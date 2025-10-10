@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <!-- Basic Page Needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <meta name="author" content="Peir-Ru Wang">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;1,300&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/20250525-icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/20250525-icon.png">
+
+    <!-- 預設圖片 URL（建議為 1200x630，jpg 或 png）-->
+    <meta property="og:image" content="../Image/Spin_Q_dim.png">
+
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/css/style.css" rel="stylesheet">
+    <link href="../assets/css/responsive.css" rel="stylesheet">
+
+    <title>Hardware Introduction</title>
+    <meta name="description" content="Discover insights into VTT&#x27;s quantum research, technology advancements, and applications in quantum computing, photonics, and cybersecurity for 2025.">
+    <meta name="keywords" content="Quantum computing hardware, VTT research on qubits, superconducting quantum devices, integrated photonics for quantum tech, cybersecurity in quantum era, quantum industry applications 2025, scalable quantum processors, quantum algorithms and software development, quantum cryptography and cybersecurity">
+    <link rel="canonical" href="https://www.insight-ihbar.com/QID_en/VTT.html">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+
+    <header id="masthead" class="site-header">
+        <nav id="primary-navigation" class="site-navigation">
+            <div class="container">
+
+                <div class="navbar-header">                   
+                    <a href="../index_en.html" class="site-title">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
+                </div><!-- /.navbar-header -->
+
+                <div class="collapse navbar-collapse" id="agency-navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="../index_en.html">Home</a></li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Qubit Physics<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                              <li><a href="../SCQ_elementary_en/main.html">Superconducting Qubits (Elementary)</a></li>
+                              <li><a href="../SCQ_advanced_en/main.html">Superconducting Qubits (Advanced)</a></li>
+                              <li><a href="../SpQ_en/main.html">Semiconductor Spin Qubits</a></li>
+                            </ul>
+                        </li>
+                        <!--<li class="active"><a href="../SCQ_elementary/main.html">科普介紹</a></li>-->
+                        <li><a href="../QC_hardware_en/main.html">Hardware</a></li>
+                        <li class="active"><a href="../QID_en/main.html">Quantum Industries</a></li>
+                        <li><a href="../About_en/main.html">About Us</a></li>
+                        <li><a href="../index.html">中文版</a></li>                        
+                    </ul>
+                </div>
+
+            </div>   
+        </nav><!-- /.site-navigation -->
+    </header><!-- /#mastheaed -->
+
+    <div id="hero" class="hero overlay subpage-hero blog-hero">
+        <div class="hero-content">
+            <div class="hero_2-text">
+                <h1>Quantum Industries</h1>
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="../index_en.html">Home</a></li>
+                  <!--<li class="breadcrumb-item"><a href="./main.html">Hardware Guide (2025)</a></li>
+                  <li class="breadcrumb-item active">約瑟夫森節</li>-->
+                </ol>
+            </div><!-- /.hero-text -->
+        </div><!-- /.hero-content -->
+    </div><!-- /.hero -->
+
+    <main id="main" class="site-main">
+
+        <section class="site-section subpage-site-section section-blog">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                        <article class="blog-post">
+                            <!--<img src="../assets/img/portfolio-1.jpg" class="img-res" alt="Laptop on wooden desk">-->
+                            <div class="post-content">
+                                <div style="text-align: center;">
+                                    <h2>VTT</h2>
+<h3>VTT Technical Research Centre of Finland</h3>
+<span style="font-size: 0.7em; line-height: 0.8;">
+    2025.10.08
+</span><br>
+<svg xmlns="http://www.w3.org/2000/svg" width="134" height="88" viewBox="0 0 134 88">
+    <g fill="none" fill-rule="evenodd">
+        <path fill="#F06E00" d="M0 88h134V0H0z"></path>
+        <path fill="#FFF" d="M47.05 59.769L58.588 24.36H48.57l-5.873 18.276-.752 2.55-.005.007c-.003.012-.015.018-.03.018s-.024 0-.029-.014l-.004-.01-.745-2.551-3.974-11.78h-9.833l9.608 28.913H47.05zM104.952 59.769V32.842h6.894v-8.51H87.925v8.51h7.166v26.927zM68.361 32.841l.002 26.927h9.86V32.841h6.962v-8.509H61.603l-2.805 8.51z"></path>
+    </g>
+</svg>
+</div>
+
+<p>VTT Technical Research Centre of Finland is a major research and technology organization in Europe. Its quantum-related projects include:</p>
+<ul>
+    <li><p><a href="#quantum-computing">Quantum Computing</a></p></li>
+    <li><p><a href="#quantum-scale-up">Quantum Computer Scale-up</a></p></li>
+    <li><p><a href="#integrated-photonics">Integrated Photonics</a></p></li>
+    <li><p><a href="#cybersecurity">Cybersecurity</a></p></li>
+</ul>
+<br><br>
+
+<section id="quantum-computing">
+    <h3><b><a href="https://www.vttresearch.com/en/ourservices/quantum-computing">Quantum Computing</a></b></h3>
+
+    <div style="text-align: center;">
+        <a href="../Image/quantum-computer-and-researchers.png.webp">
+            <img src="../Image/quantum-computer-and-researchers.png.webp" alt="Laboratory workers testing" style="width: 70%; height: auto;">
+        </a>
+    </div>
+    <p class="dark-background">
+        <span style="font-size: 0.7em; line-height: 0.8;">
+            Ref: https://www.vttresearch.com/en/technology-infrastructures/quantum-computing-and-technologies
+        </span>
+        <br><br>
+    </p>
+    
+    <h3>VTT's Research Focus in Quantum Computing</h3>
+    <ul>
+        <li><p><strong>Software and Algorithm Development:</strong> Researching pure quantum algorithms and hybrid algorithms that combine with traditional supercomputers for applications in optimization, simulation, and machine learning.</p></li>
+        <li><p><strong>Hardware Facilities:</strong> VTT has developed and operates a 50-qubit superconducting quantum computer named <b>VTT Q50</b>. This device is available for use by research and commercial organizations and can be integrated for computation with the LUMI supercomputer at the Finnish IT Center for Science (CSC).</p></li>
+    </ul>
+    <br><br>
+    <h3>VTT's Technologies and Services</h3>
+    <p>VTT provides access to its quantum computing infrastructure and conducts related research and development in software and algorithms. Its areas of expertise include:</p>
+    <ul>
+        <li><p>Quantum Optimization</p></li>
+        <li><p>Quantum Simulation</p></li>
+        <li><p>Quantum Machine Learning</p></li>
+        <li><p>Error Mitigation</p></li>
+        <li><p>Algorithm Implementation and Hardware Integration</p></li>
+    </ul>
+
+    <br><br>
+    <h3>VTT Application Case Studies</h3>
+    <ul>
+    <li><p><strong>Chemical Simulation: Algorithmiq's Photochemistry Research</strong></p></li>
+        <p>Quantum computers have a natural advantage in simulating molecular structures. The research institute Algorithmiq utilized the VTT Q50 to perform high-precision calculations of the energy gap of the BODIPY molecule. Such calculations are crucial for optimizing drug discovery processes like photodynamic cancer therapy.</p>
+    <li><p><strong>Fluid Dynamics: Quanscient's Simulation Research</strong></p></li>
+        <p>Traditional computational fluid dynamics (CFD) simulations are time-consuming and computationally expensive. VTT collaborated with Quanscient to conduct preliminary CFD simulations on superconducting quantum hardware, exploring the possibility of using quantum computing to accelerate the solving of such problems.</p>
+    <li><p><strong>Materials Science: Ammonia Molecule Simulation</strong></p></li>
+        <p>In the green energy sector, accurately calculating the potential energy of molecules like "green ammonia" is essential. Research has shown that digital simulation on a quantum computer can speed up the calculation process and achieve the accuracy required for chemical predictions.</p>
+    </ul>
+    
+</section>
+
+<br><br><br>
+
+<section id="quantum-scale-up">
+    <h3><b><a href="https://www.vttresearch.com/en/ourservices/quantum-computer-technology">Quantum Computer Scale-up</a></b></h3>
+        <div style="text-align: center;">
+            <a href="../Image/arctic-instruments.jpg.webp">
+                <img src="../Image/arctic-instruments.jpg.webp" alt="Metal heart connectors" style="width: 70%; height: auto;">
+            </a>
+        </div>
+        <p class="dark-background">
+            ▲VTT assisted its spin-off company, Arctic Instruments, with the R&D, prototyping, and chip foundry services for superconducting microwave amplifiers, accelerating its technology commercialization process.
+            <span style="font-size: 0.7em; line-height: 0.8;">
+                <br>Ref: https://www.vttresearch.com/en/case-arctic-instruments-quantum-amplifier
+            </span>
+            <br><br>
+        </p>
+    
+    <p>One of the main challenges in achieving "quantum advantage" (where a quantum computer surpasses the fastest classical computers on a specific problem) is scaling up the quantum computer. This requires not only increasing the number of qubits but also improving their quality and developing new integration and connectivity technologies. VTT's research in this area focuses on developing the key technologies needed for scale-up.</p>
+    <br><br>
+    <h3>Hardware Development and Fabrication</h3>
+    <p>VTT has decades of experience in developing superconducting hardware components and possesses in-house cleanroom facilities that support the entire process from design and fabrication to prototype testing. Its research directions include:</p>
+    <ul>
+        <li><p><strong>Superconducting Quantum Devices:</strong> Developing the technologies, devices, and subsystems required for quantum computing hardware and quantum sensors.</p></li>
+        <li><p><strong>3D Integration Technology:</strong> Researching 3D stacking methods for superconducting wafers, such as flip-chip bonding and Through-Silicon Via (TSV) technology, to achieve highly integrated superconducting modules.</p></li>
+        <li><p><strong>Quantum Sensing:</strong> Developing SQUID-based magnetometers (for applications like brain imaging) and Superconducting Nanowire Single-Photon Detectors (SNSPDs) (for quantum communication).</p></li>
+        <li><p><strong>Cryo-CMOS Technology:</strong> Developing ultra-low-noise amplifiers (for weak signals in the RF to millimeter-wave range) and custom integrated circuits (ASICs) for qubit signal readout and control in cryogenic environments, using technologies such as SiGe, CMOS, and InP.</p></li>
+        <li><p><strong>Integrated Photonics Solutions:</strong> Integrated photonic solutions for quantum computers include Silicon Nitride (SiN) and Silicon-on-Insulator (SOI) platforms. The focus is on optoelectronic conversion in quantum computers: when transmitting microwave signals from superconducting qubits or photonic sensors to the room-temperature end, optoelectronic conversion allows thousands of microwave cables to be replaced by a few optical fibers.</p></li>
+    </ul>
+    <br><br>
+    <h3>Technology Collaboration Cases</h3>
+    <ul>
+        <li><p><strong>Collaboration with Xanadu</strong></p></li>
+        <p>VTT fabricated Photon-Number-Resolving Detectors for the Canadian quantum technology company Xanadu to support the development of their photonic quantum computers. This collaboration aims to transform laboratory research results into scalable, manufacturable components.</p>
+        <li><p><strong>Collaboration with Arctic Instruments</strong></p></li>
+        <p>VTT assisted its spin-off company, Arctic Instruments, with the R&D, prototyping, and chip foundry services for superconducting microwave amplifiers, accelerating its technology commercialization process.</p>
+    </ul>
+</section>
+
+<br><br><br>
+<section id="integrated-photonics">
+    <h3><b><a href="https://www.vttresearch.com/en/ourservices/integrated-photonics">Integrated Photonics</a></b></h3>
+    
+    <p>Integrated photonics is the technology of integrating optical components such as waveguides, modulators, and lasers onto a single chip, similar to integrated circuits in electronics. Its goal is to achieve miniaturization, high performance, and low power consumption for optical systems. Application areas include data communications, sensors, LiDAR, and quantum technologies.</p>
+    <br><br>
+        <h3>Technological Advantages of Integrated Photonics</h3>
+        <ul>
+            <li><p><strong>Miniaturization:</strong> Shrinking complex optical systems from tens of centimeters down to a few millimeters.</p></li>
+            <li><p><strong>High Efficiency:</strong> Reducing power consumption, especially advantageous over traditional electronic solutions for high-frequency signal transmission.</p></li>
+            <li><p><strong>High Bandwidth:</strong> Meeting the needs of data-intensive applications, such as high-performance computing and 6G communications.</p></li>
+        </ul>
+    
+        <br><br>
+    <h3>VTT's Technology Platforms and Capabilities</h3>
+    <p>VTT has a long history of research in the field of integrated photonics, with technical capabilities covering the entire process from design simulation and prototyping to packaging and testing.</p>
+    <ul>
+        <li><p><strong>Material Platforms:</strong> Primarily developing Photonic Integrated Circuit (PIC) technology based on 3µm thick Silicon-on-Insulator (SOI) and Silicon Nitride (SiN). The SOI platform focuses on low-loss transmission in the infrared band, while the SiN platform can be extended to the visible light spectrum, suitable for quantum and medical applications.</p></li>
+        <li><p><strong>Integration Technologies:</strong>
+            <ul>
+                <li><p><strong>Monolithic Integration:</strong> Seamlessly integrating active and passive components on a single chip.</p></li>
+                <li><p><strong>Hybrid Integration:</strong> Integrating III-V semiconductor lasers or amplifiers onto silicon-based waveguides using techniques like flip-chip bonding.</p></li>
+                <li><p><strong>Heterogeneous Integration:</strong> Integrating new materials like graphene and performing subsequent processing at the wafer level.</p></li>
+            </ul>
+        </li>
+        <li><p><strong>Assembly and Packaging:</strong> Possesses advanced packaging technologies such as low-loss fiber coupling, polymer lens fabrication, and V-groove alignment.</p></li>
+    </ul>
+    <br><br>
+     <h3>Technology Application Case</h3>
+     <ul>
+        <li><p><strong>Rockley Photonics Technology Development</strong></p></li>
+        <p>Between 2014 and 2021, VTT assisted Rockley Photonics with the development and prototyping of its photonic integrated circuit platform. This technology was subsequently transferred to large-scale foundries for the production of optical sensors in consumer applications.</p>
+    </ul>
+</section>
+<br><br><br>
+<section id="cybersecurity">
+    <h3><b><a href="https://www.vttresearch.com/en/ourservices/cybersecurity">Cybersecurity</a></b></h3>
+    <p>As digitalization deepens, the threats facing information security are becoming increasingly complex. VTT's cybersecurity research aims to provide customized security architectures and evaluation methods for critical infrastructure, high-demand industries (such as energy, defense, and telecommunications), and emerging technologies.</p>
+    <br><br>
+    <h3>Research Areas and Methods</h3>
+    <p>VTT's cybersecurity research covers both software and hardware levels, with an eye on future threats.</p>
+    <ul>
+        <li><p><strong>Threat Assessment and Testing:</strong> Conducting assessments of Information Technology (IT) and Operational Technology (OT) networks, performing device testing and penetration testing.</p></li>
+        <li><p><strong>Secure Architecture Design:</strong> Designing architectures for complex systems that meet security requirements, following the Security-by-Design principle.</p></li>
+        <li><p><strong>Post-Quantum Cryptography (PQC):</strong> Researching and developing cryptographic algorithms that can withstand attacks from future quantum computers, and participating in related standardization efforts. This is to protect high-value data in fields like defense and finance.</p></li>
+        <li><p><strong>AI Security:</strong> Researching AI-driven cybersecurity applications while also defending against security risks generated by AI.</p></li>
+        <li><p><strong>Test Environments:</strong> Utilizing its Cyber War Room security lab and 5G test network infrastructure to conduct realistic cyber-attack and defense drills and security performance tests.</p></li>
+    </ul>
+<br><br>
+    <h3>Key Projects</h3>
+    <ul>
+        <li><p><strong>AI-NET-ANTILLAS Project</strong></p></li>
+        <p>VTT coordinates the Finnish consortium of this European project, which is dedicated to researching methods to protect information networks and critical infrastructure.</p>
+        <li><p><strong>Post-Quantum Cryptography (PQC) Project</strong></p></li>
+        <p>This project, funded by Business Finland, aims to develop quantum-safe cryptographic technologies and to formulate national-level quantum-safe assessment recommendations for Finland.</p>
+    </ul>
+</section>
+
+                               
+<br><br><br><br>
+                                <p>
+                                    <span style="font-size: 0.5em; line-height: 0.8;">
+                                        Parts of this article were generated and edited with the assistance of AI tools and reviewed by the author. Originally written in Chinese by the author, these articles are translated into English to invite cross-language resonance.
+                                    </span>
+                                </p>
+                                <div class="post-meta">
+                                    <span class="post-author">
+                                        <a href="../About_en/Wang.html"><img class="img-res" src="../Image/IMG_0964_2.JPG" alt="Professional headshot">Peir-Ru Wang</a>
+                                    </span>
+                                    <span class="post-category">
+                                        <a href="../QID_en/main.html"><i class="fa fa-folder" aria-hidden="true"></i>Quantum Industries</a>
+                                    </span>
+                                </div><!-- /.post-meta -->
+                            
+                                <div id="prev-next-nav" class="text-center"></div>
+
+                                <script>
+fetch("lessons.json")
+  .then(res => res.json())
+  .then(pages => {
+    // 過濾掉 disabled 的頁面
+    pages = pages.filter(p => p.enabled !== false);
+
+    const current = location.pathname.split("/").pop();
+    const index = pages.findIndex(p => p.file === current);
+    let html = "";
+
+    if (index > 0) {
+      const prev = pages[index - 1];
+      html += `<a class="btn btn-gray" href="${prev.file}">← Previous</a> `;
+    }
+
+    html += `<a class="btn btn-gray" href="../QID/${current}" style="margin: 0 10px;">中文版</a>`;
+
+    if (index < pages.length - 1) {
+      const next = pages[index + 1];
+      html += `<a class="btn btn-gray" href="${next.file}">Next →</a>`;
+    }
+
+    document.getElementById("prev-next-nav").innerHTML = html;
+  });
+</script>
+
+                            </div><!-- /.post-content -->
+                        </article><!-- /.blog-post -->
+                        <!--<div id="PostComments" class="post-comments">
+                            
+                            
+                            
+                        </div> /#PostComments -->
+                        <!--<div class="respond">
+                            <h3>Post a Comment</h3>
+                            <form class="form-horizontal">
+                                <input class="form-control" type="text" placeholder="Your Name*" required>
+                                <input class="form-control" type="email" placeholder="Your Email" required>
+                                <textarea class="form-control form-control-comment" type="text" placeholder="Your Comment*" required></textarea>
+                                <button class="btn btn-green">Add a comment</button>
+                            </form>    
+                        </div> /.respond -->
+                    </div>
+                    <aside class="col-md-3">
+                        <div class="sidebar">
+                            <!--<div class="widget search-form">
+                                <h4 class="widget-title">Search the blog</h4>
+                                <form class="form-group">
+                                    <input type="text" class="form-control" placeholder="Search" required>
+                                    <button class="btn btn-green" type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
+                                </form>
+                            </div> /.search-form -->
+                            <!--<div class="widget widget-recent-posts">
+                                <h4 class="widget-title">Recent posts</h4>
+                                <ul class="list-unstyled">
+                                    <li><a href="#">Inside The Lipsum</a></li>
+                                    <li><a href="#">Oscar Wilde</a></li>
+                                    <li><a href="#">Jeffrey Ween</a></li>
+                                    <li><a href="#">Responsive Design</a></li>
+                                    <li><a href="#">Development</a></li>
+                                </ul>
+                            </div> /.widget-recent-posts -->
+                            
+
+                            <div class="widget">
+                                <!--<h4 class="widget-title"><a href="./main.html">科普版：目錄</a></h4>-->
+                                <div id="lesson-list_2"></div>
+                            </div>
+                            <script>
+fetch("lessons.json")
+  .then(res => res.json())
+  .then(pages => {
+    const current = location.pathname.split("/").pop();
+    const list = pages
+      .filter(p => p.enabled !== false) // ← 這行：只顯示 enabled 沒被關閉的項目
+      .map(p => {
+        const isActive = p.file === current ? "active" : "";
+        return `<div class="lesson-link ${isActive}"><a href="${p.file}">${p.title}</a></div>`;
+      })
+      .join("");
+    document.getElementById("lesson-list_2").innerHTML = list;
+  });
+</script>
+
+  
+                        </div><!-- /.sidebar -->
+                        
+                    </aside>
+                </div>
+            </div>
+        </section><!-- /.section-portfolio -->
+
+    </main><!-- /#main -->
+
+    <footer id="colophon" class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-4 col-xs-6">
+                    <a href="../index.html" class="site-title">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
+                    <p>Exploring the Quantum Technology Together.</p>
+                    </div>
+                <div class="col-lg-offset-4 col-md-3 col-sm-4 col-md-offset-2 col-sm-offset-0 col-xs-6 ">
+                    <p class="site-title">𝐾𝐸𝐸𝑃 𝐼𝑁 𝑇𝑂𝑈𝐶𝐻</p>
+                    <ul class="list-unstyled contact-links">
+                        <li><i class="fa fa-envelope" aria-hidden="true"></i><a href="mailto:info@insight-ihbar.com">info@insight-ihbar.com</a></li>
+                        <!--<li><i class="fa fa-phone" aria-hidden="true"></i><a href="tel:+37400800000">+374 (00) 80 00 00 </a></li>
+                        <li><i class="fa fa-fax" aria-hidden="true"></i><a href="+37400900000">+374 (00) 90 00 00</a></li>
+                        <li><i class="fa-solid fa-location-dot"></i><p>Hsinchu 300, Taiwan (R.O.C.)</p></li>-->
+                    </ul>
+                </div>
+                <!--<div class="clearfix visible-xs"></div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6">
+                    <h3>Featured links</h3>
+                    <ul class="list-unstyled">
+                        <li class="active"><a href="index.html">Home</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="portfolio.html">Porfolio</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>-->
+            </div>
+        </div>
+        <div class="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-8">
+                        <div class="social-links">
+                            <!--<a class="twitter-bg" href="#"><i class="fab fa-twitter"></i></a>-->
+                            <!--<<a class="facebook-bg" href="https://www.facebook.com/people/Quantum-Perspectives/61576446849628/"><i class="fab fa-facebook"></i></a>-->
+                            <!--<a class="facebook-bg" href="https://www.facebook.com/people/%E9%87%8F%E5%AD%90%E9%81%A0%E8%A6%8BQuantum-Perspectives/61576883632888/"><i class="fab fa-facebook-f"></i></a>-->
+                            <!--<a class="pinterest" href="#"><i class="fa-solid fa-microscope"></i></a>-->
+                            <!--<a class="facebook-bg" href="https://www.facebook.com/people/Insight-hbar/61576811775374/"><i class="fab fa-facebook-f"></i></a>-->
+                            <a class="linkedin-bg" href="https://www.linkedin.com/company/insight-ihbar"><i class="fab fa-linkedin"></i></a>
+                        </div><!-- /.social-links -->
+                    </div>
+                    <div class="col-xs-4">
+                        <div class="text-right">
+                            <p><span style="font-size: 16px;">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</span></p>
+                            <p>All Rights Reserved</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.copyright -->
+    </footer><!-- /#footer -->
+
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="../assets/js/bootstrap-select.min.js"></script>
+    <script src="../assets/js/jquery.slicknav.min.js"></script>
+    <script src="../assets/js/jquery.countTo.min.js"></script>
+    <script src="../assets/js/jquery.shuffle.min.js"></script>
+    <script src="../assets/js/script.js"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  
+</body>
+</html>

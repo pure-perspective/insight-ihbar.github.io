@@ -1,0 +1,7 @@
+[
+    { "title": "Quantum Industry Dictionary", "file": "main.html"},
+    { "title": "VTT", "file": "VTT.html" , "status": "new" , "date": "2025-10-08"},
+    { "title": "QURECA", "file": "QURECA.html" , "status": "new" , "date": "2025-10-09"},
+    { "title": "AQT", "file": "AQT.html" , "status": "new" , "date": "2025-10-09"},
+    { "title": "IonQ", "file": "IonQ.html" , "status": "new" , "date": "2025-10-10"}
+]
