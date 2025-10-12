@@ -1,7 +1,11 @@
 [
-    { "title": "量子產業群", "file": "main.html"},
+    { "title": "量子產業群像錄", "file": "main.html"},
     { "title": "VTT", "file": "VTT.html" , "status": "new" , "date": "2025-10-08"},
     { "title": "QURECA", "file": "QURECA.html" , "status": "new" , "date": "2025-10-09"},
     { "title": "AQT", "file": "AQT.html" , "status": "new" , "date": "2025-10-09"},
-    { "title": "IonQ", "file": "IonQ.html" , "status": "new" , "date": "2025-10-10"}
+    { "title": "IonQ", "file": "IonQ.html" , "status": "new" , "date": "2025-10-10"},
+    { "title": "SQC", "file": "SQC.html" , "status": "new" , "date": "2025-10-11"},
+    { "title": "Rigetti", "file": "Rigetti.html" , "status": "new" , "date": "2025-10-11"},
+    { "title": "Atom-Computing", "file": "Atom-Computing.html" , "status": "new" , "date": "2025-10-12"}
+    
 ]
