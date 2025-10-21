@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <!-- Basic Page Needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <meta name="author" content="Peir-Ru Wang">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;1,300&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/20250525-icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/20250525-icon.png">
+
+    <!-- 預設圖片 URL（建議為 1200x630，jpg 或 png）-->
+    <meta property="og:image" content="../Image/Spin_Q_dim.png">
+
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/css/style.css" rel="stylesheet">
+    <link href="../assets/css/responsive.css" rel="stylesheet">
+
+    <title>Hardware Introduction</title>
+    <meta name="description" content="Discover insights into semiconductor spin qubits, their role in quantum computing, challenges, and future prospects for 2025.">
+    <meta name="keywords" content="Semiconductor spin qubits quantum computing hardware guide, quantum bits, qubit technology, superconducting qubits, quantum dot fabrication, low temperature cooling systems, Josephson junctions, high-fidelity two-qubit gates, scalable quantum processors">
+    <link rel="canonical" href="https://www.insight-ihbar.com/SpQ_en/A.html">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+
+    <header id="masthead" class="site-header">
+        <nav id="primary-navigation" class="site-navigation">
+            <div class="container">
+
+                <div class="navbar-header">                   
+                    <a href="../index_en.html" class="site-title">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
+                </div><!-- /.navbar-header -->
+
+                <div class="collapse navbar-collapse" id="agency-navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="../index_en.html">Home</a></li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Qubit Physics<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                              <li><a href="../SCQ_elementary_en/main.html">Superconducting Qubits (Elementary)</a></li>
+                              <li><a href="../SCQ_advanced_en/main.html">Superconducting Qubits (Advanced)</a></li>
+                              <li class="active"><a href="../SpQ_en/main.html">Semiconductor Spin Qubits</a></li>
+                            </ul>
+                        </li>
+                        <!--<li class="active"><a href="../SCQ_elementary/main.html">科普介紹</a></li>-->
+                        <li><a href="../QC_hardware_en/main.html">Hardware</a></li>
+                        <li><a href="../About_en/main.html">About Us</a></li>
+                        <li><a href="../index.html">中文版</a></li>                        
+                    </ul>
+                </div>
+
+            </div>   
+        </nav><!-- /.site-navigation -->
+    </header><!-- /#mastheaed -->
+
+    <div id="hero" class="hero overlay subpage-hero blog-hero">
+        <div class="hero-content">
+            <div class="hero_2-text">
+                <h1>Semiconductor Spin Qubits</h1>
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="../index_en.html">Home</a></li>
+                  <!--<li class="breadcrumb-item"><a href="./main.html">Hardware Guide (2025)</a></li>
+                  <li class="breadcrumb-item active">約瑟夫森節</li>-->
+                </ol>
+            </div><!-- /.hero-text -->
+        </div><!-- /.hero-content -->
+    </div><!-- /.hero -->
+
+    <main id="main" class="site-main">
+
+        <section class="site-section subpage-site-section section-blog">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                        <article class="blog-post">
+                            <!--<img src="../assets/img/portfolio-1.jpg" class="img-res" alt="Laptop on wooden desk">-->
+                            <div class="post-content">
+                                <div style="text-align: center;">
+                                    <h2>What are Spin Qubits?</h2>
+                                    <h3>Implementations of Spin Qubits</h3>
+                                </div>
+                                <p>The manifestation of quantum effects can be broadly categorized into <b>intrinsic quantum effects</b>, <b>single-particle quantum effects</b>, and <b>statistical quantum effects</b>:</p>
+                                <ul>
+                                    <li><p><b>Intrinsic Quantum Effects:</b> These are properties inherent to particles like electrons or atoms, such as spin, spin-orbit coupling, or the polarization of photons. These properties do not depend on the external environment.</p></li>
+                                    <li><p><b>Single-Particle Quantum Effects:</b> An individual electron or atom exhibits quantum effects under specific environmental constraints. For example, at low temperatures and within a confined potential well, when the electron's de Broglie wavelength is comparable to the characteristic scale of the well, energy quantization becomes significant. Similarly, when a material is scaled down to the nanoscale (e.g., quantum dots, nanowires, cold atoms), its properties also exhibit quantum energy levels.</p></li>
+                                    <li><p><b>Statistical Quantum Effects:</b> A large number of electrons or atoms enter a collective quantum statistical state, where individual physical quantities lose their meaning and must be considered as a whole. Examples include superconductivity, superfluidity, Bose-Einstein condensation, lasers, ferromagnetism, as well as quasiparticle excitations in materials like phonons and excitons.</p></li>
+                                </ul>
+                                
+                                <p>Any of the above properties can be used to create qubits for quantum computing. Semiconductor spin qubits utilize both the spin effect and the confinement effect, using a confined potential well to trap an electron and controlling its spin to store information.</p>
+                                
+                                <div style="text-align: center;">
+                                    <a href="../Image/QD_size_2.gif">
+                                        <img src="../Image/QD_size_2.gif" alt="Diagram showing the emergence of quantum effects with decreasing material size" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲ As the scale of a material shrinks, quantum effects begin to manifest and energy levels become quantized.<br>
+                                    <span style="font-size: 0.7em; line-height: 0.8;">
+                                        Advancements in thermoelectric materials: optimization strategies for enhancing energy conversion
+                                        <br>DOI: 10.1039/D4TA03666B
+                                    </span>
+                                    <br><br>
+                                </p>
+                                
+                                <h3>How are Semiconductor Qubits Realized?</h3>
+                                <p>As mentioned, semiconductor spin qubits use a confined potential well to trap an electron, causing it to exhibit significant quantum effects. The confinement can be achieved through <b>material geometric confinement</b> or <b>artificial gate confinement</b>. Material geometric confinement uses inhomogeneities in the material to create potential variations, while artificial gate confinement uses lithographically defined electrode patterns to apply voltages that create potential variations. These are introduced below.</p>
+                                <table border="1" cellspacing="0" cellpadding="8" width="100%">
+                                    <thead>
+                                      <tr bgcolor="#f2f2f2">
+                                        <th width="20%" style="text-align: center; vertical-align: middle;">Material Geometric Confinement</th>
+                                        <th width="60%" style="text-align: center; vertical-align: middle;">Description</th>
+                                        <th style="text-align: center; vertical-align: middle;">Gate-Assisted Confinement?</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr>
+                                        <td style="text-align: center; vertical-align: middle;">Dopant Impurity (0D)</td>
+                                        <td style="text-align: center; vertical-align: middle;">A defect center is naturally formed by a dopant atom in a silicon material, for example, phosphorus doping.</td>
+                                        <td style="text-align: center; vertical-align: middle;">Gates are used to fix the dopant's position.</td>
+                                      </tr>
+                                      <tr>
+                                        <td style="text-align: center; vertical-align: middle;">Quantum Dot (0D)</td>
+                                        <td style="text-align: center; vertical-align: middle;">Spherically symmetric quantum dots are self-assembled during the material growth process.</td>
+                                        <td style="text-align: center; vertical-align: middle;">Not required.</td>
+                                      </tr>
+                                      <tr>
+                                        <td style="text-align: center; vertical-align: middle;">Nanowire (1D)</td>
+                                        <td style="text-align: center; vertical-align: middle;">One-dimensional nanowires can be formed through etching or crystal growth.</td>
+                                        <td style="text-align: center; vertical-align: middle;">Gates are used for confinement along the axial direction.</td>
+                                      </tr>
+                                      <tr>
+                                        <td style="text-align: center; vertical-align: middle;">Two-Dimensional Electron Gas (2DEG) (2D)</td>
+                                        <td style="text-align: center; vertical-align: middle;">A free electron gas formed at a heterojunction interface.</td>
+                                        <td style="text-align: center; vertical-align: middle;">Gates are used to define local potential wells.</td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                  <br>
+                                <div style="text-align: center;">
+                                    <a href="../Image/Spin_Q_dim.png">
+                                        <img src="../Image/Spin_Q_dim.png" alt="Four ways to implement quantum dot qubits" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲ Four ways to implement quantum dot qubits: impurity doping, quantum dots, nanowires, and a two-dimensional electron gas at a heterojunction.<br>
+                                    <span style="font-size: 0.7em; line-height: 0.8;">
+                                        Silicon quantum electronics
+                                        <br>DOI:10.1103/RevModPhys.85.961
+                                    </span>
+                                    <br><br>
+                                </p>
+                                
+                                <h3>Phosphorus Doping</h3>
+                                <div style="text-align: center;">
+                                    <a href="../Image/Dopant_Qubit.png">
+                                        <img src="../Image/Dopant_Qubit.png" alt="Quantum dot formed by phosphorus doping" style="width: 80%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲ Using a defect center formed by phosphorus doping to create a quantum dot.<br>
+                                    <span style="font-size: 0.7em; line-height: 0.8;">
+                                        Silicon quantum electronics
+                                        <br>DOI:10.1103/RevModPhys.85.961
+                                    </span>
+                                    <br><br>
+                                </p>
+                                
+                                <h3>Germanium Quantum Dots</h3>
+                                <div style="text-align: center;">
+                                    <a href="../Image/Ge-QD.png">
+                                        <img src="../Image/Ge-QD.png" alt="Nanoscale spherical germanium quantum dots on silicon" style="width: 80%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲ Growing nanoscale spherical germanium quantum dots on a silicon material through crystal growth.
+                                    <span style="font-size: 0.7em; line-height: 0.8;">
+                                        <br>YouTube: 【2024 NYCU Electrical Engineering Project Exploration】 Introduction by Prof. Pei-Wen Li
+                                        <br><a href="https://www.youtube.com/watch?v=LuXsf-pWFeI&t=7s">https://www.youtube.com/watch?v=LuXsf-pWFeI&t=7s</a>
+                                    </span>
+                                    <br><br>
+                                </p>
+                                
+                                <div style="text-align: center;">
+                                    <a href="../Image/Ge-Dot-size.png">
+                                        <img src="../Image/Ge-Dot-size.png" alt="Size control of Germanium quantum dots" style="width: 80%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲ The size of spherical germanium quantum dots can be controlled, which directly alters the energy gap of germanium.
+                                    <span style="font-size: 0.7em; line-height: 0.8;">
+                                        <br>YouTube: 【2024 NYCU Electrical Engineering Project Exploration】 Introduction by Prof. Pei-Wen Li
+                                        <br><a href="https://www.youtube.com/watch?v=LuXsf-pWFeI&t=7s">https://www.youtube.com/watch?v=LuXsf-pWFeI&t=7s</a>
+                                    </span>
+                                    <br><br>
+                                </p>
+                                
+                                <div style="text-align: center;">
+                                    <a href="../Image/SET-DQD.png">
+                                        <img src="../Image/SET-DQD.png" alt="Double Quantum Dot (DQD) and Single Electron Transistor (SET)" style="width: 80%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲ Quantum dot qubits can be combined to form Double Quantum Dot (DQD) devices and can also be integrated with Single Electron Transistors (SETs).
+                                    <span style="font-size: 0.7em; line-height: 0.8;">
+                                        <br>YouTube: 【2024 NYCU Electrical Engineering Project Exploration】 Introduction by Prof. Pei-Wen Li
+                                        <br><a href="https://www.youtube.com/watch?v=LuXsf-pWFeI&t=7s">https://www.youtube.com/watch?v=LuXsf-pWFeI&t=7s</a>
+                                    </span>
+                                    <br><br>
+                                </p>
+                                
+                                <h3>Nanowires</h3>
+                                <div style="text-align: center;">
+                                    <a href="../Image/Nanowire_Qubit.png">
+                                        <img src="../Image/Nanowire_Qubit.png" alt="Potential well formed by gates on a nanowire" style="width: 80%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲ Using gates on a one-dimensional nanowire to form a potential well.
+                                    <span style="font-size: 0.7em; line-height: 0.8;">
+                                        Silicon quantum electronics
+                                        <br>DOI:10.1103/RevModPhys.85.961
+                                    </span>
+                                    <br><br>
+                                </p>
+                                
+                                <h3>Gate-Defined Qubits (2D Electron Gas)</h3>
+                                <div style="text-align: center;">
+                                    <a href="../Image/SpQ-1.png">
+                                        <img src="../Image/SpQ-1.png" alt="Schematic of a nanoscale qubit circuit" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p  class="dark-background">
+                                    ▲ The current mainstream approach for spin qubits. It utilizes the layer-by-layer deposition and etching characteristics of semiconductor fabrication. First, a heterostructure sandwich is created, for example, \(SiGe-Si-SiGe\). The middle layer then contains many freely moving electrons, forming a two-dimensional electron gas (2DEG). Gates are then fabricated on top, and the voltages applied by these gates are used to form quantum dots.<br>
+                                    <span style="font-size: 0.7em; line-height: 0.8;">
+                                        Resonantly driven CNOT gate for electron spins
+                                        <br>DOI:10.1126/science.aao5965
+                                    </span>
+                                    <br>
+                                    <br>
+                                </p>
+
+
+                                
+
+                                <p>
+                                    <span style="font-size: 0.5em; line-height: 0.8;">
+                                        Originally written in Chinese by the author, these articles are translated into English to invite cross-language resonance.
+                                    </span>
+                                </p>
+                                <div class="post-meta">
+                                    <span class="post-author">
+                                        <a href="../About_en/Wang.html"><img class="img-res" src="../Image/IMG_0964_2.JPG" alt="Professional headshot">Peir-Ru Wang</a>
+                                    </span>
+                                    <span class="post-category">
+                                        <a href="../SpQ_en/main.html"><i class="fa fa-folder" aria-hidden="true"></i>Semiconductor Spin Qubits</a>
+                                    </span>
+                                </div><!-- /.post-meta -->
+                            
+                                <div id="prev-next-nav" class="text-center"></div>
+
+                                <script>
+fetch("lessons.json")
+  .then(res => res.json())
+  .then(pages => {
+    // 過濾掉 disabled 的頁面
+    pages = pages.filter(p => p.enabled !== false);
+
+    const current = location.pathname.split("/").pop();
+    const index = pages.findIndex(p => p.file === current);
+    let html = "";
+
+    if (index > 0) {
+      const prev = pages[index - 1];
+      html += `<a class="btn btn-gray" href="${prev.file}">← Previous</a> `;
+    }
+
+    html += `<a class="btn btn-gray" href="../SpQ/${current}" style="margin: 0 10px;">中文版</a>`;
+
+    if (index < pages.length - 1) {
+      const next = pages[index + 1];
+      html += `<a class="btn btn-gray" href="${next.file}">Next →</a>`;
+    }
+
+    document.getElementById("prev-next-nav").innerHTML = html;
+  });
+</script>
+
+                            </div><!-- /.post-content -->
+                        </article><!-- /.blog-post -->
+                        <!--<div id="PostComments" class="post-comments">
+                            
+                            
+                            
+                        </div> /#PostComments -->
+                        <!--<div class="respond">
+                            <h3>Post a Comment</h3>
+                            <form class="form-horizontal">
+                                <input class="form-control" type="text" placeholder="Your Name*" required>
+                                <input class="form-control" type="email" placeholder="Your Email" required>
+                                <textarea class="form-control form-control-comment" type="text" placeholder="Your Comment*" required></textarea>
+                                <button class="btn btn-green">Add a comment</button>
+                            </form>    
+                        </div> /.respond -->
+                    </div>
+                    <aside class="col-md-3">
+                        <div class="sidebar">
+                            <!--<div class="widget search-form">
+                                <h4 class="widget-title">Search the blog</h4>
+                                <form class="form-group">
+                                    <input type="text" class="form-control" placeholder="Search" required>
+                                    <button class="btn btn-green" type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
+                                </form>
+                            </div> /.search-form -->
+                            <!--<div class="widget widget-recent-posts">
+                                <h4 class="widget-title">Recent posts</h4>
+                                <ul class="list-unstyled">
+                                    <li><a href="#">Inside The Lipsum</a></li>
+                                    <li><a href="#">Oscar Wilde</a></li>
+                                    <li><a href="#">Jeffrey Ween</a></li>
+                                    <li><a href="#">Responsive Design</a></li>
+                                    <li><a href="#">Development</a></li>
+                                </ul>
+                            </div> /.widget-recent-posts -->
+                            
+
+                            <div class="widget">
+                                <!--<h4 class="widget-title"><a href="./main.html">科普版：目錄</a></h4>-->
+                                <div id="lesson-list_2"></div>
+                            </div>
+                            <script>
+fetch("lessons.json")
+  .then(res => res.json())
+  .then(pages => {
+    const current = location.pathname.split("/").pop();
+    const list = pages
+      .filter(p => p.enabled !== false) // ← 這行：只顯示 enabled 沒被關閉的項目
+      .map(p => {
+        const isActive = p.file === current ? "active" : "";
+        return `<div class="lesson-link ${isActive}"><a href="${p.file}">${p.title}</a></div>`;
+      })
+      .join("");
+    document.getElementById("lesson-list_2").innerHTML = list;
+  });
+</script>
+
+  
+                        </div><!-- /.sidebar -->
+                        
+                    </aside>
+                </div>
+            </div>
+        </section><!-- /.section-portfolio -->
+
+    </main><!-- /#main -->
+
+    <footer id="colophon" class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-4 col-xs-6">
+                    <a href="../index.html" class="site-title">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
+                    <p>Exploring the Quantum Technology Together.</p>
+                    </div>
+                <div class="col-lg-offset-4 col-md-3 col-sm-4 col-md-offset-2 col-sm-offset-0 col-xs-6 ">
+                    <p class="site-title">𝐾𝐸𝐸𝑃 𝐼𝑁 𝑇𝑂𝑈𝐶𝐻</p>
+                    <ul class="list-unstyled contact-links">
+                        <li><i class="fa fa-envelope" aria-hidden="true"></i><a href="mailto:info@insight-ihbar.com">info@insight-ihbar.com</a></li>
+                        <!--<li><i class="fa fa-phone" aria-hidden="true"></i><a href="tel:+37400800000">+374 (00) 80 00 00 </a></li>
+                        <li><i class="fa fa-fax" aria-hidden="true"></i><a href="+37400900000">+374 (00) 90 00 00</a></li>
+                        <li><i class="fa-solid fa-location-dot"></i><p>Hsinchu 300, Taiwan (R.O.C.)</p></li>-->
+                    </ul>
+                </div>
+                <!--<div class="clearfix visible-xs"></div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6">
+                    <h3>Featured links</h3>
+                    <ul class="list-unstyled">
+                        <li class="active"><a href="index.html">Home</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="portfolio.html">Porfolio</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>-->
+            </div>
+        </div>
+        <div class="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-8">
+                        <div class="social-links">
+                            <!--<a class="twitter-bg" href="#"><i class="fab fa-twitter"></i></a>-->
+                            <!--<<a class="facebook-bg" href="https://www.facebook.com/people/Quantum-Perspectives/61576446849628/"><i class="fab fa-facebook"></i></a>-->
+                            <!--<a class="facebook-bg" href="https://www.facebook.com/people/%E9%87%8F%E5%AD%90%E9%81%A0%E8%A6%8BQuantum-Perspectives/61576883632888/"><i class="fab fa-facebook-f"></i></a>-->
+                            <!--<a class="pinterest" href="#"><i class="fa-solid fa-microscope"></i></a>-->
+                            <!--<a class="facebook-bg" href="https://www.facebook.com/people/Insight-hbar/61576811775374/"><i class="fab fa-facebook-f"></i></a>-->
+                            <a class="linkedin-bg" href="https://www.linkedin.com/company/insight-ihbar"><i class="fab fa-linkedin"></i></a>
+                        </div><!-- /.social-links -->
+                    </div>
+                    <div class="col-xs-4">
+                        <div class="text-right">
+                            <p><span style="font-size: 16px;">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</span></p>
+                            <p>All Rights Reserved</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.copyright -->
+    </footer><!-- /#footer -->
+
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="../assets/js/bootstrap-select.min.js"></script>
+    <script src="../assets/js/jquery.slicknav.min.js"></script>
+    <script src="../assets/js/jquery.countTo.min.js"></script>
+    <script src="../assets/js/jquery.shuffle.min.js"></script>
+    <script src="../assets/js/script.js"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  
+</body>
+</html>
