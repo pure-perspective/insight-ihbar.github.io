@@ -6,5 +6,8 @@
     { "title": "IonQ", "file": "IonQ.html" , "status": "new" , "date": "2025-10-10"},
     { "title": "SQC", "file": "SQC.html" , "status": "new" , "date": "2025-10-11"},
     { "title": "Rigetti", "file": "Rigetti.html" , "status": "new" , "date": "2025-10-11"},
-    { "title": "Atom-Computing", "file": "Atom-Computing.html" , "status": "new" , "date": "2025-10-12"}
+    { "title": "Atom-Computing", "file": "Atom-Computing.html" , "status": "new" , "date": "2025-10-12"},
+    { "title": "Infleqtion", "file": "Infleqtion.html" , "status": "new" , "date": "2025-10-13"},
+    { "title": "QuEra", "file": "QuEra.html" , "status": "new" , "date": "2025-10-21"},
+    { "title": "Safran", "file": "Safran.html" , "status": "new" , "date": "2025-10-24"}
 ]

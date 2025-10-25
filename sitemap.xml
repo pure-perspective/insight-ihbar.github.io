@@ -86,7 +86,17 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://www.insight-ihbar.com/QID_en/Infleqtion.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://www.insight-ihbar.com/QID_en/IonQ.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.insight-ihbar.com/QID_en/QuEra.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -102,6 +112,11 @@
   </url>
   <url>
     <loc>https://www.insight-ihbar.com/QID_en/Atom-Computing.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.insight-ihbar.com/QID_en/Safran.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -416,6 +431,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://www.insight-ihbar.com/QID/QuEra.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://www.insight-ihbar.com/QID/SQC.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -427,6 +447,11 @@
   </url>
   <url>
     <loc>https://www.insight-ihbar.com/QID/Atom-Computing.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.insight-ihbar.com/QID/Safran.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -601,7 +626,22 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://www.insight-ihbar.com/HSP/B.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.insight-ihbar.com/HSP/C.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://www.insight-ihbar.com/HSP/main.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.insight-ihbar.com/HSP/A.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
