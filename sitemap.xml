@@ -86,6 +86,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://www.insight-ihbar.com/QID_en/eleQtron.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://www.insight-ihbar.com/QID_en/Infleqtion.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -417,6 +422,11 @@
   </url>
   <url>
     <loc>https://www.insight-ihbar.com/QID/QURECA.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.insight-ihbar.com/QID/eleQtron.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
