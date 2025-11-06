@@ -23,9 +23,9 @@
     <link href="../assets/css/style.css" rel="stylesheet">
     <link href="../assets/css/responsive.css" rel="stylesheet">
 
-    <title>超導量子電腦硬體指南 (2025) | 量子位元、組件與廠商全解析</title>
-    <meta name="description" content="超導量子電腦硬體指南（2025），深入解析量子位元、晶片設計與主要廠商技術，掌握超導量子電腦的核心硬體架構與未來趨勢。">
-    <meta name="keywords" content="超導量子電腦, 量子位元, Qubit, 量子晶片, 超導量子電腦硬體, 量子計算硬體, 量子電腦組件, 超導量子比特, 量子控制電路, 低溫製冷技術">
+    <title>邁向Scalable QPU-量子晶片設計</title>
+    <meta name="description" content="超導量子電腦硬體設計專文，探索量子位元整合的挑戰與解決方案，深入解析中研院在量子晶片設計上的研究與創新，掌握未來科技趨勢。">
+    <meta name="keywords" content="超導量子電腦, 量子位元, 量子晶片設計, QPU, 量子計算, 量子控制, 量子電路, 低溫製冷, 量子糾錯, 串擾問題">
     <link rel="canonical" href="https://www.insight-ihbar.com/QC_hardware/U.html">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -100,7 +100,7 @@
                                 <h3>中研院的量子電腦發展</h3>
                                 <div style="text-align: center;">
                                     <a href="../Image/Sinica-QC.png">
-                                      <img src="../Image/Sinica-QC.png" alt="氘裂變核融冰與高效能微波裝置的構造示意圖" style="width: 100%; height: auto;">
+                                      <img src="../Image/Sinica-QC.png" alt="量子計算元件與硬體架構示意圖" style="width: 100%; height: auto;">
                                     </a>
                                   </div>
                                   <p >
@@ -114,7 +114,7 @@
                                   
                                   <div style="text-align: center;">
                                     <a href="../Image/Sinica-QPU.png">
-                                      <img src="../Image/Sinica-QPU.png" alt="量子晶片與量子電路示意圖" style="width: 100%; height: auto;">
+                                      <img src="../Image/Sinica-QPU.png" alt="量子位元電路示意圖與實體裝置照片。" style="width: 100%; height: auto;">
                                     </a>
                                   </div>
                                   <p >
@@ -168,7 +168,7 @@
 
                                     <div style="text-align: center;">
                                       <a href="../Image/Sinioca-Qubit.png">
-                                        <img src="../Image/Sinioca-Qubit.png" alt="半導體晶片結構及電子顯微照片示意" style="width: 100%; height: auto;">
+                                        <img src="../Image/Sinioca-Qubit.png" alt="量子比特與約瑟夫森接頭的微觀結構圖像。" style="width: 100%; height: auto;">
                                       </a>
                                     </div>
                                     <p >
@@ -240,7 +240,7 @@
   
                                           <div style="text-align: center;">
                                               <a href="../Image/Transmon-1.png">
-                                                <img src="../Image/Transmon-1.png" alt="一隻黑貓站在門口的影子上" style="width: 100%; height: auto;">
+                                                <img src="../Image/Transmon-1.png" alt="黑色剪影動物圖案。" style="width: 100%; height: auto;">
                                               </a>
                                             </div>
                                             <p >
@@ -253,7 +253,7 @@
   
                                               <div style="text-align: center;">
                                                   <a href="../Image/TT-flux.png">
-                                                    <img src="../Image/TT-flux.png" alt="電子場分佈示意圖" style="width: 70%; height: auto;">
+                                                    <img src="../Image/TT-flux.png" alt="圖示顯示微電子元件的設計細節。" style="width: 70%; height: auto;">
                                                   </a>
                                                 </div>
                                                 <p >
@@ -270,7 +270,7 @@
                                           <h3><li>量子位元的耦合形式</li></h3>
                                           <div style="text-align: center;">
                                               <a href="../Image/QQ-Coupling.png">
-                                                <img src="../Image/QQ-Coupling.png" alt="量子比特傳遞與獼猴回旋相干示意圖" style="width: 100%; height: auto;">
+                                                <img src="../Image/QQ-Coupling.png" alt="圖示顯示量子系統及其耦合關係。" style="width: 100%; height: auto;">
                                               </a>
                                             </div>
                                             <p >
@@ -286,7 +286,7 @@
   
                                               <div style="text-align: center;">
                                                   <a href="../Image/20250620-01.png">
-                                                    <img src="../Image/20250620-01.png" alt="不同顏色的電容器圖示" style="width: 70%; height: auto;">
+                                                    <img src="../Image/20250620-01.png" alt="圖示顯示電容耦合和頻率關係。" style="width: 70%; height: auto;">
                                                   </a>
                                                 </div>
                                                 <p >
@@ -298,7 +298,7 @@
                                                   </p>
                                                   <div style="text-align: center;">
                                                       <a href="../Image/20250620-10.png">
-                                                        <img src="../Image/20250620-10.png" alt="積體電路晶片微結構放大圖" style="width: 100%; height: auto;">
+                                                        <img src="../Image/20250620-10.png" alt="微小電路板結構示意圖，包含輸入與輸出端口。" style="width: 100%; height: auto;">
                                                       </a>
                                                   </div>
                                                   <p >
@@ -323,7 +323,7 @@
   
                                           <div style="text-align: center;">
                                               <a href="../Image/medium (1).png">
-                                                <img src="../Image/medium (1).png" alt="電路圖示與連接示意圖" style="width: 100%; height: auto;">
+                                                <img src="../Image/medium (1).png" alt="電路板的多路復用器設計示意圖" style="width: 100%; height: auto;">
                                               </a>
                                           </div>
                                           <p >
@@ -340,7 +340,7 @@
                                           <h3><li>讀取諧振器的頻率區隔、與總線（Bus）的耦合</li></h3>
                                           <div style="text-align: center;">
                                               <a href="../Image/readout.jpeg">
-                                                <img src="../Image/readout.jpeg" alt="量子閘電路圖示比較" style="width: 100%; height: auto;">
+                                                <img src="../Image/readout.jpeg" alt="量子電路示意圖，包含 qubit 和環境連接。" style="width: 100%; height: auto;">
                                               </a>
                                             </div>
                                             <p >
@@ -358,7 +358,7 @@
   
                                               <div style="text-align: center;">
                                                   <a href="../Image/Purcell.jpeg">
-                                                    <img src="../Image/Purcell.jpeg" alt="量子諧振子能譜圖示" style="width: 70%; height: auto;">
+                                                    <img src="../Image/Purcell.jpeg" alt="量子比特與諧振器的頻率關係圖。" style="width: 70%; height: auto;">
                                                   </a>
                                                 </div>
                                                 <p >
@@ -378,7 +378,7 @@
   
                                                   <div style="text-align: center;">
                                                       <a href="../Image/5Q.png">
-                                                          <img src="../Image/5Q.png" alt="量子電路芯片示意圖" style="width: 80%; height: auto;">
+                                                          <img src="../Image/5Q.png" alt="量子電路設計與讀取圖示" style="width: 80%; height: auto;">
                                                       </a>
                                                       </div>
                                                       <p >
@@ -393,7 +393,7 @@
                                           
                                               <div style="text-align: center;">
                                                   <a href="../Image/20250620-11.png">
-                                                    <img src="../Image/20250620-11.png" alt="量子電路示意圖" style="width: 100%; height: auto;">
+                                                    <img src="../Image/20250620-11.png" alt="量子電路圖示，顯示量子位和共振器連接。" style="width: 100%; height: auto;">
                                                   </a>
                                               </div>
                                               <p >
@@ -407,7 +407,7 @@
                                               <div id="20250702"></div><br><br>
                                               <div style="text-align: center;">
                                                 <a href="../Image/Resonator_length.png">
-                                                  <img src="../Image/Resonator_length.png" alt="晶片結構示意圖" style="width: 100%; height: auto;">
+                                                  <img src="../Image/Resonator_length.png" alt="電路圖示，標註 Purcell 濾波器與讀取共振器。" style="width: 100%; height: auto;">
                                                 </a>
                                             </div>
                                             <p >
@@ -425,7 +425,7 @@
   
                                           <div style="text-align: center;">
                                               <a href="../Image/Picture2-5.webp">
-                                                <img src="../Image/Picture2-5.webp" alt="幾何圖形與數字圖譜插圖" style="width: 100%; height: auto;">
+                                                <img src="../Image/Picture2-5.webp" alt="多種數學網路圖示及結構展現。" style="width: 100%; height: auto;">
                                               </a>
                                           </div>
                                           <p >
@@ -442,7 +442,7 @@
                                           
                                           <div style="text-align: center;">
                                               <a href="../Image/Sinica-packing.png">
-                                                <img src="../Image/Sinica-packing.png" alt="晶片結構與封裝示意圖" style="width: 100%; height: auto;">
+                                                <img src="../Image/Sinica-packing.png" alt="晶片結構與封裝示意圖分析" style="width: 100%; height: auto;">
                                               </a>
                                             </div>
                                             <p >
@@ -456,7 +456,7 @@
                                               
                                               <div style="text-align: center;">
                                                   <a href="../Image/IBM-Eagle.png">
-                                                    <img src="../Image/IBM-Eagle.png" alt="量子電腦各層結構示意圖" style="width: 100%; height: auto;">
+                                                    <img src="../Image/IBM-Eagle.png" alt="量子計算晶片結構與功能介紹圖。" style="width: 100%; height: auto;">
                                                   </a>
                                                 </div>
                                                 <p >
@@ -472,10 +472,10 @@
   
                                               <div style="text-align: center;">
                                                   <a href="../Image/20250620-08.png">
-                                                    <img src="../Image/20250620-08.png" alt="不同量子電路的脈衝設計圖" style="width: 49%; height: auto;">
+                                                    <img src="../Image/20250620-08.png" alt="量子電路設計示意圖，包括三種裝置。" style="width: 49%; height: auto;">
                                                   </a>
                                                   <a href="../Image/20250620-09.png">
-                                                      <img src="../Image/20250620-09.png" alt="半導體量子比特晶片結構圖" style="width: 49%; height: auto;">
+                                                      <img src="../Image/20250620-09.png" alt="量子位晶片及其結構示意圖。" style="width: 49%; height: auto;">
                                                     </a>
                                               </div>
                                               <p >
