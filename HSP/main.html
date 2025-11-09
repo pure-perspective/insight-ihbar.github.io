@@ -115,9 +115,31 @@
         這表明問題本身的性質（其隱藏的代數結構）決定了量子優勢是否可能，而不是量子電腦對所有任務都普遍更快。這為解釋量子原理如何獨特地揭示這種隱藏結構奠定了基礎。</p>
 
 
-
-
-
+<br><br>
+<h3>關鍵 HSP 實例的古典與量子複雜度比較</h3>
+        <div style="overflow-x: auto;"> 
+            <table width="100%" border="1" cellpadding="10" cellspacing="0" style="border-collapse: collapse; font-family: sans-serif; border-color: #cccccc;"> 
+                <thead> <tr bgcolor="#f2f2f2" align="center"> <th width="20%">問題大類</th> 
+                    <th width="20%">具體問題 (演算法)</th> 
+                    <th width="40%">核心特性 (群與複雜度)</th> <th>量子加速類型</th> </tr> </thead> <tbody> <tr valign="top"> 
+                        
+                        <td rowspan="3"><b>基於阿貝爾群<br> (Abelian)</b></td> 
+                        <td><b>整數因數分解 (Shor)</b></td> 
+                        <td> <ul> <li><b>底層群：</b>有限阿貝爾群 \(\mathbb{Z}_N\)</li> <li><b>最佳已知古典複雜度：</b>次指數時間</li> <li><b>量子複雜度：</b>多項式時間</li> </ul> </td> 
+                        <td>指數級</td> </tr> <tr valign="top"> 
+                        <td><b>離散對數 (Shor)</b></td> 
+                        <td> <ul> <li><b>底層群：</b>有限阿貝爾群 \(\mathbb{Z}_N\)</li> <li><b>最佳已知古典複雜度：</b>次指數時間</li> <li><b>量子複雜度：</b>多項式時間</li> </ul> </td> 
+                        <td>指數級</td> </tr> <tr valign="top"> 
+                        <td><b>Simon 問題</b></td> 
+                        <td> <ul> <li><b>底層群：</b>有限阿貝爾群 \(\mathbb{Z}_{N^2}\)</li> <li><b>最佳已知古典複雜度：</b>\(\mathcal{O}(2^{n/2})\) 查詢</li> <li><b>量子複雜度：</b>\(\mathcal{O}(n)\) 查詢</li> </ul> </td> 
+                        <td>指數級</td> </tr> <tr valign="top"> 
+                        <td rowspan="2"><b>基於非阿貝爾群<br> (Non-Abelian)</b></td> 
+                        <td><b>圖同構</b></td> 
+                        <td> <ul> <li><b>底層群：</b>非阿貝爾群 (對稱群)</li> <li><b>最佳已知古典複雜度：</b>次指數時間 (無已知多項式)</li> <li><b>量子複雜度：</b>無已知高效演算法</li> </ul> </td> 
+                        <td>無已知指數級加速</td> </tr> <tr valign="top"> 
+                        <td><b>最短向量問題 (SVP)</b></td> 
+                        <td> <ul> <li><b>底層群：</b>非阿貝爾群 (二面體群)</li> <li><b>最佳已知古典複雜度：</b>指數時間</li> <li><b>量子複雜度：</b>無已知高效演算法</li> </ul> </td> 
+                        <td>無已知指數級加速</td> </tr> </tbody> </table> </div>
 
 
 
