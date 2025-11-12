@@ -91,6 +91,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://www.insight-ihbar.com/QID_en/Seeqc.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://www.insight-ihbar.com/QID_en/Infleqtion.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -102,6 +107,11 @@
   </url>
   <url>
     <loc>https://www.insight-ihbar.com/QID_en/IonQ.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.insight-ihbar.com/QID_en/Quobly.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -142,6 +152,11 @@
   </url>
   <url>
     <loc>https://www.insight-ihbar.com/QID_en/VTT.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.insight-ihbar.com/QID_en/ID-Quantique.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -441,6 +456,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://www.insight-ihbar.com/QID/Seeqc.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://www.insight-ihbar.com/QID/Infleqtion.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -547,6 +567,11 @@
   </url>
   <url>
     <loc>https://www.insight-ihbar.com/QC_hardware/H.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.insight-ihbar.com/QC_hardware/%E6%A8%A1%E6%9D%BF_en.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
