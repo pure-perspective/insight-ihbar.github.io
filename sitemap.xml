@@ -156,6 +156,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://www.insight-ihbar.com/QID_en/QUDORA.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://www.insight-ihbar.com/QID_en/ID-Quantique.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -517,6 +522,11 @@
   </url>
   <url>
     <loc>https://www.insight-ihbar.com/QID/VTT.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.insight-ihbar.com/QID/QUDORA.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
