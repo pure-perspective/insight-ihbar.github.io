@@ -111,6 +111,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://www.insight-ihbar.com/QID_en/IQM.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://www.insight-ihbar.com/QID_en/Quobly.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -477,6 +482,11 @@
   </url>
   <url>
     <loc>https://www.insight-ihbar.com/QID/IonQ.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.insight-ihbar.com/QID/IQM.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>

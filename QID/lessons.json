@@ -16,5 +16,6 @@
     { "title": "Quobly", "file": "Quobly.html" , "status": "new" , "date": "2025-11-06"},
     { "title": "ID-Quantique", "file": "ID-Quantique.html" , "status": "new" , "date": "2025-11-06"},
     { "title": "SEEQC", "file": "Seeqc.html" , "status": "new" , "date": "2025-11-12"},
-    { "title": "QUDORA", "file": "QUDORA.html" , "status": "new" , "date": "2025-11-15"}
+    { "title": "QUDORA", "file": "QUDORA.html" , "status": "new" , "date": "2025-11-15"},
+    { "title": "IQM", "file": "IQM.html" , "status": "new" , "date": "2025-11-16"}
 ]
