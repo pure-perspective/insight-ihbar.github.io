@@ -76,6 +76,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://www.insight-ihbar.com/QID_en/Qilimanjaro.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://www.insight-ihbar.com/QID_en/AQT.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -447,6 +452,11 @@
   </url>
   <url>
     <loc>https://www.insight-ihbar.com/SCQ_elementary/A.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.insight-ihbar.com/QID/Qilimanjaro.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
