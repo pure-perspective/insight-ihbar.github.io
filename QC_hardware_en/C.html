@@ -375,34 +375,9 @@
                                     </span>
                                 </div><!-- /.post-meta -->
                             
-                                <div id="prev-next-nav" class="text-center"></div>
+                                <div id="prev-next-nav" class="text-center"><a class="btn btn-gray" href="B.html">← 上一頁</a> <a class="btn btn-gray" href="../QC_hardware/C.html" style="margin: 0 10px;">中文版</a><a class="btn btn-gray" href="H.html">下一頁 →</a></div>
 
-                                <script>
-fetch("lessons.json")
-  .then(res => res.json())
-  .then(pages => {
-    // 過濾掉 disabled 的頁面
-    pages = pages.filter(p => p.enabled !== false);
-
-    const current = location.pathname.split("/").pop();
-    const index = pages.findIndex(p => p.file === current);
-    let html = "";
-
-    if (index > 0) {
-      const prev = pages[index - 1];
-      html += `<a class="btn btn-gray" href="${prev.file}">← Previous</a> `;
-    }
-
-    html += `<a class="btn btn-gray" href="../QC_hardware/${current}" style="margin: 0 10px;">中文版</a>`;
-
-    if (index < pages.length - 1) {
-      const next = pages[index + 1];
-      html += `<a class="btn btn-gray" href="${next.file}">Next →</a>`;
-    }
-
-    document.getElementById("prev-next-nav").innerHTML = html;
-  });
-</script>
+                                
 
                             </div><!-- /.post-content -->
                         </article><!-- /.blog-post -->
@@ -444,7 +419,7 @@ fetch("lessons.json")
 
                             <div class="widget">
                                 <!--<h4 class="widget-title"><a href="./main.html">科普版：目錄</a></h4>-->
-                                <div id="lesson-list_2"></div>
+                                <div id="lesson-list_2"><div class="lesson-link "><a href="main.html">Hardware Technologies and Vendor Guide (2025): Menu</a></div><div class="lesson-link "><a href="A.html">Current Application Models of Superconducting Quantum Computers</a></div><div class="lesson-link "><a href="B.html">Superconducting Quantum Computers – Hardware Dissection</a></div><div class="lesson-link active"><a href="C.html">Microwave Components Overview</a></div><div class="lesson-link "><a href="H.html">Microwave Component Vendors</a></div><div class="lesson-link "><a href="U2.html">Cryogenic Wiring and Connectors</a></div><div class="lesson-link "><a href="O.html">Cryogenic Wiring and Connectors - Vendors</a></div><div class="lesson-link "><a href="F.html">Dilution Refrigerators</a></div><div class="lesson-link "><a href="M.html">Thermal Management and Thermal Anchoring</a></div><div class="lesson-link "><a href="M2.html">Thermalization Solutions</a></div><div class="lesson-link "><a href="G.html">Control Electronics</a></div><div class="lesson-link "><a href="U.html">Towards a Scalable QPU - Quantum Chip Design</a></div><div class="lesson-link "><a href="V2.html">Towards a Scalable QPU - The Issue of Crosstalk</a></div></div>
                             </div>
                             <script>
 fetch("lessons.json")

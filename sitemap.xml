@@ -466,6 +466,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://www.insight-ihbar.com/QID/Quantum-Motion.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://www.insight-ihbar.com/QID/QURECA.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -727,6 +732,11 @@
   </url>
   <url>
     <loc>https://www.insight-ihbar.com/HSP/C.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.insight-ihbar.com/HSP/D.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>

@@ -42,12 +42,12 @@ a {
     -o-transition: all 0.25s ease-in-out;
     -ms-transition: all 0.25s ease-in-out;
     cursor: pointer;
-    color: #9fa3a7;
+    color:#499afe ;
 }
 
 a:focus,
 a:hover {
-    color: #499afe;
+    color: #004dab;
     outline: 0 none;
     text-decoration: none;
 }

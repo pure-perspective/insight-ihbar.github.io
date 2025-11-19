@@ -360,34 +360,9 @@
                                     </span>
                                 </div><!-- /.post-meta -->
                             
-                                <div id="prev-next-nav" class="text-center"></div>
+                                <div id="prev-next-nav" class="text-center"><a class="btn btn-gray" href="M2.html">← 上一頁</a> <a class="btn btn-gray" href="../QC_hardware_en/G.html" style="margin: 0 10px;">English Version</a><a class="btn btn-gray" href="U.html">下一頁 →</a></div>
 
-                                <script>
-fetch("lessons.json")
-  .then(res => res.json())
-  .then(pages => {
-    // 過濾掉 disabled 的頁面
-    pages = pages.filter(p => p.enabled !== false);
-
-    const current = location.pathname.split("/").pop();
-    const index = pages.findIndex(p => p.file === current);
-    let html = "";
-
-    if (index > 0) {
-      const prev = pages[index - 1];
-      html += `<a class="btn btn-gray" href="${prev.file}">← 上一頁</a> `;
-    }
-
-    html += `<a class="btn btn-gray" href="../QC_hardware_en/${current}" style="margin: 0 10px;">English Version</a>`;
-
-    if (index < pages.length - 1) {
-      const next = pages[index + 1];
-      html += `<a class="btn btn-gray" href="${next.file}">下一頁 →</a>`;
-    }
-
-    document.getElementById("prev-next-nav").innerHTML = html;
-  });
-</script>
+                                
 
                             </div><!-- /.post-content -->
                         </article><!-- /.blog-post -->
@@ -429,7 +404,7 @@ fetch("lessons.json")
 
                             <div class="widget">
                                 <!--<h4 class="widget-title"><a href="./main.html">科普版：目錄</a></h4>-->
-                                <div id="lesson-list_2"></div>
+                                <div id="lesson-list_2"><div class="lesson-link "><a href="main.html">超導量子電腦硬體指南 (2025)：目錄</a></div><div class="lesson-link "><a href="A.html">超導量子電腦當前的應用模式</a></div><div class="lesson-link "><a href="B.html">超導量子電腦-硬體解構</a></div><div class="lesson-link "><a href="C.html">微波元件解說</a></div><div class="lesson-link "><a href="H.html">微波元件廠商</a></div><div class="lesson-link "><a href="U2.html">特殊導線與接頭</a></div><div class="lesson-link "><a href="O.html">特殊導線與接頭-廠商</a></div><div class="lesson-link "><a href="F.html">稀釋製冷機</a></div><div class="lesson-link "><a href="M.html">熱管理與熱錨定</a></div><div class="lesson-link "><a href="M2.html">熱沉解決方案</a></div><div class="lesson-link active"><a href="G.html">控制電子系統</a></div><div class="lesson-link "><a href="U.html">邁向Scalable QPU-量子晶片設計</a></div><div class="lesson-link "><a href="V2.html">邁向Scalable QPU-串擾議題</a></div></div>
                             </div>
                             <script>
 fetch("lessons.json")

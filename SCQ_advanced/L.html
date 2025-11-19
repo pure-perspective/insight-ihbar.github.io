@@ -205,34 +205,9 @@
                                     </span>
                                 </div><!-- /.post-meta -->
                             
-                                <div id="prev-next-nav" class="text-center"></div>
+                                <div id="prev-next-nav" class="text-center"><a class="btn btn-gray" href="K.html">← 上一頁</a> <a class="btn btn-gray" href="../SCQ_advanced_en/L.html" style="margin: 0 10px;">English Version</a><a class="btn btn-gray" href="appA.html">下一頁 →</a></div>
 
-<script>
-fetch("lessons.json")
-  .then(res => res.json())
-  .then(pages => {
-    const current = location.pathname.split("/").pop();
-    const index = pages.findIndex(p => p.file === current);
-    let html = "";
 
-    // 上一頁按鈕
-    if (index > 0) {
-      const prev = pages[index - 1];
-      html += `<a class="btn btn-gray" href="${prev.file}">← 上一頁</a> `;
-    }
-
-    // 英文版按鈕
-    html += `<a class="btn btn-gray" href="../SCQ_advanced_en/${current}" style="margin: 0 10px;">English Version</a>`;
-
-    // 下一頁按鈕
-    if (index < pages.length - 1) {
-      const next = pages[index + 1];
-      html += `<a class="btn btn-gray" href="${next.file}">下一頁 →</a>`;
-    }
-
-    document.getElementById("prev-next-nav").innerHTML = html;
-  });
-</script>
 
                             </div><!-- /.post-content -->
                         </article><!-- /.blog-post -->
@@ -274,7 +249,7 @@ fetch("lessons.json")
 
                             <div class="widget">
                                 <!--<h4 class="widget-title"><a href="./main.html">科普版：目錄</a></h4>-->
-                                <div id="lesson-list_2"></div>
+                                <div id="lesson-list_2"><div class="lesson-link "><a href="main.html">超導量子位元(進階版):目錄</a></div><div class="lesson-link "><a href="A.html">量子計算硬體基礎</a></div><div class="lesson-link "><a href="B.html">量子LC電路介紹</a></div><div class="lesson-link "><a href="C.html">LC電路的正則量子化</a></div><div class="lesson-link "><a href="D.html">動能與位能項的互換</a></div><div class="lesson-link "><a href="E.html">形式化 Lagrangian 動能與位能的互換</a></div><div class="lesson-link "><a href="F.html">約瑟夫森節的非線性電感性質</a></div><div class="lesson-link "><a href="G.html">雙約瑟夫森節（SQUID）的非線性電感性質</a></div><div class="lesson-link "><a href="H.html">Transmon的性質</a></div><div class="lesson-link "><a href="I.html">計算科學與二階系統（TLS）</a></div><div class="lesson-link "><a href="J.html">量子位元與布洛赫球表示</a></div><div class="lesson-link "><a href="K.html">驅動 LC 電路</a></div><div class="lesson-link active"><a href="L.html">雙LC電路耦合</a></div><div class="lesson-link "><a href="appA.html">附錄：電磁場下薛丁格方程式的機率流</a></div><div class="lesson-link "><a href="appB.html">附錄：微擾理論下的能階修正計算</a></div></div>
                             </div>
                             <script>
                             fetch("lessons.json")

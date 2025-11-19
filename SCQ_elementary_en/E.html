@@ -179,34 +179,9 @@
                                     </span>
                                 </div><!-- /.post-meta -->
                             
-                                <div id="prev-next-nav" class="text-center"></div>
+                                <div id="prev-next-nav" class="text-center"><a class="btn btn-gray" href="D.html">← 上一頁</a> <a class="btn btn-gray" href="../SCQ_elementary/E.html" style="margin: 0 10px;">中文版</a><a class="btn btn-gray" href="F.html">下一頁 →</a></div>
 
-                                <script>
-                                fetch("lessons.json")
-                                .then(res => res.json())
-                                .then(pages => {
-                                    const current = location.pathname.split("/").pop();
-                                    const index = pages.findIndex(p => p.file === current);
-                                    let html = "";
-
-                                    // 上一頁按鈕
-                                    if (index > 0) {
-                                    const prev = pages[index - 1];
-                                    html += `<a class="btn btn-gray" href="${prev.file}">← Previous</a> `;
-                                    }
-
-                                    // 英文版按鈕
-                                    html += `<a class="btn btn-gray" href="../SCQ_elementary/${current}" style="margin: 0 10px;">中文版</a>`;
-
-                                    // 下一頁按鈕
-                                    if (index < pages.length - 1) {
-                                    const next = pages[index + 1];
-                                    html += `<a class="btn btn-gray" href="${next.file}">Next →</a>`;
-                                    }
-
-                                    document.getElementById("prev-next-nav").innerHTML = html;
-                                });
-                                </script>
+                                
 
                             </div><!-- /.post-content -->
                         </article><!-- /.blog-post -->
@@ -248,7 +223,7 @@
 
                             <div class="widget">
                                 <!--<h4 class="widget-title"><a href="./main.html">科普版：目錄</a></h4>-->
-                                <div id="lesson-list_2"></div>
+                                <div id="lesson-list_2"><div class="lesson-link "><a href="main.html">Superconducting Qubits (Elementary Version): Menu</a></div><div class="lesson-link "><a href="A.html">Josephson Junction</a></div><div class="lesson-link "><a href="B.html">What is a Superconducting Qubit?</a></div><div class="lesson-link "><a href="C.html">Overview of Superconducting Circuit Qubit Types</a></div><div class="lesson-link "><a href="D.html">Early Types of Superconducting Qubits</a></div><div class="lesson-link active"><a href="E.html">Modern Mainstream Superconducting Qubits</a></div><div class="lesson-link "><a href="F.html">Superconducting Qubits under Electron Microscopy</a></div><div class="lesson-link "><a href="G.html">Other Types of Qubits</a></div><div class="lesson-link "><a href="H.html">What Does a Superconducting Quantum Computer Look Like?</a></div><div class="lesson-link "><a href="I.html">How Are Signals Delivered to Qubits?</a></div><div class="lesson-link "><a href="J.html">QPU Topology</a></div><div class="lesson-link "><a href="K.html">How to Control a Superconducting Qubit</a></div><div class="lesson-link "><a href="L.html">Control Error 1 - Frequency Detuning</a></div></div>
                             </div>
                             <script>
                             fetch("lessons.json")
