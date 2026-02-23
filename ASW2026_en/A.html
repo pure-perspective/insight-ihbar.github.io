@@ -132,149 +132,155 @@
                                 <br>
                                 <h3>Josephson Junction</h3>
                                 
-                                <div style="text-align: center;">
-                                <a href="../Image/JJ.jpg">
-                                    <img src="../Image/JJ.jpg" alt="Josephson junction diagram" style="width: 100%; height: auto;">
-                                </a>
-                                </div>
-                                <p class="dark-background">
-                                    ▲ Qubits made from superconductors essentially cannot exist without the Josephson Junction. A Josephson Junction is a sandwich-like structure featuring a non-superconducting material placed between two superconductors. Due to quantum effects, a superconducting current can pass through this non-superconducting layer via the tunneling effect. Common fabrication materials are aluminum-based (Al) or niobium-based (Nb). After depositing a layer of superconducting metal on a substrate, the surface is allowed to oxidize to form a thin oxide layer (i.e., the insulating non-superconducting layer), and then another layer of superconducting metal is deposited. This forms a Josephson Junction. This superconductor-insulator-superconductor structure is known as an SIS junction (Superconductor-Insulator-Superconductor).
-                                
-                                    <span style="font-size: 0.7em; line-height: 0.8;">Ref: 10.1557/mrs.2013.229 </span>
-                                    <br>
-                                    <br>
-                                </p>
-                                
-                                <br>
-                                <h3>Superconducting Qubits</h3>
-                                <p>
-                                    In classical computing, a series of classical bits uses two states, 0 or 1, to record information. Similarly, qubits also use different quantum states to record information and perform calculations. The simplest concept of quantum energy levels is the Quantum Simple Harmonic Oscillator. In the quantum world, the energy levels of a simple harmonic oscillator are discrete, meaning different energy levels can be used to represent information. By utilizing a Josephson Junction as a nonlinear inductive component to create quantum energy levels, we can separate $\ket{0}$ and $\ket{1}$ using the distinct characteristics of these energy levels, where $\hbar \omega_{01}$ is the eigenfrequency of the qubit. The most basic superconducting qubit simply consists of a superconducting capacitor and a Josephson Junction!
-                                    <br>
-                                    <br>
-                                </p>
-                                
-                                <div style="text-align: center;">
-                                    <a href="../Image/SCQubit state.jpg">
-                                    <img src="../Image/SCQubit state.jpg" alt="Circuit diagrams" style="width: 100%; height: auto;">
-                                    </a>
-                                </div>
-                                <p class="dark-background">
-                                    <span style="font-size: 0.7em; line-height: 0.8;">Ref: 10.1063/1.5089550 </span>
-                                <br>
-                                <br>
-                                </p>
-                                
-                                <br>
-                                <h3>Controlling Qubits</h3>
-                                <p style="font-weight: bold; font-size: 1.2em;">Main Parameters for Controlling a Qubit</p>
-                                            
-                                            <ul>
-                                                <li><b>Pulse Amplitude ($A$):</b> Changes the state of the Qubit (rotation angle on the Bloch sphere).</li>
-                                                <li><b>Pulse Duration ($T$):</b> Changes the state of the Qubit (rotation angle on the Bloch sphere).</li>
-                                                <li><b>Pulse Frequency ($\omega_d$):</b> Determines whether the Qubit can be driven accurately; the closer to the qubit's eigenfrequency $\hbar \omega_{01}$, the better.</li>
-                                                <li><b>Pulse Envelope ($F(t, \tau)$):</b> Affects leakage.</li>
-                                            </ul>
-                                    <p>
-                                    A complete pulse can be expressed as:
-                                    $$P(t) = A \cdot F(t, \tau) \cdot \sin(\omega_{01} t)$$
-                                
-                                    Examples are as follows:
-                                    </p>
-                                
-                                    
-                                    <div style="text-align: center;">
-                                    <a href="../Image/pulse_dia.png">
-                                        <img src="../Image/pulse_dia.png" alt="Sine pulse envelope" style="width: 100%; height: auto;">
-                                    </a>
-                                    </div>
-                                        
-                                    <p>
-                                    This can be visualized using a Bloch sphere. Here, we illustrate rotations around the $X$-axis for $0.25\pi$, $0.5\pi$, $0.75\pi$, and $\pi$-pulses. As you can see, the magnitude of the amplitude determines the angle of rotation.
-                                    </p>
-                                
-                                
-                                    <div style="text-align: center;">
-                                    <a href="../Image/4 amplitude.gif">
-                                        <img src="../Image/4 amplitude.gif" alt="Cosine pulse plot" style="width: 100%; height: auto;">
-                                    </a>
-                                    </div>
-                                    <p>
-                                    Similarly, we can also discuss using different pulse durations $T$ to achieve the same $\pi$-pulse from $|0\rangle \rightarrow |1\rangle$.
-                                    </p>
-                                    <div style="text-align: center;">
-                                    <a href="../Image/4 duration compare.gif">
-                                        <img src="../Image/4 duration compare.gif" alt="Bloch sphere plot" style="width: 100%; height: auto;">
-                                    </a>
-                                    </div>
-                                    <p>
-                                        Generally, because the coherence time of a Qubit is very short, we want to complete the Qubit operations in the shortest possible time. For superconducting qubits, maintaining a coherence time in the microseconds (μs) range is already considered quite long with current technology. Therefore, superconducting qubit pulses are mostly fixed at the nanosecond (ns) scale. Thus, manipulating the state of a Qubit generally relies on adjusting the pulse amplitude to determine the rotation angle. <br>
-                                        (In experiments, driving takes about 10 ns<sup>a</sup>)<br>
-                                        <span style="font-size: 0.7em; line-height: 0.8;"><sup>a</sup> 10.1103/PRXQuantum.5.030353</span><br><br>
-                                        </p>
-                                
-                                
-                                    <p>
-                                    In practice, determining the pulse duration $T$ and amplitude $A$ is a routine part of daily Qubit calibration. Proper calibration yields high-quality quantum computing results; conversely, errors alone can cause calculations to be less accurate than those of classical computers.
-                                    </p>
-                                <br><br>
-                                <h3>Single Qubit Drive and Readout Circuit</h3>
-                                
-                                <div style="text-align: center;">
-                                    <a href="../Image/SIngle Qubit circuit.png">
-                                        <img src="../Image/SIngle Qubit circuit.png" alt="Transmon qubit readout" style="width: 100%; height: auto;">
-                                    </a>
-                                    </div>
-                                
-                                    <p>
-                                        ▲ Transmon circuit layout. (a) Circuit under a microscope, (b) Corresponding circuit diagram. In this diagram, there is one Qubit (red Transmon) and one readout resonator (sky blue). Two feedlines individually drive the qubit and the readout resonator. The components are coupled using capacitors. Additionally, a Flux line is connected next to the Qubit, which generates a magnetic field to alter the Transmon's operating frequency. (c) Because the readout resonator is coupled with the qubit, it experiences a spectral shift depending on whether the qubit is in the $|0\rangle$ or $|1\rangle$ state. The characteristic spectral shift of the readout resonator is used to determine the state of the qubit.
-                                        <br><span style="font-size: 0.7em; line-height: 0.8;">arxiv.org/pdf/2106.11352</span><br><br>
-                                    </p>
-                                
-                                    <br><br>
-                                    <h3>Couplers</h3>
-                                    <div style="text-align: center;">
-                                        <a href="../Image/IQM Tunable.png">
-                                            <img src="../Image/IQM Tunable.png" alt="Qubit coupler circuit" style="width: 60%; height: auto;">
-                                        </a>
-                                    </div>
-                                    
-                                    <p>
-                                        The resonator/coupler facilitating interactions between qubits can be tunable, allowing for further adjustment of the coupling strength between different qubits, though this also increases the complexity of the control circuit.
-                                        <br><span style="font-size: 0.7em; line-height: 0.8;">arxiv: 2408.12433</span>
-                                        <br><br>
-                                    </p>
-                                
-                                    <br>
-                                <h3>Superconducting Quantum Chips</h3>
-                                    <p>
-                                        A complete superconducting quantum computer requires at least: a Helium-3 ultra-low temperature vacuum environment, a cooling system, and a massive array of RF signal control and readout instruments, making current superconducting quantum computers extremely large. Furthermore, a single qubit requires at least four lines:
-                                        <ul>
-                                        <li>Control Frequency * 1: A Flux line to adjust magnetic flux.</li>
-                                        <li>Control State * 1: A Drive line.</li>
-                                        <li>Readout State * 2: Readout lines (one in, one out).</li>
-                                        </ul>
-                                        You can refer to the image below:
-                                    </p>
-                                        
-                                    <div style="text-align: center;">
-                                        <a href="../Image/17 surface.png">
-                                            <img src="../Image/17 surface.png" alt="Quantum circuit layout" style="width: 43%; height: auto;">
-                                        </a>
-                                        <a href="../Image/Starmon.png">
-                                            <img src="../Image/Starmon.png" alt="Readout resonator" style="width: 55%; height: auto;">
-                                        </a>
-                                    </div>
-                                    <p>
-                                        ▲ To achieve quantum computing, many Qubits must be operated simultaneously. Meanwhile, due to error correction processes, additional Qubits are required. The image above shows an experimental 17-qubit quantum chip arranged in a quantum error correction pattern known as a surface code. The circles represent Qubits: pink and red are Data Qubits, while sky blue and green are Check Qubits. Each Qubit is connected to 7 lines (nicknamed Starmon), which include 4 for inter-qubit coupling, 1 Flux line, 1 Drive line, and 1 Readout resonator. The Readout resonators are merged into three feedlines. Although current technology can multiplex the Readout lines of multiple Qubits together—sharing the same Readout line (the so-called Feedline) via frequency isolation techniques—we still need to account for the Resonators that control interactions between qubits. A 100-qubit quantum computer prototype requires 400 lines routed from the outside, which is why a massive tangle of wiring is a common sight in current superconducting quantum computers.
-                                        <br><span style="font-size: 0.7em; line-height: 0.8;">https://arxiv.org/pdf/1612.08208</span>
-                                        <br><br>
-                                    </p>
-                                
-                                
-                                
+<div style="text-align: center;">
+<a href="../Image/JJ.jpg">
+    <img src="../Image/JJ.jpg" alt="Schematic of Josephson Junction Structure and Micrograph" style="width: 100%; height: auto;">
+</a>
+</div>
+<p class="dark-background">
+    ▲ Qubits made from superconductors are essentially inseparable from the Josephson Junction. A Josephson Junction is a sandwich-like structure featuring a non-superconducting material placed between two superconductors. Due to quantum effects, a superconducting current can pass through this non-superconducting layer via the tunneling effect. Common fabrication materials are aluminum-based (Al) or niobium-based (Nb). After depositing a layer of superconducting metal on a substrate, the surface is allowed to oxidize to form a thin oxide layer (i.e., the insulating non-superconducting layer), and then another layer of superconducting metal is deposited. This forms a Josephson Junction. This superconductor-insulator-superconductor structure is known as an SIS junction (Superconductor-Insulator-Superconductor).
+
+    <span style="font-size: 0.7em; line-height: 0.8;">Ref: 10.1557/mrs.2013.229 </span>
+    <br>
+    <br>
+</p>
 
 
+<br>
+<h3>Superconducting Qubits</h3>
+<p>
+    In classical computing, a series of classical bits uses two states, 0 or 1, to record information. Similarly, qubits also use different quantum states to record information and perform calculations. The simplest concept of quantum energy levels is the Quantum Simple Harmonic Oscillator. Since energy level simple harmonic oscillations are discrete in the quantum world, different energy levels can be used to represent information. By utilizing a Josephson Junction as a nonlinear inductive component to create quantum energy levels, we can isolate \( \ket{0} \) and \(\ket{1}\) using the distinct characteristics of these energy levels, where \(\hbar \omega_{01}\) is the eigenfrequency of the qubit. The most basic superconducting qubit simply consists of a superconducting capacitor and a Josephson Junction!
+    <br>
+    <br>
+</p>
 
+
+<div style="text-align: center;">
+    <a href="../Image/SCQubit state.jpg">
+    <img src="../Image/SCQubit state.jpg" alt="Schematic of Superconducting Circuit and Energy Levels" style="width: 100%; height: auto;">
+    </a>
+</div>
+<p class="dark-background">
+    <span style="font-size: 0.7em; line-height: 0.8;">Ref: 10.1063/1.5089550 </span>
+<br>
+<br>
+</p>
+
+<br>
+<h3>Controlling Qubits</h3>
+<p style="font-weight: bold; font-size: 1.2em;">Main Parameters for Controlling a Qubit</p>
+            
+            <ul>
+                <li><b>Pulse Amplitude (Amplitude \( A \)):</b> Changes the state of the Qubit (rotation angle on the Bloch sphere).</li>
+                <li><b>Pulse Duration (Duration \( T \)):</b> Changes the state of the Qubit (rotation angle on the Bloch sphere).</li>
+                <li><b>Pulse Frequency (Frequency \( \omega_d \)):</b> Determines whether the Qubit can be driven accurately; the closer to the qubit's eigenfrequency \(\hbar \omega_{01}\), the better.</li>
+                <li><b>Pulse Envelope (Envelope \( F(t, \tau) \)):</b> Affects leakage.</li>
+            </ul>
+    <p>
+    A complete pulse can be expressed as:
+    \[
+        P(t) = A \cdot F(t, \tau) \cdot \sin(\omega_{01} t)
+    \]
+
+
+    Examples are as follows:
+    </p>
+
+    
+    <div style="text-align: center;">
+    <a href="../Image/pulse_dia.png">
+        <img src="../Image/pulse_dia.png" alt="Schematic of Sine Pulse and Cosine Envelope" style="width: 100%; height: auto;">
+    </a>
+    </div>
+        
+    
+
+    <p>
+    This can be visualized using the Bloch sphere. Here, we illustrate rotations around the \( X \)-axis for \(0.25\pi\), \( 0.5\pi \), \(0.75\pi\), and \(\pi\)-pulses. As you can see, the magnitude of the amplitude determines the rotation angle.
+    </p>
+
+
+    <div style="text-align: center;">
+    <a href="../Image/4 amplitude.gif">
+        <img src="../Image/4 amplitude.gif" alt="Bloch Sphere and Four Sets of Cosine Pulses" style="width: 100%; height: auto;">
+    </a>
+    </div>
+    <p>
+    Similarly, we can also discuss using different pulse durations \(T\) to achieve the same \( \pi \)-pulse from \( |\ 0\rangle \rightarrow |\ 1\rangle \).
+    </p>
+    <div style="text-align: center;">
+    <a href="../Image/4 duration compare.gif">
+        <img src="../Image/4 duration compare.gif" alt="Quantum Bloch Sphere and Pulse Chart" style="width: 100%; height: auto;">
+    </a>
+    </div>
+    <p>
+        Generally, because the coherence time of a Qubit is very short, we want to complete the Qubit operations in the shortest possible time. For superconducting qubits, maintaining a coherence time in the microseconds (μs) range is already considered quite long with current technology. Therefore, superconducting qubit pulses are mostly fixed at the nanosecond (\(ns\)) scale. Thus, manipulating the state of a Qubit generally relies on adjusting the pulse amplitude to determine the rotation angle. <br>
+        (In experiments, driving takes about \(10ns\)<sup>a</sup>)<br>
+        <span style="font-size: 0.7em; line-height: 0.8;">\(^a\) 10.1103/PRXQuantum.5.030353</span><br><br>
+        </p>
+
+
+    <p>
+    In practice, determining the pulse duration \(T\) and amplitude \(A\) is a routine part of daily Qubit calibration. Proper calibration yields high-quality quantum computing results; conversely, errors alone can cause calculations to be less accurate than classical computers.
+    </p>
+<br><br>
+<h3>Single Qubit Drive and Readout Circuit</h3>
+
+<div style="text-align: center;">
+    <a href="../Image/SIngle Qubit circuit.png">
+        <img src="../Image/SIngle Qubit circuit.png" alt="Schematic of Superconducting Qubit Readout Circuit" style="width: 100%; height: auto;">
+    </a>
+    </div>
+
+    <p>
+        ▲ Transmon circuit layout. (a) Circuit diagram under a microscope, (b) Corresponding circuit diagram. In this diagram, there is one Qubit (red Transmon) and one readout resonator (sky blue). Two feedlines individually drive the qubit and the readout resonator. The components are coupled using capacitors. Additionally, a Flux line is connected next to the Qubit, which generates a magnetic field to alter the Transmon's operating frequency. (c) Because the readout resonator is coupled to the qubit, it experiences a spectral shift depending on whether the qubit is in the \(|0\rangle\) or \(|1\rangle\) state. We use this characteristic spectral shift of the readout resonator to determine the state of the qubit.
+        <br><span style="font-size: 0.7em; line-height: 0.8;">arxiv.org/pdf/2106.11352</span><br><br>
+    </p>
+
+    <br><br>
+    <h3>Couplers</h3>
+    <div style="text-align: center;">
+        <a href="../Image/IQM Tunable.png">
+            <img src="../Image/IQM Tunable.png" alt="Schematic of Two Qubits and Tunable Coupler Circuit" style="width: 60%; height: auto;">
+        </a>
+    </div>
+    
+    <p>
+        The Resonator/Coupler facilitating interactions between qubits can be tunable, allowing for further adjustment of the coupling strength between different Qubits, though this also increases the complexity of the control circuit.
+        <br><span style="font-size: 0.7em; line-height: 0.8;">arxiv: 2408.12433</span>
+        <br><br>
+    </p>
+
+    <br>
+<h3>Superconducting Quantum Chips</h3>
+    <p>
+        A complete superconducting quantum computer requires at least: a Helium-3 ultra-low temperature vacuum environment, a cooling system, and a massive array of RF signal control and readout instruments, making current superconducting quantum computers extremely large. Furthermore, a single qubit requires at least four lines:
+        <ul>
+        <li>Control Frequency * 1: A Flux line to adjust magnetic flux.</li>
+        <li>Control State * 1: A Drive line.</li>
+        <li>Readout State * 2: Readout lines (one in, one out).</li>
+        </ul>
+        You can refer to the image below:
+    </p>
+        
+    <div style="text-align: center;">
+        <a href="../Image/17 surface.png">
+            <img src="../Image/17 surface.png" alt="Schematic of Superconducting Qubit Circuit Connections" style="width: 43%; height: auto;">
+        </a>
+        <a href="../Image/Starmon.png">
+            <img src="../Image/Starmon.png" alt="Layout of Readout Resonators and Coupling Buses" style="width: 55%; height: auto;">
+        </a>
+    </div>
+    <p>
+        ▲ To achieve quantum computing, many Qubits must be operated simultaneously, and extra Qubits are required for error correction. The image above shows a 17-qubit experimental quantum chip arranged in a quantum error-correction format called a surface code. The circles represent Qubits: pink and red are Data Qubits, while sky blue and green are Check Qubits. Each Qubit is connected to 7 lines (nicknamed Starmon), which include 4 for inter-qubit coupling, 1 Flux line, 1 Drive line, and 1 Readout resonator. The Readout resonators are merged into three feedlines. Although current technology can multiplex the Readout lines of multiple Qubits together—sharing the same Readout line (the so-called Feedline) via frequency isolation techniques—we still need to account for the Resonators that control interactions between qubits. A 100-qubit quantum computer prototype requires 400 external lines, which is why a massive tangle of wiring is a common sight in current superconducting quantum computers.
+        <br><span style="font-size: 0.7em; line-height: 0.8;">https://arxiv.org/pdf/1612.08208</span>
+        <br><br>
+    </p>
+        
+    
+
+<br>
+<h3>Superconducting Quantum Computer Architecture</h3>
                                 <div style="text-align: center;">
                                     <a href="../Image/IBM_QC_cloud.webp">
                                       <img src="../Image/IBM_QC_cloud.webp" alt="Quantum computer diagram" style="width: 100%; height: auto;">
