@@ -3,6 +3,7 @@
     { "title": "超導量子電腦概論", "file": "A.html" , "status": "new" , "date": "2026-02-16"},
     { "title": "IQM量子電腦科技發展", "file": "B.html" , "status": "new" , "date": "2026-02-20"},
     { "title": "IQM KQCircuit Design", "file": "C.html" , "status": "new" , "date": "2026-02-23"},
+    { "title": "AMD", "file": "D.html" , "status": "new" , "date": "2026-02-26"},
     { "title": "Shuttled", "file": "H.html" ,"enabled": false},
     { "title": "Measure", "file": "F.html" ,"enabled": false}
 ]
