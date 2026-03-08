@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N39VTY949N"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-N39VTY949N');
+</script>
+    <!-- Basic Page Needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <meta name="author" content="Peir-Ru Wang">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;1,300&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/20250525-icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/20250525-icon.png">
+
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/css/style.css" rel="stylesheet">
+    <link href="../assets/css/responsive.css" rel="stylesheet">
+
+    <title>NVIDIA與NVQLink</title>
+    <meta name="description" content="深入解析 NVIDIA 與 NVQLink：從 GPU 加速計算、NVLink 高速互連到 HPC+QPU 混合運算架構，了解微秒回授、量子控制整合與 AI 輔助量子計算生態。">
+    <meta name="keywords" content="NVIDIA  
+NVQLink  
+NVLink 高速互連  
+GPU 加速計算  
+HPC 與量子混合運算  
+QPU 量子處理器互聯  
+CUDA-Q  
+cuQuantum  
+量子控制與即時回授  
+AI 輔助量子計算">
+    <link rel="canonical" href="https://www.insight-ihbar.com/ASW2026/E.html">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+
+    <header id="masthead" class="site-header">
+        <nav id="primary-navigation" class="site-navigation">
+            <div class="container">
+
+                <div class="navbar-header">
+                   
+                    <a href="../index_ch.html" class="site-title">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
+
+                </div><!-- /.navbar-header -->
+
+                <div class="collapse navbar-collapse" id="agency-navbar-collapse">
+
+                    <ul class="nav navbar-nav navbar-right">
+
+                        <li><a href="../index_ch.html">Home</a></li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">科普介紹<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                <li><a href="../SCQ_elementary/main.html">超導量子位元(科普版)</a></li>
+                              <li><a href="../SCQ_advanced/main.html">超導量子位元(進階版)</a></li>
+                              <li><a href="../SpQ/main.html">半導體自旋量子位元</a></li>
+                            </ul>
+
+                        </li>
+                        <!--<li class="active"><a href="../SCQ_elementary/main.html">科普介紹</a></li>-->
+                        <li><a href="../QC_hardware/main.html">硬體導論</a></li>
+                        <li><a href="../QID/main.html">量子產業群像錄</a></li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">研討會筆記<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                <li class="active"><a href="../ASW2026/main.html">2026中研院超導量子電腦Workshop</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">量子諮詢<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                <li><a href="https://www.quantum-perspectives.com/About/main.html">量子遠見科技：諮詢服務</a></li>
+                                <li><a href="../About/main.html">關於我們</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="../index.html">English</a></li>
+                        
+                    </ul>
+
+                </div>
+
+            </div>   
+        </nav><!-- /.site-navigation -->
+    </header><!-- /#mastheaed -->
+
+    <div id="hero" class="hero overlay subpage-hero blog-hero">
+        <div class="hero-content">
+            <div class="hero_2-text">
+                <a href="../SpQ/main.html"><h1>2026中研院QPU冬季Workshop</h1></a>
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="../index_ch.html">Home</a></li>
+                  <!--<li class="breadcrumb-item"><a href="../SCQ_elementary/main.html">超導量子位元(科普版)</a></li>
+                  <li class="breadcrumb-item active">約瑟夫森節</li>-->
+                </ol>
+            </div><!-- /.hero-text -->
+        </div><!-- /.hero-content -->
+    </div><!-- /.hero -->
+
+    <main id="main" class="site-main">
+
+        <section class="site-section subpage-site-section section-blog">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                        <article class="blog-post">
+                            <!--<img src="../assets/img/portfolio-1.jpg" class="img-res" alt="">-->
+                            <div class="post-content">
+                                <div style="text-align: center;">
+                                    <h2>NVIDIA與NVQLink</h2>
+                                    <h3></h3>
+                                    <h4>講者：王勻遠 資深解決方案架構師 <br> Yun-Yuan Wang Senior Solution Architect </h4>
+                                    <span style="font-size: 0.7em; line-height: 0.8;">
+                                        2026.03.08
+                                    </span>
+                                </div>
+                                <p>NVIDIA是當前市場上最大的加速計算與高速互連解決供應商，隨著摩爾定律的極限，單晶片算力密度成長趨緩，採用GPU平行運算已成為近代算力主力。
+                                    此外，隨著人工智慧大模型的發展，越來越大的模型參數與訓練必須分散到數百個GPU上做計算，GPU間、機櫃間的通信亦成為瓶頸，故NVIDIA亦發展高速互連技術，來解決GPU之間通信的延遲。
+                                    高速互連技術亦在量子運算中非常重要，由於量子位元需要奈秒等級（GHz）的操作精度與實時校正控制，隨著量子位元的增加，操作整晶片的參數至少是隨位元數平方級上漲，控制儀器與QPU之間的即時運算信號處理、交換也成為重要的議題。
+                                    由NVLink發展而來的NVQLink便是NVIDIA將在量子計算佔據的重要角色。
+
+                                </p>
+                                <br><br>
+                                <div style="text-align: center;">
+                                    <a href="../Image/IMG_5048.JPG">
+                                        <img src="../Image/IMG_5048.JPG" alt="加速量子超級電腦簡報頁" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                
+                                
+                                
+                                
+                                <!--<div style="text-align: center;">
+                                    <a href="../Image/IMG_5055.JPG">
+                                        <img src="../Image/IMG_5055.JPG" alt="2025量子突破趨勢簡報投影片" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲
+                                    
+                                    <br><br>
+                                </p>-->
+                                
+                                
+                                
+                                <div style="text-align: center;">
+                                    <a href="../Image/IMG_5061.JPG">
+                                        <img src="../Image/IMG_5061.JPG" alt="NVIDIA運算革命歷程圖" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲ NVIDIA的願景是加速計算，從CUDA科學計算生態圈，進入到深度學習、生成式AI，以及未來的量子計算。
+                                    
+                                    <br><br>
+                                </p>
+                                
+                                
+                                
+                                
+                                
+                                
+                                <div style="text-align: center;">
+                                    <a href="../Image/IMG_5064.JPG">
+                                        <img src="../Image/IMG_5064.JPG" alt="量子GPU超級運算簡報投影片" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲ 在NVIDIA的規劃中，著重在超級電腦HPC+量子電腦QC的混合運算架構，提供整合的軟體架構。
+                                    
+                                    <br><br>
+                                </p>
+                                
+                                
+                                
+                                <!--<div style="text-align: center;">
+                                    <a href="../Image/IMG_5068.JPG">
+                                        <img src="../Image/IMG_5068.JPG" alt="量子應用需 AI 超級運算投影片" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲
+                                    
+                                    <br><br>
+                                </p>-->
+                                
+                                
+                                
+                                <div style="text-align: center;">
+                                    <a href="../Image/IMG_5076.JPG">
+                                        <img src="../Image/IMG_5076.JPG" alt="人工智慧量子計算流程圖" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲ AI輔助量子計算是NVIDIA主打的發展方向，協助設計、優化量子晶片設計、混合運算、量子糾錯，進一步到實用化應用層面。
+                                    
+                                    <br><br>
+                                </p>
+                                
+                                
+                                
+                                <!--<div style="text-align: center;">
+                                    <a href="../Image/IMG_5078.JPG">
+                                        <img src="../Image/IMG_5078.JPG" alt="NVIDIA量子加速簡報投影片" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲
+                                    
+                                    <br><br>
+                                </p>
+                                
+                                
+                                
+                                <div style="text-align: center;">
+                                    <a href="../Image/IMG_5084.JPG">
+                                        <img src="../Image/IMG_5084.JPG" alt="量子超算中心全球分布圖" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲
+                                    
+                                    <br><br>
+                                </p>
+                                
+                                
+                                
+                                <div style="text-align: center;">
+                                    <a href="../Image/IMG_5088.JPG">
+                                        <img src="../Image/IMG_5088.JPG" alt="AI超級運算推動量子進展海報" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲
+                                    
+                                    <br><br>
+                                </p>-->
+                                <div style="text-align: center;">
+                                    <a href="../Image/IMG_5118.JPG">
+                                        <img src="../Image/IMG_5118.JPG" alt="QuTiP+cuQuantum加速公告投影片" style="width: 100%; height: auto;">
+                                    </a>
+                                    <a href="../Image/IMG_5169.JPG">
+                                        <img src="../Image/IMG_5169.JPG" alt="NVIDIA學術研究資助計畫介紹" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲ 透過NVIDIA軟體生態cuQuantum套件加速QuTip。NVIDIA與同時著重在各類科學問題、應用在不同領域的學科。
+                                    
+                                    <br><br>
+                                </p>
+                                
+                                
+                                
+                                
+                                
+                                
+                                <!--<div style="text-align: center;">
+                                    <a href="../Image/IMG_5112.JPG">
+                                        <img src="../Image/IMG_5112.JPG" alt="量子硬體噪聲限制投影片" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲
+                                    
+                                    <br><br>
+                                </p>
+                                
+                                
+                                
+                                <div style="text-align: center;">
+                                    <a href="../Image/IMG_5117.JPG">
+                                        <img src="../Image/IMG_5117.JPG" alt="CUDA-Q加速：一年縮至50分鐘圖表" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲
+                                    
+                                    <br><br>
+                                </p>-->
+                                
+                                
+                                
+                                
+                                
+                                <br><br>
+                                <h3>NVQLink</h3>
+                                <p>2026年年初黃仁勳曾說，<b>NVIDIA現在已是全球最大的網絡公司</b><a href=https://hk.finance.yahoo.com/news/%E9%BB%83%E4%BB%81%E5%8B%B3%E7%A8%B1%E8%8B%B1%E5%81%89%E9%81%94%E6%88%90%E7%82%BA%E3%80%8C%E5%85%A8%E7%90%83%E6%9C%80%E5%A4%A7%E7%B6%B2%E7%B5%A1%E5%85%AC%E5%8F%B8%E3%80%8D-%E7%95%B6%E4%B8%AD%E6%9C%89%E4%BD%95%E7%8E%84%E6%A9%9F%EF%BC%9F-233741098.html">ref</a>。
+                                    在CES 26中Vera Rubin介紹時，同時更新互連技術迭代晶片，並進入到CPO時代。在類似的邏輯上，值得介紹NVQLink，針對量子應用優化的快速互聯技術。
+                                </p>
+                                <br><br>
+                                
+                                
+                                
+                                
+                                <!--<div style="text-align: center;">
+                                    <a href="../Image/IMG_5094.JPG">
+                                        <img src="../Image/IMG_5094.JPG" alt="CUDA-Q 量子運算平台架構圖" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲
+                                    
+                                    <br><br>
+                                </p>
+                                
+                                
+                                
+                                <div style="text-align: center;">
+                                    <a href="../Image/IMG_5104.JPG">
+                                        <img src="../Image/IMG_5104.JPG" alt="量子位到超級電腦示意圖" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲
+                                    
+                                    <br><br>
+                                </p>-->
+                                
+                                
+                                
+                                
+
+
+
+
+
+
+                                <div style="text-align: center;">
+                                    <a href="../Image/IMG_5092.JPG">
+                                        <img src="../Image/IMG_5092.JPG" alt="NVIDIA量子平台架構圖" style="width: 100%; height: auto;">
+                                    </a>
+                                    <a href="../Image/IMG_5124.JPG">
+                                        <img src="../Image/IMG_5124.JPG" alt="NVIDIA NVQLink量子GPU架構圖" style="width: 100%; height: auto;">
+                                    </a>
+                                    <a href="../Image/IMG_5133.JPG">
+                                        <img src="../Image/IMG_5133.JPG" alt="NVIDIA NVQLink量子運算示意圖" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲ NVQLink的軟硬整合生態。軟體部分包含Cuda-Q、cuQuantum的加速運指令。硬體部分，NVQLink透過優化的DGX與量子控制廠商的整合，提高超級電腦與量子晶片QPU的快速互聯交換。
+
+                                    
+                                    <br><br>
+                                </p>
+                                
+                                <div style="text-align: center;">
+                                    <a href="../Image/nvqlink-1.png">
+                                        <img src="../Image/nvqlink-1.png" alt="量子電腦機櫃與硬體示意圖" style="width: 100%; height: auto;">
+                                    </a>
+                                    <a href="../Image/nvqlink-architecture-gpu-qpu-png.webp">
+                                        <img src="../Image/nvqlink-architecture-gpu-qpu-png.webp" alt="超級電腦與量子處理單元架構圖" style="width: 100%; height: auto;">
+                                    </a>
+                               
+                                    
+                                </div>
+                                <p class="dark-background">
+                                    ▲ NVIDIA官方介紹的NVQLink，可以很明顯看出NVQLink的角色是作為超級電腦與QPU的中介。NVQLink不只是單純的信息交換器，NVQLink還整合了量子控制儀器廠商的儀器，來操作QPU。
+                                    具體來說，NVQLink是一個高速訊號轉譯器，會將HPC的請求，轉譯成量子電腦的控制信號，交由量子晶片運算，並轉譯量子結果，回傳給HPC。此外，由於量子晶片需要複雜的QEC實時糾錯控制，NVQLink整合的量子控制儀器也會同時進行量子計算的糾錯、校正。
+                                    NVQLink的解決方案，可以詮釋成將古典高速計算與量子計算的<b>接口模組化</b>，古典HPC不需要負擔量子控制的算力消耗、校正優化；而量子晶片廠商只需要與NVQLink互聯做適配。
+                                    
+                                    在接下來的混合運算中提供模組化的解決方案，可以在既有的HPC框架下導入NVQLink+QPU，不需要重新設計古典架構來適配量子計算。
+
+                                    <span style="font-size: 0.7em; line-height: 0.8;">
+                                        <br>Ref: https://developer.nvidia.com/blog/nvidia-nvqlink-architecture-integrates-accelerated-computing-with-quantum-processors/
+                                    </span>
+                                    <br><br>
+                                </p>
+                                
+                                <div style="text-align: center;">
+                                    <a href="../Image/IMG_5139.JPG">
+                                        <img src="../Image/IMG_5139.JPG" alt="超級電腦與量子處理器架構圖" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲ 演講中同一張示意圖還提及NVQLink的重點，提供GPU直連、微秒回授，還有得益於益于Cuda生態的編程技術生態。
+                                    
+                                    <br><br>
+                                </p>
+                                
+                                <!--<div style="text-align: center;">
+                                    <a href="../Image/IMG_5126.JPG">
+                                        <img src="../Image/IMG_5126.JPG" alt="NVLink連接量子與GPU超算示意圖" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲
+                                    
+                                    <br><br>
+                                </p>-->
+                                
+                                
+                                
+                                <div style="text-align: center;">
+                                    <a href="../Image/IMG_5128.JPG">
+                                        <img src="../Image/IMG_5128.JPG" alt="NVIDIA NVQLink架構示意圖" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲ 目前NVQLink合作的廠商。
+                                    
+                                    <br><br>
+                                </p>
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                <div style="text-align: center;">
+                                    <a href="../Image/IMG_5144.JPG">
+                                        <img src="../Image/IMG_5144.JPG" alt="NVQLink量子運算架構圖" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲ 不同的量子晶片框架（例如超導、半導體自旋位元、光量子計算、中性原子計算等），需要<b>完全不同</b>的控制框架結構，NVQLink將這類異質架構與HPC端隔離，提供一個通用介面，使得既有HPC框架不需為不同的QPU去適配。
+                                    
+                                    <br><br>
+                                </p>
+
+                                <div style="text-align: center;">
+                                    <a href="../Image/IMG_5158.JPG">
+                                        <img src="../Image/IMG_5158.JPG" alt="NVIDIA NVQLink簡報投影片" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲ 市面上的量子控制儀器廠商，都可以與NVQLink做整合。
+                                    
+                                    <br><br>
+                                </p>
+                                
+                                <div style="text-align: center;">
+                                    <a href="../Image/IMG_5137.JPG">
+                                        <img src="../Image/IMG_5137.JPG" alt="NVIDIA量子整合展示海報" style="width: 100%; height: auto;">
+                                    </a>
+                                    <a href="../Image/IMG_5153.JPG">
+                                        <img src="../Image/IMG_5153.JPG" alt="NVQLink參考架構投影片" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲ 當前最先與DGX做整合是配的是Quantum Machines DGX1000。
+                                    
+                                    <br><br>
+                                </p>
+                                
+                                
+                               
+                                
+                                
+                                
+                                <div style="text-align: center;">
+                                    <a href="../Image/IMG_5105.JPG">
+                                        <img src="../Image/IMG_5105.JPG" alt="NVIDIA量子加速效能圖表" style="width: 100%; height: auto;">
+                                    </a>
+                                    <a href="../Image/IMG_5109.JPG">
+                                        <img src="../Image/IMG_5109.JPG" alt="CUDA-Q GPU加速柱狀圖比較" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲ 如果與大型的NVL72整合，NVIDIA預期可以大幅加速量子計算和發展。
+                                    
+                                    <br><br>
+                                </p>
+                                
+                                
+                                <div style="text-align: center;">
+                                    <a href="../Image/IMG_5162.JPG">
+                                        <img src="../Image/IMG_5162.JPG" alt="NVIDIA量子運算簡報投影片" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲ 桌上型DGX Spark，提供個人化的量子開發工具平台。
+                                    
+                                    <br><br>
+                                </p>
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                <!--<div style="text-align: center;">
+                                    <a href="../Image/IMG_5171.JPG">
+                                        <img src="../Image/IMG_5171.JPG" alt="NVIDIA GTC活動宣傳海報" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲
+                                    
+                                    <br><br>
+                                </p>
+                                
+                                
+                                
+                                <div style="text-align: center;">
+                                    <a href="../Image/IMG_5172.JPG">
+                                        <img src="../Image/IMG_5172.JPG" alt="NVIAITC量子網路QR碼投影" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲
+                                    
+                                    <br><br>
+                                </p>
+                                
+                                
+                                
+                                <div style="text-align: center;">
+                                    <a href="../Image/IMG_5175.JPG">
+                                        <img src="../Image/IMG_5175.JPG" alt="投影片顯示Thank You字樣" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲
+                                    
+                                    <br><br>
+                                </p>-->
+                                
+                                
+                                
+                                
+                                
+                                <br><br>
+                                
+                                
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                
+
+                                <div class="post-meta">
+                                    <span class="post-author">
+                                        <a href="../About/Wang.html"><img class="img-res" src="../Image/IMG_0964_2.JPG" alt="">王培儒</a>
+                                    </span>
+                                    <span class="post-category">
+                                        <a href="../ASW2026/main.html"><i class="fa fa-folder" aria-hidden="true"></i>2026中研院QPU冬季Workshop</a>
+                                    </span>
+                                </div><!-- /.post-meta -->
+                            
+                                
+                                <div id="prev-next-nav" class="text-center">
+                                    <a class="btn btn-gray" href="D.html">← 上一頁</a> 
+                                    <a class="btn btn-gray" href="../ASW2026_en/E.html" style="margin: 0 10px;">English Version</a>
+                                </div>
+
+                                
+
+                            </div><!-- /.post-content -->
+                        </article><!-- /.blog-post -->
+                        <!--<div id="PostComments" class="post-comments">
+                            
+                            
+                            
+                        </div> /#PostComments -->
+                        <!--<div class="respond">
+                            <h3>Post a Comment</h3>
+                            <form class="form-horizontal">
+                                <input class="form-control" type="text" placeholder="Your Name*" required>
+                                <input class="form-control" type="email" placeholder="Your Email" required>
+                                <textarea class="form-control form-control-comment" type="text" placeholder="Your Comment*" required></textarea>
+                                <button class="btn btn-green">Add a comment</button>
+                            </form>    
+                        </div> /.respond -->
+                    </div>
+                    <aside class="col-md-3">
+                        <div class="sidebar">
+                            <div class="widget">
+                                <div id="lesson-list_2">
+                                <div class="lesson-link "><a href="main.html">2026中研院QPU冬季Workshop:引言</a></div>
+                                <div class="lesson-link "><a href="A.html">超導量子電腦概論</a></div>
+                                <div class="lesson-link "><a href="B.html">IQM量子電腦科技發展</a></div>
+                                <div class="lesson-link "><a href="C.html">IQM KQCircuit Design</a></div>
+                                <div class="lesson-link "><a href="D.html">AMD</a></div>
+                                <div class="lesson-link active"><a href="E.html">NVIDIA與NVQLink</a></div>
+                                </div>
+                            </div>
+  
+                        </div></aside>
+                </div>
+            </div>
+        </section><!-- /.section-portfolio -->
+
+    </main><!-- /#main -->
+
+    <footer id="colophon" class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-4 col-xs-6">
+                    <a class="site-title">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
+                    <p>一起走進新時代的前沿科學與量子科技</p>
+                    </div>
+                <div class="col-lg-offset-4 col-md-3 col-sm-4 col-md-offset-2 col-sm-offset-0 col-xs-6 ">
+                    <p class="site-title">𝐾𝐸𝐸𝑃 𝐼𝑁 𝑇𝑂𝑈𝐶𝐻</p>
+                    <ul class="list-unstyled contact-links">
+                        <li><i class="fa fa-envelope" aria-hidden="true"></i><a href="mailto:info@insight-ihbar.com">info@insight-ihbar.com</a></li>
+                        <!--<li><i class="fa fa-phone" aria-hidden="true"></i><a href="tel:+37400800000">+374 (00) 80 00 00 </a></li>
+                        <li><i class="fa fa-fax" aria-hidden="true"></i><a href="+37400900000">+374 (00) 90 00 00</a></li>
+                        <li><i class="fa-solid fa-location-dot"></i><p>Hsinchu 300, Taiwan (R.O.C.)</p></li>-->
+                    </ul>
+                </div>
+                <!--<div class="clearfix visible-xs"></div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6">
+                    <h3>Featured links</h3>
+                    <ul class="list-unstyled">
+                        <li class="active"><a href="index_ch.html">Home</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="portfolio.html">Porfolio</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>-->
+            </div>
+        </div>
+        <div class="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-8">
+                        <div class="social-links">
+                            <!--<a class="twitter-bg" href="#"><i class="fab fa-twitter"></i></a>-->
+                            <!--<<a class="facebook-bg" href="https://www.facebook.com/people/Quantum-Perspectives/61576446849628/"><i class="fab fa-facebook"></i></a>-->
+                            <!--<a class="facebook-bg" href="https://www.facebook.com/people/%E9%87%8F%E5%AD%90%E9%81%A0%E8%A6%8BQuantum-Perspectives/61576883632888/"><i class="fab fa-facebook-f"></i></a>-->
+                            <!--<a class="pinterest" href="#"><i class="fa-solid fa-microscope"></i></a>-->
+                            <!--<a class="facebook-bg" href="https://www.facebook.com/people/Insight-hbar/61576811775374/"><i class="fab fa-facebook-f"></i></a>-->
+                            <a class="linkedin-bg" href="https://www.linkedin.com/company/insight-ihbar"><i class="fab fa-linkedin"></i></a>
+                        </div><!-- /.social-links -->
+                    </div>
+                    <div class="col-xs-4">
+                        <div class="text-right">
+                            <p><span style="font-size: 16px;">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</span></p>
+                            <p>All Rights Reserved</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.copyright -->
+    </footer><!-- /#footer -->
+
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="../assets/js/bootstrap-select.min.js"></script>
+    <script src="../assets/js/jquery.slicknav.min.js"></script>
+    <script src="../assets/js/jquery.countTo.min.js"></script>
+    <script src="../assets/js/jquery.shuffle.min.js"></script>
+    <script src="../assets/js/script.js"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  
+</body>
+</html>

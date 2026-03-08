@@ -326,6 +326,21 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://www.insight-ihbar.com/ASW2026/E.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.insight-ihbar.com/ASW2026/F.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.insight-ihbar.com/ASW2026/G.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://www.insight-ihbar.com/ASW2026/main.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -792,6 +807,11 @@
   </url>
   <url>
     <loc>https://www.insight-ihbar.com/ASW2026_en/D.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.insight-ihbar.com/ASW2026_en/E.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>

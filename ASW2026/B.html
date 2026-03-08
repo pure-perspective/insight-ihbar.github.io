@@ -271,12 +271,67 @@
                                         </a>
                                     </div>
                                     <p class="dark-background">
-                                        ▲ 預計在APS 2026，IQM會發表在Constellation上加入遠程耦合的位元交互作用。
+                                        ▲ 預計在APS 2026，IQM會發表在Constellation上加入遠程耦合的位元交互作用。是為了對應到qLDPC的發展。
+                                        <br><br>
+                                    </p>
+
+<br><br>
+                                    <h3>qLDPC 量子糾錯</h3>
+                                    <p>這邊來提一下為何IQM會進行遠程交互晶片設計，相關技術可以參考IBM在2024年qLDPC的工作。糾錯碼在實用計算上佔有非常重要地位，如何在最低的開銷下達到最佳的資訊傳輸和糾錯冗餘一直是工程上權衡的課題。
+                                        由於量子計算不可測量的特性，讓量子糾錯的難度更高。
+                                        超導量子位元屬於二維的量子晶片，當前最主流的量子糾錯是<b>表面碼Surface Code</b>。
+                                        Surface Code優點是對於connectivity的需求只需要鄰近的Qubit，不需要遠程交互作用，但缺點是Ancilla Qubit的數量隨系統增加同步增加，實用上會增加系統複雜度與錯誤。
+                                        IBM在2024年展示了<b>qLDPC (quantum Low-Density Parity Check code)</b>混合Surface Code的量子糾錯運算。
+                                        qLDPC需要長程的交互作用，得益於IBM多層晶片製程的佈線，可以實現較複雜的量子位元間交互連接性拓樸。
+                                    </p>
+                                    <div style="text-align: center;">
+                                        <a href="../Image/截圖 2026-03-03 下午5.50.12.png">
+                                            <img src="../Image/截圖 2026-03-03 下午5.50.12.png" alt="---" style="width: 100%; height: auto;">
+                                        </a>
+                                    </div>
+                                    <p class="dark-background">
+                                        ▲ IBM論文中比較傳統的表面碼（Surface Code）與新型且高效的雙二分碼（Bivariate Bicycle Code 簡稱 BB code，屬於qLDPC的一種）。<br>
+                                        <b>圖a</b>是表面碼 (Surface Code)。<br>
+                                        <b>圖b</b>BB 碼 (Bivariate Bicycle Code)的幾何結構： 它被「嵌入」在一個<b>拓樸環面（Torus，甜甜圈形狀）</b>上，每個量子位元有 6 條線連出去（4 條短程，2 條長程）。<br>
+                                        <b>圖c</b>混合架構與操作。<br>
+                                        傳統表面碼如果要達到同樣的容錯水準，可能需要數千個位元，而 BB 碼只需要一百多個。
+                                        <span style="font-size: 0.7em; line-height: 0.8;">
+                                            <br>Ref: 10.1038/s41586-024-07107-7
+                                        </span>
                                         <br><br>
                                     </p>
 
 
+                                    <div style="text-align: center;">
+                                        <a href="../Image/IBM_FTQC_Torus_2_K_v3_16fc27ed7f.gif">
+                                            <img src="../Image/IBM_FTQC_Torus_2_K_v3_16fc27ed7f.gif" alt="---" style="width: 100%; height: auto;">
+                                        </a>
+                                    </div>
+                                    <p class="dark-background">
+                                        ▲ 前面所說的BB Code嵌入在拓樸環面的示意圖，由IBM所繪製。
+                                        <span style="font-size: 0.7em; line-height: 0.8;">
+                                            <br>Ref: https://www.ibm.com/quantum/blog/large-scale-ftqc
+                                        </span>
+                                        <br><br>
+                                    </p>
 
+                                    <div style="text-align: center;">
+                                        <a href="../Image/266d07d8-ibm-quantum_hex-vs.-loon-architecture.png">
+                                            <img src="../Image/266d07d8-ibm-quantum_hex-vs.-loon-architecture.png" alt="---" style="width: 100%; height: auto;">
+                                        </a>
+                                    </div>
+                                    <p class="dark-background">
+                                        ▲ IBM多層晶片製程的佈線，可以實現較複雜的量子位元間交互連接性拓樸。更多量子晶片介紹可以參考：<b><a href="../QC_hardware/U.html">邁向Scalable QPU-量子晶片設計</a></b>。
+                                        <span style="font-size: 0.7em; line-height: 0.8;">
+                                            <br>Ref: https://thenewstack.io/ibm-cracks-code-for-building-fault-tolerant-quantum-computer/
+                                            <br>Ref: https://www.hpcwire.com/2025/06/10/ibm-sets-2029-target-for-fault-tolerant-quantum-computing/
+                                        </span>
+                                        <br><br>
+                                    </p>
+                                    
+                                    
+                                    
+                                    
 
 
                                                        
@@ -335,6 +390,7 @@
                                 <div class="lesson-link active"><a href="B.html">IQM量子電腦科技發展</a></div>
                                 <div class="lesson-link "><a href="C.html">IQM KQCircuit Design</a></div>
                                 <div class="lesson-link "><a href="D.html">AMD</a></div>
+                                <div class="lesson-link "><a href="E.html">NVIDIA與NVQLink</a></div>
                                 </div>
                             </div>
   

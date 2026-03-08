@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N39VTY949N"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-N39VTY949N');
+</script>
+    <!-- Basic Page Needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <meta name="author" content="Peir-Ru Wang">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;1,300&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/20250525-icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/20250525-icon.png">
+
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/css/style.css" rel="stylesheet">
+    <link href="../assets/css/responsive.css" rel="stylesheet">
+
+    <title>NVIDIA and NVQLink</title>
+    <meta name="description" content="Explore NVIDIA’s NVQLink for hybrid HPC+quantum computing—fast GPU-QPU interconnect, microsecond feedback, and CUDA-Q/cuQuantum ecosystem insights.">
+    <meta name="keywords" content="- Semiconductor spin qubits in quantum computing
+- Quantum bits technology and applications
+- Superconducting vs semiconductor qubits
+- Low temperature cooling systems for quantum processors
+- High-fidelity two-qubit gates advancement
+- Quantum dot fabrication techniques
+- Scalable semiconductor quantum processors
+- Challenges in semiconductor spin qubits
+- Fault-tolerant quantum computer development
+- Future of quantum computing technology">
+    <link rel="canonical" href="https://www.insight-ihbar.com/ASW2026_en/E.html">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+  <meta name="keywords" content="IQM superconducting quantum computer architecture  
+Crystal Star Constellation QPU topology  
+quantum gate fidelity randomized benchmarking IRB  
+MOVE gate Star architecture IQM  
+fault-tolerant quantum computing roadmap IQM  
+high connectivity quantum processor design  
+surface code QEC and qLDPC  
+quantum chip layout coupling crosstalk  
+flip-chip packaging wiring impact qubits  
+Academia Sinica SCQC Winter Workshop 2026">
+  <meta name="keywords" content="NVIDIA NVQLink hybrid quantum HPC interconnect  
+GPU QPU integration microsecond feedback NVQLink  
+CUDA-Q cuQuantum ecosystem for quantum computing  
+High-speed GPU networking for AI and quantum  
+Quantum error correction real-time control instrumentation  
+DGX systems NVL72 quantum computing acceleration  
+Co-Packaged Optics CPO era NVIDIA interconnect  
+Quantum Machines DGX1000 NVQLink control platform  
+Academia Sinica SCQC Winter Workshop 2026 lecture  
+Accelerated computing roadmap HPC plus quantum computing">
+</head>
+<body>
+
+    <header id="masthead" class="site-header">
+        <nav id="primary-navigation" class="site-navigation">
+            <div class="container">
+
+                <div class="navbar-header">                   
+                    <a href="../index.html" class="site-title">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
+                </div><!-- /.navbar-header -->
+
+                <div class="collapse navbar-collapse" id="agency-navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="../index.html">Home</a></li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Qubit Physics<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                              <li><a href="../SCQ_elementary_en/main.html">Superconducting Qubits (Elementary)</a></li>
+                              <li><a href="../SCQ_advanced_en/main.html">Superconducting Qubits (Advanced)</a></li>
+                              <li class="active"><a href="../SpQ_en/main.html">Semiconductor Spin Qubits</a></li>
+                            </ul>
+                        </li>
+                        <!--<li class="active"><a href="../SCQ_elementary/main.html">科普介紹</a></li>-->
+                        <li><a href="../QC_hardware_en/main.html">Hardware</a></li>
+                        <li><a href="../QID_en/main.html">Quantum Industries</a></li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Workshop Note<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                <li><a href="../ASW2026_en/main.html">2026 Academia Sinica SCQC Winter Workshop</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Consultance<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                <li><a href="https://www.quantum-perspectives.com/About_en/main.html">Taiwan Market Outreach Services</a></li>
+                                <li><a href="../About_en/main.html">About Us</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="../index_ch.html">中文版</a></li>                        
+                    </ul>
+                </div>
+
+            </div>   
+        </nav><!-- /.site-navigation -->
+    </header><!-- /#mastheaed -->
+
+    <div id="hero" class="hero overlay subpage-hero blog-hero">
+        <div class="hero-content">
+            <div class="hero_2-text">
+                <h1>2026 Academia Sinica SCQC Winter Workshop</h1>
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+                  <!--<li class="breadcrumb-item"><a href="./main.html">Hardware Guide (2025)</a></li>
+                  <li class="breadcrumb-item active">約瑟夫森節</li>-->
+                </ol>
+            </div><!-- /.hero-text -->
+        </div><!-- /.hero-content -->
+    </div><!-- /.hero -->
+
+    <main id="main" class="site-main">
+
+        <section class="site-section subpage-site-section section-blog">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                        <article class="blog-post">
+                            <!--<img src="../assets/img/portfolio-1.jpg" class="img-res" alt="Laptop on wooden desk">-->
+                            <div class="post-content">
+                                <div style="text-align: center;">
+                                    <h2>NVIDIA and NVQLink</h2>
+                                    <h3></h3>
+                                    <h4>Speaker: Yun-Yuan Wang, Senior Solution Architect</h4>
+                                    <span style="font-size: 0.7em; line-height: 0.8;">
+                                        2026.03.08
+                                    </span>
+                                </div>
+                                <p>
+                                    NVIDIA is currently the world's largest provider of accelerated computing and high-speed interconnect solutions. As Moore's Law reaches its physical limits and single-chip computing density growth slows down, GPU parallel computing has become the backbone of modern computational power. 
+                                    Furthermore, with the evolution of large AI models, increasingly massive model parameters and training tasks must be distributed across hundreds of GPUs. Consequently, communication between GPUs and across racks has become a bottleneck. To address this, NVIDIA has developed high-speed interconnect technologies to eliminate communication latency between GPUs.
+                                    High-speed interconnect is also critical in quantum computing. Qubits require nanosecond-level (GHz) operational precision and real-time calibration control. As the number of qubits increases, the parameters required to operate the entire chip grow at least quadratically. This makes real-time signal processing and exchange between control instruments and the QPU a vital issue. 
+                                    NVQLink, evolved from NVLink technology, represents the pivotal role NVIDIA will play in the quantum computing landscape.
+                                </p>
+                                <br><br>
+                                <div style="text-align: center;">
+                                    <a href="../Image/IMG_5048.JPG">
+                                        <img src="../Image/IMG_5048.JPG" alt="Quantum slide" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                
+                                <div style="text-align: center;">
+                                    <a href="../Image/IMG_5061.JPG">
+                                        <img src="../Image/IMG_5061.JPG" alt="NVIDIA history slide" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲ NVIDIA's vision is to accelerate computing, transitioning from the CUDA scientific computing ecosystem into deep learning, generative AI, and future quantum computing.
+                                    <br><br>
+                                </p>
+                                
+                                <div style="text-align: center;">
+                                    <a href="../Image/IMG_5064.JPG">
+                                        <img src="../Image/IMG_5064.JPG" alt="Quantum-GPU slide" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲ NVIDIA's roadmap emphasizes a hybrid architecture of Supercomputers (HPC) + Quantum Computers (QC), providing an integrated software framework.
+                                    <br><br>
+                                </p>
+                                
+                                <div style="text-align: center;">
+                                    <a href="../Image/IMG_5076.JPG">
+                                        <img src="../Image/IMG_5076.JPG" alt="AI for quantum slide" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲ AI-assisted quantum computing is a core development direction for NVIDIA, helping to design and optimize quantum chips, hybrid computing, and quantum error correction (QEC), leading toward practical applications.
+                                    <br><br>
+                                </p>
+                                
+                                <div style="text-align: center;">
+                                    <a href="../Image/IMG_5118.JPG">
+                                        <img src="../Image/IMG_5118.JPG" alt="QuTiP+cuQuantum slide" style="width: 100%; height: auto;">
+                                    </a>
+                                    <a href="../Image/IMG_5169.JPG">
+                                        <img src="../Image/IMG_5169.JPG" alt="Academic research slide" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲ Accelerating QuTip through the NVIDIA software ecosystem's cuQuantum suite. NVIDIA is simultaneously focusing on various scientific problems and cross-disciplinary applications.
+                                    <br><br>
+                                </p>
+                                
+                                <br><br>
+                                <h3>NVQLink</h3>
+                                <p>
+                                    In early 2026, Jensen Huang stated that <b>NVIDIA is now the world's largest networking company</b> <a href="https://hk.finance.yahoo.com/news/%E9%BB%83%E4%BB%81%E5%8B%B3%E7%A8%B1%E8%8B%B1%E5%81%89%E9%81%94%E6%88%90%E7%82%BA%E3%80%8C%E5%85%A8%E7%90%83%E6%9C%80%E5%A4%A7%E7%B6%B2%E7%B5%A1%E5%85%AC%E5%8F%B8%E3%80%8D-%E7%95%B6%E4%B8%AD%E6%9C%89%E4%BD%95%E7%8E%84%E6%A9%9F%EF%BC%9F-233741098.html">ref</a>.
+                                    During the Vera Rubin introduction at CES 26, interconnect technology was updated alongside chip iterations, entering the CPO (Co-Packaged Optics) era. Following this logic, NVQLink is introduced as a high-speed interconnect technology specifically optimized for quantum applications.
+                                </p>
+                                <br><br>
+                                
+                                <div style="text-align: center;">
+                                    <a href="../Image/IMG_5092.JPG">
+                                        <img src="../Image/IMG_5092.JPG" alt="NVIDIA quantum slide" style="width: 100%; height: auto;">
+                                    </a>
+                                    <a href="../Image/IMG_5124.JPG">
+                                        <img src="../Image/IMG_5124.JPG" alt="NVIDIA NVQLink slide" style="width: 100%; height: auto;">
+                                    </a>
+                                    <a href="../Image/IMG_5133.JPG">
+                                        <img src="../Image/IMG_5133.JPG" alt="NVIDIA NVQLink diagram" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲ The hardware-software integration ecosystem of NVQLink. The software side includes Cuda-Q and cuQuantum acceleration instructions. On the hardware side, NVQLink leverages optimized DGX systems and integration with quantum control vendors to enable rapid interconnect exchange between supercomputers and Quantum Processing Units (QPUs).
+                                    <br><br>
+                                </p>
+                                
+                                <div style="text-align: center;">
+                                    <a href="../Image/nvqlink-1.png">
+                                        <img src="../Image/nvqlink-1.png" alt="Quantum computer rack" style="width: 100%; height: auto;">
+                                    </a>
+                                    <a href="../Image/nvqlink-architecture-gpu-qpu-png.webp">
+                                        <img src="../Image/nvqlink-architecture-gpu-qpu-png.webp" alt="Quantum QPU diagram" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲ In NVIDIA's official introduction of NVQLink, it is clearly shown that NVQLink acts as the intermediary between the supercomputer and the QPU. NVQLink is more than a simple information switch; it integrates hardware from quantum control vendors to operate the QPU.
+                                    Specifically, NVQLink is a high-speed signal translator that converts HPC requests into quantum control signals for the chip to process, then translates the quantum results back to the HPC. Additionally, because quantum chips require complex real-time Quantum Error Correction (QEC), NVQLink’s integrated control instruments perform error correction and calibration simultaneously.
+                                    The NVQLink solution can be interpreted as <b>modularizing the interface</b> between classical high-speed computing and quantum computing. Classical HPC systems do not need to bear the computational load of quantum control or calibration; meanwhile, quantum chip manufacturers only need to adapt to the NVQLink interconnect.
+                                    This provides a modular solution for upcoming hybrid computing, allowing the integration of NVQLink+QPU into existing HPC frameworks without redesigning the entire classical architecture.
+                                    <span style="font-size: 0.7em; line-height: 0.8;">
+                                        <br>Ref: https://developer.nvidia.com/blog/nvidia-nvqlink-architecture-integrates-accelerated-computing-with-quantum-processors/
+                                    </span>
+                                    <br><br>
+                                </p>
+                                
+                                <div style="text-align: center;">
+                                    <a href="../Image/IMG_5139.JPG">
+                                        <img src="../Image/IMG_5139.JPG" alt="Quantum system diagram" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲ The same diagram from the lecture highlights key features of NVQLink: direct GPU connection, microsecond feedback, and a programming ecosystem that benefits from the established CUDA environment.
+                                    <br><br>
+                                </p>
+                                
+                                <div style="text-align: center;">
+                                    <a href="../Image/IMG_5128.JPG">
+                                        <img src="../Image/IMG_5128.JPG" alt="NVIDIA NVQLink slide" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲ Current NVQLink partner companies.
+                                    <br><br>
+                                </p>
+                                
+                                <div style="text-align: center;">
+                                    <a href="../Image/IMG_5144.JPG">
+                                        <img src="../Image/IMG_5144.JPG" alt="NVQLink diagram" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲ Different quantum chip frameworks (e.g., superconducting, semiconductor spin qubits, photonic, neutral atoms) require <b>completely different</b> control structures. NVQLink isolates these heterogeneous architectures from the HPC side, providing a universal interface so existing HPC frameworks do not need individual adaptation for every QPU.
+                                    <br><br>
+                                </p>
+                                
+                                <div style="text-align: center;">
+                                    <a href="../Image/IMG_5158.JPG">
+                                        <img src="../Image/IMG_5158.JPG" alt="NVIDIA NVQLink slide" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲ Quantum control instrument vendors on the market can all be integrated with NVQLink.
+                                    <br><br>
+                                </p>
+                                
+                                <div style="text-align: center;">
+                                    <a href="../Image/IMG_5137.JPG">
+                                        <img src="../Image/IMG_5137.JPG" alt="NVIDIA quantum slide" style="width: 100%; height: auto;">
+                                    </a>
+                                    <a href="../Image/IMG_5153.JPG">
+                                        <img src="../Image/IMG_5153.JPG" alt="NVLink slide" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲ Currently, the first system integrated with DGX is the Quantum Machines DGX1000.
+                                    <br><br>
+                                </p>
+                                
+                                <div style="text-align: center;">
+                                    <a href="../Image/IMG_5105.JPG">
+                                        <img src="../Image/IMG_5105.JPG" alt="NVIDIA quantum chart" style="width: 100%; height: auto;">
+                                    </a>
+                                    <a href="../Image/IMG_5109.JPG">
+                                        <img src="../Image/IMG_5109.JPG" alt="GPU speedup chart" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲ NVIDIA expects that integration with large-scale NVL72 systems will significantly accelerate quantum computing development.
+                                    <br><br>
+                                </p>
+                                
+                                <div style="text-align: center;">
+                                    <a href="../Image/IMG_5162.JPG">
+                                        <img src="../Image/IMG_5162.JPG" alt="DGX Spark slide" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲ The desktop DGX Spark provides a personalized platform for quantum development tools.
+                                    <br><br>
+                                </p>
+                                <br><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                
+                                <br><br>
+                                <p>
+                                    <span style="font-size: 0.5em; line-height: 0.8;">
+                                        Originally written in Chinese by the author, these articles are translated into English to invite cross-language resonance.
+                                    </span>
+                                </p>
+                                <div class="post-meta">
+                                    <span class="post-author">
+                                        <a href="../About_en/Wang.html"><img class="img-res" src="../Image/IMG_0964_2.JPG" alt="Professional headshot">Peir-Ru Wang</a>
+                                    </span>
+                                    <span class="post-category">
+                                        <a href="../ASW2026_en/main.html"><i class="fa fa-folder" aria-hidden="true"></i>2026 Academia Sinica SCQC Winter Workshop</a>
+                                    </span>
+                                </div><!-- /.post-meta -->
+                            
+                                <div id="prev-next-nav" class="text-center">
+                                    <a class="btn btn-gray" href="D.html">← Previous</a> 
+                                    <a class="btn btn-gray" href="../ASW2026/E.html" style="margin: 0 10px;">中文版</a>
+                                </div>
+
+                                
+
+                            </div><!-- /.post-content -->
+                        </article><!-- /.blog-post -->
+                        <!--<div id="PostComments" class="post-comments">
+                            
+                            
+                            
+                        </div> /#PostComments -->
+                        <!--<div class="respond">
+                            <h3>Post a Comment</h3>
+                            <form class="form-horizontal">
+                                <input class="form-control" type="text" placeholder="Your Name*" required>
+                                <input class="form-control" type="email" placeholder="Your Email" required>
+                                <textarea class="form-control form-control-comment" type="text" placeholder="Your Comment*" required></textarea>
+                                <button class="btn btn-green">Add a comment</button>
+                            </form>    
+                        </div> /.respond -->
+                    </div>
+                    <aside class="col-md-3">
+                        <div class="sidebar">
+                            <div class="widget">
+                                <div id="lesson-list_2">
+                                <div class="lesson-link "><a href="main.html">2026 Academia Sinica SCQC Winter Workshop</a></div>
+                                <div class="lesson-link "><a href="A.html">Introduction to Superconducting Quantum Computers</a></div>
+                                <div class="lesson-link "><a href="B.html">IQM Quantum Computer Technology Development</a></div>
+                                <div class="lesson-link "><a href="C.html">IQM KQCircuit Design</a></div>
+                                <div class="lesson-link "><a href="D.html">AMD</a></div>
+                                <div class="lesson-link active"><a href="E.html">NVIDIA and NVQLink</a></div>
+                                </div>
+                            </div>
+  
+                        </div></aside>
+                </div>
+            </div>
+        </section><!-- /.section-portfolio -->
+
+    </main><!-- /#main -->
+
+    <footer id="colophon" class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-4 col-xs-6">
+                    <a href="../index_ch.html" class="site-title">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
+                    <p>Exploring the Quantum Technology Together.</p>
+                    </div>
+                <div class="col-lg-offset-4 col-md-3 col-sm-4 col-md-offset-2 col-sm-offset-0 col-xs-6 ">
+                    <p class="site-title">𝐾𝐸𝐸𝑃 𝐼𝑁 𝑇𝑂𝑈𝐶𝐻</p>
+                    <ul class="list-unstyled contact-links">
+                        <li><i class="fa fa-envelope" aria-hidden="true"></i><a href="mailto:info@insight-ihbar.com">info@insight-ihbar.com</a></li>
+                        <!--<li><i class="fa fa-phone" aria-hidden="true"></i><a href="tel:+37400800000">+374 (00) 80 00 00 </a></li>
+                        <li><i class="fa fa-fax" aria-hidden="true"></i><a href="+37400900000">+374 (00) 90 00 00</a></li>
+                        <li><i class="fa-solid fa-location-dot"></i><p>Hsinchu 300, Taiwan (R.O.C.)</p></li>-->
+                    </ul>
+                </div>
+                <!--<div class="clearfix visible-xs"></div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6">
+                    <h3>Featured links</h3>
+                    <ul class="list-unstyled">
+                        <li class="active"><a href="index_ch.html">Home</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="portfolio.html">Porfolio</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>-->
+            </div>
+        </div>
+        <div class="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-8">
+                        <div class="social-links">
+                            <!--<a class="twitter-bg" href="#"><i class="fab fa-twitter"></i></a>-->
+                            <!--<<a class="facebook-bg" href="https://www.facebook.com/people/Quantum-Perspectives/61576446849628/"><i class="fab fa-facebook"></i></a>-->
+                            <!--<a class="facebook-bg" href="https://www.facebook.com/people/%E9%87%8F%E5%AD%90%E9%81%A0%E8%A6%8BQuantum-Perspectives/61576883632888/"><i class="fab fa-facebook-f"></i></a>-->
+                            <!--<a class="pinterest" href="#"><i class="fa-solid fa-microscope"></i></a>-->
+                            <!--<a class="facebook-bg" href="https://www.facebook.com/people/Insight-hbar/61576811775374/"><i class="fab fa-facebook-f"></i></a>-->
+                            <a class="linkedin-bg" href="https://www.linkedin.com/company/insight-ihbar"><i class="fab fa-linkedin"></i></a>
+                        </div><!-- /.social-links -->
+                    </div>
+                    <div class="col-xs-4">
+                        <div class="text-right">
+                            <p><span style="font-size: 16px;">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</span></p>
+                            <p>All Rights Reserved</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.copyright -->
+    </footer><!-- /#footer -->
+
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="../assets/js/bootstrap-select.min.js"></script>
+    <script src="../assets/js/jquery.slicknav.min.js"></script>
+    <script src="../assets/js/jquery.countTo.min.js"></script>
+    <script src="../assets/js/jquery.shuffle.min.js"></script>
+    <script src="../assets/js/script.js"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  
+</body>
+</html>

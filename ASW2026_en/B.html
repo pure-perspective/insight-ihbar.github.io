@@ -282,7 +282,62 @@ Academia Sinica SCQC Winter Workshop 2026">
                                         </a>
                                     </div>
                                     <p class="dark-background">
-                                        ▲ IQM is expected to present the addition of long-range coupled qubit interactions on the Constellation architecture at APS 2026.
+                                        ▲ IQM is expected to present the addition of long-range coupled qubit interactions on the Constellation architecture at APS 2026. This is intended to respond to the development of qLDPC.
+                                        <br><br>
+                                    </p>
+
+
+<br><br>
+                                    <h3>qLDPC Quantum Error Correction</h3>
+                                    <p>Here, let’s briefly mention why IQM is moving toward chip designs with long-range interactions; for related techniques, one can refer to IBM’s 2024 work on qLDPC. Error-correcting codes play an extremely important role in practical computation. Achieving the best information transmission and error-correction redundancy with the lowest overhead has always been an engineering trade-off.
+                                        Due to the non-measurement property of quantum computation, quantum error correction becomes even more challenging.
+                                        Superconducting qubits are implemented on two-dimensional quantum chips, and the most mainstream quantum error correction method currently is the <b>Surface Code</b>.
+                                        The advantage of the Surface Code is that its connectivity requirement only involves neighboring qubits and does not require long-range interactions. However, its drawback is that the number of ancilla qubits increases along with the system size, which in practice increases system complexity and errors.
+                                        In 2024, IBM demonstrated quantum error-correction operations that combine <b>qLDPC (quantum Low-Density Parity Check code)</b> with the Surface Code.
+                                        qLDPC requires long-range interactions. Benefiting from IBM’s multi-layer chip fabrication wiring, more complex qubit interconnection topologies can be realized.
+                                    </p>
+                                    <div style="text-align: center;">
+                                        <a href="../Image/截圖 2026-03-03 下午5.50.12.png">
+                                            <img src="../Image/截圖 2026-03-03 下午5.50.12.png" alt="---" style="width: 100%; height: auto;">
+                                        </a>
+                                    </div>
+                                    <p class="dark-background">
+                                        ▲ IBM’s paper compares the traditional Surface Code with a new and more efficient Bivariate Bicycle Code (BB code, a type of qLDPC).<br>
+                                        <b>Figure a</b> shows the Surface Code.<br>
+                                        <b>Figure b</b> shows the geometric structure of the BB code (Bivariate Bicycle Code): it is “embedded” on a <b>topological torus (a donut-shaped geometry)</b>, where each qubit has six connections extending outward (four short-range and two long-range).<br>
+                                        <b>Figure c</b> shows the hybrid architecture and operations.<br>
+                                        If the traditional Surface Code were used to reach the same fault-tolerance level, it might require thousands of qubits, whereas the BB code only requires slightly more than one hundred.
+                                        <span style="font-size: 0.7em; line-height: 0.8;">
+                                            <br>Ref: 10.1038/s41586-024-07107-7
+                                        </span>
+                                        <br><br>
+                                    </p>
+
+
+                                    <div style="text-align: center;">
+                                        <a href="../Image/IBM_FTQC_Torus_2_K_v3_16fc27ed7f.gif">
+                                            <img src="../Image/IBM_FTQC_Torus_2_K_v3_16fc27ed7f.gif" alt="---" style="width: 100%; height: auto;">
+                                        </a>
+                                    </div>
+                                    <p class="dark-background">
+                                        ▲ A schematic illustration of the BB Code embedded on a topological torus, drawn by IBM.
+                                        <span style="font-size: 0.7em; line-height: 0.8;">
+                                            <br>Ref: https://www.ibm.com/quantum/blog/large-scale-ftqc
+                                        </span>
+                                        <br><br>
+                                    </p>
+
+                                    <div style="text-align: center;">
+                                        <a href="../Image/266d07d8-ibm-quantum_hex-vs.-loon-architecture.png">
+                                            <img src="../Image/266d07d8-ibm-quantum_hex-vs.-loon-architecture.png" alt="---" style="width: 100%; height: auto;">
+                                        </a>
+                                    </div>
+                                    <p class="dark-background">
+                                        ▲ IBM’s multi-layer chip fabrication wiring enables more complex qubit interconnection topologies. For more introductions to quantum chips, please refer to: <b><a href="../QC_hardware_en/U.html">Toward Scalable QPU – Quantum Chip Design</a></b>.
+                                        <span style="font-size: 0.7em; line-height: 0.8;">
+                                            <br>Ref: https://thenewstack.io/ibm-cracks-code-for-building-fault-tolerant-quantum-computer/
+                                            <br>Ref: https://www.hpcwire.com/2025/06/10/ibm-sets-2029-target-for-fault-tolerant-quantum-computing/
+                                        </span>
                                         <br><br>
                                     </p>
 
@@ -351,6 +406,7 @@ Academia Sinica SCQC Winter Workshop 2026">
                                 <div class="lesson-link active"><a href="B.html">IQM Quantum Computer Technology Development</a></div>
                                 <div class="lesson-link "><a href="C.html">IQM KQCircuit Design</a></div>
                                 <div class="lesson-link "><a href="D.html">AMD</a></div>
+                                <div class="lesson-link "><a href="E.html">NVIDIA and NVQLink</a></div>
                                 </div>
                             </div>
   
