@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N39VTY949N"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-N39VTY949N');
+</script>
+    <!-- Basic Page Needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <meta name="author" content="Peir-Ru Wang">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;1,300&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/20250525-icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/20250525-icon.png">
+
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/css/style.css" rel="stylesheet">
+    <link href="../assets/css/responsive.css" rel="stylesheet">
+
+    <title>超導量子電腦概論</title>
+    <meta name="description" content="超導量子電腦概論：從約瑟夫森節到 Transmon 量子位元，介紹脈衝控制、讀出電路、可調耦合器與整機架構，掌握超導量子計算硬體核心概念。">
+    <meta name="keywords" content="超導量子電腦, 超導量子位元, 約瑟夫森節, Transmon 量子位元, 量子位元脈衝控制, 量子位元讀出電路, 可調耦合器, 量子晶片架構, 表面碼量子糾錯, 低溫量子硬體">
+    <link rel="canonical" href="https://www.insight-ihbar.com/ASW2026/A.html">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+
+    <header id="masthead" class="site-header">
+        <nav id="primary-navigation" class="site-navigation">
+            <div class="container">
+
+                <div class="navbar-header">
+                   
+                    <a href="../index_ch.html" class="site-title">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
+
+                </div><!-- /.navbar-header -->
+
+                <div class="collapse navbar-collapse" id="agency-navbar-collapse">
+
+                    <ul class="nav navbar-nav navbar-right">
+
+                        <li><a href="../index_ch.html">Home</a></li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">科普介紹<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                <li><a href="../SCQ_elementary/main.html">超導量子位元(科普版)</a></li>
+                              <li><a href="../SCQ_advanced/main.html">超導量子位元(進階版)</a></li>
+                              <li><a href="../SpQ/main.html">半導體自旋量子位元</a></li>
+                            </ul>
+
+                        </li>
+                        <!--<li class="active"><a href="../SCQ_elementary/main.html">科普介紹</a></li>-->
+                        <li><a href="../QC_hardware/main.html">硬體導論</a></li>
+                        <li><a href="../QID/main.html">量子產業群像錄</a></li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">研討會筆記<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                <li class="active"><a href="../ASW2026/main.html">2026中研院超導量子電腦Workshop</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">量子諮詢<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                <li><a href="https://www.quantum-perspectives.com/About/main.html">量子遠見科技：諮詢服務</a></li>
+                                <li><a href="../About/main.html">關於我們</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="../index.html">English</a></li>
+                        
+                    </ul>
+
+                </div>
+
+            </div>   
+        </nav><!-- /.site-navigation -->
+    </header><!-- /#mastheaed -->
+
+    <div id="hero" class="hero overlay subpage-hero blog-hero">
+        <div class="hero-content">
+            <div class="hero_2-text">
+                <a href="../SpQ/main.html"><h1>2026中研院QPU冬季Workshop</h1></a>
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="../index_ch.html">Home</a></li>
+                  <!--<li class="breadcrumb-item"><a href="../SCQ_elementary/main.html">超導量子位元(科普版)</a></li>
+                  <li class="breadcrumb-item active">約瑟夫森節</li>-->
+                </ol>
+            </div><!-- /.hero-text -->
+        </div><!-- /.hero-content -->
+    </div><!-- /.hero -->
+
+    <main id="main" class="site-main">
+
+        <section class="site-section subpage-site-section section-blog">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                        <article class="blog-post">
+                            <!--<img src="../assets/img/portfolio-1.jpg" class="img-res" alt="">-->
+                            <div class="post-content">
+                                <div style="text-align: center;">
+                                    <h2>超導量子電腦概論</h2>
+                                    <h3></h3>
+                                </div>
+                                
+                                <p>有關於超導量子電腦與超導量子位元，𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ在</p>
+                                <ul>
+                                    <li><p><a href="./SCQ_elementary/main.html"><b>超導量子位元(科普版)</b></a></p></li>
+                                    <li><p><a href="./SCQ_advanced/main.html"><b>超導量子位元(進階版)</b></a></p></li>
+                                    <li><p><a href="./QC_hardware/main.html"><b>超導量子電腦-硬體導論</b></a></p></li>
+                    
+                                </ul>
+                                <p>系列裡有專文的解說，有興趣的讀者可以前往看看，在這邊就用一篇概論go throught此次workshop相關的概念。</p>
+                                <br>
+                                <h3>約瑟夫森節</h3>
+                                
+                                <div style="text-align: center;">
+                                <a href="../Image/JJ.jpg">
+                                    <img src="../Image/JJ.jpg" alt="約瑟夫森接面結構與顯微圖" style="width: 100%; height: auto;">
+                                </a>
+                                </div>
+                                <p  class="dark-background">
+                                    ▲以超導製作的量子位元基本上都脫不開約瑟夫森節（Josephson Junction）。約瑟夫森節是一種三明治結構，以兩個超導體中間夾一個非超導態的物質，因為量子效應，超導電流可以透過穿隧效應穿越這層非超導層。常見製作材料為鋁基（Al）或是鈮基（Nb），在基板上鍍一層超導金屬之後，讓表面氧化形成一層薄薄的氧化層（即絕緣非超導層），再鍍上另一層超導金屬，即是一個約瑟夫森節，這種超導-絕緣-超導結構稱為SIS結（Superconductor-Insulator-Superconductor, SIS junction）。
+                                
+                                    <span style="font-size: 0.7em; line-height: 0.8;">Ref:10.1557/mrs.2013.229 </span>
+                                    <br>
+                                    <br>
+                                </p>
+
+
+                                <br>
+                                <h3>超導量子位元</h3>
+                                <p>
+                                    在古典計算中，一系列古典位元以0或1兩個狀態來紀錄資訊，同樣的，量子位元也是利用不同的量子狀態來記錄資訊和計算。最簡單的量子能階概念即為量子簡諧震盪(Quantum Simple Harmonic Oscillator)。
+                                    透過量子世界裡能階簡諧震盪是不連續的，可以利用不同能階來表示訊息。
+                                    透過約瑟夫森節作為非線性電感元件製作出的量子能階，就可以利用能階不同的特性分離出\( \ket{0} \)和\(\ket{1}\)，\(\hbar \omega_{01}\)是量子位元的本徵頻率。最基本的超導量子位元即為一個超導電容與一個約瑟夫森節組成！
+                                    <br>
+                                    <br>
+                                </p>
+                                
+                                
+                                <div style="text-align: center;">
+                                    <a href="../Image/SCQubit state.jpg">
+                                    <img src="../Image/SCQubit state.jpg" alt="超導電路與能階示意圖" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p  class="dark-background">
+                                    <span style="font-size: 0.7em; line-height: 0.8;">Ref: 10.1063/1.5089550 </span>
+                                <br>
+                                <br>
+                                </p>
+
+                                <br>
+                                <h3>控制量子位元</h3>
+                                <p style="font-weight: bold; font-size: 1.2em;">控制 Qubit 的主要參數</p>
+                                            
+                                            <ul>
+                                                <li><b>脈衝的振幅（Amplitude \( A \)）：</b> 改變 Qubit 的狀態（Block sphere 的轉角）</li>
+                                                <li><b>脈衝的時長（Duration \( T \)）：</b> 改變 Qubit 的狀態（Block sphere 的轉角）</li>
+                                                <li><b>脈衝的頻率（Frequency \( \omega_d \)）：</b> 決定是否能精確驅動 Qubit，越接近量子位元的本徵頻率\(\hbar \omega_{01}\)越好。</li>
+                                                <li><b>脈衝的包絡（Envelop \( F(t, \tau) \)）：</b> 影響漏態（Leakage）</li>
+                                            </ul>
+                                    <p >
+                                    一個完整的脈衝可以表達為：
+                                    \[
+                                        P(t) = A \cdot F(t, \tau) \cdot \sin(\omega_{01} t)
+                                    \]
+    
+    
+                                    舉例如下：
+                                    </p>
+    
+                                    
+                                    <div style="text-align: center;">
+                                    <a href="../Image/pulse_dia.png">
+                                        <img src="../Image/pulse_dia.png" alt="正弦脈衝與餘弦包絡示意圖" style="width: 100%; height: auto;">
+                                    </a>
+                                    </div>
+                                        
+                                    
+    
+                                    <p >
+                                    可以藉由 Bloch 球進行可視化，在這邊畫出對\( X \) 軸轉 \(0.25\pi \)、\( 0.5\pi \)、\(0.75\pi\)和\(\pi\)-pulse。可以發現說利用振幅的大小可以決定轉動的角度。
+                                    </p>
+    
+    
+                                    <div style="text-align: center;">
+                                    <a href="../Image/4 amplitude.gif">
+                                        <img src="../Image/4 amplitude.gif" alt="布洛赫球與四組餘弦脈衝圖" style="width: 100%; height: auto;">
+                                    </a>
+                                    </div>
+                                    <p >
+                                    同樣的，也可以討論利用不同脈衝的時長\(T\)來達到相同的 \( \pi \) -pulse從 \( |\ 0\rangle \rightarrow |\ 1\rangle \)
+                                    </p>
+                                    <div style="text-align: center;">
+                                    <a href="../Image/4 duration compare.gif">
+                                        <img src="../Image/4 duration compare.gif" alt="量子布洛赫球與脈衝圖表" style="width: 100%; height: auto;">
+                                    </a>
+                                    </div>
+                                    <p >
+                                        一般來說因為Qubit相干時間很短，會希望盡可能短的時間操作完Qubit的運算，以超導量子位元而言，相干時間能維持達微秒（μs）當前的技術而言已經很久了，故超導量子位元脈衝多半固定在奈秒等級（\(ns\)）。故操作Qubit的狀態一般採用調控脈衝的振幅的大小來決定轉角。 <br>
+                                        (實驗中驅動大約\(10ns\)左右\(^a\))<br>
+                                        <span style="font-size: 0.7em; line-height: 0.8;">\(^a\) 10.1103/PRXQuantum.5.030353</span><br><br>
+                                        </p>
+
+
+                                    <p >
+                                    實務上，如何決定脈衝的時長\(T\)與脈衝的震幅\(A\)，一直是Qubit日常校正的一環。良好的校正會得到優質的量子計算效果，反之，光是誤差就可以導致計算不如古典電腦來的準確。
+                                    </p>
+                                <br><br>
+                                <h3>單量子位元驅動、量測電路</h3>
+
+                                <div style="text-align: center;">
+                                    <a href="../Image/SIngle Qubit circuit.png">
+                                        <img src="../Image/SIngle Qubit circuit.png" alt="超導量子位讀出電路示意圖" style="width: 100%; height: auto;">
+                                    </a>
+                                    </div>
+    
+                                    <p >
+                                        ▲Transmon的電路 layout。（a）顯微鏡底下的電路圖，（b）對應的電路圖，此圖中有一個 Qubit（紅色 Transmon）、一個 readout resonator（天藍色），兩條 feed\mathcal{L}ine 個別驅動（Drive）量子位元與 readout resonator。各元件間利用電容作耦合。另外有一條 Flux line 連到 Qubit 旁，會產生磁場來改變 Transmon 的操作頻率。（c）readout resonator 因為與量子位元耦合，會受到量子位元在 \(|0\rangle\) 或 \(|1\rangle\) 狀態的差異產生頻譜的位移，利用 readout resonator 頻譜的位移的特性來得知量子位元的狀態。
+                                        <br><span style="font-size: 0.7em; line-height: 0.8;">arxiv.org/pdf/2106.11352</span><br><br>
+                                    </p>
+
+                                    <br><br>
+                                    <h3>耦合器</h3>
+                                    <div style="text-align: center;">
+                                        <a href="../Image/IQM Tunable.png">
+                                            <img src="../Image/IQM Tunable.png" alt="兩量子位與可調耦合器電路示意圖" style="width: 60%; height: auto;">
+                                        </a>
+                                    </div>
+                                    
+                                    <p >
+                                        量子位元間交互作用的Resonator/Coupler可以是可調控的，可進一步調控不同Qubit之間的耦合強度，但亦會增加控制電路的複雜度。
+                                        <br><span style="font-size: 0.7em; line-height: 0.8;">arxiv: 2408.12433</span>
+                                        <br><br>
+                                    </p>
+
+                                    <br>
+                                <h3>超導量子晶片</h3>
+                                    <p >
+                                        完整的超導量子電腦至少需包含：氦3極低溫真空環境、冷卻系統、大量的射頻訊號控制與讀取儀器等，故當前的超導量子電腦非常的巨大。此外，一個量子位元至少需要四條線路：
+                                        <ul>
+                                        <li>控制頻率*1：挑控磁通量的Fluxline。</li>
+                                        <li>控制狀態*1：Driveline。</li>
+                                        <li>讀取狀態*2：Readout line一進一出。</li>
+                                        </ul>
+                                        可以參考下圖：
+                                    </p>
+                                        
+                                    <div style="text-align: center;">
+                                        <a href="../Image/17 surface.png">
+                                            <img src="../Image/17 surface.png" alt="超導量子位元電路連線示意圖" style="width: 43%; height: auto;">
+                                        </a>
+                                        <a href="../Image/Starmon.png">
+                                            <img src="../Image/Starmon.png" alt="讀出共振器與耦合匯流排布局圖" style="width: 55%; height: auto;">
+                                        </a>
+                                    </div>
+                                    <p >
+                                        ▲要達到量子計算，需要同時操作許多 Qubit，同時因為糾錯的關係，也需要額外的 Qubit 來進行糾錯。上圖是一個 17 位元的實驗性量子晶片，排列方式是一種稱為 surface code（表面碼）的量子糾錯型態，原形為 Qubit，粉色及紅色是 Data Qubit，天藍色及綠色是 Check Qubit。每個 Qubit 都連接 7 條線（暱稱為 Starmon），其中 4 條為 Qubit 間耦合、1 條 Flux line、1 條 Drive line、1 條 Readout resonator。Readout resonator 分別併入到三條 feedline。雖然當前的技術可以將多個Qubit的Readout line整合在一起，透過頻率隔離的技術共用同一條Readout line（所謂Feedline），但我們還需要考慮控制量子位元間交互作用的Resonator，一個100位元的量子電腦原型就需要400條線路從外部送入，故目前常見的超導量子電腦可以看見大量的線路。
+                                        <br><span style="font-size: 0.7em; line-height: 0.8;">https://arxiv.org/pdf/1612.08208</span>
+                                        <br><br>
+                                    </p>
+                                        
+                                    
+
+
+                                <br>
+                                <h3>超導量子電腦架構</h3>
+                                  <div style="text-align: center;">
+                                    <a href="../Image/IBM_QC_cloud_ch.png">
+                                      <img src="../Image/IBM_QC_cloud_ch.png" alt="量子電腦測量系統流程示意圖" style="width: 100%; height: auto;">
+                                    </a>
+                                  </div>
+                                  <p  class="dark-background">
+                                    ▲由於當前量子電腦仍然在發展中，超導量子電腦需要運作在近乎絕對零度之下，一台原型機非常巨大且昂貴、且需要許多電子控制器協調控制個別的量子位元。
+                                    圖中是由IBM發展的量子電腦開發場景。現今人類科技發展，目前的量子電腦原型機其實是<b>古典控制信號+量子晶片</b>的複合架構，透過古典電腦作信號調製發送，穿越微波信號線以後，抵達量子位元上控制量子位元，再透過測量讀出量子態塌縮後的信號，來回推量子計算的結果。
+                                    
+                                    <br>(1)使用者可透過雲端介面，送指令進入到IBM的系統中
+                                    <br>(2)指令經由古典電腦轉譯成控制訊號後(DAC，數位到類比轉換)，由微波電子設備傳送脈衝訊號
+                                    <br>(3)脈衝訊號透過超導同軸電纜進入到低溫環境
+                                    <br>(4)量子位元經過訊號運算後，將訊號經過讀取迴路送回
+                                    <br>(5)讀取回路包含隔離器(避免訊號返回量子位元)
+                                    <br>(6)量子放大器後
+                                    <br>(7)回到微波電子設備分析(ADC，類比到數位轉換)
+                                    <br>(8)儀器分析訊號後
+                                    <br>(9)回傳到使用者
+                                    <br><span style="font-size: 0.7em; line-height: 0.8;">Ref: IBM，作者譯。原圖見<a href="../Image/IBM_QC_cloud.webp">此</a>。
+                                  
+                                   </span></p>
+                                
+
+                                <div class="post-meta">
+                                    <span class="post-author">
+                                        <a href="../About/Wang.html"><img class="img-res" src="../Image/IMG_0964_2.JPG" alt="">王培儒</a>
+                                    </span>
+                                    <span class="post-category">
+                                        <a href="../ASW2026/main.html"><i class="fa fa-folder" aria-hidden="true"></i>2026中研院QPU冬季Workshop</a>
+                                    </span>
+                                </div><!-- /.post-meta -->
+                            
+                                
+                                <div id="prev-next-nav" class="text-center">
+                                    <a class="btn btn-gray" href="main.html">← 上一頁</a> 
+                                    <a class="btn btn-gray" href="../ASW2026_en/A.html" style="margin: 0 10px;">English Version</a>
+                                    <a class="btn btn-gray" href="B.html">下一頁 →</a>
+                                </div>
+
+                                
+
+                            </div><!-- /.post-content -->
+                        </article><!-- /.blog-post -->
+                        <!--<div id="PostComments" class="post-comments">
+                            
+                            
+                            
+                        </div> /#PostComments -->
+                        <!--<div class="respond">
+                            <h3>Post a Comment</h3>
+                            <form class="form-horizontal">
+                                <input class="form-control" type="text" placeholder="Your Name*" required>
+                                <input class="form-control" type="email" placeholder="Your Email" required>
+                                <textarea class="form-control form-control-comment" type="text" placeholder="Your Comment*" required></textarea>
+                                <button class="btn btn-green">Add a comment</button>
+                            </form>    
+                        </div> /.respond -->
+                    </div>
+                    <aside class="col-md-3">
+                        <div class="sidebar">
+                            <div class="widget">
+                                <div id="lesson-list_2">
+                                <div class="lesson-link "><a href="main.html">2026中研院QPU冬季Workshop：引言</a></div>
+                                <div class="lesson-link active"><a href="A.html">超導量子電腦概論</a></div>
+                                <div class="lesson-link "><a href="B.html">IQM量子電腦科技發展</a></div>
+                                <div class="lesson-link "><a href="C.html">IQM KQCircuit Design</a></div>
+                                <div class="lesson-link "><a href="D.html">AMD</a></div>
+                                <div class="lesson-link "><a href="E.html">NVIDIA與NVQLink</a></div>
+                                </div>
+                            </div>
+  
+                        </div></aside>
+                </div>
+            </div>
+        </section><!-- /.section-portfolio -->
+
+    </main><!-- /#main -->
+
+    <footer id="colophon" class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-4 col-xs-6">
+                    <a class="site-title">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
+                    <p>一起走進新時代的前沿科學與量子科技</p>
+                    </div>
+                <div class="col-lg-offset-4 col-md-3 col-sm-4 col-md-offset-2 col-sm-offset-0 col-xs-6 ">
+                    <p class="site-title">𝐾𝐸𝐸𝑃 𝐼𝑁 𝑇𝑂𝑈𝐶𝐻</p>
+                    <ul class="list-unstyled contact-links">
+                        <li><i class="fa fa-envelope" aria-hidden="true"></i><a href="mailto:info@insight-ihbar.com">info@insight-ihbar.com</a></li>
+                        <!--<li><i class="fa fa-phone" aria-hidden="true"></i><a href="tel:+37400800000">+374 (00) 80 00 00 </a></li>
+                        <li><i class="fa fa-fax" aria-hidden="true"></i><a href="+37400900000">+374 (00) 90 00 00</a></li>
+                        <li><i class="fa-solid fa-location-dot"></i><p>Hsinchu 300, Taiwan (R.O.C.)</p></li>-->
+                    </ul>
+                </div>
+                <!--<div class="clearfix visible-xs"></div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6">
+                    <h3>Featured links</h3>
+                    <ul class="list-unstyled">
+                        <li class="active"><a href="index_ch.html">Home</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="portfolio.html">Porfolio</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>-->
+            </div>
+        </div>
+        <div class="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-8">
+                        <div class="social-links">
+                            <!--<a class="twitter-bg" href="#"><i class="fab fa-twitter"></i></a>-->
+                            <!--<<a class="facebook-bg" href="https://www.facebook.com/people/Quantum-Perspectives/61576446849628/"><i class="fab fa-facebook"></i></a>-->
+                            <!--<a class="facebook-bg" href="https://www.facebook.com/people/%E9%87%8F%E5%AD%90%E9%81%A0%E8%A6%8BQuantum-Perspectives/61576883632888/"><i class="fab fa-facebook-f"></i></a>-->
+                            <!--<a class="pinterest" href="#"><i class="fa-solid fa-microscope"></i></a>-->
+                            <!--<a class="facebook-bg" href="https://www.facebook.com/people/Insight-hbar/61576811775374/"><i class="fab fa-facebook-f"></i></a>-->
+                            <a class="linkedin-bg" href="https://www.linkedin.com/company/insight-ihbar"><i class="fab fa-linkedin"></i></a>
+                        </div><!-- /.social-links -->
+                    </div>
+                    <div class="col-xs-4">
+                        <div class="text-right">
+                            <p><span style="font-size: 16px;">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</span></p>
+                            <p>All Rights Reserved</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.copyright -->
+    </footer><!-- /#footer -->
+
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="../assets/js/bootstrap-select.min.js"></script>
+    <script src="../assets/js/jquery.slicknav.min.js"></script>
+    <script src="../assets/js/jquery.countTo.min.js"></script>
+    <script src="../assets/js/jquery.shuffle.min.js"></script>
+    <script src="../assets/js/script.js"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  
+</body>
+</html>

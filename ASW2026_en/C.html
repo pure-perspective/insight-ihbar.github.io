@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N39VTY949N"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-N39VTY949N');
+</script>
+    <!-- Basic Page Needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <meta name="author" content="Peir-Ru Wang">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;1,300&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/20250525-icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/20250525-icon.png">
+
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/css/style.css" rel="stylesheet">
+    <link href="../assets/css/responsive.css" rel="stylesheet">
+
+    <title>IQM KQCircuit Design</title>
+    <meta name="description" content="Discover IQM KQCircuits, a Python EDA tool automating superconducting quantum chip design, photomask generation, and EM/thermal simulation workflows.">
+    <meta name="keywords" content="- Semiconductor spin qubits in quantum computing
+- Quantum bits technology and applications
+- Superconducting vs semiconductor qubits
+- Low temperature cooling systems for quantum processors
+- High-fidelity two-qubit gates advancement
+- Quantum dot fabrication techniques
+- Scalable semiconductor quantum processors
+- Challenges in semiconductor spin qubits
+- Fault-tolerant quantum computer development
+- Future of quantum computing technology">
+    <link rel="canonical" href="https://www.insight-ihbar.com/ASW2026_en/C.html">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+  <meta name="keywords" content="IQM KQCircuits Python EDA superconducting quantum chip design  
+Superconducting quantum circuit automation photomask generation workflow  
+Quantum processor design tool electromagnetic thermal simulation export  
+KQCircuits optical reticle layout electron beam lithography patterns  
+Academia Sinica SCQC Winter Workshop IQM KQCircuit Design  
+Programmatic quantum chip geometry generation Python library  
+Superconducting qubit layout templates QPU architecture design  
+Quantum chip fabrication photomask files EBL pattern export">
+</head>
+<body>
+
+    <header id="masthead" class="site-header">
+        <nav id="primary-navigation" class="site-navigation">
+            <div class="container">
+
+                <div class="navbar-header">                   
+                    <a href="../index.html" class="site-title">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
+                </div><!-- /.navbar-header -->
+
+                <div class="collapse navbar-collapse" id="agency-navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="../index.html">Home</a></li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Qubit Physics<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                              <li><a href="../SCQ_elementary_en/main.html">Superconducting Qubits (Elementary)</a></li>
+                              <li><a href="../SCQ_advanced_en/main.html">Superconducting Qubits (Advanced)</a></li>
+                              <li><a href="../SpQ_en/main.html">Semiconductor Spin Qubits</a></li>
+                            </ul>
+                        </li>
+                        <!--<li class="active"><a href="../SCQ_elementary/main.html">科普介紹</a></li>-->
+                        <li><a href="../QC_hardware_en/main.html">Hardware</a></li>
+                        <li><a href="../QID_en/main.html">Quantum Industries</a></li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Workshop Note<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                <li class="active"><a href="../ASW2026_en/main.html">2026 Academia Sinica SCQC Winter Workshop</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Consultance<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                <li><a href="https://www.quantum-perspectives.com/About_en/main.html">Taiwan Market Outreach Services</a></li>
+                                <li><a href="../About_en/main.html">About Us</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="../index_ch.html">中文版</a></li>                        
+                    </ul>
+                </div>
+
+            </div>   
+        </nav><!-- /.site-navigation -->
+    </header><!-- /#mastheaed -->
+
+    <div id="hero" class="hero overlay subpage-hero blog-hero">
+        <div class="hero-content">
+            <div class="hero_2-text">
+                <h1>2026 Academia Sinica SCQC Winter Workshop</h1>
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+                  <!--<li class="breadcrumb-item"><a href="./main.html">Hardware Guide (2025)</a></li>
+                  <li class="breadcrumb-item active">約瑟夫森節</li>-->
+                </ol>
+            </div><!-- /.hero-text -->
+        </div><!-- /.hero-content -->
+    </div><!-- /.hero -->
+
+    <main id="main" class="site-main">
+
+        <section class="site-section subpage-site-section section-blog">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                        <article class="blog-post">
+                            <!--<img src="../assets/img/portfolio-1.jpg" class="img-res" alt="Laptop on wooden desk">-->
+                            <div class="post-content">
+                                <div style="text-align: center;">
+                                    <h2>IQM KQCircuit Design</h2>
+                                    <h4>Speaker: Dr. Alessandro Landra</h4>
+                                    <h4>IQM Staff Quantum Engineer, Design and Simulation, QPU Architecture</h4>
+                                    <span style="font-size: 0.7em; line-height: 0.8;">
+                                        2026.02.23
+                                    </span>
+                                </div>
+                                
+                                <div style="text-align: center;">
+                                    <a href="../Image/截圖 2026-02-23 上午9.09.31.png">
+                                        <img src="../Image/截圖 2026-02-23 上午9.09.31.png" alt="Kryo logo sphere" style="width: 30%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    KQCircuits is a Python library developed by IQM for automating the design of superconducting quantum circuits. It can be thought of as an Electronic Design Automation (EDA) tool for superconducting quantum circuits. 
+                                    KQC was created to reduce the time and manpower required to design quantum processors, while also avoiding human errors during the design process. 
+                                    It allows circuits to be defined programmatically, generating the geometry of quantum circuits in a consistent manner, and can output designs to support subsequent electromagnetic and thermal simulations. 
+                                    KQC also provides templates to integrate QPU designs into optical reticle layouts and Electron Beam Lithography (EBL) patterns, and can export the necessary set of photomask files required for quantum circuit fabrication.
+                                    <br>
+                                </p>
+                                <div style="text-align: center;">
+                                    <a href="../Image/design_flow.svg">
+                                        <img src="../Image/design_flow.svg" alt="AI image processing error" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲ Quantum chip design flow. Based on the system's required Hamiltonian, KQC can be used to design the chip's geometry and create photomasks. The geometric figures can also be exported for electromagnetic and thermal modeling and simulation.
+                                    <span style="font-size: 0.7em; line-height: 0.8;">
+                                        <br>Ref: https://github.com/iqm-finland/KQCircuits?tab=readme-ov-file
+                                    </span>
+                                    <br><br>
+                                </p>
+                                
+                                
+                                <div style="text-align: center;">
+                                    <a href="../Image/output.gif">
+                                        <img src="../Image/output.gif" alt="KQCcircuits slide" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲ The presentation demonstrated that program parameters are continuously adjustable, allowing for arbitrary modifications to the required dimensions and geometries.
+                                    
+                                    <br><br>
+                                </p>
+                                
+                                <div style="text-align: center;">
+                                    <a href="../Image/IMG_4534.JPG">
+                                        <img src="../Image/IMG_4534.JPG" alt="Qubit design slide" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲ The presentation demonstrated the code and its corresponding circular qubit design.
+                                    
+                                    <br><br>
+                                </p>
+                                
+                                
+                                <div style="text-align: center;">
+                                    <a href="../Image/IMG_4484.JPG">
+                                        <img src="../Image/IMG_4484.JPG" alt="EPR simulation slide" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲ KQC's geometric designs can interface with open-source software for electromagnetic simulations.
+                                </p>
+                                
+                                
+                                <br><br>
+                                <h3>Official Page Demonstrations</h3>
+                                <div style="text-align: center;">
+                                    <a href="../Image/single_xmons_chip_3.png">
+                                        <img src="../Image/single_xmons_chip_3.png" alt="PCB footprint layout" style="width: 49%; height: auto;">
+                                    </a>
+                                    <a href="../Image/xmon_animation.gif">
+                                        <img src="../Image/xmon_animation.gif" alt="Four-way connector" style="width: 49%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    
+                                    <span style="font-size: 0.7em; line-height: 0.8;">
+                                        Ref: https://iqm-finland.github.io/KQCircuits/
+                                        <br>Ref: https://github.com/iqm-finland/KQCircuits?tab=readme-ov-file
+                                    </span>
+                                    <br><br>
+                                </p>
+                                
+                                <div style="text-align: center;">
+                                    <a href="../Image/converting_gui_elements_to_code.gif">
+                                        <img src="../Image/converting_gui_elements_to_code.gif" alt="KLayout interface" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    
+                                    <span style="font-size: 0.7em; line-height: 0.8;">
+                                        Ref: https://github.com/iqm-finland/KQCircuits?tab=readme-ov-file
+                                    </span>
+                                    <br><br>
+                                </p>
+                                
+                                <br><br>
+                                <h3>A Few Small Tips</h3>
+                                <p>Since quantum computing is still evolving, the related EDA design workflows are also under development, and KQC is no exception. Extra attention is needed regarding software installation compatibility and setup procedures. 
+                                    Even though I conducted installation tests two weeks in advance, the standard installation instructions provided by AI tools like ChatGPT and Gemini still differed from the pre-workshop installation guide released by IQM just three days prior to the event. 
+                                    Launching the KQC software and successfully loading the relevant libraries and Python venv requires a certain level of experience. 
+                                    I even encountered an issue where my computer's default display layers were insufficient, which prevented the designed geometry from showing up at all.</p>
+                                <div style="text-align: center;">
+                                    <a href="../Image/截圖 2026-02-04 下午5.42.13.png">
+                                        <img src="../Image/截圖 2026-02-04 下午5.42.13.png" alt="CAD layout grid" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                
+                                
+                                <div style="text-align: center;">
+                                    <a href="../Image/截圖 2026-02-04 下午5.43.14.png">
+                                        <img src="../Image/截圖 2026-02-04 下午5.43.14.png" alt="Circuit layout view" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲ Note the setting next to 'Levels'. My computer's default was set to 1, which caused the pattern to remain hidden. It must be changed to multiple layers (changed to 10 here) for it to display properly.
+                                    
+                                </p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                
+
+                                <p>
+                                    <span style="font-size: 0.5em; line-height: 0.8;">
+                                        Originally written in Chinese by the author, these articles are translated into English to invite cross-language resonance.
+                                    </span>
+                                </p>
+                                <div class="post-meta">
+                                    <span class="post-author">
+                                        <a href="../About_en/Wang.html"><img class="img-res" src="../Image/IMG_0964_2.JPG" alt="Professional headshot">Peir-Ru Wang</a>
+                                    </span>
+                                    <span class="post-category">
+                                        <a href="../ASW2026_en/main.html"><i class="fa fa-folder" aria-hidden="true"></i>2026 Academia Sinica SCQC Winter Workshop</a>
+                                    </span>
+                                </div><!-- /.post-meta -->
+                            
+                                <div id="prev-next-nav" class="text-center">
+                                    <a class="btn btn-gray" href="B.html">← Previous</a> 
+                                    <a class="btn btn-gray" href="../ASW2026/C.html" style="margin: 0 10px;">中文版</a>
+                                    <a class="btn btn-gray" href="D.html">Next →</a>
+                                </div>
+
+                                
+
+                            </div><!-- /.post-content -->
+                        </article><!-- /.blog-post -->
+                        <!--<div id="PostComments" class="post-comments">
+                            
+                            
+                            
+                        </div> /#PostComments -->
+                        <!--<div class="respond">
+                            <h3>Post a Comment</h3>
+                            <form class="form-horizontal">
+                                <input class="form-control" type="text" placeholder="Your Name*" required>
+                                <input class="form-control" type="email" placeholder="Your Email" required>
+                                <textarea class="form-control form-control-comment" type="text" placeholder="Your Comment*" required></textarea>
+                                <button class="btn btn-green">Add a comment</button>
+                            </form>    
+                        </div> /.respond -->
+                    </div>
+                    <aside class="col-md-3">
+                        <div class="sidebar">
+                            <div class="widget">
+                                <div id="lesson-list_2">
+                                <div class="lesson-link "><a href="main.html">2026 Academia Sinica SCQC Winter Workshop</a></div>
+                                <div class="lesson-link "><a href="A.html">Introduction to Superconducting Quantum Computers</a></div>
+                                <div class="lesson-link "><a href="B.html">IQM Quantum Computer Technology Development</a></div>
+                                <div class="lesson-link active"><a href="C.html">IQM KQCircuit Design</a></div>
+                                <div class="lesson-link "><a href="D.html">AMD</a></div>
+                                <div class="lesson-link "><a href="E.html">NVIDIA and NVQLink</a></div>
+                                </div>
+                            </div>
+  
+                        </div></aside>
+                </div>
+            </div>
+        </section><!-- /.section-portfolio -->
+
+    </main><!-- /#main -->
+
+    <footer id="colophon" class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-4 col-xs-6">
+                    <a href="../index_ch.html" class="site-title">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
+                    <p>Exploring the Quantum Technology Together.</p>
+                    </div>
+                <div class="col-lg-offset-4 col-md-3 col-sm-4 col-md-offset-2 col-sm-offset-0 col-xs-6 ">
+                    <p class="site-title">𝐾𝐸𝐸𝑃 𝐼𝑁 𝑇𝑂𝑈𝐶𝐻</p>
+                    <ul class="list-unstyled contact-links">
+                        <li><i class="fa fa-envelope" aria-hidden="true"></i><a href="mailto:info@insight-ihbar.com">info@insight-ihbar.com</a></li>
+                        <!--<li><i class="fa fa-phone" aria-hidden="true"></i><a href="tel:+37400800000">+374 (00) 80 00 00 </a></li>
+                        <li><i class="fa fa-fax" aria-hidden="true"></i><a href="+37400900000">+374 (00) 90 00 00</a></li>
+                        <li><i class="fa-solid fa-location-dot"></i><p>Hsinchu 300, Taiwan (R.O.C.)</p></li>-->
+                    </ul>
+                </div>
+                <!--<div class="clearfix visible-xs"></div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6">
+                    <h3>Featured links</h3>
+                    <ul class="list-unstyled">
+                        <li class="active"><a href="index_ch.html">Home</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="portfolio.html">Porfolio</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>-->
+            </div>
+        </div>
+        <div class="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-8">
+                        <div class="social-links">
+                            <!--<a class="twitter-bg" href="#"><i class="fab fa-twitter"></i></a>-->
+                            <!--<<a class="facebook-bg" href="https://www.facebook.com/people/Quantum-Perspectives/61576446849628/"><i class="fab fa-facebook"></i></a>-->
+                            <!--<a class="facebook-bg" href="https://www.facebook.com/people/%E9%87%8F%E5%AD%90%E9%81%A0%E8%A6%8BQuantum-Perspectives/61576883632888/"><i class="fab fa-facebook-f"></i></a>-->
+                            <!--<a class="pinterest" href="#"><i class="fa-solid fa-microscope"></i></a>-->
+                            <!--<a class="facebook-bg" href="https://www.facebook.com/people/Insight-hbar/61576811775374/"><i class="fab fa-facebook-f"></i></a>-->
+                            <a class="linkedin-bg" href="https://www.linkedin.com/company/insight-ihbar"><i class="fab fa-linkedin"></i></a>
+                        </div><!-- /.social-links -->
+                    </div>
+                    <div class="col-xs-4">
+                        <div class="text-right">
+                            <p><span style="font-size: 16px;">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</span></p>
+                            <p>All Rights Reserved</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.copyright -->
+    </footer><!-- /#footer -->
+
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="../assets/js/bootstrap-select.min.js"></script>
+    <script src="../assets/js/jquery.slicknav.min.js"></script>
+    <script src="../assets/js/jquery.countTo.min.js"></script>
+    <script src="../assets/js/jquery.shuffle.min.js"></script>
+    <script src="../assets/js/script.js"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  
+</body>
+</html>

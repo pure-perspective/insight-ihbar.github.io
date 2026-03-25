@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N39VTY949N"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-N39VTY949N');
+</script>
+    <!-- Basic Page Needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <meta name="author" content="Peir-Ru Wang">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;1,300&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/20250525-icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/20250525-icon.png">
+
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/css/style.css" rel="stylesheet">
+    <link href="../assets/css/responsive.css" rel="stylesheet">
+
+    <title>FUJITSU：FTQC研發與挑戰</title>
+    <meta name="description" content="整理 2026 中研院 QPU 冬季 Workshop 演講筆記：FUJITSU 與 RIKEN 合作開發 FTQC 量子電腦，解析超導量子位元系統擴展、晶圓變異性、封裝散熱與量子計算中心基礎建設挑戰。">
+    <meta name="keywords" content="Fujitsu quantum hardware workshop notes  
+AMD quantum control hardware RFSoC FPGA  
+Xilinx RFSoC DAC ADC integration  
+QICK open source FPGA platform Fermilab  
+RF microwave pulse control superconducting qubits  
+Scalable QPU systems embedded computing  
+Zynq Versal roadmap quantum hardware  
+Academia Sinica QPU Winter Workshop 2026  
+Superconducting qubit control electronics FPGA">
+    <link rel="canonical" href="https://www.insight-ihbar.com/ASW2026/F.html">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+  <meta name="keywords" content="富士通 FTQC  
+RIKEN 理研 量子中心  
+超導量子電腦  
+量子位元系統擴展  
+晶圓變異性  
+量子晶片封裝與散熱  
+量子計算中心基礎建設  
+中研院 QPU 冬季 Workshop 2026  
+閘控量子計算  
+絕熱量子計算">
+</head>
+<body>
+
+    <header id="masthead" class="site-header">
+        <nav id="primary-navigation" class="site-navigation">
+            <div class="container">
+
+                <div class="navbar-header">
+                   
+                    <a href="../index_ch.html" class="site-title">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
+
+                </div><!-- /.navbar-header -->
+
+                <div class="collapse navbar-collapse" id="agency-navbar-collapse">
+
+                    <ul class="nav navbar-nav navbar-right">
+
+                        <li><a href="../index_ch.html">Home</a></li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">科普介紹<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                <li><a href="../SCQ_elementary/main.html">超導量子位元(科普版)</a></li>
+                              <li><a href="../SCQ_advanced/main.html">超導量子位元(進階版)</a></li>
+                              <li><a href="../SpQ/main.html">半導體自旋量子位元</a></li>
+                            </ul>
+
+                        </li>
+                        <!--<li class="active"><a href="../SCQ_elementary/main.html">科普介紹</a></li>-->
+                        <li><a href="../QC_hardware/main.html">硬體導論</a></li>
+                        <li><a href="../QID/main.html">量子產業群像錄</a></li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">研討會筆記<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                <li class="active"><a href="../ASW2026/main.html">2026中研院超導量子電腦Workshop</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">量子諮詢<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                <li><a href="https://www.quantum-perspectives.com/About/main.html">量子遠見科技：諮詢服務</a></li>
+                                <li><a href="../About/main.html">關於我們</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="../index.html">English</a></li>
+                        
+                    </ul>
+
+                </div>
+
+            </div>   
+        </nav><!-- /.site-navigation -->
+    </header><!-- /#mastheaed -->
+
+    <div id="hero" class="hero overlay subpage-hero blog-hero">
+        <div class="hero-content">
+            <div class="hero_2-text">
+                <a href="../SpQ/main.html"><h1>2026中研院QPU冬季Workshop</h1></a>
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="../index_ch.html">Home</a></li>
+                  <!--<li class="breadcrumb-item"><a href="../SCQ_elementary/main.html">超導量子位元(科普版)</a></li>
+                  <li class="breadcrumb-item active">約瑟夫森節</li>-->
+                </ol>
+            </div><!-- /.hero-text -->
+        </div><!-- /.hero-content -->
+    </div><!-- /.hero -->
+
+    <main id="main" class="site-main">
+
+        <section class="site-section subpage-site-section section-blog">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                        <article class="blog-post">
+                            <!--<img src="../assets/img/portfolio-1.jpg" class="img-res" alt="">-->
+                            <div class="post-content">
+                                <div style="text-align: center;">
+                                    <h2>FUJITSU：FTQC研發與挑戰</h2>
+                                    <h3>Yoshiyasu Doi, Senior Research Director</h3>
+                                    <h4>Fujitsu Research Quantum Lab</h4>
+                                    <span style="font-size: 0.7em; line-height: 0.8;">
+                                        2026.03.12
+                                    </span>
+                                </div>
+                                <p>FUJITSU是日本量子電腦整機的製造、開發商，與日本RIKEN理研量子中心有深度合作，目標是開發出日本自研自製的FTQC量子電腦。這次演講的內容主要介紹、評估邁向大規模FTQC實用化所需要面對的課題。</p>
+                                
+                                <div style="text-align: center;">
+                                    <a href="../Image/IMG_5822.JPG">
+                                        <img src="../Image/IMG_5822.JPG" alt="超導量子運算研討會投影片" style="width: 100%; height: auto;">
+                                    </a>
+                                    <a href="../Image/IMG_5832.JPG">
+                                        <img src="../Image/IMG_5832.JPG" alt="富士通運算技術發展圖表" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲ FUJITSU在日本有企業級資料中心、超級運算中心建置的解決方案。下方有趣的提到FUJITSU各個階段算力提升的方式：</p>
+                                    <ol>
+                                        <li><p>運算頻率提升：透過CPU高頻運算</p></li>
+                                        <li><p>多核心運算：多核心CPU</p></li>
+                                        <li><p>多叢集運算：叢集高速互聯</p></li>
+                                        <li><p>記憶體內運算/近記憶體運算：克服記憶體頻寬牆，試圖減緩記憶體-運算核心資料間交換造成的延遲。</p></li>
+                                    </ol>
+                                    <p>此外，也投入下一代量子科技、量子外延科技的計算發展。
+                                    <br><br>
+                                </p>
+                                
+
+                                <h3>量子電腦的種類</h3>
+                                <div style="text-align: center;">
+                                    <a href="../Image/IMG_5841.JPG">
+                                        <img src="../Image/IMG_5841.JPG" alt="量子電腦分類示意圖" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲ 量子電腦的種類大致上可以分類為閘控量子計算(Gate-Base)和絕熱量子計算(Annealing)兩大類。在計算科學裡，這兩類量子計算算力等價，可以互相模擬，但針對不同問題所需的計算開銷不同。
+                                    閘控量子計算(Gate-Base)較容易與傳統計算做類比，而絕熱量子計算適合做最佳參數分析（即基態搜索）。FUJITSU針對多項技術都有投入開發。
+                            
+                                    
+                                    <br><br>
+                                </p>
+
+
+                                <div style="text-align: center;">
+                                    <a href="../Image/fig-03-en-960x540.png">
+                                        <img src="../Image/fig-03-en-960x540.png" alt="量子電腦發展時間軸圖表" style="width: 100%; height: auto;">
+                                    </a>
+                                    <a href="../Image/截圖 2026-03-10 上午11.57.56.png">
+                                        <img src="../Image/截圖 2026-03-10 上午11.57.56.png" alt="部分容錯量子計算架構示意圖" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲ FUJITSU的量子電腦路線圖。FUJITSU研究包含超導量子電腦、鑽石自旋量子電腦。「STAR架構」一種基於相位旋轉閘（phase rotation gates）的量子運算架構。
+                                    <span style="font-size: 0.7em; line-height: 0.8;">
+                                        <br>Ref: https://global.fujitsu/en-global/technology/research/quantum
+                                        <br>Ref: https://global.fujitsu/-/media/Project/Fujitsu/Fujitsu-HQ/technology/research/quantum/event-202503/FQD2025japan_guest_talk3.pdf
+                                    </span>
+                                    <br><br>
+                                </p>
+                                
+                                
+                                
+                                
+                                <!--
+                                <div style="text-align: center;">
+                                    <a href="../Image/IMG_5843.JPG">
+                                        <img src="../Image/IMG_5843.JPG" alt="富士通投影片：解決難題應用" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲
+                                    
+                                    <br><br>
+                                </p>
+                                
+                                
+                                
+                                <div style="text-align: center;">
+                                    <a href="../Image/IMG_5845.JPG">
+                                        <img src="../Image/IMG_5845.JPG" alt="富士通量子運算策略投影片" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲
+                                    
+                                    <br><br>
+                                </p>
+                                -->
+                                
+                                <br>
+                                <h3>FUJITSU和RIKEN多量子位元系統開發</h3>
+                                <div style="text-align: center;">
+                                    <a href="../Image/IMG_5852.JPG">
+                                        <img src="../Image/IMG_5852.JPG" alt="富士通量子電腦研發投影片" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲ FUJITSU和RIKEN的量子計算中心負責人中村泰信(Yasunobu Nakamura)合作開發多量子位元系統。
+                                    Nakamura Sensei和台灣中研院關鍵議題研究中心的量子計算負責人 陳啟東 特聘研究員 及 蔡兆申院士 早年曾多次合作開發Josephson Junction為基礎製作量子位元的可行性，包含Cooper Pair Box, FLux Qubit等，是現代Transmon的前身，奠定大量基礎。
+
+
+                                    
+                                    <br><br>
+                                </p>
+                                
+                                
+                                
+                                <div style="text-align: center;">
+                                    <a href="../Image/IMG_5855.JPG">
+                                        <img src="../Image/IMG_5855.JPG" alt="256量子位系統研發簡報投影片" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲
+                                    
+                                    <br><br>
+                                </p>
+                                
+                                
+                                
+                                <div style="text-align: center;">
+                                    <a href="../Image/IMG_5870.JPG">
+                                        <img src="../Image/IMG_5870.JPG" alt="量子系統散熱設計簡報投影片" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲
+                                    
+                                    <br><br>
+                                </p>
+                                
+                                
+                                
+                                <div style="text-align: center;">
+                                    <a href="../Image/IMG_5873.JPG">
+                                        <img src="../Image/IMG_5873.JPG" alt="量子晶片封裝開發簡報畫面" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲
+                                    
+                                    <br><br>
+                                </p>
+                                
+                                
+                                
+                                <div style="text-align: center;">
+                                    <a href="../Image/IMG_5878.JPG">
+                                        <img src="../Image/IMG_5878.JPG" alt="量子電腦稀釋製冷機展示投影片" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲
+                                    
+                                    <br><br>
+                                </p>
+                                
+
+                                <h3>大尺寸超導電路面板與量子位元變異性</h3>
+                                
+                                
+                                <div style="text-align: center;">
+                                    <a href="../Image/IMG_5884.JPG">
+                                        <img src="../Image/IMG_5884.JPG" alt="量子位元變異性改善簡報投影片" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲
+                                    
+                                    <br><br>
+                                </p>
+                                
+                                <div style="text-align: center;">
+                                    <a href="../Image/IMG_5918.JPG">
+                                        <img src="../Image/IMG_5918.JPG" alt="超導量子位元晶片簡報畫面" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲
+                                    
+                                    <br><br>
+                                </p>
+                                
+                                
+                                
+                                <div style="text-align: center;">
+                                    <a href="../Image/IMG_5926.JPG">
+                                        <img src="../Image/IMG_5926.JPG" alt="超導量子位元晶片簡報投影片" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲
+                                    
+                                    <br><br>
+                                </p>
+
+                                <div style="text-align: center;">
+                                    <a href="../Image/IMG_5935.JPG">
+                                        <img src="../Image/IMG_5935.JPG" alt="簡報展示300毫米晶圓與無塵室" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲
+                                    
+                                    <br><br>
+                                </p>
+                                
+                                
+                                
+                                <div style="text-align: center;">
+                                    <a href="../Image/IMG_5936.JPG">
+                                        <img src="../Image/IMG_5936.JPG" alt="量子位變異改善簡報畫面" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲
+                                    
+                                    <br><br>
+                                </p>
+                                
+                                <div style="text-align: center;">
+                                    <a href="../Image/IMG_5893.JPG">
+                                        <img src="../Image/IMG_5893.JPG" alt="富士通1024量子電腦簡報投影片" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲
+                                    
+                                    <br><br>
+                                </p>
+                                
+                                
+                                
+                                <div style="text-align: center;">
+                                    <a href="../Image/IMG_5899.JPG">
+                                        <img src="../Image/IMG_5899.JPG" alt="富士通商用量子電腦簡報畫面" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲
+                                    
+                                    <br><br>
+                                </p>
+                                
+                                
+                                
+                                <div style="text-align: center;">
+                                    <a href="../Image/IMG_5904.JPG">
+                                        <img src="../Image/IMG_5904.JPG" alt="富士通量子位2030目標投影片" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲
+                                    
+                                    <br><br>
+                                </p>
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                <div style="text-align: center;">
+                                    <a href="../Image/IMG_5911.JPG">
+                                        <img src="../Image/IMG_5911.JPG" alt="量子電腦新建築需求簡報投影片" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲
+                                    
+                                    <br><br>
+                                </p>
+                                
+                                
+                                
+                                <div style="text-align: center;">
+                                    <a href="../Image/IMG_5915.JPG">
+                                        <img src="../Image/IMG_5915.JPG" alt="量子位元需求簡報投影片" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲
+                                    
+                                    <br><br>
+                                </p>
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                <h3>量子計算中心的基礎建設尺度</h3>
+                                
+                                
+                                <div style="text-align: center;">
+                                    <a href="../Image/IMG_5943.JPG">
+                                        <img src="../Image/IMG_5943.JPG" alt="量子電腦系統功耗與散熱簡報" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲
+                                    
+                                    <br><br>
+                                </p>
+                                
+                                
+                                
+                                <div style="text-align: center;">
+                                    <a href="../Image/IMG_5950.JPG">
+                                        <img src="../Image/IMG_5950.JPG" alt="超導量子系統冷凍機簡報畫面" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲
+                                    
+                                    <br><br>
+                                </p>
+                                
+                                
+                                
+                                <div style="text-align: center;">
+                                    <a href="../Image/IMG_5958.JPG">
+                                        <img src="../Image/IMG_5958.JPG" alt="大型量子電腦耗電簡報投影片" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲
+                                    
+                                    <br><br>
+                                </p>
+                                
+                                
+                                
+                                <div style="text-align: center;">
+                                    <a href="../Image/IMG_5964.JPG">
+                                        <img src="../Image/IMG_5964.JPG" alt="超導量子電腦成本簡報投影片" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲
+                                    
+                                    <br><br>
+                                </p>
+                                
+                                
+                                
+                                <div style="text-align: center;">
+                                    <a href="../Image/IMG_5966.JPG">
+                                        <img src="../Image/IMG_5966.JPG" alt="富士通研發未來方向簡報投影片" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲
+                                    
+                                    <br><br>
+                                </p>
+                                
+                                
+                                
+                                
+                                
+                                <br><br>
+                                
+                                
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                
+
+                                <div class="post-meta">
+                                    <span class="post-author">
+                                        <a href="../About/Wang.html"><img class="img-res" src="../Image/IMG_0964_2.JPG" alt="">王培儒</a>
+                                    </span>
+                                    <span class="post-category">
+                                        <a href="../ASW2026/main.html"><i class="fa fa-folder" aria-hidden="true"></i>2026中研院QPU冬季Workshop</a>
+                                    </span>
+                                </div><!-- /.post-meta -->
+                            
+                                
+                                <div id="prev-next-nav" class="text-center">
+                                    <a class="btn btn-gray" href="C.html">← 上一頁</a> 
+                                    <a class="btn btn-gray" href="../ASW2026_en/D.html" style="margin: 0 10px;">English Version</a>
+                                </div>
+
+                                
+
+                            </div><!-- /.post-content -->
+                        </article><!-- /.blog-post -->
+                        <!--<div id="PostComments" class="post-comments">
+                            
+                            
+                            
+                        </div> /#PostComments -->
+                        <!--<div class="respond">
+                            <h3>Post a Comment</h3>
+                            <form class="form-horizontal">
+                                <input class="form-control" type="text" placeholder="Your Name*" required>
+                                <input class="form-control" type="email" placeholder="Your Email" required>
+                                <textarea class="form-control form-control-comment" type="text" placeholder="Your Comment*" required></textarea>
+                                <button class="btn btn-green">Add a comment</button>
+                            </form>    
+                        </div> /.respond -->
+                    </div>
+                    <aside class="col-md-3">
+                        <div class="sidebar">
+                            <div class="widget">
+                                <div id="lesson-list_2">
+                                <div class="lesson-link "><a href="main.html">2026中研院QPU冬季Workshop:引言</a></div>
+                                <div class="lesson-link "><a href="A.html">超導量子電腦概論</a></div>
+                                <div class="lesson-link "><a href="B.html">IQM量子電腦科技發展</a></div>
+                                <div class="lesson-link "><a href="C.html">IQM KQCircuit Design</a></div>
+                                <div class="lesson-link active"><a href="D.html">AMD</a></div>
+                                </div>
+                            </div>
+  
+                        </div></aside>
+                </div>
+            </div>
+        </section><!-- /.section-portfolio -->
+
+    </main><!-- /#main -->
+
+    <footer id="colophon" class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-4 col-xs-6">
+                    <a class="site-title">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
+                    <p>一起走進新時代的前沿科學與量子科技</p>
+                    </div>
+                <div class="col-lg-offset-4 col-md-3 col-sm-4 col-md-offset-2 col-sm-offset-0 col-xs-6 ">
+                    <p class="site-title">𝐾𝐸𝐸𝑃 𝐼𝑁 𝑇𝑂𝑈𝐶𝐻</p>
+                    <ul class="list-unstyled contact-links">
+                        <li><i class="fa fa-envelope" aria-hidden="true"></i><a href="mailto:info@insight-ihbar.com">info@insight-ihbar.com</a></li>
+                        <!--<li><i class="fa fa-phone" aria-hidden="true"></i><a href="tel:+37400800000">+374 (00) 80 00 00 </a></li>
+                        <li><i class="fa fa-fax" aria-hidden="true"></i><a href="+37400900000">+374 (00) 90 00 00</a></li>
+                        <li><i class="fa-solid fa-location-dot"></i><p>Hsinchu 300, Taiwan (R.O.C.)</p></li>-->
+                    </ul>
+                </div>
+                <!--<div class="clearfix visible-xs"></div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6">
+                    <h3>Featured links</h3>
+                    <ul class="list-unstyled">
+                        <li class="active"><a href="index_ch.html">Home</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="portfolio.html">Porfolio</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>-->
+            </div>
+        </div>
+        <div class="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-8">
+                        <div class="social-links">
+                            <!--<a class="twitter-bg" href="#"><i class="fab fa-twitter"></i></a>-->
+                            <!--<<a class="facebook-bg" href="https://www.facebook.com/people/Quantum-Perspectives/61576446849628/"><i class="fab fa-facebook"></i></a>-->
+                            <!--<a class="facebook-bg" href="https://www.facebook.com/people/%E9%87%8F%E5%AD%90%E9%81%A0%E8%A6%8BQuantum-Perspectives/61576883632888/"><i class="fab fa-facebook-f"></i></a>-->
+                            <!--<a class="pinterest" href="#"><i class="fa-solid fa-microscope"></i></a>-->
+                            <!--<a class="facebook-bg" href="https://www.facebook.com/people/Insight-hbar/61576811775374/"><i class="fab fa-facebook-f"></i></a>-->
+                            <a class="linkedin-bg" href="https://www.linkedin.com/company/insight-ihbar"><i class="fab fa-linkedin"></i></a>
+                        </div><!-- /.social-links -->
+                    </div>
+                    <div class="col-xs-4">
+                        <div class="text-right">
+                            <p><span style="font-size: 16px;">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</span></p>
+                            <p>All Rights Reserved</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.copyright -->
+    </footer><!-- /#footer -->
+
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="../assets/js/bootstrap-select.min.js"></script>
+    <script src="../assets/js/jquery.slicknav.min.js"></script>
+    <script src="../assets/js/jquery.countTo.min.js"></script>
+    <script src="../assets/js/jquery.shuffle.min.js"></script>
+    <script src="../assets/js/script.js"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  
+</body>
+</html>

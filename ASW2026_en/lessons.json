@@ -1,0 +1,10 @@
+[
+    { "title": "2026 Academia Sinica SCQC Winter Workshop", "file": "main.html" , "status": "new" , "date": "2026-02-13"},
+    { "title": "Introduction to Superconducting Quantum Computers", "file": "A.html" , "status": "new" , "date": "2026-02-16"},
+    { "title": "IQM Quantum Computer Technology Development", "file": "B.html" , "status": "revise" , "date": "2026-03-04"},
+    { "title": "IQM KQCircuit Design", "file": "C.html" , "status": "new" , "date": "2026-02-23"},
+    { "title": "AMD", "file": "D.html" , "status": "new" , "date": "2026-02-26"},
+    { "title": "NVIDIA and NVQLink", "file": "E.html" , "status": "new" , "date": "2026-03-08"},
+    { "title": "Shuttled", "file": "H.html" ,"enabled": false},
+    { "title": "Measure", "file": "F.html" ,"enabled": false}
+]

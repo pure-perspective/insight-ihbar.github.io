@@ -311,6 +311,46 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://www.insight-ihbar.com/ASW2026/B.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.insight-ihbar.com/ASW2026/C.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.insight-ihbar.com/ASW2026/D.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.insight-ihbar.com/ASW2026/E.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.insight-ihbar.com/ASW2026/F.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.insight-ihbar.com/ASW2026/G.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.insight-ihbar.com/ASW2026/main.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.insight-ihbar.com/ASW2026/A.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://www.insight-ihbar.com/QC_APP/B.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -752,6 +792,36 @@
   </url>
   <url>
     <loc>https://www.insight-ihbar.com/HSP/A.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.insight-ihbar.com/ASW2026_en/B.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.insight-ihbar.com/ASW2026_en/C.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.insight-ihbar.com/ASW2026_en/D.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.insight-ihbar.com/ASW2026_en/E.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.insight-ihbar.com/ASW2026_en/main.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.insight-ihbar.com/ASW2026_en/A.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>

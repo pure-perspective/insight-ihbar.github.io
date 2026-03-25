@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N39VTY949N"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-N39VTY949N');
+</script>
+    <!-- Basic Page Needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <meta name="author" content="Peir-Ru Wang">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;1,300&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/20250525-icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/20250525-icon.png">
+
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/css/style.css" rel="stylesheet">
+    <link href="../assets/css/responsive.css" rel="stylesheet">
+
+    <title>IQM KQCircuit Design</title>
+    <meta name="description" content="Workshop notes on IQM KQCircuits: a Python EDA library for automated superconducting quantum circuit design, mask layout generation, and EM/thermal simulation.">
+    <meta name="keywords" content="IQM KQCircuits Python EDA  
+Automated superconducting quantum circuit design  
+QPU mask layout generation templates  
+Electromagnetic and thermal simulation workflow  
+Superconducting qubit chip layout automation  
+Electron beam lithography pattern export  
+Quantum processor design and simulation tools  
+KQCircuits parametric geometry layout design  
+Quantum hardware workshop notes IQM">
+    <link rel="canonical" href="https://www.insight-ihbar.com/ASW2026/C.html">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+
+    <header id="masthead" class="site-header">
+        <nav id="primary-navigation" class="site-navigation">
+            <div class="container">
+
+                <div class="navbar-header">
+                   
+                    <a href="../index_ch.html" class="site-title">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
+
+                </div><!-- /.navbar-header -->
+
+                <div class="collapse navbar-collapse" id="agency-navbar-collapse">
+
+                    <ul class="nav navbar-nav navbar-right">
+
+                        <li><a href="../index_ch.html">Home</a></li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">科普介紹<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                <li><a href="../SCQ_elementary/main.html">超導量子位元(科普版)</a></li>
+                              <li><a href="../SCQ_advanced/main.html">超導量子位元(進階版)</a></li>
+                              <li><a href="../SpQ/main.html">半導體自旋量子位元</a></li>
+                            </ul>
+
+                        </li>
+                        <!--<li class="active"><a href="../SCQ_elementary/main.html">科普介紹</a></li>-->
+                        <li><a href="../QC_hardware/main.html">硬體導論</a></li>
+                        <li><a href="../QID/main.html">量子產業群像錄</a></li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">研討會筆記<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                <li class="active"><a href="../ASW2026/main.html">2026中研院超導量子電腦Workshop</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">量子諮詢<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                <li><a href="https://www.quantum-perspectives.com/About/main.html">量子遠見科技：諮詢服務</a></li>
+                                <li><a href="../About/main.html">關於我們</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="../index.html">English</a></li>
+                        
+                    </ul>
+
+                </div>
+
+            </div>   
+        </nav><!-- /.site-navigation -->
+    </header><!-- /#mastheaed -->
+
+    <div id="hero" class="hero overlay subpage-hero blog-hero">
+        <div class="hero-content">
+            <div class="hero_2-text">
+                <a href="../SpQ/main.html"><h1>2026中研院QPU冬季Workshop</h1></a>
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="../index_ch.html">Home</a></li>
+                  <!--<li class="breadcrumb-item"><a href="../SCQ_elementary/main.html">超導量子位元(科普版)</a></li>
+                  <li class="breadcrumb-item active">約瑟夫森節</li>-->
+                </ol>
+            </div><!-- /.hero-text -->
+        </div><!-- /.hero-content -->
+    </div><!-- /.hero -->
+
+    <main id="main" class="site-main">
+
+        <section class="site-section subpage-site-section section-blog">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                        <article class="blog-post">
+                            <!--<img src="../assets/img/portfolio-1.jpg" class="img-res" alt="">-->
+                            <div class="post-content">
+                                <div style="text-align: center;">
+                                    <h2>IQM KQCircuit Design</h2>
+                                    <h4>講者：Dr. Alessandro Landra</h4>
+                                    <h4>IQM Staff Quantum Engineer, Design and Simulation, QPU Architecture</h4>
+                                    <span style="font-size: 0.7em; line-height: 0.8;">
+                                        2026.02.23
+                                    </span>
+                                </div>
+                                
+                                <div style="text-align: center;">
+                                    <a href="../Image/截圖 2026-02-23 上午9.09.31.png">
+                                        <img src="../Image/截圖 2026-02-23 上午9.09.31.png" alt="Kiwi logo sphere" style="width: 30%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    KQCircuits 是由 IQM 開發的一個 Python 函式庫，用於自動化設計超導量子電路，可以想成是超導量子電路的EDA。
+                                    KQC創建是為了減少設計量子處理器所需的時間與人力，同時避免設計過程中的人為錯誤。
+                                    可透過程式定義電路，以一致的方式生成量子電路的幾何結構，並可輸出支援後續電磁、熱模擬。
+KQC還提供將 QPU 設計整合為光學光罩版圖與電子束微影（EBL）圖樣的模板，並可匯出量子電路製作所需的光罩檔案集合。
+
+                                    <br>
+                                </p>
+                                <div style="text-align: center;">
+                                    <a href="../Image/design_flow.svg">
+                                        <img src="../Image/design_flow.svg" alt="AI image processing error" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲ 量子晶片的設計流程。根據系統需求的Hamiltonian，可透過KQC設計出晶片的幾何、製成光罩，並可將幾何圖形建模去做電磁、熱模擬。
+                                    <span style="font-size: 0.7em; line-height: 0.8;">
+                                        <br>Ref: https://github.com/iqm-finland/KQCircuits?tab=readme-ov-file
+                                    </span>
+                                    <br><br>
+                                </p>
+
+
+
+
+                                <div style="text-align: center;">
+                                    <a href="../Image/output.gif">
+                                        <img src="../Image/output.gif" alt="KQCcircuits slide" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲ 演講中示範透過程式參數連續可調，可以任意調整需要的尺寸與幾何。
+                                    
+                                    <br><br>
+                                </p>
+
+                                <div style="text-align: center;">
+                                    <a href="../Image/IMG_4534.JPG">
+                                        <img src="../Image/IMG_4534.JPG" alt="Qubit design slide" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲ 演講中示範程式與對應的圓形量子位元設計。
+                                    
+                                    <br><br>
+                                </p>
+
+
+
+                                <div style="text-align: center;">
+                                    <a href="../Image/IMG_4484.JPG">
+                                        <img src="../Image/IMG_4484.JPG" alt="EPR simulation slide" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲ KQC的幾何設計可以介接開源軟體做電磁模擬。
+                                </p>
+
+
+                                <br><br>
+                                <h3>官方頁面示範</h3>
+                                <div style="text-align: center;">
+                                    <a href="../Image/single_xmons_chip_3.png">
+                                        <img src="../Image/single_xmons_chip_3.png" alt="Microchip layout" style="width: 49%; height: auto;">
+                                    </a>
+                                    <a href="../Image/xmon_animation.gif">
+                                        <img src="../Image/xmon_animation.gif" alt="Cross-shaped circuit" style="width: 49%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    
+                                    <span style="font-size: 0.7em; line-height: 0.8;">
+                                        Ref: https://iqm-finland.github.io/KQCircuits/
+                                        <br>Ref: https://github.com/iqm-finland/KQCircuits?tab=readme-ov-file
+                                    </span>
+                                    <br><br>
+                                </p>
+
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                <div style="text-align: center;">
+                                    <a href="../Image/converting_gui_elements_to_code.gif">
+                                        <img src="../Image/converting_gui_elements_to_code.gif" alt="KLayout window" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    
+                                    <span style="font-size: 0.7em; line-height: 0.8;">
+                                        Ref: https://github.com/iqm-finland/KQCircuits?tab=readme-ov-file
+                                    </span>
+                                    <br><br>
+                                </p>
+
+<br><br>
+<h3>一些小Tip</h3>
+<p>由於量子計算仍在發展中，相關的EDA設計流程仍在發展中，KQC也不例外。相關的軟體安裝相容性與設定流程會需要多注意。
+    我自己即便提前兩週就有做相關的安裝測試，但ChatGPT、Gemini提供的安裝標準也仍與Workshop前三天IQM釋出的課前安裝標準有差距。
+    開啟KQC軟體後要能載入相關的Librar、Python venv需要有一定的經驗。
+我自己甚至遇到電腦預設顯示Layer不足，導致一直看不到設計的幾何圖形。</p>
+                                <div style="text-align: center;">
+                                    <a href="../Image/截圖 2026-02-04 下午5.42.13.png">
+                                        <img src="../Image/截圖 2026-02-04 下午5.42.13.png" alt="Chip layout editor" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                
+                                
+                                
+                                <div style="text-align: center;">
+                                    <a href="../Image/截圖 2026-02-04 下午5.43.14.png">
+                                        <img src="../Image/截圖 2026-02-04 下午5.43.14.png" alt="Qubit layout editor" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲ 注意Levels旁邊有個設定，我的電腦預設是1導致一直沒出現圖案，必須改為多層（這邊改為10）才顯示出來。
+                                    
+                                </p>
+
+
+
+                                
+
+
+
+
+
+
+                                
+
+                                    
+
+
+
+
+
+
+                                                       
+                                  
+                                   
+
+
+
+
+
+
+                                    
+                                
+
+                                <div class="post-meta">
+                                    <span class="post-author">
+                                        <a href="../About/Wang.html"><img class="img-res" src="../Image/IMG_0964_2.JPG" alt="">王培儒</a>
+                                    </span>
+                                    <span class="post-category">
+                                        <a href="../ASW2026/main.html"><i class="fa fa-folder" aria-hidden="true"></i>2026中研院QPU冬季Workshop</a>
+                                    </span>
+                                </div><!-- /.post-meta -->
+                            
+                                
+                                <div id="prev-next-nav" class="text-center">
+                                    <a class="btn btn-gray" href="B.html">← 上一頁</a> 
+                                    <a class="btn btn-gray" href="../ASW2026_en/C.html" style="margin: 0 10px;">English Version</a>
+                                    <a class="btn btn-gray" href="D.html">下一頁 →</a>
+                                </div>
+
+                                
+
+                            </div><!-- /.post-content -->
+                        </article><!-- /.blog-post -->
+                        <!--<div id="PostComments" class="post-comments">
+                            
+                            
+                            
+                        </div> /#PostComments -->
+                        <!--<div class="respond">
+                            <h3>Post a Comment</h3>
+                            <form class="form-horizontal">
+                                <input class="form-control" type="text" placeholder="Your Name*" required>
+                                <input class="form-control" type="email" placeholder="Your Email" required>
+                                <textarea class="form-control form-control-comment" type="text" placeholder="Your Comment*" required></textarea>
+                                <button class="btn btn-green">Add a comment</button>
+                            </form>    
+                        </div> /.respond -->
+                    </div>
+                    <aside class="col-md-3">
+                        <div class="sidebar">
+                            <div class="widget">
+                                <div id="lesson-list_2">
+                                <div class="lesson-link "><a href="main.html">2026中研院QPU冬季Workshop：引言</a></div>
+                                <div class="lesson-link "><a href="A.html">超導量子電腦概論</a></div>
+                                <div class="lesson-link "><a href="B.html">IQM量子電腦科技發展</a></div>
+                                <div class="lesson-link active"><a href="C.html">IQM KQCircuit Design</a></div>
+                                <div class="lesson-link "><a href="D.html">AMD</a></div>
+                                <div class="lesson-link "><a href="E.html">NVIDIA與NVQLink</a></div>
+                                </div>
+                            </div>
+  
+                        </div></aside>
+                </div>
+            </div>
+        </section><!-- /.section-portfolio -->
+
+    </main><!-- /#main -->
+
+    <footer id="colophon" class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-4 col-xs-6">
+                    <a class="site-title">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
+                    <p>一起走進新時代的前沿科學與量子科技</p>
+                    </div>
+                <div class="col-lg-offset-4 col-md-3 col-sm-4 col-md-offset-2 col-sm-offset-0 col-xs-6 ">
+                    <p class="site-title">𝐾𝐸𝐸𝑃 𝐼𝑁 𝑇𝑂𝑈𝐶𝐻</p>
+                    <ul class="list-unstyled contact-links">
+                        <li><i class="fa fa-envelope" aria-hidden="true"></i><a href="mailto:info@insight-ihbar.com">info@insight-ihbar.com</a></li>
+                        <!--<li><i class="fa fa-phone" aria-hidden="true"></i><a href="tel:+37400800000">+374 (00) 80 00 00 </a></li>
+                        <li><i class="fa fa-fax" aria-hidden="true"></i><a href="+37400900000">+374 (00) 90 00 00</a></li>
+                        <li><i class="fa-solid fa-location-dot"></i><p>Hsinchu 300, Taiwan (R.O.C.)</p></li>-->
+                    </ul>
+                </div>
+                <!--<div class="clearfix visible-xs"></div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6">
+                    <h3>Featured links</h3>
+                    <ul class="list-unstyled">
+                        <li class="active"><a href="index_ch.html">Home</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="portfolio.html">Porfolio</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>-->
+            </div>
+        </div>
+        <div class="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-8">
+                        <div class="social-links">
+                            <!--<a class="twitter-bg" href="#"><i class="fab fa-twitter"></i></a>-->
+                            <!--<<a class="facebook-bg" href="https://www.facebook.com/people/Quantum-Perspectives/61576446849628/"><i class="fab fa-facebook"></i></a>-->
+                            <!--<a class="facebook-bg" href="https://www.facebook.com/people/%E9%87%8F%E5%AD%90%E9%81%A0%E8%A6%8BQuantum-Perspectives/61576883632888/"><i class="fab fa-facebook-f"></i></a>-->
+                            <!--<a class="pinterest" href="#"><i class="fa-solid fa-microscope"></i></a>-->
+                            <!--<a class="facebook-bg" href="https://www.facebook.com/people/Insight-hbar/61576811775374/"><i class="fab fa-facebook-f"></i></a>-->
+                            <a class="linkedin-bg" href="https://www.linkedin.com/company/insight-ihbar"><i class="fab fa-linkedin"></i></a>
+                        </div><!-- /.social-links -->
+                    </div>
+                    <div class="col-xs-4">
+                        <div class="text-right">
+                            <p><span style="font-size: 16px;">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</span></p>
+                            <p>All Rights Reserved</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.copyright -->
+    </footer><!-- /#footer -->
+
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="../assets/js/bootstrap-select.min.js"></script>
+    <script src="../assets/js/jquery.slicknav.min.js"></script>
+    <script src="../assets/js/jquery.countTo.min.js"></script>
+    <script src="../assets/js/jquery.shuffle.min.js"></script>
+    <script src="../assets/js/script.js"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  
+</body>
+</html>

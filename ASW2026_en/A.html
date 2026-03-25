@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N39VTY949N"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-N39VTY949N');
+</script>
+    <!-- Basic Page Needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <meta name="author" content="Peir-Ru Wang">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;1,300&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/20250525-icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/20250525-icon.png">
+
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/css/style.css" rel="stylesheet">
+    <link href="../assets/css/responsive.css" rel="stylesheet">
+
+    <title>Introduction to Superconducting Quantum Computers</title>
+    <meta name="description" content="Learn how superconducting quantum computers work—Josephson junctions, transmon qubits, pulse control, readout circuits, couplers, and chip wiring.">
+    <meta name="keywords" content="- Semiconductor spin qubits in quantum computing
+- Quantum bits technology and applications
+- Superconducting vs semiconductor qubits
+- Low temperature cooling systems for quantum processors
+- High-fidelity two-qubit gates advancement
+- Quantum dot fabrication techniques
+- Scalable semiconductor quantum processors
+- Challenges in semiconductor spin qubits
+- Fault-tolerant quantum computer development
+- Future of quantum computing technology">
+    <link rel="canonical" href="https://www.insight-ihbar.com/ASW2026_en/A.html">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+  <meta name="keywords" content="superconducting quantum computers, Josephson junction, transmon qubits, qubit pulse control, qubit readout resonator, tunable couplers, cryogenic quantum hardware, surface code quantum chip, microwave control lines, IBM quantum cloud platform">
+</head>
+<body>
+
+    <header id="masthead" class="site-header">
+        <nav id="primary-navigation" class="site-navigation">
+            <div class="container">
+
+                <div class="navbar-header">                   
+                    <a href="../index.html" class="site-title">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
+                </div><!-- /.navbar-header -->
+
+                <div class="collapse navbar-collapse" id="agency-navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="../index.html">Home</a></li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Qubit Physics<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                              <li><a href="../SCQ_elementary_en/main.html">Superconducting Qubits (Elementary)</a></li>
+                              <li><a href="../SCQ_advanced_en/main.html">Superconducting Qubits (Advanced)</a></li>
+                              <li><a href="../SpQ_en/main.html">Semiconductor Spin Qubits</a></li>
+                            </ul>
+                        </li>
+                        <!--<li class="active"><a href="../SCQ_elementary/main.html">科普介紹</a></li>-->
+                        <li><a href="../QC_hardware_en/main.html">Hardware</a></li>
+                        <li><a href="../QID_en/main.html">Quantum Industries</a></li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Workshop Note<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                <li class="active"><a href="../ASW2026_en/main.html">2026 Academia Sinica SCQC Winter Workshop</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Consultance<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                <li><a href="https://www.quantum-perspectives.com/About_en/main.html">Taiwan Market Outreach Services</a></li>
+                                <li><a href="../About_en/main.html">About Us</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="../index_ch.html">中文版</a></li>                        
+                    </ul>
+                </div>
+
+            </div>   
+        </nav><!-- /.site-navigation -->
+    </header><!-- /#mastheaed -->
+
+    <div id="hero" class="hero overlay subpage-hero blog-hero">
+        <div class="hero-content">
+            <div class="hero_2-text">
+                <h1>2026 Academia Sinica SCQC Winter Workshop</h1>
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+                  <!--<li class="breadcrumb-item"><a href="./main.html">Hardware Guide (2025)</a></li>
+                  <li class="breadcrumb-item active">約瑟夫森節</li>-->
+                </ol>
+            </div><!-- /.hero-text -->
+        </div><!-- /.hero-content -->
+    </div><!-- /.hero -->
+
+    <main id="main" class="site-main">
+
+        <section class="site-section subpage-site-section section-blog">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                        <article class="blog-post">
+                            <!--<img src="../assets/img/portfolio-1.jpg" class="img-res" alt="Laptop on wooden desk">-->
+                            <div class="post-content">
+                                <div style="text-align: center;">
+                                    <h2>Introduction to Superconducting Quantum Computers</h2>
+                                    <h3></h3>
+                                </div>
+                                
+                                <p>Regarding superconducting quantum computers and superconducting qubits, 𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ has dedicated articles in the following series:</p>
+                                <ul>
+                                    <li><p><a href="./SCQ_elementary/main.html"><b>Superconducting Qubits (Popular Science Edition)</b></a></p></li>
+                                    <li><p><a href="./SCQ_advanced/main.html"><b>Superconducting Qubits (Advanced Edition)</b></a></p></li>
+                                    <li><p><a href="./QC_hardware/main.html"><b>Superconducting Quantum Computers - Hardware Introduction</b></a></p></li>
+                                </ul>
+                                <p>Interested readers can explore those sections. Here, we will use an overview to go through the concepts relevant to this workshop.</p>
+                                <br>
+                                <h3>Josephson Junction</h3>
+                                
+<div style="text-align: center;">
+<a href="../Image/JJ.jpg">
+    <img src="../Image/JJ.jpg" alt="Schematic of Josephson Junction Structure and Micrograph" style="width: 100%; height: auto;">
+</a>
+</div>
+<p class="dark-background">
+    ▲ Qubits made from superconductors are essentially inseparable from the Josephson Junction. A Josephson Junction is a sandwich-like structure featuring a non-superconducting material placed between two superconductors. Due to quantum effects, a superconducting current can pass through this non-superconducting layer via the tunneling effect. Common fabrication materials are aluminum-based (Al) or niobium-based (Nb). After depositing a layer of superconducting metal on a substrate, the surface is allowed to oxidize to form a thin oxide layer (i.e., the insulating non-superconducting layer), and then another layer of superconducting metal is deposited. This forms a Josephson Junction. This superconductor-insulator-superconductor structure is known as an SIS junction (Superconductor-Insulator-Superconductor).
+
+    <span style="font-size: 0.7em; line-height: 0.8;">Ref: 10.1557/mrs.2013.229 </span>
+    <br>
+    <br>
+</p>
+
+
+<br>
+<h3>Superconducting Qubits</h3>
+<p>
+    In classical computing, a series of classical bits uses two states, 0 or 1, to record information. Similarly, qubits also use different quantum states to record information and perform calculations. The simplest concept of quantum energy levels is the Quantum Simple Harmonic Oscillator. Since energy level simple harmonic oscillations are discrete in the quantum world, different energy levels can be used to represent information. By utilizing a Josephson Junction as a nonlinear inductive component to create quantum energy levels, we can isolate \( \ket{0} \) and \(\ket{1}\) using the distinct characteristics of these energy levels, where \(\hbar \omega_{01}\) is the eigenfrequency of the qubit. The most basic superconducting qubit simply consists of a superconducting capacitor and a Josephson Junction!
+    <br>
+    <br>
+</p>
+
+
+<div style="text-align: center;">
+    <a href="../Image/SCQubit state.jpg">
+    <img src="../Image/SCQubit state.jpg" alt="Schematic of Superconducting Circuit and Energy Levels" style="width: 100%; height: auto;">
+    </a>
+</div>
+<p class="dark-background">
+    <span style="font-size: 0.7em; line-height: 0.8;">Ref: 10.1063/1.5089550 </span>
+<br>
+<br>
+</p>
+
+<br>
+<h3>Controlling Qubits</h3>
+<p style="font-weight: bold; font-size: 1.2em;">Main Parameters for Controlling a Qubit</p>
+            
+            <ul>
+                <li><b>Pulse Amplitude (Amplitude \( A \)):</b> Changes the state of the Qubit (rotation angle on the Bloch sphere).</li>
+                <li><b>Pulse Duration (Duration \( T \)):</b> Changes the state of the Qubit (rotation angle on the Bloch sphere).</li>
+                <li><b>Pulse Frequency (Frequency \( \omega_d \)):</b> Determines whether the Qubit can be driven accurately; the closer to the qubit's eigenfrequency \(\hbar \omega_{01}\), the better.</li>
+                <li><b>Pulse Envelope (Envelope \( F(t, \tau) \)):</b> Affects leakage.</li>
+            </ul>
+    <p>
+    A complete pulse can be expressed as:
+    \[
+        P(t) = A \cdot F(t, \tau) \cdot \sin(\omega_{01} t)
+    \]
+
+
+    Examples are as follows:
+    </p>
+
+    
+    <div style="text-align: center;">
+    <a href="../Image/pulse_dia.png">
+        <img src="../Image/pulse_dia.png" alt="Schematic of Sine Pulse and Cosine Envelope" style="width: 100%; height: auto;">
+    </a>
+    </div>
+        
+    
+
+    <p>
+    This can be visualized using the Bloch sphere. Here, we illustrate rotations around the \( X \)-axis for \(0.25\pi\), \( 0.5\pi \), \(0.75\pi\), and \(\pi\)-pulses. As you can see, the magnitude of the amplitude determines the rotation angle.
+    </p>
+
+
+    <div style="text-align: center;">
+    <a href="../Image/4 amplitude.gif">
+        <img src="../Image/4 amplitude.gif" alt="Bloch Sphere and Four Sets of Cosine Pulses" style="width: 100%; height: auto;">
+    </a>
+    </div>
+    <p>
+    Similarly, we can also discuss using different pulse durations \(T\) to achieve the same \( \pi \)-pulse from \( |\ 0\rangle \rightarrow |\ 1\rangle \).
+    </p>
+    <div style="text-align: center;">
+    <a href="../Image/4 duration compare.gif">
+        <img src="../Image/4 duration compare.gif" alt="Quantum Bloch Sphere and Pulse Chart" style="width: 100%; height: auto;">
+    </a>
+    </div>
+    <p>
+        Generally, because the coherence time of a Qubit is very short, we want to complete the Qubit operations in the shortest possible time. For superconducting qubits, maintaining a coherence time in the microseconds (μs) range is already considered quite long with current technology. Therefore, superconducting qubit pulses are mostly fixed at the nanosecond (\(ns\)) scale. Thus, manipulating the state of a Qubit generally relies on adjusting the pulse amplitude to determine the rotation angle. <br>
+        (In experiments, driving takes about \(10ns\)<sup>a</sup>)<br>
+        <span style="font-size: 0.7em; line-height: 0.8;">\(^a\) 10.1103/PRXQuantum.5.030353</span><br><br>
+        </p>
+
+
+    <p>
+    In practice, determining the pulse duration \(T\) and amplitude \(A\) is a routine part of daily Qubit calibration. Proper calibration yields high-quality quantum computing results; conversely, errors alone can cause calculations to be less accurate than classical computers.
+    </p>
+<br><br>
+<h3>Single Qubit Drive and Readout Circuit</h3>
+
+<div style="text-align: center;">
+    <a href="../Image/SIngle Qubit circuit.png">
+        <img src="../Image/SIngle Qubit circuit.png" alt="Schematic of Superconducting Qubit Readout Circuit" style="width: 100%; height: auto;">
+    </a>
+    </div>
+
+    <p>
+        ▲ Transmon circuit layout. (a) Circuit diagram under a microscope, (b) Corresponding circuit diagram. In this diagram, there is one Qubit (red Transmon) and one readout resonator (sky blue). Two feedlines individually drive the qubit and the readout resonator. The components are coupled using capacitors. Additionally, a Flux line is connected next to the Qubit, which generates a magnetic field to alter the Transmon's operating frequency. (c) Because the readout resonator is coupled to the qubit, it experiences a spectral shift depending on whether the qubit is in the \(|0\rangle\) or \(|1\rangle\) state. We use this characteristic spectral shift of the readout resonator to determine the state of the qubit.
+        <br><span style="font-size: 0.7em; line-height: 0.8;">arxiv.org/pdf/2106.11352</span><br><br>
+    </p>
+
+    <br><br>
+    <h3>Couplers</h3>
+    <div style="text-align: center;">
+        <a href="../Image/IQM Tunable.png">
+            <img src="../Image/IQM Tunable.png" alt="Schematic of Two Qubits and Tunable Coupler Circuit" style="width: 60%; height: auto;">
+        </a>
+    </div>
+    
+    <p>
+        The Resonator/Coupler facilitating interactions between qubits can be tunable, allowing for further adjustment of the coupling strength between different Qubits, though this also increases the complexity of the control circuit.
+        <br><span style="font-size: 0.7em; line-height: 0.8;">arxiv: 2408.12433</span>
+        <br><br>
+    </p>
+
+    <br>
+<h3>Superconducting Quantum Chips</h3>
+    <p>
+        A complete superconducting quantum computer requires at least: a Helium-3 ultra-low temperature vacuum environment, a cooling system, and a massive array of RF signal control and readout instruments, making current superconducting quantum computers extremely large. Furthermore, a single qubit requires at least four lines:
+        <ul>
+        <li>Control Frequency * 1: A Flux line to adjust magnetic flux.</li>
+        <li>Control State * 1: A Drive line.</li>
+        <li>Readout State * 2: Readout lines (one in, one out).</li>
+        </ul>
+        You can refer to the image below:
+    </p>
+        
+    <div style="text-align: center;">
+        <a href="../Image/17 surface.png">
+            <img src="../Image/17 surface.png" alt="Schematic of Superconducting Qubit Circuit Connections" style="width: 43%; height: auto;">
+        </a>
+        <a href="../Image/Starmon.png">
+            <img src="../Image/Starmon.png" alt="Layout of Readout Resonators and Coupling Buses" style="width: 55%; height: auto;">
+        </a>
+    </div>
+    <p>
+        ▲ To achieve quantum computing, many Qubits must be operated simultaneously, and extra Qubits are required for error correction. The image above shows a 17-qubit experimental quantum chip arranged in a quantum error-correction format called a surface code. The circles represent Qubits: pink and red are Data Qubits, while sky blue and green are Check Qubits. Each Qubit is connected to 7 lines (nicknamed Starmon), which include 4 for inter-qubit coupling, 1 Flux line, 1 Drive line, and 1 Readout resonator. The Readout resonators are merged into three feedlines. Although current technology can multiplex the Readout lines of multiple Qubits together—sharing the same Readout line (the so-called Feedline) via frequency isolation techniques—we still need to account for the Resonators that control interactions between qubits. A 100-qubit quantum computer prototype requires 400 external lines, which is why a massive tangle of wiring is a common sight in current superconducting quantum computers.
+        <br><span style="font-size: 0.7em; line-height: 0.8;">https://arxiv.org/pdf/1612.08208</span>
+        <br><br>
+    </p>
+        
+    
+
+<br>
+<h3>Superconducting Quantum Computer Architecture</h3>
+                                <div style="text-align: center;">
+                                    <a href="../Image/IBM_QC_cloud.webp">
+                                      <img src="../Image/IBM_QC_cloud.webp" alt="Quantum computer diagram" style="width: 100%; height: auto;">
+                                    </a>
+                                  </div>
+                                  
+                                  <p  class="dark-background">
+                                    ▲As superconducting quantum computers are still under development, they require operation at near-absolute-zero temperatures. A prototype machine is extremely large and expensive, and requires numerous electronic controllers to precisely manage individual qubits. Prototype machines from companies like IBM, Google, and IQM are accessible via the cloud, enabling external developers to explore new quantum applications. The diagram illustrates a quantum computing scenario using IBM's cloud-based quantum platform:
+                                    <br>(1) Users submit commands via a cloud interface to IBM's system.  
+                                    <br>(2) These commands are translated by classical computers into control signals (via DAC: Digital-to-Analog Conversion) and sent through microwave electronics.  
+                                    <br>(3) Microwave pulses are transmitted into the cryogenic environment through superconducting coaxial cables.  
+                                    <br>(4) After processing by the quantum chip, output signals are sent back through readout loops.  
+                                    <br>(5) The readout loops include isolators to prevent signals from reflecting back into the qubits.  
+                                    <br>(6) The signals are amplified by quantum amplifiers.  
+                                    <br>(7) Signals are digitized and analyzed by room-temperature electronics (ADC: Analog-to-Digital Conversion).  
+                                    <br>(8) The instrument processes the data.  
+                                    <br>(9) Results are returned to the user.  
+                                    <br><span style="font-size: 0.7em; line-height: 0.8;">Ref: IBM</span>
+                                  <br><br></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                
+
+                                <p>
+                                    <span style="font-size: 0.5em; line-height: 0.8;">
+                                        Originally written in Chinese by the author, these articles are translated into English to invite cross-language resonance.
+                                    </span>
+                                </p>
+                                <div class="post-meta">
+                                    <span class="post-author">
+                                        <a href="../About_en/Wang.html"><img class="img-res" src="../Image/IMG_0964_2.JPG" alt="Professional headshot">Peir-Ru Wang</a>
+                                    </span>
+                                    <span class="post-category">
+                                        <a href="../ASW2026_en/main.html"><i class="fa fa-folder" aria-hidden="true"></i>2026 Academia Sinica SCQC Winter Workshop</a>
+                                    </span>
+                                </div><!-- /.post-meta -->
+                            
+                                <div id="prev-next-nav" class="text-center">
+                                    <a class="btn btn-gray" href="main.html">← Previous</a> 
+                                    <a class="btn btn-gray" href="../ASW2026/A.html" style="margin: 0 10px;">中文版</a>
+                                    <a class="btn btn-gray" href="B.html">Next →</a>
+                                </div>
+
+                                
+
+                            </div><!-- /.post-content -->
+                        </article><!-- /.blog-post -->
+                        <!--<div id="PostComments" class="post-comments">
+                            
+                            
+                            
+                        </div> /#PostComments -->
+                        <!--<div class="respond">
+                            <h3>Post a Comment</h3>
+                            <form class="form-horizontal">
+                                <input class="form-control" type="text" placeholder="Your Name*" required>
+                                <input class="form-control" type="email" placeholder="Your Email" required>
+                                <textarea class="form-control form-control-comment" type="text" placeholder="Your Comment*" required></textarea>
+                                <button class="btn btn-green">Add a comment</button>
+                            </form>    
+                        </div> /.respond -->
+                    </div>
+                    <aside class="col-md-3">
+                        <div class="sidebar">
+                            <div class="widget">
+                                <div id="lesson-list_2">
+                                <div class="lesson-link "><a href="main.html">2026 Academia Sinica SCQC Winter Workshop</a></div>
+                                <div class="lesson-link active"><a href="A.html">Introduction to Superconducting Quantum Computers</a></div>
+                                <div class="lesson-link "><a href="B.html">IQM Quantum Computer Technology Development</a></div>
+                                <div class="lesson-link "><a href="C.html">IQM KQCircuit Design</a></div>
+                                <div class="lesson-link "><a href="D.html">AMD</a></div>
+                                <div class="lesson-link "><a href="E.html">NVIDIA and NVQLink</a></div>
+                                </div>
+                            </div>
+  
+                        </div></aside>
+                </div>
+            </div>
+        </section><!-- /.section-portfolio -->
+
+    </main><!-- /#main -->
+
+    <footer id="colophon" class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-4 col-xs-6">
+                    <a href="../index_ch.html" class="site-title">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
+                    <p>Exploring the Quantum Technology Together.</p>
+                    </div>
+                <div class="col-lg-offset-4 col-md-3 col-sm-4 col-md-offset-2 col-sm-offset-0 col-xs-6 ">
+                    <p class="site-title">𝐾𝐸𝐸𝑃 𝐼𝑁 𝑇𝑂𝑈𝐶𝐻</p>
+                    <ul class="list-unstyled contact-links">
+                        <li><i class="fa fa-envelope" aria-hidden="true"></i><a href="mailto:info@insight-ihbar.com">info@insight-ihbar.com</a></li>
+                        <!--<li><i class="fa fa-phone" aria-hidden="true"></i><a href="tel:+37400800000">+374 (00) 80 00 00 </a></li>
+                        <li><i class="fa fa-fax" aria-hidden="true"></i><a href="+37400900000">+374 (00) 90 00 00</a></li>
+                        <li><i class="fa-solid fa-location-dot"></i><p>Hsinchu 300, Taiwan (R.O.C.)</p></li>-->
+                    </ul>
+                </div>
+                <!--<div class="clearfix visible-xs"></div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6">
+                    <h3>Featured links</h3>
+                    <ul class="list-unstyled">
+                        <li class="active"><a href="index_ch.html">Home</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="portfolio.html">Porfolio</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>-->
+            </div>
+        </div>
+        <div class="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-8">
+                        <div class="social-links">
+                            <!--<a class="twitter-bg" href="#"><i class="fab fa-twitter"></i></a>-->
+                            <!--<<a class="facebook-bg" href="https://www.facebook.com/people/Quantum-Perspectives/61576446849628/"><i class="fab fa-facebook"></i></a>-->
+                            <!--<a class="facebook-bg" href="https://www.facebook.com/people/%E9%87%8F%E5%AD%90%E9%81%A0%E8%A6%8BQuantum-Perspectives/61576883632888/"><i class="fab fa-facebook-f"></i></a>-->
+                            <!--<a class="pinterest" href="#"><i class="fa-solid fa-microscope"></i></a>-->
+                            <!--<a class="facebook-bg" href="https://www.facebook.com/people/Insight-hbar/61576811775374/"><i class="fab fa-facebook-f"></i></a>-->
+                            <a class="linkedin-bg" href="https://www.linkedin.com/company/insight-ihbar"><i class="fab fa-linkedin"></i></a>
+                        </div><!-- /.social-links -->
+                    </div>
+                    <div class="col-xs-4">
+                        <div class="text-right">
+                            <p><span style="font-size: 16px;">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</span></p>
+                            <p>All Rights Reserved</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.copyright -->
+    </footer><!-- /#footer -->
+
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="../assets/js/bootstrap-select.min.js"></script>
+    <script src="../assets/js/jquery.slicknav.min.js"></script>
+    <script src="../assets/js/jquery.countTo.min.js"></script>
+    <script src="../assets/js/jquery.shuffle.min.js"></script>
+    <script src="../assets/js/script.js"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  
+</body>
+</html>
