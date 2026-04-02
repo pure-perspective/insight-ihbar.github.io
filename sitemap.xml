@@ -816,6 +816,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://www.insight-ihbar.com/ASW2026_en/F.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://www.insight-ihbar.com/ASW2026_en/main.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>

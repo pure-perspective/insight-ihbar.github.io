@@ -5,6 +5,6 @@
     { "title": "IQM KQCircuit Design", "file": "C.html" , "status": "new" , "date": "2026-02-23"},
     { "title": "AMD", "file": "D.html" , "status": "new" , "date": "2026-02-26"},
     { "title": "NVIDIA與NVQLink", "file": "E.html" , "status": "new" , "date": "2026-03-08"},
-    { "title": "FUJITSU：FTQC研發與挑戰", "file": "E.html" , "enabled": false},
+    { "title": "FUJITSU：FTQC研發與挑戰", "file": "F.html" , "status": "new" , "date": "2026-04-02"},
     { "title": "Measure", "file": "F.html" ,"enabled": false}
 ]

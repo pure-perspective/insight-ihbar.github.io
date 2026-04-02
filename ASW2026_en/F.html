@@ -31,18 +31,19 @@
     <link href="../assets/css/style.css" rel="stylesheet">
     <link href="../assets/css/responsive.css" rel="stylesheet">
 
-    <title>FUJITSU：FTQC研發與挑戰</title>
-    <meta name="description" content="整理 2026 中研院 QPU 冬季 Workshop 演講筆記：FUJITSU 與 RIKEN 合作開發 FTQC 量子電腦，解析超導量子位元系統擴展、晶圓變異性、封裝散熱與量子計算中心基礎建設挑戰。">
-    <meta name="keywords" content="Fujitsu quantum hardware workshop notes  
-AMD quantum control hardware RFSoC FPGA  
-Xilinx RFSoC DAC ADC integration  
-QICK open source FPGA platform Fermilab  
-RF microwave pulse control superconducting qubits  
-Scalable QPU systems embedded computing  
-Zynq Versal roadmap quantum hardware  
-Academia Sinica QPU Winter Workshop 2026  
-Superconducting qubit control electronics FPGA">
-    <link rel="canonical" href="https://www.insight-ihbar.com/ASW2026/F.html">
+    <title>FUJITSU：Unresolve Challenges in SC FTQC</title>
+    <meta name="description" content="Fujitsu’s talk on unresolved challenges in superconducting fault-tolerant quantum computing: scaling multi-qubit systems, variability, power, and cooling.">
+    <meta name="keywords" content="- Semiconductor spin qubits in quantum computing
+- Quantum bits technology and applications
+- Superconducting vs semiconductor qubits
+- Low temperature cooling systems for quantum processors
+- High-fidelity two-qubit gates advancement
+- Quantum dot fabrication techniques
+- Scalable semiconductor quantum processors
+- Challenges in semiconductor spin qubits
+- Fault-tolerant quantum computer development
+- Future of quantum computing technology">
+    <link rel="canonical" href="https://www.insight-ihbar.com/ASW2026_en/F.html">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -50,16 +51,36 @@ Superconducting qubit control electronics FPGA">
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-  <meta name="keywords" content="富士通 FTQC  
-RIKEN 理研 量子中心  
-超導量子電腦  
-量子位元系統擴展  
-晶圓變異性  
-量子晶片封裝與散熱  
-量子計算中心基礎建設  
-中研院 QPU 冬季 Workshop 2026  
-閘控量子計算  
-絕熱量子計算">
+  <meta name="keywords" content="IQM superconducting quantum computer architecture  
+Crystal Star Constellation QPU topology  
+quantum gate fidelity randomized benchmarking IRB  
+MOVE gate Star architecture IQM  
+fault-tolerant quantum computing roadmap IQM  
+high connectivity quantum processor design  
+surface code QEC and qLDPC  
+quantum chip layout coupling crosstalk  
+flip-chip packaging wiring impact qubits  
+Academia Sinica SCQC Winter Workshop 2026">
+  <meta name="keywords" content="NVIDIA NVQLink hybrid quantum HPC interconnect  
+GPU QPU integration microsecond feedback NVQLink  
+CUDA-Q cuQuantum ecosystem for quantum computing  
+High-speed GPU networking for AI and quantum  
+Quantum error correction real-time control instrumentation  
+DGX systems NVL72 quantum computing acceleration  
+Co-Packaged Optics CPO era NVIDIA interconnect  
+Quantum Machines DGX1000 NVQLink control platform  
+Academia Sinica SCQC Winter Workshop 2026 lecture  
+Accelerated computing roadmap HPC plus quantum computing">
+  <meta name="keywords" content="Fujitsu superconducting fault-tolerant quantum computing challenges  
+RIKEN Fujitsu multi-qubit system scaling roadmap  
+Superconducting qubit variability Josephson junction fabrication  
+Quantum error correction surface code million qubits  
+Quantum computing center power consumption cooling infrastructure  
+64-qubit to 256-qubit QPU modular design  
+Laser-heating post-processing qubit frequency tuning  
+Gate-based vs adiabatic quantum computing comparison  
+Academia Sinica SCQC Winter Workshop 2026 Fujitsu talk  
+Large-scale superconducting quantum computer architecture and crosstalk">
 </head>
 <body>
 
@@ -67,44 +88,36 @@ RIKEN 理研 量子中心
         <nav id="primary-navigation" class="site-navigation">
             <div class="container">
 
-                <div class="navbar-header">
-                   
-                    <a href="../index_ch.html" class="site-title">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
-
+                <div class="navbar-header">                   
+                    <a href="../index.html" class="site-title">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
                 </div><!-- /.navbar-header -->
 
                 <div class="collapse navbar-collapse" id="agency-navbar-collapse">
-
                     <ul class="nav navbar-nav navbar-right">
-
-                        <li><a href="../index_ch.html">Home</a></li>
-                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">科普介紹<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
-
+                        <li><a href="../index.html">Home</a></li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Qubit Physics<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
                             <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-                                <li><a href="../SCQ_elementary/main.html">超導量子位元(科普版)</a></li>
-                              <li><a href="../SCQ_advanced/main.html">超導量子位元(進階版)</a></li>
-                              <li><a href="../SpQ/main.html">半導體自旋量子位元</a></li>
+                              <li><a href="../SCQ_elementary_en/main.html">Superconducting Qubits (Elementary)</a></li>
+                              <li><a href="../SCQ_advanced_en/main.html">Superconducting Qubits (Advanced)</a></li>
+                              <li><a href="../SpQ_en/main.html">Semiconductor Spin Qubits</a></li>
                             </ul>
-
                         </li>
                         <!--<li class="active"><a href="../SCQ_elementary/main.html">科普介紹</a></li>-->
-                        <li><a href="../QC_hardware/main.html">硬體導論</a></li>
-                        <li><a href="../QID/main.html">量子產業群像錄</a></li>
-                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">研討會筆記<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                        <li><a href="../QC_hardware_en/main.html">Hardware</a></li>
+                        <li><a href="../QID_en/main.html">Quantum Industries</a></li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Workshop Note<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
                             <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-                                <li class="active"><a href="../ASW2026/main.html">2026中研院超導量子電腦Workshop</a></li>
+                                <li class="active"><a href="../ASW2026_en/main.html">2026 Academia Sinica SCQC Winter Workshop</a></li>
                             </ul>
                         </li>
-                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">量子諮詢<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Consultance<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
                             <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-                                <li><a href="https://www.quantum-perspectives.com/About/main.html">量子遠見科技：諮詢服務</a></li>
-                                <li><a href="../About/main.html">關於我們</a></li>
+                                <li><a href="https://www.quantum-perspectives.com/About_en/main.html">Taiwan Market Outreach Services</a></li>
+                                <li><a href="../About_en/main.html">About Us</a></li>
                             </ul>
                         </li>
-                        <li><a href="../index.html">English</a></li>
-                        
+                        <li><a href="../index_ch.html">中文版</a></li>                        
                     </ul>
-
                 </div>
 
             </div>   
@@ -114,10 +127,10 @@ RIKEN 理研 量子中心
     <div id="hero" class="hero overlay subpage-hero blog-hero">
         <div class="hero-content">
             <div class="hero_2-text">
-                <a href="../SpQ/main.html"><h1>2026中研院QPU冬季Workshop</h1></a>
+                <h1>2026 Academia Sinica SCQC Winter Workshop</h1>
                 <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="../index_ch.html">Home</a></li>
-                  <!--<li class="breadcrumb-item"><a href="../SCQ_elementary/main.html">超導量子位元(科普版)</a></li>
+                  <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+                  <!--<li class="breadcrumb-item"><a href="./main.html">Hardware Guide (2025)</a></li>
                   <li class="breadcrumb-item active">約瑟夫森節</li>-->
                 </ol>
             </div><!-- /.hero-text -->
@@ -131,48 +144,49 @@ RIKEN 理研 量子中心
                 <div class="row">
                     <div class="col-md-9">
                         <article class="blog-post">
-                            <!--<img src="../assets/img/portfolio-1.jpg" class="img-res" alt="">-->
+                            <!--<img src="../assets/img/portfolio-1.jpg" class="img-res" alt="Laptop on wooden desk">-->
                             <div class="post-content">
                                 <div style="text-align: center;">
-                                    <h2>FUJITSU：FTQC研發與挑戰</h2>
+                                    <h2>FUJITSU：Unresolve Challenges in SC FTQC</h2>
+                                    <h3></h3>
                                     <h3>Yoshiyasu Doi, Senior Research Director</h3>
                                     <h4>Fujitsu Research Quantum Lab</h4>
                                     <span style="font-size: 0.7em; line-height: 0.8;">
                                         2026.04.02
                                     </span>
                                 </div>
-                                <p>FUJITSU是日本量子電腦整機的製造、開發商，與日本RIKEN理研量子中心有深度合作，目標是開發出日本自研自製的FTQC量子電腦。這次演講的內容主要介紹、評估邁向大規模FTQC實用化所需要面對的課題。</p>
+                                <p>FUJITSU is a Japanese manufacturer and developer of full-stack quantum computers. It collaborates closely with the RIKEN Center for Quantum Computing in Japan, with the goal of developing a fault-tolerant quantum computer (FTQC) designed and built domestically in Japan. This talk mainly introduced and assessed the challenges that must be addressed on the path toward the practical realization of large-scale FTQC.</p>
                                 
                                 <div style="text-align: center;">
                                     <a href="../Image/IMG_5822.JPG">
-                                        <img src="../Image/IMG_5822.JPG" alt="超導量子運算研討會投影片" style="width: 100%; height: auto;">
+                                        <img src="../Image/IMG_5822.JPG" alt="Quantum workshop slide" style="width: 100%; height: auto;">
                                     </a>
                                     <a href="../Image/IMG_5832.JPG">
-                                        <img src="../Image/IMG_5832.JPG" alt="富士通運算技術發展圖表" style="width: 100%; height: auto;">
+                                        <img src="../Image/IMG_5832.JPG" alt="Fujitsu tech slide" style="width: 100%; height: auto;">
                                     </a>
                                 </div>
                                 <p class="dark-background">
-                                    ▲ FUJITSU在日本有企業級資料中心、超級運算中心建置的解決方案。下方有趣的提到FUJITSU各個階段算力提升的方式：</p>
+                                    ▲ FUJITSU has enterprise-level data center and supercomputing center deployment solutions in Japan. Interestingly, the slide below mentions the ways FUJITSU has improved computational power at different stages:</p>
                                     <ol>
-                                        <li><p>運算頻率提升：透過CPU高頻運算</p></li>
-                                        <li><p>多核心運算：多核心CPU</p></li>
-                                        <li><p>多叢集運算：叢集高速互聯</p></li>
-                                        <li><p>記憶體內運算/近記憶體運算：克服記憶體頻寬牆，試圖減緩記憶體-運算核心資料間交換造成的延遲。</p></li>
+                                        <li><p>Higher clock frequency: through high-frequency CPU operation</p></li>
+                                        <li><p>Multi-core computing: multi-core CPUs</p></li>
+                                        <li><p>Multi-cluster computing: high-speed interconnection across clusters</p></li>
+                                        <li><p>In-memory / near-memory computing: overcoming the memory bandwidth wall and attempting to reduce latency caused by data exchange between memory and computing cores.</p></li>
                                     </ol>
-                                    <p>此外，也投入下一代量子科技、量子外延科技的計算發展。
+                                    <p>In addition, FUJITSU is also investing in the computational development of next-generation quantum technologies and quantum-inspired technologies.
                                     <br><br>
                                 </p>
                                 
 
-                                <h3>量子電腦的種類</h3>
+                                <h3>Types of Quantum Computers</h3>
                                 <div style="text-align: center;">
                                     <a href="../Image/IMG_5841.JPG">
-                                        <img src="../Image/IMG_5841.JPG" alt="量子電腦分類示意圖" style="width: 100%; height: auto;">
+                                        <img src="../Image/IMG_5841.JPG" alt="Quantum computer chart" style="width: 100%; height: auto;">
                                     </a>
                                 </div>
                                 <p class="dark-background">
-                                    ▲ 量子電腦的種類大致上可以分類為閘控量子計算(Gate-Base)和絕熱量子計算(Annealing)兩大類。在計算科學裡，這兩類量子計算算力等價，可以互相模擬，但針對不同問題所需的計算開銷不同。
-                                    閘控量子計算(Gate-Base)較容易與傳統計算做類比，而絕熱量子計算適合做最佳參數分析（即基態搜索）。FUJITSU針對多項技術都有投入開發。
+                                    ▲ Quantum computers can generally be divided into two major categories: gate-based quantum computing and adiabatic quantum computing (annealing). In computational science, these two paradigms are computationally equivalent and can simulate one another, but the computational overhead differs depending on the problem.
+                                    Gate-based quantum computing is easier to compare with conventional computing, while adiabatic quantum computing is well suited for optimal parameter analysis (that is, ground-state search). FUJITSU is investing in the development of multiple such technologies.
                             
                                     
                                     <br><br>
@@ -181,14 +195,14 @@ RIKEN 理研 量子中心
 
                                 <div style="text-align: center;">
                                     <a href="../Image/fig-03-en-960x540.png">
-                                        <img src="../Image/fig-03-en-960x540.png" alt="量子電腦發展時間軸圖表" style="width: 100%; height: auto;">
+                                        <img src="../Image/fig-03-en-960x540.png" alt="Quantum roadmap" style="width: 100%; height: auto;">
                                     </a>
                                     <a href="../Image/截圖 2026-03-10 上午11.57.56.png">
-                                        <img src="../Image/截圖 2026-03-10 上午11.57.56.png" alt="部分容錯量子計算架構示意圖" style="width: 100%; height: auto;">
+                                        <img src="../Image/截圖 2026-03-10 上午11.57.56.png" alt="Quantum architecture" style="width: 100%; height: auto;">
                                     </a>
                                 </div>
                                 <p class="dark-background">
-                                    ▲ FUJITSU的量子電腦路線圖。FUJITSU研究包含超導量子電腦、鑽石自旋量子電腦。「STAR架構」一種基於相位旋轉閘（phase rotation gates）的量子運算架構。
+                                    ▲ FUJITSU's quantum computer roadmap. FUJITSU's research includes superconducting quantum computers and diamond spin quantum computers. The "STAR architecture" is a quantum computing architecture based on phase rotation gates.
                                     <span style="font-size: 0.7em; line-height: 0.8;">
                                         <br>Ref: https://global.fujitsu/en-global/technology/research/quantum
                                         <br>Ref: https://global.fujitsu/-/media/Project/Fujitsu/Fujitsu-HQ/technology/research/quantum/event-202503/FQD2025japan_guest_talk3.pdf
@@ -202,7 +216,7 @@ RIKEN 理研 量子中心
                                 <!--
                                 <div style="text-align: center;">
                                     <a href="../Image/IMG_5843.JPG">
-                                        <img src="../Image/IMG_5843.JPG" alt="富士通投影片：解決難題應用" style="width: 100%; height: auto;">
+                                        <img src="../Image/IMG_5843.JPG" alt="Fujitsu slide" style="width: 100%; height: auto;">
                                     </a>
                                 </div>
                                 <p class="dark-background">
@@ -215,7 +229,7 @@ RIKEN 理研 量子中心
                                 
                                 <div style="text-align: center;">
                                     <a href="../Image/IMG_5845.JPG">
-                                        <img src="../Image/IMG_5845.JPG" alt="富士通量子運算策略投影片" style="width: 100%; height: auto;">
+                                        <img src="../Image/IMG_5845.JPG" alt="Fujitsu quantum slide" style="width: 100%; height: auto;">
                                     </a>
                                 </div>
                                 <p class="dark-background">
@@ -226,15 +240,15 @@ RIKEN 理研 量子中心
                                 -->
                                 
                                 <br>
-                                <h3>FUJITSU和RIKEN多量子位元系統開發</h3>
+                                <h3>FUJITSU and RIKEN Multi-Qubit System Development</h3>
                                 <div style="text-align: center;">
                                     <a href="../Image/IMG_5852.JPG">
-                                        <img src="../Image/IMG_5852.JPG" alt="富士通量子電腦研發投影片" style="width: 100%; height: auto;">
+                                        <img src="../Image/IMG_5852.JPG" alt="Quantum slide" style="width: 100%; height: auto;">
                                     </a>
                                 </div>
                                 <p class="dark-background">
-                                    ▲ FUJITSU和RIKEN的量子計算中心負責人中村泰信(Yasunobu Nakamura)合作開發多量子位元系統。
-                                    Nakamura Sensei和台灣中研院關鍵議題研究中心的量子計算負責人 陳啟東 特聘研究員 及 蔡兆申院士 早年曾多次合作開發Josephson Junction為基礎製作量子位元的可行性，包含Cooper Pair Box, FLux Qubit等，是現代Transmon的前身，奠定大量基礎。
+                                    ▲ FUJITSU is collaborating with Yasunobu Nakamura, the leader of the RIKEN quantum computing center, to develop multi-qubit systems.
+                                    Professor Nakamura, Distinguished Research Fellow Chi-Tung Chen, and Academician Tsai Chao-Sen of the Research Center for Critical Issues at Academia Sinica in Taiwan collaborated many times in the early days to develop the feasibility of qubits based on Josephson junctions, including the Cooper Pair Box and Flux Qubit. These were predecessors of the modern transmon and laid much of the foundation for the field.
 
 
                                     
@@ -245,15 +259,15 @@ RIKEN 理研 量子中心
                                 
                                 <div style="text-align: center;">
                                     <a href="../Image/IMG_5855.JPG">
-                                        <img src="../Image/IMG_5855.JPG" alt="256量子位系統研發簡報投影片" style="width: 100%; height: auto;">
+                                        <img src="../Image/IMG_5855.JPG" alt="256-qubit slide" style="width: 100%; height: auto;">
                                     </a>
                                 
                                     <a href="../Image/IMG_5870.JPG">
-                                        <img src="../Image/IMG_5870.JPG" alt="量子系統散熱設計簡報投影片" style="width: 100%; height: auto;">
+                                        <img src="../Image/IMG_5870.JPG" alt="Thermal design slide" style="width: 100%; height: auto;">
                                     </a>
                                 </div>
                                 <p class="dark-background">
-                                    ▲ FUJITSU和RIKEN合作開發64位元，並希望透過模組化的方式，組合成256位元QPU。擴展研究重點包含如何沿用既有64位元的硬體設計成果、提升裝置密度，但也要避免熱功率過度上升。
+                                    ▲ FUJITSU and RIKEN are jointly developing a 64-qubit system and hope to combine modules into a 256-qubit QPU. Key scaling research topics include how to reuse the existing 64-qubit hardware design results, improve device density, and at the same time avoid excessive increases in thermal load.
                                     
                                     <br><br>
                                 </p>
@@ -262,7 +276,7 @@ RIKEN 理研 量子中心
                                 
                                 <!--<div style="text-align: center;">
                                     <a href="../Image/IMG_5873.JPG">
-                                        <img src="../Image/IMG_5873.JPG" alt="量子晶片封裝開發簡報畫面" style="width: 100%; height: auto;">
+                                        <img src="../Image/IMG_5873.JPG" alt="Quantum packaging slide" style="width: 100%; height: auto;">
                                     </a>
                                 </div>
                                 <p class="dark-background">
@@ -275,7 +289,7 @@ RIKEN 理研 量子中心
                                 
                                 <div style="text-align: center;">
                                     <a href="../Image/IMG_5878.JPG">
-                                        <img src="../Image/IMG_5878.JPG" alt="量子電腦稀釋製冷機展示投影片" style="width: 100%; height: auto;">
+                                        <img src="../Image/IMG_5878.JPG" alt="Quantum tech slide" style="width: 100%; height: auto;">
                                     </a>
                                 </div>
                                 <p class="dark-background">
@@ -285,29 +299,29 @@ RIKEN 理研 量子中心
                                 </p>-->
                                 
 
-                                <h3>大尺寸超導電路面板與量子位元變異性</h3>
-                                <p>多量子位元晶片的製程開發，其實類似半導體晶圓產業，透過在大面積的晶圓上面集成大量量子電路。相關的量產議題，便牽涉到晶圓上量子位元的均質性。
-                                    由於量子相應非常敏感、約瑟夫森節需要極高的工藝，分佈在晶圓上的超導量子位元特性實際上是有一定差異的。可以透過後處理，來將晶圓上的量子位元調教到相近的特性。
+                                <h3>Large-Area Superconducting Circuit Panels and Qubit Variability</h3>
+                                <p>The fabrication of multi-qubit chips is in fact similar to the semiconductor wafer industry: a large number of quantum circuits are integrated on large-area wafers. The related issues of mass production therefore involve the uniformity of qubits across the wafer.
+                                    Because quantum response is extremely sensitive and Josephson junctions require very high process precision, the properties of superconducting qubits distributed across a wafer do in practice vary to some extent. Post-processing can be used to tune the qubits on the wafer toward more similar characteristics.
                                 </p>
                                 
                                 <div style="text-align: center;">
                                     <a href="../Image/IMG_5918.JPG">
-                                        <img src="../Image/IMG_5918.JPG" alt="超導量子位元晶片簡報畫面" style="width: 100%; height: auto;">
+                                        <img src="../Image/IMG_5918.JPG" alt="Superconducting slide" style="width: 100%; height: auto;">
                                     </a>
                                 </div>
                                 <p class="dark-background">
-                                    ▲ 這張圖展示在晶圓上製備約瑟夫森節時，量子位元會因為約森夫森節的氧化層/絕緣層品質差異，展現出不一樣的阻值，如果不能精確控制量子位元的特性，會在QPU上產生非預期的串擾 （ZZ crosstalk）。
+                                    ▲ This figure shows that when Josephson junctions are fabricated on a wafer, qubits can exhibit different resistance values because of differences in the quality of the oxide / insulating layer in the Josephson junctions. If qubit characteristics cannot be precisely controlled, unexpected crosstalk (ZZ crosstalk) can arise on the QPU.
                                     
                                     <br><br>
                                 </p>
 
                                 <div style="text-align: center;">
                                     <a href="../Image/IMG_5884.JPG">
-                                        <img src="../Image/IMG_5884.JPG" alt="量子位元變異性改善簡報投影片" style="width: 100%; height: auto;">
+                                        <img src="../Image/IMG_5884.JPG" alt="Qubit variability slide" style="width: 100%; height: auto;">
                                     </a>
                                 </div>
                                 <p class="dark-background">
-                                    ▲ RIKEN透過發展雷射加熱後處理的方式，提升量子位元的均值性。利用探針逐一量測量子位元，並施加雷射加熱調整約瑟夫森節的特性。
+                                    ▲ RIKEN improves qubit uniformity by developing a laser-heating post-processing method. Probes are used to measure qubits one by one, and laser heating is applied to tune the properties of the Josephson junctions.
 
                                     
                                     <br><br>
@@ -319,12 +333,12 @@ RIKEN 理研 量子中心
                                 
                                 <div style="text-align: center;">
                                     <a href="../Image/IMG_5926.JPG">
-                                        <img src="../Image/IMG_5926.JPG" alt="超導量子位元晶片簡報投影片" style="width: 100%; height: auto;">
+                                        <img src="../Image/IMG_5926.JPG" alt="Qubit chip slide" style="width: 100%; height: auto;">
                                     </a>
                                 </div>
                                 <p class="dark-background">
-                                    ▲ 然而，在邁向更多量子位元的製程時，逐一量測、雷射對準加熱可能不是一個能快速擴展化的方式。
-                                    下一代的後處理，希望整合量子電路上既有的線路，直接施加偏壓電脈衝，來實踐均質化。
+                                    ▲ However, when moving toward larger numbers of qubits, measuring each qubit individually and aligning a laser for local heating may not be a method that scales rapidly.
+                                    The next generation of post-processing aims to integrate the existing wiring on the quantum circuit itself and directly apply bias voltage pulses to achieve homogenization.
                                     
                                     <br><br>
                                 </p>
@@ -333,7 +347,7 @@ RIKEN 理研 量子中心
                                 <!--
                                 <div style="text-align: center;">
                                     <a href="../Image/IMG_5935.JPG">
-                                        <img src="../Image/IMG_5935.JPG" alt="簡報展示300毫米晶圓與無塵室" style="width: 100%; height: auto;">
+                                        <img src="../Image/IMG_5935.JPG" alt="300mm wafer slide" style="width: 100%; height: auto;">
                                     </a>
                                 </div>
                                 <p class="dark-background">
@@ -346,7 +360,7 @@ RIKEN 理研 量子中心
                                 
                                 <div style="text-align: center;">
                                     <a href="../Image/IMG_5936.JPG">
-                                        <img src="../Image/IMG_5936.JPG" alt="量子位變異改善簡報畫面" style="width: 100%; height: auto;">
+                                        <img src="../Image/IMG_5936.JPG" alt="Qubit variability slide" style="width: 100%; height: auto;">
                                     </a>
                                 </div>
                                 <p class="dark-background">
@@ -357,7 +371,7 @@ RIKEN 理研 量子中心
                                 
                                 <div style="text-align: center;">
                                     <a href="../Image/IMG_5893.JPG">
-                                        <img src="../Image/IMG_5893.JPG" alt="富士通1024量子電腦簡報投影片" style="width: 100%; height: auto;">
+                                        <img src="../Image/IMG_5893.JPG" alt="Quantum computer slide" style="width: 100%; height: auto;">
                                     </a>
                                 </div>
                                 <p class="dark-background">
@@ -370,7 +384,7 @@ RIKEN 理研 量子中心
                                 
                                 <div style="text-align: center;">
                                     <a href="../Image/IMG_5899.JPG">
-                                        <img src="../Image/IMG_5899.JPG" alt="富士通商用量子電腦簡報畫面" style="width: 100%; height: auto;">
+                                        <img src="../Image/IMG_5899.JPG" alt="Quantum computer slide" style="width: 100%; height: auto;">
                                     </a>
                                 </div>
                                 <p class="dark-background">
@@ -383,7 +397,7 @@ RIKEN 理研 量子中心
                                 
                                 <div style="text-align: center;">
                                     <a href="../Image/IMG_5904.JPG">
-                                        <img src="../Image/IMG_5904.JPG" alt="富士通量子位2030目標投影片" style="width: 100%; height: auto;">
+                                        <img src="../Image/IMG_5904.JPG" alt="Quantum qubits slide" style="width: 100%; height: auto;">
                                     </a>
                                 </div>
                                 <p class="dark-background">
@@ -400,7 +414,7 @@ RIKEN 理研 量子中心
                                 
                                 <div style="text-align: center;">
                                     <a href="../Image/IMG_5911.JPG">
-                                        <img src="../Image/IMG_5911.JPG" alt="量子電腦新建築需求簡報投影片" style="width: 100%; height: auto;">
+                                        <img src="../Image/IMG_5911.JPG" alt="Quantum slide" style="width: 100%; height: auto;">
                                     </a>
                                 </div>
                                 <p class="dark-background">
@@ -420,36 +434,36 @@ RIKEN 理研 量子中心
                                 
                                 
                                 
-                                <h3>量子計算中心的基礎建設尺度</h3>
-                                <p>邁向「實用化」的量子計算優勢，FUJITSU的發展藍圖認為需要百萬個（～1M）物理量子位元的數量級組成的量子電腦。因為量子糾錯的需求，一個「實用的」邏輯位元，在目前的技術下，推估需要千顆個物理量子位元共同組成。
-                                    這裡說明一下，實驗上與早期量子優勢展現的實驗中，對於錯誤率的容忍較高，一個具有糾錯能力的邏輯量子位元大約在100個上下，故1000~5000個物理量子位元晶片是現在量子研究、廠商追逐的目標。
-                                    透過此類1000~5000個物理量子位元等效於20~50個邏輯量子位元的計算能力，來展示量子優勢。
-                                    如果要進行更實用、大規模的量子超級計算，一方面牽涉到大量的量子位元做併行（邏輯位元數要多）、另一方面也需要更深的邏輯電路深度（錯誤率要低、或是糾錯能力要強），對物理位元常是是平方級的成長。
-                                    然而，更大量的量子位元亦會產生更複雜的串擾，反而增加錯誤率，又需要更多資源來糾錯。這導致目前推估實用的量子計算，會需要整合百萬個量子位元才能具有實用的量子優勢。
-                                    百萬個量子位元帶來的控制儀器整合、高功率超低溫冷卻議題，將超越現在AI數據中心的耗電量，對電力基建帶來沈重的負荷。
+                                <h3>Infrastructure Scale of a Quantum Computing Center</h3>
+                                <p>To move toward “practical” quantum advantage, FUJITSU’s development roadmap argues that a quantum computer composed of on the order of one million (~1M) physical qubits will be required. Because of the demands of quantum error correction, a “practical” logical qubit is currently estimated to require roughly a thousand physical qubits working together.
+                                    To clarify, in experiments and in early demonstrations of quantum advantage, the tolerance for error rates is relatively high. A logical qubit with error-correction capability may involve around 100 physical qubits, so chips with 1,000 to 5,000 physical qubits are currently the targets pursued by quantum researchers and companies.
+                                    With such 1,000 to 5,000 physical qubits—equivalent to roughly 20 to 50 logical qubits in computational capability—researchers aim to demonstrate quantum advantage.
+                                    For more practical, large-scale quantum supercomputing, however, one needs both a large number of qubits operating in parallel (that is, more logical qubits) and deeper logical circuit depth (that is, lower error rates or stronger error correction), which often causes the number of required physical qubits to grow quadratically.
+                                    Yet larger numbers of qubits also create more complicated crosstalk, which in turn increases error rates and demands even more resources for error correction. This is why practical quantum computing is currently estimated to require an integrated system with around one million qubits in order to deliver useful quantum advantage.
+                                    The integration of control instruments and high-power ultralow-temperature cooling for one million qubits would exceed the electricity consumption of today’s AI data centers and place a heavy burden on power infrastructure.
                                 </p>
                                 <div style="text-align: center;">
                                     <a href="../Image/IMG_5915.JPG">
-                                        <img src="../Image/IMG_5915.JPG" alt="量子位元需求簡報投影片" style="width: 100%; height: auto;">
+                                        <img src="../Image/IMG_5915.JPG" alt="Quantum qubit slide" style="width: 100%; height: auto;">
                                     </a>
                                 </div>
                                 <p class="dark-background">
-                                    ▲ FUJITSU說明Early-FTQC和實際FTQC所需要的量子位元。
+                                    ▲ FUJITSU explains the number of qubits required for Early-FTQC and full FTQC.
                                     
                                     <br><br>
                                 </p>
                                 
                                 <div style="text-align: center;">
                                     <a href="../Image/IMG_5943.JPG">
-                                        <img src="../Image/IMG_5943.JPG" alt="量子電腦系統功耗與散熱簡報" style="width: 100%; height: auto;">
+                                        <img src="../Image/IMG_5943.JPG" alt="Control Electronics slide" style="width: 100%; height: auto;">
                                     </a>
                                     <a href="../Image/IMG_5958.JPG">
-                                        <img src="../Image/IMG_5958.JPG" alt="大型量子電腦耗電簡報投影片" style="width: 100%; height: auto;">
+                                        <img src="../Image/IMG_5958.JPG" alt="Quantum facility slide" style="width: 100%; height: auto;">
                                     </a>
                                 </div>
                                 <p class="dark-background">
-                                    ▲ FUJITSU推算規模化的量子超算中心所帶來的冷卻與耗電議題。一方面，超大型數據中心的冷卻會有大量的噪音，這會干擾量子位元造成錯誤率上升。
-                                    另一方面，量子超算中心的耗電，粗估將是TGW3等級，是超過500座核電廠的裝置容量！
+                                    ▲ FUJITSU estimates the cooling and power-consumption issues brought by a scaled quantum supercomputing center. On one hand, cooling for ultra-large data centers generates substantial noise, which can interfere with qubits and increase error rates.
+                                    On the other hand, the power demand of a quantum supercomputing center is roughly estimated to reach the TW3 level, corresponding to more than 500 nuclear power plants in installed capacity.
 
 
                                     
@@ -460,7 +474,7 @@ RIKEN 理研 量子中心
                                 <!--
                                 <div style="text-align: center;">
                                     <a href="../Image/IMG_5950.JPG">
-                                        <img src="../Image/IMG_5950.JPG" alt="超導量子系統冷凍機簡報畫面" style="width: 100%; height: auto;">
+                                        <img src="../Image/IMG_5950.JPG" alt="Quantum fridge slide" style="width: 100%; height: auto;">
                                     </a>
                                 </div>
                                 <p class="dark-background">
@@ -474,14 +488,14 @@ RIKEN 理研 量子中心
                                 
                                 <div style="text-align: center;">
                                     <a href="../Image/IMG_5964.JPG">
-                                        <img src="../Image/IMG_5964.JPG" alt="超導量子電腦成本簡報投影片" style="width: 100%; height: auto;">
+                                        <img src="../Image/IMG_5964.JPG" alt="Quantum cost slide" style="width: 100%; height: auto;">
                                     </a>
                                  <a href="../Image/IMG_5966.JPG">
-                                        <img src="../Image/IMG_5966.JPG" alt="富士通研發未來方向簡報投影片" style="width: 100%; height: auto;">
+                                        <img src="../Image/IMG_5966.JPG" alt="Quantum R&amp;D slide" style="width: 100%; height: auto;">
                                     </a>
                                 </div>
                                 <p class="dark-background">
-                                    ▲ 由於上述推估量子超算中心的規模極其巨大，FUJITSU便提出一些開放問題，相關的基建要如何達成？由誰協助？以及如何降低相關的成本來增加可實踐性。
+                                    ▲ Because the estimated scale of such a quantum supercomputing center is enormous, FUJITSU raises several open questions: how can the relevant infrastructure be achieved, who will help enable it, and how can the associated costs be reduced to make it more feasible?
                                     
                                     <br><br>
                                 </p>
@@ -491,15 +505,6 @@ RIKEN 理研 量子中心
                                 
                                 
                                 <br><br>
-                                
-                                
-
-
-
-
-
-
-
 
 
 
@@ -517,20 +522,24 @@ RIKEN 理研 量子中心
 
 
                                 
-
+                                <br><br>
+                                <p>
+                                    <span style="font-size: 0.5em; line-height: 0.8;">
+                                        Originally written in Chinese by the author, these articles are translated into English to invite cross-language resonance.
+                                    </span>
+                                </p>
                                 <div class="post-meta">
                                     <span class="post-author">
-                                        <a href="../About/Wang.html"><img class="img-res" src="../Image/IMG_0964_2.JPG" alt="">王培儒</a>
+                                        <a href="../About_en/Wang.html"><img class="img-res" src="../Image/IMG_0964_2.JPG" alt="Professional headshot">Peir-Ru Wang</a>
                                     </span>
                                     <span class="post-category">
-                                        <a href="../ASW2026/main.html"><i class="fa fa-folder" aria-hidden="true"></i>2026中研院QPU冬季Workshop</a>
+                                        <a href="../ASW2026_en/main.html"><i class="fa fa-folder" aria-hidden="true"></i>2026 Academia Sinica SCQC Winter Workshop</a>
                                     </span>
                                 </div><!-- /.post-meta -->
                             
-                                
                                 <div id="prev-next-nav" class="text-center">
-                                    <a class="btn btn-gray" href="E.html">← 上一頁</a> 
-                                    <a class="btn btn-gray" href="../ASW2026_en/F.html" style="margin: 0 10px;">English Version</a>
+                                    <a class="btn btn-gray" href="E.html">← Previous</a> 
+                                    <a class="btn btn-gray" href="../ASW2026/F.html" style="margin: 0 10px;">中文版</a>
                                 </div>
 
                                 
@@ -556,13 +565,13 @@ RIKEN 理研 量子中心
                         <div class="sidebar">
                             <div class="widget">
                                 <div id="lesson-list_2">
-                                <div class="lesson-link "><a href="main.html">2026中研院QPU冬季Workshop：引言</a></div>
-                                <div class="lesson-link "><a href="A.html">超導量子電腦概論</a></div>
-                                <div class="lesson-link "><a href="B.html">IQM量子電腦科技發展</a></div>
+                                <div class="lesson-link "><a href="main.html">2026 Academia Sinica SCQC Winter Workshop</a></div>
+                                <div class="lesson-link "><a href="A.html">Introduction to Superconducting Quantum Computers</a></div>
+                                <div class="lesson-link "><a href="B.html">IQM Quantum Computer Technology Development</a></div>
                                 <div class="lesson-link "><a href="C.html">IQM KQCircuit Design</a></div>
                                 <div class="lesson-link "><a href="D.html">AMD</a></div>
-                                <div class="lesson-link "><a href="E.html">NVIDIA與NVQLink</a></div>
-                                <div class="lesson-link active"><a href="F.html">FUJITSU：FTQC研發與挑戰</a></div>
+                                <div class="lesson-link "><a href="E.html">NVIDIA and NVQLink</a></div>
+                                <div class="lesson-link active"><a href="F.html">FUJITSU：Unresolve Challenges in SC FTQC</a></div>
                                 </div>
                             </div>
   
@@ -577,8 +586,8 @@ RIKEN 理研 量子中心
         <div class="container">
             <div class="row">
                 <div class="col-md-3 col-sm-4 col-xs-6">
-                    <a class="site-title">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
-                    <p>一起走進新時代的前沿科學與量子科技</p>
+                    <a href="../index_ch.html" class="site-title">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
+                    <p>Exploring the Quantum Technology Together.</p>
                     </div>
                 <div class="col-lg-offset-4 col-md-3 col-sm-4 col-md-offset-2 col-sm-offset-0 col-xs-6 ">
                     <p class="site-title">𝐾𝐸𝐸𝑃 𝐼𝑁 𝑇𝑂𝑈𝐶𝐻</p>
