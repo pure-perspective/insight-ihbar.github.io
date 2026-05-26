@@ -115,6 +115,9 @@
                                 <p >走向量子計算，整合數千上萬個量子位元是當前努力的方向。
                                     然而，當多個超導量子位元整合在量子晶片上時，量子位元間的串擾（Crosstalk），成了當前量子計算嚴峻的課題。
                                 </p>
+<br>
+                                
+
                                 <h3>中研院的量子電腦發展</h3>
                                 <div style="text-align: center;">
                                     <a href="../Image/Sinica-QC.png">
@@ -247,14 +250,15 @@
                                         <li><p ><a href="#B1">量子位元是否可調頻率？</a></p></li>
                                         <li><p ><a href="#B2">量子位元的耦合為直接或間接耦合（借助諧振器）？間接耦合諧振器是否可調耦合大小？耦合拓墣是否可變？</a></p></li>
                                         <li><p ><a href="#B3">讀取諧振器的頻率區隔、與總線（Bus）的耦合</a></p></li>
-                                        <li><p ><a href="#B4">線路間的跨越、晶片分層與封裝</a></p></li>
+                                        <li><p ><a href="#B4">量子位元的連接拓樸、線路間的跨越</a></p></li>
+                                        <li><p ><a href="#B5">晶片分層與封裝</a></p></li>
                                     </ul>
                                     <p >
                                         在這些議題上，著名的兩大陣營IBM和Google就採取了截然不同策略。IBM走的不可調路線、而Google採幾乎全可調路線。以下針對電路設計來理解這兩條路線的著眼的原因差異。
                                     </p>
                                     <ol>
                                           <div id="B1"><br><br><br></div>
-                                          <h3><li>量子位元是否可調頻率？</li></h3>
+                                          <h4><li>量子位元是否可調頻率？</li></h4>
   
                                           <div style="text-align: center;">
                                               <a href="../Image/Transmon-1.png">
@@ -285,7 +289,7 @@
                                               
   
                                               <div id="B2"><br><br><br></div>
-                                          <h3><li>量子位元的耦合形式</li></h3>
+                                          <h4><li>量子位元的耦合形式</li></h4>
                                           <div style="text-align: center;">
                                               <a href="../Image/QQ-Coupling.png">
                                                 <img src="../Image/QQ-Coupling.png" alt="圖示顯示量子系統及其耦合關係。" style="width: 100%; height: auto;">
@@ -355,7 +359,7 @@
                                           
   
                                           <div id="B3"><br><br><br></div>
-                                          <h3><li>讀取諧振器的頻率區隔、與總線（Bus）的耦合</li></h3>
+                                          <h4><li>讀取諧振器的頻率區隔、與總線（Bus）的耦合</li></h4>
                                           <div style="text-align: center;">
                                               <a href="../Image/readout.jpeg">
                                                 <img src="../Image/readout.jpeg" alt="量子電路示意圖，包含 qubit 和環境連接。" style="width: 100%; height: auto;">
@@ -422,7 +426,7 @@
                                                 </span>
                                               </p>
                                             
-                                              <div id="20250702"></div><br><br>
+                                              
                                               <div style="text-align: center;">
                                                 <a href="../Image/Resonator_length.png">
                                                   <img src="../Image/Resonator_length.png" alt="電路圖示，標註 Purcell 濾波器與讀取共振器。" style="width: 100%; height: auto;">
@@ -436,10 +440,9 @@
                                               </span><br><br>
                                             </p>
                                               
-
-
+                                            
                                               <div id="B4"><br><br><br></div>
-                                          <h3><li>線路間的跨越、晶片分層與封裝</li></h3>
+                                          <h4><li>量子位元的連接拓樸、線路間的跨越</li></h4>
   
                                           <div style="text-align: center;">
                                               <a href="../Image/Picture2-5.webp">
@@ -447,24 +450,51 @@
                                               </a>
                                           </div>
                                           <p >
-                                              ▲QPU拓墣表示量子位元間的連接性。要實現量子演算法優勢，盡可能實踐量子位元的All-to-All連接是重要的議題。然而對於固態量子位元體系（超導量子位元、半導體量子位元等）
+                                              ▲QPU拓墣表示量子位元間的連接拓樸。要實現量子演算法優勢，盡可能實踐量子位元的All-to-All連接是重要的議題。然而對於固態量子位元體系（超導量子位元、半導體量子位元等）
                                               ，由於製程上的關係，多半是平面排列，這導致量子位元如果不採用3D線路連接，則只能跟鄰近的量子位元耦合。右圖為IBM目前的QPU拓墣。
                                               而對於非固態量子位元體系如離子阱量子位元，可以透過離子的偶極交互作用實現遠程的耦合，從而實現All-to-All。
-                                          </p>
-                                          <p>
                                             <br><span style="font-size: 0.7em; line-height: 1.2;">
                                               Ref: https://thequantuminsider.com/2022/08/12/a-guide-to-quantum-computing-benchmarking-and-certification/ <br>
                                               Schematic representation of different QPU topologies. (Top-left: IonQ, Top-center: OXC, Bottom-left: Rigetti, Right: IBM). Images compiled from AWS Braket and IBM Quantum Experience sites.
                                             </span><br><br>
                                           </p>
                                           
+                                          
+                                          <div id="20260526"></div><br><br>
+                                          <div style="text-align: center;">
+                                            <a href="../Image/IBM-Quantum_Heron-Vs.-Loon-Architecture.png.png">
+                                              <img src="../Image/IBM-Quantum_Heron-Vs.-Loon-Architecture.png.png"
+                                                   alt="IBM Quantum Heron and Loon architecture comparison."
+                                                   style="width: 100%; height: auto;">
+                                            </a>
+                                          </div>
+                                          
+                                          <p class="dark-background">
+                                            ▲ IBM Heron 與 Loon 架構比較。
+                                            Heron 架構顯示較清楚的 Qubit 與 tunable coupler 佈局，目標是在中等規模下提高品質與可用性。
+                                            然而，若要支援更複雜的錯誤校正與更大規模的量子計算，需要更高密度、更複雜的連接網路。
+                                            Loon 則展示更高密度、更複雜的連接網路，目標是支援更大規模的量子錯誤校正與量子運算。
+                                            從 Heron 到 Loon，即為為從「規則且較稀疏的耦合網路」走向「更高連通度、更複雜走線的量子晶片」。
+                                            這種架構挑戰不只是量子電路設計，也涉及製程、封裝、控制線路、微波工程與低溫系統整合。
+                                            <br>
+                                            <span style="font-size: 0.7em; line-height: 0.8;">
+                                              Ref: https://www.hpcwire.com/2025/06/10/ibm-sets-2029-target-for-fault-tolerant-quantum-computing/
+                                            </span>
+                                          </p>
+
+
+                                          
+                                              <div id="B5"><br><br><br></div>
+                                          <h4><li>晶片分層與封裝</li></h4>
+
+
                                           <div style="text-align: center;">
                                               <a href="../Image/Sinica-packing.png">
                                                 <img src="../Image/Sinica-packing.png" alt="晶片結構與封裝示意圖分析" style="width: 100%; height: auto;">
                                               </a>
                                             </div>
                                             <p >
-                                              ▲首先，固態量子位元體系多半是平面排列，各種控制線複雜的穿越導致線路之間勢必有跨越的問題。元件間的互相跨越（control line可以跨越resonator/coupler，但反之不宜）或是避免跨越（任何線路都不可跨越量子位元）
+                                              ▲ 固態量子位元體系多半是平面排列，各種控制線複雜的穿越導致線路之間勢必有跨越的問題。元件間的互相跨越（control line可以跨越resonator/coupler，但反之不宜）或是避免跨越（任何線路都不可跨越量子位元）
                                               。再來，量子晶片亦需要在封裝上下功夫。當前主要採用覆晶封裝（flip chip），為了維持量子位元的保真度不受其他元件的干擾，
                                               可以將量子晶片拆成兩層，需要高品質的區域放置量子位元，而其他如控制電路、讀取等線路放到另外一層，再將兩層疊在一起。
                                               <br><span style="font-size: 0.7em; line-height: 0.8;">
@@ -476,16 +506,20 @@
                                                   <a href="../Image/IBM-Eagle.png">
                                                     <img src="../Image/IBM-Eagle.png" alt="量子計算晶片結構與功能介紹圖。" style="width: 100%; height: auto;">
                                                   </a>
+                                                  <a href="../Image/CsW4y4MxI9KOxHLM-1456x819.jpg">
+                                                    <img src="../Image/CsW4y4MxI9KOxHLM-1456x819.jpg" alt="---" style="width: 100%; height: auto;">
+                                                </a>
                                                 </div>
                                                 <p >
-                                                  ▲ 除了雙層的覆疊，目前也開始朝向將不同功能的元件分散到獨立的晶片曾。圖為IBM Eagle的設計，將量子位元、控制線路、諧振器分到不同的晶片層，減少干擾。
+                                                  ▲ 除了雙層的覆疊，目前也開始朝向將不同功能的元件分散到獨立的晶片層。圖為IBM Eagle和Osprey的設計，將量子位元、控制線路、諧振器分到不同的晶片層，減少干擾。
                                                   <br><span style="font-size: 0.7em; line-height: 0.8;">
-                                                      Ref: IBM quantum computers: evolution, performance, and future directions<br>
-                                                      DOI:10.1007/s11227-025-07047-7
+                                                      Ref: IBM quantum computers: evolution, performance, and future directions, DOI:10.1007/s11227-025-07047-7
+                                                      <br>Ref: https://wccftech.com/ibm-intros-osprey-quantum-processor-over-400-quantum-bits-to-power-quantum-system-two/
                                                   </span><br><br>
                                                   </p>
+
+
                                               
-  
   
   
                                               <div style="text-align: center;">
@@ -599,6 +633,9 @@
                                 <div class="lesson-link "><a href="G.html">控制電子系統</a></div>
                                 <div class="lesson-link active"><a href="U.html">邁向Scalable QPU-量子晶片設計</a></div>
                                 <div class="lesson-link "><a href="V2.html">邁向Scalable QPU-串擾議題</a></div>
+                                <div class="lesson-link "><a href="V4.html">邁向Scalable QPU-跨晶片連接</a></div>
+                                <div class="lesson-link "><a href="WA.html">邁向超大型量子計算：超算-量子混合運算</a></div>
+                                <div class="lesson-link "><a href="W.html">邁向超大型量子計算：製冷機間量子連結</a></div>
                                 </div>
                             </div>
   

@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N39VTY949N"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-N39VTY949N');
+</script>
+    <!-- Basic Page Needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <meta name="author" content="Peir-Ru Wang">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;1,300&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/20250525-icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/20250525-icon.png">
+
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/css/style.css" rel="stylesheet">
+    <link href="../assets/css/responsive.css" rel="stylesheet">
+
+    <title>Toward Scalable QPU - Cross-Chip Quantum Interconnection</title>
+    <meta name="description" content="Learn how scalable superconducting QPUs use modular chip-to-chip quantum interconnects (C-, M-, L-couplers) to boost connectivity and enable error correction.">
+    <meta name="keywords" content="- Quantum hardware crosstalk issues
+- Scalable QPU design strategies 2025
+- Classical and quantum crosstalk explanation
+- Crosstalk mitigation in quantum circuits
+- Understanding crosstalk in superconducting qubits
+- Guide to quantum computing hardware
+- Quantum state propagation effects
+- Electromagnetic leakage in quantum systems
+- Optimizing QPU design for performance
+- Advanced quantum computing discussions 2025">
+    <link rel="canonical" href="https://www.insight-ihbar.com/QC_hardware_en/V4.html">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+  <meta name="keywords" content="scalable QPU cross-chip quantum interconnection  
+superconducting quantum processor modular architecture  
+chip-to-chip quantum interconnect M-coupler  
+IBM Quantum roadmap Flamingo Crossbill Kookaburra  
+C-coupler non-neighboring qubit connectivity  
+L-coupler long-distance cryostat quantum links  
+quantum error correction qLDPC connectivity  
+modular superconducting qubits multi-chip scaling  
+quantum data center hybrid quantum classical computing  
+low-loss phase-stable quantum communication channels">
+</head>
+<body>
+
+    <header id="masthead" class="site-header">
+        <nav id="primary-navigation" class="site-navigation">
+            <div class="container">
+
+                <div class="navbar-header">                   
+                    <a href="../index.html" class="site-title">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
+                </div><!-- /.navbar-header -->
+
+                <div class="collapse navbar-collapse" id="agency-navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="../index.html">Home</a></li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Qubit Physics<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                              <li><a href="../SCQ_elementary_en/main.html">Superconducting Qubits (Elementary)</a></li>
+                              <li><a href="../SCQ_advanced_en/main.html">Superconducting Qubits (Advanced)</a></li>
+                              <li><a href="../SpQ_en/main.html">Semiconductor Spin Qubits</a></li>
+                            </ul>
+                        </li>
+                        <!--<li class="active"><a href="../SCQ_elementary/main.html">科普介紹</a></li>-->
+                        <li class="active"><a href="../QC_hardware_en/main.html">Hardware</a></li>
+                        <li><a href="../QID_en/main.html">Quantum Industries</a></li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Workshop Note<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                <li><a href="../ASW2026_en/main.html">2026 Academia Sinica SCQC Winter Workshop</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Consultance<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                <li><a href="https://www.quantum-perspectives.com/About_en/main.html">Taiwan Market Outreach Services</a></li>
+                                <li><a href="../About_en/main.html">About Us</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="../index_ch.html">中文版</a></li>                        
+                    </ul>
+                </div>
+
+            </div>   
+        </nav><!-- /.site-navigation -->
+    </header><!-- /#mastheaed -->
+
+    <div id="hero" class="hero overlay subpage-hero blog-hero">
+        <div class="hero-content">
+            <div class="hero_2-text">
+                <h1>Hardware Guide</h1>
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+                  <li class="breadcrumb-item"><a href="./main.html">Hardware Guide (2025)</a></li>
+                  <!--<li class="breadcrumb-item active">約瑟夫森節</li>-->
+                </ol>
+            </div><!-- /.hero-text -->
+        </div><!-- /.hero-content -->
+    </div><!-- /.hero -->
+
+    <main id="main" class="site-main">
+
+        <section class="site-section subpage-site-section section-blog">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                        <article class="blog-post">
+                            <!--<img src="../assets/img/portfolio-1.jpg" class="img-res" alt="Laptop on desk">-->
+                            <div class="post-content">
+                                <div style="text-align: center;">
+  <h2>Toward Scalable QPU - Cross-Chip Quantum Interconnection</h2>
+  <h3></h3>
+  <span style="font-size: 0.7em; line-height: 0.8;">
+    2026.05.25
+  </span>
+</div>
+
+<p class="dark-background">
+  For superconducting quantum computers, as the number of qubits increases, chip area, wiring density, frequency allocation, microwave crosstalk, fabrication yield, packaging complexity, and the requirements of quantum error correction all become rapidly more demanding.
+  To realize a truly scalable quantum computer, the key question is not only “how to fabricate more qubits,” but how to make a large number of qubits operate together under conditions that allow reliable control, readout, and error correction.
+</p>
+
+<p class="dark-background">
+  Therefore, the development direction of large-scale QPUs is gradually moving from a “single giant chip” toward a <b>modular quantum system</b>.
+  In other words, a future QPU may not necessarily be one extremely large chip, but rather a quantum computing cluster composed of multiple quantum chips, multiple packaging modules, or even multiple dilution refrigerators.
+  In this context, <b>quantum interconnection</b> becomes a core technology for realizing a scalable QPU.
+</p>
+<br>
+
+<table width="100%" border="1" cellpadding="10" cellspacing="0"
+       style="border-collapse: collapse; font-family: sans-serif; border-color: #cccccc;">
+  <thead>
+    <tr bgcolor="#f2f2f2" align="center">
+      <th width="20%">Scaling Approach</th>
+      <th width="35%">Advantages</th>
+      <th>Main Bottlenecks</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>Scaling up a single chip</b></td>
+      <td>The architecture is intuitive, the coupling distance within the chip is short, and the control model is relatively simple.</td>
+      <td>Chip area, wiring density, fabrication yield, frequency crowding, and crosstalk increase rapidly.</td>
+    </tr>
+    <tr>
+      <td><b>Multiple chips inside a single refrigerator</b></td>
+      <td>The total number of qubits can be increased through chiplet, packaging, and modular technologies.</td>
+      <td>The cryogenic space is limited, and packaging, vertical interconnection, and synchronized control become more complex.</td>
+    </tr>
+    <tr>
+      <td><b>Quantum links across multiple refrigerators</b></td>
+      <td>QPUs can be distributed across multiple cryostats to form a larger quantum computing cluster.</td>
+      <td>Low-loss, low-thermal-noise, phase-stable, and synchronizable quantum channels are required.</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+<ol>
+  <h3><li>From a Single Chip to a Modular QPU</li></h3>
+
+  <p class="dark-background">
+    IBM Quantum’s development roadmap clearly illustrates this modularization trend.
+    Early quantum processors mainly emphasized increasing the number of qubits on a single chip, such as the Hummingbird, Eagle, Osprey, and Condor processors.
+    However, as systems move toward higher qubit counts and stronger error-correction requirements, simply enlarging a single chip is no longer sufficient for long-term scaling.
+  </p>
+
+  <p class="dark-background">
+    Therefore, IBM’s architecture has begun to move toward multi-chip, multi-module, and multi-system parallelization.
+    For example, the Heron architecture emphasizes higher-quality medium-scale chips;
+    Crossbill and Flamingo represent chip-to-chip connection and modular packaging;
+    Kookaburra further demonstrates the concept of multi-chip quantum parallelization.
+    These developments all point to one central question:
+    <b>How can quantum information be exchanged effectively between different quantum chips?</b>
+  </p>
+
+  <p class="dark-background">
+    Here, two different types of connection must be distinguished.
+    The first is a <b>classical link</b>, which uses real-time classical communication to allow multiple QPUs to execute tasks collaboratively.
+    The second is a <b>quantum link</b>, which is a channel that truly transmits quantum states or establishes quantum correlations.
+    The former is easier to implement, while the latter is closer to the core capability required for future large-scale fault-tolerant quantum computers.
+  </p>
+  <br>
+
+  <div style="text-align: center;">
+    <a href="../Image/this-diagram-shows-the-quantum-processors-that-ibm-expects-to-have-ready-in-2023-condor-and-heron-in-2024-flamingo-and-cross.webp">
+      <img src="../Image/this-diagram-shows-the-quantum-processors-that-ibm-expects-to-have-ready-in-2023-condor-and-heron-in-2024-flamingo-and-cross.webp"
+           alt="Quantum roadmap 2023-25"
+           style="width: 100%; height: auto;">
+    </a>
+  </div>
+
+  <p class="dark-background">
+    ▲ IBM quantum processors are moving from single-chip scaling toward multi-chip modularization.
+    Condor represents the scaling of the qubit count on a single chip, while Flamingo, Crossbill, and Kookaburra begin to introduce chip-to-chip quantum communication and modular scaling.
+    It is worth noting that interconnections inside chips can be divided into classical interconnections and quantum interconnections.
+    Classical interconnections are basically used for microwave control/readout signals, whereas quantum interconnections require the interactions between chips to preserve quantum effects.
+    <br>
+    <span style="font-size: 0.7em; line-height: 0.8;">
+      Ref: https://spectrum.ieee.org/ibm-condor
+    </span>
+  </p>
+  <br>
+
+  <div style="text-align: center;">
+    <a href="../Image/crossbill_condor_8f886198bc.png">
+      <img src="../Image/crossbill_condor_8f886198bc.png" alt="Quantum chip module" style="width: 70%; height: auto;">
+    </a>
+  </div>
+
+  <p class="dark-background">
+    ▲ IBM Quantum Crossbill (left) and IBM Quantum Condor (right). Condor adopts a monolithic large-chip design, while Crossbill uses a multi-chip interconnection design.
+    <span style="font-size: 0.7em; line-height: 0.8;">
+      <br>Ref: https://www.ibm.com/quantum/blog/qdc-2024
+    </span>
+    <br><br>
+  </p>
+
+  <div style="text-align: center;">
+    <a href="../Image/image1_00a8b8ece1.png">
+      <img src="../Image/image1_00a8b8ece1.png"
+           alt="Quantum computer diagram"
+           style="width: 70%; height: auto;">
+    </a>
+  </div>
+
+  <p class="dark-background">
+    ▲ Two IBM Quantum Eagle processors are connected through a real-time classical link.
+    This architecture allows multiple QPUs to work collaboratively within the same system, but it still belongs to classical communication and is different from a true quantum interconnect.
+    <br>
+    <span style="font-size: 0.7em; line-height: 0.8;">
+      Ref: https://www.ibm.com/quantum/blog/lo-locc-circuit-cutting
+    </span>
+  </p>
+  <br>
+
+  <div style="text-align: center;">
+    <a href="../Image/Heron_Parallelization_Graphic_9109dba010.png">
+      <img src="../Image/Heron_Parallelization_Graphic_9109dba010.png" alt="Heron qubit layout" style="width: 70%; height: auto;">
+    </a>
+  </div>
+
+  <p class="dark-background">
+    ▲ The interconnection architecture of IBM Heron mainly uses a shared microwave signal bus for control/readout.
+    Since the current microwave signals for control/readout are classical control signals, this type of interconnection is classified as a classical interconnection.
+    <span style="font-size: 0.7em; line-height: 0.8;">
+      <br>Ref: https://www.ibm.com/quantum/blog/ibm-quantum-roadmap-2025
+    </span>
+    <br><br>
+  </p>
+
+  <h3><li>Three Levels of Quantum Interconnection: C-coupler, M-coupler, and L-coupler</li></h3>
+
+  <p class="dark-background">
+    IBM classifies quantum interconnections according to different length scales.
+    Some interconnections are used inside the same chip to increase the connectivity between non-neighboring qubits;
+    some are used between adjacent chips to form multi-chip modules;
+    others are responsible for connecting more distant chip platforms inside the same dilution refrigerator.
+    These interconnection technologies target quantum networks within the same refrigerator.
+  </p>
+
+  <table width="100%" border="1" cellpadding="10" cellspacing="0"
+         style="border-collapse: collapse; font-family: sans-serif; border-color: #cccccc;">
+    <thead>
+      <tr bgcolor="#f2f2f2" align="center">
+        <th width="10%">Interconnection Type</th>
+        <th width="23%">Connection Scale</th>
+        <th>Functional Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><b>C-coupler</b></td>
+        <td>Between non-neighboring qubits within the same chip</td>
+        <td>
+          The C-coupler is used to improve intra-chip connectivity, allowing distant and non-neighboring qubits on the same chip to transmit quantum information.
+          This is particularly important for certain quantum error-correction codes, because error correction does not necessarily rely only on nearest-neighbor qubit interactions.
+        </td>
+      </tr>
+      <tr>
+        <td><b>M-coupler</b></td>
+        <td>Interconnection between adjacent chips</td>
+        <td>
+          The M-coupler is a short-distance chip-to-chip quantum interconnect used to transmit quantum information between adjacent quantum chips.
+          It is suitable for combining several smaller chips into a larger modular quantum processor.
+        </td>
+      </tr>
+      <tr>
+        <td><b>L-coupler</b></td>
+        <td>Between more distant chips inside the same refrigerator</td>
+        <td>
+          The L-coupler is a longer-distance quantum interconnection that can route quantum information between different platforms or more distant chips inside the same cryostat.
+          As the transmission distance increases, it places higher demands on loss, latency, phase stability, and synchronized control.
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <br>
+
+  <div style="text-align: center;">
+    <a href="../Image/IBM-C-coupler.png">
+      <img src="../Image/IBM-C-coupler.png" alt="Quantum chip diagram" style="width: 33%; height: auto;">
+    </a>
+    <a href="../Image/IBM-M-coupler.png">
+      <img src="../Image/IBM-M-coupler.png" alt="Quantum chip diagram" style="width: 33%; height: auto;">
+    </a>
+    <a href="../Image/IBM-L-coupler.png">
+      <img src="../Image/IBM-L-coupler.png" alt="Quantum chip diagram" style="width: 33%; height: auto;">
+    </a>
+  </div>
+
+  <p class="dark-background">
+    ▲ <b>(Left) C-coupler:</b> Used to improve qubit connectivity within the same chip.
+    In many quantum error-correction architectures, qubits not only need to interact with nearest neighbors, but may also need to transmit information to more distant qubits.
+    The goal of the C-coupler is to establish effective quantum communication paths between non-neighboring qubits.
+    <br>
+    <b>(Middle) M-coupler:</b> Used for short-distance interconnection between adjacent quantum chips.
+    It can transmit quantum information between neighboring chips and is suitable for combining several smaller chips into a larger modular quantum processor.
+    <br>
+    <b>(Right) L-coupler:</b> Used for longer-distance quantum interconnection.
+    It can transmit quantum information between quantum chips on different platforms inside the same refrigerator, meaning that quantum chips do not all have to be packed into the same local packaging region.
+    However, the increased distance also brings stricter limits on loss, latency, and transmission rate.
+    <br><span style="font-size: 0.7em; line-height: 0.8;">
+      Ref: IEEE Spectrum / IBM, Optics Lab
+    </span><br><br>
+  </p>
+
+  <div style="text-align: center;">
+    <a href="../Image/Quantum_Connects_Parallelization_Graphic_7460c0616a.png">
+      <img src="../Image/Quantum_Connects_Parallelization_Graphic_7460c0616a.png"
+           alt="Quantum chip link"
+           style="width: 100%; height: auto;">
+    </a>
+  </div>
+
+  <p class="dark-background">
+    ▲ The M-coupler allows multiple quantum processors to work together through connection channels, so quantum computing is no longer limited to a single chip.
+    <br>
+    <span style="font-size: 0.7em; line-height: 0.8;">
+      Ref: https://www.ibm.com/quantum/blog/ibm-quantum-roadmap-2025
+    </span>
+  </p>
+  <br>
+
+  <div style="text-align: center;">
+    <a href="../Image/IBM_Quantum_Production_Flamingo_24_Packaged_V008_RS_COMP_V001_RS_1114573c07.jpg">
+      <img src="../Image/IBM_Quantum_Production_Flamingo_24_Packaged_V008_RS_COMP_V001_RS_1114573c07.jpg"
+           alt="Dual circuit boards"
+           style="width: 100%; height: auto;">
+    </a>
+    <a href="../Image/960x0 (1).webp">
+      <img src="../Image/960x0 (1).webp" alt="L-coupler diagram" style="width: 100%; height: auto;">
+    </a>
+  </div>
+
+  <p class="dark-background">
+    ▲ The L-coupler used for IBM Flamingo demonstrates the design direction of modular quantum processors and long-distance connection.
+    The focus of this type of architecture is not only to increase the number of qubits, but also to allow multiple quantum modules to operate together under synchronized and controllable conditions.
+    <span style="font-size: 0.7em; line-height: 0.8;">
+      <br>Ref: https://www.ibm.com/quantum/blog/qdc-2024
+      <br>Ref: https://www.forbes.com/sites/karlfreund/2023/12/04/ibm-launches-quantum-system-two-and-a-roadmap-to-quantum-advantage/
+    </span>
+    <br><br>
+  </p>
+
+  <br><br>
+
+  <div style="text-align: center;">
+    <a href="../Image/960x0.webp">
+      <img src="../Image/960x0.webp"
+           alt="Coupler diagram"
+           style="width: 100%; height: auto;">
+    </a>
+  </div>
+
+  <p class="dark-background">
+    ▲ C-, M-, and L-couplers can be used together to expand quantum chip interconnection.
+    <br>
+    <span style="font-size: 0.7em; line-height: 0.8;">
+      Ref: Forbes (https://www.forbes.com/sites/karlfreund/2023/12/04/ibm-launches-quantum-system-two-and-a-roadmap-to-quantum-advantage/) / IBM
+    </span>
+  </p>
+  <br>
+
+  <div style="text-align: center;">
+    <a href="../Image/Kookaburra_Parallelization_Graphic_afc360b38b.png">
+      <img src="../Image/Kookaburra_Parallelization_Graphic_afc360b38b.png"
+           alt="Quantum chip diagram"
+           style="width: 100%; height: auto;">
+    </a>
+  </div>
+
+  <p class="dark-background">
+    ▲ Kookaburra demonstrates the concept of parallelized interconnection among multi-chip quantum processors.
+    Multiple quantum chips are connected through quantum links to form a larger processing unit.
+    <span style="font-size: 0.7em; line-height: 0.8;">
+      <br>Ref: https://www.ibm.com/quantum/blog/ibm-quantum-roadmap-2025
+    </span>
+    <br><br>
+  </p>
+  <br>
+
+  <p class="dark-background">
+    From these three types of interconnection, we can see that the scaling of large quantum computers actually involves multiple levels:
+    the first level is qubit connectivity within the same chip;
+    the second level is chip-to-chip interconnection between adjacent chips;
+    the third level is long-distance connection between different shielding cans inside the same refrigerator;
+    beyond that comes the inter-cryostat quantum link between multiple refrigerators.
+  </p>
+
+  <h3><li>Why Does Error Correction Require Higher Connectivity?</li></h3>
+
+  <p class="dark-background">
+    In small quantum processors, nearest-neighbor coupling is usually sufficient for executing many basic quantum circuits.
+    However, in QEC architectures, the situation becomes more complex.
+    Many efficient quantum error-correction codes, such as LDPC codes, may require higher non-local connectivity between qubits.
+    If all interactions must be completed through nearest-neighbor swaps, additional SWAP gates will be introduced, increasing circuit depth and accumulating more errors.
+  </p>
+  <br>
+
+  <h4>qLDPC Quantum Error Correction</h4>
+
+  <p>
+    In 2024, IBM demonstrated work on qLDPC quantum error correction.
+    QEC codes play a very important role in practical computation, and how to achieve optimal information transmission and error-correction redundancy with minimal overhead has always been an engineering trade-off.
+    Because quantum computation has the feature that quantum information cannot be directly measured without disturbance, quantum error correction becomes even more difficult.
+    Superconducting qubits are implemented on two-dimensional quantum chips, and the current mainstream quantum error-correction approach is the <b>surface code</b>.
+    The advantage of the surface code is that its connectivity requirement only involves neighboring qubits and does not require long-range interactions.
+    Its disadvantage is that the number of ancilla qubits increases together with the system size, which in practice increases system complexity and error sources.
+    In 2024, IBM demonstrated quantum error-correction operations based on <b>qLDPC (quantum Low-Density Parity Check code)</b> combined with the surface code.
+    qLDPC requires long-range interactions, and IBM’s multilayer chip fabrication wiring/C-coupler enables more complex inter-qubit connectivity topologies.
+  </p>
+  <br>
+
+  <div style="text-align: center;">
+    <a href="../Image/截圖 2026-03-03 下午5.50.12.png">
+      <img src="../Image/截圖 2026-03-03 下午5.50.12.png" alt="Quantum code lattice" style="width: 100%; height: auto;">
+    </a>
+  </div>
+
+  <p class="dark-background">
+    ▲ A comparison in IBM’s paper between the conventional surface code and a new, efficient bivariate bicycle code, abbreviated as BB code, which is a type of qLDPC code.<br>
+    <b>Figure a.</b> The surface code.<br>
+    <b>Figure b.</b> The geometry of the BB code, or bivariate bicycle code: it is “embedded” on a <b>topological torus</b>, shaped like a donut, where each qubit has six lines connected to it, including four short-range and two long-range connections.<br>
+    <b>Figure c.</b> The hybrid architecture and operations.<br>
+    To reach the same fault-tolerance level, a conventional surface code may require thousands of qubits, while the BB code only requires a little more than one hundred.
+    <span style="font-size: 0.7em; line-height: 0.8;">
+      <br>Ref: 10.1038/s41586-024-07107-7
+    </span>
+    <br><br>
+  </p>
+
+  <div style="text-align: center;">
+    <a href="../Image/IBM_FTQC_Torus_2_K_v3_16fc27ed7f.gif">
+      <img src="../Image/IBM_FTQC_Torus_2_K_v3_16fc27ed7f.gif" alt="Qubit connectivity grid" style="width: 100%; height: auto;">
+    </a>
+  </div>
+
+  <p class="dark-background">
+    ▲ A schematic drawn by IBM showing the BB code embedded on the topological torus mentioned above.
+    <span style="font-size: 0.7em; line-height: 0.8;">
+      <br>Ref: https://www.ibm.com/quantum/blog/large-scale-ftqc
+    </span>
+    <br>
+  </p>
+
+  <p class="dark-background">
+    Therefore, the significance of the C-coupler, M-coupler, and L-coupler is not merely to “connect chips together,”
+    but to provide a more flexible connectivity graph for future error-corrected logical qubits.
+    From this perspective, quantum interconnection is not only a hardware packaging problem;
+    it also directly affects quantum error-correction codes, compilation strategies, and system architecture.
+  </p>
+  <br>
+
+  <h3><li>From Expanding Quantum Chips to Quantum Data Centers: Toward Ultra-Large-Scale Quantum Computing</li></h3>
+
+  <p class="dark-background">
+    When quantum computers move from a single QPU toward quantum data centers, the system architecture becomes closer to a hybrid quantum-classical infrastructure.
+    In this architecture, the QPU is responsible for quantum-state evolution and quantum measurement;
+    the classical cluster is responsible for compilation, scheduling, optimization, error decoding, and feedback;
+    and the runtime system is responsible for assigning quantum tasks to suitable hardware resources.
+  </p>
+
+  <div style="text-align: center;">
+    <a href="../Image/下載.jpeg">
+      <img src="../Image/下載.jpeg" alt="Quantum computing diagram" style="width: 100%; height: auto;">
+    </a>
+    <a href="../Image/960x0 (2).webp">
+      <img src="../Image/960x0 (2).webp" alt="IBM Quantum roadmap" style="width: 100%; height: auto;">
+    </a>
+  </div>
+
+  <p class="dark-background">
+    ▲ IBM’s conceptual image of hybrid supercomputing-quantum computing.
+    Scaled qubit computation will move from on-chip interconnection, cross-chip interconnection, and intra-refrigerator cross-package interconnection toward inter-refrigerator quantum interconnection, which will be introduced further in a later article.
+    <span style="font-size: 0.7em; line-height: 0.8;">
+      <br>(Top)Ref: https://spectrum.ieee.org/ibm-quantum-computer-2668978269
+      <br>(Bottom)Ref: https://www.forbes.com/sites/karlfreund/2023/12/04/ibm-launches-quantum-system-two-and-a-roadmap-to-quantum-advantage/
+    </span>
+    <br><br>
+  </p>
+
+  <p class="dark-background">
+    Therefore, the core of a scalable QPU is not a breakthrough at a single level, but the joint maturation of multiple levels:
+    better qubit connectivity is needed inside the chip;
+    low-loss chip-to-chip quantum interconnects are needed between chips;
+    long-distance and phase-stable quantum channels are needed inside the refrigerator;
+    and inter-cryostat links capable of maintaining synchronization and quantum correlations are needed between multiple refrigerators.
+  </p>
+
+  <p class="dark-background">
+    From the development of IBM Quantum, we can see that the C-coupler, M-coupler, and L-coupler represent quantum interconnections at different length scales:
+    from the connection of non-neighboring qubits within a chip, to short-distance connection between adjacent chips,
+    and then to longer-distance quantum connection inside the same refrigerator.
+    Together, they point to an important direction:
+    <b>the future of quantum computers is not only about larger chips, but about better quantum-networked architectures.</b>
+  </p>
+
+</ol>
+
+                                <p>
+                                    <span style="font-size: 0.5em; line-height: 0.8;">
+                                        Originally written in Chinese by the author, these articles are translated into English to invite cross-language resonance.
+                                    </span>
+                                </p>
+                                <div class="post-meta">
+                                    <span class="post-author">
+                                        <a href="../About_en/Wang.html"><img class="img-res" src="../Image/IMG_0964_2.JPG" alt="Professional headshot">Peir-Ru Wang</a>
+                                    </span>
+                                    <span class="post-category">
+                                        <a href="./main.html"><i class="fa fa-folder" aria-hidden="true"></i>Hardware Guide (2025)</a>
+                                    </span>
+                                </div><!-- /.post-meta -->
+                            
+                                <div id="prev-next-nav" class="text-center">
+                                    <a class="btn btn-gray" href="V2.html">← Previous</a> 
+                                    <a class="btn btn-gray" href="../QC_hardware/V4.html" style="margin: 0 10px;">中文版</a>
+                                    <a class="btn btn-gray" href="WA.html">Next →</a>
+                                </div>
+
+                                
+
+                            </div><!-- /.post-content -->
+                        </article><!-- /.blog-post -->
+                        <!--<div id="PostComments" class="post-comments">
+                            
+                            
+                            
+                        </div> /#PostComments -->
+                        <!--<div class="respond">
+                            <h3>Post a Comment</h3>
+                            <form class="form-horizontal">
+                                <input class="form-control" type="text" placeholder="Your Name*" required>
+                                <input class="form-control" type="email" placeholder="Your Email" required>
+                                <textarea class="form-control form-control-comment" type="text" placeholder="Your Comment*" required></textarea>
+                                <button class="btn btn-green">Add a comment</button>
+                            </form>    
+                        </div> /.respond -->
+                    </div>
+                    <aside class="col-md-3">
+                        <div class="sidebar">
+                            <div class="widget">
+                                <div id="lesson-list_2">
+                                <div class="lesson-link "><a href="main.html">Hardware Technologies and Vendor Guide (2025): Menu</a></div>
+                                <div class="lesson-link "><a href="A.html">Current Application Models of Superconducting Quantum Computers</a></div>
+                                <div class="lesson-link "><a href="B.html">Superconducting Quantum Computers – Hardware Dissection</a></div>
+                                <div class="lesson-link "><a href="C.html">Microwave Components Overview</a></div>
+                                <div class="lesson-link "><a href="H.html">Microwave Component Vendors</a></div>
+                                <div class="lesson-link "><a href="U2.html">Cryogenic Wiring and Connectors</a></div>
+                                <div class="lesson-link "><a href="O.html">Cryogenic Wiring and Connectors - Vendors</a></div>
+                                <div class="lesson-link "><a href="F.html">Dilution Refrigerators</a></div>
+                                <div class="lesson-link "><a href="M.html">Thermal Management and Thermal Anchoring</a></div>
+                                <div class="lesson-link "><a href="M2.html">Thermalization Solutions</a></div>
+                                <div class="lesson-link "><a href="G.html">Control Electronics</a></div>
+                                <div class="lesson-link "><a href="U.html">Toward Scalable QPU - Quantum Chip Design</a></div>
+                                <div class="lesson-link "><a href="V2.html">Toward Scalable QPU - The Issue of Crosstalk</a></div>
+                                <div class="lesson-link active"><a href="V4.html">Toward Scalable QPU - Cross-Chip Quantum Interconnection</a></div>
+                                <div class="lesson-link "><a href="WA.html">Toward Ultra-Large-Scale Quantum Computing: Supercomputer–Quantum Hybrid Computing</a></div>
+                                <div class="lesson-link "><a href="W.html">Toward Ultra-Large-Scale Quantum Computing: Inter-Cryostat Quantum Links</a></div>
+                                </div>
+                            </div>
+  
+                        </div></aside>
+                </div>
+            </div>
+        </section><!-- /.section-portfolio -->
+
+    </main><!-- /#main -->
+
+    <footer id="colophon" class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-4 col-xs-6">
+                    <a href="../index_ch.html" class="site-title">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
+                    <p>Exploring the Quantum Technology Together.</p>
+                    </div>
+                <div class="col-lg-offset-4 col-md-3 col-sm-4 col-md-offset-2 col-sm-offset-0 col-xs-6 ">
+                    <p class="site-title">𝐾𝐸𝐸𝑃 𝐼𝑁 𝑇𝑂𝑈𝐶𝐻</p>
+                    <ul class="list-unstyled contact-links">
+                        <li><i class="fa fa-envelope" aria-hidden="true"></i><a href="mailto:info@insight-ihbar.com">info@insight-ihbar.com</a></li>
+                        <!--<li><i class="fa fa-phone" aria-hidden="true"></i><a href="tel:+37400800000">+374 (00) 80 00 00 </a></li>
+                        <li><i class="fa fa-fax" aria-hidden="true"></i><a href="+37400900000">+374 (00) 90 00 00</a></li>
+                        <li><i class="fa-solid fa-location-dot"></i><p>Hsinchu 300, Taiwan (R.O.C.)</p></li>-->
+                    </ul>
+                </div>
+                <!--<div class="clearfix visible-xs"></div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6">
+                    <h3>Featured links</h3>
+                    <ul class="list-unstyled">
+                        <li class="active"><a href="index_ch.html">Home</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="portfolio.html">Porfolio</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>-->
+            </div>
+        </div>
+        <div class="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-8">
+                        <div class="social-links">
+                            <!--<a class="twitter-bg" href="#"><i class="fab fa-twitter"></i></a>-->
+                            <!--<<a class="facebook-bg" href="https://www.facebook.com/people/Quantum-Perspectives/61576446849628/"><i class="fab fa-facebook"></i></a>-->
+                            <!--<a class="facebook-bg" href="https://www.facebook.com/people/%E9%87%8F%E5%AD%90%E9%81%A0%E8%A6%8BQuantum-Perspectives/61576883632888/"><i class="fab fa-facebook-f"></i></a>-->
+                            <!--<a class="pinterest" href="#"><i class="fa-solid fa-microscope"></i></a>-->
+                            <!--<a class="facebook-bg" href="https://www.facebook.com/people/Insight-hbar/61576811775374/"><i class="fab fa-facebook-f"></i></a>-->
+                            <a class="linkedin-bg" href="https://www.linkedin.com/company/insight-ihbar"><i class="fab fa-linkedin"></i></a>
+                        </div><!-- /.social-links -->
+                    </div>
+                    <div class="col-xs-4">
+                        <div class="text-right">
+                            <p><span style="font-size: 16px;">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</span></p>
+                            <p>All Rights Reserved</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.copyright -->
+    </footer><!-- /#footer -->
+
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="../assets/js/bootstrap-select.min.js"></script>
+    <script src="../assets/js/jquery.slicknav.min.js"></script>
+    <script src="../assets/js/jquery.countTo.min.js"></script>
+    <script src="../assets/js/jquery.shuffle.min.js"></script>
+    <script src="../assets/js/script.js"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  
+</body>
+</html>

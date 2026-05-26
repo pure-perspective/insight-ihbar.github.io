@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    
+
+    
+    <meta name="author" content="Peir-Ru Wang">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,600,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/20250525-icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/20250525-icon.png">
+
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="../assets/css/style.css" rel="stylesheet">
+    <link href="../assets/css/responsive.css" rel="stylesheet">
+
+    <title>邁向超大型量子計算：製冷機間量子連結</title>
+    <meta name="description" content="解析製冷機間量子連結（inter-cryostat quantum link）如何在 mK 低溫中傳輸微波光子、量子態與遠距糾纏，掌握通道要求、硬體組成與關鍵技術門檻，邁向模組化超大型量子計算。">
+    <meta name="keywords" content="- 超導量子電腦
+- 量子位元
+- 量子硬體
+- 低溫接頭
+- 柔性帶狀線纜
+- 高密度連接器
+- 量子計算技術
+- 材料科學
+- 量子控制電子
+- 量子供應商">
+    <link rel="canonical" href="https://www.insight-ihbar.com/QC_hardware/W.html">
+
+  <meta name="keywords" content="超大型量子計算、製冷機間量子連結、超導量子電腦、微波量子通道、微波光子、遠距量子糾纏、稀釋製冷機、模組化QPU、量子態轉移、低溫微波工程">
+</head>
+<body>
+
+    <header id="masthead" class="site-header">
+        <nav id="primary-navigation" class="site-navigation">
+            <div class="container">
+
+                <div class="navbar-header">                   
+                    <a href="../index_ch.html" class="site-title">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
+                </div><!-- /.navbar-header -->
+
+                <div class="collapse navbar-collapse" id="agency-navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="../index_ch.html">Home</a></li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">科普介紹<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                              <li><a href="../SCQ_elementary/main.html">超導量子位元(科普版)</a></li>
+                              <li><a href="../SCQ_advanced/main.html">超導量子位元(進階版)</a></li>
+                              <li><a href="../SpQ/main.html">半導體自旋量子位元</a></li>
+                            </ul>
+                        </li>
+                        <!--<li class="active"><a href="../SCQ_elementary/main.html">科普介紹</a></li>-->
+                        <li class="active"><a href="../QC_hardware/main.html">硬體導論</a></li>
+                        <li><a href="../QID/main.html">量子產業群像錄</a></li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">研討會筆記<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                <li><a href="../ASW2026/main.html">2026中研院超導量子電腦Workshop</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">量子諮詢<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                <li><a href="https://www.quantum-perspectives.com/About/main.html">量子遠見科技：諮詢服務</a></li>
+                                <li><a href="../About/main.html">關於我們</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="../index.html">English</a></li>                        
+                    </ul>
+                </div>
+
+            </div>   
+        </nav><!-- /.site-navigation -->
+    </header><!-- /#mastheaed -->
+
+    <div id="hero" class="hero overlay subpage-hero blog-hero">
+        <div class="hero-content">
+            <div class="hero_2-text">
+                <h1>硬體導論</h1>
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="../index_ch.html">Home</a></li>
+                  <li class="breadcrumb-item"><a href="./main.html">硬體導論</a></li>
+                  <!--<li class="breadcrumb-item active">約瑟夫森節</li>-->
+                </ol>
+            </div><!-- /.hero-text -->
+        </div><!-- /.hero-content -->
+    </div><!-- /.hero -->
+
+    <main id="main" class="site-main">
+
+        <section class="site-section subpage-site-section section-blog">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                        <article class="blog-post">
+                            <!--<img src="../assets/img/portfolio-1.jpg" class="img-res" alt="">-->
+                            <div class="post-content">
+                                <div style="text-align: center;">
+                                    <h2>邁向超大型量子計算：製冷機間量子連結</h2>
+                                    <h3></h3>
+                                    <span style="font-size: 0.7em; line-height: 0.8;">
+                                        2026.05.23
+                                    </span>
+                                </div>
+
+
+<p class="dark-background">
+  當量子處理器的規模繼續放大時，如果單一製冷機無法容納足夠多的量子位元、無法提供足夠的製冷功率，我們能不能將QPU分散在多台製冷機中，並建立跨製冷機的量子連結呢？
+</p>
+
+<p class="dark-background">
+  這就是「製冷機間量子連結」（inter-cryostat quantum link）的核心問題。它不只是把兩台低溫儀器用普通電纜接起來，而是要在 mK 的低溫環境中，建立一條可以傳送微波光子、量子態或糾纏的通道。
+</p>
+<br><br>
+<div style="text-align: center;">
+    <a href="../Image/SDfDzJze24Wrv7hD-1456x819.jpg">
+        <img src="../Image/SDfDzJze24Wrv7hD-1456x819.jpg" alt="IBM量子電腦設備外觀" style="width: 70%; height: auto;">
+    </a>
+</div>
+<div style="text-align: center;">
+    <a href="../Image/K93D3YRZXth5AN4X-1456x819.jpg">
+        <img src="../Image/K93D3YRZXth5AN4X-1456x819.jpg" alt="IBM量子電腦設備示意圖" style="width: 70%; height: auto;">
+    </a>
+</div>
+
+<p class="dark-background">
+  ▲ IBM提出的Quantum System Two 模組化量子系統的概念圖。當單一 QPU 或單一低溫系統無法滿足計算規模需求時，未來系統可能透過 classical connection 與 quantum connection 把多個 QPU 模組整合起來。
+  <br><span style="font-size: 0.7em; line-height: 0.8;">
+    Ref: https://wccftech.com/ibm-intros-osprey-quantum-processor-over-400-quantum-bits-to-power-quantum-system-two/
+  </span><br><br>
+</p>
+
+<h3>為什麼需要製冷機間量子連結？</h3>
+
+<p class="dark-background">
+  超導量子位元通常需要在 10–20 mK 左右的低溫環境中操作。
+  每一個量子位元都需要控制線、讀出線、濾波器、衰減器、隔離器、放大器與校準資源。
+  當量子位元數量增加時，瓶頸不只是晶片能不能做大，還包括製冷機空間、冷卻功率、低溫佈線密度、
+  微波串擾、封裝結構與系統校準複雜度。
+</p>
+
+<p class="dark-background">
+  因此，超大型量子計算的一條重要路線，是把整個量子系統拆成多個較小、可維護、可替換的 QPU 模組。每個模組可以放在自己的製冷機中，再透過量子連結把它們組合成更大的運算系統。這樣的架構類似資料中心中的伺服器叢集。
+</p>
+
+
+
+
+
+
+<h3>微波量子通道</h3>
+<p class="dark-background">
+    對超導量子電路而言，量子位元的典型操作頻率位於微波頻段。
+    因此，在短距離或中距離的製冷機間連結中，常見研究方向是使用低溫微波通道，
+    例如低損耗同軸線、波導、低溫 circulator、directional coupler 與可控釋放/吸收微波光子的量子節點。
+  </p>
+<p class="dark-background">
+  普通電纜傳送的是大量電子共同形成的古典訊號，只要訊號強度足夠、雜訊可控，資訊就能被可靠傳輸。
+  但量子連結要傳送的可能是一個單光子波包，或一個由微波光子承載的量子態。
+  在這種情況下，任何損耗、熱雜訊、反射或相位漂移，都可能直接破壞量子資訊。
+</p>
+<br><br>
+<table width="100%" border="1" cellpadding="10" cellspacing="0" style="border-collapse: collapse; font-family: sans-serif; border-color: #cccccc;">
+  <thead>
+    <tr bgcolor="#f2f2f2" align="center">
+      <th width="25%">通道要求</th>
+      <th>物理意義</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>低損耗</b></td>
+      <td>若微波光子在傳輸過程中被吸收，承載的量子態便會遺失。</td>
+    </tr>
+    <tr>
+      <td><b>低熱雜訊</b></td>
+      <td>熱光子會污染量子通道，使接收端無法分辨真正的量子訊號與環境雜訊。</td>
+    </tr>
+    <tr>
+      <td><b>阻抗匹配</b></td>
+      <td>若通道中存在阻抗不連續，微波光子會反射，降低傳輸與吸收效率。</td>
+    </tr>
+    <tr>
+      <td><b>相位穩定</b></td>
+      <td>量子態的相位本身就是資訊的一部分，因此通道長度、溫度與機械振動都可能造成相位雜訊。</td>
+    </tr>
+    <tr>
+      <td><b>波包整形</b></td>
+      <td>發射端釋放的 photon wave packet 必須與接收端吸收模式匹配，才能提高量子態轉移效率。</td>
+    </tr>
+    <tr>
+      <td><b>時間同步</b></td>
+      <td>兩端 QPU 的控制脈衝、讀出時序與接收窗口必須精準同步。</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>製冷機間量子糾纏</h3>
+
+
+
+
+<p class="dark-background">
+  製冷機間量子連結技術從晶片間微波光子傳輸、遠距糾纏產生、低溫微波通道工程一路發展而來。以下整理幾個重要實驗脈絡。
+</p>
+<br><br>
+<table width="100%" border="1" cellpadding="10" cellspacing="0" style="border-collapse: collapse; font-family: sans-serif; border-color: #cccccc;">
+  <thead>
+    <tr bgcolor="#f2f2f2" align="center">
+      <th width="7%">年份</th>
+      <th width="30%">實驗重點</th>
+      <th>意義</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>2018</b></td>
+      <td>利用 microwave photons 進行 deterministic quantum state transfer 與 remote entanglement。</td>
+      <td>證明超導量子電路可以發射、傳輸並吸收承載量子資訊的微波光子，是分散式超導量子計算的重要基礎。</td>
+    </tr>
+    <tr>
+      <td><b>2020</b></td>
+      <td>ETH Zurich 展示約 5 m 的 microwave quantum link。</td>
+      <td>把微波量子通道從晶片尺度推進到製冷機間尺度，展示跨低溫系統的相干連結可能性。</td>
+    </tr>
+    <tr>
+      <td><b>2023</b></td>
+      <td>兩個相距約 30 m 的超導電路透過低溫微波通道建立糾纏並進行 Bell test。</td>
+      <td>顯示巨觀尺度的超導量子電路可以透過工程化微波通道展現非局域量子關聯。</td>
+    </tr>
+  </tbody>
+</table>
+<br><br>
+<div style="text-align: center;">
+  <a href="../Image/截圖 2026-05-21 下午1.11.35.png">
+    <img src="../Image/截圖 2026-05-21 下午1.11.35.png" alt="超導量子晶片互連實驗示意圖" style="width: 100%; height: auto;">
+  </a>
+</div>
+<p class="dark-background">
+  ▲ 2018 年 Nature 論文展示以 microwave photons 進行 deterministic quantum state transfer
+  與 remote entanglement。其核心思想是：量子節點可將 qubit 狀態轉換成可傳播的微波光子，
+  再由另一個節點吸收，完成量子態轉移。
+  <br><span style="font-size: 0.7em; line-height: 0.8;">
+    Ref: Deterministic quantum state transfer and remote entanglement using microwave photons, Nature 558, 264–267 (2018), DOI:10.1038/s41586-018-0195-y
+  </span><br><br>
+</p>
+<div style="text-align: center;">
+    <a href="../Image/image.imageformat.930.dpr2.39105624.jpg">
+      <img src="../Image/image.imageformat.930.dpr2.39105624.jpg" alt="實驗室人員操作大型儀器設備" style="width: 100%; height: auto;">
+    </a>
+  </div>
+  <p class="dark-background">
+    ▲ ETH Zurich 展示的製冷機間微波量子連結實驗。圖中可見長距離低溫微波通道與兩端的實驗系統。
+    這類實驗的重點，是在公尺等級距離上維持微波量子態的相干傳輸。
+    <br><span style="font-size: 0.7em; line-height: 0.8;">
+      Ref: https://ethz.ch/en/news-and-events/eth-news/news/2020/03/longest-microwave-quantum-link.html
+    </span><br><br>
+  </p>
+<div style="text-align: center;">
+  <a href="../Image/截圖 2026-05-21 下午1.06.31.png">
+    <img src="../Image/截圖 2026-05-21 下午1.06.31.png" alt="實驗室長管線設備全景" style="width: 100%; height: auto;">
+  </a>
+</div>
+<p class="dark-background">
+  ▲ 2023 年 Nature 論文中的 30 m 製冷機間超導電路實驗架構，並成功進行無漏洞的貝爾不等式實驗。兩端超導電路透過長距離低溫微波通道連接，顯示製冷機間量子連結已從概念走向可測試的實驗平台。
+  <br><span style="font-size: 0.7em; line-height: 0.8;">
+    Ref: Loophole-free Bell inequality violation with superconducting circuits, Nature 617, 265–270 (2023), DOI:10.1038/s41586-023-05885-0
+  </span><br><br>
+</p>
+
+<h3>製冷機間量子連結的硬體組成</h3>
+
+<p class="dark-background">
+  一條製冷機間量子連結可以分成三個主要部分：發射端量子節點、低溫傳輸通道、接收端量子節點。
+  每一部分都需要整合低溫微波工程、量子控制、時間同步。
+</p>
+<br><br>
+<table width="100%" border="1" cellpadding="10" cellspacing="0" style="border-collapse: collapse; font-family: sans-serif; border-color: #cccccc;">
+  <thead>
+    <tr bgcolor="#f2f2f2" align="center">
+      <th width="15%">硬體區段</th>
+      <th width="35%">可能元件</th>
+      <th>功能解說</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>發射端量子節點</b></td>
+      <td>Transmon qubit、可調耦合器、讀出/傳輸 resonator</td>
+      <td>將本地 qubit 的量子態映射到可傳播的微波光子波包。</td>
+    </tr>
+    <tr>
+      <td><b>微波釋放控制</b></td>
+      <td>Pulse shaping、parametric coupling、Raman process</td>
+      <td>控制光子釋放的時間形狀，使波包能被接收端有效吸收。</td>
+    </tr>
+    <tr>
+      <td><b>低溫傳輸線</b></td>
+      <td>同軸線、波導、低損耗超導線路</td>
+      <td>在低熱雜訊與低損耗條件下傳送微波光子。</td>
+    </tr>
+    <tr>
+      <td><b>非互易元件</b></td>
+      <td>Circulator、isolator、directional coupler</td>
+      <td>控制微波訊號方向，減少反射與雜訊回灌。</td>
+    </tr>
+    <tr>
+      <td><b>接收端量子節點</b></td>
+      <td>接收 resonator、transmon qubit、可調耦合器</td>
+      <td>將傳來的微波光子重新吸收並轉換回本地 qubit 的量子態。</td>
+    </tr>
+    <tr>
+      <td><b>同步與校準系統</b></td>
+      <td>AWG、FPGA、時脈分配、相位校準</td>
+      <td>確保兩端脈衝、接收窗口與相位參考一致。</td>
+    </tr>
+  </tbody>
+</table>
+
+<br><br>
+
+<div style="text-align: center;">
+    <a href="../Image/image3.imageformat.slideshow.86165948.jpg">
+        <img src="../Image/image3.imageformat.slideshow.86165948.jpg" alt="實驗室大型管線設備特寫" style="width: 90%; height: auto;">
+      </a>
+  <a href="../Image/image2.imageformat.slideshow.237072056.jpg">
+    <img src="../Image/image2.imageformat.slideshow.237072056.jpg" alt="銅製工業真空腔體部件近照" style="width: 90%; height: auto;">
+  </a>
+</div>
+<p class="dark-background">
+    ▲製冷機間量子連結需要將長距離傳輸線維持在低溫、低損耗、低雜訊的條件下。這使得量子連結不只是量子物理問題，也是低溫工程、微波工程與系統整合問題。ETH Zurich 30 公尺長量子連結通道的內部局部視圖。位於中央的鋁製波導被冷卻至接近絕對零度，用以連接兩個量子電路。
+    多層銅製屏蔽結構則保護導體，避免其受到熱輻射干擾。 低溫微波通道中的耦合結構，對單光子等級的量子訊號而言，通道幾何、接頭、反射與熱化設計都會影響量子傳輸效率。
+    <br><span style="font-size: 0.7em; line-height: 0.8;">
+        Ref: https://ethz.ch/en/news-and-events/eth-news/news/2023/05/entangled-quantum-circuits.html
+        <br>Photo: ETH Zurich / Daniel Winkler
+    </span><br><br>
+  </p>
+
+<h3>技術門檻</h3>
+
+<table width="100%" border="1" cellpadding="10" cellspacing="0" style="border-collapse: collapse; font-family: sans-serif; border-color: #cccccc;">
+  <thead>
+    <tr bgcolor="#f2f2f2" align="center">
+      <th width="15%">關鍵挑戰</th>
+      <th>說明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>傳輸損耗</b></td>
+      <td>微波光子在長距離通道中若被吸收或散射，會直接降低量子態轉移 fidelity。</td>
+    </tr>
+    <tr>
+      <td><b>熱光子雜訊</b></td>
+      <td>室溫或高溫級的熱輻射若進入通道，會在微波頻段產生假訊號並破壞量子態。</td>
+    </tr>
+    <tr>
+      <td><b>低溫熱負載</b></td>
+      <td>長距離金屬線路會導入熱量，必須透過熱沉、材料選擇與多級冷卻降低對 mK 區的負擔。</td>
+    </tr>
+    <tr>
+      <td><b>相位與時序穩定</b></td>
+      <td>兩端 QPU 的相位參考與時序必須穩定，否則遠距糾纏與量子閘操作會失真。</td>
+    </tr>
+    <tr>
+      <td><b>波包匹配</b></td>
+      <td>發射端與接收端必須精準控制 photon wave packet，使接收端能以高效率吸收。</td>
+    </tr>
+    <tr>
+      <td><b>非互易元件整合</b></td>
+      <td>Circulator 與 isolator 可隔離反射雜訊，但傳統元件體積大、損耗與磁場需求也會影響可擴展性。</td>
+    </tr>
+    <tr>
+      <td><b>模組化校準</b></td>
+      <td>當 QPU 數量增加，每一條量子連結都需要獨立校準耦合強度、頻率、相位與延遲。</td>
+    </tr>
+    <tr>
+      <td><b>錯誤校正整合</b></td>
+      <td>未來製冷機間連結若要支援容錯量子計算，必須與 logical qubit、syndrome measurement 與 real-time decoder 整合。</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>從量子連結到量子資料中心</h3>
+
+<p class="dark-background">
+  製冷機間量子連結的長期目標，不只是展示兩個節點可以糾纏，而是讓多個 QPU 模組能夠共同執行大型量子演算法。
+  在這樣的架構中，每台 dilution refrigerator 可以視為一個量子運算節點；
+  多個節點透過 quantum interconnect 建立糾纏或傳送量子態，再由 classical control system 負責同步、
+  排程、讀出與錯誤校正。
+</p>
+
+<p class="dark-background">
+  這代表未來的量子電腦將不再只是「一台儀器」，而更像是一座量子計算建築：
+  裡面有低溫系統、微波通道、古典超算、控制電子學、即時解碼器與多層軟體堆疊。
+  超大型量子計算的關鍵，也會從單純增加 qubit 數量，轉向如何讓分散在不同空間位置的量子模組，
+  在資訊上仍然表現得像同一個可程式化的量子系統。
+</p>
+
+<p class="dark-background">
+  超算-量子混合運算解決的是「如何讓 QPU 與古典超算協同工作」；
+  製冷機間量子連結解決的則是「如何讓多個 QPU 在量子層級上彼此連接」。
+  這兩者合在一起，構成邁向超大型量子計算的完整硬體路線圖。
+</p>
+                             
+
+
+
+
+
+
+                                
+
+
+
+
+                    
+
+
+                                <div class="post-meta">
+                                    <span class="post-author">
+                                        <a href="../About/Wang.html"><img class="img-res" src="../Image/IMG_0964_2.JPG" alt="">王培儒</a>
+                                    </span>
+                                    <span class="post-category">
+                                        <a href="./main.html"><i class="fa fa-folder" aria-hidden="true"></i>硬體導論</a>
+                                    </span>
+                                </div><!-- /.post-meta -->
+                            
+                                <div id="prev-next-nav" class="text-center">
+                                    <a class="btn btn-gray" href="WA.html">← 上一頁</a> 
+                                    <a class="btn btn-gray" href="../QC_hardware_en/W.html" style="margin: 0 10px;">English Version</a>
+                                </div>
+
+                                
+
+                            </div><!-- /.post-content -->
+                        </article><!-- /.blog-post -->
+                        <!--<div id="PostComments" class="post-comments">
+                            
+                            
+                            
+                        </div> /#PostComments -->
+                        <!--<div class="respond">
+                            <h3>Post a Comment</h3>
+                            <form class="form-horizontal">
+                                <input class="form-control" type="text" placeholder="Your Name*" required>
+                                <input class="form-control" type="email" placeholder="Your Email" required>
+                                <textarea class="form-control form-control-comment" type="text" placeholder="Your Comment*" required></textarea>
+                                <button class="btn btn-green">Add a comment</button>
+                            </form>    
+                        </div> /.respond -->
+                    </div>
+                    <aside class="col-md-3">
+                        <div class="sidebar">
+                            <div class="widget">
+                                <div id="lesson-list_2">
+                                <div class="lesson-link "><a href="main.html">超導量子電腦硬體指南 (2025)：目錄</a></div>
+                                <div class="lesson-link "><a href="A.html">超導量子電腦當前的應用模式</a></div>
+                                <div class="lesson-link "><a href="B.html">超導量子電腦-硬體解構</a></div>
+                                <div class="lesson-link "><a href="C.html">微波元件解說</a></div>
+                                <div class="lesson-link "><a href="H.html">微波元件廠商</a></div>
+                                <div class="lesson-link "><a href="U2.html">特殊導線與接頭</a></div>
+                                <div class="lesson-link "><a href="O.html">特殊導線與接頭-廠商</a></div>
+                                <div class="lesson-link "><a href="F.html">稀釋製冷機</a></div>
+                                <div class="lesson-link "><a href="M.html">熱管理與熱錨定</a></div>
+                                <div class="lesson-link "><a href="M2.html">熱沉解決方案</a></div>
+                                <div class="lesson-link "><a href="G.html">控制電子系統</a></div>
+                                <div class="lesson-link "><a href="U.html">邁向Scalable QPU-量子晶片設計</a></div>
+                                <div class="lesson-link "><a href="V2.html">邁向Scalable QPU-串擾議題</a></div>
+                                <div class="lesson-link "><a href="V4.html">邁向Scalable QPU-跨晶片連接</a></div>
+                                <div class="lesson-link "><a href="WA.html">邁向超大型量子計算：超算-量子混合運算</a></div>
+                                <div class="lesson-link active"><a href="W.html">邁向超大型量子計算：製冷機間量子連結</a></div>
+                                </div>
+                            </div>
+  
+                        </div></aside>
+                </div>
+            </div>
+        </section><!-- /.section-portfolio -->
+
+    </main><!-- /#main -->
+
+    <footer id="colophon" class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-4 col-xs-6">
+                    <a href="../index_ch.html" class="site-title">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
+                    <p>一起走進新時代的前沿科學與量子科技</p>
+                    </div>
+                <div class="col-lg-offset-4 col-md-3 col-sm-4 col-md-offset-2 col-sm-offset-0 col-xs-6 ">
+                    <p class="site-title">𝐾𝐸𝐸𝑃 𝐼𝑁 𝑇𝑂𝑈𝐶𝐻</p>
+                    <ul class="list-unstyled contact-links">
+                        <li><i class="fa fa-envelope" aria-hidden="true"></i><a href="mailto:info@insight-ihbar.com">info@insight-ihbar.com</a></li>
+                        <!--<li><i class="fa fa-phone" aria-hidden="true"></i><a href="tel:+37400800000">+374 (00) 80 00 00 </a></li>
+                        <li><i class="fa fa-fax" aria-hidden="true"></i><a href="+37400900000">+374 (00) 90 00 00</a></li>
+                        <li><i class="fa-solid fa-location-dot"></i><p>Hsinchu 300，Taiwan (R.O.C.)</p></li>-->
+                    </ul>
+                </div>
+                <!--<div class="clearfix visible-xs"></div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6">
+                    <h3>Featured links</h3>
+                    <ul class="list-unstyled">
+                        <li class="active"><a href="index_ch.html">Home</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="portfolio.html">Porfolio</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>-->
+            </div>
+        </div>
+        <div class="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-8">
+                        <div class="social-links">
+                            <!--<a class="twitter-bg" href="#"><i class="fab fa-twitter"></i></a>-->
+                            <!--<<a class="facebook-bg" href="https://www.facebook.com/people/Quantum-Perspectives/61576446849628/"><i class="fab fa-facebook"></i></a>-->
+                            <!--<a class="facebook-bg" href="https://www.facebook.com/people/%E9%87%8F%E5%AD%90%E9%81%A0%E8%A6%8BQuantum-Perspectives/61576883632888/"><i class="fab fa-facebook-f"></i></a>-->
+                            <!--<a class="pinterest" href="#"><i class="fa-solid fa-microscope"></i></a>-->
+                            <!--<a class="facebook-bg" href="https://www.facebook.com/people/Insight-hbar/61576811775374/"><i class="fab fa-facebook-f"></i></a>-->
+                            <a class="linkedin-bg" href="https://www.linkedin.com/company/insight-ihbar"><i class="fab fa-linkedin"></i></a>
+                        </div><!-- /.social-links -->
+                    </div>
+                    <div class="col-xs-4">
+                        <div class="text-right">
+                            <p><span style="font-size: 16px;">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</span></p>
+                            <p>All Rights Reserved</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.copyright -->
+    </footer><!-- /#footer -->
+
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="../assets/js/bootstrap-select.min.js"></script>
+    <script src="../assets/js/jquery.slicknav.min.js"></script>
+    <script src="../assets/js/jquery.countTo.min.js"></script>
+    <script src="../assets/js/jquery.shuffle.min.js"></script>
+    <script src="../assets/js/script.js"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  
+</body>
+</html>

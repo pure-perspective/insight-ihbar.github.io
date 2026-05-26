@@ -19,5 +19,6 @@
     { "title": "QUDORA", "file": "QUDORA.html" , "status": "new" , "date": "2025-11-15"},
     { "title": "IQM", "file": "IQM.html" , "status": "new" , "date": "2025-11-16"},
     { "title": "Qilimanjaro", "file": "Qilimanjaro.html" , "status": "new" , "date": "2025-11-17"},
-    { "title": "Quantum-Motion", "file": "Quantum-Motion.html" , "status": "new" , "date": "2025-11-20"}
+    { "title": "Quantum-Motion", "file": "Quantum-Motion.html" , "status": "new" , "date": "2025-11-20"},
+    { "title": "imec", "file": "imec.html" , "status": "new" , "date": "2025-11-17","enabled": false}
 ]

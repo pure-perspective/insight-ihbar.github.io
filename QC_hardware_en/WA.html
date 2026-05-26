@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N39VTY949N"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-N39VTY949N');
+</script>
+    <!-- Basic Page Needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <meta name="author" content="Peir-Ru Wang">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;1,300&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/20250525-icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/20250525-icon.png">
+
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/css/style.css" rel="stylesheet">
+    <link href="../assets/css/responsive.css" rel="stylesheet">
+
+    <title>Toward Ultra-Large-Scale Quantum Computing: Supercomputer–Quantum Hybrid Computing</title>
+    <meta name="description" content="Explore supercomputer–quantum hybrid computing: how CPUs, GPUs, FPGAs and QPUs integrate via runtimes, scheduling, calibration and low-latency control.">
+    <meta name="keywords" content="- Microwave components for quantum computing
+- Quantum computing hardware guide 2025
+- Superconducting qubits and amplifiers
+- Quantum amplifier technologies explained
+- Low-noise HEMT amplifiers in quantum systems
+- Traveling Wave Parametric Amplifiers overview
+- Quantum system measurement challenges
+- Cryogenic microwave components and applications
+- Readout systems for quantum processors
+- Key technologies in quantum computing hardware">
+    <link rel="canonical" href="https://www.insight-ihbar.com/QC_hardware_en/WA.html">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+  <meta name="keywords" content="supercomputer quantum hybrid computing, quantum-centric supercomputer architecture, HPC QPU integration runtime orchestrator, low-latency quantum control FPGA ASIC, quantum error correction syndrome decoding, multi-QPU scaling quantum interconnect, circuit knitting hybrid quantum workflows, variational quantum algorithms classical optimization loop, IBM Quantum System Two integration, NVIDIA NVQLink GPU QPU interface">
+</head>
+<body>
+
+    <header id="masthead" class="site-header">
+        <nav id="primary-navigation" class="site-navigation">
+            <div class="container">
+
+                <div class="navbar-header">                   
+                    <a href="../index.html" class="site-title">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
+                </div><!-- /.navbar-header -->
+
+                <div class="collapse navbar-collapse" id="agency-navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="../index.html">Home</a></li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Qubit Physics<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                              <li><a href="../SCQ_elementary_en/main.html">Superconducting Qubits (Elementary)</a></li>
+                              <li><a href="../SCQ_advanced_en/main.html">Superconducting Qubits (Advanced)</a></li>
+                              <li><a href="../SpQ_en/main.html">Semiconductor Spin Qubits</a></li>
+                            </ul>
+                        </li>
+                        <!--<li class="active"><a href="../SCQ_elementary/main.html">科普介紹</a></li>-->
+                        <li class="active"><a href="../QC_hardware_en/main.html">Hardware</a></li>
+                        <li><a href="../QID_en/main.html">Quantum Industries</a></li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Workshop Note<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                <li><a href="../ASW2026_en/main.html">2026 Academia Sinica SCQC Winter Workshop</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Consultance<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                <li><a href="https://www.quantum-perspectives.com/About_en/main.html">Taiwan Market Outreach Services</a></li>
+                                <li><a href="../About_en/main.html">About Us</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="../index_ch.html">中文版</a></li>                        
+                    </ul>
+                </div>
+
+            </div>   
+        </nav><!-- /.site-navigation -->
+    </header><!-- /#mastheaed -->
+
+    <div id="hero" class="hero overlay subpage-hero blog-hero">
+        <div class="hero-content">
+            <div class="hero_2-text">
+                <h1>Hardware Guide</h1>
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+                  <li class="breadcrumb-item"><a href="./main.html">Hardware Guide (2025)</a></li>
+                  <!--<li class="breadcrumb-item active">約瑟夫森節</li>-->
+                </ol>
+            </div><!-- /.hero-text -->
+        </div><!-- /.hero-content -->
+    </div><!-- /.hero -->
+
+    <main id="main" class="site-main">
+
+        <section class="site-section subpage-site-section section-blog">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                        <article class="blog-post">
+                            <!--<img src="../assets/img/portfolio-1.jpg" class="img-res" alt="Laptop on wooden desk">-->
+                            <div class="post-content">
+                              <div style="text-align: center;">
+                                <h2>Toward Ultra-Large-Scale Quantum Computing: Supercomputer–Quantum Hybrid Computing</h2>
+                                <h3></h3>
+                                <span style="font-size: 0.7em; line-height: 0.8;">
+                                  2026.05.24
+                                </span>
+                              </div>
+                              
+                              <p class="dark-background">
+                                When we discuss “ultra-large-scale quantum computing,” it is natural to imagine a gigantic quantum computer with hundreds of thousands, or even millions, of qubits.
+                                However, a truly usable quantum computing system will not simply be an isolated cryogenic instrument.
+                                It will more closely resemble a <b>quantum-centric supercomputer</b> that integrates
+                                high-performance computing (HPC), classical control systems, cryogenic quantum processors (QPUs),
+                                real-time decoders, and cloud-based scheduling software.
+                              </p>
+                              
+                              <p class="dark-background">
+                                In this architecture, quantum computers do not replace conventional supercomputers.
+                                Instead, they become specialized accelerators within high-performance classical computing systems.
+                                CPUs and GPUs are responsible for data preprocessing, parameter optimization, error mitigation, result analysis, and workflow management;
+                                QPUs are responsible for handling subproblems with intrinsically quantum structure, such as quantum chemistry, materials simulation, combinatorial optimization, or specific linear-algebra tasks.
+                              </p>
+                              
+                              <br>
+                              <h4>From Standalone Quantum Computers to Quantum-Centric Supercomputers</h4>
+                              
+                              <p class="dark-background">
+                                The scaling path of classical computers has evolved from single processors to multicore processors, clusters, data centers, and supercomputers.
+                                Similarly, quantum computers are unlikely to remain forever in the form of “a single chip + a single cryostat.”
+                                As the number of qubits increases, the system simultaneously faces bottlenecks in cryogenic space, control-line count, readout bandwidth, calibration complexity,
+                                thermal load, and the speed of error-correction decoding.
+                              </p>
+                              
+                              <p class="dark-background">
+                                Therefore, future large-scale quantum computing will likely adopt a hybrid architecture:
+                                classical supercomputers will handle massive data flows and control decisions, while subproblems suitable for quantum acceleration will be sent to QPUs.
+                                This is not a competition of “quantum vs. classical,” but a collaborative model of “quantum + classical” computing.
+                              </p>
+                              
+                              <br><br>
+                              
+                              <table width="100%" border="1" cellpadding="10" cellspacing="0" style="border-collapse: collapse; font-family: sans-serif; border-color: #cccccc;">
+                                <thead>
+                                  <tr bgcolor="#f2f2f2" align="center">
+                                    <th width="20%">System Layer</th>
+                                    <th width="20%">Primary Role</th>
+                                    <th>Function in Hybrid Quantum Computing</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td><b>CPU</b></td>
+                                    <td>General-purpose classical computing core</td>
+                                    <td>Responsible for program scheduling, data preprocessing, iterative control, algorithm workflow management, and communication with cloud or HPC systems.</td>
+                                  </tr>
+                                  <tr>
+                                    <td><b>GPU</b></td>
+                                    <td>Massively parallel computing core</td>
+                                    <td>Responsible for tensor operations, linear algebra, machine learning, gradient estimation in variational algorithms, and quantum-circuit simulation assistance.</td>
+                                  </tr>
+                                  <tr>
+                                    <td><b>FPGA / ASIC</b></td>
+                                    <td>Real-time control and decoding hardware</td>
+                                    <td>Responsible for low-latency feedback, pulse control, fast measurement discrimination, and quantum error-correction syndrome decoding.</td>
+                                  </tr>
+                                  <tr>
+                                    <td><b>QPU</b></td>
+                                    <td>Quantum processing unit</td>
+                                    <td>Executes quantum circuits and processes specific subproblems that can benefit from quantum superposition, entanglement, and interference.</td>
+                                  </tr>
+                                  <tr>
+                                    <td><b>Runtime / Orchestrator</b></td>
+                                    <td>Computing coordination layer</td>
+                                    <td>Distributes tasks among CPUs, GPUs, FPGAs, and QPUs, deciding which parts should be handled classically and which should be sent to quantum hardware.</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                              
+                              <br>
+                              <h4>Why Do Quantum Computers Need Supercomputers?</h4>
+                              
+                              <p class="dark-background">
+                                A quantum computer is not a universal machine capable of independently processing every task.
+                                In practice, most current quantum algorithms require substantial classical computation.
+                                For example, in variational quantum algorithms (VQAs), the QPU executes parameterized quantum circuits and outputs measurement results;
+                                the classical computer then updates the parameters based on those results and sends the new parameters back to the QPU.
+                              </p>
+                              
+                              <p class="dark-background">
+                                This loop of “QPU execution + classical optimization” makes quantum computing inherently hybrid.
+                                As problem sizes grow, the amount of data processing, scheduling, optimization, and error mitigation required on the classical side also increases rapidly.
+                                As a result, supercomputing systems will become indispensable infrastructure for large-scale quantum computing.
+                              </p>
+                              
+                              <br><br>
+                              
+                              <table width="100%" border="1" cellpadding="10" cellspacing="0" style="border-collapse: collapse; font-family: sans-serif; border-color: #cccccc;">
+                                <thead>
+                                  <tr bgcolor="#f2f2f2" align="center">
+                                    <th width="17%">Hybrid Computing Task</th>
+                                    <th width="25%">Main Hardware</th>
+                                    <th>Function</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td><b>Quantum Circuit Compilation</b></td>
+                                    <td>CPU / GPU</td>
+                                    <td>Converts abstract quantum algorithms into hardware-executable gate sequences while considering qubit topology, coupling maps, and gate errors.</td>
+                                  </tr>
+                                  <tr>
+                                    <td><b>Pulse Generation and Control</b></td>
+                                    <td>AWG / FPGA / Control electronics</td>
+                                    <td>Converts quantum gates into microwave pulses, flux pulses, and readout pulses, which are sent into the cryogenic system to control the QPU.</td>
+                                  </tr>
+                                  <tr>
+                                    <td><b>Quantum Circuit Execution</b></td>
+                                    <td>QPU</td>
+                                    <td>Executes quantum operations in a cryogenic environment using quantum superposition, entanglement, and interference.</td>
+                                  </tr>
+                                  <tr>
+                                    <td><b>Measurement Result Processing</b></td>
+                                    <td>FPGA / CPU / GPU</td>
+                                    <td>Converts weak readout signals into a classical bitstream and performs classification, correction, and statistical analysis.</td>
+                                  </tr>
+                                  <tr>
+                                    <td><b>Error Mitigation and Error Correction</b></td>
+                                    <td>CPU / GPU / FPGA / ASIC</td>
+                                    <td>Performs error mitigation in the NISQ era; in fault-tolerant quantum computing, real-time syndrome decoding and feedback control are required.</td>
+                                  </tr>
+                                  <tr>
+                                    <td><b>Workflow Scheduling</b></td>
+                                    <td>HPC / Cloud Runtime</td>
+                                    <td>Manages task allocation and data flow among multiple users, multiple QPUs, and different classical computing resources.</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                              
+                              <br>
+                              <h4>Key Concepts in Supercomputer–Quantum Hybrid Architectures</h4>
+                              
+                              <table width="100%" border="1" cellpadding="10" cellspacing="0" style="border-collapse: collapse; font-family: sans-serif; border-color: #cccccc;">
+                                <thead>
+                                  <tr bgcolor="#f2f2f2" align="center">
+                                    <th width="25%">Key Concept</th>
+                                    <th>Description</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td><b>Quantum Runtime</b></td>
+                                    <td>Packages quantum workloads into executable tasks and coordinates QPUs, classical servers, and cloud resources.</td>
+                                  </tr>
+                                  <tr>
+                                    <td><b>Circuit Knitting</b></td>
+                                    <td>Splits a large quantum circuit into multiple smaller circuits, executes them on different QPUs or at different times, and reconstructs the result through classical post-processing.</td>
+                                  </tr>
+                                  <tr>
+                                    <td><b>Error Mitigation</b></td>
+                                    <td>Uses classical statistical methods to reduce the influence of noise on quantum results before fully fault-tolerant hardware is available.</td>
+                                  </tr>
+                                  <tr>
+                                    <td><b>Real-time Feedback</b></td>
+                                    <td>Measurement results must be fed back to the control system within an extremely short time window to support dynamic circuits and quantum error correction.</td>
+                                  </tr>
+                                  <tr>
+                                    <td><b>Resource Orchestration</b></td>
+                                    <td>When a task requires multiple QPUs, multiple GPUs, or multiple classical servers, the system must automatically manage resource allocation and data synchronization.</td>
+                                  </tr>
+                                  <tr>
+                                    <td><b>Quantum Interconnect</b></td>
+                                    <td>As the number of QPUs increases, the system needs links capable of transmitting quantum information between modules. This is the topic of the next article, “Inter-Cryostat Quantum Links.”</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                              
+                              <br>
+                              <h4>Typical Workflow of Hybrid Computing</h4>
+                              
+                              <p class="dark-background">
+                                A quantum–classical hybrid computation usually does not end with a single submission of a quantum circuit.
+                                Instead, it consists of multiple iterations.
+                                The classical side adjusts the parameters of the next quantum circuit according to the results of each measurement round, forming a closed feedback loop.
+                              </p>
+                              
+                              <ol class="dark-background">
+                                <li><p><b>Problem decomposition:</b> Split the original scientific or engineering problem into parts that can be handled classically and parts that may benefit from quantum acceleration.</p></li>
+                                <li><p><b>Quantum circuit generation:</b> Generate parameterized quantum circuits or specific quantum kernels on the classical side.</p></li>
+                                <li><p><b>Hardware compilation:</b> Perform transpilation based on the QPU topology, native gate set, and calibration data.</p></li>
+                                <li><p><b>QPU execution:</b> Execute the circuit on the cryogenic quantum chip and measure the output.</p></li>
+                                <li><p><b>Classical post-processing:</b> Use CPUs/GPUs to analyze measurement results, estimate expectation values, and update parameters.</p></li>
+                                <li><p><b>Iterative convergence:</b> Repeat the process until the energy, cost function, or target metric converges.</p></li>
+                              </ol>
+                              
+                              <br><br>
+                              
+                              <div style="text-align: center;">
+                                <a href="../Image/42484_2025_305_Fig1_HTML.png">
+                                  <img src="../Image/42484_2025_305_Fig1_HTML.webp" alt="Quantum NN diagram" style="width: 100%; height: auto;">
+                                </a>
+                              </div>
+                              
+                              <p class="dark-background">
+                                ▲ Schematic diagram of hybrid computing in quantum machine learning.
+                                <span style="font-size: 0.7em; line-height: 0.8;">
+                                  <br>Ref: Quantum-Train: rethinking hybrid quantum-classical machine learning in the model compression perspective, DOI: 10.1007/s42484-025-00305-0
+                                </span>
+                                <br><br>
+                              </p>
+                              
+                              <br>
+                              <h4>Technical Challenges</h4>
+                              
+                              <table width="100%" border="1" cellpadding="10" cellspacing="0" style="border-collapse: collapse; font-family: sans-serif; border-color: #cccccc;">
+                                <thead>
+                                  <tr bgcolor="#f2f2f2" align="center">
+                                    <th width="15%">Key Challenge</th>
+                                    <th>Description</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td><b>Low-latency Control</b></td>
+                                    <td>Quantum error correction and dynamic circuits require real-time interpretation of measurement results and feedback operations within the coherence time.</td>
+                                  </tr>
+                                  <tr>
+                                    <td><b>Data-flow Bottleneck</b></td>
+                                    <td>Repeated measurements of many qubits generate massive bitstreams, requiring high-speed data acquisition, compression, classification, and storage.</td>
+                                  </tr>
+                                  <tr>
+                                    <td><b>Cross-hardware Scheduling</b></td>
+                                    <td>CPUs, GPUs, FPGAs, QPUs, and cloud servers operate at different rhythms and must be coordinated by a runtime system.</td>
+                                  </tr>
+                                  <tr>
+                                    <td><b>Error-correction Decoding</b></td>
+                                    <td>Fault-tolerant quantum computing requires real-time processing of syndrome information; decoders may require FPGA, ASIC, or GPU acceleration.</td>
+                                  </tr>
+                                  <tr>
+                                    <td><b>Multi-QPU Scaling</b></td>
+                                    <td>The number of qubits in a single QPU is limited. Future systems must expand the effective computational space through modular QPUs and quantum links.</td>
+                                  </tr>
+                                  <tr>
+                                    <td><b>Hardware–Software Co-design</b></td>
+                                    <td>Quantum algorithms, compilers, control pulses, QPU topology, and cryogenic packaging must be designed together rather than optimized separately.</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                              
+                              <br>
+                              <h3>IQM and the Leibniz Supercomputing Centre: An Experiment in Quantum Integration</h3>
+                              
+                              <p>
+                                A 2025 IQM research report (arxiv:2509.12949) summarized practical experience in integrating a 20-qubit superconducting quantum computer into the HPC infrastructure of the Leibniz Supercomputing Centre (LRZ).
+                                This case is important because it shows that for a quantum computer to truly become a “quantum accelerator,” the QPU itself is not enough.
+                                Site preparation, cooling, networking, scheduling, calibration, and user training must all be integrated.
+                              </p>
+                              
+                              <br><br>
+                              
+                              <div style="text-align: center;">
+                                <a href="../Image/thequantuminsider-image001-1-scaled.jpg">
+                                  <img src="../Image/image001-1-scaled.webp" alt="Quantum computer cryostat" style="width: 80%; height: auto;">
+                                </a>
+                                <a href="../Image/截圖 2026-05-23 晚上8.05.05.png">
+                                  <img src="../Image/截圖 2026-05-23 晚上8.05.05.png" alt="Quantum fridge setup" style="width: 80%; height: auto;">
+                                </a>
+                              </div>
+                              
+                              <p class="dark-background">
+                                <span style="font-size: 0.7em; line-height: 0.8;">
+                                  (Top) Ref: https://thequantuminsider.com/2024/06/19/germany-launches-first-hybrid-quantum-computer-at-leibniz-supercomputing-centre/
+                                  <br>(Bottom) Ref: https://arxiv.org/pdf/2509.12949v1
+                                </span>
+                                <br><br>
+                              </p>
+                              
+                              <h4>1. Environmental Control</h4>
+                              
+                              <p>
+                                Conventional HPC nodes can usually be treated as stable computing resources: once installed, powered, and connected to cooling systems, they can provide relatively stable computing capacity for long periods.
+                                A superconducting quantum computer, however, is closer to a precision experimental apparatus.
+                                It is more sensitive to environmental vibration, sound, electromagnetic noise, and temperature fluctuations, because these disturbances can affect qubit coherence times, gate-operation accuracy, and readout quality.
+                              </p>
+                              
+                              <p>
+                                Therefore, before deploying a quantum computer, a data center must conduct a strict site survey, including measurements of magnetic fields, floor vibrations, sound pressure, temperature, and humidity.
+                                This means that future quantum data centers will require more than just “power, networking, and cooling.”
+                                They must also satisfy requirements for low noise, high stability, and maintainability.
+                              </p>
+                              
+                              <br>
+                              
+                              <table width="100%" border="1" cellpadding="10" cellspacing="0" style="border-collapse: collapse; font-family: sans-serif; border-color: #cccccc;">
+                                <thead>
+                                  <tr bgcolor="#f2f2f2" align="center">
+                                    <th width="18%">Measurement</th>
+                                    <th width="42%">Equipment</th>
+                                    <th>Requirement</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td><b>DC magnetic field</b></td>
+                                    <td>A 3-axis fluxgate sensor positioned at the planned location of the cryostat, approximately at the height of the QPU.</td>
+                                    <td>&lt; 100 μT for each axis.</td>
+                                  </tr>
+                                  <tr>
+                                    <td><b>AC magnetic field</b></td>
+                                    <td>A 3-axis fluxgate sensor positioned at the planned location of the cryostat, approximately at the height of the QPU.</td>
+                                    <td>&lt; 1 μT peak-to-peak spectrum amplitude for each axis over the frequency range 5 Hz – 1000 Hz.</td>
+                                  </tr>
+                                  <tr>
+                                    <td><b>Floor vibrations</b></td>
+                                    <td>A single-axis vibration sensor positioned on the floor at the planned location of the cryostat.</td>
+                                    <td>&lt; 400 μm/s RMS spectrum amplitude for each axis over the frequency range 1 Hz – 200 Hz, or equivalently, within the ISO vibration limit for office spaces.</td>
+                                  </tr>
+                                  <tr>
+                                    <td><b>Sound pressure</b></td>
+                                    <td>An omnidirectional microphone positioned at the location of the cryostat.</td>
+                                    <td>&lt; 80 dBA when integrated over the frequency range 20 Hz – 20 kHz.</td>
+                                  </tr>
+                                  <tr>
+                                    <td><b>Temperature</b></td>
+                                    <td>A thermometer positioned at the planned location of the electronics cabinet.</td>
+                                    <td>ΔT &lt; ±1°C within 12 hours around any set point between 20 – 25°C.</td>
+                                  </tr>
+                                  <tr>
+                                    <td><b>Humidity</b></td>
+                                    <td>A hygrometer positioned at the planned location of the electronics cabinet.</td>
+                                    <td>25 – 60%, non-condensing.</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                              
+                              <br>
+                              <h4>2. Calibration and Monitoring: Quantum Computers Are Dynamic Systems</h4>
+                              
+                              <p>
+                                The properties of superconducting qubits change over time.
+                                Their frequencies, gate fidelities, readout fidelities, and noise conditions may drift over timescales ranging from hours to days.
+                                This is one of the largest differences between quantum computers and conventional CPUs/GPUs:
+                                quantum computers require repeated calibration, and such calibration cannot rely entirely on manual operation.
+                              </p>
+                              
+                              <p>
+                                IQM’s 20-qubit superconducting quantum computer includes automated calibration workflows.
+                                The system can perform either fast calibration or full calibration, and the HPC center can schedule calibration windows according to user workloads.
+                                This is crucial: if a QPU is to become part of an HPC resource pool, calibration must be integrated into the scheduling system in real time, rather than treated as an external maintenance event.
+                              </p>
+                              
+                              <br>
+                              <h4>3. The Importance of Backup Power and Cooling Systems</h4>
+                              
+                              <p>
+                                Superconducting quantum computers must operate at extremely low temperatures.
+                                If power or cooling is interrupted, the QPU may warm up, requiring the system to be cooled down and recalibrated again.
+                                This recovery process may take several days, making it far more complex than restarting an ordinary HPC node.
+                              </p>
+                              
+                              <p>
+                                Therefore, IQM emphasizes the importance of backup power and redundant cooling-water systems.
+                                For a data center, the availability of a quantum computer depends not only on the QPU itself,
+                                but also on whether the entire infrastructure can prevent unexpected downtime.
+                              </p>
+                              
+                              <br>
+                              <h4>4. The Key to HPC+QC: Turning the QPU into a Schedulable Accelerator</h4>
+                              
+                              <p>
+                                In an HPC+QC architecture, a quantum computer can be used in two ways.
+                                The first is remote asynchronous submission:
+                                users submit quantum tasks to a queue and retrieve results after the QPU executes them.
+                                The second is a more tightly integrated accelerator mode:
+                                the QPU is embedded into a classical HPC workflow, forming a low-latency hybrid computing loop with CPUs/GPUs.
+                                This is especially important for VQE, quantum chemistry, optimization, and hybrid quantum-classical algorithms.
+                              </p>
+                              
+                              <p>
+                                This integration requires a software stack capable of connecting multiple front-end frameworks with hardware backends.
+                                The Munich Quantum Software Stack (MQSS), mentioned in the IQM paper, supports interfaces such as Qiskit, CUDA-Q, and PennyLane.
+                                Through intermediate representations and JIT compilation, it converts high-level quantum programs into low-level instructions executable by the hardware.
+                              </p>
+                              
+                              <br>
+                              <h4>5. User Onboarding: Hardware Availability Does Not Immediately Mean Research Readiness</h4>
+                              
+                              <p>
+                                Even after quantum hardware has been connected to an HPC system, users still need to learn how to use it effectively.
+                                For quantum experts, the key is to understand the topology, native gate set, and noise characteristics of a specific QPU.
+                                For traditional HPC users, the first step is to understand the basic concepts of quantum circuits, quantum measurement, and hybrid workflows.
+                              </p>
+                              
+                              <p>
+                                Therefore, successful HPC+QC integration is not only a technical issue but also a user-education issue.
+                                The IQM case uses Jupyter notebooks, hardware-characterization tutorials, mentorship, and FAQs
+                                to help early users move from “having access to a quantum computer” toward “producing meaningful research results.”
+                              </p>
+                              
+                              <p>
+                                The IQM case shows that bringing quantum computers into the HPC world cannot be done simply by placing a QPU inside a data center.
+                                True HPC+QC integration requires five layers to mature together:
+                              </p>
+                              
+                              <ul>
+                                <li>A low-noise site and environmental control suitable for quantum hardware;</li>
+                                <li>Automated calibration workflows that can be managed by HPC scheduling systems;</li>
+                                <li>Stable power, cooling, and redundant infrastructure;</li>
+                                <li>A software stack that supports both remote submission and low-latency hybrid computing;</li>
+                                <li>Training and onboarding mechanisms for both quantum experts and HPC users.</li>
+                              </ul>
+                              
+                              <p>
+                                Future quantum computing will not simply be the scaling of a single QPU.
+                                It will be the integration of “QPU + HPC + software stack + data-center engineering + user ecosystem.”
+                              </p>
+                              
+                              <br>
+                              <h3>IBM Quantum System Two: A Scalable Quantum–Supercomputing Architecture</h3>
+                              
+                              <div style="text-align: center;">
+                                <a href="../Image/52904644927_511a27d7d1_k.jpg">
+                                  <img src="../Image/52904644927_511a27d7d1_k.jpg" alt="Quantum supercomputer diagram" style="width: 100%; height: auto;">
+                                </a>
+                                <a href="../Image/Blog_Supercomputing_2024_11_19_v01_fb8bfa9d72.webp">
+                                  <img src="../Image/Blog_Supercomputing_2024_11_19_v01_fb8bfa9d72.webp" alt="CPU GPU QPU diagram" style="width: 100%; height: auto;">
+                                </a>
+                              </div>
+                              
+                              <p class="dark-background">
+                                ▲ Conceptual renderings of IBM Quantum System Two.
+                                The focus of such systems is not merely the qubit count of a single QPU, but how cryogenic systems, classical control electronics, data-center infrastructure, and multiple quantum processors can be integrated into a scalable computing platform.
+                                The vision of a quantum-centric supercomputer is not simply to scale up a single QPU, but to integrate multiple quantum systems, classical servers, and data-center networks.
+                                The coexistence of classical connections and quantum connections indicates that future large-scale quantum computing will require both classical data flow and quantum information flow.
+                                <br><span style="font-size: 0.7em; line-height: 0.8;">
+                                  Ref: IBM Quantum, 100,000-qubit quantum-centric supercomputer vision.
+                                  <br>(Top) Ref: https://newsroom.ibm.com/2023-05-21-IBM-Launches-100-Million-Partnership-with-Global-Universities-to-Develop-Novel-Technologies-Towards-a-100,000-Qubit-Quantum-Centric-Supercomputer
+                                  <br>(Bottom) Ref: https://www.ibm.com/quantum/blog/supercomputing-24
+                                </span><br><br>
+                              </p>
+                              
+                              <div style="text-align: center;">
+                                <video controls style="width: 100%; height: auto;">
+                                  <source src="../Image/IBM Quantum System Two_1080p.mp4" type="video/mp4">
+                                </video>
+                              </div>
+                              
+                              <p class="dark-background">
+                                ▲ Promotional video of IBM Quantum System Two.
+                                <span style="font-size: 0.7em; line-height: 0.8;">
+                                  <br>Ref: https://www.youtube.com/watch?v=AQjKUN8PORM
+                                </span>
+                                <br><br>
+                              </p>
+                              
+                              <h3>NVIDIA NVQLink: A Modular Interface for Quantum–Supercomputing Integration</h3>
+                              
+                              <div style="text-align: center;">
+                                <a href="../Image/nvqlink-1.jpg">
+                                  <img src="../Image/nvqlink-1-jpg.webp" alt="Quantum server racks" style="width: 100%; height: auto;">
+                                </a>
+                                <a href="../Image/nvqlink-architecture-gpu-qpu-png.webp">
+                                  <img src="../Image/nvqlink-architecture-gpu-qpu-png.webp" alt="Quantum QPU diagram" style="width: 100%; height: auto;">
+                                </a>
+                              </div>
+                              
+                              <p class="dark-background">
+                                ▲ NVIDIA’s NVQLink clearly plays the role of an intermediary between supercomputers and QPUs.
+                                NVQLink is not merely an information exchanger; it also integrates instruments from quantum-control hardware vendors in order to operate the QPU.
+                                More specifically, NVQLink acts as a high-speed signal translator: it converts HPC requests into quantum-computer control signals, sends them to the quantum chip for computation, and translates quantum results back to the HPC system.
+                                In addition, because quantum chips require complex real-time QEC control, the quantum-control instruments integrated with NVQLink can also participate in error correction and calibration during quantum computation.
+                                NVQLink can therefore be understood as a solution that <b>modularizes the interface</b> between classical high-speed computing and quantum computing.
+                                Classical HPC systems do not need to take on the computational burden of quantum control, calibration, and optimization, while quantum-chip vendors only need to adapt their systems to the NVQLink interface.
+                                In future hybrid-computing workflows, this provides a modular solution: NVQLink + QPU can be introduced into existing HPC frameworks without redesigning the classical architecture specifically for quantum computing.
+                                <span style="font-size: 0.7em; line-height: 0.8;">
+                                  <br>Ref: https://developer.nvidia.com/blog/nvidia-nvqlink-architecture-integrates-accelerated-computing-with-quantum-processors/
+                                </span>
+                                <br><br>
+                              </p>
+                              
+                              <p class="dark-background">
+                                In summary, the first-layer problem of ultra-large-scale quantum computing is how to make QPUs usable accelerators within high-performance computing systems.
+                                This requires the integration of runtimes, compilers, classical accelerators, low-latency control, and error-correction decoding.
+                                However, as the number of QPUs continues to increase, the next question emerges:
+                                how can different QPUs, or even QPUs located in different cryostats, exchange quantum information?
+                                This is the hardware core of the next article, “Inter-Cryostat Quantum Links.”
+                              </p>
+                                    
+
+
+
+
+                                <p>
+                                    <span style="font-size: 0.5em; line-height: 0.8;">
+                                        Originally written in Chinese by the author, these articles are translated into English to invite cross-language resonance.
+                                    </span>
+                                </p>
+                                <div class="post-meta">
+                                    <span class="post-author">
+                                        <a href="../About_en/Wang.html"><img class="img-res" src="../Image/IMG_0964_2.JPG" alt="Professional headshot">Peir-Ru Wang</a>
+                                    </span>
+                                    <span class="post-category">
+                                        <a href="./main.html"><i class="fa fa-folder" aria-hidden="true"></i>Hardware Guide (2025)</a>
+                                    </span>
+                                </div><!-- /.post-meta -->
+                            
+                                <div id="prev-next-nav" class="text-center">
+                                    <a class="btn btn-gray" href="V4.html">← Previous</a> 
+                                    <a class="btn btn-gray" href="../QC_hardware/WA.html" style="margin: 0 10px;">中文版</a>
+                                    <a class="btn btn-gray" href="W.html">Next →</a>
+                                </div>
+
+                                
+
+                            </div><!-- /.post-content -->
+                        </article><!-- /.blog-post -->
+                        <!--<div id="PostComments" class="post-comments">
+                            
+                            
+                            
+                        </div> /#PostComments -->
+                        <!--<div class="respond">
+                            <h3>Post a Comment</h3>
+                            <form class="form-horizontal">
+                                <input class="form-control" type="text" placeholder="Your Name*" required>
+                                <input class="form-control" type="email" placeholder="Your Email" required>
+                                <textarea class="form-control form-control-comment" type="text" placeholder="Your Comment*" required></textarea>
+                                <button class="btn btn-green">Add a comment</button>
+                            </form>    
+                        </div> /.respond -->
+                    </div>
+                    <aside class="col-md-3">
+                        <div class="sidebar">
+                            <div class="widget">
+                                <div id="lesson-list_2">
+                                <div class="lesson-link "><a href="main.html">Hardware Technologies and Vendor Guide (2025): Menu</a></div>
+                                <div class="lesson-link "><a href="A.html">Current Application Models of Superconducting Quantum Computers</a></div>
+                                <div class="lesson-link "><a href="B.html">Superconducting Quantum Computers – Hardware Dissection</a></div>
+                                <div class="lesson-link "><a href="C.html">Microwave Components Overview</a></div>
+                                <div class="lesson-link "><a href="H.html">Microwave Component Vendors</a></div>
+                                <div class="lesson-link "><a href="U2.html">Cryogenic Wiring and Connectors</a></div>
+                                <div class="lesson-link "><a href="O.html">Cryogenic Wiring and Connectors - Vendors</a></div>
+                                <div class="lesson-link "><a href="F.html">Dilution Refrigerators</a></div>
+                                <div class="lesson-link "><a href="M.html">Thermal Management and Thermal Anchoring</a></div>
+                                <div class="lesson-link "><a href="M2.html">Thermalization Solutions</a></div>
+                                <div class="lesson-link "><a href="G.html">Control Electronics</a></div>
+                                <div class="lesson-link "><a href="U.html">Toward Scalable QPU - Quantum Chip Design</a></div>
+                                <div class="lesson-link "><a href="V2.html">Toward Scalable QPU - The Issue of Crosstalk</a></div>
+                                <div class="lesson-link "><a href="V4.html">Toward Scalable QPU - Cross-Chip Quantum Interconnection</a></div>
+                                <div class="lesson-link active"><a href="WA.html">Toward Ultra-Large-Scale Quantum Computing: Supercomputer–Quantum Hybrid Computing</a></div>
+                                <div class="lesson-link "><a href="W.html">Toward Ultra-Large-Scale Quantum Computing: Inter-Cryostat Quantum Links</a></div>
+                                </div>
+                            </div>
+  
+                        </div></aside>
+                </div>
+            </div>
+        </section><!-- /.section-portfolio -->
+
+    </main><!-- /#main -->
+
+    <footer id="colophon" class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-4 col-xs-6">
+                    <a href="../index_ch.html" class="site-title">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
+                    <p>Exploring the Quantum Technology Together.</p>
+                    </div>
+                <div class="col-lg-offset-4 col-md-3 col-sm-4 col-md-offset-2 col-sm-offset-0 col-xs-6 ">
+                    <p class="site-title">𝐾𝐸𝐸𝑃 𝐼𝑁 𝑇𝑂𝑈𝐶𝐻</p>
+                    <ul class="list-unstyled contact-links">
+                        <li><i class="fa fa-envelope" aria-hidden="true"></i><a href="mailto:info@insight-ihbar.com">info@insight-ihbar.com</a></li>
+                        <!--<li><i class="fa fa-phone" aria-hidden="true"></i><a href="tel:+37400800000">+374 (00) 80 00 00 </a></li>
+                        <li><i class="fa fa-fax" aria-hidden="true"></i><a href="+37400900000">+374 (00) 90 00 00</a></li>
+                        <li><i class="fa-solid fa-location-dot"></i><p>Hsinchu 300, Taiwan (R.O.C.)</p></li>-->
+                    </ul>
+                </div>
+                <!--<div class="clearfix visible-xs"></div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6">
+                    <h3>Featured links</h3>
+                    <ul class="list-unstyled">
+                        <li class="active"><a href="index_ch.html">Home</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="portfolio.html">Porfolio</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>-->
+            </div>
+        </div>
+        <div class="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-8">
+                        <div class="social-links">
+                            <!--<a class="twitter-bg" href="#"><i class="fab fa-twitter"></i></a>-->
+                            <!--<<a class="facebook-bg" href="https://www.facebook.com/people/Quantum-Perspectives/61576446849628/"><i class="fab fa-facebook"></i></a>-->
+                            <!--<a class="facebook-bg" href="https://www.facebook.com/people/%E9%87%8F%E5%AD%90%E9%81%A0%E8%A6%8BQuantum-Perspectives/61576883632888/"><i class="fab fa-facebook-f"></i></a>-->
+                            <!--<a class="pinterest" href="#"><i class="fa-solid fa-microscope"></i></a>-->
+                            <!--<a class="facebook-bg" href="https://www.facebook.com/people/Insight-hbar/61576811775374/"><i class="fab fa-facebook-f"></i></a>-->
+                            <a class="linkedin-bg" href="https://www.linkedin.com/company/insight-ihbar"><i class="fab fa-linkedin"></i></a>
+                        </div><!-- /.social-links -->
+                    </div>
+                    <div class="col-xs-4">
+                        <div class="text-right">
+                            <p><span style="font-size: 16px;">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</span></p>
+                            <p>All Rights Reserved</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.copyright -->
+    </footer><!-- /#footer -->
+
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="../assets/js/bootstrap-select.min.js"></script>
+    <script src="../assets/js/jquery.slicknav.min.js"></script>
+    <script src="../assets/js/jquery.countTo.min.js"></script>
+    <script src="../assets/js/jquery.shuffle.min.js"></script>
+    <script src="../assets/js/script.js"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  
+</body>
+</html>

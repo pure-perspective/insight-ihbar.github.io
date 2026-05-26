@@ -16,6 +16,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://www.insight-ihbar.com/QC_hardware_en/W.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://www.insight-ihbar.com/QC_hardware_en/O.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -41,6 +46,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://www.insight-ihbar.com/QC_hardware_en/V4.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://www.insight-ihbar.com/QC_hardware_en/U2.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -62,6 +72,11 @@
   </url>
   <url>
     <loc>https://www.insight-ihbar.com/QC_hardware_en/U.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.insight-ihbar.com/QC_hardware_en/WA.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -576,6 +591,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://www.insight-ihbar.com/QID/imec.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://www.insight-ihbar.com/QID/Atom-Computing.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -612,6 +632,11 @@
   </url>
   <url>
     <loc>https://www.insight-ihbar.com/QC_hardware/V3.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.insight-ihbar.com/QC_hardware/W.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -676,6 +701,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://www.insight-ihbar.com/QC_hardware/V4.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://www.insight-ihbar.com/QC_hardware/U2.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -731,7 +761,17 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://www.insight-ihbar.com/QC_hardware/WA.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://www.insight-ihbar.com/QC_hardware/M.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.insight-ihbar.com/QC_hardware/X.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
