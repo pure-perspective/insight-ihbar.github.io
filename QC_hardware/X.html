@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    
+
+    
+    <meta name="author" content="Peir-Ru Wang">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,600,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/20250525-icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/20250525-icon.png">
+
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="../assets/css/style.css" rel="stylesheet">
+    <link href="../assets/css/responsive.css" rel="stylesheet">
+
+    <title>光整合超導量子電腦：全光控制</title>
+    <meta name="description" content="解析光整合超導量子電腦的全光控制與讀出：光纖傳輸微波控制訊號、微波—光學量子轉換器、all-optical readout，降低佈線與熱負載，邁向可擴展 QPU 與量子網路互連。">
+    <meta name="keywords" content="- 超導量子電腦
+- 量子位元
+- 量子硬體
+- 低溫接頭
+- 柔性帶狀線纜
+- 高密度連接器
+- 量子計算技術
+- 材料科學
+- 量子控制電子
+- 量子供應商">
+    <link rel="canonical" href="https://www.insight-ihbar.com/QC_hardware/X.html">
+
+  <meta name="keywords" content="光整合超導量子電腦, 全光控制, 光纖微波控制訊號, 微波—光學量子轉換器, microwave-to-optical transducer, all-optical 量子位元讀出, radio-over-fibre 讀出, 超導量子位元, 可擴展 QPU, 量子網路互連">
+</head>
+<body>
+
+    <header id="masthead" class="site-header">
+        <nav id="primary-navigation" class="site-navigation">
+            <div class="container">
+
+                <div class="navbar-header">                   
+                    <a href="../index_ch.html" class="site-title">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
+                </div><!-- /.navbar-header -->
+
+                <div class="collapse navbar-collapse" id="agency-navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="../index_ch.html">Home</a></li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">科普介紹<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                              <li><a href="../SCQ_elementary/main.html">超導量子位元(科普版)</a></li>
+                              <li><a href="../SCQ_advanced/main.html">超導量子位元(進階版)</a></li>
+                              <li><a href="../SpQ/main.html">半導體自旋量子位元</a></li>
+                            </ul>
+                        </li>
+                        <!--<li class="active"><a href="../SCQ_elementary/main.html">科普介紹</a></li>-->
+                        <li class="active"><a href="../QC_hardware/main.html">硬體導論</a></li>
+                        <li><a href="../QID/main.html">量子產業群像錄</a></li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">研討會筆記<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                <li><a href="../ASW2026/main.html">2026中研院超導量子電腦Workshop</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">量子諮詢<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                <li><a href="https://www.quantum-perspectives.com/About/main.html">量子遠見科技：諮詢服務</a></li>
+                                <li><a href="../About/main.html">關於我們</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="../index.html">English</a></li>                        
+                    </ul>
+                </div>
+
+            </div>   
+        </nav><!-- /.site-navigation -->
+    </header><!-- /#mastheaed -->
+
+    <div id="hero" class="hero overlay subpage-hero blog-hero">
+        <div class="hero-content">
+            <div class="hero_2-text">
+                <h1>硬體導論</h1>
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="../index_ch.html">Home</a></li>
+                  <li class="breadcrumb-item"><a href="./main.html">硬體導論</a></li>
+                  <!--<li class="breadcrumb-item active">約瑟夫森節</li>-->
+                </ol>
+            </div><!-- /.hero-text -->
+        </div><!-- /.hero-content -->
+    </div><!-- /.hero -->
+
+    <main id="main" class="site-main">
+
+        <section class="site-section subpage-site-section section-blog">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                        <article class="blog-post">
+                            <!--<img src="../assets/img/portfolio-1.jpg" class="img-res" alt="">-->
+                            <div class="post-content">
+                                <div style="text-align: center;">
+                                    <h2>光整合超導量子電腦：全光控制</h2>
+                                    <h3></h3>
+                                    <span style="font-size: 0.7em; line-height: 0.8;">
+                                        2026.05.23
+                                    </span>
+                                </div>
+
+
+
+                                <p class="dark-background">
+                                  除了用光纖連接不同製冷機中的超導量子電路之外，另一個正在發展中的方向，
+                                  是用光學訊號來控制或讀出超導量子晶片。這裡的「用光控制」需要小心區分：
+                                  目前大多數實驗並不是用單光子量子態直接對 qubit 做量子閘，
+                                  而是用光纖把調制後的光訊號送入低溫系統，再在低溫端把光訊號轉換成微波訊號，
+                                  用來控制或讀出超導 qubit。
+                                </p>
+                                
+                                <p class="dark-background">
+                                  這個方向的動機很明確：大型超導量子電腦需要大量微波控制線與讀出線。
+                                  傳統同軸線雖然可以傳送高品質微波訊號，但每一條線都會占用空間、導入熱負載，
+                                  並增加低溫佈線與封裝的複雜度。相比之下，光纖體積小、熱導率低、頻寬高，
+                                  因此有機會成為未來大規模 QPU 的高密度訊號傳輸方式。
+                                </p>
+                                
+                                <h4>光纖產生微波控制訊號</h4>
+                                
+                                <p class="dark-background">
+                                  一種較直接的作法，是在室溫端產生調制雷射，透過 optical fibre 將光訊號送入 dilution refrigerator，
+                                  再由低溫 photodetector 將光訊號轉換成 microwave control signals。
+                                  這些微波訊號可以像傳統同軸線產生的控制脈衝一樣，用來驅動超導 qubit 的 Rabi oscillation、
+                                  單量子位元閘操作與讀出。
+                                </p>
+                                
+                                <p class="dark-background">
+                                  這種方法的意義在於：光纖本身不一定直接承載 qubit 的量子態，
+                                  但它可以取代部分進入低溫系統的 microwave cables，降低佈線密度與熱負載。
+                                  因此，它更接近「用光纖傳送控制訊號」，而不是「用光學單光子直接作為量子資訊載體」。
+                                </p>
+                                
+                                <h4>相干光學控制：microwave–optical quantum transducer</h4>
+                                
+                                <p class="dark-background">
+                                  更進一步的方向，是使用 <b>microwave–optical quantum transducer</b>。
+                                  這類元件可以把光學頻率與微波頻率相干耦合，使光學訊號在低溫端轉換成可驅動超導 qubit 的微波訊號。
+                                  近期研究已展示 <b>coherent optical control of a superconducting qubit</b>：
+                                  研究團隊利用 microwave–optical quantum transducer 產生微波驅動場，
+                                  並觀察到由光學訊號驅動的 Rabi oscillations。
+                                </p>
+                                
+                                <p class="dark-background">
+                                  這項結果代表光學系統不只是能傳送古典控制訊號，也開始能與超導量子電路建立相干介面。
+                                  不過，目前這類 transducer 的轉換效率、附加雜訊、光致加熱與低溫整合仍是主要挑戰。
+                                  若未來能進一步提升效率並降低雜訊，它將可能成為量子資料中心中光纖互連與超導 QPU 之間的關鍵橋樑。
+                                </p>
+                                
+                                <h4>光學讀出：all-optical superconducting qubit readout</h4>
+                                
+                                <p class="dark-background">
+                                  除了控制之外，也有研究嘗試用光學方式讀出超導 qubit。
+                                  所謂 <b>all-optical superconducting qubit readout</b>，
+                                  是指在低溫端使用電光轉換元件，將微波讀出訊號與光學訊號互相轉換，
+                                  讓讀出資訊可以透過光纖傳回室溫端。
+                                </p>
+                                
+                                <p class="dark-background">
+                                  這種 radio-over-fibre readout 的優點，是可以減少低溫微波放大器、循環器與大量同軸線的需求。
+                                  對未來上千、上萬甚至更多 qubit 的系統而言，
+                                  這類光學 I/O 架構有機會成為解決低溫訊號線瓶頸的重要方案。
+                                </p>
+                                
+                                <table width="100%" border="1" cellpadding="10" cellspacing="0" style="border-collapse: collapse; font-family: sans-serif; border-color: #cccccc;">
+                                  <thead>
+                                    <tr bgcolor="#f2f2f2" align="center">
+                                      <th width="25%">研究方向</th>
+                                      <th width="25%">核心概念</th>
+                                      <th>技術意義</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <td><b>Photonic link control</b></td>
+                                      <td>用光纖傳送調制光，在低溫端 photodetector 轉成微波控制訊號。</td>
+                                      <td>可降低同軸線數量與熱負載，適合大規模 QPU 的高密度控制線路。</td>
+                                    </tr>
+                                    <tr>
+                                      <td><b>Coherent optical control</b></td>
+                                      <td>利用 microwave–optical quantum transducer，將光學訊號相干轉換成微波驅動場。</td>
+                                      <td>更接近真正的光學—超導量子介面，可望支援未來量子網路與模組化 QPU。</td>
+                                    </tr>
+                                    <tr>
+                                      <td><b>All-optical readout</b></td>
+                                      <td>透過電光轉換與 radio-over-fibre 架構，把 qubit 讀出訊號轉成光學訊號傳回室溫端。</td>
+                                      <td>有機會減少低溫放大鏈、循環器與同軸線，提升讀出系統的可擴展性。</td>
+                                    </tr>
+                                    <tr>
+                                      <td><b>Quantum transduction</b></td>
+                                      <td>在單光子層級實現 microwave photon 與 optical photon 的量子態轉換。</td>
+                                      <td>若能達到高效率、低雜訊，將成為超導量子電腦連接光纖量子網路的核心技術。</td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                                
+                                <p class="dark-background">
+                                  總結來說，用「量子光」控制超導量子晶片目前可分成兩個層次：
+                                  較成熟的是用光纖傳送調制光，並在低溫端轉換成微波控制或讀出訊號；
+                                  更前沿的是利用 microwave–optical quantum transducer，
+                                  讓光學訊號與超導 qubit 之間建立相干介面。
+                                </p>
+                                
+                                <p class="dark-background">
+                                  前者主要解決大型 QPU 的低溫佈線與熱負載問題；
+                                  後者則瞄準更長遠的目標：讓超導量子處理器能透過光學通道接入量子網路，
+                                  甚至實現跨模組、跨製冷機、跨資料中心的量子資訊交換。
+                                </p>
+
+
+
+
+                                <div style="text-align: center;">
+                                  <a href="../Image/Image/Control link.png">
+                                  <img src="../Image/Control link.png" alt="同軸與光子連結架構比較圖" style="width: 70%; height: auto;">
+                                  </a>
+                              </div>
+                              <p  class="dark-background">
+                              ▲光纖方案，（a）是傳統控制線路，（b）採用不同波長的載波混波技術，將控制訊號透過光電轉換器放到對應的載波上，通過光纖束進入到腔體中，再轉換回控制Qubit的控制訊號。
+                              <br><span style="font-size: 0.7em; line-height: 0.8;">Ref: DOI: 10.1038/s41586-021-03268-x</span><br><br>
+                              </p>
+                              
+                              <div style="text-align: center;">
+                                  <a href="../Image/Control Bus.png">
+                                  <img src="../Image/Control Bus.png" alt="量子位控制器與頻譜示意圖" style="width: 70%; height: auto;">
+                                  </a>
+                              </div>
+                              <p  class="dark-background">
+                              ▲透過Qubit頻率隔離，並且利用設計過的控制頻譜訊號，使得Qubit之間的控制可以隔離開來，便可通過單一控制線路控制多個Qubit。
+                              <br><span style="font-size: 0.7em; line-height: 0.8;">arXiv:2501.10710v1</span><br><br>
+                              </p>
+
+
+                              <div style="text-align: center;">
+                                <a href="../Image/截圖 2026-05-25 下午3.54.17.png">
+                                    <img src="../Image/截圖 2026-05-25 下午3.54.17.png" alt="微波光學轉換器系統示意圖" style="width: 70%; height: auto;">
+                                </a>
+                            </div>
+                            <p class="dark-background">
+                                ▲
+                                <span style="font-size: 0.7em; line-height: 0.8;">
+                                    <br>Ref: All-optical superconducting qubit readout, DOI:10.1038/s41567-024-02741-4
+                                </span>
+                                <br><br>
+                            </p>
+
+
+                            
+
+
+                                <h3>用「量子光」連接超導量子晶片：微波光子與光纖光子</h3>
+
+<p class="dark-background">
+  當我們說「用量子光連接超導量子位元晶片」時，需要先區分兩種不同層級的技術路線。
+  第一種是使用 <b>微波光子（microwave photon）</b> 作為量子資訊的載體；
+  第二種則是使用光纖中的 <b>光學光子或電信波段光子（optical / telecom photon）</b> 作為長距離傳輸媒介。
+  兩者都可以被稱為「量子光」，但在超導量子電腦硬體中，它們的成熟度與工程挑戰相當不同。
+</p>
+
+<h4>路線一：微波光子連結，最自然的超導量子通道</h4>
+
+<p class="dark-background">
+  超導量子位元本身就是微波頻段的量子系統，因此最自然的 flying photon 並不是可見光或電信光，
+  而是 <b>微波光子</b>。在這條路線中，量子位元的狀態可以被轉換成可傳播的微波光子，
+  經由低溫同軸線或波導傳輸，再由遠端的另一個超導電路吸收。
+</p>
+
+<p class="dark-background">
+  ETH Zurich / Wallraff group 在 2020 年已展示跨製冷機的微波量子連結：
+  兩個 transmon qubit 分別位於兩台 dilution refrigerator 中，
+  中間透過低溫波導形成 <b>cryogenic microwave quantum link</b>，
+  使兩端超導量子電路能夠相干連接。
+  這是目前最直接對應「跨製冷機超導量子連結」的實驗路線。
+</p>
+
+<h4>路線二：光纖光子連結，邁向更長距離的量子網路</h4>
+
+<p class="dark-background">
+  如果「量子光」指的是光纖中的光學光子或電信波段光子，則問題會更複雜。
+  因為超導量子位元工作在 GHz 微波頻段，而光纖通訊使用的是數百 THz 的光學頻段。
+  兩者之間相差約五個數量級以上，因此需要一種稱為
+  <b>microwave-to-optical transducer</b> 的量子轉換器。
+</p>
+
+<p class="dark-background">
+  這類轉換器的任務，是先把超導量子電路中的微波量子資訊轉換成可在光纖中傳播的
+  telecom optical photon，經由光纖傳輸後，再於遠端轉回微波量子態。
+  若這項技術成熟，超導量子電腦便不再只能依賴低溫微波線路，而有機會透過光纖形成更長距離、
+  更接近量子資料中心或量子網路的互連架構。
+</p>
+
+<p class="dark-background">
+  不過，目前光纖式跨製冷機超導量子連結仍屬於前沿研究。
+  近年的實驗已展示跨製冷機、公里級的 coherent photonic link 原型：
+  兩個分別位於不同 dilution refrigerator 的超導電路，
+  透過 aluminum nitride electro-optic transducers 與 1 km telecom optical fiber 進行相干訊號傳輸。
+  這代表光纖式超導量子互連已經從概念走向實驗平台，
+  但距離高保真、低雜訊、可直接支援 qubit-to-qubit 量子態傳輸或遠距量子閘，仍有相當大的技術門檻。
+</p>
+
+<h4>相關前置技術</h4>
+
+<p class="dark-background">
+  除了直接跨製冷機連結之外，光纖與超導量子電路的整合還包括幾個重要前置方向。
+  例如，NIST 曾展示利用 optical fibre 將調制雷射送至低溫 photodetector，
+  在 mK 端直接產生 microwave control signals，並完成超導 qubit 的控制與讀出。
+  這條路線的重點，是用光纖取代大量進入製冷機的室溫同軸控制線，
+  但它傳送的是控制與讀出訊號，不是跨 QPU 的量子態。
+</p>
+
+<p class="dark-background">
+  另一個方向是 microwave-to-optical quantum transduction。
+  例如 Painter / AWS 團隊曾展示將 transmon 的 microwave-frequency excitation 轉換成 optical photon。
+  這類研究說明了微波與光學系統之間可以建立耦合，
+  但如何在轉換過程中完整保留脆弱的量子態，仍是量子轉換技術的核心挑戰。
+</p>
+
+<p class="dark-background">
+  近年也有研究展示 all-optical superconducting qubit readout，
+  也就是在低溫環境中透過電光轉換與 radio-over-fibre 架構讀出超導 qubit。
+  這顯示 telecom-wavelength light 與 superconducting circuits 的相容性正在提高，
+  也為未來模組化量子網路鋪路。
+</p>
+
+<table width="100%" border="1" cellpadding="10" cellspacing="0" style="border-collapse: collapse; font-family: sans-serif; border-color: #cccccc;">
+  <thead>
+    <tr bgcolor="#f2f2f2" align="center">
+      <th width="25%">路線</th>
+      <th width="20%">是否已有跨製冷機展示</th>
+      <th width="25%">傳輸載體</th>
+      <th>成熟度</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>低溫微波量子連結</b></td>
+      <td align="center">有</td>
+      <td>Microwave photon / waveguide</td>
+      <td>較成熟，已展示跨製冷機超導電路的相干連結。</td>
+    </tr>
+    <tr>
+      <td><b>光纖 photonic link</b></td>
+      <td align="center">有原型</td>
+      <td>Optical / telecom photon</td>
+      <td>快速發展中，但仍需提高轉換效率、降低雜訊，並驗證真正的量子態傳輸能力。</td>
+    </tr>
+    <tr>
+      <td><b>完整光纖式量子態傳輸或遠距量子閘</b></td>
+      <td align="center">尚未成熟</td>
+      <td>Microwave ⇄ optical ⇄ microwave</td>
+      <td>仍屬前沿研究目標，是未來量子資料中心與長距離超導量子網路的重要方向。</td>
+    </tr>
+  </tbody>
+</table>
+
+<p class="dark-background">
+  總結來說，目前跨製冷機超導量子連結最成熟的實驗路線，是使用低溫微波光子通道，
+  直接在兩台 dilution refrigerator 之間傳送微波量子資訊。
+  若要進一步走向更長距離或資料中心尺度，另一條重要路線則是
+  <b>microwave-to-optical transduction</b>：
+  把超導電路中的微波量子資訊轉換成可在光纖中傳播的 telecom optical photon，
+  再於遠端轉回微波量子態。
+</p>
+
+<p class="dark-background">
+  因此，「用光連接超導量子晶片」確實已經出現跨製冷機與公里級光纖連結的實驗原型；
+  但若要求高效率、低雜訊、可用於容錯量子計算的完整量子互連，
+  目前仍是量子硬體領域中的前沿研究課題。
+</p>
+<div style="text-align: center;">
+    <a href="../Image/截圖 2026-05-21 下午3.42.29.png">
+        <img src="../Image/截圖 2026-05-21 下午3.42.29.png" alt="光纖連接雙換能器量測示意圖" style="width: 70%; height: auto;">
+    </a>
+</div>
+<p class="dark-background">
+    ▲
+    <span style="font-size: 0.7em; line-height: 0.8;">
+        <br>Ref: https://arxiv.org/abs/2508.02444
+    </span>
+    <br><br>
+</p>
+
+
+
+<div style="text-align: center;">
+    <a href="../Image/截圖 2026-05-21 下午3.42.02.png">
+        <img src="../Image/截圖 2026-05-21 下午3.42.02.png" alt="光電整合晶片結構示意與顯微圖" style="width: 70%; height: auto;">
+    </a>
+</div>
+<p class="dark-background">
+    ▲
+    <span style="font-size: 0.7em; line-height: 0.8;">
+        <br>Ref: https://arxiv.org/abs/2508.02444
+    </span>
+    <br><br>
+</p>
+
+
+
+<div style="text-align: center;">
+    <a href="../Image/截圖 2026-05-21 下午3.41.42.png">
+        <img src="../Image/截圖 2026-05-21 下午3.41.42.png" alt="兩換能器與1公里光纖示意圖" style="width: 70%; height: auto;">
+    </a>
+</div>
+<p class="dark-background">
+    ▲
+    <span style="font-size: 0.7em; line-height: 0.8;">
+        <br>Ref: https://arxiv.org/abs/2508.02444
+    </span>
+    <br><br>
+</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                             
+<h2>飛行微波光子與超導量子位元的糾纏：邁向「全量子控制堆疊」</h2>
+
+<p>
+    在傳統超導量子電腦中，量子位元雖然是量子系統，但控制與讀出大多仍依賴古典微波脈衝：
+    我們用室溫電子學產生一個相干微波訊號，再把它送入低溫晶片，驅動 qubit 產生 Rabi rotation。
+    這樣的微波場通常可以近似為古典波，因為它包含大量光子，其量子漲落相對於平均振幅很小。
+</p>
+
+<p>
+    然而，這項研究展示的是更深一層的問題：如果微波場本身不只是古典控制訊號，而是一個真正的
+    <strong>量子光場</strong>，它能否與超導量子位元形成糾纏？
+    換句話說，能不能讓一個固定在晶片上的 superconducting qubit，和一個沿傳輸線傳播的
+    <strong>itinerant microwave photon</strong> 共同形成一個非局域量子態？
+</p>
+
+<p>
+    這正是「飛行量子位元」在超導量子架構中的核心意義。
+    晶片上的 transmon 或 superconducting qubit 是 <strong>stationary qubit</strong>；
+    沿著傳輸線離開晶片、可攜帶量子資訊的微波光子則是 <strong>flying qubit</strong>。
+    若兩者能夠產生糾纏，就代表超導量子處理器不再只是局部晶片上的量子系統，而可以透過量子光場建立模組之間的量子連結。
+</p>
+
+<div style="text-align: center;">
+                              <a href="../Image/截圖 2026-05-25 下午4.01.51.png">
+                                  <img src="../Image/截圖 2026-05-25 下午4.01.51.png" alt="量子態相空間與密度矩陣圖表" style="width: 70%; height: auto;">
+                              </a>
+                          </div>
+                          <p class="dark-background">
+                              ▲
+                              <span style="font-size: 0.7em; line-height: 0.8;">
+                                  <br>Ref: Observation of Entanglement between Itinerant Microwave Photons and a Superconducting Qubit, DOI:10.1103/PhysRevLett.109.240501
+                              </span>
+                              <br><br>
+                          </p>
+
+<h3>實驗的核心概念：把 qubit 的量子態寫入飛行微波光子</h3>
+
+<p>
+    這個實驗可以用一句話概括：
+</p>
+
+<p style="text-align: center;">
+    <strong>固定的超導量子位元 + 傳播中的微波光子 = 混合型量子糾纏態</strong>
+</p>
+
+<p>
+    系統中有一個 superconducting qubit，它與一個微波共振腔耦合。
+    研究者先用微波脈衝準備 qubit 的疊加態，接著透過 qubit 與共振腔之間的受控交互作用，
+    將 qubit 的量子資訊部分轉移到共振腔場，再讓這個場從共振腔中洩漏出去，形成一個沿傳輸線傳播的微波波包。
+</p>
+
+<p>
+    如果設計得當，最後得到的不是單純的「qubit 在某個態、光子在某個態」，
+    而是一個糾纏態。例如可概念性地寫成：
+</p>
+
+<p style="text-align: center;">
+    \( |g\rangle |1\rangle + |e\rangle |0\rangle \)
+</p>
+
+<p>
+    這裡的 \( |g\rangle \) 與 \( |e\rangle \) 是超導量子位元的基態與激發態，
+    而 \( |0\rangle \)、\( |1\rangle \) 代表傳播微波場中的零光子與單光子成分。
+    重點不是光子數本身，而是 qubit 狀態與飛行光場狀態之間存在不可分解的量子相關性。
+</p>
+
+<h3>為什麼這不是傳統微波控制？</h3>
+
+<p>
+    傳統微波控制中，微波場通常被視為一個古典控制參數：
+</p>
+
+<p style="text-align: center;">
+    \( a \rightarrow \alpha(t) \)
+</p>
+
+<p>
+    也就是說，場算符 \( a \) 被替換成一個複數振幅 \( \alpha(t) \)，
+    qubit 感受到的是一個可調振幅、相位與頻率的 Rabi drive。
+    這種控制非常成功，但微波場本身並沒有被當作量子資訊載體。
+</p>
+
+<p>
+    這項研究則不同。這裡的微波場不是只提供一個古典振幅，而是保留了零光子、一光子、二光子等 Fock-state 成分，
+    並且與 qubit 形成糾纏。
+    因此，微波場不能再簡單地替換成 \( \alpha(t) \)；
+    它必須被視為一個真正的量子自由度。
+</p>
+
+<p>
+    這就是從「古典微波控制」走向「量子光場控制與互連」的關鍵轉變。
+</p>
+
+<h3>實驗架構：產生、傳送與量測飛行微波量子態</h3>
+
+<p>
+    下圖顯示了實驗裝置的核心。左側是超導量子位元與共振腔結構，
+    研究者透過不同頻率的微波脈衝控制 qubit 與 cavity field。
+    右側則是量測鏈，包含低雜訊的 Josephson parametric amplifier，
+    用來放大非常微弱的飛行微波量子場。
+</p>
+
+<p>
+    對傳播中的微波光子來說，量測比對固定腔內光子更困難。
+    因為光子一旦離開腔體，就成為一個時間波包；研究者必須量測它的兩個 quadratures，
+    也就是類似電磁場的 \(X\) 與 \(P\) 分量，並從大量單次量測資料中重建其量子態。
+</p>
+
+<div style="text-align: center;">
+                              <a href="../Image/截圖 2026-05-25 下午4.01.33.png">
+                                  <img src="../Image/截圖 2026-05-25 下午4.01.33.png" alt="量子電路與微波共振腔示意圖" style="width: 70%; height: auto;">
+                              </a>
+                          </div>
+                          <p class="dark-background">
+                              ▲
+                              <span style="font-size: 0.7em; line-height: 0.8;">
+                                  <br>Ref: Observation of Entanglement between Itinerant Microwave Photons and a Superconducting Qubit, DOI:10.1103/PhysRevLett.109.240501
+                              </span>
+                              <br><br>
+                          </p>
+
+<h3>如何證明真的有糾纏？</h3>
+
+<p>
+    單純看到 qubit 被激發，或看到微波訊號出現，並不足以證明糾纏。
+    要證明 qubit 與傳播光場之間有量子糾纏，必須重建它們的聯合量子態。
+</p>
+
+<p>
+    圖中的相空間分布顯示了不同 qubit 投影條件下，微波場在 \(X\)-\(P\) 平面上的分布。
+    對古典雜訊而言，這些分布只會反映一般機率相關；
+    但若場與 qubit 之間存在量子糾纏，則 qubit 的 Pauli operators
+    \( \sigma_x \)、\( \sigma_y \)、\( \sigma_z \)
+    會和光場的 moments 產生特定的非古典相關。
+</p>
+
+<p>
+    因此，研究者量測並重建了下列形式的相關量：
+</p>
+
+<p style="text-align: center;">
+    \( \langle (a^\dagger)^n a^m \sigma_i \rangle \)
+</p>
+
+<p>
+    這些量同時包含光場的 photon-number moments 與 qubit 的 Pauli 測量結果。
+    換句話說，它們不是只問「光場長什麼樣子」，也不是只問「qubit 在哪個態」，
+    而是問：
+</p>
+
+<p style="text-align: center;">
+    <strong>qubit 的量子方向與飛行光場的量子結構是否彼此鎖定？</strong>
+</p>
+
+<p>
+    圖中的密度矩陣重建結果顯示，系統確實具有 Bell-type entangled state 的特徵。
+    這代表飛行微波光子不只是訊號載體，而是真正攜帶與 qubit 糾纏的量子資訊。
+</p>
+
+<h3>這項研究的重要性</h3>
+
+<p>
+    這項工作的重要性在於，它把超導量子電路從「晶片內部的量子系統」推向「可傳播的量子網路」。
+    在一般 superconducting quantum processor 裡，qubit 多半被限制在晶片上的局域電路中；
+    但若能把 qubit 狀態與飛行微波光子糾纏，就有機會把量子資訊送往另一個模組、另一個晶片，
+    甚至進一步透過 microwave-to-optical transduction 連接到長距離光纖網路。
+</p>
+
+<p>
+    從研究路線來看，這項實驗連接了三個重要方向：
+</p>
+
+<ul>
+    <li>
+        <strong>量子光控制：</strong>
+        不再只用古典微波脈衝控制 qubit，而是讓單光子、Fock state 或其他非古典微波態參與 qubit dynamics。
+    </li>
+    <li>
+        <strong>量子光互連：</strong>
+        讓飛行微波光子成為 superconducting qubits 之間的量子匯流排，也就是 photonic quantum bus。
+    </li>
+    <li>
+        <strong>量子光讀出：</strong>
+        透過對傳播場的 quadrature tomography 或低雜訊放大，讀出 qubit 與光場之間的量子相關。
+    </li>
+</ul>
+
+<h3>與「全量子控制堆疊」的關係</h3>
+
+<p>
+    如果我們把傳統超導量子電腦看成：
+</p>
+
+<p style="text-align: center;">
+    <strong>古典控制電子學 → 微波脈衝 → 超導量子位元</strong>
+</p>
+
+<p>
+    那麼這類研究指向的是更進一步的架構：
+</p>
+
+<p style="text-align: center;">
+    <strong>量子光場 → 量子互連 → 量子讀出 → 超導量子位元</strong>
+</p>
+
+<p>
+    也就是說，控制、互連與讀出的媒介本身也逐漸量子化。
+    這不是單純把微波線換成光纖，也不是只把古典訊號搬到另一種頻段；
+    真正關鍵的是：傳播場本身是否保留 Fock-state、squeezing、entanglement 等非古典資源。
+</p>
+
+<p>
+    因此，這項研究可以被視為「全量子控制堆疊」的一個早期核心示範：
+    它證明了固定的超導量子位元可以與飛行中的微波光子形成可觀測、可重建的量子糾纏。
+    這為未來的模組化超導量子電腦、量子網路、量子微波光子學，以及量子增強讀出技術奠定了基礎。
+</p>
+
+<p>
+    簡言之，這篇研究的精神不是「用更好的古典微波控制 qubit」，
+    而是展示：
+</p>
+
+<p style="text-align: center;">
+    <strong>微波光子本身可以成為超導量子資訊處理中的量子自由度。</strong>
+</p>
+
+
+
+
+
+
+                                
+
+
+
+
+                    
+
+
+                                <div class="post-meta">
+                                    <span class="post-author">
+                                        <a href="../About/Wang.html"><img class="img-res" src="../Image/IMG_0964_2.JPG" alt="">王培儒</a>
+                                    </span>
+                                    <span class="post-category">
+                                        <a href="./main.html"><i class="fa fa-folder" aria-hidden="true"></i>硬體導論</a>
+                                    </span>
+                                </div><!-- /.post-meta -->
+                            
+                                <div id="prev-next-nav" class="text-center">
+                                    <a class="btn btn-gray" href="U2.html">← 上一頁</a> 
+                                    <a class="btn btn-gray" href="../QC_hardware_en/O.html" style="margin: 0 10px;">English Version</a>
+                                    <a class="btn btn-gray" href="F.html">下一頁 →</a>
+                                </div>
+
+                                
+
+                            </div><!-- /.post-content -->
+                        </article><!-- /.blog-post -->
+                        <!--<div id="PostComments" class="post-comments">
+                            
+                            
+                            
+                        </div> /#PostComments -->
+                        <!--<div class="respond">
+                            <h3>Post a Comment</h3>
+                            <form class="form-horizontal">
+                                <input class="form-control" type="text" placeholder="Your Name*" required>
+                                <input class="form-control" type="email" placeholder="Your Email" required>
+                                <textarea class="form-control form-control-comment" type="text" placeholder="Your Comment*" required></textarea>
+                                <button class="btn btn-green">Add a comment</button>
+                            </form>    
+                        </div> /.respond -->
+                    </div>
+                    <aside class="col-md-3">
+                        <div class="sidebar">
+                            <div class="widget">
+                                <div id="lesson-list_2">
+                                <div class="lesson-link "><a href="main.html">超導量子電腦硬體指南 (2025)：目錄</a></div>
+                                <div class="lesson-link "><a href="A.html">超導量子電腦當前的應用模式</a></div>
+                                <div class="lesson-link "><a href="B.html">超導量子電腦-硬體解構</a></div>
+                                <div class="lesson-link "><a href="C.html">微波元件解說</a></div>
+                                <div class="lesson-link "><a href="H.html">微波元件廠商</a></div>
+                                <div class="lesson-link "><a href="U2.html">特殊導線與接頭</a></div>
+                                <div class="lesson-link active"><a href="O.html">特殊導線與接頭-廠商</a></div>
+                                <div class="lesson-link "><a href="F.html">稀釋製冷機</a></div>
+                                <div class="lesson-link "><a href="M.html">熱管理與熱錨定</a></div>
+                                <div class="lesson-link "><a href="M2.html">熱沉解決方案</a></div>
+                                <div class="lesson-link "><a href="G.html">控制電子系統</a></div>
+                                <div class="lesson-link "><a href="U.html">邁向Scalable QPU-量子晶片設計</a></div>
+                                <div class="lesson-link "><a href="V2.html">邁向Scalable QPU-串擾議題</a></div>
+                                </div>
+                            </div>
+  
+                        </div></aside>
+                </div>
+            </div>
+        </section><!-- /.section-portfolio -->
+
+    </main><!-- /#main -->
+
+    <footer id="colophon" class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-4 col-xs-6">
+                    <a href="../index_ch.html" class="site-title">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
+                    <p>一起走進新時代的前沿科學與量子科技</p>
+                    </div>
+                <div class="col-lg-offset-4 col-md-3 col-sm-4 col-md-offset-2 col-sm-offset-0 col-xs-6 ">
+                    <p class="site-title">𝐾𝐸𝐸𝑃 𝐼𝑁 𝑇𝑂𝑈𝐶𝐻</p>
+                    <ul class="list-unstyled contact-links">
+                        <li><i class="fa fa-envelope" aria-hidden="true"></i><a href="mailto:info@insight-ihbar.com">info@insight-ihbar.com</a></li>
+                        <!--<li><i class="fa fa-phone" aria-hidden="true"></i><a href="tel:+37400800000">+374 (00) 80 00 00 </a></li>
+                        <li><i class="fa fa-fax" aria-hidden="true"></i><a href="+37400900000">+374 (00) 90 00 00</a></li>
+                        <li><i class="fa-solid fa-location-dot"></i><p>Hsinchu 300，Taiwan (R.O.C.)</p></li>-->
+                    </ul>
+                </div>
+                <!--<div class="clearfix visible-xs"></div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6">
+                    <h3>Featured links</h3>
+                    <ul class="list-unstyled">
+                        <li class="active"><a href="index_ch.html">Home</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="portfolio.html">Porfolio</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>-->
+            </div>
+        </div>
+        <div class="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-8">
+                        <div class="social-links">
+                            <!--<a class="twitter-bg" href="#"><i class="fab fa-twitter"></i></a>-->
+                            <!--<<a class="facebook-bg" href="https://www.facebook.com/people/Quantum-Perspectives/61576446849628/"><i class="fab fa-facebook"></i></a>-->
+                            <!--<a class="facebook-bg" href="https://www.facebook.com/people/%E9%87%8F%E5%AD%90%E9%81%A0%E8%A6%8BQuantum-Perspectives/61576883632888/"><i class="fab fa-facebook-f"></i></a>-->
+                            <!--<a class="pinterest" href="#"><i class="fa-solid fa-microscope"></i></a>-->
+                            <!--<a class="facebook-bg" href="https://www.facebook.com/people/Insight-hbar/61576811775374/"><i class="fab fa-facebook-f"></i></a>-->
+                            <a class="linkedin-bg" href="https://www.linkedin.com/company/insight-ihbar"><i class="fab fa-linkedin"></i></a>
+                        </div><!-- /.social-links -->
+                    </div>
+                    <div class="col-xs-4">
+                        <div class="text-right">
+                            <p><span style="font-size: 16px;">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</span></p>
+                            <p>All Rights Reserved</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.copyright -->
+    </footer><!-- /#footer -->
+
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="../assets/js/bootstrap-select.min.js"></script>
+    <script src="../assets/js/jquery.slicknav.min.js"></script>
+    <script src="../assets/js/jquery.countTo.min.js"></script>
+    <script src="../assets/js/jquery.shuffle.min.js"></script>
+    <script src="../assets/js/script.js"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  
+</body>
+</html>

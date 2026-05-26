@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N39VTY949N"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-N39VTY949N');
+</script>
+    <!-- Basic Page Needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <meta name="author" content="Peir-Ru Wang">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;1,300&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/20250525-icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/20250525-icon.png">
+
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/css/style.css" rel="stylesheet">
+    <link href="../assets/css/responsive.css" rel="stylesheet">
+
+    <title>邁向超大型量子計算：跨晶片量子互聯</title>
+    <meta name="description" content="解析超導量子電腦邁向可擴展 QPU 的跨晶片量子互聯技術，涵蓋模組化架構、C/M/L-coupler 層級與 qLDPC 錯誤校正連通性需求，掌握 IBM 路線與量子資料中心趨勢。">
+    <meta name="keywords" content="可擴展QPU, 跨晶片量子互聯, 超導量子電腦, 模組化量子處理器, 量子晶片互連, C-coupler, M-coupler, L-coupler, 量子錯誤校正, qLDPC碼">
+    <link rel="canonical" href="https://www.insight-ihbar.com/QC_hardware/V4.html">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+
+    <header id="masthead" class="site-header">
+        <nav id="primary-navigation" class="site-navigation">
+            <div class="container">
+
+                <div class="navbar-header">                   
+                    <a href="../index_ch.html" class="site-title">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
+                </div><!-- /.navbar-header -->
+
+                <div class="collapse navbar-collapse" id="agency-navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="../index_ch.html">Home</a></li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">科普介紹<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                              <li><a href="../SCQ_elementary/main.html">超導量子位元(科普版)</a></li>
+                              <li><a href="../SCQ_advanced/main.html">超導量子位元(進階版)</a></li>
+                              <li><a href="../SpQ/main.html">半導體自旋量子位元</a></li>
+                            </ul>
+                        </li>
+                        <!--<li class="active"><a href="../SCQ_elementary/main.html">科普介紹</a></li>-->
+                        <li class="active"><a href="../QC_hardware/main.html">硬體導論</a></li>
+                        <li><a href="../QID/main.html">量子產業群像錄</a></li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">研討會筆記<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                <li><a href="../ASW2026/main.html">2026中研院超導量子電腦Workshop</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">量子諮詢<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                <li><a href="https://www.quantum-perspectives.com/About/main.html">量子遠見科技：諮詢服務</a></li>
+                                <li><a href="../About/main.html">關於我們</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="../index.html">English</a></li>                        
+                    </ul>
+                </div>
+
+            </div>   
+        </nav><!-- /.site-navigation -->
+    </header><!-- /#mastheaed -->
+
+    <div id="hero" class="hero overlay subpage-hero blog-hero">
+        <div class="hero-content">
+            <div class="hero_2-text">
+                <h1>硬體導論</h1>
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="../index_ch.html">Home</a></li>
+                  <li class="breadcrumb-item"><a href="./main.html">硬體導論</a></li>
+                  <!--<li class="breadcrumb-item active">約瑟夫森節</li>-->
+                </ol>
+            </div><!-- /.hero-text -->
+        </div><!-- /.hero-content -->
+    </div><!-- /.hero -->
+
+    <main id="main" class="site-main">
+
+        <section class="site-section subpage-site-section section-blog">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                        <article class="blog-post">
+                            <!--<img src="../assets/img/portfolio-1.jpg" class="img-res" alt="">-->
+                            <div class="post-content">
+                              <div style="text-align: center;">
+                                <h2>邁向超大型量子計算：跨晶片量子互聯</h2>
+                                <h3></h3>
+                                <span style="font-size: 0.7em; line-height: 0.8;">
+                                  2026.05.25
+                              </span>
+                              </div>
+                              
+                              <p class="dark-background">
+                                對超導量子電腦而言，隨著 Qubit 數量增加，晶片面積、佈線密度、頻率配置、微波串擾、製程良率、封裝複雜度與錯誤校正需求都會快速變得嚴苛。
+                                要實現真正可擴展的量子電腦，關鍵問題不只是「如何製造更多 Qubit」，而是如何讓大量 Qubit 在可控制、可讀出、可糾錯的條件下共同運作。
+                              </p>
+                              
+                              <p class="dark-background">
+                                因此，大型QPU的發展方向，逐漸從「單一巨大晶片」邁向<b>模組化量子系統</b>。
+                                也就是說，未來的 QPU 不一定是一顆極大的晶片，而可能是由多個量子晶片、多個封裝模組，甚至多台稀釋製冷機共同組成的量子計算叢集，<b>量子互聯（Quantum interconnection）</b>
+                                便成為實現 scalable QPU 的核心技術。
+                              </p>
+                              <br>
+                              <table width="100%" border="1" cellpadding="10" cellspacing="0"
+                                     style="border-collapse: collapse; font-family: sans-serif; border-color: #cccccc;">
+                                <thead>
+                                  <tr bgcolor="#f2f2f2" align="center">
+                                    <th width="20%">擴展方式</th>
+                                    <th width="35%">優點</th>
+                                    <th>主要瓶頸</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td><b>單一晶片放大</b></td>
+                                    <td>架構直觀，晶片內耦合距離短，控制模型相對單純。</td>
+                                    <td>晶片面積、佈線密度、製程良率、頻率擁擠與串擾會快速增加。</td>
+                                  </tr>
+                                  <tr>
+                                    <td><b>單一製冷機內多晶片</b></td>
+                                    <td>可透過 chiplet、封裝與模組化技術提升總 Qubit 數量。</td>
+                                    <td>低溫空間有限，封裝、垂直互聯與同步控制變得更複雜。</td>
+                                  </tr>
+                                  <tr>
+                                    <td><b>多製冷機量子連結</b></td>
+                                    <td>可把 QPU 分散到多台 cryostat，形成更大型的量子計算叢集。</td>
+                                    <td>需要低損耗、低熱雜訊、相位穩定且可同步的量子通道。</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+
+
+
+                              <br>
+                              <ol>
+                              <h3><li>從單一晶片到模組化 QPU</li></h3>
+                              
+                              <p class="dark-background">
+                                透過IBM Quantum 的發展路線可以清楚呈現了這種模組化趨勢。早期的量子處理器主要強調單晶片 Qubit 數量的增加，例如 Hummingbird、
+                                Eagle、Osprey 與 Condor 等處理器。
+                                然而，當系統邁向更高 Qubit 數量與錯誤校正需求時，
+                                僅僅放大單一晶片已不足以支撐長期擴展。
+                              </p>
+                              
+                              <p class="dark-background">
+                                因此，IBM 的架構開始朝向多晶片、多模組與多系統並行的方向發展。
+                                例如 Heron 架構強調較高品質的中等規模晶片；
+                                Crossbill 與 Flamingo 則代表晶片間連接與模組化封裝；
+                                Kookaburra 進一步展示多晶片量子平行化的概念。
+                                這些發展共同指向一個核心問題：
+                                <b>如何讓不同量子晶片之間有效交換量子資訊？</b>
+                              </p>
+                              <p class="dark-background">
+                                這裡需要區分兩種不同的連接方式。
+                                第一種是 <b>classical link</b>，也就是利用即時古典通訊讓多個 QPU 協同執行任務。
+                                第二種是 <b>quantum link</b>，也就是真正傳送量子態或建立量子相關性的通道。
+                                前者較容易實作，後者則更接近未來大型容錯量子電腦所需的核心能力。
+                              </p>
+                              <br>
+                              <div style="text-align: center;">
+                                <a href="../Image/this-diagram-shows-the-quantum-processors-that-ibm-expects-to-have-ready-in-2023-condor-and-heron-in-2024-flamingo-and-cross.webp">
+                                  <img src="../Image/this-diagram-shows-the-quantum-processors-that-ibm-expects-to-have-ready-in-2023-condor-and-heron-in-2024-flamingo-and-cross.webp"
+                                       alt="量子處理器路線圖示意圖"
+                                       style="width: 100%; height: auto;">
+                                </a>
+                              </div>
+                              
+                              <p class="dark-background">
+                                ▲ IBM 量子處理器從單晶片大型化走向多晶片模組化。
+                                Condor 代表單晶片 Qubit 數量的放大，而 Flamingo、Crossbill 與 Kookaburra
+                                則開始導入晶片間量子通訊與模組化擴展。值得注意的是，晶片中的互聯有分成有分成古典互聯與量子互聯。
+                                古典互聯基本上是針對微波控制/讀出的訊號，而量子互聯要求晶片間的交互作用維持量子效應。
+                                <br>
+                                <span style="font-size: 0.7em; line-height: 0.8;">
+                                  Ref: https://spectrum.ieee.org/ibm-condor
+                                </span>
+                              </p>
+                              <br>
+                              <div style="text-align: center;">
+                                <a href="../Image/crossbill_condor_8f886198bc.png">
+                                    <img src="../Image/crossbill_condor_8f886198bc.png" alt="IBM量子晶片與封裝件" style="width: 70%; height: auto;">
+                                </a>
+                              </div>
+                              <p class="dark-background">
+                                ▲ IBM Quantum Crossbill (左) 和 IBM Quantum Condor (右)。Condor 是單體大晶片設計，而Crossbill採用多晶片互聯設計。
+                                <span style="font-size: 0.7em; line-height: 0.8;">
+                                    <br>Ref: https://www.ibm.com/quantum/blog/qdc-2024
+                                </span>
+                                <br><br>
+                              </p>
+                              
+       
+                              
+                              <div style="text-align: center;">
+                                <a href="../Image/image1_00a8b8ece1.png">
+                                  <img src="../Image/image1_00a8b8ece1.png"
+                                       alt="兩個Eagle量子晶片連接示意圖"
+                                       style="width: 70%; height: auto;">
+                                </a>
+                              </div>
+                              
+                              <p class="dark-background">
+                                ▲ 兩個 IBM Quantum Eagle processors 透過 real-time classical link 連接。
+                                這種架構讓多個 QPU 可以在同一個系統中協同運作，但它仍屬於 classical communication，
+                                與真正的 quantum interconnect 不同。
+                                <br>
+                                <span style="font-size: 0.7em; line-height: 0.8;">
+                                  Ref: https://www.ibm.com/quantum/blog/lo-locc-circuit-cutting
+                                </span>
+                              </p>
+                       <br>
+                              <div style="text-align: center;">
+                                <a href="../Image/Heron_Parallelization_Graphic_9109dba010.png">
+                                    <img src="../Image/Heron_Parallelization_Graphic_9109dba010.png" alt="Heron量子晶片互連架構圖" style="width: 70%; height: auto;">
+                                </a>
+                              </div>
+                              <p class="dark-background">
+                                ▲ IBM Heron的互聯架構，主要是共用控制/讀出的微波訊號總線，當前的控制/讀出的微波訊號是屬於古典信號控制，故這類互聯被歸類在古典互聯。
+                                <span style="font-size: 0.7em; line-height: 0.8;">
+                                    <br>Ref: https://www.ibm.com/quantum/blog/ibm-quantum-roadmap-2025
+                                </span>
+                                <br><br>
+                              </p>
+
+
+                              <h3><li>量子互聯的三個層級：C-coupler、M-coupler、L-coupler</li></h3>
+                              
+                              <p class="dark-background">
+                                IBM 將量子互聯分成不同尺度。
+                                有些互聯用於同一晶片內部，增加非鄰近 Qubit 的連通性；
+                                有些互聯用於相鄰晶片之間，形成多晶片模組；
+                                也有些互聯則負責連接同一製冷機內距離較遠的晶片平台。
+                                這些互聯技術針對同一台製冷機內的量子網路。
+                              </p>
+                              
+                              <table width="100%" border="1" cellpadding="10" cellspacing="0"
+                                     style="border-collapse: collapse; font-family: sans-serif; border-color: #cccccc;">
+                                <thead>
+                                  <tr bgcolor="#f2f2f2" align="center">
+                                    <th width="10%">互聯類型</th>
+                                    <th width="23%">連接尺度</th>
+                                    <th>功能解說</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td><b>C-coupler</b></td>
+                                    <td>同一晶片內非鄰近 Qubit 之間</td>
+                                    <td>
+                                      C-coupler 用於提高晶片內部連通性，使同一晶片上距離較遠、非鄰近的 Qubit 也能進行量子資訊傳輸。這對某些量子錯誤校正碼特別重要，因為錯誤校正不一定只依賴最近鄰 Qubit 互動。
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td><b>M-coupler</b></td>
+                                    <td>相鄰晶片之間互聯</td>
+                                    <td>
+                                      M-coupler 是短距離 chip-to-chip quantum interconnect，用於在相鄰量子晶片之間傳送量子資訊。它適合把多個較小晶片組合成更大的模組化量子處理器。
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td><b>L-coupler</b></td>
+                                    <td>同一製冷機內較遠晶片之間</td>
+                                    <td>
+                                      L-coupler 是較長距離的量子互聯，可在同一台 cryostat 內不同平台或較遠晶片之間路由量子資訊。由於傳輸距離增加，它對損耗、延遲、相位穩定性與同步控制提出更高要求。
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+
+                              <br>
+
+
+<div style="text-align: center;">
+<a href="../Image/IBM-C-coupler.png">
+<img src="../Image/IBM-C-coupler.png" alt="IBM量子晶片遠距量子通訊示意圖" style="width: 33%; height: auto;">
+</a>
+<a href="../Image/IBM-M-coupler.png">
+<img src="../Image/IBM-M-coupler.png" alt="IBM量子晶片互連示意圖" style="width: 33%; height: auto;">
+</a>
+<a href="../Image/IBM-L-coupler.png">
+<img src="../Image/IBM-L-coupler.png" alt="量子晶片互連示意圖" style="width: 33%; height: auto;">
+</a>
+</div>
+<p class="dark-background">
+▲ <b>(左)C-coupler：</b> 用於提高同一晶片內部的 Qubit 連通性。在許多量子錯誤校正架構中，Qubit 不只需要與最近鄰互動，也可能需要與較遠的 Qubit 傳遞資訊。C-coupler 的目標就是讓非鄰近 Qubit 之間也能建立有效的量子通訊路徑。
+<br>
+<b>(中)M-coupler：</b> 用於相鄰量子晶片之間的短距離互聯。它可以在鄰近晶片之間傳送量子資訊，適合把多個較小晶片組合成較大的模組化量子處理器。
+<br>
+<b>(右)L-coupler：</b> 用於較長距離的量子互聯。它可在同一製冷機內不同平台上的量子晶片之間傳送量子資訊，代表量子晶片不必全部擠在同一個局部封裝區域中。但距離增加也會帶來更嚴格的損耗、延遲與傳輸速率限制。
+<br><span style="font-size: 0.7em; line-height: 0.8;">
+Ref: IEEE Spectrum / IBM, Optics Lab
+</span><br><br>
+</p>
+<div style="text-align: center;">
+  <a href="../Image/Quantum_Connects_Parallelization_Graphic_7460c0616a.png">
+    <img src="../Image/Quantum_Connects_Parallelization_Graphic_7460c0616a.png"
+         alt="量子晶片間雙量子位通訊示意圖"
+         style="width: 100%; height: auto;">
+  </a>
+</div>
+
+<p class="dark-background">
+  ▲ M-Coupler 將多個量子處理器透過連接通道共同工作，使量子計算不再侷限於單一晶片。
+  <br>
+  <span style="font-size: 0.7em; line-height: 0.8;">
+    Ref: https://www.ibm.com/quantum/blog/ibm-quantum-roadmap-2025
+  </span>
+</p>
+<br>
+
+
+<div style="text-align: center;">
+  <a href="../Image/IBM_Quantum_Production_Flamingo_24_Packaged_V008_RS_COMP_V001_RS_1114573c07.jpg">
+    <img src="../Image/IBM_Quantum_Production_Flamingo_24_Packaged_V008_RS_COMP_V001_RS_1114573c07.jpg"
+         alt="兩片金色電路板模組"
+         style="width: 100%; height: auto;">
+  </a>
+  <a href="../Image/960x0 (1).webp">
+    <img src="../Image/960x0 (1).webp" alt="Flamingo L耦合器電纜示意圖" style="width: 100%; height: auto;">
+</a>
+</div>
+
+<p class="dark-background">
+  ▲ 用於IBM Flamingo的L-Copuler 展示了模組化量子處理器與長距離連接的設計方向。
+  這類架構的重點不只在於增加 Qubit 數量，而是讓多個量子模組能在可同步、可控制的條件下共同運作。
+  <span style="font-size: 0.7em; line-height: 0.8;">
+      <br>Ref: https://www.ibm.com/quantum/blog/qdc-2024
+      <br>Ref: https://www.forbes.com/sites/karlfreund/2023/12/04/ibm-launches-quantum-system-two-and-a-roadmap-to-quantum-advantage/
+  </span>
+  <br><br>
+</p>
+
+<br><br>
+<div style="text-align: center;">
+  <a href="../Image/960x0.webp">
+    <img src="../Image/960x0.webp"
+         alt="新型糾錯碼耦合器連接示意圖"
+         style="width: 100%; height: auto;">
+  </a>
+</div>
+
+<p class="dark-background">
+  ▲ C-, M-, L-Coupler可同時用於擴展量子晶片互聯。
+  <br>
+  <span style="font-size: 0.7em; line-height: 0.8;">
+    Ref: Forbes (https://www.forbes.com/sites/karlfreund/2023/12/04/ibm-launches-quantum-system-two-and-a-roadmap-to-quantum-advantage/) / IBM
+  </span>
+</p>
+<br>
+<div style="text-align: center;">
+  <a href="../Image/Kookaburra_Parallelization_Graphic_afc360b38b.png">
+    <img src="../Image/Kookaburra_Parallelization_Graphic_afc360b38b.png"
+         alt="2025多晶片量子處理器示意圖"
+         style="width: 100%; height: auto;">
+  </a>
+</div>
+
+<p class="dark-background">
+  ▲ Kookaburra 展示多晶片量子處理器平行化互聯的概念。多個量子晶片透過量子連接共同組成更大的處理單元。
+  <span style="font-size: 0.7em; line-height: 0.8;">
+      <br>Ref: https://www.ibm.com/quantum/blog/ibm-quantum-roadmap-2025
+  </span>
+  <br><br>
+</p><br>
+
+<p class="dark-background">
+從這三種互聯可以看出，大型量子電腦的擴展其實有多個層級：第一層是同一晶片內的 Qubit 連通性；第二層是相鄰晶片之間的 chip-to-chip interconnect；第三層是同一製冷機內不同屏蔽罩之間的長距離連結；再往外，才是多台製冷機之間的inter-cryostat quantum link。
+</p>
+
+
+
+<h3><li>為什麼錯誤校正需要更高連通性？</li></h3>
+                              
+                              <p class="dark-background">
+                                在小型量子處理器中，最近鄰耦合通常已足以執行許多基本量子電路。但在QEC校正架構中，情況會變得更複雜。
+                                許多高效率的量子錯誤校正碼，例如 LDPC code，
+                                可能需要 Qubit 之間具備更高的非局域連通性。
+                                如果所有互動都必須透過最近鄰交換完成，則會引入額外的 SWAP gate、
+                                增加電路深度，並累積更多錯誤。
+                              </p>
+<br>
+                              <h4>qLDPC 量子糾錯</h4>
+                                    <p>IBM在2024年展示qLDPC量子糾錯的工作。QEC 量子糾錯碼在實用計算上佔有非常重要地位，如何在最低的開銷下達到最佳的資訊傳輸和糾錯冗餘一直是工程上權衡的課題。
+                                        由於量子計算不可測量的特性，讓量子糾錯的難度更高。超導量子位元屬於二維的量子晶片，當前最主流的量子糾錯是<b>表面碼Surface Code</b>。
+                                        Surface Code優點是對於connectivity的需求只需要鄰近的Qubit，不需要遠程交互作用，但缺點是Ancilla Qubit的數量隨系統增加同步增加，實用上會增加系統複雜度與錯誤。
+                                        IBM在2024年展示了<b>qLDPC (quantum Low-Density Parity Check code)</b>混合Surface Code的量子糾錯運算。
+                                        qLDPC需要長程的交互作用，得益於IBM多層晶片製程的佈線/C-Coupler，可以實現較複雜的量子位元間交互聯接性拓樸。
+                                    </p><br>
+                                    <div style="text-align: center;">
+                                        <a href="../Image/截圖 2026-03-03 下午5.50.12.png">
+                                            <img src="../Image/截圖 2026-03-03 下午5.50.12.png" alt="表面碼與準循環碼網格示意圖" style="width: 100%; height: auto;">
+                                        </a>
+                                    </div>
+                                    <p class="dark-background">
+                                        ▲ IBM論文中比較傳統的表面碼（Surface Code）與新型且高效的雙二分碼（Bivariate Bicycle Code 簡稱 BB code，屬於qLDPC的一種）。<br>
+                                        <b>圖a.</b> 是表面碼 (Surface Code)。<br>
+                                        <b>圖b.</b> BB 碼 (Bivariate Bicycle Code)的幾何結構： 它被「嵌入」在一個<b>拓樸環面（Torus，甜甜圈形狀）</b>上，每個量子位元有 6 條線連出去（4 條短程，2 條長程）。<br>
+                                        <b>圖c.</b> 混合架構與操作。<br>
+                                        傳統表面碼如果要達到同樣的容錯水準，可能需要數千個位元，而 BB 碼只需要一百多個。
+                                        <span style="font-size: 0.7em; line-height: 0.8;">
+                                            <br>Ref: 10.1038/s41586-024-07107-7
+                                        </span>
+                                        <br><br>
+                                    </p>
+
+
+                                    <div style="text-align: center;">
+                                        <a href="../Image/IBM_FTQC_Torus_2_K_v3_16fc27ed7f.gif">
+                                            <img src="../Image/IBM_FTQC_Torus_2_K_v3_16fc27ed7f.gif" alt="量子位長距離連接示意圖" style="width: 100%; height: auto;">
+                                        </a>
+                                    </div>
+                                    <p class="dark-background">
+                                        ▲ 前面所說的BB Code嵌入在拓樸環面的示意圖，由IBM所繪製。
+                                        <span style="font-size: 0.7em; line-height: 0.8;">
+                                            <br>Ref: https://www.ibm.com/quantum/blog/large-scale-ftqc
+                                        </span>
+                                        <br>
+                                    </p>
+                              
+                              <p class="dark-background">
+                                因此，C-coupler、M-coupler 與 L-coupler 的意義不只是「把晶片接起來」，
+                                而是為未來的錯誤校正邏輯 Qubit 提供更彈性的連通圖。
+                                從這個角度看，量子互聯不只是硬體封裝問題，
+                                也直接影響量子錯誤校正碼、編譯策略與系統架構。
+                              </p>
+                              <br>
+                              
+                              
+
+
+                              
+                              
+                              
+                              
+                              <h3><li>從拓展量子晶片到量子資料中心：邁向超大型量子計算</li></h3>
+                              
+                              <p class="dark-background">
+                                當量子電腦從單一 QPU 走向量子資料中心時，
+                                系統架構會更接近一種 hybrid quantum-classical infrastructure。
+                                在這個架構中，QPU 負責量子態演化與量子測量；
+                                classical cluster 負責編譯、排程、最佳化、錯誤解碼與 feedback；
+                                runtime system 則負責把量子任務分配到合適的硬體資源。
+                              </p>
+                              
+                              
+                              
+                              
+                              <div style="text-align: center;">
+                                <a href="../Image/下載.jpeg">
+                                  <img src="../Image/下載.jpeg" alt="量子晶片與量子電腦架構圖" style="width: 100%; height: auto;">
+                              </a>
+                                <a href="../Image/960x0 (2).webp">
+                                    <img src="../Image/960x0 (2).webp" alt="IBM量子系統發展路線圖示意" style="width: 100%; height: auto;">
+                                </a>
+                              </div>
+                              <p class="dark-background">
+                                ▲ IBM的超算-量子混合計算預想圖。規模化的量子位元計算，將從晶面內互聯、跨晶片互聯、製冷機內跨封裝互聯，將要邁向跨製冷機量子互聯，將在後續做進一步介紹。
+                                <span style="font-size: 0.7em; line-height: 0.8;">
+                                  <br>(上)Ref: https://spectrum.ieee.org/ibm-quantum-computer-2668978269
+                                    <br>(下)Ref: https://www.forbes.com/sites/karlfreund/2023/12/04/ibm-launches-quantum-system-two-and-a-roadmap-to-quantum-advantage/
+                                </span>
+                                <br><br>
+                              </p>
+                              
+                              
+                              
+                              
+                              <p class="dark-background">
+                                因此，scalable QPU 的核心並不是單一層級的突破，
+                                而是多個層級共同成熟：
+                                晶片內部需要更好的 Qubit 連通性；
+                                晶片之間需要低損耗的 chip-to-chip quantum interconnect；
+                                製冷機內部需要長距離且相位穩定的量子通道；
+                                多台製冷機之間則需要能夠維持同步與量子相關性的 inter-cryostat link。
+                              </p>
+                              <p class="dark-background">
+                                從 IBM Quantum 的發展可以看出，C-coupler、M-coupler 與 L-coupler 分別代表不同尺度的量子互聯：
+                                從晶片內非鄰近 Qubit 的連接，到相鄰晶片間的短距離連接，
+                                再到同一製冷機內較長距離的量子連接。
+                                它們共同指出一個重要方向：
+                                <b>量子電腦的未來，不只是更大的晶片，而是更好的量子網路化架構。</b>
+                              </p>
+                                
+                              </ol>
+                              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                
+                                
+
+
+                                <div class="post-meta">
+                                    <span class="post-author">
+                                        <a href="../About/Wang.html"><img class="img-res" src="../Image/IMG_0964_2.JPG" alt="">王培儒</a>
+                                    </span>
+                                    <span class="post-category">
+                                        <a href="./main.html"><i class="fa fa-folder" aria-hidden="true"></i>硬體導論</a>
+                                    </span>
+                                </div><!-- /.post-meta -->
+                            
+                                <div id="prev-next-nav" class="text-center">
+                                    <a class="btn btn-gray" href="V2.html">← 上一頁</a> 
+                                    <a class="btn btn-gray" href="../QC_hardware_en/V4.html" style="margin: 0 10px;">English Version</a>
+                                    <a class="btn btn-gray" href="W.html">下一頁 →</a>
+                                </div>
+
+                                
+
+                            </div><!-- /.post-content -->
+                        </article><!-- /.blog-post -->
+                        <!--<div id="PostComments" class="post-comments">
+                            
+                            
+                            
+                        </div> /#PostComments -->
+                        <!--<div class="respond">
+                            <h3>Post a Comment</h3>
+                            <form class="form-horizontal">
+                                <input class="form-control" type="text" placeholder="Your Name*" required>
+                                <input class="form-control" type="email" placeholder="Your Email" required>
+                                <textarea class="form-control form-control-comment" type="text" placeholder="Your Comment*" required></textarea>
+                                <button class="btn btn-green">Add a comment</button>
+                            </form>    
+                        </div> /.respond -->
+                    </div>
+                    <aside class="col-md-3">
+                        <div class="sidebar">
+                            <div class="widget">
+                                <div id="lesson-list_2">
+                                <div class="lesson-link "><a href="main.html">超導量子電腦硬體指南 (2025)：目錄</a></div>
+                                <div class="lesson-link "><a href="A.html">超導量子電腦當前的應用模式</a></div>
+                                <div class="lesson-link "><a href="B.html">超導量子電腦-硬體解構</a></div>
+                                <div class="lesson-link "><a href="C.html">微波元件解說</a></div>
+                                <div class="lesson-link "><a href="H.html">微波元件廠商</a></div>
+                                <div class="lesson-link "><a href="U2.html">特殊導線與接頭</a></div>
+                                <div class="lesson-link "><a href="O.html">特殊導線與接頭-廠商</a></div>
+                                <div class="lesson-link "><a href="F.html">稀釋製冷機</a></div>
+                                <div class="lesson-link "><a href="M.html">熱管理與熱錨定</a></div>
+                                <div class="lesson-link "><a href="M2.html">熱沉解決方案</a></div>
+                                <div class="lesson-link "><a href="G.html">控制電子系統</a></div>
+                                <div class="lesson-link "><a href="U.html">邁向Scalable QPU：量子晶片設計</a></div>
+                                <div class="lesson-link "><a href="V2.html">邁向Scalable QPU：串擾議題</a></div>
+                                <div class="lesson-link active"><a href="V4.html">邁向超大型量子計算：跨晶片連接</a></div>
+                                <div class="lesson-link "><a href="W.html">邁向超大型量子計算：製冷機間量子連結</a></div>
+                                <div class="lesson-link "><a href="WA.html">邁向超大型量子計算：超算-量子混合運算</a></div>
+                                </div>
+                            </div>
+  
+                        </div></aside>
+                </div>
+            </div>
+        </section><!-- /.section-portfolio -->
+
+    </main><!-- /#main -->
+
+    <footer id="colophon" class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-4 col-xs-6">
+                    <a href="../index_ch.html" class="site-title">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
+                    <p>一起走進新時代的前沿科學與量子科技</p>
+                    </div>
+                <div class="col-lg-offset-4 col-md-3 col-sm-4 col-md-offset-2 col-sm-offset-0 col-xs-6 ">
+                    <p class="site-title">𝐾𝐸𝐸𝑃 𝐼𝑁 𝑇𝑂𝑈𝐶𝐻</p>
+                    <ul class="list-unstyled contact-links">
+                        <li><i class="fa fa-envelope" aria-hidden="true"></i><a href="mailto:info@insight-ihbar.com">info@insight-ihbar.com</a></li>
+                        <!--<li><i class="fa fa-phone" aria-hidden="true"></i><a href="tel:+37400800000">+374 (00) 80 00 00 </a></li>
+                        <li><i class="fa fa-fax" aria-hidden="true"></i><a href="+37400900000">+374 (00) 90 00 00</a></li>
+                        <li><i class="fa-solid fa-location-dot"></i><p>Hsinchu 300, Taiwan (R.O.C.)</p></li>-->
+                    </ul>
+                </div>
+                <!--<div class="clearfix visible-xs"></div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6">
+                    <h3>Featured links</h3>
+                    <ul class="list-unstyled">
+                        <li class="active"><a href="index_ch.html">Home</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="portfolio.html">Porfolio</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>-->
+            </div>
+        </div>
+        <div class="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-8">
+                        <div class="social-links">
+                            <!--<a class="twitter-bg" href="#"><i class="fab fa-twitter"></i></a>-->
+                            <!--<<a class="facebook-bg" href="https://www.facebook.com/people/Quantum-Perspectives/61576446849628/"><i class="fab fa-facebook"></i></a>-->
+                            <!--<a class="facebook-bg" href="https://www.facebook.com/people/%E9%87%8F%E5%AD%90%E9%81%A0%E8%A6%8BQuantum-Perspectives/61576883632888/"><i class="fab fa-facebook-f"></i></a>-->
+                            <!--<a class="pinterest" href="#"><i class="fa-solid fa-microscope"></i></a>-->
+                            <!--<a class="facebook-bg" href="https://www.facebook.com/people/Insight-hbar/61576811775374/"><i class="fab fa-facebook-f"></i></a>-->
+                            <a class="linkedin-bg" href="https://www.linkedin.com/company/insight-ihbar"><i class="fab fa-linkedin"></i></a>
+                        </div><!-- /.social-links -->
+                    </div>
+                    <div class="col-xs-4">
+                        <div class="text-right">
+                            <p><span style="font-size: 16px;">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</span></p>
+                            <p>All Rights Reserved</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.copyright -->
+    </footer><!-- /#footer -->
+
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="../assets/js/bootstrap-select.min.js"></script>
+    <script src="../assets/js/jquery.slicknav.min.js"></script>
+    <script src="../assets/js/jquery.countTo.min.js"></script>
+    <script src="../assets/js/jquery.shuffle.min.js"></script>
+    <script src="../assets/js/script.js"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  
+</body>
+</html>

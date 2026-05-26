@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N39VTY949N"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-N39VTY949N');
+</script>
+    <!-- Basic Page Needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <meta name="author" content="Peir-Ru Wang">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;1,300&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/20250525-icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/20250525-icon.png">
+
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/css/style.css" rel="stylesheet">
+    <link href="../assets/css/responsive.css" rel="stylesheet">
+
+    <title>Toward Ultra-Large-Scale Quantum Computing: Inter-Cryostat Quantum Links</title>
+    <meta name="description" content="Explore inter-cryostat quantum links for scaling superconducting QPUs—microwave quantum channels, key hardware components, milestones, and challenges.">
+    <meta name="keywords" content="- Microwave components for quantum computing
+- Quantum computing hardware guide 2025
+- Superconducting qubits and amplifiers
+- Quantum amplifier technologies explained
+- Low-noise HEMT amplifiers in quantum systems
+- Traveling Wave Parametric Amplifiers overview
+- Quantum system measurement challenges
+- Cryogenic microwave components and applications
+- Readout systems for quantum processors
+- Key technologies in quantum computing hardware">
+    <link rel="canonical" href="https://www.insight-ihbar.com/QC_hardware_en/W.html">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+  <meta name="keywords" content="inter-cryostat quantum links superconducting QPUs  
+microwave quantum channels cryogenic transmission lines  
+distributed superconducting quantum computing architecture  
+remote entanglement microwave photons Bell test  
+cryogenic microwave components circulators isolators waveguides  
+quantum state transfer via microwave photons  
+quantum data center modular QPU cryostats  
+low-loss low-noise millikelvin quantum interconnects  
+phase stability time synchronization quantum link hardware  
+scaling superconducting qubits across multiple cryostats">
+</head>
+<body>
+
+    <header id="masthead" class="site-header">
+        <nav id="primary-navigation" class="site-navigation">
+            <div class="container">
+
+                <div class="navbar-header">                   
+                    <a href="../index.html" class="site-title">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
+                </div><!-- /.navbar-header -->
+
+                <div class="collapse navbar-collapse" id="agency-navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="../index.html">Home</a></li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Qubit Physics<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                              <li><a href="../SCQ_elementary_en/main.html">Superconducting Qubits (Elementary)</a></li>
+                              <li><a href="../SCQ_advanced_en/main.html">Superconducting Qubits (Advanced)</a></li>
+                              <li><a href="../SpQ_en/main.html">Semiconductor Spin Qubits</a></li>
+                            </ul>
+                        </li>
+                        <!--<li class="active"><a href="../SCQ_elementary/main.html">科普介紹</a></li>-->
+                        <li class="active"><a href="../QC_hardware_en/main.html">Hardware</a></li>
+                        <li><a href="../QID_en/main.html">Quantum Industries</a></li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Workshop Note<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                <li><a href="../ASW2026_en/main.html">2026 Academia Sinica SCQC Winter Workshop</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Consultance<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                <li><a href="https://www.quantum-perspectives.com/About_en/main.html">Taiwan Market Outreach Services</a></li>
+                                <li><a href="../About_en/main.html">About Us</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="../index_ch.html">中文版</a></li>                        
+                    </ul>
+                </div>
+
+            </div>   
+        </nav><!-- /.site-navigation -->
+    </header><!-- /#mastheaed -->
+
+    <div id="hero" class="hero overlay subpage-hero blog-hero">
+        <div class="hero-content">
+            <div class="hero_2-text">
+                <h1>Hardware Guide</h1>
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+                  <li class="breadcrumb-item"><a href="./main.html">Hardware Guide (2025)</a></li>
+                  <!--<li class="breadcrumb-item active">約瑟夫森節</li>-->
+                </ol>
+            </div><!-- /.hero-text -->
+        </div><!-- /.hero-content -->
+    </div><!-- /.hero -->
+
+    <main id="main" class="site-main">
+
+        <section class="site-section subpage-site-section section-blog">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                        <article class="blog-post">
+                            <!--<img src="../assets/img/portfolio-1.jpg" class="img-res" alt="Laptop on wooden desk">-->
+                            <div class="post-content">
+                              <div style="text-align: center;">
+                                <h2>Toward Ultra-Large-Scale Quantum Computing: Inter-Cryostat Quantum Links</h2>
+                                <h3></h3>
+                                <span style="font-size: 0.7em; line-height: 0.8;">
+                                  2026.05.23
+                                </span>
+                              </div>
+                              
+                              <p class="dark-background">
+                                As quantum processors continue to scale up, a fundamental question arises: if a single cryostat can no longer accommodate enough qubits or provide sufficient cooling power, can we distribute QPUs across multiple cryostats and establish quantum links between them?
+                              </p>
+                              
+                              <p class="dark-background">
+                                This is the central idea behind an <b>inter-cryostat quantum link</b>. It is not simply a matter of connecting two cryogenic instruments with ordinary cables. Rather, it requires building a channel in a millikelvin environment that can transmit microwave photons, quantum states, or entanglement.
+                              </p>
+                              
+                              <br><br>
+                              
+                              <div style="text-align: center;">
+                                <a href="../Image/SDfDzJze24Wrv7hD-1456x819.jpg">
+                                  <img src="../Image/SDfDzJze24Wrv7hD-1456x819.jpg" alt="IBM quantum system" style="width: 70%; height: auto;">
+                                </a>
+                              </div>
+                              
+                              <div style="text-align: center;">
+                                <a href="../Image/K93D3YRZXth5AN4X-1456x819.jpg">
+                                  <img src="../Image/K93D3YRZXth5AN4X-1456x819.jpg" alt="IBM quantum computer" style="width: 70%; height: auto;">
+                                </a>
+                              </div>
+                              
+                              <p class="dark-background">
+                                ▲ Conceptual renderings of IBM’s Quantum System Two modular quantum system. When a single QPU or a single cryogenic system is no longer sufficient to meet the required computational scale, future systems may integrate multiple QPU modules through both classical connections and quantum connections.
+                                <br><span style="font-size: 0.7em; line-height: 0.8;">
+                                  Ref: https://wccftech.com/ibm-intros-osprey-quantum-processor-over-400-quantum-bits-to-power-quantum-system-two/
+                                </span><br><br>
+                              </p>
+                              
+                              <h3>Why Do We Need Inter-Cryostat Quantum Links?</h3>
+                              
+                              <p class="dark-background">
+                                Superconducting qubits typically operate in an ultralow-temperature environment of around 10–20 mK.
+                                Each qubit requires control lines, readout lines, filters, attenuators, isolators, amplifiers, and calibration resources.
+                                As the number of qubits increases, the bottlenecks are not limited to whether the chip itself can be made larger.
+                                Cryostat volume, cooling power, cryogenic wiring density, microwave crosstalk, packaging architecture, and system calibration complexity all become major constraints.
+                              </p>
+                              
+                              <p class="dark-background">
+                                Therefore, an important path toward ultra-large-scale quantum computing is to divide the overall quantum system into smaller, maintainable, and replaceable QPU modules.
+                                Each module can be housed in its own cryostat, and these modules can then be combined into a larger computing system through quantum links.
+                                This architecture is analogous to server clusters in data centers.
+                              </p>
+                              
+                              <h3>Microwave Quantum Channels</h3>
+                              
+                              <p class="dark-background">
+                                For superconducting quantum circuits, the typical operating frequencies of qubits lie in the microwave regime.
+                                Therefore, for short- to medium-range inter-cryostat links, a common research direction is to use cryogenic microwave channels,
+                                such as low-loss coaxial cables, waveguides, cryogenic circulators, directional couplers, and quantum nodes capable of controllably emitting and absorbing microwave photons.
+                              </p>
+                              
+                              <p class="dark-background">
+                                Ordinary cables transmit classical signals formed by the collective motion of many electrons. As long as the signal strength is sufficient and noise is manageable, information can be transmitted reliably.
+                                A quantum link, however, may need to transmit a single-photon wave packet or a quantum state carried by a microwave photon.
+                                In this case, any loss, thermal noise, reflection, or phase drift can directly destroy the quantum information.
+                              </p>
+                              
+                              <br><br>
+                              
+                              <table width="100%" border="1" cellpadding="10" cellspacing="0" style="border-collapse: collapse; font-family: sans-serif; border-color: #cccccc;">
+                                <thead>
+                                  <tr bgcolor="#f2f2f2" align="center">
+                                    <th width="20%">Channel Requirement</th>
+                                    <th>Physical Meaning</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td><b>Low Loss</b></td>
+                                    <td>If a microwave photon is absorbed during transmission, the quantum state it carries is lost.</td>
+                                  </tr>
+                                  <tr>
+                                    <td><b>Low Thermal Noise</b></td>
+                                    <td>Thermal photons can contaminate the quantum channel, making it difficult for the receiver to distinguish the intended quantum signal from environmental noise.</td>
+                                  </tr>
+                                  <tr>
+                                    <td><b>Impedance Matching</b></td>
+                                    <td>If impedance discontinuities exist in the channel, microwave photons may be reflected, reducing transmission and absorption efficiency.</td>
+                                  </tr>
+                                  <tr>
+                                    <td><b>Phase Stability</b></td>
+                                    <td>The phase of a quantum state is itself part of the information. Therefore, channel length, temperature, and mechanical vibration can all introduce phase noise.</td>
+                                  </tr>
+                                  <tr>
+                                    <td><b>Wave-Packet Shaping</b></td>
+                                    <td>The photon wave packet emitted by the transmitter must match the absorption mode of the receiver in order to improve quantum state transfer efficiency.</td>
+                                  </tr>
+                                  <tr>
+                                    <td><b>Time Synchronization</b></td>
+                                    <td>The control pulses, readout timing, and receiving windows of the two QPUs must be precisely synchronized.</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                              
+                              <h3>Inter-Cryostat Quantum Entanglement</h3>
+                              
+                              <p class="dark-background">
+                                Inter-cryostat quantum-link technology has evolved from chip-to-chip microwave-photon transmission, remote entanglement generation, and cryogenic microwave-channel engineering.
+                                The following table summarizes several important experimental milestones.
+                              </p>
+                              
+                              <br><br>
+                              
+                              <table width="100%" border="1" cellpadding="10" cellspacing="0" style="border-collapse: collapse; font-family: sans-serif; border-color: #cccccc;">
+                                <thead>
+                                  <tr bgcolor="#f2f2f2" align="center">
+                                    <th width="7%">Year</th>
+                                    <th width="30%">Experimental Focus</th>
+                                    <th>Significance</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td><b>2018</b></td>
+                                    <td>Deterministic quantum state transfer and remote entanglement using microwave photons.</td>
+                                    <td>Demonstrated that superconducting quantum circuits can emit, transmit, and absorb microwave photons carrying quantum information, establishing an important foundation for distributed superconducting quantum computing.</td>
+                                  </tr>
+                                  <tr>
+                                    <td><b>2020</b></td>
+                                    <td>ETH Zurich demonstrated an approximately 5 m microwave quantum link.</td>
+                                    <td>Pushed microwave quantum channels from the chip scale to the inter-cryostat scale, demonstrating the possibility of coherent links across cryogenic systems.</td>
+                                  </tr>
+                                  <tr>
+                                    <td><b>2023</b></td>
+                                    <td>Two superconducting circuits separated by approximately 30 m were entangled through a cryogenic microwave channel and used in a Bell test.</td>
+                                    <td>Showed that superconducting quantum circuits at macroscopic distances can exhibit nonlocal quantum correlations through engineered microwave channels.</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                              
+                              <br><br>
+                              
+                              <div style="text-align: center;">
+                                <a href="../Image/截圖 2026-05-21 下午1.11.35.png">
+                                  <img src="../Image/截圖 2026-05-21 下午1.11.35.png" alt="Quantum circuit diagram" style="width: 100%; height: auto;">
+                                </a>
+                              </div>
+                              
+                              <p class="dark-background">
+                                ▲ A 2018 Nature paper demonstrated deterministic quantum state transfer and remote entanglement using microwave photons.
+                                The core idea is that a quantum node can convert the state of a qubit into a propagating microwave photon,
+                                which is then absorbed by another node to complete quantum state transfer.
+                                <br><span style="font-size: 0.7em; line-height: 0.8;">
+                                  Ref: Deterministic quantum state transfer and remote entanglement using microwave photons, Nature 558, 264–267 (2018), DOI:10.1038/s41586-018-0195-y
+                                </span><br><br>
+                              </p>
+                              
+                              <div style="text-align: center;">
+                                <a href="../Image/image.imageformat.930.dpr2.39105624.jpg">
+                                  <img src="../Image/image.imageformat.930.dpr2.39105624.jpg" alt="Physics lab setup" style="width: 100%; height: auto;">
+                                </a>
+                              </div>
+                              
+                              <p class="dark-background">
+                                ▲ An inter-cryostat microwave quantum-link experiment demonstrated by ETH Zurich.
+                                The image shows a long-distance cryogenic microwave channel and the experimental systems at both ends.
+                                The key objective of such experiments is to maintain coherent transmission of microwave quantum states over meter-scale distances.
+                                <br><span style="font-size: 0.7em; line-height: 0.8;">
+                                  Ref: https://ethz.ch/en/news-and-events/eth-news/news/2020/03/longest-microwave-quantum-link.html
+                                </span><br><br>
+                              </p>
+                              
+                              <div style="text-align: center;">
+                                <a href="../Image/截圖 2026-05-21 下午1.06.31.png">
+                                  <img src="../Image/截圖 2026-05-21 下午1.06.31.png" alt="Experimental beamline" style="width: 100%; height: auto;">
+                                </a>
+                              </div>
+                              
+                              <p class="dark-background">
+                                ▲ The experimental architecture of a 30 m inter-cryostat superconducting-circuit experiment reported in a 2023 Nature paper, which successfully performed a loophole-free Bell inequality test.
+                                The superconducting circuits at both ends were connected through a long-distance cryogenic microwave channel, showing that inter-cryostat quantum links have moved from concept toward experimentally testable platforms.
+                                <br><span style="font-size: 0.7em; line-height: 0.8;">
+                                  Ref: Loophole-free Bell inequality violation with superconducting circuits, Nature 617, 265–270 (2023), DOI:10.1038/s41586-023-05885-0
+                                </span><br><br>
+                              </p>
+                              
+                              <h3>Hardware Components of an Inter-Cryostat Quantum Link</h3>
+                              
+                              <p class="dark-background">
+                                An inter-cryostat quantum link can be divided into three main parts: a transmitting quantum node, a cryogenic transmission channel, and a receiving quantum node.
+                                Each part must integrate cryogenic microwave engineering, quantum control, and time synchronization.
+                              </p>
+                              
+                              <br><br>
+                              
+                              <table width="100%" border="1" cellpadding="10" cellspacing="0" style="border-collapse: collapse; font-family: sans-serif; border-color: #cccccc;">
+                                <thead>
+                                  <tr bgcolor="#f2f2f2" align="center">
+                                    <th width="20%">Hardware Section</th>
+                                    <th width="35%">Possible Components</th>
+                                    <th>Function</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td><b>Transmitting Quantum Node</b></td>
+                                    <td>Transmon qubit, tunable coupler, readout/transmission resonator</td>
+                                    <td>Maps the quantum state of a local qubit onto a propagating microwave photon wave packet.</td>
+                                  </tr>
+                                  <tr>
+                                    <td><b>Microwave Emission Control</b></td>
+                                    <td>Pulse shaping, parametric coupling, Raman process</td>
+                                    <td>Controls the temporal shape of the emitted photon so that the wave packet can be efficiently absorbed by the receiver.</td>
+                                  </tr>
+                                  <tr>
+                                    <td><b>Cryogenic Transmission Line</b></td>
+                                    <td>Coaxial cable, waveguide, low-loss superconducting transmission line</td>
+                                    <td>Transmits microwave photons under low-thermal-noise and low-loss conditions.</td>
+                                  </tr>
+                                  <tr>
+                                    <td><b>Nonreciprocal Components</b></td>
+                                    <td>Circulator, isolator, directional coupler</td>
+                                    <td>Control the direction of microwave signals and reduce reflections and noise backflow.</td>
+                                  </tr>
+                                  <tr>
+                                    <td><b>Receiving Quantum Node</b></td>
+                                    <td>Receiving resonator, transmon qubit, tunable coupler</td>
+                                    <td>Reabsorbs the incoming microwave photon and converts it back into the quantum state of a local qubit.</td>
+                                  </tr>
+                                  <tr>
+                                    <td><b>Synchronization and Calibration System</b></td>
+                                    <td>AWG, FPGA, clock distribution, phase calibration</td>
+                                    <td>Ensures that the pulses, receiving windows, and phase references at both ends are aligned.</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                              
+                              <br><br>
+                              
+                              <div style="text-align: center;">
+                                <a href="../Image/image3.imageformat.slideshow.86165948.jpg">
+                                  <img src="../Image/image3.imageformat.slideshow.86165948.jpg" alt="Industrial piping" style="width: 90%; height: auto;">
+                                </a>
+                                <a href="../Image/image2.imageformat.slideshow.237072056.jpg">
+                                  <img src="../Image/image2.imageformat.slideshow.237072056.jpg" alt="Copper machine part" style="width: 90%; height: auto;">
+                                </a>
+                              </div>
+                              
+                              <p class="dark-background">
+                                ▲ An inter-cryostat quantum link must keep a long-distance transmission line under cryogenic, low-loss, and low-noise conditions.
+                                This makes the quantum link not only a problem in quantum physics, but also one in cryogenic engineering, microwave engineering, and system integration.
+                                The images show an internal view of ETH Zurich’s 30 m quantum-link channel. The aluminum waveguide at the center is cooled to near absolute zero and connects two quantum circuits.
+                                Multiple layers of copper shielding protect the conductor from thermal radiation. For quantum signals at the single-photon level, channel geometry, connectors, reflections, and thermalization all affect quantum transmission efficiency.
+                                <br><span style="font-size: 0.7em; line-height: 0.8;">
+                                  Ref: https://ethz.ch/en/news-and-events/eth-news/news/2023/05/entangled-quantum-circuits.html
+                                  <br>Photo: ETH Zurich / Daniel Winkler
+                                </span><br><br>
+                              </p>
+                              
+                              <h3>Technical Challenges</h3>
+                              
+                              <table width="100%" border="1" cellpadding="10" cellspacing="0" style="border-collapse: collapse; font-family: sans-serif; border-color: #cccccc;">
+                                <thead>
+                                  <tr bgcolor="#f2f2f2" align="center">
+                                    <th width="20%">Key Challenge</th>
+                                    <th>Description</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td><b>Transmission Loss</b></td>
+                                    <td>If microwave photons are absorbed or scattered in a long-distance channel, the fidelity of quantum state transfer is directly reduced.</td>
+                                  </tr>
+                                  <tr>
+                                    <td><b>Thermal Photon Noise</b></td>
+                                    <td>If thermal radiation from room temperature or higher-temperature stages enters the channel, it can generate spurious microwave signals and destroy the quantum state.</td>
+                                  </tr>
+                                  <tr>
+                                    <td><b>Cryogenic Heat Load</b></td>
+                                    <td>Long metallic transmission lines introduce heat. Thermal anchoring, material selection, and multistage cooling are required to reduce the load on the mK stage.</td>
+                                  </tr>
+                                  <tr>
+                                    <td><b>Phase and Timing Stability</b></td>
+                                    <td>The phase references and timing of the two QPUs must remain stable; otherwise, remote entanglement and quantum-gate operations will be distorted.</td>
+                                  </tr>
+                                  <tr>
+                                    <td><b>Wave-Packet Matching</b></td>
+                                    <td>The transmitter and receiver must precisely control the photon wave packet so that the receiver can absorb it with high efficiency.</td>
+                                  </tr>
+                                  <tr>
+                                    <td><b>Integration of Nonreciprocal Components</b></td>
+                                    <td>Circulators and isolators can suppress reflected noise, but conventional components are bulky and may introduce loss or magnetic-field requirements that affect scalability.</td>
+                                  </tr>
+                                  <tr>
+                                    <td><b>Modular Calibration</b></td>
+                                    <td>As the number of QPUs increases, each quantum link requires independent calibration of coupling strength, frequency, phase, and delay.</td>
+                                  </tr>
+                                  <tr>
+                                    <td><b>Error-Correction Integration</b></td>
+                                    <td>If future inter-cryostat links are to support fault-tolerant quantum computing, they must be integrated with logical qubits, syndrome measurement, and real-time decoders.</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                              
+                              <h3>From Quantum Links to Quantum Data Centers</h3>
+                              
+                              <p class="dark-background">
+                                The long-term goal of inter-cryostat quantum links is not merely to demonstrate that two nodes can be entangled,
+                                but to enable multiple QPU modules to jointly execute large-scale quantum algorithms.
+                                In such an architecture, each dilution refrigerator can be regarded as a quantum-computing node.
+                                Multiple nodes can establish entanglement or transmit quantum states through quantum interconnects,
+                                while a classical control system handles synchronization, scheduling, readout, and error correction.
+                              </p>
+                              
+                              <p class="dark-background">
+                                This means that future quantum computers will no longer be merely “a single instrument.”
+                                Instead, they will resemble quantum-computing architectures composed of cryogenic systems, microwave channels, classical supercomputers, control electronics, real-time decoders, and multilayer software stacks.
+                                The key to ultra-large-scale quantum computing will also shift from simply increasing the number of qubits
+                                to making spatially distributed quantum modules behave, at the information level, like one programmable quantum system.
+                              </p>
+                              
+                              <p class="dark-background">
+                                Hybrid supercomputer–quantum computing addresses the question of how QPUs can work together with classical supercomputers.
+                                Inter-cryostat quantum links address a different question: how multiple QPUs can be connected at the quantum level.
+                                Together, these two directions form a complete hardware roadmap toward ultra-large-scale quantum computing.
+                              </p>
+                                    
+
+
+
+
+                                <p>
+                                    <span style="font-size: 0.5em; line-height: 0.8;">
+                                        Originally written in Chinese by the author, these articles are translated into English to invite cross-language resonance.
+                                    </span>
+                                </p>
+                                <div class="post-meta">
+                                    <span class="post-author">
+                                        <a href="../About_en/Wang.html"><img class="img-res" src="../Image/IMG_0964_2.JPG" alt="Professional headshot">Peir-Ru Wang</a>
+                                    </span>
+                                    <span class="post-category">
+                                        <a href="./main.html"><i class="fa fa-folder" aria-hidden="true"></i>Hardware Guide (2025)</a>
+                                    </span>
+                                </div><!-- /.post-meta -->
+                            
+                                <div id="prev-next-nav" class="text-center">
+                                    <a class="btn btn-gray" href="V4.html">← Previous</a> 
+                                    <a class="btn btn-gray" href="../QC_hardware/W.html" style="margin: 0 10px;">中文版</a>
+                                    <a class="btn btn-gray" href="WA.html">Next →</a>
+                                </div>
+
+                                
+
+                            </div><!-- /.post-content -->
+                        </article><!-- /.blog-post -->
+                        <!--<div id="PostComments" class="post-comments">
+                            
+                            
+                            
+                        </div> /#PostComments -->
+                        <!--<div class="respond">
+                            <h3>Post a Comment</h3>
+                            <form class="form-horizontal">
+                                <input class="form-control" type="text" placeholder="Your Name*" required>
+                                <input class="form-control" type="email" placeholder="Your Email" required>
+                                <textarea class="form-control form-control-comment" type="text" placeholder="Your Comment*" required></textarea>
+                                <button class="btn btn-green">Add a comment</button>
+                            </form>    
+                        </div> /.respond -->
+                    </div>
+                    <aside class="col-md-3">
+                        <div class="sidebar">
+                            <div class="widget">
+                                <div id="lesson-list_2">
+                                <div class="lesson-link "><a href="main.html">Hardware Technologies and Vendor Guide (2025): Menu</a></div>
+                                <div class="lesson-link "><a href="A.html">Current Application Models of Superconducting Quantum Computers</a></div>
+                                <div class="lesson-link "><a href="B.html">Superconducting Quantum Computers – Hardware Dissection</a></div>
+                                <div class="lesson-link "><a href="C.html">Microwave Components Overview</a></div>
+                                <div class="lesson-link "><a href="H.html">Microwave Component Vendors</a></div>
+                                <div class="lesson-link "><a href="U2.html">Cryogenic Wiring and Connectors</a></div>
+                                <div class="lesson-link "><a href="O.html">Cryogenic Wiring and Connectors - Vendors</a></div>
+                                <div class="lesson-link "><a href="F.html">Dilution Refrigerators</a></div>
+                                <div class="lesson-link "><a href="M.html">Thermal Management and Thermal Anchoring</a></div>
+                                <div class="lesson-link "><a href="M2.html">Thermalization Solutions</a></div>
+                                <div class="lesson-link "><a href="G.html">Control Electronics</a></div>
+                                <div class="lesson-link "><a href="U.html">Toward Scalable QPU - Quantum Chip Design</a></div>
+                                <div class="lesson-link "><a href="V2.html">Toward Scalable QPU - The Issue of Crosstalk</a></div>
+                                <div class="lesson-link "><a href="V4.html">Toward Ultra-Large-Scale Quantum Computing - Cross-Chip Quantum Interconnection</a></div>
+                                <div class="lesson-link active"><a href="W.html">Toward Ultra-Large-Scale Quantum Computing - Inter-Cryostat Quantum Links</a></div>
+                                <div class="lesson-link "><a href="WA.html">Toward Ultra-Large-Scale Quantum Computing - Supercomputer–Quantum Hybrid Computing</a></div>
+                                </div>
+                            </div>
+  
+                        </div></aside>
+                </div>
+            </div>
+        </section><!-- /.section-portfolio -->
+
+    </main><!-- /#main -->
+
+    <footer id="colophon" class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-4 col-xs-6">
+                    <a href="../index_ch.html" class="site-title">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
+                    <p>Exploring the Quantum Technology Together.</p>
+                    </div>
+                <div class="col-lg-offset-4 col-md-3 col-sm-4 col-md-offset-2 col-sm-offset-0 col-xs-6 ">
+                    <p class="site-title">𝐾𝐸𝐸𝑃 𝐼𝑁 𝑇𝑂𝑈𝐶𝐻</p>
+                    <ul class="list-unstyled contact-links">
+                        <li><i class="fa fa-envelope" aria-hidden="true"></i><a href="mailto:info@insight-ihbar.com">info@insight-ihbar.com</a></li>
+                        <!--<li><i class="fa fa-phone" aria-hidden="true"></i><a href="tel:+37400800000">+374 (00) 80 00 00 </a></li>
+                        <li><i class="fa fa-fax" aria-hidden="true"></i><a href="+37400900000">+374 (00) 90 00 00</a></li>
+                        <li><i class="fa-solid fa-location-dot"></i><p>Hsinchu 300, Taiwan (R.O.C.)</p></li>-->
+                    </ul>
+                </div>
+                <!--<div class="clearfix visible-xs"></div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6">
+                    <h3>Featured links</h3>
+                    <ul class="list-unstyled">
+                        <li class="active"><a href="index_ch.html">Home</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="portfolio.html">Porfolio</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>-->
+            </div>
+        </div>
+        <div class="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-8">
+                        <div class="social-links">
+                            <!--<a class="twitter-bg" href="#"><i class="fab fa-twitter"></i></a>-->
+                            <!--<<a class="facebook-bg" href="https://www.facebook.com/people/Quantum-Perspectives/61576446849628/"><i class="fab fa-facebook"></i></a>-->
+                            <!--<a class="facebook-bg" href="https://www.facebook.com/people/%E9%87%8F%E5%AD%90%E9%81%A0%E8%A6%8BQuantum-Perspectives/61576883632888/"><i class="fab fa-facebook-f"></i></a>-->
+                            <!--<a class="pinterest" href="#"><i class="fa-solid fa-microscope"></i></a>-->
+                            <!--<a class="facebook-bg" href="https://www.facebook.com/people/Insight-hbar/61576811775374/"><i class="fab fa-facebook-f"></i></a>-->
+                            <a class="linkedin-bg" href="https://www.linkedin.com/company/insight-ihbar"><i class="fab fa-linkedin"></i></a>
+                        </div><!-- /.social-links -->
+                    </div>
+                    <div class="col-xs-4">
+                        <div class="text-right">
+                            <p><span style="font-size: 16px;">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</span></p>
+                            <p>All Rights Reserved</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.copyright -->
+    </footer><!-- /#footer -->
+
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="../assets/js/bootstrap-select.min.js"></script>
+    <script src="../assets/js/jquery.slicknav.min.js"></script>
+    <script src="../assets/js/jquery.countTo.min.js"></script>
+    <script src="../assets/js/jquery.shuffle.min.js"></script>
+    <script src="../assets/js/script.js"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  
+</body>
+</html>

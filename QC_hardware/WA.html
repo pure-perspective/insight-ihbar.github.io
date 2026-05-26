@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    
+
+    
+    <meta name="author" content="Peir-Ru Wang">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,600,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/20250525-icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/20250525-icon.png">
+
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="../assets/css/style.css" rel="stylesheet">
+    <link href="../assets/css/responsive.css" rel="stylesheet">
+
+    <title>邁向超大型量子計算：超算-量子混合計算</title>
+    <meta name="description" content="深入解析超算-量子混合運算架構：CPU/GPU/FPGA 與 QPU 協同、Quantum Runtime 排程、誤差緩解與即時回饋，並以 IQM、IBM System Two、NVIDIA NVQLink 案例說明量子中心超級電腦發展。">
+    <meta name="keywords" content="- 超導量子電腦
+- 量子位元
+- 量子硬體
+- 低溫接頭
+- 柔性帶狀線纜
+- 高密度連接器
+- 量子計算技術
+- 材料科學
+- 量子控制電子
+- 量子供應商">
+    <link rel="canonical" href="https://www.insight-ihbar.com/QC_hardware/WA.html">
+
+  <meta name="keywords" content="超算-量子混合計算, 量子中心超級電腦, 高效能運算HPC, 量子處理器QPU, Quantum Runtime, CPU GPU FPGA協同運算, 量子錯誤校正解碼, 即時回饋控制, IBM Quantum System Two, NVIDIA NVQLink">
+</head>
+<body>
+
+    <header id="masthead" class="site-header">
+        <nav id="primary-navigation" class="site-navigation">
+            <div class="container">
+
+                <div class="navbar-header">                   
+                    <a href="../index_ch.html" class="site-title">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
+                </div><!-- /.navbar-header -->
+
+                <div class="collapse navbar-collapse" id="agency-navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="../index_ch.html">Home</a></li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">科普介紹<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                              <li><a href="../SCQ_elementary/main.html">超導量子位元(科普版)</a></li>
+                              <li><a href="../SCQ_advanced/main.html">超導量子位元(進階版)</a></li>
+                              <li><a href="../SpQ/main.html">半導體自旋量子位元</a></li>
+                            </ul>
+                        </li>
+                        <!--<li class="active"><a href="../SCQ_elementary/main.html">科普介紹</a></li>-->
+                        <li class="active"><a href="../QC_hardware/main.html">硬體導論</a></li>
+                        <li><a href="../QID/main.html">量子產業群像錄</a></li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">研討會筆記<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                <li><a href="../ASW2026/main.html">2026中研院超導量子電腦Workshop</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">量子諮詢<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                <li><a href="https://www.quantum-perspectives.com/About/main.html">量子遠見科技：諮詢服務</a></li>
+                                <li><a href="../About/main.html">關於我們</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="../index.html">English</a></li>                        
+                    </ul>
+                </div>
+
+            </div>   
+        </nav><!-- /.site-navigation -->
+    </header><!-- /#mastheaed -->
+
+    <div id="hero" class="hero overlay subpage-hero blog-hero">
+        <div class="hero-content">
+            <div class="hero_2-text">
+                <h1>硬體導論</h1>
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="../index_ch.html">Home</a></li>
+                  <li class="breadcrumb-item"><a href="./main.html">硬體導論</a></li>
+                  <!--<li class="breadcrumb-item active">約瑟夫森節</li>-->
+                </ol>
+            </div><!-- /.hero-text -->
+        </div><!-- /.hero-content -->
+    </div><!-- /.hero -->
+
+    <main id="main" class="site-main">
+
+        <section class="site-section subpage-site-section section-blog">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                        <article class="blog-post">
+                            <!--<img src="../assets/img/portfolio-1.jpg" class="img-res" alt="">-->
+                            <div class="post-content">
+                                <div style="text-align: center;">
+                                    <h2>邁向超大型量子計算：超算-量子混合計算</h2>
+                                    <h3></h3>
+                                    <span style="font-size: 0.7em; line-height: 0.8;">
+                                        2026.05.24
+                                      </span>
+                                </div>
+                                
+                                
+
+                                
+                                
+
+<p class="dark-background">
+  當我們討論「超大型量子計算」時，直覺上常會想像一台擁有數十萬、甚至數百萬量子位元的巨大量子電腦。
+  然而，真正可用的量子計算系統並不會只是一台孤立的低溫儀器，而更接近一座結合
+  高效能運算（High Performance Computing, HPC）、古典控制系統、低溫量子處理器（QPU）、
+  即時解碼器與雲端排程軟體的「量子中心超級電腦」（Quantum-centric Supercomputer）。
+</p>
+
+<p class="dark-background">
+  在這個架構中，量子電腦不是取代傳統超級電腦，而是成為傳統高效能運算系統中的一種特殊加速器。
+  CPU 與 GPU 負責資料前處理、參數最佳化、誤差緩解、結果分析與工作流管理；
+  QPU 則負責處理某些具有量子結構的子問題，例如量子化學、材料模擬、組合最佳化或特定線性代數任務。
+</p>
+
+
+<br>
+<h4>從單機量子電腦到量子中心超級電腦</h4>
+
+<p class="dark-background">
+  傳統電腦的擴展方式，是從單一處理器走向多核心、叢集、資料中心與超級電腦。
+  類似地，量子電腦的擴展也不太可能永遠停留在「單一晶片 + 單一製冷機」的模式。
+  因為隨著量子位元數增加，系統會同時面臨低溫空間、控制線數量、讀出頻寬、校準複雜度、
+  熱負載與錯誤校正解碼速度等瓶頸。
+</p>
+
+<p class="dark-background">
+  因此，未來的大型量子計算很可能採用混合式架構：
+  由古典超算負責龐大的資料流與控制決策，再把適合量子加速的子問題送到 QPU。
+  這種模式不是「量子 vs. 古典」的競爭，而是「量子 + 古典」的協同運算。
+</p>
+<br>
+<div style="text-align: center;">
+  <a href="../Image/下載 (1).png">
+      <img src="../Image/下載 (1).png" alt="IBM量子晶片結構示意圖" style="width: 70%; height: auto;">
+  </a>
+</div>
+<p class="dark-background">
+  ▲ IBM 繪製的架構圖，從當前的量子原型機，邁向實用化的量子計算需要加入大型古典超算機櫃整合。
+
+  <span style="font-size: 0.7em; line-height: 0.8;">
+      <br>Ref: https://spectrum.ieee.org/ibm-quantum-computer-2668978269
+  </span>
+  <br><br>
+</p>
+
+<table width="100%" border="1" cellpadding="10" cellspacing="0" style="border-collapse: collapse; font-family: sans-serif; border-color: #cccccc;">
+  <thead>
+    <tr bgcolor="#f2f2f2" align="center">
+      <th width="20%">系統層級</th>
+      <th width="20%">主要角色</th>
+      <th>在混合量子運算中的功能</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>CPU</b></td>
+      <td>通用古典運算核心</td>
+      <td>負責程式排程、資料前處理、迭代控制、演算法流程管理，以及與雲端或 HPC 系統溝通。</td>
+    </tr>
+    <tr>
+      <td><b>GPU</b></td>
+      <td>大規模平行運算核心</td>
+      <td>負責張量運算、線性代數、機器學習、變分演算法中的梯度估計，以及量子電路模擬輔助。</td>
+    </tr>
+    <tr>
+      <td><b>FPGA / ASIC</b></td>
+      <td>即時控制與解碼硬體</td>
+      <td>負責低延遲回饋、脈衝控制、快速量測判讀、量子錯誤校正 syndrome decoding。</td>
+    </tr>
+    <tr>
+      <td><b>QPU</b></td>
+      <td>量子處理器</td>
+      <td>執行量子電路，處理量子疊加、糾纏與干涉所能加速的特定子問題。</td>
+    </tr>
+    <tr>
+      <td><b>Runtime / Orchestrator</b></td>
+      <td>運算協調層</td>
+      <td>在 CPU、GPU、FPGA 與 QPU 之間分配任務，決定哪些部分適合古典處理，哪些部分送入量子硬體。</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+<h4>為什麼量子電腦需要超算？</h4>
+
+<p class="dark-background">
+  量子電腦本身並不是一台可以獨立處理所有任務的萬能機器。實際上，現在大部分量子演算法都需要大量古典運算配合。
+  例如在變分量子演算法（Variational Quantum Algorithms, VQA）中，QPU 負責執行參數化量子電路並輸出量測結果；
+  古典電腦則根據量測結果更新參數，再把新的參數送回 QPU。
+</p>
+
+<p class="dark-background">
+  這種「QPU 執行、古典電腦最佳化」的迴圈，使得量子計算天然就是一種混合計算。
+  當問題規模變大，古典端需要處理的資料、排程、最佳化與誤差緩解也會快速增加，因此超算系統會成為大型量子計算不可或缺的基礎設施。
+</p>
+<br><br>
+<table width="100%" border="1" cellpadding="10" cellspacing="0" style="border-collapse: collapse; font-family: sans-serif; border-color: #cccccc;">
+  <thead>
+    <tr bgcolor="#f2f2f2" align="center">
+      <th width="17%">混合計算任務</th>
+      <th width="25%">主要執行硬體</th>
+      <th>功能解說</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>量子電路編譯</b></td>
+      <td>CPU / GPU</td>
+      <td>將抽象量子演算法轉換成硬體可執行的閘序列，並考慮 qubit topology、coupling map 與閘誤差。</td>
+    </tr>
+    <tr>
+      <td><b>脈衝產生與控制</b></td>
+      <td>AWG / FPGA / 控制電子學</td>
+      <td>把量子閘轉換為微波脈衝、磁通脈衝與讀出脈衝，送入低溫系統操控 QPU。</td>
+    </tr>
+    <tr>
+      <td><b>量子電路執行</b></td>
+      <td>QPU</td>
+      <td>在低溫環境中利用量子疊加、糾纏與干涉執行量子操作。</td>
+    </tr>
+    <tr>
+      <td><b>量測結果處理</b></td>
+      <td>FPGA / CPU / GPU</td>
+      <td>將微弱讀出訊號轉換為 classical bitstream，並進行分類、校正與統計分析。</td>
+    </tr>
+    <tr>
+      <td><b>誤差緩解與錯誤校正</b></td>
+      <td>CPU / GPU / FPGA / ASIC</td>
+      <td>在 NISQ 階段進行誤差緩解；在容錯量子計算階段則需要即時 syndrome decoding 與回饋控制。</td>
+    </tr>
+    <tr>
+      <td><b>工作流排程</b></td>
+      <td>HPC / Cloud Runtime</td>
+      <td>管理多個使用者、多個 QPU、多種古典資源之間的任務分配與資料流。</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+<h4>超算-量子混合架構中的關鍵概念</h4>
+
+<table width="100%" border="1" cellpadding="10" cellspacing="0" style="border-collapse: collapse; font-family: sans-serif; border-color: #cccccc;">
+  <thead>
+    <tr bgcolor="#f2f2f2" align="center">
+      <th width="25%">關鍵概念</th>
+      <th>說明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>Quantum Runtime</b></td>
+      <td>負責把量子工作負載封裝成可執行任務，並協調 QPU、古典伺服器與雲端資源。</td>
+    </tr>
+    <tr>
+      <td><b>Circuit Knitting</b></td>
+      <td>將大型量子電路拆成多個較小電路，分別在不同 QPU 或不同時間執行，再由古典後處理將結果拼接回來。</td>
+    </tr>
+    <tr>
+      <td><b>Error Mitigation</b></td>
+      <td>在尚未完全容錯的量子硬體上，透過古典統計方法降低雜訊對結果的影響。</td>
+    </tr>
+    <tr>
+      <td><b>Real-time Feedback</b></td>
+      <td>量測結果必須在極短時間內回饋到控制系統，以支援動態電路與量子錯誤校正。</td>
+    </tr>
+    <tr>
+      <td><b>Resource Orchestration</b></td>
+      <td>當一個任務需要多個 QPU、多台 GPU 或多個 classical servers 時，系統必須自動管理資源配置與資料同步。</td>
+    </tr>
+    <tr>
+      <td><b>Quantum Interconnect</b></td>
+      <td>當 QPU 數量增加，系統需要能在模組之間傳送量子資訊的連結。</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+<h4>混合計算的典型流程</h4>
+
+<p class="dark-background">
+  一個量子-古典混合計算通常不是單次送出量子電路就結束，而是由多次迭代構成。
+  古典端會根據每一輪量子量測結果調整下一輪的量子電路參數，使整體流程形成封閉回饋迴圈。
+</p>
+
+<ol class="dark-background">
+    <li><p><b>問題分解：</b> 將原始科學或工程問題拆成古典可處理部分與量子加速部分。</p></li>
+    <li><p><b>量子電路產生：</b> 由古典端產生參數化量子電路或特定 quantum kernel。</p></li>
+    <li><p><b>硬體編譯：</b> 根據 QPU 拓撲、閘集合與校準資料進行 transpilation。</p></li>
+    <li><p><b>QPU 執行：</b> 在低溫量子晶片上執行電路並量測輸出。</p></li>
+    <li><p><b>古典後處理：</b> 使用 CPU/GPU 分析量測結果、估計期望值、更新參數。</p></li>
+    <li><p><b>迭代收斂：</b> 重複執行直到能量、成本函數或目標指標收斂。</p></li>
+</ol>
+<br><br>
+<div style="text-align: center;">
+    <a href="../Image/42484_2025_305_Fig1_HTML.png">
+        <img src="../Image/42484_2025_305_Fig1_HTML.webp" alt="量子神經網路生成經典網路權重流程圖" style="width: 100%; height: auto;">
+    </a>
+</div>
+<p class="dark-background">
+    ▲ 量子機器學習混合計算示意圖。
+    <span style="font-size: 0.7em; line-height: 0.8;">
+        <br>Ref: Quantum-Train: rethinking hybrid quantum-classical machine learning in the model compression perspective, DOI: 10.1007/s42484-025-00305-0
+    </span>
+    <br><br>
+</p>
+
+
+
+<br>
+<h4>技術門檻</h4>
+
+<table width="100%" border="1" cellpadding="10" cellspacing="0" style="border-collapse: collapse; font-family: sans-serif; border-color: #cccccc;">
+  <thead>
+    <tr bgcolor="#f2f2f2" align="center">
+      <th width="15%">關鍵挑戰</th>
+      <th>說明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>低延遲控制</b></td>
+      <td>量子錯誤校正與動態電路需要即時判讀量測結果，並在 coherence time 內完成回饋操作。</td>
+    </tr>
+    <tr>
+      <td><b>資料流瓶頸</b></td>
+      <td>大量 qubit 的重複量測會產生龐大 bitstream，需要高速資料擷取、壓縮、分類與儲存。</td>
+    </tr>
+    <tr>
+      <td><b>跨硬體排程</b></td>
+      <td>CPU、GPU、FPGA、QPU 與雲端伺服器的運算節奏不同，必須透過 runtime 系統協調。</td>
+    </tr>
+    <tr>
+      <td><b>錯誤校正解碼</b></td>
+      <td>容錯量子計算需要即時處理 syndrome 資訊，解碼器可能需要 FPGA、ASIC 或 GPU 加速。</td>
+    </tr>
+    <tr>
+      <td><b>多 QPU 擴展</b></td>
+      <td>單一 QPU 的 qubit 數量有限，未來必須透過模組化 QPU 與量子連結擴大有效計算空間。</td>
+    </tr>
+    <tr>
+      <td><b>軟硬體共同設計</b></td>
+      <td>量子演算法、編譯器、控制脈衝、QPU 拓撲與低溫封裝必須一起設計，不能分開最佳化。</td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+<br>
+<h3>IQM與德國萊布尼茲超算中心的量子整合實驗</h3>
+
+
+
+<p>
+    2025 年IQM的研究報告(arxiv:2509.12949)整理了將一台 20 量子位元超導量子電腦整合進 Leibniz Supercomputing Centre（LRZ） HPC 基礎設施的實務經驗。
+    這個案例很重要的說明，量子電腦若要真正成為「量子加速器」，不只需要 QPU 本身，還需要場地、冷卻、網路、排程、校準與使用者訓練的完整配合。
+  </p>
+
+<br><br>
+
+<div style="text-align: center;">
+    <a href="../Image/thequantuminsider-image001-1-scaled.jpg">
+        <img src="../Image/image001-1-scaled.webp" alt="量子電腦低溫冷卻系統" style="width: 80%; height: auto;">
+    </a>
+    <a href="../Image/截圖 2026-05-23 晚上8.05.05.png">
+        <img src="../Image/截圖 2026-05-23 晚上8.05.05.png" alt="稀釋製冷機與量測機櫃示意圖" style="width: 80%; height: auto;">
+    </a>
+</div>
+<p class="dark-background">
+    <span style="font-size: 0.7em; line-height: 0.8;">
+        (上)Ref: https://thequantuminsider.com/2024/06/19/germany-launches-first-hybrid-quantum-computer-at-leibniz-supercomputing-centre/
+    
+        <br>(下)Ref: https://arxiv.org/pdf/2509.12949v1
+    </span>
+    <br><br>
+</p>
+    
+    
+  
+    <h4>一、環境的把控</h4>
+  
+    <p>
+      傳統 HPC 節點通常可以被視為穩定的計算資源：安裝、接電、接冷卻系統後，便能長時間提供相對固定的運算能力。然而超導量子電腦更接近一套精密實驗設備。
+      它對環境振動、聲音、電磁雜訊、溫度變化都更加敏感，因為這些擾動可能影響量子位元的相干時間、閘操作準確度與讀出品質。
+    </p>
+  
+    <p>
+      因此，在部署量子電腦前，資料中心必須先進行嚴格的場地調查，包括磁場、地板振動、聲壓、溫度與濕度等量測。這代表未來的量子資料中心，不只是「有電、有網路、有冷卻」即可，而是需要同時滿足低雜訊、高穩定度與可維護性的條件。
+    </p>
+    <br>
+    <table width="100%" border="1" cellpadding="10" cellspacing="0" style="border-collapse: collapse; font-family: sans-serif; border-color: #cccccc;">
+        <thead>
+          <tr bgcolor="#f2f2f2" align="center">
+            <th width="18%">量測項目</th>
+            <th width="42%">設備</th>
+            <th>環境要求</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>直流磁場</b><br>DC magnetic field</td>
+            <td>將三軸磁通門感測器放置於預定安裝製冷機的位置，約略位於 QPU 的高度。</td>
+            <td>每一軸皆需 &lt; 100 μT。</td>
+          </tr>
+          <tr>
+            <td><b>交流磁場</b><br>AC magnetic field</td>
+            <td>將三軸磁通門感測器放置於預定安裝製冷機的位置，約略位於 QPU 的高度。</td>
+            <td>在 5 Hz – 1000 Hz 的頻率範圍內，每一軸的峰對峰頻譜振幅需 &lt; 1 μT。</td>
+          </tr>
+          <tr>
+            <td><b>地板振動</b><br>Floor vibrations</td>
+            <td>將單軸振動感測器放置於預定安裝製冷機位置的地板上。</td>
+            <td>在 1 Hz – 200 Hz 的頻率範圍內，每一軸的 RMS 頻譜振幅需 &lt; 400 μm/s；或等效地，需符合辦公室空間的 ISO 振動限制。</td>
+          </tr>
+          <tr>
+            <td><b>聲壓</b><br>Sound pressure</td>
+            <td>將全指向性麥克風放置於製冷機所在位置。</td>
+            <td>在 20 Hz – 20 kHz 的頻率範圍內積分後，聲壓需 &lt; 80 dBA。</td>
+          </tr>
+          <tr>
+            <td><b>溫度</b><br>Temperature</td>
+            <td>將溫度計放置於預定安裝電子機櫃的位置。</td>
+            <td>在 20 – 25°C 的任一設定溫度附近，12 小時內的溫度變化需滿足 ΔT &lt; ±1°C。</td>
+          </tr>
+          <tr>
+            <td><b>濕度</b><br>Humidity</td>
+            <td>將濕度計放置於預定安裝電子機櫃的位置。</td>
+            <td>25 – 60%，且不可凝結。</td>
+          </tr>
+        </tbody>
+      </table>
+
+
+
+    <br><h4>二、校準與監控：量子電腦是動態系統</h4>
+  
+    <p>
+      超導量子位元的特性會隨時間變化，它的頻率、閘保真度、讀出保真度與雜訊狀態，都可能在數小時到數天的尺度上漂移。
+      這是量子電腦與傳統 CPU/GPU 最大的差異之一，量子電腦需要時常進行反覆校準，而這些校準不能完全依賴人工操作。
+    </p>
+  
+    <p>
+      IQM的 20-qubit 超導量子電腦具備自動化校準流程。
+      系統可以執行快速校準或完整校準，並由 HPC 中心根據使用者工作負載安排校準時段。
+      這點非常關鍵：若 QPU 要成為 HPC 資源的一部分，校準就必須被「實時」納入排程系統，
+      而不是被視為獨立外部維護事件。
+    </p>
+
+    <br><h4>三、備援電力與冷卻系統的重要性</h4>
+  
+    <p>
+      超導量子電腦需要維持在極低溫環境下運作。若發生斷電或冷卻中斷，
+      QPU 可能升溫，導致系統需要重新降溫與重新校準。這個恢復過程可能需要數天時間，
+      遠比重啟一般 HPC 節點更複雜。
+    </p>
+  
+    <p>
+      因此，IQM強調備援電力與備援冷卻水系統的重要性。
+      對資料中心而言，量子電腦的可用率不只取決於 QPU 本身，
+      也取決於整個基礎設施是否能避免非預期停機。
+    </p>
+    <br>
+    <h4>四、HPC+QC 的關鍵：把 QPU 變成可排程的加速器</h4>
+  
+    <p>
+      在 HPC+QC 架構中，量子電腦可以有兩種使用方式。第一種是遠端非同步提交：
+      使用者將量子任務送進佇列，等待 QPU 執行後取回結果。第二種則是更緊密的
+      加速器模式：QPU 被放入 classical HPC workflow 之中，與 CPU/GPU 形成
+      低延遲的混合計算迴圈。這對 VQE、量子化學、最佳化與混合量子-classical
+      演算法特別重要。
+    </p>
+  
+    <p>
+      這種整合需要一套能連接多種前端框架與硬體後端的軟體堆疊。
+      IQM論文中提到的 Munich Quantum Software Stack（MQSS）支援 Qiskit、
+      CUDA-Q、PennyLane 等介面，並透過中介表示法與 JIT 編譯機制，
+      將高階量子程式轉換成硬體可執行的低階指令。
+    </p>
+  
+    
+  
+    
+  
+    <br><h4>五、使用者導入：硬體可用不代表研究立即可行</h4>
+  
+    <p>
+      即使量子硬體已經接入 HPC 系統，使用者仍需要學習如何有效使用它。
+      對量子專家而言，重點是理解特定 QPU 的拓撲、原生閘集合與雜訊特徵；
+      對傳統 HPC 使用者而言，則需要先理解量子電路、量子測量與混合工作流程的基本概念。
+    </p>
+  
+    <p>
+      因此，成功的 HPC+QC 整合不只是技術問題，也是一個使用者教育問題。
+      IQM的案例透過 Jupyter notebook、硬體特性教學、mentor 制度與 FAQ，
+      幫助早期使用者從「可以存取量子電腦」走向「能產生實際研究成果」。
+    </p>
+    
+    
+    <p>
+      IQM的案例說明，量子電腦要進入 HPC 世界，不能只把 QPU 放進資料中心。
+      真正的 HPC+QC 整合需要五個層次同時成熟：
+    </p>
+  
+    <ul>
+      <li>適合量子硬體的低雜訊場地與環境控制；</li>
+      <li>可由 HPC 排程系統管理的自動化校準流程；</li>
+      <li>穩定的電力、冷卻與備援基礎設施；</li>
+      <li>能支援遠端提交與低延遲混合計算的軟體堆疊；</li>
+      <li>面向量子專家與 HPC 使用者的訓練與導入機制。</li>
+    </ul>
+  
+    <p>
+      未來的量子運算不會只是單一 QPU 的擴充，
+      而會是「QPU + HPC + 軟體堆疊 + 資料中心工程 + 使用者生態」的整合。
+    </p>
+<br>
+    <h3>IBM Quantum System Two 可擴展量子-超算系統規劃</h3>
+    
+<div style="text-align: center;">
+  <a href="../Image/IBM-Quantum-Data-Center_Poughkeepsie-NY_Rendering-2025.png">
+    <img src="../Image/IBM-Quantum-Data-Center_Poughkeepsie-NY_Rendering-2025.png" alt="IBM量子資料中心示意圖" style="width: 100%; height: auto;">
+</a>
+    <a href="../Image/52904644927_511a27d7d1_k.jpg">
+      <img src="../Image/52904644927_511a27d7d1_k.jpg" alt="十萬量子位超級電腦示意圖" style="width: 100%; height: auto;">
+    </a>
+    <a href="../Image/Blog_Supercomputing_2024_11_19_v01_fb8bfa9d72.webp">
+        <img src="../Image/Blog_Supercomputing_2024_11_19_v01_fb8bfa9d72.webp" alt="CPU、GPU、QPU示意圖" style="width: 100%; height: auto;">
+    </a>
+  </div>
+  <p class="dark-background">
+    ▲ IBM Quantum System Two 的概念圖。這類系統的重點不只是單一 QPU 的量子位元數，而是如何把低溫系統、古典控制電子學、資料中心基礎設施與多個量子處理器整合成可擴展的運算平台。
+     量子中心超級電腦的願景不只是單一 QPU 的放大，而是多個量子系統、古典伺服器與資料中心網路的整合。
+    圖中可見 classical connections 與 quantum connections 並存，代表未來大型量子運算同時需要古典資料流與量子資訊流。
+  
+    <br><span style="font-size: 0.7em; line-height: 0.8;">
+      Ref: IBM Quantum, 100,000-qubit quantum-centric supercomputer vision.
+      <br>(上)Ref: https://www.hpcwire.com/2025/06/10/ibm-sets-2029-target-for-fault-tolerant-quantum-computing/
+      <br>(中)Ref: https://newsroom.ibm.com/2023-05-21-IBM-Launches-100-Million-Partnership-with-Global-Universities-to-Develop-Novel-Technologies-Towards-a-100,000-Qubit-Quantum-Centric-Supercomputer
+      <br>(下)Ref: https://www.ibm.com/quantum/blog/supercomputing-24              
+    </span><br><br>
+  </p>
+
+
+
+
+<div style="text-align: center;">
+    <video 
+        controls 
+        style="width: 100%; height: auto;">
+        <source src="../Image/IBM Quantum System Two_1080p.mp4" type="video/mp4">
+        
+    </video>
+</div>
+
+<p class="dark-background">
+    ▲ IBM Quantum System Two的宣傳影片。
+    <span style="font-size: 0.7em; line-height: 0.8;">
+        <br>Ref: https://www.youtube.com/watch?v=AQjKUN8PORM
+    </span>
+    <br><br>
+</p>
+    
+
+    <h3>NVIDIA的NVQLink：模組化的量子-超算整合接口</h3>
+    <div style="text-align: center;">
+        <a href="../Image/nvqlink-1.jpg">
+            <img src="../Image/nvqlink-1-jpg.webp" alt="量子電腦機櫃與元件示意圖" style="width: 100%; height: auto;">
+        </a>
+        <a href="../Image/nvqlink-architecture-gpu-qpu-png.webp">
+            <img src="../Image/nvqlink-architecture-gpu-qpu-png.webp" alt="超級電腦與量子處理器架構圖" style="width: 100%; height: auto;">
+        </a>
+    </div>
+    <p class="dark-background">
+        ▲ NVIDIA的NVQLink，可以很明顯看出NVQLink的角色是作為超級電腦與QPU的中介。NVQLink不只是單純的信息交換器，NVQLink還整合了量子控制儀器廠商的儀器，來操作QPU。
+        具體來說，NVQLink是一個高速訊號轉譯器，會將HPC的請求，轉譯成量子電腦的控制信號，交由量子晶片運算，並轉譯量子結果，回傳給HPC。此外，由於量子晶片需要複雜的QEC實時糾錯控制，NVQLink整合的量子控制儀器也會同時進行量子計算的糾錯、校正。
+        NVQLink的解決方案，可以詮釋成將古典高速計算與量子計算的<b>接口模組化</b>，古典HPC不需要負擔量子控制的算力消耗、校正優化；而量子晶片廠商只需要與NVQLink互聯做適配。
+        
+        在接下來的混合計算中提供模組化的解決方案，可以在既有的HPC框架下導入NVQLink+QPU，不需要重新設計古典架構來適配量子計算。
+
+        <span style="font-size: 0.7em; line-height: 0.8;">
+            <br>Ref: https://developer.nvidia.com/blog/nvidia-nvqlink-architecture-integrates-accelerated-computing-with-quantum-processors/
+        </span>
+        <br><br>
+    </p>
+    
+
+
+
+    <p class="dark-background">
+        總結來說，超大型量子計算的第一層問題，是如何讓 QPU 成為高效能運算系統中的一個可用加速器。
+        這需要 runtime、編譯器、古典加速器、低延遲控制與錯誤校正解碼的整合。
+      </p>
+    
+
+
+    
+
+                                <div class="post-meta">
+                                    <span class="post-author">
+                                        <a href="../About/Wang.html"><img class="img-res" src="../Image/IMG_0964_2.JPG" alt="">王培儒</a>
+                                    </span>
+                                    <span class="post-category">
+                                        <a href="./main.html"><i class="fa fa-folder" aria-hidden="true"></i>硬體導論</a>
+                                    </span>
+                                </div><!-- /.post-meta -->
+                            
+                                <div id="prev-next-nav" class="text-center">
+                                    <a class="btn btn-gray" href="W.html">← 上一頁</a> 
+                                    <a class="btn btn-gray" href="../QC_hardware_en/WA.html" style="margin: 0 10px;">English Version</a>
+                                </div>
+
+                                
+
+                            </div><!-- /.post-content -->
+                        </article><!-- /.blog-post -->
+                        <!--<div id="PostComments" class="post-comments">
+                            
+                            
+                            
+                        </div> /#PostComments -->
+                        <!--<div class="respond">
+                            <h3>Post a Comment</h3>
+                            <form class="form-horizontal">
+                                <input class="form-control" type="text" placeholder="Your Name*" required>
+                                <input class="form-control" type="email" placeholder="Your Email" required>
+                                <textarea class="form-control form-control-comment" type="text" placeholder="Your Comment*" required></textarea>
+                                <button class="btn btn-green">Add a comment</button>
+                            </form>    
+                        </div> /.respond -->
+                    </div>
+                    <aside class="col-md-3">
+                        <div class="sidebar">
+                            <div class="widget">
+                                <div id="lesson-list_2">
+                                <div class="lesson-link "><a href="main.html">超導量子電腦硬體指南 (2025)：目錄</a></div>
+                                <div class="lesson-link "><a href="A.html">超導量子電腦當前的應用模式</a></div>
+                                <div class="lesson-link "><a href="B.html">超導量子電腦-硬體解構</a></div>
+                                <div class="lesson-link "><a href="C.html">微波元件解說</a></div>
+                                <div class="lesson-link "><a href="H.html">微波元件廠商</a></div>
+                                <div class="lesson-link "><a href="U2.html">特殊導線與接頭</a></div>
+                                <div class="lesson-link "><a href="O.html">特殊導線與接頭-廠商</a></div>
+                                <div class="lesson-link "><a href="F.html">稀釋製冷機</a></div>
+                                <div class="lesson-link "><a href="M.html">熱管理與熱錨定</a></div>
+                                <div class="lesson-link "><a href="M2.html">熱沉解決方案</a></div>
+                                <div class="lesson-link "><a href="G.html">控制電子系統</a></div>
+                                <div class="lesson-link "><a href="U.html">邁向Scalable QPU：量子晶片設計</a></div>
+                                <div class="lesson-link "><a href="V2.html">邁向Scalable QPU：串擾議題</a></div>
+                                <div class="lesson-link "><a href="V4.html">邁向超大型量子計算：跨晶片連接</a></div>
+                                <div class="lesson-link "><a href="W.html">邁向超大型量子計算：製冷機間量子連結</a></div>
+                                <div class="lesson-link active"><a href="WA.html">邁向超大型量子計算：超算-量子混合運算</a></div>
+                                </div>
+                            </div>
+  
+                        </div></aside>
+                </div>
+            </div>
+        </section><!-- /.section-portfolio -->
+
+    </main><!-- /#main -->
+
+    <footer id="colophon" class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-4 col-xs-6">
+                    <a href="../index_ch.html" class="site-title">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
+                    <p>一起走進新時代的前沿科學與量子科技</p>
+                    </div>
+                <div class="col-lg-offset-4 col-md-3 col-sm-4 col-md-offset-2 col-sm-offset-0 col-xs-6 ">
+                    <p class="site-title">𝐾𝐸𝐸𝑃 𝐼𝑁 𝑇𝑂𝑈𝐶𝐻</p>
+                    <ul class="list-unstyled contact-links">
+                        <li><i class="fa fa-envelope" aria-hidden="true"></i><a href="mailto:info@insight-ihbar.com">info@insight-ihbar.com</a></li>
+                        <!--<li><i class="fa fa-phone" aria-hidden="true"></i><a href="tel:+37400800000">+374 (00) 80 00 00 </a></li>
+                        <li><i class="fa fa-fax" aria-hidden="true"></i><a href="+37400900000">+374 (00) 90 00 00</a></li>
+                        <li><i class="fa-solid fa-location-dot"></i><p>Hsinchu 300，Taiwan (R.O.C.)</p></li>-->
+                    </ul>
+                </div>
+                <!--<div class="clearfix visible-xs"></div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6">
+                    <h3>Featured links</h3>
+                    <ul class="list-unstyled">
+                        <li class="active"><a href="index_ch.html">Home</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="portfolio.html">Porfolio</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>-->
+            </div>
+        </div>
+        <div class="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-8">
+                        <div class="social-links">
+                            <!--<a class="twitter-bg" href="#"><i class="fab fa-twitter"></i></a>-->
+                            <!--<<a class="facebook-bg" href="https://www.facebook.com/people/Quantum-Perspectives/61576446849628/"><i class="fab fa-facebook"></i></a>-->
+                            <!--<a class="facebook-bg" href="https://www.facebook.com/people/%E9%87%8F%E5%AD%90%E9%81%A0%E8%A6%8BQuantum-Perspectives/61576883632888/"><i class="fab fa-facebook-f"></i></a>-->
+                            <!--<a class="pinterest" href="#"><i class="fa-solid fa-microscope"></i></a>-->
+                            <!--<a class="facebook-bg" href="https://www.facebook.com/people/Insight-hbar/61576811775374/"><i class="fab fa-facebook-f"></i></a>-->
+                            <a class="linkedin-bg" href="https://www.linkedin.com/company/insight-ihbar"><i class="fab fa-linkedin"></i></a>
+                        </div><!-- /.social-links -->
+                    </div>
+                    <div class="col-xs-4">
+                        <div class="text-right">
+                            <p><span style="font-size: 16px;">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</span></p>
+                            <p>All Rights Reserved</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.copyright -->
+    </footer><!-- /#footer -->
+
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="../assets/js/bootstrap-select.min.js"></script>
+    <script src="../assets/js/jquery.slicknav.min.js"></script>
+    <script src="../assets/js/jquery.countTo.min.js"></script>
+    <script src="../assets/js/jquery.shuffle.min.js"></script>
+    <script src="../assets/js/script.js"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  
+</body>
+</html>
