@@ -12,7 +12,13 @@
     { "title": "Control Electronics", "file": "G.html" , "status": "new" , "date": "2025-07-14"}, 
     { "title": "Toward Scalable QPU - Quantum Chip Design", "file": "U.html" , "status": "revise" , "date": "2025-07-02" , "note": "Added an illustration of the length differences between readout resonators on the chip." , "anchor": "20250702"},
     { "title": "Toward Scalable QPU - The Issue of Crosstalk", "file": "V2.html", "status": "new" , "date": "2025-06-23"},
+<<<<<<< HEAD
     { "title": "Toward Ultra-Large-Scale Quantum Computing - Cross-Chip Quantum Interconnection", "file": "V4.html", "status": "new" , "date": "2026-05-25"},
     { "title": "Toward Ultra-Large-Scale Quantum Computing - Inter-Cryostat Quantum Links", "file": "W.html", "status": "new" , "date": "2026-05-23"},
     { "title": "Toward Ultra-Large-Scale Quantum Computing - Supercomputer–Quantum Hybrid Computing","file": "WA.html", "status": "new" , "date": "2026-05-24"}   
+=======
+    { "title": "Toward Scalable QPU - Cross-Chip Quantum Interconnection", "file": "V4.html", "status": "new" , "date": "2026-05-25"},
+    { "title": "Toward Ultra-Large-Scale Quantum Computing: Supercomputer–Quantum Hybrid Computing","file": "WA.html", "status": "new" , "date": "2026-05-24"},
+    { "title": "Toward Ultra-Large-Scale Quantum Computing: Inter-Cryostat Quantum Links", "file": "W.html", "status": "new" , "date": "2026-05-23"}
+>>>>>>> 03041e70ddd9323915d0b7f04c196f2a17110aa1
 ]
