@@ -31,8 +31,8 @@
     <link href="../assets/css/style.css" rel="stylesheet">
     <link href="../assets/css/responsive.css" rel="stylesheet">
 
-    <title>邁向 Scalable QPU：跨晶片量子互聯</title>
-    <meta name="description" content="解析超導量子電腦邁向可擴展 QPU 的跨晶片量子互聯技術，涵蓋模組化架構、C/M/L-coupler 互聯層級與錯誤校正連通性需求，掌握 IBM 路線與量子資料中心趨勢。">
+    <title>邁向超大型量子計算：跨晶片量子互聯</title>
+    <meta name="description" content="解析超導量子電腦邁向可擴展 QPU 的跨晶片量子互聯技術，涵蓋模組化架構、C/M/L-coupler 層級與 qLDPC 錯誤校正連通性需求，掌握 IBM 路線與量子資料中心趨勢。">
     <meta name="keywords" content="可擴展QPU, 跨晶片量子互聯, 超導量子電腦, 模組化量子處理器, 量子晶片互連, C-coupler, M-coupler, L-coupler, 量子錯誤校正, qLDPC碼">
     <link rel="canonical" href="https://www.insight-ihbar.com/QC_hardware/V4.html">
 
@@ -108,7 +108,7 @@
                             <!--<img src="../assets/img/portfolio-1.jpg" class="img-res" alt="">-->
                             <div class="post-content">
                               <div style="text-align: center;">
-                                <h2>邁向 Scalable QPU：跨晶片量子互聯</h2>
+                                <h2>邁向超大型量子計算：跨晶片量子互聯</h2>
                                 <h3></h3>
                                 <span style="font-size: 0.7em; line-height: 0.8;">
                                   2026.05.25
@@ -185,7 +185,7 @@
                               <div style="text-align: center;">
                                 <a href="../Image/this-diagram-shows-the-quantum-processors-that-ibm-expects-to-have-ready-in-2023-condor-and-heron-in-2024-flamingo-and-cross.webp">
                                   <img src="../Image/this-diagram-shows-the-quantum-processors-that-ibm-expects-to-have-ready-in-2023-condor-and-heron-in-2024-flamingo-and-cross.webp"
-                                       alt="量子晶片路線圖與量子位數"
+                                       alt="量子處理器路線圖示意圖"
                                        style="width: 100%; height: auto;">
                                 </a>
                               </div>
@@ -203,7 +203,7 @@
                               <br>
                               <div style="text-align: center;">
                                 <a href="../Image/crossbill_condor_8f886198bc.png">
-                                    <img src="../Image/crossbill_condor_8f886198bc.png" alt="IBM量子晶片與封裝近照" style="width: 70%; height: auto;">
+                                    <img src="../Image/crossbill_condor_8f886198bc.png" alt="IBM量子晶片與封裝件" style="width: 70%; height: auto;">
                                 </a>
                               </div>
                               <p class="dark-background">
@@ -219,7 +219,7 @@
                               <div style="text-align: center;">
                                 <a href="../Image/image1_00a8b8ece1.png">
                                   <img src="../Image/image1_00a8b8ece1.png"
-                                       alt="兩個127量子位Eagle晶片連線圖"
+                                       alt="兩個Eagle量子晶片連接示意圖"
                                        style="width: 70%; height: auto;">
                                 </a>
                               </div>
@@ -236,7 +236,7 @@
                        <br>
                               <div style="text-align: center;">
                                 <a href="../Image/Heron_Parallelization_Graphic_9109dba010.png">
-                                    <img src="../Image/Heron_Parallelization_Graphic_9109dba010.png" alt="Heron量子處理器架構示意圖" style="width: 70%; height: auto;">
+                                    <img src="../Image/Heron_Parallelization_Graphic_9109dba010.png" alt="Heron量子晶片互連架構圖" style="width: 70%; height: auto;">
                                 </a>
                               </div>
                               <p class="dark-background">
@@ -294,18 +294,23 @@
 
                               <br>
 
+                              <table width="100%" border="1" cellpadding="10" cellspacing="0"
+                                     style="border-collapse: collapse; font-family: sans-serif; border-color: #cccccc;">
+                                <thead>
+                                  <tr bgcolor="#f2f2f2" align="center">
+                                    <th width="33.33333%"><a href="../Image/IBM-C-coupler.png">
+                                      <img src="../Image/IBM-C-coupler.png" alt="IBM量子晶片遠距量子通訊示意圖" style="width: 100%; height: auto;">
+                                      </a></th>
+                                    <th width="33.33333%"><a href="../Image/IBM-M-coupler.png">
+                                      <img src="../Image/IBM-M-coupler.png" alt="IBM量子晶片互連示意圖" style="width: 100%; height: auto;">
+                                      </a></th>
+                                    <th><a href="../Image/IBM-L-coupler.png">
+                                      <img src="../Image/IBM-L-coupler.png" alt="量子晶片互連示意圖" style="width: 100%; height: auto;">
+                                      </a></th>
+                                  </tr>
+                                </thead>
+                              </table>
 
-<div style="text-align: center;">
-<a href="../Image/IBM-C-coupler.png">
-<img src="../Image/IBM-C-coupler.png" alt="IBM量子晶片遠距量子通訊示意圖" style="width: 33%; height: auto;">
-</a>
-<a href="../Image/IBM-M-coupler.png">
-<img src="../Image/IBM-M-coupler.png" alt="IBM量子晶片互連示意圖" style="width: 33%; height: auto;">
-</a>
-<a href="../Image/IBM-L-coupler.png">
-<img src="../Image/IBM-L-coupler.png" alt="IBM量子晶片互連示意圖" style="width: 33%; height: auto;">
-</a>
-</div>
 <p class="dark-background">
 ▲ <b>(左)C-coupler：</b> 用於提高同一晶片內部的 Qubit 連通性。在許多量子錯誤校正架構中，Qubit 不只需要與最近鄰互動，也可能需要與較遠的 Qubit 傳遞資訊。C-coupler 的目標就是讓非鄰近 Qubit 之間也能建立有效的量子通訊路徑。
 <br>
@@ -313,7 +318,7 @@
 <br>
 <b>(右)L-coupler：</b> 用於較長距離的量子互聯。它可在同一製冷機內不同平台上的量子晶片之間傳送量子資訊，代表量子晶片不必全部擠在同一個局部封裝區域中。但距離增加也會帶來更嚴格的損耗、延遲與傳輸速率限制。
 <br><span style="font-size: 0.7em; line-height: 0.8;">
-Ref: IEEE Spectrum / IBM, Optics Lab
+  Ref: IEEE Spectrum / IBM, https://spectrum.ieee.org/ibm-quantum-computer-2668978269
 </span><br><br>
 </p>
 <div style="text-align: center;">
@@ -337,11 +342,11 @@ Ref: IEEE Spectrum / IBM, Optics Lab
 <div style="text-align: center;">
   <a href="../Image/IBM_Quantum_Production_Flamingo_24_Packaged_V008_RS_COMP_V001_RS_1114573c07.jpg">
     <img src="../Image/IBM_Quantum_Production_Flamingo_24_Packaged_V008_RS_COMP_V001_RS_1114573c07.jpg"
-         alt="兩塊金色電子電路板模組"
+         alt="兩片金色電路板模組"
          style="width: 100%; height: auto;">
   </a>
   <a href="../Image/960x0 (1).webp">
-    <img src="../Image/960x0 (1).webp" alt="量子處理器L耦合器示意圖" style="width: 100%; height: auto;">
+    <img src="../Image/960x0 (1).webp" alt="Flamingo L耦合器電纜示意圖" style="width: 100%; height: auto;">
 </a>
 </div>
 
@@ -359,7 +364,7 @@ Ref: IEEE Spectrum / IBM, Optics Lab
 <div style="text-align: center;">
   <a href="../Image/960x0.webp">
     <img src="../Image/960x0.webp"
-         alt="C、L、M耦合器連線示意圖"
+         alt="新型糾錯碼耦合器連接示意圖"
          style="width: 100%; height: auto;">
   </a>
 </div>
@@ -375,7 +380,7 @@ Ref: IEEE Spectrum / IBM, Optics Lab
 <div style="text-align: center;">
   <a href="../Image/Kookaburra_Parallelization_Graphic_afc360b38b.png">
     <img src="../Image/Kookaburra_Parallelization_Graphic_afc360b38b.png"
-         alt="多晶片量子處理器示意圖"
+         alt="2025多晶片量子處理器示意圖"
          style="width: 100%; height: auto;">
   </a>
 </div>
@@ -413,7 +418,7 @@ Ref: IEEE Spectrum / IBM, Optics Lab
                                     </p><br>
                                     <div style="text-align: center;">
                                         <a href="../Image/截圖 2026-03-03 下午5.50.12.png">
-                                            <img src="../Image/截圖 2026-03-03 下午5.50.12.png" alt="量子表面碼格點與檢查節點圖" style="width: 100%; height: auto;">
+                                            <img src="../Image/截圖 2026-03-03 下午5.50.12.png" alt="表面碼與準循環碼網格示意圖" style="width: 100%; height: auto;">
                                         </a>
                                     </div>
                                     <p class="dark-background">
@@ -475,7 +480,7 @@ Ref: IEEE Spectrum / IBM, Optics Lab
                                   <img src="../Image/下載.jpeg" alt="量子晶片與量子電腦架構圖" style="width: 100%; height: auto;">
                               </a>
                                 <a href="../Image/960x0 (2).webp">
-                                    <img src="../Image/960x0 (2).webp" alt="IBM量子藍松鴉系統路線圖" style="width: 100%; height: auto;">
+                                    <img src="../Image/960x0 (2).webp" alt="IBM量子系統發展路線圖示意" style="width: 100%; height: auto;">
                                 </a>
                               </div>
                               <p class="dark-background">
@@ -546,7 +551,7 @@ Ref: IEEE Spectrum / IBM, Optics Lab
                                 <div id="prev-next-nav" class="text-center">
                                     <a class="btn btn-gray" href="V2.html">← 上一頁</a> 
                                     <a class="btn btn-gray" href="../QC_hardware_en/V4.html" style="margin: 0 10px;">English Version</a>
-                                    <a class="btn btn-gray" href="WA.html">下一頁 →</a>
+                                    <a class="btn btn-gray" href="W.html">下一頁 →</a>
                                 </div>
 
                                 
@@ -583,11 +588,11 @@ Ref: IEEE Spectrum / IBM, Optics Lab
                                 <div class="lesson-link "><a href="M.html">熱管理與熱錨定</a></div>
                                 <div class="lesson-link "><a href="M2.html">熱沉解決方案</a></div>
                                 <div class="lesson-link "><a href="G.html">控制電子系統</a></div>
-                                <div class="lesson-link "><a href="U.html">邁向Scalable QPU-量子晶片設計</a></div>
-                                <div class="lesson-link "><a href="V2.html">邁向Scalable QPU-串擾議題</a></div>
-                                <div class="lesson-link active"><a href="V4.html">邁向Scalable QPU-跨晶片連接</a></div>
-                                <div class="lesson-link "><a href="WA.html">邁向超大型量子計算：超算-量子混合運算</a></div>
+                                <div class="lesson-link "><a href="U.html">邁向Scalable QPU：量子晶片設計</a></div>
+                                <div class="lesson-link "><a href="V2.html">邁向Scalable QPU：串擾議題</a></div>
+                                <div class="lesson-link active"><a href="V4.html">邁向超大型量子計算：跨晶片連接</a></div>
                                 <div class="lesson-link "><a href="W.html">邁向超大型量子計算：製冷機間量子連結</a></div>
+                                <div class="lesson-link "><a href="WA.html">邁向超大型量子計算：超算-量子混合運算</a></div>
                                 </div>
                             </div>
   

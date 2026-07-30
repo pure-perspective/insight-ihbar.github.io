@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N39VTY949N"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-N39VTY949N');
+</script>
+    <!-- Basic Page Needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <meta name="author" content="Peir-Ru Wang">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;1,300&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/20250525-icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/20250525-icon.png">
+
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/css/style.css" rel="stylesheet">
+    <link href="../assets/css/responsive.css" rel="stylesheet">
+
+    <title>退相干時間漂移</title>
+    <meta name="description" content="解析超導量子位元退相干時間漂移，說明 T1/T2、頻率與讀出參數為何隨時間變動，並探討 TLS 缺陷、雜訊來源與量子電腦需頻繁校正的原因。">
+    <meta name="keywords" content="- 量子位元
+- 超導量子位元
+- 捕獲離子量子計算
+- 半導體自旋
+- NV中心量子計算
+- 量子計算技術
+- 量子硬體
+- 量子資訊
+- 中性原子陣列
+- 光量子計算">
+    <link rel="canonical" href="https://www.insight-ihbar.com/SCQ_elementary/M.html">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+  <meta name="keywords" content="超導量子位元, 退相干時間漂移, T1 T2, TLS 二能階系統, 約瑟夫森接面, 量子位元頻率漂移, 量子電腦校正, 磁通雜訊, 電荷雜訊, Purcell 衰減">
+</head>
+<body>
+
+    <header id="masthead" class="site-header">
+        <nav id="primary-navigation" class="site-navigation">
+            <div class="container">
+
+                <div class="navbar-header">
+                   
+                    <a href="../index_ch.html" class="site-title">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
+
+                </div><!-- /.navbar-header -->
+
+                <div class="collapse navbar-collapse" id="agency-navbar-collapse">
+
+                    <ul class="nav navbar-nav navbar-right">
+
+                        <li><a href="../index_ch.html">Home</a></li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">科普介紹<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                              <li class="active"><a href="../SCQ_elementary/main.html">超導量子位元(科普版)</a></li>
+                              <li><a href="../SCQ_advanced/main.html">超導量子位元(進階版)</a></li>
+                              <li><a href="../SpQ/main.html">半導體自旋量子位元</a></li>
+                            </ul>
+
+                        </li>
+                        <!--<li class="active"><a href="../SCQ_elementary/main.html">科普介紹</a></li>-->
+                        <li><a href="../QC_hardware/main.html">硬體導論</a></li>
+                        <li><a href="../QID/main.html">量子產業群像錄</a></li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">研討會筆記<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                <li><a href="../ASW2026/main.html">2026中研院超導量子電腦Workshop</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">量子諮詢<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                <li><a href="https://www.quantum-perspectives.com/About/main.html">量子遠見科技：諮詢服務</a></li>
+                                <li><a href="../About/main.html">關於我們</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="../index.html">English</a></li>
+                        
+                    </ul>
+
+                </div>
+
+            </div>   
+        </nav><!-- /.site-navigation -->
+    </header><!-- /#mastheaed -->
+
+    <div id="hero" class="hero overlay subpage-hero blog-hero">
+        <div class="hero-content">
+            <div class="hero_2-text">
+                <h1>科普介紹</h1>
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="../index_ch.html">Home</a></li>
+                  <li class="breadcrumb-item"><a href="../SCQ_elementary/main.html">超導量子位元(科普版)</a></li>
+                  <!--<li class="breadcrumb-item active">早年超導量子位元的種類</li>-->
+                </ol>
+            </div><!-- /.hero-text -->
+        </div><!-- /.hero-content -->
+    </div><!-- /.hero -->
+
+    <main id="main" class="site-main">
+
+        <section class="site-section subpage-site-section section-blog">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                        <article class="blog-post">
+                            <div class="post-content">
+                            <!--<img src="../assets/img/portfolio-1.jpg" class="img-res" alt="木桌上的筆電與白紙">-->
+                            <div style="text-align: center;">
+                                <h2>退相干時間漂移</h2>
+                                <h3>為什麼超導量子電腦需要頻繁校正?</h3>
+                            </div>
+                            <p>
+                              超導量子電腦不是一台校正一次就能長時間穩定運作的機器，量子位元的頻率、能量鬆弛時間 \(T_1\)、相位退相干時間 \(T_2\)、讀出響應與雙量子位元閘參數，仍然會隨時間漂移。因此，實際運行量子處理器時，必須反覆進行校正。
+                            </p>
+                          
+                            <p>
+                              在超導量子電腦中，校正通常包括量子位元頻率、微波脈衝振幅、脈衝長度、相位、讀出閾值、耦合器偏壓與雙量子位元閘條件。這些參數都依賴量子位元當下的頻譜與退相干環境。量子硬體本身具有時間依賴性，超導量子位元是由微影製程製成的人工原子，它會與材料表面的缺陷、Josephson junction 中的氧化層、非平衡態準粒子事件、封裝模態、背景輻射與控制線路中的雜訊耦合。這些環境自由度會改變量子位元的退相干通道，使得昨天量到的最佳參數，今天不一定仍然最佳。
+                            </p>
+
+                          
+                            
+                              <p>
+                                如果量子位元頻率漂移，原本準確的 \(\pi\) pulse 可能不再剛好完成一次位元翻轉。如果 \(T_1\) 下降，量子位元在閘操作或讀出前就有更高機率從激發態衰退回基態。如果讀出 resonator 的響應改變，原本設定好的分類閾值就可能提高誤判率。因此，量子電腦需要頻繁校正，本質上是因為它的操作點與錯誤模型會隨時間改變。
+                              </p>
+                          
+
+                            <p>量子位元原本應該只按照我們設計、預期的控制脈衝演化，但實際上它會透過某些物理路徑，把能量或相位資訊洩漏到環境中。這些「資訊洩漏的路徑」稱為「退相干通道」。</p>
+                            <table width="100%" border="1" cellpadding="10" cellspacing="0" style="border-collapse: collapse; font-family: sans-serif; border-color: #cccccc;">
+                              <tr>
+                                <th style="width: 50%; border: 1px solid black; padding: 10px; text-align: center;">
+                                  <p><b>能量鬆弛通道</b></p>
+                                </th>
+                                <th style="width: 50%; border: 1px solid black; padding: 10px; text-align: center;">
+                                <p><b>相位退相干通道</b></p>
+                                </th>
+                              </tr>
+                            
+                              <tr>
+                                <td style="border: 1px solid black; padding: 10px; vertical-align: top;">
+                                  <ol>
+                                    <li>
+                                      <p>TLS 缺陷吸收能量</p>
+                                    </li>
+                                    <li>
+                                      <p>準粒子穿越 Josephson junction</p>
+                                    </li>
+                                    <li>
+                                      <p>Purcell decay，能量經由 resonator 或讀出線路流失</p>
+                                    </li>
+                                    <li>
+                                      <p>聲子或封裝模態吸收能量</p>
+                                    </li>
+                                    <li>
+                                      <p>表面介電損耗</p>
+                                    </li>
+                                  </ol>
+                                </td>
+                            
+                                <td style="border: 1px solid black; padding: 10px; vertical-align: top;">
+                                  <ol>
+                                    <li>
+                                      <p>磁通雜訊</p>
+                                    </li>
+                                    <li>
+                                      <p>電荷雜訊</p>
+                                    </li>
+                                    <li>
+                                      <p>TLS 頻率漂移</p>
+                                    </li>
+                                    <li>
+                                      <p>臨界電流雜訊</p>
+                                    </li>
+                                    <li>
+                                      <p>讀出光子殘留造成 AC Stark shift</p>
+                                    </li>
+                                    <li>
+                                      <p>低頻 \(1/f\) 噪聲</p>
+                                    </li>
+                                  </ol>
+                                </td>
+                              </tr>
+                            </table>
+                            <div style="text-align: center;">
+                              <a href="../Image/截圖 2026-06-29 下午3.59.04.png">
+                                <img src="../Image/截圖 2026-06-29 下午3.59.04.png" alt="超導量子位元雜訊與退相干示意圖" style="width: 100%; height: auto;">
+                              </a>
+                            </div>
+                            <p class="dark-background">
+                              ▲ 退相干的來源示意圖。<b>a. </b>由八個 transmon 量子位元構成的量子位元晶片之光學影像；這些量子位元採用\(Al/AlO_x/Al\) Josephson junctions（JJs），周圍採用鈮（\(Nb\)）微波電路。量子位元間透過諧振器與相鄰量子位元耦合，並各自搭配一個的諧振器用於量子態讀出，並可將訊號多工傳輸至共同匯流排。
+                              <b>b. </b>退相干可能來自表面與界面上的缺陷層或非晶層，會產生寄生的介電損耗。
+                              <b>c. </b>超導薄膜與基板中的非平衡態激發，可能由游離輻射、高能射線、或殘留磁場引發。這些噪聲源尤其會產生準粒子、熱聲子與磁通渦旋。
+                              <b>d. </b>微觀尺度的電荷缺陷與自旋缺陷會造成\(1/f\) 的漲落噪聲，使量子位元電路受到隨時間變化的電場或磁場偏置；若缺陷存在於穿隧層中，還可能導致約瑟夫森接面電感產生變化。
+                              <b>e. </b>純相位退相干\(T_\phi\)(pure dephasing)來自於環境中的噪聲對量子位元的<b>能階擾動</b>；縱向弛豫退相干 \(T_1\) (longitudinal relaxation)為環境中的擾動對量子位元產生<b>能量交換</b>，產生衰減。
+                              
+                              <span style="font-size: 0.7em; line-height: 0.8;">
+                                <br>Ref: 10.1038/s41578-021-00370-4
+                              </span>
+                              <br><br>
+                            </p>
+
+
+                            <div style="text-align: center;">
+                              <a href="../Image/截圖 2026-07-03 下午4.06.45.png">
+                                  <img src="../Image/截圖 2026-07-03 下午4.06.45.png" alt="超導量子電路雜訊來源示意圖" style="width: 60%; height: auto;">
+                              </a>
+                          </div>
+                          <p class="dark-background">
+                              ▲ 退相干的來源示意圖。包含控制電路的噪聲、材料核自旋擾動、材料的熱聲子、電荷漲落、電磁波干擾、偏置磁場擾動與磁渦流捕捉。在穿隧層附近，準粒子穿隧事件會嚴重干擾量子位元的特性。
+
+                              <span style="font-size: 0.7em; line-height: 0.8;">
+                                  <br>Ref: 10.1557/mrs.2013.229
+                              </span>
+                              <br><br>
+                          </p>
+
+                            
+                             
+                            <h3>材料表面與 Josephson junction 是退相干噪聲的主要來源</h3>
+                            
+                            <p>
+                              超導量子位元的電場會分布在金屬邊緣、基板表面、氧化穿隧層、封裝中。若這些區域存在缺陷或污染物，量子位元就可能與它們耦合。特別是在 Josephson junction 附近，氧化鋁穿隧層非常薄，局部原子排列、雜質與缺陷都可能影響臨界電流與微波損耗。
+                            </p>
+                          
+                            <p>
+                              表面吸附分子、殘留光阻、氧化物、污染與結構缺陷都可能形成電偶極漲落。這些微觀自由度的狀態切換，會造成電荷雜訊、頻率雜訊或 \(T_1\) 波動。從校正角度來看，這代表每一顆量子位元都可能有自己的漂移特性，不同晶片、不同製程批次、甚至同一晶片上的不同位置，都可能有不同的穩定性。
+                            </p>
+                          
+                            
+                            <div style="text-align: center;">
+                              <a href="../Image/截圖 2026-06-29 下午3.41.48.png">
+                                  <img src="../Image/截圖 2026-06-29 下午3.41.48.png" alt="超導量子位元電極與約瑟夫森接面示意圖" style="width: 90%; height: auto;">
+                              </a>
+                          </div>
+                          <p class="dark-background">
+                              ▲ 金屬邊緣、基板表面、氧化穿隧層、封裝都會影響、干擾超導量子位元的量子相干特性。<b>b. </b>約瑟夫森接面非晶 \(AlO_x\) 穿隧層中缺陷類型示意圖，包含原子缺陷TLS二能階系統（原子在缺陷形成的雙位能井間躍遷）、氫雜質與被捕獲的電子。
+                              <b>c. </b>表面缺陷示意圖，呈現量子位元電極及其天然氧化鋁層的剖面；該氧化層中存在結構性TLS二能階系統。此外，氫（\(H\)）與氧（\(O_2\)）等吸附物會提供表面自旋。製程殘留物，例如光阻、空氣污染物，以及因電路圖案化造成的基板表面非晶化，也是表面退相干擾動的來源。
+
+                              <span style="font-size: 0.7em; line-height: 0.8;">
+                                  <br>Ref: doi.org/10.1038/s41534-019-0224-1
+                              </span>
+                              <br><br>
+                          </p>
+                            
+
+                          <div style="text-align: center;">
+                            <a href="../Image/截圖 2026-07-03 下午4.06.26.png">
+                                <img src="../Image/截圖 2026-07-03 下午4.06.26.png" alt="超導量子位與缺陷示意圖" style="width: 100%; height: auto;">
+                            </a>
+                            </div>
+                            <p class="dark-background">
+                            ▲ 另一篇示意材料中退相干來源的示意研究。包含被捕獲的電子、氫雜質、原子在缺陷形成的TLS二能階系統、還有原子間未配對的懸鍵。
+                            <span style="font-size: 0.7em; line-height: 0.8;">
+                                <br>
+                                Ref: 10.53829/ntr202411fr1
+                                
+                            </span>
+                            <br><br>
+                            </p>
+                        
+
+                            <h3>TLS 缺陷：造成退相干的物理機制模型</h3>
+                            
+                              <p>
+                                Two-level systems，簡稱 TLS，是超導量子位元中常見的材料缺陷模型。如前述可以來自非晶氧化層、表面吸附物、殘留污染、Josephson junction 穿隧層或金屬—基板介面中的微觀結構。這些缺陷可以被視為另一組微小的雙能階系統。當 TLS 的能階差接近量子位元頻率時，量子位元可能把能量轉移給 TLS，導致 \(T_1\) 降低。
+                              </p>
+                            
+                              <div style="text-align: center;">
+                                <a href="../Image/截圖 2026-06-29 下午4.00.18.png">
+                                  <img src="../Image/截圖 2026-06-29 下午4.00.18.png" alt="量子位元與雙井勢能示意圖" style="width: 100%; height: auto;">
+                                </a>
+                              </div>
+                              <p class="dark-background">
+                                ▲ 雙位能井形成的簡易TLS模型。物理模型中如果TLS直接與Qubit耦合，會探討耦合強度\(g\)；此外材料中也存在大量的TLS會間接干擾量子系統，常視為背景場擾動來處理。
+                                <span style="font-size: 0.7em; line-height: 0.8;">
+                                  <br>Ref: 10.1038/s41578-021-00370-4
+                                </span>
+                                <br><br>
+                              </p>
+                              <p>
+                                對可調頻量子位元而言，TLS 會在頻譜中留下可辨識的痕跡。例如，量子位元頻率掃過某個 TLS 時，可能出現avoided corssing、Rabi 頻率異常或局部損耗增加。這也是為什麼量子位元不只是一個計算元件，也是一個敏感的材料探針：透過量子位元的退相干與頻譜變化，可以反推出晶片中缺陷的存在與耦合特性。
+                              </p>
+                            
+                              <div style="text-align: center;">
+                                <a href="../Image/截圖 2026-07-03 下午2.19.50.png">
+                                  <img src="../Image/截圖 2026-07-03 下午2.19.50.png" alt="缺陷與量子位能階示意圖" style="width: 70%; height: auto;">
+                                </a>
+                              </div>
+                              <p class="dark-background">
+                                ▲ Qubit與TLS直接耦合時，如果調整Qubit的能階接近TLS的能階時，會出現兩者能態的混成，這類現象稱作avoided corssing。此時，兩者共振效應很強，Qubit的能量會大量洩露給TLS造成能量衰減的退相干，\(T_1\)會下降。
+                                <span style="font-size: 0.7em; line-height: 0.8;">
+                                  <br>Ref: 10.1103/PhysRevLett.121.090502
+                                </span>
+                                <br><br>
+                              </p>
+                              
+                            
+                              <table>
+                                <thead>
+                                  <tr>
+                                    <th style="width: 25%;"><a href="../Image/PRXQuantum.3.040332.png">
+                                      <img src="../Image/PRXQuantum.3.040332.png" alt="約瑟夫森接面電荷與臨界電流波動示意圖" style="width: 100%; height: auto;">
+                                  </a></th>
+                                    <th><a href="../Image/截圖 2026-07-03 下午2.21.32.png">
+                                      <img src="../Image/截圖 2026-07-03 下午2.21.32.png" alt="磁通與拉比頻率熱圖與TLS能階圖" style="width: 100%; height: auto;">
+                                    </a></th>
+                                  </tr>
+                                </thead>
+                              </table>
+
+
+                              <p class="dark-background">
+                                ▲ 材料中的TLS有很多種，也能透過實驗方法來區分不同種類的TLS。這篇研究討論電子漲落（TLS1~TLS3）和臨界電流漲落（TLS4~TLS5）兩類的TLS現象。
+                                <span style="font-size: 0.7em; line-height: 0.8;">
+                                  <br>Ref: 10.1103/PRXQuantum.3.040332
+                                </span>
+                                <br><br>
+                              </p>
+
+                              
+                            
+                              
+                            
+                              <h3>\(T_1\) drift：同一顆量子位元的特性會隨頻率與時間改變</h3>
+                              <p>
+                                TLS 並不一定穩定停在同一個頻率。它們可能受到鄰近缺陷、局部電荷環境、應變場或低頻雜訊影響，導致自己的能階也發生漂移。當 TLS 頻率漂移時，量子位元看到的損耗環境也會漂移。這就是 decoherence time drift 的一個重要物理圖像：不是量子位元單獨在漂，而是量子位元周圍的缺陷環境也在緩慢變動。
+                              </p>
+                              <p>
+                                能量鬆弛時間 \(T_1\) 描述量子位元從激發態 \(\ket{1}\) 回到基態 \(\ket{0}\) 的時間。若 \(T_1\) 很長，代表量子位元可以較久地保存能量資訊；若 \(T_1\) 變短，閘操作與量測期間發生錯誤的機率就會上升。
+                              </p>
+                            
+                              <p>
+                                但 \(T_1\) 不是一個固定常數。實驗中可以看到，當調整量子位元頻率掃過不同區域時，某些頻率附近會出現明顯的 \(T_1\) 降低。這通常表示量子位元和某些TLS局部缺陷接近共振，使能量更容易從量子位元流向缺陷環境。更重要的是，這些low \(T_1\) 區域本身也會隨時間變化，造成所謂的 decoherence time drift （\(T_1\) drift）。
+                              </p>
+                            
+                              
+                            
+                              <div style="text-align: center;">
+                                <a href="../Image/截圖 2026-07-03 下午2.20.10.png">
+                                  <img src="../Image/截圖 2026-07-03 下午2.20.10.png" alt="頻率時間解析T1熱圖與統計圖" style="width: 100%; height: auto;">
+                                </a>
+                              </div>
+                              <p class="dark-background">
+                                ▲ 這張圖針對時間和頻率空間掃掠進行 \(T_1\) 數值量測，橫軸是調整Qubit的頻率、縱軸是量測不同時間的\(T_1\)表現。固定時間時（固定縱軸），調整可以Qubit頻率可以發現\(T_1\)有較長（藍）和短（紅），\(T_1\)變短表示Qubit有與TLS強耦合。
+                                接著改變時間，可以發現與TLS共振頻率會隨時間變化（可以觀察紅色區域）。可以看出 \(T_1\) 在頻率與時間兩個方向上都不均勻。某些頻率區域長時間保持較低的 \(T_1\)，某些區域則出現漂移、變寬或突然變差。對量子電腦來說，這意味著最佳操作頻率不是永久固定的；它可能需要避開新的損耗區域，或者在校正流程中重新估計錯誤率。
+                                <span style="font-size: 0.7em; line-height: 0.8;">
+                                  <br>Ref: 10.1103/PhysRevLett.121.090502
+                                </span>
+                                <br><br>
+                              </p>
+                            
+                              
+
+                              
+
+
+
+                            <br><br>
+                            <p>
+                                <span style="font-size: 0.5em; line-height: 0.8;">
+                                    本文部分內容透過 AI 協作，經作者編輯審核。
+                                </span>
+                            </p>
+
+                                <div class="post-meta">
+                                    <span class="post-author">
+                                        <a href="../About/Wang.html"><img class="img-res" src="../Image/IMG_0964_2.JPG" alt="">王培儒</a>
+                                    </span>
+                                    <span class="post-category">
+                                        <a href="../SCQ_elementary/main.html"><i class="fa fa-folder" aria-hidden="true"></i> 超導量子位元(科普版)</a>
+                                    </span>
+                                </div><!-- /.post-meta -->
+                                <br><br>
+                                <div id="prev-next-nav" class="text-center">
+                                    <a class="btn btn-gray" href="J.html">← 上一頁</a> 
+                                    <a class="btn btn-gray" href="../SCQ_elementary_en/M.html" style="margin: 0 10px;">English Version</a>
+                                    <a class="btn btn-gray" href="K.html">下一頁 →</a>
+                                </div>
+
+
+
+                            </div><!-- /.post-content -->
+                        </article><!-- /.blog-post -->
+                        <!--<div id="PostComments" class="post-comments">
+                            
+                            
+                            
+                        </div> /#PostComments -->
+                        <!--<div class="respond">
+                            <h3>Post a Comment</h3>
+                            <form class="form-horizontal">
+                                <input class="form-control" type="text" placeholder="Your Name*" required>
+                                <input class="form-control" type="email" placeholder="Your Email" required>
+                                <textarea class="form-control form-control-comment" type="text" placeholder="Your Comment*" required></textarea>
+                                <button class="btn btn-green">Add a comment</button>
+                            </form>    
+                        </div> /.respond -->
+                    </div>
+                    <aside class="col-md-3">
+                        <div class="sidebar">
+                            <div class="widget">
+                                <div id="lesson-list_2">
+                                <div class="lesson-link "><a href="main.html">超導量子位元(科普版):目錄</a></div>
+                                <div class="lesson-link "><a href="A.html">約瑟夫森節</a></div>
+                                <div class="lesson-link "><a href="B.html">超導量子位元是什麼呢？</a></div>
+                                <div class="lesson-link "><a href="C.html">淺談超導電路量子位元的種類</a></div>
+                                <div class="lesson-link "><a href="D.html">早年超導量子位元的種類</a></div>
+                                <div class="lesson-link "><a href="E.html">當前主流超導量子位元的種類</a></div>
+                                <div class="lesson-link "><a href="F.html">電子顯微鏡下的超導量子位元</a></div>
+                                <div class="lesson-link "><a href="G.html">其他種類的Qubit</a></div>
+                                <div class="lesson-link "><a href="H.html">超導量子電腦長什麼樣子？</a></div>
+                                <div class="lesson-link "><a href="I.html">如何送訊號到量子位元？</a></div>
+                                <div class="lesson-link "><a href="J.html">QPU拓墣</a></div>
+                                <div class="lesson-link active"><a href="M.html">退相干時間漂移</a></div>
+                                <div class="lesson-link "><a href="K.html">如何控制超導量子位元</a></div>
+                                <div class="lesson-link "><a href="L.html">控制誤差1-頻率失諧</a></div>
+                                </div>
+                            </div>
+  
+                        </div></aside>
+                </div>
+            </div>
+        </section><!-- /.section-portfolio -->
+
+    </main><!-- /#main -->
+
+    <footer id="colophon" class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-4 col-xs-6">
+                    <a class="site-title">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
+                    <p>一起走進新時代的前沿科學與量子科技</p>
+                    </div>
+                <div class="col-lg-offset-4 col-md-3 col-sm-4 col-md-offset-2 col-sm-offset-0 col-xs-6 ">
+                    <p class="site-title">𝐾𝐸𝐸𝑃 𝐼𝑁 𝑇𝑂𝑈𝐶𝐻</p>
+                    <ul class="list-unstyled contact-links">
+                        <li><i class="fa fa-envelope" aria-hidden="true"></i><a href="mailto:info@insight-ihbar.com">info@insight-ihbar.com</a></li>
+                        <!--<li><i class="fa fa-phone" aria-hidden="true"></i><a href="tel:+37400800000">+374 (00) 80 00 00 </a></li>
+                        <li><i class="fa fa-fax" aria-hidden="true"></i><a href="+37400900000">+374 (00) 90 00 00</a></li>
+                        <li><i class="fa-solid fa-location-dot"></i><p>Hsinchu 300, Taiwan (R.O.C.)</p></li>-->
+                    </ul>
+                </div>
+                <!--<div class="clearfix visible-xs"></div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6">
+                    <h3>Featured links</h3>
+                    <ul class="list-unstyled">
+                        <li class="active"><a href="index_ch.html">Home</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="portfolio.html">Porfolio</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>-->
+            </div>
+        </div>
+        <div class="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-8">
+                        <div class="social-links">
+                            <!--<a class="twitter-bg" href="#"><i class="fab fa-twitter"></i></a>-->
+                            <!--<<a class="facebook-bg" href="https://www.facebook.com/people/Quantum-Perspectives/61576446849628/"><i class="fab fa-facebook"></i></a>-->
+                            <!--<a class="facebook-bg" href="https://www.facebook.com/people/%E9%87%8F%E5%AD%90%E9%81%A0%E8%A6%8BQuantum-Perspectives/61576883632888/"><i class="fab fa-facebook-f"></i></a>-->
+                            <!--<a class="pinterest" href="#"><i class="fa-solid fa-microscope"></i></a>-->
+                            <!--<a class="facebook-bg" href="https://www.facebook.com/people/Insight-hbar/61576811775374/"><i class="fab fa-facebook-f"></i></a>-->
+                            <a class="linkedin-bg" href="https://www.linkedin.com/company/insight-ihbar"><i class="fab fa-linkedin"></i></a>
+                        </div><!-- /.social-links -->
+                    </div>
+                    <div class="col-xs-4">
+                        <div class="text-right">
+                            <p><span style="font-size: 16px;">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</span></p>
+                            <p>All Rights Reserved</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.copyright -->
+    </footer><!-- /#footer -->
+
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="../assets/js/bootstrap-select.min.js"></script>
+    <script src="../assets/js/jquery.slicknav.min.js"></script>
+    <script src="../assets/js/jquery.countTo.min.js"></script>
+    <script src="../assets/js/jquery.shuffle.min.js"></script>
+    <script src="../assets/js/script.js"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  
+</body>
+</html>

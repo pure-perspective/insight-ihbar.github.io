@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N39VTY949N"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-N39VTY949N');
+</script>
+    <!-- Basic Page Needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <meta name="author" content="Peir-Ru Wang">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;1,300&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/20250525-icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/20250525-icon.png">
+
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/css/style.css" rel="stylesheet">
+    <link href="../assets/css/responsive.css" rel="stylesheet">
+
+    <title>Decoherence-Time Drift</title>
+    <meta name="description" content="Learn why superconducting qubits need frequent calibration as T1/T2, frequency and readout drift due to TLS defects, noise, quasiparticles and materials.">
+    <meta name="keywords" content="1. Superconducting qubits signal delivery system  
+2. Quantum hardware wiring challenges  
+3. Innovative solutions for qubit control  
+4. Fiber optic control lines in quantum computing  
+5. Low temperature quantum computing innovations  
+6. Josephson Junction and Transmon applications  
+7. Scalable quantum systems and control  
+8. Qubit physics and signal processing  
+9. Quantum optics for superconducting qubits  
+10. Advanced quantum control methods">
+    <link rel="canonical" href="https://www.insight-ihbar.com/SCQ_elementary_en/M.html">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+  <meta name="keywords" content="Superconducting qubit decoherence-time drift calibration  
+T1 T2 drift in quantum processors  
+TLS defects Josephson junction qubit noise  
+Flux noise charge noise 1/f dephasing  
+Qubit frequency drift readout error calibration  
+Purcell decay quasiparticles energy relaxation channels  
+Materials surface dielectric loss superconducting qubits  
+Transmon qubit coherence drift and stability">
+</head>
+<body>
+
+    <header id="masthead" class="site-header">
+        <nav id="primary-navigation" class="site-navigation">
+            <div class="container">
+
+                <div class="navbar-header">                   
+                    <a href="../index.html" class="site-title">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
+                </div><!-- /.navbar-header -->
+
+                <div class="collapse navbar-collapse" id="agency-navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="../index.html">Home</a></li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Qubit Physics<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                              <li class="active"><a href="../SCQ_elementary_en/main.html">Superconducting Qubits (Elementary)</a></li>
+                              <li><a href="../SCQ_advanced_en/main.html">Superconducting Qubits (Advanced)</a></li>
+                              <li><a href="../SpQ_en/main.html">Semiconductor Spin Qubits</a></li>
+                            </ul>
+                        </li>
+                        <!--<li class="active"><a href="../SCQ_elementary/main.html">科普介紹</a></li>-->
+                        <li><a href="../QC_hardware_en/main.html">Hardware</a></li>
+                        <li><a href="../QID_en/main.html">Quantum Industries</a></li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Workshop Note<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                <li><a href="../ASW2026_en/main.html">2026 Academia Sinica SCQC Winter Workshop</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Consultance<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                <li><a href="https://www.quantum-perspectives.com/About_en/main.html">Taiwan Market Outreach Services</a></li>
+                                <li><a href="../About_en/main.html">About Us</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="../index_ch.html">中文版</a></li>                        
+                    </ul>
+                </div>
+
+            </div>   
+        </nav><!-- /.site-navigation -->
+    </header><!-- /#mastheaed -->
+
+    <div id="hero" class="hero overlay subpage-hero blog-hero">
+        <div class="hero-content">
+            <div class="hero_2-text">
+                <h1>Qubit Physics</h1>
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+                  <li class="breadcrumb-item"><a href="./main.html">Superconducting Qubits (Elementary)</a></li>
+                  <!--<li class="breadcrumb-item active">約瑟夫森節</li>-->
+                </ol>
+            </div><!-- /.hero-text -->
+        </div><!-- /.hero-content -->
+    </div><!-- /.hero -->
+
+    <main id="main" class="site-main">
+
+        <section class="site-section subpage-site-section section-blog">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                        <article class="blog-post">
+                            <!--<img src="../assets/img/portfolio-1.jpg" class="img-res" alt="">-->
+                            <div class="post-content">
+                                <div style="text-align: center;">
+                                    <h2>Decoherence-Time Drift</h2>
+                                    <h3>Why Do Superconducting Quantum Computers Require Frequent Calibration?</h3>
+                                </div>
+                                
+                                <p>
+                                    A superconducting quantum computer is not a machine that can be calibrated once and then remain stable for a long time. The qubit frequency, energy relaxation time \(T_1\), phase decoherence time \(T_2\), readout response, and two-qubit gate parameters can all drift over time. As a result, real quantum processors must be calibrated repeatedly during operation.
+                                </p>
+                                
+                                <p>
+                                    In superconducting quantum computers, calibration usually involves the qubit frequency, microwave pulse amplitude, pulse duration, phase, readout threshold, coupler bias, and two-qubit gate conditions. All of these parameters depend on the qubit’s instantaneous spectrum and decoherence environment. Quantum hardware is intrinsically time-dependent. Superconducting qubits are artificial atoms fabricated by lithographic processes, and they can couple to defects on material surfaces, oxide layers inside Josephson junctions, nonequilibrium quasiparticle events, package modes, background radiation, and noise in control lines. These environmental degrees of freedom modify the qubit’s decoherence channels, meaning that the optimal parameters measured yesterday may no longer be optimal today.
+                                </p>
+                                
+                                <p>
+                                    If the qubit frequency drifts, a previously accurate \(\pi\) pulse may no longer perform a perfect bit flip. If \(T_1\) decreases, the qubit has a higher probability of relaxing from the excited state back to the ground state before the gate operation or readout is completed. If the response of the readout resonator changes, the previously calibrated classification threshold may lead to a higher readout error rate. Therefore, superconducting quantum computers require frequent calibration because their operating points and error models change over time.
+                                </p>
+                                
+                                <p>
+                                    Ideally, a qubit should evolve only according to the control pulses that we intentionally design and apply. In practice, however, it can leak energy or phase information into the environment through specific physical pathways. These pathways of information leakage are called <b>decoherence channels</b>.
+                                </p>
+                                
+                                <table width="100%" border="1" cellpadding="10" cellspacing="0" style="border-collapse: collapse; font-family: sans-serif; border-color: #cccccc;">
+                                    <tr>
+                                        <th style="width: 50%; border: 1px solid black; padding: 10px; text-align: center;">
+                                            <p><b>Energy Relaxation Channels</b></p>
+                                        </th>
+                                        <th style="width: 50%; border: 1px solid black; padding: 10px; text-align: center;">
+                                            <p><b>Phase Decoherence Channels</b></p>
+                                        </th>
+                                    </tr>
+                                
+                                
+                                <tr>
+                                    <td style="border: 1px solid black; padding: 10px; vertical-align: top;">
+                                        <ol>
+                                            <li>
+                                                <p>Energy absorption by TLS defects</p>
+                                            </li>
+                                            <li>
+                                                <p>Quasiparticles tunneling across the Josephson junction</p>
+                                            </li>
+                                            <li>
+                                                <p>Purcell decay, where energy is lost through the resonator or readout line</p>
+                                            </li>
+                                            <li>
+                                                <p>Energy absorption by phonons or package modes</p>
+                                            </li>
+                                            <li>
+                                                <p>Surface dielectric loss</p>
+                                            </li>
+                                        </ol>
+                                    </td>
+                                
+                                    <td style="border: 1px solid black; padding: 10px; vertical-align: top;">
+                                        <ol>
+                                            <li>
+                                                <p>Flux noise</p>
+                                            </li>
+                                            <li>
+                                                <p>Charge noise</p>
+                                            </li>
+                                            <li>
+                                                <p>TLS frequency drift</p>
+                                            </li>
+                                            <li>
+                                                <p>Critical-current noise</p>
+                                            </li>
+                                            <li>
+                                                <p>AC Stark shifts caused by residual readout photons</p>
+                                            </li>
+                                            <li>
+                                                <p>Low-frequency \(1/f\) noise</p>
+                                            </li>
+                                        </ol>
+                                    </td>
+                                </tr>
+                                
+                                
+                                </table>
+                                
+                                <div style="text-align: center;">
+                                    <a href="../Image/截圖 2026-06-29 下午3.59.04.png">
+                                        <img src="../Image/截圖 2026-06-29 下午3.59.04.png" alt="Qubit chip diagram" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                
+                                <p class="dark-background">
+                                    ▲ Schematic illustration of decoherence sources.
+                                    <b>a. </b>Optical image of a qubit chip consisting of eight transmon qubits. These qubits use \(Al/AlO_x/Al\) Josephson junctions (JJs), surrounded by niobium (\(Nb\)) microwave circuits. The qubits are coupled to neighboring qubits through resonators, and each qubit is equipped with its own resonator for quantum-state readout. The readout signals can be multiplexed and transmitted to a shared bus.
+                                    <b>b. </b>Decoherence may originate from defect layers or amorphous layers at surfaces and interfaces, which introduce parasitic dielectric loss.
+                                    <b>c. </b>Nonequilibrium excitations in superconducting films and substrates may be triggered by ionizing radiation, high-energy particles, or residual magnetic fields. These noise sources can generate quasiparticles, thermal phonons, and magnetic flux vortices.
+                                    <b>d. </b>Microscopic charge and spin defects can generate \(1/f\) fluctuation noise, exposing the qubit circuit to time-dependent electric or magnetic bias fields. If such defects exist inside the tunneling barrier, they may also change the inductance of the Josephson junction.
+                                    <b>e. </b>Pure dephasing \(T_\phi\) originates from environmental noise that perturbs the <b>energy levels</b> of the qubit, whereas longitudinal relaxation \(T_1\) occurs when environmental perturbations exchange <b>energy</b> with the qubit, causing decay.
+                                
+                                
+                                <span style="font-size: 0.7em; line-height: 0.8;">
+                                    <br>Ref: 10.1038/s41578-021-00370-4
+                                </span>
+                                <br><br>
+                                
+                                
+                                </p>
+                                
+                                <div style="text-align: center;">
+                                    <a href="../Image/截圖 2026-07-03 下午4.06.45.png">
+                                        <img src="../Image/截圖 2026-07-03 下午4.06.45.png" alt="Quantum noise diagram" style="width: 60%; height: auto;">
+                                    </a>
+                                </div>
+                                
+                                <p class="dark-background">
+                                    ▲ Schematic illustration of decoherence sources, including noise from control circuitry, nuclear-spin perturbations in materials, thermal phonons, charge fluctuations, electromagnetic interference, bias-field fluctuations, and trapped magnetic vortices. Near the tunneling barrier, quasiparticle tunneling events can strongly disturb the properties of the qubit.
+                                
+                                
+                                <span style="font-size: 0.7em; line-height: 0.8;">
+                                    <br>Ref: 10.1557/mrs.2013.229
+                                </span>
+                                <br><br>
+                                
+                                
+                                </p>
+                                
+                                <h3>Material Surfaces and Josephson Junctions Are Major Sources of Decoherence Noise</h3>
+                                
+                                <p>
+                                    The electric field of a superconducting qubit is distributed around metal edges, substrate surfaces, oxide tunneling barriers, and packaging structures. If defects or contaminants are present in these regions, the qubit can couple to them. This is especially important near the Josephson junction, where the aluminum oxide tunneling barrier is extremely thin. Local atomic arrangements, impurities, and defects can all influence the critical current and microwave loss.
+                                </p>
+                                
+                                <p>
+                                    Surface-adsorbed molecules, residual photoresist, oxides, contaminants, and structural defects may all form fluctuating electric dipoles. State switching in these microscopic degrees of freedom can cause charge noise, frequency noise, or fluctuations in \(T_1\). From the perspective of calibration, this means that every qubit may have its own drift characteristics. Different chips, different fabrication batches, and even different locations on the same chip can exhibit different levels of stability.
+                                </p>
+                                
+                                <div style="text-align: center;">
+                                    <a href="../Image/截圖 2026-06-29 下午3.41.48.png">
+                                        <img src="../Image/截圖 2026-06-29 下午3.41.48.png" alt="Qubit circuit diagram" style="width: 90%; height: auto;">
+                                    </a>
+                                </div>
+                                
+                                <p class="dark-background">
+                                    ▲ Metal edges, substrate surfaces, oxide tunneling barriers, and packaging structures can all affect and disturb the quantum coherence of superconducting qubits.
+                                    <b>b. </b>Schematic illustration of defect types in the amorphous \(AlO_x\) tunneling barrier of a Josephson junction, including atomic-defect two-level systems, or TLSs, in which atoms switch between two potential wells formed by a defect, as well as hydrogen impurities and trapped electrons.
+                                    <b>c. </b>Schematic illustration of surface defects, showing a cross-section of the qubit electrode and its native aluminum oxide layer. Structural TLSs may exist inside this oxide layer. In addition, adsorbates such as hydrogen (\(H\)) and oxygen (\(O_2\)) can provide surface spins. Processing residues, such as photoresist, airborne contaminants, and substrate amorphization caused by circuit patterning, are also sources of surface-induced decoherence.
+                                
+                                
+                                <span style="font-size: 0.7em; line-height: 0.8;">
+                                    <br>Ref: doi.org/10.1038/s41534-019-0224-1
+                                </span>
+                                <br><br>
+                                
+                                
+                                </p>
+                                
+                                <div style="text-align: center;">
+                                    <a href="../Image/截圖 2026-07-03 下午4.06.26.png">
+                                        <img src="../Image/截圖 2026-07-03 下午4.06.26.png" alt="Superconducting qubit" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                
+                                <p class="dark-background">
+                                    ▲ Another schematic study illustrating material-related decoherence sources, including trapped electrons, hydrogen impurities, atomic TLS defects formed by double-well potentials, and unpaired dangling bonds between atoms.
+                                    <span style="font-size: 0.7em; line-height: 0.8;">
+                                        <br>
+                                        Ref: 10.53829/ntr202411fr1
+                                    </span>
+                                    <br><br>
+                                </p>
+                                
+                                <h3>TLS Defects: A Physical Mechanism Behind Decoherence</h3>
+                                
+                                <p>
+                                    Two-level systems, commonly abbreviated as TLSs, are a widely used model for material defects in superconducting qubits. As mentioned above, they may originate from amorphous oxide layers, surface adsorbates, residual contamination, Josephson-junction tunneling barriers, or microscopic structures at metal–substrate interfaces. These defects can be treated as another set of tiny two-level systems. When the energy splitting of a TLS is close to the qubit frequency, the qubit may transfer energy into the TLS, reducing \(T_1\).
+                                </p>
+                                
+                                <div style="text-align: center;">
+                                    <a href="../Image/截圖 2026-06-29 下午4.00.18.png">
+                                        <img src="../Image/截圖 2026-06-29 下午4.00.18.png" alt="Qubit TLS diagram" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                
+                                <p class="dark-background">
+                                    ▲ A simple TLS model formed by a double-well potential. In a physical model where the TLS couples directly to the qubit, the coupling strength \(g\) is an important parameter. In addition, many TLSs exist in materials and can indirectly perturb the quantum system; they are often treated as a background field or fluctuating environment.
+                                    <span style="font-size: 0.7em; line-height: 0.8;">
+                                        <br>Ref: 10.1038/s41578-021-00370-4
+                                    </span>
+                                    <br><br>
+                                </p>
+                                
+                                <p>
+                                    For tunable qubits, TLS defects can leave identifiable signatures in the spectrum. For example, when the qubit frequency is swept across a TLS, one may observe an avoided crossing, an anomalous Rabi frequency, or an increase in local loss. This is why a superconducting qubit is not only a computational element, but also a sensitive probe of materials. By studying changes in qubit decoherence and spectra, one can infer the presence and coupling properties of defects inside the chip.
+                                </p>
+                                
+                                <div style="text-align: center;">
+                                    <a href="../Image/截圖 2026-07-03 下午2.19.50.png">
+                                        <img src="../Image/截圖 2026-07-03 下午2.19.50.png" alt="Qubit energy diagram" style="width: 70%; height: auto;">
+                                    </a>
+                                </div>
+                                
+                                <p class="dark-background">
+                                    ▲ When a qubit is directly coupled to a TLS, tuning the qubit energy level close to the TLS energy level can lead to hybridization between the two quantum states. This phenomenon is known as an avoided crossing. Under this condition, the resonance effect is strong, and a large amount of qubit energy can leak into the TLS, producing energy-relaxation decoherence and reducing \(T_1\).
+                                    <span style="font-size: 0.7em; line-height: 0.8;">
+                                        <br>Ref: 10.1103/PhysRevLett.121.090502
+                                    </span>
+                                    <br><br>
+                                </p>
+                                
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th style="width: 25%;">
+                                                <a href="../Image/PRXQuantum.3.040332.png">
+                                                    <img src="../Image/PRXQuantum.3.040332.png" alt="Josephson junction" style="width: 100%; height: auto;">
+                                                </a>
+                                            </th>
+                                            <th>
+                                                <a href="../Image/截圖 2026-07-03 下午2.21.32.png">
+                                                    <img src="../Image/截圖 2026-07-03 下午2.21.32.png" alt="Quantum heatmaps" style="width: 100%; height: auto;">
+                                                </a>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                                
+                                <p class="dark-background">
+                                    ▲ There are many types of TLSs in materials, and different categories of TLSs can be distinguished experimentally. This study discusses two classes of TLS phenomena: electric-field fluctuations, labeled TLS1 to TLS3, and critical-current fluctuations, labeled TLS4 to TLS5.
+                                    <span style="font-size: 0.7em; line-height: 0.8;">
+                                        <br>Ref: 10.1103/PRXQuantum.3.040332
+                                    </span>
+                                    <br><br>
+                                </p>
+                                
+                                <h3>\(T_1\) Drift: The Properties of the Same Qubit Can Change with Frequency and Time</h3>
+                                
+                                <p>
+                                    TLS defects do not necessarily remain fixed at the same frequency. They may be influenced by nearby defects, the local charge environment, strain fields, or low-frequency noise, causing their own energy levels to drift. When TLS frequencies drift, the loss environment seen by the qubit also drifts. This provides an important physical picture of decoherence-time drift: the qubit is not drifting alone; the defect environment surrounding the qubit is also slowly changing.
+                                </p>
+                                
+                                <p>
+                                    The energy relaxation time \(T_1\) describes the timescale over which a qubit relaxes from the excited state \(\ket{1}\) back to the ground state \(\ket{0}\). A long \(T_1\) means that the qubit can preserve its energy information for a longer time. A shorter \(T_1\), by contrast, increases the probability of errors during gate operations and measurement.
+                                </p>
+                                
+                                <p>
+                                    However, \(T_1\) is not a fixed constant. Experiments show that when the qubit frequency is tuned across different spectral regions, a pronounced decrease in \(T_1\) can appear near certain frequencies. This usually indicates that the qubit is close to resonance with local TLS defects, making it easier for energy to flow from the qubit into the defect environment. More importantly, these low-\(T_1\) regions can themselves change over time, producing what is known as decoherence-time drift, or \(T_1\) drift.
+                                </p>
+                                
+                                <div style="text-align: center;">
+                                    <a href="../Image/截圖 2026-07-03 下午2.20.10.png">
+                                        <img src="../Image/截圖 2026-07-03 下午2.20.10.png" alt="T1 heatmap plot" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                
+                                <p class="dark-background">
+                                    ▲ This figure shows \(T_1\) measurements performed across both time and frequency. The horizontal axis corresponds to the tuned qubit frequency, while the vertical axis represents \(T_1\) measured at different times. At a fixed time, sweeping the qubit frequency reveals regions where \(T_1\) is longer, shown in blue, and regions where \(T_1\) is shorter, shown in red. A shorter \(T_1\) indicates strong coupling between the qubit and TLS defects.
+                                    As time evolves, the resonance frequencies associated with TLS defects can also shift, as seen from the movement of the red regions. The figure shows that \(T_1\) is nonuniform along both the frequency and time axes. Some frequency regions maintain a low \(T_1\) for an extended period, while others drift, broaden, or suddenly degrade. For a quantum computer, this means that the optimal operating frequency is not permanently fixed. The system may need to avoid newly emerging loss regions or re-estimate error rates during calibration.
+                                    <span style="font-size: 0.7em; line-height: 0.8;">
+                                        <br>Ref: 10.1103/PhysRevLett.121.090502
+                                    </span>
+                                    <br><br>
+                                </p>
+                                
+                                
+                                
+                                
+                           
+
+
+
+
+                                <p>
+                                    <span style="font-size: 0.5em; line-height: 0.8;">
+                                        Originally written in Chinese by the author, these articles are translated into English to invite cross-language resonance.
+                                    </span>
+                                </p>
+                                <div class="post-meta">
+                                    <span class="post-author">
+                                        <a href="../About_en/Wang.html"><img class="img-res" src="../Image/IMG_0964_2.JPG" alt="">Peir-Ru Wang</a>
+                                    </span>
+                                    <span class="post-category">
+                                        <a href="./main.html"><i class="fa fa-folder" aria-hidden="true"></i>Superconducting Qubits (Elementary)</a>
+                                    </span>
+                                </div><!-- /.post-meta -->
+                            
+                                <div id="prev-next-nav" class="text-center">
+                                    <a class="btn btn-gray" href="J.html">← Previous</a> 
+                                    <a class="btn btn-gray" href="../SCQ_elementary/M.html" style="margin: 0 10px;">中文版</a>
+                                    <a class="btn btn-gray" href="K.html">Next →</a>
+                                </div>
+
+                                
+
+                            </div><!-- /.post-content -->
+                        </article><!-- /.blog-post -->
+                        <!--<div id="PostComments" class="post-comments">
+                            
+                            
+                            
+                        </div> /#PostComments -->
+                        <!--<div class="respond">
+                            <h3>Post a Comment</h3>
+                            <form class="form-horizontal">
+                                <input class="form-control" type="text" placeholder="Your Name*" required>
+                                <input class="form-control" type="email" placeholder="Your Email" required>
+                                <textarea class="form-control form-control-comment" type="text" placeholder="Your Comment*" required></textarea>
+                                <button class="btn btn-green">Add a comment</button>
+                            </form>    
+                        </div> /.respond -->
+                    </div>
+                    <aside class="col-md-3">
+                        <div class="sidebar">
+                            <div class="widget">
+                                <div id="lesson-list_2">
+                                <div class="lesson-link "><a href="main.html">Superconducting Qubits (Elementary Version): Menu</a></div>
+                                <div class="lesson-link "><a href="A.html">Josephson Junction</a></div>
+                                <div class="lesson-link "><a href="B.html">What is a Superconducting Qubit?</a></div>
+                                <div class="lesson-link "><a href="C.html">Overview of Superconducting Circuit Qubit Types</a></div>
+                                <div class="lesson-link "><a href="D.html">Early Types of Superconducting Qubits</a></div>
+                                <div class="lesson-link "><a href="E.html">Modern Mainstream Superconducting Qubits</a></div>
+                                <div class="lesson-link "><a href="F.html">Superconducting Qubits under Electron Microscopy</a></div>
+                                <div class="lesson-link "><a href="G.html">Other Types of Qubits</a></div>
+                                <div class="lesson-link "><a href="H.html">What Does a Superconducting Quantum Computer Look Like?</a></div>
+                                <div class="lesson-link "><a href="I.html">How Are Signals Delivered to Qubits?</a></div>
+                                <div class="lesson-link "><a href="J.html">QPU Topology</a></div>
+                                <div class="lesson-link active"><a href="M.html">Decoherence-Time Drift</a></div>
+                                <div class="lesson-link "><a href="K.html">How to Control a Superconducting Qubit</a></div>
+                                <div class="lesson-link "><a href="L.html">Control Error 1 - Frequency Detuning</a></div>
+                                </div>
+                            </div>
+  
+                        </div></aside>
+                </div>
+            </div>
+        </section><!-- /.section-portfolio -->
+
+    </main><!-- /#main -->
+
+    <footer id="colophon" class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-4 col-xs-6">
+                    <a href="../index.html" class="site-title">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
+                    <p>Exploring the Quantum Technology Together.</p>
+                    </div>
+                <div class="col-lg-offset-4 col-md-3 col-sm-4 col-md-offset-2 col-sm-offset-0 col-xs-6 ">
+                    <p class="site-title">𝐾𝐸𝐸𝑃 𝐼𝑁 𝑇𝑂𝑈𝐶𝐻</p>
+                    <ul class="list-unstyled contact-links">
+                        <li><i class="fa fa-envelope" aria-hidden="true"></i><a href="mailto:info@insight-ihbar.com">info@insight-ihbar.com</a></li>
+                        <!--<li><i class="fa fa-phone" aria-hidden="true"></i><a href="tel:+37400800000">+374 (00) 80 00 00 </a></li>
+                        <li><i class="fa fa-fax" aria-hidden="true"></i><a href="+37400900000">+374 (00) 90 00 00</a></li>
+                        <li><i class="fa-solid fa-location-dot"></i><p>Hsinchu 300, Taiwan (R.O.C.)</p></li>-->
+                    </ul>
+                </div>
+                <!--<div class="clearfix visible-xs"></div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6">
+                    <h3>Featured links</h3>
+                    <ul class="list-unstyled">
+                        <li class="active"><a href="index_ch.html">Home</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="portfolio.html">Porfolio</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>-->
+            </div>
+        </div>
+        <div class="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-8">
+                        <div class="social-links">
+                            <!--<a class="twitter-bg" href="#"><i class="fab fa-twitter"></i></a>-->
+                            <!--<<a class="facebook-bg" href="https://www.facebook.com/people/Quantum-Perspectives/61576446849628/"><i class="fab fa-facebook"></i></a>-->
+                            <!--<a class="facebook-bg" href="https://www.facebook.com/people/%E9%87%8F%E5%AD%90%E9%81%A0%E8%A6%8BQuantum-Perspectives/61576883632888/"><i class="fab fa-facebook-f"></i></a>-->
+                            <!--<a class="pinterest" href="#"><i class="fa-solid fa-microscope"></i></a>-->
+                            <!--<a class="facebook-bg" href="https://www.facebook.com/people/Insight-hbar/61576811775374/"><i class="fab fa-facebook-f"></i></a>-->
+                            <a class="linkedin-bg" href="https://www.linkedin.com/company/insight-ihbar"><i class="fab fa-linkedin"></i></a>
+                        </div><!-- /.social-links -->
+                    </div>
+                    <div class="col-xs-4">
+                        <div class="text-right">
+                            <p><span style="font-size: 16px;">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</span></p>
+                            <p>All Rights Reserved</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.copyright -->
+    </footer><!-- /#footer -->
+
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="../assets/js/bootstrap-select.min.js"></script>
+    <script src="../assets/js/jquery.slicknav.min.js"></script>
+    <script src="../assets/js/jquery.countTo.min.js"></script>
+    <script src="../assets/js/jquery.shuffle.min.js"></script>
+    <script src="../assets/js/script.js"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        details.dark-background {
+          background-color: #f5f5f5;
+          border: 1px solid #ddd;
+          padding: 10px;
+          border-radius: 5px;
+        }
+        details.dark-background summary {
+          cursor: pointer;
+          font-weight: bold;
+          background-color: #e0e0e0;
+          padding: 5px;
+          border-radius: 3px;
+        }
+      </style>
+  
+</body>
+</html>

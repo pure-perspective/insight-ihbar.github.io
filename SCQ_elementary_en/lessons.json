@@ -10,6 +10,7 @@
     { "title": "What Does a Superconducting Quantum Computer Look Like?", "file": "H.html" },
     { "title": "How Are Signals Delivered to Qubits?", "file": "I.html" },
     { "title": "QPU Topology", "file": "J.html" },
+    { "title": "Decoherence-Time Drift", "file": "M.html"  , "status": "new" , "date": "2026-07-30"},
     { "title": "How to Control a Superconducting Qubit", "file": "K.html" },
     { "title": "Control Error 1 - Frequency Detuning", "file": "L.html" }
 ]
