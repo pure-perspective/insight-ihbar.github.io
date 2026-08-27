@@ -1,0 +1,1363 @@
+{
+  "generated_at": "2026-08-19T16:42:36Z",
+  "source_dir": "/mnt/x570_data750/uniweb/QH-2026F-v2",
+  "total_files": 225,
+  "excluded_backups": [
+    "T1-1.html.bak-20260817-024709",
+    "T1-1_TTS.txt.bak-20260817-024709"
+  ],
+  "source_immutability_verified": true,
+  "staging_copy_verified": true,
+  "files": [
+    {
+      "path": "README.md",
+      "size": 183,
+      "sha256": "246e56e4ad5f2eb5ecdb2dceaddc356b9e207aee355b10b444c0df0bf88169f5",
+      "mtime": 1786867830.0
+    },
+    {
+      "path": "T1-1.html",
+      "size": 86815,
+      "sha256": "5f50b5085ffd8dbe8e7de45b65b9e79f0be758c8bebe5b2ba943c52ad3427480",
+      "mtime": 1786934794.0
+    },
+    {
+      "path": "T1-1_TTS.txt",
+      "size": 51112,
+      "sha256": "e79334045b5bb9e029d3c9516397ffc3b2d37f62aad603f1f03e71c04dbdea26",
+      "mtime": 1786934794.0
+    },
+    {
+      "path": "T2-2.html",
+      "size": 127533,
+      "sha256": "0cb200d44b13247703ea362f079aad1d15624735df0490fa3874dd5566bb5f3a",
+      "mtime": 1786941950.0
+    },
+    {
+      "path": "T2-2_TTS.txt",
+      "size": 56989,
+      "sha256": "431399994ac031bcbde921218f4c3ff38d903d6cdc33839584174c00a409d06d",
+      "mtime": 1786941950.0
+    },
+    {
+      "path": "T2-3.html",
+      "size": 110821,
+      "sha256": "8687b4fd9e30d392c4d4976cfaf49ec76db6b09b05819a6a87794b19ba3dd64b",
+      "mtime": 1786941950.0
+    },
+    {
+      "path": "T2-3_TTS.txt",
+      "size": 48091,
+      "sha256": "78637aa7db84d94f333280f9ed239d04afb57ae6effc385e704b504c48847f0f",
+      "mtime": 1786941950.0
+    },
+    {
+      "path": "T2-4.html",
+      "size": 114588,
+      "sha256": "cfac5f3be4107061c011d19a2c794329ded86465eee0c3a9bdbb2bd3e573553a",
+      "mtime": 1786941950.0
+    },
+    {
+      "path": "T2-4_TTS.txt",
+      "size": 42361,
+      "sha256": "6f2c50cfac18d3b03f918dd14fda40b5ea86a187600d514a463efaa00995bdfd",
+      "mtime": 1786941950.0
+    },
+    {
+      "path": "T3-5.html",
+      "size": 85301,
+      "sha256": "40e86cfd3d5d1f0390124d4daad4738405d6aca85febf10ff43a2df42b1b8b49",
+      "mtime": 1786941950.0
+    },
+    {
+      "path": "T3-5_TTS.txt",
+      "size": 43859,
+      "sha256": "27357c53084aa4267fcb9e70c2866306e35ff7659ed69b34fadee46c6bbb5566",
+      "mtime": 1786941950.0
+    },
+    {
+      "path": "T3-6.html",
+      "size": 157851,
+      "sha256": "cc883006845f22ea8d24cd89d2b9d0ed35b5334ffcad61a441500b4a87e4890c",
+      "mtime": 1786941950.0
+    },
+    {
+      "path": "T3-6_TTS.txt",
+      "size": 54606,
+      "sha256": "a840af48df867284e0beacf749dbdf4cbbcb84e9d4bb24823ab8ae79e9bd1931",
+      "mtime": 1786941950.0
+    },
+    {
+      "path": "T3-7.html",
+      "size": 112808,
+      "sha256": "72682daa7796e6b0456f0627c4bd0682256df953a63f57bec741346d9d62aba6",
+      "mtime": 1786941950.0
+    },
+    {
+      "path": "T3-7_TTS.txt",
+      "size": 51029,
+      "sha256": "0d95c4217c99757c4d27f7136a97d0a243607064993cf0754711f4a1dadc9f38",
+      "mtime": 1786941951.0
+    },
+    {
+      "path": "T4-10.html",
+      "size": 151381,
+      "sha256": "60ddb09e26b7c1acefb137db848ddd191083e6000b5d7a6a417099497dca8aa8",
+      "mtime": 1786941951.0
+    },
+    {
+      "path": "T4-10_TTS.txt",
+      "size": 59600,
+      "sha256": "16556ec48399285329a3093271d7cdd63bf6620804cc619f2835ca1989aaeb47",
+      "mtime": 1786941951.0
+    },
+    {
+      "path": "T4-8.html",
+      "size": 100775,
+      "sha256": "4da87ad5762e65f848dbecffe637763abc2008c8c46dcbadb77fa61283248ecf",
+      "mtime": 1786941951.0
+    },
+    {
+      "path": "T4-8_TTS.txt",
+      "size": 41406,
+      "sha256": "50165cba7f6aba53e5708c10ae01f361de5413ac2b554eb5b50423c5b6900032",
+      "mtime": 1786941951.0
+    },
+    {
+      "path": "T4-9.html",
+      "size": 172328,
+      "sha256": "8e5621686745ca5ac7feebce5f332ecfbcf943221960885e58693c711bbec523",
+      "mtime": 1786941951.0
+    },
+    {
+      "path": "T4-9_TTS.txt",
+      "size": 59423,
+      "sha256": "59e5875c322a39468885f2d2de64eede7e58ed70d1df254afe4bbdfee823e00a",
+      "mtime": 1786941951.0
+    },
+    {
+      "path": "T5-11.html",
+      "size": 94311,
+      "sha256": "dca546860cfcd5f0b5353a89f39bda80f6eafd0d82479cccf4843602cd984104",
+      "mtime": 1786941951.0
+    },
+    {
+      "path": "T5-11_TTS.txt",
+      "size": 49884,
+      "sha256": "5b2220c2975e2bda1b5eed37492a76c057051c96e466db81a24bd27e0bc22706",
+      "mtime": 1786941951.0
+    },
+    {
+      "path": "T5-12.html",
+      "size": 152794,
+      "sha256": "d2ac06e2b6f1dfa377ee5a60e04857b5b38d2b93444fbbc9e4f04ef83fa8ead0",
+      "mtime": 1786941951.0
+    },
+    {
+      "path": "T5-12_TTS.txt",
+      "size": 73096,
+      "sha256": "10a9773b1e199bc9b1c2f32c3f1fb828466b25c9f7888a46215e3c0311e28777",
+      "mtime": 1786941951.0
+    },
+    {
+      "path": "T5-13.html",
+      "size": 167069,
+      "sha256": "f6f8eba2827add8142f15bb4630a440cf1651e4df868c55c9e24e5eb6fd742a6",
+      "mtime": 1786941951.0
+    },
+    {
+      "path": "T5-13_TTS.txt",
+      "size": 66195,
+      "sha256": "445bcb4d7e60da6497bb46b10d58c5ea7c6b53f0c04d8c9cedfec5086b7d9a4c",
+      "mtime": 1786941951.0
+    },
+    {
+      "path": "T6-14.html",
+      "size": 128875,
+      "sha256": "79331f71d1d7f5a894187bb834f9bb809cdaa78cc2cec3a1b8707072d357c936",
+      "mtime": 1786941951.0
+    },
+    {
+      "path": "T6-14_TTS.txt",
+      "size": 52026,
+      "sha256": "69b31237802e2f2cd1919d8d8ef613dd993a722f09068966ab46081fd7433f97",
+      "mtime": 1786941951.0
+    },
+    {
+      "path": "T6-15.html",
+      "size": 214445,
+      "sha256": "5005a52cfbb3d6128c34f0b592e7584b1355b71b82693062968748231c9ffca2",
+      "mtime": 1786941951.0
+    },
+    {
+      "path": "T6-15_TTS.txt",
+      "size": 77575,
+      "sha256": "41a5d7f8844f2c895954cd44ec94531fec995bbae4e9a11346402232269c34ae",
+      "mtime": 1786941951.0
+    },
+    {
+      "path": "T7-16.html",
+      "size": 252735,
+      "sha256": "a8b7402367fb0e31fc5156e266a5c4367f4e7d41765cb94f6b823e64f6c6a5f3",
+      "mtime": 1786941951.0
+    },
+    {
+      "path": "T7-16_TTS.txt",
+      "size": 110436,
+      "sha256": "17723dbfaa7a42db01de3c3f4221387203121ff5e329a1f8a6be5611e33d5581",
+      "mtime": 1786941951.0
+    },
+    {
+      "path": "course-map.json",
+      "size": 58067,
+      "sha256": "bcb6158a0b426bc363e7371ca16773b667b8077e0b99015ccdb387dcb2906dfd",
+      "mtime": 1786867830.0
+    },
+    {
+      "path": "lessons.json",
+      "size": 2237,
+      "sha256": "85f8120288abb49d328fb3ce34d76ba8bbdacd36681380f7591826408fc7da63",
+      "mtime": 1786867830.0
+    },
+    {
+      "path": "main.html",
+      "size": 23749,
+      "sha256": "c9a530d28f49ac8e24561b73b51dac60a8506315371054d731cefe78bd37f577",
+      "mtime": 1786867830.0
+    },
+    {
+      "path": "assets/source-images/17 surface.png",
+      "size": 222826,
+      "sha256": "539078b7363dac3d8ced83f4e7d396a92c9cc3f374d1d7bc6a7853aedbefa23d",
+      "mtime": 1735442033.0
+    },
+    {
+      "path": "assets/source-images/2 qubit 1 resonator.png",
+      "size": 205868,
+      "sha256": "f5a30af1d5a14521e41a2f1bbb167bacc3a17af52dbc7d87374b4c2091a36af8",
+      "mtime": 1735285417.0
+    },
+    {
+      "path": "assets/source-images/20250531-01.png",
+      "size": 1522621,
+      "sha256": "6434da13b0b810272a480389be161fbf0568a58fd437163a2a37a6e80f9068e2",
+      "mtime": 1748655524.0
+    },
+    {
+      "path": "assets/source-images/20250531-03.png",
+      "size": 2813477,
+      "sha256": "ff6b27987608e328e1b0784b67a768dc4320032780e3c17d78996d1e4408f2cf",
+      "mtime": 1748655683.0
+    },
+    {
+      "path": "assets/source-images/20250620-01.png",
+      "size": 300356,
+      "sha256": "f65cc94ff9ec9bf2e70abb8c45c76cc3517336dfec38357201f9467f46176077",
+      "mtime": 1750391319.0
+    },
+    {
+      "path": "assets/source-images/20250620-02.png",
+      "size": 304315,
+      "sha256": "ce054dbea59981cf549daf1e5a1b5980fb9107ea61f25988b427e7539f019eff",
+      "mtime": 1750391331.0
+    },
+    {
+      "path": "assets/source-images/20250620-03.png",
+      "size": 746282,
+      "sha256": "02daaf0bbbe549f305761d71eaf438e1cab4157653c4c2d3992b08e5d1ab8b4d",
+      "mtime": 1750392463.0
+    },
+    {
+      "path": "assets/source-images/20250620-04.png",
+      "size": 900089,
+      "sha256": "9b57bfa3087cade0704732234fe8464dbd9836cfbe5a2604358848db3a383f56",
+      "mtime": 1750392636.0
+    },
+    {
+      "path": "assets/source-images/20250620-05.png",
+      "size": 232898,
+      "sha256": "cdb32654a32ce8135ef6a6fc704f84b5beede90e624124e78276e05aac55909e",
+      "mtime": 1750392663.0
+    },
+    {
+      "path": "assets/source-images/20250620-06.png",
+      "size": 445394,
+      "sha256": "f6cc7b26e5b503c15ddfa1f6a647aa729fd494dffa70cd880f182d4995fd7cf5",
+      "mtime": 1750392952.0
+    },
+    {
+      "path": "assets/source-images/20250620-07.png",
+      "size": 632352,
+      "sha256": "7e180bcc55ef7634df3522dc0ff13afef296fa1a7336795c91e96d8f4be3dede",
+      "mtime": 1750393090.0
+    },
+    {
+      "path": "assets/source-images/20250620-08.png",
+      "size": 274542,
+      "sha256": "6f17e86f8a7a104bceced87cf0b1fab96be19876c92080cf577d3f6a4b882bcd",
+      "mtime": 1750394363.0
+    },
+    {
+      "path": "assets/source-images/20250620-09.png",
+      "size": 1170323,
+      "sha256": "c40a83fe04be95f368e3c8c48d202fcf31baba1132b792768848854aaf156704",
+      "mtime": 1750394341.0
+    },
+    {
+      "path": "assets/source-images/20250620-10.png",
+      "size": 681324,
+      "sha256": "75442c2fc4934258ec529ea0b569afadbbbb533674430a3aaf529abf4997d2ca",
+      "mtime": 1750408457.0
+    },
+    {
+      "path": "assets/source-images/20250620-11.png",
+      "size": 1091867,
+      "sha256": "c26f55c4015a5d441f6d2ceb286c5022f95e26208c724defb6a42d79f6123c48",
+      "mtime": 1750394702.0
+    },
+    {
+      "path": "assets/source-images/20250620-12.png",
+      "size": 381998,
+      "sha256": "efd8091523ec7aa5d3cb4c3ecab7670209e77e80b62aee7479749908e34ec224",
+      "mtime": 1750394717.0
+    },
+    {
+      "path": "assets/source-images/20250620-13.png",
+      "size": 289736,
+      "sha256": "d2e1e97a1718e62252e53537ec13c4251d6f181a93c318671fa5fb497c934186",
+      "mtime": 1750394737.0
+    },
+    {
+      "path": "assets/source-images/20250620-14.png",
+      "size": 355579,
+      "sha256": "2c8ca144b4a64851684c875a297203268d6ff870fa8c2f0f9283dec82205f616",
+      "mtime": 1750394906.0
+    },
+    {
+      "path": "assets/source-images/20250620-15.png",
+      "size": 385436,
+      "sha256": "6d4656b8797a090b08f2b733ce006a1b52f1c2340c0ceaafca88743acaed8259",
+      "mtime": 1750395016.0
+    },
+    {
+      "path": "assets/source-images/20250620-16.png",
+      "size": 565096,
+      "sha256": "ee7ec698449a8658d3587b390779dd3796c23fe41826f00be8a58e2bb71fbd1c",
+      "mtime": 1750395318.0
+    },
+    {
+      "path": "assets/source-images/20250620-18.png",
+      "size": 530557,
+      "sha256": "760b9b0ed5cff173d50a1726115c744b66f45eebc9375b46fa667c7463bf65c4",
+      "mtime": 1750398017.0
+    },
+    {
+      "path": "assets/source-images/20250620-19.png",
+      "size": 198660,
+      "sha256": "65088e0e08972c594bd90aba14ffda2ca69efc583f75ca94111a2d7e43e2b9d1",
+      "mtime": 1750396505.0
+    },
+    {
+      "path": "assets/source-images/20250620-20.png",
+      "size": 658877,
+      "sha256": "afd51d2ca1ab13d82630347f51c60b53d1f855a3437f75bef827cbe721fb6166",
+      "mtime": 1750397612.0
+    },
+    {
+      "path": "assets/source-images/20250620-21.png",
+      "size": 468003,
+      "sha256": "3db293291aa6ad85c5bdc11a3c7250f5ec35317db5acf77b4eecf12bd9f34b4d",
+      "mtime": 1750397726.0
+    },
+    {
+      "path": "assets/source-images/20250620-22.png",
+      "size": 676291,
+      "sha256": "19a51b74a341856700ace71a2699c39e258799f9a177021c1ea515ddbaa18538",
+      "mtime": 1750397741.0
+    },
+    {
+      "path": "assets/source-images/20250620-23.png",
+      "size": 434608,
+      "sha256": "abfcd8339af0d201eba4be283da2f528216441b29ce8f4193f9608fbda94c010",
+      "mtime": 1750397768.0
+    },
+    {
+      "path": "assets/source-images/20250620-24.png",
+      "size": 1352147,
+      "sha256": "6f148c5609d1dfa5e3cba559d921316e3b2c892740d03d0d07e0d81fe70648ab",
+      "mtime": 1750397874.0
+    },
+    {
+      "path": "assets/source-images/20250620-25.png",
+      "size": 36831,
+      "sha256": "43ea821305042beabd86aa16d39ef08ae42b6fc34ad23de95b63f7cf4ce9c162",
+      "mtime": 1750395502.0
+    },
+    {
+      "path": "assets/source-images/20250620-30.png",
+      "size": 749231,
+      "sha256": "d37456684213dbbb73926b5887d7e001442e48165b57047dba06ebce781cc14c",
+      "mtime": 1750398492.0
+    },
+    {
+      "path": "assets/source-images/20260620-07.png",
+      "size": 656541,
+      "sha256": "802a47bdb04e678c8b0e45340d4724b6a3d77112abab340cab4cbd0cbdbb714d",
+      "mtime": 1750394220.0
+    },
+    {
+      "path": "assets/source-images/20260620-26.png",
+      "size": 817958,
+      "sha256": "ca27eb774fd922508a4e688f9ef5f94edb62ba203f86b5b25412977ae65967cb",
+      "mtime": 1750395711.0
+    },
+    {
+      "path": "assets/source-images/20260620-27.png",
+      "size": 884191,
+      "sha256": "7745bd3306a8575d8f5469741d4a60014d49fb31bd55864e13dd42da81aa5bcb",
+      "mtime": 1750398114.0
+    },
+    {
+      "path": "assets/source-images/20260620-28.png",
+      "size": 2118367,
+      "sha256": "ce740642fff50b75973dc9d600db2d3e62c9c9ecc1927e8a2c61b4ed10af24d4",
+      "mtime": 1750398189.0
+    },
+    {
+      "path": "assets/source-images/2026IQM-roadmap.png",
+      "size": 753674,
+      "sha256": "bd259535519f234c0b331922a9cda98dab29b9383ce9f6df11ab5297d25368e3",
+      "mtime": 1771576641.0
+    },
+    {
+      "path": "assets/source-images/266d07d8-ibm-quantum_hex-vs.-loon-architecture.png",
+      "size": 4979960,
+      "sha256": "07da6f390075a1ce890df6c4117b2de70579b8cf22e321e5f642ef2e1af8aa26",
+      "mtime": 1772530144.0
+    },
+    {
+      "path": "assets/source-images/2_LC.png",
+      "size": 14842,
+      "sha256": "f2ebaed6932464ce1fcd0e31674c2e7d86fd618d64dcb0f33b52cc009d0c548e",
+      "mtime": 1737191125.0
+    },
+    {
+      "path": "assets/source-images/4 amplitude.gif",
+      "size": 11452889,
+      "sha256": "1b876688ca61accb452b4e224ecd6c2bfe9c0263ee3a14db607655dad449b56d",
+      "mtime": 1736123851.0
+    },
+    {
+      "path": "assets/source-images/4 duration compare.gif",
+      "size": 6986707,
+      "sha256": "779e9db330eb8fbe942713fa8a7906bc445ef1e5c7a66ff8d87e6918ca51f968",
+      "mtime": 1736140410.0
+    },
+    {
+      "path": "assets/source-images/4 qubit.png",
+      "size": 603948,
+      "sha256": "b037d9330177d6a6787330eed3e080ba0710cce895eeb19170fc3d000abf6b45",
+      "mtime": 1735296583.0
+    },
+    {
+      "path": "assets/source-images/42484_2025_305_Fig1_HTML.webp",
+      "size": 89264,
+      "sha256": "1bb281183ce0b581a70c90ca4a667ad484c554669cf4d2678cf06af9318313e7",
+      "mtime": 1779538785.0
+    },
+    {
+      "path": "assets/source-images/52904644927_511a27d7d1_k.jpg",
+      "size": 218956,
+      "sha256": "22bd28bac7e0ef9145dbefc86762ea8a128cfc31f3a59d66b09fb2f70af5d0bd",
+      "mtime": 1778291872.0
+    },
+    {
+      "path": "assets/source-images/5Q.png",
+      "size": 1070673,
+      "sha256": "dca64cc8a3e3d32588afbb07766599d25d0802555ab7b49fd8bc4d0661b83f7c",
+      "mtime": 1735452850.0
+    },
+    {
+      "path": "assets/source-images/960x0 (1).webp",
+      "size": 250388,
+      "sha256": "45b2a9a23198916d7a2ff11fb33438c25636e48804b7719e329ff4d1d0186bdb",
+      "mtime": 1779589099.0
+    },
+    {
+      "path": "assets/source-images/960x0 (2).webp",
+      "size": 204202,
+      "sha256": "ec0cc30fb682eee456aaaab9fb3143ccdce43cc0e1175307950d3d3f0392c0ff",
+      "mtime": 1779589105.0
+    },
+    {
+      "path": "assets/source-images/960x0.webp",
+      "size": 68116,
+      "sha256": "9f966951dc16aea812add9aa1da4bc7af0c9f269ad4db5579fbe7a75f3003035",
+      "mtime": 1779589068.0
+    },
+    {
+      "path": "assets/source-images/Blochnium.png",
+      "size": 585655,
+      "sha256": "745502dca6f82d4ea2f074b36cddc029aa1d0c481165fa8bb29414a84d48a3b9",
+      "mtime": 1738762927.0
+    },
+    {
+      "path": "assets/source-images/Blog_Supercomputing_2024_11_19_v01_fb8bfa9d72.webp",
+      "size": 81794,
+      "sha256": "4c4a48d873708956a3a7041912073a194fbb155f95b966008c49d96ea0f227fc",
+      "mtime": 1779539629.0
+    },
+    {
+      "path": "assets/source-images/Control Bus.png",
+      "size": 97156,
+      "sha256": "66220a623afb84752a64dd626c6d78b222f2937b10912369ba3d74f9721dc70b",
+      "mtime": 1738745306.0
+    },
+    {
+      "path": "assets/source-images/Control link.png",
+      "size": 484677,
+      "sha256": "a4106304fbd71aae1e1ac7780c5771c8076efc6135c7f10b2bd67f634c00942d",
+      "mtime": 1737963746.0
+    },
+    {
+      "path": "assets/source-images/CryoCoax.jpg",
+      "size": 170099,
+      "sha256": "597c74141bdf04ae18889087a8ccf7c445bce7bb36faa0d55db194b2fc8b0c8e",
+      "mtime": 1751528982.0
+    },
+    {
+      "path": "assets/source-images/CsW4y4MxI9KOxHLM-1456x819.jpg",
+      "size": 91065,
+      "sha256": "8f29e8d947cd1655fb8965c35473f891a4915822eba8586149b9a2c77a9dd835",
+      "mtime": 1779589201.0
+    },
+    {
+      "path": "assets/source-images/CuTS.png",
+      "size": 464003,
+      "sha256": "f52b136864957f9433d3fe04c4fa17023a05a1314f4abbfd952ddef9efc05814",
+      "mtime": 1750142319.0
+    },
+    {
+      "path": "assets/source-images/Delft circuit.png",
+      "size": 357115,
+      "sha256": "bfffdc806659ec4b058a0b0dc86b7124f913cf9d164226e1a7bd9bc1cded8906",
+      "mtime": 1748499871.0
+    },
+    {
+      "path": "assets/source-images/Delft-circuit-1.png",
+      "size": 1197772,
+      "sha256": "fd462b86843ec1626c92f4fec7c1bbf9ff16f68e216b53afe1585d3678f936ff",
+      "mtime": 1751528122.0
+    },
+    {
+      "path": "assets/source-images/Delft-circuit-2.png",
+      "size": 262562,
+      "sha256": "ef159d532e0c4317c280603c6e62e8a00fc2b0e8b6bd0954754d3092e666f513",
+      "mtime": 1751528194.0
+    },
+    {
+      "path": "assets/source-images/Early SCQ.png",
+      "size": 944305,
+      "sha256": "1a482cd1fbfd7e07f7b0564cd517943a2c881001033d1d961ba92842b9de8aca",
+      "mtime": 1737692403.0
+    },
+    {
+      "path": "assets/source-images/Fluxonium.png",
+      "size": 556953,
+      "sha256": "99cd4396a18588855dab4a4be99685eb85cc8d698ce1ee3d876cac759ff27825",
+      "mtime": 1738762712.0
+    },
+    {
+      "path": "assets/source-images/Heron_Parallelization_Graphic_9109dba010.png",
+      "size": 72010,
+      "sha256": "5a2992c59c6c6eaccc3ea5a0d8e5e25e3c4547aa9b84b3bd1c4e9410aa4f3819",
+      "mtime": 1779588755.0
+    },
+    {
+      "path": "assets/source-images/IBM Quantum System Two_1080p.mp4",
+      "size": 26572388,
+      "sha256": "d705da5a3740ee7a768c014ed340914f662f9ab247c90a931fc078ed0394cc48",
+      "mtime": 1779340970.0
+    },
+    {
+      "path": "assets/source-images/IBM-C-coupler.png",
+      "size": 509543,
+      "sha256": "567e4a34dbacc5c2bd70f1542e921562d0cf99556c46eedf851a9aa8897bae58",
+      "mtime": 1779346503.0
+    },
+    {
+      "path": "assets/source-images/IBM-Eagle.png",
+      "size": 1173208,
+      "sha256": "902ea8fc884bf3d5fa18b87b22e62ff2dfab4b6860dfed544c0bf789fc63da59",
+      "mtime": 1750497650.0
+    },
+    {
+      "path": "assets/source-images/IBM-L-coupler.png",
+      "size": 580902,
+      "sha256": "f36852e2c0ffe695bdeb89690fdb2485a90bf01f257fc83156076839a7cefc42",
+      "mtime": 1779346502.0
+    },
+    {
+      "path": "assets/source-images/IBM-M-coupler.png",
+      "size": 522261,
+      "sha256": "b5d836153e918e145aa5f662bd4e19e3484e75b345ef4f70494dc15eef62b615",
+      "mtime": 1779346502.0
+    },
+    {
+      "path": "assets/source-images/IBM-Quantum-Data-Center_Poughkeepsie-NY_Rendering-2025.png",
+      "size": 10401884,
+      "sha256": "9c4beed3a1e2c7c8d770195180c83084409ef937498f3ad7cfbaae3b8dab92e3",
+      "mtime": 1779588991.0
+    },
+    {
+      "path": "assets/source-images/IBM-Quantum_Heron-Vs.-Loon-Architecture.png.png",
+      "size": 5222553,
+      "sha256": "3f05fee2b44e3abaabc1aa856981a6a2d111b62310bee0751bd3858d0ff5b41f",
+      "mtime": 1779588969.0
+    },
+    {
+      "path": "assets/source-images/IBM_FTQC_Torus_2_K_v3_16fc27ed7f.gif",
+      "size": 23036367,
+      "sha256": "ea816f654e6583a0ea8a84e936fdfbdda8a55a9f9c1642653b0a395c54ab15fb",
+      "mtime": 1772595522.0
+    },
+    {
+      "path": "assets/source-images/IBM_Quantum_Production_Flamingo_24_Packaged_V008_RS_COMP_V001_RS_1114573c07.jpg",
+      "size": 1703193,
+      "sha256": "675e799e4d383eae23321de3e0377fcacbbd547ed84c48106560c78d99be121d",
+      "mtime": 1779588185.0
+    },
+    {
+      "path": "assets/source-images/IMG_4373.JPG",
+      "size": 757844,
+      "sha256": "d497c49ec917f78eae69fa1b914d38979f93acd4927c03e3a564161040e378e4",
+      "mtime": 1771895192.0
+    },
+    {
+      "path": "assets/source-images/IMG_5048.JPG",
+      "size": 816361,
+      "sha256": "b8a6aacb18f6522e33e7e5d6594a97171bcafa3367b8690181b2a42febf2d89c",
+      "mtime": 1772263078.0
+    },
+    {
+      "path": "assets/source-images/IMG_5061.JPG",
+      "size": 832906,
+      "sha256": "bb11e7f3762eace59191eb98f8fe9de558beca4a3176c914879247edfdcacf23",
+      "mtime": 1772263079.0
+    },
+    {
+      "path": "assets/source-images/IMG_5064.JPG",
+      "size": 972597,
+      "sha256": "ce92de000669382f98eeae14998110e8b55457b3ae6968da36c068d77f3bd0de",
+      "mtime": 1772263079.0
+    },
+    {
+      "path": "assets/source-images/IMG_5076.JPG",
+      "size": 1019628,
+      "sha256": "9fdd61125e87f2305b59068458296aa9e1294fdebd2fbc95d5dc13096834b58f",
+      "mtime": 1772263079.0
+    },
+    {
+      "path": "assets/source-images/IMG_5092.JPG",
+      "size": 867744,
+      "sha256": "f7fc19aa2b99c5d29f91ccba1bf37a93c350fed251769e6c29f945c40556fa7d",
+      "mtime": 1772263079.0
+    },
+    {
+      "path": "assets/source-images/IMG_5105.JPG",
+      "size": 949817,
+      "sha256": "d3d5ada513d98990b63be7380f1519a198f1fc9063e6a19024384cff16cf2f09",
+      "mtime": 1772263080.0
+    },
+    {
+      "path": "assets/source-images/IMG_5109.JPG",
+      "size": 832420,
+      "sha256": "dfa8d42328505b98185f5d9b64fc4794286cff533fc73686dffa7672f4a8ddc8",
+      "mtime": 1772263080.0
+    },
+    {
+      "path": "assets/source-images/IMG_5118.JPG",
+      "size": 1045599,
+      "sha256": "dab71934144605c92455708c050399ef6aebcd401714a2567778d9ee4bd72eb9",
+      "mtime": 1772263080.0
+    },
+    {
+      "path": "assets/source-images/IMG_5124.JPG",
+      "size": 993959,
+      "sha256": "b53bcdc2abf396ecd5360b0cfbf95c046b14d2e6079ca74dc8fe153502bae7f0",
+      "mtime": 1772263081.0
+    },
+    {
+      "path": "assets/source-images/IMG_5128.JPG",
+      "size": 1006231,
+      "sha256": "605719fb80a416380f09972f7f0b56543b37bd3b63f6be9657b203dcb7af9684",
+      "mtime": 1772263081.0
+    },
+    {
+      "path": "assets/source-images/IMG_5133.JPG",
+      "size": 1055002,
+      "sha256": "d7f20c366b888d93c0aaf0bddac8ce23ae7a70fa676537c6fd39c9028770e5f5",
+      "mtime": 1772263081.0
+    },
+    {
+      "path": "assets/source-images/IMG_5137.JPG",
+      "size": 1075072,
+      "sha256": "35bfc59d1bfd1958870b6f498a1e5471a5e566aca5d2d689e49ff0f556098444",
+      "mtime": 1772263081.0
+    },
+    {
+      "path": "assets/source-images/IMG_5139.JPG",
+      "size": 1117555,
+      "sha256": "9d5c146f7933f63d6ab2c4a99ea98e36894b39e287bdfcb1285afa8980b49b59",
+      "mtime": 1772263081.0
+    },
+    {
+      "path": "assets/source-images/IMG_5144.JPG",
+      "size": 1041280,
+      "sha256": "a7f7df5f90ed2adf4561f237031b460c73566d87d78a12e1b0d8b483f2ad9e2b",
+      "mtime": 1772263081.0
+    },
+    {
+      "path": "assets/source-images/IMG_5153.JPG",
+      "size": 1078931,
+      "sha256": "fab24595eb07597b0fae66b88d338b7e9a4604099e66480fc8b605c7477801b9",
+      "mtime": 1772263082.0
+    },
+    {
+      "path": "assets/source-images/IMG_5158.JPG",
+      "size": 1055350,
+      "sha256": "1e1da9d01ec0539bd92b02aa5638cfb8bdd195e779f486069817b961d30ba8fd",
+      "mtime": 1772263082.0
+    },
+    {
+      "path": "assets/source-images/IMG_5162.JPG",
+      "size": 1023598,
+      "sha256": "7e2efe972c77913e1868c12895161c78d7cf539c1f499764b347acd55d63a9fe",
+      "mtime": 1772263082.0
+    },
+    {
+      "path": "assets/source-images/IMG_5169.JPG",
+      "size": 1141525,
+      "sha256": "c47b0e96257783f3b218c00ba21a3b8abf28f2b3b247287dd864bdf9a056cfd9",
+      "mtime": 1772263082.0
+    },
+    {
+      "path": "assets/source-images/IMG_5822.JPG",
+      "size": 881853,
+      "sha256": "98435dc7ad4ff98414ea01a862f5aa225ed7a20a6941eb6b88ebadd25e858995",
+      "mtime": 1772446094.0
+    },
+    {
+      "path": "assets/source-images/IMG_5832.JPG",
+      "size": 1130374,
+      "sha256": "a3e0767837db8ba734a2b6bcaa203541294ab4f14c3766b78da25ab31a0d5319",
+      "mtime": 1772446094.0
+    },
+    {
+      "path": "assets/source-images/IMG_5841.JPG",
+      "size": 1112013,
+      "sha256": "2baf05ee85cfcd34f94f52e6a6eed4defc4159256b617781e375b5deeadfca3c",
+      "mtime": 1773059612.0
+    },
+    {
+      "path": "assets/source-images/IMG_5852.JPG",
+      "size": 1174860,
+      "sha256": "4833bc09259894870944db057a0d93ebaeb92b6a9b7ba01a58279498f0b673ab",
+      "mtime": 1772446095.0
+    },
+    {
+      "path": "assets/source-images/IMG_5855.JPG",
+      "size": 1264523,
+      "sha256": "e245f3513ae90693407b30dc1438b7ef0baeb14b502d728d1ce9d1a827a37045",
+      "mtime": 1772446095.0
+    },
+    {
+      "path": "assets/source-images/IMG_5870.JPG",
+      "size": 1243505,
+      "sha256": "e91cbd9b5e6bb659e771d64c60979ffd87c19e9c034073015cb3718da214efc6",
+      "mtime": 1772446095.0
+    },
+    {
+      "path": "assets/source-images/IMG_5884.JPG",
+      "size": 1276687,
+      "sha256": "488b6916ba8fca56d992658d89788292aca393553f4b627d978f235d58fe2cc7",
+      "mtime": 1772446096.0
+    },
+    {
+      "path": "assets/source-images/IMG_5915.JPG",
+      "size": 1110530,
+      "sha256": "69e40dd08d2875b1e36566f8352bfa69add596dd086fe30a484655dd0c4d6f89",
+      "mtime": 1772446096.0
+    },
+    {
+      "path": "assets/source-images/IMG_5918.JPG",
+      "size": 1165094,
+      "sha256": "e32cb8a4a2e97b04d3c0089f51b2d377cb6f3db6970917eb6e73389186f1e779",
+      "mtime": 1772446097.0
+    },
+    {
+      "path": "assets/source-images/IMG_5926.JPG",
+      "size": 1124880,
+      "sha256": "86593d74302c605b5379124edb06d8e933c3e2188b98992cf911736627bacf50",
+      "mtime": 1772446097.0
+    },
+    {
+      "path": "assets/source-images/IMG_5943.JPG",
+      "size": 1222201,
+      "sha256": "0dd11910c99f30e5cdb470bf9e3f3656c4a719095e48c6d12b513c142e27af57",
+      "mtime": 1772446097.0
+    },
+    {
+      "path": "assets/source-images/IMG_5958.JPG",
+      "size": 1165376,
+      "sha256": "bfe623b198b721fb962820fa4e6300f8396d92d37c47dae67c2125a307c90e81",
+      "mtime": 1772446097.0
+    },
+    {
+      "path": "assets/source-images/IMG_5964.JPG",
+      "size": 1039849,
+      "sha256": "dac6288b5ec80c480828fbbb16f5534cd2b38db5bd0e338b76bc169fdd3d88cf",
+      "mtime": 1772446098.0
+    },
+    {
+      "path": "assets/source-images/IMG_5966.JPG",
+      "size": 1130504,
+      "sha256": "9adf30e963a7ce77691eafe68b220d5faaff784b7e539edec4f2e5a1e2c9cd64",
+      "mtime": 1772446098.0
+    },
+    {
+      "path": "assets/source-images/IQM QPU Topo.JPG",
+      "size": 905918,
+      "sha256": "9df09cdc7cf6506d60ea6c0e43812db351493994bbf9fd40f9db0ef518e134a9",
+      "mtime": 1738767925.0
+    },
+    {
+      "path": "assets/source-images/IQM Tunable.png",
+      "size": 16020,
+      "sha256": "5d783d728391667874e0d42fdcc032ec9c05a0fee94f454ce63e88f9f6abde25",
+      "mtime": 1738767954.0
+    },
+    {
+      "path": "assets/source-images/IQM-Blog-30-Sep-2025-1.jpeg",
+      "size": 56759,
+      "sha256": "9d0483af6cf1017fd66eeb3168d8aefec9658826b64688ab003165f9c294d9a4",
+      "mtime": 1763267372.0
+    },
+    {
+      "path": "assets/source-images/JJ Array.png",
+      "size": 689416,
+      "sha256": "50b70a581592039bfb6b4dfd77d72a400d628c9f23e474afe6053dd23a6d622a",
+      "mtime": 1738764687.0
+    },
+    {
+      "path": "assets/source-images/JJ.jpg",
+      "size": 542253,
+      "sha256": "0ddf21e49a66aeac69ef6b69c072e8809c6bedf2c268d1986c208be27ab762b3",
+      "mtime": 1736486701.0
+    },
+    {
+      "path": "assets/source-images/JJ.png",
+      "size": 17115,
+      "sha256": "b21142e8fccc72d579204895de3137be152e811b4c5056014eb893e0cfee7e95",
+      "mtime": 1733817767.0
+    },
+    {
+      "path": "assets/source-images/K93D3YRZXth5AN4X-1456x819.jpg",
+      "size": 62150,
+      "sha256": "5102f221ad45ea4d95447a741bf3ac2b89c7423930f9899820230640623f4113",
+      "mtime": 1779340823.0
+    },
+    {
+      "path": "assets/source-images/Kookaburra_Parallelization_Graphic_afc360b38b.png",
+      "size": 25428,
+      "sha256": "0c4dde5dd33570c9b0de681e844d4d70622f97d7b4bf89ec29ce96299c402cd3",
+      "mtime": 1779588864.0
+    },
+    {
+      "path": "assets/source-images/LC JJ circuit.png",
+      "size": 12682,
+      "sha256": "224d02d767e3a7e0f884c3ad55c82ca949d9c670f0e538b8bdec68609ac689ac",
+      "mtime": 1736645372.0
+    },
+    {
+      "path": "assets/source-images/LC.png",
+      "size": 5873,
+      "sha256": "160739098965671081f9d777955916024b0c8752e20c596d7cd0689bae9fcd94",
+      "mtime": 1735279972.0
+    },
+    {
+      "path": "assets/source-images/LCJ Qubit.png",
+      "size": 106015,
+      "sha256": "d510b2527f19aa739fc23f2f2a817eec9fd27b2108951bee95bc0f7877815054",
+      "mtime": 1738763244.0
+    },
+    {
+      "path": "assets/source-images/Nb JJ.png",
+      "size": 173497,
+      "sha256": "cceb571a3d2494b9ef4c159cca203bed7fa21cb1f836bba397f9f16432ee2007",
+      "mtime": 1736486251.0
+    },
+    {
+      "path": "assets/source-images/PRXQuantum.3.040332.png",
+      "size": 17011,
+      "sha256": "354c6e1b96c3099ec9521247d8cf2f1b23e69f115cda13839d936152a0da17d7",
+      "mtime": 1783065657.0
+    },
+    {
+      "path": "assets/source-images/Picture2-5.webp",
+      "size": 77938,
+      "sha256": "25e8efb494327e9a35e50a9273c1495601f455c7acc12b6545b198d3fc1dfa33",
+      "mtime": 1750397457.0
+    },
+    {
+      "path": "assets/source-images/Purcell.jpeg",
+      "size": 172720,
+      "sha256": "ab793460946ab376b4bc1467ef297bdb89cc30880c39844ac2ad805a5d29b5ad",
+      "mtime": 1750494194.0
+    },
+    {
+      "path": "assets/source-images/QC structure.png",
+      "size": 457094,
+      "sha256": "2130f56abe84b85b7b159c785d818825f5c60c7ee9c4cc1ef8980a97ee3adc86",
+      "mtime": 1738745817.0
+    },
+    {
+      "path": "assets/source-images/QMC-CRYOBRKT.png",
+      "size": 4770777,
+      "sha256": "79155174ccd4de740c2ed6a32591f952682cf76f49c3f5a94a68dd62ac3b1571",
+      "mtime": 1751856816.0
+    },
+    {
+      "path": "assets/source-images/QQ-Coupling.png",
+      "size": 50400,
+      "sha256": "e73ebb758db0997cca577fa982ae6023caf3b46fe79dd0e3456b77a5ff71f5e2",
+      "mtime": 1750407425.0
+    },
+    {
+      "path": "assets/source-images/Quantum-crosstalk.png",
+      "size": 243478,
+      "sha256": "607f02eaa35decff4117540391d15c633de9c62cc0e8dda8167c7ca92c36f984",
+      "mtime": 1750689968.0
+    },
+    {
+      "path": "assets/source-images/Quantum_Connects_Parallelization_Graphic_7460c0616a.png",
+      "size": 45119,
+      "sha256": "3f430900e827eb23a238e4f2e3a75bfa00b362c90c0549ea09911df8eef9c970",
+      "mtime": 1779588850.0
+    },
+    {
+      "path": "assets/source-images/Resonance-24Qubit_Blog.jpg",
+      "size": 84393,
+      "sha256": "3258140a5eedf4a65b8b9f20ca4dc98ef903eb6c161936a7047a2ca364a6f56a",
+      "mtime": 1750396474.0
+    },
+    {
+      "path": "assets/source-images/Resonance-54Qubit_Blog.jpg",
+      "size": 577402,
+      "sha256": "e28c632c6d8f002b349175ca9799634308d1c55168f2b7059fed972d209a5228",
+      "mtime": 1750396468.0
+    },
+    {
+      "path": "assets/source-images/Resonator_length.png",
+      "size": 1406292,
+      "sha256": "47d976b66cfccee3b6a3304cde6f4e03bd147e6d5a2a64584c20ab372ae8a2c0",
+      "mtime": 1751438483.0
+    },
+    {
+      "path": "assets/source-images/Return_current.png",
+      "size": 830811,
+      "sha256": "c44a9780f6d8eeae7edd65820ab19f26fe6a53e3aeac71091a840592374bb7b7",
+      "mtime": 1750577758.0
+    },
+    {
+      "path": "assets/source-images/SC Qubit type 1.png",
+      "size": 503174,
+      "sha256": "79174d5a361ab545d18c6b6e7e1d928166de501597e6128a072ce03fde15550b",
+      "mtime": 1738763224.0
+    },
+    {
+      "path": "assets/source-images/SCQ ratio.png",
+      "size": 122389,
+      "sha256": "117d92cb748380878126c1b4e7587bf5744429afab1c2f4b83e4046837e70f59",
+      "mtime": 1738763462.0
+    },
+    {
+      "path": "assets/source-images/SCQ.png",
+      "size": 140781,
+      "sha256": "0b611d669da3842284f8d42fdd72aa027566d20b67a7746d6e57d395add0b940",
+      "mtime": 1737801826.0
+    },
+    {
+      "path": "assets/source-images/SCQubit state.jpg",
+      "size": 589070,
+      "sha256": "874c49545a715cba239f906cf717d1701be588f1b994b2ae383c5f055fa1eb3e",
+      "mtime": 1736674906.0
+    },
+    {
+      "path": "assets/source-images/SCS.png",
+      "size": 71444,
+      "sha256": "de8b19a0bdb9561a9d2fa0f58210d90a59955c83c113aae2d689c690da3b27e5",
+      "mtime": 1736489356.0
+    },
+    {
+      "path": "assets/source-images/SDfDzJze24Wrv7hD-1456x819.jpg",
+      "size": 60943,
+      "sha256": "61953c2c623bfb0a078feba3c10811423a7da525c35d32ea7aa20fb90959b5b6",
+      "mtime": 1779340814.0
+    },
+    {
+      "path": "assets/source-images/SIngle Qubit circuit.png",
+      "size": 535879,
+      "sha256": "dc828651f3bcb5577fc5196d53549cafb0315ba15f811b55b8c643dcf4201166",
+      "mtime": 1735283066.0
+    },
+    {
+      "path": "assets/source-images/SQUID transmon.png",
+      "size": 10627,
+      "sha256": "2e2295fa6a7a8e21e14b6d9329e7e4de6c050fc395f7efdbae4678d0b62dcd70",
+      "mtime": 1736645458.0
+    },
+    {
+      "path": "assets/source-images/SQUID.png",
+      "size": 39559,
+      "sha256": "289e5a12e19968fb9781b1344579651fa923863fb9312a614e4075088acff4a5",
+      "mtime": 1733817823.0
+    },
+    {
+      "path": "assets/source-images/Sinica-QC.png",
+      "size": 2019111,
+      "sha256": "18f7db588d778c54e8efb3410557c08ab4deb0212ca4bb647c8c99bdb0de3d99",
+      "mtime": 1750310974.0
+    },
+    {
+      "path": "assets/source-images/Sinica-QPU.png",
+      "size": 5601139,
+      "sha256": "739b636e701628942f5ef6ac5eb8ac6526ae5c1c825e540f71ba349d8c54790d",
+      "mtime": 1750310896.0
+    },
+    {
+      "path": "assets/source-images/Sinica-Qubit-3.png",
+      "size": 571282,
+      "sha256": "05ed82859d269eb31c0bf451905f5b8210bcb4f5059ccc99ed1bba862df7504a",
+      "mtime": 1750310537.0
+    },
+    {
+      "path": "assets/source-images/Sinica-Qubit-fluxline.png",
+      "size": 235474,
+      "sha256": "ee3bd6393d1a6113b4982abb245649410aa5ea1bb268c61eb300d6fe23cbb1f5",
+      "mtime": 1750310583.0
+    },
+    {
+      "path": "assets/source-images/Sinica-Qubit.png",
+      "size": 497974,
+      "sha256": "ce493bbdba710e3cfc4b0505bd269928f29e5b0b40c2ea1667bc5a0e20d26a1f",
+      "mtime": 1750310556.0
+    },
+    {
+      "path": "assets/source-images/Sinica-packing.png",
+      "size": 1947042,
+      "sha256": "33483e12e312ccc6e3d972c90f56fcd07059a13da10443c0fd1b4be8f3d0f5f7",
+      "mtime": 1750316090.0
+    },
+    {
+      "path": "assets/source-images/Sinioca-Qubit.png",
+      "size": 4608551,
+      "sha256": "4c51430046a2f4b7450bfbcbb35fa927a67869b93209863e12f68d2626e463f9",
+      "mtime": 1750310858.0
+    },
+    {
+      "path": "assets/source-images/Starmon.png",
+      "size": 3070196,
+      "sha256": "9dae76f76faeb34d95280d9a2ce057d54aba9c942826048047957694c6aa65b5",
+      "mtime": 1735442005.0
+    },
+    {
+      "path": "assets/source-images/State-propagation.png",
+      "size": 58977,
+      "sha256": "a292b2c6ded6949434d4d49cdc59c9e2843d68c70ba753321e409f2536600223",
+      "mtime": 1750570667.0
+    },
+    {
+      "path": "assets/source-images/TT-flux.png",
+      "size": 233497,
+      "sha256": "d60eacef6346f699ea44d3e10b7b00fde92127ff6c4f0f3becacb868496c1b26",
+      "mtime": 1750389734.0
+    },
+    {
+      "path": "assets/source-images/Thermal Straps__A5-501 AlTS and F5-501 CuFS.webp",
+      "size": 49246,
+      "sha256": "a1e855f104c5d6fba4b48e883fdfdca068c903005133a9edbc084c4256dd3f60",
+      "mtime": 1751867218.0
+    },
+    {
+      "path": "assets/source-images/Transmon state.png",
+      "size": 49621,
+      "sha256": "c13058df89c806aaceeab84db4064d403b4d5095a7854b33099e5f4fb49f2378",
+      "mtime": 1735282254.0
+    },
+    {
+      "path": "assets/source-images/Transmon-1.png",
+      "size": 26819,
+      "sha256": "4602374c3853427b4eccda8e29afd48da7e084184ea28e60bd8c8d0fce1afcae",
+      "mtime": 1750388416.0
+    },
+    {
+      "path": "assets/source-images/Transmon.png",
+      "size": 8695,
+      "sha256": "795801ae5a447d76cf2cd1abcd9e46fd38184da0de1d39c690572bc2ef59ec2c",
+      "mtime": 1733708660.0
+    },
+    {
+      "path": "assets/source-images/Unexpected-static-coupling.png",
+      "size": 48337,
+      "sha256": "99d79389824210622d1798560979824755b16585ae9a0bba9f88e3f93a89f0f9",
+      "mtime": 1750570654.0
+    },
+    {
+      "path": "assets/source-images/ardent-2.webp",
+      "size": 129678,
+      "sha256": "d5d113681ba22046cbe44344856a940dc18c7cc02bc9ccd32403371d3d8def49",
+      "mtime": 1751530280.0
+    },
+    {
+      "path": "assets/source-images/control-crosstalk.png",
+      "size": 72274,
+      "sha256": "d0a4b9b25d0f21448698391861ce365b627635f6417c7103a7e3ae089bf2bdcb",
+      "mtime": 1750570626.0
+    },
+    {
+      "path": "assets/source-images/crossbill_condor_8f886198bc.png",
+      "size": 738048,
+      "sha256": "6122c101785e97dc85cff5ceafba6b66efe97b8174ddccf8abced5ba7cdadb4f",
+      "mtime": 1779588177.0
+    },
+    {
+      "path": "assets/source-images/fig-03-en-960x540.png",
+      "size": 345244,
+      "sha256": "a68e6e3090ea4f0b83b78c53f86dfda72a6b7e6df9e1de8288621cfafc9aaf1c",
+      "mtime": 1773061992.0
+    },
+    {
+      "path": "assets/source-images/image.imageformat.930.dpr2.39105624.jpg",
+      "size": 1141520,
+      "sha256": "936d9ae7d48438691fa3ed6d9f76451b2a248b5ba46d8f2b3e6a5e4b17888bb6",
+      "mtime": 1779344397.0
+    },
+    {
+      "path": "assets/source-images/image001-1-scaled.webp",
+      "size": 171682,
+      "sha256": "f19b16f6ddaf941d940d10192c4509de5180ae2c1c10ed5d712cb9e5f9c39884",
+      "mtime": 1779537852.0
+    },
+    {
+      "path": "assets/source-images/image1_00a8b8ece1.png",
+      "size": 108834,
+      "sha256": "8cc24428f4be1762f3584011f1d9a096b53a2deedfe6efe7c9fe6f831492c92b",
+      "mtime": 1779588038.0
+    },
+    {
+      "path": "assets/source-images/image2.imageformat.slideshow.237072056.jpg",
+      "size": 85479,
+      "sha256": "b1e76cb105313f90f6d165c6908b81f7ff9e5a8917a996abd0f9bb96dea956ed",
+      "mtime": 1779339924.0
+    },
+    {
+      "path": "assets/source-images/image3.imageformat.slideshow.86165948.jpg",
+      "size": 187421,
+      "sha256": "a2cece38e89f89919456299c09f13ccb7b25ee711c8c8846a71abf848e52bcd8",
+      "mtime": 1779339934.0
+    },
+    {
+      "path": "assets/source-images/iqm-cross.png",
+      "size": 39370,
+      "sha256": "7656f3d418316e54b5b5535c2ea59d039dec74bf1c9be599b9520423b6861bb7",
+      "mtime": 1771646771.0
+    },
+    {
+      "path": "assets/source-images/iqm-move.png",
+      "size": 879099,
+      "sha256": "6701553b0023b1e59f1dc24c2e38d8ae201c4df9de06a128b950005e06889509",
+      "mtime": 1771648043.0
+    },
+    {
+      "path": "assets/source-images/iqm-q-q.png",
+      "size": 362053,
+      "sha256": "353a7ac078aedd925cd8bdf6eacc64b79ec0459ae1325a2b280a03c29b0cd66f",
+      "mtime": 1771646486.0
+    },
+    {
+      "path": "assets/source-images/maybell-1.png",
+      "size": 350139,
+      "sha256": "9e5087adcb7118e03761227c3dbd5f2a8a25e0b8125cd4c5c01f345ba858bda1",
+      "mtime": 1751529291.0
+    },
+    {
+      "path": "assets/source-images/maybell-2.png",
+      "size": 333945,
+      "sha256": "360f37dfb5ae4b5481a6887ead4fcd2af12c3f7ab6807007162a7df659085499",
+      "mtime": 1751529313.0
+    },
+    {
+      "path": "assets/source-images/medium (1).png",
+      "size": 125633,
+      "sha256": "543af4e295e5b57330498622bc7aa2240d868dde79fc7747a6274abcf9f58658",
+      "mtime": 1750397091.0
+    },
+    {
+      "path": "assets/source-images/nvqlink-1-jpg.webp",
+      "size": 47556,
+      "sha256": "aa2fca08717d6e3d503fdcb5f39abc11d3eecb4addbcb94ec9b74cce5d5123ed",
+      "mtime": 1772505694.0
+    },
+    {
+      "path": "assets/source-images/nvqlink-1.png",
+      "size": 360113,
+      "sha256": "f39973d21e6862c99a002a20724817cbe017923360c010d5d2bb067584065929",
+      "mtime": 1772506193.0
+    },
+    {
+      "path": "assets/source-images/nvqlink-architecture-gpu-qpu-png.webp",
+      "size": 96934,
+      "sha256": "9964c5084c79c8e02fa0d55edea2c7e30c66a8d9a4de6b4bd112bcb51601088f",
+      "mtime": 1772505699.0
+    },
+    {
+      "path": "assets/source-images/pi pulse.gif",
+      "size": 1402525,
+      "sha256": "89ab2144f99b9043ef97470ffb46214268b146752d02c8c0d8e046d99acb513a",
+      "mtime": 1736087177.0
+    },
+    {
+      "path": "assets/source-images/pulse.png",
+      "size": 142493,
+      "sha256": "6a79cdc121126ad86b5cf3a81364f1d68a4bc2a8b6051764b57676315eeece4d",
+      "mtime": 1736147552.0
+    },
+    {
+      "path": "assets/source-images/readout.jpeg",
+      "size": 334087,
+      "sha256": "3cebd6cd3f9d6f2266b70265e50651eed1766908fba6ed90b5e33eeabc10b365",
+      "mtime": 1750409853.0
+    },
+    {
+      "path": "assets/source-images/this-diagram-shows-the-quantum-processors-that-ibm-expects-to-have-ready-in-2023-condor-and-heron-in-2024-flamingo-and-cross.webp",
+      "size": 106178,
+      "sha256": "970208c9d7b17e22398711aa61906dd0646346e730b2d35fd457044561153074",
+      "mtime": 1779588660.0
+    },
+    {
+      "path": "assets/source-images/xy_tra.gif",
+      "size": 2896563,
+      "sha256": "0f6ab9d264b42a25b9ec09a201f54a4269cad31264b455d07af534049bb72782",
+      "mtime": 1736324762.0
+    },
+    {
+      "path": "assets/source-images/xy_tra_npi.gif",
+      "size": 15785505,
+      "sha256": "8cbde2335507822925a0c16e446165e56e549e222083917b2f6837720b337180",
+      "mtime": 1736325001.0
+    },
+    {
+      "path": "assets/source-images/\u4e0b\u8f09 (1).png",
+      "size": 1246533,
+      "sha256": "14965aeaf5c3b4dbc510ef8679aa7ebe5b86d4e011edf7f9f2c73062b5a09a7b",
+      "mtime": 1779588376.0
+    },
+    {
+      "path": "assets/source-images/\u4e0b\u8f09.jpeg",
+      "size": 1011139,
+      "sha256": "cc9574388954d22afe067caaa68d8903465b622adcc73ec3f19232630d2462ad",
+      "mtime": 1779588385.0
+    },
+    {
+      "path": "assets/source-images/\u622a\u5716 2025-11-16 \u4e2d\u534812.31.27.png",
+      "size": 298072,
+      "sha256": "29a785f9b7fe9e353bc7b5e5d36e7cfbf2b824741602dd6e74ff364eb9d287a3",
+      "mtime": 1763267493.0
+    },
+    {
+      "path": "assets/source-images/\u622a\u5716 2026-02-20 \u4e0b\u53481.45.25.png",
+      "size": 117295,
+      "sha256": "1b745248c37298a7983d5551b8c1a997d87c45d6b781f2e843460143f576ba9f",
+      "mtime": 1771566335.0
+    },
+    {
+      "path": "assets/source-images/\u622a\u5716 2026-03-03 \u4e0b\u53485.50.12.png",
+      "size": 307469,
+      "sha256": "92be2dd21b6e09e7f1b1bab526020abf8046a174bf1fdc835f9e016dba9d44e1",
+      "mtime": 1772531417.0
+    },
+    {
+      "path": "assets/source-images/\u622a\u5716 2026-03-10 \u4e0a\u534811.57.56.png",
+      "size": 1211305,
+      "sha256": "f63cd6e8a0472023a7404cbedf3437eb323e61bebcfbe7bc3c2efd6767368c64",
+      "mtime": 1773115082.0
+    },
+    {
+      "path": "assets/source-images/\u622a\u5716 2026-05-21 \u4e0b\u53481.06.31.png",
+      "size": 1146590,
+      "sha256": "e7861d98c7faab81a1fdba02f5b2fe6d8acfb1e818cc8d4ff8cb367c9001684f",
+      "mtime": 1779339998.0
+    },
+    {
+      "path": "assets/source-images/\u622a\u5716 2026-05-21 \u4e0b\u53481.11.35.png",
+      "size": 208471,
+      "sha256": "8d59d9f8acc576cf3b81f44f2c415da19c14a0ba646715bc3a9910fbf497ebd2",
+      "mtime": 1779340301.0
+    },
+    {
+      "path": "assets/source-images/\u622a\u5716 2026-05-23 \u665a\u4e0a8.05.05.png",
+      "size": 337276,
+      "sha256": "fb7501e9242a546b6030c6cc0b21050ff35a09c79dccc98f94537fea8f9a84a7",
+      "mtime": 1779537910.0
+    },
+    {
+      "path": "assets/source-images/\u622a\u5716 2026-06-29 \u4e0b\u53483.41.48.png",
+      "size": 471622,
+      "sha256": "5d8d31dffd76633b9414d7fa040eda39463eccba4eff87e8462a080ceebbffca",
+      "mtime": 1782718914.0
+    },
+    {
+      "path": "assets/source-images/\u622a\u5716 2026-06-29 \u4e0b\u53483.59.04.png",
+      "size": 761671,
+      "sha256": "ee9eeba65de1539ab4242cb32cb1f4ce65c26dd0524e0d5ed4fab99211d8d319",
+      "mtime": 1782719950.0
+    },
+    {
+      "path": "assets/source-images/\u622a\u5716 2026-06-29 \u4e0b\u53484.00.18.png",
+      "size": 153536,
+      "sha256": "bb762a7d739aae146ab7c5f90548c83a8cbec845a0c46e816bf93d72653802b4",
+      "mtime": 1782720023.0
+    },
+    {
+      "path": "assets/source-images/\u622a\u5716 2026-07-03 \u4e0b\u53482.19.50.png",
+      "size": 193172,
+      "sha256": "fa9cdd4794044ac055cb4c4c242851483b8816638237a88deb8908862fe0d09e",
+      "mtime": 1783059595.0
+    },
+    {
+      "path": "assets/source-images/\u622a\u5716 2026-07-03 \u4e0b\u53482.20.10.png",
+      "size": 3805525,
+      "sha256": "e2208fa80e6c4c3355f139c507fa9304ec69adfffd0ebdeb94965cca0cb6d79c",
+      "mtime": 1783059615.0
+    },
+    {
+      "path": "assets/source-images/\u622a\u5716 2026-07-03 \u4e0b\u53482.21.32.png",
+      "size": 716667,
+      "sha256": "7ec2631676dc0b105601c92dc2212b1b902d4e7def380b595fb8f5e87f92d983",
+      "mtime": 1783059697.0
+    },
+    {
+      "path": "assets/source-images/\u622a\u5716 2026-07-03 \u4e0b\u53484.06.26.png",
+      "size": 948049,
+      "sha256": "4555dda07d2c53d32b403a6cfdc23ecf74f7365ad9be2ddfd4e0b3701fac9df5",
+      "mtime": 1783065992.0
+    },
+    {
+      "path": "assets/source-images/\u622a\u5716 2026-07-03 \u4e0b\u53484.06.45.png",
+      "size": 589338,
+      "sha256": "d43943e48209897d7f6716984832603e2b53ae76671c1b7520f9617764b163a9",
+      "mtime": 1783066011.0
+    }
+  ]
+}

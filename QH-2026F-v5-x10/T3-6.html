@@ -1,0 +1,1449 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N39VTY949N"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-N39VTY949N');
+</script>
+    <!-- Basic Page Needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <meta name="author" content="Peir-Ru Wang">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;1,300&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/20250525-icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/20250525-icon.png">
+
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/css/style.css" rel="stylesheet">
+    <link href="../assets/css/responsive.css" rel="stylesheet">
+
+    <title>Week 6 · Circuit QED、Dispersive Readout 與量測鏈 | QH-2026F v5</title>
+    <meta name="description" content="PHYS598500 第 6 週，120 分鐘進階課程：Circuit QED、Dispersive Readout 與量測鏈">
+    <meta name="keywords" content="- 量子處理器
+- 超導量子位元
+- Qubit
+- 約瑟夫森接面
+- Transmon
+- Fluxonium
+- 量子計算
+- 量子硬體
+- 量子演算法
+- 量子晶片">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+<style>
+.qh-week-meta { margin: 20px 0; padding: 16px 18px; border-left: 4px solid #5f4b8b; background: #f6f4fa; }
+.qh-week-meta p { margin: 4px 0; }
+.qh-session-plan { width: 100%; margin: 18px 0 8px; border-collapse: collapse; }
+.qh-session-plan th, .qh-session-plan td { padding: 10px 12px; border: 1px solid #ddd; vertical-align: top; }
+.qh-session-plan th { background: #f4f4f4; }
+.qh-session-plan .qh-break td { color: #666; background: #fafafa; }
+.qh-total { text-align: right; font-weight: 700; }
+.qh-reading li { margin-bottom: 12px; }
+.qh-reading span, .qh-reading em { display: block; }
+.qh-week-list { padding-left: 0; list-style: none; }
+.qh-week-list li { margin: 0 0 13px; padding: 12px 15px; border-left: 4px solid #5f4b8b; background: #f7f7f7; }
+.qh-week-list a { font-weight: 700; }
+@media (max-width: 767px) { .qh-session-plan { display: block; overflow-x: auto; } }
+</style>
+
+
+<style id="qh-full-course-style">
+    .qh-full-lecture {
+      margin: 30px 0;
+      padding: 24px 26px;
+      border: 1px solid #d9d4e5;
+      background: #fff;
+    }
+
+    .qh-full-lecture>h2,
+    .qh-full-lecture>h3 {
+      margin-top: 0;
+    }
+
+    .qh-full-lecture h4 {
+      margin-top: 24px;
+    }
+
+    .qh-full-lecture li {
+      margin-bottom: 8px;
+    }
+
+    .qh-time {
+      display: inline-block;
+      margin-bottom: 12px;
+      padding: 4px 10px;
+      border-radius: 14px;
+      background: #5f4b8b;
+      color: #fff;
+      font-size: .9em;
+    }
+
+    .qh-board,
+    .qh-case,
+    .qh-task,
+    .qh-answer,
+    .qh-source-chapter {
+      margin: 20px 0;
+      padding: 17px 19px;
+      font-size: 15px;
+    }
+
+    .qh-board {
+      border-left: 4px solid #d0ccc8;
+      background: #fafafa;
+    }
+
+    .qh-case {
+      border-left: 4px solid #d0ccc8;
+      background: #fafafa;
+    }
+
+    .qh-task {
+      border-left: 4px solid #d0ccc8;
+      background: #fafafa;
+    }
+
+    .qh-answer {
+      border-left: 4px solid #d0ccc8;
+      background: #fafafa;
+    }
+
+    /* Section divider headings */
+    .qh-section {
+      margin: 40px 0 24px;
+      padding: 17px 19px;
+      border-left: 4px solid #355c9a;
+      background: #f3f7fc;
+    }
+
+    .qh-section h3 {
+      margin: 0 0 4px;
+      font-size: 20px;
+      font-weight: 700;
+      color: #355c9a;
+      border-bottom: none;
+    }
+
+    .qh-section h4 {
+      margin: 0;
+      font-size: 15px;
+      font-weight: 400;
+      color: #6a8ab5;
+      font-style: italic;
+    }
+
+    .qh-section>h3:first-child {
+      margin-top: 0;
+    }
+
+    /* Equation highlight — compact, not a section heading */
+    .qh-equation-highlight {
+      margin: 24px 0;
+      padding: 14px 18px;
+      border-left: 3px solid #6a6560;
+      background: #f9f8f7;
+    }
+
+    .qh-equation-label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      color: #6a6560;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    .qh-source-chapter {
+      border: 1px solid #e5e0ec;
+      background: #fdfcff;
+    }
+
+
+    .qh-source-chapter>h3 {
+      padding-bottom: 9px;
+      border-bottom: 1px solid #ddd5e8;
+    }
+
+    .qh-source-note {
+      color: #665f72;
+      font-size: .92em;
+    }
+
+    @media (max-width: 720px) {
+      .qh-full-lecture {
+        padding: 18px 15px;
+      }
+
+      .qh-board,
+      .qh-case,
+      .qh-task,
+      .qh-answer,
+      .qh-source-chapter {
+        padding: 14px 13px;
+      }
+    }
+
+    /* Supplement section styling */
+    .qh-supplement-divider {
+      margin: 36px 0 24px;
+      padding: 18px 22px;
+      border-left: 4px solid #5f4b8b;
+      background: #f6f4fa;
+    }
+
+    .qh-supplement-divider h2 {
+      margin: 0 0 5px;
+      font-size: 22px;
+    }
+
+    .qh-supplement-divider p {
+      margin: 0;
+    }
+
+    /* Tables in supplement */
+    .module table {
+      width: 100%;
+      margin: 16px 0;
+      border-collapse: collapse;
+      font-size: 15px;
+    }
+
+    .module table th,
+    .module table td {
+      padding: 10px 12px;
+      border: 1px solid #ddd;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .module table th {
+      background: #f4f4f4;
+      font-weight: 700;
+    }
+
+    /* Callout in supplement */
+    .module .callout {
+      margin: 16px 0;
+      padding: 12px 16px;
+      border-left: 4px solid #5f4b8b;
+      background: #f6f4fa;
+      font-size: 15px;
+    }
+
+    /* Lists in supplement */
+    .module ul,
+    .module ol {
+      margin: 12px 0;
+      padding-left: 24px;
+    }
+
+    .module li {
+      margin-bottom: 8px;
+      line-height: 1.6;
+      font-size: 15px;
+    }
+
+    /* Heading consistency — only direct h3 children, not inside .qh-section */
+    .module > h3 {
+      margin: 28px 0 14px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #ddd5e8;
+      font-size: 20px;
+    }
+
+    .module h4 {
+      margin: 20px 0 10px;
+      font-size: 17px;
+    }
+
+    .module p {
+      margin: 10px 0;
+      line-height: 1.7;
+    }
+  </style>
+
+<style id="qh-details-style">
+        details.dark-background {
+          background-color: #f5f5f5;
+          border: 1px solid #ddd;
+          padding: 10px;
+          border-radius: 5px;
+        }
+        details.dark-background summary {
+          cursor: pointer;
+          font-weight: bold;
+          background-color: #e0e0e0;
+          padding: 5px;
+          border-radius: 3px;
+        }
+      </style>
+
+</head>
+<body>
+
+    <header id="masthead" class="site-header">
+        <nav id="primary-navigation" class="site-navigation">
+            <div class="container">
+
+                <div class="navbar-header">                   
+                    <a href="../index_ch.html" class="site-title">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
+                </div><!-- /.navbar-header -->
+
+                <div class="collapse navbar-collapse" id="agency-navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="../index_ch.html">Home</a></li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">科普介紹<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                              <li><a href="../SCQ_elementary/main.html">超導量子位元(科普版)</a></li>
+                              <li><a href="../SCQ_advanced/main.html">超導量子位元(進階版)</a></li>
+                              <li><a href="../SpQ/main.html">半導體自旋量子位元</a></li>
+                            </ul>
+                        </li>
+                        <!--<li class="active"><a href="../SCQ_elementary/main.html">科普介紹</a></li>-->
+                        <li class="active"><a href="../QC_hardware/main.html">硬體導論</a></li>
+                        <li><a href="../QID/main.html">量子產業群像錄</a></li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">研討會筆記<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                <li><a href="../ASW2026/main.html">2026中研院超導量子電腦Workshop</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">量子諮詢<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                <li><a href="https://www.quantum-perspectives.com/About/main.html">量子遠見科技：諮詢服務</a></li>
+                                <li><a href="../About/main.html">關於我們</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="../index.html">English</a></li>                        
+                    </ul>
+                </div>
+
+            </div>   
+        </nav><!-- /.site-navigation -->
+    </header><!-- /#mastheaed -->
+
+    <div id="hero" class="hero overlay subpage-hero blog-hero">
+        <div class="hero-content">
+            <div class="hero_2-text">
+                <h1>超導量子電腦架構</h1>
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="../index_ch.html">Home</a></li>
+                  <li class="breadcrumb-item"><a href="../SCQ_advanced/main.html">PHYS598500</a></li>
+                  <!--<li class="breadcrumb-item active">約瑟夫森節</li>-->
+                </ol>
+            </div><!-- /.hero-text -->
+        </div><!-- /.hero-content -->
+    </div><!-- /.hero -->
+
+    <main id="main" class="site-main">
+
+        <section class="site-section subpage-site-section section-blog">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                        <article class="blog-post">
+                            <!--<img src="../assets/img/portfolio-1.jpg" class="img-res" alt="">-->
+                            <div class="post-content">
+
+<section id="week-6" class="course-theme">
+      <div style="text-align: center;">
+      <p class="theme-label">PHYS598500 · Week 6 · T3</p>
+      <h2>Circuit QED、Dispersive Readout 與量測鏈</h2>
+      <h3>Circuit QED, Dispersive Readout, and the Measurement Chain</h3>
+    </div>
+  <section class="course-overview">
+    <h3>本週定位</h3>
+    <div class="qh-week-meta">
+      <p><strong>課程長度：</strong>120 分鐘</p>
+      <p><strong>核心問題：</strong>如何讓 qubit state 轉成可分類的 classical voltage，又不把 qubit 先破壞掉？</p>
+      <p><strong>難度：</strong>很高</p>
+      <p><strong>先備：</strong>Jaynes–Cummings model、resonator response、S-parameters</p>
+      <p><strong>原始教材來源：</strong>T3 modules 4, 5</p>
+    </div>
+    <h3>學習成果</h3><ul><li>由 Jaynes–Cummings model 推到 dispersive Hamiltonian。</li><li>理解 \(\chi\)、\(\kappa\)、readout power、Purcell loss 與 fidelity 的 trade-off。</li><li>追蹤訊號由 readout resonator 到 amplifier、ADC 與 classifier 的完整路徑。</li></ul>
+    <h3>兩小時授課配置</h3><table class="qh-session-plan"><thead><tr><th>時間</th><th>形式</th><th>授課內容與當段產出</th></tr></thead><tbody><tr><td>0–10 分</td><td>定位／診斷</td><td><strong>如何把不可見的量子態轉成可分類的電壓？</strong><br>以一個問題確認先備與本週接口。</td></tr><tr><td>10–35 分</td><td>概念主線 A</td><td><strong>Qubit–resonator coupling 如何由 Jaynes–Cummings model 描述？</strong><br>建立第一組物理概念、變數與工程語言。</td></tr><tr><td>35–60 分</td><td>推導／定量</td><td><strong>Dispersive shift、readout contrast 與 Purcell loss 如何互相制約？</strong><br>走完關鍵公式或定量關係，不停留在名詞介紹。</td></tr><tr class="qh-break"><td>60–70 分</td><td>休息</td><td><strong>Break</strong><br>保留兩小時課程的注意力恢復窗口。</td></tr><tr><td>70–95 分</td><td>概念主線 B</td><td><strong>量子態如何一路穿過 resonator、amplifier 與 IQ classifier？</strong><br>把物理結果接到元件、控制或系統架構。</td></tr><tr><td>95–110 分</td><td>案例／研討</td><td><strong>如何建立從 readout tone 到 IQ cloud 的 signal/noise budget？</strong><br>學生留下可檢查的圖、表、推導或 architecture decision。</td></tr><tr><td>110–120 分</td><td>整合／驗收</td><td><strong>Readout speed、fidelity 與 backaction 應如何共同驗收？</strong><br>用 exit question 檢查是否能跨層解釋。</td></tr></tbody></table><p class="qh-total">合計：120 分鐘</p>
+  </section>
+<!-- QH_FULL_LECTURE_START -->
+<section class="qh-full-lecture" id="full-T3-6">
+  <span class="qh-time">完整授課層 · 0–120 分鐘</span>
+    <div class="qh-section">
+    <h3>Dispersive readout：從 quantum state 到可校準的 classical record</h3>
+  </div>
+  <p><strong>本週驅動問題：</strong>readout chain 最後只交付 IQ samples；從 qubit–resonator Hamiltonian到 bit assignment，中間有哪些資訊轉換、noise source 與不可逆步驟？</p>
+  <h3>0–10 分鐘：問題設定與先備診斷 <span class="qh-concept-id">W6-C1</span></h3>
+  <p><strong>W6-C1 先備診斷：</strong>先要求學生不用查資料，以一張圖畫出本週主題從抽象模型到真實硬體的訊息流。教師不立刻公布答案，而是收集學生把哪些層次畫成等號。全課結束時再重畫一次，用兩張圖的差異驗收是否真正建立跨層理解。</p>
+  <p><strong>W5 回顧：</strong>學生已理解耦合 Hamiltonian 中的 exchange 與 ZZ 項，以及 detuning 控制 interaction regime（resonant vs dispersive）。本週聚焦 dispersive regime 的讀出應用。</p>
+  <h3>10–35 分鐘：Qubit–resonator coupling 如何由 Jaynes–Cummings model 描述？ <span class="qh-concept-id">W6-C1</span></h3>
+  <div class="qh-board">
+<h4>Jaynes–Cummings Hamiltonian</h4>
+<p>一個 qubit 與 resonator 的耦合系統可由 Jaynes–Cummings Hamiltonian 描述：</p>
+<p>
+\frac{H_{\mathrm{JC}}}{\hbar}=\omega_r a^\dagger a+\frac{\omega_q}{2}\sigma_z+g\big(a^\dagger\sigma_-+a\sigma_+\big)
+</p>
+<p>其中 \(\omega_r\) 為 readout resonator frequency，\(\omega_q\) 為 qubit transition frequency，\(a^\dagger,a\) 為 resonator photon creation 與 annihilation operators，\(g\) 為 qubit–resonator coupling strength，\(\sigma_+\)、\(\sigma_-\) 為 qubit raising 與 lowering operators。</p>
+<p>若 \(\omega_q\approx\omega_r\)，兩者交換能量（resonant regime）。但在實際量子讀出中，設計 \(|\Delta|=|\omega_q-\omega_r|\gg g\)（dispersive regime），qubit 與 resonator 不直接交換能量，但 qubit state 改變 resonator 的有效共振頻率。</p>
+</div>
+  <h3>35–60 分鐘：推導 dispersive Hamiltonian、chi 與 Purcell trade-off <span class="qh-concept-id">W6-D1</span> <span class="qh-concept-id">W6-C2</span></h3>
+  
+<h4>黑板推導：dispersive Hamiltonian <span class="qh-concept-id">W6-D1</span></h4>
+<p>在 \(|\Delta|=|\omega_q-\omega_r|\gg g\) 時，Schrieffer–Wolff transformation 給出近似：</p>
+<p>
+\frac{H_{\mathrm{disp}}}{\hbar}\approx
+\big(\omega_r+\chi\sigma_z\big)a^\dagger a+
+\frac{\omega_q+\chi}{2}\sigma_z,
+\qquad \chi\approx\frac{g^2}{\Delta}.
+</p>
+<p>qubit state 使 resonator frequency 位移 \(\pm\chi\)：</p>
+<p>\[
+\omega_r^{\ket{0}}=\omega_r-\chi,\qquad\omega_r^{\ket{1}}=\omega_r+\chi.
+\]</p>
+<p>probe tone 因而取得 state-dependent amplitude/phase。這是一個 transduction：qubit population → resonator field → propagating microwave → amplified voltage → digitized IQ → classifier label。</p>
+<p><strong>W6-C2：chi、kappa、Purcell loss trade-off。</strong>增大 readout power 可提高短時間 SNR，但 cavity photon number 太高會破壞 dispersive approximation、造成 measurement-induced transition、AC Stark shift 或 leakage。增大 \(\kappa\) 可加快 readout，卻提高 Purcell decay rate \(\Gamma_P\approx\frac{4g^2}{\kappa}\cdot\frac{\kappa_{ext}}{\kappa_{int}}\)。readout speed、Q factor、Purcell decay、multiplexing density 與 amplifier bandwidth 必須共同設計。</p>
+
+  <p>學生兩人一組，把推導中的每個符號分成「設計可選參數、製程/裝置產生參數、必須校準參數、只能量測估計的狀態」四類。這一步迫使公式離開紙面，成為 architecture dependency。</p>
+</section>
+
+<section class="qh-full-lecture">
+  <span class="qh-time">60–70 分鐘</span>
+  <h3>休息與黑板保留</h3>
+  <p>保留本週核心 Hamiltonian／system equation 與 dependency graph。休息後直接以既有教材展開，不重新講一次名詞表。</p>
+</section>
+
+<section class="qh-full-lecture">
+  <span class="qh-time">70–95 分鐘</span>
+    <div class="qh-section">
+    <h3>量子態如何一路穿過 resonator、amplifier 與 IQ classifier？ <span class="qh-concept-id">W6-C3</span> <span class="qh-concept-id">W6-C4</span></h3>
+  </div>
+  <p>下列內容不是附錄，而是本週第二段講授材料。授課時選擇與黑板模型直接相連的圖、表與段落逐一解讀；其餘留作課後複習。每一段都要追問「它改變了哪一個 Hamiltonian／control／measurement／system 參數」。</p>
+
+  <div class="qh-board">
+  <h4>W6-C3：Readout chain —— 從 dispersive shift 到 bit assignment</h4>
+  <p>上一段黑板推導告訴我們：qubit state 使 resonator frequency 位移 \\(\pm\chi\\)。但這只是 transduction 的第一步。實際系統中，這個微小的 phase/amplitude change 必須穿越五個不同的物理域才能成為一個可分類的 classical bit：</p>
+  <ol>
+    <li><strong>量子域 → 電磁域：</strong>probe tone 射入 readout resonator，resonator 的 S-parameter 因 \\(\chi\sigma_z\\) 而改變。反射或透射訊號攜帶了 state-dependent phase shift，大小約 \\(\delta\phi\approx\frac{2\chi}{\kappa}\cdot\frac{\kappa_{ext}}{\kappa}\cdot\sqrt{n_{ph}}\\)，其中 \\(n_{ph}\\) 是 cavity 內的平均 photon number。</li>
+    <li><strong>電磁域 → 低溫放大：</strong>訊號極弱（單光子級），必須先經量子極限放大器（JPA 或 TWPA）。JPA 的增益可達 20 dB 以上且 noise temperature 接近量子極限 \\(h\nu/k_B\\)，但帶寬窄（通常 &lt;100 MHz），不適合 multiplexing。TWPA 提供寬頻（&gt;1 GHz）放大，適合多 qubit 同時讀出，但需要 pump tone 校準且動態範圍較小。</li>
+    <li><strong>低溫放大 → 室溫放大：</strong>訊號經 circulator/isolator 導出後，由 4K 級的 HEMT 進一步放大（增益約 25-30 dB，noise temp 約 2-4 K）。HEMT 的 noise 雖高於量子極限，但因前級量子放大器已提供足夠增益，Friis formula 確保總 noise figure 由第一級主導。</li>
+    <li><strong>室溫鏈路 → digitization：</strong>微波訊號經 mixer 下變頻至 IF（通常 50-500 MHz），再由 ADC 以 GSa/s 取樣。I/Q demodulation 將每個 readout shot 映射到一個 2D plane 上的點。</li>
+    <li><strong>Digitized IQ → classifier：</strong>IQ plane 上的 \\(\ket{0}\\) 與 \\(\ket{1}\\) 形成兩個 cloud。classifier（通常是 linear threshold 或 Gaussian mixture model）根據 integration window 內的平均 I/Q 值給出 bit assignment。</li>
+  </ol>
+  <p><strong>關鍵設計約束：</strong>每一步都引入 gain、loss 或 noise。total SNR 由 chain 的 noise temperature budget 決定，而 noise budget 又受 amplifier 選擇、attenuation、filtering 與 cable loss 的共同限制。readout fidelity 不是單一參數，而是整條 chain 的系統工程結果。</p>
+  </div>
+
+  <div class="qh-board">
+  <h4>W6-C4：Readout fidelity 的定量關係與 measurement-induced error</h4>
+  <p>assignment fidelity 定義為 \\(F_{assign}=\frac{1}{2}\big(P(0|0)+P(1|1)\big)\\)。要达到 \\(F_{assign}&gt;0.99\\) 需要 \\(P(0|0)\) 與 \\(P(1|1)\\) 都接近 1，這要求兩個條件同時滿足：</p>
+  <p><strong>條件 A — 足夠 SNR：</strong>IQ clouds 的 separation 必須大於它們的 width。在散粒雜訊極限下，\\(\mathrm{SNR}\approx\frac{\chi\cdot\sqrt{n_{ph}}\cdot\sqrt{\kappa\cdot t_{int}}}{\sqrt{N_{add}}}\\)，其中 \\(t_{int}\\) 是 integration time，\\(N_{add}\\) 是 amplifier 的 added photon noise。增大 \\(n_{ph}\\) 或 \\(t_{int}\\) 可改善 SNR，但兩者都有上限。</p>
+  <p><strong>條件 B — 足夠快的讀出：</strong>readout time \\(t_{RO}\\approx 1/(\kappa\cdot\mathrm{SNR}^2)\\) 必須短於 \\(T_1\\)，否則 \\(\ket{1}\\) 在讀出完成前 decay 到 \\(\ket{0}\\)，造成 assignment error。這是一個 fundamental trade-off：加快 readout 需要增大 \\(\kappa\\) 或 \\(n_{ph}\\)，但增大 \\(\kappa\\) 提高 Purcell loss（降低 \\(T_1\\)），增大 \\(n_{ph}\\) 則破壞 dispersive approximation。</p>
+  <p><strong>Measurement backaction 的三種機制：</strong></p>
+  <ul>
+    <li><strong>Relaxation during readout：</strong>\\(\ket{1}\to\ket{0}\\) transition 在讀出途中發生。這是 irreversible population loss，直接降低 \\(P(1|1)\\)。</li>
+    <li><strong>Dephasing：</strong>readout photons 攜帶 qubit state 資訊，即使 qubit 未 decay，phase coherence 已被破壞。這使得 readout 後的 qubit 不再處於純態疊加。</li>
+    <li><strong>Purcell decay：</strong>resonator 作為 qubit 到環境的 channel，其外部耦合 \\(\kappa_{ext}\\) 直接貢獻到 qubit 的總 decay rate。Purcell filter 或 band-stop resonator 可抑制此效應，但增加 design complexity。</li>
+  </ul>
+  <p><strong>課堂練習：</strong>給定 \\(\chi/2\pi=500\\) kHz、\\(\kappa/2\pi=5\\) MHz、\\(T_1=50\\) μs、\\(n_{ph}=10\\)，估算最佳 \\(t_{int}\\) 與預期 \\(F_{assign}\\)。這迫使學生把抽象符號轉成 architecture decision。</p>
+  </div>
+
+  <section class="qh-source-chapter">
+  <h3>教材深挖 1：量子計算硬體基礎</h3>
+  <p class="qh-source-note">整合自既有 Insight iHBAR 教材：SCQ_advanced/A.html</p>
+  <p >
+                                量子計算在特定問題上蘊含遠超古典電腦的運算潛力，其硬體卻也面臨控制困難、操作時間過短的問題。量子計算的硬體以量子位元作為的核心元件，還需搭配操控量子位元狀態的驅動元件、量子位元狀態的讀取元件。此外，因為量子位元容易受到外界干擾的特性，量子位元的校正/微調元件、量子糾錯元件等。簡而言之可以包含以下：
+                                </p>
+                            
+                                <ul>
+                                <li>量子位元</li>
+                                <li>驅動</li>
+                                <li>讀取</li>
+                                <li>校正</li>
+                                <li>糾錯</li>
+                                </ul>
+                            
+                                <p >
+                                事實上，在現今的記憶體中，其實也包含以上不同的硬體分工，只是在量子計算裡面，以上不同元件需要整體考慮。更具體一點的講法，因為不同元件會互相交互作用，當我們利用量子物理學，寫下其整個量子電路的 Hamiltonian（或薛丁格方程式），其交互作用像會去"修正"量子位元本身的特性，一方面我們利用"修正"的特性來操作和讀取量子位元的資訊，然而另一方面卻也導致量子位元受到影響，偏離理想狀態、導致錯誤產生。
+                                </p>
+                            
+                                <p >
+                                本文專注在超導量子電路，量子電路中包含的元件分類如下（兩種切入點）：
+                                </p>
+                            
+                                <table style="width: 100%; border-collapse: collapse; text-align: left; border: 1px solid black;">
+                                    <tr>
+                                        <th style="border: 1px solid black; padding: 10px;">以功能性為觀點</th>
+                                        <td style="border: 1px solid black; padding: 10px;">
+                                        1. 量子位元（資料儲存）<br>
+                                        2. 驅動：耦合電路或 LC 共振器（作運算）<br>
+                                        3. 讀取（readout）：LC 共振器與饋線<br>
+                                        4. 校正：Flux line（改變量子位元頻率）<br>
+                                        5. 糾錯：量子位元（糾錯用）
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                    <th style="border: 1px solid black; padding: 10px;">以元件種類為觀點</th>
+                                        
+                                        <td style="border: 1px solid black; padding: 10px;">
+                                        1. LC 電路<br>
+                                        &nbsp;&nbsp;&nbsp;<b>a.</b> LC 共振器（線性 LC 電路）：用作讀取量子位元狀態（readout resonator），有時也可以作為量子位元間耦合（間接耦合）<br>
+                                        &nbsp;&nbsp;&nbsp;<b>b.</b> 量子位元（非線性 LC 電路）：部分作為資料儲存、部分作為糾錯用位元<br><br>
+                                        2. 饋線（feedline）：外部訊號送入與讀出<br><br>
+                                        3. 耦合元件：<br>
+                                        &nbsp;&nbsp;&nbsp;<b>a.</b> 操作、改變量子位元狀態<br>
+                                        &nbsp;&nbsp;&nbsp;<b>b.</b> 量子位元之間的直接耦合<br>
+                                        &nbsp;&nbsp;&nbsp;<b>c.</b> 將外部訊號與各元件交換訊號<br><br>
+                                        4. Flux line：調整改變量子位元頻率，讓量子位元在指定頻率運作
+                                        </td>
+                                    </tr>
+                                </table>
+                            
+                            
+                                <div style="text-align: center;">
+                                
+                                    <a href="../Image/SIngle Qubit circuit--bc569b45.png"><img loading="lazy" src="../WebP/SIngle Qubit circuit--bc569b45.webp" alt="量子位相關的電路與讀取圖示。" style="width: 100%; height: auto;"></a>
+                                
+                                </div>
+                                
+                                    <p >
+                                    ▲首先可以先欣賞一下單量子位元的 layout。（a）顯微鏡底下的電路圖，（b）對應的電路圖，此圖中有一個 Qubit（紅色 Transmon）、一個 readout resonator（天藍色），兩條 feedline 個別驅動（Drive）量子位元與 readout resonator。各元件間利用電容作耦合。另外有一條 Flux line 連到 Qubit 旁，會產生磁場來改變 Transmon 的操作頻率。（c）readout resonator 因為與量子位元耦合，會受到量子位元在 \(\ket{0}\) 或 \(\ket{1}\) 狀態的差異產生頻譜的位移，利用 readout resonator 頻譜的位移的特性來得知量子位元的狀態。
+                                    <br><span style="font-size: 0.7em; line-height: 0.8;">Ref:arxiv.org/pdf/2106.11352</span><br><br>
+                                    </p>
+                                
+                                <div style="text-align: center;">
+                                
+                                    <a href="../Image/2 qubit 1 resonator.png"><img loading="lazy" src="../WebP/2 qubit 1 resonator.webp" alt="量子位耦合與讀取的共振腔設計示意圖" style="width: 100%; height: auto;"></a>
+                                
+                                </div>
+                                    <p >
+                                    ▲這張圖是兩個量子位元（Transmon）藉由一個 resonator 耦合在一起（間接耦合），可以注意的是下方一行文字寫這個 resonator 兼具耦合兩個量子位元的功能。
+                                    <br><span style="font-size: 0.7em; line-height: 0.8;">Ref:doi.org/10.1038/nature08121</span><br><br>
+                                </p>
+                                
+                                
+                                <div style="text-align: center;">
+                                
+                                    <a href="../Image/4 qubit.png"><img loading="lazy" src="../WebP/4 qubit.webp" alt="第二代四量子位處理器電路圖" style="width: 100%; height: auto;"></a>
+                                
+                                </div>
+                                <p >
+                                    ▲這張圖是四個 Qubit，中間由 bus resonator 串連耦合四個 Qubit。其中四個接頭直通 Qubit，是 flux-line，另外左上跟右下各有一條 readout feedline I/O，各自連結到兩個 readout resonator 並與 Qubit 耦合（等於說一條 readout feedline 會同時讀取兩個 Qubit）。
+                                </p>
+                                
+                                
+                                <div style="text-align: center;">
+                                
+                                    <a href="../Image/5Q--7f4f25e4.png"><img loading="lazy" src="../WebP/5Q--7f4f25e4.webp" alt="量子電路圖與元件標示詳情。" style="width: 80%; height: auto;"></a>
+                                
+                                </div>
+                                <p >
+                                    
+                                
+                                    ▲這張是另一種 5 qubit layout 的示意圖。其中 Z 是 flux line，XY 是 Drive line，5 個 Qubit 是直接電容耦合。此外，每個 qubit 都有自己的 readout resonator，在上方併入（此圖顯示是電感耦合）到 readout line。
+                                    <br><span style="font-size: 0.7em; line-height: 0.8;">doi.org/10.1038/nature13171</span><br><br>
+                                </p>
+                                
+                                <p style="font-weight: bold; font-size: 1.2em;">邁向多 Qubit 模組</p>
+                                <div style="text-align: center;">
+                                
+                                    <a href="../Image/17 surface--24761abf.png"><img loading="lazy" src="../WebP/17 surface--24761abf.webp" alt="量子電路圖示，顯示量子比特與連接。" style="width: 43%; height: auto;"></a>
+                                
+                                
+                                    <a href="../Image/Starmon--e72fd59a.png"><img loading="lazy" src="../WebP/Starmon--e72fd59a.webp" alt="微波驅動線及讀取共振器示意圖" style="width: 55%; height: auto;"></a>
+                                
+                                </div>
+                                <p >
+                                    ▲要達到量子計算，需要同時操作許多 Qubit，同時因為糾錯的關係，也需要額外的 Qubit 來進行糾錯。下圖是一個 17 位元的實驗性量子晶片，排列方式是一種稱為 surface code（表面碼）的量子糾錯型態，圓形為 Qubit，粉色及紅色是 Data Qubit，天藍色及綠色是 Check Qubit。每個 Qubit 都連接 7 條線（暱稱為 Starmon），其中 4 條為 Qubit 間耦合、1 條 Flux line、1 條 Drive line、1 條 Readout resonator。Readout resonator 分別併入到三條 feedline。
+                                    <br><span style="font-size: 0.7em; line-height: 0.8;">https://arxiv.org/pdf/1612.08208</span><br><br>
+                                </p>
+</section>
+
+<section class="qh-source-chapter">
+  <h3>教材深挖 2：如何送訊號到量子位元？</h3>
+  <p class="qh-source-note">整合自既有 Insight iHBAR 教材：SCQ_elementary/I.html</p>
+  <p >
+                                前文介紹量子電腦複雜的硬體設計，本節稍微介紹一下超導電腦控式訊號的線路設計。控制訊號由任意波形產生器(AWG)生成數位訊號，透過數位-類比轉換器(DAC)轉換成類比訊號，通過層層的濾波器送入到量子位元電路中，然後回饋出來的訊號再通過類比-數位轉換器(ADC)換成數位訊號由儀器量測。
+                                </p>
+                                <div style="text-align: center;">
+                                    
+                                    <a href="../Image/QC structure.png"><img loading="lazy" src="../WebP/QC structure.webp" alt="固態量子比特技術挑戰圖示。" style="width: 100%; height: auto;"></a>
+                                    
+                                
+                                </div>
+                                <p >
+                                    <span style="font-size: 0.7em; line-height: 0.8;">Ref: arxiv: 2303.15547</span><br><br>
+                                </p>
+                                
+                                
+                                <p >
+                                前面在「超導量子電腦長什麼樣子？」文中可以見到大量的線路層層穿越低溫腔進入到量子位元中，如此複雜的線路需要精密的設計、降噪、隔熱，容易增加成本和出錯率，造成大型化（scalable）的困難度。以下講解兩種可能的方案，試圖減少穿越的線路。
+                                </p>
+                                <div style="text-align: center;">
+                                    
+                                    <a href="../Image/Control link.png"><img loading="lazy" src="../WebP/Control link.webp" alt="量子電路的兩種連接方式示意圖" style="width: 70%; height: auto;"></a>
+                                    
+                                </div>
+                                <p  class="dark-background">
+                                ▲光纖方案，（a）是傳統控制線路，（b）採用不同波長的載波混波技術，將控制訊號透過光電轉換器放到對應的載波上，通過光纖束進入到腔體中，再轉換回控制Qubit的控制訊號。
+                                <br><span style="font-size: 0.7em; line-height: 0.8;">Ref: DOI: 10.1038/s41586-021-03268-x</span><br><br>
+                                </p>
+                                
+                                <div style="text-align: center;">
+                                    
+                                    <a href="../Image/Control Bus.png"><img loading="lazy" src="../WebP/Control Bus.webp" alt="量子比特控制器與波形圖示解說" style="width: 70%; height: auto;"></a>
+                                    
+                                </div>
+                                <p  class="dark-background">
+                                ▲透過Qubit頻率隔離，並且利用設計過的控制頻譜訊號，使得Qubit之間的控制可以隔離開來，便可通過單一控制線路控制多個Qubit。
+                                <br><span style="font-size: 0.7em; line-height: 0.8;">arXiv:2501.10710v1</span><br><br>
+                                </p>
+</section>
+
+<section class="qh-source-chapter">
+  <h3>教材深挖 3：微波元件解說</h3>
+  <p class="qh-source-note">整合自既有 Insight iHBAR 教材：QC_hardware/C.html</p>
+  <p  class="dark-background">
+                                        前一節針對量子電腦稀釋制冷機內部的部件做一個簡單的綜覽，接下來我們針對微波元件，詳細解說各部件的功能。
+                                      </p>
+                                  
+                                      <h3>關鍵組件與技術</h3>
+                                      <p  class="dark-background">
+                                        微波元件作為橋接外部儀器控制訊號送往QPU，同時也要負擔將運算後的訊號經過放大橫送回到儀器中，會包含以下元件：
+                                      </p>
+                                      <ul>
+                                        <li><b>諧振器 (Resonators)：</b> 每個超導量子位元通常耦合到一個微波諧振器。量子位元的狀態會影響諧振器的共振頻率或相位，透過探測諧振器的響應可以推斷出量子位元的狀態。</li>
+                                        <li><b>量子放大器 (Quantum Amplifiers)：</b> 來自諧振器的讀出訊號非常微弱，需要接近量子極限的低雜訊放大器進行放大，才能被後續的古典電子設備檢測到。
+                                          <ul>
+                                            <li><b>約瑟夫森參量放大器 (Josephson Parametric Amplifiers, JPAs)：</b> 利用約瑟夫森結的非線性特性實現微波訊號的低雜訊放大。JPAs可以工作在相位敏感模式（放大單個正交分量而不增加雜訊）或相位保持模式。它們通常具有較窄的帶寬，但可以實現高增益。</li>
+                                            <li><b>行波參量放大器 (Traveling Wave Parametric Amplifiers, TWPAs)：</b> 例如QuantWare的Crescendo-S，是一種基於約瑟夫森結鏈的行波放大器，能夠在較寬的頻寬內提供高增益和接近量子極限的雜訊性能，非常適合多路復用讀出。與JPA不同，TWPA是透射式而非諧振式器件，因此帶寬不受諧振器限制。</li>
+                                          </ul>
+                                        </li>
+                                        <li><b>低雜訊半導體放大器 (Low-Noise Amplifier, LNA)：</b> 通常放置在低溫系統的較高溫級（如4K級），用於進一步放大來自量子放大器的訊號。</li>
+                                            <ul>
+                                                <li><b>HEMT (High Electron Mobility Transistor, 高電子遷移率電晶體)：</b> 由於其獨特的物理結構（利用二維電子氣），HEMT 內的電子能夠高速移動且碰撞機率低。這個「高電子遷移率」的特性，直接轉換為極低的雜訊和優異的高頻性能。</li>
+                                                
+                                            </ul>
+                                        <li><b>混頻器、濾波器和ADC：</b> 用於將放大的微波訊號下變頻到中頻，濾除雜訊，然後由ADC轉換為數位訊號進行處理。</li>
+                                      </ul>
+
+                                      <p  class="dark-background">
+                                       <br>接下來我們將搭配電路圖，詳細解說各部件的功能。<br><br>
+                                      </p>
+
+                                      <div style="text-align: center;">
+                                        
+                                        <a href="../Image/20250531-01--af19a0ab.png"><img loading="lazy" src="../WebP/20250531-01--af19a0ab.webp" alt="量子電腦冷卻系統與電路圖示。" style="width: 100%; height: auto;"></a>
+                                        
+                                      </div>
+                                      <p  class="dark-background">
+                                        ▲透過電路功能圖對照硬體，可進一步了解量子電腦中硬體元件的配置。
+                                        <br>(a) 安裝有 25 條驅動線（drive lines）、25 條磁通線（flux lines）、4 條讀出線（read-out）、6 條讀入線（read-in），以及 5 條泵浦線（pump lines）的 Bluefors XLD 型稀釋制冷機。
+                                        <br>(b) 稀釋制冷機內部電纜配置的示意圖。我們藉由下方表格來解說各個元件及端口的功能：
+                                        <table width="100%" border="1" cellpadding="8" cellspacing="0" align="center">
+
+                                        
+                                      
+                                          <thead>
+                                              <tr bgcolor="#f2f2f2" align="center">
+                                                  <th width="20%">I/O端</th>
+                                                  <th width="20%">中文翻譯</th>
+                                                  <th>功能解說</th>
+                                              </tr>
+                                          </thead>
+                                          <tbody>
+                                              <tr>
+                                                  <td><b>Drive</b></td>
+                                                  <td>驅動端</td>
+                                                  <td>用於輸入控制脈衝，操控量子位元的狀態（如進行 X/Y 閘操作），通常是微波頻率訊號。</td>
+                                              </tr>
+                                              <tr>
+                                                  <td><b>Flux</b></td>
+                                                  <td>磁通端</td>
+                                                  <td>提供直流或低頻訊號改變 SQUID 迴路的有效磁通量，進而調變量子位元或諧震器的頻率。</td>
+                                              </tr>
+                                              <tr>
+                                                  <td><b>Pump</b></td>
+                                                  <td>泵浦端</td>
+                                                  <td>用於激發參數放大器（如 JPA 或 TWPA）所需的能量輸入，通常在特定頻率提供高功率微波。</td>
+                                              </tr>
+                                              <tr>
+                                                  <td><b>Output</b></td>
+                                                  <td>讀出端</td>
+                                                  <td>從量子系統中讀出訊號，經由讀出共振腔與放大器鏈路輸出至室溫設備進行量測。</td>
+                                              </tr>
+                                          </tbody>
+                                      
+                                          <thead>
+                                              <tr bgcolor="#e8e8e8">
+                                                  <th colspan="3" align="center">通用微波元件</th>
+                                              </tr>
+                                          </thead>
+                                          <tbody>
+                                              <tr>
+                                                  <td><b>Isolator</b></td>
+                                                  <td>隔離器</td>
+                                                  <td>允許訊號單向通過，防止反射雜訊干擾敏感元件，如量子位元。</td>
+                                              </tr>
+                                              <tr>
+                                                  <td><b>TWPA</b></td>
+                                                  <td>行波參數放大器</td>
+                                                  <td>低溫下使用的量子放大器，具有低雜訊、寬頻帶的特性，可提升微波訊號強度。</td>
+                                              </tr>
+                                              <tr>
+                                                  <td><b>HEMT</b></td>
+                                                  <td>高電子遷移率電晶體</td>
+                                                  <td>常用於 4K 級的第一級放大器，提供低雜訊、高增益的訊號讀取。</td>
+                                              </tr>
+                                              <tr>
+                                                  <td><b>Low-pass filter</b></td>
+                                                  <td>低通濾波器</td>
+                                                  <td>阻擋高頻雜訊，允許低頻訊號通過，常用於防止熱輻射進入量子元件。</td>
+                                              </tr>
+                                              <tr>
+                                                  <td><b>Band-pass filter</b></td>
+                                                  <td>帶通濾波器</td>
+                                                  <td>僅允許某一頻率範圍內的訊號通過，用於選擇特定微波頻率。</td>
+                                              </tr>
+                                              <tr>
+                                                  <td><b>Eccosorb filter</b></td>
+                                                  <td>Eccosorb 濾波器</td>
+                                                  <td>使用 Eccosorb 吸波材料製成的濾波器，能有效吸收高頻熱雜訊與不必要的輻射。</td>
+                                              </tr>
+                                              <tr>
+                                                  <td><b>Circulator</b></td>
+                                                  <td>循環器</td>
+                                                  <td>三端口非互易(non-reciprocity)微波元件，訊號僅以順時針或逆時針方式循環，用來分離輸入與回波路徑。</td>
+                                              </tr>
+                                              <tr>
+                                                  <td><b>Dir. Coupler</b></td>
+                                                  <td>定向耦合器</td>
+                                                  <td>將一部分微波訊號從主通道引導至旁路，通常用於監測、量測或訊號分離。</td>
+                                              </tr>
+                                              <tr>
+                                                  <td><b>Termination</b></td>
+                                                  <td>終端 (50Ω)</td>
+                                                  <td>吸收多餘訊號能量，防止訊號反射，常與隔離器、循環器搭配使用。</td>
+                                              </tr>
+                                              <tr>
+                                                  <td><b>Thermalisation</b></td>
+                                                  <td>熱沉（熱化、熱錨定）</td>
+                                                  <td>將電纜或元件的外導體熱接至冷卻級，降低熱雜訊傳遞至低溫核心元件。</td>
+                                              </tr>
+                                              <tr>
+                                                  <td><b>NbTi Cable</b></td>
+                                                  <td>鈮鈦合金同軸電纜</td>
+                                                  <td>使用具有超導性質的鈮鈦合金，在 mK 級連接量子位元或諧振器時，使用鈮鈦超導線路可減少耗散與熱傳導。</td>
+                                              </tr>
+                                              <tr>
+                                                  <td valign="top"><b>Attenuator</b><br>10dB, 20dB...</td>
+                                                  <td valign="top">衰減器</td>
+                                                  <td>
+                                                      <table width="100%" border="1" cellpadding="5" cellspacing="0">
+                                                          <tr bgcolor="#f5f5f5" align="center">
+                                                              <th>溫區</th>
+                                                              <th>衰減器值（常見）</th>
+                                                              <th>目的</th>
+                                                          </tr>
+                                                          <tr align="center">
+                                                              <td>300K → 4K</td>
+                                                              <td>20 dB</td>
+                                                              <td align="left">阻斷來自室溫的主要熱雜訊。</td>
+                                                          </tr>
+                                                          <tr align="center">
+                                                              <td>4K → 100 mK</td>
+                                                              <td>10–20 dB</td>
+                                                              <td align="left">細調訊號強度與進一步降噪。</td>
+                                                          </tr>
+                                                          <tr align="center">
+                                                              <td>100 mK → 10 mK</td>
+                                                              <td>10 dB（可選）</td>
+                                                              <td align="left">控制微波脈衝精細度，確保熱平衡。</td>
+                                                          </tr>
+                                                      </table>
+                                                  </td>
+                                              </tr>
+                                          </tbody>
+                                      
+                                      </table>
+                                        <br><span style="font-size: 0.7em; line-height: 0.8;">Ref: Engineering cryogenic setups for 100-qubit scale superconducting circuit systems, DOI:10.1140/epjqt/s40507-019-0072-0
+                                        </span><br><br>
+                                        </p>
+                          
+                          
+                                      <div style="text-align: center;">
+                                        
+                                        <a href="../Image/20250531-03--0ca613cf.png"><img loading="lazy" src="../WebP/20250531-03--0ca613cf.webp" alt="量子電路內部結構，包含隔離器與濾波器。" style="width: 70%; height: auto;"></a>
+                                        
+                                      </div>
+                                      <p  class="dark-background">
+                                        ▲在制冷機最底端、也是最冷的部分，稱為混合室（Mixing Chamber，MXC）。此區的溫度維持在10mK以下，以操作超導量子電路。
+                                        (a) 安裝於 MXC 板上的元件：來自量子處理器的讀出訊號首先經過右側的第一組四通道磁屏蔽隔離器陣列，再通過定向耦合器、行波參數放大器（TWPA），以及左側的第二組相同的隔離器陣列。
+                                        (b) 安裝於 4K 板上的四顆 HEMT 放大器。
+                                        (c)下方為帶通濾波器安裝（搭配熱沉）於 MXC 板上，上方為安裝於冷板(100mK區段)上的四個循環器。
+                                        <br><span style="font-size: 0.7em; line-height: 0.8;">Ref: Engineering cryogenic setups for 100-qubit scale superconducting circuit systems, DOI:10.1140/epjqt/s40507-019-0072-0
+                                        </span><br><br>
+                                    </p>
+                                
+
+                                    
+                                      <h3>技術門檻</h3>
+                                      
+                                      <table width="100%" border="1" cellpadding="10" cellspacing="0" style="border-collapse: collapse; font-family: sans-serif; border-color: #cccccc;">
+
+                                        
+                                    
+                                        <thead>
+                                            <tr bgcolor="#f2f2f2" align="center">
+                                                <th width="25%">關鍵挑戰 (Key Challenge)</th>
+                                                <th>說明 (Description)</th>
+                                            </tr>
+                                        </thead>
+                                    
+                                        <tbody>
+                                            <tr>
+                                                <td><b>讀出速度 (Speed)</b></td>
+                                                <td>讀出速度必須夠快，以支援需要即時條件反饋的量子演算法（如量子糾錯），並最大化單位時間內可執行的邏輯閘數量。</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>多路復用 (Multiplexing)</b></td>
+                                                <td>開發高效的多路復用技術，利用單一讀出鏈路就能同時、獨立地測量大量量子位元的狀態，這是系統擴展的基礎。</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>量子極限放大 (Quantum-Limited Amplification)</b></td>
+                                                <td>放大鏈路中的第一級放大器必須是量子極限的 (Quantum-Limited)，即其增加的雜訊量達到海森堡不確定性原理所規定的物理下限，以保護微弱的量子訊號。</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>串擾 (Crosstalk)</b></td>
+                                                <td>將測量串擾降至最低。讀出目標量子位元的微波脈衝不應意外地影響或改變鄰近量子位元的頻率或狀態。</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>測量產生的反作用(Backaction)</b></td>
+                                                <td>處理測量的反作用。標準的投影式測量會摧毀量子疊加態，因此需發展量子非破壞性 (Quantum Non-Demolition, QND) 測量技術，以在不破壞特定量子態的情況下獲取資訊。</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>可擴展性與集成性 (Scalability & Integration)</b></td>
+                                                <td>讀出架構的設計必須能夠隨著量子處理器 (QPU) 的規模擴展，並與複雜的低溫佈線和封裝緊密、高效地集成。</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>系統性誤差 (Systematic Errors)</b></td>
+                                                <td>隨著量子位元數量增加，測量系統中的微小誤差（如訊號失真、時序抖動）會累積並放大，成為限制整體計算保真度的瓶頸。</td>
+                                            </tr>
+                                        </tbody>
+                                    
+                                    </table>
+                                      <p  class="dark-background">
+                                        讀出系統的發展與QPU和控制系統的發展緊密相連。實現高保真度、快速且可擴展的讀出是實用量子計算的關鍵。TWPA等寬帶量子放大器的出現，為解決大規模量子位元系統的多路復用讀出問題提供了有希望的途徑。
+                                      </p>
+</section>
+
+<section class="qh-source-chapter">
+  <h3>教材深挖 4：控制電子系統</h3>
+  <p class="qh-source-note">整合自既有 Insight iHBAR 教材：QC_hardware/G.html</p>
+  <p class="qh-source-plain">控制電子系統負責將演算法指令轉換為施加到量子位元上的物理訊號。對於超導量子位元，這通常涉及產生具有特定頻率、幅度、相位和持續時間的微波脈衝。這些脈衝的精度極高，通常達到奈秒甚至更短的時間尺度。控制系統還必須能夠同步操作多個量子位元，並可能包含即時反饋和校準算法。一個高效的量子控制系統必須滿足以下多個嚴苛的需求： 操控量子態: 產生精確定時、定形、定幅和定相的微波脈衝信號。這些脈衝作用於量子位元，驅動其在布洛赫球(Bloch sphere)上進行旋轉，從而實現量子態的初始化、疊加態製備、量子邏輯閘操作(如單量子位元旋轉閘 Hadamard， X， Y， Z 和兩量子位元糾纏閘 CNOT， CZ)以及執行完整的量子算法序列。 讀出量子態: 量子計算結束時，需要測量每個量子位元的最終狀態(是\( \ket{0} \)還是\( \ket{1} \))。這通常通過向與量子位元耦合的讀出諧振腔發送一個探測微波脈衝，並測量透射或反射信號的相位和幅度變化來實現。由於讀取信號非常微弱(單光子量級)，需要低雜訊放大器將其放大到可檢測水平，然後由電子設備進行採集和數字化處理。 低延遲與實時反饋 (Low Latency &amp; Real-time Feedback): 許多先進的量子協議，如量子糾錯 (QEC)、動態校準 (dynamic calibration) 和主動重置 (active reset)，都極度依賴此能力。控制系統必須具備根據中間測量結果，在極短的延遲內（通常為數百奈秒）完成古典計算，並即時調整後續的脈衝序列或發出反饋操作。整個反饋迴路必須在量子位元的相干時間內完成，以有效修正錯誤或補償系統漂移，這對控制系統的處理速度和反應能力提出了嚴格要求。 多通道同步 (Multi-channel Synchronization): 一個大型量子處理器包含數十至數百個量子位元，所有的多量子位元操作都依賴於各個控制和讀取通道之間的高度協調。因此，控制系統必須能夠精確地同步生成與採集所有通道的訊號，確保所有操作的一致性與時序準確性。 可擴展性 (Scalability): 隨著量子位元數量增加，所需的控制通道數量也隨之劇增，這對控制系統的物理尺寸、成本和整體複雜性都提出了巨大挑戰。一個理想的控制系統架構，必須能夠支持平滑擴展 (smooth scaling)，以適應未來更大規模量子處理器的需求，而不會導致成本或系統管理的複雜度呈指數級增長。 高精度與穩定性 (High Precision and Stability): 所有施加在量子位元上的控制脈衝，其各項參數——包含波形 (shape)、時序 (timing)、頻率 (frequency)、幅度 (amplitude) 與相位 (phase)——都必須極其精確且穩定。任何微小的偏差都可能導致量子操作的錯誤累積，從而降低量子閘的保真度。其中，時間精度通常要求達到奈秒 (ns) 甚至皮秒 (ps) 的等級。此外，不同通道間的脈衝也必須高度同步，以確保多量子位元操作的準確性。 頻寬： 需要足夠的頻寬來產生快速的脈衝邊緣和複雜的波形。 低雜訊： 控制訊號中的雜訊會直接影響量子位元的相干性和操作保真度。 低溫整合（Cryo-CMOS）： 將部分控制電子（特別是靠近QPU的部分）整合到低溫環境中，可以顯著減少從室溫到QPU的佈線數量，降低熱負載，並減少訊號延遲和失真。然而，在極低溫下設計和運行複雜的CMOS電路本身就是一個巨大的技術挑戰，包括元件性能變化、功耗管理和散熱等。 軟體整合與校準： 控制硬體需要與高層軟體緊密整合，並需要複雜的自動化校準程序來優化脈衝參數並補償硬體缺陷。 控制電子系統正從使用通用實驗室儀器向專用化、整合化和低溫化方向發展。Cryo-CMOS技術被認為是解決大規模量子電腦控制瓶頸的關鍵途徑之一，它有望將控制功能更靠近量子位元，從而提高性能並降低系統複雜性。然而，這也意味著控制系統的設計必須與QPU和低溫系統的設計更加緊密地耦合。 為了滿足上述需求，現代量子控制系統通常整合了以下關鍵硬體： 任意波形產生器(Arbitrary Waveform Generators， AWGs): 這是產生控制脈衝的核心。高性能 AWG 能夠以極高的時間分辨率(取樣率達 GSa/s)和幅度分辨率(如16位)生成使用者定義的任意複雜波形。通常具有多個輸出通道，並支持觸發和序列播放功能。這些波形經過上變頻後驅動量子位元。AWG透過優化時間波形，可以解決相干控制、量子糾纏操控等應用中的技術問題。 FPGA(Field-Programmable Gate Arrays， 現場可程式化邏輯閘陣列): FPGA 是實現實時控制邏輯的關鍵。它們被編程來執行高速的脈衝序列生成、參數計算、條件分支、觸發管理、數據採集與處理、以及與其他儀器的同步。 因其可重構性、並行處理、和低延遲特性，使其非常適合量子控制的實時性要求。 FPGA在量子計算中用於接口和控制硬體，執行量子糾錯、量子位元控制和數據處理等複雜任務。它們在混合量子-古典計算系統中尤其有價值。 數位/類比轉換器 (DACs/ADCs): 數位類比轉換器(Digital-to-Analog Converters， DACs): 將FPGA或AWG 輸出的數字波形數據轉換為模擬電壓信號。其分辨率和速度直接影響控制脈衝的精度。 類比數位轉換器(Analog-to-Digital Converters， ADCs): 將來自量子位元的經過放大的模擬讀取信號轉換為數字數據，供FPGA或後續處理單元分析。其取樣率和分辨率決定了讀取速度和精度。 射頻/微波源與混頻器 (RF/Microwave Sources &amp; Mixers)： 產生微波載波訊號，並與AWG輸出的基帶脈衝進行混頻（IQ調製），以產生在量子位元共振頻率上的控制脈衝。 上/下變頻模組 (Up/Down-conversion Modules): 由於AWG 通常產生的是基帶或中頻(IF)信號，需要使用混頻器(Mixers)和電子振盪器(Local Oscillators， LO)將這些信號上變頻(Up-conversion)到量子位元操作所需的千兆赫茲(GHz)微波頻段。 同樣，讀取時需要將來自量子位元的 GHz 信號下變頻(Down-conversion) 到ADC 可以處理的頻率。這些模組的雜訊性能和線性度非常重要。 量子控制電子設備領域正在經歷快速演進，體現出三大關鍵趨勢。 首先，控制系統正從早期依賴通用儀器拼湊組合的方式，轉變為採用專門設計、高度整合的量子控制平台。 在量子計算研究的初期階段，研究人員通常使用市面上可獲得的通用 AWG、DAC/ADC、信號源等儀器來搭建控制系統。 傳統的測試測量儀器公司如 Keysight Technologies、Rohde &amp; Schwarz等也在提供適用於量子研究的高頻 AWG、VNA 和信號分析儀等單個儀器。 然而，隨著量子位元數量的增加和量子算法複雜性的提升，管理和同步大量離散儀器變得極其困難，成為系統擴展和性能提升的瓶頸。 更重要的是，量子計算對控制系統提出了特殊要求，例如超低延遲的實時反饋、複雜的條件邏輯執行以及皮秒級的跨通道同步，這些很難用標準的現成儀器高效實現。 這種需求推動了 Quantum Machines、Qblox、Zurich Instruments、SpinQ 等專業供應商的崛起，他們開發出整合了AWG、數字化儀、FPGA 處理單元以及專用控制軟體和韌體(如QM的QUA 語言 或ZI的LabOne Q框架)的整體解決方案。 這些專用平台大大簡化了實驗室的系統搭建和編程工作，並使執行更複雜、更依賴實時響應的量子協議成為可能。 其次，將實時古典計算能力(通常基於FPGA 或GPU處理器)直接整合到控制迴路中，正變得日益重要，甚至是不可或缺。 這對於實現量子糾錯、動態校準等高級應用尤為關鍵。 量子態極其脆弱，且控制參數會隨時間漂移。量子糾錯方案要求系統能夠快速測量輔助量子位元的狀態(稱為 syndrome)，進行經典的解碼計算以判斷發生了何種錯誤， 然後迅速將對應的修正操作應用到數據量子位元上，整個過程必須在量子位元的相干時間內完成。 同樣，動態校準也需要在實驗過程中實時測量量子位元的參數(如頻率漂移)，並即時調整控制脈衝的參數加以補償。 這些任務都需要在奈秒到微秒的時間尺度內完成大量的古典計算和決策。因此，現代控制系統的核心是強大的 FPGA 或專用處理器，甚至開始探索與 GPU 等高性能計算單元的緊密整合(如NVIDIA DGX Quantum)， 將古典計算能力盡可能地靠近量子硬體，實現低延遲的實時處理。這一趨勢標誌著量子計算正走向一種硬體層面深度融合的混合量子-古典計算架構。 另一個前沿方向是低溫整合 (Cryo-CMOS)，即將部分控制電子整合到低溫環境中，以解決大規模量子電腦的佈線瓶頸，降低熱負載和訊號延遲。 然而，這也意味著控制系統的設計必須與 QPU 和低溫系統的設計更加緊密地耦合。 總體來看，現代量子控制系統的發展趨勢是整合化、模組化和軟體定義化。供應商傾向於提供包含硬體和配套軟體(韌體、API、高級編程框架)的完整解決方案，以簡化系統整合和實驗編程。系統架構越來越強調實時處理能力和低延遲反饋，以支持更高級的量子計算協議和糾錯需求。 供應商 供應商 (Supplier) 系統/主要產品 核心技術 主要特點 (Key Features) 目標應用 Quantum Machines (QM) (以色列) OPX+/OPX1000 Processor-based (HPU/FPGA) 極低的實時反饋延遲(約 224ns)，強大的脈衝級編程語言 QUA，將實時序列生成、測量處理和古典計算緊密集成，易於擴展。 通用量子控制, 量子糾錯(QEC), 實時反饋, AI輔助校準 NVIDIA / QM (美國/以色列) DGX Quantum GPU + QM OPX (Processor-based) 整合高性能古典計算(GPU)與量子控制，實現低延遲的混合量子-古典計算架構。 QEC, AI輔助量子算法/校準, 混合計算 Qblox (荷蘭) Cluster System FPGA-based, Modular 模組化設計，透過高速同步協議(SYNQ/LINQ)確保皮秒級同步；支持高達 18.5 GHz 的直接微波合成，架構易於擴展至數百量子位元。 超導、自旋、NV色心等各類量子位元的控制與讀取 Zurich Instruments (ZI) (瑞士) QCCS (HDAWG, UHFQA, PQSC) FPGA-based, Multi-instrument 提供完整儀器套件，具高通道密度、低觸發延遲(&lt;50ns)，以及強大的 LabOne Q Python 框架，實現多儀器精密同步。 通用量子控制, 核磁共振(NMR/EPR), 半導體測試 SpinQ (本源量子) (中國) SPINQ QCM System FPGA-based, Modular 支持4-8 GHz頻段，提供開放API和自動化校準軟體，旨在提供高性價比的解決方案。 超導量子位元控制、測量與校準 Keysight (美國) AWGs, VNAs, Signal Analyzers 通用儀器技術 提供高性能、高精度的單項測試與測量儀器。 基礎量子研究, 元件特性分析 Rohde &amp; Schwarz (德國) Signal Generators, Analyzers 通用儀器技術 提供各類可用於量子控制與訊號分析的相關測試與測量設備。 基礎量子研究, 元件特性分析 供應商與產品範例 產品圖例 (圖片皆取自官網) Quantum Machines OPX1000 NVIDIA Grace Hopper Qblox Zurich Instruments Keysight</p>
+</section>
+
+</section>
+
+<section class="qh-full-lecture">
+  <span class="qh-time">95–110 分鐘</span>
+  <h3>案例／研討：如何建立從 readout tone 到 IQ cloud 的 signal/noise budget？ <span class="qh-concept-id">W6-CS1</span></h3>
+  <div class="qh-case">
+<h4>資料案例：從 IQ clouds 建立 assignment matrix</h4>
+<p>分別準備 \(\ket{0}\) 與 \(\ket{1}\)，重複取得 IQ samples。classifier 給出 \(P(0|0)=0.98\)、\(P(1|1)=0.93\)，則 assignment matrix 可寫為 \(\begin{pmatrix}0.98&0.07\\0.02&0.93\end{pmatrix}\)。不對稱可能來自 excited-state decay during readout、thermal population、state-preparation error 或 cloud overlap。只報平均 assignment fidelity 會把這些機制混在一起。</p>
+<p>若 measurement time 加長，integration SNR 最初改善，但 \(\ket{1}\) 在讀出途中 decay 的機率也增加。應掃 integration window 與 kernel，找出分類錯誤與 state transition 的平衡點。</p>
+</div>
+  <div class="qh-task">
+    <h4>課堂任務（8–10 分鐘）</h4>
+    <p>請畫出完整 readout chain，從 resonator 到 ADC 標出 attenuation/amplification、isolator/circulator、HEMT、room-temperature mixer 與 DSP。再選一個觀察到的 IQ cloud 變寬現象，列出三個可能來源與各自的診斷方法。</p>
+  </div>
+  <div class="qh-answer">
+    <h4>教師解答與評分依據</h4>
+    <p>量子端先由 dispersive interaction把 state 映射到場；輸出經隔離、低溫放大、HEMT 與室溫鏈路後 digitize。cloud 變寬可能是 amplifier noise、qubit frequency/readout drift、thermal/quantum transition 或 LO phase instability；可藉 bypass/noise calibration、時間切片、state-preparation reference 與 cross-channel correlation 區分。</p>
+    <p>答案不以是否使用特定名詞評分，而以是否建立「假設 → 可觀測量 → 區分實驗 → 決策」的閉環評分。學生若提出不同方案，只要能明確指出代價與可否證條件，即可成立。</p>
+  </div>
+</section>
+
+<section class="qh-full-lecture">
+  <span class="qh-time">110–120 分鐘</span>
+  <h3>整合／驗收：Readout speed、fidelity 與 backaction 應如何共同驗收？ <span class="qh-concept-id">W6-C5</span></h3>
+  <p><strong>W6-C5：Frequency allocation 與 architecture overview。</strong>多 qubit 晶片需要仔細安排 qubit frequencies、resonator frequencies 與 coupler frequencies。若頻率配置不當，可能出現 unwanted resonance、frequency collision、leakage channel 或 readout crosstalk。每個 qubit 通常需要一條或多條 drive lines、flux line、一個 readout resonator、與鄰近 qubits 的耦合結構。Control、interaction 與 readout 不能被視為彼此獨立的功能，超導量子電路架構的設計是一個多目標最佳化問題。</p>
+  <p><strong>Exit ticket：</strong></p>
+  <ol>
+    <li>本週最重要的一條 equation／model 是什麼？它的適用近似為何？</li>
+    <li>哪一個看似局部的參數，實際會跨越 device、control 與 system 三層？</li>
+    <li>若只能做一個新實驗，什麼結果最能改變目前的 architecture decision？</li>
+  </ol>
+  <p><strong>Outgoing bridge to W7：</strong>W7 將建立 calibration dependency graph 並追蹤 drift。學生需要帶著 readout chain 的理解、fidelity 的定量關係、以及 chi/kappa/Purcell trade-off 進入 W7 的 Hamiltonian identification。</p>
+</section>
+<!-- QH_FULL_LECTURE_END -->
+
+<!-- Preserved v2 source: quantum sensing/metrology (not part of W6 timed teaching) -->
+<section class="qh-source-chapter">
+  <h3>教材深挖 5：量子測量</h3>
+  <p class="qh-source-note">整合自既有 Insight iHBAR 教材：Q_Tech/G.html</p>
+  <h3>
+                                        技術原理與背景
+                                    </h3>
+                                    <p>
+                                        量子測量（也稱量子感測與計量）是指利用量子力學效應提高測量精度和靈敏度的技術與方法。傳統測量受限於經典物理的極限，例如電路噪聲、熱噪聲等；而量子測量希望利用如**量子糾纏**、**疊加**和**壓縮態**等量子現象，突破這些限制。根據量子力學，測量一個物理量的極限不確定度（噪聲下限）可以因為使用特殊的量子態而降低，例如利用光場的壓縮真空態可以壓低一個正交分量的噪聲，從而超越經典“射頻光子噪聲極限”。此外，糾纏態感測器陣列可以實現超越獨立感測器平均的精度提升（Heisenberg極限，相較於經典感測的√N提升更快）。常見的量子測量包括原子鐘、量子磁力計、量子加速度計、量子雷達、干涉式重力計等。
+                                    </p>
+                                    <p>
+                                        量子測量的核心在於巧妙地準備一個對目標參數高度敏感的量子態，經過與被測參數的相互作用後，通過測量態的變化來推斷參數值。例如，原子鐘利用原子或離子的兩個能階之間的躍遷頻率作為時間標準，由於量子態演化的高穩定性，可以比傳統石英鐘準確數個數量級。再如量子磁力計常採用鍺原子氣體的自旋預測進行磁場感測，量子態的相位受外界磁場影響，通過干涉即可測得極微弱的磁場。量子測量理論還討論測量的極限，如量子克拉美-饒(lower bound)及量子費雪資訊等概念，用以描述在給定量子態下可達到的最優估計精度。
+                                    </p>
+                                    <h3>
+                                        目前的技術進展與實作方式
+                                    </h3>
+                                    <p>
+                                        量子測量/感測是量子技術中相對較為成熟的一支，一些實用裝置已經出現或正在開發中。最知名的例子是**原子鐘**：傳統銫原子鐘已運行數十年，而近年的光鐘（使用光頻躍遷，如鍶-光晶格鐘）精度更是達到驚人的$10^{-18}$量級，即在3億年內誤差不超過1秒。DARPA等機構還推動開發<strong>晶片級原子鐘</strong>（如ACES計畫），讓原子鐘小型化到可穿戴/可移動的程度。原子鐘的改進直接帶動GPS導航、電信同步等行業的效能提升。
+                                    </p>
+                                    <p>
+                                        在**量子磁力計**方面，利用冷原子、自旋陀螺儀或NV中心（金剛石氮-空位色心）的裝置，已實現對極微弱磁場（如人腦神經電流產生的femtotesla量級磁場）的測量。其中以NV中心為基礎的磁力顯微鏡可以在室溫操作，並提供奈米級空間解析度，被應用於觀測材料中的磁疇結構、生物分子標記等。光泵原子磁力計在醫學上則被用來取代超導量子干涉儀(SQUID)測量腦磁圖，裝置更簡便且不需液氦冷卻。
+                                    </p>
+                                    <p>
+                                        **量子加速度計/重力計**是另一活躍領域。基於冷原子幹涉儀的重力梯度儀已達到商用水平，美國的AOSense公司與NASA合作開發的量子重力梯度儀可以利用原子干涉來繪製局部引力場分佈，用於地下資源勘測或隱蔽目標探測。英國和法國的研究團隊也演示了車載的冷原子重力計原型，可在移動中量測地質構造。在導航方面，結合量子加速度計和量子陀螺儀有望提供無GPS依賴的高精度慣性導航系統。目前有多家歐洲初創如Quantum Navigation公司致力於此。
+                                    </p>
+                                    <p>
+                                        **量子雷達**（或稱量子illumination）利用糾纏光子提高雷達對低截面目標的偵測性能。理論上，量子雷達的訊噪比可達傳統雷達的4倍。中國、加拿大等國有進行量子雷達樣機的研製。不過，因為實際隱形目標的雷達截面複雜且干擾因素多，量子雷達能否真正帶來顛覆性優勢仍有待實測評估。
+                                    </p>
+                                    <p>
+                                        最後值得一提的是**量子計量標準**的進展。量子計量將基本物理常數引入國際單位制SI中——例如2019年起秒的定義以銫原子躍遷頻率為基礎，千克的定義改以普朗克常數固定值為基礎（透過量子電磁現象實現）。這些改變彰顯量子現象已成為人類最準確測量的根本。可以說，量子測量技術正悄然滲透到我們計量體系與高科技應用的方方面面。
+                                    </p>
+                                    <h3>
+                                        應用領域與實際用途
+                                    </h3>
+                                    <p>
+                                        量子測量技術的高精度特性，使其在多個領域有重要應用。首先在<strong>國防與安全</strong>上，精密的原子鐘和量子慣性導航可用於戰略武器或潛艇導航，避免對GPS的依賴；高靈敏磁場感測器可用於偵測隱蔽目標（如水下潛艇的磁簽）；量子重力梯度儀則可用於地下空洞或隧道探測。在<strong>地質與資源勘察</strong>中，量子重力計能比傳統重力計更快感知重力異常，用於油礦探勘或地震監測。在<strong>醫學成像</strong>領域，原子磁力計正嘗試用於腦磁圖（MEG），希望替代昂貴笨重的傳統技術，使得腦功能成像更普及。量子光學傳感器（比如基於壓縮光的干涉儀）則有機會應用於生物成像，降低光對樣品的擾動。
+                                    </p>
+                                    <p>
+                                        在<strong>時間頻率傳遞</strong>方面，擁有更精確的原子鐘也意味著可建立更精準的時間同步網路，用於金融高頻交易時間戳、電網同步等。特別是當量子鐘小型化後，可裝設於通信基站或伺服器機房，提供獨立於GPS的高精度時間源。在<strong>科研</strong>上，量子測量裝置是探索前沿物理的利器。例如利用原子干涉測試等效原理、檢驗引力理論，用超高精度光譜測量尋找物理常數隨時間漂移的跡象等。
+                                    </p>
+                                    <p>
+                                        整體而言，量子測量瞄準的是所有需要極致精度的場合。雖然一般日常應用對精度要求沒那麼高，但在尖端科技和產業中，測量精度的每一點提升都可能帶來質的飛躍。因此量子測量技術一方面服務於國防戰略等關鍵領域，另一方面也將隨著成本降低逐步下放，如高精度導航終端、醫療檢測設備等走入民用市場。
+                                    </p>
+                                    <h3>
+                                        當前挑戰與未來發展趨勢
+                                    </h3>
+                                    <p>
+                                        量子測量裝置要廣泛應用，仍需克服一些瓶頸。首先是**環境穩定性和可攜性**：許多高精度量子感測器對環境條件要求嚴苛，例如原子干涉儀需要在實驗室裡隔震運行，冷原子設備需要激光和真空系統，這些都限制了外場部署。為了解決這點，研究者正努力縮小系統尺寸並提高抗干擾能力，比如利用微機電系統(MEMS)技術製造小型真空腔或激光晶片。其次，**資料讀出與解讀**也是挑戰。量子感測器往往輸出大量高頻數據，需要即時的處理和濾波，以從中提取有意義的信號，這對電子硬體和演算法都提出要求。
+                                    </p>
+                                    <p>
+                                        另一層面，**標準化與認證**也是量子測量走向產業的必經過程。以原子鐘為例，各國計量院需要對新型光鐘進行比對認證，才能取代舊的銫鐘成為新的標準。對於醫療磁測設備，則需要經過臨床試驗和監管批准。這些過程都需要時間和努力。在量子雷達等軍事應用上，目前也缺乏公開的測試數據來證實其優越性。
+                                    </p>
+                                    <p>
+                                        展望未來，量子測量技術很可能與AI、自動控制等技術結合。例如使用機器學習來分析量子傳感器信號，濾除雜訊或辨識模式；或者用量子網絡將分散的感測器連接，構成協同的感測陣列，提高精度和覆蓋範圍（所謂的量子分散式感測）。一個值得關注的趨勢是多種量子感測器的集成，例如將原子鐘、加速度計、磁力計組成一個多功能量子探測平台，提供全面的信息感知。
+                                    </p>
+                                    <p>
+                                        總之，量子測量雖然低調但意義重大。根據Frost & Sullivan的分析，量子技術未來將催生超高靈敏度的感測器、原子鐘、通信與成像設備，徹底改變國防、安全、工業與醫療市場。隨著技術日益成熟、成本下降，我們有理由相信，量子測量設備將從實驗室走向更廣闊的天地，在未來的高科技基礎設施中扮演不可或缺的角色。
+                                    </p>
+                                    <h3>
+                                        相關研究機構、公司或產品
+                                    </h3>
+                                    <p>
+                                        量子測量/感測領域聚集了眾多頂尖的物理實驗室和創新公司。在時間頻率領域，美國<strong>國家標準技術研究院 (NIST)</strong> 的時間頻率分部、法國<strong>國家時間實驗室 SYRTE</strong>、日本<strong>情報通信研究機構 (NICT)</strong>等都在競逐開發新一代光鐘。商業方面，美國的 <strong>Microsemi (Microchip)</strong> 公司販售高性能原子鐘產品，瑞士<strong>Oscilloquartz</strong>等提供小型原子鐘以應用於電信。此外歐盟有頻率比對專案將多台光鐘通過光纖連網，比對精度達到10<sup>-18</sup>量級，這本身也是一種量子測量的應用。
+                                    </p>
+                                    <p>
+                                        量子磁力計和慣性感測方面，開發NV中心傳感的有如<strong>Qnami</strong>（瑞士）等初創公司，已推出基於NV探針的磁場成像裝置。美國的<strong>AOSense</strong> 公司是冷原子干涉儀應用的先鋒，產品線涵蓋原子慣導、重力計等。英國有<strong>M Squared</strong>公司與多所大學合作研製量子冷原子感測器，他們演示的便攜式重力計原型獲得廣泛關注。<strong>Boeing</strong> 和<strong>Lockheed Martin</strong> 等大型航太公司也對量子感測展現興趣，投入研究經費希望在下一代導航和探測系統中搶占先機。
+                                    </p>
+                                    <p>
+                                        在醫療方面，德國的 <strong>QuSpin</strong> 公司生產可放置於房間溫度環境的光泵原子磁計，用於腦磁圖試驗；澳洲的<strong>Quantum Brilliance</strong> 則開發基於鑽石量子色心的小型量子傳感器，聲稱未來可用於可穿戴醫療裝置。在量子雷達領域，加拿大<strong>國家研究委員會 (NRC)</strong>、中國電子科技集團等都有相關計畫。值得一提的是，各國國防部門普遍對量子感測抱以很大期望，因為它們多數不需要長期維護且抗干擾能力強，可以用於一些關鍵環境。
+                                    </p>
+                                    <p>
+                                        總體而言，量子測量的研發版圖橫跨學術與產業。許多技術起源於大學或國家實驗室，隨後透過初創公司或技術轉移推向應用。例如，牛津大學的研究衍生出 <strong>Oxford Quantum Circuits</strong> 公司（部分專注於量子射頻傳感），麻省理工的研究人員創辦了 <strong>Atom Computing</strong> 公司（開發原子陣列量子技術，包括感測）。各國的量子國家計畫也都將量子感測列為重點資助方向之一（例如美國國防預研局DARPA的量子感測專項）。可以預見，隨著技術突破和應用需求驅動，量子測量相關的產品和公司將在未來數年持續增加，形成新的高科技產業鏈。
+                                    </p>
+</section>
+
+
+  <section class="module">
+    
+<div class="qh-section">
+  <h3>進階主線：Readout 是 quantum-to-classical transduction</h3>
+</div>
+<div class="equation-card"><p>\[H_{\rm JC}/\hbar=\omega_ra^\dagger a+\frac{\omega_q}{2}\sigma_z+g(a^\dagger\sigma_-+a\sigma_+)\]</p></div>
+<p>在 \(|\Delta|=|\omega_q-\omega_r|\gg g\) 時，Schrieffer–Wolff transformation 給出 dispersive shift，resonator frequency 依 qubit state 改變。可分辨度取決於 pointer-state separation、integration time、added noise 與 state transition。</p>
+<p>提高 photon number 可增加 SNR，卻可能造成 measurement-induced dephasing、state transition／ionization；增大 \(\kappa\) 可加快 readout，卻提高 Purcell decay。Multiplexing 再加入 dynamic range、collision 與 amplifier saturation。</p>
+
+  </section>
+  <section class="module">
+                                      <div class="qh-section">
+                                        <h3>五、單元 4：量子態讀出與 Readout Resonator</h3>
+                                      </div>
+                                  
+                                      <h4>4.1 Why Readout Is Needed</h4>
+                                      <p>
+                                        量子計算的輸入與演化可以保持在量子態中，但最終結果必須透過量測轉換為古典資訊。
+                                        在超導量子計算中，qubit 狀態通常不會被直接量測，而是透過與 readout resonator 的交互作用，
+                                        將 qubit 狀態轉換成微波訊號的相位或振幅變化。
+                                      </p>
+                                  
+                                      <p>
+                                        Readout resonator 通常是一個微波共振腔，例如 coplanar waveguide resonator 或 lumped-element resonator。
+                                        它與 qubit 電容耦合，並與 readout line 相連。當微波探測訊號經過 resonator 時，
+                                        resonator 的響應會依賴 qubit 處於 \(\ket{0}\) 或 \(\ket{1}\)。
+                                      </p>
+                                  
+                                      <h4>4.2 Qubit-Resonator System</h4>
+                                      <p>
+                                        一個 qubit 與 resonator 的耦合系統可由 Jaynes–Cummings Hamiltonian 描述：
+                                      </p>
+                                  
+                                      <div class="equation">
+                                        <p>\[
+                                        \hat{H}_{\mathrm{JC}}
+                                        =
+                                        \hbar\omega_r \hat{a}^{\dagger}\hat{a}
+                                        +
+                                        \frac{\hbar\omega_q}{2}\hat{\sigma}_z
+                                        +
+                                        \hbar g
+                                        \left(
+                                        \hat{a}^{\dagger}\hat{\sigma}_-
+                                        +
+                                        \hat{a}\hat{\sigma}_+
+                                        \right)
+                                        \]</p>
+                                      </div>
+                                  
+                                      <p>
+                                        其中：
+                                      </p>
+                                  
+                                      <ul>
+                                        <li>\(\omega_r\)：readout resonator frequency。</li>
+                                        <li>\(\omega_q\)：qubit transition frequency。</li>
+                                        <li>\(\hat{a}^{\dagger}\)、\(\hat{a}\)：resonator photon creation 與 annihilation operators。</li>
+                                        <li>\(g\)：qubit-resonator coupling strength。</li>
+                                        <li>\(\hat{\sigma}_+\)、\(\hat{\sigma}_-\)：qubit raising 與 lowering operators。</li>
+                                      </ul>
+                                  
+                                      <h4>4.3 Resonant vs. Dispersive Regime</h4>
+                                      <p>
+                                        若 qubit frequency 與 resonator frequency 接近，兩者可以交換能量。
+                                        但在實際量子讀出中，通常會將 qubit 與 resonator 設計在 dispersive regime：
+                                      </p>
+                                  
+                                      <div class="equation">
+                                        <p>\[
+                                        |\Delta| = |\omega_q - \omega_r| \gg g
+                                        \]</p>
+                                      </div>
+                                  
+                                      <p>
+                                        在這個 regime 中，qubit 與 resonator 不會直接交換能量，
+                                        但 qubit 狀態會改變 resonator 的有效共振頻率。
+                                        這正是 dispersive readout 的基礎。
+                                      </p>
+                                  
+                                      <h4>4.4 Dispersive Hamiltonian</h4>
+                                      <p>
+                                        在 dispersive approximation 下，Jaynes–Cummings Hamiltonian 可化為：
+                                      </p>
+                                  
+                                      <div class="equation">
+                                        <p>\[
+                                        \hat{H}_{\mathrm{disp}}
+                                        =
+                                        \hbar
+                                        \left(
+                                        \omega_r + \chi\hat{\sigma}_z
+                                        \right)
+                                        \hat{a}^{\dagger}\hat{a}
+                                        +
+                                        \frac{\hbar}{2}
+                                        \left(
+                                        \omega_q + \chi
+                                        \right)
+                                        \hat{\sigma}_z
+                                        \]</p>
+                                      </div>
+                                  
+                                      <p>
+                                        其中 \(\chi\) 是 dispersive shift。
+                                        這個 Hamiltonian 表示 resonator frequency 會依賴 qubit state：
+                                      </p>
+                                  
+                                      <div class="equation">
+                                        <p>\[
+                                        \omega_r^{\ket{0}} = \omega_r - \chi,
+                                        \qquad
+                                        \omega_r^{\ket{1}} = \omega_r + \chi
+                                        \]</p>
+                                      </div>
+                                  
+                                      <p>
+                                        因此，透過偵測從 resonator 反射或穿透的微波訊號相位，就可以判斷 qubit 比較可能處於
+                                        \(\ket{0}\) 或 \(\ket{1}\)。
+                                      </p>
+                                  
+                                      <h4>4.5 Readout Chain</h4>
+                                      <p>
+                                        超導量子位元的讀出訊號非常微弱，必須經過低雜訊放大與多級訊號處理。
+                                        典型 readout chain 包含：
+                                      </p>
+                                  
+                                      <ol>
+                                        <li>室溫 microwave source 產生 readout pulse。</li>
+                                        <li>Readout pulse 經由衰減器與濾波器進入低溫晶片。</li>
+                                        <li>Readout resonator 根據 qubit state 改變反射或穿透訊號。</li>
+                                        <li>訊號經由 circulator 或 isolator 導向 amplifier。</li>
+                                        <li>Quantum-limited amplifier 或 HEMT amplifier 放大訊號。</li>
+                                        <li>室溫電子儀器進行 downconversion、digitization 與 state discrimination。</li>
+                                      </ol>
+                                  
+                                      <h4>4.6 Readout Fidelity and Measurement-Induced Error</h4>
+                                      <p>
+                                        理想讀出應該快速、準確且不破壞非目標 qubit。
+                                        然而實際 readout 會受到多種誤差限制：
+                                      </p>
+                                  
+                                      <table>
+                                        <thead>
+                                          <tr>
+                                            <th>誤差來源</th>
+                                            <th>物理原因</th>
+                                            <th>可能影響</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr>
+                                            <td>Finite signal-to-noise ratio</td>
+                                            <td>放大器雜訊與有限量測時間</td>
+                                            <td>造成 \(\ket{0}\)、\(\ket{1}\) 判別錯誤</td>
+                                          </tr>
+                                          <tr>
+                                            <td>Relaxation during readout</td>
+                                            <td>量測期間 \(\ket{1} \rightarrow \ket{0}\)</td>
+                                            <td>降低 excited-state assignment fidelity</td>
+                                          </tr>
+                                          <tr>
+                                            <td>Purcell effect</td>
+                                            <td>Qubit 透過 resonator 向外部環境衰減</td>
+                                            <td>降低 \(T_1\)</td>
+                                          </tr>
+                                          <tr>
+                                            <td>Measurement-induced dephasing</td>
+                                            <td>Readout photons 攜帶 qubit state information</td>
+                                            <td>破壞 qubit coherence</td>
+                                          </tr>
+                                          <tr>
+                                            <td>Readout crosstalk</td>
+                                            <td>多個 resonators 或 readout lines 間的串擾</td>
+                                            <td>造成鄰近 qubit 的錯誤判讀</td>
+                                          </tr>
+                                        </tbody>
+                                      </table>
+                                  
+                                      <div class="learning-check">
+                                        <h4>學習檢核</h4>
+                                        <ol>
+                                          <li>為什麼超導 qubit 通常透過 readout resonator 間接讀出？</li>
+                                          <li>Jaynes–Cummings Hamiltonian 中的 \(g\) 代表什麼？</li>
+                                          <li>Dispersive regime 的條件是什麼？</li>
+                                          <li>Dispersive readout 如何將 qubit state 轉換成微波訊號？</li>
+                                          <li>Readout fidelity 可能受到哪些因素限制？</li>
+                                        </ol>
+                                      </div>
+                                    </section><section class="module">
+                                      <div class="qh-section">
+                                        <h3>六、單元 5：超導量子電路架構總覽</h3>
+                                      </div>
+                                  
+                                      <h4>5.1 From Qubit-Level Components to Circuit Architecture</h4>
+                                      <p>
+                                        一個完整的超導量子電路不只是許多 qubits 排列在晶片上。
+                                        它必須同時整合單量子位元控制、兩量子位元耦合、量子態讀出、頻率配置、微波佈線、
+                                        接地結構與封裝環境。
+                                      </p>
+                                  
+                                      <p>
+                                        在架構層次上，每個 qubit 通常需要：
+                                      </p>
+                                  
+                                      <ul>
+                                        <li>一條或多條 microwave drive lines，用於 single-qubit control。</li>
+                                        <li>可能需要 flux line，用於 tunable qubit 或 tunable coupler。</li>
+                                        <li>一個 readout resonator，用於 quantum state measurement。</li>
+                                        <li>與鄰近 qubits 或 couplers 的耦合結構。</li>
+                                        <li>與封裝、接地平面與 readout bus 相容的版圖配置。</li>
+                                      </ul>
+                                  
+                                      <h4>5.2 Frequency Allocation</h4>
+                                      <p>
+                                        多量子位元晶片需要仔細安排 qubit frequencies、resonator frequencies 與 coupler frequencies。
+                                        若頻率配置不當，可能出現 unwanted resonance、frequency collision、leakage channel 或 readout crosstalk。
+                                      </p>
+                                  
+                                      <table>
+                                        <thead>
+                                          <tr>
+                                            <th>頻率類型</th>
+                                            <th>設計考量</th>
+                                            <th>可能問題</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr>
+                                            <td>Qubit frequency</td>
+                                            <td>避免與鄰近 qubits 或 higher levels 撞頻</td>
+                                            <td>Frequency collision、leakage、unwanted swap</td>
+                                          </tr>
+                                          <tr>
+                                            <td>Readout resonator frequency</td>
+                                            <td>需彼此可分辨並避免與 qubit 太接近</td>
+                                            <td>Readout crosstalk、Purcell loss</td>
+                                          </tr>
+                                          <tr>
+                                            <td>Coupler frequency</td>
+                                            <td>需能調控 effective coupling</td>
+                                            <td>Residual ZZ、flux noise sensitivity</td>
+                                          </tr>
+                                          <tr>
+                                            <td>Drive frequency</td>
+                                            <td>需精準對準目標 transition</td>
+                                            <td>Off-resonant excitation、spectator error</td>
+                                          </tr>
+                                        </tbody>
+                                      </table>
+                                  
+                                      <h4>5.3 Control, Interaction, and Readout as a Unified System</h4>
+                                      <p>
+                                        Control、interaction 與 readout 不能被視為彼此獨立的功能。
+                                        在真實晶片中，一條控制線可能引入額外 loss；一個 readout resonator 可能造成 Purcell decay；
+                                        一個 tunable coupler 可能帶來 flux crosstalk；一個 fast gate 可能增加 leakage。
+                                        因此，超導量子電路架構的設計是一個多目標最佳化問題。
+                                      </p>
+                                  
+                                      <table>
+                                        <thead>
+                                          <tr>
+                                            <th>系統目標</th>
+                                            <th>需要最佳化的量</th>
+                                            <th>常見 trade-off</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr>
+                                            <td>快速控制</td>
+                                            <td>較大的 drive amplitude 與 coupling strength</td>
+                                            <td>可能增加 leakage 與 crosstalk</td>
+                                          </tr>
+                                          <tr>
+                                            <td>高 coherence</td>
+                                            <td>低損耗材料、弱環境耦合</td>
+                                            <td>可能降低控制與讀出速度</td>
+                                          </tr>
+                                          <tr>
+                                            <td>高讀出保真度</td>
+                                            <td>大 dispersive shift 與高 SNR</td>
+                                            <td>可能增加 Purcell loss 或 measurement-induced dephasing</td>
+                                          </tr>
+                                          <tr>
+                                            <td>可擴展性</td>
+                                            <td>規則化 layout、multiplexed readout、低串擾</td>
+                                            <td>可能限制個別 qubit 的最佳化空間</td>
+                                          </tr>
+                                        </tbody>
+                                      </table>
+                                  
+                                      <h4>5.4 Architecture Overview</h4>
+                                      <p>
+                                        一個簡化的 superconducting quantum circuit architecture 可以分成以下層次：
+                                      </p>
+                                  
+                                      <ol>
+                                        <li><strong>Qubit Layer：</strong>Transmon、Fluxonium 或其他超導量子位元。</li>
+                                        <li><strong>Coupling Layer：</strong>固定耦合器、bus resonator 或 tunable coupler。</li>
+                                        <li><strong>Control Layer：</strong>microwave drive line、flux bias line 與 pulse shaping electronics。</li>
+                                        <li><strong>Readout Layer：</strong>readout resonator、feedline、multiplexed readout 與 amplifier chain。</li>
+                                        <li><strong>Packaging Layer：</strong>chip package、wirebond、interposer、3D integration 與 electromagnetic shielding。</li>
+                                        <li><strong>Classical Control Layer：</strong>AWG、LO、mixer、ADC、FPGA 與 control software。</li>
+                                      </ol>
+                                  
+                                      <div class="note">
+                                        <h4>核心觀念</h4>
+                                        <p>
+                                          超導量子計算不是單一元件技術，而是一個全系統工程問題。
+                                          一個量子閘的品質，取決於 qubit 設計、控制波形、耦合架構、讀出鏈、封裝環境與校準流程的共同表現。
+                                        </p>
+                                      </div>
+                                    </section>
+  <section class="module">
+    <div class="qh-section">
+      <h3>課堂整合與驗收</h3>
+    </div>
+    <p><strong>研討問題：</strong>畫出從 readout tone 到 IQ cloud 的 signal budget，標出每一級的 gain/loss、noise、bandwidth 與 backaction。</p>
+    <p><strong>完成條件：</strong>學生必須留下可檢查的推導、關係圖、比較表或 architecture decision，並能說明其物理假設與工程代價。</p>
+  </section>
+  <section class="module">
+    <div class="qh-section">
+      <h3>核心與延伸閱讀</h3><ul class="qh-reading"><li><a href="https://arxiv.org/abs/2005.12667" target="_blank" rel="noopener">Circuit Quantum Electrodynamics</a><span>A. Blais et al., Reviews of Modern Physics 93, 025005 (2021).</span><em>Jaynes–Cummings、dispersive regime、讀出與環境耦合。</em></li><li><a href="https://doi.org/10.1063/1.5089550" target="_blank" rel="noopener">A Quantum Engineer&#x27;s Guide to Superconducting Qubits</a><span>P. Krantz et al., Applied Physics Reviews 6, 021318 (2019).</span><em>控制、coherence、readout 與工程參數的主幹 review。</em></li><li><a href="https://arxiv.org/abs/1806.07862" target="_blank" rel="noopener">Engineering Cryogenic Setups for 100-Qubit Scale Superconducting Circuit Systems</a><span>S. Krinner et al., EPJ Quantum Technology 6, 2 (2019).</span><em>drive、flux、output lines 的熱負載與工程設計。</em></li><li><a href="https://research.google/pubs/analogmixed-signal-integrated-circuits-for-quantum-computing/" target="_blank" rel="noopener">Analog/Mixed-Signal Integrated Circuits for Quantum Computing</a><span>J. C. Bardin, IEEE BCICTS (2020).</span><em>百萬通道尺度下的控制電子與 cryogenic electronics 問題。</em></li></ul>
+    </div>
+  </section>
+</section>
+
+
+                                <div class="post-meta">
+                                    <span class="post-author">
+                                        <a href="../About/Wang.html"><img class="img-res" src="../WebP/IMG_0964_2.webp" alt="">王培儒</a>
+                                    </span>
+                                    <span class="post-category">
+                                        <a href="../SCQ_advanced/main.html"><i class="fa fa-folder" aria-hidden="true"></i>PHYS598500</a>
+                                    </span>
+                                </div><!-- /.post-meta -->
+                            
+                                <div id="prev-next-nav" class="text-center">
+                                    <a class="btn btn-gray" href="T3-5.html">← 上一頁</a> 
+                                    <a class="btn btn-gray" href="T4-7.html">下一頁 →</a>
+                                </div>
+
+                                
+
+                            </div><!-- /.post-content -->
+                        </article><!-- /.blog-post -->
+                        <!--<div id="PostComments" class="post-comments">
+                            
+                            
+                            
+                        </div> /#PostComments -->
+                        <!--<div class="respond">
+                            <h3>Post a Comment</h3>
+                            <form class="form-horizontal">
+                                <input class="form-control" type="text" placeholder="Your Name*" required>
+                                <input class="form-control" type="email" placeholder="Your Email" required>
+                                <textarea class="form-control form-control-comment" type="text" placeholder="Your Comment*" required></textarea>
+                                <button class="btn btn-green">Add a comment</button>
+                            </form>    
+                        </div> /.respond -->
+                    </div>
+                    <aside class="col-md-3">
+                        <div class="sidebar">
+                            <div class="widget">
+                                <div id="lesson-list_2">
+                                <div class="lesson-link "><a href="main.html">QH-2026F v5 · 16週總覽</a></div>
+                                <div class="lesson-link "><a href="T1-1.html">Week 1 · 從量子計算模型到硬體操作</a></div>
+                                <div class="lesson-link "><a href="T2-2.html">Week 2 · 超導電路量子化與 Transmon 設計</a></div>
+                                <div class="lesson-link "><a href="T2-3.html">Week 3 · Fluxonium：從電路改造到設計取捨</a></div>
+                                <div class="lesson-link "><a href="T3-4.html">Week 4 · 單量子位元控制：從微波脈衝到旋轉座標</a></div>
+                                <div class="lesson-link "><a href="T3-5.html">Week 5 · 耦合 Hamiltonian、兩量子位元閘與 Tunable Coupler</a></div>
+                                <div class="lesson-link active"><a href="T3-6.html">Week 6 · Circuit QED、Dispersive Readout 與量測鏈</a></div>
+                                <div class="lesson-link "><a href="T4-7.html">Week 7 · 量子處理器校準：Hamiltonian Identification 與 Drift</a></div>
+                                <div class="lesson-link "><a href="T4-8.html">Week 8 · Benchmarking、多量子位元誤差與可擴展校準</a></div>
+                                <div class="lesson-link "><a href="T4-9.html">Week 9 · 量子錯誤校正基礎：從物理誤差到 Stabilizer Syndrome</a></div>
+                                <div class="lesson-link "><a href="T4-10.html">Week 10 · Surface-Code Hardware Cycle：排程、解碼與 Logical-Qubit 資源</a></div>
+                                <div class="lesson-link "><a href="T5-11.html">Week 11 · Dilution Refrigerator、熱化與低溫線路預算</a></div>
+                                <div class="lesson-link "><a href="T5-12.html">Week 12 · 微波控制、讀出電子與訊號完整性</a></div>
+                                <div class="lesson-link "><a href="T5-13.html">Week 13 · 封裝、EM Modes、佈線擴展與全系統整合</a></div>
+                                <div class="lesson-link "><a href="T6-14.html">Week 14 · 超導量子晶片製程與 Josephson Junction Process Module</a></div>
+                                <div class="lesson-link "><a href="T6-15.html">Week 15 · Materials Loss、製程變異、Yield 與 Design–Fab–Measure Loop</a></div>
+                                <div class="lesson-link "><a href="T7-16.html">Week 16 · 前沿架構與 Hardware-Aware Quantum System Capstone</a></div>
+                                </div>
+                            </div>
+                        </div></aside>
+                </div>
+            </div>
+        </section><!-- /.section-portfolio -->
+
+    </main><!-- /#main -->
+
+    <footer id="colophon" class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-4 col-xs-6">
+                    <a href="../index_ch.html" class="site-title">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
+                    <p>一起走進新時代的前沿科學與量子科技</p>
+                    </div>
+                <div class="col-lg-offset-4 col-md-3 col-sm-4 col-md-offset-2 col-sm-offset-0 col-xs-6 ">
+                    <p class="site-title">𝐾𝐸𝐸𝑃 𝐼𝑁 𝑇𝑂𝑈𝐶𝐻</p>
+                    <ul class="list-unstyled contact-links">
+                        <li><i class="fa fa-envelope" aria-hidden="true"></i><a href="mailto:info@insight-ihbar.com">info@insight-ihbar.com</a></li>
+                        <!--<li><i class="fa fa-phone" aria-hidden="true"></i><a href="tel:+37400800000">+374 (00) 80 00 00 </a></li>
+                        <li><i class="fa fa-fax" aria-hidden="true"></i><a href="+37400900000">+374 (00) 90 00 00</a></li>
+                        <li><i class="fa-solid fa-location-dot"></i><p>Hsinchu 300, Taiwan (R.O.C.)</p></li>-->
+                    </ul>
+                </div>
+                <!--<div class="clearfix visible-xs"></div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6">
+                    <h3>Featured links</h3>
+                    <ul class="list-unstyled">
+                        <li class="active"><a href="index_ch.html">Home</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="portfolio.html">Porfolio</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>-->
+            </div>
+        </div>
+        <div class="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-8">
+                        <div class="social-links">
+                            <!--<a class="twitter-bg" href="#"><i class="fab fa-twitter"></i></a>-->
+                            <!--<<a class="facebook-bg" href="https://www.facebook.com/people/Quantum-Perspectives/61576446849628/"><i class="fab fa-facebook"></i></a>-->
+                            <!--<a class="facebook-bg" href="https://www.facebook.com/people/%E9%87%8F%E5%AD%90%E9%81%A0%E8%A6%8BQuantum-Perspectives/61576883632888/"><i class="fab fa-facebook-f"></i></a>-->
+                            <!--<a class="pinterest" href="#"><i class="fa-solid fa-microscope"></i></a>-->
+                            <!--<a class="facebook-bg" href="https://www.facebook.com/people/Insight-hbar/61576811775374/"><i class="fab fa-facebook-f"></i></a>-->
+                            <a class="linkedin-bg" href="https://www.linkedin.com/company/insight-ihbar"><i class="fab fa-linkedin"></i></a>
+                        </div><!-- /.social-links -->
+                    </div>
+                    <div class="col-xs-4">
+                        <div class="text-right">
+                            <p><span style="font-size: 16px;">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</span></p>
+                            <p>All Rights Reserved</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.copyright -->
+    </footer><!-- /#footer -->
+
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="../assets/js/bootstrap-select.min.js"></script>
+    <script src="../assets/js/jquery.slicknav.min.js"></script>
+    <script src="../assets/js/jquery.countTo.min.js"></script>
+    <script src="../assets/js/jquery.shuffle.min.js"></script>
+    <script src="../assets/js/script.js"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  
+</body>
+</html>

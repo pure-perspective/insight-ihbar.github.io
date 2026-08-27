@@ -1,0 +1,2462 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N39VTY949N"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-N39VTY949N');
+</script>
+    <!-- Basic Page Needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <meta name="author" content="Peir-Ru Wang">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;1,300&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/20250525-icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/20250525-icon.png">
+
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/css/style.css" rel="stylesheet">
+    <link href="../assets/css/responsive.css" rel="stylesheet">
+
+    <title>Week 13 · 封裝、EM Modes、佈線擴展與全系統整合 | QH-2026F v5</title>
+    <meta name="description" content="PHYS598500 第 13 週，120 分鐘進階課程：封裝、EM Modes、佈線擴展與全系統整合">
+    <meta name="keywords" content="- 量子處理器
+- 超導量子位元
+- Qubit
+- 約瑟夫森接面
+- Transmon
+- Fluxonium
+- 量子計算
+- 量子硬體
+- 量子演算法
+- 量子晶片">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+<style>
+.qh-week-meta { margin: 20px 0; padding: 16px 18px; border-left: 4px solid #5f4b8b; background: #f6f4fa; }
+.qh-week-meta p { margin: 4px 0; }
+.qh-session-plan { width: 100%; margin: 18px 0 8px; border-collapse: collapse; }
+.qh-session-plan th, .qh-session-plan td { padding: 10px 12px; border: 1px solid #ddd; vertical-align: top; }
+.qh-session-plan th { background: #f4f4f4; }
+.qh-session-plan .qh-break td { color: #666; background: #fafafa; }
+.qh-total { text-align: right; font-weight: 700; }
+.qh-reading li { margin-bottom: 12px; }
+.qh-reading span, .qh-reading em { display: block; }
+.qh-week-list { padding-left: 0; list-style: none; }
+.qh-week-list li { margin: 0 0 13px; padding: 12px 15px; border-left: 4px solid #5f4b8b; background: #f7f7f7; }
+.qh-week-list a { font-weight: 700; }
+@media (max-width: 767px) { .qh-session-plan { display: block; overflow-x: auto; } }
+</style>
+
+
+<style id="qh-full-course-style">
+    .qh-full-lecture {
+      margin: 30px 0;
+      padding: 24px 26px;
+      border: 1px solid #d9d4e5;
+      background: #fff;
+    }
+
+    .qh-full-lecture>h2,
+    .qh-full-lecture>h3 {
+      margin-top: 0;
+    }
+
+    .qh-full-lecture h4 {
+      margin-top: 24px;
+    }
+
+    .qh-full-lecture li {
+      margin-bottom: 8px;
+    }
+
+    .qh-time {
+      display: inline-block;
+      margin-bottom: 12px;
+      padding: 4px 10px;
+      border-radius: 14px;
+      background: #5f4b8b;
+      color: #fff;
+      font-size: .9em;
+    }
+
+    .qh-board,
+    .qh-case,
+    .qh-task,
+    .qh-answer,
+    .qh-source-chapter {
+      margin: 20px 0;
+      padding: 17px 19px;
+      font-size: 15px;
+    }
+
+    .qh-board {
+      border-left: 4px solid #d0ccc8;
+      background: #fafafa;
+    }
+
+    .qh-case {
+      border-left: 4px solid #d0ccc8;
+      background: #fafafa;
+    }
+
+    .qh-task {
+      border-left: 4px solid #d0ccc8;
+      background: #fafafa;
+    }
+
+    .qh-answer {
+      border-left: 4px solid #d0ccc8;
+      background: #fafafa;
+    }
+
+    /* Section divider headings */
+    .qh-section {
+      margin: 40px 0 24px;
+      padding: 17px 19px;
+      border-left: 4px solid #355c9a;
+      background: #f3f7fc;
+    }
+
+    .qh-section h3 {
+      margin: 0 0 4px;
+      font-size: 20px;
+      font-weight: 700;
+      color: #355c9a;
+      border-bottom: none;
+    }
+
+    .qh-section h4 {
+      margin: 0;
+      font-size: 15px;
+      font-weight: 400;
+      color: #6a8ab5;
+      font-style: italic;
+    }
+
+    .qh-section>h3:first-child {
+      margin-top: 0;
+    }
+
+    /* Equation highlight — compact, not a section heading */
+    .qh-equation-highlight {
+      margin: 24px 0;
+      padding: 14px 18px;
+      border-left: 3px solid #6a6560;
+      background: #f9f8f7;
+    }
+
+    .qh-equation-label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      color: #6a6560;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    .qh-source-chapter {
+      border: 1px solid #e5e0ec;
+      background: #fdfcff;
+    }
+
+
+    .qh-source-chapter>h3 {
+      padding-bottom: 9px;
+      border-bottom: 1px solid #ddd5e8;
+    }
+
+    .qh-source-note {
+      color: #665f72;
+      font-size: .92em;
+    }
+
+    @media (max-width: 720px) {
+      .qh-full-lecture {
+        padding: 18px 15px;
+      }
+
+      .qh-board,
+      .qh-case,
+      .qh-task,
+      .qh-answer,
+      .qh-source-chapter {
+        padding: 14px 13px;
+      }
+    }
+
+    /* Supplement section styling */
+    .qh-supplement-divider {
+      margin: 36px 0 24px;
+      padding: 18px 22px;
+      border-left: 4px solid #5f4b8b;
+      background: #f6f4fa;
+    }
+
+    .qh-supplement-divider h2 {
+      margin: 0 0 5px;
+      font-size: 22px;
+    }
+
+    .qh-supplement-divider p {
+      margin: 0;
+    }
+
+    /* Tables in supplement */
+    .module table {
+      width: 100%;
+      margin: 16px 0;
+      border-collapse: collapse;
+      font-size: 15px;
+    }
+
+    .module table th,
+    .module table td {
+      padding: 10px 12px;
+      border: 1px solid #ddd;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .module table th {
+      background: #f4f4f4;
+      font-weight: 700;
+    }
+
+    /* Callout in supplement */
+    .module .callout {
+      margin: 16px 0;
+      padding: 12px 16px;
+      border-left: 4px solid #5f4b8b;
+      background: #f6f4fa;
+      font-size: 15px;
+    }
+
+    /* Lists in supplement */
+    .module ul,
+    .module ol {
+      margin: 12px 0;
+      padding-left: 24px;
+    }
+
+    .module li {
+      margin-bottom: 8px;
+      line-height: 1.6;
+      font-size: 15px;
+    }
+
+    /* Heading consistency — only direct h3 children, not inside .qh-section */
+    .module > h3 {
+      margin: 28px 0 14px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #ddd5e8;
+      font-size: 20px;
+    }
+
+    .module h4 {
+      margin: 20px 0 10px;
+      font-size: 17px;
+    }
+
+    .module p {
+      margin: 10px 0;
+      line-height: 1.7;
+    }
+  </style>
+
+<style id="qh-details-style">
+        details.dark-background {
+          background-color: #f5f5f5;
+          border: 1px solid #ddd;
+          padding: 10px;
+          border-radius: 5px;
+        }
+        details.dark-background summary {
+          cursor: pointer;
+          font-weight: bold;
+          background-color: #e0e0e0;
+          padding: 5px;
+          border-radius: 3px;
+        }
+      </style>
+
+</head>
+<body>
+
+    <header id="masthead" class="site-header">
+        <nav id="primary-navigation" class="site-navigation">
+            <div class="container">
+
+                <div class="navbar-header">                   
+                    <a href="../index_ch.html" class="site-title">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
+                </div><!-- /.navbar-header -->
+
+                <div class="collapse navbar-collapse" id="agency-navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="../index_ch.html">Home</a></li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">科普介紹<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                              <li><a href="../SCQ_elementary/main.html">超導量子位元(科普版)</a></li>
+                              <li><a href="../SCQ_advanced/main.html">超導量子位元(進階版)</a></li>
+                              <li><a href="../SpQ/main.html">半導體自旋量子位元</a></li>
+                            </ul>
+                        </li>
+                        <!--<li class="active"><a href="../SCQ_elementary/main.html">科普介紹</a></li>-->
+                        <li class="active"><a href="../QC_hardware/main.html">硬體導論</a></li>
+                        <li><a href="../QID/main.html">量子產業群像錄</a></li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">研討會筆記<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                <li><a href="../ASW2026/main.html">2026中研院超導量子電腦Workshop</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">量子諮詢<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                <li><a href="https://www.quantum-perspectives.com/About/main.html">量子遠見科技：諮詢服務</a></li>
+                                <li><a href="../About/main.html">關於我們</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="../index.html">English</a></li>                        
+                    </ul>
+                </div>
+
+            </div>   
+        </nav><!-- /.site-navigation -->
+    </header><!-- /#mastheaed -->
+
+    <div id="hero" class="hero overlay subpage-hero blog-hero">
+        <div class="hero-content">
+            <div class="hero_2-text">
+                <h1>超導量子電腦架構</h1>
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="../index_ch.html">Home</a></li>
+                  <li class="breadcrumb-item"><a href="../SCQ_advanced/main.html">PHYS598500</a></li>
+                  <!--<li class="breadcrumb-item active">約瑟夫森節</li>-->
+                </ol>
+            </div><!-- /.hero-text -->
+        </div><!-- /.hero-content -->
+    </div><!-- /.hero -->
+
+    <main id="main" class="site-main">
+
+        <section class="site-section subpage-site-section section-blog">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                        <article class="blog-post">
+                            <!--<img src="../assets/img/portfolio-1.jpg" class="img-res" alt="">-->
+                            <div class="post-content">
+
+<section id="week-13" class="course-theme">
+      <div style="text-align: center;">
+      <p class="theme-label">PHYS598500 · Week 13 · T5</p>
+      <h2>封裝、EM Modes、佈線擴展與全系統整合</h2>
+      <h3>Packaging, EM Modes, Wiring Scale-Up, and Full-System Integration</h3>
+    </div>
+  <section class="course-overview">
+    <h3>本週定位</h3>
+    <div class="qh-week-meta">
+      <p><strong>課程長度：</strong>120 分鐘</p>
+      <p><strong>核心問題：</strong>當 qubit 從數顆走向數百顆，哪一個『周邊』會先變成主系統？</p>
+      <p><strong>難度：</strong>很高／架構整合</p>
+      <p><strong>先備：</strong>microwave modes、crosstalk、thermal budget、control stack</p>
+      <p><strong>原始教材來源：</strong>T5 modules 5, 6, 7</p>
+    </div>
+    <h3>學習成果</h3><ul><li>理解 package cavity、slotline、bond-wire inductance、grounding 與 spurious mode。</li><li>把 wire count、heat load、connector density、frequency crowding 與 serviceability 聯立。</li><li>理解 EM simulation、package measurement、control software 與 system bring-up 的閉環。</li></ul>
+    <h3>兩小時授課配置</h3><table class="qh-session-plan"><thead><tr><th>時間</th><th>形式</th><th>授課內容與當段產出</th></tr></thead><tbody><tr><td>0–10 分</td><td>定位／診斷</td><td><strong>當 qubit 數量增加，為什麼封裝也會成為 Hamiltonian 的一部分？</strong><br>以一個問題確認先備與本週接口。</td></tr><tr><td>10–35 分</td><td>概念主線 A</td><td><strong>Package cavity、slotline、ground return、bond wire 與 seam loss 如何影響 qubit？</strong><br>建立第一組物理概念、變數與工程語言。</td></tr><tr><td>35–60 分</td><td>推導／定量</td><td><strong>如何從 EM mode 與 participation 指標建立驗收條件？</strong><br>走完關鍵公式或定量關係，不停留在名詞介紹。</td></tr><tr class="qh-break"><td>60–70 分</td><td>休息</td><td><strong>Break</strong><br>保留兩小時課程的注意力恢復窗口。</td></tr><tr><td>70–95 分</td><td>概念主線 B</td><td><strong>I/O density、heat load、3D wiring 與 cryogenic control 如何共同限制擴充？</strong><br>把物理結果接到元件、控制或系統架構。</td></tr><tr><td>95–110 分</td><td>案例／研討</td><td><strong>如何進行一次 100-qubit package/wiring architecture review？</strong><br>學生留下可檢查的圖、表、推導或 architecture decision。</td></tr><tr><td>110–120 分</td><td>整合／驗收</td><td><strong>系統擴充時，最先爆掉的三個 budget 可能是什麼？</strong><br>用 exit question 檢查是否能跨層解釋。</td></tr></tbody></table><p class="qh-total">合計：120 分鐘</p>
+  </section>
+<!-- QH_FULL_LECTURE_START -->
+<section class="qh-full-lecture" id="full-T5-13">
+  <span class="qh-time">0–10 分鐘</span>
+    <div class="qh-section">
+    <h3>當 qubit 數量增加，為什麼封裝也會成為 Hamiltonian 的一部分？</h3>
+  </div>
+  <p><strong>本週驅動問題：</strong>package mode、slotline、return current、wirebond、connector 與跨晶片互連如何改變 qubit decay、crosstalk 與 frequency map？為何『電性接通』遠不足以驗收量子封裝？</p>
+  <p>先要求學生不用查資料，以一張圖畫出本週主題從抽象模型到真實硬體的訊息流。教師不立刻公布答案，而是收集學生把哪些層次畫成等號。全課結束時再重畫一次，用兩張圖的差異驗收是否真正建立跨層理解。</p>
+  <p><strong>先備診斷：</strong>W11 建立了 dilution fridge 的 thermal budget 與 wiring constraint；W12 完成了 control electronics chain 與 readout signal integrity。本週把這些接到 package、EM mode、wiring scale-up 與 system integration。</p>
+
+  <span class="qh-time">10–35 分鐘</span>
+  <h3>概念主線 A：Package cavity、slotline、ground return、bond wire 與 seam loss 如何影響 qubit？</h3>
+  <p><strong>[W13-C1] Package cavity、slotline、bond-wire inductance、grounding、spurious modes</strong></p>
+  <div class="qh-board">
+<h4>黑板主線：package 是 Hamiltonian 的一部分</h4>
+<p>晶片與封裝形成 distributed electromagnetic structure。某個 package/cavity mode 若接近 qubit frequency，會 hybridize 或提供額外 Purcell decay channel；ground plane 被切割後，return current 被迫繞路，產生 slotline mode 與非預期 mutual coupling。effective Hamiltonian 中的 \(\\omega_i,g_{ij},\\chi_{ik}\) 都可能被封裝幾何改寫。</p>
+<p>封裝元件包括：sample box（固定晶片並提供屏蔽環境）、wirebond（連接晶片 pad 與封裝 PCB，帶來寄生電感）、PCB/carrier（介電損耗、阻抗控制、熱收縮）、connector（阻抗匹配、低溫可靠性、反射）與 shielding（阻擋磁場、紅外輻射與電磁干擾）。</p>
+<p>常見需要避免的模式包括：package cavity modes、slotline modes、substrate modes、box modes、feedline parasitic resonances 與 connector-induced resonances。</p>
+<p><strong>[W13-C3] EM simulation 與 microwave design rules</strong>：電磁模擬至少分 eigenmode、driven modal/network、electrostatic/capacitance 與 participation analysis。eigenmode 找 resonance 與 field pattern；S-parameter 評估傳輸、反射、隔離；capacitance matrix 支援 circuit quantization；surface participation 連到 dielectric loss。單一漂亮的 \(S_{21}\) 曲線不能替代全部問題。</p>
+</div>
+
+  <span class="qh-time">35–60 分鐘</span>
+  <h3>推導/定量：如何從 EM mode 與 participation 指標建立驗收條件？</h3>
+  <p><strong>[W13-D1] Maxwell mode 到 effective circuit：participation ratio 設計條件</strong></p>
+  
+<h4>黑板推導：participation ratio 如何設定 design criteria</h4>
+<p>每一個 dielectric interface 對 qubit 的 loss 貢獻，由其 electric-field participation ratio 決定：</p>
+<p>P_k = \frac{\int_{V_k} \varepsilon_k |{\bf E}|^2 d^3r}{\sum_j \int_{V_j} \varepsilon_j |{\bf E}|^2 d^3r}</p>
+<p>total inverse \(T_1\) 是各 interface 的 weighted sum：</p>
+<p>\[\frac{1}{T_1} = \sum_k P_k \cdot \frac{\omega}{Q_{0,k}}\]</p>
+<p>其中 \(Q_{0,k}\) 是第 k 個介電材質的 intrinsic quality factor。participation ratio 同時控制 spurious-mode hybridization strength：若某個 package mode 的 participation 超過 threshold，它就會成為額外的 Purcell decay channel 或引起 frequency shift。</p>
+<p>設計驗收條件：</p>
+<ol>
+<li><strong>Eigenmode sweep</strong>：在 qubit frequency band（4–8 GHz）內，package cavity 無 mode 落在 ±500 MHz 以內。</li>
+<li><strong>Participation budget</strong>：surface oxide 的 \(P_{\text{oxide}}\) 必須小於 target \(1/T_1\) 容許值；substrate participation 次之。</li>
+<li><strong>S-parameter validation</strong>：port-to-port isolation 在 qubit band 內低於 −60 dB；connector launch 反射低於 −20 dB。</li>
+<li><strong>Crosstalk floor</strong>：neighboring qubit drive crosstalk 低於 −40 dB，readout crosstalk 低於 −30 dB。</li>
+</ol>
+<p>學生兩人一組，把推導中的每個符號分成「設計可選參數、製程/裝置產生參數、必須校準參數、只能量測估計的狀態」四類。這一步迫使公式離開紙面，成為 architecture dependency。</p>
+
+</section>
+
+<section class="qh-full-lecture">
+  <span class="qh-time">60–70 分鐘</span>
+  <h3>休息與黑板保留</h3>
+  <p>保留本週核心 Hamiltonian／system equation 與 dependency graph。休息後直接以既有教材展開，不重新講一次名詞表。</p>
+</section>
+
+<section class="qh-full-lecture">
+  <span class="qh-time">70–95 分鐘</span>
+  <h3>概念主線 B：I/O density、heat load、3D wiring 與 cryogenic control 如何共同限制擴充？</h3>
+  <p><strong>[W13-C2] Wire count、heat load、connector density、frequency crowding</strong></p>
+  <p>下列內容不是附錄，而是本週第二段講授材料。授課時選擇與黑板模型直接相連的圖、表與段落逐一解讀；其餘留作課後複習。每一段都要追問「它改變了哪一個 Hamiltonian／control／measurement／system 參數」。</p>
+  
+
+
+
+
+
+
+
+
+</section>
+
+<section class="qh-full-lecture">
+  <span class="qh-time">95–110 分鐘</span>
+  <h3>案例/研討：如何進行一次 100-qubit package/wiring architecture review？</h3>
+  <p><strong>[W13-CS1] 100-qubit module package/wiring architecture review</strong></p>
+  <p><strong>[W13-C4] Cross-chip quantum interconnect：C/M/L-couplers</strong></p>
+  <p><strong>[W13-C5] Cryogenic-to-cryogenic quantum links and data center architecture</strong></p>
+  <p><strong>[W13-C6] System integration pipeline：EM sim → package measurement → control software</strong></p>
+  <div class="qh-case">
+<h4>案例：封裝蓋上後 \(T_1\) 系統性下降</h4>
+<p>可能原因包括 package mode、seam loss、wirebond/ground discontinuity、magnetic/IR leakage、材料污染或 mechanical stress。診斷可比較 lid geometry/eigenmode、增加 airbridge/wirebond fence、掃 qubit frequency、量測 package S-parameters、做 magnetic/IR shielding A/B test。</p>
+<p>若只在某個頻帶出現 \(T_1\) dip，frequency-dependent loss/mode/TLS 比均勻材料 loss 更可疑；若所有 qubit 同時受事件影響，common environment、radiation 或 temperature 更值得優先檢查。</p>
+</div>
+  <div class="qh-task">
+    <h4>課堂任務（8–10 分鐘）</h4>
+    <p>為 100-qubit package 寫一份最小 design review：列出需要的 EM simulation、thermal/mechanical analysis、製造公差、ground strategy、I/O density、可維修性與量測 coupon。每一項必須連回一個 quantum failure mode。</p>
+    <p><strong>延伸：跨晶片互連選擇</strong>：若 100-qubit 模組由四片 25-qubit chiplet 組成，選擇 C-coupler（chip 內非鄰近 qubit）、M-coupler（相鄰晶片）或 L-coupler（同製冷機遠距）並說明理由。考慮 insertion loss、thermal noise、coherence transfer、entanglement fidelity 與 stability。</p>
+  </div>
+  <div class="qh-answer">
+    <h4>教師解答與評分依據</h4>
+    <p>eigenmode 對應 resonant loss/crosstalk；S-parameter 對應 drive/readout integrity；thermal analysis 對應 effective temperature；mechanical tolerance 對應 alignment/contact；ground/return current 對應 slotline；coupon 與 seam test 對應材料/介面 loss；serviceability 影響重工與可重複校準。</p>
+    <p>答案不以是否使用特定名詞評分，而以是否建立「假設 → 可觀測量 → 區分實驗 → 決策」的閉環評分。學生若提出不同方案，只要能明確指出代價與可否證條件，即可成立。</p>
+  </div>
+</section>
+
+<section class="qh-full-lecture">
+  <span class="qh-time">110–120 分鐘</span>
+  <h3>整合/驗收：系統擴充時，最先爆掉的三個 budget 可能是什麼？</h3>
+  <p>回到開場那張圖。現在學生重畫一次：package cavity → EM mode spectrum → participation ratio → \(T_1\) budget；wire count → heat load → cooling power budget；connector density → crosstalk → frequency allocation budget。每一節都標出它的 spec 如何影響最終的 quantum metric。</p>
+  <h4>Exit ticket</h4>
+  <ol>
+    <li>本週最重要的一條 equation／model 是什麼？它的適用近似為何？</li>
+    <li>哪一個看似局部的參數，實際會跨越 device、control 與 system 三層？</li>
+    <li>若只能做一個新實驗，什麼結果最能改變目前的 architecture decision？</li>
+  </ol>
+  <p><strong>下週預覽：</strong>W14 將從 fabrication process 開始 — 如何把今天討論的 package 與 EM design 真正做出來。</p>
+</section>
+<!-- QH_FULL_LECTURE_END -->
+
+<section class="qh-source-chapter">
+  <h3>教材深挖 1：低溫導線與接頭</h3>
+  <p class="qh-source-note">整合自既有 Insight iHBAR 教材：QC_hardware/U2.html</p>
+  <p><strong>[W13-C2] Wire count、heat load、connector density、frequency crowding</strong></p>
+  <p  class="dark-background">
+                                    在超導量子電腦中，連接室溫控制電子設備和位於稀釋製冷機mK溫區的量子晶片的線纜和接頭，是至關重要但又極具挑戰性的環節。它們不僅要傳輸精密的控制和讀取信號，還必須在極端的溫度梯度下最大限度地減少熱傳和雜訊干擾。一個成功的低溫佈線系統需要在多個矛盾的需求之間取得平衡。
+                                </p>
+                                <h3>核心挑戰與設計要求</h3>
+                                <div style="overflow-x: auto;">
+                                <table width="100%" border="1" cellpadding="10" cellspacing="0" style="border-collapse: collapse; font-family: sans-serif; border-color: #cccccc;">
+                                    <thead>
+                                        <tr bgcolor="#f2f2f2" align="center">
+                                            <th width="25%">挑戰領域</th>
+                                            <th>具體要求與說明</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr valign="top">
+                                            <td><b>熱管理<br>(Thermal Management)</b></td>
+                                            <td>
+                                                <b>核心挑戰：</b> 良好的導電材料通常也是良好的導熱材料。
+                                                <ul>
+                                                    <li><b>極低熱導率：</b> 線纜必須具有極低的熱導率，以盡可能減少從室溫 (~300K) 到 mK 級的熱傳。過高的熱負載會超出製冷機的冷卻能力，嚴重限制可支持的量子位元數量。</li>
+                                                    <li><b>熱錨定 (Thermalisation)：</b> 訊號線需在各溫級進行充分的熱化，通常透過熱錨和衰減器將線纜的雜訊溫度降低到接近該級的物理溫度。</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr valign="top">
+                                            <td><b>訊號完整性<br>(Signal Integrity)</b></td>
+                                            <td>
+                                                <b>核心挑戰：</b> 在長距離和極端溫差下保持訊號不失真。
+                                                <ul>
+                                                    <li><b>寬頻性能：</b> 在寬頻率範圍內（DC 到數 GHz）提供低損耗、低色散的傳輸特性，確保控制脈衝和讀出訊號的保真度。</li>
+                                                    <li><b>阻抗匹配：</b> 在所有溫級都需保持良好的阻抗匹配 (通常為 50Ω)，以減少訊號反射。</li>
+                                                    <li><b>低串擾 (Crosstalk)：</b> 具有高訊號隔離度，防止不同通道間的訊號互相干擾。</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr valign="top">
+                                            <td><b>雜訊抑制<br>(Noise Mitigation)</b></td>
+                                            <td>
+                                                <b>核心挑戰：</b> 保護量子位元免受雜訊影響而導致去相干。
+                                                <ul>
+                                                    <li><b>抑制熱雜訊：</b> 線纜會產生黑體輻射，需透過熱化和串聯衰減器來抑制這些雜訊光子。</li>
+                                                    <li><b>電磁屏蔽：</b> 線纜需具備優良的屏蔽性能，以阻擋外部環境的電磁干擾 (EMI)。</li>
+                                                    <li><b>紅外濾波：</b> 常整合紅外濾波器，以阻止高頻熱輻射沿介電層傳播。</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr valign="top">
+                                            <td><b>可擴展性與緊湊性<br>(Scalability & Compact)</b></td>
+                                            <td>
+                                                <b>核心挑戰：</b> 「佈線瓶頸」是擴展量子電腦規模的主要障礙之一。
+                                                <ul>
+                                                    <li><b>高密度整合：</b> 隨著量子位元數增加，線纜和接頭必須具有高密度、小尺寸的特點，以在有限的低溫空間內容納數百至數千條通道。</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr valign="top">
+                                            <td><b>機械與材料可靠性<br>(Mechanical & Material Reliability)</b></td>
+                                            <td>
+                                                <b>核心挑戰：</b> 材料需承受劇烈的溫差和反覆的熱循環。
+                                                <ul>
+                                                    <li><b>低溫兼容性：</b> 材料不能在低溫下變脆、開裂或性能顯著下降。不同材料的熱膨脹係數差異是設計上的關鍵考量。</li>
+                                                    <li><b>柔韌性：</b> 柔性線纜有助於簡化在複雜製冷機內部耗時且易錯的安裝過程。</li>
+                                                    <li><b>非磁性要求：</b> 需使用磁化率極低的非磁性材料，避免干擾對磁場敏感的量子元件 (如 SQUID)。</li>
+                                                    <li><b>氣密性 (Hermeticity)：</b> 穿過真空外殼的接頭 (Feedthroughs) 必須達到超高真空的氣密性標準。</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr valign="top">
+                                            <td><b>成本<br>(Cost)</b></td>
+                                            <td>
+                                                <b>核心挑戰：</b> 當前由於特殊的材料、複雜的製造工藝且市場需求尚未完整，高性能低溫線纜和組件非常昂貴。
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                </div>
+
+
+
+
+
+
+
+
+
+
+                                <h3>低溫佈線的關鍵組件、材料與技術</h3>
+                                
+
+                                
+                                <p  class="dark-background">
+                                    為了應對在極端溫度梯度下正確傳輸微波脈衝信號，並最小化熱負載的需求，研究人員和供應商開發了多種類型的低溫導線、接頭與相關組件。
+                                    每種類型都在電路性能、熱學性能、機械可靠性和可擴展性之間做出了不同的權衡。以下將各關鍵組件整合整理如下：
+                                </p>
+                                <div style="overflow-x: auto;">
+                                <table width="100%" border="1" cellpadding="10" cellspacing="0" style="border-collapse: collapse; font-family: sans-serif; border-color: #cccccc;">
+                            
+                                    
+                            
+                                    <thead>
+                                        <tr bgcolor="#f2f2f2" align="center">
+                                            <th width="15%">組件類別</th>
+                                            <th width="15%">具體類型</th>
+                                            <th width="45%">核心特點與設計考量</th>
+                                            <th>主要應用</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr valign="top">
+                                            <td rowspan="4"><b>導線與線纜<br>(Wiring & Cables)</b></td>
+                                            <td><b>低熱導同軸電纜</b><br>(Low-K Coaxial Cables)</td>
+                                            <td>
+                                                <ul>
+                                                    <li><b>結構：</b>分為提供較好屏蔽的半剛性(Semi-rigid)電纜和易於佈線的柔性(Flexible)電纜。</li>
+                                                    <li><b>材料：</b>導體採用不銹鋼(SS)、銅鎳(CuNi)等低熱導合金；在最冷段使用鈮鈦(NbTi)等超導材料以兼顧零電阻和低熱導。</li>
+                                                </ul>
+                                            </td>
+                                            <td>傳統的RF訊號傳輸方案，經過低溫優化。適用於通道數較少或對成本較敏感的場合。</td>
+                                        </tr>
+                                        <tr valign="top">
+                                            <td><b>柔性帶狀線纜 / PCB</b><br>(Flexible Ribbon Cables)</td>
+                                            <td>
+                                                <ul>
+                                                    <li><b>結構：</b>在聚酰亞胺(Polyimide)等柔性基板上印刷多通道的微帶線。</li>
+                                                    <li><b>優點：</b>高密度、極佳的柔韌性、低熱負載、易於集成無源元件。</li>
+                                                </ul>
+                                            </td>
+                                            <td>解決高密度和安裝便利性問題的現代主流方案。</td>
+                                        </tr>
+                                        <tr valign="top">
+                                            <td><b>雙絞線</b><br>(Twisted Pairs)</td>
+                                            <td>
+                                                <ul>
+                                                    <li><b>結構：</b>兩條絕緣導線互相絞合。</li>
+                                                    <li><b>特點：</b>結構簡單、成本低，具備一定的抗共模雜訊能力。</li>
+                                                </ul>
+                                            </td>
+                                            <td>主要用於傳輸低頻類比信號或直流(DC)Bias signal。RF性能有限。</td>
+                                        </tr>
+                                        <tr valign="top">
+                                            <td><b>光纖</b><br>(Optical Fibers)</td>
+                                            <td>
+                                                <ul>
+                                                    <li><b>特點：</b>極低的熱導率和極高的帶寬潛力。</li>
+                                                    <li><b>優勢：</b>從根本上解決熱洩漏和電磁干擾(EMI)問題。</li>
+                                                </ul>
+                                            </td>
+                                            <td>被認為是未來極具潛力的替代方案，尤其適合需傳輸大量數據或對熱負載極敏感的場合。</td>
+                                        </tr>
+                                        <tr valign="top">
+                                            <td rowspan="3"><b>接頭與互連<br>(Connectors & Interconnects)</b></td>
+                                            <td><b>標準RF同軸接頭</b><br>(Cryogenic/Non-Magnetic)</td>
+                                            <td>
+                                                <ul>
+                                                    <li><b>類型：</b>SMA, SMP, 2.92mm (K) 等接口的低溫非磁性版本。</li>
+                                                    <li><b>材料：</b>使用無磁不銹鋼、鈹銅(BeCu)等金屬，以及PEEK或PTFE絕緣體。表面通常鍍金。</li>
+                                                </ul>
+                                            </td>
+                                            <td>用於單一線路的連接。</td>
+                                        </tr>
+                                        <tr valign="top">
+                                            <td><b>高密度接頭</b><br>(High-Density Connectors)</td>
+                                            <td>
+                                                <ul>
+                                                    <li><b>類型：</b>多端口同軸連接器、基於彈性觸點陣列的板對板/線對板接口。</li>
+                                                    <li><b>優點：</b>顯著提高連接密度，簡化大規模系統的組裝和維護。</li>
+                                                </ul>
+                                            </td>
+                                            <td>應對不斷增長的通道數量。</td>
+                                        </tr>
+                                        <tr valign="top">
+                                            <td><b>氣密接頭 / 饋通</b><br>(Hermetic Feedthroughs)</td>
+                                            <td>
+                                                <ul>
+                                                    <li><b>功能：</b>將信號線從常壓環境引入超高真空低溫環境的關鍵接口。</li>
+                                                    <li><b>技術：</b>採用玻璃-金屬或陶瓷-金屬密封技術，接頭體常用 Kovar 合金或不銹鋼，並提供標準真空法蘭接口 (如 KF, CF)。</li>
+                                                </ul>
+                                            </td>
+                                            <td>所有需要穿過真空外殼的線路都必須使用。</td>
+                                        </tr>
+                                        <tr valign="top">
+                                            <td rowspan="2"><b>被動元件與熱管理<br>(Passives & Thermal)</b></td>
+                                            <td><b>衰減器與濾波器</b><br>(Attenuators & Filters)</td>
+                                            <td>
+                                                <ul>
+                                                    <li><b>功能：</b>精密地集成在訊號線路中，用於衰減來自高溫級的熱雜訊、濾除不需要的頻段，並精確控制送達量子晶片的訊號功率。</li>
+                                                </ul>
+                                            </td>
+                                            <td>訊號線路中不可或缺的元件，用於雜訊管理和訊號調節。</td>
+                                        </tr>
+                                        <tr valign="top">
+                                            <td><b>熱錨 / 熱沉</b><br>(Thermal Anchors / Sinks)</td>
+                                            <td>
+                                                <ul>
+                                                    <li><b>功能：</b>將線纜在稀釋製冷機的各個溫級（如 4K、Still、Cold Plate）進行熱錨定，以逐步散去沿線纜傳導下來的熱量。</li>
+                                                </ul>
+                                            </td>
+                                            <td>管理線纜熱負載的核心手段，對於維持 mK 級的穩定溫度至關重要。</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                </div>
+                                <br><br>
+</section>
+<section class="qh-source-chapter">
+  <h3>教材深挖 2：特殊導線與接頭-廠商</h3>
+  <p class="qh-source-note">整合自既有 Insight iHBAR 教材：QC_hardware/O.html</p>
+  <p><strong>[W13-C2] 供應商與高密度連接器技術</strong></p>
+  <h3>追求高密度與系統集成</h3>
+                                <p  class="dark-background">
+                                    隨著量子處理器從幾十個量子位元向數百乃至數千個擴展，所需的信號線路數量呈爆炸式增長。然而，稀釋製冷機內部，尤其是最冷的 mK 級，空間極其寶貴。傳統同軸電纜的體積、熱負載與組裝複雜性使其難以應對此需求，因而推動了新技術的發展。
+                                </p>
+                                <p  class="dark-background">
+                                    <b>柔性帶狀線纜技術</b>（如 Delft Circuits 的 Cri/oFlex®、Maybell 的 Flexlines）應運而生，它們能在極小的橫截面積內容納多個通道，並具有良好的彎曲性，極大提高了佈線密度和安裝便利性。與此同時，<b>高密度連接器技術</b>（如 Rosenberger 的多端口系統、Ardent Concepts 的板級連接器）允許在更小的面積上實現更多連接點，並通過單次插拔操作簡化了組裝和維護流程。此外，將濾波器、衰減器等被動元件直接<b>整合到柔性線纜上</b>，不僅進一步節省了寶貴的低溫空間，還減少了接點數量，提高了系統的整體可靠性。
+                                </p>
+                                <br><br>
+                                <h3>材料的工程特性平衡</h3>
+                                <p  class="dark-background">
+                                    另一個核心趨勢是透過材料科學來平衡多重且相互衝突的物理要求。低溫線纜和接頭需要在從室溫到接近絕對零度的極端溫度範圍內可靠工作，這意味著材料必須同時滿足以下苛刻條件：
+                                </p>
+                                <p  class="dark-background">
+                                    其核心矛盾在於，材料既要具備優良的「導電性」以低損耗傳輸 RF 信號，又要擁有極差的「導熱性」以隔絕熱量。為實現這種精密的平衡，供應商和研究機構不斷探索和優化材料體系。例如，採用不銹鋼、銅鎳合金等低熱導合金作為導體基材，並輔以薄層良導體（如銀）來改善 RF 性能。
+                                    在最冷的溫級，則利用鈮鈦 (NbTi) 等超導材料的獨特性質，同時實現零電阻和極低熱導。
+                                    此外，材料還需具備良好的「機械性能」（如低溫下的柔韌性、抗熱循環疲勞）和「電磁特性」（如非磁性）。尋找能夠在所有這些方面都表現出色的新材料或複合結構，仍然是該領域持續研發的重點。
+                                </p>
+                                <br><br>
+                                <table width="100%" border="1" cellpadding="10" cellspacing="0" style="border-collapse: collapse; border-color: #cccccc; font-family: sans-serif;">
+                                
+                                    <thead>
+                                        <tr bgcolor="#e9ecef" align="center">
+                                            <th width="18%">組件類別</th>
+                                            <th width="18%">供應商 (Supplier)</th>
+                                            <th width="12%">國家/地區</th>
+                                            <th width="28%">主要產品/服務</th>
+                                            <th>關鍵特點/技術</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr valign="top">
+                                            <td rowspan="8" align="center"><b>低溫導線與接頭<br>(Cryogenic Wiring & Connectors)</b></td>
+                                            <td>Delft Circuits</td>
+                                            <td align="center">荷蘭</td>
+                                            <td>Cri/oFlex® 柔性線纜 (Ag/NbTi)，低溫接頭，T2B 接口，高密度Feedthrough(up to 256 ch)</td>
+                                            <td>高密度、低熱導、可整合元件、超導選項</td>
+                                        </tr>
+                                        <tr valign="top" bgcolor="#f8f9fa">
+                                            <td>Rosenberger</td>
+                                            <td align="center">德國</td>
+                                            <td>低溫同軸電纜 (SS、CuNi，NbTi)，非磁性 RF 接頭 (SMA，SMP)，高密度接頭，柔性線纜，帶狀線纜</td>
+                                            <td>產品線寬廣，可定製氣密法蘭，高頻性能優異、非磁性選項，寬頻率範圍(up to 110 GHz)，高密度解決方案</td>
+                                        </tr>
+                                        <tr valign="top">
+                                            <td>CryoCoax (Intelliconnect)</td>
+                                            <td align="center">英國</td>
+                                            <td>低溫 RF 互連組件與子系統，高密度連接器</td>
+                                            <td>專注於低溫應用的射頻解決方案</td>
+                                        </tr>
+                                        <tr valign="top" bgcolor="#f8f9fa">
+                                            <td>Amphenol Aerospace</td>
+                                            <td align="center">美國</td>
+                                            <td>Cryo-Seal™ 氣密接頭 (基於 38999 軍規標準)</td>
+                                            <td>極低溫(-195°C)性能保證，高氣密性，玻璃-金屬密封</td>
+                                        </tr>
+                                        <tr valign="top">
+                                            <td>Martec</td>
+                                            <td align="center">英國</td>
+                                            <td>客製化低溫氣密接頭/Feedthroughs</td>
+                                            <td>真空友好，低釋氣 (low-outgassing) 材料</td>
+                                        </tr>
+                                        <tr valign="top" bgcolor="#f8f9fa">
+                                            <td>Quantum Microwave</td>
+                                            <td align="center">美國</td>
+                                            <td>非磁性低溫接頭 (SMA，SMP，SMPS 等)</td>
+                                            <td>專為量子實驗室提供各類微波組件</td>
+                                        </tr>
+                                        <tr valign="top">
+                                            <td>Maybell Quantum</td>
+                                            <td align="center">美國</td>
+                                            <td>Flexlines (柔性帶狀線纜)，低溫平台</td>
+                                            <td>專注於可擴展性的低溫硬體解決方案</td>
+                                        </tr>
+                                        <tr valign="top" bgcolor="#f8f9fa">
+                                            <td>Ardent Concepts</td>
+                                            <td align="center">美國</td>
+                                            <td>用於QPU 封裝的高密度連接(板對板或線對板)</td>
+                                            <td>高密度板級連接器</td>
+                                        </tr>
+                                            
+                                        <tr valign="top">
+                                            <td rowspan="4" align="center"><b>輔助系統部件<br>(Auxiliary Systems)</b></td>
+                                            <td>Leybold，Edwards，Pfeiffer</td>
+                                            <td align="center">(多國)</td>
+                                            <td>各類真空幫浦 (旋片、乾式、渦輪、離子等)</td>
+                                            <td>成熟的真空技術供應商</td>
+                                        </tr>
+                                        <tr valign="top" bgcolor="#f8f9fa">
+                                            <td>SAES Getters</td>
+                                            <td align="center">意大利</td>
+                                            <td>非蒸散型吸氣幫浦 (NEG Pumps)</td>
+                                            <td>對氫氣(H₂)抽速高，無振動、無磁場干擾</td>
+                                        </tr>
+                                        <tr valign="top">
+                                            <td>Amuneal，Magnetic Shields Ltd.</td>
+                                            <td align="center">美國，英國</td>
+                                            <td>磁屏蔽材料與系統 (\(\mu\)-metal)</td>
+                                            <td>高磁導率材料，可定製低溫主動屏蔽、被動屏蔽系統</td>
+                                        </tr>
+                                        <tr valign="top" bgcolor="#f8f9fa">
+                                            <td>Lake Shore Cryotronics</td>
+                                            <td align="center">美國</td>
+                                            <td>低溫溫度/磁場傳感器，測量儀器，探針台</td>
+                                            <td>低溫測量領域的專家</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                
+                                <br><br>
+                                
+                                <table width="100%" border="1" cellpadding="10" cellspacing="0" style="border-collapse: collapse; font-family: sans-serif; border-color: #cccccc;">
+                                    
+                                    <thead>
+                                        <tr bgcolor="#e9ecef">
+                                            <th width="30%" style="text-align: center; vertical-align: middle;">新創公司與產品範例</th>
+                                            <th style="text-align: center; vertical-align: middle;">產品圖例<br>(圖片皆取自官網)</th>
+                                        </tr>
+                                    </thead>
+                                
+                                    <tbody>
+                                        <tr valign="middle">
+                                            <td align="center"><strong>Delft Circuits</strong></td>
+                                            <td align="left">
+                                                <div style="text-align: center;">
+                                                    
+                                                    <a href="../Image/Delft-circuit-1--a45b30d2.png"><img loading="lazy" src="../WebP/Delft-circuit-1--a45b30d2.webp" alt="量子設備結構示意圖，標示各部件。" style="width: 100%; height: auto;"></a>
+                                                    
+                                                </div>
+                                                <div style="text-align: center;"> 
+                                                    <a href="../Image/Delft-circuit-2--ece11d07.png"><img loading="lazy" src="../WebP/Delft-circuit-2--ece11d07.webp" alt="金色機械部件排列在金屬基座上。" style="width: 100%; height: auto;"></a>
+                                                    
+                                                </div>
+                                            </td>
+                                              
+                                        </tr>
+                                        <tr valign="middle">
+                                            <td align="center"><strong>CryoCoax</strong><br><br>High Density Connectors</td>
+                                            <td align="left">
+                                                <div style="text-align: center;">
+                                                    
+                                                    <a href="../Image/CryoCoax--6577f47a.jpg"><img loading="lazy" src="../WebP/CryoCoax--6577f47a.webp" alt="金屬線材曲線結構，固定在底座上。" style="width: 100%; height: auto;"></a>
+                                                    
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr valign="middle">
+                                            <td align="center"><strong>Maybell</strong><br><br>Wiring<br>Fridge solutions</td>
+                                            <td align="left">
+                                                <div style="text-align: center;">
+                                                    
+                                                    <a href="../Image/maybell-1--3337d787.png"><img loading="lazy" src="../WebP/maybell-1--3337d787.webp" alt="金屬接頭與波浪狀連接線材質。" style="width: 100%; height: auto;"></a>
+                                                    
+                                                    
+                                                        <a href="../Image/maybell-2--e07e9ab0.png"><img loading="lazy" src="../WebP/maybell-2--e07e9ab0.webp" alt="高科技裝置的剖面圖，顯示內部結構。" style="width: 100%; height: auto;"></a>
+                                                    
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr valign="middle">
+                                            <td align="center"><strong>Quantum Microwave</strong><br>Magnetic-shielding<br>Cryogenic Breadboard</td>
+                                            <td align="left">
+                                                <div style="text-align: center;">
+                                                    
+                                                    <a href="../Image/QMC-CRYOBRKT--8948c23b.png"><img loading="lazy" src="../WebP/QMC-CRYOBRKT--8948c23b.webp" alt="金屬接頭及模組組合圖像。" style="width: 100%; height: auto;"></a>
+                                                    
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr valign="middle">
+                                            <td align="center"><strong>Ardent Concepts</strong><br>Plate-to-plate connection</td>
+                                            <td align="left">
+                                                <div style="text-align: center;">
+                                                    
+                                                    <a href="../Image/ardent-2--692be2a8.webp"><img loading="lazy" src="../WebP/ardent-2--692be2a8.webp" alt="先進的電子元件測試設備排列。" style="width: 100%; height: auto;"></a>
+                                                    
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+</section>
+<section class="qh-source-chapter">
+  <h3>教材深挖 3：邁向超大型量子計算：跨晶片量子互聯</h3>
+  <p class="qh-source-note">整合自既有 Insight iHBAR 教材：QC_hardware/V4.html</p>
+  <p><strong>[W13-C4] Cross-chip quantum interconnect：C/M/L-coupler 三層級</strong></p>
+  <p class="dark-background">
+                                對超導量子電腦而言，隨著 Qubit 數量增加，晶片面積、佈線密度、頻率配置、微波串擾、製程良率、封裝複雜度與錯誤校正需求都會快速變得嚴苛。
+                                要實現真正可擴展的量子電腦，關鍵問題不只是「如何製造更多 Qubit」，而是如何讓大量 Qubit 在可控制、可讀出、可糾錯的條件下共同運作。
+                              </p>
+                              
+                              <p class="dark-background">
+                                因此，大型QPU的發展方向，逐漸從「單一巨大晶片」邁向<b>模組化量子系統</b>。
+                                也就是說，未來的 QPU 不一定是一顆極大的晶片，而可能是由多個量子晶片、多個封裝模組，甚至多台稀釋製冷機共同組成的量子計算叢集，<b>量子互聯（Quantum interconnection）</b>
+                                便成為實現 scalable QPU 的核心技術。
+                              </p>
+                              <br>
+                              <table width="100%" border="1" cellpadding="10" cellspacing="0"
+                                     style="border-collapse: collapse; font-family: sans-serif; border-color: #cccccc;">
+                                <thead>
+                                  <tr bgcolor="#f2f2f2" align="center">
+                                    <th width="20%">擴展方式</th>
+                                    <th width="35%">優點</th>
+                                    <th>主要瓶頸</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td><b>單一晶片放大</b></td>
+                                    <td>架構直觀，晶片內耦合距離短，控制模型相對單純。</td>
+                                    <td>晶片面積、佈線密度、製程良率、頻率擁擠與串擾會快速增加。</td>
+                                  </tr>
+                                  <tr>
+                                    <td><b>單一製冷機內多晶片</b></td>
+                                    <td>可透過 chiplet、封裝與模組化技術提升總 Qubit 數量。</td>
+                                    <td>低溫空間有限，封裝、垂直互聯與同步控制變得更複雜。</td>
+                                  </tr>
+                                  <tr>
+                                    <td><b>多製冷機量子連結</b></td>
+                                    <td>可把 QPU 分散到多台 cryostat，形成更大型的量子計算叢集。</td>
+                                    <td>需要低損耗、低熱雜訊、相位穩定且可同步的量子通道。</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+
+
+
+                              <br>
+                              <ol>
+                              <h3><li>從單一晶片到模組化 QPU</li></h3>
+                              
+                              <p class="dark-background">
+                                透過IBM Quantum 的發展路線可以清楚呈現了這種模組化趨勢。早期的量子處理器主要強調單晶片 Qubit 數量的增加，例如 Hummingbird、
+                                Eagle、Osprey 與 Condor 等處理器。
+                                然而，當系統邁向更高 Qubit 數量與錯誤校正需求時，
+                                僅僅放大單一晶片已不足以支撐長期擴展。
+                              </p>
+                              
+                              <p class="dark-background">
+                                因此，IBM 的架構開始朝向多晶片、多模組與多系統並行的方向發展。
+                                例如 Heron 架構強調較高品質的中等規模晶片；
+                                Crossbill 與 Flamingo 則代表晶片間連接與模組化封裝；
+                                Kookaburra 進一步展示多晶片量子平行化的概念。
+                                這些發展共同指向一個核心問題：
+                                <b>如何讓不同量子晶片之間有效交換量子資訊？</b>
+                              </p>
+                              <p class="dark-background">
+                                這裡需要區分兩種不同的連接方式。
+                                第一種是 <b>classical link</b>，也就是利用即時古典通訊讓多個 QPU 協同執行任務。
+                                第二種是 <b>quantum link</b>，也就是真正傳送量子態或建立量子相關性的通道。
+                                前者較容易實作，後者則更接近未來大型容錯量子電腦所需的核心能力。
+                              </p>
+                              <br>
+                              <div style="text-align: center;">
+                                
+                                  <a href="../Image/this-diagram-shows-the-quantum-processors-that-ibm-expects-to-have-ready-in-2023-condor-and-heron-in-2024-flamingo-and-cross--6cb7287a.webp"><img loading="lazy" src="../WebP/this-diagram-shows-the-quantum-processors-that-ibm-expects-to-have-ready-in-2023-condor-and-heron-in-2024-flamingo-and-cross--6cb7287a.webp" alt="量子處理器路線圖示意圖" style="width: 100%; height: auto;"></a>
+                                
+                              </div>
+                              
+                              <p class="dark-background">
+                                ▲ IBM 量子處理器從單晶片大型化走向多晶片模組化。
+                                Condor 代表單晶片 Qubit 數量的放大，而 Flamingo、Crossbill 與 Kookaburra
+                                則開始導入晶片間量子通訊與模組化擴展。值得注意的是，晶片中的互聯有分成有分成古典互聯與量子互聯。
+                                古典互聯基本上是針對微波控制/讀出的訊號，而量子互聯要求晶片間的交互作用維持量子效應。
+                                <br>
+                                <span style="font-size: 0.7em; line-height: 0.8;">
+                                  Ref: https://spectrum.ieee.org/ibm-condor
+                                </span>
+                              </p>
+                              <br>
+                              <div style="text-align: center;">
+                                
+                                    <a href="../Image/crossbill_condor_8f886198bc--23253c85.png"><img loading="lazy" src="../WebP/crossbill_condor_8f886198bc--23253c85.webp" alt="IBM量子晶片與封裝件" style="width: 70%; height: auto;"></a>
+                                
+                              </div>
+                              <p class="dark-background">
+                                ▲ IBM Quantum Crossbill (左) 和 IBM Quantum Condor (右)。Condor 是單體大晶片設計，而Crossbill採用多晶片互聯設計。
+                                <span style="font-size: 0.7em; line-height: 0.8;">
+                                    <br>Ref: https://www.ibm.com/quantum/blog/qdc-2024
+                                </span>
+                                <br><br>
+                              </p>
+                              
+       
+                              
+                              <div style="text-align: center;">
+                                
+                                  <a href="../Image/image1_00a8b8ece1--54401d8a.png"><img loading="lazy" src="../WebP/image1_00a8b8ece1--54401d8a.webp" alt="兩個Eagle量子晶片連接示意圖" style="width: 70%; height: auto;"></a>
+                                
+                              </div>
+                              
+                              <p class="dark-background">
+                                ▲ 兩個 IBM Quantum Eagle processors 透過 real-time classical link 連接。
+                                這種架構讓多個 QPU 可以在同一個系統中協同運作，但它仍屬於 classical communication，
+                                與真正的 quantum interconnect 不同。
+                                <br>
+                                <span style="font-size: 0.7em; line-height: 0.8;">
+                                  Ref: https://www.ibm.com/quantum/blog/lo-locc-circuit-cutting
+                                </span>
+                              </p>
+                       <br>
+                              <div style="text-align: center;">
+                                
+                                    <a href="../Image/Heron_Parallelization_Graphic_9109dba010--8cf3ab0a.png"><img loading="lazy" src="../WebP/Heron_Parallelization_Graphic_9109dba010--8cf3ab0a.webp" alt="Heron量子晶片互連架構圖" style="width: 70%; height: auto;"></a>
+                                
+                              </div>
+                              <p class="dark-background">
+                                ▲ IBM Heron的互聯架構，主要是共用控制/讀出的微波訊號總線，當前的控制/讀出的微波訊號是屬於古典信號控制，故這類互聯被歸類在古典互聯。
+                                <span style="font-size: 0.7em; line-height: 0.8;">
+                                    <br>Ref: https://www.ibm.com/quantum/blog/ibm-quantum-roadmap-2025
+                                </span>
+                                <br><br>
+                              </p>
+
+
+                              <h3><li>量子互聯的三個層級：C-coupler、M-coupler、L-coupler</li></h3>
+                              
+                              <p class="dark-background">
+                                IBM 將量子互聯分成不同尺度。
+                                有些互聯用於同一晶片內部，增加非鄰近 Qubit 的連通性；
+                                有些互聯用於相鄰晶片之間，形成多晶片模組；
+                                也有些互聯則負責連接同一製冷機內距離較遠的晶片平台。
+                                這些互聯技術針對同一台製冷機內的量子網路。
+                              </p>
+                              
+                              <table width="100%" border="1" cellpadding="10" cellspacing="0"
+                                     style="border-collapse: collapse; font-family: sans-serif; border-color: #cccccc;">
+                                <thead>
+                                  <tr bgcolor="#f2f2f2" align="center">
+                                    <th width="10%">互聯類型</th>
+                                    <th width="23%">連接尺度</th>
+                                    <th>功能解說</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td><b>C-coupler</b></td>
+                                    <td>同一晶片內非鄰近 Qubit 之間</td>
+                                    <td>
+                                      C-coupler 用於提高晶片內部連通性，使同一晶片上距離較遠、非鄰近的 Qubit 也能進行量子資訊傳輸。這對某些量子錯誤校正碼特別重要，因為錯誤校正不一定只依賴最近鄰 Qubit 互動。
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td><b>M-coupler</b></td>
+                                    <td>相鄰晶片之間互聯</td>
+                                    <td>
+                                      M-coupler 是短距離 chip-to-chip quantum interconnect，用於在相鄰量子晶片之間傳送量子資訊。它適合把多個較小晶片組合成更大的模組化量子處理器。
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td><b>L-coupler</b></td>
+                                    <td>同一製冷機內較遠晶片之間</td>
+                                    <td>
+                                      L-coupler 是較長距離的量子互聯，可在同一台 cryostat 內不同平台或較遠晶片之間路由量子資訊。由於傳輸距離增加，它對損耗、延遲、相位穩定性與同步控制提出更高要求。
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+
+                              <br>
+
+                              <table width="100%" border="1" cellpadding="10" cellspacing="0"
+                                     style="border-collapse: collapse; font-family: sans-serif; border-color: #cccccc;">
+                                <thead>
+                                  <tr bgcolor="#f2f2f2" align="center">
+                                    <th width="33.33333%">
+                                      <a href="../Image/IBM-C-coupler--e1765369.png"><img loading="lazy" src="../WebP/IBM-C-coupler--e1765369.webp" alt="IBM量子晶片遠距量子通訊示意圖" style="width: 100%; height: auto;"></a>
+                                      </th>
+                                    <th width="33.33333%">
+                                      <a href="../Image/IBM-M-coupler--c68980ec.png"><img loading="lazy" src="../WebP/IBM-M-coupler--c68980ec.webp" alt="IBM量子晶片互連示意圖" style="width: 100%; height: auto;"></a>
+                                      </th>
+                                    <th>
+                                      <a href="../Image/IBM-L-coupler--72c6bea3.png"><img loading="lazy" src="../WebP/IBM-L-coupler--72c6bea3.webp" alt="量子晶片互連示意圖" style="width: 100%; height: auto;"></a>
+                                      </th>
+                                  </tr>
+                                </thead>
+                              </table>
+
+<p class="dark-background">
+▲ <b>(左)C-coupler：</b> 用於提高同一晶片內部的 Qubit 連通性。在許多量子錯誤校正架構中，Qubit 不只需要與最近鄰互動，也可能需要與較遠的 Qubit 傳遞資訊。C-coupler 的目標就是讓非鄰近 Qubit 之間也能建立有效的量子通訊路徑。
+<br>
+<b>(中)M-coupler：</b> 用於相鄰量子晶片之間的短距離互聯。它可以在鄰近晶片之間傳送量子資訊，適合把多個較小晶片組合成較大的模組化量子處理器。
+<br>
+<b>(右)L-coupler：</b> 用於較長距離的量子互聯。它可在同一製冷機內不同平台上的量子晶片之間傳送量子資訊，代表量子晶片不必全部擠在同一個局部封裝區域中。但距離增加也會帶來更嚴格的損耗、延遲與傳輸速率限制。
+<br><span style="font-size: 0.7em; line-height: 0.8;">
+  Ref: IEEE Spectrum / IBM, https://spectrum.ieee.org/ibm-quantum-computer-2668978269
+</span><br><br>
+</p>
+<div style="text-align: center;">
+  
+    <a href="../Image/Quantum_Connects_Parallelization_Graphic_7460c0616a--f98eacc3.png"><img loading="lazy" src="../WebP/Quantum_Connects_Parallelization_Graphic_7460c0616a--f98eacc3.webp" alt="量子晶片間雙量子位通訊示意圖" style="width: 100%; height: auto;"></a>
+  
+</div>
+
+<p class="dark-background">
+  ▲ M-Coupler 將多個量子處理器透過連接通道共同工作，使量子計算不再侷限於單一晶片。
+  <br>
+  <span style="font-size: 0.7em; line-height: 0.8;">
+    Ref: https://www.ibm.com/quantum/blog/ibm-quantum-roadmap-2025
+  </span>
+</p>
+<br>
+
+
+<div style="text-align: center;">
+  
+    <a href="../Image/IBM_Quantum_Production_Flamingo_24_Packaged_V008_RS_COMP_V001_RS_1114573c07--2aa4dbba.jpg"><img loading="lazy" src="../WebP/IBM_Quantum_Production_Flamingo_24_Packaged_V008_RS_COMP_V001_RS_1114573c07--2aa4dbba.webp" alt="兩片金色電路板模組" style="width: 100%; height: auto;"></a>
+  
+  
+    <a href="../Image/960x0 (1)--dec0588c.webp"><img loading="lazy" src="../WebP/960x0 (1)--dec0588c.webp" alt="Flamingo L耦合器電纜示意圖" style="width: 100%; height: auto;"></a>
+
+</div>
+
+<p class="dark-background">
+  ▲ 用於IBM Flamingo的L-Copuler 展示了模組化量子處理器與長距離連接的設計方向。
+  這類架構的重點不只在於增加 Qubit 數量，而是讓多個量子模組能在可同步、可控制的條件下共同運作。
+  <span style="font-size: 0.7em; line-height: 0.8;">
+      <br>Ref: https://www.ibm.com/quantum/blog/qdc-2024
+      <br>Ref: https://www.forbes.com/sites/karlfreund/2023/12/04/ibm-launches-quantum-system-two-and-a-roadmap-to-quantum-advantage/
+  </span>
+  <br><br>
+</p>
+
+<br><br>
+<div style="text-align: center;">
+  
+    <a href="../Image/960x0--7022e068.webp"><img loading="lazy" src="../WebP/960x0--7022e068.webp" alt="新型糾錯碼耦合器連接示意圖" style="width: 100%; height: auto;"></a>
+  
+</div>
+
+<p class="dark-background">
+  ▲ C-, M-, L-Coupler可同時用於擴展量子晶片互聯。
+  <br>
+  <span style="font-size: 0.7em; line-height: 0.8;">
+    Ref: Forbes (https://www.forbes.com/sites/karlfreund/2023/12/04/ibm-launches-quantum-system-two-and-a-roadmap-to-quantum-advantage/) / IBM
+  </span>
+</p>
+<br>
+<div style="text-align: center;">
+  
+    <a href="../Image/Kookaburra_Parallelization_Graphic_afc360b38b--e07e50a3.png"><img loading="lazy" src="../WebP/Kookaburra_Parallelization_Graphic_afc360b38b--e07e50a3.webp" alt="2025多晶片量子處理器示意圖" style="width: 100%; height: auto;"></a>
+  
+</div>
+
+<p class="dark-background">
+  ▲ Kookaburra 展示多晶片量子處理器平行化互聯的概念。多個量子晶片透過量子連接共同組成更大的處理單元。
+  <span style="font-size: 0.7em; line-height: 0.8;">
+      <br>Ref: https://www.ibm.com/quantum/blog/ibm-quantum-roadmap-2025
+  </span>
+  <br><br>
+</p><br>
+
+<p class="dark-background">
+從這三種互聯可以看出，大型量子電腦的擴展其實有多個層級：第一層是同一晶片內的 Qubit 連通性；第二層是相鄰晶片之間的 chip-to-chip interconnect；第三層是同一製冷機內不同屏蔽罩之間的長距離連結；再往外，才是多台製冷機之間的inter-cryostat quantum link。
+</p>
+
+
+
+<h3><li>為什麼錯誤校正需要更高連通性？</li></h3>
+                              
+                              <p class="dark-background">
+                                在小型量子處理器中，最近鄰耦合通常已足以執行許多基本量子電路。但在QEC校正架構中，情況會變得更複雜。
+                                許多高效率的量子錯誤校正碼，例如 LDPC code，
+                                可能需要 Qubit 之間具備更高的非局域連通性。
+                                如果所有互動都必須透過最近鄰交換完成，則會引入額外的 SWAP gate、
+                                增加電路深度，並累積更多錯誤。
+                              </p>
+<br>
+                              <h4>qLDPC 量子糾錯</h4>
+                                    <p>IBM在2024年展示qLDPC量子糾錯的工作。QEC 量子糾錯碼在實用計算上佔有非常重要地位，如何在最低的開銷下達到最佳的資訊傳輸和糾錯冗餘一直是工程上權衡的課題。
+                                        由於量子計算不可測量的特性，讓量子糾錯的難度更高。超導量子位元屬於二維的量子晶片，當前最主流的量子糾錯是<b>表面碼Surface Code</b>。
+                                        Surface Code優點是對於connectivity的需求只需要鄰近的Qubit，不需要遠程交互作用，但缺點是Ancilla Qubit的數量隨系統增加同步增加，實用上會增加系統複雜度與錯誤。
+                                        IBM在2024年展示了<b>qLDPC (quantum Low-Density Parity Check code)</b>混合Surface Code的量子糾錯運算。
+                                        qLDPC需要長程的交互作用，得益於IBM多層晶片製程的佈線/C-Coupler，可以實現較複雜的量子位元間交互聯接性拓樸。
+                                    </p><br>
+                                    <div style="text-align: center;">
+                                        
+                                            <a href="../Image/截圖 2026-03-03 下午5.50.12--abc5ecfa.png"><img loading="lazy" src="../WebP/截圖 2026-03-03 下午5.50.12--abc5ecfa.webp" alt="表面碼與準循環碼網格示意圖" style="width: 100%; height: auto;"></a>
+                                        
+                                    </div>
+                                    <p class="dark-background">
+                                        ▲ IBM論文中比較傳統的表面碼（Surface Code）與新型且高效的雙二分碼（Bivariate Bicycle Code 簡稱 BB code，屬於qLDPC的一種）。<br>
+                                        <b>圖a.</b> 是表面碼 (Surface Code)。<br>
+                                        <b>圖b.</b> BB 碼 (Bivariate Bicycle Code)的幾何結構： 它被「嵌入」在一個<b>拓樸環面（Torus，甜甜圈形狀）</b>上，每個量子位元有 6 條線連出去（4 條短程，2 條長程）。<br>
+                                        <b>圖c.</b> 混合架構與操作。<br>
+                                        傳統表面碼如果要達到同樣的容錯水準，可能需要數千個位元，而 BB 碼只需要一百多個。
+                                        <span style="font-size: 0.7em; line-height: 0.8;">
+                                            <br>Ref: 10.1038/s41586-024-07107-7
+                                        </span>
+                                        <br><br>
+                                    </p>
+
+
+                                    <div style="text-align: center;">
+                                        
+                                            <a href="../Image/IBM_FTQC_Torus_2_K_v3_16fc27ed7f--58528765.gif"><img loading="lazy" src="../Image/IBM_FTQC_Torus_2_K_v3_16fc27ed7f--58528765.gif" alt="量子位長距離連接示意圖" style="width: 100%; height: auto;"></a>
+                                        
+                                    </div>
+                                    <p class="dark-background">
+                                        ▲ 前面所說的BB Code嵌入在拓樸環面的示意圖，由IBM所繪製。
+                                        <span style="font-size: 0.7em; line-height: 0.8;">
+                                            <br>Ref: https://www.ibm.com/quantum/blog/large-scale-ftqc
+                                        </span>
+                                        <br>
+                                    </p>
+                              
+                              <p class="dark-background">
+                                因此，C-coupler、M-coupler 與 L-coupler 的意義不只是「把晶片接起來」，
+                                而是為未來的錯誤校正邏輯 Qubit 提供更彈性的連通圖。
+                                從這個角度看，量子互聯不只是硬體封裝問題，
+                                也直接影響量子錯誤校正碼、編譯策略與系統架構。
+                              </p>
+                              <br>
+                              
+                              
+
+
+                              
+                              
+                              
+                              
+                              <h3><li>從拓展量子晶片到量子資料中心：邁向超大型量子計算</li></h3>
+                              
+                              <p class="dark-background">
+                                當量子電腦從單一 QPU 走向量子資料中心時，
+                                系統架構會更接近一種 hybrid quantum-classical infrastructure。
+                                在這個架構中，QPU 負責量子態演化與量子測量；
+                                classical cluster 負責編譯、排程、最佳化、錯誤解碼與 feedback；
+                                runtime system 則負責把量子任務分配到合適的硬體資源。
+                              </p>
+                              
+                              
+                              
+                              
+                              <div style="text-align: center;">
+                                
+                                  <a href="../Image/下載--3e7f9b40.jpeg"><img loading="lazy" src="../WebP/下載--3e7f9b40.webp" alt="量子晶片與量子電腦架構圖" style="width: 100%; height: auto;"></a>
+                              
+                                
+                                    <a href="../Image/960x0 (2)--351fcadf.webp"><img loading="lazy" src="../WebP/960x0 (2)--351fcadf.webp" alt="IBM量子系統發展路線圖示意" style="width: 100%; height: auto;"></a>
+                                
+                              </div>
+                              <p class="dark-background">
+                                ▲ IBM的超算-量子混合計算預想圖。規模化的量子位元計算，將從晶面內互聯、跨晶片互聯、製冷機內跨封裝互聯，將要邁向跨製冷機量子互聯，將在後續做進一步介紹。
+                                <span style="font-size: 0.7em; line-height: 0.8;">
+                                  <br>(上)Ref: https://spectrum.ieee.org/ibm-quantum-computer-2668978269
+                                    <br>(下)Ref: https://www.forbes.com/sites/karlfreund/2023/12/04/ibm-launches-quantum-system-two-and-a-roadmap-to-quantum-advantage/
+                                </span>
+                                <br><br>
+                              </p>
+                              
+                              
+                              
+                              
+                              <p class="dark-background">
+                                因此，scalable QPU 的核心並不是單一層級的突破，
+                                而是多個層級共同成熟：
+                                晶片內部需要更好的 Qubit 連通性；
+                                晶片之間需要低損耗的 chip-to-chip quantum interconnect；
+                                製冷機內部需要長距離且相位穩定的量子通道；
+                                多台製冷機之間則需要能夠維持同步與量子相關性的 inter-cryostat link。
+                              </p>
+                              <p class="dark-background">
+                                從 IBM Quantum 的發展可以看出，C-coupler、M-coupler 與 L-coupler 分別代表不同尺度的量子互聯：
+                                從晶片內非鄰近 Qubit 的連接，到相鄰晶片間的短距離連接，
+                                再到同一製冷機內較長距離的量子連接。
+                                它們共同指出一個重要方向：
+                                <b>量子電腦的未來，不只是更大的晶片，而是更好的量子網路化架構。</b>
+                              </p>
+                                
+                              </ol>
+</section>
+<section class="qh-source-chapter">
+  <h3>教材深挖 4：邁向超大型量子計算：製冷機間量子連結</h3>
+  <p class="qh-source-note">整合自既有 Insight iHBAR 教材：QC_hardware/W.html</p>
+  <p><strong>[W13-C5] Cryogenic-to-cryogenic quantum links and data center architecture</strong></p>
+  <p class="dark-background">
+  當量子處理器的規模繼續放大時，如果單一製冷機無法容納足夠多的量子位元、無法提供足夠的製冷功率，我們能不能將QPU分散在多台製冷機中，並建立跨製冷機的量子連結呢？
+</p>
+
+<p class="dark-background">
+  這就是「製冷機間量子連結」（inter-cryostat quantum link）的核心問題。它不只是把兩台低溫儀器用普通電纜接起來，而是要在 mK 的低溫環境中，建立一條可以傳送微波光子、量子態或糾纏的通道。
+</p>
+<br><br>
+<div style="text-align: center;">
+    
+        <a href="../Image/SDfDzJze24Wrv7hD-1456x819--c9d843ef.jpg"><img loading="lazy" src="../WebP/SDfDzJze24Wrv7hD-1456x819--c9d843ef.webp" alt="IBM量子電腦設備外觀" style="width: 70%; height: auto;"></a>
+    
+</div>
+<div style="text-align: center;">
+    
+        <a href="../Image/K93D3YRZXth5AN4X-1456x819--d9424a1d.jpg"><img loading="lazy" src="../WebP/K93D3YRZXth5AN4X-1456x819--d9424a1d.webp" alt="IBM量子電腦設備示意圖" style="width: 70%; height: auto;"></a>
+    
+</div>
+
+<p class="dark-background">
+  ▲ IBM提出的Quantum System Two 模組化量子系統的概念圖。當單一 QPU 或單一低溫系統無法滿足計算規模需求時，未來系統可能透過 classical connection 與 quantum connection 把多個 QPU 模組整合起來。
+  <br><span style="font-size: 0.7em; line-height: 0.8;">
+    Ref: https://wccftech.com/ibm-intros-osprey-quantum-processor-over-400-quantum-bits-to-power-quantum-system-two/
+  </span><br><br>
+</p>
+
+<h3>為什麼需要製冷機間量子連結？</h3>
+
+<p class="dark-background">
+  超導量子位元通常需要在 10–20 mK 左右的低溫環境中操作。
+  每一個量子位元都需要控制線、讀出線、濾波器、衰減器、隔離器、放大器與校準資源。
+  當量子位元數量增加時，瓶頸不只是晶片能不能做大，還包括製冷機空間、冷卻功率、低溫佈線密度、
+  微波串擾、封裝結構與系統校準複雜度。
+</p>
+
+<p class="dark-background">
+  因此，超大型量子計算的一條重要路線，是把整個量子系統拆成多個較小、可維護、可替換的 QPU 模組。每個模組可以放在自己的製冷機中，再透過量子連結把它們組合成更大的運算系統。這樣的架構類似資料中心中的伺服器叢集。
+</p>
+
+
+
+
+
+
+<h3>微波量子通道</h3>
+<p class="dark-background">
+    對超導量子電路而言，量子位元的典型操作頻率位於微波頻段。
+    因此，在短距離或中距離的製冷機間連結中，常見研究方向是使用低溫微波通道，
+    例如低損耗同軸線、波導、低溫 circulator、directional coupler 與可控釋放/吸收微波光子的量子節點。
+  </p>
+<p class="dark-background">
+  普通電纜傳送的是大量電子共同形成的古典訊號，只要訊號強度足夠、雜訊可控，資訊就能被可靠傳輸。
+  但量子連結要傳送的可能是一個單光子波包，或一個由微波光子承載的量子態。
+  在這種情況下，任何損耗、熱雜訊、反射或相位漂移，都可能直接破壞量子資訊。
+</p>
+<br><br>
+<table width="100%" border="1" cellpadding="10" cellspacing="0" style="border-collapse: collapse; font-family: sans-serif; border-color: #cccccc;">
+  <thead>
+    <tr bgcolor="#f2f2f2" align="center">
+      <th width="25%">通道要求</th>
+      <th>物理意義</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>低損耗</b></td>
+      <td>若微波光子在傳輸過程中被吸收，承載的量子態便會遺失。</td>
+    </tr>
+    <tr>
+      <td><b>低熱雜訊</b></td>
+      <td>熱光子會污染量子通道，使接收端無法分辨真正的量子訊號與環境雜訊。</td>
+    </tr>
+    <tr>
+      <td><b>阻抗匹配</b></td>
+      <td>若通道中存在阻抗不連續，微波光子會反射，降低傳輸與吸收效率。</td>
+    </tr>
+    <tr>
+      <td><b>相位穩定</b></td>
+      <td>量子態的相位本身就是資訊的一部分，因此通道長度、溫度與機械振動都可能造成相位雜訊。</td>
+    </tr>
+    <tr>
+      <td><b>波包整形</b></td>
+      <td>發射端釋放的 photon wave packet 必須與接收端吸收模式匹配，才能提高量子態轉移效率。</td>
+    </tr>
+    <tr>
+      <td><b>時間同步</b></td>
+      <td>兩端 QPU 的控制脈衝、讀出時序與接收窗口必須精準同步。</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>製冷機間量子糾纏</h3>
+
+
+
+
+<p class="dark-background">
+  製冷機間量子連結技術從晶片間微波光子傳輸、遠距糾纏產生、低溫微波通道工程一路發展而來。以下整理幾個重要實驗脈絡。
+</p>
+<br><br>
+<table width="100%" border="1" cellpadding="10" cellspacing="0" style="border-collapse: collapse; font-family: sans-serif; border-color: #cccccc;">
+  <thead>
+    <tr bgcolor="#f2f2f2" align="center">
+      <th width="7%">年份</th>
+      <th width="30%">實驗重點</th>
+      <th>意義</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>2018</b></td>
+      <td>利用 microwave photons 進行 deterministic quantum state transfer 與 remote entanglement。</td>
+      <td>證明超導量子電路可以發射、傳輸並吸收承載量子資訊的微波光子，是分散式超導量子計算的重要基礎。</td>
+    </tr>
+    <tr>
+      <td><b>2020</b></td>
+      <td>ETH Zurich 展示約 5 m 的 microwave quantum link。</td>
+      <td>把微波量子通道從晶片尺度推進到製冷機間尺度，展示跨低溫系統的相干連結可能性。</td>
+    </tr>
+    <tr>
+      <td><b>2023</b></td>
+      <td>兩個相距約 30 m 的超導電路透過低溫微波通道建立糾纏並進行 Bell test。</td>
+      <td>顯示巨觀尺度的超導量子電路可以透過工程化微波通道展現非局域量子關聯。</td>
+    </tr>
+  </tbody>
+</table>
+<br><br>
+<div style="text-align: center;">
+  
+    <a href="../Image/截圖 2026-05-21 下午1.11.35--d390ad19.png"><img loading="lazy" src="../WebP/截圖 2026-05-21 下午1.11.35--d390ad19.webp" alt="超導量子晶片互連實驗示意圖" style="width: 100%; height: auto;"></a>
+  
+</div>
+<p class="dark-background">
+  ▲ 2018 年 Nature 論文展示以 microwave photons 進行 deterministic quantum state transfer
+  與 remote entanglement。其核心思想是：量子節點可將 qubit 狀態轉換成可傳播的微波光子，
+  再由另一個節點吸收，完成量子態轉移。
+  <br><span style="font-size: 0.7em; line-height: 0.8;">
+    Ref: Deterministic quantum state transfer and remote entanglement using microwave photons, Nature 558, 264–267 (2018), DOI:10.1038/s41586-018-0195-y
+  </span><br><br>
+</p>
+<div style="text-align: center;">
+    
+      <a href="../Image/image.imageformat.930.dpr2.39105624--7b876993.jpg"><img loading="lazy" src="../WebP/image.imageformat.930.dpr2.39105624--7b876993.webp" alt="實驗室人員操作大型儀器設備" style="width: 100%; height: auto;"></a>
+    
+  </div>
+  <p class="dark-background">
+    ▲ ETH Zurich 展示的製冷機間微波量子連結實驗。圖中可見長距離低溫微波通道與兩端的實驗系統。
+    這類實驗的重點，是在公尺等級距離上維持微波量子態的相干傳輸。
+    <br><span style="font-size: 0.7em; line-height: 0.8;">
+      Ref: https://ethz.ch/en/news-and-events/eth-news/news/2020/03/longest-microwave-quantum-link.html
+    </span><br><br>
+  </p>
+<div style="text-align: center;">
+  
+    <a href="../Image/截圖 2026-05-21 下午1.06.31--e0e0c566.png"><img loading="lazy" src="../WebP/截圖 2026-05-21 下午1.06.31--e0e0c566.webp" alt="實驗室長管線設備全景" style="width: 100%; height: auto;"></a>
+  
+</div>
+<p class="dark-background">
+  ▲ 2023 年 Nature 論文中的 30 m 製冷機間超導電路實驗架構，並成功進行無漏洞的貝爾不等式實驗。兩端超導電路透過長距離低溫微波通道連接，顯示製冷機間量子連結已從概念走向可測試的實驗平台。
+  <br><span style="font-size: 0.7em; line-height: 0.8;">
+    Ref: Loophole-free Bell inequality violation with superconducting circuits, Nature 617, 265–270 (2023), DOI:10.1038/s41586-023-05885-0
+  </span><br><br>
+</p>
+
+<h3>製冷機間量子連結的硬體組成</h3>
+
+<p class="dark-background">
+  一條製冷機間量子連結可以分成三個主要部分：發射端量子節點、低溫傳輸通道、接收端量子節點。
+  每一部分都需要整合低溫微波工程、量子控制、時間同步。
+</p>
+<br><br>
+<table width="100%" border="1" cellpadding="10" cellspacing="0" style="border-collapse: collapse; font-family: sans-serif; border-color: #cccccc;">
+  <thead>
+    <tr bgcolor="#f2f2f2" align="center">
+      <th width="15%">硬體區段</th>
+      <th width="35%">可能元件</th>
+      <th>功能解說</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>發射端量子節點</b></td>
+      <td>Transmon qubit、可調耦合器、讀出/傳輸 resonator</td>
+      <td>將本地 qubit 的量子態映射到可傳播的微波光子波包。</td>
+    </tr>
+    <tr>
+      <td><b>微波釋放控制</b></td>
+      <td>Pulse shaping、parametric coupling、Raman process</td>
+      <td>控制光子釋放的時間形狀，使波包能被接收端有效吸收。</td>
+    </tr>
+    <tr>
+      <td><b>低溫傳輸線</b></td>
+      <td>同軸線、波導、低損耗超導線路</td>
+      <td>在低熱雜訊與低損耗條件下傳送微波光子。</td>
+    </tr>
+    <tr>
+      <td><b>非互易元件</b></td>
+      <td>Circulator、isolator、directional coupler</td>
+      <td>控制微波訊號方向，減少反射與雜訊回灌。</td>
+    </tr>
+    <tr>
+      <td><b>接收端量子節點</b></td>
+      <td>接收 resonator、transmon qubit、可調耦合器</td>
+      <td>將傳來的微波光子重新吸收並轉換回本地 qubit 的量子態。</td>
+    </tr>
+    <tr>
+      <td><b>同步與校準系統</b></td>
+      <td>AWG、FPGA、時脈分配、相位校準</td>
+      <td>確保兩端脈衝、接收窗口與相位參考一致。</td>
+    </tr>
+  </tbody>
+</table>
+
+<br><br>
+
+<div style="text-align: center;">
+    
+        <a href="../Image/image3.imageformat.slideshow.86165948--4049a43f.jpg"><img loading="lazy" src="../WebP/image3.imageformat.slideshow.86165948--4049a43f.webp" alt="實驗室大型管線設備特寫" style="width: 90%; height: auto;"></a>
+      
+  
+    <a href="../Image/image2.imageformat.slideshow.237072056--e2506440.jpg"><img loading="lazy" src="../WebP/image2.imageformat.slideshow.237072056--e2506440.webp" alt="銅製工業真空腔體部件近照" style="width: 90%; height: auto;"></a>
+  
+</div>
+<p class="dark-background">
+    ▲製冷機間量子連結需要將長距離傳輸線維持在低溫、低損耗、低雜訊的條件下。這使得量子連結不只是量子物理問題，也是低溫工程、微波工程與系統整合問題。ETH Zurich 30 公尺長量子連結通道的內部局部視圖。位於中央的鋁製波導被冷卻至接近絕對零度，用以連接兩個量子電路。
+    多層銅製屏蔽結構則保護導體，避免其受到熱輻射干擾。 低溫微波通道中的耦合結構，對單光子等級的量子訊號而言，通道幾何、接頭、反射與熱化設計都會影響量子傳輸效率。
+    <br><span style="font-size: 0.7em; line-height: 0.8;">
+        Ref: https://ethz.ch/en/news-and-events/eth-news/news/2023/05/entangled-quantum-circuits.html
+        <br>Photo: ETH Zurich / Daniel Winkler
+    </span><br><br>
+  </p>
+
+<h3>技術門檻</h3>
+
+<table width="100%" border="1" cellpadding="10" cellspacing="0" style="border-collapse: collapse; font-family: sans-serif; border-color: #cccccc;">
+  <thead>
+    <tr bgcolor="#f2f2f2" align="center">
+      <th width="15%">關鍵挑戰</th>
+      <th>說明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>傳輸損耗</b></td>
+      <td>微波光子在長距離通道中若被吸收或散射，會直接降低量子態轉移 fidelity。</td>
+    </tr>
+    <tr>
+      <td><b>熱光子雜訊</b></td>
+      <td>室溫或高溫級的熱輻射若進入通道，會在微波頻段產生假訊號並破壞量子態。</td>
+    </tr>
+    <tr>
+      <td><b>低溫熱負載</b></td>
+      <td>長距離金屬線路會導入熱量，必須透過熱沉、材料選擇與多級冷卻降低對 mK 區的負擔。</td>
+    </tr>
+    <tr>
+      <td><b>相位與時序穩定</b></td>
+      <td>兩端 QPU 的相位參考與時序必須穩定，否則遠距糾纏與量子閘操作會失真。</td>
+    </tr>
+    <tr>
+      <td><b>波包匹配</b></td>
+      <td>發射端與接收端必須精準控制 photon wave packet，使接收端能以高效率吸收。</td>
+    </tr>
+    <tr>
+      <td><b>非互易元件整合</b></td>
+      <td>Circulator 與 isolator 可隔離反射雜訊，但傳統元件體積大、損耗與磁場需求也會影響可擴展性。</td>
+    </tr>
+    <tr>
+      <td><b>模組化校準</b></td>
+      <td>當 QPU 數量增加，每一條量子連結都需要獨立校準耦合強度、頻率、相位與延遲。</td>
+    </tr>
+    <tr>
+      <td><b>錯誤校正整合</b></td>
+      <td>未來製冷機間連結若要支援容錯量子計算，必須與 logical qubit、syndrome measurement 與 real-time decoder 整合。</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>從量子連結到量子資料中心</h3>
+
+<p class="dark-background">
+  製冷機間量子連結的長期目標，不只是展示兩個節點可以糾纏，而是讓多個 QPU 模組能夠共同執行大型量子演算法。
+  在這樣的架構中，每台 dilution refrigerator 可以視為一個量子運算節點；
+  多個節點透過 quantum interconnect 建立糾纏或傳送量子態，再由 classical control system 負責同步、
+  排程、讀出與錯誤校正。
+</p>
+
+<p class="dark-background">
+  這代表未來的量子電腦將不再只是「一台儀器」，而更像是一座量子計算建築：
+  裡面有低溫系統、微波通道、古典超算、控制電子學、即時解碼器與多層軟體堆疊。
+  超大型量子計算的關鍵，也會從單純增加 qubit 數量，轉向如何讓分散在不同空間位置的量子模組，
+  在資訊上仍然表現得像同一個可程式化的量子系統。
+</p>
+
+<p class="dark-background">
+  超算-量子混合運算解決的是「如何讓 QPU 與古典超算協同工作」；
+  製冷機間量子連結解決的則是「如何讓多個 QPU 在量子層級上彼此連接」。
+  這兩者合在一起，構成邁向超大型量子計算的完整硬體路線圖。
+</p>
+</section>
+<section class="qh-source-chapter">
+  <h3>教材深挖 5：整體系統集成、挑戰與未來展望</h3>
+  <p class="qh-source-note">整合自既有 Insight iHBAR 教材：QC_hardware/text.html</p>
+  <p><strong>[W13-C6] System integration pipeline：EM sim → package measurement → control software</strong></p>
+  <div style="text-align: center;">
+                                        
+                                          <a href="../Image/Delft circuit.png"><img loading="lazy" src="../WebP/Delft circuit.webp" alt="超導量子計算機的電路圖示解說。" style="width: 100%; height: auto;"></a>
+                                        
+                                        </div>
+                                        <p >
+                                        
+                                        Ref: Delft circuit
+                                        </p>
+                                
+                                
+                                
+                                
+                                      <p >
+                                    完整的超導量子電腦至少需包含：氦3極低溫真空環境、冷卻系統、大量的射頻訊號控制與讀取儀器等，故當前的超導量子電腦非常的巨大。此外，一個量子位元至少需要四條線路：
+                                    <ul>
+                                    <li>控制頻率*1：挑控磁通量的Fluxline。</li>
+                                    <li>控制狀態*1：Driveline。</li>
+                                    <li>讀取狀態*2：讀出 line一進一出。</li>
+                                    </ul>
+                                    可以參考下圖：
+                                    </p>
+                                    
+                                    <div style="text-align: center;">
+                                    
+                                      <a href="../Image/17 surface--24761abf.png"><img loading="lazy" src="../WebP/17 surface--24761abf.webp" alt="量子電路示意圖，顯示量子比特及連接。" style="width: 43%; height: auto;"></a>
+                                    
+                                    
+                                      <a href="../Image/Starmon--e72fd59a.png"><img loading="lazy" src="../WebP/Starmon--e72fd59a.webp" alt="微波驅動線及耦合總線示意圖" style="width: 55%; height: auto;"></a>
+                                    
+                                    </div>
+                                    <p >
+                                      https://arxiv.org/pdf/1612.08208
+                                      
+                                      <br>
+                                      ▲要達到量子計算，需要同時操作許多 Qubit，同時因為糾錯的關係，也需要額外的 Qubit 來進行糾錯。上圖是一個 17 位元的實驗性量子晶片，排列方式是一種稱為 surface code（表面碼）的量子糾錯型態，原形為 Qubit，粉色及紅色是 Data Qubit，天藍色及綠色是 Check Qubit。每個 Qubit 都連接 7 條線（暱稱為 Starmon），其中 4 條為 Qubit 間耦合、1 條 Flux line、1 條 Drive line、1 條 讀出 諧振器。讀出讀出 諧振器 分別併入到三條 feedline。雖然當前的技術可以將多個Qubit的讀出 line整合在一起，透過頻率隔離的技術共用同一條讀出 line（所謂Feedline），但我們還需要考慮控制量子位元間交互作用的Resonator，一個100位元的量子電腦原型就需要400條線路從外部送入，故目前常見的超導量子電腦可以看見大量的線路。
+                                      </p>
+                                    
+                                    <div style="text-align: center;">
+                                    
+                                      <a href="../Image/IQM Tunable--c869138a.png"><img loading="lazy" src="../WebP/IQM Tunable--c869138a.webp" alt="量子比特與可調耦合器示意圖" style="width: 60%; height: auto;"></a>
+                                    
+                                    
+                                    </div>
+                                    <p >
+                                    arxiv: 2408.12433<br>
+                                    量子位元間交互作用的Resonator/Coupler可以是可調控的，可進一步調控不同Qubit之間的耦合強度，但亦會增加控制電路的複雜度。
+                                    </p>
+                                 
+                                  
+                                  
+                          
+                                                                    <div class="qh-section">
+                                    <h3>IV. 整體系統集成、挑戰與未來展望</h3>
+                                  </div>
+                                  
+                                  <p  class="dark-background">構建一台功能強大的超導量子電腦，不僅僅是將各個高性能組件簡單堆砌，更是一個涉及深度系統集成的複雜工程。硬體與軟體之間、各個子系統之間都存在著緊密的相互依賴關係。</p>
+                                  
+                                  <h3>A. 硬體與軟體組件間的相互依賴性</h3>
+                                  <p  class="dark-background">量子電腦是一個高度耦合的系統，其任何一部分的特性都會深遠影響其他部分。QPU的特性，如量子位元類型、數量、保真度、連接性以及雜訊水平，直接決定了控制脈衝的設計複雜度、量子糾錯碼的選擇與效率、編譯器優化的策略，乃至於哪些類型的量子演算法在該平台上是可行的 [46, 67, 68, 70]。例如，一個具有特定二維佈局和鄰近連接的QPU可能更適合運行表面碼進行糾錯。</p>
+                                  <p  class="dark-background">反過來，低溫系統的能力，如總冷卻功率、可用空間和佈線容量，也直接限制了QPU的潛在規模以及控制和讀出電子設備的集成方式 [11, 35]。如果低溫系統無法支持更多量子位元產生的熱量或容納相應的控制線路，那麼即使QPU製造技術有所突破，系統的整體性能也無法提升。</p>
+                                  <p  class="dark-background">這種相互依賴性意味著量子電腦的發展不能僅僅依靠單個組件的孤立改進，而必須進行整個技術堆疊的協同優化。一個領域的進步（例如，量子位元相干時間的顯著提高）可能會對其他領域提出新的需求或暴露出新的瓶頸（例如，需要更快、更精確的控制和讀出系統，或更複雜的量子糾錯解碼器）。「全棧」(full-stack) 的概念 [68, 70] 本身就強調了這些組件間的緊密聯繫。例如，「物理感知全棧軟體」(Physics-Aware, Full-Stack Software) [70] 的理念，正是要讓軟體層面充分理解和利用底層物理硬體的特性。Cryo-CMOS技術的發展也是一個例證，它試圖將控制電子與低溫系統更緊密地集成起來，以解決佈線和延遲問題 [6, 11]。</p>
+                                  
+                                  <h3>B. 構建可擴展超導量子電腦的主要瓶頸</h3>
+                                  <p  class="dark-background">儘管超導量子計算在過去幾年中取得了顯著進展，但要實現大規模、可容錯的量子計算，仍面臨諸多嚴峻瓶頸：</p>
+                                  <ol>
+                                  <li><b>量子位元的品質與可擴展性：</b> 這是最核心的挑戰。實現大量具有高相干時間、高閘保真度和高讀出保真度的量子位元，並且能夠以一致的、可重複的方式進行製造，仍然極其困難 [1, 5, 6, 7]。</li>
+                                  <li><b>量子糾錯的巨大開銷：</b> 實現一個容錯的邏輯量子位元需要數百甚至數千個物理量子位元，這種巨大的資源冗餘是目前實現容錯計算的最大障礙之一 [6, 63, 64]。</li>
+                                  <li><b>大規模佈線與互連的挑戰 (「佈線問題」)：</b> 如何將成千上萬條控制和讀出訊號線路從室溫引入到極低溫的稀釋製冷機內部，同時有效管理由此產生的熱負載、確保訊號完整性並避免串擾，是一個極其棘手的工程難題 [6, 33, 35]。</li>
+                                  <li><b>低溫系統的可擴展性：</b> 現有的稀釋製冷機在為未來可能包含數百萬量子位元及其相關控制電子的系統提供足夠的冷卻功率方面面臨挑戰 [11]。</li>
+                                  <li><b>高昂的成本：</b> 從QPU的研發和製造，到稀釋製冷機、精密控制與讀出電子設備、特殊低溫線纜的採購，再到整個系統的運行和維護，都耗資巨大，限制了技術的普及和發展速度 [3, 12, 13, 20, 39]。</li>
+                                  </ol>
+                                  <p  class="dark-background">雖然量子位元的數量經常成為衡量進展的頭條新聞 [2]，但那些看似不那麼「光鮮」的方面，如低溫佈線的密度和熱管理、控制訊號的生成與傳輸質量，以及量子糾錯所需的巨大物理資源開銷，對於實現真正大規模、可容錯的量子計算而言，其瓶頸效應可能同等重要，甚至更為顯著。如果這些支持性組件的發展跟不上量子位元數量的增長，那麼僅僅增加量子位元數量並不能帶來實質性的計算能力提升。</p>
+                                  
+                                  <h3>C. 當前趨勢與未來預測</h3>
+                                  <p  class="dark-background">展望未來，超導量子計算領域呈現出以下幾個主要發展趨勢：</p>
+                                  <ol>
+                                  <li><b>持續提升量子位元數量與質量：</b> IBM、Google等領先者將繼續致力於開發具有更多量子位元和更高性能（如更長相干時間、更高保真度）的QPU [1, 2, 6]。</li>
+                                  <li><b>聚焦錯誤緩解與早期量子糾錯實現：</b> 在NISQ時代，重點是通過先進的錯誤緩解技術使現有嘈雜設備更加實用，同時積極探索和實現初步的量子糾錯方案，為最終實現容錯計算鋪平道路。Google的Willow晶片集成表面碼糾錯 [1] 和SurgeonQ等合作項目 [45] 正是這一趨勢的體現。</li>
+                                  
+                                  <li><b>Cryo-CMOS技術的發展：</b> 將部分控制電子集成到低溫環境中，更靠近量子位元，以減少佈線複雜性、降低延遲和熱負載，是提升系統性能和可擴展性的重要方向 。   </li>
+                                  <li><b>模組化量子架構探索：</b> 為了克服單個晶片在尺寸和複雜性上的限制，研究人員正在探索通過高速互連技術將多個QPU晶片或模組連接起來，構建更大規模的量子計算系統 。   </li>
+                                  <li><b>混合量子-經典架構的持續主導： </b>在可預見的未來，特別是在NISQ設備上解決實際問題時，量子計算機將作為協處理器與經典高性能計算機協同工作。因此，針對這種混合架構的硬體和軟體協同設計仍將是關鍵 。   </li>
+                                  <li><b>量子雲平台的增長：</b> 越來越多的量子硬體資源將通過雲平台提供給用戶，降低了用戶接觸和使用量子計算的門檻，促進了應用探索和生態系統的發展 。   </li>
+                                  <li><b>國家級戰略投入的持續加強： </b>美國、中國、歐盟等主要國家和地區將繼續加大對量子計算領域的戰略性投入，支持基礎研究、技術開發和人才培養 。   </li>
+                                </ol>
+                                  <p  class="dark-background">短期內，量子計算的發展可能會主要集中在通過改進錯誤緩解技術和混合演算法來提升NISQ系統的實用性。而長遠目標則始終是通過穩健的量子糾錯實現大規模的容錯量子計算。架構趨勢方面，一方面是向著更高程度的集成化發展（如Cryo-CMOS），另一方面也可能通過模組化來突破單晶片擴展的物理極限。這些都是在應對當前局限性的同時，為實現量子計算的最終潛力所採取的務實步驟。
+                          </p>
+                                                                        <div class="qh-section">
+                                      <h3>V. 結論與主要觀點</h3>
+                                    </div>
+                                    <p  class="dark-background">構建一台實用的、可擴展的超導量子電腦是一項極其複雜的跨學科系統工程，它融合了量子物理、材料科學、微波工程、低溫工程、軟體工程等多個領域的尖端知識，並且需要巨大的資金投入。從核心的量子處理器 (QPU) 到極端的低溫環境，再到精密的控制與讀出系統、特製的低溫佈線，以及複雜的軟體堆疊，每一個環節都至關重要，且面臨著獨特的技術挑戰。
+                                    </p>
+                                    <p  class="dark-background">儘管過去幾年取得了令人鼓舞的進展，例如量子位元數量的增加和相干時間的提升，但通往實用化超導量子計算的道路依然漫長。在硬體層面，量子位元的質量和一致性、大規模佈線的散熱與訊號完整性、以及低溫系統的冷卻能力擴展等問題仍是主要的瓶頸。在軟體層面，開發高效的雜訊感知演算法、構建穩健的量子中間表示和編譯器、以及實現資源開銷可控且能實時運行的量子糾錯協議，都是亟待突破的難關。
+                                    </p>
+                          
+                                      <p  class="dark-background">這項事業的成功，並非單個組件的突破所能保證，而是依賴於整個複雜系統中所有組成部分的協同進步和整體優化。當前全球範圍內的研發格局，既體現了主要科技強國和領先企業之間的激烈競爭，也反映出在應對這些巨大挑戰時，學術界、產業界和政府之間開展合作的必要性。
+                                      </p>
+                                      
+                                      <p  class="dark-background">最終，能否開發出穩健的量子糾錯方案並成功擴展高質量的量子位元系統，將是決定超導量子計算能否實現其革命性潛力的關鍵所在。這是一場需要持續創新、耐心投入和全球協作的「馬拉松」。
+                                      </p>
+                                 
+                                
+                          
+                          
+                          
+                          
+                                  
+                                      <header class="major">
+                                                                                <div class="qh-section">
+                                          <h3><li>超導電腦部件及其主要廠商</li></h3>
+                                        </div>
+                                      </header>
+                              
+                                                                            <div class="qh-section">
+                                        <h3>超導電腦部件及其主要廠商（再次更新版）</h3>
+                                      </div>
+                                      <p  class="dark-background">
+                                      <table border="1">
+                                          <thead>
+                                              <tr>
+                                                  <th>部件類別</th>
+                                                  <th>具體部件/服務</th>
+                                                  <th>主要廠商/機構 (根據提供的HTML內容)</th>
+                                              </tr>
+                                          </thead>
+                                          <tbody>
+                                              <tr>
+                                                  <td rowspan="2"><b>量子處理器 (QPU) / 量子晶片</b></td>
+                                                  <td>QPU 標準產品及代工服務</td>
+                                                  <td>
+                                                      <ul>
+                                                          <li>SpinQ [cite: 5, 36]</li>
+                                                          <li>QuantWare (荷蘭) [cite: 36] </li>
+                                                          <li>Rigetti Computing (美國) [cite: 36] </li>
+                                                          <li>SkyWater Technology [cite: 36]</li>
+                                                          <li>SeeQC (美國) [cite: 10, 36] </li>
+                                                      </ul>
+                                                  </td>
+                                              </tr>
+                                              <tr>
+                                                  <td>QPU 內部開發/研究 (大型集成商/研究機構)</td>
+                                                  <td>
+                                                      <ul>
+                                                          <li>IBM [cite: 1, 2, 10, 36, 37]</li>
+                                                          <li>Google Quantum AI [cite: 1, 2, 10, 36, 37]</li>
+                                                          <li>Intel [cite: 1, 2, 10, 36, 37]</li>
+                                                          <li>OQC (Oxford Quantum Circuits) (英國) [cite: 1, 5, 6] </li>
+                                                          <li>Anyon Systems [cite: 1, 5, 6]</li>
+                                                          <li>Yale University [cite: 1, 5, 6]</li>
+                                                          <li>UMD (University of Maryland) [cite: 1, 5, 6]</li>
+                                                          <li>Atlantic Quantum [cite: 1, 5, 6]</li>
+                                                          <li>IQM Quantum Computers (芬蘭) </li>
+                                                          <li>Alice & Bob (法國) </li>
+                                                      </ul>
+                                                  </td>
+                                              </tr>
+                                              <tr>
+                                                  <td><b>低溫系統</b></td>
+                                                  <td>稀釋製冷機 / 低溫製冷系統</td>
+                                                  <td>
+                                                      <ul>
+                                                          <li>Bluefors (芬蘭) [cite: 8, 9, 11, 12, 13, 14, 24, 31, 36, 37, 41]</li>
+                                                          <li>Oxford Instruments NanoScience (英國) [cite: 8, 9, 11, 12, 13, 14, 24, 36, 41]</li>
+                                                          <li>ULVAC [cite: 8, 9, 11, 12, 13, 14, 24, 36, 41]</li>
+                                                          <li>Maybell Quantum [cite: 8, 9, 11, 12, 13, 14, 32, 36, 41]</li>
+                                                          <li>Janis Research (Lake Shore) (美國) (資訊來源：更新內容中的「超導量子電腦主要部件與廠商選項」表)</li>
+                                                          <li>Leiden Cryogenics</li>
+                                                          <li>Cryomech (美國) </li>
+                                                          <li>ICEoxford (英國) </li>
+                                                          <li>Kiutra (德國) </li>
+                                                          <li>Quantum Design (美國/全球) (資訊來源：更新內容中的「超導量子電腦主要部件與廠商選項」表)</li>
+                                                      </ul>
+                                                  </td>
+                                              </tr>
+                                              <tr>
+                                                  <td rowspan="2"><b>控制與讀取電子設備</b></td>
+                                                  <td>控制電子系統 (專用平台/模塊化系統/脈衝產生器)</td>
+                                                  <td>
+                                                      <ul>
+                                                          <li>Quantum Machines (以色列) [cite: 14, 15, 16, 17, 18, 19, 36]</li>
+                                                          <li>Qblox (荷蘭) [cite: 14, 15, 16, 17, 18, 19, 36, 37]</li>
+                                                          <li>Zurich Instruments (瑞士) [cite: 14, 15, 16, 17, 18, 19, 36]</li>
+                                                          <li>SpinQ [cite: 14, 15, 16, 17, 18, 19, 36]</li>
+                                                          <li>Keysight Technologies (也提供單項儀器如AWG) [cite: 16, 18, 19]</li>
+                                                          <li>Rohde & Schwarz (也提供單項儀器如AWG) [cite: 16, 18, 19]</li>
+                                                          <li>Tektronix (AWG) (資訊來源：更新內容中的「超導量子電腦主要部件與廠商選項」表)</li>
+                                                          <li>Tabor Quantum Solutions (Tabor Electronics)</li>
+                                                          <li>Intel (Cryo-CMOS 研究)</li>
+                                                          <li>NVIDIA (與QM合作DGX Quantum) [cite: 17, 18, 19]</li>
+                                                      </ul>
+                                                  </td>
+                                              </tr>
+                                              <tr>
+                                                  <td>讀出與測量系統組件</td>
+                                                  <td>
+                                                      <ul>
+                                                          <li>(許多控制系統供應商如Quantum Machines, Qblox, Zurich Instruments, SpinQ 的產品集成讀取功能)</li>
+                                                          <li><strong>低溫放大器:</strong>
+                                                              <ul>
+                                                                  <li>HEMT (高電子遷移率電晶體) 放大器: Low Noise Factory, MITEQ, 扩维科技 (資訊來源：更新內容中的「超導量子電腦主要部件與廠商選項」表)。新HTML文本「低溫設置工程...」部分描述其用途。</li>
+                                                                  <li>TWPA/JPA (行波/約瑟夫森參數放大器): QuantWare (TWPA); 耶魯大學、MIT 等 (JPA/TWPA 研究/自研) (資訊來源：更新內容中的「超導量子電腦主要部件與廠商選項」表)。新HTML文本「低溫設置工程...」部分描述TWPA用途。</li>
+                                                              </ul>
+                                                          </li>
+                                                          <li><strong>微波無源元件 (Cryogenic Passive Microwave Components):</strong>
+                                                              <ul>
+                                                                  <li>隔離器 (Isolator) / 循環器 (Circulator): DiTom Microwave, QuinStar, 天靈微波 (資訊來源：更新內容中的「超導量子電腦主要部件與廠商選項」表)。新HTML文本「低溫設置工程...」部分描述其用途。</li>
+                                                                  <li>低通濾波器 (Low-pass filter): Minicircuits (VLFX1300+) (資訊來源：新HTML文本「低溫設置工程...」部分)。</li>
+                                                                  <li>帶通濾波器 (Band-pass filter): 新HTML文本「低溫設置工程...」部分描述其用途; 特定商業生產商需參考通用微波元件供應商。</li>
+                                                                  <li>Eccosorb 濾波器: 基於 Eccosorb® CR-124 吸收材料的客製化紅外濾波器 (資訊來源：新HTML文本「低溫設置工程...」部分)。Eccosorb® 為材料品牌。</li>
+                                                                  <li>定向耦合器 (Dir. Coupler / Directional Coupler): 新HTML文本「低溫設置工程...」部分描述其用途; 特定商業生產商需參考通用微波元件供應商。</li>
+                                                                  <li>終端 (Termination): 新HTML文本「低溫設置工程...」部分描述其應用; 特定商業生產商需參考通用微波元件供應商。</li>
+                                                              </ul>
+                                                          </li>
+                                                          <li>量子-經典界面 (微波光子轉換): QphoX (荷蘭) </li>
+                                                          <li>超導單光子探測器與低溫模組: PhotonSpot (美國) </li>
+                                                          <li>量子感測器 / 磁性成像: Qnami (瑞士) </li>
+                                                          <li>外導體熱沉 (Thermalisation of outer conductor): 新HTML文本「低溫設置工程...」部分描述為一種設計技術，非標準採購部件。</li>
+                                                          <li>通用量測儀器 (VNA, 信號產生器, 頻譜儀等): Keysight Technologies, Rohde & Schwarz, Anritsu, AlazarTech (資訊來源：「超導量子電腦主要部件與廠商選項」表及原文)</li>
+                                                          <li>低溫傳感器/儀器: Lake Shore Cryotronics [cite: 34, 39, 42]</li>
+                                                          <li>低溫霍爾傳感器: Paragraf [cite: 34]</li>
+                                                      </ul>
+                                                  </td>
+                                              </tr>
+                                              <tr>
+                                                  <td rowspan="2"><b>特殊導線與接頭</b></td>
+                                                  <td>低溫導線 (同軸電纜, 柔性線纜, 雙絞線, 光纖硬體/選項)</td>
+                                                  <td>
+                                                      <ul>
+                                                          <li>Delft Circuits (Cri/oFlex® 柔性線纜) [cite: 10, 20, 21, 23, 24, 25, 26, 27, 36, 42, 44]</li>
+                                                          <li>Maybell Quantum (Flexlines 柔性線纜) [cite: 10, 20, 21, 23, 24, 25, 26, 27, 32, 36, 41]</li>
+                                                          <li>Rosenberger (同軸電纜) [cite: 21, 23, 24, 25, 26, 27, 36, 42]</li>
+                                                          <li>CryoCoax (Intelliconnect) (同軸電纜) [cite: 21, 23, 24, 25, 26, 27, 36, 42]</li>
+                                                          <li>EZ Form Cable (同軸電纜) [cite: 21, 23, 24, 25, 26, 27, 36, 42]</li>
+                                                          <li>MIT Lincoln Lab (柔性線纜技術) [cite: 21, 23, 24, 26]</li>
+                                                          <li>Bluefors (提供多種線纜選項，包括雙絞線、光纖) [cite: 21, 23, 24, 25, 26, 27, 37]</li>
+                                                          <li>QDevil (低溫連接與封裝) (資訊來源：更新內容中的「超導量子電腦主要部件與廠商選項」表)</li>
+                                                          <li>qutools (德國) (量子光學與時鐘/光纖硬體) </li>
+                                                          <li>ScalINQ (德國) (量子連接元件) </li>
+                                                      </ul>
+                                                  </td>
+                                              </tr>
+                                              <tr>
+                                                  <td>低溫連接器/接頭 (RF接頭, 高密度接頭, 氣密接頭/饋通)</td>
+                                                  <td>
+                                                      <ul>
+                                                          <li>Quantum Microwave [cite: 22, 23, 24, 28, 29, 30, 36]</li>
+                                                          <li>Rosenberger [cite: 22, 23, 24, 28, 29, 30, 36, 42]</li>
+                                                          <li>Delft Circuits [cite: 22, 23, 24, 28, 29, 30, 36, 42]</li>
+                                                          <li>Ardent Concepts (高密度板級連接器) [cite: 22, 23, 24, 28, 29, 30]</li>
+                                                          <li>Martec (氣密接頭/饋通) [cite: 22, 23, 24, 28, 29, 30, 36, 42]</li>
+                                                          <li>Amphenol Aerospace (Cryo-Seal 氣密接頭) [cite: 22, 23, 24, 28, 29, 30, 36, 42]</li>
+                                                          <li>QDevil (資訊來源：更新內容中的「超導量子電腦主要部件與廠商選項」表)</li>
+                                                          <li>CryoCoax (Intelliconnect) (資訊來源：更新內容中的「超導量子電腦主要部件與廠商選項」表)</li>
+                                                          <li>Lake Shore Cryotronics (樣品盒等) (資訊來源：更新內容中的「超導量子電腦主要部件與廠商選項」表)</li>
+                                                          <li>ScalINQ (德國) (量子連接元件) </li>
+                                                      </ul>
+                                                  </td>
+                                              </tr>
+                                              <tr>
+                                                  <td rowspan="2"><b>輔助系統部件</b></td>
+                                                  <td>真空系統部件 (真空幫浦, 真空計, 閥門等)</td>
+                                                  <td>
+                                                      <ul>
+                                                          <li>Leybold [cite: 11, 30, 31, 32, 38, 42]</li>
+                                                          <li>Edwards Vacuum [cite: 30, 31, 32, 38, 42]</li>
+                                                          <li>Pfeiffer Vacuum [cite: 30, 31, 32, 38, 42]</li>
+                                                          <li>SAES Getters (NEG 幫浦) [cite: 30, 31, 32, 38, 42]</li>
+                                                          <li>Gamma Vacuum (離子幫浦) [cite: 30, 31, 32, 38, 42]</li>
+                                                          <li>Busch Vacuum Solutions [cite: 31, 32, 38, 42]</li>
+                                                          <li>Agilent (原 Varian) [cite: 31, 32, 38, 42]</li>
+                                                          <li>Welch [cite: 31, 32, 38, 42]</li>
+                                                          <li>VAT (真空閥門) [cite: 31, 32, 38, 42]</li>
+                                                      </ul>
+                                                  </td>
+                                              </tr>
+                                              <tr>
+                                                  <td>磁屏蔽與輻射屏蔽 / 低溫探針台</td>
+                                                  <td>
+                                                      <ul>
+                                                          <li>Amuneal Manufacturing Corp. [cite: 32, 33, 38, 42]</li>
+                                                          <li>Magnetic Shields Limited (MSL) [cite: 32, 33, 38, 42]</li>
+                                                          <li>Bluefors (集成屏蔽方案) [cite: 33]</li>
+                                                          <li>Quantum Machines (QCage 樣品架提供磁屏蔽選項) [cite: 33]</li>
+                                                          <li>Montana Instruments (美國) (低溫探針台/模組) </li>
+                                                      </ul>
+                                                  </td>
+                                              </tr>
+                                              <tr>
+                                                  <td><b>完整系統提供商</b></td>
+                                                  <td>提供完整超導量子計算系統或解決方案</td>
+                                                  <td>
+                                                      <ul>
+                                                          <li>IBM [cite: 1, 43, 44]</li>
+                                                          <li>Google Quantum AI [cite: 1, 43, 44]</li>
+                                                          <li>Intel [cite: 44]</li>
+                                                          <li>Rigetti Computing [cite: 3, 44, 45]</li>
+                                                          <li>D-Wave Systems (量子退火機為主,亦開發門模型) [cite: 45]</li>
+                                                          <li>SpinQ [cite: 1, 45]</li>
+                                                          <li>Oxford Quantum Circuits (OQC) [cite: 6, 45]</li>
+                                                          <li>Anyon Systems [cite: 45]</li>
+                                                          <li>Alice & Bob [cite: 45]</li>
+                                                          <li>Atlantic Quantum [cite: 45]</li>
+                                                          <li>IQM Quantum Computers (芬蘭) </li>
+                                                      </ul>
+                                                  </td>
+                                              </tr>
+                                          </tbody>
+                                      </table>
+                              </p>
+</section>  <section class="module">
+    
+<div class="qh-section">
+  <h3>進階主線：Package 是 Hamiltonian 的一部分</h3>
+</div>
+<p>封裝不是晶片完成後才補上的盒子。package cavity、chip mode、connector launch、ground return、bond wire 與 seam loss 都會改變 mode spectrum、Purcell channel、crosstalk 與 coherence。EM simulation 的目的不是得到漂亮 field plot，而是驗證 mode-free band、port isolation、participation 與對製程公差的敏感度。</p>
+<p>Scale-up 時，I/O density 與 mixing-chamber heat budget常比單顆 qubit performance 更先限制系統。可能解法包括 3D wiring、interposer、multiplexing、cryo-CMOS／SFQ、modular QPU；每個解法又改變 calibration、repair、yield 與 software abstraction。</p>
+
+  </section>
+  <section class="module">
+                                    <div class="qh-section">
+                                      <h3>六、單元 5：訊號傳遞、佈線限制與熱負載</h3>
+                                    </div>
+                                
+                                    <h4>5.1 Wiring as a Scalability Bottleneck</h4>
+                                    <p>
+                                      超導量子電腦的擴展不只是增加 qubit 數量。
+                                      每增加一個 qubit，通常也需要增加控制、讀出、偏壓與校準所需的線路資源。
+                                      這些線路會佔據 dilution refrigerator 內部空間、增加熱負載、引入串擾，
+                                      並提高封裝與控制電子學的複雜度。
+                                    </p>
+                                
+                                    <p>
+                                      因此，wiring 是超導量子電腦可擴展性的主要瓶頸之一。
+                                      大規模系統需要在獨立控制能力、線路數量、熱負載與訊號完整性之間取得平衡。
+                                    </p>
+                                
+                                    <h4>5.2 Types of Wiring</h4>
+                                    <table>
+                                      <thead>
+                                        <tr>
+                                          <th>線路類型</th>
+                                          <th>用途</th>
+                                          <th>主要挑戰</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        <tr>
+                                          <td>Microwave Drive Line</td>
+                                          <td>single-qubit control</td>
+                                          <td>串擾、反射、帶外激發、熱雜訊</td>
+                                        </tr>
+                                        <tr>
+                                          <td>Flux Bias Line</td>
+                                          <td>tunable qubit 或 tunable coupler 控制</td>
+                                          <td>flux noise、脈衝失真、磁通串擾</td>
+                                        </tr>
+                                        <tr>
+                                          <td>Readout Feedline</td>
+                                          <td>多 qubit 讀出訊號傳輸</td>
+                                          <td>multiplexing、放大器飽和、readout crosstalk</td>
+                                        </tr>
+                                        <tr>
+                                          <td>DC Bias Line</td>
+                                          <td>偏壓控制或特殊元件操作</td>
+                                          <td>低頻雜訊、濾波、熱化</td>
+                                        </tr>
+                                        <tr>
+                                          <td>Pump Line</td>
+                                          <td>parametric amplifier 或 parametric gate 驅動</td>
+                                          <td>pump leakage、強訊號串擾、熱負載</td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                
+                                    <h4>5.3 Thermal Budget</h4>
+                                    <p>
+                                      Dilution refrigerator 的每個溫度級都有有限的 cooling power。
+                                      特別是 mixing chamber 的冷卻功率通常非常有限，
+                                      因此線路數量、元件耗散與光子熱負載都必須嚴格管理。
+                                    </p>
+                                
+                                    <p>
+                                      熱負載來源包含：
+                                    </p>
+                                
+                                    <ul>
+                                      <li>coaxial cables 的熱傳導。</li>
+                                      <li>attenuators 吸收微波功率所產生的熱。</li>
+                                      <li>filters、circulators、isolators 的插入損耗。</li>
+                                      <li>低溫放大器與主動元件的功率耗散。</li>
+                                      <li>封裝與機械支撐結構的熱傳導。</li>
+                                      <li>紅外輻射或黑體輻射沿線路進入低溫端。</li>
+                                    </ul>
+                                
+                                    <h4>5.4 Signal Integrity</h4>
+                                    <p>
+                                      訊號完整性是量子控制與讀出品質的核心。
+                                      在微波系統中，阻抗不匹配、反射、standing waves、cross coupling、mode conversion
+                                      與 connector imperfections 都可能改變控制脈衝或讀出訊號。
+                                    </p>
+                                
+                                    <h4>常見 signal integrity 問題</h4>
+                                    <table>
+                                      <thead>
+                                        <tr>
+                                          <th>問題</th>
+                                          <th>原因</th>
+                                          <th>影響</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        <tr>
+                                          <td>Reflection</td>
+                                          <td>阻抗不匹配或 connector discontinuity</td>
+                                          <td>造成 pulse distortion 與 ringing</td>
+                                        </tr>
+                                        <tr>
+                                          <td>Standing Wave</td>
+                                          <td>多重反射干涉</td>
+                                          <td>造成頻率依賴的振幅與相位誤差</td>
+                                        </tr>
+                                        <tr>
+                                          <td>Crosstalk</td>
+                                          <td>鄰近線路或封裝模式耦合</td>
+                                          <td>非目標 qubit 被驅動或讀出污染</td>
+                                        </tr>
+                                        <tr>
+                                          <td>Insertion Loss</td>
+                                          <td>線材、元件與接頭損耗</td>
+                                          <td>降低控制功率或讀出 SNR</td>
+                                        </tr>
+                                        <tr>
+                                          <td>Dispersion</td>
+                                          <td>頻率依賴相速度與群延遲</td>
+                                          <td>造成脈衝形狀改變</td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                
+                                    <h4>5.5 Scaling Strategies</h4>
+                                    <p>
+                                      為了擴展到更多 qubits，系統設計需要降低每個 qubit 所需線路數量，
+                                      並提高低溫與室溫資源的共享程度。
+                                    </p>
+                                
+                                    <ul>
+                                      <li>Frequency multiplexing：多個 readout resonators 共享一條 feedline。</li>
+                                      <li>Control multiplexing：使用選擇性頻率控制多個 qubits。</li>
+                                      <li>Cryo-CMOS control：將部分控制電子學移到低溫端以降低線路需求。</li>
+                                      <li>3D integration：使用 interposer、through-silicon vias 或 bump bonds 增加連接密度。</li>
+                                      <li>Modular architecture：將量子處理器分成多個模組，再透過互連架構整合。</li>
+                                    </ul>
+                                
+                                    <div class="note">
+                                      <h4>核心觀念</h4>
+                                      <p>
+                                        大規模量子電腦的挑戰不只是「如何做更多 qubits」，
+                                        而是「如何在有限低溫功率、有限線路密度與有限訊號完整性下，可靠地控制與讀出更多 qubits」。
+                                      </p>
+                                    </div>
+                                  </section><section class="module">
+                                    <div class="qh-section">
+                                      <h3>七、單元 6：晶片封裝、電磁模擬與微波設計</h3>
+                                    </div>
+                                
+                                    <h4>6.1 Why Packaging Matters</h4>
+                                    <p>
+                                      在超導量子電腦中，封裝不是單純保護晶片的外殼。
+                                      封裝會決定晶片與外部世界的微波連接、接地品質、寄生模態、熱化效果、
+                                      磁屏蔽與機械穩定性。錯誤的封裝設計可能引入 package modes、slotline modes、
+                                      unwanted coupling 或額外 loss，進而降低 qubit coherence 與 gate fidelity。
+                                    </p>
+                                
+                                    <h4>6.2 Chip Package Components</h4>
+                                    <table>
+                                      <thead>
+                                        <tr>
+                                          <th>封裝元件</th>
+                                          <th>功能</th>
+                                          <th>設計考量</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        <tr>
+                                          <td>Sample Box</td>
+                                          <td>固定晶片並提供屏蔽環境</td>
+                                          <td>材料導熱性、超導性、腔體模態</td>
+                                        </tr>
+                                        <tr>
+                                          <td>Wirebond</td>
+                                          <td>連接晶片 pad 與封裝 PCB</td>
+                                          <td>寄生電感、接地連續性、機械可靠性</td>
+                                        </tr>
+                                        <tr>
+                                          <td>PCB / Carrier</td>
+                                          <td>提供微波與 DC 連接</td>
+                                          <td>介電損耗、阻抗控制、熱收縮</td>
+                                        </tr>
+                                        <tr>
+                                          <td>Connector</td>
+                                          <td>連接同軸線與封裝</td>
+                                          <td>阻抗匹配、低溫可靠性、反射</td>
+                                        </tr>
+                                        <tr>
+                                          <td>Shielding</td>
+                                          <td>阻擋磁場、紅外輻射與電磁干擾</td>
+                                          <td>材料選擇、接地、熱化</td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                
+                                    <h4>6.3 Electromagnetic Modes</h4>
+                                    <p>
+                                      封裝與晶片共同形成三維電磁環境。
+                                      若 package cavity mode 或 substrate mode 的頻率接近 qubit、resonator 或 control frequency，
+                                      可能造成額外損耗、頻率漂移或遠距離 crosstalk。
+                                    </p>
+                                
+                                    <p>
+                                      常見需要避免的模式包括：
+                                    </p>
+                                
+                                    <ul>
+                                      <li>Package cavity modes。</li>
+                                      <li>Slotline modes。</li>
+                                      <li>Substrate modes。</li>
+                                      <li>Box modes。</li>
+                                      <li>Feedline parasitic resonances。</li>
+                                      <li>Connector-induced resonances。</li>
+                                    </ul>
+                                
+                                    <h4>6.4 Electromagnetic Simulation</h4>
+                                    <p>
+                                      Electromagnetic simulation 是量子晶片與封裝設計的重要工具。
+                                      透過有限元素法或微波模擬，可以預測電容、耦合強度、resonator frequency、
+                                      participation ratio、radiation loss 與 package modes。
+                                    </p>
+                                
+                                    <h4>常見模擬目標</h4>
+                                    <table>
+                                      <thead>
+                                        <tr>
+                                          <th>模擬目標</th>
+                                          <th>物理量</th>
+                                          <th>設計用途</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        <tr>
+                                          <td>Capacitance Extraction</td>
+                                          <td>\(C_\Sigma\)、coupling capacitance</td>
+                                          <td>決定 \(E_C\)、qubit frequency 與 coupling strength</td>
+                                        </tr>
+                                        <tr>
+                                          <td>Mode Simulation</td>
+                                          <td>resonator modes、package modes</td>
+                                          <td>避免 unwanted resonances</td>
+                                        </tr>
+                                        <tr>
+                                          <td>Participation Ratio</td>
+                                          <td>電場在介面與材料中的分佈</td>
+                                          <td>估計 dielectric loss 與 coherence limit</td>
+                                        </tr>
+                                        <tr>
+                                          <td>Impedance Matching</td>
+                                          <td>\(S_{11}\)、\(S_{21}\)</td>
+                                          <td>降低反射並提升訊號完整性</td>
+                                        </tr>
+                                        <tr>
+                                          <td>Crosstalk Analysis</td>
+                                          <td>線路間耦合與場分佈</td>
+                                          <td>降低非目標 qubit 驅動與讀出污染</td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                
+                                    <h4>6.5 Microwave Design Rules</h4>
+                                    <p>
+                                      超導量子晶片中的微波設計需要同時考慮量子電路參數與傳輸線工程。
+                                      例如 coplanar waveguide 的線寬、間距與接地結構決定 characteristic impedance；
+                                      resonator 長度決定共振頻率；coupling capacitor 決定 readout coupling rate；
+                                      ground plane 與 air bridges 影響 slotline suppression。
+                                    </p>
+                                
+                                    <ul>
+                                      <li>維持 50-ohm impedance matching，降低反射。</li>
+                                      <li>避免 abrupt discontinuities，減少 microwave scattering。</li>
+                                      <li>使用 air bridges 或 wirebonds 連接 ground planes，抑制 slotline modes。</li>
+                                      <li>控制 resonator linewidth \(\kappa\)，平衡 readout speed 與 Purcell loss。</li>
+                                      <li>避免 control lines 與 qubit electric field 過強耦合造成額外 \(T_1\) loss。</li>
+                                      <li>使用 EM simulation 檢查封裝與晶片共同模態。</li>
+                                    </ul>
+                                
+                                    <div class="learning-check">
+                                      <h4>學習檢核</h4>
+                                      <ol>
+                                        <li>為什麼量子晶片封裝會影響 qubit coherence？</li>
+                                        <li>Package mode 與 slotline mode 可能造成哪些問題？</li>
+                                        <li>Electromagnetic simulation 在超導量子晶片設計中扮演什麼角色？</li>
+                                        <li>為什麼 50-ohm impedance matching 對微波控制與讀出很重要？</li>
+                                      </ol>
+                                    </div>
+                                  </section><section class="module">
+                                    <div class="qh-section">
+                                      <h3>八、單元 7：系統整合與量子電腦開發流程</h3>
+                                    </div>
+                                
+                                    <h4>7.1 Quantum Computer Development Pipeline</h4>
+                                    <p>
+                                      超導量子電腦的開發通常是一個反覆迭代的流程。
+                                      從元件設計到晶片製作、封裝、低溫測試、校準、benchmarking 與系統最佳化，
+                                      每個階段都會回饋到下一代設計。
+                                    </p>
+                                
+                                    <ol>
+                                      <li><strong>Device Design：</strong>設計 qubit、resonator、coupler 與 layout。</li>
+                                      <li><strong>EM Simulation：</strong>模擬電容、模式、耦合與封裝效應。</li>
+                                      <li><strong>Fabrication：</strong>製作薄膜、Josephson junction、蝕刻與金屬化結構。</li>
+                                      <li><strong>Packaging：</strong>將晶片安裝到 sample box 或 interposer。</li>
+                                      <li><strong>Cryogenic Integration：</strong>將封裝連接到 dilution refrigerator wiring。</li>
+                                      <li><strong>Bring-Up：</strong>量測 resonators、qubit spectra、coherence 與基本控制。</li>
+                                      <li><strong>Calibration：</strong>校準 single-qubit gates、two-qubit gates 與 readout。</li>
+                                      <li><strong>Benchmarking：</strong>執行 RB、QEC cycle、system-level metrics。</li>
+                                      <li><strong>Diagnosis：</strong>分析 error sources、crosstalk、leakage 與 frequency collision。</li>
+                                      <li><strong>Iteration：</strong>回饋到下一輪晶片、封裝與系統設計。</li>
+                                    </ol>
+                                
+                                    <h4>7.2 System-Level Optimization</h4>
+                                    <p>
+                                      系統最佳化不是單一參數最佳化，而是多目標、多限制條件下的平衡。
+                                      例如，提高 readout power 可以改善 SNR，但也可能造成 measurement-induced dephasing；
+                                      增加 coupling strength 可以加快 two-qubit gates，但可能提高 residual ZZ 與 crosstalk；
+                                      加強濾波可以降低雜訊，但可能使 pulse distortion 更嚴重。
+                                    </p>
+                                
+                                    <table>
+                                      <thead>
+                                        <tr>
+                                          <th>最佳化目標</th>
+                                          <th>希望改善的量</th>
+                                          <th>可能代價</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        <tr>
+                                          <td>提高 coherence</td>
+                                          <td>\(T_1\)、\(T_2\)、低雜訊環境</td>
+                                          <td>可能降低控制與讀出耦合</td>
+                                        </tr>
+                                        <tr>
+                                          <td>提高 gate speed</td>
+                                          <td>較短 gate time</td>
+                                          <td>可能增加 leakage 與 pulse distortion</td>
+                                        </tr>
+                                        <tr>
+                                          <td>提高 readout fidelity</td>
+                                          <td>較高 SNR 與 assignment fidelity</td>
+                                          <td>可能增加 Purcell loss 與 readout crosstalk</td>
+                                        </tr>
+                                        <tr>
+                                          <td>提高 scalability</td>
+                                          <td>更多 qubits 與更高 wiring density</td>
+                                          <td>增加熱負載、封裝複雜度與校準成本</td>
+                                        </tr>
+                                        <tr>
+                                          <td>降低 crosstalk</td>
+                                          <td>更高操作獨立性</td>
+                                          <td>可能需要更大晶片面積或更複雜封裝</td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                
+                                    <h4>7.3 Automation and Control Software</h4>
+                                    <p>
+                                      隨著 qubit 數量增加，手動校準變得不可行。
+                                      大規模量子電腦需要自動化校準與控制軟體，將高層量子程式轉換成硬體可執行的 pulse schedule，
+                                      並根據量測結果自動更新系統參數。
+                                    </p>
+                                
+                                    <p>
+                                      典型控制軟體需要處理：
+                                    </p>
+                                
+                                    <ul>
+                                      <li>Pulse scheduling and timing alignment。</li>
+                                      <li>Qubit frequency tracking。</li>
+                                      <li>Automatic Rabi、Ramsey、\(T_1\)、\(T_2\) calibration。</li>
+                                      <li>Two-qubit gate optimization。</li>
+                                      <li>Readout threshold and classifier update。</li>
+                                      <li>Crosstalk matrix measurement and compensation。</li>
+                                      <li>Drift monitoring and recalibration triggers。</li>
+                                      <li>QEC syndrome collection and decoder interface。</li>
+                                    </ul>
+                                
+                                    <h4>7.4 Toward Fault-Tolerant System Architecture</h4>
+                                    <p>
+                                      若要實現 fault-tolerant quantum computing，完整系統必須支援重複且穩定的 QEC cycles。
+                                      這代表硬體不只要執行高 fidelity gates，也必須能夠進行快速讀出、快速 reset、
+                                      低延遲 classical processing 與長時間穩定運作。
+                                    </p>
+                                
+                                    <h4>Fault-tolerant system architecture 的需求</h4>
+                                    <ul>
+                                      <li>高保真度 single-qubit 與 two-qubit gates。</li>
+                                      <li>高 fidelity、低延遲的 ancilla readout。</li>
+                                      <li>快速 qubit reset 或 active reset。</li>
+                                      <li>支援 surface-code cycle 的規則化晶片布局。</li>
+                                      <li>低 leakage 與 leakage management。</li>
+                                      <li>低延遲 classical decoder 與 Pauli frame update。</li>
+                                      <li>可長時間維持穩定校準狀態的自動化系統。</li>
+                                    </ul>
+                                
+                                    <div class="note">
+                                      <h4>核心觀念</h4>
+                                      <p>
+                                        Fault-tolerant quantum computer 不是單靠更好的 qubit 就能完成。
+                                        它需要晶片、封裝、低溫、微波、控制電子學、讀出、校準、解碼與軟體架構的共同成熟。
+                                      </p>
+                                    </div>
+                                  </section>
+  <section class="module">
+    <div class="qh-section">
+      <h3>課堂整合與驗收</h3>
+    </div>
+    <p><strong>研討問題：</strong>為 100-qubit 模組做 package/wiring architecture review：列出 mode、heat、I/O、crosstalk、assembly、test 與 serviceability 的驗收項。</p>
+    <p><strong>完成條件：</strong>學生必須留下可檢查的推導、關係圖、比較表或 architecture decision，並能說明其物理假設與工程代價。</p>
+  </section>
+  <section class="module">
+    <div class="qh-section">
+      <h3>核心與延伸閱讀</h3><ul class="qh-reading"><li><a href="https://doi.org/10.1103/PRXQuantum.2.020306" target="_blank" rel="noopener">Microwave Package Design for Superconducting Quantum Processors</a><span>S. Huang et al., PRX Quantum 2, 020306 (2021).</span><em>package mode、材料、port 與 simultaneous control fidelity。</em></li><li><a href="https://arxiv.org/abs/1806.07862" target="_blank" rel="noopener">Engineering Cryogenic Setups for 100-Qubit Scale Superconducting Circuit Systems</a><span>S. Krinner et al., EPJ Quantum Technology 6, 2 (2019).</span><em>drive、flux、output lines 的熱負載與工程設計。</em></li><li><a href="https://research.google/pubs/analogmixed-signal-integrated-circuits-for-quantum-computing/" target="_blank" rel="noopener">Analog/Mixed-Signal Integrated Circuits for Quantum Computing</a><span>J. C. Bardin, IEEE BCICTS (2020).</span><em>百萬通道尺度下的控制電子與 cryogenic electronics 問題。</em></li><li><a href="https://arxiv.org/abs/1204.0587" target="_blank" rel="noopener">Black-box Superconducting Circuit Quantization</a><span>S. E. Nigg et al., Physical Review Letters 108, 240502 (2012).</span><em>把分佈式電磁環境與 Josephson 非線性轉成有效 Hamiltonian。</em></li></ul>
+    </div>
+  </section>
+</section>
+
+
+                                <div class="post-meta">
+                                    <span class="post-author">
+                                        <a href="../About/Wang.html"><img class="img-res" src="../WebP/IMG_0964_2.webp" alt="">王培儒</a>
+                                    </span>
+                                    <span class="post-category">
+                                        <a href="../SCQ_advanced/main.html"><i class="fa fa-folder" aria-hidden="true"></i>PHYS598500</a>
+                                    </span>
+                                </div><!-- /.post-meta -->
+                            
+                                <div id="prev-next-nav" class="text-center">
+                                    <a class="btn btn-gray" href="T5-12.html">← 上一頁</a> 
+                                    <a class="btn btn-gray" href="T6-14.html">下一頁 →</a>
+                                </div>
+
+                                
+
+                            </div><!-- /.post-content -->
+                        </article><!-- /.blog-post -->
+                        <!--<div id="PostComments" class="post-comments">
+                            
+                            
+                            
+                        </div> /#PostComments -->
+                        <!--<div class="respond">
+                            <h3>Post a Comment</h3>
+                            <form class="form-horizontal">
+                                <input class="form-control" type="text" placeholder="Your Name*" required>
+                                <input class="form-control" type="email" placeholder="Your Email" required>
+                                <textarea class="form-control form-control-comment" type="text" placeholder="Your Comment*" required></textarea>
+                                <button class="btn btn-green">Add a comment</button>
+                            </form>    
+                        </div> /.respond -->
+                    </div>
+                    <aside class="col-md-3">
+                        <div class="sidebar">
+                            <div class="widget">
+                                <div id="lesson-list_2">
+                                <div class="lesson-link "><a href="main.html">QH-2026F v5 · 16週總覽</a></div>
+                                <div class="lesson-link "><a href="T1-1.html">Week 1 · 從量子計算模型到硬體操作</a></div>
+                                <div class="lesson-link "><a href="T2-2.html">Week 2 · 超導電路量子化與 Transmon 設計</a></div>
+                                <div class="lesson-link "><a href="T2-3.html">Week 3 · Fluxonium：從電路改造到設計取捨</a></div>
+                                <div class="lesson-link "><a href="T3-4.html">Week 4 · 單量子位元控制：從微波脈衝到旋轉座標</a></div>
+                                <div class="lesson-link "><a href="T3-5.html">Week 5 · 耦合 Hamiltonian、兩量子位元閘與 Tunable Coupler</a></div>
+                                <div class="lesson-link "><a href="T3-6.html">Week 6 · Circuit QED、Dispersive Readout 與量測鏈</a></div>
+                                <div class="lesson-link "><a href="T4-7.html">Week 7 · 量子處理器校準：Hamiltonian Identification 與 Drift</a></div>
+                                <div class="lesson-link "><a href="T4-8.html">Week 8 · Benchmarking、多量子位元誤差與可擴展校準</a></div>
+                                <div class="lesson-link "><a href="T4-9.html">Week 9 · 量子錯誤校正基礎：從物理誤差到 Stabilizer Syndrome</a></div>
+                                <div class="lesson-link "><a href="T4-10.html">Week 10 · Surface-Code Hardware Cycle：排程、解碼與 Logical-Qubit 資源</a></div>
+                                <div class="lesson-link "><a href="T5-11.html">Week 11 · Dilution Refrigerator、熱化與低溫線路預算</a></div>
+                                <div class="lesson-link "><a href="T5-12.html">Week 12 · 微波控制、讀出電子與訊號完整性</a></div>
+                                <div class="lesson-link active"><a href="T5-13.html">Week 13 · 封裝、EM Modes、佈線擴展與全系統整合</a></div>
+                                <div class="lesson-link "><a href="T6-14.html">Week 14 · 超導量子晶片製程與 Josephson Junction Process Module</a></div>
+                                <div class="lesson-link "><a href="T6-15.html">Week 15 · Materials Loss、製程變異、Yield 與 Design–Fab–Measure Loop</a></div>
+                                <div class="lesson-link "><a href="T7-16.html">Week 16 · 前沿架構與 Hardware-Aware Quantum System Capstone</a></div>
+                                </div>
+                            </div>
+                        </div></aside>
+                </div>
+            </div>
+        </section><!-- /.section-portfolio -->
+
+    </main><!-- /#main -->
+
+    <footer id="colophon" class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-4 col-xs-6">
+                    <a href="../index_ch.html" class="site-title">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
+                    <p>一起走進新時代的前沿科學與量子科技</p>
+                    </div>
+                <div class="col-lg-offset-4 col-md-3 col-sm-4 col-md-offset-2 col-sm-offset-0 col-xs-6 ">
+                    <p class="site-title">𝐾𝐸𝐸𝑃 𝐼𝑁 𝑇𝑂𝑈𝐶𝐻</p>
+                    <ul class="list-unstyled contact-links">
+                        <li><i class="fa fa-envelope" aria-hidden="true"></i><a href="mailto:info@insight-ihbar.com">info@insight-ihbar.com</a></li>
+                        <!--<li><i class="fa fa-phone" aria-hidden="true"></i><a href="tel:+37400800000">+374 (00) 80 00 00 </a></li>
+                        <li><i class="fa fa-fax" aria-hidden="true"></i><a href="+37400900000">+374 (00) 90 00 00</a></li>
+                        <li><i class="fa-solid fa-location-dot"></i><p>Hsinchu 300, Taiwan (R.O.C.)</p></li>-->
+                    </ul>
+                </div>
+                <!--<div class="clearfix visible-xs"></div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6">
+                    <h3>Featured links</h3>
+                    <ul class="list-unstyled">
+                        <li class="active"><a href="index_ch.html">Home</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="portfolio.html">Porfolio</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>-->
+            </div>
+        </div>
+        <div class="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-8">
+                        <div class="social-links">
+                            <!--<a class="twitter-bg" href="#"><i class="fab fa-twitter"></i></a>-->
+                            <!--<<a class="facebook-bg" href="https://www.facebook.com/people/Quantum-Perspectives/61576446849628/"><i class="fab fa-facebook"></i></a>-->
+                            <!--<a class="facebook-bg" href="https://www.facebook.com/people/%E9%87%8F%E5%AD%90%E9%81%A0%E8%A6%8BQuantum-Perspectives/61576883632888/"><i class="fab fa-facebook-f"></i></a>-->
+                            <!--<a class="pinterest" href="#"><i class="fa-solid fa-microscope"></i></a>-->
+                            <!--<a class="facebook-bg" href="https://www.facebook.com/people/Insight-hbar/61576811775374/"><i class="fab fa-facebook-f"></i></a>-->
+                            <a class="linkedin-bg" href="https://www.linkedin.com/company/insight-ihbar"><i class="fab fa-linkedin"></i></a>
+                        </div><!-- /.social-links -->
+                    </div>
+                    <div class="col-xs-4">
+                        <div class="text-right">
+                            <p><span style="font-size: 16px;">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</span></p>
+                            <p>All Rights Reserved</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.copyright -->
+    </footer><!-- /#footer -->
+
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="../assets/js/bootstrap-select.min.js"></script>
+    <script src="../assets/js/jquery.slicknav.min.js"></script>
+    <script src="../assets/js/jquery.countTo.min.js"></script>
+    <script src="../assets/js/jquery.shuffle.min.js"></script>
+    <script src="../assets/js/script.js"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  
+</body>
+</html>

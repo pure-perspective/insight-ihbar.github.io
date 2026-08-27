@@ -1,0 +1,2588 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N39VTY949N"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-N39VTY949N');
+</script>
+    <!-- Basic Page Needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <meta name="author" content="Peir-Ru Wang">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;1,300&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/20250525-icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/20250525-icon.png">
+
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/css/style.css" rel="stylesheet">
+    <link href="../assets/css/responsive.css" rel="stylesheet">
+
+    <title>Week 5 · 耦合 Hamiltonian、兩量子位元閘與 Tunable Coupler | QH-2026F v5</title>
+    <meta name="description" content="PHYS598500 第 5 週，120 分鐘進階課程：耦合 Hamiltonian、兩量子位元閘與 Tunable Coupler">
+    <meta name="keywords" content="- 量子處理器
+- 超導量子位元
+- Qubit
+- 約瑟夫森接面
+- Transmon
+- Fluxonium
+- 量子計算
+- 量子硬體
+- 量子演算法
+- 量子晶片">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+<style>
+.qh-week-meta { margin: 20px 0; padding: 16px 18px; border-left: 4px solid #5f4b8b; background: #f6f4fa; }
+.qh-week-meta p { margin: 4px 0; }
+.qh-session-plan { width: 100%; margin: 18px 0 8px; border-collapse: collapse; }
+.qh-session-plan th, .qh-session-plan td { padding: 10px 12px; border: 1px solid #ddd; vertical-align: top; }
+.qh-session-plan th { background: #f4f4f4; }
+.qh-session-plan .qh-break td { color: #666; background: #fafafa; }
+.qh-total { text-align: right; font-weight: 700; }
+.qh-reading li { margin-bottom: 12px; }
+.qh-reading span, .qh-reading em { display: block; }
+.qh-week-list { padding-left: 0; list-style: none; }
+.qh-week-list li { margin: 0 0 13px; padding: 12px 15px; border-left: 4px solid #5f4b8b; background: #f7f7f7; }
+.qh-week-list a { font-weight: 700; }
+@media (max-width: 767px) { .qh-session-plan { display: block; overflow-x: auto; } }
+</style>
+
+
+<style id="qh-full-course-style">
+    .qh-full-lecture {
+      margin: 30px 0;
+      padding: 24px 26px;
+      border: 1px solid #d9d4e5;
+      background: #fff;
+    }
+
+    .qh-full-lecture>h2,
+    .qh-full-lecture>h3 {
+      margin-top: 0;
+    }
+
+    .qh-full-lecture h4 {
+      margin-top: 24px;
+    }
+
+    .qh-full-lecture li {
+      margin-bottom: 8px;
+    }
+
+    .qh-time {
+      display: inline-block;
+      margin-bottom: 12px;
+      padding: 4px 10px;
+      border-radius: 14px;
+      background: #5f4b8b;
+      color: #fff;
+      font-size: .9em;
+    }
+
+    .qh-board,
+    .qh-case,
+    .qh-task,
+    .qh-answer,
+    .qh-source-chapter {
+      margin: 20px 0;
+      padding: 17px 19px;
+      font-size: 15px;
+    }
+
+    .qh-board {
+      border-left: 4px solid #d0ccc8;
+      background: #fafafa;
+    }
+
+    .qh-case {
+      border-left: 4px solid #d0ccc8;
+      background: #fafafa;
+    }
+
+    .qh-task {
+      border-left: 4px solid #d0ccc8;
+      background: #fafafa;
+    }
+
+    .qh-answer {
+      border-left: 4px solid #d0ccc8;
+      background: #fafafa;
+    }
+
+    /* Section divider headings */
+    .qh-section {
+      margin: 40px 0 24px;
+      padding: 17px 19px;
+      border-left: 4px solid #355c9a;
+      background: #f3f7fc;
+    }
+
+    .qh-section h3 {
+      margin: 0 0 4px;
+      font-size: 20px;
+      font-weight: 700;
+      color: #355c9a;
+      border-bottom: none;
+    }
+
+    .qh-section h4 {
+      margin: 0;
+      font-size: 15px;
+      font-weight: 400;
+      color: #6a8ab5;
+      font-style: italic;
+    }
+
+    .qh-section>h3:first-child {
+      margin-top: 0;
+    }
+
+    /* Equation highlight — compact, not a section heading */
+    .qh-equation-highlight {
+      margin: 24px 0;
+      padding: 14px 18px;
+      border-left: 3px solid #6a6560;
+      background: #f9f8f7;
+    }
+
+    .qh-equation-label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      color: #6a6560;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    .qh-source-chapter {
+      border: 1px solid #e5e0ec;
+      background: #fdfcff;
+    }
+
+
+    .qh-source-chapter>h3 {
+      padding-bottom: 9px;
+      border-bottom: 1px solid #ddd5e8;
+    }
+
+    .qh-source-note {
+      color: #665f72;
+      font-size: .92em;
+    }
+
+    @media (max-width: 720px) {
+      .qh-full-lecture {
+        padding: 18px 15px;
+      }
+
+      .qh-board,
+      .qh-case,
+      .qh-task,
+      .qh-answer,
+      .qh-source-chapter {
+        padding: 14px 13px;
+      }
+    }
+
+    /* Supplement section styling */
+    .qh-supplement-divider {
+      margin: 36px 0 24px;
+      padding: 18px 22px;
+      border-left: 4px solid #5f4b8b;
+      background: #f6f4fa;
+    }
+
+    .qh-supplement-divider h2 {
+      margin: 0 0 5px;
+      font-size: 22px;
+    }
+
+    .qh-supplement-divider p {
+      margin: 0;
+    }
+
+    /* Tables in supplement */
+    .module table {
+      width: 100%;
+      margin: 16px 0;
+      border-collapse: collapse;
+      font-size: 15px;
+    }
+
+    .module table th,
+    .module table td {
+      padding: 10px 12px;
+      border: 1px solid #ddd;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .module table th {
+      background: #f4f4f4;
+      font-weight: 700;
+    }
+
+    /* Callout in supplement */
+    .module .callout {
+      margin: 16px 0;
+      padding: 12px 16px;
+      border-left: 4px solid #5f4b8b;
+      background: #f6f4fa;
+      font-size: 15px;
+    }
+
+    /* Lists in supplement */
+    .module ul,
+    .module ol {
+      margin: 12px 0;
+      padding-left: 24px;
+    }
+
+    .module li {
+      margin-bottom: 8px;
+      line-height: 1.6;
+      font-size: 15px;
+    }
+
+    /* Heading consistency — only direct h3 children, not inside .qh-section */
+    .module > h3 {
+      margin: 28px 0 14px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #ddd5e8;
+      font-size: 20px;
+    }
+
+    .module h4 {
+      margin: 20px 0 10px;
+      font-size: 17px;
+    }
+
+    .module p {
+      margin: 10px 0;
+      line-height: 1.7;
+    }
+  </style>
+
+<style id="qh-details-style">
+        details.dark-background {
+          background-color: #f5f5f5;
+          border: 1px solid #ddd;
+          padding: 10px;
+          border-radius: 5px;
+        }
+        details.dark-background summary {
+          cursor: pointer;
+          font-weight: bold;
+          background-color: #e0e0e0;
+          padding: 5px;
+          border-radius: 3px;
+        }
+      </style>
+
+</head>
+<body>
+
+    <header id="masthead" class="site-header">
+        <nav id="primary-navigation" class="site-navigation">
+            <div class="container">
+
+                <div class="navbar-header">                   
+                    <a href="../index_ch.html" class="site-title">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
+                </div><!-- /.navbar-header -->
+
+                <div class="collapse navbar-collapse" id="agency-navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="../index_ch.html">Home</a></li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">科普介紹<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                              <li><a href="../SCQ_elementary/main.html">超導量子位元(科普版)</a></li>
+                              <li><a href="../SCQ_advanced/main.html">超導量子位元(進階版)</a></li>
+                              <li><a href="../SpQ/main.html">半導體自旋量子位元</a></li>
+                            </ul>
+                        </li>
+                        <!--<li class="active"><a href="../SCQ_elementary/main.html">科普介紹</a></li>-->
+                        <li class="active"><a href="../QC_hardware/main.html">硬體導論</a></li>
+                        <li><a href="../QID/main.html">量子產業群像錄</a></li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">研討會筆記<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                <li><a href="../ASW2026/main.html">2026中研院超導量子電腦Workshop</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">量子諮詢<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                <li><a href="https://www.quantum-perspectives.com/About/main.html">量子遠見科技：諮詢服務</a></li>
+                                <li><a href="../About/main.html">關於我們</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="../index.html">English</a></li>                        
+                    </ul>
+                </div>
+
+            </div>   
+        </nav><!-- /.site-navigation -->
+    </header><!-- /#mastheaed -->
+
+    <div id="hero" class="hero overlay subpage-hero blog-hero">
+        <div class="hero-content">
+            <div class="hero_2-text">
+                <h1>超導量子電腦架構</h1>
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="../index_ch.html">Home</a></li>
+                  <li class="breadcrumb-item"><a href="../SCQ_advanced/main.html">PHYS598500</a></li>
+                  <!--<li class="breadcrumb-item active">約瑟夫森節</li>-->
+                </ol>
+            </div><!-- /.hero-text -->
+        </div><!-- /.hero-content -->
+    </div><!-- /.hero -->
+
+    <main id="main" class="site-main">
+
+        <section class="site-section subpage-site-section section-blog">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                        <article class="blog-post">
+                            <!--<img src="../assets/img/portfolio-1.jpg" class="img-res" alt="">-->
+                            <div class="post-content">
+
+<section id="week-5" class="course-theme">
+      <div style="text-align: center;">
+      <p class="theme-label">PHYS598500 · Week 5 · T3</p>
+      <h2>耦合 Hamiltonian、兩量子位元閘與 Tunable Coupler</h2>
+      <h3>Coupling Hamiltonians, Two-Qubit Gates, and Tunable Couplers</h3>
+    </div>
+  <section class="course-overview">
+    <h3>本週定位</h3>
+    <div class="qh-week-meta">
+      <p><strong>課程長度：</strong>120 分鐘</p>
+      <p><strong>核心問題：</strong>如何打開需要的 interaction，同時關掉 idle coupling、ZZ 與 crosstalk？</p>
+      <p><strong>難度：</strong>很高</p>
+      <p><strong>先備：</strong>第 3–5 週、coupled oscillator、perturbation theory</p>
+      <p><strong>原始教材來源：</strong>T3 modules 2, 3</p>
+    </div>
+    <h3>學習成果</h3><ul><li>區分直接 capacitive/inductive coupling、resonator bus 與 tunable coupler。</li><li>由有效 Hamiltonian 辨識 exchange、ZZ 與 parametric interaction。</li><li>比較 iSWAP、CZ、cross-resonance 等 gate mechanism 的硬體與校準需求。</li></ul>
+    <h3>兩小時授課配置</h3><table class="qh-session-plan"><thead><tr><th>時間</th><th>形式</th><th>授課內容與當段產出</th></tr></thead><tbody><tr><td>0–10 分</td><td>定位／診斷</td><td><strong>如何只在需要時打開兩顆 qubit 的 interaction？</strong><br>以一個問題確認先備與本週接口。</td></tr><tr><td>10–35 分</td><td>概念主線 A</td><td><strong>不同耦合電路會在 Hamiltonian 中產生哪些項？</strong><br>建立第一組物理概念、變數與工程語言。</td></tr><tr><td>35–60 分</td><td>推導／定量</td><td><strong>Exchange、ZZ 與 avoided crossing 有什麼不同？</strong><br>走完關鍵公式或定量關係，不停留在名詞介紹。</td></tr><tr class="qh-break"><td>60–70 分</td><td>休息</td><td><strong>Break</strong><br>保留兩小時課程的注意力恢復窗口。</td></tr><tr><td>70–95 分</td><td>概念主線 B</td><td><strong>iSWAP、CZ 與 cross-resonance 應依什麼條件選擇？</strong><br>把物理結果接到元件、控制或系統架構。</td></tr><tr><td>95–110 分</td><td>案例／研討</td><td><strong>Spectator error、crosstalk 與 frequency collision 如何隨晶片擴大？</strong><br>學生留下可檢查的圖、表、推導或 architecture decision。</td></tr><tr><td>110–120 分</td><td>整合／驗收</td><td><strong>如何把 connectivity graph 變成 interaction 與 error budget？</strong><br>用 exit question 檢查是否能跨層解釋。</td></tr></tbody></table><p class="qh-total">合計：120 分鐘</p>
+  </section>
+<!-- QH_FULL_LECTURE_START -->
+<section class="qh-full-lecture" id="full-T3-5">
+  <span class="qh-time">0–10 分鐘</span>
+    <div class="qh-section">
+    <h3>兩量子位元耦合與可調電路：把 connectivity 讀成 interaction budget</h3>
+  </div>
+  <p><strong>本週驅動問題：</strong>晶片上畫了一條 coupler，不代表任何時候都只有想要的交互作用。如何由 coupled-mode Hamiltonian 分辨交換、色散、ZZ、leakage 與 spectator crosstalk？</p>
+  <h3>問題設定與先備診斷 <span class="qh-concept-id">W5-C1</span></h3>
+  <p>先要求學生不用查資料，以一張圖畫出本週主題從抽象模型到真實硬體的訊息流。教師不立刻公布答案，而是收集學生把哪些層次畫成等號。全課結束時再重畫一次，用兩張圖的差異驗收是否真正建立跨層理解。</p>
+</section>
+
+<section class="qh-full-lecture">
+  <span class="qh-time">10–35 分鐘</span>
+    <div class="qh-section">
+    <h3>不同耦合電路會在 Hamiltonian 中產生哪些項？ <span class="qh-concept-id">W5-C1</span> <span class="qh-concept-id">W5-C4</span></h3>
+  </div>
+  <p>單量子位元閘只能改變個別 qubit 的狀態，無法產生 entanglement。然而，量子計算的核心能力之一正是來自多量子位元之間的糾纏。因此，一個可用於通用量子計算的硬體平台，必須同時具備高保真度的 single-qubit gates 與 entangling two-qubit gates。</p>
+  <p>在超導量子晶片中，兩量子位元閘通常來自 qubit 之間的電容耦合、電感耦合、共振腔媒介耦合，或透過 tunable coupler 進行可調式交互作用。</p>
+  <div class="qh-board">
+<h4>黑板模型：兩種 oscillator 的交換耦合 <span class="qh-concept-id">W5-D1</span></h4>
+<p>對兩個弱 anharmonic mode，可從 \\(\hat H/\hbar=\sum_i[\omega_i n_i+\alpha_i n_i(n_i-1)/2]+g(a_1^\dagger a_2+a_1a_2^\dagger)\\) 開始。接近共振時，\\(\ket{10}\\) 與 \\(\ket{01}\\) hybridize，形成 avoided crossing；在大 detuning \\(|\Delta|\gg g\\) 時可作 dispersive elimination，留下 frequency shift、effective exchange 與 static ZZ 等殘餘項。</p>
+<p>耦合器的目標不是「讓 \\(g\\) 最大」，而是讓 on-state interaction 足夠快、off-state residual 足夠小、flux-noise sensitivity 可接受，且不把額外 mode 帶入工作頻帶。可調 coupler 透過 bias 改變 effective interaction，卻增加 control line、calibration surface、parasitic capacitance 與新的 loss channel。</p>
+</div>
+</section>
+
+<section class="qh-full-lecture">
+  <span class="qh-time">35–60 分鐘</span>
+    <div class="qh-section">
+    <h3>Exchange、ZZ 與 avoided crossing 有什麼不同？ <span class="qh-concept-id">W5-C2</span></h3>
+  </div>
+  <p>兩個 qubits 的自由 Hamiltonian 可寫為 \\(\hat H_0=\frac{\hbar\omega_1}{2}\hat\sigma_z^{(1)}+\frac{\hbar\omega_2}{2}\hat\sigma_z^{(2)}\\)。若兩者之間存在 exchange-type coupling，交互作用項近似為 \\(\hat H_{\mathrm{int}}=\hbar g(\hat\sigma_+^{(1)}\hat\sigma_-^{(2)}+\hat\sigma_-^{(1)}\hat\sigma_+^{(2)})\\)。其中 \\(g\\) 是 coupling strength，\\(\hat\sigma_+\\) 與 \\(\hat\sigma_-\\) 分別是 raising 與 lowering operators。這個項表示 excitation 可以在兩個 qubits 之間交換。</p>
+  <p>兩個 qubits 的相對頻率會決定交互作用的形式。若 \\(\omega_1\approx\omega_2\\)，兩者接近 resonance，excitation 可以有效交換；若兩者頻率相差很大，即 detuning \\(\Delta_{12}=\omega_1-\omega_2\\) 很大，直接能量交換會被抑制，但仍可能產生有效的條件相位或 frequency shift。</p>
+  <p>學生兩人一組，把推導中的每個符號分成「設計可選參數、製程/裝置產生參數、必須校準參數、只能量測估計的狀態」四類。這一步迫使公式離開紙面，成為 architecture dependency。</p>
+</section>
+
+<section class="qh-full-lecture">
+  <span class="qh-time">60–70 分鐘</span>
+  <h3>休息與黑板保留</h3>
+  <p>保留本週核心 Hamiltonian／system equation 與 dependency graph。休息後直接以既有教材展開，不重新講一次名詞表。</p>
+</section>
+
+<section class="qh-full-lecture">
+  <span class="qh-time">70–95 分鐘</span>
+    <div class="qh-section">
+    <h3>iSWAP、CZ 與 cross-resonance 應依什麼條件選擇？ <span class="qh-concept-id">W5-C3</span></h3>
+  </div>
+  <p>下列內容不是附錄，而是本週第二段講授材料。授課時選擇與黑板模型直接相連的圖、表與段落逐一解讀；其餘留作課後複習。每一段都要追問「它改變了哪一個 Hamiltonian／control／measurement／system 參數」。</p>
+  <section class="qh-source-chapter">
+  <h3>教材深挖 1：雙約瑟夫森節（SQUID）的非線性電感性質 <span class="qh-concept-id">W5-C4</span></h3>
+  <p class="qh-source-note">整合自既有 Insight iHBAR 教材：SCQ_advanced/G.html</p>
+  <div style="text-align: center;">
+                      
+                        <a href="../Image/SQUID--f35a8132.png"><img loading="lazy" src="../WebP/SQUID--f35a8132.webp" alt="圓形導體及電流與磁場示意圖" style="width: 50%; height: auto;"></a>
+                      
+                    </div>
+                    
+                    
+                            <p >
+                                將兩組約瑟夫森節 \(J_1\)、\(J_2\) 相組，中間形成一個閉環，通入磁通 \( \Phi_B \) 與電壓 \( V \)。在前一節中，超導函數的相位對閉環的積分需滿足：
+                                <p>\[
+                                \oint \nabla \theta(r) \cdot d\vec{l} - \frac{q}{\hbar} \Phi_B = 2\pi N
+                                \]</p>
+                                因為在接面不連續會貢獻 \( \Delta\theta_1 \)、\( \Delta\theta_2 \)，\( q = -2e \)，帶入得：
+                                <p>\[
+                                \Delta\theta_2 - \Delta\theta_1 + 2\pi \frac{\Phi_B}{\Phi_0} = 2\pi N
+                                \]</p>
+                                <p>\[
+                                \Delta\theta_2 = \Delta\theta_1 - 2\pi \frac{\Phi_B}{\Phi_0} + 2\pi N
+                                \]</p>
+                            </p>
+                            <p >
+                                當整個 SQUID 通入電流 \( I = I_1 + I_2 \)，並使用前一節約瑟夫森節電流的關係式（這裡考慮對稱的 SQUID，即兩個約瑟夫森節的特性 \( I_c \) 相同），計算得：
+                                <p>\[
+                                I = I_1 + I_2 = I_0 (\sin\Delta\theta_1 + \sin\Delta\theta_2)
+                                \]</p>
+                                <p>\[
+                                I = I_0 \left[\sin\Delta\theta_1 + \sin\left(\Delta\theta_1 - 2\pi \frac{\Phi_B}{\Phi_0} + 2\pi N\right)\right]
+                                \]</p>
+                                <p>\[
+                                I = I_0 \left[\sin\Delta\theta_1 + \sin\left(\Delta\theta_1 - 2\pi \frac{\Phi_B}{\Phi_0}\right)\right]
+                                \]</p>
+                                利用三角恆等式化簡：
+                                <p>\[
+                                I = I_0 \left[2 \sin\left(\frac{\Delta\theta_1 + \Delta\theta_1 - 2\pi \frac{\Phi_B}{\Phi_0}}{2}\right) 
+                                \cos\left(\frac{\Delta\theta_1 - \Delta\theta_1 + 2\pi \frac{\Phi_B}{\Phi_0}}{2}\right)\right]
+                                \]</p>
+                                <p>\[
+                                I = 2I_0 \cos\left(\frac{\Phi_B}{\Phi_0} \pi\right) \sin\left(\Delta\theta_1 - \frac{\Phi_B}{\Phi_0} \pi\right)
+                                \]</p>
+                            </p>
+                            <p >
+                                前一節提到約瑟夫森節具有電感的性質，同理我們可以討論 SQUID 的電感性質。將電流對時間微分：
+                                <p>\[
+                                \dot{I} = 2I_0 \cos\left(\frac{\Phi_B}{\Phi_0} \pi\right) \cos\left(\Delta\theta_1 - \frac{\Phi_B}{\Phi_0} \pi\right) \dot{\Delta\theta_1}
+                                \]</p>
+                                而 \( \dot{\Delta\theta_1} \) 與電壓 \( V \) 的關係為：
+                                <p>\[
+                                V = \frac{\hbar}{2e} \dot{\Delta\theta_1} = \frac{\Phi_0}{2\pi} \dot{\Delta\theta_1}
+                                \]</p>
+                                帶入後可得電感值：
+                                <p>\[
+                                L_{\text{SQUID}}(\Delta\theta_1, \Phi_B) = \left[\frac{2\pi}{\Phi_0} \cdot 2I_0 \cos\left(\frac{\Phi_B}{\Phi_0} \pi\right) 
+                                \cos\left(\Delta\theta_1 - \frac{\Phi_B}{\Phi_0} \pi\right)\right]
+                                \]</p>
+                            </p>
+                            <p >
+                                可以注意到 \( L_{\text{SQUID}} \) 的值會受到外加磁通 \( \Phi_B \) 的影響，這為後來 Tunable Transmon 調整頻率的關鍵。定義變數 \( \Phi \)：
+                                <p>\[
+                                \Phi \equiv \frac{\Delta\theta_1}{\pi} \Phi_0 - \Phi_B = \frac{\Phi_0}{\pi} \left(\Delta\theta_1 - \frac{\Phi}{\Phi_0} \pi\right)
+                                \]</p>
+                                並有：
+                                <p>\[
+                                \dot{\Phi} = \frac{\Phi_0}{\pi} \dot{\Delta\theta_1}
+                                \]</p>
+                                電壓 \( V \) 和電流 \( I \) 分別為：
+                                <p>\[
+                                V = \frac{1}{2} \dot{\Phi}, \quad I = 2I_0 \cos\left(\frac{\Phi_B}{\Phi_0} \pi\right) \sin\left(\frac{\Phi}{\Phi_0} \pi\right)
+                                \]</p>
+                            </p>
+                            <p >
+                                固定外場 \( \Phi_B \) 下，一組 SQUID 儲存的能量為：
+                                <p>\[
+                                E = \int IV \, dt = \int \left[2I_0 \cos\left(\frac{\Phi_B}{\Phi_0} \pi\right) \sin\left(\frac{\Phi}{\Phi_0} \pi\right) \cdot \frac{1}{2} \dot{\Phi}\right] dt
+                                \]</p>
+                                化簡得：
+                                <p>\[
+                                E = I_0 \cos\left(\frac{\Phi_B}{\Phi_0} \pi\right) \int \sin\left(\frac{\Phi}{\Phi_0} \pi\right) d\Phi
+                                \]</p>
+                                <p>\[
+                                E = -\frac{I_0 \Phi_0}{\pi} \cos\left(\frac{\Phi_B}{\Phi_0} \pi\right) \cos\left(\frac{\pi}{\Phi_0} \Phi\right)
+                                \]</p>
+                            </p>
+                    
+                    
+                    
+                    
+                    <div style="text-align: center;">
+                      
+                        <a href="../Image/SQUID transmon--570f8b0c.png"><img loading="lazy" src="../WebP/SQUID transmon--570f8b0c.webp" alt="簡單的幾何圖形和符號插圖。" style="width:60%; height: auto;"></a>
+                      
+                    </div>
+                    <p >
+                    ▲由兩個約瑟夫森節組合成可調電感值的\(LC\)電路。
+                    
+                    </p>
+</section>
+
+<section class="qh-source-chapter">
+  <h3>教材深挖 2：雙LC電路耦合 <span class="qh-concept-id">W5-D1</span></h3>
+  <p class="qh-source-note">整合自既有 Insight iHBAR 教材：SCQ_advanced/L.html</p>
+  <div style="text-align: center;">
+                  
+                    <a href="../Image/2_LC.png"><img loading="lazy" src="../WebP/2_LC.webp" alt="靜態圖形與箭頭符號的結合。" style="width: 70%; height: auto;"></a>
+                  
+                </div>
+                            <p >
+                                要量子計算需要位元之間的耦合，耦合會對量子位元的參數產生影響。可以先討論兩個線性 LC 電路透過電容 \( C_g \) 耦合。
+                            </p>
+                
+                            <p style="text-align:center">
+                                <p>\[
+                                \mathcal{L}_{2LC} = \frac{L_A \dot{Q}_A^2}{2} + \frac{L_B \dot{Q}_B^2}{2} - \frac{Q_A^2}{2C_A} - \frac{Q_B^2}{2C_B} - \frac{Q_g^2}{2C_g}
+                                \]</p>
+                            </p>
+                
+                            <p >
+                                耦合電容 \( C_g \) 的帶電 \( Q_g \) 可以代換為 \( Q_A \) 和 \( Q_B \)，利用電容的性質：
+                            </p>
+                
+                            <p style="text-align:center">
+                                <p>\[
+                                Q_g = C_g (V_A - V_B) = C_g \left( \frac{Q_A}{C_A} - \frac{Q_B}{C_B} \right)
+                                \]</p>
+                            </p>
+                
+                            <p >
+                                將其代入 Lagrangian 並整理得：
+                            </p>
+                
+                            <p style="text-align:center">
+                                <p>\[
+                                \mathcal{L}_{2LC} = \frac{L_A \dot{Q}_A^2}{2} + \frac{L_B \dot{Q}_B^2}{2} - \frac{(C_A + C_g) }{2C_A^2} Q_A^2 - \frac{(C_B + C_g) }{2C_B^2}Q_B^2 + \frac{C_g}{C_A C_B} Q_A Q_B
+                                \]</p>
+                            </p>
+                
+                            <p >
+                                其中定義 \( C_{\Sigma A} = \frac{C_A^2}{C_A + C_g} \)，\( C_{\Sigma B} = \frac{C_B^2}{C_B + C_g} \)。接著定義正則動量：
+                            </p>
+                
+                            <p style="text-align:center">
+                                <p>\[
+                                \Phi_A = -\frac{\partial \mathcal{L}_{2LC}}{\partial \dot{Q}_A} = -L_A \dot{Q}_A \quad \rightarrow \quad \dot{Q}_A = -\frac{\Phi_A}{L_A}
+                                \]</p>
+                            </p>
+                
+                            <p >
+                                計算 Hamiltonian：
+                            </p>
+                
+                            <p style="text-align:center">
+                                <p>\[
+                                \bar{\mathcal{H}}_{2LC} = \frac{\Phi_A^2}{2L_A} + \frac{Q_A^2}{2C_{\Sigma A}} + \frac{\Phi_B^2}{2L_B} + \frac{Q_B^2}{2C_{\Sigma B}} - \frac{C_g}{C_A C_B} Q_A Q_B
+                                \]</p>
+                            </p>
+                
+                            <p >
+                                正則量子化：
+                            </p>
+                
+                            <p style="text-align:center">
+                                <p>\[
+                                \begin{aligned}
+                                &a;_{\Sigma A} = \sqrt{\frac{1}{2\hbar} \sqrt{\frac{L_A}{C_{\Sigma A}}}} \left(\sqrt{\frac{C_{\Sigma A}}{L_A}} \Phi_A + iQ_A \right) \\
+                                &a;_{\Sigma A}^\dagger = \sqrt{\frac{1}{2\hbar} \sqrt{\frac{L_A}{C_{\Sigma A}}}} \left(\sqrt{\frac{C_{\Sigma A}}{L_A}} \Phi_A - iQ_A \right)
+                                \end{aligned}
+                                \]</p>
+                            </p>
+                
+                            <p >
+                                定義頻率 \( \omega_{\Sigma A} = \frac{1}{\sqrt{L_A C_{\Sigma A}}} \)，\( \omega_{\Sigma B} = \frac{1}{\sqrt{L_B C_{\Sigma B}}} \)：
+                            </p>
+                
+                            <p style="text-align:center">
+                                <p>\[
+                                \bar{\mathcal{H}}_{2LC} = \hbar \omega_{\Sigma A} \left(a_{\Sigma A}^\dagger a_{\Sigma A} + \frac{1}{2}\right) + \hbar \omega_{\Sigma B} \left(a_{\Sigma B}^\dagger a_{\Sigma B} + \frac{1}{2}\right) - \hbar \Omega_g \, i(a_{\Sigma A}^\dagger - a_{\Sigma A}) \, i(a_{\Sigma B}^\dagger - a_{\Sigma B})
+                                \]</p>
+                            </p>
+                
+                            <p >
+                                其中，耦合強度 \( \Omega_g \) 定義為：
+                            </p>
+                
+                            <p style="text-align:center">
+                                <p>\[
+                                \Omega_g = C_g \sqrt{\frac{\omega_{\Sigma A}}{2(C_A + C_g)}} \sqrt{\frac{\omega_{\Sigma B}}{2(C_B + C_g)}}
+                                \]</p>
+                            </p>
+</section>
+
+<section class="qh-source-chapter">
+  <h3>教材深挖 3：QPU拓墣 <span class="qh-concept-id">W5-C6</span></h3>
+  <p class="qh-source-note">整合自既有 Insight iHBAR 教材：SCQ_elementary/J.html</p>
+  <p >
+                                    在這邊簡單提一下量子處理器QPU設計。當前量子電路是二維電路，Qubit間的交互作用在電路上常只能與鄰近的Qubit連接。再搭配目前常見的糾錯設計（QEC）是表面碼（Surface code）採用四邊形的設計，所以當前的QPU，每個Qubit僅需四個coupler與鄰近Qubit耦合。製造商IQM亦提供新的QPU設計，試圖加入Computational Resonator，構造出更進階的量子計算方式，未來有機會可以撰文解說。
+                                </p>
+                                <div style="text-align: center;">
+                                
+                                    <a href="../Image/IQM QPU Topo.JPG"><img loading="lazy" src="../WebP/IQM QPU Topo.webp" alt="IQM 的兩種 QPU 拓撲結構示意圖。" style="width: 100%; height: auto;"></a>
+                                
+                                </div>
+                                <p >                            
+                                    <span style="font-size: 0.7em; line-height: 0.8;">Ref: 
+                                    IQM
+                                
+                                    <br>
+                                    Ref: Arxiv: 2408.12433 <br></span>
+                                    <br><br>
+                                </p>
+</section>
+
+<section class="qh-source-chapter">
+  <h3>教材深挖 4：邁向Scalable QPU-量子晶片設計</h3>
+  <p class="qh-source-note">整合自既有 Insight iHBAR 教材：QC_hardware/U.html</p>
+  <p >走向量子計算，整合數千上萬個量子位元是當前努力的方向。
+                                    然而，當多個超導量子位元整合在量子晶片上時，量子位元間的串擾（Crosstalk），成了當前量子計算嚴峻的課題。
+                                </p>
+<br>
+                                
+
+                                <h3>中研院的量子電腦發展</h3>
+                                <div style="text-align: center;">
+                                    
+                                      <a href="../Image/Sinica-QC--e360b021.png"><img loading="lazy" src="../WebP/Sinica-QC--e360b021.webp" alt="量子計算元件與硬體架構示意圖" style="width: 100%; height: auto;"></a>
+                                    
+                                  </div>
+                                  <p >
+                                    ▲中研院的量子電腦解構圖，<b>左邊</b>為在外部的控制、分析硬體，負責將古典電腦的數位訊號，轉換成控制超導量子電腦的類比微波訊號，
+                                    反之亦將讀取出來的微波資訊轉換成古典電腦可以分析的數位訊號。<br>
+                                    <b>右邊</b>為中研院採用的稀釋製冷機內部相關的微波元件、量子晶片與屏蔽組件。
+                                    <br><span style="font-size: 0.7em; line-height: 0.8;">
+                                        Ref: Sinica
+                                    </span><br><br>
+                                    </p>
+                                  
+                                  <div style="text-align: center;">
+                                    
+                                      <a href="../Image/Sinica-QPU--b27d38ac.png"><img loading="lazy" src="../WebP/Sinica-QPU--b27d38ac.webp" alt="量子位元電路示意圖與實體裝置照片。" style="width: 100%; height: auto;"></a>
+                                    
+                                  </div>
+                                  <p >
+                                    ▲中研院上一代5量子位元晶片設計（據說當前在研製20量子位元QPU）。                       
+                            
+                                    <br><span style="font-size: 0.7em; line-height: 0.8;">
+                                        Ref: Sinica
+                                    </span><br><br>
+                                </p>
+
+                                <div style="overflow-x: auto;">
+                                    <table width="100%" border="1" cellpadding="8" cellspacing="0" align="center">
+                                        <thead>
+                                            <tr bgcolor="#f2f2f2" align="center">
+                                                <th width="10%">I/O端</th>
+                                                <th width="20%">類似術語</th>
+                                                <th>功能解說</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><b>XY</b></td>
+                                                <td>Drive line</td>
+                                                <td>用於輸入控制脈衝，操控量子位元的狀態（如進行 X/Y 閘操作），通常是<b>微波RF訊號</b>。</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Z</b></td>
+                                                <td>Flux line</td>
+                                                <td>提供<b>直流或低頻訊號</b>改變 SQUID 迴路的有效磁通量，進而調變量子位元或諧震器的頻率。</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>ROin</b></td>
+                                                <td>Readout drive/input</td>
+                                                <td>輸入微波脈衝與讀取諧振器（Readout Resonator）交互作用。通常是<b>微波RF訊號</b>。</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>ROout</b></td>
+                                                <td>Readout output</td>
+                                                <td>讀取諧振器會因為量子位元的狀態不同，改變透射的波段，由外部儀器分析回傳的訊號強弱來判斷量子位元的狀態。</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Pumping</b></td>
+                                                <td></td>
+                                                <td>用於激發參數放大器（如 JPA 或 TWPA）所需的能量輸入，來增強回到外部的訊號，通常在特定頻率提供高功率微波。</td>
+                                            </tr>
+                                            
+                                        </tbody>
+                                    </table>
+                                </div>
+                                    <br><br>
+
+                                    <div style="text-align: center;">
+                                      
+                                        <a href="../Image/Sinioca-Qubit--922ae473.png"><img loading="lazy" src="../WebP/Sinioca-Qubit--922ae473.webp" alt="量子比特與約瑟夫森接頭的微觀結構圖像。" style="width: 100%; height: auto;"></a>
+                                      
+                                    </div>
+                                    <p >
+                                      <span style="font-size: 0.7em; line-height: 0.8;">
+                                          Ref: Sinica
+                                      </span><br>
+                                      ▲電子顯微鏡下量子位元電路圖、約瑟夫森節。在這邊量子位元的尺寸設計、諧振器的長度尺寸等都是設計上的know-how。
+                                      例如傳統上Transmon的設計自然頻率約在5~9GHz，這受到兩件事情的考量：
+                                      
+                                    </p>
+                                    <ul>
+                                        <li><b>上限</b>：材料的超導溫度決定了上限。目前因為鋁在製作約瑟夫森節(JJ)製程的優勢與優異的量率，多數JJ都採用\(Al-Al_2 O_3-Al\)的SIS結構為主
+                                            （相關解說可以參考「超導量子位元（進階版）：約瑟夫森節」）。
+                                            鋁的臨界溫度為1.2K，意味著其超導古柏對的能量\( \Delta \)為\( \Delta=1.76 k_B T_c\)。由量子力學可知對應的頻率約為40 GHz，如果操作頻率逼近或超過這個頻率，會產生準粒子激發（Quasiparticle excitation）或破壞超導性，導致退相干發生。</li>
+                                        <li><b>下限</b>：由量子電腦操作的背景溫度決定。目前超導量子電腦在的設計都處在10~20 mK，對應的熱激發頻率約為400 MHz (以20mK計算)，如果量子位元設計的操作頻率與低溫的熱噪音相近，容易從基態被激發造成錯誤，量子位元設計的頻率需要盡可能減少熱背景干擾，故環境的溫度決定的下限。
+                
+                                        </li>
+                                    </ul>
+                                    <p >
+                                        依照這兩點要求，鋁基超導量子位元設計的操作頻率就被設定在1~10GHz這個數量級。（當然，如果非超導量子位元，則操作頻率可以在不同的範圍。例如矽基自旋量子位元可以在1K的環境下操作，光量子位元可在室溫下操作，對應的上下限需求就不同。）
+                                        根據操作頻率設計超導量子位元的電容能量\(E_C\)，尺寸與幾何形狀需經過電磁模擬後，成為圖中的設計樣式。諧振器的長度尺寸也是由操作頻率來決定其長度。
+                                    </p>
+
+
+                                    
+                                    <h3>邁向多量子位元所需要面對的問題</h3>
+                                    <p >
+                                        要達到量子計算的基本優勢，一種說法是至少需要50個量子邏輯位元（logical qubit）。此說法的根據為50個量子邏輯位元表示的計算空間為\(2^{50}\)維度，
+                                        而\(2^{50}\approx 1024 TB\)足以表示當前大部分古典電腦計算的資料量。
+                                        看起來很簡單，背後實際上要動用超過千顆的物理量子位元（physical qubit）。這牽涉到量子糾錯（Quantum Error Correction）的議題。
+                                        以Shor 9 code為例，一個logical qubit需要用到9個physical qubits+8個Ancilla qubits=17個qubit，50個量子邏輯位元至少背後有850個位元參與計算過程。
+                                        （當然Shor 9 code是早期、相對「沒效率」的量子位元糾錯方式，然而這是非常跨時代的成果。近來來已有Surface code、Color code、Bacon-Shor code等等來增加量子位元的有效利用率。）
+                                        要設計QPU，有以下議題要考慮：
+                                    </p>
+                                    <ul>
+                                        <li><p >連外資訊交換（Signal input/output）</p></li>
+                                        <li><p >如何排列量子位元、線路（Connectivity and Layout）</p></li>
+                                        <li><p >古典串擾（Classical crosstalk）</p></li>
+                                        <li><p >量子串擾（Quantum crosstalk）</p></li>
+                                    </ul>
+
+                                    <div id="A">
+                                        <br><br><br>
+                                    </div>
+
+                                    <h3>連外資訊交換（Signal input/output）</h3>
+                                    <p >
+                                        間單的說，目前一個超量子位元至少需要兩條控制線（一條XY控制，一條Z控制），再考慮讀曲線（一進一出）、泵補增益線
+                                        ，如果進一步希望量子位元間的可調耦合（控制線一條），粗略就需要五倍於量子位元數量的連外RF訊號線，非常驚人。<br><br>
+                                    </p>
+
+                                    <div id="B"><br><br><br></div>
+                                    <h3>如何排列量子位元、線路（Connectivity and Layout）</h3>
+                                    <p >
+                                        要設計超導量子晶片，牽涉到採用的超導量子位元的形式、量子位元間耦合的形式、讀取線路的需求，還有個元件之間的編排都是需要考量的議題。在這邊針對以Transmon為基礎的QPU來討論設計需求：
+                                    </p>
+                                    <ul>
+                                        <li><p >量子位元是否可調頻率？</p></li>
+                                        <li><p >量子位元的耦合為直接或間接耦合（借助諧振器）？間接耦合諧振器是否可調耦合大小？耦合拓墣是否可變？</p></li>
+                                        <li><p >讀取諧振器的頻率區隔、與總線（Bus）的耦合</p></li>
+                                        <li><p >量子位元的連接拓樸、線路間的跨越</p></li>
+                                        <li><p >晶片分層與封裝</p></li>
+                                    </ul>
+                                    <p >
+                                        在這些議題上，著名的兩大陣營IBM和Google就採取了截然不同策略。IBM走的不可調路線、而Google採幾乎全可調路線。以下針對電路設計來理解這兩條路線的著眼的原因差異。
+                                    </p>
+                                    <ol>
+                                          <div id="B1"><br><br><br></div>
+                                          <h4><li>量子位元是否可調頻率？</li></h4>
+  
+                                          <div style="text-align: center;">
+                                              
+                                                <a href="../Image/Transmon-1--a51b4206.png"><img loading="lazy" src="../WebP/Transmon-1--a51b4206.webp" alt="黑色剪影動物圖案。" style="width: 100%; height: auto;"></a>
+                                              
+                                            </div>
+                                            <p >
+                                              <span style="font-size: 0.7em; line-height: 0.8;">
+                                                  Ref: 作者繪製
+                                              </span><br>
+                                              ▲<b>左側</b>為定頻率的Transmon，由一個JJ作為非線性電感。<b>右側</b>為可調頻率的Transmon，兩個JJ形成的SQUID可受外部磁場\(\Phi_B\)來調控動態電感，從而調整頻率。
+                                              <br><br>
+                                              </p>
+  
+                                              <div style="text-align: center;">
+                                                  
+                                                    <a href="../Image/TT-flux--0aba9433.png"><img loading="lazy" src="../WebP/TT-flux--0aba9433.webp" alt="圖示顯示微電子元件的設計細節。" style="width: 70%; height: auto;"></a>
+                                                  
+                                                </div>
+                                                <p >
+                                                  ▲中研院的Tunable Transmon與Flux line (Z-Control)在電子顯微鏡下，加上電流流向的示意圖。透過調控電流的大小，產生磁場來達到調控Transmon的頻率。
+                                                  
+                                                  <br><span style="font-size: 0.7em; line-height: 0.8;">
+                                                      Ref:作者修改，原圖取自 如何打造一台量子電腦 (中央研究院物理研究所/陳啟東研究員) https://www.youtube.com/watch?v=wceckog180U&t;=3420s
+                                                  </span>
+                                                  <br><br>
+                                                  </p>
+                                              
+  
+                                              <div id="B2"><br><br><br></div>
+                                          <h4><li>量子位元的耦合形式</li></h4>
+                                          <div style="text-align: center;">
+                                              
+                                                <a href="../Image/QQ-Coupling--784cd6da.png"><img loading="lazy" src="../WebP/QQ-Coupling--784cd6da.webp" alt="圖示顯示量子系統及其耦合關係。" style="width: 100%; height: auto;"></a>
+                                              
+                                            </div>
+                                            <p >
+                                              ▲量子位元間的耦合方式，左側為固定耦合（量子位元頻率固定、直接電容耦合），右側為全可調式（量子位元頻率可調、藉由可調頻諧振器耦合）。
+                                              IBM的固定式設計，以上圖左側為例，每個量子位元只需要一條XY-control line，共只需兩條控制線。
+                                              Google的全可調設計，以上圖右側為例，每個量子位元需要XY & Z兩條控制線，加上可調頻諧振器需要一條控制線，
+                                              就需要五條控制線，是固定式設計的2.5倍。
+  
+                                              <br><span style="font-size: 0.7em; line-height: 0.8;">
+                                                  Ref: 作者繪製
+                                              </span><br><br>
+                                              </p>
+  
+                                              <div style="text-align: center;">
+                                                  
+                                                    <a href="../Image/20250620-01--a9ecab6d.png"><img loading="lazy" src="../WebP/20250620-01--a9ecab6d.webp" alt="圖示顯示電容耦合和頻率關係。" style="width: 70%; height: auto;"></a>
+                                                  
+                                                </div>
+                                                <p >
+                                                  ▲固定耦合式設計就需要考慮區分不同位元間的頻率分離，避免非預期地串擾。
+                                                  <br><span style="font-size: 0.7em; line-height: 0.8;">
+                                                      Ref: doi.org/10.1007/s10948-021-06104-5
+                                                  </span><br><br>
+                                                  
+                                                  </p>
+                                                  <div style="text-align: center;">
+                                                      
+                                                        <a href="../Image/20250620-10--f7b20226.png"><img loading="lazy" src="../WebP/20250620-10--f7b20226.webp" alt="微小電路板結構示意圖，包含輸入與輸出端口。" style="width: 100%; height: auto;"></a>
+                                                      
+                                                  </div>
+                                                  <p >
+                                                    ▲與之相比，可調式設計就可以透過改變頻率差來操作耦合強度。
+                                                    在沒有操作時，可以將耦合諧振器的頻率遠離量子位元的頻率，因為耦合強度反比於兩元件之間的頻率差（Detuning，失諧），此時兩個量子位元就可以視為隔離。
+                                                    當需要進行閘運算時，再將頻率差縮小，就可以進行量子位元耦合。可調式設計可以兼顧製程後可調性，一方面可以透過訊號調整製程上的誤差；
+                                                    另一方面還可實現可變QPU拓墣，即可以依照運算需求改變量子位元間的連結性。
+                                          
+                                                    <br><span style="font-size: 0.7em; line-height: 1.2;">
+                                                        Ref:Suppression of Qubit Crosstalk in a Tunable Coupling Superconducting Circuit<br>
+                                                        DOI: 10.1103/PhysRevApplied.12.054023
+                                                    </span><br><br>
+                                                  </p>
+  
+                                          <p >
+                                              IBM走的不可調路線，可以大幅簡化電路設計的複雜度，較容易增加製程上量率，同時連外的線路少，接收到的雜訊也較少，IBM認為透過這種方式可以較快速實現量子優勢計算。
+                                              但同時也被迫面對量子位元因為直接耦合造成的串擾、一旦離開製程後就完全不可調整的缺點。
+                                              Google採幾乎全可調路線，就需要面對複雜的線路設計、更多的噪訊干擾等問題，也因為控制參數很多，需要大量的參數校正。
+                                              但全可調路線因為具有較高的彈性，可以透過外部儀器修正各項參數，可以逐步逼近最佳化，目前（2025）是Google領先，多數廠商也採用可調設計，連IBM也開始慢慢走向可調式設計。
+                                              <br><br>
+                                          </p>
+  
+                                          <div style="text-align: center;">
+                                              
+                                                <a href="../Image/medium (1)--9784b761.png"><img loading="lazy" src="../WebP/medium (1)--9784b761.webp" alt="電路板的多路復用器設計示意圖" style="width: 100%; height: auto;"></a>
+                                              
+                                          </div>
+                                          <p >
+                                            ▲能不能讓多個量子位元共用同一個耦合諧振器呢？目前也有相關的研究，這邊展示出10個量子位元共用同一個耦合器（B，Quantum Bus），也實現一種All-to-All connectivity。
+                                            具體可行的操作可以是耦合器的頻率遠離量子位元，當兩個量子位元要進行運算時，在將指定兩個量子位元的頻率移至與耦合器的頻率相近，運算完之後再移開頻率。
+                                            <br><span style="font-size: 0.7em; line-height: 1.2;">
+                                                10-Qubit Entanglement and Parallel Logic Operations with a Superconducting Circuit<br>
+                                                DOI: 10.1103/PhysRevLett.119.180511
+                                            </span><br><br>
+                                          </p>
+                                          
+  
+                                          <div id="B3"><br><br><br></div>
+                                          <h4><li>讀取諧振器的頻率區隔、與總線（Bus）的耦合</li></h4>
+                                          <div style="text-align: center;">
+                                              
+                                                <a href="../Image/readout--523cc3c5.jpeg"><img loading="lazy" src="../WebP/readout--523cc3c5.webp" alt="量子電路示意圖，包含 qubit 和環境連接。" style="width: 100%; height: auto;"></a>
+                                              
+                                            </div>
+                                            <p >
+                                              ▲ 簡化來理解量子位元的讀取。
+                                              <br><b>(a)</b>早年採用直接讀取，外部電路直接量測量子位元。但這樣容易讓非預期的雜訊引入，也是一種破壞性量測。
+                                              <br><b>(b)</b>讓量子位元搭配一個耦合諧振器，藉由量測諧振器頻率的改變來間接得知量子位元的狀態，是一種QND量測，可以實現重複量測增加保真度。
+                                              <br><b>(c)</b>進一步搭配一個Purcell filter來增加保真度。Purcell filter的功用由下一張圖解說。<br>
+                                              進一步瞭解超導量子位元的讀取，可以參考超導量子位元(進階版)：量子計算硬體基礎
+                                              <br><span style="font-size: 0.7em; line-height: 0.8;">
+                                                  Ref: A quantum engineer's guide to superconducting qubits featuredFree<br>
+                                                  Doi: 10.1063/1.5089550                                                
+                                              </span><br><br>
+  
+                                              </p>
+  
+                                              <div style="text-align: center;">
+                                                  
+                                                    <a href="../Image/Purcell--2cb16671.jpeg"><img loading="lazy" src="../WebP/Purcell--2cb16671.webp" alt="量子比特與諧振器的頻率關係圖。" style="width: 70%; height: auto;"></a>
+                                                  
+                                                </div>
+                                                <p >
+                                                  ▲ Purcell Filter透波率對頻率的設計考量。雖然量子位元搭配一個耦合諧振器可以增加量測的保真度，
+                                                  但量子位元的狀態還是有可能透過諧振器外流導致退相干。Purcell Filter透波率設計與諧振器的頻率對齊，可以保證良好的讀取信號輸入和輸出，
+                                                  但是在量子位元自然頻率上壓制，確保量子位元的能量無法流出，提升相干時間。
+                                                  <br><span style="font-size: 0.7em; line-height: 0.8;">
+                                                      Ref: A quantum engineer's guide to superconducting qubits featuredFree<br>
+                                                      Doi: 10.1063/1.5089550                                                
+                                                  </span><br><br>
+      
+                                                  </p>
+                                                  <p >
+                                                  目前在量子位元晶片設計中，常常將個別量子位元的讀取共用同一條讀取線（Readout Bus or feedline），只要將每個讀取諧振器頻率錯開，就可以有效分析數據。
+                                              以下提供兩個範例：
+                                          </p>
+  
+                                                  <div style="text-align: center;">
+                                                      
+                                                          <a href="../Image/5Q--7f4f25e4.png"><img loading="lazy" src="../WebP/5Q--7f4f25e4.webp" alt="量子電路設計與讀取圖示" style="width: 80%; height: auto;"></a>
+                                                      
+                                                      </div>
+                                                      <p >
+                                                          
+                                                      
+                                                          ▲這張是 5 qubit layout 的示意圖。其中 Z 是 flux line，XY 是 Drive line，5 個 Qubit 是直接電容耦合。此外，每個 qubit 都有自己的 readout resonator，在上方併入（此圖顯示是電感耦合）到 readout line。
+                                                          <br><span style="font-size: 0.7em; line-height: 0.8;">doi.org/10.1038/nature13171</span><br><br>
+                                                      </p>
+                                                       
+  
+                                              
+                                          
+                                              <div style="text-align: center;">
+                                                  
+                                                    <a href="../Image/20250620-11--b1c67ade.png"><img loading="lazy" src="../WebP/20250620-11--b1c67ade.webp" alt="量子電路圖示，顯示量子位和共振器連接。" style="width: 100%; height: auto;"></a>
+                                                  
+                                              </div>
+                                              <p >
+                                                ▲這張也是 5 qubit layout 的示意圖。圖中charge line表示XY control，量子位元間透過定頻率的耦合諧振器耦合。這邊可以與前一張圖比對，讀取諧振器跟總線間還有一個Purcell filter。
+                                                <br><span style="font-size: 0.7em; line-height: 1.2;">
+                                                    Entanglement stabilization using ancilla-based parity detection and real-time feedback in superconducting circuits<br>
+                                                    DOI: 10.1038/s41534-019-0185-4
+                                                </span>
+                                              </p>
+                                            
+                                              
+                                              <div style="text-align: center;">
+                                                
+                                                  <a href="../Image/Resonator_length--8f1adec0.png"><img loading="lazy" src="../WebP/Resonator_length--8f1adec0.webp" alt="電路圖示，標註 Purcell 濾波器與讀取共振器。" style="width: 100%; height: auto;"></a>
+                                                
+                                            </div>
+                                            <p >
+                                              ▲這張是 4 qubit layout 。圖正中間是讀取總線入口，連接四個Purcell filter和讀取諧振器，可以見到四個Purcell filter、讀取諧振器長度皆不相同，意味著不同的工作頻率。
+                                              <br><span style="font-size: 0.7em; line-height: 1.2;">
+                                                Fast Multiplexed Superconducting-Qubit Readout with Intrinsic Purcell Filtering Using a Multiconductor Transmission Line<br>
+                                                  DOI: 10.1103/PRXQuantum.6.020345
+                                              </span><br><br>
+                                            </p>
+                                              
+                                            
+                                              <div id="B4"><br><br><br></div>
+                                          <h4><li>量子位元的連接拓樸、線路間的跨越</li></h4>
+  
+                                          <div style="text-align: center;">
+                                              
+                                                <a href="../Image/Picture2-5--dcb0481b.webp"><img loading="lazy" src="../WebP/Picture2-5--dcb0481b.webp" alt="多種數學網路圖示及結構展現。" style="width: 100%; height: auto;"></a>
+                                              
+                                          </div>
+                                          <p >
+                                              ▲QPU拓墣表示量子位元間的連接拓樸。要實現量子演算法優勢，盡可能實踐量子位元的All-to-All連接是重要的議題。然而對於固態量子位元體系（超導量子位元、半導體量子位元等）
+                                              ，由於製程上的關係，多半是平面排列，這導致量子位元如果不採用3D線路連接，則只能跟鄰近的量子位元耦合。右圖為IBM目前的QPU拓墣。
+                                              而對於非固態量子位元體系如離子阱量子位元，可以透過離子的偶極交互作用實現遠程的耦合，從而實現All-to-All。
+                                            <br><span style="font-size: 0.7em; line-height: 1.2;">
+                                              Ref: https://thequantuminsider.com/2022/08/12/a-guide-to-quantum-computing-benchmarking-and-certification/ <br>
+                                              Schematic representation of different QPU topologies. (Top-left: IonQ, Top-center: OXC, Bottom-left: Rigetti, Right: IBM). Images compiled from AWS Braket and IBM Quantum Experience sites.
+                                            </span><br><br>
+                                          </p>
+                                          
+                                          
+                                          <div id="20260526"></div><br><br>
+                                          <div style="text-align: center;">
+                                            
+                                              <a href="../Image/IBM-Quantum_Heron-Vs.-Loon-Architecture.png--96e48646.png"><img loading="lazy" src="../WebP/IBM-Quantum_Heron-Vs.-Loon-Architecture.png--96e48646.webp" alt="IBM Quantum Heron and Loon architecture comparison." style="width: 100%; height: auto;"></a>
+                                            
+                                          </div>
+                                          
+                                          <p class="dark-background">
+                                            ▲ IBM Heron 與 Loon 架構比較。
+                                            Heron 架構顯示較清楚的 Qubit 與 tunable coupler 佈局，目標是在中等規模下提高品質與可用性。
+                                            然而，若要支援更複雜的錯誤校正與更大規模的量子計算，需要更高密度、更複雜的連接網路。
+                                            Loon 則展示更高密度、更複雜的連接網路，目標是支援更大規模的量子錯誤校正與量子運算。
+                                            從 Heron 到 Loon，即為為從「規則且較稀疏的耦合網路」走向「更高連通度、更複雜走線的量子晶片」。
+                                            這種架構挑戰不只是量子電路設計，也涉及製程、封裝、控制線路、微波工程與低溫系統整合。
+                                            <br>
+                                            <span style="font-size: 0.7em; line-height: 0.8;">
+                                              Ref: https://www.hpcwire.com/2025/06/10/ibm-sets-2029-target-for-fault-tolerant-quantum-computing/
+                                            </span>
+                                          </p>
+
+
+                                          
+                                              <div id="B5"><br><br><br></div>
+                                          <h4><li>晶片分層與封裝</li></h4>
+
+
+                                          <div style="text-align: center;">
+                                              
+                                                <a href="../Image/Sinica-packing--2fbef1f5.png"><img loading="lazy" src="../WebP/Sinica-packing--2fbef1f5.webp" alt="晶片結構與封裝示意圖分析" style="width: 100%; height: auto;"></a>
+                                              
+                                            </div>
+                                            <p >
+                                              ▲ 固態量子位元體系多半是平面排列，各種控制線複雜的穿越導致線路之間勢必有跨越的問題。元件間的互相跨越（control line可以跨越resonator/coupler，但反之不宜）或是避免跨越（任何線路都不可跨越量子位元）
+                                              。再來，量子晶片亦需要在封裝上下功夫。當前主要採用覆晶封裝（flip chip），為了維持量子位元的保真度不受其他元件的干擾，
+                                              可以將量子晶片拆成兩層，需要高品質的區域放置量子位元，而其他如控制電路、讀取等線路放到另外一層，再將兩層疊在一起。
+                                              <br><span style="font-size: 0.7em; line-height: 0.8;">
+                                                  Ref: 如何打造一台量子電腦 (中央研究院物理研究所/陳啟東研究員) https://www.youtube.com/watch?v=wceckog180U&t;=3420s
+                                              </span><br><br>
+                                              </p>
+                                              
+                                              <div style="text-align: center;">
+                                                  
+                                                    <a href="../Image/IBM-Eagle--b1e59b41.png"><img loading="lazy" src="../WebP/IBM-Eagle--b1e59b41.webp" alt="量子計算晶片結構與功能介紹圖。" style="width: 100%; height: auto;"></a>
+                                                  
+                                                  
+                                                    <a href="../Image/CsW4y4MxI9KOxHLM-1456x819--417a3657.jpg"><img loading="lazy" src="../WebP/CsW4y4MxI9KOxHLM-1456x819--417a3657.webp" alt="---" style="width: 100%; height: auto;"></a>
+                                                
+                                                </div>
+                                                <p >
+                                                  ▲ 除了雙層的覆疊，目前也開始朝向將不同功能的元件分散到獨立的晶片層。圖為IBM Eagle和Osprey的設計，將量子位元、控制線路、諧振器分到不同的晶片層，減少干擾。
+                                                  <br><span style="font-size: 0.7em; line-height: 0.8;">
+                                                      Ref: IBM quantum computers: evolution, performance, and future directions, DOI:10.1007/s11227-025-07047-7
+                                                      <br>Ref: https://wccftech.com/ibm-intros-osprey-quantum-processor-over-400-quantum-bits-to-power-quantum-system-two/
+                                                  </span><br><br>
+                                                  </p>
+
+
+                                              
+  
+  
+                                              <div style="text-align: center;">
+                                                  
+                                                    <a href="../Image/20250620-08--6790b128.png"><img loading="lazy" src="../WebP/20250620-08--6790b128.webp" alt="量子電路設計示意圖，包括三種裝置。" style="width: 49%; height: auto;"></a>
+                                                  
+                                                  
+                                                      <a href="../Image/20250620-09--06ed66c5.png"><img loading="lazy" src="../WebP/20250620-09--06ed66c5.webp" alt="量子位晶片及其結構示意圖。" style="width: 49%; height: auto;"></a>
+                                                    
+                                              </div>
+                                              <p >
+                                                ▲ 因為製程上的關係與超導量子位元的尺寸不小，除了將不同元件分在不同晶片上，
+                                                在單一晶片難以塞入大量的量子位元，故跨晶片的超導量子位元連結並保持量子特性亦是封裝上重要的實驗與挑戰。
+                                                <br><span style="font-size: 0.7em; line-height: 1.2;">
+                                                    Modular superconducting-qubit architecture with a multichip tunable coupler<br>
+                                                    DOI: 10.1103/PhysRevApplied.21.054063
+                                                </span><br><br>
+                                              </p>
+                                              
+  
+                                    </ol>
+                                      
+                                    <h3>串擾議題：古典串擾與量子串擾 <span class="qh-concept-id">W5-C5</span></h3>
+                                    <p >
+                                        在當前的量子電腦發展上，嚴格來說其實是半古典、半量子的綜合體，利用古典電腦發送帶有古典資訊的微波訊號，進入到量子位元後，
+                                        因為量子位元與微波耦合，會回傳帶有量子資訊的古典信號，再由古典電腦分析結果。
+                                        此特性可以稍微將串擾議題分類為古典串擾與量子串擾。
+                                        由控制訊號、閘操作造成的非預期影響，歸類為古典串擾；而量子串擾，來自於其他量子位元因為處在不同狀態，造成指定的量子位元控制不如預期。由下一節討論。
+                                        <br><br><br>
+                                    </p>
+
+                                      
+                                    <table width="100%"  cellpadding="10" cellspacing="0" style="border-collapse: collapse; font-family: sans-serif; border-color: #cccccc;">
+                                        <thead>
+                                                <tr bgcolor="#f2f2f2" align="center">
+                                                    <th><span style="font-size: 0.9em; line-height: 0.8;">
+                                                        本文參考 由中興大學 郭華丞教授 應 中原大學 徐立義教授 邀請，主講題目：<br><br>
+                                                            
+                                                        </span>
+                                                        <div style="text-align: center; font-weight: bold;">
+                                                            <span style="font-size: 1.2em; line-height: 0.8;">Key issues in designing a scalable QPU</span>
+                                                        </div>
+                                                        <span style="font-size: 0.9em; line-height: 0.8;">
+                                                            <br>Event Date: 2025-06-18
+                                                            <br>Speaker: Prof. Watson Kuo (Dept. of Physics, National Chung Hsing University) 
+                                                            <br>Host: Prof. Li-Yi Hsu (CYCU)
+                                                            <br>Place: R211, Science Building, Chung Yuan Christian University
+                                                            <br>Time: 14:00
+                                                        </span>
+                                                        <span style="font-size: 0.9em; line-height: 0.8;">
+                                                            <br>筆者深感啟發，特此致謝。
+                                                            </span>
+                                                          
+                                                    </th>
+                                                    
+                                                </tr>
+                                            </thead>
+                                        </table>
+</section>
+
+<section class="qh-source-chapter">
+  <h3>教材深挖 5：邁向Scalable QPU-串擾議題 <span class="qh-concept-id">W5-C5</span></h3>
+  <p class="qh-source-note">整合自既有 Insight iHBAR 教材：QC_hardware/V2.html</p>
+  <p >
+                                    在當前的量子電腦發展上，嚴格來說其實是半古典、半量子的綜合體，利用古典電腦發送帶有古典資訊的微波訊號，進入到量子位元後，
+                                    因為量子位元與微波耦合，會回傳帶有量子資訊的古典信號，再由古典電腦分析結果。
+                                    此特性可以稍微將串擾議題分類為古典串擾與量子串擾。
+                                    不過讀者也無需過度在意確切的定義，實務上不同類型的串擾常會同時發生，物理學家和工程師藉由假設串擾模型來預測串擾的發生，再進行優化。
+                                </p>
+
+
+                                <div id="C"><br><br><br></div>
+                                <h3>古典串擾</h3>
+                                
+                                <p >
+                                  由控制訊號、閘操作、量子位元間非預期的耦合項造成的非預期影響，大體上歸類為古典串擾。可以簡單從Hamiltonian來思考：
+                                  <p>\[
+                                  \hat{H}=\hat{H}_{qubits}+\hat{H}_{coupling}+V_{control}+\color{red}{\hat{H}_{unexpected}}
+                                  \]</p>
+
+                                  因為量子Hamiltonian常由古典Hamiltonian量子化而來，故此類串擾常可用古典模型來模擬。<br><br>
+                                  </p>
+
+                                  <div style="text-align: center;">
+                                    
+                                      <a href="../Image/control-crosstalk--0ab9e197.png"><img loading="lazy" src="../WebP/control-crosstalk--0ab9e197.webp" alt="電磁波行進的示意圖與量子狀態。" style="width: 100%; height: auto;"></a>
+                                    
+                                  </div>
+                                  <p >
+                                    ▲由控制訊號的電磁場洩漏造成其他量子位元的影響。
+                                    
+  
+                                  <br><span style="font-size: 0.7em; line-height: 0.8;">
+                                      Ref: 作者繪製
+                                  </span><br><br>
+                                  </p>
+
+
+
+                                  <div style="text-align: center;">
+                                    
+                                      <a href="../Image/Unexpected-static-coupling--b279ef37.png"><img loading="lazy" src="../WebP/Unexpected-static-coupling--b279ef37.webp" alt="流程圖示範多種狀態與轉換。" style="width: 100%; height: auto;"></a>
+                                    
+                                  </div>
+                                  <p >
+                                    ▲量子位元間有設計外的耦合項，造成非預期的狀態轉換或退相干。
+                                    <br><span style="font-size: 0.7em; line-height: 0.8;">
+                                        Ref: 作者繪製
+                                    </span><br><br>
+                                  </p>
+
+                                  <h3>返回電流 Return Current Focus</h3>
+                                  <div style="text-align: center;">
+                                    
+                                      <a href="../Image/Return_current--8d0dc8f1.png"><img loading="lazy" src="../WebP/Return_current--8d0dc8f1.webp" alt="微觀結構圖示，帶有標註與參數。" style="width: 100%; height: auto;"></a>
+                                    
+                                  </div>
+                                  <p >
+                                    ▲ 在現代精密電子電路中，需要注意接地問題。同樣的在量子電路中，電流是否依照理想狀態返回接地，
+                                    如果在晶片上亂竄，會造成Flux crosstalk。此時就需要Return Current Focus的設計
+                                    例如利用空橋將接地的部分盡可能相連，使Flux current盡可能快速離開晶片。                                  
+  
+                                    <br><span style="font-size: 0.7em; line-height: 0.8;">
+                                        Ref: 左：Sinica<br>
+                                        右：https://i.sstatic.net/3lSUB.png
+                                    </span><br><br>
+                                    </p>
+                                  
+                                  
+                                
+                                
+                                
+                                    <h3>量子串擾</h3>
+                                    <p >
+                                      量子串擾來自於其他量子位元因為處在不同狀態，造成指定的量子位元控制不如預期。在量子世界裡，完整的物理演化包含Hamiltonian和state vector：
+                                      <p>\[
+                                        i\hbar\partial_t \ket{\psi}=\hat{H}\ket{\psi}
+                                      \]</p>
+                                      由於\(\ket{\psi}\)是量子物理的特性，沒有古典對應，故與\(\ket{\psi}\)有關的串擾可被歸類為量子串擾。
+
+                                    </p>
+                                    <div style="text-align: center;">
+                                      
+                                        <a href="../Image/State-propagation--fe331f1d.png"><img loading="lazy" src="../WebP/State-propagation--fe331f1d.webp" alt="量子態變換圖示。" style="width: 100%; height: auto;"></a>
+                                      
+                                    </div>
+                                    <p >
+                                      ▲ State Propagation，不在基態的量子位元可能會影響到其他處在基態的量子位元。
+                                      <br><span style="font-size: 0.7em; line-height: 0.8;">
+                                          Ref: 作者繪製
+                                      </span><br><br>
+                                      </p>
+  
+                                      <div style="text-align: center;">
+                                        
+                                          <a href="../Image/Quantum-crosstalk--cd21e857.png"><img loading="lazy" src="../WebP/Quantum-crosstalk--cd21e857.webp" alt="量子電路示意圖，包含幾個量子比特和操作。" style="width: 100%; height: auto;"></a>
+                                        
+                                      </div>
+                                      <p >
+                                        ▲ 理想的量子晶片，當計算侷限在局部子系統時，理論上操作結果、品質不應與其餘量子位元的狀態有關。但實務上，即便空間位置很遠的量子位元，也有可能會對操作子系統產生影響。
+                                        <br><span style="font-size: 0.7em; line-height: 0.8;">
+                                            Ref: 作者繪製
+                                        </span><br><br>
+                                        </p>
+
+                                        <p >
+                                          當然，量子狀態的演化其實跟Hamiltonian有關，不同位元間的狀態改變一定與Hamiltonian是否有交互作用項有關，量子串擾與古典串擾不一定有明確的劃分。
+                                          串擾的修正，可以在製程上進行優化，也可以利用校正的方式，針對運算閘操作進行修正。
+                                          <br><br><br>
+                                        </p>
+                                  
+
+                                    
+
+
+                                      
+
+
+
+
+
+                                
+
+                                
+
+
+
+<table width="100%"  cellpadding="10" cellspacing="0" style="border-collapse: collapse; font-family: sans-serif; border-color: #cccccc;">
+<thead>
+        <tr bgcolor="#f2f2f2" align="center">
+            <th><span style="font-size: 0.9em; line-height: 0.8;">
+                本文參考 由中興大學 郭華丞教授 應 中原大學 徐立義教授 邀請，主講題目：<br><br>
+                    
+                </span>
+                <div style="text-align: center; font-weight: bold;">
+                    <span style="font-size: 1.2em; line-height: 0.8;">Key issues in designing a scalable QPU</span>
+                </div>
+                <span style="font-size: 0.9em; line-height: 0.8;">
+                    <br>Event Date: 2025-06-18
+                    <br>Speaker: Prof. Watson Kuo (Dept. of Physics, National Chung Hsing University) 
+                    <br>Host: Prof. Li-Yi Hsu (CYCU)
+                    <br>Place: R211, Science Building, Chung Yuan Christian University
+                    <br>Time: 14:00
+                </span>
+                <span style="font-size: 0.9em; line-height: 0.8;">
+                    <br>筆者深感啟發，特此致謝。
+                    </span>
+                  
+            </th>
+            
+        </tr>
+    </thead>
+</table>
+</section>
+
+<section class="qh-source-chapter">
+  <h3>教材深挖 6：超導量子電腦-硬體技術與廠商指引(2025)</h3>
+  <p class="qh-source-note">整合自既有 Insight iHBAR 教材：QC_hardware/V3.html</p>
+  <div style="text-align: center;">
+                                    
+                                      <a href="../Image/Sinica-Qubit-fluxline.png"><img loading="lazy" src="../WebP/Sinica-Qubit-fluxline.webp" alt="微觀電路圖示，顯示結構細節。" style="width: 70%; height: auto;"></a>
+                                    
+                                  </div>
+                                  <p >
+                                    ▲
+                                    <br><span style="font-size: 0.7em; line-height: 0.8;">
+                                        Ref: 如何打造一台量子電腦 (中央研究院物理研究所/陳啟東研究員) https://www.youtube.com/watch?v=wceckog180U&t;=3420s
+                                    </span><br><br>
+                                    </p>
+                                    ，個別量子位元的操作、量子位元間的連接性
+                                  <div style="text-align: center;">
+                                    
+                                      <a href="../Image/Sinica-Qubit--742db44d.png"><img loading="lazy" src="../WebP/Sinica-Qubit--742db44d.webp" alt="圖像顯示微電路設計與標註細節。" style="width: 70%; height: auto;"></a>
+                                    
+                                  </div>
+                                  <p >
+                                    ▲
+                                    <br><span style="font-size: 0.7em; line-height: 0.8;">
+                                        Ref: 如何打造一台量子電腦 (中央研究院物理研究所/陳啟東研究員) https://www.youtube.com/watch?v=wceckog180U&t;=3420s
+                                    </span><br><br>
+                                    </p>
+                                  
+                                  <div style="text-align: center;">
+                                    
+                                      <a href="../Image/Sinica-Qubit-3.png"><img loading="lazy" src="../WebP/Sinica-Qubit-3.webp" alt="電路板上顯示的連接點及標籤。" style="width: 70%; height: auto;"></a>
+                                    
+                                  </div>
+                                  <p >
+                                    ▲
+                                    <br><span style="font-size: 0.7em; line-height: 0.8;">
+                                        Ref: 如何打造一台量子電腦 (中央研究院物理研究所/陳啟東研究員) https://www.youtube.com/watch?v=wceckog180U&t;=3420s
+                                    </span><br><br>
+                                    </p>
+                                  
+                                    
+                                        
+
+                                    
+                                    
+                            
+
+                                    
+
+                                        <div style="text-align: center;">
+                                            
+                                              <a href="../Image/20250620-02.png"><img loading="lazy" src="../WebP/20250620-02.webp" alt="量子電路示意圖與控制設計。" style="width: 70%; height: auto;"></a>
+                                            
+                                          </div>
+                                          <p >
+                                            ▲
+                                            <br><span style="font-size: 0.7em; line-height: 0.8;">
+                                                Ref: doi.org/10.1007/s10948-021-06104-5                                                    
+                                            </span><br><br>
+                                            </p>
+
+                                            <div style="text-align: center;">
+                                                
+                                                  <a href="../Image/20250620-03.png"><img loading="lazy" src="../WebP/20250620-03.webp" alt="量子位電路和元件示意圖。" style="width: 70%; height: auto;"></a>
+                                                
+                                              </div>
+                                              <p >
+                                                ▲
+                                                <br><span style="font-size: 0.7em; line-height: 0.8;">
+                                                    Ref: doi.org/10.1038/s41467-022-34727-2<br>
+                                                    Engineering superconducting qubits to reduce quasiparticles and charge noise
+                                                   
+                                                </span><br><br>
+                                                Floating Qubit
+                                                </p>
+                                    
+                                                <div style="text-align: center;">
+                                                    
+                                                      <a href="../Image/20250620-04.png"><img loading="lazy" src="../WebP/20250620-04.webp" alt="量子電路與元件示意圖與微觀結構分析。" style="width: 70%; height: auto;"></a>
+                                                    
+                                                  </div>
+                                                  <p >
+                                                    ▲
+                                                    <br><span style="font-size: 0.7em; line-height: 0.8;">
+                                                        doi.org/10.1038/s41467-024-48230-3<br>
+                                                        Mechanically induced correlated errors on superconducting qubits with relaxation times exceeding 0.4 ms
+
+                                                    </span><br><br>
+                                                    Floating Qubit
+                                                    </p>
+                                                    <div style="text-align: center;">
+                                                        
+                                                          <a href="../Image/20250620-05.png"><img loading="lazy" src="../WebP/20250620-05.webp" alt="微波測試電路概覽圖示。" style="width: 70%; height: auto;"></a>
+                                                        
+                                                      </div>
+                                                      <p >
+                                                        ▲
+                                                        <br><span style="font-size: 0.7em; line-height: 0.8;">
+                                                            doi.org/10.1038/s41467-024-48230-3<br>
+                                                        Mechanically induced correlated errors on superconducting qubits with relaxation times exceeding 0.4 ms
+
+                                                        </span><br><br>
+                                                        Floating Qubit
+                                                        </p>
+
+                                                        <div style="text-align: center;">
+                                                            
+                                                              <a href="../Image/20250620-06.png"><img loading="lazy" src="../WebP/20250620-06.webp" alt="量子電路及冷卻系統示意圖" style="width: 70%; height: auto;"></a>
+                                                            
+                                                          </div>
+                                                          <p >
+                                                            ▲
+                                                            <br><span style="font-size: 0.7em; line-height: 0.8;">
+                                                                doi.org/10.1038/s41467-023-39249-z<br>
+                                                                Quantum bath suppression in a superconducting circuit by immersion cooling
+                                                            </span><br><br>
+                                                            </p>
+
+                                                        
+                                                            <div style="text-align: center;">
+                                                                
+                                                                  <a href="../Image/20250620-07.png"><img loading="lazy" src="../WebP/20250620-07.webp" alt="SAW 量子位和電路示意圖及照片。" style="width: 70%; height: auto;"></a>
+                                                                
+                                                              </div>
+                                                              <p >
+                                                                ▲
+                                                                <br><span style="font-size: 0.7em; line-height: 0.8;">
+                                                                    doi.org/10.1038/s41467-023-39682-0<br>Phononic bath engineering of a
+superconducting qubit
+                                                                </span><br><br>
+                                                                Phononic bath engineering of a superconducting qubit  探討了將超導量子位元耦合到聲學表面波（SAW
+                                                                </p>
+
+                                                                
+
+
+
+                                                                <div style="text-align: center;">
+                                                                    
+                                                                      <a href="../Image/20250620-30.png"><img loading="lazy" src="../WebP/20250620-30.webp" alt="不同類型導線的設計圖與尺寸標示。" style="width: 70%; height: auto;"></a>
+                                                                    
+                                                                  </div>
+                                                                  <p >
+                                                                    ▲
+                                                                    <br><span style="font-size: 0.7em; line-height: 0.8;">
+                                                                        10.1038/s41598-024-57248-y<br>
+                                                                Wiring surface loss of a superconducting transmon qubit
+
+
+                                                                    </span><br><br>
+                                                                    </p>
+
+                                                               
+                                                                    <div style="text-align: center;">
+                                                                        
+                                                                          <a href="../Image/20260620-07.png"><img loading="lazy" src="../WebP/20260620-07.webp" alt="量子電路示意圖及其元件配置" style="width: 70%; height: auto;"></a>
+                                                                        
+                                                                    </div>
+                                                                    <p >
+                                                                      ▲
+                                                                      <br><span style="font-size: 0.7em; line-height: 1.2;">
+                                                                          Gate-Efficient Simulation of Molecular Eigenstates on a Quantum Computer<br>
+                                                                          DOI: 10.1103/PhysRevApplied.11.044092
+                                                                      </span><br><br>
+                                                                    </p>
+                                                                    
+                                                     
+                                                                    
+                                                                    <div style="text-align: center;">
+                                                                        
+                                                                          <a href="../Image/20250620-14.png"><img loading="lazy" src="../WebP/20250620-14.webp" alt="五量子位芯片及其相關電路配置示意圖。" style="width: 70%; height: auto;"></a>
+                                                                        
+                                                                    </div>
+                                                                    <p >
+                                                                      ▲
+                                                                      <br><span style="font-size: 0.7em; line-height: 1.2;">
+                                                                          Deep-Neural-Network Discrimination of Multiplexed Superconducting-Qubit States<br>
+                                                                          DOI: 10.1103/PhysRevApplied.17.014024
+                                                                      </span><br><br>
+                                                                    </p>
+                                                                    
+                                                                    <hr>
+                                                                    
+                                                                    
+                                                                    
+                                                                    <hr>
+                                                                    
+                                                                    <div style="text-align: center;">
+                                                                        
+                                                                          <a href="../Image/Picture2-5--dcb0481b.webp"><img loading="lazy" src="../WebP/Picture2-5--dcb0481b.webp" alt="數學圖形與網路結構示意圖" style="width: 70%; height: auto;"></a>
+                                                                        
+                                                                    </div>
+                                                                    <p >
+                                                                      ▲
+                                                                      <br><span style="font-size: 0.7em; line-height: 1.2;">
+                                                                          Schematic representation of different QPU topologies. (Top-left: IonQ, Top-center: OXC, Bottom-left: Rigetti, Right: IBM). Images compiled from AWS Braket and IBM Quantum Experience sites.
+                                                                      </span><br><br>
+                                                                    </p>
+                                                                    
+                                                                    <hr>
+                                                                    
+                                                                    <div style="text-align: center;">
+                                                                        
+                                                                          <a href="../Image/20250620-19.png"><img loading="lazy" src="../WebP/20250620-19.webp" alt="IQM Star QPU 與傳統量子處理器比較表" style="width: 70%; height: auto;"></a>
+                                                                        
+                                                                    </div>
+                                                                    <p >
+                                                                      ▲
+                                                                      <br><span style="font-size: 0.7em; line-height: 1.2;">
+                                                                          The IQM Star architecture connects all qubits through a central resonator, enabling effective all-to-all connectivity, which improves error resilience and algorithm efficiency.
+                                                                      </span><br><br>
+                                                                    </p>
+
+
+
+
+                                                                    補上的項目 (Additional Items)
+20250620-12.png
+
+
+<div style="text-align: center;">
+
+  <a href="../Image/20250620-12.png"><img loading="lazy" src="../WebP/20250620-12.webp" alt="微電路設計示意圖及元件詳情。" style="width: 70%; height: auto;"></a>
+
+</div>
+<p >
+▲
+<br><span style="font-size: 0.7em; line-height: 1.2;">
+  Entanglement stabilization using ancilla-based parity detection and real-time feedback in superconducting circuits<br>
+  DOI: 10.1038/s41534-019-0185-4
+</span><br><br>
+</p>
+
+
+20250620-13.png
+
+
+<div style="text-align: center;">
+
+  <a href="../Image/20250620-13.png"><img loading="lazy" src="../WebP/20250620-13.webp" alt="複雜的電子電路圖示。" style="width: 70%; height: auto;"></a>
+
+</div>
+<p >
+▲
+<br><span style="font-size: 0.7em; line-height: 1.2;">
+  Entanglement stabilization using ancilla-based parity detection and real-time feedback in superconducting circuits<br>
+  DOI: 10.1038/s41534-019-0185-4
+</span><br><br>
+</p>
+
+
+20250620-15.png
+
+
+<div style="text-align: center;">
+
+  <a href="../Image/20250620-15.png"><img loading="lazy" src="../WebP/20250620-15.webp" alt="量子位元電路示意圖與其特性分析。" style="width: 70%; height: auto;"></a>
+
+</div>
+<p >
+▲
+<br><span style="font-size: 0.7em; line-height: 1.2;">
+  Decay-protected superconducting qubit with fast control enabled by integrated onchip filters<br>
+  DOI: 10.1038/s42005-024-01733-3
+</span><br><br>
+</p>
+
+
+20250620-16.png
+
+
+<div style="text-align: center;">
+
+  <a href="../Image/20250620-16.png"><img loading="lazy" src="../WebP/20250620-16.webp" alt="量子比特系統示意圖，包含濾波器和共振器。" style="width: 70%; height: auto;"></a>
+
+</div>
+<p >
+▲
+<br><span style="font-size: 0.7em; line-height: 1.2;">
+  On-premises superconducting quantum computer for education and research<br>
+  DOI: 10.1140/epjqt/s40507-024-00243-z
+</span><br><br>
+</p>
+
+
+Resonance-24Qubit_Blog.jpg
+
+
+<div style="text-align: center;">
+
+  <a href="../Image/Resonance-24Qubit_Blog.jpg"><img loading="lazy" src="../WebP/Resonance-24Qubit_Blog.webp" alt="量子電路內的 Qubit 與 Coupler 配置圖。" style="width: 70%; height: auto;"></a>
+
+</div>
+<p >
+▲
+<br><span style="font-size: 0.7em; line-height: 1.2;">
+  Ref: https://meetiqm.com/blog/jumping-off-the-grid-in-quantum-processor-innovation-introducing-iqm-star/
+</span><br><br>
+</p>
+
+
+20250620-20.png
+
+<div style="text-align: center;">
+
+  <a href="../Image/Resonance-54Qubit_Blog.jpg"><img loading="lazy" src="../WebP/Resonance-54Qubit_Blog.webp" alt="量子電路拓撲圖，顯示 Qubit 和 Coupler。" style="width: 70%; height: auto;"></a>
+
+</div>
+<p >
+▲
+<br><span style="font-size: 0.7em; line-height: 1.2;">
+  Ref: IQM Blog - Jumping off the grid in quantum processor innovation
+</span><br><br>
+</p>
+
+<div style="text-align: center;">
+
+  <a href="../Image/20250620-20.png"><img loading="lazy" src="../WebP/20250620-20.webp" alt="不同結構的化學分子排列示意圖。" style="width: 70%; height: auto;"></a>
+
+</div>
+<p >
+▲
+<br><span style="font-size: 0.7em; line-height: 1.2;">
+  IQM crystal, 5Q, 20Q, 54Q, 150Q<br>
+  Ref: Technology and Performance Benchmarks of IQM’s 20-Qubit Quantum Computer (PDF)
+</span><br><br>
+</p>
+
+
+20250620-21.png
+
+
+<div style="text-align: center;">
+
+  <a href="../Image/20250620-21.png"><img loading="lazy" src="../WebP/20250620-21.webp" alt="伺服器內部設備與連接線路示意圖" style="width: 70%; height: auto;"></a>
+
+</div>
+<p >
+▲
+<br><span style="font-size: 0.7em; line-height: 1.2;">
+  IQM crystal, 5Q, 20Q, 54Q, 150Q<br>
+  Ref: Technology and Performance Benchmarks of IQM’s 20-Qubit Quantum Computer (PDF)
+</span><br><br>
+</p>
+
+
+20250620-22.png
+
+
+<div style="text-align: center;">
+
+  <a href="../Image/20250620-22.png"><img loading="lazy" src="../WebP/20250620-22.webp" alt="實驗室設備與配置示意圖。" style="width: 70%; height: auto;"></a>
+
+</div>
+<p >
+▲
+<br><span style="font-size: 0.7em; line-height: 1.2;">
+  IQM crystal, 5Q, 20Q, 54Q, 150Q<br>
+  Ref: Technology and Performance Benchmarks of IQM’s 20-Qubit Quantum Computer (PDF)
+</span><br><br>
+</p>
+
+
+20250620-23.png
+
+
+<div style="text-align: center;">
+
+  <a href="../Image/20250620-23.png"><img loading="lazy" src="../WebP/20250620-23.webp" alt="伺服器前面板，帶有多個接口和指示燈。" style="width: 70%; height: auto;"></a>
+
+</div>
+<p >
+▲
+<br><span style="font-size: 0.7em; line-height: 1.2;">
+  IQM crystal, 5Q, 20Q, 54Q, 150Q<br>
+  Ref: Technology and Performance Benchmarks of IQM’s 20-Qubit Quantum Computer (PDF)
+</span><br><br>
+</p>
+
+
+20250620-24.png
+
+
+<div style="text-align: center;">
+
+  <a href="../Image/20250620-24.png"><img loading="lazy" src="../WebP/20250620-24.webp" alt="量子電路示意圖，包含各種元件和連接。" style="width: 70%; height: auto;"></a>
+
+</div>
+<p >
+▲
+<br><span style="font-size: 0.7em; line-height: 1.2;">
+  Coherent microwave-photon-mediated coupling between a semiconductor and a superconducting qubit<br>
+  DOI: 10.1038/s41467-019-10798-6
+</span><br><br>
+</p>
+
+
+medium (1).png
+
+
+
+
+
+20250620-18.png
+
+
+<div style="text-align: center;">
+
+  <a href="../Image/20250620-18.png"><img loading="lazy" src="../WebP/20250620-18.webp" alt="量子電路示意圖與控制元件配置" style="width: 70%; height: auto;"></a>
+
+</div>
+<p >
+▲
+<br><span style="font-size: 0.7em; line-height: 1.2;">
+  Coherent Josephson Qubit Suitable for Scalable Quantum Integrated Circuits<br>
+  DOI: 10.1103/PhysRevLett.111.080502
+</span><br><br>
+</p>
+
+
+20250620-25.png
+
+
+<div style="text-align: center;">
+
+  <a href="../Image/20250620-25.png"><img loading="lazy" src="../WebP/20250620-25.webp" alt="電路圖示範不同組件配置" style="width: 70%; height: auto;"></a>
+
+</div>
+<p >
+▲
+<br><span style="font-size: 0.7em; line-height: 1.2;">
+  Superconducting quantum computing: a review<br>
+  DOI: 10.1007/s11432-020-2881-9
+</span><br><br>
+</p>
+
+
+20260620-26.png
+
+
+<div style="text-align: center;">
+
+  <a href="../Image/20260620-26.png"><img loading="lazy" src="../WebP/20260620-26.webp" alt="電路圖和元件示意圖展示。" style="width: 70%; height: auto;"></a>
+
+</div>
+<p >
+▲
+<br><span style="font-size: 0.7em; line-height: 1.2;">
+  Superconducting quantum computing: a review<br>
+  DOI: 10.1007/s11432-020-2881-9
+</span><br><br>
+</p>
+
+
+20260620-27.png
+
+
+<div style="text-align: center;">
+
+  <a href="../Image/20260620-27.png"><img loading="lazy" src="../WebP/20260620-27.webp" alt="量子系統中去局部化與局部化激發的比較圖。" style="width: 70%; height: auto;"></a>
+
+</div>
+<p >
+▲
+<br><span style="font-size: 0.7em; line-height: 1.2;">
+  Superconducting quantum computing: a review<br>
+  DOI: 10.1007/s11432-020-2881-9
+</span><br><br>
+</p>
+
+
+20260620-28.png
+
+
+<div style="text-align: center;">
+
+  <a href="../Image/20260620-28.png"><img loading="lazy" src="../WebP/20260620-28.webp" alt="量子電路及其量子態示意圖。" style="width: 70%; height: auto;"></a>
+
+</div>
+<p >
+▲
+<br><span style="font-size: 0.7em; line-height: 1.2;">
+  Superconducting quantum computing: a review<br>
+  DOI: 10.1007/s11432-020-2881-9
+</span><br><br>
+</p>
+
+                                                                
+                                                            
+                                                                20260620-07.png
+                                            
+                                                                Gate-Efficient Simulation of Molecular Eigenstates on a Quantum Computer
+                                                                DOI: 10.1103/PhysRevApplied.11.044092
+
+                                                                
+                                                                20250620-08.png
+                                                                Modular superconducting-qubit architecture with a multichip tunable coupler
+                                                                DOI: 10.1103/PhysRevApplied.21.054063
+                                                                
+
+                                                                20250620-09.png
+                                                                Modular superconducting-qubit architecture with a multichip tunable coupler
+                                                                DOI: 10.1103/PhysRevApplied.21.054063
+
+
+                                                                20250620-10.png
+                                                                Suppression of Qubit Crosstalk in a Tunable Coupling Superconducting Circuit
+                                                                DOI: 10.1103/PhysRevApplied.12.054023
+
+
+
+
+                                                                20250620-11.png
+                                                                10.1038/s41534-019-0185-4
+                                                                Entanglement stabilization using ancilla-based parity detection and real-time feedback in superconducting circuits
+
+                                                                20250620-12.png
+                                                                10.1038/s41534-019-0185-4
+                                                                Entanglement stabilization using ancilla-based parity detection and real-time feedback in superconducting circuits
+
+                                                                20250620-13.png
+                                                                10.1038/s41534-019-0185-4
+                                                                Entanglement stabilization using ancilla-based parity detection and real-time feedback in superconducting circuits
+
+
+                                                                20250620-14.png
+                                                                Deep-Neural-Network Discrimination of Multiplexed Superconducting-Qubit States
+                                                                DOI: 10.1103/PhysRevApplied.17.014024
+
+                                                                20250620-15.png
+                                                                10.1038/s42005-024-01733-3
+Decay-protected superconducting qubit with fast control enabled by integrated onchip filters
+
+20250620-17.png
+10.1140/epjqt/s40507-024-00243-z
+On-premises superconducting quantum computer for education and research
+
+
+
+20250620-16.png
+10.1140/epjqt/s40507-024-00243-z
+On-premises superconducting quantum computer for education and research
+
+
+Resonance-54Qubit_Blog.jpg
+Ref:https://meetiqm.com/blog/jumping-off-the-grid-in-quantum-processor-innovation-introducing-iqm-star/
+
+Resonance-24Qubit_Blog.jpg
+Ref:https://meetiqm.com/blog/jumping-off-the-grid-in-quantum-processor-innovation-introducing-iqm-star/
+
+Picture2-5.webp 
+Images compiled from AWS Braket and IBM Quantum Experience sites. Fig. 2. Schematic representation of different QPU topologies. The top left corner shows the all-to-all connectivity of the 11-qubit trapped ion system by IonQ, demonstrating the fully connected nature of this technology. The other circuits are representatives of superconducting QPUs available on the cloud, the top central schematic of the octagonal configuration of the 8-qubit QPU Lucy from OXC, the bottom left figure is also based on octagonal configuration (Rigetti) but with octagon vertices linked through three neighbor links, the largest offering currently accessible through AWS bracket is an 80-qubit system. The schematic on the right shows a typical superconducting layout of IBMs superconducting processor. At the time of compiling this report, IBM hold the record of largest superconducting QPU with 127 qubits.
+
+20250620-20.png
+IQM crystal, 5Q, 20Q, 54Q, 150Q
+https://cdn.prod.website-files.com/6523f13a748909d3e1bbb657/66840c982cc873f725237cbc_IQM%20Garnet%2020Q%20Whitepaper%202024%20sm.pdf
+Technology and Performance Benchmarks of IQM’s 20-Qubit Quantum Computer.pdf
+
+20250620-23.png
+IQM crystal, 5Q, 20Q, 54Q, 150Q
+https://cdn.prod.website-files.com/6523f13a748909d3e1bbb657/66840c982cc873f725237cbc_IQM%20Garnet%2020Q%20Whitepaper%202024%20sm.pdf
+Technology and Performance Benchmarks of IQM’s 20-Qubit Quantum Computer.pdf
+
+
+20250620-22.png
+IQM crystal, 5Q, 20Q, 54Q, 150Q
+https://cdn.prod.website-files.com/6523f13a748909d3e1bbb657/66840c982cc873f725237cbc_IQM%20Garnet%2020Q%20Whitepaper%202024%20sm.pdf
+Technology and Performance Benchmarks of IQM’s 20-Qubit Quantum Computer.pdf
+
+20250620-21.png
+IQM crystal, 5Q, 20Q, 54Q, 150Q
+https://cdn.prod.website-files.com/6523f13a748909d3e1bbb657/66840c982cc873f725237cbc_IQM%20Garnet%2020Q%20Whitepaper%202024%20sm.pdf
+Technology and Performance Benchmarks of IQM’s 20-Qubit Quantum Computer.pdf
+
+
+20250620-24.png
+10.1038/s41467-019-10798-6 
+Coherent microwave-photon-mediated coupling between a semiconductor and a superconducting qubit
+
+
+20250620-19.png
+The IQM Star addresses a lot of these issues. It effectively connects all qubits through a resonator, which is rare in superconducting technology. This resonator acts as a computational element, enabling direct, high-fidelity interactions between all qubits.
+A Departure from Tradition: How IQM Star Stands Apart 
+Effective all-to-all connectivity: Any qubit can interact with any other qubit, eliminating the need for noisy SWAP gates.
+Improved error resilience: The shared resonator allows for more efficient quantum error detection and correction.
+Efficient quantum algorithm execution: Algorithms that require high qubit connectivity, such as quantum simulations and variational quantum eigensolvers (VQEs), can run more efficiently.
+
+
+
+medium (1).png
+10-Qubit Entanglement and Parallel Logic Operations with a Superconducting Circuit
+10.1103/PhysRevLett.119.180511
+
+20250620-18.png
+Coherent Josephson Qubit Suitable for Scalable Quantum Integrated Circuits
+10.1103/PhysRevLett.111.080502
+
+
+
+20260620-28.png
+10.1007/s11432-020-2881-9
+Superconducting quantum computing: a review
+31.Superconductingquantumcomputing_areview.pdf
+
+
+20260620-27.png
+10.1007/s11432-020-2881-9
+Superconducting quantum computing: a review
+31.Superconductingquantumcomputing_areview.pdf
+
+
+20260620-26.png
+10.1007/s11432-020-2881-9
+Superconducting quantum computing: a review
+31.Superconductingquantumcomputing_areview.pdf
+
+
+20250620-25.png
+10.1007/s11432-020-2881-9
+Superconducting quantum computing: a review
+31.Superconductingquantumcomputing_areview.pdf
+
+
+                                                                <div class="section">
+<ul>
+    <li><strong>基本元件：</strong> gate line、readout line、flux bias line、resonator</li>
+    <li><strong>構成：</strong> qubit 多採 XY gate + Z gate 線控制，resonator 作為 readout 或耦合中介</li>
+    <li><strong>尺寸考量：</strong> qubit 約 100 µm，resonator（6 GHz）約 4 mm</li>
+</ul>
+
+                                <p >
+                                ▲
+                                <br><span style="font-size: 0.7em; line-height: 0.8;">
+
+                                </span><br><br>
+                                </p>
+</div>
+
+<div class="section">
+<div class="qh-section">
+  <h3>2. 低溫操作條件</h3>
+</div>
+<ul>
+    <li>使用 dilution fridge 降至 0.02 K 以下，抑制黑體輻射</li>
+    <li>操作頻率須滿足 GHz ≫ kT 條件，常見為 5–7 GHz</li>
+    <li>超導 gap Δ ≈ 1.76 T<sub>c</sub></li>
+</ul>
+</div>
+
+<div class="section">
+<div class="qh-section">
+  <h3>3. Qubit 頻率設計：IBM vs Google</h3>
+</div>
+<ul>
+    <li><strong>IBM：</strong> fixed-frequency SQUID，穩定但難調控</li>
+    <li><strong>Google：</strong> tunable-frequency SQUID，可調但易受 flux noise 影響</li>
+</ul>
+</div>
+
+<div class="section">
+<div class="qh-section">
+  <h3>4. Crosstalk 串音問題與解法</h3>
+</div>
+<ul>
+    <li><strong>Classical crosstalk：</strong> gate 線之 signal 串擾</li>
+    <li><strong>Quantum crosstalk：</strong> readout 或 flux 線干擾 nearby qubit</li>
+    <li><strong>解法：</strong> 拉距離、隔離接地、加 shielding/filter、設計雙層佈線</li>
+</ul>
+</div>
+
+<div class="section">
+<div class="qh-section">
+  <h3>5. Tunable Coupler 與 Parasitic 元件</h3>
+</div>
+<ul>
+    <li>可調耦合器支援關閉 qubit 間 interaction（gate on-demand）</li>
+    <li>parasitic element（雜散電容/電感）會造成殘餘耦合</li>
+    <li>避免共振腔載 photon 時未清空（需 reset）</li>
+</ul>
+</div>
+
+<div class="section">
+<div class="qh-section">
+  <h3>6. 回流電流與 Residual 耦合問題</h3>
+</div>
+<ul>
+    <li>flux 控制電流回流路徑造成非預期耦合</li>
+    <li>設計 qubit array 時避免產生意外 residual interaction</li>
+    <li>tunable coupler 可有效 suppress 不必要耦合</li>
+</ul>
+</div>
+
+<div class="section">
+<div class="qh-section">
+  <h3>7. Gate Propagation 與 off-resonance 操作</h3>
+</div>
+<ul>
+    <li>off-resonance 控制方式可透過 detuning 處理</li>
+    <li>操作時需規劃 gate 的時間排列以避免重疊（propagate diagram）</li>
+</ul>
+</div>
+
+<div class="section">
+<div class="qh-section">
+  <h3>8. 模擬 Hamiltonian 與分解策略</h3>
+</div>
+<ul>
+    <li>量子模擬關鍵為實現 <code>e<sup>-iHt</sup></code></li>
+    <li>使用 Suzuki-Trotter 或變分方式分解為 gate</li>
+    <li>Free evolution 中的 undesired coupling 需插入 cancel 序列（如 echo、Z gate）</li>
+</ul>
+</div>
+                                
+                                <p >
+                                    ▲
+                                    <br><span style="font-size: 0.7em; line-height: 0.8;">
+
+                                    </span><br><br>
+                                    </p>
+</section>
+
+<section class="qh-source-chapter">
+  <h3>教材深挖 7：量子計算硬體基礎</h3>
+  <p class="qh-source-note">整合自既有 Insight iHBAR 教材：SCQ_advanced/A.html</p>
+  <p >
+                                量子計算在特定問題上蘊含遠超古典電腦的運算潛力，其硬體卻也面臨控制困難、操作時間過短的問題。量子計算的硬體以量子位元作為的核心元件，還需搭配操控量子位元狀態的驅動元件、量子位元狀態的讀取元件。此外，因為量子位元容易受到外界干擾的特性，量子位元的校正/微調元件、量子糾錯元件等。簡而言之可以包含以下：
+                                </p>
+                            
+                                <ul>
+                                <li>量子位元</li>
+                                <li>驅動</li>
+                                <li>讀取</li>
+                                <li>校正</li>
+                                <li>糾錯</li>
+                                </ul>
+                            
+                                <p >
+                                事實上，在現今的記憶體中，其實也包含以上不同的硬體分工，只是在量子計算裡面，以上不同元件需要整體考慮。更具體一點的講法，因為不同元件會互相交互作用，當我們利用量子物理學，寫下其整個量子電路的 Hamiltonian（或薛丁格方程式），其交互作用像會去"修正"量子位元本身的特性，一方面我們利用"修正"的特性來操作和讀取量子位元的資訊，然而另一方面卻也導致量子位元受到影響，偏離理想狀態、導致錯誤產生。
+                                </p>
+                            
+                                <p >
+                                本文專注在超導量子電路，量子電路中包含的元件分類如下（兩種切入點）：
+                                </p>
+                            
+                                <table style="width: 100%; border-collapse: collapse; text-align: left; border: 1px solid black;">
+                                    <tr>
+                                        <th style="border: 1px solid black; padding: 10px;">以功能性為觀點</th>
+                                        <td style="border: 1px solid black; padding: 10px;">
+                                        1. 量子位元（資料儲存）<br>
+                                        2. 驅動：耦合電路或 LC 共振器（作運算）<br>
+                                        3. 讀取（readout）：LC 共振器與饋線<br>
+                                        4. 校正：Flux line（改變量子位元頻率）<br>
+                                        5. 糾錯：量子位元（糾錯用）
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                    <th style="border: 1px solid black; padding: 10px;">以元件種類為觀點</th>
+                                        
+                                        <td style="border: 1px solid black; padding: 10px;">
+                                        1. LC 電路<br>
+                                        &nbsp;&nbsp;&nbsp;<b>a.</b> LC 共振器（線性 LC 電路）：用作讀取量子位元狀態（readout resonator），有時也可以作為量子位元間耦合（間接耦合）<br>
+                                        &nbsp;&nbsp;&nbsp;<b>b.</b> 量子位元（非線性 LC 電路）：部分作為資料儲存、部分作為糾錯用位元<br><br>
+                                        2. 饋線（feedline）：外部訊號送入與讀出<br><br>
+                                        3. 耦合元件：<br>
+                                        &nbsp;&nbsp;&nbsp;<b>a.</b> 操作、改變量子位元狀態<br>
+                                        &nbsp;&nbsp;&nbsp;<b>b.</b> 量子位元之間的直接耦合<br>
+                                        &nbsp;&nbsp;&nbsp;<b>c.</b> 將外部訊號與各元件交換訊號<br><br>
+                                        4. Flux line：調整改變量子位元頻率，讓量子位元在指定頻率運作
+                                        </td>
+                                    </tr>
+                                </table>
+                            
+                            
+                                <div style="text-align: center;">
+                                
+                                    <a href="../Image/SIngle Qubit circuit--bc569b45.png"><img loading="lazy" src="../WebP/SIngle Qubit circuit--bc569b45.webp" alt="量子位相關的電路與讀取圖示。" style="width: 100%; height: auto;"></a>
+                                
+                                </div>
+                                
+                                    <p >
+                                    ▲首先可以先欣賞一下單量子位元的 layout。（a）顯微鏡底下的電路圖，（b）對應的電路圖，此圖中有一個 Qubit（紅色 Transmon）、一個 readout resonator（天藍色），兩條 feedline 個別驅動（Drive）量子位元與 readout resonator。各元件間利用電容作耦合。另外有一條 Flux line 連到 Qubit 旁，會產生磁場來改變 Transmon 的操作頻率。（c）readout resonator 因為與量子位元耦合，會受到量子位元在 \(\ket{0}\) 或 \(\ket{1}\) 狀態的差異產生頻譜的位移，利用 readout resonator 頻譜的位移的特性來得知量子位元的狀態。
+                                    <br><span style="font-size: 0.7em; line-height: 0.8;">Ref:arxiv.org/pdf/2106.11352</span><br><br>
+                                    </p>
+                                
+                                <div style="text-align: center;">
+                                
+                                    <a href="../Image/2 qubit 1 resonator.png"><img loading="lazy" src="../WebP/2 qubit 1 resonator.webp" alt="量子位耦合與讀取的共振腔設計示意圖" style="width: 100%; height: auto;"></a>
+                                
+                                </div>
+                                    <p >
+                                    ▲這張圖是兩個量子位元（Transmon）藉由一個 resonator 耦合在一起（間接耦合），可以注意的是下方一行文字寫這個 resonator 兼具耦合兩個量子位元的功能。
+                                    <br><span style="font-size: 0.7em; line-height: 0.8;">Ref:doi.org/10.1038/nature08121</span><br><br>
+                                </p>
+                                
+                                
+                                <div style="text-align: center;">
+                                
+                                    <a href="../Image/4 qubit.png"><img loading="lazy" src="../WebP/4 qubit.webp" alt="第二代四量子位處理器電路圖" style="width: 100%; height: auto;"></a>
+                                
+                                </div>
+                                <p >
+                                    ▲這張圖是四個 Qubit，中間由 bus resonator 串連耦合四個 Qubit。其中四個接頭直通 Qubit，是 flux-line，另外左上跟右下各有一條 readout feedline I/O，各自連結到兩個 readout resonator 並與 Qubit 耦合（等於說一條 readout feedline 會同時讀取兩個 Qubit）。
+                                </p>
+                                
+                                
+                                <div style="text-align: center;">
+                                
+                                    <a href="../Image/5Q--7f4f25e4.png"><img loading="lazy" src="../WebP/5Q--7f4f25e4.webp" alt="量子電路圖與元件標示詳情。" style="width: 80%; height: auto;"></a>
+                                
+                                </div>
+                                <p >
+                                    
+                                
+                                    ▲這張是另一種 5 qubit layout 的示意圖。其中 Z 是 flux line，XY 是 Drive line，5 個 Qubit 是直接電容耦合。此外，每個 qubit 都有自己的 readout resonator，在上方併入（此圖顯示是電感耦合）到 readout line。
+                                    <br><span style="font-size: 0.7em; line-height: 0.8;">doi.org/10.1038/nature13171</span><br><br>
+                                </p>
+                                
+                                <p style="font-weight: bold; font-size: 1.2em;">邁向多 Qubit 模組</p>
+                                <div style="text-align: center;">
+                                
+                                    <a href="../Image/17 surface--24761abf.png"><img loading="lazy" src="../WebP/17 surface--24761abf.webp" alt="量子電路圖示，顯示量子比特與連接。" style="width: 43%; height: auto;"></a>
+                                
+                                
+                                    <a href="../Image/Starmon--e72fd59a.png"><img loading="lazy" src="../WebP/Starmon--e72fd59a.webp" alt="微波驅動線及讀取共振器示意圖" style="width: 55%; height: auto;"></a>
+                                
+                                </div>
+                                <p >
+                                    ▲要達到量子計算，需要同時操作許多 Qubit，同時因為糾錯的關係，也需要額外的 Qubit 來進行糾錯。下圖是一個 17 位元的實驗性量子晶片，排列方式是一種稱為 surface code（表面碼）的量子糾錯型態，圓形為 Qubit，粉色及紅色是 Data Qubit，天藍色及綠色是 Check Qubit。每個 Qubit 都連接 7 條線（暱稱為 Starmon），其中 4 條為 Qubit 間耦合、1 條 Flux line、1 條 Drive line、1 條 Readout resonator。Readout resonator 分別併入到三條 feedline。
+                                    <br><span style="font-size: 0.7em; line-height: 0.8;">https://arxiv.org/pdf/1612.08208</span><br><br>
+                                </p>
+</section>
+</section>
+
+<section class="qh-full-lecture">
+  <span class="qh-time">95–110 分鐘</span>
+  <h3>Spectator error、crosstalk 與 frequency collision 如何隨晶片擴大？ <span class="qh-concept-id">W5-C6</span> <span class="qh-concept-id">W5-CS1</span></h3>
+  <div class="qh-case">
+<h4>估算案例：交換時間與 detuning <span class="qh-concept-id">W5-CS1</span></h4>
+<p>若 resonant exchange coupling \(g/2\pi=20\) MHz，在理想 two-level model 中 iSWAP time 約 \(t_{\mathrm{iSWAP}}=\pi/(2g)\approx12.5\) ns。真實 gate 還需 ramp、echo 與 leakage suppression，因此不能把此數值直接當 gate duration。若 off-state detuning 只有 200 MHz，\(g/\Delta=0.1\) 並不極小，residual interaction 與 frequency crowding 必須量測。</p>
+<p>比較 fixed-frequency + cross-resonance、tunable qubit CZ 與 tunable-coupler CZ 時，應把 gate fidelity、duration、idle ZZ、flux-noise exposure、wiring、yield 與 calibration time 放進同一張表。</p>
+</div>
+  <div class="qh-task">
+    <h4>課堂任務（8–10 分鐘）</h4>
+    <p>一個四量子位元方形晶片的兩條相鄰 edge 同時做 CZ 時 fidelity 明顯下降，單獨執行正常。請提出至少四個機制，並為每個機制設計最小實驗。</p>
+  </div>
+  <div class="qh-answer">
+    <h4>教師解答與評分依據</h4>
+    <p>候選包括 shared control-line leakage、frequency collision、spectator ZZ、readout-independent heating、coupler bias crosstalk。可用 interleaved simultaneous RB、交換 edge 組合、掃 bias/frequency、插入 spectator Ramsey、量測 leakage 與監看 line response 逐一區分。</p>
+    <p>答案不以是否使用特定名詞評分，而以是否建立「假設 → 可觀測量 → 區分實驗 → 決策」的閉環評分。學生若提出不同方案，只要能明確指出代價與可否證條件，即可成立。</p>
+  </div>
+  <h4>Exit ticket</h4>
+  <ol>
+    <li>本週最重要的一條 equation／model 是什麼？它的適用近似為何？</li>
+    <li>哪一個看似局部的參數，實際會跨越 device、control 與 system 三層？</li>
+    <li>若只能做一個新實驗，什麼結果最能改變目前的 architecture decision？</li>
+  </ol>
+</section>
+
+<section class="qh-full-lecture">
+  <span class="qh-time">110–120 分鐘</span>
+    <div class="qh-section">
+    <h3>如何把 connectivity graph 變成 interaction 與 error budget？ <span class="qh-concept-id">W5-C6</span></h3>
+  </div>
+  <p>hardware connectivity graph 只表示可用 interaction；同時 gate 能否並行還取決於 frequency collision、shared control/readout resource、crosstalk 與 pulse scheduling。compiler 的 routing cost 必須使用經校準的 edge weight，而不是把所有連線視為同品質。</p>
+  <p><strong>從 graph 到 schedule：</strong>選定一個 connectivity graph，為每條 edge 指定 gate mechanism、idle interaction、控制線與至少一個 spectator risk。完成條件：學生必須留下可檢查的推導、關係圖、比較表或 architecture decision，並能說明其物理假設與工程代價。</p>
+</section>
+<!-- QH_FULL_LECTURE_END -->
+  <section class="module">
+    
+<div class="qh-section">
+  <h3>進階主線：Connectivity 是 interaction budget，不只是連線圖</h3>
+</div>
+<p>兩個弱 anharmonic mode 的最小模型可寫成</p>
+<div class="equation-card"><p>\[H/\hbar=\sum_i\left(\omega_i a_i^\dagger a_i+\frac{\alpha_i}{2}a_i^{\dagger2}a_i^2\right)+g(a_1^\dagger a_2+a_1a_2^\dagger)+\zeta n_1n_2+\cdots\]</p></div>
+<p>gate design 的問題是控制 \(g(t)\)、detuning 與 avoided crossing，同時壓低 residual \(ZZ\)、leakage、spectator error 與 flux sensitivity。Tunable coupler 把「on/off ratio」變成額外控制自由度，但也加入 coupler mode、flux line、pulse calibration 與新 collision。</p>
+<p>本週不追求背完所有 gate；要能看到一個 device Hamiltonian 後，判斷可用的 entangling mechanism 與主要 error channel。</p>
+
+  </section>
+  <section class="module">
+                                      <div class="qh-section">
+                                        <h3>三、單元 2：兩量子位元耦合原理</h3>
+                                      </div>
+                                  
+                                      <h4>2.1 Why Two-Qubit Gates Are Necessary</h4>
+                                      <p>
+                                        單量子位元閘只能改變個別 qubit 的狀態，無法產生 entanglement。
+                                        然而，量子計算的核心能力之一正是來自多量子位元之間的糾纏。
+                                        因此，一個可用於通用量子計算的硬體平台，必須同時具備高保真度的 single-qubit gates
+                                        與 entangling two-qubit gates。
+                                      </p>
+                                  
+                                      <p>
+                                        在超導量子晶片中，兩量子位元閘通常來自 qubit 之間的電容耦合、電感耦合、共振腔媒介耦合，
+                                        或透過 tunable coupler 進行可調式交互作用。
+                                      </p>
+                                  
+                                      <h4>2.2 Coupled-Qubit Hamiltonian</h4>
+                                      <p>
+                                        兩個 qubits 的自由 Hamiltonian 可寫為：
+                                      </p>
+                                  
+                                      <div class="equation">
+                                        <p>\[
+                                        \hat{H}_0
+                                        =
+                                        \frac{\hbar\omega_1}{2}\hat{\sigma}_z^{(1)}
+                                        +
+                                        \frac{\hbar\omega_2}{2}\hat{\sigma}_z^{(2)}
+                                        \]</p>
+                                      </div>
+                                  
+                                      <p>
+                                        若兩個 qubits 之間存在 exchange-type coupling，交互作用項可近似寫為：
+                                      </p>
+                                  
+                                      <div class="equation">
+                                        <p>\[
+                                        \hat{H}_{\mathrm{int}}
+                                        =
+                                        \hbar g
+                                        \left(
+                                        \hat{\sigma}_+^{(1)}\hat{\sigma}_-^{(2)}
+                                        +
+                                        \hat{\sigma}_-^{(1)}\hat{\sigma}_+^{(2)}
+                                        \right)
+                                        \]</p>
+                                      </div>
+                                  
+                                      <p>
+                                        其中 \(g\) 是 coupling strength，\(\hat{\sigma}_+\) 與 \(\hat{\sigma}_-\) 分別是 raising
+                                        與 lowering operators。這個項表示 excitation 可以在兩個 qubits 之間交換。
+                                      </p>
+                                  
+                                      <h4>2.3 Resonant and Dispersive Coupling</h4>
+                                      <p>
+                                        兩個 qubits 的相對頻率會決定交互作用的形式。
+                                        若 \(\omega_1 \approx \omega_2\)，兩者接近 resonance，excitation 可以有效交換；
+                                        若兩者頻率相差很大，即 detuning \(\Delta_{12} = \omega_1 - \omega_2\) 很大，
+                                        直接能量交換會被抑制，但仍可能產生有效的條件相位或 frequency shift。
+                                      </p>
+                                  
+                                      <table>
+                                        <thead>
+                                          <tr>
+                                            <th>耦合 regime</th>
+                                            <th>條件</th>
+                                            <th>主要物理現象</th>
+                                            <th>可能應用</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr>
+                                            <td>Resonant coupling</td>
+                                            <td>\(\omega_1 \approx \omega_2\)</td>
+                                            <td>Excitation exchange</td>
+                                            <td>iSWAP-like gates</td>
+                                          </tr>
+                                          <tr>
+                                            <td>Dispersive coupling</td>
+                                            <td>\(|\Delta_{12}| \gg g\)</td>
+                                            <td>State-dependent frequency shift</td>
+                                            <td>CZ-like gates, conditional phase</td>
+                                          </tr>
+                                          <tr>
+                                            <td>Parametric coupling</td>
+                                            <td>透過外部調變補償能量差</td>
+                                            <td>可選擇性開啟 interaction</td>
+                                            <td>Parametric gates, tunable coupler gates</td>
+                                          </tr>
+                                        </tbody>
+                                      </table>
+                                  
+                                      <h4>2.4 Types of Two-Qubit Coupling</h4>
+                                      <table>
+                                        <thead>
+                                          <tr>
+                                            <th>耦合方式</th>
+                                            <th>電路來源</th>
+                                            <th>特色</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr>
+                                            <td>Capacitive Coupling</td>
+                                            <td>兩個 qubit island 之間的耦合電容</td>
+                                            <td>常見於 Transmon 架構，設計簡單但耦合通常固定</td>
+                                          </tr>
+                                          <tr>
+                                            <td>Inductive Coupling</td>
+                                            <td>共享電感或磁通耦合</td>
+                                            <td>常見於 flux-based circuits，可與磁通控制結合</td>
+                                          </tr>
+                                          <tr>
+                                            <td>Resonator-Mediated Coupling</td>
+                                            <td>透過 bus resonator 間接耦合 qubits</td>
+                                            <td>可用於較遠距離 coupling，但需管理 resonator modes</td>
+                                          </tr>
+                                          <tr>
+                                            <td>Tunable Coupler</td>
+                                            <td>額外可調式量子電路元件</td>
+                                            <td>可開啟、關閉或調整 effective coupling</td>
+                                          </tr>
+                                        </tbody>
+                                      </table>
+                                  
+                                      <div class="note">
+                                        <h4>核心觀念</h4>
+                                        <p>
+                                          兩量子位元耦合的目標不是讓 qubits 永遠強烈互動，而是能在需要時開啟交互作用，
+                                          在不需要時盡可能關閉交互作用。這是大規模量子晶片設計中的重要挑戰。
+                                        </p>
+                                      </div>
+                                    </section><section class="module">
+                                      <div class="qh-section">
+                                        <h3>四、單元 3：SQUID 與可調式量子電路 <span class="qh-concept-id">W5-C4</span></h3>
+                                      </div>
+                                  
+                                      <h4>3.1 SQUID as a Tunable Josephson Element</h4>
+                                      <p>
+                                        SQUID，全名為 Superconducting Quantum Interference Device，是由兩個 Josephson junction
+                                        形成的超導迴路。對超導量子電路而言，SQUID 的重要性在於它可以作為一個
+                                        <strong>可由外加磁通量調控的有效 Josephson junction</strong>。
+                                      </p>
+                                  
+                                      <p>
+                                        對稱 SQUID 的有效 Josephson energy 近似為：
+                                      </p>
+                                  
+                                      <div class="equation">
+                                        <p>\[
+                                        E_J^{\mathrm{eff}}(\Phi_{\mathrm{ext}})
+                                        =
+                                        E_{J,\mathrm{max}}
+                                        \left|
+                                        \cos\left(
+                                        \pi\frac{\Phi_{\mathrm{ext}}}{\Phi_0}
+                                        \right)
+                                        \right|
+                                        \]</p>
+                                      </div>
+                                  
+                                      <p>
+                                        其中 \(\Phi_{\mathrm{ext}}\) 是穿過 SQUID loop 的外加磁通量，
+                                        \(\Phi_0 = h/2e\) 是磁通量量子。
+                                        透過改變 \(\Phi_{\mathrm{ext}}\)，可以調整有效 \(E_J\)，進而調整 qubit frequency
+                                        或 coupler strength。
+                                      </p>
+                                  
+                                      <h4>3.2 Tunable Transmon</h4>
+                                      <p>
+                                        Tunable transmon 使用 SQUID 取代單一 Josephson junction。
+                                        因為 Transmon 的 transition frequency 近似與 \(\sqrt{E_JE_C}\) 有關，
+                                        因此改變 SQUID 的有效 \(E_J\) 可以調整 qubit frequency。
+                                      </p>
+                                  
+                                      <div class="equation">
+                                        <p>\[
+                                        \omega_{01}(\Phi_{\mathrm{ext}})
+                                        \approx
+                                        \frac{
+                                        \sqrt{8E_CE_J^{\mathrm{eff}}(\Phi_{\mathrm{ext}})}
+                                        -
+                                        E_C
+                                        }{\hbar}
+                                        \]</p>
+                                      </div>
+                                  
+                                      <p>
+                                        Tunable transmon 的優點是可以動態調整頻率，用於避免 frequency collision、
+                                        實現特定 two-qubit gates 或進行 frequency parking。
+                                        缺點是對 flux noise 更敏感，且需要額外的 flux control line，增加晶片佈線與串擾問題。
+                                      </p>
+                                  
+                                      <h4>3.3 Tunable Coupler</h4>
+                                      <p>
+                                        Tunable coupler 是位於兩個 qubits 之間的可調式電路元件。
+                                        它可以改變兩個 qubits 之間的 effective coupling，使系統在 idle 時降低殘餘耦合，
+                                        在執行 two-qubit gate 時提高或調變耦合。
+                                      </p>
+                                  
+                                      <p>
+                                        一個簡化的三體系統可以表示為：
+                                      </p>
+                                  
+                                      <div class="equation">
+                                        <p>\[
+                                        \hat{H}
+                                        =
+                                        \sum_{i=1,2,c}
+                                        \frac{\hbar\omega_i}{2}\hat{\sigma}_z^{(i)}
+                                        +
+                                        \hbar g_{1c}
+                                        \left(
+                                        \hat{\sigma}_+^{(1)}\hat{\sigma}_-^{(c)}
+                                        +
+                                        \hat{\sigma}_-^{(1)}\hat{\sigma}_+^{(c)}
+                                        \right)
+                                        +
+                                        \hbar g_{2c}
+                                        \left(
+                                        \hat{\sigma}_+^{(2)}\hat{\sigma}_-^{(c)}
+                                        +
+                                        \hat{\sigma}_-^{(2)}\hat{\sigma}_+^{(c)}
+                                        \right)
+                                        \]</p>
+                                      </div>
+                                  
+                                      <p>
+                                        其中 \(c\) 代表 coupler。透過調整 coupler frequency \(\omega_c\)，
+                                        可以改變兩個 data qubits 之間的 effective interaction。
+                                      </p>
+                                  
+                                      <h4>3.4 Why Tunability Matters</h4>
+                                      <table>
+                                        <thead>
+                                          <tr>
+                                            <th>需求</th>
+                                            <th>可調電路的作用</th>
+                                            <th>工程挑戰</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr>
+                                            <td>避免 frequency collision</td>
+                                            <td>調整 qubit 或 coupler frequency</td>
+                                            <td>需要精準 flux calibration</td>
+                                          </tr>
+                                          <tr>
+                                            <td>降低 idle coupling</td>
+                                            <td>將 effective coupling 調到接近零</td>
+                                            <td>殘餘 ZZ interaction 仍可能存在</td>
+                                          </tr>
+                                          <tr>
+                                            <td>加速 two-qubit gate</td>
+                                            <td>在 gate 期間提高 interaction strength</td>
+                                            <td>可能引入 leakage 與 nonadiabatic error</td>
+                                          </tr>
+                                          <tr>
+                                            <td>提高架構彈性</td>
+                                            <td>允許更多動態控制策略</td>
+                                            <td>增加控制線、熱負載與串擾</td>
+                                          </tr>
+                                        </tbody>
+                                      </table>
+                                  
+                                      <div class="learning-check">
+                                        <h4>學習檢核</h4>
+                                        <ol>
+                                          <li>SQUID 為什麼可以被視為可調式 Josephson junction？</li>
+                                          <li>Tunable transmon 的優點與缺點是什麼？</li>
+                                          <li>Tunable coupler 如何幫助降低 idle error？</li>
+                                          <li>可調式電路為什麼會增加 flux noise 與 crosstalk 的工程挑戰？</li>
+                                        </ol>
+                                      </div>
+                                    </section>
+  <section class="module">
+    <div class="qh-section">
+      <h3>課堂整合與驗收</h3>
+    </div>
+    <p><strong>研討問題：</strong>選定一個 connectivity graph，為每條 edge 指定 gate mechanism、idle interaction、控制線與至少一個 spectator risk。</p>
+    <p><strong>完成條件：</strong>學生必須留下可檢查的推導、關係圖、比較表或 architecture decision，並能說明其物理假設與工程代價。</p>
+  </section>
+  <section class="module">
+    <div class="qh-section">
+      <h3>核心與延伸閱讀</h3><ul class="qh-reading"><li><a href="https://arxiv.org/abs/2006.11860" target="_blank" rel="noopener">High-fidelity, High-scalability Two-qubit Gate Scheme for Superconducting Qubits</a><span>Y. Xu et al., Physical Review Letters 125, 240503 (2020).</span><em>固定頻率 qubit、tunable coupler、殘餘耦合與可擴展 CZ gate。</em></li><li><a href="https://doi.org/10.1063/1.5089550" target="_blank" rel="noopener">A Quantum Engineer&#x27;s Guide to Superconducting Qubits</a><span>P. Krantz et al., Applied Physics Reviews 6, 021318 (2019).</span><em>控制、coherence、readout 與工程參數的主幹 review。</em></li><li><a href="https://arxiv.org/abs/2005.12667" target="_blank" rel="noopener">Circuit Quantum Electrodynamics</a><span>A. Blais et al., Reviews of Modern Physics 93, 025005 (2021).</span><em>Jaynes–Cummings、dispersive regime、讀出與環境耦合。</em></li><li><a href="https://doi.org/10.1103/PhysRevLett.109.240504" target="_blank" rel="noopener">Characterization of Addressability by Simultaneous Randomized Benchmarking</a><span>J. M. Gambetta et al., Physical Review Letters 109, 240504 (2012).</span><em>多 qubit 同時操作的 addressability 與 crosstalk。</em></li></ul>
+    </div>
+  </section>
+</section>
+
+
+                                <div class="post-meta">
+                                    <span class="post-author">
+                                        <a href="../About/Wang.html"><img class="img-res" src="../WebP/IMG_0964_2.webp" alt="">王培儒</a>
+                                    </span>
+                                    <span class="post-category">
+                                        <a href="../SCQ_advanced/main.html"><i class="fa fa-folder" aria-hidden="true"></i>PHYS598500</a>
+                                    </span>
+                                </div><!-- /.post-meta -->
+                            
+                                <div id="prev-next-nav" class="text-center">
+                                    <a class="btn btn-gray" href="T3-4.html">← 上一頁</a> 
+                                    <a class="btn btn-gray" href="T3-6.html">下一頁 →</a>
+                                </div>
+
+                                
+
+                            </div><!-- /.post-content -->
+                        </article><!-- /.blog-post -->
+                        <!--<div id="PostComments" class="post-comments">
+                            
+                            
+                            
+                        </div> /#PostComments -->
+                        <!--<div class="respond">
+                            <h3>Post a Comment</h3>
+                            <form class="form-horizontal">
+                                <input class="form-control" type="text" placeholder="Your Name*" required>
+                                <input class="form-control" type="email" placeholder="Your Email" required>
+                                <textarea class="form-control form-control-comment" type="text" placeholder="Your Comment*" required></textarea>
+                                <button class="btn btn-green">Add a comment</button>
+                            </form>    
+                        </div> /.respond -->
+                    </div>
+                    <aside class="col-md-3">
+                        <div class="sidebar">
+                            <div class="widget">
+                                <div id="lesson-list_2">
+                                <div class="lesson-link "><a href="main.html">QH-2026F v5 · 16週總覽</a></div>
+                                <div class="lesson-link "><a href="T1-1.html">Week 1 · 從量子計算模型到硬體操作</a></div>
+                                <div class="lesson-link "><a href="T2-2.html">Week 2 · 超導電路量子化與 Transmon 設計</a></div>
+                                <div class="lesson-link "><a href="T2-3.html">Week 3 · Fluxonium：從電路改造到設計取捨</a></div>
+                                <div class="lesson-link "><a href="T3-4.html">Week 4 · 單量子位元控制：從微波脈衝到旋轉座標</a></div>
+                                <div class="lesson-link active"><a href="T3-5.html">Week 5 · 耦合 Hamiltonian、兩量子位元閘與 Tunable Coupler</a></div>
+                                <div class="lesson-link "><a href="T3-6.html">Week 6 · Circuit QED、Dispersive Readout 與量測鏈</a></div>
+                                <div class="lesson-link "><a href="T4-7.html">Week 7 · 量子處理器校準：Hamiltonian Identification 與 Drift</a></div>
+                                <div class="lesson-link "><a href="T4-8.html">Week 8 · Benchmarking、多量子位元誤差與可擴展校準</a></div>
+                                <div class="lesson-link "><a href="T4-9.html">Week 9 · 量子錯誤校正基礎：從物理誤差到 Stabilizer Syndrome</a></div>
+                                <div class="lesson-link "><a href="T4-10.html">Week 10 · Surface-Code Hardware Cycle：排程、解碼與 Logical-Qubit 資源</a></div>
+                                <div class="lesson-link "><a href="T5-11.html">Week 11 · Dilution Refrigerator、熱化與低溫線路預算</a></div>
+                                <div class="lesson-link "><a href="T5-12.html">Week 12 · 微波控制、讀出電子與訊號完整性</a></div>
+                                <div class="lesson-link "><a href="T5-13.html">Week 13 · 封裝、EM Modes、佈線擴展與全系統整合</a></div>
+                                <div class="lesson-link "><a href="T6-14.html">Week 14 · 超導量子晶片製程與 Josephson Junction Process Module</a></div>
+                                <div class="lesson-link "><a href="T6-15.html">Week 15 · Materials Loss、製程變異、Yield 與 Design–Fab–Measure Loop</a></div>
+                                <div class="lesson-link "><a href="T7-16.html">Week 16 · 前沿架構與 Hardware-Aware Quantum System Capstone</a></div>
+                                </div>
+                            </div>
+                        </div></aside>
+                </div>
+            </div>
+        </section><!-- /.section-portfolio -->
+
+    </main><!-- /#main -->
+
+    <footer id="colophon" class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-4 col-xs-6">
+                    <a href="../index_ch.html" class="site-title">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
+                    <p>一起走進新時代的前沿科學與量子科技</p>
+                    </div>
+                <div class="col-lg-offset-4 col-md-3 col-sm-4 col-md-offset-2 col-sm-offset-0 col-xs-6 ">
+                    <p class="site-title">𝐾𝐸𝐸𝑃 𝐼𝑁 𝑇𝑂𝑈𝐶𝐻</p>
+                    <ul class="list-unstyled contact-links">
+                        <li><i class="fa fa-envelope" aria-hidden="true"></i><a href="mailto:info@insight-ihbar.com">info@insight-ihbar.com</a></li>
+                        <!--<li><i class="fa fa-phone" aria-hidden="true"></i><a href="tel:+37400800000">+374 (00) 80 00 00 </a></li>
+                        <li><i class="fa fa-fax" aria-hidden="true"></i><a href="+37400900000">+374 (00) 90 00 00</a></li>
+                        <li><i class="fa-solid fa-location-dot"></i><p>Hsinchu 300, Taiwan (R.O.C.)</p></li>-->
+                    </ul>
+                </div>
+                <!--<div class="clearfix visible-xs"></div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6">
+                    <h3>Featured links</h3>
+                    <ul class="list-unstyled">
+                        <li class="active"><a href="index_ch.html">Home</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="portfolio.html">Porfolio</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>-->
+            </div>
+        </div>
+        <div class="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-8">
+                        <div class="social-links">
+                            <!--<a class="twitter-bg" href="#"><i class="fab fa-twitter"></i></a>-->
+                            <!--<<a class="facebook-bg" href="https://www.facebook.com/people/Quantum-Perspectives/61576446849628/"><i class="fab fa-facebook"></i></a>-->
+                            <!--<a class="facebook-bg" href="https://www.facebook.com/people/%E9%87%8F%E5%AD%90%E9%81%A0%E8%A6%8BQuantum-Perspectives/61576883632888/"><i class="fab fa-facebook-f"></i></a>-->
+                            <!--<a class="pinterest" href="#"><i class="fa-solid fa-microscope"></i></a>-->
+                            <!--<a class="facebook-bg" href="https://www.facebook.com/people/Insight-hbar/61576811775374/"><i class="fab fa-facebook-f"></i></a>-->
+                            <a class="linkedin-bg" href="https://www.linkedin.com/company/insight-ihbar"><i class="fab fa-linkedin"></i></a>
+                        </div><!-- /.social-links -->
+                    </div>
+                    <div class="col-xs-4">
+                        <div class="text-right">
+                            <p><span style="font-size: 16px;">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</span></p>
+                            <p>All Rights Reserved</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.copyright -->
+    </footer><!-- /#footer -->
+
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="../assets/js/bootstrap-select.min.js"></script>
+    <script src="../assets/js/jquery.slicknav.min.js"></script>
+    <script src="../assets/js/jquery.countTo.min.js"></script>
+    <script src="../assets/js/jquery.shuffle.min.js"></script>
+    <script src="../assets/js/script.js"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  
+</body>
+</html>

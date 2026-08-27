@@ -1,0 +1,1849 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N39VTY949N"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-N39VTY949N');
+</script>
+    <!-- Basic Page Needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <meta name="author" content="Peir-Ru Wang">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;1,300&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/20250525-icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/20250525-icon.png">
+
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/css/style.css" rel="stylesheet">
+    <link href="../assets/css/responsive.css" rel="stylesheet">
+
+    <title>Week 12 · 微波控制、讀出電子與訊號完整性 | QH-2026F v5</title>
+    <meta name="description" content="PHYS598500 第 12 週，120 分鐘進階課程：微波控制、讀出電子與訊號完整性">
+    <meta name="keywords" content="- 量子處理器
+- 超導量子位元
+- Qubit
+- 約瑟夫森接面
+- Transmon
+- Fluxonium
+- 量子計算
+- 量子硬體
+- 量子演算法
+- 量子晶片">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+<style>
+.qh-week-meta { margin: 20px 0; padding: 16px 18px; border-left: 4px solid #5f4b8b; background: #f6f4fa; }
+.qh-week-meta p { margin: 4px 0; }
+.qh-session-plan { width: 100%; margin: 18px 0 8px; border-collapse: collapse; }
+.qh-session-plan th, .qh-session-plan td { padding: 10px 12px; border: 1px solid #ddd; vertical-align: top; }
+.qh-session-plan th { background: #f4f4f4; }
+.qh-session-plan .qh-break td { color: #666; background: #fafafa; }
+.qh-total { text-align: right; font-weight: 700; }
+.qh-reading li { margin-bottom: 12px; }
+.qh-reading span, .qh-reading em { display: block; }
+.qh-week-list { padding-left: 0; list-style: none; }
+.qh-week-list li { margin: 0 0 13px; padding: 12px 15px; border-left: 4px solid #5f4b8b; background: #f7f7f7; }
+.qh-week-list a { font-weight: 700; }
+@media (max-width: 767px) { .qh-session-plan { display: block; overflow-x: auto; } }
+</style>
+
+
+<style id="qh-full-course-style">
+    .qh-full-lecture {
+      margin: 30px 0;
+      padding: 24px 26px;
+      border: 1px solid #d9d4e5;
+      background: #fff;
+    }
+
+    .qh-full-lecture>h2,
+    .qh-full-lecture>h3 {
+      margin-top: 0;
+    }
+
+    .qh-full-lecture h4 {
+      margin-top: 24px;
+    }
+
+    .qh-full-lecture li {
+      margin-bottom: 8px;
+    }
+
+    .qh-time {
+      display: inline-block;
+      margin-bottom: 12px;
+      padding: 4px 10px;
+      border-radius: 14px;
+      background: #5f4b8b;
+      color: #fff;
+      font-size: .9em;
+    }
+
+    .qh-board,
+    .qh-case,
+    .qh-task,
+    .qh-answer,
+    .qh-source-chapter {
+      margin: 20px 0;
+      padding: 17px 19px;
+      font-size: 15px;
+    }
+
+    .qh-board {
+      border-left: 4px solid #d0ccc8;
+      background: #fafafa;
+    }
+
+    .qh-case {
+      border-left: 4px solid #d0ccc8;
+      background: #fafafa;
+    }
+
+    .qh-task {
+      border-left: 4px solid #d0ccc8;
+      background: #fafafa;
+    }
+
+    .qh-answer {
+      border-left: 4px solid #d0ccc8;
+      background: #fafafa;
+    }
+
+    /* Section divider headings */
+    .qh-section {
+      margin: 40px 0 24px;
+      padding: 17px 19px;
+      border-left: 4px solid #355c9a;
+      background: #f3f7fc;
+    }
+
+    .qh-section h3 {
+      margin: 0 0 4px;
+      font-size: 20px;
+      font-weight: 700;
+      color: #355c9a;
+      border-bottom: none;
+    }
+
+    .qh-section h4 {
+      margin: 0;
+      font-size: 15px;
+      font-weight: 400;
+      color: #6a8ab5;
+      font-style: italic;
+    }
+
+    .qh-section>h3:first-child {
+      margin-top: 0;
+    }
+
+    /* Equation highlight — compact, not a section heading */
+    .qh-equation-highlight {
+      margin: 24px 0;
+      padding: 14px 18px;
+      border-left: 3px solid #6a6560;
+      background: #f9f8f7;
+    }
+
+    .qh-equation-label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      color: #6a6560;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    .qh-source-chapter {
+      border: 1px solid #e5e0ec;
+      background: #fdfcff;
+    }
+
+
+    .qh-source-chapter>h3 {
+      padding-bottom: 9px;
+      border-bottom: 1px solid #ddd5e8;
+    }
+
+    .qh-source-note {
+      color: #665f72;
+      font-size: .92em;
+    }
+
+    @media (max-width: 720px) {
+      .qh-full-lecture {
+        padding: 18px 15px;
+      }
+
+      .qh-board,
+      .qh-case,
+      .qh-task,
+      .qh-answer,
+      .qh-source-chapter {
+        padding: 14px 13px;
+      }
+    }
+
+    /* Supplement section styling */
+    .qh-supplement-divider {
+      margin: 36px 0 24px;
+      padding: 18px 22px;
+      border-left: 4px solid #5f4b8b;
+      background: #f6f4fa;
+    }
+
+    .qh-supplement-divider h2 {
+      margin: 0 0 5px;
+      font-size: 22px;
+    }
+
+    .qh-supplement-divider p {
+      margin: 0;
+    }
+
+    /* Tables in supplement */
+    .module table {
+      width: 100%;
+      margin: 16px 0;
+      border-collapse: collapse;
+      font-size: 15px;
+    }
+
+    .module table th,
+    .module table td {
+      padding: 10px 12px;
+      border: 1px solid #ddd;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .module table th {
+      background: #f4f4f4;
+      font-weight: 700;
+    }
+
+    /* Callout in supplement */
+    .module .callout {
+      margin: 16px 0;
+      padding: 12px 16px;
+      border-left: 4px solid #5f4b8b;
+      background: #f6f4fa;
+      font-size: 15px;
+    }
+
+    /* Lists in supplement */
+    .module ul,
+    .module ol {
+      margin: 12px 0;
+      padding-left: 24px;
+    }
+
+    .module li {
+      margin-bottom: 8px;
+      line-height: 1.6;
+      font-size: 15px;
+    }
+
+    /* Heading consistency — only direct h3 children, not inside .qh-section */
+    .module > h3 {
+      margin: 28px 0 14px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #ddd5e8;
+      font-size: 20px;
+    }
+
+    .module h4 {
+      margin: 20px 0 10px;
+      font-size: 17px;
+    }
+
+    .module p {
+      margin: 10px 0;
+      line-height: 1.7;
+    }
+  </style>
+
+<style id="qh-details-style">
+        details.dark-background {
+          background-color: #f5f5f5;
+          border: 1px solid #ddd;
+          padding: 10px;
+          border-radius: 5px;
+        }
+        details.dark-background summary {
+          cursor: pointer;
+          font-weight: bold;
+          background-color: #e0e0e0;
+          padding: 5px;
+          border-radius: 3px;
+        }
+      </style>
+
+</head>
+<body>
+
+    <header id="masthead" class="site-header">
+        <nav id="primary-navigation" class="site-navigation">
+            <div class="container">
+
+                <div class="navbar-header">                   
+                    <a href="../index_ch.html" class="site-title">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
+                </div><!-- /.navbar-header -->
+
+                <div class="collapse navbar-collapse" id="agency-navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="../index_ch.html">Home</a></li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">科普介紹<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                              <li><a href="../SCQ_elementary/main.html">超導量子位元(科普版)</a></li>
+                              <li><a href="../SCQ_advanced/main.html">超導量子位元(進階版)</a></li>
+                              <li><a href="../SpQ/main.html">半導體自旋量子位元</a></li>
+                            </ul>
+                        </li>
+                        <!--<li class="active"><a href="../SCQ_elementary/main.html">科普介紹</a></li>-->
+                        <li class="active"><a href="../QC_hardware/main.html">硬體導論</a></li>
+                        <li><a href="../QID/main.html">量子產業群像錄</a></li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">研討會筆記<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                <li><a href="../ASW2026/main.html">2026中研院超導量子電腦Workshop</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">量子諮詢<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                <li><a href="https://www.quantum-perspectives.com/About/main.html">量子遠見科技：諮詢服務</a></li>
+                                <li><a href="../About/main.html">關於我們</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="../index.html">English</a></li>                        
+                    </ul>
+                </div>
+
+            </div>   
+        </nav><!-- /.site-navigation -->
+    </header><!-- /#mastheaed -->
+
+    <div id="hero" class="hero overlay subpage-hero blog-hero">
+        <div class="hero-content">
+            <div class="hero_2-text">
+                <h1>超導量子電腦架構</h1>
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="../index_ch.html">Home</a></li>
+                  <li class="breadcrumb-item"><a href="../SCQ_advanced/main.html">PHYS598500</a></li>
+                  <!--<li class="breadcrumb-item active">約瑟夫森節</li>-->
+                </ol>
+            </div><!-- /.hero-text -->
+        </div><!-- /.hero-content -->
+    </div><!-- /.hero -->
+
+    <main id="main" class="site-main">
+
+        <section class="site-section subpage-site-section section-blog">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                        <article class="blog-post">
+                            <!--<img src="../assets/img/portfolio-1.jpg" class="img-res" alt="">-->
+                            <div class="post-content">
+
+<section id="week-12" class="course-theme">
+      <div style="text-align: center;">
+      <p class="theme-label">PHYS598500 · Week 12 · T5</p>
+      <h2>微波控制、讀出電子與訊號完整性</h2>
+      <h3>Microwave Control, Readout Electronics, and Signal Integrity</h3>
+    </div>
+  <section class="course-overview">
+    <h3>本週定位</h3>
+    <div class="qh-week-meta">
+      <p><strong>課程長度：</strong>120 分鐘</p>
+      <p><strong>核心問題：</strong>電子儀器規格如何轉成 gate error、readout error 與 calibration burden？</p>
+      <p><strong>難度：</strong>高</p>
+      <p><strong>先備：</strong>IQ modulation、SNR、noise figure、sampling</p>
+      <p><strong>原始教材來源：</strong>T5 modules 3, 4</p>
+    </div>
+    <h3>學習成果</h3><ul><li>追蹤 AWG/DAC、LO、IQ mixer、line transfer function 到 qubit drive 的誤差來源。</li><li>建立 JPA/JPC/TWPA、HEMT、room-temperature chain 的 gain/noise/dynamic-range budget。</li><li>理解 multiplexed readout 對 bandwidth、intermodulation、ADC 與 classifier 的需求。</li></ul>
+    <h3>兩小時授課配置</h3><table class="qh-session-plan"><thead><tr><th>時間</th><th>形式</th><th>授課內容與當段產出</th></tr></thead><tbody><tr><td>0–10 分</td><td>定位／診斷</td><td><strong>電子儀器規格如何轉變成 quantum error？</strong><br>以一個問題確認先備與本週接口。</td></tr><tr><td>10–35 分</td><td>概念主線 A</td><td><strong>DAC、AWG、LO、IQ mixer 與 clock 如何形成控制鏈？</strong><br>建立第一組物理概念、變數與工程語言。</td></tr><tr><td>35–60 分</td><td>推導／定量</td><td><strong>如何建立 amplifier cascade 的 gain、noise 與 dynamic-range budget？</strong><br>走完關鍵公式或定量關係，不停留在名詞介紹。</td></tr><tr class="qh-break"><td>60–70 分</td><td>休息</td><td><strong>Break</strong><br>保留兩小時課程的注意力恢復窗口。</td></tr><tr><td>70–95 分</td><td>概念主線 B</td><td><strong>Multiplexed readout 會遇到哪些 intermodulation、ADC 與分類問題？</strong><br>把物理結果接到元件、控制或系統架構。</td></tr><tr><td>95–110 分</td><td>案例／研討</td><td><strong>如何由 readout target 反推 electronics requirements？</strong><br>學生留下可檢查的圖、表、推導或 architecture decision。</td></tr><tr><td>110–120 分</td><td>整合／驗收</td><td><strong>如何驗收 room-temperature 到 qubit 的 signal-integrity chain？</strong><br>用 exit question 檢查是否能跨層解釋。</td></tr></tbody></table><p class="qh-total">合計：120 分鐘</p>
+  </section>
+<!-- QH_FULL_LECTURE_START -->
+<section class="qh-full-lecture" id="full-T5-12">
+  <span class="qh-time">0–10 分鐘</span>
+    <div class="qh-section">
+    <h3>控制與讀出電子：把 instrument specification 投影成 quantum metric</h3>
+  </div>
+  <p><strong>本週驅動問題：</strong>DAC bits、sample rate、phase noise、noise figure、compression point 與 bandwidth，如何最後變成 rotation error、dephasing、readout SNR 與 multiplexing capacity？</p>
+  <p><strong>先備診斷（W11 橋接）：</strong>上週我們建立了 dilution refrigerator 的 stage hierarchy、cooling-power budget、以及每條 control line 的 thermal cost。本週把焦點拉到 room-temperature electronics 與 cryogenic amplifier chain——這些元件的 datasheet spec 如何一路投影成 qubit 上的 error？</p>
+  <p>先要求學生不用查資料，以一張圖畫出本週主題從抽象 model 到真實硬體的訊息流。教師不立刻公布答案，而是收集學生把哪些層次畫成等號。全課結束時再重畫一次，用兩張圖的差異驗收是否真正建立跨層理解。</p>
+
+  <span class="qh-time">10–35 分鐘</span>
+  <h3>概念主線 A：DAC、AWG、LO、IQ mixer 與 clock 如何形成控制鏈？</h3>
+  <p><strong>[W12-C1] AWG/DAC、LO、IQ mixer、clock、transfer function、predistortion</strong></p>
+  <div class="qh-board">
+<h4>黑板主線 A：classical noise 如何進入 qubit frame</h4>
+<p>drive amplitude error \( \delta A/A \) 對 rotation angle 形成 \( \delta\theta/\theta\approx\delta A/A \)；LO phase noise 會變成 control-axis phase fluctuation 與 effective dephasing；IQ imbalance 產生 unwanted sideband，LO leakage 可能形成持續 drive。instrument datasheet 必須經 line gain/loss、mixer、filter 與 pulse spectrum 才能映射到 chip 上的 error。</p>
+<p>AWG sample rate 必須支援 envelope bandwidth，不等於直接合成 carrier 的唯一條件；常用 IQ/upconversion 或 RF DAC。clock jitter 對高頻 carrier 轉成相位誤差，多機同步還需共同 reference、deterministic latency 與 channel skew calibration。</p>
+<p><strong>Predistortion 概念：</strong>控制脈衝從室溫傳到晶片會經過 cable dispersion、attenuator frequency dependence、filter group delay 與 mixer non-linearity。predistortion 在 AWG 端預先修改 waveform，使經系統 transfer function 後在 chip 端形成接近理想的 pulse。這是 calibration 的核心工具，不是 optional feature。</p>
+</div>
+
+  <span class="qh-time">35–60 分鐘</span>
+  <h3>推導/定量：如何建立 amplifier cascade 的 gain、noise 與 dynamic-range budget？</h3>
+  <p><strong>[W12-C2] Amplifier cascade: JPA/JPC/TWPA、HEMT、gain/noise/dynamic range</strong></p>
+  <p><strong>[W12-D1] Amplifier cascade gain/noise/dynamic-range budget 推導</strong></p>
+  <div class="qh-board">
+<h4>黑板推導：Friis formula 與 amplifier cascade budget</h4>
+<p>readout chain 的 system noise temperature 可用 Friis formula 追蹤：\( T_{\rm sys} = T_1 + T_2/G_1 + T_3/(G_1 G_2) + \cdots \)。把低-noise parametric amplifier 放在最前端可壓低後級 HEMT 的等效貢獻，但必須處理 pump、dynamic range、bandwidth、gain ripple、isolation 與 saturation。</p>
+<p>高 gain 並非越大越好——multiplexed tones 的 peak-to-average ratio 加上 transient 可能推入 compression，使有效 gain 下降、引入 intermodulation product。</p>
+<p>學生兩人一組，把推導中的每個符號分成「設計可選參數、製程/裝置產生參數、必須校準參數、只能量測估計的狀態」四類。這一步迫使公式離開紙面，成為 architecture dependency。</p>
+</div>
+</section>
+
+<section class="qh-full-lecture">
+  <span class="qh-time">60–70 分鐘</span>
+  <h3>休息與黑板保留</h3>
+  <p>保留本週核心 Hamiltonian／system equation 與 dependency graph。休息後直接以既有教材展開，不重新講一次名詞表。</p>
+</section>
+
+<section class="qh-full-lecture">
+  <span class="qh-time">70–95 分鐘</span>
+  <h3>概念主線 B：Multiplexed readout 會遇到哪些 intermodulation、ADC 與分類問題？</h3>
+
+  <p><strong>[W12-C3] Multiplexed readout: bandwidth、intermodulation、ADC、classifier</strong></p>
+  <div class="qh-board">
+  <h4>黑板主線 B-1：頻率分域多工讀出</h4>
+  <p>當一個 readout line 要同時讀出多個 qubit 時，我們把每個 qubit 的 readout resonator 設在相異頻率 \\( \\{\\omega_{r,i}\\} \\)，在同一條 cable 上同時發射多個 probe tone。關鍵限制來自：</p>
+  <ul>
+    <li><strong>Bandwidth allocation：</strong> TWPA 或 JPA 的 gain bandwidth 決定可容納的 tone 數。QuantWare Crescendo-S 約 1 GHz gain bandwidth，若每個 resonator 需要 \\( \\kappa/2\\pi \\approx 500\\) kHz 解析度加上 2 MHz guard band，每 2.5 MHz 一個 tone，1 GHz 內約可放 400 個——但實際受 amplifier compression 與 intermodulation 限制，目前 8–20 個是實務上限。</li>
+    <li><strong>Intermodulation products：</strong> 當 amplifier 的非線性遇上多個同時存在的 tone，會產生 \\( 2\\omega_1-\\omega_2 \\)、\\( 2\\omega_2-\\omega_3 \\) 等 third-order intermodulation (IM3) 產物。如果 \\( \\omega_{IM3} \\) 恰好落在某個 tone 的 passband 內，會偽造 signal offset。tone 間距設計與 amplifier P1dB 必須同時優化：tone 越密，IM3 越可能落入有效 band；tone 越疏，可用 channel 越少。</li>
+    <li><strong>ADC requirements：</strong> ADC 的 sample rate 必須至少是總 bandwidth 的兩倍（Nyquist），但實務上需要 2–3× 以留給 anti-aliasing filter roll-off。ENOB（Effective Number of Bits）決定 quantization noise floor：14 ENOB 約 85 dB SFDR，對 \\( \\sim 20\\) dB SNR 的 quantum readout 已足夠；但 ADC 的 spurious-free dynamic range (SFDR) 必須高於 multiplexed tones 的 peak-to-average ratio，否則 quantization artifact 會偽造 intermodulation。</li>
+    <li><strong>Classifier design：</strong> ADC 輸出的是 IQ 樣本串。I/Q plane 上 |0⟩ 與 |1⟩ 形成兩個 Gaussian cluster，classifier 可以是簡單的 threshold（兩 cluster 中心中點）、Bayes-optimal（考慮 cluster variance）、或 ML-based（處理 non-Gaussian tail）。integration time \\( T_{\\rm int} \\) 與 photon number \\( \\bar{n} \\) 的 trade-off 直接決定了 classifier 的輸入 SNR——這正是 W12-C5 的推導主軸。</li>
+  </ul>
+  </div>
+
+  <p><strong>[W12-C4] Circulators、isolators、attenuators、filters — 量子鏈路上的角色與規格</strong></p>
+  <div class="qh-board">
+  <h4>黑板主線 B-2：訊號完整性元件的 quantum-metric 映射</h4>
+  <p>這組元件不產生量子效果，但它們的 datasheet spec 直接決定 readout chain 的 noise figure、drive line 的 thermal occupation、以及 amplifier 的穩定性。</p>
+  <ul>
+    <li><strong>Circulator（循環器）：</strong> 三埠非互易元件——port 1→2→3→1 單向流通。在 readout chain 中，circulator 將 qubit↔resonator 的微弱反射訊號（port 2）引導至 amplifier（port 3），同時防止 amplifier 的 noise 反灌回 qubit（port 2 不向 port 1 漏）。quantum 關鍵 spec：insertion loss 必須 &lt;0.5 dB（否則吃掉 SNR）、isolation &gt;20 dB（防止 HEMT noise 反灌）、且在 4 K–20 mK 下維持 ferrite 性能（低溫 ferrite 磁化曲線漂移是工程難點）。</li>
+    <li><strong>Isolator（隔離器）：</strong> 本質上是 circulator 的第三埠接 50Ω load 的退化形式。在 drive line 上防止 reflection 造成的 standing wave，在 readout line 上保護 TWPA/JPA 免受 downstream 失配反射。quantum spec：isolation &gt;30 dB（低於此值，HEMT reflection 足以使 TWPA pump 不穩定）、VSWR &lt;1.5:1。</li>
+    <li><strong>Attenuator（衰減器）：</strong> 不只在 W11 的 thermalization 脈絡出現——attenuator 的 frequency-dependent insertion loss 本身就是 system transfer function 的一部分。20 dB room-temp attenuator 把 room-temp noise power 壓到 \\( k_B\\cdot 300\\)K / \\( 10^{20/10} \\approx k_B\\cdot 3\\)mK，這比直接送 300 K noise 到 4 K 重要得多。但 attenuator 也有 thermal noise 貢獻：其等效 noise temperature 是 \\( T_{\\rm att}(1-10^{-A/10}) \\)，其中 \\( A \\) 是 attenuation dB 數、\\( T_{\\rm att} \\) 是 attenuator 實際溫度。因此 attenuator 的 placement（300 K vs 4 K vs mK）影響 Friis cascade 計算。</li>
+    <li><strong>Filter（濾波器）：</strong> low-pass filter (LPF) 在每個 stage 切斷高於操作頻段的 thermal radiation；band-pass filter (BPF) 在 readout line 只保留 resonator frequencies；Eccosorb 吸收式濾波器在 300 K stage 吃掉 DC–GHz 的 broadband thermal noise。quantum spec：cutoff sharpness 決定了 downstream stage 看到的 noise bandwidth，roll-off 不夠陡會使 4 K HEMT 看到本可被 300 K LPF 吃掉的 noise。</li>
+  </ul>
+  </div>
+
+  <p><strong>[W12-C5] Signal-to-noise ratio 與 readout fidelity 的定量關係</strong></p>
+  <div class="qh-board">
+  <h4>黑板主線 B-3：SNR → 讀出保真度</h4>
+  <p>dispersive readout 中，qubit |0⟩ 與 |1⟩ 使 resonator 的反射訊號在 I/Q plane 上偏移。兩狀態的平均 photon number 差 \\( \\Delta\\bar{n} \\) 形成 signal，而 amplifier chain 的 noise photon 形成 noise floor。</p>
+  <p><strong>SNR 定義：</strong> \\( \\mathrm{SNR} = \\Delta\\bar{n} / \\bar{n}_{\\rm noise} \\)。對 QND measurement，\\( \\bar{n}_{\\rm noise} \\approx T_{\\rm sys}/(\\hbar\\omega/k_B) + 1 \\)（system noise temperature 換算成的等效 noise photon）。</p>
+  <p><strong>讀出保真度公式：</strong> 當 I/Q cluster 是 Gaussian 且 classifier 用 Bayes-optimal threshold，single-shot readout fidelity 可近似為：</p>
+  <p>\\( F_{\\rm readout} \\approx \\frac{1}{2} + \\frac{1}{2}\\,\\mathrm{erf}\\!\\left(\\frac{\\mathrm{SNR}}{2\\sqrt{2}}\\right) \\)</p>
+  <p>這表示 SNR = 10 對應 \\( F_{\\rm readout} \\approx 99.8\\% \\)，SNR = 5 約 98%，SNR = 3 約 95%。這是 architecture decision 的硬約束：要達到 99.5% readout fidelity（QEC 的門檻），system noise temperature 必須壓到讓 SNR &gt; 8。</p>
+  <p><strong>Integration time 與 photon number 的 trade-off：</strong> \\( \\Delta\\bar{n} \\propto \\bar{n}_{\\rm probe} \\cdot \\chi\\cdot T_{\\rm int} \\)（\\( \\chi \\) 是 dispersive shift），但 \\( \\bar{n}_{\\rm probe} \\) 太大會造成 photon-number-dependent dephasing（Purcell 與 measurement backaction），縮短 qubit \\( T_1 \\)。實務上 \\( \\bar{n}_{\\rm probe} \\sim 0.1\\) 個 photon 在 resonator 內，\\( T_{\\rm int} \\sim 1\\)–5 μs，兩者乘積決定了可達到的 SNR——這正是下一節案例的計算起點。</p>
+  </div>
+
+    <div class="qh-section">
+    <h3>既有教材整合：由元件知識進入完整系統</h3>
+  </div>
+  <p>下列內容不是附錄，而是本週第二段講授材料。授課時選擇與黑板模型直接相連的圖、表與段落逐一解讀；其餘留作課後複習。每一段都要追問「它改變了哪一個 Hamiltonian／control／measurement／system 參數」。</p>
+  
+
+
+
+
+
+
+
+
+
+
+</section>
+
+<section class="qh-full-lecture">
+  <span class="qh-time">95–110 分鐘</span>
+  <h3>案例/研討：如何由 readout target 反推 electronics requirements？</h3>
+  <p><strong>[W12-CS1] 8-channel multiplexed readout dynamic range calculation</strong></p>
+  <div class="qh-case">
+<h4>案例：八路 multiplexed readout 的 dynamic range</h4>
+<p>八個 resonator tone 疊加時，峰值可能遠高於單 tone RMS；crest factor、gain ripple 與 amplifier compression 必須留 margin。若每個 tone 個別看都未飽和，但總 waveform 使 parametric amplifier 或 ADC clipping，assignment fidelity 會呈現 channel-dependent degradation。</p>
+<p>設計時需從目標 integration time/SNR 反推 resonator output power，再經各級 gain/loss 計算 JPA/TWPA、HEMT、mixer 與 ADC 的輸入範圍。任何一級只引用 standalone 最佳 noise figure 都不足以證明完整 chain。</p>
+</div>
+  <div class="qh-task">
+    <h4>課堂任務（8–10 分鐘）</h4>
+    <p>選一個規格：LO phase noise、AWG vertical resolution、JPA bandwidth 或 ADC ENOB。請畫出它到最終 quantum metric 的傳遞鏈，並指定一個 bench test 與一個 on-qubit test。</p>
+  </div>
+  <div class="qh-answer">
+    <h4>教師解答與評分依據</h4>
+    <p>例如 LO phase noise 經 mixer與line到 drive phase，形成 rotation-axis fluctuation與 dephasing；bench 可用 phase-noise analyzer/loopback，on-qubit 可用 long Ramsey、repeated gate amplification或 RB。兩者必須結合，因 bench spec 不能取代 qubit response。</p>
+    <p>答案不以是否使用特定名詞評分，而以是否建立「假設 → 可觀測量 → 區分實驗 → 決策」的閉環評分。學生若提出不同方案，只要能明確指出代價與可否證條件，即可成立。</p>
+  </div>
+  <h4>Exit ticket</h4>
+  <ol>
+    <li>本週最重要的一條 equation／model 是什麼？它的適用近似為何？</li>
+    <li>哪一個看似局部的參數，實際會跨越 device、control 與 system 三層？</li>
+    <li>若只能做一個新實驗，什麼結果最能改變目前的 architecture decision？</li>
+  </ol>
+</section>
+
+<section class="qh-full-lecture">
+  <span class="qh-time">110–120 分鐘</span>
+  <h3>整合/驗收：如何驗收 room-temperature 到 qubit 的 signal-integrity chain？</h3>
+  <p>回到開場那張圖。現在學生重畫一次：AWG → DAC → IQ mixer → LO → cable → attenuator → filter → circulator → JPA/TWPA → resonator → qubit → (reverse) → HEMT → ADC → classifier。每一節都標出它的 spec 如何影響最終的 quantum metric。</p>
+  <p><strong>W13 橋接：</strong>本週我們完成了 control electronics chain 的理解。下週 W13 會進入 packaging、EM modes 與 wiring scale-up——從 chip 到 package 的物理介面，以及百條線以上的 system integration 挑戰。</p>
+</section>
+<!-- QH_FULL_LECTURE_END -->
+
+<section class="qh-source-chapter">
+  <h3>教材深挖 1：微波元件解說</h3>
+  <p class="qh-source-note">整合自既有 Insight iHBAR 教材：QC_hardware/C.html</p>
+  <p  class="dark-background">
+                                        前一節針對量子電腦稀釋制冷機內部的部件做一個簡單的綜覽，接下來我們針對微波元件，詳細解說各部件的功能。
+                                      </p>
+                                  
+                                      <h3>關鍵組件與技術</h3>
+                                      <p  class="dark-background">
+                                        微波元件作為橋接外部儀器控制訊號送往QPU，同時也要負擔將運算後的訊號經過放大橫送回到儀器中，會包含以下元件：
+                                      </p>
+                                      <ul>
+                                        <li><b>諧振器 (Resonators)：</b> 每個超導量子位元通常耦合到一個微波諧振器。量子位元的狀態會影響諧振器的共振頻率或相位，透過探測諧振器的響應可以推斷出量子位元的狀態。</li>
+                                        <li><b>量子放大器 (Quantum Amplifiers)：</b> 來自諧振器的讀出訊號非常微弱，需要接近量子極限的低雜訊放大器進行放大，才能被後續的古典電子設備檢測到。
+                                          <ul>
+                                            <li><b>約瑟夫森參量放大器 (Josephson Parametric Amplifiers, JPAs)：</b> 利用約瑟夫森結的非線性特性實現微波訊號的低雜訊放大。JPAs可以工作在相位敏感模式（放大單個正交分量而不增加雜訊）或相位保持模式。它們通常具有較窄的帶寬，但可以實現高增益。</li>
+                                            <li><b>行波參量放大器 (Traveling Wave Parametric Amplifiers, TWPAs)：</b> 例如QuantWare的Crescendo-S，是一種基於約瑟夫森結鏈的行波放大器，能夠在較寬的頻寬內提供高增益和接近量子極限的雜訊性能，非常適合多路復用讀出。與JPA不同，TWPA是透射式而非諧振式器件，因此帶寬不受諧振器限制。</li>
+                                          </ul>
+                                        </li>
+                                        <li><b>低雜訊半導體放大器 (Low-Noise Amplifier, LNA)：</b> 通常放置在低溫系統的較高溫級（如4K級），用於進一步放大來自量子放大器的訊號。</li>
+                                            <ul>
+                                                <li><b>HEMT (High Electron Mobility Transistor, 高電子遷移率電晶體)：</b> 由於其獨特的物理結構（利用二維電子氣），HEMT 內的電子能夠高速移動且碰撞機率低。這個「高電子遷移率」的特性，直接轉換為極低的雜訊和優異的高頻性能。</li>
+                                                
+                                            </ul>
+                                        <li><b>混頻器、濾波器和ADC：</b> 用於將放大的微波訊號下變頻到中頻，濾除雜訊，然後由ADC轉換為數位訊號進行處理。</li>
+                                      </ul>
+
+                                      <p  class="dark-background">
+                                       <br>接下來我們將搭配電路圖，詳細解說各部件的功能。<br><br>
+                                      </p>
+
+                                      <div style="text-align: center;">
+                                        
+                                        <a href="../Image/20250531-01--af19a0ab.png"><img loading="lazy" src="../WebP/20250531-01--af19a0ab.webp" alt="量子電腦冷卻系統與電路圖示。" style="width: 100%; height: auto;"></a>
+                                        
+                                      </div>
+                                      <p  class="dark-background">
+                                        ▲透過電路功能圖對照硬體，可進一步了解量子電腦中硬體元件的配置。
+                                        <br>(a) 安裝有 25 條驅動線（drive lines）、25 條磁通線（flux lines）、4 條讀出線（read-out）、6 條讀入線（read-in），以及 5 條泵浦線（pump lines）的 Bluefors XLD 型稀釋制冷機。
+                                        <br>(b) 稀釋制冷機內部電纜配置的示意圖。我們藉由下方表格來解說各個元件及端口的功能：
+                                        <table width="100%" border="1" cellpadding="8" cellspacing="0" align="center">
+
+                                        
+                                      
+                                          <thead>
+                                              <tr bgcolor="#f2f2f2" align="center">
+                                                  <th width="20%">I/O端</th>
+                                                  <th width="20%">中文翻譯</th>
+                                                  <th>功能解說</th>
+                                              </tr>
+                                          </thead>
+                                          <tbody>
+                                              <tr>
+                                                  <td><b>Drive</b></td>
+                                                  <td>驅動端</td>
+                                                  <td>用於輸入控制脈衝，操控量子位元的狀態（如進行 X/Y 閘操作），通常是微波頻率訊號。</td>
+                                              </tr>
+                                              <tr>
+                                                  <td><b>Flux</b></td>
+                                                  <td>磁通端</td>
+                                                  <td>提供直流或低頻訊號改變 SQUID 迴路的有效磁通量，進而調變量子位元或諧震器的頻率。</td>
+                                              </tr>
+                                              <tr>
+                                                  <td><b>Pump</b></td>
+                                                  <td>泵浦端</td>
+                                                  <td>用於激發參數放大器（如 JPA 或 TWPA）所需的能量輸入，通常在特定頻率提供高功率微波。</td>
+                                              </tr>
+                                              <tr>
+                                                  <td><b>Output</b></td>
+                                                  <td>讀出端</td>
+                                                  <td>從量子系統中讀出訊號，經由讀出共振腔與放大器鏈路輸出至室溫設備進行量測。</td>
+                                              </tr>
+                                          </tbody>
+                                      
+                                          <thead>
+                                              <tr bgcolor="#e8e8e8">
+                                                  <th colspan="3" align="center">稀釋製冷機 (Dilution Refrigerator) 區段</th>
+                                              </tr>
+                                          </thead>
+                                          <tbody>
+                                              <tr>
+                                                  <td><b>4K Plate</b></td>
+                                                  <td>4K板</td>
+                                                  <td>溫度約4K。<br>此區連接第一級冷卻，安裝 HEMT 放大器、熱沉濾波器等元件。</td>
+                                              </tr>
+                                              <tr>
+                                                  <td><b>Still Plate</b></td>
+                                                  <td>Still板（靜置板）</td>
+                                                  <td>溫度約800 mK。稀釋冷卻循環中的「Still」位置，進一步降低熱量傳導，可安裝低頻濾波器或電源線熱沉。</td>
+                                              </tr>
+                                              <tr>
+                                                  <td><b>Cold Plate</b></td>
+                                                  <td>冷板</td>
+                                                  <td>溫度約100 mK。<br>進入量子操作區前的緩衝層，常安裝循環器、熱沉的中介點。</td>
+                                              </tr>
+                                              <tr>
+                                                  <td><b>MXC Plate</b><br>(Mixing Chamber)</td>
+                                                  <td>MXC板 (混合腔板)</td>
+                                                  <td>溫度約10–20 mK。<br>最冷的一層，安裝量子位元晶片、TWPA、隔離器等關鍵元件，是核心操作與熱沉層。</td>
+                                              </tr>
+                                          </tbody>
+                                      
+                                          <thead>
+                                              <tr bgcolor="#e8e8e8">
+                                                  <th colspan="3" align="center">通用微波元件</th>
+                                              </tr>
+                                          </thead>
+                                          <tbody>
+                                              <tr>
+                                                  <td><b>Isolator</b></td>
+                                                  <td>隔離器</td>
+                                                  <td>允許訊號單向通過，防止反射雜訊干擾敏感元件，如量子位元。</td>
+                                              </tr>
+                                              <tr>
+                                                  <td><b>TWPA</b></td>
+                                                  <td>行波參數放大器</td>
+                                                  <td>低溫下使用的量子放大器，具有低雜訊、寬頻帶的特性，可提升微波訊號強度。</td>
+                                              </tr>
+                                              <tr>
+                                                  <td><b>HEMT</b></td>
+                                                  <td>高電子遷移率電晶體</td>
+                                                  <td>常用於 4K 級的第一級放大器，提供低雜訊、高增益的訊號讀取。</td>
+                                              </tr>
+                                              <tr>
+                                                  <td><b>Low-pass filter</b></td>
+                                                  <td>低通濾波器</td>
+                                                  <td>阻擋高頻雜訊，允許低頻訊號通過，常用於防止熱輻射進入量子元件。</td>
+                                              </tr>
+                                              <tr>
+                                                  <td><b>Band-pass filter</b></td>
+                                                  <td>帶通濾波器</td>
+                                                  <td>僅允許某一頻率範圍內的訊號通過，用於選擇特定微波頻率。</td>
+                                              </tr>
+                                              <tr>
+                                                  <td><b>Eccosorb filter</b></td>
+                                                  <td>Eccosorb 濾波器</td>
+                                                  <td>使用 Eccosorb 吸波材料製成的濾波器，能有效吸收高頻熱雜訊與不必要的輻射。</td>
+                                              </tr>
+                                              <tr>
+                                                  <td><b>Circulator</b></td>
+                                                  <td>循環器</td>
+                                                  <td>三端口非互易(non-reciprocity)微波元件，訊號僅以順時針或逆時針方式循環，用來分離輸入與回波路徑。</td>
+                                              </tr>
+                                              <tr>
+                                                  <td><b>Dir. Coupler</b></td>
+                                                  <td>定向耦合器</td>
+                                                  <td>將一部分微波訊號從主通道引導至旁路，通常用於監測、量測或訊號分離。</td>
+                                              </tr>
+                                              <tr>
+                                                  <td><b>Termination</b></td>
+                                                  <td>終端 (50Ω)</td>
+                                                  <td>吸收多餘訊號能量，防止訊號反射，常與隔離器、循環器搭配使用。</td>
+                                              </tr>
+                                              <tr>
+                                                  <td><b>Thermalisation</b></td>
+                                                  <td>熱沉（熱化、熱錨定）</td>
+                                                  <td>將電纜或元件的外導體熱接至冷卻級，降低熱雜訊傳遞至低溫核心元件。</td>
+                                              </tr>
+                                              <tr>
+                                                  <td><b>NbTi Cable</b></td>
+                                                  <td>鈮鈦合金同軸電纜</td>
+                                                  <td>使用具有超導性質的鈮鈦合金，在 mK 級連接量子位元或諧振器時，使用鈮鈦超導線路可減少耗散與熱傳導。</td>
+                                              </tr>
+                                              <tr>
+                                                  <td valign="top"><b>Attenuator</b><br>10dB, 20dB...</td>
+                                                  <td valign="top">衰減器</td>
+                                                  <td>
+                                                      <table width="100%" border="1" cellpadding="5" cellspacing="0">
+                                                          <tr bgcolor="#f5f5f5" align="center">
+                                                              <th>溫區</th>
+                                                              <th>衰減器值（常見）</th>
+                                                              <th>目的</th>
+                                                          </tr>
+                                                          <tr align="center">
+                                                              <td>300K → 4K</td>
+                                                              <td>20 dB</td>
+                                                              <td align="left">阻斷來自室溫的主要熱雜訊。</td>
+                                                          </tr>
+                                                          <tr align="center">
+                                                              <td>4K → 100 mK</td>
+                                                              <td>10–20 dB</td>
+                                                              <td align="left">細調訊號強度與進一步降噪。</td>
+                                                          </tr>
+                                                          <tr align="center">
+                                                              <td>100 mK → 10 mK</td>
+                                                              <td>10 dB（可選）</td>
+                                                              <td align="left">控制微波脈衝精細度，確保熱平衡。</td>
+                                                          </tr>
+                                                      </table>
+                                                  </td>
+                                              </tr>
+                                          </tbody>
+                                      
+                                      </table>
+                                        <br><span style="font-size: 0.7em; line-height: 0.8;">Ref: Engineering cryogenic setups for 100-qubit scale superconducting circuit systems, DOI:10.1140/epjqt/s40507-019-0072-0
+                                        </span><br><br>
+                                        </p>
+                          
+                          
+                                      <div style="text-align: center;">
+                                        
+                                        <a href="../Image/20250531-03--0ca613cf.png"><img loading="lazy" src="../WebP/20250531-03--0ca613cf.webp" alt="量子電路內部結構，包含隔離器與濾波器。" style="width: 70%; height: auto;"></a>
+                                        
+                                      </div>
+                                      <p  class="dark-background">
+                                        ▲在制冷機最底端、也是最冷的部分，稱為混合室（Mixing Chamber，MXC）。此區的溫度維持在10mK以下，以操作超導量子電路。
+                                        (a) 安裝於 MXC 板上的元件：來自量子處理器的讀出訊號首先經過右側的第一組四通道磁屏蔽隔離器陣列，再通過定向耦合器、行波參數放大器（TWPA），以及左側的第二組相同的隔離器陣列。
+                                        (b) 安裝於 4K 板上的四顆 HEMT 放大器。
+                                        (c)下方為帶通濾波器安裝（搭配熱沉）於 MXC 板上，上方為安裝於冷板(100mK區段)上的四個循環器。
+                                        <br><span style="font-size: 0.7em; line-height: 0.8;">Ref: Engineering cryogenic setups for 100-qubit scale superconducting circuit systems, DOI:10.1140/epjqt/s40507-019-0072-0
+                                        </span><br><br>
+                                    </p>
+                                
+
+                                    
+                                      <h3>技術門檻</h3>
+                                      
+                                      <table width="100%" border="1" cellpadding="10" cellspacing="0" style="border-collapse: collapse; font-family: sans-serif; border-color: #cccccc;">
+
+                                        
+                                    
+                                        <thead>
+                                            <tr bgcolor="#f2f2f2" align="center">
+                                                <th width="25%">關鍵挑戰 (Key Challenge)</th>
+                                                <th>說明 (Description)</th>
+                                            </tr>
+                                        </thead>
+                                    
+                                        <tbody>
+                                            <tr>
+                                                <td><b>讀出速度 (Speed)</b></td>
+                                                <td>讀出速度必須夠快，以支援需要即時條件反饋的量子演算法（如量子糾錯），並最大化單位時間內可執行的邏輯閘數量。</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>多路復用 (Multiplexing)</b></td>
+                                                <td>開發高效的多路復用技術，利用單一讀出鏈路就能同時、獨立地測量大量量子位元的狀態，這是系統擴展的基礎。</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>量子極限放大 (Quantum-Limited Amplification)</b></td>
+                                                <td>放大鏈路中的第一級放大器必須是量子極限的 (Quantum-Limited)，即其增加的雜訊量達到海森堡不確定性原理所規定的物理下限，以保護微弱的量子訊號。</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>串擾 (Crosstalk)</b></td>
+                                                <td>將測量串擾降至最低。讀出目標量子位元的微波脈衝不應意外地影響或改變鄰近量子位元的頻率或狀態。</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>測量產生的反作用(Backaction)</b></td>
+                                                <td>處理測量的反作用。標準的投影式測量會摧毀量子疊加態，因此需發展量子非破壞性 (Quantum Non-Demolition, QND) 測量技術，以在不破壞特定量子態的情況下獲取資訊。</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>可擴展性與集成性 (Scalability & Integration)</b></td>
+                                                <td>讀出架構的設計必須能夠隨著量子處理器 (QPU) 的規模擴展，並與複雜的低溫佈線和封裝緊密、高效地集成。</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>系統性誤差 (Systematic Errors)</b></td>
+                                                <td>隨著量子位元數量增加，測量系統中的微小誤差（如訊號失真、時序抖動）會累積並放大，成為限制整體計算保真度的瓶頸。</td>
+                                            </tr>
+                                        </tbody>
+                                    
+                                    </table>
+                                      <p  class="dark-background">
+                                        讀出系統的發展與QPU和控制系統的發展緊密相連。實現高保真度、快速且可擴展的讀出是實用量子計算的關鍵。TWPA等寬帶量子放大器的出現，為解決大規模量子位元系統的多路復用讀出問題提供了有希望的途徑。
+                                      </p>
+</section>
+<section class="qh-source-chapter">
+  <h3>教材深挖 2：控制電子系統</h3>
+  <p class="qh-source-note">整合自既有 Insight iHBAR 教材：QC_hardware/G.html</p>
+  <p class="qh-source-plain">控制電子系統負責將演算法指令轉換為施加到量子位元上的物理訊號。對於超導量子位元，這通常涉及產生具有特定頻率、幅度、相位和持續時間的微波脈衝。這些脈衝的精度極高，通常達到奈秒甚至更短的時間尺度。控制系統還必須能夠同步操作多個量子位元，並可能包含即時反饋和校準算法。一個高效的量子控制系統必須滿足以下多個嚴苛的需求： 操控量子態: 產生精確定時、定形、定幅和定相的微波脈衝信號。這些脈衝作用於量子位元，驅動其在布洛赫球(Bloch sphere)上進行旋轉，從而實現量子態的初始化、疊加態製備、量子邏輯閘操作(如單量子位元旋轉閘 Hadamard， X， Y， Z 和兩量子位元糾纏閘 CNOT， CZ)以及執行完整的量子算法序列。 讀出量子態: 量子計算結束時，需要測量每個量子位元的最終狀態(是\( \ket{0} \)還是\( \ket{1} \))。這通常通過向與量子位元耦合的讀出諧振腔發送一個探測微波脈衝，並測量透射或反射信號的相位和幅度變化來實現。由於讀取信號非常微弱(單光子量級)，需要低雜訊放大器將其放大到可檢測水平，然後由電子設備進行採集和數字化處理。 低延遲與實時反饋 (Low Latency &amp; Real-time Feedback): 許多先進的量子協議，如量子糾錯 (QEC)、動態校準 (dynamic calibration) 和主動重置 (active reset)，都極度依賴此能力。控制系統必須具備根據中間測量結果，在極短的延遲內（通常為數百奈秒）完成古典計算，並即時調整後續的脈衝序列或發出反饋操作。整個反饋迴路必須在量子位元的相干時間內完成，以有效修正錯誤或補償系統漂移，這對控制系統的處理速度和反應能力提出了嚴格要求。 多通道同步 (Multi-channel Synchronization): 一個大型量子處理器包含數十至數百個量子位元，所有的多量子位元操作都依賴於各個控制和讀取通道之間的高度協調。因此，控制系統必須能夠精確地同步生成與採集所有通道的訊號，確保所有操作的一致性與時序準確性。 可擴展性 (Scalability): 隨著量子位元數量增加，所需的控制通道數量也隨之劇增，這對控制系統的物理尺寸、成本和整體複雜性都提出了巨大挑戰。一個理想的控制系統架構，必須能夠支持平滑擴展 (smooth scaling)，以適應未來更大規模量子處理器的需求，而不會導致成本或系統管理的複雜度呈指數級增長。 高精度與穩定性 (High Precision and Stability): 所有施加在量子位元上的控制脈衝，其各項參數——包含波形 (shape)、時序 (timing)、頻率 (frequency)、幅度 (amplitude) 與相位 (phase)——都必須極其精確且穩定。任何微小的偏差都可能導致量子操作的錯誤累積，從而降低量子閘的保真度。其中，時間精度通常要求達到奈秒 (ns) 甚至皮秒 (ps) 的等級。此外，不同通道間的脈衝也必須高度同步，以確保多量子位元操作的準確性。 頻寬： 需要足夠的頻寬來產生快速的脈衝邊緣和複雜的波形。 低雜訊： 控制訊號中的雜訊會直接影響量子位元的相干性和操作保真度。 低溫整合（Cryo-CMOS）： 將部分控制電子（特別是靠近QPU的部分）整合到低溫環境中，可以顯著減少從室溫到QPU的佈線數量，降低熱負載，並減少訊號延遲和失真。然而，在極低溫下設計和運行複雜的CMOS電路本身就是一個巨大的技術挑戰，包括元件性能變化、功耗管理和散熱等。 軟體整合與校準： 控制硬體需要與高層軟體緊密整合，並需要複雜的自動化校準程序來優化脈衝參數並補償硬體缺陷。 控制電子系統正從使用通用實驗室儀器向專用化、整合化和低溫化方向發展。Cryo-CMOS技術被認為是解決大規模量子電腦控制瓶頸的關鍵途徑之一，它有望將控制功能更靠近量子位元，從而提高性能並降低系統複雜性。然而，這也意味著控制系統的設計必須與QPU和低溫系統的設計更加緊密地耦合。 為了滿足上述需求，現代量子控制系統通常整合了以下關鍵硬體： 任意波形產生器(Arbitrary Waveform Generators， AWGs): 這是產生控制脈衝的核心。高性能 AWG 能夠以極高的時間分辨率(取樣率達 GSa/s)和幅度分辨率(如16位)生成使用者定義的任意複雜波形。通常具有多個輸出通道，並支持觸發和序列播放功能。這些波形經過上變頻後驅動量子位元。AWG透過優化時間波形，可以解決相干控制、量子糾纏操控等應用中的技術問題。 FPGA(Field-Programmable Gate Arrays， 現場可程式化邏輯閘陣列): FPGA 是實現實時控制邏輯的關鍵。它們被編程來執行高速的脈衝序列生成、參數計算、條件分支、觸發管理、數據採集與處理、以及與其他儀器的同步。 因其可重構性、並行處理、和低延遲特性，使其非常適合量子控制的實時性要求。 FPGA在量子計算中用於接口和控制硬體，執行量子糾錯、量子位元控制和數據處理等複雜任務。它們在混合量子-古典計算系統中尤其有價值。 數位/類比轉換器 (DACs/ADCs): 數位類比轉換器(Digital-to-Analog Converters， DACs): 將FPGA或AWG 輸出的數字波形數據轉換為模擬電壓信號。其分辨率和速度直接影響控制脈衝的精度。 類比數位轉換器(Analog-to-Digital Converters， ADCs): 將來自量子位元的經過放大的模擬讀取信號轉換為數字數據，供FPGA或後續處理單元分析。其取樣率和分辨率決定了讀取速度和精度。 射頻/微波源與混頻器 (RF/Microwave Sources &amp; Mixers)： 產生微波載波訊號，並與AWG輸出的基帶脈衝進行混頻（IQ調製），以產生在量子位元共振頻率上的控制脈衝。 上/下變頻模組 (Up/Down-conversion Modules): 由於AWG 通常產生的是基帶或中頻(IF)信號，需要使用混頻器(Mixers)和電子振盪器(Local Oscillators， LO)將這些信號上變頻(Up-conversion)到量子位元操作所需的千兆赫茲(GHz)微波頻段。 同樣，讀取時需要將來自量子位元的 GHz 信號下變頻(Down-conversion) 到ADC 可以處理的頻率。這些模組的雜訊性能和線性度非常重要。 量子控制電子設備領域正在經歷快速演進，體現出三大關鍵趨勢。 首先，控制系統正從早期依賴通用儀器拼湊組合的方式，轉變為採用專門設計、高度整合的量子控制平台。 在量子計算研究的初期階段，研究人員通常使用市面上可獲得的通用 AWG、DAC/ADC、信號源等儀器來搭建控制系統。 傳統的測試測量儀器公司如 Keysight Technologies、Rohde &amp; Schwarz等也在提供適用於量子研究的高頻 AWG、VNA 和信號分析儀等單個儀器。 然而，隨著量子位元數量的增加和量子算法複雜性的提升，管理和同步大量離散儀器變得極其困難，成為系統擴展和性能提升的瓶頸。 更重要的是，量子計算對控制系統提出了特殊要求，例如超低延遲的實時反饋、複雜的條件邏輯執行以及皮秒級的跨通道同步，這些很難用標準的現成儀器高效實現。 這種需求推動了 Quantum Machines、Qblox、Zurich Instruments、SpinQ 等專業供應商的崛起，他們開發出整合了AWG、數字化儀、FPGA 處理單元以及專用控制軟體和韌體(如QM的QUA 語言 或ZI的LabOne Q框架)的整體解決方案。 這些專用平台大大簡化了實驗室的系統搭建和編程工作，並使執行更複雜、更依賴實時響應的量子協議成為可能。 其次，將實時古典計算能力(通常基於FPGA 或GPU處理器)直接整合到控制迴路中，正變得日益重要，甚至是不可或缺。 這對於實現量子糾錯、動態校準等高級應用尤為關鍵。 量子態極其脆弱，且控制參數會隨時間漂移。量子糾錯方案要求系統能夠快速測量輔助量子位元的狀態(稱為 syndrome)，進行經典的解碼計算以判斷發生了何種錯誤， 然後迅速將對應的修正操作應用到數據量子位元上，整個過程必須在量子位元的相干時間內完成。 同樣，動態校準也需要在實驗過程中實時測量量子位元的參數(如頻率漂移)，並即時調整控制脈衝的參數加以補償。 這些任務都需要在奈秒到微秒的時間尺度內完成大量的古典計算和決策。因此，現代控制系統的核心是強大的 FPGA 或專用處理器，甚至開始探索與 GPU 等高性能計算單元的緊密整合(如NVIDIA DGX Quantum)， 將古典計算能力盡可能地靠近量子硬體，實現低延遲的實時處理。這一趨勢標誌著量子計算正走向一種硬體層面深度融合的混合量子-古典計算架構。 另一個前沿方向是低溫整合 (Cryo-CMOS)，即將部分控制電子整合到低溫環境中，以解決大規模量子電腦的佈線瓶頸，降低熱負載和訊號延遲。 然而，這也意味著控制系統的設計必須與 QPU 和低溫系統的設計更加緊密地耦合。 總體來看，現代量子控制系統的發展趨勢是整合化、模組化和軟體定義化。供應商傾向於提供包含硬體和配套軟體(韌體、API、高級編程框架)的完整解決方案，以簡化系統整合和實驗編程。系統架構越來越強調實時處理能力和低延遲反饋，以支持更高級的量子計算協議和糾錯需求。 供應商 供應商 (Supplier) 系統/主要產品 核心技術 主要特點 (Key Features) 目標應用 Quantum Machines (QM) (以色列) OPX+/OPX1000 Processor-based (HPU/FPGA) 極低的實時反饋延遲(約 224ns)，強大的脈衝級編程語言 QUA，將實時序列生成、測量處理和古典計算緊密集成，易於擴展。 通用量子控制, 量子糾錯(QEC), 實時反饋, AI輔助校準 NVIDIA / QM (美國/以色列) DGX Quantum GPU + QM OPX (Processor-based) 整合高性能古典計算(GPU)與量子控制，實現低延遲的混合量子-古典計算架構。 QEC, AI輔助量子算法/校準, 混合計算 Qblox (荷蘭) Cluster System FPGA-based, Modular 模組化設計，透過高速同步協議(SYNQ/LINQ)確保皮秒級同步；支持高達 18.5 GHz 的直接微波合成，架構易於擴展至數百量子位元。 超導、自旋、NV色心等各類量子位元的控制與讀取 Zurich Instruments (ZI) (瑞士) QCCS (HDAWG, UHFQA, PQSC) FPGA-based, Multi-instrument 提供完整儀器套件，具高通道密度、低觸發延遲(&lt;50ns)，以及強大的 LabOne Q Python 框架，實現多儀器精密同步。 通用量子控制, 核磁共振(NMR/EPR), 半導體測試 SpinQ (本源量子) (中國) SPINQ QCM System FPGA-based, Modular 支持4-8 GHz頻段，提供開放API和自動化校準軟體，旨在提供高性價比的解決方案。 超導量子位元控制、測量與校準 Keysight (美國) AWGs, VNAs, Signal Analyzers 通用儀器技術 提供高性能、高精度的單項測試與測量儀器。 基礎量子研究, 元件特性分析 Rohde &amp; Schwarz (德國) Signal Generators, Analyzers 通用儀器技術 提供各類可用於量子控制與訊號分析的相關測試與測量設備。 基礎量子研究, 元件特性分析 供應商與產品範例 產品圖例 (圖片皆取自官網) Quantum Machines OPX1000 NVIDIA Grace Hopper Qblox Zurich Instruments Keysight</p>
+</section>
+<section class="qh-source-chapter">
+  <h3>教材深挖 3：微波元件廠商-TWPA</h3>
+  <p class="qh-source-note">整合自既有 Insight iHBAR 教材：QC_hardware/K.html</p>
+    <div class="qh-section">
+    <h3>3. 行波參數放大器 (TWPA) 製造商</h3>
+  </div>
+                                <p  class="dark-background">行波參數放大器 (TWPA)，特別是基於約瑟夫森結的 TWPA (J-TWPA)，因其接近量子極限的雜訊性能和寬廣的頻寬，在量子運算領域中對於量子位元的低雜訊讀取至關重要。此市場目前主要由專業的新創公司和研究密集型企業主導。必須明確區分用於量子應用的 J-TWPA 與傳統的行波管 (TWT)，後者基於完全不同的物理原理和應用領域。</p>
+                      
+                                <h3>3.1 量子應用 TWPA 的主要參與者與創新者</h3>
+                                <p  class="dark-background">這些企業處於為超導量子電腦開發關鍵放大器的最前沿，其產品專為低溫操作而設計，旨在滿足量子資訊處理的嚴格要求。</p>
+                                <p  class="dark-background">主要供應商及其產品特性：</p>
+                                <ul>
+                                    <li><strong>Silent Waves:</strong> 來自法國，成立於 2022 年，專注於基於約瑟夫森結和行波架構的超低雜訊超導放大器<sup>1</sup>。其產品包括「The Argo」、「The Carthago」（基於克爾反轉效應，提供 4 GHz 頻寬和超過 18 dB 的增益）以及「The Dreadnought」（即插即用解決方案）<sup>1</sup>。該公司強調其產品在高保真度和量子運算可擴展性方面的優勢。Quantum Microwave 為其北美地區（美國和加拿大）的分銷商<sup>1</sup>。</li>
+                                    <li><strong>QuantWare:</strong> 來自荷蘭，成立於 2020/2021 年，提供「Crescendo-S」J-TWPA，專為量子位元讀取而設計<sup>2</sup>。該產品在 S3 型號中具有 1 GHz 頻寬內 20 dB 的增益，採用緊湊的 HEMT 尺寸外形，並為可擴展性和易用性進行了優化，支持大批量生產<sup>2</sup>。</li>
+                                    <li><strong>QET Sweden (Quantum Electronics Technology AB):</strong> 脫胎於瑞典查爾姆斯理工大學，於 2024 年與 SCALINQ 合作推出了「QET Vidar TWPA」（S 型和 D 型）<sup>32</sup>。這些放大器提供 4 GHz 的不間斷增益頻寬，並採用了專利的多 TWPA 集成技術<sup>35</sup>。</li>
+                                    <li><strong>QphoX:</strong> 位於荷蘭，成立於 2021 年，致力於開發量子數據機設備，其旗艦產品為 AI-TWPA-C，這是一款用於 C 波段 (4-8 GHz) 量子位元讀取的近量子極限放大器<sup>5</sup>。該公司專注於量子網路技術<sup>5</sup>。</li>
+                                    <li><strong>Low Noise Factory (LNF):</strong> 雖然以低雜訊放大器 (LNA) 聞名，但其在低溫放大器領域的專業知識具有相關性。該公司是 Quantum Microwave 的合作夥伴，後者分銷 TWPA<sup>7</sup>。</li>
+                                    <li><strong>SCALINQ:</strong> 量子運算硬體供應商，與 QET Sweden 合作提供 Vidar TWPA<sup>32</sup>。SCALINQ 本身也是一家量子新創公司<sup>38</sup>。</li>
+                                </ul>
+                      
+                                <h3>3.2 與傳統行波管 (TWT) 的區別</h3>
+                                <p  class="dark-background">傳統的行波管 (TWT) 製造商，如 Stellant Systems、Communications & Power Industries、Leonardo DRS、NEC、PHOTONIS 和 Teledyne e2v 等，其產品主要應用於雷達、電子戰和衛星通訊等領域<sup>39</sup>。這些 TWT 通常在較高功率水平下工作，並基於真空電子學原理，與 J-TWPA 所採用的超導電路技術截然不同。因此，傳統 TWT 製造商通常不供應量子運算所需的 J-TWPA。</p>
+                                <p  class="dark-background">J-TWPA 技術涉及尖端的超導電路製造和約瑟夫森結物理學，這些領域通常由學術研究實驗室及其衍生公司引領。Silent Waves、QuantWare、QET Sweden 和 QphoX 均符合此特徵<sup>1</sup>。這些公司產品的快速創新周期和性能提升是該領域的顯著特點，反映了在實現量子優勢方面的激烈競爭。更寬的頻寬、更高的飽和功率以及更便捷的集成是主要的發展方向<sup>1</sup>。</p>
+                                <p  class="dark-background">對於量子應用的 TWPA 採購，意味著需要直接與這些專業的、通常較新的公司接洽。這些新創公司提供的「現成」J-TWPA 產品（例如 QuantWare 的 Crescendo-S<sup>2</sup>）是該領域的一大進展，降低了量子硬體開發的門檻。</p>
+                      
+                                <table>
+                                    <caption>表 2：主要量子運算約瑟夫森 TWPA 製造商</caption>
+                                    <thead>
+                                        <tr>
+                                            <th>製造商名稱</th>
+                                            <th>國家/地區</th>
+                                            <th>主要 TWPA 產品特點 (頻寬, 增益, 雜訊溫度, 可調性等)</th>
+                                            <th>企業類型 (新創/成熟)</th>
+                                            <th>主要合作夥伴/分銷商</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><strong>Silent Waves</strong></td>
+                                            <td>法國</td>
+                                            <td>Argo, Carthago, Dreadnought<br>1-4 GHz 頻寬, >15-18 dB 增益, <1K 雜訊溫度, 克爾反轉, 通量雜訊免疫 <sup>1</sup></td>
+                                            <td>新創</td>
+                                            <td>Quantum Microwave (北美) <sup>1</sup></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>QuantWare</strong></td>
+                                            <td>荷蘭</td>
+                                            <td>Crescendo-S (S1,S2,S3)<br>1 GHz 頻寬 (S3), 16-20 dB 增益, 70% 量子效率, HEMT 尺寸 <sup>2</sup></td>
+                                            <td>新創</td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>QET Sweden</strong></td>
+                                            <td>瑞典</td>
+                                            <td>QET Vidar (S, D)<br>4 GHz 不間斷增益頻寬, 多 TWPA 集成, ESD 保護 <sup>32</sup></td>
+                                            <td>新創</td>
+                                            <td>SCALINQ <sup>32</sup></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>QphoX</strong></td>
+                                            <td>荷蘭</td>
+                                            <td>AI-TWPA-C<br>C 波段 (4-8 GHz), 近量子極限 <sup>5</sup></td>
+                                            <td>新創</td>
+                                            <td>與 QuantWare 合作開發量子介面 <sup>37</sup></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>SCALINQ</strong></td>
+                                            <td>瑞典</td>
+                                            <td>(與 QET 合作 Vidar)<br>(Vidar 特性)</td>
+                                            <td>新創</td>
+                                            <td>QET Sweden <sup>32</sup></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <ul>
+                                    <li><strong>低溫放大器 (Cryogenic Amplifiers):</strong> 安裝在稀釋製冷機的低溫級，用於放大微弱的量子訊號。常用的有放置在 4K 級的**高電子遷移率晶體管 (HEMT)**，以及放置在 mK 級、能提供接近量子極限雜訊性能的**參量放大器 (JPA / TWPA)**。</li>
+                                    <li><b>放大器 (Amplifiers)：</b> 放大控制訊號以達到驅動量子位元所需的功率水平。</li>
+                                    <li><strong>低溫放大器 (Cryogenic Amplifiers):</strong> 為了放大極其微弱的量子位元讀取信號(通常只有幾個光子)，同時盡可能少地引入額外雜訊(接近量子極限)，需要在稀釋製冷機的低溫級(通常是4K級和/或mK級)安裝特殊的低雜訊放大器。常用的包括:
+                                        <ul>
+                                            <li><strong>高電子遷移率晶體管放大器(High-Electron-Mobility Transistor， HEMT):</strong> 通常放置在4K級，提供較高的增益和相對較低的雜訊溫度。</li>
+                                            <li><strong>參量放大器 (Parametric Amplifiers):</strong> 如約瑟夫森參量放大器(JPA)或行波參量放大器(Traveling Wave Parametric Amplifier， TWPA)，可以放置在mK級，非常接近量子晶片，能夠提供接近量子極限的雜訊性能和高增益帶寬。</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+
+                                <li><strong>濾波器(Filters)和衰減器(Attenuators):</strong> 安裝在信號線路的不同溫度級，用於濾除帶外雜訊、整形信號頻譜、精確控制到達量子位元的信號功率，並幫助線纜實現熱化(吸收來自高溫級的熱輻射雜訊)。</li>
+                                <li><strong>濾波器與衰減器 (Filters & Attenuators):</strong> 安裝在信號線路中，用於濾除雜訊、精確控制訊號功率，並幫助線纜實現熱化。</li>
+                                                                <div class="qh-section">
+                                  <h3>4. 高電子遷移率電晶體 (HEMT) 製造商</h3>
+                                </div>
+                                <p  class="dark-background">高電子遷移率電晶體 (HEMT) 是構成低雜訊放大器 (LNA) 的核心組件，在射頻/微波系統中扮演關鍵角色，尤其在需要極低雜訊性能的低溫應用（如量子運算中的讀取鏈路）中不可或缺。本節將涵蓋氮化鎵 (GaN) 和砷化鎵 (GaAs) 等主要 HEMT 技術的製造商，並區分大型成熟半導體公司/晶圓代工廠與小型專業 HEMT 供應商或磊晶片供應商。</p>
+                      
+                                <h3>4.1 主要半導體公司和晶圓代工廠 (GaN, GaAs)</h3>
+                                <p  class="dark-background">這些大型企業通常擁有廣泛的製造能力，提供多樣化的 HEMT 產品，應用於高功率和高頻領域，部分廠商也開始關注航太和高可靠性市場。</p>
+                                <p  class="dark-background">主要供應商包括：</p>
+                                <ul>
+                                    <li><strong>Qorvo:</strong> 提供廣泛的 GaN HEMT 和 GaAs pHEMT 產品組合，強調高效率、功率密度和可靠性，是 GaN 技術的領導者之一 <sup>41</sup>。</li>
+                                    <li><strong>Infineon Technologies:</strong> 提供基於其 CoolGaN™ 技術的 HEMT (GaN-on-Si)，應用於伺服器電源、電信等，並推出了用於太空的抗輻射 GaN HEMT <sup>43</sup>。</li>
+                                    <li><strong>Sumitomo Electric Device Innovations, Inc. (SEDI):</strong> 利用化合物半導體 (GaAs, InP, GaN) 開發和製造用於光學和無線通訊的組件 <sup>44</sup>。</li>
+                                    <li><strong>NXP Semiconductors:</strong> 全球領先的高性能混合訊號半導體解決方案供應商，提供用於無線通訊、汽車雷達等應用的 HEMT 產品 <sup>43</sup>。</li>
+                                    <li><strong>STMicroelectronics:</strong> 領先的半導體製造商，生產用於電信、航空航太、國防和消費電子的 HEMT <sup>43</sup>。</li>
+                                    <li><strong>ROHM Semiconductor:</strong> 提供 EcoGaN™ HEMT 組件，包括 650V GaN HEMT，專注於電源系統 <sup>43</sup>。</li>
+                                    <li>其他主要參與者還包括 <strong>Mitsubishi Electric Corporation、Intel Corporation、Texas Instruments、Renesas Electronics、Wolfspeed (前身為 Cree)、MACOM Technology Solutions Holdings, Inc.、Analog Devices, Inc.</strong>，以及 <strong>Teledyne e2v HiRel Electronics</strong> (提供太空級 GaN HEMT) <sup>42</sup>。</li>
+                                </ul>
+                      
+                                <h3>4.2 專業 HEMT 晶圓代工廠、磊晶片供應商及新興公司</h3>
+                                <p  class="dark-background">此類別包括提供 HEMT 製造基礎材料（磊晶片）、客製化 HEMT 設計代工服務，以及開發新型 HEMT 架構的新創公司。</p>
+                                <p  class="dark-background">主要供應商和服務：</p>
+                                <ul>
+                                    <li><strong>Intelligent Epitaxy Technology, Inc. (IntelliEPI):</strong> 領先的 III-V 族磊晶代工廠，採用分子束磊晶 (MBE) 技術生產 GaAs pHEMT、InP HBT 等磊晶片。近期獲得美國 CHIPS 法案資金支持，以擴大其在 InP、GaAs、GaSb 和 GaN 化合物半導體磊晶片方面的產能 <sup>50</sup>。該公司自 1999 年成立以來即為磊晶代工領域的成熟企業，CHIPS 法案的資助凸顯其在專業領域的戰略地位。</li>
+                                    <li><strong>MSE Supplies:</strong> 供應各種基板（矽、藍寶石、碳化矽）上的 GaN 磊晶片，用於射頻和功率應用，直接從工廠銷售 <sup>54</sup>。該公司成立於 2014 年，更像是一家供應商/分銷商，而非 HEMT 組件的初級製造商 <sup>57</sup>。</li>
+                                    <li><strong>X-FAB:</strong> 純晶圓代工廠，提供 SiC 和 GaN 製程服務，包括在其 8 吋廠進行 GaN-on-Si HEMT 製程，支持客製化組件創建 <sup>58</sup>。</li>
+                                    <li><strong>Global Communication Semiconductors (GCS):</strong> 純化合物半導體晶圓代工廠，提供 GaN/SiC HEMT 製程（0.15um、0.25um、0.4um T-Gate）和多種 GaAs pHEMT 製程，專注於無線和雷達應用的 RFIC/MMIC <sup>60</sup>。</li>
+                                    <li><strong>Finwave Semiconductor:</strong> 成立於 2012 年（前身為 Cambridge Electronics），2022 年更名，是一家開發 GaN-on-Si FinFET 和 E-mode MISHEMT 的新創公司，目標市場為 5G/6G 和行動裝置。與 GlobalFoundries 建立晶圓代工夥伴關係，並透過 RFMW 分銷 <sup>62</sup>。這是 HEMT 領域創新型新創公司的明確範例。</li>
+                                    <li><strong>Low Noise Factory (LNF):</strong> 雖然以 LNA 聞名，但其核心技術為 InP HEMT，由其內部設計和生產，用於其全球領先的低雜訊低溫放大器 <sup>15</sup>。這使其成為針對利基、高性能低溫應用的專業 HEMT 製造商。</li>
+                                    <li>其他磊晶片供應商 <sup>50</sup>: 包括 <strong>EPISTROMO LLC</strong> (保加利亞，小批量磊晶服務)、<strong>ACS</strong> (中國，MBE)、<strong>Photin sp. Z O.O.</strong> (波蘭，MOCVD)、<strong>江蘇華興雷射技術</strong> (中國)、<strong>IQE Plc</strong> (英國，射頻與光電磊晶片)、<strong>SCIOCS COMPANY LIMITED</strong> (日本，GaN 基板/磊晶片、GaAs 磊晶片)、<strong>VIGO System S.A.</strong> (波蘭)、<strong>Connector Optics LLC</strong> (俄羅斯，VCSEL/光電二極體磊晶片)、<strong>Seen Semiconductors</strong> (波蘭，GaN、InP、GaAs 磊晶片)、以及台灣的<strong>穩懋半導體</strong> (Visual Photonics Epitaxy Co Ltd, VPEC，提供 HBT、HEMT、pHEMT、GaN 的磊晶代工)。這些廠商規模從小型服務提供商到大型磊晶代工廠不等。</li>
+                                </ul>
+                                <p  class="dark-background">HEMT 市場呈現雙層結構：大型成熟半導體公司提供廣泛的（通常以功率為主的）GaN 和 GaAs HEMT；而一個更專業的層級則由磊晶片供應商、代工廠和創新型新創公司組成，它們專注於特定材料、製程或新穎的組件結構。例如，LNF 的 InP HEMT 專為實現最低雜訊的低溫 LNA 而設計。</p>
+                                <p  class="dark-background">GaN-on-Si 技術因其成本效益和可擴展性而成為 HEMT 生產的重要趨勢，Finwave <sup>63</sup> 和 X-FAB <sup>58</sup> 等公司均專注於此。這種技術旨在結合 GaN 的卓越性能與矽成熟的製造工藝。對更高頻率 (5G/6G、雷達) 和更高功率效率的需求，正驅動著 HEMT 技術的創新，催生了新材料、新組件架構（如 Finwave 的 GaN FinFET <sup>63</sup>）以及專業的代工服務。</p>
+                                <p  class="dark-background">對於標準 HEMT 需求，大型供應商提供穩健的解決方案。然而，對於尖端或高度專業化的需求（例如最低雜訊的低溫 LNA、新穎的組件結構），則需要與專業代工廠、磊晶片供應商或像 Finwave、LNF 這樣的創新型新創公司合作。美國 CHIPS 法案對 IntelliEPI 的資助 <sup>52</sup> 也表明了強化這些關鍵化合物半導體材料國內供應鏈的戰略意圖。</p>
+                      
+                                <table>
+                                    <caption>表 3：主要 HEMT 製造商、代工廠和磊晶片供應商</caption>
+                                    <thead>
+                                        <tr>
+                                            <th>公司名稱</th>
+                                            <th>國家/地區</th>
+                                            <th>主要 HEMT 焦點 (GaN, GaAs, InP; 組件, 磊晶片, 代工)</th>
+                                            <th>關鍵技術/專業領域</th>
+                                            <th>企業類型 (新創/成熟)</th>
+                                            <th>目標應用</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><strong>Qorvo</strong></td>
+                                            <td>美國</td>
+                                            <td>GaN HEMT, GaAs pHEMT (組件)</td>
+                                            <td>高效率, 功率密度, GaN 技術領導者</td>
+                                            <td>成熟</td>
+                                            <td>軍用/民用雷達, 通訊, 測試儀器 <sup>41</sup></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Infineon Technologies</strong></td>
+                                            <td>德國</td>
+                                            <td>GaN-on-Si HEMT (CoolGaN™) (組件)</td>
+                                            <td>可靠性, 抗輻射 (太空應用)</td>
+                                            <td>成熟</td>
+                                            <td>伺服器電源, 電信, 太空 <sup>45</sup></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Sumitomo Electric Device Innov.</strong></td>
+                                            <td>日本</td>
+                                            <td>GaAs, InP, GaN (組件)</td>
+                                            <td>光學與無線通訊組件</td>
+                                            <td>成熟</td>
+                                            <td>5G, 資料中心 <sup>47</sup></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Intelligent Epitaxy Tech. (IntelliEPI)</strong></td>
+                                            <td>美國</td>
+                                            <td>InP, GaAs, GaSb, GaN (磊晶片)</td>
+                                            <td>MBE 磊晶技術, CHIPS 法案支持</td>
+                                            <td>成熟 (專業磊晶)</td>
+                                            <td>國防, AI/資料中心, 電信 <sup>50</sup></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>MSE Supplies</strong></td>
+                                            <td>美國</td>
+                                            <td>GaN (磊晶片)</td>
+                                            <td>多種基板上的 GaN 磊晶片供應</td>
+                                            <td>供應商/分銷商</td>
+                                            <td>射頻與功率應用 <sup>54</sup></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>X-FAB</strong></td>
+                                            <td>德國/美國</td>
+                                            <td>GaN-on-Si HEMT (代工)</td>
+                                            <td>8 吋廠製程, 客製化組件</td>
+                                            <td>成熟 (代工)</td>
+                                            <td>功率組件 <sup>58</sup></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Global Communication Semi. (GCS)</strong></td>
+                                            <td>美國</td>
+                                            <td>GaN/SiC HEMT, GaAs pHEMT (代工)</td>
+                                            <td>0.15/0.25/0.4um T-Gate GaN 製程</td>
+                                            <td>專業代工</td>
+                                            <td>5G 無線基礎設施, 雷達 <sup>60</sup></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Finwave Semiconductor</strong></td>
+                                            <td>美國</td>
+                                            <td>GaN-on-Si FinFET, E-mode MISHEMT (組件)</td>
+                                            <td>MIT 創新技術, 與 GlobalFoundries 合作</td>
+                                            <td>新創</td>
+                                            <td>5G/6G, 行動裝置 <sup>63</sup></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Low Noise Factory (LNF)</strong></td>
+                                            <td>瑞典</td>
+                                            <td>InP HEMT (內部組件製造)</td>
+                                            <td>超低雜訊低溫放大器核心技術</td>
+                                            <td>成熟 (專業利基)</td>
+                                            <td>量子運算, 射頻天文 <sup>15</sup></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>VPEC (穩懋半導體)</strong></td>
+                                            <td>台灣</td>
+                                            <td>HEMT, pHEMT, GaN (磊晶代工)</td>
+                                            <td>磊晶代工服務</td>
+                                            <td>成熟 (代工)</td>
+                                            <td>無線通訊, 光電 <sup>50</sup></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                      
+                                
+                                <p >
+                                    ▲
+                                    <br><span style="font-size: 0.7em; line-height: 0.8;">
+
+                                    </span><br><br>
+                                    </p>
+</section>
+<section class="qh-source-chapter">
+  <h3>教材深挖 4：微波元件廠商-隔離器</h3>
+  <p class="qh-source-note">整合自既有 Insight iHBAR 教材：QC_hardware/L.html</p>
+    <div class="qh-section">
+    <h3>2. 隔離器製造商</h3>
+  </div>
+                                <p  class="dark-background">隔離器作為一種非互易雙埠組件，允許訊號沿一個方向低損耗傳輸，同時在反方向提供高隔離度，對於保護訊號源、防止反射及降低系統雜訊至關重要。本節將隔離器製造商分為兩大類：提供通用型射頻與微波隔離器的成熟供應商，以及專注於低溫環境和量子運算應用的專業廠商。後者對材料選擇（如無磁性材料）和極低溫（mK 等級）下的性能有著更為嚴苛的要求。</p>
+                      
+                                <h3>2.1 成熟射頻/微波隔離器供應商</h3>
+                                <p  class="dark-background">眾多成熟企業提供廣泛的射頻與微波隔離器產品，適用於室溫下的多種應用。這些公司通常擁有豐富的產品線，涵蓋同軸、插入式、微帶和表面黏著等不同類型，滿足不同頻段和功率等級的需求，主要應用於電信、國防和航空航太領域。</p>
+                                <p  class="dark-background">主要供應商包括：</p>
+                                <ul>
+                                    <li><strong>DiTom Microwave:</strong> 提供多種隔離器產品<sup>6</sup>。</li>
+                                    <li><strong>Honeywell Aerospace (或 Honeywell):</strong> 產品線廣泛，應用於航空航太領域<sup>6</sup>。</li>
+                                    <li><strong>Renaissance Electronics Corporation:</strong> 提供多種隔離器選項<sup>6</sup>。</li>
+                                    <li><strong>Smiths Interconnect:</strong> 產品涵蓋多種配置<sup>6</sup>。</li>
+                                    <li><strong>Exens Solutions:</strong> 位於法國的供應商<sup>6</sup>。</li>
+                                    <li><strong>Nova Microwave:</strong> 專門設計和製造射頻循環器和隔離器，頻率範圍從 380 MHz 到 26.5 GHz，適用於商業、軍事、蜂巢式和無線電信應用<sup>7</sup>。該公司隸屬於 Electro Technik Industries<sup>8</sup>。</li>
+                                    <li><strong>M2 Global Technology:</strong> 提供廣泛的隔離器產品組合，是國防、航空航太和電信行業的供應商<sup>7</sup>。</li>
+                                    <li><strong>Cernex Inc:</strong> 提供包括隔離器在內的鐵氧體產品<sup>7</sup>。</li>
+                                    <li>其他知名供應商還包括 <strong>3Rwave、ADMOTECH、A-Info、JQL Electronics、MECA、Mercury Systems、Pasternack Enterprises、Qorvo、Skyworks Solutions、TDK、Teledyne Microwave Solutions</strong> 及 <strong>UTE Microwave</strong> 等<sup>7</sup>。</li>
+                                </ul>
+                      
+                                <h3>2.2 新創及利基專業廠商 (低溫/量子應用)</h3>
+                                <p  class="dark-background">針對量子運算等需要在極低溫環境下運作的應用，對隔離器的要求遠超傳統產品。這些特殊需求催生了一批專注於低溫隔離器的新創企業和利基市場參與者。其產品特點包括使用無磁或精密屏蔽的磁性材料以避免干擾量子位元，以及在毫開爾文 (mK) 溫區仍能保持優異性能的設計，同時需考慮到在稀釋製冷機內部空間的緊湊性。</p>
+                                <p  class="dark-background">主要供應商和產品特性：</p>
+                                <ul>
+                                    <li><strong>Low Noise Factory (LNF):</strong> 來自瑞典，設計和生產用於太空探索、量子運算和射頻天文學的低溫微波組件，包括低溫隔離器/循環器<sup>7</sup>。其產品如小型 4-12 GHz 和 10-18 GHz 單結隔離器/循環器，專為接近絕對零度的環境設計<sup>16</sup>。</li>
+                                    <li><strong>Quantum Microwave:</strong> 不僅分銷 LNF 的低溫隔離器，也擁有自有品牌的低溫微波組件，並與 Raytheon BBN 合作開發低溫產品<sup>1</sup>。該公司明確專注於量子運算和射頻天文學市場，提供針對性的解決方案<sup>20</sup>。</li>
+                                    <li><strong>Metamagnetics:</strong> 位於美國，開發射頻和微波解決方案，包括可能無需偏置磁鐵的自偏置微型循環器和隔離器，這在緊湊的低溫設置中具有潛在優勢<sup>14</sup>。該公司成立於 2009 年，屬於小型專業實體<sup>7</sup>。</li>
+                                    <li><strong>Raditek:</strong> 提供用於量子運算的低溫隔離器，特別標註了其產品可在 0.01-4°K 和 4-77°K 的溫度範圍以及 4-8 GHz 和 8-12 GHz 等頻率下運作<sup>25</sup>。</li>
+                                    <li><strong>IQM:</strong> 雖然主要業務是量子電腦的建構，但其複雜的低溫系統<sup>3</sup> 意味著對此類組件的大量使用，並可能涉及內部開發或專業採購。</li>
+                                </ul>
+                                <p  class="dark-background">量子位元對磁場和熱雜訊極為敏感。標準鐵氧體隔離器使用的磁偏置會干擾量子位元的運作，且材料特性在低溫下可能發生劇烈變化。因此，專用的無磁材料或經過精心屏蔽的磁性材料，以及在 mK 溫區仍能保持性能的設計至關重要。上述專業公司如 LNF 和 Quantum Microwave 正是為滿足這些需求而存在<sup>15</sup>。</p>
+                                <p  class="dark-background">量子運算的快速發展直接推動了對這些專業低溫隔離器的需求。隨著量子系統規模的擴大，對可靠、高性能且緊湊的隔離器的需求將持續增長。量子電腦需要大量的控制和讀取線路，每條線路都可能需要隔離器來保護敏感的量子位元和放大器（如 TWPA）免受不必要的反射和雜訊影響<sup>3</sup>。因此，建構量子系統的研究人員和工程師必須超越傳統的射頻組件目錄，與這些專業供應商接洽。這些專業廠商提供的「現成」低溫隔離器，極大地推動了該領域的發展。</p>
+                      
+                                <table>
+                                    <caption>表 1：主要隔離器製造商 (射頻/微波及量子/低溫應用)</caption>
+                                    <thead>
+                                        <tr>
+                                            <th>製造商名稱</th>
+                                            <th>國家/地區</th>
+                                            <th>主要隔離器類型</th>
+                                            <th>專業領域 (通用射頻, 低溫, 量子, 自偏置)</th>
+                                            <th>企業類型 (新創/成熟)</th>
+                                            <th>備註/範例產品</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><strong>Nova Microwave</strong></td>
+                                            <td>美國</td>
+                                            <td>同軸、插入式、表面黏著</td>
+                                            <td>通用射頻</td>
+                                            <td>成熟</td>
+                                            <td>頻率 380 MHz - 26.5 GHz <sup>8</sup></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>M2 Global Technology</strong></td>
+                                            <td>美國</td>
+                                            <td>同軸、插入式、表面黏著、波導</td>
+                                            <td>通用射頻</td>
+                                            <td>成熟</td>
+                                            <td>服務國防、航空航太、電信 <sup>10</sup></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Low Noise Factory (LNF)</strong></td>
+                                            <td>瑞典</td>
+                                            <td>低溫同軸</td>
+                                            <td>低溫, 量子</td>
+                                            <td>成熟 (專業利基)</td>
+                                            <td>4-12 GHz, 10-18 GHz 單結隔離器/循環器 <sup>15</sup></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Quantum Microwave</strong></td>
+                                            <td>美國</td>
+                                            <td>低溫同軸、自有品牌及分銷 LNF 產品</td>
+                                            <td>低溫, 量子</td>
+                                            <td>成熟 (專業利基)</td>
+                                            <td>專注量子運算、射頻天文 <sup>18</sup></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Metamagnetics</strong></td>
+                                            <td>美國</td>
+                                            <td>微型隔離器/循環器</td>
+                                            <td>自偏置潛力, 低溫</td>
+                                            <td>新創/小型</td>
+                                            <td>成立於 2009 年 <sup>22</sup></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Raditek</strong></td>
+                                            <td>美國</td>
+                                            <td>低溫同軸</td>
+                                            <td>低溫, 量子</td>
+                                            <td>未明確</td>
+                                            <td>0.01-4°K, 4-77°K 隔離器 <sup>25</sup></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>DiTom Microwave</strong></td>
+                                            <td>美國</td>
+                                            <td>同軸、波導</td>
+                                            <td>通用射頻, 低溫</td>
+                                            <td>成熟</td>
+                                            <td>提供磁屏蔽低溫同軸隔離器 <sup>6</sup></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Honeywell Aerospace</strong></td>
+                                            <td>美國</td>
+                                            <td>多種類型</td>
+                                            <td>通用射頻</td>
+                                            <td>成熟</td>
+                                            <td>航空航太應用 <sup>6</sup></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Renaissance Electronics Corp.</strong></td>
+                                            <td>美國</td>
+                                            <td>多種類型</td>
+                                            <td>通用射頻</td>
+                                            <td>成熟</td>
+                                            <td><sup>6</sup></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Smiths Interconnect</strong></td>
+                                            <td>美國/全球</td>
+                                            <td>多種類型</td>
+                                            <td>通用射頻</td>
+                                            <td>成熟</td>
+                                            <td><sup>6</sup></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                      
+                                
+                                <p >
+                                    ▲
+                                    <br><span style="font-size: 0.7em; line-height: 0.8;">
+
+                                    </span><br><br>
+                                    </p>
+</section>
+<section class="qh-source-chapter">
+  <h3>教材深挖 5：循環器製造商</h3>
+  <p class="qh-source-note">整合自既有 Insight iHBAR 教材：QC_hardware/T.html</p>
+    <div class="qh-section">
+    <h3>9. 循環器製造商</h3>
+  </div>
+                                <p  class="dark-background">循環器與隔離器功能相似，均為非互易鐵氧體組件，但循環器通常具有三個或更多埠，允許訊號按特定順序（通常是順時針）從一個埠流向相鄰的下一個埠，同時隔離其他路徑。本節將涵蓋成熟的射頻/微波循環器供應商以及專注於低溫和量子應用特定循環器的公司。</p>
+                      
+                                <h3>9.1 成熟射頻/微波循環器供應商</h3>
+                                <p  class="dark-background">許多生產隔離器的公司也製造循環器，因為兩者基於相似的鐵氧體技術。這些公司提供適用於室溫下射頻系統訊號管理的各種循環器。</p>
+                                <p  class="dark-background">主要供應商包括：</p>
+                                <ul>
+                                    <li><strong>Nova Microwave:</strong> 專門從事循環器和隔離器的設計與製造，產品頻率範圍從 380 MHz 到 26.5 GHz <sup>8</sup>。</li>
+                                    <li><strong>M2 Global Technology:</strong> 提供同軸、插入式、表面黏著和波導循環器 <sup>10</sup>。</li>
+                                    <li><strong>Cernex Inc.:</strong> 其鐵氧體產品線包括結型循環器、插入式循環器、同軸循環器和波導循環器 <sup>12</sup>。</li>
+                                    <li><strong>Molex:</strong> 是一家大型供應商，擁有超過 6,000 種隔離器和循環器型號，頻率範圍從 380 MHz 到 40 GHz，並採用自動化製造 <sup>126</sup>。</li>
+                                    <li><strong>Pasternack Enterprises:</strong> 提供射頻循環器，頻率範圍從 1 GHz 到 26.5 GHz <sup>127</sup>。</li>
+                                    <li><strong>VidaRF:</strong> 提供多種循環器，包括同軸、插入式、表面黏著和波導類型 <sup>123</sup>。</li>
+                                    <li>其他如 <strong>Smiths Interconnect、JQL Electronics、Mercury Systems、Renaissance Electronics Corporation、UTE Microwave</strong> 等也是市場上的重要參與者 <sup>123</sup>。Thomasnet 列出的供應商還包括 <strong>NetSource Technology</strong> 和 <strong>Anatech Electronics</strong> <sup>131</sup>。</li>
+                                </ul>
+                      
+                                <h3>9.2 新創及利基專業廠商 (低溫/量子應用)</h3>
+                                <p  class="dark-background">低溫循環器在量子運算中至關重要，用於將訊號路由至量子位元和量子極限放大器（如 TWPA 和 JPA）或從中讀取訊號，同時提供必要的隔離。這些循環器必須在 mK 溫度下可靠工作，並且通常需要無磁或良好屏蔽的設計。</p>
+                                <p  class="dark-background">主要供應商和產品特性：</p>
+                                <ul>
+                                    <li><strong>Low Noise Factory (LNF):</strong> 提供低溫隔離器/循環器 <sup>7</sup>。其 4-12 GHz 和 10-18 GHz 單結組件可用作循環器。</li>
+                                    <li><strong>Quantum Microwave:</strong> 分銷 LNF 的低溫循環器，並可能提供其他適用於量子應用的循環器 <sup>7</sup>。</li>
+                                    <li><strong>Metamagnetics:</strong> 其關於自偏置微型循環器和隔離器的研究與此相關 <sup>7</sup>。</li>
+                                    <li><strong>Raditek:</strong> 提供用於量子運算的低溫循環器，與其隔離器產品類似，標明可在 0.01-4°K 和 4-77°K 溫度下工作 <sup>25</sup>。</li>
+                                    <li><strong>DiTom Microwave, QuinStar Technology Inc, L-TEQ Microwave Technology, FERRITE-QUASAR:</strong> 在 <sup>26</sup> 中被列為低溫循環器製造商。DiTom 提供磁屏蔽同軸低溫循環器；QuinStar 提供 QCY-G0401202 (4-12 GHz)；L-TEQ 和 FERRITE-QUASAR 也列出了特定的低溫循環器型號。</li>
+                                    <li><strong>Lake Shore Cryotronics:</strong> 雖然主要以低溫系統和量測聞名，但在低溫設備製造商的搜索結果中出現 <sup>132</sup>，其全面的低溫環境解決方案會需要或集成此類組件。</li>
+                                </ul>
+                                <p  class="dark-background">低溫循環器的供應商基礎與低溫隔離器高度重疊，均由少數專業公司引領，專注於為量子運算設計組件。這些公司開發的低溫非互易組件自然會同時涵蓋隔離器和循環器。量子應用的特定需求（低溫、無磁性、特定量子位元操作頻段）驅動了這種專業化。</p>
+                                <p  class="dark-background">一個明顯的趨勢是循環器的微型化以及將其集成到低溫放大器模組或量子位元讀取鏈路中。由於稀釋製冷機的冷板空間非常寶貴，將循環器與放大器或其他組件直接集成可以減少佔用空間、互連點以及潛在的故障點或熱負載。Metamagnetics 的「微型循環器」<sup>22</sup> 以及量子硬體普遍追求緊湊性的趨勢（例如 QuantWare 的 HEMT 尺寸 TWPA <sup>2</sup>）都支持了這一點。</p>
+                                <p  class="dark-background">與隔離器一樣，為量子系統採購循環器需要超越標準射頻產品目錄，尋求專業供應商。LNF 或 Raditek 等公司提供的現成低溫循環器的日益普及，簡化了量子硬體的開發。量子新創企業的版圖 <sup>38</sup> 通常包含這些專業循環器的使用者或集成商。</p>
+                      
+                                <table>
+                                    <caption>表 8：主要循環器製造商 (射頻/微波及量子/低溫應用)</caption>
+                                    <thead>
+                                        <tr>
+                                            <th>製造商名稱</th>
+                                            <th>國家/地區</th>
+                                            <th>主要循環器類型</th>
+                                            <th>專業領域 (通用射頻, 低溫, 量子, 自偏置)</th>
+                                            <th>企業類型 (新創/成熟)</th>
+                                            <th>備註/範例產品</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><strong>Nova Microwave</strong></td>
+                                            <td>美國</td>
+                                            <td>同軸、插入式、表面黏著</td>
+                                            <td>通用射頻</td>
+                                            <td>成熟</td>
+                                            <td>頻率 380 MHz - 26.5 GHz <sup>8</sup></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>M2 Global Technology</strong></td>
+                                            <td>美國</td>
+                                            <td>同軸、插入式、表面黏著、波導</td>
+                                            <td>通用射頻</td>
+                                            <td>成熟</td>
+                                            <td>服務國防、航空航太、電信 <sup>10</sup></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Molex</strong></td>
+                                            <td>美國/全球</td>
+                                            <td>同軸、插入式、表面黏著、波導</td>
+                                            <td>通用射頻</td>
+                                            <td>成熟</td>
+                                            <td>超過 6000 種型號，自動化生產 <sup>126</sup></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Low Noise Factory (LNF)</strong></td>
+                                            <td>瑞典</td>
+                                            <td>低溫同軸</td>
+                                            <td>低溫, 量子</td>
+                                            <td>成熟 (專業利基)</td>
+                                            <td>4-12 GHz, 10-18 GHz 單結隔離器/循環器 <sup>15</sup></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Quantum Microwave</strong></td>
+                                            <td>美國</td>
+                                            <td>低溫同軸、自有品牌及分銷 LNF 產品</td>
+                                            <td>低溫, 量子</td>
+                                            <td>成熟 (專業利基)</td>
+                                            <td>專注量子運算、射頻天文 <sup>18</sup></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Metamagnetics</strong></td>
+                                            <td>美國</td>
+                                            <td>微型循環器/隔離器</td>
+                                            <td>自偏置潛力, 低溫</td>
+                                            <td>新創/小型</td>
+                                            <td>成立於 2009 年 <sup>22</sup></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Raditek</strong></td>
+                                            <td>美國</td>
+                                            <td>低溫同軸</td>
+                                            <td>低溫, 量子</td>
+                                            <td>未明確</td>
+                                            <td>0.01-4°K, 4-77°K 循環器 <sup>25</sup></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>DiTom Microwave</strong></td>
+                                            <td>美國</td>
+                                            <td>同軸、波導</td>
+                                            <td>通用射頻, 低溫</td>
+                                            <td>成熟</td>
+                                            <td>提供磁屏蔽低溫同軸循環器 <sup>26</sup></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>QuinStar Technology Inc</strong></td>
+                                            <td>美國</td>
+                                            <td>低溫同軸</td>
+                                            <td>低溫</td>
+                                            <td>未明確</td>
+                                            <td>QCY-G0401202 (4-12 GHz) <sup>26</sup></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>L-TEQ Microwave Technology</strong></td>
+                                            <td>法國</td>
+                                            <td>低溫同軸</td>
+                                            <td>低溫</td>
+                                            <td>未明確</td>
+                                            <td>M-3CCC60-1 (4-8 GHz) <sup>26</sup></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                      
+                                
+                                
+                                <p >
+                                    ▲
+                                    <br><span style="font-size: 0.7em; line-height: 0.8;">
+
+                                    </span><br><br>
+                                    </p>
+</section>
+<section class="qh-source-chapter">
+  <h3>教材深挖 6：量子信號產生器</h3>
+  <p class="qh-source-note">整合自既有 Insight iHBAR 教材：Q_Tech/B.html</p>
+    <div class="qh-section">
+    <h3>
+                                  量子信號產生器
+                              </h3>
+  </div>
+                                  <h3>
+                                      技術原理與背景
+                                  </h3>
+                                  <p>
+                                      「量子信號產生器」泛指能利用量子力學原理來產生訊號或數據的裝置。其中一個典型例子是量子隨機數產生器 (QRNG)，透過量子測量的本質隨機性來取得不可預測的亂數。傳統的隨機數產生器通常依賴演算法（偽隨機）或複雜物理現象，但量子亂數產生器直接利用量子不確定性（例如單光子經過分束板後的檢測結果）來獲得真隨機數，因而在原理上無法被預測或複製。此外，量子信號產生器也包括產生單光子或糾纏光子對的量子光源，例如利用自發參量下轉換 (SPDC) 晶體產生糾纏光子對，或藉由量子點釋放單光子。這類量子光源可視為產生攜帶量子資訊的「信號」裝置，是量子通訊和量子計算實驗的重要基礎。
+                                  </p>
+                                  <h3>
+                                      目前的技術進展與實作方式
+                                  </h3>
+                                  <p>
+                                      在量子亂數產生方面，近年來已有顯著進展。研究團隊成功展示了高速且安全的量子亂數產生技術，例如丹麥科技大學的科學家實現了每秒2.9 Gb的高速量子亂數產生，同時確保亂數對量子側信道攻擊也是安全的。商業上已出現量子亂數晶片，例如 ID Quantique 公司推出了首款用於手機和物聯網裝置的量子亂數產生晶片（IDQ250C2），使行動裝置也能取得高品質的量子亂數。在單光子和糾纏光源方面，目前廣泛使用的實作方式是利用弱相干雷射脈衝（經過強度衰減後近似單光子）進行量子金鑰分發，以及利用SPDC晶體產生糾纏光子。實驗室中，研究者也開發出量子點單光子源與奈米鑽石氮-空穴中心等光源，提升單光子產生的效率與純度。量子糾纏對的分發距離不斷刷新紀錄，例如中國「墨子號」量子衛星已成功實現千公里級的星地量子糾纏分發與量子密鑰分發。總的來說，量子信號產生技術正朝著更高速、更高品質以及更易於整合的方向發展。
+                                  </p>
+                                  <h3>
+                                      應用領域與實際用途
+                                  </h3>
+                                  <p>
+                                      量子信號產生器的應用領域相當廣泛。在資訊安全方面，量子亂數產生器可用於產生加密密鑰，因其亂數無法預測，可大幅提升通訊安全。例如，將量子亂數應用於一時一密的加密系統，可提供理論上無條件安全的通信保障。單光子和糾纏光源則是量子通訊的核心，例如量子金鑰分發（QKD）需要單光子來承載密鑰資訊，而糾纏光子對可用於量子隨選網路和量子隱形傳態等通訊協議。在量子計算和模擬領域，產生特定的量子態（例如貓態、NOON態等）對於量子感測和量子計算都有應用：NOON態可提高干涉式感測的精度（量子測量中的量子增強技術），而高純度的單光子源是光量子電腦的基本資源。此外，量子亂數在科學計算（例如蒙地卡羅模擬）中也有實際用途，能提高模擬結果的可信度。
+                                  </p>
+                                  <h3>
+                                      當前挑戰與未來發展趨勢
+                                  </h3>
+                                  <p>
+                                      儘管已有初步成果，量子信號產生技術仍面臨一些挑戰。對於量子亂數產生器而言，如何同時實現**高速**與**高熵質量**是難點——裝置需要在短時間內產生大量亂數且保證其隨機性經嚴格統計檢驗。未來的趨勢是在晶片上實現整合的量子亂數產生器，讓手機、車用裝置甚至物聯網節點都能內建QRNG，提高整體系統安全性。同時，需要制定亂數標準以驗證其量子隨機性和安全性。對於量子光源，挑戰在於**單光子的生成效率和純度**。目前高品質單光子源往往工作在極低溫或需要複雜設備，不易實用化。未來的發展方向包括：研製常溫下工作的單光子源、提高量子點光源的亮度和純度，以及發展波長可調的糾纏光源以融入現有光通訊基礎設施。此外，在糾纏分發距離方面，需要突破光纖損耗和去相干效應的限制，這可能透過研發量子中繼器來實現。
+                                  </p>
+                                  <h3>
+                                      相關研究機構、公司或產品
+                                  </h3>
+                                  <p>
+                                      量子信號產生技術的研發涉及產學研多方努力。在隨機數方面，瑞士的 <strong>ID&nbsp;Quantique</strong> 是領先的公司之一，推出了商用的Quantis系列量子亂數產生器，廣泛應用於金融和政府通訊。另外，如加拿大的 <strong>Quantum eMotion</strong> 也專注開發小型QRNG硬體。在學術界，北京大學量子電子學研究所等機構也設立了專門的研究團隊探索高速量子隨機數發生器的理論與實現。單光子與糾纏光源方面，中國科學技術大學潘建偉團隊研發了多種糾纏光源並主導「墨子號」衛星計畫，奠定了量子通信光源技術的里程碑。歐美的許多實驗室（如麻省理工學院、維也納大學等）在固態單光子源、鑽石色心等領域也有重要成果。公司方面，日內瓦的 <strong>華為量子</strong>（Huawei Quantum）和日本東芝亦投入了量子光源與QKD設備的開發。可以預期，隨著量子技術熱潮持續升溫，將有更多企業和研究機構投入量子信號產生器的研發與商業化。
+                                  </p>
+                                                            <div class="qh-section">
+                                <h3>
+                                  量子任意波形產生器
+                              </h3>
+                              </div>
+                                  <h3>
+                                      技術原理與背景
+                                  </h3>
+                                  <p>
+                                      任意波形產生器（AWG）是一種能夠產生任意形狀電信號的電子儀器，使用數位-類比轉換器(DAC)逐點輸出預先定義的波形。在傳統電子測量中，AWG允許使用者產生不侷限於簡單正弦波或方波的複雜訊號，以滿足各種測試需求。<strong>量子任意波形產生器 (Quantum AWG, Q-AWG)</strong> 則是這一概念在量子領域的延伸，旨在產生**任意量子態**且具有**任意時間波形**的光或量子信號。簡言之，Q-AWG不僅可以塑造經典波形，還可以塑造量子光場的波形和態。例如，在量子電子學中控制光子的時間結構、相位與振幅，即可創造出所需的非經典光態。由於量子態非常脆弱，量子AWG必須採用與傳統脈衝塑形完全不同的方法來避免破壞量子態。這項技術的提出，是因為在量子資訊處理中，能夠隨心所欲地準備所需的量子態（例如具有特定波包形狀的單光子或疊加態）將帶來極大的靈活性和功能，就如同經典AWG對電子測量的重要性一樣。
+                                  </p>
+                                  <h3>
+                                      目前的技術進展與實作方式
+                                  </h3>
+                                  <p>
+                                      目前在實驗實作上，量子任意波形產生器仍屬於前沿研究課題。然而，類似的概念已開始以另一種形式服務於量子技術：即傳統AWG在量子實驗中的應用。量子運算與量子實驗對訊號控制精度要求極高。舉例而言，在超導量子位元或離子阱量子位元的控制上，每個量子位元通常需要多路的精準射頻或雷射脈衝信號來操作其量子態。研究者使用AWG來產生這些多通道的控制波形。Tektronix等公司推出的高階AWG（如AWG5200系列）提供了8個同步通道，每通道具備高取樣率和深記憶體，可同時輸出多路相位相干的脈衝，用於驅動多個量子位元。在離子量子計算方面，奧地利因斯布魯克大學的研究人員使用AWG透過聲光偏轉器控制雷射光束，可同時驅動一串離子中的多個離子，實現平行的量子操作，顯著加快實驗進程。這種多頻控制實現了對各離子的個別操控，同時避免逐一尋址所耗費的時間。
+                                  </p>
+                                  <p>
+                                      至於真正的「量子AWG」，已有學者提出初步架構並在實驗中驗證其核心技術。東京大學的研究團隊在2022年發表了Q-AWG的架構設想，並展示了該裝置可在接近GHz的重複頻率下，半決定性地產生前所未有波形的高非經典量子光態。這意味著，他們成功產生了過去未曾實現過、具有特殊時間波形的量子態，證明了以全新方法來塑造量子光脈衝是可行的。實作上，這類量子AWG系統可能結合了快速的電光調變器、光學相位調控器以及單光子/壓縮光源等元件，同步控制，以實現對光子波包的精細調制。目前這方面處於研發早期階段，但其潛力已逐漸顯現。
+                                  </p>
+                                  <h3>
+                                      應用領域與實際用途
+                                  </h3>
+                                  <p>
+                                      任意波形產生器在量子科技中的應用主要分為兩部分：其一是利用現有AWG提高量子系統的控制能力，其二是未來量子AWG實現後帶來的新應用。首先，就現有技術而言，AWG已是量子運算實驗的關鍵工具。對超導量子電腦而言，AWG可產生高保真度、精確計時的微波脈衝，用來執行量子閘操作。對離子阱量子計算，AWG產生的多頻射頻信號可透過聲光調制器控制多束雷射，平行操控多個離子量子比特。在量子感測領域，AWG也可用於產生所需的探測信號或校準信號。例如在量子雷達原型中，可能需要特殊調變的光子態作為發射信號，以實現所謂的量子照明增益。
+                                  </p>
+                                  <p>
+                                      若展望真正的量子AWG裝置，其應用將更加令人振奮。在量子通訊中，Q-AWG可望生成任意形狀的單光子或糾纏態脈衝，這將提高量子網路協定的靈活性和效率。例如，透過量子AWG可以按照需求產生時序上精心設計的光子序列，實現先進的量子密碼協議或量子隱形傳態方案。在光學量子計算領域，Q-AWG可以用來為光子量子位元（qubit）或連續變量量子位元準備任意初始態，甚至動態改變光子在干涉儀中傳遞的波包形狀，這有助於執行更複雜的光量子邏輯操作。此外，在量子精密測量中，Q-AWG能夠產生特殊的量子態（如壓縮態光場）來突破經典測量的極限，提高傳感器的靈敏度和精度。
+                                  </p>
+                                  <h3>
+                                      當前挑戰與未來發展趨勢
+                                  </h3>
+                                  <p>
+                                      對現有使用於量子領域的AWG來說，一個實際挑戰是**擴充性**和**同步性**。隨著量子處理器中的量子位元數目增加，每個量子位元往往需要多條控制線路，這意味著實驗需要更多通道的AWG同步輸出。在大規模系統中，確保所有通道的訊號保持嚴密同步且互相之間串音很低，是困難的工程挑戰。此外，多通道AWG設備昂貴，每增加一個量子位元都帶來額外的成本負擔。未來的趨勢是發展**高通道密度且低噪聲**的AWG，或者探索將部分波形產生功能下放到低溫電子裝置中（如在低溫晶片上整合DAC，減少傳輸失真）。
+                                  </p>
+                                  <p>
+                                      對於量子AWG的長遠挑戰，由於要直接處理量子態，技術門檻更高。必須解決如何在不破壞量子相干性的前提下進行波形塑形，例如光學元件的損耗、熱雜訊都需極小。實現Q-AWG還需要開發超高速且高精度的光子調控器件，以及可能需要配合量子記憶體來暫存和釋放光子，以半決定性的方式輸出光子串列。未來隨著光子學與電子學的融合，我們或許會看到光子晶片上實現基本的量子波形塑形功能。另外，隨著量子電腦和量子網路發展，對靈活產生定製量子態的需求將推動Q-AWG技術成熟。整體而言，量子任意波形產生技術有望在未來5-10年逐步從概念走向實驗驗證，長期看甚至成為量子資訊科學實驗室和產業中的常規工具。
+                                  </p>
+                                  <h3>
+                                      相關研究機構、公司或產品
+                                  </h3>
+                                  <p>
+                                      目前傳統AWG市場由多家測試測量領域的龍頭廠商主導，其中包括美國的 <strong>Tektronix</strong>、<strong>Keysight (是德科技)</strong>、<strong>Spectrum Instrumentation</strong> 以及瑞士的 <strong>Zurich Instruments</strong> 等。Tektronix 的 AWG5200 系列產品專為量子研究提供高同步多通道的解決方案。Keysight 則有PXIe架構的高速AWG（例如M3202A模組），宣稱針對量子運算和大規模MIMO研究提供高品質輸出。Spectrum 公司曾報導奧地利因斯布魯克大學利用其 AWG 卡（M4i.6631-x8）來控制離子陷阱實驗。Zurich Instruments 推出了專為量子技術設計的 HDAWG 系列，具備高通道密度與低相位雜訊，非常適合超導量子比特和半導體自旋比特實驗。
+                                  </p>
+                                  <p>
+                                      在真正的量子AWG研究方面，日本東京大學的 <strong>古澤明</strong> (Akira Furusawa) 團隊是先驅之一，2022年他們在 <em>Science Advances</em> 發表了量子任意波形產生器的架構和實驗結果。另外，NTT、NICT等日本研究單位在量子光學領域實力雄厚，也可能參與相關研究。儘管目前尚無商用的量子AWG產品，但可以預見，隨著技術成熟，測試設備公司可能開發混合型裝置，結合傳統AWG與量子態生成功能。一些量子科技初創公司也值得關注，例如 <strong>Quantum Machines</strong>（量子機器公司）雖然專注於量子控制硬體，但未來不排除導入量子波形產生的專門模組。總的來說，量子任意波形產生器正處於從學術探索走向產業應用的前夜，其相關研發動態值得持續追蹤。
+                                  </p>
+</section>  <section class="module">
+    
+<div class="qh-section">
+  <h3>進階主線：Instrument specification 必須投影成 quantum metric</h3>
+</div>
+<p>DAC resolution、clock jitter、LO phase noise、IQ imbalance、mixer leakage、cable dispersion 與 amplifier compression 最終都不是「電子問題」；它們會變成 rotation error、dephasing、pulse distortion、readout overlap 與 drift。</p>
+<p>輸入鏈需要 transfer-function measurement 與 predistortion；輸出鏈需要足夠前級 gain，使後級 HEMT/room-temperature noise 被壓低，同時保留 multiplexed tones 的 dynamic range。當 channel 數增加，frequency plan 與 intermodulation product 也成為 system architecture。</p>
+
+  </section>
+  <section class="module">
+                                    <div class="qh-section">
+                                      <h3>四、單元 3：微波控制硬體與輸入鏈路</h3>
+                                    </div>
+                                
+                                    <h4>3.1 Microwave Control Chain</h4>
+                                    <p>
+                                      超導量子位元的單量子位元閘通常透過 microwave pulse 實現；
+                                      tunable qubit 或 tunable coupler 則可能需要 flux pulse。
+                                      這些控制訊號從室溫電子儀器產生，經過混頻、放大、濾波、衰減與低溫線路，最後到達量子晶片。
+                                    </p>
+                                
+                                    <p>
+                                      一條典型 microwave control chain 可簡化為：
+                                    </p>
+                                
+                                    <ol>
+                                      <li>AWG 或 DAC 產生 baseband I/Q waveform。</li>
+                                      <li>Local oscillator 產生 microwave carrier。</li>
+                                      <li>IQ mixer 將 baseband waveform 上變頻到 qubit frequency。</li>
+                                      <li>Room-temperature amplifier 或 variable attenuator 調整訊號功率。</li>
+                                      <li>訊號經由 coaxial cable 進入 dilution refrigerator。</li>
+                                      <li>在不同低溫級經過 attenuators、filters 與 thermal anchors。</li>
+                                      <li>最終到達晶片上的 drive line 或 flux line。</li>
+                                    </ol>
+                                
+                                    <h4>3.2 AWG, LO, and IQ Mixer</h4>
+                                    <table>
+                                      <thead>
+                                        <tr>
+                                          <th>元件</th>
+                                          <th>功能</th>
+                                          <th>對量子控制的影響</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        <tr>
+                                          <td>AWG / DAC</td>
+                                          <td>產生任意波形與 pulse envelope</td>
+                                          <td>決定 pulse shape、gate timing 與脈衝解析度</td>
+                                        </tr>
+                                        <tr>
+                                          <td>Local Oscillator</td>
+                                          <td>提供微波載波頻率</td>
+                                          <td>影響 frequency accuracy 與 phase noise</td>
+                                        </tr>
+                                        <tr>
+                                          <td>IQ Mixer</td>
+                                          <td>將 I/Q 訊號上變頻至微波頻段</td>
+                                          <td>決定 amplitude、phase 與 sideband quality</td>
+                                        </tr>
+                                        <tr>
+                                          <td>Clock Reference</td>
+                                          <td>同步多台儀器</td>
+                                          <td>影響 multi-qubit gate timing 與 phase coherence</td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                
+                                    <p>
+                                      IQ mixer 的校準非常重要。
+                                      若 I/Q imbalance、LO leakage 或 sideband suppression 不佳，可能造成 unwanted drive、
+                                      phase error 或 off-resonant excitation，進而降低 gate fidelity。
+                                    </p>
+                                
+                                    <h4>3.3 Attenuators</h4>
+                                    <p>
+                                      Attenuator 是低溫輸入鏈路中的重要元件。
+                                      它一方面降低訊號功率，避免過強微波進入晶片；
+                                      另一方面也吸收從高溫端傳來的熱雜訊，使線路逐級熱化。
+                                    </p>
+                                
+                                    <p>
+                                      常見設計會在不同溫度級放置多個 attenuators，例如在 4 K、Still、Cold Plate 與 Mixing Chamber
+                                      各放置部分衰減量，使室溫熱雜訊逐步被低溫環境取代。
+                                    </p>
+                                
+                                    <h4>Attenuator 設計考量</h4>
+                                    <ul>
+                                      <li>總衰減量需足以降低 room-temperature thermal noise。</li>
+                                      <li>各溫度級衰減量需符合冷卻功率限制。</li>
+                                      <li>過大衰減會要求室溫輸出功率更高，可能增加失真與串擾。</li>
+                                      <li>attenuator 本身需良好熱錨定，否則不能有效降低雜訊溫度。</li>
+                                    </ul>
+                                
+                                    <h4>3.4 Filters</h4>
+                                    <p>
+                                      Filters 用於限制進入晶片的頻譜內容，阻擋高頻雜訊、紅外輻射與不需要的帶外訊號。
+                                      在超導量子系統中，常見 filter 包含 low-pass filter、band-pass filter、Eccosorb filter、
+                                      infrared filter、RC filter 與 copper-powder filter。
+                                    </p>
+                                
+                                    <table>
+                                      <thead>
+                                        <tr>
+                                          <th>Filter 類型</th>
+                                          <th>主要功能</th>
+                                          <th>常見位置</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        <tr>
+                                          <td>Low-Pass Filter</td>
+                                          <td>阻擋高頻雜訊</td>
+                                          <td>DC flux line、bias line</td>
+                                        </tr>
+                                        <tr>
+                                          <td>Band-Pass Filter</td>
+                                          <td>只允許特定微波頻段通過</td>
+                                          <td>Drive line、readout line</td>
+                                        </tr>
+                                        <tr>
+                                          <td>Eccosorb Filter</td>
+                                          <td>吸收紅外與高頻輻射</td>
+                                          <td>Cold Plate、Mixing Chamber</td>
+                                        </tr>
+                                        <tr>
+                                          <td>RC Filter</td>
+                                          <td>抑制低頻線路中的高頻雜訊</td>
+                                          <td>DC bias line</td>
+                                        </tr>
+                                        <tr>
+                                          <td>Copper-Powder Filter</td>
+                                          <td>提供寬頻高頻衰減</td>
+                                          <td>低溫 DC 或低頻控制線</td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                
+                                    <h4>3.5 Pulse Distortion and Pre-Distortion</h4>
+                                    <p>
+                                      控制脈衝從室溫傳到晶片時，會經過許多線路與元件。
+                                      這些元件可能造成頻率依賴損耗、群延遲、反射、非線性與相位失真。
+                                      因此，送到晶片上的實際波形可能與 AWG 輸出的理想波形不同。
+                                    </p>
+                                
+                                    <p>
+                                      為了補償這些效應，可以使用 predistortion 技術。
+                                      其概念是在室溫端預先修改輸入波形，使其經過系統傳遞函數後，在晶片端形成接近理想的波形。
+                                    </p>
+                                
+                                    <div class="note">
+                                      <h4>核心觀念</h4>
+                                      <p>
+                                        量子閘不是只由 pulse sequence 決定，而是由「儀器輸出波形 × 線路傳遞函數 × 晶片響應」
+                                        共同決定。高保真度控制需要把整條控制鏈視為一個可校準的動態系統。
+                                      </p>
+                                    </div>
+                                  </section><section class="module">
+                                    <div class="qh-section">
+                                      <h3>五、單元 4：讀出鏈路與量子限制放大器</h3>
+                                    </div>
+                                
+                                    <h4>4.1 Why Readout Needs Amplification</h4>
+                                    <p>
+                                      超導量子位元的讀出訊號非常微弱，通常只包含少量微波 photon 的資訊。
+                                      若直接把訊號傳到室溫放大器，沿途損耗與放大器雜訊會淹沒 qubit-state-dependent signal。
+                                      因此，讀出鏈路需要在低溫端進行低雜訊放大。
+                                    </p>
+                                
+                                    <p>
+                                      一條典型 readout chain 包含：
+                                    </p>
+                                
+                                    <ol>
+                                      <li>室溫產生 readout pulse。</li>
+                                      <li>Readout pulse 經由低溫輸入線進入晶片。</li>
+                                      <li>Readout resonator 根據 qubit state 改變反射或穿透訊號。</li>
+                                      <li>輸出訊號經由 circulator 或 isolator 與晶片隔離。</li>
+                                      <li>Quantum-limited amplifier 在低溫端放大訊號。</li>
+                                      <li>HEMT amplifier 在 4 K 級提供進一步放大。</li>
+                                      <li>室溫 electronics 進行 downconversion、digitization 與 state discrimination。</li>
+                                    </ol>
+                                
+                                    <h4>4.2 Circulators and Isolators</h4>
+                                    <p>
+                                      Circulator 與 isolator 是 readout chain 中用來控制訊號方向的重要元件。
+                                      它們可以讓從晶片出來的訊號前往放大器，同時阻擋放大器反向雜訊進入晶片。
+                                    </p>
+                                
+                                    <table>
+                                      <thead>
+                                        <tr>
+                                          <th>元件</th>
+                                          <th>功能</th>
+                                          <th>在讀出鏈中的角色</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        <tr>
+                                          <td>Circulator</td>
+                                          <td>讓微波訊號沿特定方向在不同 port 間傳遞</td>
+                                          <td>將 readout output 導向 amplifier，隔離反向雜訊</td>
+                                        </tr>
+                                        <tr>
+                                          <td>Isolator</td>
+                                          <td>允許單向傳輸並吸收反向訊號</td>
+                                          <td>保護 qubit 免受 amplifier backaction</td>
+                                        </tr>
+                                        <tr>
+                                          <td>Directional Coupler</td>
+                                          <td>取樣或注入特定方向的訊號</td>
+                                          <td>用於校準、pump tone injection 或訊號監測</td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                
+                                    <h4>4.3 HEMT Amplifier</h4>
+                                    <p>
+                                      HEMT amplifier 通常安裝在 4 K stage，提供高增益與相對低雜訊的放大。
+                                      然而，對單次量子態讀出而言，HEMT amplifier 的雜訊溫度仍然偏高。
+                                      因此，在高保真度讀出中，通常需要在 HEMT 前方加入 quantum-limited amplifier。
+                                    </p>
+                                
+                                    <h4>4.4 Quantum-Limited Amplifiers</h4>
+                                    <p>
+                                      Quantum-limited amplifier 是超導量子讀出的關鍵技術。
+                                      它能在接近量子極限的雜訊下放大微弱微波訊號，提高 single-shot readout fidelity。
+                                      常見類型包括 Josephson Parametric Amplifier、Josephson Parametric Converter、
+                                      Traveling-Wave Parametric Amplifier 與 Josephson Traveling-Wave Parametric Amplifier。
+                                    </p>
+                                
+                                    <table>
+                                      <thead>
+                                        <tr>
+                                          <th>放大器類型</th>
+                                          <th>特點</th>
+                                          <th>適用情境</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        <tr>
+                                          <td>JPA</td>
+                                          <td>高增益、窄頻、接近量子極限</td>
+                                          <td>少數 qubits 或窄頻讀出</td>
+                                        </tr>
+                                        <tr>
+                                          <td>JPC</td>
+                                          <td>三波混頻，可實現 phase-sensitive 或 phase-preserving amplification</td>
+                                          <td>高靈敏度讀出與微波量子光學實驗</td>
+                                        </tr>
+                                        <tr>
+                                          <td>TWPA</td>
+                                          <td>寬頻、多模式放大</td>
+                                          <td>多 qubit multiplexed readout</td>
+                                        </tr>
+                                        <tr>
+                                          <td>JTWPA</td>
+                                          <td>以 Josephson junction array 實現 traveling-wave amplification</td>
+                                          <td>大規模量子處理器讀出鏈</td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                
+                                    <h4>4.5 Signal-to-Noise Ratio and Readout Fidelity</h4>
+                                    <p>
+                                      讀出 fidelity 取決於 \(\ket{0}\) 與 \(\ket{1}\) 對應訊號分佈能否被清楚分辨。
+                                      若放大器雜訊太大、讀出時間太短、resonator response 太弱，兩個分佈會重疊，
+                                      造成 state assignment error。
+                                    </p>
+                                
+                                    <p>
+                                      提高 readout fidelity 的方法包含：
+                                    </p>
+                                
+                                    <ul>
+                                      <li>增加 dispersive shift \(\chi\)，使兩個 qubit states 對應的 resonator response 更可分辨。</li>
+                                      <li>使用 quantum-limited amplifier 提高 signal-to-noise ratio。</li>
+                                      <li>最佳化 readout pulse amplitude 與 duration。</li>
+                                      <li>降低 readout crosstalk 與 resonator frequency collision。</li>
+                                      <li>使用 Purcell filter 兼顧 fast readout 與 qubit \(T_1\)。</li>
+                                    </ul>
+                                
+                                    <h4>4.6 Multiplexed Readout</h4>
+                                    <p>
+                                      大規模量子晶片不可能為每個 qubit 配置完全獨立的讀出線路。
+                                      因此，多個 readout resonators 常被設計在不同頻率，並耦合到同一條 feedline，
+                                      透過 frequency multiplexing 同時讀出多個 qubits。
+                                    </p>
+                                
+                                    <p>
+                                      Multiplexed readout 的挑戰包括：
+                                    </p>
+                                
+                                    <ul>
+                                      <li>readout resonator frequencies 必須足夠分離，避免頻率重疊。</li>
+                                      <li>同一條 feedline 上的訊號可能產生 crosstalk。</li>
+                                      <li>總讀出功率可能導致放大器飽和。</li>
+                                      <li>多 qubit 同時讀出時，需要更複雜的 state discrimination。</li>
+                                      <li>頻率配置必須與 qubit frequencies、Purcell filters 與封裝模式共同考慮。</li>
+                                    </ul>
+                                
+                                    <div class="learning-check">
+                                      <h4>學習檢核</h4>
+                                      <ol>
+                                        <li>為什麼超導 qubit 讀出需要低溫放大器？</li>
+                                        <li>Circulator 與 isolator 如何保護量子晶片？</li>
+                                        <li>Quantum-limited amplifier 與 HEMT amplifier 的功能差異是什麼？</li>
+                                        <li>Multiplexed readout 為什麼對大規模量子晶片很重要？</li>
+                                      </ol>
+                                    </div>
+                                  </section>
+  <section class="module">
+    <div class="qh-section">
+      <h3>課堂整合與驗收</h3>
+    </div>
+    <p><strong>研討問題：</strong>由目標 readout time/fidelity 反推 resonator bandwidth、第一級 amplifier、總 gain、ADC bandwidth 與 multiplexing 限制。</p>
+    <p><strong>完成條件：</strong>學生必須留下可檢查的推導、關係圖、比較表或 architecture decision，並能說明其物理假設與工程代價。</p>
+  </section>
+  <section class="module">
+    <div class="qh-section">
+      <h3>核心與延伸閱讀</h3><ul class="qh-reading"><li><a href="https://arxiv.org/abs/2005.12667" target="_blank" rel="noopener">Circuit Quantum Electrodynamics</a><span>A. Blais et al., Reviews of Modern Physics 93, 025005 (2021).</span><em>Jaynes–Cummings、dispersive regime、讀出與環境耦合。</em></li><li><a href="https://arxiv.org/abs/1806.07862" target="_blank" rel="noopener">Engineering Cryogenic Setups for 100-Qubit Scale Superconducting Circuit Systems</a><span>S. Krinner et al., EPJ Quantum Technology 6, 2 (2019).</span><em>drive、flux、output lines 的熱負載與工程設計。</em></li><li><a href="https://research.google/pubs/analogmixed-signal-integrated-circuits-for-quantum-computing/" target="_blank" rel="noopener">Analog/Mixed-Signal Integrated Circuits for Quantum Computing</a><span>J. C. Bardin, IEEE BCICTS (2020).</span><em>百萬通道尺度下的控制電子與 cryogenic electronics 問題。</em></li><li><a href="https://doi.org/10.1063/1.5089550" target="_blank" rel="noopener">A Quantum Engineer&#x27;s Guide to Superconducting Qubits</a><span>P. Krantz et al., Applied Physics Reviews 6, 021318 (2019).</span><em>控制、coherence、readout 與工程參數的主幹 review。</em></li></ul>
+    </div>
+  </section>
+</section>
+
+
+                                <div class="post-meta">
+                                    <span class="post-author">
+                                        <a href="../About/Wang.html"><img class="img-res" src="../WebP/IMG_0964_2.webp" alt="">王培儒</a>
+                                    </span>
+                                    <span class="post-category">
+                                        <a href="../SCQ_advanced/main.html"><i class="fa fa-folder" aria-hidden="true"></i>PHYS598500</a>
+                                    </span>
+                                </div><!-- /.post-meta -->
+                            
+                                <div id="prev-next-nav" class="text-center">
+                                    <a class="btn btn-gray" href="T5-11.html">← 上一頁</a> 
+                                    <a class="btn btn-gray" href="T5-13.html">下一頁 →</a>
+                                </div>
+
+                                
+
+                            </div><!-- /.post-content -->
+                        </article><!-- /.blog-post -->
+                        <!--<div id="PostComments" class="post-comments">
+                            
+                            
+                            
+                        </div> /#PostComments -->
+                        <!--<div class="respond">
+                            <h3>Post a Comment</h3>
+                            <form class="form-horizontal">
+                                <input class="form-control" type="text" placeholder="Your Name*" required>
+                                <input class="form-control" type="email" placeholder="Your Email" required>
+                                <textarea class="form-control form-control-comment" type="text" placeholder="Your Comment*" required></textarea>
+                                <button class="btn btn-green">Add a comment</button>
+                            </form>    
+                        </div> /.respond -->
+                    </div>
+                    <aside class="col-md-3">
+                        <div class="sidebar">
+                            <div class="widget">
+                                <div id="lesson-list_2">
+                                <div class="lesson-link "><a href="main.html">QH-2026F v5 · 16週總覽</a></div>
+                                <div class="lesson-link "><a href="T1-1.html">Week 1 · 從量子計算模型到硬體操作</a></div>
+                                <div class="lesson-link "><a href="T2-2.html">Week 2 · 超導電路量子化與 Transmon 設計</a></div>
+                                <div class="lesson-link "><a href="T2-3.html">Week 3 · Fluxonium：從電路改造到設計取捨</a></div>
+                                <div class="lesson-link "><a href="T3-4.html">Week 4 · 單量子位元控制：從微波脈衝到旋轉座標</a></div>
+                                <div class="lesson-link "><a href="T3-5.html">Week 5 · 耦合 Hamiltonian、兩量子位元閘與 Tunable Coupler</a></div>
+                                <div class="lesson-link "><a href="T3-6.html">Week 6 · Circuit QED、Dispersive Readout 與量測鏈</a></div>
+                                <div class="lesson-link "><a href="T4-7.html">Week 7 · 量子處理器校準：Hamiltonian Identification 與 Drift</a></div>
+                                <div class="lesson-link "><a href="T4-8.html">Week 8 · Benchmarking、多量子位元誤差與可擴展校準</a></div>
+                                <div class="lesson-link "><a href="T4-9.html">Week 9 · 量子錯誤校正基礎：從物理誤差到 Stabilizer Syndrome</a></div>
+                                <div class="lesson-link "><a href="T4-10.html">Week 10 · Surface-Code Hardware Cycle：排程、解碼與 Logical-Qubit 資源</a></div>
+                                <div class="lesson-link "><a href="T5-11.html">Week 11 · Dilution Refrigerator、熱化與低溫線路預算</a></div>
+                                <div class="lesson-link active"><a href="T5-12.html">Week 12 · 微波控制、讀出電子與訊號完整性</a></div>
+                                <div class="lesson-link "><a href="T5-13.html">Week 13 · 封裝、EM Modes、佈線擴展與全系統整合</a></div>
+                                <div class="lesson-link "><a href="T6-14.html">Week 14 · 超導量子晶片製程與 Josephson Junction Process Module</a></div>
+                                <div class="lesson-link "><a href="T6-15.html">Week 15 · Materials Loss、製程變異、Yield 與 Design–Fab–Measure Loop</a></div>
+                                <div class="lesson-link "><a href="T7-16.html">Week 16 · 前沿架構與 Hardware-Aware Quantum System Capstone</a></div>
+                                </div>
+                            </div>
+                        </div></aside>
+                </div>
+            </div>
+        </section><!-- /.section-portfolio -->
+
+    </main><!-- /#main -->
+
+    <footer id="colophon" class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-4 col-xs-6">
+                    <a href="../index_ch.html" class="site-title">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
+                    <p>一起走進新時代的前沿科學與量子科技</p>
+                    </div>
+                <div class="col-lg-offset-4 col-md-3 col-sm-4 col-md-offset-2 col-sm-offset-0 col-xs-6 ">
+                    <p class="site-title">𝐾𝐸𝐸𝑃 𝐼𝑁 𝑇𝑂𝑈𝐶𝐻</p>
+                    <ul class="list-unstyled contact-links">
+                        <li><i class="fa fa-envelope" aria-hidden="true"></i><a href="mailto:info@insight-ihbar.com">info@insight-ihbar.com</a></li>
+                        <!--<li><i class="fa fa-phone" aria-hidden="true"></i><a href="tel:+37400800000">+374 (00) 80 00 00 </a></li>
+                        <li><i class="fa fa-fax" aria-hidden="true"></i><a href="+37400900000">+374 (00) 90 00 00</a></li>
+                        <li><i class="fa-solid fa-location-dot"></i><p>Hsinchu 300, Taiwan (R.O.C.)</p></li>-->
+                    </ul>
+                </div>
+                <!--<div class="clearfix visible-xs"></div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6">
+                    <h3>Featured links</h3>
+                    <ul class="list-unstyled">
+                        <li class="active"><a href="index_ch.html">Home</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="portfolio.html">Porfolio</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>-->
+            </div>
+        </div>
+        <div class="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-8">
+                        <div class="social-links">
+                            <!--<a class="twitter-bg" href="#"><i class="fab fa-twitter"></i></a>-->
+                            <!--<<a class="facebook-bg" href="https://www.facebook.com/people/Quantum-Perspectives/61576446849628/"><i class="fab fa-facebook"></i></a>-->
+                            <!--<a class="facebook-bg" href="https://www.facebook.com/people/%E9%87%8F%E5%AD%90%E9%81%A0%E8%A6%8BQuantum-Perspectives/61576883632888/"><i class="fab fa-facebook-f"></i></a>-->
+                            <!--<a class="pinterest" href="#"><i class="fa-solid fa-microscope"></i></a>-->
+                            <!--<a class="facebook-bg" href="https://www.facebook.com/people/Insight-hbar/61576811775374/"><i class="fab fa-facebook-f"></i></a>-->
+                            <a class="linkedin-bg" href="https://www.linkedin.com/company/insight-ihbar"><i class="fab fa-linkedin"></i></a>
+                        </div><!-- /.social-links -->
+                    </div>
+                    <div class="col-xs-4">
+                        <div class="text-right">
+                            <p><span style="font-size: 16px;">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</span></p>
+                            <p>All Rights Reserved</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.copyright -->
+    </footer><!-- /#footer -->
+
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="../assets/js/bootstrap-select.min.js"></script>
+    <script src="../assets/js/jquery.slicknav.min.js"></script>
+    <script src="../assets/js/jquery.countTo.min.js"></script>
+    <script src="../assets/js/jquery.shuffle.min.js"></script>
+    <script src="../assets/js/script.js"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  
+</body>
+</html>

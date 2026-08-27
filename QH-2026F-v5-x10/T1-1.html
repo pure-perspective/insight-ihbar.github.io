@@ -1,0 +1,1357 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N39VTY949N"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-N39VTY949N');
+</script>
+    <!-- Basic Page Needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <meta name="author" content="Peir-Ru Wang">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;1,300&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/20250525-icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/20250525-icon.png">
+
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/css/style.css" rel="stylesheet">
+    <link href="../assets/css/responsive.css" rel="stylesheet">
+
+    <title>Week 1 · 從量子計算模型到硬體操作 | QH-2026F v5</title>
+    <meta name="description" content="PHYS598500 第 1 週，120 分鐘進階課程：從量子計算模型到硬體操作">
+    <meta name="keywords" content="- 量子處理器
+- 超導量子位元
+- Qubit
+- 約瑟夫森接面
+- Transmon
+- Fluxonium
+- 量子計算
+- 量子硬體
+- 量子演算法
+- 量子晶片">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+<style>
+.qh-week-meta { margin: 20px 0; padding: 16px 18px; border-left: 4px solid #5f4b8b; background: #f6f4fa; }
+.qh-week-meta p { margin: 4px 0; }
+.qh-session-plan { width: 100%; margin: 18px 0 8px; border-collapse: collapse; }
+.qh-session-plan th, .qh-session-plan td { padding: 10px 12px; border: 1px solid #ddd; vertical-align: top; }
+.qh-session-plan th { background: #f4f4f4; }
+.qh-session-plan .qh-break td { color: #666; background: #fafafa; }
+.qh-total { text-align: right; font-weight: 700; }
+.qh-reading li { margin-bottom: 12px; }
+.qh-reading span, .qh-reading em { display: block; }
+.qh-week-list { padding-left: 0; list-style: none; }
+.qh-week-list li { margin: 0 0 13px; padding: 12px 15px; border-left: 4px solid #5f4b8b; background: #f7f7f7; }
+.qh-week-list a { font-weight: 700; }
+@media (max-width: 767px) { .qh-session-plan { display: block; overflow-x: auto; } }
+</style>
+
+
+<style id="qh-expanded-lecture-style">
+.qh-lecture-block { margin: 30px 0; padding: 22px 24px; border: 1px solid #ded8ea; background: #fff; }
+.qh-lecture-block > h3 { margin-top: 0; }
+.qh-board, .qh-worked-example, .qh-instructor-note, .qh-student-task { margin: 18px 0; padding: 16px 18px; }
+.qh-board { border-left: 4px solid #355c9a; background: #f3f7fc; }
+.qh-worked-example { border-left: 4px solid #8b5a2b; background: #fbf7f2; }
+.qh-instructor-note { border-left: 4px solid #5f4b8b; background: #f6f4fa; }
+.qh-student-task { border-left: 4px solid #2f7d58; background: #f2f8f5; }
+.qh-lecture-block li { margin-bottom: 8px; }
+.qh-timing { display: inline-block; margin-bottom: 10px; padding: 4px 9px; border-radius: 12px; background: #5f4b8b; color: #fff; font-size: 0.9em; }
+</style>
+
+<style id="qh-details-style">
+        details.dark-background {
+          background-color: #f5f5f5;
+          border: 1px solid #ddd;
+          padding: 10px;
+          border-radius: 5px;
+        }
+        details.dark-background summary {
+          cursor: pointer;
+          font-weight: bold;
+          background-color: #e0e0e0;
+          padding: 5px;
+          border-radius: 3px;
+        }
+      </style>
+
+</head>
+<body>
+
+    <header id="masthead" class="site-header">
+        <nav id="primary-navigation" class="site-navigation">
+            <div class="container">
+
+                <div class="navbar-header">                   
+                    <a href="../index_ch.html" class="site-title">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
+                </div><!-- /.navbar-header -->
+
+                <div class="collapse navbar-collapse" id="agency-navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="../index_ch.html">Home</a></li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">科普介紹<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                              <li><a href="../SCQ_elementary/main.html">超導量子位元(科普版)</a></li>
+                              <li><a href="../SCQ_advanced/main.html">超導量子位元(進階版)</a></li>
+                              <li><a href="../SpQ/main.html">半導體自旋量子位元</a></li>
+                            </ul>
+                        </li>
+                        <!--<li class="active"><a href="../SCQ_elementary/main.html">科普介紹</a></li>-->
+                        <li class="active"><a href="../QC_hardware/main.html">硬體導論</a></li>
+                        <li><a href="../QID/main.html">量子產業群像錄</a></li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">研討會筆記<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                <li><a href="../ASW2026/main.html">2026中研院超導量子電腦Workshop</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">量子諮詢<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                <li><a href="https://www.quantum-perspectives.com/About/main.html">量子遠見科技：諮詢服務</a></li>
+                                <li><a href="../About/main.html">關於我們</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="../index.html">English</a></li>                        
+                    </ul>
+                </div>
+
+            </div>   
+        </nav><!-- /.site-navigation -->
+    </header><!-- /#mastheaed -->
+
+    <div id="hero" class="hero overlay subpage-hero blog-hero">
+        <div class="hero-content">
+            <div class="hero_2-text">
+                <h1>超導量子電腦架構</h1>
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="../index_ch.html">Home</a></li>
+                  <li class="breadcrumb-item"><a href="../SCQ_advanced/main.html">PHYS598500</a></li>
+                  <!--<li class="breadcrumb-item active">約瑟夫森節</li>-->
+                </ol>
+            </div><!-- /.hero-text -->
+        </div><!-- /.hero-content -->
+    </div><!-- /.hero -->
+
+    <main id="main" class="site-main">
+
+        <section class="site-section subpage-site-section section-blog">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                        <article class="blog-post">
+                            <!--<img src="../assets/img/portfolio-1.jpg" class="img-res" alt="">-->
+                            <div class="post-content">
+
+<section id="week-1" class="course-theme">
+      <div style="text-align: center;">
+      <p class="theme-label">PHYS598500 · Week 1 · T1</p>
+      <h2>從量子計算模型到硬體操作</h2>
+      <h3>From Quantum Computation Models to Hardware Operations</h3>
+    </div>
+  <section class="course-overview">
+    <h3>本週定位</h3>
+    <div class="qh-week-meta">
+      <p><strong>課程長度：</strong>120 分鐘</p>
+      <p><strong>核心問題：</strong>一個量子演算法步驟，如何一路落到可控制、可量測的硬體操作？</p>
+      <p><strong>難度：</strong>先備整合／跨層定位</p>
+      <p><strong>先備：</strong>線性代數、基礎量子力學、基本邏輯閘</p>
+      <p><strong>原始教材來源：</strong>T1 modules 1, 2, 3, 4, 5, 6, 7</p>
+    </div>
+    <h3>學習成果</h3><ul><li>建立 algorithm → logical operation → unitary → Hamiltonian → waveform → measurement 的跨層地圖。</li><li>理解封閉量子演化的 unitary／reversible 條件，以及 measurement、reset 的不同角色。</li><li>辨認每一抽象層新增的資源、控制自由度與失效模式。</li></ul>
+    <h3>兩小時授課配置</h3><table class="qh-session-plan"><thead><tr><th>時間</th><th>形式</th><th>授課內容與當段產出</th></tr></thead><tbody><tr><td>0–10 分</td><td>定位／診斷</td><td><strong>一個量子演算法步驟，究竟要求硬體做什麼？</strong><br>以一個問題確認先備與本週接口。</td></tr><tr><td>10–35 分</td><td>概念主線 A</td><td><strong>為什麼封閉量子演化必須是 unitary、因而可逆？</strong><br>建立第一組物理概念、變數與工程語言。</td></tr><tr><td>35–60 分</td><td>推導／定量</td><td><strong>一個 logical gate 如何變成可分解的 unitary operation？</strong><br>走完關鍵公式或定量關係，不停留在名詞介紹。</td></tr><tr class="qh-break"><td>60–70 分</td><td>休息</td><td><strong>Break</strong><br>保留兩小時課程的注意力恢復窗口。</td></tr><tr><td>70–95 分</td><td>概念主線 B</td><td><strong>一個 unitary operation 如何由 time-dependent Hamiltonian 產生？</strong><br>把物理結果接到元件、控制或系統架構。</td></tr><tr><td>95–110 分</td><td>案例／研討</td><td><strong>Measurement、reset 與 classical feedback 在哪裡接上 unitary chain？</strong><br>學生留下可檢查的圖、表、推導或 architecture decision。</td></tr><tr><td>110–120 分</td><td>整合／驗收</td><td><strong>後續課程將沿著哪些抽象層追蹤誤差與資源？</strong><br>用 exit question 檢查是否能跨層解釋。</td></tr></tbody></table><p class="qh-total">合計：120 分鐘</p>
+  </section>
+<!-- QH_EXPANDED_LECTURE_START -->
+<section class="qh-lecture-block" id="week1-full-lecture">
+  <span class="qh-timing">延伸備課資料庫 · 依六問選用</span>
+  <div class="qh-section">
+  <h3>Week 1 延伸材料：從「函數」一路走到「可控制的物理演化」</h3>
+</div>
+  <p>這一週不是再複習一次量子資訊導論，而是建立整門課後續會反覆使用的跨層語言。學生最後必須能沿著同一個問題往下追：我們想計算哪一個函數？這個函數如何嵌入可逆映射？可逆映射如何表示為 unitary circuit？unitary 又如何由實際的時間相依 Hamiltonian、控制波形與量測鏈實現？如果其中任何一層被省略，就容易把「抽象演算法可以寫出來」誤認成「硬體已經能可靠執行」。</p>
+  <p>以下保留 Landauer principle、Bennett reversible computation 與 adiabatic model 作為延伸備課材料；表定主線只沿六個核心問題建立 algorithm → unitary → Hamiltonian → control → measurement 的接口，不要求在第一週完整講完所有計算模型。</p>
+  <div class="qh-instructor-note">
+    <h4>教師使用方式</h4>
+    <p>「黑板推導」是應實際走完的內容；「課堂任務」應留出學生書寫或討論時間；「教師解答」用來收束學生容易混淆的層次。若學生先備較弱，可以刪減複雜度理論的延伸，但不要刪掉 reversible embedding 與 logical-to-physical chain，因為那是本週真正的接口。</p>
+  </div>
+</section>
+
+<section class="qh-lecture-block" id="week1-opening">
+  <span class="qh-timing">0–10 分鐘</span>
+  <h3>一、開場診斷：計算不是漂浮在物理世界之外的符號</h3>
+  <p>先寫下一個看似單純的運算：輸入兩個 bit，輸出它們的 AND，亦即 \(f(a,b)=a\land b\)。在數學上，這只是一張四列的 truth table；在程式中，它可能只是一個 operator；但在真實裝置裡，我們還必須指定輸入由什麼自由度承載、系統如何演化、輸出在哪個時間被讀出、熱與雜訊流向哪裡，以及相同操作能否在有限誤差下重複執行。</p>
+  <p>因此「計算」至少同時包含三種問題。第一，<strong>語義問題</strong>：什麼輸入應對應到什麼輸出？第二，<strong>表示問題</strong>：我們用 bit、qubit、register、circuit 或 Hamiltonian 的哪一種形式編碼？第三，<strong>實現問題</strong>：哪個物理系統與控制程序真的產生所需轉換？這三層可以互相對應，但不能直接畫上等號。</p>
+  <div class="qh-student-task">
+    <h4>開場題：三分鐘個人書寫，兩分鐘全班收斂</h4>
+    <p>一個 NAND gate 已經能生成任意 Boolean function。那麼，為什麼我們不能只說「NAND 是 universal，所以量子電腦也只要實作 NAND」？請至少指出一個數學障礙與一個物理障礙。</p>
+  </div>
+  <div class="qh-instructor-note">
+    <h4>教師解答</h4>
+    <p>數學障礙是 NAND 為 many-to-one mapping：輸出 0 對應三個可能輸入，不能由輸出唯一恢復輸入，因此無法直接成為封閉量子系統的 unitary evolution。物理障礙則是「truth table 正確」仍未指定能階、耦合、脈衝、耗散與量測。這不是說量子電腦不能計算 NAND，而是 NAND 必須被<strong>嵌入更大的可逆映射</strong>，例如 \((a,b,c)\mapsto(a,b,c\oplus ab)\)，再由可控制的物理演化實現。</p>
+  </div>
+  <div class="qh-board">
+    <h4>本週總鏈條</h4>
+    <p>
+      <p>\[
+        f(x)\ \longrightarrow\ U_f:\ket{x,y}\mapsto\ket{x,y\oplus f(x)}
+        \ \longrightarrow\ \{G_1,G_2,\ldots,G_m\}
+        \ \longrightarrow\ H(t)
+        \ \longrightarrow\ \text{control waveform}
+        \ \longrightarrow\ \text{measurement record}.
+      \]</p>
+    </p>
+    <p>箭頭不是同義反覆。每跨一層，都會新增不同的設計自由度與失效模式。</p>
+  </div>
+</section>
+
+<section class="qh-lecture-block" id="week1-models">
+  <span class="qh-timing">10–35 分鐘</span>
+  <h3>二、表示、轉換與物理實現：四種計算描述不能混在一起</h3>
+  <h4>2.1 Boolean map：只規定輸入與輸出</h4>
+  <p>一個 Boolean function 是 \(f:\{0,1\}^n\to\{0,1\}^m\)。它告訴我們哪些 bit string 對應到哪些輸出，卻沒有規定計算順序、暫存空間、能耗或硬體。例如 \(f(a,b)=a\land b\) 的 truth table 是：</p>
+  <table>
+    <thead><tr><th>\(a\)</th><th>\(b\)</th><th>\(a\land b\)</th><th>由輸出能否找回輸入？</th></tr></thead>
+    <tbody>
+      <tr><td>0</td><td>0</td><td>0</td><td rowspan="3">不能：三個輸入合併成同一輸出</td></tr>
+      <tr><td>0</td><td>1</td><td>0</td></tr>
+      <tr><td>1</td><td>0</td><td>0</td></tr>
+      <tr><td>1</td><td>1</td><td>1</td><td>只有這一列可辨識</td></tr>
+    </tbody>
+  </table>
+  <p>若定義域與值域大小相同，有限集合上的可逆函數必須是一個 permutation：每個輸入只有一個輸出，每個輸出也只有一個前像。NOT 是兩個狀態的交換，因此可逆；AND、OR、NAND 則丟失了輸入資訊，因此不是 permutation。</p>
+
+  <h4>2.2 Reversible circuit：保留足夠資訊，使映射成為一對一</h4>
+  <p>CNOT 的作用是 \((a,b)\mapsto(a,a\oplus b)\)。因為再作用一次 CNOT 就回到原輸入，所以 \( \mathrm{CNOT}^{-1}=\mathrm{CNOT}\)。Toffoli gate 則為：</p>
+  <p>
+    <p>\[
+      T(a,b,c)=(a,b,c\oplus ab).
+    \]</p>
+  </p>
+  <p>當第三個 bit 初始化為 \(c=0\)，輸出第三位正是 \(ab\)，但 \(a,b\) 沒有被刪除。因此 Toffoli 不是「直接把兩個輸入壓成一個 AND」，而是在更大的狀態空間中保存輸入，將 AND 寫進 target bit。這個額外空間不是形式上的裝飾，而是可逆化的代價。</p>
+  <table>
+    <thead><tr><th>輸入 \((a,b,0)\)</th><th>Toffoli 輸出</th><th>第三位</th></tr></thead>
+    <tbody>
+      <tr><td>000</td><td>000</td><td>0</td></tr>
+      <tr><td>010</td><td>010</td><td>0</td></tr>
+      <tr><td>100</td><td>100</td><td>0</td></tr>
+      <tr><td>110</td><td>111</td><td>1</td></tr>
+    </tbody>
+  </table>
+
+  <h4>2.3 Unitary circuit：把 permutation 延伸到複振幅的線性空間</h4>
+  <p>古典 reversible gate 對 computational basis 做 permutation；量子 gate 則必須對任意 superposition 線性作用並保持內積。若 \(U^\dagger U=I\)，則對任何 \(\ket{\psi},\ket{\phi}\)：</p>
+  <p>
+    <p>\[
+      \langle U\psi\vert U\phi\rangle
+      =\langle\psi\vert U^\dagger U\vert\phi\rangle
+      =\langle\psi\vert\phi\rangle.
+    \]</p>
+  </p>
+  <p>因此 norm、正交性與可區分性都被保存。若兩個正交輸入被送到完全相同的輸出，輸出內積會由 0 變成 1，違反 unitary 的內積保存。這就是 many-to-one Boolean gate 不能直接當量子閘的精確理由。</p>
+
+  <h4>2.4 Hamiltonian evolution：unitary 還必須能被裝置產生</h4>
+  <p>抽象 circuit 把演化切成 \(U=G_m\cdots G_2G_1\)；真實封閉系統則由 Schrödinger equation 決定：</p>
+  <p>
+    <p>\[
+      i\hbar\frac{d}{dt}\ket{\psi(t)}=H(t)\ket{\psi(t)},
+      \qquad
+      U(t)=\mathcal T\exp\!\left[-\frac{i}{\hbar}\int_0^tH(\tau)d\tau\right].
+    \]</p>
+  </p>
+  <p>指定 \(U\) 並不等於已經指定 \(H(t)\)。同一個 logical gate 可以由不同 pulse shape、frame、coupling mechanism 與 duration 實現；它們有不同的 leakage、decoherence、crosstalk 與 calibration burden。後續課程談 transmon、microwave control 與 readout 時，都會回到這個差異。</p>
+
+  <h4>2.5 可逆化之後，資源問題才真正開始</h4>
+  <p>把不可逆函數寫成 \(U_f\) 只證明「存在一個可逆表示」，沒有說它很便宜。設一個古典程式包含許多中間變數 \(g_1(x),g_2(x),\ldots\)。最直觀的可逆模擬會保留每一步 history，空間需求可能隨步數增加；若頻繁 uncompute，可以回收 ancilla，卻會增加 circuit depth。於是至少出現一個 space–time trade-off：保留更多工作 register 可減少重算，積極清理 register 則節省 qubit 但需要額外 gate。</p>
+  <p>在 fault-tolerant quantum computing 中，這個 trade-off 又會被放大。logical qubit 不是一顆 physical qubit；非 Clifford operation 的成本也可能遠高於 Clifford gate。因此「兩個演算法都有 polynomial complexity」不足以判斷哪一個能先實作。實際 resource estimate 必須追蹤 logical qubit、T count、T depth、connectivity、error-correction cycle 與允許失敗率。這門硬體課不會在第一週完成 fault-tolerant costing，但從現在開始就不把 ancilla 與抽象 gate 當成免費符號。</p>
+  <div class="qh-worked-example">
+    <h4>微型例題：同一個函數的兩種資源帳</h4>
+    <p>若要依序計算 \(g=a\oplus b\)、\(h=g\land c\)，方案 A 保留 \(g\) 到最後，需要一個 workspace，但不必重算；方案 B 在使用 \(g\) 後立刻 uncompute，若後面再次需要 \(g\)，便要重新施作兩個 CNOT。兩者輸出的函數相同，卻有不同的峰值 workspace、總 gate count 與 error exposure。學生之後看到 compiler 最佳化時，應先問它到底在最小化哪個 cost function。</p>
+  </div>
+
+  <div class="qh-student-task">
+    <h4>課堂任務：分類而不是背名詞（5 分鐘）</h4>
+    <p>將下列敘述分到「語義／可逆邏輯／unitary circuit／物理控制」：一、求 \(f(x)\)；二、加入 ancilla 保存輸入；三、用 CNOT 與單量子位元 rotation 分解；四、用 20 ns microwave pulse 執行 \(X_{\pi/2}\)；五、以 threshold 將 resonator IQ point 判成 0 或 1。請再指出哪兩個步驟最容易在軟體模擬中被忽略。</p>
+  </div>
+  <div class="qh-instructor-note">
+    <h4>教師解答</h4>
+    <p>依序是語義、可逆邏輯、unitary circuit、物理控制、量測與古典後處理。第四、第五步最容易被抽象模擬遮蔽；但第二步的 ancilla 與 garbage management 也會直接改變 qubit count 和 circuit depth，不能當成免費資源。</p>
+  </div>
+</section>
+
+<section class="qh-lecture-block" id="week1-landauer">
+  <span class="qh-timing">35–60 分鐘</span>
+  <h3>三、從資訊抹除到可逆計算：Landauer 與 Bennett 解決的是不同問題</h3>
+  <h4>3.1 為什麼 reset 是關鍵，而不是某一種 transistor 特別耗電</h4>
+  <p>考慮一個記憶體 bit，初始時 0 與 1 各以二分之一機率出現。對這個 ensemble 而言，Shannon entropy 為：</p>
+  <p>
+    <p>\[
+      H(X)=-\sum_xp(x)\log_2p(x)
+      =-\frac12\log_2\frac12-\frac12\log_2\frac12
+      =1\ \text{bit}.
+    \]</p>
+  </p>
+  <p>執行 RESET-TO-0 後，兩種初始狀態都進入 0，輸出分布變成 \(p(0)=1,p(1)=0\)，資訊熵降為 0。對 memory subsystem 而言，我們丟失了一 bit 的資訊。如果整體遵守第二定律，這個 entropy reduction 不可能無代價地消失；在準靜態、等溫且理想化的極限中，環境至少必須得到：</p>
+  <p>
+    <p>\[
+      \Delta S_{\mathrm{env}}\ge k_B\ln 2,
+      \qquad
+      Q_{\min}=T\Delta S_{\mathrm{env}}\ge k_BT\ln2.
+    \]</p>
+  </p>
+  <p>這個下界不等於「每一次邏輯閘必然耗散恰好 \(k_BT\ln2\)」。真實 CMOS switching energy 通常遠高於此；可逆邏輯也仍可能因有限速度、阻尼、漏電與控制失誤而耗能。Landauer principle 指向的是更精確的命題：<strong>邏輯上不可逆的資訊抹除，具有無法藉由單純改善工程效率而消失的最低熱力學代價</strong>。</p>
+
+  <div class="qh-worked-example">
+    <h4>完整例題 A：300 K 與 10 mK 的 Landauer bound</h4>
+    <p>取 \(k_B=1.380649\times10^{-23}\,\mathrm{J/K}\)。在室溫 \(T=300\,\mathrm K\)：</p>
+    <p>
+      <p>\[
+        Q_{\min}=k_BT\ln2
+        \approx(1.380649\times10^{-23})(300)(0.693)
+        \approx2.87\times10^{-21}\,\mathrm J.
+      \]</p>
+    </p>
+    <p>在 dilution refrigerator 的 \(T=10\,\mathrm{mK}\) 假想熱浴中，形式上的下界變成約 \(9.57\times10^{-26}\,\mathrm J\)。但不能因此推論「低溫量子電腦的總能耗必然極小」。真正系統還包括室溫 microwave electronics、attenuation chain、amplifier、cryocooler 與 refrigerator coefficient of performance。Landauer bound 是資訊抹除的理論下界，不是整機功耗估算公式。</p>
+  </div>
+
+  <h4>3.2 Logical reversibility 不等於 thermodynamic reversibility</h4>
+  <p>logical reversibility 問的是：給定輸出，是否能唯一找回輸入？thermodynamic reversibility 問的是：整個實際過程能否在趨近準靜態的極限中，使總 entropy production 趨近零？前者是一個 mapping property，後者是 trajectory 與 dissipation property。一個可逆 truth table 如果被快速、強阻尼地切換，仍然可以高度耗能；反過來，一個工程上非常省電的不可逆 gate，仍不會消除 reset 的理論下界。</p>
+  <p>這個區分對量子硬體尤其重要。封閉系統的 Schrödinger evolution 是 unitary，但實驗裝置必須初始化、量測、重置、做 classical feedback，並持續與環境交換能量。說「量子演化可逆」不能直接推出「整台量子電腦沒有耗散」。</p>
+
+  <h4>3.3 非均勻 bit 的抹除成本：不是永遠恰好一個 bit</h4>
+  <p>若 memory 為 1 的機率是 \(p\)，為 0 的機率是 \(1-p\)，初始 Shannon entropy 是 binary entropy：</p>
+  <p>
+    <p>\[
+      H_2(p)=-p\log_2p-(1-p)\log_2(1-p).
+    \]</p>
+  </p>
+  <p>理想 reset 後 entropy 為零，因此最低環境 entropy increase 對應 \(k_B\ln2\,H_2(p)\)。當 \(p=1/2\) 時回到 \(k_B\ln2\)；當 \(p\to0\) 或 \(1\) 時，ensemble 原本幾乎已知，理論下界也趨近零。這提醒我們：Landauer cost 與被丟棄的資訊量有關，而不是看到一個電路符號就機械地乘上固定常數。</p>
+  <p>同樣地，若 reset protocol 知道輸入分布，可設計偏壓能景以接近較低的平均 work；若控制者不知道 individual microstate，仍必須對 ensemble 做帳。這裡的關鍵角色是 logical information 與 thermodynamic entropy 的連接條件，而不是把 Shannon entropy 與熱力學 entropy 在任何情況下直接視為同一個量。</p>
+
+  <h4>3.4 Bennett 的 compute–copy–uncompute</h4>
+  <p>若直接執行一串古典計算並覆寫中間 register，舊資訊會被丟棄。Bennett 的核心方法是先把每一步改寫成可逆演化、暫時保存 history，得到結果後將結果複製到乾淨 register，最後反向執行原計算，把工作空間恢復到初始狀態：</p>
+  <ol>
+    <li><strong>Compute：</strong>\((x,0,0)\mapsto(x,g(x),f(x))\)。</li>
+    <li><strong>Copy：</strong>\((x,g,f,0)\mapsto(x,g,f,f)\)。古典 basis state 可以用 CNOT 複製；這不是複製未知量子態。</li>
+    <li><strong>Uncompute：</strong>對前三個 register 施作 \(U_f^{-1}\)，得到 \((x,0,0,f(x))\)。</li>
+  </ol>
+  <p>最後只有需要的輸入與輸出被保留，暫存 garbage 回到標準狀態，因而可以重複使用。代價是額外空間、額外 circuit depth，以及必須有足夠精確的 inverse operation。這套思想至今仍是量子演算法設計的基本語法：oracle、ancilla 與 arithmetic circuit 如果不做 uncomputation，garbage 會和答案糾纏，破壞後續 interference。</p>
+
+  <div class="qh-worked-example">
+    <h4>完整例題 B：計算 \(f(a,b)=a\oplus b\)，並清除暫存 garbage</h4>
+    <p>準備四個 bit \((a,b,g,y)\)，其中 \(g=0,y=0\)。先以兩個 CNOT 將 parity 寫入 \(g\)：</p>
+    <p>
+      <p>\[
+        (a,b,0,0)
+        \xrightarrow{\mathrm{CNOT}_{a\to g}}
+        (a,b,a,0)
+        \xrightarrow{\mathrm{CNOT}_{b\to g}}
+        (a,b,a\oplus b,0).
+      \]</p>
+    </p>
+    <p>再把 \(g\) 複製到輸出 \(y\)：\((a,b,a\oplus b,0)\to(a,b,a\oplus b,a\oplus b)\)。若此時直接丟棄 \(g\)，那就是一次資訊抹除。正確作法是反向執行原兩個 CNOT：</p>
+    <p>
+      <p>\[
+        (a,b,a\oplus b,a\oplus b)
+        \xrightarrow{\mathrm{CNOT}_{b\to g}}
+        (a,b,a,a\oplus b)
+        \xrightarrow{\mathrm{CNOT}_{a\to g}}
+        (a,b,0,a\oplus b).
+      \]</p>
+    </p>
+    <p>輸出留下，工作 bit 回到 0。由於 CNOT 是 self-inverse，反向 circuit 在本例很容易看見；一般 \(U\) 則必須以相反順序施作每個 \(G_i^{-1}\)。</p>
+  </div>
+
+  <div class="qh-student-task">
+    <h4>課堂任務：把 AND 做成乾淨 oracle（7 分鐘）</h4>
+    <p>以 Toffoli 實作 \(ab\)，另用一個 output bit \(y\)。請畫出 compute、copy、uncompute 三段，使最後狀態為 \((a,b,0,y\oplus ab)\)。在圖旁標出哪些 register 是 input、workspace、output。</p>
+  </div>
+  <div class="qh-instructor-note">
+    <h4>教師解答與追問</h4>
+    <p>先以 \(T_{a,b\to g}\) 得到 \(g=ab\)，再以 CNOT\(_{g\to y}\) 寫入 \(y\)，最後再施作一次 Toffoli 清除 \(g\)。追問學生：為何不能只把 \(g\) reset？答案是 reset 抹除了與輸入相關的資訊；在量子 superposition 下，reset 或 trace-out 還會摧毀 coherence。再追問：為何 copy 不違反 no-cloning theorem？因為 CNOT 只是在指定 computational basis 上複製 classical label；若輸入是未知 superposition，輸出通常是 entangled state，而不是兩份獨立的 \(\ket{\psi}\)。</p>
+  </div>
+
+  <div class="qh-board">
+    <h4>黑板收束：三個不能混淆的句子</h4>
+    <ol>
+      <li>一般不可逆函數可以嵌入可逆函數，不代表嵌入所需 ancilla、depth 與 garbage 是免費的。</li>
+      <li>邏輯可逆可以避開資訊抹除的必然下界，不代表真實 device 自動無耗散。</li>
+      <li>量子 gate 的 unitary 性與 Bennett reversible computation 相容，但量子電腦的初始化、量測與 feedback 仍是 open-system process。</li>
+    </ol>
+  </div>
+</section>
+
+<section class="qh-lecture-block" id="week1-break">
+  <span class="qh-timing">60–70 分鐘</span>
+  <h3>休息與黑板保留</h3>
+  <p>黑板保留 \(f(x)\to U_f\to G_i\to H(t)\) 與 compute–copy–uncompute。休息後不重新從基本名詞開始，而是直接問：既然 unitary 只能一對一演化，measurement 為什麼看起來會產生 many-to-one 的 classical outcome？</p>
+</section>
+
+<section class="qh-lecture-block" id="week1-quantum-models">
+  <span class="qh-timing">70–95 分鐘</span>
+  <h3>四、Unitary、measurement、gate model 與 adiabatic model 的接口</h3>
+  <h4>4.1 封閉系統的演化為何可逆</h4>
+  <p>若 \(H(t)=H^\dagger(t)\)，由 Schrödinger equation 產生的 \(U(t)\) 滿足 \(U^\dagger U=I\)。對時間無關 Hamiltonian，\(U(t)=e^{-iHt/\hbar}\)，其 inverse 是 \(U(-t)=U^\dagger(t)\)。這個數學性質意味著完整 pure state 的資訊保留在複振幅中；它不保證我們在實驗中知道這些振幅，也不保證環境沒有帶走相位資訊。</p>
+  <p>以單量子位元為例，若控制 Hamiltonian 為：</p>
+  <p>
+    <p>\[
+      H=\frac{\hbar\Omega}{2}\sigma_x,
+      \qquad
+      U(t)=\cos\frac{\Omega t}{2}I-i\sin\frac{\Omega t}{2}\sigma_x.
+    \]</p>
+  </p>
+  <p>取 \(t=\pi/\Omega\)，得到 \(U=-i\sigma_x\)，忽略 global phase 即為 \(X\) gate。這個推導把抽象的 \(X\) 與一個可操作參數 \(\Omega t\) 接起來。若 pulse area 不是 \(\pi\)、drive detuning 不為零，或有其他 level 參與，實際 \(U\) 就偏離理想 gate。</p>
+
+  <h4>4.2 Measurement 不是「另一個普通 unitary gate」</h4>
+  <p>projective measurement 以 projector \(\{P_m\}\) 描述。對 density matrix \(\rho\)，得到 outcome \(m\) 的機率與條件態為：</p>
+  <p>
+    <p>\[
+      p(m)=\operatorname{Tr}(P_m\rho),\qquad
+      \rho_m=\frac{P_m\rho P_m}{p(m)}.
+    \]</p>
+  </p>
+  <p>若忽略 measurement record，系統的 non-selective state 變成 \(\rho'=\sum_mP_m\rho P_m\)。這是一個 completely positive trace-preserving map，通常不是 system Hilbert space 上的 unitary。以 \(\ket{+}=(\ket{0}+\ket{1})/\sqrt2\) 做 \(Z\)-basis measurement 並忘記結果，原本含 off-diagonal coherence 的 pure state 會變成：</p>
+  <p>
+    <p>\[
+      \rho'=\frac12\ket{0}\bra{0}+\frac12\ket{1}\bra{1}.
+    \]</p>
+  </p>
+  <p>然而，把 system、apparatus 與 environment 合併成更大的封閉系統，量測 interaction 仍可先由 unitary entanglement 描述，例如 \(\ket{0}\ket{A_0}\to\ket{0}\ket{A_0'}\)、\(\ket{1}\ket{A_0}\to\ket{1}\ket{A_1'}\)。看似不可逆的部分來自我們只保留 subsystem、讀出 classical record，或忽略 environment。這與前半堂「擴大狀態空間才能保存資訊」形成直接呼應。</p>
+
+  <div class="qh-student-task">
+    <h4>概念檢核（4 分鐘）</h4>
+    <p>有人說：「量子力學是 unitary，所以量測後也能只靠被測 qubit 本身把測前 superposition 完整倒轉。」請指出錯在哪裡。答案必須提到 system boundary，而不能只寫 collapse。</p>
+  </div>
+  <div class="qh-instructor-note">
+    <h4>教師解答</h4>
+    <p>measurement record 已經與 apparatus/environment correlation；只操作被測 qubit，通常無法回收被分散到其他自由度的相位資訊。若要談整體可逆，必須控制包含 apparatus 與 environment 的完整狀態，這在一般讀出後並不可行。關鍵不是任意宣稱「自然定律不可逆」，而是說明我們選定的 subsystem channel 不再是 unitary。</p>
+  </div>
+
+  <h4>4.3 Gate model：離散指令背後仍是連續時間演化</h4>
+  <p>gate model 以 register、gate sequence 與 measurement 組織演算法。Universal gate set 的意思是任意目標 unitary 可以在所需精度下由有限 gate set 近似，不代表硬體只需要一種元件。以超導平台而言，single-qubit rotations、two-qubit entangling interaction、virtual frame update、readout 與 reset 具有完全不同的 control path。</p>
+  <p>從 compilation 角度，logical circuit 會先分解成 native gate set；從 control 角度，每一個 native gate 再被翻譯成 flux 或 microwave waveform。可用一個概念式表示：</p>
+  <p>
+    <p>\[
+      H(t;\theta)
+      =H_0+\sum_k u_k(t;\theta)H_k,
+    \]</p>
+  </p>
+  <p>其中 \(H_0\) 是 drift Hamiltonian，\(H_k\) 是可控制耦合，\(u_k(t)\) 是波形，\(\theta\) 包含 amplitude、phase、frequency、duration 與 envelope。校準問題就是調整 \(\theta\)，讓實際 propagator \(U(\theta)\) 接近目標 gate，同時抑制 leakage、crosstalk 與 sensitivity。</p>
+
+  <h4>4.4 Adiabatic computation：用 ground-state path 表示計算</h4>
+  <p>另一種描述不是依序下 gate，而是設計一族 Hamiltonian：</p>
+  <p>
+    <p>\[
+      H(s)=(1-s)H_{\mathrm{init}}+sH_{\mathrm{problem}},
+      \qquad s=t/T\in[0,1].
+    \]</p>
+  </p>
+  <p>系統先準備在 \(H_{\mathrm{init}}\) 的容易取得 ground state。若演化足夠慢，且沿途與 excited state 之間維持非零 spectral gap，理想情況下最終態會接近 \(H_{\mathrm{problem}}\) 的 ground state。粗略地說，所需時間對最小 gap \(\Delta_{\min}\) 非常敏感；常見 adiabatic condition 具有：</p>
+  <p>
+    <p>\[
+      T\gg
+      \max_s\frac{
+        \left\ket{\langle1(s)\vert\partial_sH\vert0(s)}\right|
+      }{\Delta(s)^2}.
+    \]</p>
+  </p>
+  <p>這不是一條不含假設的萬用等式，而是提醒工程設計：問題不只在終點 Hamiltonian，還包括整條 path、minimum gap、initialization、thermal excitation 與 control schedule。若 gap 隨系統大小快速縮小，單純「慢慢演化」可能需要不可接受的時間。</p>
+
+  <h4>4.5 計算能力等價，不代表工程成本等價</h4>
+  <p>Aharonov 等人的結果說明 standard circuit model 與 adiabatic quantum computation 在適當條件下可做 polynomial simulation。這是 computational model 層級的等價；它不表示兩種裝置在 coherence demand、coupler topology、control bandwidth、temperature、calibration 或 noise susceptibility 上相同。</p>
+  <table>
+    <thead><tr><th>比較面向</th><th>Gate model</th><th>Adiabatic／Hamiltonian model</th></tr></thead>
+    <tbody>
+      <tr><td>程式表示</td><td>離散 gate sequence</td><td>連續 Hamiltonian path</td></tr>
+      <tr><td>關鍵資源</td><td>gate count、depth、fidelity</td><td>minimum gap、schedule、path control</td></tr>
+      <tr><td>主要誤差語言</td><td>over/under rotation、dephasing、leakage</td><td>non-adiabatic transition、thermal excitation、control distortion</td></tr>
+      <tr><td>最終讀出</td><td>circuit 末端或中途 measurement</td><td>最終能量／bit configuration measurement</td></tr>
+      <tr><td>硬體問題</td><td>native gate 與 calibration</td><td>可程式化耦合、gap 與 annealing schedule</td></tr>
+    </tbody>
+  </table>
+  <p>因此，研究 computation model 時要問「哪些問題可有效計算」；研究 hardware architecture 時則要問「要暴露哪些控制自由度，才能在有限雜訊與資源下實現那個模型」。兩個問題相連，但評估指標不同。</p>
+
+  <div class="qh-worked-example">
+    <h4>完整例題 C：一個 avoided crossing 如何決定 adiabatic 難度</h4>
+    <p>考慮簡化二能級模型：</p>
+    <p>
+      <p>\[
+        H(s)=A(1-2s)\sigma_z+B\sigma_x.
+      \]</p>
+    </p>
+    <p>其瞬時能量為 \(E_\pm(s)=\pm\sqrt{A^2(1-2s)^2+B^2}\)，能隙：</p>
+    <p>
+      <p>\[
+        \Delta(s)=E_+-E_-=2\sqrt{A^2(1-2s)^2+B^2}.
+      \]</p>
+    </p>
+    <p>最小 gap 出現在 \(s=1/2\)，得到 \(\Delta_{\min}=2|B|\)。若把 transverse coupling \(B\) 減半，gap 減半；而 adiabatic time scale 常對 \(1/\Delta_{\min}^2\) 敏感，因此所需時間可能增加約四倍。這個例子說明：終點 problem Hamiltonian 沒變，僅中途 coupling path 改變，就可能大幅改變實作成本。</p>
+    <p>另一方面，演化拉長並非無限有利。太快會產生 non-adiabatic transition；太慢則讓系統有更多時間受到 thermal excitation、dephasing 或 low-frequency noise。真實 optimum 是 open-system dynamics、temperature、gap 與 schedule 的共同結果，不是單調的「越慢越好」。</p>
+  </div>
+
+  <div class="qh-board">
+    <h4>本段黑板結論</h4>
+    <p>
+      <p>
+        \text{model equivalence}
+        \not\Rightarrow
+        \text{identical physical resource}
+        \not\Rightarrow
+        \text{identical engineering difficulty}.
+      </p>
+    </p>
+  </div>
+</section>
+
+<section class="qh-lecture-block" id="week1-end-to-end-case">
+  <span class="qh-timing">95–110 分鐘</span>
+  <h3>五、完整案例：把 \(f(a,b)=ab\) 從邏輯需求一路落到超導硬體</h3>
+  <p>前四段分別建立了函數、可逆化、unitary 與 Hamiltonian 的語言。現在把這些層次串成同一條工程鏈。案例故意選擇最簡單的 AND，不是因為真正量子演算法只做 AND，而是因為它足以暴露每一層新增的問題；若連這個三量子位元案例都無法清楚跨層描述，更大的演算法只會把接口問題藏在更多 gate 後面。</p>
+
+  <h4>5.1 Requirement layer：先說清楚要保留什麼輸出</h4>
+  <p>原始需求是給定兩個 classical input bit \(a,b\)，計算 \(ab\)。若只寫 \(f:\{0,1\}^2\to\{0,1\}\)，輸出只有一個 bit，這個 map 本身不可逆。量子版本先改寫為：</p>
+  <p>
+    <p>\[
+      U_f\ket{a,b,y}
+      =\ket{a,b,y\oplus ab}.
+    \]</p>
+  </p>
+  <p>當 \(y=0\) 時，第三個 register 取得答案；當 \(y=1\) 時，第三位取得答案的反值。保留 \(a,b\) 並使用 XOR，不是多餘形式，而是讓八個 computational basis states 被一對一排列。此時 \(U_f\) 正是 Toffoli gate，其 matrix 是一個 \(8\times8\) permutation matrix，因此自然也是 unitary。</p>
+
+  <div class="qh-board">
+    <h4>第一個接口檢查</h4>
+    <p>需求文件如果只寫「輸出 AND」，compiler 仍不知道輸入是否保留、output register 初值為何、ancilla 是否必須回復、能否接受 measurement-based cleanup。這些選擇會改變 qubit count、depth 與可重用性。所謂 logical specification，必須至少把 register contract 寫清楚。</p>
+  </div>
+
+  <h4>5.2 Circuit layer：Toffoli 不是硬體上的單一按鈕</h4>
+  <p>在抽象 circuit diagram 裡，可以畫一個 CCX 符號；但多數平台的 native instruction 不包含理想三體 interaction。compiler 必須把它分解成單量子位元 rotation 與雙量子位元 entangling gate。常見 exact decomposition 可用 Hadamard、\(T=R_z(\pi/4)\)、\(T^\dagger\) 與多個 CNOT 組成；若只要求特定 relative phase，則可能採用較短的 relative-phase Toffoli。兩者 truth table 在 computational basis 上可能看起來相同，但對 superposition 的 phase action 不同，不能只用 classical truth table 驗收。</p>
+  <p>因此 compiler 需要知道下游用途。如果 CCX 後立刻 measurement，某些 phase freedom 也許可以利用；若 CCX 位於 interference circuit 中，未追蹤的 relative phase 會直接改變答案。這是「語義相似」與「完整 unitary 等價」的差別。</p>
+  <p>假設晶片的 native set 是 virtual \(R_z(\theta)\)、microwave \(X_{\pi/2}\) 與一種 calibrated \(CZ\)，編譯鏈可以概念化為：</p>
+  <p>
+    <p>\[
+      \mathrm{CCX}
+      \longrightarrow
+      \{H,T,T^\dagger,\mathrm{CNOT}\}
+      \longrightarrow
+      \{R_z(\theta),X_{\pi/2},CZ\}
+      \longrightarrow
+      \{u_k(t)\}.
+    \]</p>
+  </p>
+  <p>第二個箭頭使用例如 \(\mathrm{CNOT}_{c,t}=H_tCZ_{c,t}H_t\) 的 basis conversion；\(H\) 又可以由 \(R_z\) 與 \(X_{\pi/2}\) 組成。實際 compiler 還會根據 coupling graph 插入 routing、合併相鄰 rotations、消除互逆 gate，並考慮 pulse-level schedule。因而 logical depth、native two-qubit depth 與 wall-clock duration 是三個不同數量。</p>
+
+  <h4>5.3 Device model：把 qubit 與 coupling 寫進 Hamiltonian</h4>
+  <p>對兩個弱 anharmonic transmon，可用截斷 Duffing oscillator 模型描述：</p>
+  <p>
+    <p>\[
+      \frac{H_0}{\hbar}
+      =\sum_{i=1}^{2}
+        \left[
+        \omega_i b_i^\dagger b_i
+        +\frac{\alpha_i}{2}b_i^{\dagger2}b_i^2
+        \right]
+        +g\left(b_1^\dagger b_2+b_1b_2^\dagger\right).
+    \]</p>
+  </p>
+  <p>其中 \(\omega_i\) 是 qubit transition frequency，\(\alpha_i<0\) 是 anharmonicity，\(g\) 是 exchange coupling。若只把每個 transmon 當完美 two-level system，會漏掉 \(\ket{2}\) 等 leakage channel；但若保留太多 level，simulation cost 又迅速增加。model order 本身就是工程取捨。</p>
+  <p>單量子位元 microwave drive 可寫為：</p>
+  <p>
+    <p>\[
+      \frac{H_d(t)}{\hbar}
+      =\Omega(t)\cos(\omega_dt+\phi)
+        \left(b+b^\dagger\right).
+    \]</p>
+  </p>
+  <p>在 rotating frame 與 rotating-wave approximation 下，resonant drive 的 amplitude、phase 與 duration 決定 Bloch sphere rotation axis 與 angle。理想 \(X_{\pi/2}\) 需要校準 pulse area；太短可能因頻譜展寬而 leakage，太長則增加 decoherence exposure。兩量子位元 \(CZ\) 的實現依裝置架構而異，可能透過 flux tuning 接近 avoided crossing、可調 coupler，或其他 conditional-phase mechanism；不能只由「需要 CZ」推定唯一波形。</p>
+
+  <div class="qh-worked-example">
+    <h4>估算例題：gate fidelity 如何沿電路累積？</h4>
+    <p>假設某一種 CCX decomposition 需要 6 個雙量子位元 gate 與 9 個實體單量子位元 pulse；virtual \(R_z\) 暫視為零時長 frame update。若平均 two-qubit fidelity 為 \(F_2=0.99\)，single-qubit fidelity 為 \(F_1=0.999\)，並非常粗略地假設 stochastic independent errors，僅 gate contribution 的成功比例約為：</p>
+    <p>
+      <p>\[
+        F_{\mathrm{rough}}\approx F_2^6F_1^9
+        =0.99^6\times0.999^9\approx0.933.
+      \]</p>
+    </p>
+    <p>這不是嚴格 process fidelity 預測，因為 coherent error、correlated noise、crosstalk、SPAM 與 compiler cancellation 都被忽略。但它清楚顯示：logical specification 只有一個 CCX，不代表 hardware cost 只有「一次 gate」。若 two-qubit fidelity 提升至 0.995，其他條件不變，粗估值變成約 0.962；改善最昂貴的 primitive，常比微調已很高的單量子位元 fidelity 更有系統影響。</p>
+  </div>
+
+  <h4>5.4 Control、calibration 與 readout：真正的輸出不是 ket，而是資料</h4>
+  <p>control electronics 將 gate schedule 轉成 digital waveform，再由 DAC、mixer、cable 與 cryogenic chain 送到 chip。到達 qubit 的波形不等於 AWG 檔案：頻率響應、delay、attenuation、reflection 與 crosstalk 都會改變它。calibration 的工作是由量測資料反推並更新 amplitude、frequency、phase、duration 與 compensation parameter，而不是一次算完後永久固定。</p>
+  <p>執行 circuit 後，readout resonator 的 response 經 amplification 與 down-conversion 形成 IQ trajectory；integration kernel 將時間序列壓成一個 IQ point，classifier 再把它判成 0 或 1。以三量子位元 Toffoli 為例，最終 classical dataset 是不同輸入與 repeated shots 下的 bit-string counts，而不是直接看見 \(\ket{a,b,y\oplus ab}\)。驗收至少包括：</p>
+  <ol>
+    <li>對八個 basis inputs 建立 conditional probability \(P(z_{\mathrm{out}}\mid z_{\mathrm{in}})\)。</li>
+    <li>將 readout assignment error 與 gate error 分開估計，避免把 classifier 問題全算成 CCX error。</li>
+    <li>用 superposition input 或 process-oriented test 檢查 phase action，因為 truth table 看不見 relative phase。</li>
+    <li>重複跨時間量測，判斷 calibration drift，而不是只報一次最佳結果。</li>
+  </ol>
+
+  <h4>5.5 建立一張可執行的驗證階梯</h4>
+  <p>直接跑完整 CCX 後看到錯誤，定位空間太大。工程上應讓驗證由小到大，每一層先建立獨立 evidence。第一層確認 qubit spectrum、anharmonicity、\(T_1/T_2\) 與 readout assignment；第二層校準單量子位元 amplitude、DRAG parameter 與 phase；第三層校準每條需要的 two-qubit edge；第四層測 simultaneous operation 與 crosstalk；第五層才執行 compiled CCX。若前一層沒有可信 baseline，後一層的失敗不能被唯一歸因。</p>
+  <p>每一層的測試也應區分三種時間尺度：單次 pulse 內的 coherent dynamics、數分鐘到數小時的 calibration drift，以及跨日的 device state change。某個 circuit 在一百次 shots 中成功，最多證明當下可以產生輸出；要成為可重複使用的 system capability，還要知道多久需要 recalibration、失敗能否被自動偵測，以及校準是否能在沒有人工挑圖的情況下重新收斂。</p>
+  <div class="qh-board">
+    <h4>從展示到能力的判準</h4>
+    <p>一次漂亮結果是 demonstration；有規格、有測試、有 error budget、有重跑程序、有失效定位，才接近 deployable capability。之後談完整量子計算系統時，這個差別會反覆出現。</p>
+  </div>
+
+  <div class="qh-student-task">
+    <h4>課堂任務：跨層故障定位（6 分鐘）</h4>
+    <p>實驗得到：對 basis input \(110\)，輸出 \(111\) 的比例只有 0.82；其他多數輸入超過 0.95。請各提出一個可能屬於 specification／compilation／control／device／measurement 的原因，並為每個原因指定一項能區分它的下一個實驗。答案不能只寫「雜訊很大」。</p>
+  </div>
+  <div class="qh-instructor-note">
+    <h4>教師參考答案</h4>
+    <ul>
+      <li><strong>Specification：</strong>target bit 初值或 bit ordering 設錯；先用 simulator 與 raw bit ordering 對照。</li>
+      <li><strong>Compilation：</strong>routing 或 qubit mapping 讓關鍵 CNOT 經過品質差的 edge；固定 layout，比較不同 transpilation。</li>
+      <li><strong>Control：</strong>某個 conditional-phase pulse amplitude/drift 不準；插入相應 pair 的 Ramsey/conditional-phase calibration。</li>
+      <li><strong>Device：</strong>\(\ket{11}\) 附近 leakage 或特定 avoided crossing；做 qutrit population 或 leakage-sensitive measurement。</li>
+      <li><strong>Measurement：</strong>\(\ket{111}\) 的 simultaneous readout assignment/crosstalk 特別差；獨立準備八個 basis states，建立完整 assignment matrix。</li>
+    </ul>
+    <p>重點不是猜中唯一原因，而是把模糊的「結果不好」轉成可反駁的 layer-specific hypothesis。這就是 quantum hardware engineer 與只會呼叫 circuit API 的差別之一。</p>
+  </div>
+</section>
+
+<section class="qh-lecture-block" id="week1-synthesis">
+  <span class="qh-timing">110–120 分鐘</span>
+  <h3>六、收束：用同一張矩陣讀完整門課</h3>
+  <p>這一週的目的不是讓學生背完 reversible computing 的歷史，而是建立一張之後十六週都能反覆定位的矩陣。遇到任何量子技術主張，都先問它處理的是哪一層、假設了哪些接口，以及代價被移到哪裡。</p>
+  <table>
+    <thead><tr><th>層次</th><th>核心物件</th><th>本層問題</th><th>常見誤判</th><th>可觀察證據</th></tr></thead>
+    <tbody>
+      <tr><td>Problem / semantics</td><td>\(f(x)\)、cost function、sampling task</td><td>答案到底是什麼？</td><td>把問題定義當成執行方法</td><td>正確性條件、輸入輸出規格</td></tr>
+      <tr><td>Reversible embedding</td><td>\(U_f\)、ancilla、garbage</td><td>如何保留資訊並清理暫存？</td><td>把 ancilla 與 uncompute 當免費</td><td>register contract、qubit count</td></tr>
+      <tr><td>Logical circuit</td><td>unitary、gate、depth</td><td>如何分解演算法？</td><td>把 logical gate count 當實體成本</td><td>logical resources、error budget</td></tr>
+      <tr><td>Compilation</td><td>native gates、routing、schedule</td><td>如何符合 topology 與 instruction set？</td><td>只看抽象 circuit diagram</td><td>two-qubit depth、duration、mapping</td></tr>
+      <tr><td>Device</td><td>能階、coupling、\(H_0\)</td><td>裝置能提供哪些自由度？</td><td>把 qubit 當理想二能級</td><td>spectrum、coherence、leakage</td></tr>
+      <tr><td>Control</td><td>\(u_k(t)\)、pulse、calibration</td><td>如何產生目標 propagator？</td><td>把 gate symbol 當物理操作</td><td>Rabi/Ramsey、RB、drift data</td></tr>
+      <tr><td>Measurement</td><td>IQ record、POVM、classifier</td><td>如何把狀態轉成可信資料？</td><td>把 readout bit 當真實 state</td><td>assignment matrix、SNR、shots</td></tr>
+      <tr><td>System</td><td>cryo、electronics、software stack</td><td>整體能否穩定、擴張與重複？</td><td>只以單元件最佳值代表整機</td><td>uptime、throughput、calibration overhead</td></tr>
+    </tbody>
+  </table>
+
+  <div class="qh-student-task">
+    <h4>Exit ticket：下課前獨立回答</h4>
+    <ol>
+      <li>為什麼 NAND 的 functional universality 不足以直接定義量子硬體？</li>
+      <li>Landauer principle 限制的是哪一種操作？它沒有聲稱什麼？</li>
+      <li>Bennett uncomputation 為何在量子演算法中不只是節能技巧？</li>
+      <li>gate model 與 adiabatic model 的 computational equivalence，為何不代表相同硬體？</li>
+      <li>從 CCX truth table 成功到「CCX 實作可信」，還缺哪兩類測試？</li>
+    </ol>
+  </div>
+  <div class="qh-instructor-note">
+    <h4>Exit ticket 解答要點</h4>
+    <ol>
+      <li>NAND 是 many-to-one，不能直接成為 unitary；而且 truth table 沒指定 Hamiltonian、control 與 measurement。</li>
+      <li>它給出資訊抹除在理想等溫極限的最低 entropy/heat cost；它沒有聲稱所有 gate 恰耗 \(k_BT\ln2\)，也不是整機功耗公式。</li>
+      <li>garbage 若與答案糾纏，會保留 which-path information 並破壞 interference；必須恢復 ancilla 才能重用並得到乾淨 output state。</li>
+      <li>兩者的控制自由度、主要資源、noise channel、minimum gap、calibration 與 topology 要求不同。</li>
+      <li>至少需要 phase-sensitive/superposition test 與 SPAM/readout characterization；此外還應看跨時間 drift 與 leakage。</li>
+    </ol>
+  </div>
+
+  <h4>課後銜接</h4>
+  <p>下一週開始進入 superconducting circuit。學生應帶著本週的接口問題閱讀：Josephson junction 不是「天然的 qubit gate」，而是提供 nonlinearity；從 junction 與 capacitor 得到量子化 Hamiltonian 後，還要選擇工作能階、耦合方式、drive operator、readout channel 與 calibration procedure。本週建立的 logical-to-physical chain，會在後面每個器件主題重新具體化。</p>
+
+  <h4>延伸閱讀與原始來源</h4>
+  <ul>
+    <li>R. Landauer, <a href="https://doi.org/10.1147/rd.53.0183" target="_blank" rel="noopener">Irreversibility and Heat Generation in the Computing Process</a>：資訊抹除與熱力學代價的原始論述。</li>
+    <li>C. H. Bennett, <a href="https://doi.org/10.1147/rd.176.0525" target="_blank" rel="noopener">Logical Reversibility of Computation</a>：可逆模擬與 history cleanup 的經典來源。</li>
+    <li>D. Aharonov et al., <a href="https://arxiv.org/abs/quant-ph/0405098" target="_blank" rel="noopener">Adiabatic Quantum Computation is Equivalent to Standard Quantum Computation</a>：理解模型等價的範圍與前提。</li>
+    <li>M. A. Nielsen and I. L. Chuang, <em>Quantum Computation and Quantum Information</em>：reversible circuit、unitary、measurement 與 circuit model 的系統性背景。</li>
+  </ul>
+</section>
+<!-- QH_EXPANDED_LECTURE_END -->
+  <section class="module">
+    
+<div class="qh-section">
+  <h3>進階主線：不要把第一週上成量子資訊導論</h3>
+</div>
+<p>本週假設學生已見過 ket、tensor product 與基本量子閘。課堂重點不是重教所有先備，而是建立三種描述層次：</p>
+<ol>
+  <li><b>計算語義：</b>輸入、輸出、可計算函數與複雜度。</li>
+  <li><b>邏輯表示：</b>reversible gate、unitary circuit、measurement 與 classical feed-forward。</li>
+  <li><b>物理實現：</b>時間相依 Hamiltonian (H(t))、控制脈衝與量測鏈。</li>
+</ol>
+<p>Landauer 指出的是「資訊抹除」的物理成本；Bennett 則說明一般計算可透過保存 history 與 uncomputation 改寫為邏輯可逆。量子閘的 unitary 演化因此不是一句「量子很神奇」，而是資訊保存、可逆動力學與可實作控制的交會點。</p>
+<div class="equation-card"><p>\[\ket{\psi(t)}=\mathcal T\exp\!\left[-\frac{i}{\hbar}\int_0^t H(\tau)d\tau\right]\ket{\psi(0)}\]</p></div>
+<p>最後比較 circuit model 與 adiabatic/Hamiltonian model：兩者在計算能力上可多項式等價，但硬體所暴露的控制參數、gap、noise channel 與校正問題並不相同。</p>
+
+  </section>
+  <section class="module">
+        <div class="qh-section">
+          <h3>二、單元 1：古典邏輯閘與布林計算</h3>
+        </div>
+    
+        <h4>1.1 Classical Bits and Boolean Logic</h4>
+        <p>
+          古典計算以 bit 作為最基本的資訊單位，每個 bit 只能處於 0 或 1 的狀態。
+          在硬體層次中，這通常對應到電壓高低、電荷有無、磁化方向或其他可穩定區分的物理狀態。
+          透過布林代數，我們可以將複雜的邏輯運算分解為基本邏輯閘。
+        </p>
+    
+        <h4>核心概念</h4>
+        <ul>
+          <li>Bit：古典資訊的最小單位。</li>
+          <li>Boolean algebra：以 0 與 1 表示邏輯真假。</li>
+          <li>Truth table：用表格描述邏輯閘輸入與輸出的對應關係。</li>
+          <li>Logic gate：實現布林運算的基本元件。</li>
+        </ul>
+    
+        <h4>基本邏輯閘</h4>
+        <table>
+          <thead>
+            <tr>
+              <th>Gate</th>
+              <th>輸入</th>
+              <th>輸出</th>
+              <th>功能說明</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>NOT</td>
+              <td>A</td>
+              <td>¬A</td>
+              <td>將 0 變成 1，將 1 變成 0。</td>
+            </tr>
+            <tr>
+              <td>AND</td>
+              <td>A, B</td>
+              <td>A ∧ B</td>
+              <td>只有當兩個輸入皆為 1 時，輸出才為 1。</td>
+            </tr>
+            <tr>
+              <td>OR</td>
+              <td>A, B</td>
+              <td>A ∨ B</td>
+              <td>只要任一輸入為 1，輸出即為 1。</td>
+            </tr>
+            <tr>
+              <td>XOR</td>
+              <td>A, B</td>
+              <td>A ⊕ B</td>
+              <td>當兩個輸入不同時，輸出為 1。</td>
+            </tr>
+            <tr>
+              <td>NAND</td>
+              <td>A, B</td>
+              <td>¬(A ∧ B)</td>
+              <td>AND 的反相輸出，是古典邏輯中的 universal gate。</td>
+            </tr>
+          </tbody>
+        </table>
+    
+        <h4>1.2 Universal Classical Computation</h4>
+        <p>
+          在古典計算中，NAND gate 或 NOR gate 具有 universal computation 的能力。
+          也就是說，只要有足夠多的 NAND 或 NOR gate，就可以組合出任意布林邏輯電路。
+          這個觀念對後續理解量子計算中的 universal quantum gate set 非常重要。
+        </p>
+    
+        <div class="learning-check">
+          <h4>學習檢核</h4>
+          <ol>
+            <li>為什麼 NAND gate 可以作為 universal classical gate？</li>
+            <li>請用 NAND gate 組合出 NOT、AND 與 OR gate。</li>
+            <li>布林邏輯與實際硬體電路之間的關係是什麼？</li>
+          </ol>
+        </div>
+      </section><section class="module">
+        <div class="qh-section">
+          <h3>三、單元 2：現代電腦架構與計算模型</h3>
+        </div>
+    
+        <h4>2.1 Von Neumann Architecture</h4>
+        <p>
+          現代電腦大多建立在 von Neumann architecture 的概念上，主要由 CPU、記憶體、輸入輸出裝置與匯流排組成。
+          程式與資料共同儲存在記憶體中，CPU 透過 fetch、decode、execute 的循環執行指令。
+        </p>
+    
+        <h4>主要組成</h4>
+        <ul>
+          <li><strong>CPU：</strong>負責指令執行與資料處理。</li>
+          <li><strong>ALU：</strong>執行算術與邏輯運算。</li>
+          <li><strong>Register：</strong>CPU 內部高速暫存器。</li>
+          <li><strong>Memory hierarchy：</strong>包含 cache、RAM、SSD/HDD 等不同速度與容量的記憶體層級。</li>
+          <li><strong>Bus：</strong>負責資料、位址與控制訊號的傳輸。</li>
+        </ul>
+    
+        <h4>2.2 From Classical Circuits to Computation</h4>
+        <p>
+          古典邏輯閘本身只是局部的邏輯運算；當大量邏輯閘被組合在一起，就形成加法器、乘法器、暫存器、
+          控制單元與記憶體系統。這些元件進一步組成 CPU 與完整的現代電腦架構。
+        </p>
+    
+        <p>
+          從計算模型的角度來看，古典電腦可被理解為一種狀態機：
+          在每一步計算中，系統根據目前狀態與輸入，轉移到下一個狀態。
+          然而，多數古典邏輯運算是不可逆的，例如 AND gate 的輸出無法唯一反推出原本的兩個輸入。
+        </p>
+    
+        <div class="note">
+          <h4>與量子計算的連結</h4>
+          <p>
+            量子系統的封閉演化必須由么正矩陣描述，而么正演化必然是可逆的。
+            因此，若要將計算建立在量子力學上，必須重新思考「計算」本身是否能以可逆方式進行。
+          </p>
+        </div>
+      </section><section class="module">
+        <div class="qh-section">
+          <h3>四、單元 3：可逆計算 Reversible Computing</h3>
+        </div>
+    
+        <h4>3.1 不可逆計算與資訊丟失</h4>
+        <p>
+          在古典邏輯中，許多邏輯閘會壓縮輸入資訊。例如 AND gate 有四種可能輸入，
+          但只有一個輸出 bit，因此無法從輸出唯一恢復輸入。這種多對一的映射稱為不可逆計算。
+        </p>
+    
+        <p>
+          從物理角度來看，資訊丟失與能量耗散之間存在深刻關聯。可逆計算的研究指出，
+          若計算過程能夠避免資訊丟失，理論上可以降低由資訊擦除所造成的熱耗散。
+        </p>
+    
+        <h4>3.2 Reversible Gates</h4>
+        <p>
+          可逆邏輯閘要求輸入與輸出之間是一對一映射，因此輸出必須保留足夠資訊以重建輸入。
+          常見的可逆邏輯閘包括 CNOT gate、Toffoli gate 與 Fredkin gate。
+        </p>
+    
+        <table>
+          <thead>
+            <tr>
+              <th>Reversible Gate</th>
+              <th>作用</th>
+              <th>重要性</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>CNOT</td>
+              <td>若 control bit 為 1，則翻轉 target bit。</td>
+              <td>量子計算中最重要的二量子位元閘之一。</td>
+            </tr>
+            <tr>
+              <td>Toffoli Gate</td>
+              <td>若兩個 control bits 皆為 1，則翻轉 target bit。</td>
+              <td>可用於建構可逆古典計算，也稱為 controlled-controlled-NOT。</td>
+            </tr>
+            <tr>
+              <td>Fredkin Gate</td>
+              <td>根據 control bit 決定是否交換兩個 target bits。</td>
+              <td>展示可逆邏輯與條件交換操作的代表性例子。</td>
+            </tr>
+          </tbody>
+        </table>
+    
+        <h4>3.3 Why Quantum Computing Must Be Reversible</h4>
+        <p>
+          在量子力學中，封閉系統的時間演化由 unitary operator 描述。
+          Unitary operator 具有反矩陣，因此量子態的演化在數學上必須是可逆的。
+          這表示量子閘不能像古典 AND gate 那樣把多個輸入壓縮成同一個輸出。
+        </p>
+    
+        <div class="learning-check">
+          <h4>學習檢核</h4>
+          <ol>
+            <li>為什麼 AND gate 不是可逆邏輯閘？</li>
+            <li>Toffoli gate 如何實現古典可逆計算？</li>
+            <li>為什麼量子計算中的 gate 必須用 unitary matrix 表示？</li>
+          </ol>
+        </div>
+      </section><section class="module">
+        <div class="qh-section">
+          <h3>五、單元 4：量子力學作為計算語言</h3>
+        </div>
+    
+        <h4>4.1 Quantum State and Hilbert Space</h4>
+        <p>
+          量子計算的基本資訊單位是 qubit。不同於古典 bit 只能是 0 或 1，
+          qubit 可以處於 |0⟩ 與 |1⟩ 的線性疊加：
+        </p>
+    
+        <div class="equation">
+          |ψ⟩ = α|0⟩ + β|1⟩
+        </div>
+    
+        <p>
+          其中 α 與 β 是複數振幅，並滿足歸一化條件：
+        </p>
+    
+        <div class="equation">
+          |α|² + |β|² = 1
+        </div>
+    
+        <p>
+          這個式子表示量子態不是單純的機率分布，而是帶有相位資訊的複數向量。
+          相位雖然不能直接被量測，但會影響干涉結果，是量子演算法能夠超越古典直覺的重要來源。
+        </p>
+    
+        <h4>4.2 Superposition, Phase, and Interference</h4>
+        <p>
+          疊加態意味著量子系統可以同時具有多個基底態的振幅。
+          然而，這不應被簡化理解成「同時是 0 和 1」。
+          更精確地說，qubit 是 Hilbert space 中的向量，而 |0⟩ 與 |1⟩ 是一組基底。
+        </p>
+    
+        <ul>
+          <li><strong>Superposition：</strong>量子態可由多個基底態線性組合而成。</li>
+          <li><strong>Relative phase：</strong>不同振幅之間的相對相位會影響干涉。</li>
+          <li><strong>Interference：</strong>振幅可以相長或相消，改變量測機率。</li>
+          <li><strong>Measurement：</strong>量測會將量子態投影到某個量測基底上。</li>
+        </ul>
+    
+        <h4>4.3 Measurement and Born Rule</h4>
+        <p>
+          若 qubit 處於 |ψ⟩ = α|0⟩ + β|1⟩，在 computational basis 下量測時，
+          得到 0 的機率為 |α|²，得到 1 的機率為 |β|²。
+          這稱為 Born rule。
+        </p>
+    
+        <p>
+          量測與 unitary evolution 不同。Unitary evolution 是連續、線性且可逆的；
+          量測則會將量子態投影到特定結果，並引入機率性。
+          這個差異對理解量子讀出、量子錯誤校正與量子控制非常重要。
+        </p>
+    
+        <h4>4.4 Tensor Product and Multi-Qubit States</h4>
+        <p>
+          多量子位元系統的狀態空間由 tensor product 建構。
+          兩個 qubits 的基底為：
+        </p>
+    
+        <div class="equation">
+          |00⟩, |01⟩, |10⟩, |11⟩
+        </div>
+    
+        <p>
+          因此，兩個 qubits 的一般量子態可寫為：
+        </p>
+    
+        <div class="equation">
+          |ψ⟩ = c₀₀|00⟩ + c₀₁|01⟩ + c₁₀|10⟩ + c₁₁|11⟩
+        </div>
+    
+        <p>
+          對 n 個 qubits 而言，狀態空間維度為 2ⁿ。
+          這種指數成長是量子計算具有強大表現能力的來源之一，
+          但也使得量子系統的控制、模擬與誤差校正變得極具挑戰。
+        </p>
+      </section><section class="module">
+        <div class="qh-section">
+          <h3>六、單元 5：量子閘與 Gate-Based Quantum Computing</h3>
+        </div>
+    
+        <h4>5.1 Quantum Gates as Unitary Operators</h4>
+        <p>
+          量子閘是作用在 qubit 狀態上的 unitary operator。
+          一個量子電路可以被視為一連串 unitary operations，
+          最後透過量測得到古典輸出。
+        </p>
+    
+        <h4>常見的一量子位元閘</h4>
+        <table>
+          <thead>
+            <tr>
+              <th>Gate</th>
+              <th>作用</th>
+              <th>物理或幾何意義</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>X gate</td>
+              <td>|0⟩ ↔ |1⟩</td>
+              <td>類似古典 NOT gate，對應 Bloch sphere 上的 x 軸 π 旋轉。</td>
+            </tr>
+            <tr>
+              <td>Y gate</td>
+              <td>包含相位的 bit-flip</td>
+              <td>對應 y 軸 π 旋轉。</td>
+            </tr>
+            <tr>
+              <td>Z gate</td>
+              <td>|1⟩ 獲得負號</td>
+              <td>改變相對相位，對應 z 軸 π 旋轉。</td>
+            </tr>
+            <tr>
+              <td>Hadamard gate</td>
+              <td>產生 |0⟩ 與 |1⟩ 的疊加</td>
+              <td>將 computational basis 轉換到 superposition basis。</td>
+            </tr>
+            <tr>
+              <td>S gate</td>
+              <td>施加 π/2 相位</td>
+              <td>phase gate。</td>
+            </tr>
+            <tr>
+              <td>T gate</td>
+              <td>施加 π/4 相位</td>
+              <td>常用於 universal quantum computation。</td>
+            </tr>
+            <tr>
+              <td>Rₓ, Rᵧ, Rᶻ</td>
+              <td>繞 Bloch sphere 軸向旋轉</td>
+              <td>對應實際量子控制中的連續旋轉操作。</td>
+            </tr>
+          </tbody>
+        </table>
+    
+        <h4>常見的二量子位元閘</h4>
+        <table>
+          <thead>
+            <tr>
+              <th>Gate</th>
+              <th>作用</th>
+              <th>重要性</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>CNOT</td>
+              <td>根據 control qubit 狀態決定是否翻轉 target qubit。</td>
+              <td>可產生 entanglement，是量子電路中的基本二量子位元閘。</td>
+            </tr>
+            <tr>
+              <td>CZ</td>
+              <td>當兩個 qubits 皆為 |1⟩ 時施加負號。</td>
+              <td>在超導量子計算中常見，與 entangling gate 實作密切相關。</td>
+            </tr>
+            <tr>
+              <td>SWAP</td>
+              <td>交換兩個 qubits 的狀態。</td>
+              <td>在受限連接度的量子晶片上用於調整量子資訊位置。</td>
+            </tr>
+          </tbody>
+        </table>
+    
+        <h4>5.2 Universal Quantum Gate Set</h4>
+        <p>
+          類似於古典計算中的 NAND gate，量子計算也有 universal gate set 的概念。
+          一組量子閘若能近似任意 unitary operation，便可視為 universal。
+          常見例子包括：
+        </p>
+    
+        <ul>
+          <li>任意 single-qubit rotation 加上一個 entangling two-qubit gate。</li>
+          <li>Clifford gates 加上 T gate。</li>
+          <li>H, S, T, CNOT 等組合。</li>
+        </ul>
+    
+        <h4>5.3 Gate-Based Quantum Computing Model</h4>
+        <p>
+          Gate-based quantum computing 將量子計算表示為量子電路。
+          計算流程通常包含以下步驟：
+        </p>
+    
+        <ol>
+          <li><strong>Initialization：</strong>將 qubits 準備在已知初態，例如 |0⟩。</li>
+          <li><strong>Unitary evolution：</strong>施加一系列 quantum gates。</li>
+          <li><strong>Entanglement generation：</strong>透過二量子位元閘建立量子關聯。</li>
+          <li><strong>Measurement：</strong>將量子態轉換為古典 bit string。</li>
+          <li><strong>Classical post-processing：</strong>對量測結果進行統計與分析。</li>
+        </ol>
+    
+        <div class="note">
+          <h4>與超導量子晶片的連結</h4>
+          <p>
+            在超導量子計算中，single-qubit gates 通常透過 microwave pulses 實現；
+            two-qubit gates 則依賴 qubit-qubit coupling、tunable coupler 或頻率調控。
+            因此，抽象量子閘必須進一步轉化為具體的微波控制波形與晶片設計參數。
+          </p>
+        </div>
+      </section><section class="module">
+        <div class="qh-section">
+          <h3>七、單元 6：Adiabatic Quantum Computing</h3>
+        </div>
+    
+        <h4>6.1 從量子閘模型到哈密頓量演化模型</h4>
+        <p>
+          Gate-based quantum computing 以離散的量子閘序列表示計算。
+          Adiabatic quantum computing 則採用不同觀點：計算不是由一個個 gate 組成，
+          而是透過系統 Hamiltonian 的緩慢變化完成。
+        </p>
+    
+        <p>
+          在 adiabatic quantum computing 中，系統一開始被準備在容易製備的初始 Hamiltonian 基態。
+          接著，Hamiltonian 緩慢變化到問題 Hamiltonian。
+          若演化足夠慢，根據 adiabatic theorem，系統會保持在瞬時基態附近。
+          最後量測系統，即可得到對應於問題 Hamiltonian 基態的答案。
+        </p>
+    
+        <h4>6.2 Basic Formulation</h4>
+        <p>
+          一個常見的 adiabatic evolution 可表示為：
+        </p>
+    
+        <div class="equation">
+          H(s) = (1 - s)H₀ + sHₚ,  0 ≤ s ≤ 1
+        </div>
+    
+        <ul>
+          <li><strong>H₀：</strong>初始 Hamiltonian，其基態容易準備。</li>
+          <li><strong>Hₚ：</strong>問題 Hamiltonian，其基態編碼問題答案。</li>
+          <li><strong>s：</strong>隨時間緩慢改變的參數。</li>
+          <li><strong>Energy gap：</strong>基態與第一激發態之間的能隙，決定演化所需時間。</li>
+        </ul>
+    
+        <h4>6.3 Gate-Based vs. Adiabatic Quantum Computing</h4>
+        <table>
+          <thead>
+            <tr>
+              <th>比較項目</th>
+              <th>Gate-Based Quantum Computing</th>
+              <th>Adiabatic Quantum Computing</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>計算方式</td>
+              <td>離散 quantum gates</td>
+              <td>連續 Hamiltonian evolution</td>
+            </tr>
+            <tr>
+              <td>核心語言</td>
+              <td>Quantum circuit</td>
+              <td>Energy landscape / Hamiltonian</td>
+            </tr>
+            <tr>
+              <td>主要挑戰</td>
+              <td>Gate fidelity、decoherence、crosstalk</td>
+              <td>Minimum gap、演化時間、noise</td>
+            </tr>
+            <tr>
+              <td>典型應用</td>
+              <td>量子演算法、量子模擬、量子化學</td>
+              <td>最佳化問題、量子退火、基態搜尋</td>
+            </tr>
+            <tr>
+              <td>與超導平台關係</td>
+              <td>超導 transmon 系統的主流模型之一</td>
+              <td>與 superconducting flux qubits、quantum annealing 有關</td>
+            </tr>
+          </tbody>
+        </table>
+    
+        <div class="learning-check">
+          <h4>學習檢核</h4>
+          <ol>
+            <li>Gate-based quantum computing 與 adiabatic quantum computing 的主要差異是什麼？</li>
+            <li>為什麼 energy gap 對 adiabatic computing 很重要？</li>
+            <li>Adiabatic quantum computing 如何將最佳化問題轉換成物理問題？</li>
+          </ol>
+        </div>
+      </section><section class="module">
+        <div class="qh-section">
+          <h3>八、單元 7：從抽象量子計算到超導量子晶片</h3>
+        </div>
+    
+        <p>
+          本主題最後需要建立一個重要觀念：量子計算不是只有數學上的量子閘或量子演算法，
+          它必須被實作在具體的物理系統中。對超導量子計算而言，qubit 是由 Josephson junction、
+          電容、電感與微波共振腔等電路元件所形成的人工量子系統。
+        </p>
+    
+        <p>
+          後續主題將會把本主題的抽象概念逐步轉換為超導量子晶片中的實體對應：
+        </p>
+    
+        <table>
+          <thead>
+            <tr>
+              <th>抽象量子計算概念</th>
+              <th>超導量子晶片中的對應</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Qubit</td>
+              <td>Transmon、Fluxonium 等超導量子位元。</td>
+            </tr>
+            <tr>
+              <td>Quantum gate</td>
+              <td>Microwave pulse、flux pulse、tunable coupling。</td>
+            </tr>
+            <tr>
+              <td>Hamiltonian</td>
+              <td>由電容、電感、Josephson energy 與耦合項決定的電路哈密頓量。</td>
+            </tr>
+            <tr>
+              <td>Measurement</td>
+              <td>Readout resonator 與 dispersive readout。</td>
+            </tr>
+            <tr>
+              <td>Decoherence</td>
+              <td>T₁ relaxation、T₂ dephasing、材料損耗、控制雜訊。</td>
+            </tr>
+            <tr>
+              <td>Quantum error correction</td>
+              <td>Surface code、ancilla qubits、syndrome measurement。</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+  <section class="module">
+    <div class="qh-section">
+      <h3>課堂整合與驗收</h3>
+    </div>
+    <p><strong>研討問題：</strong>選一個量子演算法步驟，分別寫成 logical operation、unitary block 與可能的 Hamiltonian/control realization。</p>
+    <p><strong>完成條件：</strong>學生必須留下可檢查的推導、關係圖、比較表或 architecture decision，並能說明其物理假設與工程代價。</p>
+  </section>
+  <section class="module">
+    <div class="qh-section">
+      <h3>核心與延伸閱讀</h3><ul class="qh-reading"><li><a href="https://doi.org/10.1147/RD.53.0183" target="_blank" rel="noopener">Irreversibility and Heat Generation in the Computing Process</a><span>R. Landauer, IBM Journal of Research and Development 5, 183–191 (1961).</span><em>邏輯不可逆與物理耗散的原始論證。</em></li><li><a href="https://doi.org/10.1147/rd.176.0525" target="_blank" rel="noopener">Logical Reversibility of Computation</a><span>C. H. Bennett, IBM Journal of Research and Development 17, 525–532 (1973).</span><em>可逆通用計算與 uncomputation 的原始構造。</em></li><li><a href="https://arxiv.org/abs/quant-ph/0405098" target="_blank" rel="noopener">Adiabatic Quantum Computation is Equivalent to Standard Quantum Computation</a><span>D. Aharonov et al., SIAM Journal on Computing 37, 166–194 (2007).</span><em>電路模型與 Hamiltonian／絕熱模型的計算等價性。</em></li><li><a href="https://doi.org/10.1063/1.5089550" target="_blank" rel="noopener">A Quantum Engineer's Guide to Superconducting Qubits</a><span>P. Krantz et al., Applied Physics Reviews 6, 021318 (2019).</span><em>控制、coherence、readout 與工程參數的主幹 review。</em></li></ul>
+    </div>
+  </section>
+</section>
+
+
+                                <div class="post-meta">
+                                    <span class="post-author">
+                                        <a href="../About/Wang.html"><img class="img-res" src="../WebP/IMG_0964_2.webp" alt="">王培儒</a>
+                                    </span>
+                                    <span class="post-category">
+                                        <a href="../SCQ_advanced/main.html"><i class="fa fa-folder" aria-hidden="true"></i>PHYS598500</a>
+                                    </span>
+                                </div><!-- /.post-meta -->
+                            
+                                <div id="prev-next-nav" class="text-center">
+                                    <a class="btn btn-gray" href="main.html">← 上一頁</a> 
+                                    <a class="btn btn-gray" href="T2-2.html">下一頁 →</a>
+                                </div>
+
+                                
+
+                            </div><!-- /.post-content -->
+                        </article><!-- /.blog-post -->
+                        <!--<div id="PostComments" class="post-comments">
+                            
+                            
+                            
+                        </div> /#PostComments -->
+                        <!--<div class="respond">
+                            <h3>Post a Comment</h3>
+                            <form class="form-horizontal">
+                                <input class="form-control" type="text" placeholder="Your Name*" required>
+                                <input class="form-control" type="email" placeholder="Your Email" required>
+                                <textarea class="form-control form-control-comment" type="text" placeholder="Your Comment*" required></textarea>
+                                <button class="btn btn-green">Add a comment</button>
+                            </form>    
+                        </div> /.respond -->
+                    </div>
+                    <aside class="col-md-3">
+                        <div class="sidebar">
+                            <div class="widget">
+                                <div id="lesson-list_2">
+                                <div class="lesson-link "><a href="main.html">QH-2026F v5 · 16週總覽</a></div>
+                                <div class="lesson-link active"><a href="T1-1.html">Week 1 · 從量子計算模型到硬體操作</a></div>
+                                <div class="lesson-link "><a href="T2-2.html">Week 2 · 超導電路量子化與 Transmon 設計</a></div>
+                                <div class="lesson-link "><a href="T2-3.html">Week 3 · Fluxonium：從電路改造到設計取捨</a></div>
+                                <div class="lesson-link "><a href="T3-4.html">Week 4 · 單量子位元控制：從微波脈衝到旋轉座標</a></div>
+                                <div class="lesson-link "><a href="T3-5.html">Week 5 · 耦合 Hamiltonian、兩量子位元閘與 Tunable Coupler</a></div>
+                                <div class="lesson-link "><a href="T3-6.html">Week 6 · Circuit QED、Dispersive Readout 與量測鏈</a></div>
+                                <div class="lesson-link "><a href="T4-7.html">Week 7 · 量子處理器校準：Hamiltonian Identification 與 Drift</a></div>
+                                <div class="lesson-link "><a href="T4-8.html">Week 8 · Benchmarking、多量子位元誤差與可擴展校準</a></div>
+                                <div class="lesson-link "><a href="T4-9.html">Week 9 · 量子錯誤校正基礎：從物理誤差到 Stabilizer Syndrome</a></div>
+                                <div class="lesson-link "><a href="T4-10.html">Week 10 · Surface-Code Hardware Cycle：排程、解碼與 Logical-Qubit 資源</a></div>
+                                <div class="lesson-link "><a href="T5-11.html">Week 11 · Dilution Refrigerator、熱化與低溫線路預算</a></div>
+                                <div class="lesson-link "><a href="T5-12.html">Week 12 · 微波控制、讀出電子與訊號完整性</a></div>
+                                <div class="lesson-link "><a href="T5-13.html">Week 13 · 封裝、EM Modes、佈線擴展與全系統整合</a></div>
+                                <div class="lesson-link "><a href="T6-14.html">Week 14 · 超導量子晶片製程與 Josephson Junction Process Module</a></div>
+                                <div class="lesson-link "><a href="T6-15.html">Week 15 · Materials Loss、製程變異、Yield 與 Design–Fab–Measure Loop</a></div>
+                                <div class="lesson-link "><a href="T7-16.html">Week 16 · 前沿架構與 Hardware-Aware Quantum System Capstone</a></div>
+                                </div>
+                            </div>
+                        </div></aside>
+                </div>
+            </div>
+        </section><!-- /.section-portfolio -->
+
+    </main><!-- /#main -->
+
+    <footer id="colophon" class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-4 col-xs-6">
+                    <a href="../index_ch.html" class="site-title">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
+                    <p>一起走進新時代的前沿科學與量子科技</p>
+                    </div>
+                <div class="col-lg-offset-4 col-md-3 col-sm-4 col-md-offset-2 col-sm-offset-0 col-xs-6 ">
+                    <p class="site-title">𝐾𝐸𝐸𝑃 𝐼𝑁 𝑇𝑂𝑈𝐶𝐻</p>
+                    <ul class="list-unstyled contact-links">
+                        <li><i class="fa fa-envelope" aria-hidden="true"></i><a href="mailto:info@insight-ihbar.com">info@insight-ihbar.com</a></li>
+                        <!--<li><i class="fa fa-phone" aria-hidden="true"></i><a href="tel:+374****0000">+374 (00) 80 00 00 </a></li>
+                        <li><i class="fa fa-fax" aria-hidden="true"></i><a href="+374****0000">+374 (00) 90 00 00</a></li>
+                        <li><i class="fa-solid fa-location-dot"></i><p>Hsinchu 300, Taiwan (R.O.C.)</p></li>-->
+                    </ul>
+                </div>
+                <!--<div class="clearfix visible-xs"></div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6">
+                    <h3>Featured links</h3>
+                    <ul class="list-unstyled">
+                        <li class="active"><a href="index_ch.html">Home</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="portfolio.html">Porfolio</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>-->
+            </div>
+        </div>
+        <div class="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-8">
+                        <div class="social-links">
+                            <!--<a class="twitter-bg" href="#"><i class="fab fa-twitter"></i></a>-->
+                            <!--<a class="facebook-bg" href="https://www.facebook.com/people/Quantum-Perspectives/61576446849628/"><i class="fab fa-facebook"></i></a>-->
+                            <!--<a class="facebook-bg" href="https://www.facebook.com/people/%E9%87%8F%E5%AD%90%E9%81%A0%E8%A6%8BQuantum-Perspectives/61576883632888/"><i class="fab fa-facebook-f"></i></a>-->
+                            <!--<a class="pinterest" href="#"><i class="fa-solid fa-microscope"></i></a>-->
+                            <!--<a class="facebook-bg" href="https://www.facebook.com/people/Insight-hbar/61576811775374/"><i class="fab fa-facebook-f"></i></a>-->
+                            <a class="linkedin-bg" href="https://www.linkedin.com/company/insight-ihbar"><i class="fab fa-linkedin"></i></a>
+                        </div><!-- /.social-links -->
+                    </div>
+                    <div class="col-xs-4">
+                        <div class="text-right">
+                            <p><span style="font-size: 16px;">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</span></p>
+                            <p>All Rights Reserved</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.copyright -->
+    </footer><!-- /#footer -->
+
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="../assets/js/bootstrap-select.min.js"></script>
+    <script src="../assets/js/jquery.slicknav.min.js"></script>
+    <script src="../assets/js/jquery.countTo.min.js"></script>
+    <script src="../assets/js/jquery.shuffle.min.js"></script>
+    <script src="../assets/js/script.js"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  
+</body>
+</html>

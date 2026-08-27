@@ -1,0 +1,1824 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N39VTY949N"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-N39VTY949N');
+</script>
+    <!-- Basic Page Needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <meta name="author" content="Peir-Ru Wang">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;1,300&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/20250525-icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/20250525-icon.png">
+
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/css/style.css" rel="stylesheet">
+    <link href="../assets/css/responsive.css" rel="stylesheet">
+
+    <title>Week 14 · 超導量子晶片製程與 Josephson Junction Process Module | QH-2026F v5</title>
+    <meta name="description" content="PHYS598500 第 14 週，120 分鐘進階課程：超導量子晶片製程與 Josephson Junction Process Module">
+    <meta name="keywords" content="- 量子處理器
+- 超導量子位元
+- Qubit
+- 約瑟夫森接面
+- Transmon
+- Fluxonium
+- 量子計算
+- 量子硬體
+- 量子演算法
+- 量子晶片">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+<style>
+.qh-week-meta { margin: 20px 0; padding: 16px 18px; border-left: 4px solid #5f4b8b; background: #f6f4fa; }
+.qh-week-meta p { margin: 4px 0; }
+.qh-session-plan { width: 100%; margin: 18px 0 8px; border-collapse: collapse; }
+.qh-session-plan th, .qh-session-plan td { padding: 10px 12px; border: 1px solid #ddd; vertical-align: top; }
+.qh-session-plan th { background: #f4f4f4; }
+.qh-session-plan .qh-break td { color: #666; background: #fafafa; }
+.qh-total { text-align: right; font-weight: 700; }
+.qh-reading li { margin-bottom: 12px; }
+.qh-reading span, .qh-reading em { display: block; }
+.qh-week-list { padding-left: 0; list-style: none; }
+.qh-week-list li { margin: 0 0 13px; padding: 12px 15px; border-left: 4px solid #5f4b8b; background: #f7f7f7; }
+.qh-week-list a { font-weight: 700; }
+@media (max-width: 767px) { .qh-session-plan { display: block; overflow-x: auto; } }
+</style>
+
+
+<style id="qh-full-course-style">
+    .qh-full-lecture {
+      margin: 30px 0;
+      padding: 24px 26px;
+      border: 1px solid #d9d4e5;
+      background: #fff;
+    }
+
+    .qh-full-lecture>h2,
+    .qh-full-lecture>h3 {
+      margin-top: 0;
+    }
+
+    .qh-full-lecture h4 {
+      margin-top: 24px;
+    }
+
+    .qh-full-lecture li {
+      margin-bottom: 8px;
+    }
+
+    .qh-time {
+      display: inline-block;
+      margin-bottom: 12px;
+      padding: 4px 10px;
+      border-radius: 14px;
+      background: #5f4b8b;
+      color: #fff;
+      font-size: .9em;
+    }
+
+    .qh-board,
+    .qh-case,
+    .qh-task,
+    .qh-answer,
+    .qh-source-chapter {
+      margin: 20px 0;
+      padding: 17px 19px;
+      font-size: 15px;
+    }
+
+    .qh-board {
+      border-left: 4px solid #d0ccc8;
+      background: #fafafa;
+    }
+
+    .qh-case {
+      border-left: 4px solid #d0ccc8;
+      background: #fafafa;
+    }
+
+    .qh-task {
+      border-left: 4px solid #d0ccc8;
+      background: #fafafa;
+    }
+
+    .qh-answer {
+      border-left: 4px solid #d0ccc8;
+      background: #fafafa;
+    }
+
+    /* Section divider headings */
+    .qh-section {
+      margin: 40px 0 24px;
+      padding: 17px 19px;
+      border-left: 4px solid #355c9a;
+      background: #f3f7fc;
+    }
+
+    .qh-section h3 {
+      margin: 0 0 4px;
+      font-size: 20px;
+      font-weight: 700;
+      color: #355c9a;
+      border-bottom: none;
+    }
+
+    .qh-section h4 {
+      margin: 0;
+      font-size: 15px;
+      font-weight: 400;
+      color: #6a8ab5;
+      font-style: italic;
+    }
+
+    .qh-section>h3:first-child {
+      margin-top: 0;
+    }
+
+    /* Equation highlight — compact, not a section heading */
+    .qh-equation-highlight {
+      margin: 24px 0;
+      padding: 14px 18px;
+      border-left: 3px solid #6a6560;
+      background: #f9f8f7;
+    }
+
+    .qh-equation-label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      color: #6a6560;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    .qh-source-chapter {
+      border: 1px solid #e5e0ec;
+      background: #fdfcff;
+    }
+
+
+    .qh-source-chapter>h3 {
+      padding-bottom: 9px;
+      border-bottom: 1px solid #ddd5e8;
+    }
+
+    .qh-source-note {
+      color: #665f72;
+      font-size: .92em;
+    }
+
+    @media (max-width: 720px) {
+      .qh-full-lecture {
+        padding: 18px 15px;
+      }
+
+      .qh-board,
+      .qh-case,
+      .qh-task,
+      .qh-answer,
+      .qh-source-chapter {
+        padding: 14px 13px;
+      }
+    }
+
+    /* Supplement section styling */
+    .qh-supplement-divider {
+      margin: 36px 0 24px;
+      padding: 18px 22px;
+      border-left: 4px solid #5f4b8b;
+      background: #f6f4fa;
+    }
+
+    .qh-supplement-divider h2 {
+      margin: 0 0 5px;
+      font-size: 22px;
+    }
+
+    .qh-supplement-divider p {
+      margin: 0;
+    }
+
+    /* Tables in supplement */
+    .module table {
+      width: 100%;
+      margin: 16px 0;
+      border-collapse: collapse;
+      font-size: 15px;
+    }
+
+    .module table th,
+    .module table td {
+      padding: 10px 12px;
+      border: 1px solid #ddd;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .module table th {
+      background: #f4f4f4;
+      font-weight: 700;
+    }
+
+    /* Callout in supplement */
+    .module .callout {
+      margin: 16px 0;
+      padding: 12px 16px;
+      border-left: 4px solid #5f4b8b;
+      background: #f6f4fa;
+      font-size: 15px;
+    }
+
+    /* Lists in supplement */
+    .module ul,
+    .module ol {
+      margin: 12px 0;
+      padding-left: 24px;
+    }
+
+    .module li {
+      margin-bottom: 8px;
+      line-height: 1.6;
+      font-size: 15px;
+    }
+
+    /* Heading consistency — only direct h3 children, not inside .qh-section */
+    .module > h3 {
+      margin: 28px 0 14px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #ddd5e8;
+      font-size: 20px;
+    }
+
+    .module h4 {
+      margin: 20px 0 10px;
+      font-size: 17px;
+    }
+
+    .module p {
+      margin: 10px 0;
+      line-height: 1.7;
+    }
+  </style>
+
+<style id="qh-details-style">
+        details.dark-background {
+          background-color: #f5f5f5;
+          border: 1px solid #ddd;
+          padding: 10px;
+          border-radius: 5px;
+        }
+        details.dark-background summary {
+          cursor: pointer;
+          font-weight: bold;
+          background-color: #e0e0e0;
+          padding: 5px;
+          border-radius: 3px;
+        }
+      </style>
+
+</head>
+<body>
+
+    <header id="masthead" class="site-header">
+        <nav id="primary-navigation" class="site-navigation">
+            <div class="container">
+
+                <div class="navbar-header">                   
+                    <a href="../index_ch.html" class="site-title">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
+                </div><!-- /.navbar-header -->
+
+                <div class="collapse navbar-collapse" id="agency-navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="../index_ch.html">Home</a></li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">科普介紹<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                              <li><a href="../SCQ_elementary/main.html">超導量子位元(科普版)</a></li>
+                              <li><a href="../SCQ_advanced/main.html">超導量子位元(進階版)</a></li>
+                              <li><a href="../SpQ/main.html">半導體自旋量子位元</a></li>
+                            </ul>
+                        </li>
+                        <!--<li class="active"><a href="../SCQ_elementary/main.html">科普介紹</a></li>-->
+                        <li class="active"><a href="../QC_hardware/main.html">硬體導論</a></li>
+                        <li><a href="../QID/main.html">量子產業群像錄</a></li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">研討會筆記<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                <li><a href="../ASW2026/main.html">2026中研院超導量子電腦Workshop</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">量子諮詢<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                <li><a href="https://www.quantum-perspectives.com/About/main.html">量子遠見科技：諮詢服務</a></li>
+                                <li><a href="../About/main.html">關於我們</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="../index.html">English</a></li>                        
+                    </ul>
+                </div>
+
+            </div>   
+        </nav><!-- /.site-navigation -->
+    </header><!-- /#mastheaed -->
+
+    <div id="hero" class="hero overlay subpage-hero blog-hero">
+        <div class="hero-content">
+            <div class="hero_2-text">
+                <h1>超導量子電腦架構</h1>
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="../index_ch.html">Home</a></li>
+                  <li class="breadcrumb-item"><a href="../SCQ_advanced/main.html">PHYS598500</a></li>
+                  <!--<li class="breadcrumb-item active">約瑟夫森節</li>-->
+                </ol>
+            </div><!-- /.hero-text -->
+        </div><!-- /.hero-content -->
+    </div><!-- /.hero -->
+
+    <main id="main" class="site-main">
+
+        <section class="site-section subpage-site-section section-blog">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                        <article class="blog-post">
+                            <!--<img src="../assets/img/portfolio-1.jpg" class="img-res" alt="">-->
+                            <div class="post-content">
+
+<section id="week-14" class="course-theme">
+      <div style="text-align: center;">
+      <p class="theme-label">PHYS598500 · Week 14 · T6</p>
+      <h2>超導量子晶片製程與 Josephson Junction Process Module</h2>
+      <h3>Superconducting-Qubit Fabrication and the Josephson-Junction Process Module</h3>
+    </div>
+  <section class="course-overview">
+    <h3>本週定位</h3>
+    <div class="qh-week-meta">
+      <p><strong>課程長度：</strong>120 分鐘</p>
+      <p><strong>核心問題：</strong>版圖上的 \(E_J\)、\(E_C\) 與低損耗結構，如何被製程真正做出來？</p>
+      <p><strong>難度：</strong>高／製程整合</p>
+      <p><strong>先備：</strong>thin films、lithography、etch/lift-off、T2 circuit parameters</p>
+      <p><strong>原始教材來源：</strong>T6 modules 1, 2, 3, 4</p>
+    </div>
+    <h3>學習成果</h3><ul><li>建立 substrate/base metal/patterning/JJ/clean/packaging 的 process flow。</li><li>理解 deposition、etch、lift-off、residue、alignment 與 surface treatment 的 trade-off。</li><li>把 JJ area、oxidation、normal resistance 與 \(I_c/E_J\) 連到 room-temperature process control。</li></ul>
+    <h3>兩小時授課配置</h3><table class="qh-session-plan"><thead><tr><th>時間</th><th>形式</th><th>授課內容與當段產出</th></tr></thead><tbody><tr><td>0–10 分</td><td>定位／診斷</td><td><strong>版圖上的 EJ、EC 如何被製程真正做出來？</strong><br>以一個問題確認先備與本週接口。</td></tr><tr><td>10–35 分</td><td>概念主線 A</td><td><strong>Substrate、base metal、lithography、etch、lift-off 與 cleaning 如何形成製程流程？</strong><br>建立第一組物理概念、變數與工程語言。</td></tr><tr><td>35–60 分</td><td>推導／定量</td><td><strong>如何從 Rn、Ic 與 EJ 建立 Josephson-junction process module？</strong><br>走完關鍵公式或定量關係，不停留在名詞介紹。</td></tr><tr class="qh-break"><td>60–70 分</td><td>休息</td><td><strong>Break</strong><br>保留兩小時課程的注意力恢復窗口。</td></tr><tr><td>70–95 分</td><td>概念主線 B</td><td><strong>PCM、overlay、residue 與 surface treatment 如何接受低溫驗證？</strong><br>把物理結果接到元件、控制或系統架構。</td></tr><tr><td>95–110 分</td><td>案例／研討</td><td><strong>每個 process step 應監控哪些 CTQ、PCM 與 defect？</strong><br>學生留下可檢查的圖、表、推導或 architecture decision。</td></tr><tr><td>110–120 分</td><td>整合／驗收</td><td><strong>如何建立 design parameter → process control 的映射？</strong><br>用 exit question 檢查是否能跨層解釋。</td></tr></tbody></table><p class="qh-total">合計：120 分鐘</p>
+  </section>
+<!-- QH_FULL_LECTURE_START -->
+<section class="qh-full-lecture" id="full-T6-14">
+  <span class="qh-time">完整授課層 · 0–120 分鐘</span>
+    <div class="qh-section">
+    <h3>Fabrication as Hamiltonian realization：從材料堆疊到 Josephson junction</h3>
+  </div>
+  <p><strong>本週驅動問題：</strong>設計圖中的 \(E_J,E_C,Q\) 必須由材料、界面、線寬、氧化與接觸實現。如何把 process traveler 的每一步連回 Hamiltonian parameter、loss channel 與 yield？</p>
+  <h3 data-concept="W14-C1 W14-C2">0–10 分鐘：問題設定與先備診斷</h3>
+  <p>先要求學生不用查資料，以一張圖畫出本週主題從抽象模型到真實硬體的訊息流。教師不立刻公布答案，而是收集學生把哪些層次畫成等號。全課結束時再重畫一次，用兩張圖的差異驗收是否真正建立跨層理解。</p>
+  <h3 data-concept="W14-C1 W14-C2">10–35 分鐘：Substrate、base metal、lithography、etch、lift-off 與 cleaning 如何形成製程流程？</h3>
+  <div class="qh-board">
+<h4>黑板主線：製程參數如何進入 qubit model</h4>
+<p>對 Josephson junction，\(E_J=\hbar I_c/(2e)\)，而 \(I_c=J_cA\)。junction area \(A\)、barrier oxidation 與材料界面共同決定 critical current；小面積誤差與 \(J_c\) 非均勻會直接形成 qubit frequency spread。shunt capacitor 幾何決定 \(C_\Sigma\) 與 \(E_C=e^2/(2C_\Sigma)\)，而 substrate/metal/air interfaces 的 electric-field participation 連到 dielectric loss。</p>
+<p>因此 process control 不只追線寬是否符合 mask，而是追 \(\delta A/A\)、\(J_c\) distribution、sheet resistance、film stress、surface roughness、residue、contact resistance 與 interface participation。每一項都應有 metrology 與 device-level electrical/quantum test 的對應。</p>
+<h4>Josephson junction flow</h4>
+<p>常見 Al/AlO\(_x\)/Al junction 可用 e-beam lithography、Dolan bridge/double-angle evaporation、controlled oxidation 與 lift-off。undercut/profile 決定 overlap geometry；base pressure、evaporation angle/rate、氧壓與時間影響 barrier；resist residue、fence與 shadow variation 影響 yield。不同 foundry flow 可能使用 subtractive junction或其他材料，不能把單一路線當自然定律。</p>
+</div>
+  <h3 data-concept="W14-D1 W14-C3 W14-C4">35–60 分鐘：如何從 Rn、Ic 與 EJ 建立 Josephson-junction process module？</h3>
+  <div class="qh-board">
+<h4>推導主線：room-temperature \(R_N\) → \(I_c\) → \(E_J\) → Hamiltonian parameter</h4>
+<p>這一段要把製程可量測的室溫參數，逐步推到 Hamiltonian 中的 \(E_J\)。每一步都標明近似條件與製程接口。</p>
+
+<p><strong>Step 1 — 由 junction 面積與材料決定 \(I_cR_N\) 積：</strong></p>
+<p>對 diffusive Al/AlO\(_x\)/Al tunnel junction，Ambegaokar–Baratoff 關係在 \(T\ll T_c\) 給出</p>
+<div class="equation-card"><p>I_cR_N\approx\frac{\pi\Delta(0)}{2e}\tanh\!\left(\frac{\Delta(0)}{2k_BT}\right)\xrightarrow{T\to0}\frac{\pi\Delta(0)}{2e}</p></div>
+<p>其中 \(\Delta(0)\) 是 Al 的超導能隙（~1.8 meV），\(R_N\) 是 junction 的室溫正常電阻。這個關係的關鍵在於：\(R_N\) 可以在 room temperature 直接量測，不需要低溫環境。製程上，\(R_N\) 由 tunnel barrier 的厚度與品質決定，而 barrier 由 oxidation step 的 pressure × time 控制。</p>
+
+<p><strong>Step 2 — 由 \(I_cR_N\) 與 \(R_N\) 分離出 \(I_c\)：</strong></p>
+<p>量測得到 \(R_N\) 後，利用上式估計 \(I_cR_N\) 的上限，即可推算 critical current：</p>
+<div class="equation-card"><p>\[I_c\approx\frac{\pi\Delta(0)}{2eR_N}\]</p></div>
+<p>但實際 \(I_c\) 還受 junction area \(A\) 與 critical current density \(J_c\) 影響：</p>
+<div class="equation-card"><p>\[I_c=J_c\cdot A\]</p></div>
+<p>其中 \(J_c\) 由 barrier oxidation 決定（典型值 10–100 A/cm\(^2\) 對 transmon），\(A\) 由 lithography overlay 與 evaporation angle 決定。因此 \(R_N\) 的製程控制同時影響 \(I_c\) 的兩個因子。</p>
+
+<p><strong>Step 3 — 由 \(I_c\) 到 \(E_J\)：</strong></p>
+<p>Josephson energy 是 transmon Hamiltonian 的核心參數：</p>
+<div class="equation-card"><p>\[E_J=\frac{\hbar I_c}{2e}=\frac{\Phi_0 I_c}{4\pi^2}\approx\frac{I_c}{4\pi^2}\times2.07\;\mu\mathrm{eV}/\mathrm{nA}\]</p></div>
+<p>代入 \(I_c=J_cA\)：</p>
+<div class="equation-card"><p>\[E_J=\frac{\hbar J_c A}{2e}\propto J_c\cdot A\]</p></div>
+<p>這一步把 Hamiltonian parameter \(E_J\) 直接連到兩個製程可控制量：\(J_c\)（oxidation dose）與 \(A\)（lithography + evaporation geometry）。</p>
+
+<p><strong>Step 4 — \(E_J\) 進入 qubit frequency 與 Hamiltonian：</strong></p>
+<p>對 transmon，\(f_{01}\approx\sqrt{8E_JE_C}/h-2E_C/h\)，因此 \(E_J\) 的製程變異直接投影到 qubit frequency：</p>
+<div class="equation-card"><p>\[\frac{\delta f_{01}}{f_{01}}\approx\frac{1}{2}\frac{\delta E_J}{E_J}=\frac{1}{2}\frac{\delta I_c}{I_c}=\frac{1}{2}\left(\frac{\delta J_c}{J_c}+\frac{\delta A}{A}\right)\]</p></div>
+<p>若製程給出 \(J_c\) 的 wafer-level σ 為 10%，area σ 為 5%，則 \(f_{01}\) spread 約 3%。對 5 GHz transmon 即 ~150 MHz，足以造成 frequency collision。</p>
+
+<p><strong>Step 5 — 製程 control 閉環：</strong></p>
+<p>完整的 process module 鏈為：</p>
+<div class="equation-card"><p>\[\text{Oxidation }(P,\,t)\;\to\;J_c\;\to\;I_c\;\to\;E_J\;\to\;f_{01}\;\to\;\text{Hamiltonian}\]</p></div>
+<div class="equation-card"><p>\[\text{Lithography/overlay }\;\to\;A\;\to\;I_c\;\to\;E_J\;\to\;f_{01}\;\to\;\text{Hamiltonian}\]</p></div>
+<p>room-temperature \(R_N\) 提供第一層 proxy，但最終仍需低溫 spectroscopy 閉環校準。\(E_C=e^2/(2C_\Sigma)\) 由 shunt capacitor 幾何決定，相對容易控制（σ &lt; 1%），所以 \(E_J\) 通常是 frequency spread 的主因。</p>
+
+<h4>學生活動（5 分鐘）</h4>
+<p>兩人一組，把推導中的每個符號分成「設計可選參數、製程/裝置產生參數、必須校準參數、只能量測估計的狀態」四類。這一步迫使公式離開紙面，成為 architecture dependency。</p>
+</div>
+</section>
+
+<section class="qh-full-lecture">
+  <span class="qh-time">60–70 分鐘</span>
+  <div class="qh-section">
+    <h3>休息與黑板保留</h3>
+  </div>
+  <p>保留本週核心 Hamiltonian／system equation 與 dependency graph。休息後直接以既有教材展開，不重新講一次名詞表。</p>
+</section>
+
+<section class="qh-full-lecture">
+  <span class="qh-time">70–95 分鐘</span>
+    <div class="qh-section">
+    <h3>既有教材整合：PCM、overlay、residue 與 surface treatment 如何接受低溫驗證？</h3>
+  </div>
+  <p>下列內容不是附錄，而是本週第二段講授材料。授課時選擇與黑板模型直接相連的圖、表與段落逐一解讀；其餘留作課後複習。每一段都要追問「它改變了哪一個 Hamiltonian／control／measurement／system 參數」。</p>
+
+
+
+</section>
+
+<section class="qh-full-lecture">
+  <span class="qh-time">95–110 分鐘</span>
+  <h3 data-concept="W14-CS1">工程案例與驗收</h3>
+  <div class="qh-case">
+<h4>統計案例：頻率分布由哪裡來？</h4>
+<p>若 transmon 在固定 \(E_C\) 下 \(f_{01}\sim\sqrt{8E_JE_C}/h\)，則小變動近似 \(\delta f/f\approx\frac12\delta E_J/E_J\approx\frac12\delta I_c/I_c\)。junction critical-current standard deviation 6% 可先估計為約 3% frequency spread，再加上 capacitance與 model 誤差。對 5 GHz 即約 150 MHz，足以影響 frequency allocation/collision。</p>
+<p>wafer map 若呈現 radial trend，可能指向 evaporation/oxidation/etch uniformity；若局部 cluster，可能是 lithography focus、contamination 或 resist process；若 random telegraphic behavior，則要考慮 microscopic defect。統計形狀比單一平均值更能指向根因。</p>
+</div>
+  <div class="qh-task">
+    <h4>課堂任務（8–10 分鐘）</h4>
+    <p>建立一份 junction process traveler：從 substrate clean、resist、exposure、development、evaporation、oxidation、lift-off 到 room-temperature resistance。每一步列出一項可量測 process control、一項可能 qubit failure 與一項可追溯 metadata。</p>
+  </div>
+  <div class="qh-answer">
+    <h4>教師解答與評分依據</h4>
+    <p>例如 exposure/development 量 critical dimension，對應 area/frequency variation；evaporation記錄 rate/angle/base pressure，對應 film quality與 overlap；oxidation記錄 pressure/time/dose，對應 \(J_c\)；lift-off檢查 residue/fence，對應 loss/short；room-temperature \(R_N\) 可作 \(I_c\) proxy，但仍需低溫 spectroscopy閉環。</p>
+    <p>答案不以是否使用特定名詞評分，而以是否建立「假設 → 可觀測量 → 區分實驗 → 決策」的閉環評分。學生若提出不同方案，只要能明確指出代價與可否證條件，即可成立。</p>
+  </div>
+  <h4>Exit ticket</h4>
+  <ol>
+    <li>本週最重要的一條 equation／model 是什麼？它的適用近似為何？</li>
+    <li>哪一個看似局部的參數，實際會跨越 device、control 與 system 三層？</li>
+    <li>若只能做一個新實驗，什麼結果最能改變目前的 architecture decision？</li>
+  </ol>
+  <h3 data-concept="W14-C6">110–120 分鐘：如何建立 design parameter → process control 的映射？</h3>
+  <p><strong>Exit question：</strong>選一個你剛剛標出的 CTQ，說明它如何從 room-temperature metrology 一路連到 Hamiltonian parameter、qubit coherence 與 system-level yield。這條鏈在哪一步最容易斷？你如何驗證它沒有斷？</p>
+  <p><strong>整合驗收：</strong>學生以一張圖或一張表回答，教師以「假設→可觀測量→區分實驗→決策」閉環評分。若學生能指出製程誤差對 Hamiltonian 參數的投影路徑，即通過驗收。</p>
+</section>
+<!-- QH_FULL_LECTURE_END -->
+  <section class="qh-source-chapter">
+  <h3>教材深挖 1：約瑟夫森節</h3>
+  <p class="qh-source-note">整合自既有 Insight iHBAR 教材：SCQ_elementary/A.html</p>
+  <p >
+                                    以超導製作的量子位元基本上都脫不開約瑟夫森節（Josephson Junction）。約瑟夫森節是一種三明治結構，以兩個超導體中間夾一個非超導態的物質，因為量子效應，超導電流可以透過穿隧效應穿越這層非超導層。常見製作材料為鋁基（Al）或是鈮基（Nb），在基板上鍍一層超導金屬之後，讓表面氧化形成一層薄薄的氧化層（即絕緣非超導層），再鍍上另一層超導金屬，即是一個約瑟夫森節，這種超導-絕緣-超導結構稱為SIS結（Superconductor-Insulator-Superconductor, SIS junction）。
+                                <br>
+                                <br>
+                                </p>
+                                
+
+                                <div style="text-align: center;">
+                                
+                                    <a href="../Image/JJ--703e0e52.jpg"><img loading="lazy" src="../WebP/JJ--703e0e52.webp" alt="約瑟夫接點結構與特徵示意圖" style="width: 100%; height: auto;"></a>
+                                
+                                </div>
+                                <p  class="dark-background">
+                                    ▲（a）SIS約瑟夫森節的示意圖。（b）電子顯微鏡下的鋁基SIS節。（c）鋁的超導溫度\(T_c = 1.2K\)，而鈮的擁有單元素裡面最高的超導溫度\(T_c = 9.2K\)，故如果用鈮來做量子位元可以有比較高的穩定度。可是鈮的氧化物\(Nb_2O_5\)與金屬鈮結構差異過大，難以製作成性能良好的約瑟夫森節，故利用多層的材料\(Nb-Re-Al_2O_3-Al-Nb\)，採用氧化鋁當絕緣層搭配薄薄的\(Re\)、\(Al\)當結構緩衝層。這種緩衝手法再現今半導體製程上也很常出現（異質整合），緩衝層大概約兩三層原子，作為橋接兩個晶格常數不匹配得材料。在量子材料中另一個很常見的量子效應-鄰近效應（Proximity effect），即塊材的波函數會完全進入到薄膜層，使得薄膜的物理性質「變成」塊材的物理性質。在這邊也會因為鈮超導的鄰近效應，使得緩衝層也變為超導性，故這個多層結構也是SIS。<br>
+                                    <span style="font-size: 0.7em; line-height: 0.8;">Ref:10.1557/mrs.2013.229 </span>
+                                    <br>
+                                    <br>
+                                </p>
+
+                                <div style="text-align: center;">
+                                
+                                    <a href="../Image/Nb JJ.png"><img loading="lazy" src="../WebP/Nb JJ.webp" alt="微觀結構示意圖，展示材料交匯處。" style="width: 50%; height: auto;"></a>
+                                
+                                </div>
+                                <p >
+                                    ▲Nb的約瑟夫森節例子<br>
+                                    <span style="font-size: 0.7em; line-height: 0.8;">Ref:David Schuster of Stanford University<br>
+                                    https://www.anl.gov/article/resurrecting-niobium-for-quantum-science<br>
+                                    https://schusterlab.stanford.edu/research.html</span>
+                                    <br>
+                                    <br>
+                                </p>
+
+                                <div style="text-align: center;">
+                                
+                                    <a href="../Image/SCS.png"><img loading="lazy" src="../WebP/SCS.webp" alt="超導體與鋁結構的示意圖。" style="width: 70%; height: auto;"></a>
+                                
+                                </div>   
+
+
+                                <p >
+                                ▲量子效應是很脆弱的，事實上約瑟夫森節非常脆弱，要形成良好的絕緣層「並」整合在三明治結構中是非常挑戰的。如果結構中有不良的缺陷，會導致量子位元退相干、產生錯誤。故科學家也不斷的思考不同的解決方案。圖b為一種理論建議，利用收窄的效果，使局部失去超導性，即自然形成一個約瑟夫森節（ScS）。<br>
+                                <span style="font-size: 0.7em; line-height: 0.8;">Ref:10.1103/PhysRevA.110.012427<br>
+                                https://quantumzeitgeist.com/superconducting-qubits-get-boost-with-novel-constriction-design/</span>
+                                </p>
+</section>
+<section class="qh-source-chapter">
+  <h3>教材深挖 2：電子顯微鏡下的超導量子位元</h3>
+  <p class="qh-source-note">整合自既有 Insight iHBAR 教材：SCQ_elementary/F.html</p>
+  <div style="text-align: center;">
+                                
+                                    <a href="../Image/SIngle Qubit circuit--bc569b45.png"><img loading="lazy" src="../WebP/SIngle Qubit circuit--bc569b45.webp" alt="量子比特驅動及讀取系統示意圖。" style="width: 100%; height: auto;"></a>
+                                
+                                </div>
+
+                                <p >
+                                    ▲首先可以先欣賞一下Transmon的 layout。（a）顯微鏡底下的電路圖，（b）對應的電路圖，此圖中有一個 Qubit（紅色 Transmon）、一個 readout resonator（天藍色），兩條 feed\mathcal{L}ine 個別驅動（Drive）量子位元與 readout resonator。各元件間利用電容作耦合。另外有一條 Flux line 連到 Qubit 旁，會產生磁場來改變 Transmon 的操作頻率。（c）readout resonator 因為與量子位元耦合，會受到量子位元在 \(\ket{0}\) 或 \(\ket{1}\) 狀態的差異產生頻譜的位移，利用 readout resonator 頻譜的位移的特性來得知量子位元的狀態。
+                                    <br><span style="font-size: 0.7em; line-height: 0.8;">arxiv.org/pdf/2106.11352</span><br><br>
+                                </p>
+
+
+
+                                <div style="text-align: center;">
+                                
+                                    <a href="../Image/Fluxonium.png"><img loading="lazy" src="../WebP/Fluxonium.webp" alt="微細結構圖示與原理示意圖。" style="width: 60%; height: auto;"></a>
+                                
+                                </div>
+                                <p >
+                                    ▲從其中一側的約瑟夫森節著手，改成串連許多約瑟夫森節構成一個電感\(L\)，稱為Fluxonium。
+                                    <br><span style="font-size: 0.7em; line-height: 0.8;">Ref: 10.1038/s41467-021-26686-x</span>
+                                    <br><br>
+                                        
+                                </p>
+
+                                <div style="text-align: center;">
+                                
+                                    <a href="../Image/Blochnium.png"><img loading="lazy" src="../WebP/Blochnium.webp" alt="微觀結構圖，顯示不同的電路連接。" style="width: 100%; height: auto;"></a>
+                                
+                                </div>
+                                <p >
+                                    ▲Blochnium可以說是電感進一步串連的Fluxonium。其立體結構非常有趣。
+                                    <br><span style="font-size: 0.7em; line-height: 0.8;">Ref: 10.1038/s41586-020-2687-9</span><br>
+                                    <br><br>
+                                        
+                                </p>
+
+
+
+                                <div style="text-align: center;">
+                                
+                                    <a href="../Image/JJ Array.png"><img loading="lazy" src="../WebP/JJ Array.webp" alt="超導材料的 JJ 陣列與單一 JJ 結構顯微圖像" style="width: 100%; height: auto;"></a>
+                                
+                                </div>
+                                <p >
+                                    ▲另一張Fluxonium/Blochnium中的約瑟夫森節陣列蝕刻製程的圖片。此圖可以很明顯地看出捲鬚結構是由一連串的約瑟夫森節串連而成。
+                                    <br><span style="font-size: 0.7em; line-height: 0.8;">Ref: arxiv: 2411.10396</span>
+                                    <br><br>
+                                </p>
+</section>
+<section class="qh-source-chapter">
+  <h3>教材深挖 3：量子處理器 (QPU)</h3>
+  <p class="qh-source-note">整合自既有 Insight iHBAR 教材：QC_hardware/E.html</p>
+  <p class="qh-source-note" style="background:#fff3cd;border-left:4px solid #856404;padding:8px 12px;margin:8px 0;">
+    <strong>補充說明（僅供回顧）：</strong>本段包含超導量子位元類型（電荷量子位元、Flux Qubit、Phase Qubit、Transmon、Fluxonium 等）的簡介。這些概念已在 W2（circuit quantization）與 W2（transmon spectrum）詳細講授。此處保留原始教材內容作為製程語境下的補充參考，不作為本週授課主線。
+  </p>
+  <h3>A. 量子處理器(QPUs)/量子位元(Qubits)</h3>
+                                    
+                                <h4>1.基本概念與重要性</h4>
+                            
+                                <p  class="dark-background">
+                                  量子位元(Qubit)是量子計算的基本運算單元，構成了量子處理器的核心。
+                                  與古典位元只能表示0或1不同，量子位元利用微觀粒子的量子態(例如原子的能階、電子的自旋，或在超導電路中的特定量子化狀態)來編碼資訊。超導量子位元通常利用電路的兩個最低能量狀態,即基態(\( \ket{0} \))和第一激發態(\( \ket{1} \))<sup>1</sup>。</p>
+                            
+                                <p  class="dark-background">量子位元的關鍵特性在於其能夠處於疊加態,即同時是\( \ket{0} \)和\( \ket{1} \)的線性組合(|ψ⟩=α<sub>0</sub>\( \ket{0} \)+α<sub>1</sub>\( \ket{1} \),其中|α<sub>0</sub>|<sup>2</sup>+|α<sub>1</sub>|<sup>2</sup>=1)<sup>1</sup>。此外,多個量子位元之間可以建立糾纏關係,形成一個不可分割的整體<sup>3</sup>。這些量子特性使得量子計算機具備潛在的並行處理能力。例如，N個量子位元可以同時表示 2<sup>N</sup> 個狀態，使得量子計算機在處理某些特定問題時,其計算能力隨量子位元數量呈指數級增長，遠超古典計算機。</p>
+                            
+                                <p  class="dark-background">在超導量子位元中,約瑟夫森結(Josephson Junction, JJ)扮演著至關重要的角色。JJ本質上是一個由兩個超導體通過一個薄絕緣層(通常是氧化鋁)隔開形成的隧道結<sup>1</sup>。它表現出非線性的、無損耗的電感特性,這是構建具有不等能級間距(非諧性)的人造原子的關鍵,從而可以將計算限制在最低的兩個能級(\( \ket{0} \)和\( \ket{1} \))之間,避免信息洩漏到更高能級<sup>2</sup>。</p>
+                            
+                                <h4>2.超導量子位元類型與原理</h4>
+                            
+                                <p  class="dark-background">基於不同的電路設計和利用的物理量(電荷、磁通量或相位),已發展出多種類型的超導量子位元。它們的設計目標通常是在提高相干時間、保真度、可控性和可擴展性之間尋求平衡。主要類型包括:</p>
+                            
+                                <ul>
+                                    <li><strong>電荷量子位元(Charge Qubit / Cooper Pair Box):</strong> 這是最早實現的超導量子位元之一<sup>2</sup>。其原理是控制一個小型超導島上的庫柏對(Cooper pairs) 數量。量子態對應於島上整數個庫柏對的狀態。其約瑟夫森能量(E<sub>J</sub>)與充電能量(E<sub>C</sub>)的比值 E<sub>J</sub>/E<sub>C</sub> 通常較小(約為10<sup>-1</sup>)<sup>2</sup>。這種類型的量子位元對電荷雜訊非常敏感,導致相干時間較短。</li>
+                                    <li><strong>磁通量量子位元(Flux Qubit / Persistent-Current Qubit):</strong> 其核心是一個包含一個或多個JJ的超導環路。量子態對應於環路中陷俘的磁通量子的整數倍<sup>2</sup>。其E<sub>J</sub>/E<sub>C</sub> 比值通常較大(約為10<sup>1</sup>)<sup>2</sup>。相較於電荷量子位元,它對電荷雜訊不敏感,但對磁通量雜訊敏感。</li>
+                                    <li><strong>相位量子位元(Phase Qubit):</strong> 在這種設計中,E<sub>J</sub>/E<sub>C</sub>比值非常大(約為10<sup>6</sup>)<sup>2</sup>。量子態對應於JJ 兩端相位差的不同振盪幅度。</li>
+                                    <li><strong>Transmon (Transmission Line Shunted Plasma Oscillation Qubit):</strong> 這是電荷量子位元的一種重要改進型,通過引入一個大的並聯電容來顯著增大E<sub>C</sub>,從而使得E<sub>J</sub>/E<sub>C</sub> 遠大於1(通常在 50-100 範圍)。這極大地抑制了對電荷雜訊的敏感性,顯著提高了相干時間,同時保持了足夠的非諧性以便進行量子操作<sup>2</sup>。Transmon 已成為目前最廣泛應用和研究的超導量子位元類型之一,被IBM、Google、SpinQ 等多家公司和研究機構採用<sup>1</sup>。 </li>
+                                    <li><strong>Fluxonium:</strong> 這是磁通量量子位元的一種變體。其核心是一個JJ與一個大的線性電感(通常由一系列 JJ 串聯構成的超電感 Superinductor 實現)並聯<sup>2</sup>。Fluxonium的一個重要優勢是在特定的磁通偏置點(如半磁通量子點)具有非常長的相干時間(可超過毫秒),並且具有很大的非諧性,有利於實現快速、高保真度的量子閘操作,並減少頻譜擁擠問題,提升可擴展性<sup>2</sup>。</li>
+                                    <li><strong>其他混合類型:</strong> 還存在如Xmon (Google 開發的 Transmon 變體)、Quantronium 等其他設計,它們試圖結合不同類型量子位元的優點或針對特定應用進行優化<sup>2</sup>。</li>
+                                </ul>
+                            
+                                <p  class="dark-background">不同類型的量子位元在相干時間、控制複雜度、對雜訊的敏感性、可擴展性等方面各有優劣。選擇哪種類型取決於具體的應用需求和技術成熟度。</p>
+                            
+                                <h4>3.材料與製造考量</h4>
+                            
+                                <p  class="dark-background">超導量子位元的性能高度依賴於所使用的材料及其製造工藝的質量。</p>
+                            
+                                <ul>
+                                    <li><strong>常用材料:</strong>
+                                        <ul>
+                                            <li><strong>超導體:</strong> 鋁(Al)是最常用的材料之一,因其易於在表面自然氧化形成均勻、薄的氧化鋁(AlO<sub>x</sub>)層,該氧化層恰好可以作為JJ的隧道勢壘<sup>1</sup>。鈮(Nb)也是常用的超導材料,具有較高的臨界溫度<sup>1</sup>。氮化鈦(TiN)因其高動能電感(有利於縮小元件尺寸)、與CMOS 工藝的兼容性以及潛在的低介電損耗界面而受到越來越多的關注<sup>20</sup>。氮化鈮 (NbN)也被用於全氮化物量子位元的研究<sup>21</sup>。</li>
+                                            <li><strong>基板:</strong> 高阻值的矽(Si)是最常用的基板材料,因其具有成熟的加工工藝和低微波損耗<sup>20</sup>。藍寶石(Sapphire, Al<sub>2</sub>O<sub>3</sub>)也因其極低的介電損耗而被研究作為替代基板<sup>24</sup>。</li>
+                                            <li><strong>介電層:</strong> 在多層結構或電容設計中可能需要介電層,需要選擇低損耗材料。</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>製造技術與挑戰:</strong> 超導量子晶片的製造通常借鑒半導體工業的成熟工藝,但需針對量子元件的特殊需求進行調整<sup>7</sup>。
+                                        <ul>
+                                            <li><strong>工藝流程:</strong> 主要涉及薄膜沉積(Deposition)、微影曝光(Lithography) 和蝕刻(Etching)等步驟<sup>19</sup>。沉積方法包括物理氣相沉積(PVD,如濺射 Sputtering、蒸鍍 Evaporation)<sup>20</sup>、化學氣相沉積(CVD)和原子層沉積(ALD)<sup>11</sup>。微影技術從傳統的光學微影到用於定義亞微米JJ的電子束微影(E-beam lithography)<sup>25</sup>。蝕刻技術主要是反應離子蝕刻(RIE)<sup>20</sup>。</li>
+                                            <li><strong>Josephson 接面製造:</strong> JJ的精確製造是核心挑戰。
+                                                <ul>
+                                                    <li><strong>雙角度蒸鍍(Double-Angle Shadow Evaporation):</strong> 這是實驗室中最常用的製作 Al/AlO<sub>x</sub>/Al JJ的技術<sup>19</sup>。它利用懸掛的橋式光阻結構,通過兩次不同角度的鋁蒸鍍和一次原位氧化步驟,在單次真空循環和光阻圖形中完成 JJ的製作。優點是工藝相對簡單,易於獲得小尺寸接面。缺點是難以實現大規模、高均勻性的生產,且光阻殘留和剝離(Lift-off)過程可能引入缺陷和污染<sup>19</sup>。</li>
+                                                    <li><strong>無剝離(Lift-off-free)/減法工藝:</strong> 為了更好地兼容工業界標準的晶圓級製造,研究人員正在開發不依賴光阻剝離的JJ製造方法。
+                                                        <ul>
+                                                            <li><strong>窗口接面(Window Junction, WJ):</strong> 利用沉積的二氧化矽(SiO<sub>2</sub>)作為犧牲支架,通過蝕刻在 SiO<sub>2</sub> 中形成精確尺寸的窗口來定義 JJ 區域。沉積基底電極、氧化形成隧道結、沉積頂部電極後,最後通過氣相氟化氫(vHF)等方法選擇性地移除 SiO<sub>2</sub>支架,留下懸空的JJ結構<sup>19</sup>。這種方法避免了剝離過程,減少了聚合物殘留,且SiO<sub>2</sub> 蝕刻是成熟的半導體工藝,有望提高均勻性和良率<sup>19</sup>。 </li>
+                                                            <li><strong>全 CMOS 兼容工藝:</strong> 僅使用光學微影和反應離子蝕刻技術來圖形化超導層和定義 JJ。已有研究展示了使用這種方法製造的 Transmon 量子位元,其相干時間超過 100 µs,證明了其可行性和大規模生產的潛力<sup>25</sup>。</li>
+                                                        </ul>
+                                                    </li>
+                                                    <li><strong>重疊接面(Overlap Junction):</strong> 分兩步光刻和蒸鍍製作底部和頂部電極。在沉積頂部電極前,使用原位氬離子研磨(Ar milling) 清潔底部電極表面,然後進行氧化形成隧道結<sup>22</sup>。這種方法避免了傾斜蒸鍍,更容易實現大面積均勻性,但Ar離子轟擊可能損傷基板和金屬表面,引入缺陷<sup>19</sup>。</li>
+                                                    <li><strong>補丁整合交叉型(Patch-Integrated Cross-Type, PICT):</strong> 在單次光刻和真空循環中,通過特殊設計的模板蒸鍍 JJ 電極和用於連接外部電路的超導補丁,簡化了工藝流程<sup>26</sup>。</li>
+                                                </ul>
+                                            </li>
+                                            <li><strong>表面與界面處理:</strong> 超導量子位元的相干時間對材料表面和界面處的缺陷(稱為兩能級系統,Two-Level Systems, TLS)極為敏感<sup>19</sup>。TLS 主要來源於非晶態氧化物、加工過程中引入的損傷或污染物、光阻殘留等。因此,整個製造過程需要極力避免引入TLS,例如採用潔淨的真空環境、優化蝕刻和清潔步驟、開發低損耗界面材料等<sup>19</sup>。</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            
+                                <h4>4.發展趨勢分析</h4>
+                            
+                                <p  class="dark-background">超導量子位元的發展呈現出兩個明顯的趨勢。其一,製造工藝正從傳統的實驗室技術向量產兼容的工業化流程演進。早期量子位元的製作高度依賴如雙角度蒸鍍和電子束微影等實驗室技術<sup>19</sup>。然而,要實現包含數千乃至數百萬高質量量子位元的容錯量子計算機,就必須藉助現代半導體工業所具備的高良率、高均勻性和高可重複性的製造能力<sup>19</sup>。傳統的量子位元製程,特別是基於光阻剝離的JJ製作方法,難以直接整合到標準的CMOS (Complementary Metal-Oxide-Semiconductor) 生產線中<sup>19</sup>。這一挑戰正驅動著研究人員探索新的材料體系(如與CMOS 工藝更兼容的TiN<sup>20</sup>) 和創新的製造方法,例如無剝離的窗口接面法<sup>19</sup>、完全基於光刻和蝕刻的全 CMOS 流程<sup>25</sup>以及重疊接面法<sup>22</sup>。這些新方法的成功(例如,使用CMOS 方法實現超過100微秒的相干時間<sup>25</sup>) 預示著超導量子處理器向著可規模化製造邁出了關鍵一步,為利用現有成熟的半導體基礎設施生產量子晶片鋪平了道路。</p>
+                            
+                                <p  class="dark-background">其二,材料探索正超越傳統的鋁/氧化鋁體系。儘管 Al/AlO<sub>x</sub> JJ 因其易於製備而成為當前的主流選擇,但其界面處存在的固有缺陷(TLS)被認為是限制相干時間的主要因素之一<sup>19</sup>。提升相干時間對於實現容錯量子計算至關重要<sup>19</sup>。因此,研究界正積極探索替代材料,以期找到具有更優異界面特性或更低損耗的組合。例如,氮化鈦(TiN)不僅與CMOS工藝兼容,還具有較高的動能電感(有利於縮小元件尺寸以提高集成度)和潛在的更低界面損耗<sup>20</sup>。研究人員已經成功演示了基於 TiN/AlN/TiN的JJ和諧振器<sup>20</sup>,這表明學術界和產業界正在積極尋找克服 Al/AlO<sub>x</sub> 局限性的新途徑,儘管這些新材料的性能優化和工藝穩定性仍面臨挑戰。</p>
+                            
+                                <h4>5.潛在表格</h4>
+                            
+                                <p  class="dark-background">表1:超導量子位元類型比較</p>
+                                
+                                <table border="1">
+                                    <thead>
+                                        <tr>
+                                            <th>類型 (Type)</th>
+                                            <th>原理 (Principle)</th>
+                                            <th>主要材料 (Key Materials) </th>
+                                            <th>優點 (Advantages)</th>
+                                            <th>缺點 (Disadvantages)</th>
+                                            <th>代表機構/公司 (Representative Institutions/Companies)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Charge Qubit (CPB)</td>
+                                            <td>控制島上 Cooper Pair 數量 (E<sub>J</sub>/E<sub>C</sub> &lt;&lt;1)</td>
+                                            <td>Al/AlO<sub>x</sub>/Al</td>
+                                            <td>結構簡單</td>
+                                            <td>對電荷雜訊敏感,相干時間短</td>
+                                            <td>(早期研究)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Flux Qubit</td>
+                                            <td>控制環路中磁通量量子數量 (E<sub>J</sub>/E<sub>C</sub> &gt;&gt;1)</td>
+                                            <td>Al/AlO<sub>x</sub>/Al, Nb</td>
+                                            <td>對電荷雜訊不敏感</td>
+                                            <td>對磁通雜訊敏感,設計較複雜</td>
+                                            <td>(早期研究)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Phase Qubit</td>
+                                            <td>控制 JJ 相位差振盪幅度 (E<sub>J</sub>/E<sub>C</sub> &gt;&gt;&gt;1)</td>
+                                            <td>Al/AlO<sub>x</sub>/Al, Nb</td>
+                                            <td></td>
+                                            <td>控制複雜,對雜訊敏感</td>
+                                            <td>(早期研究)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Transmon</td>
+                                            <td>大並聯電容抑制電荷雜訊 (E<sub>J</sub>/E<sub>C</sub> &gt;&gt;1)</td>
+                                            <td>Al/AlO<sub>x</sub>/Al, Nb, TiN</td>
+                                            <td>對電荷雜訊不敏感,相干時間長,控制相對簡單,可擴展性好</td>
+                                            <td>對磁通雜訊仍有一定敏感性</td>
+                                            <td>IBM, Google, Intel, SpinQ, Rigetti, OQC, Anyon</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Fluxonium</td>
+                                            <td>JJ 並聯大電感(JJ array)</td>
+                                            <td>Al/AlO<sub>x</sub>/Al, Nb, TiN</td>
+                                            <td>相干時間極長(特定偏置點),大非諧性,有利於控制和擴展</td>
+                                            <td>製造較複雜(需要超電感),對磁通雜訊敏感</td>
+                                            <td>Yale, UMD, Atlantic Quantum</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Xmon</td>
+                                            <td>Transmon 變體,優化耦合與讀取</td>
+                                            <td>Al/AlO<sub>x</sub>/Al</td>
+                                            <td>良好的可控性和讀取保真度</td>
+                                            <td>(類似 Transmon)</td>
+                                            <td>Google</td>
+                                        </tr>
+                                        <tr>
+                                            <td>TiN/AlN based Qubits</td>
+                                            <td>使用氮化物材料</td>
+                                            <td>TiN, AlN</td>
+                                            <td>潛在低損耗界面,高動能電感, CMOS 兼容 </td>
+                                            <td>材料與工藝仍在優化中</td>
+                                            <td>(研究階段)</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+
+                                
+                                
+                                  <p  class="dark-background">
+                                    <b>功能與重要性</b><br>
+                                    量子處理器 (QPU) 是量子電腦的核心，負責實際執行量子運算。超導量子位元通常由鋁或鈮等超導材料製成的電路構成，利用約瑟夫森結等非線性元件來創建人工原子，使其能夠表現出量子力學行為，如疊加和糾纏。這些量子位元代表量子資訊的基本單位，其基態和激發態被定義為邏輯狀態 \( \ket{0} \) 和 \( \ket{1} \)。透過施加精確的微波脈衝，可以操控量子位元的狀態並執行量子閘操作，這是量子演算法的基礎。QPU的設計和性能直接決定了量子電腦的計算能力、速度和可靠性。
+                                  </p>
+                                  <p  class="dark-background">
+                                    <b>超導量子位元的類型</b><br>
+                                    主要的超導量子位元類型包括相位量子位元 (phase qubit)、電荷量子位元 (charge qubit) 和磁通量子位元 (flux qubit)。這些原型也衍生出許多混合類型，如 Fluxonium、Transmon (目前最主流的類型之一，因其對電荷雜訊相對不敏感而受到青睞)、Xmon (Google 使用) 和 Quantronium 等。Transmon 量子位元因其設計相對簡單、相干時間較長且易於耦合，成為許多領先研究團隊和公司的首選。
+                                  </p>
+                    
+                                  
+                    
+                                  <p  class="dark-background">
+                                    <b>技術門檻</b><br>
+                                    製造和操作高性能超導QPU面臨眾多挑戰：
+                                  </p>
+                                  <ul>
+                                    <li><b>量子位元品質與一致性：</b>製造具有相同特性的量子位元非常困難，微小製造差異會導致性能變化。</li>
+                                    <li><b>擴展性：</b>隨著量子位元數量增加，維持其性能、控制和連接的難度指數上升，造成成本與物理實現困難。</li>
+                                    <li><b>相干時間：</b>量子位元易受環境雜訊影響產生退相干，約瑟夫森結品質與基板缺陷為主因。</li>
+                                    <li><b>閘保真度：</b>微波脈衝誤差或校準問題會導致邏輯錯誤。</li>
+                                    <li><b>串擾：</b>操作一個量子位元可能影響鄰近量子位元。</li>
+                                    <li><b>製造變異性：</b>晶片製造誤差會影響量子位元性能，穩定製造約瑟夫森結至關重要。</li>
+                                    <li><b>材料科學：</b>需改進材料與基板（如用藍寶石代替矽）並利用蝕刻等製程減少材料缺陷。</li>
+                                    <li><b>量子位元參數平衡：</b>須在電荷雜訊免疫與操作非線性間取得平衡。</li>
+                                  </ul>
+                                  <p  class="dark-background">
+                                    QPU的發展不僅是量子位元數量的競賽，更關鍵在於品質提升，如相干時間、保真度與抗串擾能力。未來將持續朝優化設計、材料改良與精密製程三者協同演進。
+                                  </p>
+                                  
+                    
+                                  <p  class="dark-background">
+                                    <b>代表性製造商/研究機構與所在國家/地區</b><br>
+                                    全球有多家公司和研究機構在積極開發超導QPU。
+                                  </p>
+                                  <ul>
+                                    <li>
+                                      <b>美國：</b>IBM 和 Google Quantum AI 是該領域的領導者，分別開發了如 Condor (1121 量子位元) 和 Willow (105 量子位元，實現了表面碼糾錯) 等處理器。Intel 也在進行超導量子位元研究，並開發了如 Tangle Lake (49 量子位元) 等測試晶片。Rigetti Computing 是一家專注於製造超導量子處理器的公司，其 Ankaa-9Q-1 晶片價格超過90萬美元。其他美國公司還包括 Bleximo 和 Atlantic Quantum。
+                                    </li>
+                                    <li>
+                                      <b>中國：</b>中國科學院 (CAS) 開發了名為「曉紅」的504量子位元超導處理器。SpinQ (本源量子) 也是中國重要的量子計算公司，提供超導量子晶片和整機解決方案。
+                                    </li>
+                                    <li>
+                                      <b>歐洲：</b>芬蘭的 IQM 和荷蘭的 QuantWare 是歐洲超導QPU開發的代表。QuantWare 提供模組化、可擴展的QPU，例如 Soprano-D 和 Contralto-D。英國的 Oxford Quantum Circuits (OQC) 也推出了其超導處理器，如 Lucy 和 Toshiko。法國的 Alice & Bob 專注於開發超導貓量子位元。
+                                    </li>
+                                    <li>
+                                      <b>加拿大：</b>Nord Quantique 致力於開發具有玻色子糾錯功能的超導量子位元。
+                                    </li>
+                                  </ul>
+                                  
+                                  <p  class="dark-background"><b>部分超導QPU供應商比較</b></p>
+                                  <table>
+                                    <thead>
+                                      <tr>
+                                        <th>製造商/機構</th>
+                                        <th>代表性QPU/技術</th>
+                                        <th>國家/地區</th>
+                                        <th>QPU特性/近期進展 (截至2024-2025年初資訊)</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr>
+                                        <td>IBM</td>
+                                        <td>Condor, Osprey, Eagle, Heron 系列</td>
+                                        <td>美國</td>
+                                        <td>Condor (1121 qubits), Heron R2 (156 qubits, 96.5% 2-qubit保真度)</td>
+                                      </tr>
+                                      <tr>
+                                        <td>Google Quantum AI</td>
+                                        <td>Sycamore, Bristlecone, Willow</td>
+                                        <td>美國</td>
+                                        <td>Willow (105 qubits, 表面碼糾錯, 1-qubit保真度99.965%, 2-qubit保真度99.67%)</td>
+                                      </tr>
+                                      <tr>
+                                        <td>Intel</td>
+                                        <td>17-Qubit Test Chip, Tangle Lake</td>
+                                        <td>美國</td>
+                                        <td>Tangle Lake (49 qubits)</td>
+                                      </tr>
+                                      <tr>
+                                        <td>Rigetti Computing</td>
+                                        <td>Ankaa 系列</td>
+                                        <td>美國</td>
+                                        <td>Ankaa-9Q-1 (9 qubits)</td>
+                                      </tr>
+                                      <tr>
+                                        <td>中國科學院 (CAS)</td>
+                                        <td>曉紅 (Xiaohong)</td>
+                                        <td>中國</td>
+                                        <td>504 qubits (2024年發布)</td>
+                                      </tr>
+                                      <tr>
+                                        <td>SpinQ (本源量子)</td>
+                                        <td>多款超導量子晶片</td>
+                                        <td>中國</td>
+                                        <td>提供從設計、製造到測試的完整QPU開發服務</td>
+                                      </tr>
+                                      <tr>
+                                        <td>QuantWare</td>
+                                        <td>Soprano-D, Contralto-D</td>
+                                        <td>荷蘭</td>
+                                        <td>Soprano-D (5 qubits), Contralto-D (21 qubits), 模組化架構</td>
+                                      </tr>
+                                      <tr>
+                                        <td>IQM</td>
+                                        <td>5-qubit, 20-qubit 系統</td>
+                                        <td>芬蘭</td>
+                                        <td>20-qubit 系統 (1-qubit保真度中位數99.91%, 2-qubit保真度中位數98.25%)</td>
+                                      </tr>
+                                      <tr>
+                                        <td>Oxford Quantum Circuits</td>
+                                        <td>Lucy, OQC Toshiko</td>
+                                        <td>英國</td>
+                                        <td>OQC Toshiko (32 qubits)</td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                    
+                              <b>量子位元晶片供應商供應商與代工服務</b>
+                    
+                              <p  class="dark-background">超導量子計算硬體的構建依賴於一個多元化的供應鏈,涵蓋了從基礎材料、核心元件到專用設備的各個環節。特別是對於量子位元晶片這樣的核心部件,專業的代工服務(Foundry Services)正在興起,為更廣泛的研究和開發活動提供了支持。</p>
+                    
+                              <p  class="dark-background">製造高質量、高性能的超導量子位元晶片需要高度專業化的知識、昂貴的設備和精密的工藝控制。目前市場上存在幾種供應模式：</p>
+                    
+                    
+                              
+                              <strong>提供標準 QPU 產品和/或代工服務的公司：</strong> 
+                              <ul>
+                                <li><strong>SpinQ（中國）：</strong> SpinQ 不僅提供完整的超導量子計算機系統，還提供一系列標準化的超導 QPU 產品（如 C2、C5、C10、C20 型號，具有 1D 或 2D 拓撲結構），並利用其自有的 QPU 製造中心提供定制化的量子晶片設計、代工製造和表徵測試服務。他們強調其晶片達到工業級標準，具有高 Qi 值和長相干時間（T1 可達 100 µs 或更長）。</li>
+                                <li><strong>QuantWare（荷蘭）：</strong> 專注於提供超導量子處理器的代工服務。他們基於其 VIO（Vertical Integrated Organisation）平台，提供從設計支持、快速製造（聲稱設計凍結後交付時間 &lt;45 天）到封裝（提供 Soprano、Contralto、VIO-176 等不同規模的封裝選項）的服務。他們強調其工藝能夠實現高結點良率（&lt;3% targeting spread）和長相干時間（&gt;100 µs Transmon T1）。</li>
+                                <li><strong>Rigetti Computing（美國）：</strong> Rigetti 運營著其位於加州 Fremont 的 Fab-1，這是世界上最早的專用量子器件代工廠之一。他們利用該設施為內部處理器開發提供支持，同時也面向更廣泛的量子研究社區提供量子集成電路（QuIC）測試器件的銷售和定制設計代工服務。他們提供經過工廠校準和低溫表徵的器件。</li>
+                                <li><strong>SkyWater Technology（美國）：</strong> 作為一家美國本土的、經認證的半導體代工廠，SkyWater 將其業務擴展到超導技術領域。他們採用 TaaS（Technology as a Service）模式，為量子器件開發者提供定制化的代工服務，支持超導量子位元、處理器和低溫控制電子的開發與製造。他們是 D-Wave 量子退火計算機中量子位元的商業製造商。</li>
+                                <li><strong>SEEQC（美國／英國）：</strong> SEEQC 擁有一座先進的多層超導電子晶片製造工廠，主要用於生產其核心的 SFQ（Single Flux Quantum）數字邏輯電路和 SFQuClass 處理器，這些處理器旨在實現數字化的量子位元控制、讀取和經典協處理，並與量子位元晶片集成在低溫環境中。雖然主要服務於內部需求，但其先進的製造能力也可能使其能夠提供相關的代工服務。</li>
+                              </ul>
+                    
+                              <strong>大型集成商的內部能力：</strong> 像 IBM、Google、Intel 這樣的大型科技公司，通常投入巨資建立了自己的量子器件製造能力，或者與特定的半導體製造商建立了緊密的合作關係，以確保其核心 QPU 的供應和持續迭代。這些內部能力通常不對外提供商業代工服務。
+                    
+                              <p  class="dark-background">
+                                這個供應鏈仍在不斷發展和完善中，新的參與者和技術也在持續湧現。
+                              </p>
+                    
+                              <h3>C.發展趨勢分析</h3>
+                    
+                              <p  class="dark-background">
+                                零部件供應和代工服務領域的發展揭示了超導量子計算生態系統的演變。一個顯著的趨勢是專業化量子晶片代工廠的興起。建造和運營一個能夠生產高性能超導量子位元的先進製造設施是一項資本密集且技術要求極高的任務。對於許多大學研究團隊、初創公司乃至一些中等規模的企業而言，獨立承擔這樣的投入是不現實的。專業代工廠（如 SpinQ、QuantWare、Rigetti、SkyWater、SEEQC 等）的出現，通過提供標準化的製造流程和設計服務，有效地填補了這一空白。它們使得沒有內部製造能力的機構也能夠獲取或定製先進的量子晶片，從而降低了進入量子硬體研發的門檻，加速了新設計、新材料和新架構的驗證與迭代。這種代工模式的發展，在一定程度上借鑒了經典半導體產業的成功經驗，標誌著量子硬體生態系統正在走向成熟和產業化分工。
+                              </p>
+                    
+                              <p  class="dark-background">
+                                另一個趨勢是供應鏈內部的合作日益加強。構建一個功能完整的量子計算機需要整合來自不同技術領域的專業知識和產品，從量子位元物理到低溫工程，再到微波控制和軟體開發。沒有任何一家公司能夠在所有這些方面都達到頂尖水平。因此，供應商之間以及供應商與系統集成商之間的戰略合作變得越來越普遍。例如，低溫設備製造商 ULVAC 與系統集成商 IBM 合作開發滿足特定需求的稀釋製冷機；代工廠 SkyWater 為量子計算公司 D-Wave 生產量子位元；低溫系統領導者 Bluefors 與控制系統專家 Quantum Machines 合作提供預先集成了高性能樣品架的 turnkey 解決方案；控制系統供應商 Quantum Machines 與 QPU 開發商 Rigetti 及高性能計算巨頭 NVIDIA 合作，共同探索 AI 驅動的自動化校準。這些合作使得各方能夠專注於自身的核心優勢，同時通過協同設計和集成優化，為最終用戶提供更完整、性能更優或更易於使用的解決方案，共同推動整個量子計算技術的進步。
+                              </p>
+                    
+                    
+                    
+                            
+
+
+
+
+                                <p >
+                                    ▲
+                                    <br><span style="font-size: 0.7em; line-height: 0.8;">
+
+                                    </span><br><br>
+                                    </p>
+</section>
+<section class="qh-source-chapter">
+  <h3>教材深挖 4：FUJITSU：FTQC研發與挑戰</h3>
+  <p class="qh-source-note">整合自既有 Insight iHBAR 教材：ASW2026/F.html</p>
+  <p>FUJITSU是日本量子電腦整機的製造、開發商，與日本RIKEN理研量子中心有深度合作，目標是開發出日本自研自製的FTQC量子電腦。這次演講的內容主要介紹、評估邁向大規模FTQC實用化所需要面對的課題。</p>
+                                
+                                <div style="text-align: center;">
+                                    
+                                        <a href="../Image/IMG_5822.JPG"><img loading="lazy" src="../WebP/IMG_5822.webp" alt="超導量子運算研討會投影片" style="width: 100%; height: auto;"></a>
+                                    
+                                    
+                                        <a href="../Image/IMG_5832.JPG"><img loading="lazy" src="../WebP/IMG_5832.webp" alt="富士通運算技術發展圖表" style="width: 100%; height: auto;"></a>
+                                    
+                                </div>
+                                <p class="dark-background">
+                                    ▲ FUJITSU在日本有企業級資料中心、超級運算中心建置的解決方案。下方有趣的提到FUJITSU各個階段算力提升的方式：</p>
+                                    <ol>
+                                        <li><p>運算頻率提升：透過CPU高頻運算</p></li>
+                                        <li><p>多核心運算：多核心CPU</p></li>
+                                        <li><p>多叢集運算：叢集高速互聯</p></li>
+                                        <li><p>記憶體內運算/近記憶體運算：克服記憶體頻寬牆，試圖減緩記憶體-運算核心資料間交換造成的延遲。</p></li>
+                                    </ol>
+                                    <p>此外，也投入下一代量子科技、量子外延科技的計算發展。
+                                    <br><br>
+                                </p>
+                                
+
+                                <h3>量子電腦的種類</h3>
+                                <div style="text-align: center;">
+                                    
+                                        <a href="../Image/IMG_5841.JPG"><img loading="lazy" src="../WebP/IMG_5841.webp" alt="量子電腦分類示意圖" style="width: 100%; height: auto;"></a>
+                                    
+                                </div>
+                                <p class="dark-background">
+                                    ▲ 量子電腦的種類大致上可以分類為閘控量子計算(Gate-Base)和絕熱量子計算(Annealing)兩大類。在計算科學裡，這兩類量子計算算力等價，可以互相模擬，但針對不同問題所需的計算開銷不同。
+                                    閘控量子計算(Gate-Base)較容易與傳統計算做類比，而絕熱量子計算適合做最佳參數分析（即基態搜索）。FUJITSU針對多項技術都有投入開發。
+                            
+                                    
+                                    <br><br>
+                                </p>
+
+
+                                <div style="text-align: center;">
+                                    
+                                        <a href="../Image/fig-03-en-960x540.png"><img loading="lazy" src="../WebP/fig-03-en-960x540.webp" alt="量子電腦發展時間軸圖表" style="width: 100%; height: auto;"></a>
+                                    
+                                    
+                                        <a href="../Image/截圖 2026-03-10 上午11.57.56.png"><img loading="lazy" src="../WebP/截圖 2026-03-10 上午11.57.56.webp" alt="部分容錯量子計算架構示意圖" style="width: 100%; height: auto;"></a>
+                                    
+                                </div>
+                                <p class="dark-background">
+                                    ▲ FUJITSU的量子電腦路線圖。FUJITSU研究包含超導量子電腦、鑽石自旋量子電腦。「STAR架構」一種基於相位旋轉閘（phase rotation gates）的量子運算架構。
+                                    <span style="font-size: 0.7em; line-height: 0.8;">
+                                        <br>Ref: https://global.fujitsu/en-global/technology/research/quantum
+                                        <br>Ref: https://global.fujitsu/-/media/Project/Fujitsu/Fujitsu-HQ/technology/research/quantum/event-202503/FQD2025japan_guest_talk3.pdf
+                                    </span>
+                                    <br><br>
+                                </p>
+                                
+                                
+                                
+                                
+                                
+                                
+                                <br>
+                                <h3>FUJITSU和RIKEN多量子位元系統開發</h3>
+                                <div style="text-align: center;">
+                                    
+                                        <a href="../Image/IMG_5852.JPG"><img loading="lazy" src="../WebP/IMG_5852.webp" alt="富士通量子電腦研發投影片" style="width: 100%; height: auto;"></a>
+                                    
+                                </div>
+                                <p class="dark-background">
+                                    ▲ FUJITSU和RIKEN的量子計算中心負責人中村泰信(Yasunobu Nakamura)合作開發多量子位元系統。
+                                    Nakamura Sensei和台灣中研院關鍵議題研究中心的量子計算負責人 陳啟東 特聘研究員 及 蔡兆申院士 早年曾多次合作開發Josephson Junction為基礎製作量子位元的可行性，包含Cooper Pair Box, FLux Qubit等，是現代Transmon的前身，奠定大量基礎。
+
+
+                                    
+                                    <br><br>
+                                </p>
+                                
+                                
+                                
+                                <div style="text-align: center;">
+                                    
+                                        <a href="../Image/IMG_5855.JPG"><img loading="lazy" src="../WebP/IMG_5855.webp" alt="256量子位系統研發簡報投影片" style="width: 100%; height: auto;"></a>
+                                    
+                                
+                                    
+                                        <a href="../Image/IMG_5870.JPG"><img loading="lazy" src="../WebP/IMG_5870.webp" alt="量子系統散熱設計簡報投影片" style="width: 100%; height: auto;"></a>
+                                    
+                                </div>
+                                <p class="dark-background">
+                                    ▲ FUJITSU和RIKEN合作開發64位元，並希望透過模組化的方式，組合成256位元QPU。擴展研究重點包含如何沿用既有64位元的硬體設計成果、提升裝置密度，但也要避免熱功率過度上升。
+                                    
+                                    <br><br>
+                                </p>
+                                
+                                
+                                
+                                
+                                
+
+                                <h3>大尺寸超導電路面板與量子位元變異性</h3>
+                                <p>多量子位元晶片的製程開發，其實類似半導體晶圓產業，透過在大面積的晶圓上面集成大量量子電路。相關的量產議題，便牽涉到晶圓上量子位元的均質性。
+                                    由於量子相應非常敏感、約瑟夫森節需要極高的工藝，分佈在晶圓上的超導量子位元特性實際上是有一定差異的。可以透過後處理，來將晶圓上的量子位元調教到相近的特性。
+                                </p>
+                                
+                                <div style="text-align: center;">
+                                    
+                                        <a href="../Image/IMG_5918.JPG"><img loading="lazy" src="../WebP/IMG_5918.webp" alt="超導量子位元晶片簡報畫面" style="width: 100%; height: auto;"></a>
+                                    
+                                </div>
+                                <p class="dark-background">
+                                    ▲ 這張圖展示在晶圓上製備約瑟夫森節時，量子位元會因為約森夫森節的氧化層/絕緣層品質差異，展現出不一樣的阻值，如果不能精確控制量子位元的特性，會在QPU上產生非預期的串擾 （ZZ crosstalk）。
+                                    
+                                    <br><br>
+                                </p>
+
+                                <div style="text-align: center;">
+                                    
+                                        <a href="../Image/IMG_5884.JPG"><img loading="lazy" src="../WebP/IMG_5884.webp" alt="量子位元變異性改善簡報投影片" style="width: 100%; height: auto;"></a>
+                                    
+                                </div>
+                                <p class="dark-background">
+                                    ▲ RIKEN透過發展雷射加熱後處理的方式，提升量子位元的均值性。利用探針逐一量測量子位元，並施加雷射加熱調整約瑟夫森節的特性。
+
+                                    
+                                    <br><br>
+                                </p>
+                                
+                                
+                                
+                                
+                                
+                                <div style="text-align: center;">
+                                    
+                                        <a href="../Image/IMG_5926.JPG"><img loading="lazy" src="../WebP/IMG_5926.webp" alt="超導量子位元晶片簡報投影片" style="width: 100%; height: auto;"></a>
+                                    
+                                </div>
+                                <p class="dark-background">
+                                    ▲ 然而，在邁向更多量子位元的製程時，逐一量測、雷射對準加熱可能不是一個能快速擴展化的方式。
+                                    下一代的後處理，希望整合量子電路上既有的線路，直接施加偏壓電脈衝，來實踐均質化。
+                                    
+                                    <br><br>
+                                </p>
+
+
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                <h3>量子計算中心的基礎建設尺度</h3>
+                                <p>邁向「實用化」的量子計算優勢，FUJITSU的發展藍圖認為需要百萬個（～1M）物理量子位元的數量級組成的量子電腦。因為量子糾錯的需求，一個「實用的」邏輯位元，在目前的技術下，推估需要千顆個物理量子位元共同組成。
+                                    這裡說明一下，實驗上與早期量子優勢展現的實驗中，對於錯誤率的容忍較高，一個具有糾錯能力的邏輯量子位元大約在100個上下，故1000~5000個物理量子位元晶片是現在量子研究、廠商追逐的目標。
+                                    透過此類1000~5000個物理量子位元等效於20~50個邏輯量子位元的計算能力，來展示量子優勢。
+                                    如果要進行更實用、大規模的量子超級計算，一方面牽涉到大量的量子位元做併行（邏輯位元數要多）、另一方面也需要更深的邏輯電路深度（錯誤率要低、或是糾錯能力要強），對物理位元常是是平方級的成長。
+                                    然而，更大量的量子位元亦會產生更複雜的串擾，反而增加錯誤率，又需要更多資源來糾錯。這導致目前推估實用的量子計算，會需要整合百萬個量子位元才能具有實用的量子優勢。
+                                    百萬個量子位元帶來的控制儀器整合、高功率超低溫冷卻議題，將超越現在AI數據中心的耗電量，對電力基建帶來沈重的負荷。
+                                </p>
+                                <div style="text-align: center;">
+                                    
+                                        <a href="../Image/IMG_5915.JPG"><img loading="lazy" src="../WebP/IMG_5915.webp" alt="量子位元需求簡報投影片" style="width: 100%; height: auto;"></a>
+                                    
+                                </div>
+                                <p class="dark-background">
+                                    ▲ FUJITSU說明Early-FTQC和實際FTQC所需要的量子位元。
+                                    
+                                    <br><br>
+                                </p>
+                                
+                                <div style="text-align: center;">
+                                    
+                                        <a href="../Image/IMG_5943.JPG"><img loading="lazy" src="../WebP/IMG_5943.webp" alt="量子電腦系統功耗與散熱簡報" style="width: 100%; height: auto;"></a>
+                                    
+                                    
+                                        <a href="../Image/IMG_5958.JPG"><img loading="lazy" src="../WebP/IMG_5958.webp" alt="大型量子電腦耗電簡報投影片" style="width: 100%; height: auto;"></a>
+                                    
+                                </div>
+                                <p class="dark-background">
+                                    ▲ FUJITSU推算規模化的量子超算中心所帶來的冷卻與耗電議題。一方面，超大型數據中心的冷卻會有大量的噪音，這會干擾量子位元造成錯誤率上升。
+                                    另一方面，量子超算中心的耗電，粗估將是TGW3等級，是超過500座核電廠的裝置容量！
+
+
+                                    
+                                    <br><br>
+                                </p>
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                <div style="text-align: center;">
+                                    
+                                        <a href="../Image/IMG_5964.JPG"><img loading="lazy" src="../WebP/IMG_5964.webp" alt="超導量子電腦成本簡報投影片" style="width: 100%; height: auto;"></a>
+                                    
+                                 
+                                        <a href="../Image/IMG_5966.JPG"><img loading="lazy" src="../WebP/IMG_5966.webp" alt="富士通研發未來方向簡報投影片" style="width: 100%; height: auto;"></a>
+                                    
+                                </div>
+                                <p class="dark-background">
+                                    ▲ 由於上述推估量子超算中心的規模極其巨大，FUJITSU便提出一些開放問題，相關的基建要如何達成？由誰協助？以及如何降低相關的成本來增加可實踐性。
+                                    
+                                    <br><br>
+                                </p>
+                                
+                                
+                                
+                                
+                                
+                                <br><br>
+</section>
+  <section class="module">
+    
+<h3 data-concept="W14-C6">進階主線：Fabrication 是 Hamiltonian realization</h3>
+<p>Base layer 同時定義 capacitor、resonator、ground plane 與 wiring；JJ module 決定 critical current 與 qubit frequency。Dolan bridge／shadow evaporation 容易形成小面積 Al/AlO<sub>x</sub>/Al junction，卻對 resist profile、angle、oxidation、descum、overlay 與 parasitic junction 敏感。</p>
+<p>製程控制不能只看最後低溫 qubit。Room-temperature \(R_n\)、junction-chain statistics、film stress/thickness、sheet resistance、CD/overlay、surface chemistry 與 resonator-Q monitor 必須成為 process-control monitor (PCM)。</p>
+<div class="equation-card"><p>\[I_cR_n\approx\frac{\pi\Delta}{2e}\tanh\!\left(\frac{\Delta}{2k_BT}\right),\qquad E_J=\frac{\Phi_0I_c}{2\pi}\]</p></div>
+
+  </section>
+  <section class="module">
+                                      <h3 data-concept="W14-C1">二、單元 1：超導量子晶片製程總覽</h3>
+                                  
+                                      <h4>1.1 From Design Layout to Fabricated Quantum Chip</h4>
+                                      <p>
+                                        超導量子晶片的製程流程通常從版圖設計開始。
+                                        設計者會先根據目標 Hamiltonian、qubit frequency、coupling strength、readout frequency
+                                        與晶片架構規劃出幾何版圖。接著，透過微影、薄膜沉積、蝕刻、氧化與 lift-off 等製程，
+                                        將設計圖案轉移到基板上，形成實際的超導電路。
+                                      </p>
+                                  
+                                      <p>
+                                        對超導量子位元而言，製程的核心不是追求最小線寬或最高電晶體密度，
+                                        而是追求低損耗、低缺陷、低雜訊、可重複且可預測的量子電路參數。
+                                        這使得 superconducting quantum chip fabrication 與傳統 CMOS fabrication 在目標上有明顯差異。
+                                      </p>
+                                  
+                                      <h4>超導量子晶片製程的主要階段</h4>
+                                      <table>
+                                        <thead>
+                                          <tr>
+                                            <th>製程階段</th>
+                                            <th>主要內容</th>
+                                            <th>對量子晶片的影響</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr>
+                                            <td>Substrate Preparation</td>
+                                            <td>選擇基板、清洗、去除表面污染與氧化層</td>
+                                            <td>影響介面損耗與薄膜品質</td>
+                                          </tr>
+                                          <tr>
+                                            <td>Thin-Film Deposition</td>
+                                            <td>沉積 Al、Nb、Ta、TiN 等超導薄膜</td>
+                                            <td>決定電阻率、晶粒、表面粗糙度與 microwave loss</td>
+                                          </tr>
+                                          <tr>
+                                            <td>Lithography</td>
+                                            <td>使用 optical 或 e-beam lithography 定義圖案</td>
+                                            <td>決定 qubit pad、resonator、junction 與細線結構</td>
+                                          </tr>
+                                          <tr>
+                                            <td>Etching or Lift-Off</td>
+                                            <td>移除不需要的金屬或形成金屬圖案</td>
+                                            <td>影響邊緣粗糙度、殘留物與介面品質</td>
+                                          </tr>
+                                          <tr>
+                                            <td>Josephson Junction Fabrication</td>
+                                            <td>雙角度蒸鍍、氧化形成 tunnel barrier</td>
+                                            <td>決定 \(E_J\)、\(I_c\)、qubit frequency 與製程變異</td>
+                                          </tr>
+                                          <tr>
+                                            <td>Integration and Packaging</td>
+                                            <td>整合 qubits、resonators、couplers、control/readout lines</td>
+                                            <td>影響串擾、寄生模態、封裝損耗與可擴展性</td>
+                                          </tr>
+                                        </tbody>
+                                      </table>
+                                  
+                                      <h4>1.2 Fabrication as Hamiltonian Realization</h4>
+                                      <p>
+                                        在主題二中，我們已經看到超導量子位元的 Hamiltonian 由 \(E_C\)、\(E_J\)、\(E_L\)
+                                        與耦合項決定。從製程角度來看，這些參數分別對應到具體的幾何與材料因素。
+                                      </p>
+                                  
+                                      <table>
+                                        <thead>
+                                          <tr>
+                                            <th>Hamiltonian 參數</th>
+                                            <th>製程或幾何來源</th>
+                                            <th>受哪些因素影響</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr>
+                                            <td>\(E_C\)</td>
+                                            <td>總電容 \(C_\Sigma\)</td>
+                                            <td>pad 面積、金屬間距、基板介電常數、封裝環境</td>
+                                          </tr>
+                                          <tr>
+                                            <td>\(E_J\)</td>
+                                            <td>Josephson junction critical current</td>
+                                            <td>junction 面積、氧化層厚度、氧化壓力與時間</td>
+                                          </tr>
+                                          <tr>
+                                            <td>\(E_L\)</td>
+                                            <td>電感或 superinductor</td>
+                                            <td>線寬、材料動能電感、Josephson junction array 參數</td>
+                                          </tr>
+                                          <tr>
+                                            <td>Coupling \(g\)</td>
+                                            <td>電容或電感耦合</td>
+                                            <td>耦合器幾何、線路距離、寄生電容與電磁模態</td>
+                                          </tr>
+                                          <tr>
+                                            <td>Readout \(\chi\)</td>
+                                            <td>qubit-resonator coupling 與 detuning</td>
+                                            <td>resonator 幾何、coupling capacitor、junction variation</td>
+                                          </tr>
+                                        </tbody>
+                                      </table>
+                                  
+                                      <div class="note">
+                                        <h4>核心觀念</h4>
+                                        <p>
+                                          超導量子晶片製程的本質，是把設計中的 Hamiltonian 參數轉換成實際可製作、可量測、
+                                          可重複的幾何與材料結構。製程誤差會直接變成 Hamiltonian 誤差。
+                                        </p>
+                                      </div>
+                                    </section><section class="module">
+                                      <h3 data-concept="W14-C1">三、單元 2：基板、表面處理與薄膜沉積</h3>
+                                  
+                                      <h4>2.1 Substrate Selection</h4>
+                                      <p>
+                                        基板是超導量子晶片的物理支撐，也是 microwave electric field 分佈的重要介質。
+                                        常見基板包括 high-resistivity silicon、sapphire 與其他低損耗介電材料。
+                                        基板的介電損耗、表面缺陷、晶格品質、熱膨脹係數與製程相容性都會影響 qubit coherence。
+                                      </p>
+                                  
+                                      <table>
+                                        <thead>
+                                          <tr>
+                                            <th>基板材料</th>
+                                            <th>優點</th>
+                                            <th>主要挑戰</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr>
+                                            <td>High-Resistivity Silicon</td>
+                                            <td>製程成熟、晶圓品質高、可與半導體技術相容</td>
+                                            <td>表面氧化層與介面缺陷可能造成 dielectric loss</td>
+                                          </tr>
+                                          <tr>
+                                            <td>Sapphire</td>
+                                            <td>低介電損耗、微波性能佳</td>
+                                            <td>加工較困難，與部分製程相容性需評估</td>
+                                          </tr>
+                                          <tr>
+                                            <td>SOI or Engineered Substrates</td>
+                                            <td>可支援特殊整合與 3D 結構</td>
+                                            <td>介面較複雜，可能引入額外損耗</td>
+                                          </tr>
+                                        </tbody>
+                                      </table>
+                                  
+                                      <h4>2.2 Surface Cleaning</h4>
+                                      <p>
+                                        超導量子位元對表面與介面缺陷非常敏感。
+                                        在薄膜沉積前，基板表面必須經過清洗，以移除有機污染、金屬污染、微粒、自然氧化層與水氣殘留。
+                                        不良表面處理可能導致 two-level system defects，進一步造成 dielectric loss 與 qubit frequency instability。
+                                      </p>
+                                  
+                                      <h4>常見表面處理步驟</h4>
+                                      <ul>
+                                        <li>Solvent clean：使用 acetone、IPA 等溶劑去除有機污染。</li>
+                                        <li>Piranha clean 或 RCA clean：去除有機物與金屬離子污染。</li>
+                                        <li>HF dip：去除 silicon native oxide，形成 hydrogen-terminated surface。</li>
+                                        <li>Oxygen plasma clean：去除 resist residue 與有機殘留。</li>
+                                        <li>In-situ ion milling：沉積前在真空腔內移除表面氧化與污染。</li>
+                                      </ul>
+                                  
+                                      <h4>2.3 Thin-Film Deposition</h4>
+                                      <p>
+                                        超導薄膜是量子晶片的主要導電結構。
+                                        常見沉積方法包括 electron-beam evaporation、thermal evaporation、sputtering、molecular beam epitaxy
+                                        與 atomic layer deposition。不同方法會影響薄膜晶粒、粗糙度、應力、殘留污染與界面品質。
+                                      </p>
+                                  
+                                      <table>
+                                        <thead>
+                                          <tr>
+                                            <th>沉積方法</th>
+                                            <th>特色</th>
+                                            <th>適用情境</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr>
+                                            <td>Electron-Beam Evaporation</td>
+                                            <td>方向性強、適合 shadow evaporation</td>
+                                            <td>Al Josephson junction、lift-off 製程</td>
+                                          </tr>
+                                          <tr>
+                                            <td>Thermal Evaporation</td>
+                                            <td>設備簡單、熱蒸鍍速率穩定</td>
+                                            <td>部分 Al 薄膜與小面積製程</td>
+                                          </tr>
+                                          <tr>
+                                            <td>Sputtering</td>
+                                            <td>薄膜附著性佳，可沉積 Nb、Ta、TiN 等材料</td>
+                                            <td>大面積 ground plane、resonator、high-Q films</td>
+                                          </tr>
+                                          <tr>
+                                            <td>MBE</td>
+                                            <td>高品質外延薄膜</td>
+                                            <td>高品質材料研究與特殊界面控制</td>
+                                          </tr>
+                                          <tr>
+                                            <td>ALD</td>
+                                            <td>原子層級厚度控制</td>
+                                            <td>薄介電層、保護層、特殊 tunnel barrier 研究</td>
+                                          </tr>
+                                        </tbody>
+                                      </table>
+                                  
+                                      <h4>2.4 Superconducting Materials</h4>
+                                      <p>
+                                        不同超導材料具有不同的臨界溫度、薄膜品質、氧化行為、介面損耗與製程相容性。
+                                        選擇材料時需要同時考慮 coherence、製程穩定性、Josephson junction 相容性與封裝整合。
+                                      </p>
+                                  
+                                      <table>
+                                        <thead>
+                                          <tr>
+                                            <th>材料</th>
+                                            <th>常見用途</th>
+                                            <th>特色</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr>
+                                            <td>Aluminum, Al</td>
+                                            <td>Josephson junction、Transmon qubit</td>
+                                            <td>自然氧化層可形成 AlOx tunnel barrier，製程成熟</td>
+                                          </tr>
+                                          <tr>
+                                            <td>Niobium, Nb</td>
+                                            <td>resonator、ground plane、wiring</td>
+                                            <td>較高 \(T_c\)，適合微波電路，但表面氧化與介面需控制</td>
+                                          </tr>
+                                          <tr>
+                                            <td>Tantalum, Ta</td>
+                                            <td>高 coherence qubit 薄膜</td>
+                                            <td>近年受到重視，可能具有低表面損耗潛力</td>
+                                          </tr>
+                                          <tr>
+                                            <td>Titanium Nitride, TiN</td>
+                                            <td>high kinetic inductance resonator、superinductor</td>
+                                            <td>可提供高動能電感，但薄膜組成與損耗需精密控制</td>
+                                          </tr>
+                                          <tr>
+                                            <td>NbTiN</td>
+                                            <td>高動能電感、microwave resonator、wiring</td>
+                                            <td>高 \(T_c\)、高臨界場，常用於低溫微波元件</td>
+                                          </tr>
+                                        </tbody>
+                                      </table>
+                                  
+                                      <div class="learning-check">
+                                        <h4>學習檢核</h4>
+                                        <ol>
+                                          <li>為什麼基板表面處理會影響 qubit coherence？</li>
+                                          <li>Al 為什麼常用於 Josephson junction 製程？</li>
+                                          <li>Sputtering 與 evaporation 在薄膜特性上有何差異？</li>
+                                          <li>為什麼薄膜材料選擇不能只看 \(T_c\)？</li>
+                                        </ol>
+                                      </div>
+                                    </section><section class="module">
+                                      <h3 data-concept="W14-C2">四、單元 3：微影、蝕刻與圖案轉移</h3>
+                                  
+                                      <h4>3.1 Lithography Overview</h4>
+                                      <p>
+                                        Lithography 是將晶片版圖轉移到光阻或電子束阻劑上的製程。
+                                        超導量子晶片通常同時需要大面積結構與奈米尺度 Josephson junction。
+                                        因此，常見流程會結合 optical lithography 與 electron-beam lithography。
+                                      </p>
+                                  
+                                      <table>
+                                        <thead>
+                                          <tr>
+                                            <th>微影方法</th>
+                                            <th>解析度</th>
+                                            <th>常見用途</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr>
+                                            <td>Optical Lithography</td>
+                                            <td>適合微米尺度圖案</td>
+                                            <td>qubit pads、resonators、feedlines、ground plane</td>
+                                          </tr>
+                                          <tr>
+                                            <td>Electron-Beam Lithography</td>
+                                            <td>適合奈米尺度圖案</td>
+                                            <td>Josephson junction、narrow wires、superinductor 結構</td>
+                                          </tr>
+                                          <tr>
+                                            <td>Step-and-Repeat Lithography</td>
+                                            <td>適合晶圓級重複圖案</td>
+                                            <td>大規模晶圓製程與量產導向平台</td>
+                                          </tr>
+                                        </tbody>
+                                      </table>
+                                  
+                                      <h4>3.2 Resist Process</h4>
+                                      <p>
+                                        微影製程通常需要塗佈 resist，經過曝光、顯影後形成圖案。
+                                        對 lift-off 製程而言，resist profile 特別重要，因為需要形成 undercut，
+                                        讓金屬沉積後可以順利移除不需要的部分。
+                                      </p>
+                                  
+                                      <h4>典型 resist process</h4>
+                                      <ol>
+                                        <li>Spin coating：將 resist 均勻塗佈在晶圓表面。</li>
+                                        <li>Soft bake：移除溶劑並穩定 resist 膜厚。</li>
+                                        <li>Exposure：以光或電子束定義圖案。</li>
+                                        <li>Development：顯影形成 openings 或 resist mask。</li>
+                                        <li>Descum：使用輕微 oxygen plasma 去除殘留 resist。</li>
+                                        <li>Metal deposition 或 etching：進行圖案轉移。</li>
+                                        <li>Lift-off 或 resist strip：移除 resist。</li>
+                                      </ol>
+                                  
+                                      <h4>3.3 Etching</h4>
+                                      <p>
+                                        Etching 是移除未被 mask 保護的材料，以形成目標圖案。
+                                        蝕刻可分為 wet etching 與 dry etching。
+                                        在超導量子晶片中，蝕刻品質會影響邊緣粗糙度、表面殘留、介面損傷與 microwave loss。
+                                      </p>
+                                  
+                                      <table>
+                                        <thead>
+                                          <tr>
+                                            <th>蝕刻方法</th>
+                                            <th>特色</th>
+                                            <th>可能問題</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr>
+                                            <td>Wet Etching</td>
+                                            <td>使用化學液體移除材料，設備較簡單</td>
+                                            <td>可能 isotropic etch，造成 undercut 與尺寸偏移</td>
+                                          </tr>
+                                          <tr>
+                                            <td>Reactive Ion Etching, RIE</td>
+                                            <td>使用 plasma 進行方向性蝕刻</td>
+                                            <td>可能造成表面損傷、殘留聚合物與介面缺陷</td>
+                                          </tr>
+                                          <tr>
+                                            <td>Ion Milling</td>
+                                            <td>使用離子物理轟擊移除材料或氧化層</td>
+                                            <td>可能引入 roughness、implantation 或過度損傷</td>
+                                          </tr>
+                                          <tr>
+                                            <td>ICP Etching</td>
+                                            <td>高密度 plasma，適合深蝕刻或高均勻性製程</td>
+                                            <td>參數複雜，需控制損傷與 selectivity</td>
+                                          </tr>
+                                        </tbody>
+                                      </table>
+                                  
+                                      <h4>3.4 Lift-Off Process</h4>
+                                      <p>
+                                        Lift-off 是先形成 resist 圖案，再沉積金屬，最後將 resist 連同上方金屬一起移除，
+                                        只保留直接沉積在基板上的金屬圖案。
+                                        它常用於 Al Josephson junction 與部分微波結構。
+                                      </p>
+                                  
+                                      <p>
+                                        Lift-off 的優點是可以避免對已沉積金屬進行蝕刻，
+                                        但它也容易受到 resist residue、金屬側壁連接、沉積方向性與 undercut profile 影響。
+                                        不乾淨的 lift-off 殘留物可能形成 dielectric loss source，降低 qubit \(T_1\)。
+                                      </p>
+                                  
+                                      <h4>3.5 Alignment and Overlay</h4>
+                                      <p>
+                                        多層製程需要精準 alignment。
+                                        例如 Josephson junction 必須正確連接到 qubit capacitor pads；
+                                        air bridges 必須跨越正確位置；readout resonator、coupler 與 control lines 也需保持設計距離。
+                                        Overlay error 會造成電容、耦合強度與 junction contact area 偏離設計值。
+                                      </p>
+                                  
+                                      <div class="note">
+                                        <h4>核心觀念</h4>
+                                        <p>
+                                          微影與蝕刻不只是決定圖案是否成功形成，也會透過殘留物、表面損傷與尺寸偏差，
+                                          影響 qubit 的損耗、頻率、耦合與製程良率。
+                                        </p>
+                                      </div>
+                                    </section><section class="module">
+                                      <h3 data-concept="W14-C3 W14-C4 W14-C5">五、單元 4：Josephson Junction 製作</h3>
+                                  
+                                      <h4>4.1 Why Josephson Junction Fabrication Is Critical</h4>
+                                      <p>
+                                        Josephson junction 是超導量子位元中最關鍵的非線性元件。
+                                        它的 critical current \(I_c\) 決定 Josephson energy：
+                                      </p>
+                                  
+                                      <div class="equation">
+                                        <p>\[
+                                        E_J = \frac{\Phi_0 I_c}{2\pi}
+                                        \]</p>
+                                      </div>
+                                  
+                                      <p>
+                                        因此，junction 面積、氧化層厚度、tunnel barrier 品質與界面缺陷都會直接影響 qubit frequency、
+                                        anharmonicity、coherence 與晶片間一致性。
+                                      </p>
+                                  
+                                      <h4>4.2 Al/AlOx/Al Junction</h4>
+                                      <p>
+                                        最常見的 Josephson junction 之一是 Al/AlOx/Al junction。
+                                        它由兩層鋁電極與中間極薄的氧化鋁 tunnel barrier 構成。
+                                        其製作通常仰賴 shadow evaporation 或 double-angle evaporation。
+                                      </p>
+                                  
+                                      <h4>典型 Al/AlOx/Al junction 製程</h4>
+                                      <ol>
+                                        <li>使用 e-beam lithography 定義 junction pattern 與 undercut resist profile。</li>
+                                        <li>進行第一次角度蒸鍍，形成第一層 Al electrode。</li>
+                                        <li>在受控氧壓與時間下進行 in-situ oxidation，形成 AlOx tunnel barrier。</li>
+                                        <li>改變蒸鍍角度，進行第二次 Al evaporation。</li>
+                                        <li>完成 lift-off，留下重疊區域形成 Josephson junction。</li>
+                                      </ol>
+                                  
+                                      <h4>4.3 Shadow Evaporation</h4>
+                                      <p>
+                                        Shadow evaporation 利用雙層 resist 形成的 undercut 結構，讓不同角度蒸鍍的金屬在基板上產生重疊區域。
+                                        這個重疊區域即為 junction area。
+                                        透過控制角度、resist 厚度與圖案寬度，可以定義奈米尺度的 junction。
+                                      </p>
+                                  
+                                      <p>
+                                        Shadow evaporation 的優點是可以在同一真空腔中完成兩層 Al 與氧化層，
+                                        避免 tunnel barrier 暴露於空氣中造成污染。
+                                        其挑戰是對 resist profile、蒸鍍角度、對準、氧化條件與 lift-off 品質高度敏感。
+                                      </p>
+                                  
+                                      <h4>4.4 Oxidation Process</h4>
+                                      <p>
+                                        Josephson junction 的 tunnel barrier 通常由第一層 Al 的受控氧化形成。
+                                        Oxidation pressure 與 oxidation time 會影響氧化層厚度與穿隧電阻，
+                                        進而影響 critical current density \(J_c\)。
+                                      </p>
+                                  
+                                      <p>
+                                        若氧化層太薄，junction critical current 過大，可能造成 qubit frequency 偏高或漏電增加；
+                                        若氧化層太厚，critical current 過小，可能造成 \(E_J\) 偏低。
+                                        此外，氧化層中的缺陷也可能形成 two-level systems，導致 decoherence。
+                                      </p>
+                                  
+                                      <table>
+                                        <thead>
+                                          <tr>
+                                            <th>氧化參數</th>
+                                            <th>影響</th>
+                                            <th>可能結果</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr>
+                                            <td>Oxygen Pressure</td>
+                                            <td>影響氧化速率與 barrier 厚度</td>
+                                            <td>改變 \(I_c\) 與 \(E_J\)</td>
+                                          </tr>
+                                          <tr>
+                                            <td>Oxidation Time</td>
+                                            <td>影響氧化層生長程度</td>
+                                            <td>改變 junction resistance</td>
+                                          </tr>
+                                          <tr>
+                                            <td>Substrate Temperature</td>
+                                            <td>影響氧化均勻性與薄膜形貌</td>
+                                            <td>影響 junction reproducibility</td>
+                                          </tr>
+                                          <tr>
+                                            <td>Oxygen Purity</td>
+                                            <td>影響 barrier 污染程度</td>
+                                            <td>可能增加 defects 與 loss</td>
+                                          </tr>
+                                        </tbody>
+                                      </table>
+                                  
+                                      <h4>4.5 Junction Area and Critical Current Variation</h4>
+                                      <p>
+                                        Josephson junction 的 critical current 近似與 junction area 和 critical current density 有關：
+                                      </p>
+                                  
+                                      <div class="equation">
+                                        <p>\[
+                                        I_c = J_c A_J
+                                        \]</p>
+                                      </div>
+                                  
+                                      <p>
+                                        其中 \(A_J\) 是 junction area，\(J_c\) 是 critical current density。
+                                        因此，微小的 junction 尺寸誤差、電子束曝光劑量偏差、resist profile 變化或氧化條件變化，
+                                        都會造成 \(I_c\) 與 \(E_J\) 的變異。
+                                      </p>
+                                  
+                                      <p>
+                                        對 fixed-frequency transmon 而言，junction variation 會直接造成 qubit frequency spread。
+                                        若 frequency spread 過大，可能造成 frequency collision，降低多量子位元晶片良率。
+                                      </p>
+                                  
+                                      <h4>4.6 Junction Defects and Decoherence</h4>
+                                      <p>
+                                        Josephson junction 的 tunnel barrier 是量子位元中電場集中的區域之一。
+                                        若 barrier 或附近介面存在 defects，這些 defects 可能表現為 microscopic two-level systems，
+                                        與 qubit 交換能量或造成頻率雜訊。
+                                      </p>
+                                  
+                                      <p>
+                                        Junction-related defects 可能導致：
+                                      </p>
+                                  
+                                      <ul>
+                                        <li>\(T_1\) relaxation 增加。</li>
+                                        <li>Qubit frequency jumps。</li>
+                                        <li>Time-dependent frequency drift。</li>
+                                        <li>Charge noise 或 critical-current noise。</li>
+                                        <li>晶片間與 cooldown-to-cooldown variation。</li>
+                                      </ul>
+                                  
+                                      <div class="learning-check">
+                                        <h4>學習檢核</h4>
+                                        <ol>
+                                          <li>為什麼 Josephson junction 的製程穩定性會影響 qubit frequency？</li>
+                                          <li>Shadow evaporation 如何形成 Al/AlOx/Al junction？</li>
+                                          <li>氧化壓力與氧化時間如何影響 critical current？</li>
+                                          <li>Junction defects 為什麼可能造成 decoherence？</li>
+                                        </ol>
+                                      </div>
+                                    </section>
+  <section class="module">
+    <div class="qh-section">
+      <h3>課堂整合與驗收</h3>
+    </div>
+    <p><strong>研討問題：</strong>畫出一套 Al/AlOx/Al transmon process flow；對每一步標出 CTQ、可量測 PCM 與可能造成 coherence/yield 損失的 defect。</p>
+    <p><strong>完成條件：</strong>學生必須留下可檢查的推導、關係圖、比較表或 architecture decision，並能說明其物理假設與工程代價。</p>
+  </section>
+  <section class="module">
+    <div class="qh-section">
+      <h3>核心與延伸閱讀</h3><ul class="qh-reading"><li><a href="https://doi.org/10.1126/science.abb2823" target="_blank" rel="noopener">Materials Challenges and Opportunities for Quantum Computing Hardware</a><span>N. P. de Leon et al., Science 372, eabb2823 (2021).</span><em>TLS、表面／介面、準粒子與材料表徵。</em></li><li><a href="https://www.nature.com/articles/s41578-021-00370-4" target="_blank" rel="noopener">Engineering High-Coherence Superconducting Qubits</a><span>I. Siddiqi, Nature Reviews Materials 6, 875–891 (2021).</span><em>不同 qubit architecture、材料損耗與 coherence 的設計 trade-off。</em></li><li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10130087/" target="_blank" rel="noopener">Improving Josephson Junction Reproducibility for Superconducting Quantum Circuits</a><span>Y. Wu et al., Scientific Reports 13, 6515 (2023).</span><em>junction area／resistance variation 與 wafer/chip uniformity。</em></li><li><a href="https://doi.org/10.1103/PhysRevA.76.042319" target="_blank" rel="noopener">Charge-insensitive Qubit Design Derived from the Cooper Pair Box</a><span>J. Koch et al., Physical Review A 76, 042319 (2007).</span><em>Transmon 的 \(E_J/E_C\)、charge dispersion 與 anharmonicity trade-off。</em></li></ul>
+    </div>
+  </section>
+</section>
+
+
+                                <div class="post-meta">
+                                    <span class="post-author">
+                                        <a href="../About/Wang.html"><img class="img-res" src="../WebP/IMG_0964_2.webp" alt="">王培儒</a>
+                                    </span>
+                                    <span class="post-category">
+                                        <a href="../SCQ_advanced/main.html"><i class="fa fa-folder" aria-hidden="true"></i>PHYS598500</a>
+                                    </span>
+                                </div><!-- /.post-meta -->
+                            
+                                <div id="prev-next-nav" class="text-center">
+                                    <a class="btn btn-gray" href="T5-13.html">← 上一頁</a> 
+                                    <a class="btn btn-gray" href="T6-15.html">下一頁 →</a>
+                                </div>
+
+                                
+
+                            </div><!-- /.post-content -->
+                        </article><!-- /.blog-post -->
+                        <!--<div id="PostComments" class="post-comments">
+                            
+                            
+                            
+                        </div> /#PostComments -->
+                        <!--<div class="respond">
+                            <h3>Post a Comment</h3>
+                            <form class="form-horizontal">
+                                <input class="form-control" type="text" placeholder="Your Name*" required>
+                                <input class="form-control" type="email" placeholder="Your Email" required>
+                                <textarea class="form-control form-control-comment" type="text" placeholder="Your Comment*" required></textarea>
+                                <button class="btn btn-green">Add a comment</button>
+                            </form>    
+                        </div> /.respond -->
+                    </div>
+                    <aside class="col-md-3">
+                        <div class="sidebar">
+                            <div class="widget">
+                                <div id="lesson-list_2">
+                                <div class="lesson-link "><a href="main.html">QH-2026F v5 · 16週總覽</a></div>
+                                <div class="lesson-link "><a href="T1-1.html">Week 1 · 從量子計算模型到硬體操作</a></div>
+                                <div class="lesson-link "><a href="T2-2.html">Week 2 · 超導電路量子化與 Transmon 設計</a></div>
+                                <div class="lesson-link "><a href="T2-3.html">Week 3 · Fluxonium：從電路改造到設計取捨</a></div>
+                                <div class="lesson-link "><a href="T3-4.html">Week 4 · 單量子位元控制：從微波脈衝到旋轉座標</a></div>
+                                <div class="lesson-link "><a href="T3-5.html">Week 5 · 耦合 Hamiltonian、兩量子位元閘與 Tunable Coupler</a></div>
+                                <div class="lesson-link "><a href="T3-6.html">Week 6 · Circuit QED、Dispersive Readout 與量測鏈</a></div>
+                                <div class="lesson-link "><a href="T4-7.html">Week 7 · 量子處理器校準：Hamiltonian Identification 與 Drift</a></div>
+                                <div class="lesson-link "><a href="T4-8.html">Week 8 · Benchmarking、多量子位元誤差與可擴展校準</a></div>
+                                <div class="lesson-link "><a href="T4-9.html">Week 9 · 量子錯誤校正基礎：從物理誤差到 Stabilizer Syndrome</a></div>
+                                <div class="lesson-link "><a href="T4-10.html">Week 10 · Surface-Code Hardware Cycle：排程、解碼與 Logical-Qubit 資源</a></div>
+                                <div class="lesson-link "><a href="T5-11.html">Week 11 · Dilution Refrigerator、熱化與低溫線路預算</a></div>
+                                <div class="lesson-link "><a href="T5-12.html">Week 12 · 微波控制、讀出電子與訊號完整性</a></div>
+                                <div class="lesson-link "><a href="T5-13.html">Week 13 · 封裝、EM Modes、佈線擴展與全系統整合</a></div>
+                                <div class="lesson-link active"><a href="T6-14.html">Week 14 · 超導量子晶片製程與 Josephson Junction Process Module</a></div>
+                                <div class="lesson-link "><a href="T6-15.html">Week 15 · Materials Loss、製程變異、Yield 與 Design–Fab–Measure Loop</a></div>
+                                <div class="lesson-link "><a href="T7-16.html">Week 16 · 前沿架構與 Hardware-Aware Quantum System Capstone</a></div>
+                                </div>
+                            </div>
+                        </div></aside>
+                </div>
+        </section><!-- /.section-portfolio -->
+
+    </main><!-- /#main -->
+
+    <footer id="colophon" class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-4 col-xs-6">
+                    <a href="../index_ch.html" class="site-title">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
+                    <p>一起走進新時代的前沿科學與量子科技</p>
+                    </div>
+                <div class="col-lg-offset-4 col-md-3 col-sm-4 col-md-offset-2 col-sm-offset-0 col-xs-6 ">
+                    <p class="site-title">𝐾𝐸𝐸𝑃 𝐼𝑁 𝑇𝑂𝑈𝐶𝐻</p>
+                    <ul class="list-unstyled contact-links">
+                        <li><i class="fa fa-envelope" aria-hidden="true"></i><a href="mailto:info@insight-ihbar.com">info@insight-ihbar.com</a></li>
+                        <!--<li><i class="fa fa-phone" aria-hidden="true"></i><a href="tel:+37400800000">+374 (00) 80 00 00 </a></li>
+                        <li><i class="fa fa-fax" aria-hidden="true"></i><a href="+37400900000">+374 (00) 90 00 00</a></li>
+                        <li><i class="fa-solid fa-location-dot"></i><p>Hsinchu 300, Taiwan (R.O.C.)</p></li>-->
+                    </ul>
+                </div>
+                <!--<div class="clearfix visible-xs"></div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6">
+                    <h3>Featured links</h3>
+                    <ul class="list-unstyled">
+                        <li class="active"><a href="index_ch.html">Home</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="portfolio.html">Porfolio</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>-->
+            </div>
+        </div>
+        <div class="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-8">
+                        <div class="social-links">
+                            <!--<a class="twitter-bg" href="#"><i class="fab fa-twitter"></i></a>-->
+                            <!--<<a class="facebook-bg" href="https://www.facebook.com/people/Quantum-Perspectives/61576446849628/"><i class="fab fa-facebook"></i></a>-->
+                            <!--<a class="facebook-bg" href="https://www.facebook.com/people/%E9%87%8F%E5%AD%90%E9%81%A0%E8%A6%8BQuantum-Perspectives/61576883632888/"><i class="fab fa-facebook-f"></i></a>-->
+                            <!--<a class="pinterest" href="#"><i class="fa-solid fa-microscope"></i></a>-->
+                            <!--<a class="facebook-bg" href="https://www.facebook.com/people/Insight-hbar/61576811775374/"><i class="fab fa-facebook-f"></i></a>-->
+                            <a class="linkedin-bg" href="https://www.linkedin.com/company/insight-ihbar"><i class="fab fa-linkedin"></i></a>
+                        </div><!-- /.social-links -->
+                    </div>
+                    <div class="col-xs-4">
+                        <div class="text-right">
+                            <p><span style="font-size: 16px;">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</span></p>
+                            <p>All Rights Reserved</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.copyright -->
+    </footer><!-- /#footer -->
+
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="../assets/js/bootstrap-select.min.js"></script>
+    <script src="../assets/js/jquery.slicknav.min.js"></script>
+    <script src="../assets/js/jquery.countTo.min.js"></script>
+    <script src="../assets/js/jquery.shuffle.min.js"></script>
+    <script src="../assets/js/script.js"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  
+</body>
+</html>

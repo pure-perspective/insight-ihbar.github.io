@@ -1,0 +1,2399 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N39VTY949N"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-N39VTY949N');
+  </script>
+  <!-- Basic Page Needs
+    ================================================== -->
+  <meta charset="utf-8">
+  <meta name="author" content="Peir-Ru Wang">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;1,300&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/20250525-icon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/20250525-icon.png">
+
+  <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/css/style.css" rel="stylesheet">
+  <link href="../assets/css/responsive.css" rel="stylesheet">
+
+  <title>Week 2 · 超導電路量子化與 Transmon 設計 | QH-2026F v5</title>
+  <meta name="description" content="PHYS598500 第 2 週，120 分鐘進階課程：超導電路量子化與 Transmon 設計">
+  <meta name="keywords" content="- 量子處理器
+- 超導量子位元
+- Qubit
+- 約瑟夫森接面
+- Transmon
+- Fluxonium
+- 量子計算
+- 量子硬體
+- 量子演算法
+- 量子晶片">
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+  <style>
+    .qh-week-meta {
+      margin: 20px 0;
+      padding: 16px 18px;
+      border-left: 4px solid #5f4b8b;
+      background: #f6f4fa;
+    }
+
+    .qh-week-meta p {
+      margin: 4px 0;
+    }
+
+    .qh-session-plan {
+      width: 100%;
+      margin: 18px 0 8px;
+      border-collapse: collapse;
+    }
+
+    .qh-session-plan th,
+    .qh-session-plan td {
+      padding: 10px 12px;
+      border: 1px solid #ddd;
+      vertical-align: top;
+    }
+
+    .qh-session-plan th {
+      background: #f4f4f4;
+    }
+
+    .qh-session-plan .qh-break td {
+      color: #666;
+      background: #fafafa;
+    }
+
+    .qh-total {
+      text-align: right;
+      font-weight: 700;
+    }
+
+    .qh-reading li {
+      margin-bottom: 12px;
+    }
+
+    .qh-reading span,
+    .qh-reading em {
+      display: block;
+    }
+
+    .qh-week-list {
+      padding-left: 0;
+      list-style: none;
+    }
+
+    .qh-week-list li {
+      margin: 0 0 13px;
+      padding: 12px 15px;
+      border-left: 4px solid #5f4b8b;
+      background: #f7f7f7;
+    }
+
+    .qh-week-list a {
+      font-weight: 700;
+    }
+
+    @media (max-width: 767px) {
+      .qh-session-plan {
+        display: block;
+        overflow-x: auto;
+      }
+    }
+  </style>
+
+
+  <style id="qh-full-course-style">
+    .qh-full-lecture {
+      margin: 30px 0;
+      padding: 24px 26px;
+      border: 1px solid #d9d4e5;
+      background: #fff;
+    }
+
+    .qh-full-lecture>h2,
+    .qh-full-lecture>h3 {
+      margin-top: 0;
+    }
+
+    .qh-full-lecture h4 {
+      margin-top: 24px;
+    }
+
+    .qh-full-lecture li {
+      margin-bottom: 8px;
+    }
+
+    .qh-time {
+      display: inline-block;
+      margin-bottom: 12px;
+      padding: 4px 10px;
+      border-radius: 14px;
+      background: #5f4b8b;
+      color: #fff;
+      font-size: .9em;
+    }
+
+    .qh-board,
+    .qh-case,
+    .qh-task,
+    .qh-answer,
+    .qh-source-chapter {
+      margin: 20px 0;
+      padding: 17px 19px;
+      font-size: 15px;
+    }
+
+    .qh-board {
+      border-left: 4px solid #d0ccc8;
+      background: #fafafa;
+    }
+
+    .qh-case {
+      border-left: 4px solid #d0ccc8;
+      background: #fafafa;
+    }
+
+    .qh-task {
+      border-left: 4px solid #d0ccc8;
+      background: #fafafa;
+    }
+
+    .qh-answer {
+      border-left: 4px solid #d0ccc8;
+      background: #fafafa;
+    }
+
+    /* Section divider headings */
+    .qh-section {
+      margin: 40px 0 24px;
+      padding: 17px 19px;
+      border-left: 4px solid #355c9a;
+      background: #f3f7fc;
+    }
+
+    .qh-section h3 {
+      margin: 0 0 4px;
+      font-size: 20px;
+      font-weight: 700;
+      color: #355c9a;
+      border-bottom: none;
+    }
+
+    .qh-section h4 {
+      margin: 0;
+      font-size: 15px;
+      font-weight: 400;
+      color: #6a8ab5;
+      font-style: italic;
+    }
+
+    .qh-section>h3:first-child {
+      margin-top: 0;
+    }
+
+    /* Equation highlight — compact, not a section heading */
+    .qh-equation-highlight {
+      margin: 24px 0;
+      padding: 14px 18px;
+      border-left: 3px solid #6a6560;
+      background: #f9f8f7;
+    }
+
+    .qh-equation-label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      color: #6a6560;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    .qh-source-chapter {
+      border: 1px solid #e5e0ec;
+      background: #fdfcff;
+    }
+
+
+    .qh-source-chapter>h3 {
+      padding-bottom: 9px;
+      border-bottom: 1px solid #ddd5e8;
+    }
+
+    .qh-source-note {
+      color: #665f72;
+      font-size: .92em;
+    }
+
+    @media (max-width: 720px) {
+      .qh-full-lecture {
+        padding: 18px 15px;
+      }
+
+      .qh-board,
+      .qh-case,
+      .qh-task,
+      .qh-answer,
+      .qh-source-chapter {
+        padding: 14px 13px;
+      }
+    }
+
+    /* Supplement section styling */
+    .qh-supplement-divider {
+      margin: 36px 0 24px;
+      padding: 18px 22px;
+      border-left: 4px solid #5f4b8b;
+      background: #f6f4fa;
+    }
+
+    .qh-supplement-divider h2 {
+      margin: 0 0 5px;
+      font-size: 22px;
+    }
+
+    .qh-supplement-divider p {
+      margin: 0;
+    }
+
+    /* Tables in supplement */
+    .module table {
+      width: 100%;
+      margin: 16px 0;
+      border-collapse: collapse;
+      font-size: 15px;
+    }
+
+    .module table th,
+    .module table td {
+      padding: 10px 12px;
+      border: 1px solid #ddd;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .module table th {
+      background: #f4f4f4;
+      font-weight: 700;
+    }
+
+    /* Callout in supplement */
+    .module .callout {
+      margin: 16px 0;
+      padding: 12px 16px;
+      border-left: 4px solid #5f4b8b;
+      background: #f6f4fa;
+      font-size: 15px;
+    }
+
+    /* Lists in supplement */
+    .module ul,
+    .module ol {
+      margin: 12px 0;
+      padding-left: 24px;
+    }
+
+    .module li {
+      margin-bottom: 8px;
+      line-height: 1.6;
+      font-size: 15px;
+    }
+
+    /* Heading consistency — only direct h3 children, not inside .qh-section */
+    .module > h3 {
+      margin: 28px 0 14px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #ddd5e8;
+      font-size: 20px;
+    }
+
+    .module h4 {
+      margin: 20px 0 10px;
+      font-size: 17px;
+    }
+
+    .module p {
+      margin: 10px 0;
+      line-height: 1.7;
+    }
+  </style>
+
+
+  <style id="qh-details-style">
+    details.dark-background {
+      margin: 24px 0;
+      background-color: #3a3632;
+      border: none;
+      padding: 0;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    details.dark-background summary {
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 16px;
+      color: #e8e4e0;
+      background-color: #4a4540;
+      padding: 14px 20px;
+      border-radius: 0;
+      list-style: none;
+      transition: background-color 0.2s;
+    }
+
+    details.dark-background summary:hover {
+      background-color: #5a5550;
+    }
+
+    details.dark-background summary::-webkit-details-marker {
+      display: none;
+    }
+
+    details.dark-background summary::marker {
+      content: "";
+    }
+
+    details.dark-background summary::before {
+      content: "▸";
+      display: inline-block;
+      margin-right: 8px;
+      font-size: 12px;
+      transition: transform 0.2s;
+    }
+
+    details.dark-background[open] summary::before {
+      transform: rotate(90deg);
+    }
+
+    details.dark-background summary h3 {
+      margin: 0;
+      font-size: inherit;
+      font-weight: inherit;
+      color: inherit;
+      line-height: 1.4;
+    }
+
+    details.dark-background> :not(summary) {
+      padding: 20px;
+      color: #d0ccc8;
+    }
+
+    details.dark-background> :not(summary) p {
+      color: #c8c4c0;
+      line-height: 1.7;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <header id="masthead" class="site-header">
+    <nav id="primary-navigation" class="site-navigation">
+      <div class="container">
+
+        <div class="navbar-header">
+          <a href="../index_ch.html" class="site-title">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
+        </div><!-- /.navbar-header -->
+
+        <div class="collapse navbar-collapse" id="agency-navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="../index_ch.html">Home</a></li>
+            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">科普介紹<i
+                  class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+              <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                <li><a href="../SCQ_elementary/main.html">超導量子位元(科普版)</a></li>
+                <li><a href="../SCQ_advanced/main.html">超導量子位元(進階版)</a></li>
+                <li><a href="../SpQ/main.html">半導體自旋量子位元</a></li>
+              </ul>
+            </li>
+            <!--<li class="active"><a href="../SCQ_elementary/main.html">科普介紹</a></li>-->
+            <li class="active"><a href="../QC_hardware/main.html">硬體導論</a></li>
+            <li><a href="../QID/main.html">量子產業群像錄</a></li>
+            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">研討會筆記<i
+                  class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+              <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                <li><a href="../ASW2026/main.html">2026中研院超導量子電腦Workshop</a></li>
+              </ul>
+            </li>
+            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">量子諮詢<i
+                  class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+              <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                <li><a href="https://www.quantum-perspectives.com/About/main.html">量子遠見科技：諮詢服務</a></li>
+                <li><a href="../About/main.html">關於我們</a></li>
+              </ul>
+            </li>
+            <li><a href="../index.html">English</a></li>
+          </ul>
+        </div>
+
+      </div>
+    </nav><!-- /.site-navigation -->
+  </header><!-- /#mastheaed -->
+
+  <div id="hero" class="hero overlay subpage-hero blog-hero">
+    <div class="hero-content">
+      <div class="hero_2-text">
+        <h1>超導量子電腦架構</h1>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="../index_ch.html">Home</a></li>
+          <li class="breadcrumb-item"><a href="../SCQ_advanced/main.html">PHYS598500</a></li>
+          <!--<li class="breadcrumb-item active">約瑟夫森節</li>-->
+        </ol>
+      </div><!-- /.hero-text -->
+    </div><!-- /.hero-content -->
+  </div><!-- /.hero -->
+
+  <main id="main" class="site-main">
+
+    <section class="site-section subpage-site-section section-blog">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-9">
+            <article class="blog-post">
+              <!--<img src="../assets/img/portfolio-1.jpg" class="img-res" alt="">-->
+              <div class="post-content">
+                <div style="text-align: center;">
+                  <p class="theme-label">PHYS598500 · Week 2 · T2</p>
+                  <h2>超導電路量子化與 Transmon 設計</h2>
+                  <h3>Circuit Quantization and Transmon Design</h3>
+                </div>
+
+                <section id="week-2" class="course-theme">
+
+                  <section class="course-overview">
+                    <h3>本週定位</h3>
+                    <div class="qh-week-meta">
+                      <p><strong>課程長度：</strong>120 分鐘</p>
+                      <p><strong>核心問題：</strong>一張超導電路圖，如何一路變成可設計的 Transmon？</p>
+                      <p><strong>先備：</strong>Lagrangian/Hamiltonian mechanics、LC circuit、基礎 superconductivity</p>
+
+                    </div>
+
+                  </section>
+
+                  <section class="qh-supplement-divider">
+                    <h3>W2
+                      <strong>超導電路量子化與 Transmon 設計</strong>
+                    </h3>
+                    <p>6 題</p>
+
+                    <ol>
+                      <li>
+                        <p>電路圖裡，哪些量可以成為自由度？</p>
+                      </li>
+                      <li>
+                        <p>怎麼把電路變成 Hamiltonian？</p>
+                      </li>
+                      <li>
+                        <p>Josephson junction 為何能做出 qubit？</p>
+                      </li>
+                      <li>
+                        <p>Transmon 用什麼換到抗 charge noise？</p>
+                      </li>
+                      <li>
+                        <p>目標頻率如何變成版圖與製程參數？</p>
+                      </li>
+                      <li>
+                        <p>這套設計何時不該再用？</p>
+                      </li>
+                    </ol>
+                  </section>
+                  <div class="qh-section">
+                    <h3>Transmon的性質</h3>
+                    </div>
+                    <h4>當前主流的超導量子位元</h4>
+                  <div style="text-align: center;">
+                    <a href="../Image/Transmon.png">
+                      <img src="../WebP/Transmon.webp" alt="單JJ轉換器和對稱、非對稱SQUID轉換器電路圖" style="width: 98%; height: auto;">
+                    </a>
+                  </div>
+                  <div style="text-align: center;">
+                    <a href="../Image/Transmon state.png">
+                      <img src="../WebP/Transmon state.webp" alt="潛能曲線及量子能級示意圖" style="width: 50%; height: auto;">
+                    </a>
+                  </div>
+                  <p>
+                    <span style="font-size: 0.7em; line-height: 0.8;">Ref:
+                      DOI:10.48550/arXiv.2203.04164</span><br><br>
+                  </p>
+
+
+                  <section class="module">
+                    <div class="qh-section">
+                      <h3>單元 2：什麼是超導量子位元？</h3>
+                    </div>
+                    <h4>2.1 Artificial Atoms from Superconducting Circuits</h4>
+                    <p>
+                      超導量子位元可以被視為人工原子。
+                      自然原子的能階來自電子在原子核庫倫位能中的量子化運動；
+                      超導量子位元的能階則來自電路中電荷、磁通量與 Josephson phase 的量子化運動。
+                    </p>
+
+                    <p>
+                      在古典 LC 電路中，能量在電容的電場能與電感的磁場能之間交換，形成諧振。
+                      若把 LC 電路量子化，它會形成 quantum harmonic oscillator。
+                      然而，理想 harmonic oscillator 的能階間距完全相等，無法單獨選取最低兩個能階作為 qubit。
+                      因此，超導 qubit 必須引入非線性，使能階間距不再相等。
+                    </p>
+
+                    <h4>2.2 Why Nonlinearity Is Necessary</h4>
+                    <p>
+                      若量子電路的能階為等間距，則從 \(\ket{0}\) 到 \(\ket{1}\) 的頻率與
+                      從 \(\ket{1}\) 到 \(\ket{2}\) 的頻率相同。
+                      這會導致微波控制無法只針對 qubit 子空間 \(\ket{0}, \ket{1}\)，
+                      而容易激發到更高能階。
+                    </p>
+
+                    <p>
+                      Josephson junction 提供了超導量子電路所需的非線性電感。
+                      透過這個非線性，超導電路可以形成不等間距能階，使最低兩個能階能夠被用作量子位元。
+                    </p>
+
+                    <h4>2.3 Types of Superconducting Qubits</h4>
+                    <p>
+                      不同超導量子位元可以根據主要能量尺度與電路設計分為多種類型。
+                      常見的例子包括 Charge Qubit、Flux Qubit、Phase Qubit、Transmon、Fluxonium 與 0-π Qubit。
+                      在現代 gate-based superconducting quantum computing 中，Transmon 是最廣泛使用的設計之一；
+                      Fluxonium 則因其長 coherence、較低 relaxation rate 與特殊能階結構而受到高度關注。
+                    </p>
+
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>Qubit 類型</th>
+                          <th>主要自由度</th>
+                          <th>設計特色</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Charge Qubit</td>
+                          <td>Cooper pair number</td>
+                          <td>對電荷敏感，控制性佳但容易受 charge noise 影響</td>
+                        </tr>
+                        <tr>
+                          <td>Flux Qubit</td>
+                          <td>磁通量與環流方向</td>
+                          <td>以超導迴路中的 persistent current 狀態作為基礎</td>
+                        </tr>
+                        <tr>
+                          <td>Transmon</td>
+                          <td>Josephson phase</td>
+                          <td>透過增加電容降低 charge noise sensitivity</td>
+                        </tr>
+                        <tr>
+                          <td>Fluxonium</td>
+                          <td>Phase across Josephson junction and superinductor</td>
+                          <td>使用 superinductor 形成特殊能階與雜訊保護</td>
+                        </tr>
+                      </tbody>
+                    </table>
+
+                  </section>
+
+                  <div class="qh-section">
+                    <h3>LC電路的正則量子化</h3>
+                    </div>
+                    <h4>簡諧振蕩</h4>
+                  <p>
+                    量子物理中常見的簡諧振蕩，經過量子化後能產生離散的能階，這正是量子計算基礎中的量子位元所依賴的概念。量子位元需要以具有量子效應的元件為基礎，利用超導體作為量子材料，結合 LC
+                    振蕩電路的概念，製造出超導量子位元。本節將首先討論 LC 電路的量子化過程。
+                  </p>
+                  <br><br>
+                  <div style="text-align: center;">
+                    <a href="../Image/LC.png">
+                      <img src="../WebP/LC.webp" alt="簡約風格的黑色動物圖案。" style="width: 30%; height: auto;">
+                    </a>
+                  </div>
+
+
+
+                  <p>
+                    ▲一個基礎的 \(LC\) 振蕩電路包含一個電感 \(L\) 和一個電容 \(C\)。定義電容攜帶的電荷為 \(Q\)，當電容儲存的電荷改變速度（即
+                    \(\dot{Q}\)）時，即表示電路上的流動電流。電容和電感分別儲存的能量可表達為：
+                    \[
+                    E_C = \frac{Q^2}{2C}, \quad E_L = \frac{L\dot{Q}^2}{2}.
+                    \]
+                    我們可以將 \(E_L\) 視為動能項 \(T\)，將 \(E_C\) 視為位能項 \(U\)，從而定義拉格朗日量 \(L\)：
+                    \[
+                    \mathcal{L}(\dot{Q}, Q) = T - U = \frac{L\dot{Q}^2}{2} - \frac{Q^2}{2C}.
+                    \]
+                  </p>
+                  <p>
+                    根據歐拉-拉格朗日方程：
+                    \[
+                    \frac{d}{dt} \frac{\partial \mathcal{L}}{\partial \dot{Q}} - \frac{\partial \mathcal{L}}{\partial Q}
+                    = 0,
+                    \]
+                    我們得到：
+                    \[
+                    L\ddot{Q} + \frac{Q}{C} = 0 \implies \ddot{Q} + \frac{Q}{LC} = 0,
+                    \]
+                    即描述一個以頻率 \(\omega = \frac{1}{\sqrt{LC}}\) 振蕩的簡諧運動。
+                  </p>
+
+
+                  <!-- /.post-meta -->
+
+
+
+
+
+                  <div class="qh-section">
+                    <h3>量子化古典LC電路</h3>
+                  </div>
+
+                  <h4>什麼是正則量子化？</h4>
+                  <p>
+                    正則量子化是針對古典系統引入量子結構的一套方法，其核心是將 Hamiltonian 的 Poisson 結構替換為對易關係（commutator relation）。在前一節中，我們已經給出了
+                    Lagrangian，現在透過 Lagendre 變換即可得到 Hamiltonian。
+                  </p>
+
+                  <div class="qh-section">
+                    <h3>LC Circuit</h3>
+                  </div>
+
+                  <h4>LC 電路的基本關係</h4>
+                  <p>
+                    LC 電路由電容 \(C\) 與電感 \(L\) 組成。電容與電感的基本關係分別為：
+                    \[
+                    \left\{
+                    \begin{aligned}
+                    \text{Capacitor:}\qquad
+                    I_C &= C\frac{dV_C}{dt},\\[6pt]
+                    \text{Inductor:}\qquad
+                    V_L &= L\frac{dI_L}{dt}.
+                    \end{aligned}
+                    \right.
+                    \]
+                    由於瞬時功率為 \(IV\)，因此電路元件所儲存的能量可以寫成：
+                    \[
+                    E=\int_{0}^{t}IV\,dt.
+                    \]
+                  </p>
+
+                  <p>
+                    令 \(Q\) 表示電容上的電荷，則電路電流可以寫成
+                    \(I=\dot{Q}\)。電容與電感所儲存的能量分別為：
+                    \[
+                    \left\{
+                    \begin{aligned}
+                    E_C &= \frac{Q^2}{2C},\\[6pt]
+                    E_L &= \frac{L\dot{Q}^{\,2}}{2}.
+                    \end{aligned}
+                    \right.
+                    \]
+                    這組能量形式與質量－彈簧系統相對應：
+                    \[
+                    \left\{
+                    \begin{aligned}
+                    E_C &= \frac{Q^2}{2C},\\[6pt]
+                    E_L &= \frac{L\dot{Q}^{\,2}}{2}
+                    \end{aligned}
+                    \right.
+                    \quad\longleftrightarrow\quad
+                    \left\{
+                    \begin{aligned}
+                    V &= \frac{1}{2}Kx^2,\\[6pt]
+                    T &= \frac{1}{2}m\dot{x}^{\,2}.
+                    \end{aligned}
+                    \right.
+                    \]
+                    其中，\(x\) 為質量 \(m\) 的位移，\(K\) 為彈簧常數。兩個系統之間的對應關係為：
+                    \[
+                    Q\longleftrightarrow x,
+                    \qquad
+                    L\longleftrightarrow m,
+                    \qquad
+                    \frac{1}{C}\longleftrightarrow K.
+                    \]
+                  </p>
+
+                  <p>
+                    定義電感兩端的磁通量變數 \(\Phi\)：
+                    \[
+                    \Phi
+                    \equiv
+                    \int_{0}^{t}V_L\,dt
+                    =
+                    \int_{0}^{t}
+                    L\frac{dI_L}{dt}\,dt
+                    =
+                    LI_L
+                    =
+                    L\dot{Q}.
+                    \]
+                    因為 LC 電路中的電容與電感具有相同的端電壓，
+                    \(V_L=V_C\)，所以：
+                    \[
+                    \frac{d\Phi}{dt}
+                    =
+                    V_L
+                    =
+                    V_C
+                    =
+                    \frac{Q}{C}.
+                    \]
+                    因此，電荷 \(Q\) 與磁通量變數 \(\Phi\) 之間的關係為：
+                    \[
+                    Q=C\dot{\Phi}.
+                    \]
+                  </p>
+
+                  <p>
+                    將 \(Q=C\dot{\Phi}\) 以及 \(\Phi=L\dot{Q}\) 代入能量表達式，可以得到：
+                    \[
+                    \left\{
+                    \begin{aligned}
+                    E_C
+                    &=
+                    \frac{Q^2}{2C}
+                    =
+                    \frac{C\dot{\Phi}^{\,2}}{2},\\[8pt]
+                    E_L
+                    &=
+                    \frac{L\dot{Q}^{\,2}}{2}
+                    =
+                    \frac{\Phi^2}{2L}.
+                    \end{aligned}
+                    \right.
+                    \]
+                    因此，以 \(\Phi\) 作為廣義座標時，電容能量扮演動能項，而電感能量扮演位能項。
+                  </p>
+
+                  <p>
+                    LC 電路的 Lagrangian \(\mathcal{L}\) 為：
+                    \[
+                    \mathcal{L}
+                    =
+                    E_C-E_L
+                    =
+                    \frac{C\dot{\Phi}^{\,2}}{2}
+                    -
+                    \frac{\Phi^2}{2L}.
+                    \]
+                  </p>
+
+                  <p>
+                    與廣義座標 \(\Phi\) 對應的正則動量
+                    \(\Pi\) 定義為：
+                    \[
+                    \Pi
+                    \equiv
+                    \frac{\partial\mathcal{L}}
+                    {\partial\dot{\Phi}}
+                    =
+                    C\dot{\Phi}
+                    =
+                    Q.
+                    \]
+                    因此，在 LC 電路中，磁通量 \(\Phi\) 的正則共軛動量就是電荷 \(Q\)。
+                  </p>
+
+                  <p>
+                    Hamiltonian \(\mathcal{H}\) 由 Legendre transformation 定義為：
+                    \[
+                    \mathcal{H}
+                    \equiv
+                    \Pi\dot{\Phi}-\mathcal{L}.
+                    \]
+                    代入 \(\Pi=Q=C\dot{\Phi}\) 後，可以得到：
+                    \[
+                    \mathcal{H}
+                    =
+                    \frac{Q^2}{2C}
+                    +
+                    \frac{\Phi^2}{2L}.
+                    \]
+                  </p>
+
+                  <div class="qh-equation-highlight">
+                    <span class="qh-equation-label">Canonical Quantization</span>
+                    <p>
+                      \[
+                      [\hat{\Phi},\hat{Q}]
+                      =
+                      i\hbar
+                      \quad\longleftrightarrow\quad
+                      [x,p]
+                      =
+                      i\hbar.
+                      \]
+                    </p>
+                  </div>
+
+                  <br><br>
+                  <details class="dark-background">
+                    <summary>
+                      <h3>正則座標的選擇 (Optional)</h3>
+                    </summary>
+
+                    <p>
+                      正則動量 \(\Phi_\#\) 定義為：
+                      \[
+                      \Phi_\# \equiv \frac{\partial \mathcal{L}}{\partial \dot{Q}} = \mathcal{L}\dot{Q} \leftrightarrow
+                      \dot{Q} = \frac{\Phi_\#}{L}.
+                      \]
+                      此處 \(\Phi_\#\) 的單位與磁通量相同，可以視為電感內部的磁通量。Hamiltonian \(H(\Phi_\#, Q)\) 定義為：
+                      \[
+                      \mathcal{H} \equiv \Phi_\# \dot{Q} - \mathcal{L} = \frac{\Phi_\#^2}{2L} + \frac{Q^2}{2C}.
+                      \]
+                    </p>
+
+                    <p>
+                      在量子系統中，正則座標 \(q\) 和正則動量 \(p\) 滿足對易關係：
+                      \[
+                      [x, p] = i\hbar.
+                      \]
+                      對於本文中的參數，量子化條件為：
+                      \[
+                      [Q, \Phi_\#] = i\hbar.
+                      \]
+                    </p>
+
+                    <p style="text-align:justify; color:blue;">
+                      本文目前採用 \(\Phi_\#\) 作為記號，這是因為與傳統文章採用的方式相反。傳統文章中，Hamiltonian 對於 \(\Phi_\#\) 與 \(Q\)
+                      的地位是對稱的，定義誰是正則座標、誰是正則動量「似乎」是可以對換的（然而，Lagrangian 中動能和位能是反對稱的）。因此，本文直接反過來，將磁通量的部分作為廣義坐標，記為
+                      \(\Phi\)，而 \(Q\) 作為廣義動量。
+                    </p>
+
+                    <p style="text-align:justify; color:blue;">
+                      在這種情況下，量子化條件變為：
+                      \[
+                      [\Phi, Q] = i\hbar,
+                      \]
+                      與本文的選擇差一個負號，即：
+                      \[
+                      \Phi = -\Phi_\#.
+                      \]
+                      這個負號也可以由 Lagrangian 的反對稱性進一步解釋。
+                    </p>
+
+                    <p>
+                      有一種說法是因為後續會利用非線性的電感元件:約瑟夫森節（Josephson
+                      junction）取代線性電感，此非線性項如果出現在位能項比較好理解。不過，後面在驅動量子位元的時候，也是施加電容電壓來驅動，此時卻反而像驅動動能而不是驅動位能。以計算而言，誰是動能誰是位能是沒有差的。
+                    </p>
+
+                    <p>
+
+                      我們引入新的變量 \(a\)、\(a^\dagger\)：
+                      \[
+                      a = \sqrt{\frac{1}{2\hbar} \sqrt{\frac{L}{C}}} \left( Q + i\sqrt{\frac{C}{L}} \Phi_\# \right),
+                      \quad
+                      a^\dagger = \sqrt{\frac{1}{2\hbar} \sqrt{\frac{L}{C}}} \left( Q - i\sqrt{\frac{C}{L}} \Phi_\#
+                      \right).
+                      \]
+                      反之，可以表示為：
+                      \[
+                      Q = \sqrt{\frac{\hbar}{2} \sqrt{\frac{C}{L}}} (a^\dagger + a), \quad
+                      \Phi_\# = i\sqrt{\frac{\hbar}{2} \sqrt{\frac{L}{C}}} (a^\dagger - a).
+                      \]
+                    </p>
+
+                    <p>
+                      易證 \([a, a^\dagger] = 1\)：
+                      \[
+                      [a, a^\dagger] = aa^\dagger - a^\dagger a = \frac{1}{2\hbar} \sqrt{\frac{L}{C}} \left[ Q, \Phi_\#
+                      \right] = 1.
+                      \]
+                      我們可以利用 \(a\)、\(a^\dagger\) 重寫 Hamiltonian \(H(\Phi_\#, Q)\)：
+                      \[
+                      \mathcal{H} = \frac{\Phi_\#^2}{2L} + \frac{Q^2}{2C} = \frac{\hbar \omega}{4} \left[ - (a^\dagger -
+                      a)^2 + (a^\dagger + a)^2 \right],
+                      \]
+                      其中 \(\omega = \frac{1}{\sqrt{LC}}\)。
+                      展開後可得：
+                      \[
+                      \mathcal{H} = \frac{\hbar \omega}{2} \left[ a^\dagger a + a^\dagger a + 1 \right] = \hbar \omega
+                      \left[ a^\dagger a + \frac{1}{2} \right].
+                      \]
+                    </p>
+
+                    <p>
+                      最終得到量子化後的 Hamiltonian，每個能階差為 \(\hbar \omega\)。
+                    </p>
+
+
+
+
+
+                    <div class="qh-section">
+                      <h3>動能與位能項的互換</h3>
+                    </div>
+
+
+
+                    <h4>正則座標的嚴格定義</h4>
+                    <p>
+                      實際上，要正確地透過對易關係（commutator relation）進行量子化，需要嚴格規定 \(x, p\) 的對應關係，否則可能會出現負號上的偏差。承接前一節，我們知道：
+                      \[
+                      \dot{\Phi}_\# = \frac{d}{dt} \frac{\partial \mathcal{L}}{\partial \dot{Q}} = \frac{\partial
+                      \mathcal{L}}{\partial Q} = -\frac{Q}{C} \implies Q = -C\dot{\Phi}_\#.
+                      \]
+                      現在，我們將 Lagrangian \(L\) 轉換到動量空間。
+                    </p>
+
+                    <p>
+                      定義新的 Lagrangian \(\bar{\mathcal{L}}\) 為：
+                      \[
+                      \bar{\mathcal{L}} \equiv \mathcal{L} - \frac{d}{dt} (\Phi_\# Q) = \mathcal{L} - \dot{\Phi}_\# Q -
+                      \Phi_\# \dot{Q},
+                      \]
+                      展開後可得：
+                      \[
+                      \bar{\mathcal{L}} = \frac{L\dot{Q}^2}{2} - \frac{Q^2}{2C} - \dot{\Phi}_\# Q - \Phi_\# \dot{Q} =
+                      \frac{\Phi_\#^2}{2L} - \frac{C\dot{\Phi}_\#^2}{2} + C\dot{\Phi}_\#^2 - \frac{\Phi_\#^2}{L},
+                      \]
+                      簡化為：
+                      \[
+                      \bar{\mathcal{L}} = \frac{C\dot{\Phi}_\#^2}{2} - \frac{\Phi_\#^2}{2L}.
+                      \]
+                    </p>
+
+                    <p>
+                      注意，此時 \(\mathcal{L}(Q, \dot{Q}) \to \bar{\mathcal{L}}(\Phi_\#, \dot{\Phi}_\#)\)，動能與位能的角色互換。同時，有
+                      \(\bar{\mathcal{L}} = -\mathcal{L}\)，對應於 Lagrangian 的反對稱性。為吸收這一反對稱性，我們定義新的變量：
+                      \[
+                      \Phi = -\Phi_\#.
+                      \]
+                      這使得：
+                      \[
+                      \bar{\mathcal{L}}(\dot{\Phi}, \Phi) = \frac{C\dot{\Phi}^2}{2} - \frac{\Phi^2}{2L}.
+                      \]
+                    </p>
+
+                    <p>
+                      對應的正則動量 \(\Pi\)（並利用前述結果與 \(Q\) 進行聯繫）：
+                      \[
+                      \Pi \equiv \frac{\partial \bar{\mathcal{L}}}{\partial \dot{\Phi}} = C\dot{\Phi} = -C\dot{\Phi}_\#
+                      = Q \implies \dot{\Phi} = \frac{\Pi}{C} = \frac{Q}{C}.
+                      \]
+                    </p>
+
+                    <p>
+                      Hamiltonian \(\bar{\mathcal{H}}\) 定義為：
+                      \[
+                      \bar{\mathcal{H}} = \Pi\dot{\Phi} - \bar{\mathcal{L}} = \frac{\Pi^2}{C} - \frac{\Pi^2}{2C} +
+                      \frac{\Phi^2}{2L} = \frac{\Pi^2}{2C} + \frac{\Phi^2}{2L},
+                      \]
+                      與先前的 \(\mathcal{H}\) 完全一致。此時的量子化條件為：
+                      \[
+                      [\Phi, \Pi] = [\Phi, Q] = i\hbar,
+                      \]
+                      與傳統條件相同。
+                    </p>
+
+                    <p>
+                      定義新的變量 \(a\)、\(a^\dagger\)：
+                      \[
+                      a = \sqrt{\frac{1}{2\hbar} \sqrt{\frac{L}{C}}} \left( \sqrt{\frac{C}{L}} \Phi + iQ \right), \quad
+                      a^\dagger = \sqrt{\frac{1}{2\hbar} \sqrt{\frac{L}{C}}} \left( \sqrt{\frac{C}{L}} \Phi - iQ
+                      \right).
+                      \]
+                      反之：
+                      \[
+                      \Phi = \sqrt{\frac{\hbar}{2} \sqrt{\frac{L}{C}}} (a^\dagger + a), \quad
+                      Q = i\sqrt{\frac{\hbar}{2} \sqrt{\frac{C}{L}}} (a^\dagger - a).
+                      \]
+                    </p>
+
+                    <p>
+                      易證 \([a, a^\dagger] = 1\)：
+                      \[
+                      [a, a^\dagger] = aa^\dagger - a^\dagger a = \frac{1}{2\hbar} \sqrt{\frac{L}{C}} \left[ \Phi, Q
+                      \right] = 1.
+                      \]
+                      Hamiltonian \(H(\Phi, Q)\) 可改寫為：
+                      \[
+                      \mathcal{H} = \frac{\Phi^2}{2L} + \frac{Q^2}{2C} = \frac{\hbar}{4\sqrt{LC}} \left[ (a^\dagger +
+                      a)^2 - (a^\dagger - a)^2 \right].
+                      \]
+                      由於 \(\omega = \frac{1}{\sqrt{LC}}\)，展開後可得：
+                      \[
+                      \mathcal{H} = \frac{\hbar \omega}{4} \left[ (a^\dagger + a)^2 - (a^\dagger - a)^2 \right] = \hbar
+                      \omega \left[ a^\dagger a + \frac{1}{2} \right].
+                      \]
+                    </p>
+
+                    <p>
+                      最終，我們再次得到量子化後的 Hamiltonian，其中每個能階的差異為 \(\hbar \omega\)。
+                    </p>
+
+
+
+
+
+                    <div class="qh-section">
+                      <h3>形式化 Lagrangian 動能與位能的互換</h3>
+                    </div>
+
+                    <h4>簡化推導步驟</h4>
+                    <p>
+                      從 \(L(\dot{Q}, Q)\) 出發，基於 Lagrangian 動能與位能的反對稱性，我們定義對應 \(\dot{Q}\) 的正則動量 \(\Phi\)
+                      時手動加入一個負號，以吸收反對稱性（否則後續的 Hamiltonian 會為負）：
+                      \[
+                      \Phi \equiv -\frac{\partial \mathcal{L}}{\partial \dot{Q}} \implies \dot{\Phi} = -\frac{\partial
+                      \mathcal{L}}{\partial Q}.
+                      \]
+                      接下來，我們將 Lagrangian 換到 \((\dot{\Phi}, \Phi)\) 空間，即動量空間的 Lagrangian \(\bar{\mathcal{L}}\)：
+                      \[
+                      \bar{\mathcal{L}} \equiv \mathcal{L} + \frac{d}{dt} (\Phi Q) = \mathcal{L} + \dot{\Phi} Q + \Phi
+                      \dot{Q}.
+                      \]
+                    </p>
+
+                    <p>
+                      利用微分的方式，可以證明 \(\bar{\mathcal{L}} = \bar{\mathcal{L}}(\dot{\Phi}, \Phi)\) 是 \((\dot{\Phi}, \Phi)\)
+                      空間的函數：
+                      \[
+                      d\bar{\mathcal{L}} = d\mathcal{L} + d(\dot{\Phi} Q) + d(\Phi \dot{Q}) = \frac{\partial
+                      \mathcal{L}}{\partial \dot{Q}} d\dot{Q} + \frac{\partial \mathcal{L}}{\partial Q} dQ +
+                      Qd\dot{\Phi} + \dot{\Phi}dQ + \dot{Q}d\Phi + \Phi d\dot{Q}.
+                      \]
+                      展開後，因為 \(-\Phi = \frac{\partial \mathcal{L}}{\partial \dot{Q}}\)，我們有：
+                      \[
+                      d\bar{\mathcal{L}} = -\Phi d\dot{Q} - \dot{\Phi} dQ + Q d\dot{\Phi} + \dot{\Phi} dQ + \dot{Q}
+                      d\Phi + \Phi d\dot{Q} = Q d\dot{\Phi} + \dot{Q} d\Phi.
+                      \]
+                    </p>
+
+                    <p>
+                      此時，對應 \(\dot{\Phi}\) 的正則動量 \(\Pi\) 為：
+                      \[
+                      \Pi = \frac{\partial \bar{\mathcal{L}}}{\partial \dot{\Phi}} = Q,
+                      \]
+                      即與原來的 \(Q\) 相同。對應的 Hamiltonian \(\bar{\mathcal{H}}\) 定義為：
+                      \[
+                      \bar{\mathcal{H}} = \Pi \dot{\Phi} - \bar{\mathcal{L}} = Q\dot{\Phi} - \mathcal{L} - \dot{\Phi} Q
+                      - \Phi \dot{Q} = -\mathcal{L} - \Phi \dot{Q}.
+                      \]
+                      最終形式為：
+                      \[
+                      \bar{\mathcal{H}}(Q, \Phi) = -\mathcal{L} - \Phi \dot{Q}.
+                      \]
+                    </p>
+
+                    <p>
+                      這樣，我們可以簡化後續的推導，只需遵循以下步驟：
+                    <ol>
+                      <li>寫下 \(L(\dot{Q}, Q)\)。</li>
+                      <li>定義 \(\Phi \equiv -\frac{\partial \mathcal{L}}{\partial \dot{Q}}\)，並得到 \(\dot{Q}\) 與 \(\Phi\)
+                        的關係。</li>
+                      <li>直接求出對應的 Hamiltonian：
+                        \[
+                        \bar{\mathcal{H}}(Q, \Phi) = -\mathcal{L} - \Phi \dot{Q},
+                        \]
+                        並將 \(\dot{Q}\) 代入前述關係式。
+                      </li>
+                      <li>量子化條件：
+                        \[
+                        [Q, \Phi] = i\hbar.
+                        \]
+                      </li>
+                    </ol>
+                    </p>
+
+                    <p>
+                      這樣無需經過繁瑣的轉換 \(L(\dot{Q}, Q) \to \bar{\mathcal{L}}(\dot{\Phi}, \Phi) \to \bar{\mathcal{H}}(Q,
+                      \Phi)\)。特別是在後續引入外力耦合項時（如在推導如何驅動與讀取量子位元時，外部訊號與量子位元交互作用，或是兩個量子位元之間的耦合），如果按照繁瑣的推導，會出現類似於電磁場下的動量 \(p
+                      \to p - eA\) 的情況，在中間轉換時極度複雜。
+                    </p>
+
+                    <p style="text-align:justify; color:blue;">
+                      註：注意到：
+                      \[
+                      \bar{\mathcal{H}}(Q, \Phi) = -\mathcal{L} - \Phi \dot{Q} = -\mathcal{L} + \frac{\partial
+                      \mathcal{L}}{\partial \dot{Q}} \dot{Q} = H(\Phi, Q).
+                      \]
+                      \(H(\Phi, Q)\) 就是傳統上熟悉的 Hamiltonian。同時，\(\bar{\mathcal{H}} = H\) 再一次表明了 Hamiltonian 動能與位能的對稱性。
+
+                    </p>
+
+                  </details>
+                  <br><br>
+
+                  <section class="qh-supplement-source">
+
+                    <div class="qh-section">
+                      <h3>超導現象與 Josephson Junction</h3>
+                    </div>
+
+                    <h4>3.1 Superconductivity</h4>
+                    <p>
+                      超導是一種低溫量子凝聚態現象。當某些材料被冷卻到臨界溫度 \(T_c\) 以下時，
+                      電阻消失，並且會排斥內部磁場，這稱為 Meissner effect。
+                      在微觀層次中，電子透過與晶格振動的交互作用形成 Cooper pairs，
+                      大量 Cooper pairs 進一步凝聚成具有共同相位的巨觀量子態。
+                    </p>
+
+                    <h4>超導體的重要特性</h4>
+                    <ul>
+                      <li><strong>Zero resistance：</strong>直流電阻消失，使電路耗散大幅降低。</li>
+                      <li><strong>Meissner effect：</strong>超導體排斥磁場，形成磁通量屏蔽。</li>
+                      <li><strong>Cooper pair condensate：</strong>電子成對凝聚，形成巨觀量子相干態。</li>
+                      <li><strong>Macroscopic phase：</strong>超導態可用一個巨觀相位 \(\phi\) 描述。</li>
+                      <li><strong>Flux quantization：</strong>超導迴路中的磁通量以 \(\Phi_0 = h/2e\) 為單位量子化。</li>
+                    </ul>
+
+                    <h4>3.2 Macroscopic Quantum Phase</h4>
+                    <p>
+                      超導凝聚態可以用一個巨觀波函數描述：
+                    </p>
+
+
+                    <p>\[
+                      \Psi({r}) = |\Psi({r})| e^{i\phi({r})}
+                      \]</p>
+                    <p>
+                      其中 \(\phi\) 是超導相位。對超導量子電路而言，
+                      這個相位不只是抽象變數，而是可以作為電路自由度並被量子化。
+                      因此，超導量子電路中的重要變數通常包含電荷數 \(n\) 與相位 \(\varphi\)，
+                      並滿足類似位置與動量的共軛關係。</p>
+
+
+
+                    <p>\[
+                      [\hat{\varphi}, \hat{n}] = i
+                      \]</p>
+
+                    <h4>3.3 Josephson Junction</h4>
+                    <p>
+                      Josephson junction 是由兩個超導體中間夾著一層極薄絕緣層所構成的結構，
+                      通常記為 SIS junction，也就是 superconductor-insulator-superconductor。
+                      雖然中間是絕緣層，Cooper pairs 仍然可以透過量子穿隧效應通過 junction，
+                      形成 Josephson current。
+                    </p>
+
+                    <h4>Josephson Relations</h4>
+                    <p>
+                      Josephson junction 的電流與相位差之間具有非線性關係：
+                    </p>
+
+
+                    <p>\[
+                      I = I_c \sin\varphi
+                      \]</p>
+                    <p>
+                      當 junction 兩端存在電壓 \(V\) 時，相位差會隨時間演化：
+                    </p>
+
+
+                    <p>\[
+                      V = \frac{\Phi_0}{2\pi}\frac{d\varphi}{dt}
+                      \]</p>
+                    <p>
+                      其中 \(\Phi_0 = h/2e\) 是超導磁通量量子。
+                      Josephson energy 可寫為：
+                    </p>
+
+
+                    <p>\[
+                      E_J = \frac{\Phi_0 I_c}{2\pi}
+                      \]</p>
+                    <h4>3.4 Josephson Junction as a Nonlinear Inductor</h4>
+                    <p>
+                      Josephson junction 的關鍵價值在於它提供非線性電感。
+                      一般線性電感的能量與相位近似呈二次關係；
+                      Josephson junction 的能量則為：
+                    </p>
+
+
+                    <p>\[
+                      U_J(\varphi) = -E_J \cos\varphi
+                      \]</p>
+                    <p>
+                      這個 cosine potential 使得電路能階不再等間距，
+                      因此能從量子振盪器中選出最低兩個能階作為 qubit。
+                    </p>
+
+                    <div class="qh-board">
+                      <h4>核心觀念</h4>
+                      <p>
+                        沒有 Josephson junction，超導 LC 電路只是近似 harmonic oscillator；
+                        有了 Josephson junction，電路才具有足夠非線性，可以形成可選址的量子二能階系統。
+                      </p>
+                    </div>
+
+                    <div class="qh-task">
+                      <h4>學習檢核</h4>
+                      <ol>
+                        <li>Josephson junction 為什麼能讓 Cooper pairs 穿過絕緣層？</li>
+                        <li>Josephson current 與相位差之間的關係是什麼？</li>
+                        <li>為什麼 Josephson junction 可被視為 nonlinear inductor？</li>
+                      </ol>
+                    </div>
+
+
+                    <div class="qh-section">
+                      <h3>約瑟夫森節的非線性電感性質</h3>
+                      </div>
+                      <h4>非線性使得精確控制量子位元成為可能</h4>
+
+                    <h4>約瑟夫森接面的量子描述</h4>
+                    <div style="text-align: center;">
+                      <a href="../Image/JJ.png">
+                        <img src="../WebP/JJ--f7ec7a89.webp" alt="簡單的圖表，顯示選項 A 和 B。" style="width: 50%; height: auto;">
+                      </a>
+                    </div>
+
+
+                    <div class="qh-source-plain">
+                      <!--<img src="../assets/img/portfolio-1.jpg" class="img-res" alt="">-->
+                      <div class="post-content">
+                        <p>
+                          ▲描述一個約瑟夫森接面，其材料的內秉性質由 \(H_0\) 描述。在接面兩端施加電壓 \(V\)，超導波函數之間的交互作用以 \(K\) 表示，其運動方程為：
+                          \[
+                          i\hbar \frac{\partial}{\partial t}
+                          \begin{pmatrix}
+                          \sqrt{n_A} e^{i\theta_A} \\
+                          \sqrt{n_B} e^{i\theta_B}
+                          \end{pmatrix}
+                          =
+                          \begin{pmatrix}
+                          H_0 - \frac{qV}{2} & K \\
+                          K & H_0 + \frac{qV}{2}
+                          \end{pmatrix}
+                          \begin{pmatrix}
+                          \sqrt{n_A} e^{i\theta_A} \\
+                          \sqrt{n_B} e^{i\theta_B}
+                          \end{pmatrix}.
+                          \]
+                          當 \(q = -2e\)（古柏對）時，方程變為：
+                          \[
+                          i\hbar \frac{\partial}{\partial t}
+                          \begin{pmatrix}
+                          \sqrt{n_A} e^{i\theta_A} \\
+                          \sqrt{n_B} e^{i\theta_B}
+                          \end{pmatrix}
+                          =
+                          \begin{pmatrix}
+                          H_0 + eV & K \\
+                          K & H_0 - eV
+                          \end{pmatrix}
+                          \begin{pmatrix}
+                          \sqrt{n_A} e^{i\theta_A} \\
+                          \sqrt{n_B} e^{i\theta_B}
+                          \end{pmatrix}.
+                          \]
+                        </p>
+                        <details class="dark-background">
+                          <summary>\(\theta_A, n_A \)完整推導過程</summary>
+                          <p>
+                            第一條方程為：
+                            \[
+                            i\hbar \frac{\partial}{\partial t} (\sqrt{n_A} e^{i\theta_A}) =
+                            \frac{i}{2} \frac{e^{i\theta_A}}{\sqrt{n_A}} \frac{\partial n_A}{\partial t}
+                            - \sqrt{n_A} e^{i\theta_A} \frac{\partial \theta_A}{\partial t}
+                            = (H_0 + eV) \sqrt{n_A} e^{i\theta_A} + K\sqrt{n_B} e^{i\theta_B}.
+                            \]
+                            將實部與虛部分離後得到：
+                            \[
+                            \frac{i}{2}\hbar \frac{\partial n_A}{\partial t} - n_A \hbar \frac{\partial
+                            \theta_A}{\partial t} =
+                            (H_0 + eV)n_A + K\sqrt{n_A n_B} e^{i(\theta_B - \theta_A)}.
+                            \]
+                            其共軛方程為：
+                            \[
+                            -\frac{i}{2}\hbar \frac{\partial n_A}{\partial t} - n_A \hbar \frac{\partial
+                            \theta_A}{\partial t} =
+                            (H_0 + eV)n_A + K\sqrt{n_A n_B} e^{-i(\theta_B - \theta_A)}.
+                            \]
+                          </p>
+
+                          <table border="1" style="width:100%; text-align:center;">
+                            <tr>
+                              <th>
+                                將兩式相加可得：
+                                \[
+                                -2n_A \hbar \frac{\partial \theta_A}{\partial t} = 2(H_0 + eV)n_A + 2K\sqrt{n_A n_B}
+                                \cos(\theta_B - \theta_A),
+                                \]
+                                整理得到 \(\theta_A\) 的方程：
+                                \[
+                                \hbar \frac{\partial \theta_A}{\partial t} = -(H_0 + eV) - K\sqrt{\frac{n_B}{n_A}}
+                                \cos(\theta_B - \theta_A).
+                                \]
+                              </th>
+                            </tr>
+                            <tr>
+                              <th>
+                                將兩式相減可得：
+                                \[
+                                i\hbar \frac{\partial n_A}{\partial t} = 2iK\sqrt{n_A n_B} \sin(\theta_B - \theta_A),
+                                \]
+                                即：
+                                \[
+                                \hbar \frac{\partial n_A}{\partial t} = 2K\sqrt{n_A n_B} \sin(\theta_B - \theta_A).
+                                \]
+                              </th>
+                            </tr>
+
+                          </table>
+                        </details>
+
+                        <details class="dark-background">
+                          <summary>\(\theta_B, n_B \)完整推導過程</summary>
+                          <p>
+                            第二條方程為：
+                            \[
+                            i\hbar \frac{\partial}{\partial t} (\sqrt{n_B} e^{i\theta_B}) =
+                            \frac{i}{2} \frac{e^{i\theta_B}}{\sqrt{n_B}} \frac{\partial n_B}{\partial t}
+                            - \sqrt{n_B} e^{i\theta_B} \frac{\partial \theta_B}{\partial t}
+                            = K\sqrt{n_A} e^{i\theta_A} + (H_0 - eV)\sqrt{n_B} e^{i\theta_B}.
+                            \]
+                            拆分後為：
+                            \[
+                            \frac{i}{2}\hbar \frac{\partial n_B}{\partial t} - n_B \hbar \frac{\partial
+                            \theta_B}{\partial t} =
+                            K\sqrt{n_A n_B} e^{-i(\theta_B - \theta_A)} + (H_0 - eV)n_B.
+                            \]
+                            其共軛方程為：
+                            \[
+                            -\frac{i}{2}\hbar \frac{\partial n_B}{\partial t} - n_B \hbar \frac{\partial
+                            \theta_B}{\partial t} =
+                            K\sqrt{n_A n_B} e^{i(\theta_B - \theta_A)} + (H_0 - eV)n_B.
+                            \]
+                          </p>
+                          <table border="1" style="width:100%; text-align:center;">
+                            <tr>
+                              <th>
+                                將兩式相加可得：
+                                \[
+                                -2n_B \hbar \frac{\partial \theta_B}{\partial t} = 2K\sqrt{n_A n_B} \cos(\theta_B -
+                                \theta_A) + 2(H_0 - eV)n_B,
+                                \]
+                                整理得到 \(\theta_B\) 的方程：
+                                \[
+                                \hbar \frac{\partial \theta_B}{\partial t} = -(H_0 - eV) - K\sqrt{\frac{n_A}{n_B}}
+                                \cos(\theta_B - \theta_A).
+                                \]
+
+                              </th>
+                            </tr>
+                            <tr>
+                              <th>
+                                將兩式相減可得：
+                                \[
+                                i\hbar \frac{\partial n_B}{\partial t} = -2iK\sqrt{n_A n_B} \sin(\theta_B - \theta_A),
+                                \]
+                                即：
+                                \[
+                                \hbar \frac{\partial n_B}{\partial t} = -2K\sqrt{n_A n_B} \sin(\theta_B - \theta_A).
+                                \]
+                              </th>
+                            </tr>
+
+                          </table>
+                        </details>
+
+                        <p>
+                          整理得出以下方程：
+                        <ul>
+                          <li>對於 \(\theta_A\)：
+                            \[
+                            \hbar \frac{\partial \theta_A}{\partial t} = -(H_0 + eV) - K\sqrt{\frac{n_B}{n_A}}
+                            \cos(\theta_B - \theta_A).
+                            \]
+                          </li>
+                          <li>對於 \(\theta_B\)：
+                            \[
+                            \hbar \frac{\partial \theta_B}{\partial t} = -(H_0 - eV) - K\sqrt{\frac{n_A}{n_B}}
+                            \cos(\theta_B - \theta_A).
+                            \]
+                          </li>
+                          <li>對於 \(n_A\)：
+                            \[
+                            \hbar \frac{\partial n_A}{\partial t} = 2K\sqrt{n_A n_B} \sin(\theta_B - \theta_A).
+                            \]
+                          </li>
+                          <li>對於 \(n_B\)：
+                            \[
+                            \hbar \frac{\partial n_B}{\partial t} = -2K\sqrt{n_A n_B} \sin(\theta_B - \theta_A).
+                            \]
+                          </li>
+                        </ul>
+                        </p>
+
+                        <p>
+                          定義相位差 \(\Delta \theta = \theta_B - \theta_A\)，並將前兩個方程相減，可得：
+                          \[
+                          \hbar \frac{\partial \Delta \theta}{\partial t} = 2eV + \frac{K}{\hbar} \left( \frac{n_B -
+                          n_A}{\sqrt{n_A n_B}} \right) \cos\Delta \theta.
+                          \]
+                          將後兩條方程結合並定義電流 \(I\) 為：
+                          \[
+                          -\frac{\partial n_A}{\partial t} = \frac{\partial n_B}{\partial t} \equiv \frac{I}{-2e}.
+                          \]
+                          整理得到：
+                          \[
+                          I = \frac{4eK}{\hbar} \sqrt{n_A n_B} \sin\Delta \theta \equiv I_c \sin\Delta \theta,
+                          \]
+                          其中 \(I_c\) 為該約瑟夫森接面的臨界電流。
+                        </p>
+
+                        <p>
+                          定義約瑟夫森接面的非線性電感：
+                          \[
+                          L_J(\Delta \theta) = \left(\frac{2e}{\hbar I_c \cos\Delta \theta}\right).
+                          \]
+                          電感儲存的能量為：
+                          \[
+                          E = \int IV dt = \int I_0 \sin\Delta \theta \cdot \frac{\hbar}{q} \frac{\partial \Delta
+                          \theta}{\partial t} dt
+                          = -\frac{I_0 \hbar}{2e} \cos\Delta \theta \equiv -\frac{I_0 \Phi_0}{2\pi} \cos\Delta \theta,
+                          \]
+                          其中，磁通量子 \(\Phi_0 = \frac{2\pi\hbar}{2e}\)，並定義：
+                          \[
+                          E_J = \frac{I_0 \Phi_0}{2\pi}.
+                          \]
+                        </p>
+
+
+                        <div style="text-align: center;">
+                          <a href="../Image/LC JJ circuit.png">
+                            <img src="../WebP/LC JJ circuit.webp" alt="五角形圖形的簡單設計元素。" style="width: 80%; height: auto;">
+                          </a>
+                        </div>
+                        <p>
+                          ▲從線性的\(LC\)電路，變成以約瑟夫森節的非線性電感組合出的非線性\(LC\)電路。\(L_J\)為約瑟夫森節的電感值。
+
+                        </p>
+
+
+
+
+
+                        <!-- /.post-meta -->
+
+
+
+
+
+                      </div><!-- /.post-content -->
+                    </div>
+                  </section>
+
+
+                  <section class="module">
+                    <div class="qh-section">
+                      <h3>單元 4：Transmon Qubit</h3>
+                    </div>
+                    <h4>4.1 From LC Circuit to Quantum LC Oscillator</h4>
+                    <p>
+                      在古典電路中，LC 振盪器的能量在電容與電感之間交換。
+                      電容儲存電場能，電感儲存磁場能。
+                      若將 LC 振盪器量子化，會得到等間距能階：
+                    </p>
+
+
+                    <p>\[
+                      E_m = \hbar\omega\left(m + \frac{1}{2}\right)
+                      \]</p>
+                    <p>
+                      這樣的 harmonic oscillator 並不適合作為 qubit，因為相鄰能階間距相同，
+                      控制脈衝無法只選擇 \(\ket{0} \leftrightarrow \ket{1}\) transition。
+                    </p>
+
+                    <h4>4.2 Nonlinear LC Circuit</h4>
+                    <p>
+                      Transmon 可以被理解為一個 nonlinear LC oscillator。
+                      它以 Josephson junction 取代一般線性電感，並加入較大的 shunt capacitance。
+                      Josephson junction 提供非線性，shunt capacitor 則降低 charging energy，
+                      使 qubit 對 offset charge noise 不敏感。
+                    </p>
+
+                    <p>
+                      Transmon 的基本電路包含：
+                    </p>
+
+                    <ul>
+                      <li>一個 Josephson junction 或 SQUID loop。</li>
+                      <li>一個大型 shunt capacitor。</li>
+                      <li>與微波控制線、讀出共振腔或耦合器之間的電容耦合。</li>
+                    </ul>
+
+                    <h4>4.3 Transmon Hamiltonian</h4>
+                    <p>
+                      Transmon Hamiltonian 可寫為：
+                    </p>
+
+
+                    <p>\[
+                      \hat{H}_{\mathrm{transmon}}
+                      =
+                      4E_C(\hat{n} - n_g)^2
+                      -
+                      E_J\cos\hat{\varphi}
+                      \]</p>
+                    <p>
+                      其中：
+                    </p>
+
+                    <ul>
+                      <li>\(\hat{n}\)：Cooper pair number operator。</li>
+                      <li>\(\hat{\varphi}\)：Josephson junction 兩端的超導相位差。</li>
+                      <li>\(n_g\)：offset charge，代表環境電荷雜訊或 gate-induced charge。</li>
+                      <li>\(E_C = e^2 / 2C_\Sigma\)：charging energy，由總電容 \(C_\Sigma\) 決定。</li>
+                      <li>\(E_J = \Phi_0 I_c / 2\pi\)：Josephson energy，由 junction critical current 決定。</li>
+                    </ul>
+
+                    <p>
+                      Transmon 的重要設計條件是：
+                    </p>
+
+
+                    <p>\[
+                      \frac{E_J}{E_C} \gg 1
+                      \]</p>
+                    <p>
+                      在這個 regime 中，能階對 offset charge \(n_g\) 的敏感度會被大幅壓低，
+                      但仍保留足夠的 anharmonicity，使最低兩個能階可以作為 qubit 使用。
+                    </p>
+
+                    <h4>4.4 Energy Spectrum and Anharmonicity</h4>
+                    <p>
+                      在 \(E_J/E_C \gg 1\) 的近似下，Transmon 的最低能階可近似為弱非諧振盪器。
+                      其 \(\ket{0} \rightarrow \ket{1}\) transition frequency 約為：
+                    </p>
+
+
+                    <p>\[
+                      \omega_{01}
+                      \approx
+                      \frac{\sqrt{8E_JE_C} - E_C}{\hbar}
+                      \]</p>
+                    <p>
+                      Transmon 的 anharmonicity 約為：
+                    </p>
+
+
+                    <p>\[
+                      \alpha
+                      =
+                      \omega_{12} - \omega_{01}
+                      \approx
+                      -\frac{E_C}{\hbar}
+                      \]</p>
+                    <p>
+                      Anharmonicity 是量子閘控制中的重要參數。
+                      若 \(|\alpha|\) 太小，微波脈衝容易造成 leakage 到 \(\ket{2}\)；
+                      若 \(|\alpha|\) 太大，通常代表 \(E_C\) 較大，可能提高對 charge noise 的敏感度。
+                      因此 Transmon 設計需要在 charge-noise protection 與 control selectivity 之間取得平衡。
+                    </p>
+
+                    <h4>4.5 Design of \(E_C\) and \(E_J\)</h4>
+                    <p>
+                      Transmon 的設計核心在於選擇合適的 \(E_C\)、\(E_J\) 與 \(E_J/E_C\)。
+                      這些參數分別由晶片幾何、材料與 Josephson junction 製程決定。
+                    </p>
+
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>參數</th>
+                          <th>定義</th>
+                          <th>由什麼決定</th>
+                          <th>設計影響</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>\(E_C\)</td>
+                          <td>\(e^2/2C_\Sigma\)</td>
+                          <td>總電容、pad 面積、耦合電容、封裝環境</td>
+                          <td>決定 anharmonicity 與 charge-noise sensitivity</td>
+                        </tr>
+                        <tr>
+                          <td>\(E_J\)</td>
+                          <td>\(\Phi_0 I_c/2\pi\)</td>
+                          <td>Josephson junction 面積、氧化層厚度、臨界電流密度</td>
+                          <td>決定 qubit frequency 與 potential depth</td>
+                        </tr>
+                        <tr>
+                          <td>\(E_J/E_C\)</td>
+                          <td>Josephson energy 與 charging energy 比值</td>
+                          <td>junction 與 capacitor 的共同設計</td>
+                          <td>控制 charge dispersion 與 anharmonicity 的 trade-off</td>
+                        </tr>
+                      </tbody>
+                    </table>
+
+                    <h4>4.6 Fixed-Frequency and Tunable Transmon</h4>
+                    <p>
+                      Transmon 可以分為 fixed-frequency transmon 與 tunable transmon。
+                      Fixed-frequency transmon 使用單一 Josephson junction，頻率在製作後大致固定。
+                      Tunable transmon 則使用 SQUID loop 取代單一 junction，使有效 Josephson energy 可由外加磁通量調控。
+                    </p>
+
+
+                    <p>\[
+                      E_J(\Phi_{\mathrm{ext}})
+                      \approx
+                      E_{J,\mathrm{max}}
+                      \left|
+                      \cos\left(\pi\frac{\Phi_{\mathrm{ext}}}{\Phi_0}\right)
+                      \right|
+                      \]</p>
+                    <p>
+                      Tunable transmon 提供更高的控制彈性，可用於頻率調諧、兩量子位元閘與避免 frequency collision；
+                      但同時也會增加對 flux noise 的敏感度。
+                    </p>
+
+                    <div class="qh-board">
+                      <h4>設計直覺</h4>
+                      <p>
+                        Transmon 的成功來自一個簡潔但深刻的設計策略：
+                        用較大的電容降低 \(E_C\)，犧牲部分 anharmonicity，
+                        換取對電荷雜訊的指數級保護。
+                      </p>
+                    </div>
+
+                    <div class="qh-task">
+                      <h4>學習檢核</h4>
+                      <ol>
+                        <li>為什麼單純的量子 LC oscillator 不適合作為 qubit？</li>
+                        <li>Josephson junction 在 Transmon 中扮演什麼角色？</li>
+                        <li>為什麼 Transmon 需要設計在 \(E_J/E_C \gg 1\) 的區域？</li>
+                        <li>\(E_C\) 太大或太小分別會造成什麼問題？</li>
+                        <li>Fixed-frequency Transmon 與 Tunable Transmon 的優缺點為何？</li>
+                      </ol>
+                    </div>
+
+                  </section>
+                  <section class="module">
+
+                    <div class="qh-section">
+                      <h3>進階主線：設計不是把 \(E_J/E_C\) 做得越大越好</h3>
+                    </div>
+                    <p>\[H=4E_C(\hat n-n_g)^2-E_J\cos\hat\varphi\]</p>
+                    <p>在 \(E_J/E_C\gg1\) 的 transmon regime，低能階近似</p>
+                    <p>\[\hbar\omega_{01}\approx\sqrt{8E_JE_C}-E_C,\qquad
+                      \alpha\equiv\omega_{12}-\omega_{01}\approx-\frac{E_C}{\hbar}\]</p>
+                    <p>charge dispersion 隨 \(\exp[-\sqrt{8E_J/E_C}]\)（帶有能階依賴的代數前因子）指數下降，但 anharmonicity 只以較慢尺度下降。這是
+                      transmon 成功的核心；代價是 pulse selectivity、leakage、frequency crowding 與 fabrication spread 必須一起設計。</p>
+                    <p>固定頻率 transmon 減少 flux-noise sensitivity；SQUID transmon 提供可調頻率與 gate mechanism，卻引入 flux line、sweet
+                      spot 與 drift 問題。真正的設計問題是 noise、control、coupling、yield 與 calibration 的聯立最佳化。</p>
+
+                  </section>
+                  <section class="qh-supplement-source">
+                    <div class="qh-section">
+                      <h3>雙約瑟夫森節（SQUID）的非線性電感性質</h3>
+                      </div>
+                      <h4>頻率可調式量子位元</h4>
+                    <div style="text-align: center;">
+                      <a href="../Image/SQUID.png">
+                        <img src="../WebP/SQUID.webp" alt="圓形導體及電流與磁場示意圖" style="width: 50%; height: auto;">
+                      </a>
+                    </div>
+
+
+
+                    <div class="qh-source-plain">
+                      <!--<img src="../assets/img/portfolio-1.jpg" class="img-res" alt="">-->
+                      <div class="post-content">
+                        <p>
+                          將兩組約瑟夫森節 \(J_1\)、\(J_2\) 相組，中間形成一個閉環，通入磁通 \( \Phi_B \) 與電壓 \( V \)。在前一節中，超導函數的相位對閉環的積分需滿足：
+                          \[
+                          \oint \nabla \theta(r) \cdot d\vec{l} - \frac{q}{\hbar} \Phi_B = 2\pi N
+                          \]
+                          因為在接面不連續會貢獻 \( \Delta\theta_1 \)、\( \Delta\theta_2 \)，\( q = -2e \)，帶入得：
+                          \[
+                          \Delta\theta_2 - \Delta\theta_1 + 2\pi \frac{\Phi_B}{\Phi_0} = 2\pi N
+                          \]
+                          \[
+                          \Delta\theta_2 = \Delta\theta_1 - 2\pi \frac{\Phi_B}{\Phi_0} + 2\pi N
+                          \]
+                        </p>
+                        <p>
+                          當整個 SQUID 通入電流 \( I = I_1 + I_2 \)，並使用前一節約瑟夫森節電流的關係式（這裡考慮對稱的 SQUID，即兩個約瑟夫森節的特性 \( I_c \)
+                          相同），計算得：
+                          \[
+                          I = I_1 + I_2 = I_0 (\sin\Delta\theta_1 + \sin\Delta\theta_2)
+                          \]
+                          \[
+                          I = I_0 \left[\sin\Delta\theta_1 + \sin\left(\Delta\theta_1 - 2\pi \frac{\Phi_B}{\Phi_0} +
+                          2\pi N\right)\right]
+                          \]
+                          \[
+                          I = I_0 \left[\sin\Delta\theta_1 + \sin\left(\Delta\theta_1 - 2\pi
+                          \frac{\Phi_B}{\Phi_0}\right)\right]
+                          \]
+                          利用三角恆等式化簡：
+                          \[
+                          I = I_0 \left[2 \sin\left(\frac{\Delta\theta_1 + \Delta\theta_1 - 2\pi
+                          \frac{\Phi_B}{\Phi_0}}{2}\right)
+                          \cos\left(\frac{\Delta\theta_1 - \Delta\theta_1 + 2\pi \frac{\Phi_B}{\Phi_0}}{2}\right)\right]
+                          \]
+                          \[
+                          I = 2I_0 \cos\left(\frac{\Phi_B}{\Phi_0} \pi\right) \sin\left(\Delta\theta_1 -
+                          \frac{\Phi_B}{\Phi_0} \pi\right)
+                          \]
+                        </p>
+                        <p>
+                          前一節提到約瑟夫森節具有電感的性質，同理我們可以討論 SQUID 的電感性質。將電流對時間微分：
+                          \[
+                          \dot{I} = 2I_0 \cos\left(\frac{\Phi_B}{\Phi_0} \pi\right) \cos\left(\Delta\theta_1 -
+                          \frac{\Phi_B}{\Phi_0} \pi\right) \dot{\Delta\theta_1}
+                          \]
+                          而 \( \dot{\Delta\theta_1} \) 與電壓 \( V \) 的關係為：
+                          \[
+                          V = \frac{\hbar}{2e} \dot{\Delta\theta_1} = \frac{\Phi_0}{2\pi} \dot{\Delta\theta_1}
+                          \]
+                          帶入後可得電感值：
+                          \[
+                          L_{\text{SQUID}}(\Delta\theta_1, \Phi_B) = \left[\frac{2\pi}{\Phi_0} \cdot 2I_0
+                          \cos\left(\frac{\Phi_B}{\Phi_0} \pi\right)
+                          \cos\left(\Delta\theta_1 - \frac{\Phi_B}{\Phi_0} \pi\right)\right]
+                          \]
+                        </p>
+                        <p>
+                          可以注意到 \( L_{\text{SQUID}} \) 的值會受到外加磁通 \( \Phi_B \) 的影響，這為後來 Tunable Transmon 調整頻率的關鍵。定義變數 \(
+                          \Phi \)：
+                          \[
+                          \Phi \equiv \frac{\Delta\theta_1}{\pi} \Phi_0 - \Phi_B = \frac{\Phi_0}{\pi}
+                          \left(\Delta\theta_1 - \frac{\Phi}{\Phi_0} \pi\right)
+                          \]
+                          並有：
+                          \[
+                          \dot{\Phi} = \frac{\Phi_0}{\pi} \dot{\Delta\theta_1}
+                          \]
+                          電壓 \( V \) 和電流 \( I \) 分別為：
+                          \[
+                          V = \frac{1}{2} \dot{\Phi}, \quad I = 2I_0 \cos\left(\frac{\Phi_B}{\Phi_0} \pi\right)
+                          \sin\left(\frac{\Phi}{\Phi_0} \pi\right)
+                          \]
+                        </p>
+                        <p>
+                          固定外場 \( \Phi_B \) 下，一組 SQUID 儲存的能量為：
+                          \[
+                          E = \int IV \, dt = \int \left[2I_0 \cos\left(\frac{\Phi_B}{\Phi_0} \pi\right)
+                          \sin\left(\frac{\Phi}{\Phi_0} \pi\right) \cdot \frac{1}{2} \dot{\Phi}\right] dt
+                          \]
+                          化簡得：
+                          \[
+                          E = I_0 \cos\left(\frac{\Phi_B}{\Phi_0} \pi\right) \int \sin\left(\frac{\Phi}{\Phi_0}
+                          \pi\right) d\Phi
+                          \]
+                          \[
+                          E = -\frac{I_0 \Phi_0}{\pi} \cos\left(\frac{\Phi_B}{\Phi_0} \pi\right)
+                          \cos\left(\frac{\pi}{\Phi_0} \Phi\right)
+                          \]
+                        </p>
+
+
+
+
+
+
+
+
+
+
+                        <!-- /.post-meta -->
+
+
+
+
+
+                      </div><!-- /.post-content -->
+                    </div>
+                  </section>
+
+
+                  <section class="qh-supplement-source">
+
+
+                    <div class="qh-source-plain">
+                      <!--<img src="../assets/img/portfolio-1.jpg" class="img-res" alt="">-->
+                      <div clas s="post-content">
+
+
+                        <div class="qh-section">
+                          <h3>Tunable Transmon</h3>
+                          </div>
+                          <h4>可調頻率的Transmon</h4>
+
+                        <div style="text-align: center;">
+                          <a href="../Image/SQUID transmon.png">
+                            <img src="../WebP/SQUID transmon.webp" alt="簡單的幾何圖形和符號插圖。" style="width:60%; height: auto;">
+                          </a>
+                        </div>
+                        <p>
+                          ▲由兩個約瑟夫森節組合成可調電感值的\(LC\)電路。
+
+                        </p>
+                        <p>
+                          前文提及約瑟夫森節具有電感性質，Transmon即是LC電路中的電感替換成約瑟夫森節。本節直接討論 Tunable Transmon，採用 SQUID
+                          當作電感。實務上因為材料製作的不均一性，不同 Transmon 會有不一樣的特性，如果採用 Tunable Transmon，可以透過微調磁通量 \( \Phi_B \) 的方式使
+                          Qubit 性質一致。此外，我們在前面量子化 LC 電路時，\([ \Phi, Q ] = i\hbar\) 是一對正則變量，利用 SQUID 的推導可以很自然地將磁通量 \( \Phi
+                          \) 與相位差 \( \Delta\theta \) 做聯繫，即：
+                          \[
+                          \Phi \equiv \frac{\Delta\theta_1}{\pi} \Phi_0 - \Phi_B
+                          \]
+                        </p>
+                        <p>
+                          現在我們寫下 Hamiltonian：
+                          \[
+                          \mathcal{H} = \frac{Q^2}{2C} + \frac{\Phi_\#^2}{2L} = \frac{Q^2}{2C} + \frac{(I_0
+                          \pi)}{2\Phi_0} \cos\left(\frac{\Phi_B}{\Phi_0} \pi\right) \Phi^2 - \frac{I_0}{24}
+                          \left(\frac{\pi}{\Phi_0}\right)^3 \cos\left(\frac{\Phi_B}{\Phi_0} \pi\right) \Phi^4 + \cdots
+                          \]
+                          \[
+                          = \frac{Q^2}{2C} + \frac{\Phi^2}{2L} - \frac{1}{24L} \left(\frac{\pi}{\Phi_0}\right)^2 \Phi^4
+                          + \cdots
+                          \]
+                          其中：
+                          \[
+                          L = \left(\frac{I_0 \pi}{\Phi_0} \cos\left(\frac{\Phi_B}{\Phi_0} \pi\right)\right)^{-1}
+                          \]
+                        </p>
+
+
+                        <p>
+                          現在我們要討論非線性對於能階的改變，前文我們選擇新的變量 \( a \)、\( a^\dagger \)：
+                          \[
+                          a = \sqrt{\frac{1}{2\hbar} \sqrt{ \frac{L}{C}}} \left(\sqrt{\frac{C}{L}} \Phi + iQ\right),
+                          \quad
+                          a^\dagger = \sqrt{\frac{1}{2\hbar} \sqrt{ \frac{L}{C}}} \left(\sqrt{\frac{C}{L}} \Phi -
+                          iQ\right)
+                          \]
+                          反之：
+                          \[
+                          \Phi = \sqrt{\frac{\hbar}{2 }\sqrt{ \frac{L}{C}}} (a^\dagger + a), \quad
+                          Q = i\sqrt{\frac{\hbar}{2} \sqrt{ \frac{C}{L}}} (a^\dagger - a)
+                          \]
+
+                        </p>
+                        <p>
+                          將 Hamiltonian 表達式展開為：
+                          \[
+                          \mathcal{H} = \frac{\hbar}{\sqrt{LC}} \left[a^\dagger a + \frac{1}{2}\right] - \frac{1}{24L}
+                          \left(\frac{\pi}{\Phi_0}\right)^2 \left[i \sqrt{\frac{\hbar}{2\sqrt{L/C}}} (a^\dagger +
+                          a)\right]^4
+                          \]
+                          化簡後：
+                          \[
+                          \mathcal{H} = \frac{\hbar}{\sqrt{LC}} \left[a^\dagger a + \frac{1}{2}\right] -
+                          \frac{\hbar^2}{96C} \left(\frac{\pi}{\Phi_0}\right)^2 (a^\dagger + a)^4
+                          \]
+                          該表達式包含線性和非線性項，線性項描述的是量子簡諧振子的能階，而非線性項源自於 Josephson 節對於能階的修正。
+                        </p>
+
+                        <p>
+                          利用微擾理論，當 \( \mathcal{H} = H_0 + \Delta H \)， \( \ket{E_0^m} \to \ket{E^m} \)、 \( E_0^m \to E^m
+                          = E_0^m + \delta E^m \)，我們知道對能階 \( E_0^m \) 的修正 \( \delta E^m \) 為：
+                        </p>
+
+                        <p style="text-align:center">
+                          \[
+                          \delta E^m = \langle E_0^m | \Delta H | E_0^m \rangle = \langle E_0^m |
+                          \left[-\frac{\hbar^2}{96C} \left(\frac{\pi}{\Phi_0}\right)^2 (a^\dagger + a)^4\right] | E_0^m
+                          \rangle
+                          \]
+                        </p>
+
+                        <p>
+                          計算如下：
+                        </p>
+
+                        <p style="text-align:center">
+                          \[
+                          \langle E_0^m | (a^\dagger + a)^4 | E_0^m \rangle = \langle E_0^m | (aa + aa^\dagger +
+                          a^\dagger a + a^\dagger a^\dagger)^2 | E_0^m \rangle
+                          \]
+                        </p>
+
+                        <p>
+                          展開為：
+                        </p>
+
+                        <p style="text-align:center">
+                          \[
+                          \langle E_0^m | aa(aa + aa^\dagger + a^\dagger a + a^\dagger a^\dagger) + aa^\dagger(aa +
+                          aa^\dagger + a^\dagger a + a^\dagger a^\dagger)
+                          + a^\dagger a(aa + aa^\dagger + a^\dagger a + a^\dagger a^\dagger) + a^\dagger a^\dagger(aa +
+                          aa^\dagger + a^\dagger a + a^\dagger a^\dagger) \ket{ E_0^m }
+                          \]
+                        </p>
+
+                        <p>
+                          因為取期望值，只會留下 \( a, a^\dagger \) 次數相等的項，剩下：
+                        </p>
+
+                        <p style="text-align:center">
+                          \[
+                          \langle E_0^m | aaa^\dagger a^\dagger + aa^\dagger aa^\dagger + aa^\dagger a^\dagger a +
+                          a^\dagger aaa^\dagger + a^\dagger aa^\dagger a + a^\dagger a^\dagger aa | E_0^m \rangle
+                          \]
+                        </p>
+
+                        <p>
+                          繼續簡化：
+                        </p>
+
+                        <p style="text-align:center">
+                          \[
+                          \langle E_0^m | a(a^\dagger a + 1)a^\dagger + aa^\dagger aa^\dagger + (a^\dagger a +
+                          1)a^\dagger a + a^\dagger a(a^\dagger a + 1) + a^\dagger aa^\dagger a + a^\dagger (aa^\dagger
+                          - 1)a | E_0^m \rangle
+                          \]
+                        </p>
+
+                        <p>
+                          再整理為：
+                        </p>
+
+                        <p style="text-align:center">
+                          \[
+                          \langle E_0^m | aa^\dagger aa^\dagger + aa^\dagger + aa^\dagger aa^\dagger + a^\dagger
+                          aa^\dagger a + a^\dagger a + a^\dagger aa^\dagger a + a^\dagger a + a^\dagger aa^\dagger a +
+                          a^\dagger aa^\dagger a - a^\dagger a | E_0^m \rangle
+                          \]
+                        </p>
+
+                        <p>
+                          進一步簡化：
+                        </p>
+
+                        <p style="text-align:center">
+                          \[
+                          \langle E_0^m | 2aa^\dagger aa^\dagger + aa^\dagger + 4a^\dagger aa^\dagger a + a^\dagger a |
+                          E_0^m \rangle
+                          \]
+                          \[
+                          = \langle E_0^m | 2(a^\dagger a + 1)(a^\dagger a + 1) + (a^\dagger a + 1) + 4a^\dagger
+                          aa^\dagger a + a^\dagger a | E_0^m \rangle
+                          \]
+                        </p>
+
+                        <p>
+                          最終得到：
+                        </p>
+
+                        <p style="text-align:center">
+                          \[
+                          \langle E_0^m | 6a^\dagger aa^\dagger a + 6a^\dagger a + 3 | E_0^m \rangle = 6m^2 + 6m + 3
+                          \]
+                        </p>
+
+                        <p>
+                          定義能階差：
+                        </p>
+
+                        <p style="text-align:center">
+                          \[
+                          \Delta E^m_{m-1} = \frac{\hbar}{\sqrt{LC}} - \frac{\hbar^2}{96C}
+                          \left(\frac{\pi}{\Phi_0}\right)^2 \left\{6[m^2 - (m-1)^2] + 6\right\}
+                          \]
+                        </p>
+
+                        <p style="text-align:center">
+                          \[
+                          = \frac{\hbar}{\sqrt{LC}} - \frac{\hbar^2 \pi^2}{96C} \frac{e^2}{\pi^2 \hbar^2} \left[6(2m -
+                          1) + 6\right]
+                          \]
+                        </p>
+
+                        <p>
+                          最終得到：
+                        </p>
+
+                        <p style="text-align:center">
+                          \[
+                          \Delta E^m_{m-1} = \frac{\hbar}{\sqrt{LC}} - m\frac{e^2}{8C}
+                          \]
+                        </p>
+
+                        <p>
+                          計算 \( \Delta E^{21} - \Delta E^{10} \)：
+                        </p>
+
+                        <p style="text-align:center">
+                          \[
+                          \Delta E^{21} - \Delta E^{10} = \left(\frac{\hbar}{\sqrt{LC}} - 2\frac{e^2}{8C}\right) -
+                          \left(\frac{\hbar}{\sqrt{LC}} - \frac{e^2}{8C}\right)
+                          \]
+                        </p>
+
+                        <p style="text-align:center">
+                          \[
+                          = -\frac{e^2}{8C} \equiv -E_C
+                          \]
+                        </p>
+
+                        <p>
+                          \( E_C \) 表示其非線性效應。
+                        </p>
+
+                        <p>
+                          <span style="font-size: 0.7em; line-height: 0.8;">Ref:
+                            DOI:10.1103/RevModPhys.93.025005</span><br><br>
+
+
+                        </p>
+
+
+                        <!-- /.post-meta -->
+
+
+
+
+
+                      </div><!-- /.post-content -->
+                    </div>
+                  </section>
+
+                  <section class="module">
+
+                    <div class="qh-section">
+                      <h3>單元 1：超導量子晶片版圖導論</h3>
+                    </div>
+                    <h4>1.1 What Is a Superconducting Quantum Chip?</h4>
+                    <p>
+                      超導量子晶片是一種以微奈米製程製作的低溫量子電路。
+                      在晶片上，量子位元、讀出共振腔、耦合器、控制線與接地結構被設計成特定的微波電路。
+                      當晶片被冷卻到約 10 mK 到數十 mK 的低溫環境時，超導金屬中的電子形成 Cooper pairs，
+                      電路的能量耗散大幅降低，使得特定電路模式可以展現量子化能階。
+                    </p>
+
+                    <p>
+                      從工程觀點來看，超導量子晶片同時是一個微波電路、低溫電子系統與人工量子系統。
+                      因此，理解超導量子晶片需要結合量子力學、電磁學、電路理論、材料科學與微奈米製程。
+                    </p>
+
+                    <h4>1.2 Typical Layout Elements</h4>
+                    <p>
+                      一個典型的超導量子晶片通常包含以下幾類元件：
+                    </p>
+
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>晶片元件</th>
+                          <th>功能</th>
+                          <th>物理角色</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Qubit</td>
+                          <td>儲存與處理量子資訊</td>
+                          <td>由非線性超導電路形成的人工原子</td>
+                        </tr>
+                        <tr>
+                          <td>Readout Resonator</td>
+                          <td>讀出 qubit 狀態</td>
+                          <td>與 qubit dispersively coupled 的微波共振腔</td>
+                        </tr>
+                        <tr>
+                          <td>Drive Line</td>
+                          <td>施加 microwave pulse 控制 qubit</td>
+                          <td>產生一量子位元旋轉操作</td>
+                        </tr>
+                        <tr>
+                          <td>Flux Line</td>
+                          <td>調控 qubit 或 coupler 的頻率</td>
+                          <td>透過外加磁通量改變 Josephson energy</td>
+                        </tr>
+                        <tr>
+                          <td>Coupler</td>
+                          <td>連接兩個或多個 qubits</td>
+                          <td>提供可固定或可調式的量子耦合</td>
+                        </tr>
+                        <tr>
+                          <td>Ground Plane</td>
+                          <td>提供電磁參考地與屏蔽</td>
+                          <td>影響微波模式、串擾與封裝效應</td>
+                        </tr>
+                        <tr>
+                          <td>Air Bridge / Crossover</td>
+                          <td>連接接地平面或跨越訊號線</td>
+                          <td>降低 slotline mode 與寄生耦合</td>
+                        </tr>
+                      </tbody>
+                    </table>
+
+                    <h4>1.3 From Circuit Layout to Hamiltonian</h4>
+                    <p>
+                      超導量子晶片的版圖不只是幾何圖案，它對應到具體的電路參數，例如電容、電感、耦合強度、
+                      共振頻率與損耗通道。這些參數進一步決定系統的 Hamiltonian。
+                    </p>
+
+                    <p>
+                      例如，一個 Transmon qubit 的大面積金屬 pad 決定總電容 \(C_\Sigma\)，
+                      Josephson junction 決定 Josephson energy \(E_J\)，而兩者共同決定 qubit frequency、
+                      anharmonicity 與對電荷雜訊的敏感度。
+                    </p>
+
+                    <div class="qh-board">
+                      <h4>核心觀念</h4>
+                      <p>
+                        在超導量子晶片中，「版圖設計」就是「Hamiltonian engineering」。
+                        一個看似幾何的設計選擇，最終會轉換成量子系統的頻率、耦合、雜訊敏感度與可控制性。
+                      </p>
+                    </div>
+
+                    <div class="qh-task">
+                      <h4>學習檢核</h4>
+                      <ol>
+                        <li>超導量子晶片與傳統 CMOS 晶片最大的差異是什麼？</li>
+                        <li>為什麼 readout resonator 需要與 qubit 耦合？</li>
+                        <li>為什麼晶片版圖會影響 qubit 的 Hamiltonian？</li>
+                      </ol>
+                    </div>
+
+
+                  </section>
+
+                  <section class="module">
+
+                    <div class="qh-section">
+                      <h3>進階主線：Circuit → Lagrangian → Hamiltonian → Spectrum</h3>
+                    </div>
+                    <p><em>（W2-C1, W2-D1, W2-D2）</em>對節點磁通 \(\Phi\) 而言，電容網路提供 kinetic term，電感與 Josephson junction 提供
+                      potential term：</p>
+                    <p>\[\mathcal L=\frac12\dot{\Phi}^{T} C\dot{\Phi}-U(\Phi),\qquad Q=\frac{\partial\mathcal
+                      L}{\partial\dot{\Phi}}\]</p>
+                    <p>Legendre transform 得到 \(H(\Phi, Q)\)，再施加 \([\hat\Phi_i,\hat Q_j]=i\hbar\delta_{ij}\)。線性 LC
+                      電路只產生等距能階；Josephson term</p>
+                    <p>\[U_J(\varphi)=-E_J\cos\varphi,\qquad E_J=\frac{\Phi_0 I_c}{2\pi}\]</p>
+                    <p>才打破 harmonicity，使最低兩能階可以被選擇性控制。進階課需要讓學生實際走完一次「由 schematic 到 Hamiltonian」；只背 transmon 公式不足以判斷寄生
+                      mode、coupling 與 layout 變更的後果。</p>
+                    <p class="callout"><b>邊界：</b>本週不深入 BCS microscopic derivation；超導體在這裡主要提供 macroscopic phase、低損耗
+                      wiring 與 Josephson element。微觀材料損耗留到 T6。</p>
+
+                  </section>
+
+                  
+
+                  <section class="module">
+                    <div class="qh-section">
+                      <h3>課堂整合與驗收</h3>
+                    </div>
+                    <p><strong>研討問題：</strong>由一個含 \(C\)、\(L\)、JJ 的單節點電路寫出 \(\mathcal L\)、canonical charge 與
+                      \(H\)，並指出哪個參數由版圖或製程控制。</p>
+                    <p><strong>完成條件：</strong>學生必須留下可檢查的推導、關係圖、比較表或 architecture decision，並能說明其物理假設與工程代價。</p>
+                  </section>
+                  <section class="module">
+                    <div class="qh-section">
+                      <h3>課堂整合與驗收</h3>
+                    </div>
+                    <p><strong>研討問題：</strong>給定 \(f_{01}\) 與 target anharmonicity，估算 \(E_C\)、\(E_J\)、總電容及
+                      \(I_c\)，再說明近似在哪裡可能失效。</p>
+                    <p><strong>完成條件：</strong>學生必須留下可檢查的推導、關係圖、比較表或 architecture decision，並能說明其物理假設與工程代價。</p>
+                  </section>
+                  <section class="module">
+                    <div class="qh-section">
+                      <h3>核心與延伸閱讀</h3>
+                    </div>
+                    <ul class="qh-reading">
+                      <li><a href="https://arxiv.org/abs/1610.03438" target="_blank" rel="noopener">Introduction to
+                          Quantum Electromagnetic Circuits</a><span>U. Vool and M. H. Devoret, International Journal of
+                          Circuit Theory and Applications 45, 897–934 (2017).</span><em>從電路圖、Lagrangian 到量子 Hamiltonian
+                          的核心讀物。</em></li>
+                      <li><a href="https://arxiv.org/abs/1204.0587" target="_blank" rel="noopener">Black-box
+                          Superconducting Circuit Quantization</a><span>S. E. Nigg et al., Physical Review Letters 108,
+                          240502 (2012).</span><em>把分佈式電磁環境與 Josephson 非線性轉成有效 Hamiltonian。</em></li>
+                      <li><a href="https://doi.org/10.1063/1.5089550" target="_blank" rel="noopener">A Quantum
+                          Engineer&#x27;s Guide to Superconducting Qubits</a><span>P. Krantz et al., Applied Physics
+                          Reviews 6, 021318 (2019).</span><em>控制、coherence、readout 與工程參數的主幹 review。</em></li>
+                      <li><a href="https://www.nature.com/articles/s41578-021-00370-4" target="_blank" rel="noopener">Engineering High-Coherence Superconducting Qubits</a><span>I. Siddiqi, Nature
+                          Reviews Materials 6, 875–891 (2021).</span><em>不同 qubit architecture、材料損耗與 coherence 的設計
+                          trade-off。</em></li>
+                    </ul>
+                  </section>
+                  <section class="module">
+                    <div class="qh-section">
+                      <h3>核心與延伸閱讀</h3>
+                    </div>
+                    <ul class="qh-reading">
+                      <li><a href="https://doi.org/10.1103/PhysRevA.76.042319" target="_blank" rel="noopener">Charge-insensitive Qubit Design Derived from the Cooper Pair Box</a><span>J.
+                          Koch et al., Physical Review A 76, 042319 (2007).</span><em>Transmon 的 \(E_J/E_C\)、charge
+                          dispersion 與 anharmonicity trade-off。</em></li>
+                      <li><a href="https://doi.org/10.1063/1.5089550" target="_blank" rel="noopener">A Quantum
+                          Engineer&#x27;s Guide to Superconducting Qubits</a><span>P. Krantz et al., Applied Physics
+                          Reviews 6, 021318 (2019).</span><em>控制、coherence、readout 與工程參數的主幹 review。</em></li>
+                      <li><a href="https://www.nature.com/articles/s41578-021-00370-4" target="_blank" rel="noopener">Engineering High-Coherence Superconducting Qubits</a><span>I. Siddiqi, Nature
+                          Reviews Materials 6, 875–891 (2021).</span><em>不同 qubit architecture、材料損耗與 coherence 的設計
+                          trade-off。</em></li>
+                      <li><a href="https://doi.org/10.1103/PhysRevResearch.5.043001" target="_blank" rel="noopener">Mitigation of Frequency Collisions in Superconducting Quantum
+                          Processors</a><span>J. B. Hertzberg et al., Physical Review Research 5, 043001
+                          (2023).</span><em>製程變異如何轉成 qubit frequency spread、collision 與 yield。</em></li>
+                    </ul>
+                  </section>
+                </section>
+                <div class="post-meta">
+                  <span class="post-author">
+                    <a href="../About/Wang.html"><img class="img-res" src="../WebP/IMG_0964_2.webp" alt="">王培儒</a>
+                  </span>
+                  <span class="post-category">
+                    <a href="../SCQ_advanced/main.html"><i class="fa fa-folder" aria-hidden="true"></i>PHYS598500</a>
+                  </span>
+                </div><!-- /.post-meta -->
+
+                <div id="prev-next-nav" class="text-center">
+                                    <a class="btn btn-gray" href="T1-1.html">← 上一頁</a> 
+                                    <a class="btn btn-gray" href="T2-3.html">下一頁 →</a>
+                                </div>
+
+
+              </div><!-- /.post-content -->
+            </article><!-- /.blog-post -->
+            <!--<div id="PostComments" class="post-comments">
+                            
+                            
+                            
+                        </div> /#PostComments -->
+            <!--<div class="respond">
+                            <h3>Post a Comment</h3>
+                            <form class="form-horizontal">
+                                <input class="form-control" type="text" placeholder="Your Name*" required>
+                                <input class="form-control" type="email" placeholder="Your Email" required>
+                                <textarea class="form-control form-control-comment" type="text" placeholder="Your Comment*" required></textarea>
+                                <button class="btn btn-green">Add a comment</button>
+                            </form>    
+                        </div> /.respond -->
+          </div>
+          <aside class="col-md-3">
+                        <div class="sidebar">
+                            <div class="widget">
+                                <div id="lesson-list_2">
+                                <div class="lesson-link "><a href="main.html">QH-2026F v5 · 16週總覽</a></div>
+                                <div class="lesson-link "><a href="T1-1.html">Week 1 · 從量子計算模型到硬體操作</a></div>
+                                <div class="lesson-link active"><a href="T2-2.html">Week 2 · 超導電路量子化與 Transmon 設計</a></div>
+                                <div class="lesson-link "><a href="T2-3.html">Week 3 · Fluxonium：從電路改造到設計取捨</a></div>
+                                <div class="lesson-link "><a href="T3-4.html">Week 4 · 單量子位元控制：從微波脈衝到旋轉座標</a></div>
+                                <div class="lesson-link "><a href="T3-5.html">Week 5 · 耦合 Hamiltonian、兩量子位元閘與 Tunable Coupler</a></div>
+                                <div class="lesson-link "><a href="T3-6.html">Week 6 · Circuit QED、Dispersive Readout 與量測鏈</a></div>
+                                <div class="lesson-link "><a href="T4-7.html">Week 7 · 量子處理器校準：Hamiltonian Identification 與 Drift</a></div>
+                                <div class="lesson-link "><a href="T4-8.html">Week 8 · Benchmarking、多量子位元誤差與可擴展校準</a></div>
+                                <div class="lesson-link "><a href="T4-9.html">Week 9 · 量子錯誤校正基礎：從物理誤差到 Stabilizer Syndrome</a></div>
+                                <div class="lesson-link "><a href="T4-10.html">Week 10 · Surface-Code Hardware Cycle：排程、解碼與 Logical-Qubit 資源</a></div>
+                                <div class="lesson-link "><a href="T5-11.html">Week 11 · Dilution Refrigerator、熱化與低溫線路預算</a></div>
+                                <div class="lesson-link "><a href="T5-12.html">Week 12 · 微波控制、讀出電子與訊號完整性</a></div>
+                                <div class="lesson-link "><a href="T5-13.html">Week 13 · 封裝、EM Modes、佈線擴展與全系統整合</a></div>
+                                <div class="lesson-link "><a href="T6-14.html">Week 14 · 超導量子晶片製程與 Josephson Junction Process Module</a></div>
+                                <div class="lesson-link "><a href="T6-15.html">Week 15 · Materials Loss、製程變異、Yield 與 Design–Fab–Measure Loop</a></div>
+                                <div class="lesson-link "><a href="T7-16.html">Week 16 · 前沿架構與 Hardware-Aware Quantum System Capstone</a></div>
+                                </div>
+                            </div>
+                        </div></aside>
+        </div>
+      </div>
+    </section><!-- /.section-portfolio -->
+
+  </main><!-- /#main -->
+
+  <footer id="colophon" class="site-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3 col-sm-4 col-xs-6">
+          <a href="../index_ch.html" class="site-title">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
+          <p>一起走進新時代的前沿科學與量子科技</p>
+        </div>
+        <div class="col-lg-offset-4 col-md-3 col-sm-4 col-md-offset-2 col-sm-offset-0 col-xs-6 ">
+          <p class="site-title">𝐾𝐸𝐸𝑃 𝐼𝑁 𝑇𝑂𝑈𝐶𝐻</p>
+          <ul class="list-unstyled contact-links">
+            <li><i class="fa fa-envelope" aria-hidden="true"></i><a href="mailto:info@insight-ihbar.com">info@insight-ihbar.com</a></li>
+            <!--<li><i class="fa fa-phone" aria-hidden="true"></i><a href="tel:+37400800000">+374 (00) 80 00 00 </a></li>
+                        <li><i class="fa fa-fax" aria-hidden="true"></i><a href="+37400900000">+374 (00) 90 00 00</a></li>
+                        <li><i class="fa-solid fa-location-dot"></i><p>Hsinchu 300, Taiwan (R.O.C.)</p></li>-->
+          </ul>
+        </div>
+        <!--<div class="clearfix visible-xs"></div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6">
+                    <h3>Featured links</h3>
+                    <ul class="list-unstyled">
+                        <li class="active"><a href="index_ch.html">Home</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="portfolio.html">Porfolio</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>-->
+      </div>
+    </div>
+    <div class="copyright">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-8">
+            <div class="social-links">
+              <!--<a class="twitter-bg" href="#"><i class="fab fa-twitter"></i></a>-->
+              <!--<<a class="facebook-bg" href="https://www.facebook.com/people/Quantum-Perspectives/61576446849628/"><i class="fab fa-facebook"></i></a>-->
+              <!--<a class="facebook-bg" href="https://www.facebook.com/people/%E9%87%8F%E5%AD%90%E9%81%A0%E8%A6%8BQuantum-Perspectives/61576883632888/"><i class="fab fa-facebook-f"></i></a>-->
+              <!--<a class="pinterest" href="#"><i class="fa-solid fa-microscope"></i></a>-->
+              <!--<a class="facebook-bg" href="https://www.facebook.com/people/Insight-hbar/61576811775374/"><i class="fab fa-facebook-f"></i></a>-->
+              <a class="linkedin-bg" href="https://www.linkedin.com/company/insight-ihbar"><i
+                  class="fab fa-linkedin"></i></a>
+            </div><!-- /.social-links -->
+          </div>
+          <div class="col-xs-4">
+            <div class="text-right">
+              <p><span style="font-size: 16px;">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</span></p>
+              <p>All Rights Reserved</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!-- /.copyright -->
+  </footer><!-- /#footer -->
+
+
+
+  <!-- Bootstrap core JavaScript
+    ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/bootstrap-select.min.js"></script>
+  <script src="../assets/js/jquery.slicknav.min.js"></script>
+  <script src="../assets/js/jquery.countTo.min.js"></script>
+  <script src="../assets/js/jquery.shuffle.min.js"></script>
+  <script src="../assets/js/script.js"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</body>
+
+</html>

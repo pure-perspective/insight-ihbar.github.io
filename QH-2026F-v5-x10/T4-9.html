@@ -1,0 +1,2438 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N39VTY949N"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-N39VTY949N');
+</script>
+    <!-- Basic Page Needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <meta name="author" content="Peir-Ru Wang">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;1,300&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/20250525-icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/20250525-icon.png">
+
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/css/style.css" rel="stylesheet">
+    <link href="../assets/css/responsive.css" rel="stylesheet">
+
+    <title>Week 9 · 量子錯誤校正基礎：從物理誤差到 Stabilizer Syndrome | QH-2026F v5</title>
+    <meta name="description" content="PHYS598500 第 9 週，120 分鐘進階課程：量子錯誤校正基礎：從物理誤差到 Stabilizer Syndrome">
+    <meta name="keywords" content="- 量子處理器
+- 超導量子位元
+- Qubit
+- 約瑟夫森接面
+- Transmon
+- Fluxonium
+- 量子計算
+- 量子硬體
+- 量子演算法
+- 量子晶片">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+<style>
+.qh-week-meta { margin: 20px 0; padding: 16px 18px; border-left: 4px solid #5f4b8b; background: #f6f4fa; }
+.qh-week-meta p { margin: 4px 0; }
+.qh-session-plan { width: 100%; margin: 18px 0 8px; border-collapse: collapse; }
+.qh-session-plan th, .qh-session-plan td { padding: 10px 12px; border: 1px solid #ddd; vertical-align: top; }
+.qh-session-plan th { background: #f4f4f4; }
+.qh-session-plan .qh-break td { color: #666; background: #fafafa; }
+.qh-total { text-align: right; font-weight: 700; }
+.qh-reading li { margin-bottom: 12px; }
+.qh-reading span, .qh-reading em { display: block; }
+.qh-week-list { padding-left: 0; list-style: none; }
+.qh-week-list li { margin: 0 0 13px; padding: 12px 15px; border-left: 4px solid #5f4b8b; background: #f7f7f7; }
+.qh-week-list a { font-weight: 700; }
+@media (max-width: 767px) { .qh-session-plan { display: block; overflow-x: auto; } }
+</style>
+
+
+<style id="qh-full-course-style">
+    .qh-full-lecture {
+      margin: 30px 0;
+      padding: 24px 26px;
+      border: 1px solid #d9d4e5;
+      background: #fff;
+    }
+
+    .qh-full-lecture>h2,
+    .qh-full-lecture>h3 {
+      margin-top: 0;
+    }
+
+    .qh-full-lecture h4 {
+      margin-top: 24px;
+    }
+
+    .qh-full-lecture li {
+      margin-bottom: 8px;
+    }
+
+    .qh-time {
+      display: inline-block;
+      margin-bottom: 12px;
+      padding: 4px 10px;
+      border-radius: 14px;
+      background: #5f4b8b;
+      color: #fff;
+      font-size: .9em;
+    }
+
+    .qh-board,
+    .qh-case,
+    .qh-task,
+    .qh-answer,
+    .qh-source-chapter {
+      margin: 20px 0;
+      padding: 17px 19px;
+      font-size: 15px;
+    }
+
+    .qh-board {
+      border-left: 4px solid #d0ccc8;
+      background: #fafafa;
+    }
+
+    .qh-case {
+      border-left: 4px solid #d0ccc8;
+      background: #fafafa;
+    }
+
+    .qh-task {
+      border-left: 4px solid #d0ccc8;
+      background: #fafafa;
+    }
+
+    .qh-answer {
+      border-left: 4px solid #d0ccc8;
+      background: #fafafa;
+    }
+
+    /* Section divider headings */
+    .qh-section {
+      margin: 40px 0 24px;
+      padding: 17px 19px;
+      border-left: 4px solid #355c9a;
+      background: #f3f7fc;
+    }
+
+    .qh-section h3 {
+      margin: 0 0 4px;
+      font-size: 20px;
+      font-weight: 700;
+      color: #355c9a;
+      border-bottom: none;
+    }
+
+    .qh-section h4 {
+      margin: 0;
+      font-size: 15px;
+      font-weight: 400;
+      color: #6a8ab5;
+      font-style: italic;
+    }
+
+    .qh-section>h3:first-child {
+      margin-top: 0;
+    }
+
+    /* Equation highlight — compact, not a section heading */
+    .qh-equation-highlight {
+      margin: 24px 0;
+      padding: 14px 18px;
+      border-left: 3px solid #6a6560;
+      background: #f9f8f7;
+    }
+
+    .qh-equation-label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      color: #6a6560;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    .qh-source-chapter {
+      border: 1px solid #e5e0ec;
+      background: #fdfcff;
+    }
+
+
+    .qh-source-chapter>h3 {
+      padding-bottom: 9px;
+      border-bottom: 1px solid #ddd5e8;
+    }
+
+    .qh-source-note {
+      color: #665f72;
+      font-size: .92em;
+    }
+
+    @media (max-width: 720px) {
+      .qh-full-lecture {
+        padding: 18px 15px;
+      }
+
+      .qh-board,
+      .qh-case,
+      .qh-task,
+      .qh-answer,
+      .qh-source-chapter {
+        padding: 14px 13px;
+      }
+    }
+
+    /* Supplement section styling */
+    .qh-supplement-divider {
+      margin: 36px 0 24px;
+      padding: 18px 22px;
+      border-left: 4px solid #5f4b8b;
+      background: #f6f4fa;
+    }
+
+    .qh-supplement-divider h2 {
+      margin: 0 0 5px;
+      font-size: 22px;
+    }
+
+    .qh-supplement-divider p {
+      margin: 0;
+    }
+
+    /* Tables in supplement */
+    .module table {
+      width: 100%;
+      margin: 16px 0;
+      border-collapse: collapse;
+      font-size: 15px;
+    }
+
+    .module table th,
+    .module table td {
+      padding: 10px 12px;
+      border: 1px solid #ddd;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .module table th {
+      background: #f4f4f4;
+      font-weight: 700;
+    }
+
+    /* Callout in supplement */
+    .module .callout {
+      margin: 16px 0;
+      padding: 12px 16px;
+      border-left: 4px solid #5f4b8b;
+      background: #f6f4fa;
+      font-size: 15px;
+    }
+
+    /* Lists in supplement */
+    .module ul,
+    .module ol {
+      margin: 12px 0;
+      padding-left: 24px;
+    }
+
+    .module li {
+      margin-bottom: 8px;
+      line-height: 1.6;
+      font-size: 15px;
+    }
+
+    /* Heading consistency — only direct h3 children, not inside .qh-section */
+    .module > h3 {
+      margin: 28px 0 14px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #ddd5e8;
+      font-size: 20px;
+    }
+
+    .module h4 {
+      margin: 20px 0 10px;
+      font-size: 17px;
+    }
+
+    .module p {
+      margin: 10px 0;
+      line-height: 1.7;
+    }
+  </style>
+
+<style id="qh-details-style">
+        details.dark-background {
+          background-color: #f5f5f5;
+          border: 1px solid #ddd;
+          padding: 10px;
+          border-radius: 5px;
+        }
+        details.dark-background summary {
+          cursor: pointer;
+          font-weight: bold;
+          background-color: #e0e0e0;
+          padding: 5px;
+          border-radius: 3px;
+        }
+      </style>
+
+</head>
+<body>
+
+    <header id="masthead" class="site-header">
+        <nav id="primary-navigation" class="site-navigation">
+            <div class="container">
+
+                <div class="navbar-header">                   
+                    <a href="../index_ch.html" class="site-title">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
+                </div><!-- /.navbar-header -->
+
+                <div class="collapse navbar-collapse" id="agency-navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="../index_ch.html">Home</a></li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">科普介紹<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                              <li><a href="../SCQ_elementary/main.html">超導量子位元(科普版)</a></li>
+                              <li><a href="../SCQ_advanced/main.html">超導量子位元(進階版)</a></li>
+                              <li><a href="../SpQ/main.html">半導體自旋量子位元</a></li>
+                            </ul>
+                        </li>
+                        <!--<li class="active"><a href="../SCQ_elementary/main.html">科普介紹</a></li>-->
+                        <li class="active"><a href="../QC_hardware/main.html">硬體導論</a></li>
+                        <li><a href="../QID/main.html">量子產業群像錄</a></li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">研討會筆記<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                <li><a href="../ASW2026/main.html">2026中研院超導量子電腦Workshop</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">量子諮詢<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                <li><a href="https://www.quantum-perspectives.com/About/main.html">量子遠見科技：諮詢服務</a></li>
+                                <li><a href="../About/main.html">關於我們</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="../index.html">English</a></li>                        
+                    </ul>
+                </div>
+
+            </div>   
+        </nav><!-- /.site-navigation -->
+    </header><!-- /#mastheaed -->
+
+    <div id="hero" class="hero overlay subpage-hero blog-hero">
+        <div class="hero-content">
+            <div class="hero_2-text">
+                <h1>超導量子電腦架構</h1>
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="../index_ch.html">Home</a></li>
+                  <li class="breadcrumb-item"><a href="../SCQ_advanced/main.html">PHYS598500</a></li>
+                  <!--<li class="breadcrumb-item active">約瑟夫森節</li>-->
+                </ol>
+            </div><!-- /.hero-text -->
+        </div><!-- /.hero-content -->
+    </div><!-- /.hero -->
+
+    <main id="main" class="site-main">
+
+        <section class="site-section subpage-site-section section-blog">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                        <article class="blog-post">
+                            <!--<img src="../assets/img/portfolio-1.jpg" class="img-res" alt="">-->
+                            <div class="post-content">
+
+<section id="week-9" class="course-theme">
+      <div style="text-align: center;">
+      <p class="theme-label">PHYS598500 · Week 9 · T4</p>
+      <h2>量子錯誤校正基礎：從物理誤差到 Stabilizer Syndrome</h2>
+      <h3>Quantum Error-Correction Foundations: From Physical Errors to Stabilizer Syndromes</h3>
+    </div>
+  <section class="course-overview">
+    <h3>本週定位</h3>
+    <div class="qh-week-meta">
+      <p><strong>課程長度：</strong>120 分鐘</p>
+      <p><strong>核心問題：</strong>不能複製、不能直接偷看量子態時，我們如何知道錯誤發生了？</p>
+      <p><strong>難度：</strong>很高／QEC 基礎</p>
+      <p><strong>先備：</strong>Pauli operators、entanglement、two-qubit gates、readout、W8 noise taxonomy</p>
+      <p><strong>原始教材來源：</strong>T4 modules 5–6；原 W10 拆分並擴充</p>
+    </div>
+    <h3>學習成果</h3><ul><li>區分 suppression、mitigation、detection、correction 與 fault tolerance。</li><li>由 repetition code 建立 syndrome 不揭露 logical state 的直覺。</li><li>理解 stabilizer、logical operator、code distance 與 error equivalence class。</li><li>辨認 leakage、correlated error 與 faulty measurement 對簡化 QEC 模型的挑戰。</li></ul>
+    <h3>兩小時授課配置</h3>
+    <table class="qh-session-plan"><thead><tr><th>時間</th><th>要回答的小問題</th><th>當段產出</th></tr></thead><tbody>
+      <tr><td>0–20 分</td><td><strong>物理誤差與計算失敗是同一件事嗎？</strong></td><td>建立 error channel → observable → failure 的層次圖。</td></tr>
+      <tr><td>20–40 分</td><td><strong>量子資訊不能複製，冗餘從哪裡來？</strong></td><td>用 entangled codeword 解釋 redundancy。</td></tr>
+      <tr><td>40–60 分</td><td><strong>怎麼知道哪裡出錯，又不直接讀出答案？</strong></td><td>完成三量子位元 repetition code 的 syndrome table。</td></tr>
+      <tr class="qh-break"><td>60–70 分</td><td><strong>休息</strong></td><td>保留 parity-check circuit。</td></tr>
+      <tr><td>70–90 分</td><td><strong>Stabilizer 到底壓縮了什麼資訊？</strong></td><td>把 code space 寫成 commuting checks 的共同 eigenspace。</td></tr>
+      <tr><td>90–110 分</td><td><strong>Code distance 能保證什麼，又不能保證什麼？</strong></td><td>由 logical operator weight 推出 detect/correct 能力。</td></tr>
+      <tr><td>110–120 分</td><td><strong>為什麼下一步需要 Surface code？</strong></td><td>列出 local connectivity、repeated checks 與 faulty measurement 三個需求。</td></tr>
+    </tbody></table><p class="qh-total">合計：120 分鐘</p>
+  </section>
+<!-- QH_FULL_LECTURE_START -->
+<section class="qh-full-lecture" id="full-T4-9">
+  <span class="qh-time">完整授課層 · 0–60 分鐘</span>
+    <div class="qh-section">
+    <h3>第一段：從物理誤差走到可量測的 syndrome</h3>
+  </div>
+  <p><strong>本週驅動問題：</strong>量子態不能複製，也不能在計算中途直接讀出；那麼 QEC 到底從哪裡取得足以修正錯誤的資訊？</p>
+
+  <h3>0–20 分鐘：物理誤差與計算失敗是同一件事嗎？ <span class="qh-concept-id">W9-C1</span></h3>
+  <p>從 W8 的 benchmarking 回頭看：average gate infidelity、readout assignment error、leakage rate 與 logical failure probability 並不在同一層。先把 noise channel 分成 stochastic Pauli、coherent over-rotation、amplitude/phase damping、leakage 與 correlated error，再問 code 與 decoder實際看見什麼。</p>
+  <div class="qh-board">
+    <h4>錯誤管理的五個不同承諾</h4>
+    <ul>
+      <li><strong>Suppression：</strong>讓 physical operation 少犯錯。</li>
+      <li><strong>Mitigation：</strong>用額外抽樣或模型改善 expectation estimate，不維持一個可長時間演化的 logical state。</li>
+      <li><strong>Detection：</strong>知道 state 離開 code space，但不一定能判定完整 correction。</li>
+      <li><strong>Correction：</strong>由 syndrome 推斷 equivalence class，恢復 logical information。</li>
+      <li><strong>Fault tolerance：</strong>限制單一 fault 在整個 circuit 中的傳播，使修正程序本身不摧毀保護。</li>
+    </ul>
+  </div>
+
+  <h3>20–40 分鐘：不能複製量子資訊，冗餘從哪裡來？ <span class="qh-concept-id">W9-C2</span></h3>
+  <p>以 bit-flip repetition code 為入口：\(\ket{\psi_L}=\alpha\ket{000}+\beta\ket{111}\)。這不是三份未知態的 clone，而是把一個 logical degree of freedom 編碼進多體 correlation。錯誤資訊出現在 parity，而 logical amplitude \(\alpha,\beta\) 不應被量測。</p>
+
+  <h3>40–60 分鐘：怎麼知道哪裡出錯，又不直接讀出答案？ <span class="qh-concept-id">W9-D1</span></h3>
+  <div class="qh-board">
+    <h4>黑板推導：syndrome table</h4>
+    <p>選 stabilizers \(S_1=Z_1Z_2\)、\(S_2=Z_2Z_3\)。對 \(I,X_1,X_2,X_3\) 逐一計算 \((S_1,S_2)\) 的 eigenvalue，得到四個不同 syndrome。學生必須說出 syndrome 辨認的是 error equivalence class，不是直接量測 logical bit。</p>
+    <table class="qh-session-plan"><thead><tr><th>Error</th><th>\(Z_1Z_2\)</th><th>\(Z_2Z_3\)</th></tr></thead><tbody>
+      <tr><td>\(I\)</td><td>+1</td><td>+1</td></tr><tr><td>\(X_1\)</td><td>−1</td><td>+1</td></tr><tr><td>\(X_2\)</td><td>−1</td><td>−1</td></tr><tr><td>\(X_3\)</td><td>+1</td><td>−1</td></tr>
+    </tbody></table>
+  </div>
+</section>
+
+<section class="qh-full-lecture"><span class="qh-time">60–70 分鐘</span><h3>休息與黑板保留</h3><p>保留 codeword、兩個 stabilizers 與 syndrome table；休息後把案例抽象成一般語言。</p></section>
+
+<section class="qh-full-lecture">
+  <span class="qh-time">70–110 分鐘</span>
+    <div class="qh-section">
+    <h3>第二段：Stabilizer、distance 與真實 noise 的邊界</h3>
+  </div>
+  <h3>70–90 分鐘：Stabilizer 到底壓縮了什麼資訊？ <span class="qh-concept-id">W9-C3</span></h3>
+  <p>對 \([[n,k,d]]\) stabilizer code，\(n-k\) 個 independent commuting generators 定義 code space。logical operators commute with all stabilizers，但不屬於 stabilizer group。這套語言把 exponentially large state description 壓縮成可重複量測的 local checks 與 logical equivalence classes。</p>
+  <p>實作上，ancilla 與 data qubits 透過 entangling gates 把 parity 映到 ancilla。此處加入第一個 fault-tolerance 警告：一個 ancilla fault 可能經多次 two-qubit gates 傳到數個 data qubits，所以 gate ordering、ancilla verification／flagging 與 reset 都屬於 code 實作。</p>
+
+  <h3>90–110 分鐘：Code distance 能保證什麼，又不能保證什麼？ <span class="qh-concept-id">W9-C4</span></h3>
+  <div class="qh-board">
+    <p>distance \(d\) 是最小 nontrivial logical operator 的 weight，因此可偵測最多 \(d-1\) 個 error，並在理想假設下修正 \(t=\lfloor(d-1)/2\rfloor\) 個 error。這不是「任何真實 fault 都能修正」：leakage、time-correlated drift、crosstalk 與 non-Markovian noise 可能違反簡化模型。</p>
+  </div>
+  <div class="qh-task"><h4>課堂任務</h4><p>給定四組 syndrome history，區分 data error、measurement error 與無法由單輪資料判定的情形；再指出還需要哪一個時間維度的量測。這一步為 W10 的 repeated surface-code cycle 建立接口。</p></div>
+</section>
+
+<section class="qh-full-lecture">
+  <span class="qh-time">110–120 分鐘</span>
+  <h3>整合：為什麼下一步需要 Surface code？</h3>
+  <p>學生交一張需求表：二维 local connectivity、data/ancilla 分工、faulty syndrome measurement 的 repeated rounds、decoder 與 leakage handling。W10 將把這張表變成真正的 hardware cycle。</p>
+</section>
+<!-- QH_FULL_LECTURE_END -->
+
+<section class="qh-source-chapter">
+  <h3>教材深挖 1：量子計算硬體基礎</h3>
+  <p class="qh-source-note">整合自既有 Insight iHBAR 教材：SCQ_advanced/A.html</p>
+  <p >
+                                量子計算在特定問題上蘊含遠超古典電腦的運算潛力，其硬體卻也面臨控制困難、操作時間過短的問題。量子計算的硬體以量子位元作為的核心元件，還需搭配操控量子位元狀態的驅動元件、量子位元狀態的讀取元件。此外，因為量子位元容易受到外界干擾的特性，量子位元的校正/微調元件、量子糾錯元件等。簡而言之可以包含以下：
+                                </p>
+                            
+                                <ul>
+                                <li>量子位元</li>
+                                <li>驅動</li>
+                                <li>讀取</li>
+                                <li>校正</li>
+                                <li>糾錯</li>
+                                </ul>
+                            
+                                <p >
+                                事實上，在現今的記憶體中，其實也包含以上不同的硬體分工，只是在量子計算裡面，以上不同元件需要整體考慮。更具體一點的講法，因為不同元件會互相交互作用，當我們利用量子物理學，寫下其整個量子電路的 Hamiltonian（或薛丁格方程式），其交互作用像會去"修正"量子位元本身的特性，一方面我們利用"修正"的特性來操作和讀取量子位元的資訊，然而另一方面卻也導致量子位元受到影響，偏離理想狀態、導致錯誤產生。
+                                </p>
+                            
+                                <p >
+                                本文專注在超導量子電路，量子電路中包含的元件分類如下（兩種切入點）：
+                                </p>
+                            
+                                <table style="width: 100%; border-collapse: collapse; text-align: left; border: 1px solid black;">
+                                    <tr>
+                                        <th style="border: 1px solid black; padding: 10px;">以功能性為觀點</th>
+                                        <td style="border: 1px solid black; padding: 10px;">
+                                        1. 量子位元（資料儲存）<br>
+                                        2. 驅動：耦合電路或 LC 共振器（作運算）<br>
+                                        3. 讀取（readout）：LC 共振器與饋線<br>
+                                        4. 校正：Flux line（改變量子位元頻率）<br>
+                                        5. 糾錯：量子位元（糾錯用）
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                    <th style="border: 1px solid black; padding: 10px;">以元件種類為觀點</th>
+                                        
+                                        <td style="border: 1px solid black; padding: 10px;">
+                                        1. LC 電路<br>
+                                        &nbsp;&nbsp;&nbsp;<b>a.</b> LC 共振器（線性 LC 電路）：用作讀取量子位元狀態（readout resonator），有時也可以作為量子位元間耦合（間接耦合）<br>
+                                        &nbsp;&nbsp;&nbsp;<b>b.</b> 量子位元（非線性 LC 電路）：部分作為資料儲存、部分作為糾錯用位元<br><br>
+                                        2. 饋線（feedline）：外部訊號送入與讀出<br><br>
+                                        3. 耦合元件：<br>
+                                        &nbsp;&nbsp;&nbsp;<b>a.</b> 操作、改變量子位元狀態<br>
+                                        &nbsp;&nbsp;&nbsp;<b>b.</b> 量子位元之間的直接耦合<br>
+                                        &nbsp;&nbsp;&nbsp;<b>c.</b> 將外部訊號與各元件交換訊號<br><br>
+                                        4. Flux line：調整改變量子位元頻率，讓量子位元在指定頻率運作
+                                        </td>
+                                    </tr>
+                                </table>
+                            
+                            
+                                <div style="text-align: center;">
+                                
+                                    <a href="../Image/SIngle Qubit circuit--bc569b45.png"><img loading="lazy" src="../WebP/SIngle Qubit circuit--bc569b45.webp" alt="量子位相關的電路與讀取圖示。" style="width: 100%; height: auto;"></a>
+                                
+                                </div>
+                                
+                                    <p >
+                                    ▲首先可以先欣賞一下單量子位元的 layout。（a）顯微鏡底下的電路圖，（b）對應的電路圖，此圖中有一個 Qubit（紅色 Transmon）、一個 readout resonator（天藍色），兩條 feedline 個別驅動（Drive）量子位元與 readout resonator。各元件間利用電容作耦合。另外有一條 Flux line 連到 Qubit 旁，會產生磁場來改變 Transmon 的操作頻率。（c）readout resonator 因為與量子位元耦合，會受到量子位元在 \(\ket{0}\) 或 \(\ket{1}\) 狀態的差異產生頻譜的位移，利用 readout resonator 頻譜的位移的特性來得知量子位元的狀態。
+                                    <br><span style="font-size: 0.7em; line-height: 0.8;">Ref:arxiv.org/pdf/2106.11352</span><br><br>
+                                    </p>
+                                
+                                <div style="text-align: center;">
+                                
+                                    <a href="../Image/2 qubit 1 resonator.png"><img loading="lazy" src="../WebP/2 qubit 1 resonator.webp" alt="量子位耦合與讀取的共振腔設計示意圖" style="width: 100%; height: auto;"></a>
+                                
+                                </div>
+                                    <p >
+                                    ▲這張圖是兩個量子位元（Transmon）藉由一個 resonator 耦合在一起（間接耦合），可以注意的是下方一行文字寫這個 resonator 兼具耦合兩個量子位元的功能。
+                                    <br><span style="font-size: 0.7em; line-height: 0.8;">Ref:doi.org/10.1038/nature08121</span><br><br>
+                                </p>
+                                
+                                
+                                <div style="text-align: center;">
+                                
+                                    <a href="../Image/4 qubit.png"><img loading="lazy" src="../WebP/4 qubit.webp" alt="第二代四量子位處理器電路圖" style="width: 100%; height: auto;"></a>
+                                
+                                </div>
+                                <p >
+                                    ▲這張圖是四個 Qubit，中間由 bus resonator 串連耦合四個 Qubit。其中四個接頭直通 Qubit，是 flux-line，另外左上跟右下各有一條 readout feedline I/O，各自連結到兩個 readout resonator 並與 Qubit 耦合（等於說一條 readout feedline 會同時讀取兩個 Qubit）。
+                                </p>
+                                
+                                
+                                <div style="text-align: center;">
+                                
+                                    <a href="../Image/5Q--7f4f25e4.png"><img loading="lazy" src="../WebP/5Q--7f4f25e4.webp" alt="量子電路圖與元件標示詳情。" style="width: 80%; height: auto;"></a>
+                                
+                                </div>
+                                <p >
+                                    
+                                
+                                    ▲這張是另一種 5 qubit layout 的示意圖。其中 Z 是 flux line，XY 是 Drive line，5 個 Qubit 是直接電容耦合。此外，每個 qubit 都有自己的 readout resonator，在上方併入（此圖顯示是電感耦合）到 readout line。
+                                    <br><span style="font-size: 0.7em; line-height: 0.8;">doi.org/10.1038/nature13171</span><br><br>
+                                </p>
+                                
+                                <p style="font-weight: bold; font-size: 1.2em;">邁向多 Qubit 模組</p>
+                                <div style="text-align: center;">
+                                
+                                    <a href="../Image/17 surface--24761abf.png"><img loading="lazy" src="../WebP/17 surface--24761abf.webp" alt="量子電路圖示，顯示量子比特與連接。" style="width: 43%; height: auto;"></a>
+                                
+                                
+                                    <a href="../Image/Starmon--e72fd59a.png"><img loading="lazy" src="../WebP/Starmon--e72fd59a.webp" alt="微波驅動線及讀取共振器示意圖" style="width: 55%; height: auto;"></a>
+                                
+                                </div>
+                                <p >
+                                    ▲要達到量子計算，需要同時操作許多 Qubit，同時因為糾錯的關係，也需要額外的 Qubit 來進行糾錯。下圖是一個 17 位元的實驗性量子晶片，排列方式是一種稱為 surface code（表面碼）的量子糾錯型態，圓形為 Qubit，粉色及紅色是 Data Qubit，天藍色及綠色是 Check Qubit。每個 Qubit 都連接 7 條線（暱稱為 Starmon），其中 4 條為 Qubit 間耦合、1 條 Flux line、1 條 Drive line、1 條 Readout resonator。Readout resonator 分別併入到三條 feedline。
+                                    <br><span style="font-size: 0.7em; line-height: 0.8;">https://arxiv.org/pdf/1612.08208</span><br><br>
+                                </p>
+</section>
+<section class="qh-source-chapter">
+  <h3>教材深挖 2：IQM量子電腦科技發展</h3>
+  <p class="qh-source-note">整合自既有 Insight iHBAR 教材：ASW2026/B.html</p>
+  <p>IQM是一家芬蘭專注於超導量子電腦的供應商，結合自研超導量子系統、量子雲端平台，協助學研機構與高效能運算（HPC）中心探索與落地量子計算應用。</p>
+                                
+                                <br><br>
+                                <h3>IQM Qubit Architecture</h3>
+                                
+
+                                <table border="1" cellspacing="0" cellpadding="8" width="100%">
+                                    <thead>
+                                        <tr>
+                                            <th style="text-align: center; vertical-align: middle;">&nbsp;</th>
+                                            <th width="31.5%" style="text-align: center; vertical-align: middle;">Crystal</th>
+                                            <th width="31.5%" style="text-align: center; vertical-align: middle;">Star</th>
+                                            <th width="31.5%" style="text-align: center; vertical-align: middle;">Constellation</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td style="text-align: center; vertical-align: middle;"><strong>拓樸</strong></td>
+                                            <td style="text-align: center; vertical-align: middle;">
+                                                <a href="../Image/IQM-Blog-30-Sep-2025-1--431380bb.jpeg"><img loading="lazy" src="../WebP/IQM-Blog-30-Sep-2025-1--431380bb.webp" alt="藍綠幾何圖案重複背景" style="width: 90%; height: auto;"></a>
+                                            </td>
+                                            <td style="text-align: center; vertical-align: middle;">
+                                                <a href="../Image/截圖 2026-02-20 下午1.45.25--ce2cea2e.png"><img loading="lazy" src="../WebP/截圖 2026-02-20 下午1.45.25--ce2cea2e.webp" alt="抽象圖示：波形與圓點排列" style="width: 100%; height: auto;"></a>
+                                            </td>
+                                            <td style="text-align: center; vertical-align: middle;">
+                                                <a href="../Image/截圖 2025-11-16 中午12.31.27--af0bddd9.png"><img loading="lazy" src="../WebP/截圖 2025-11-16 中午12.31.27--af0bddd9.webp" alt="量子位與共振器耦合示意圖" style="width: 100%; height: auto;"></a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: center; vertical-align: middle;"><strong>組成</strong></td>
+                                            <td style="text-align: center; vertical-align: middle;">由量子位元、可調耦合器組成</td>
+                                            <td style="text-align: center; vertical-align: middle;">加入計算性諧振器</td>
+                                            <td style="text-align: center; vertical-align: middle;">由六邊形 Star 結構為單元組成</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: center; vertical-align: middle;"><strong>特點</strong></td>
+                                            <td style=" vertical-align: middle;">
+                                                <ul>
+                                                    <li>傳統四邊形晶體結構</li>
+                                                    <li>鄰近位元耦合（Connectivity=4）</li>
+                                                    <li>多執行緒:可執行許多平行閘操作</li>
+                                                    <li>適合 Surface code QEC</li>
+                                                </ul>
+                                            </td>
+                                            <td style=" vertical-align: middle;"><ul>
+                                                <li>由計算性諧振器串聯所有 Qubit</li>
+                                                <li>全連結（All-to-all Connectivity）</li>
+                                                <li>單執行緒:單次只能操作一對耦合閘操作</li>
+                                            </ul></td>
+                                            <td style=" vertical-align: middle;"><ul>
+
+                                                <li>採用六邊形蜂窩模組架構</li>
+                                                <li>透過諧振器達到 Connectivity=12</li>
+                                                <li>多執行緒:可執行許多平行閘操作</li>
+                                                <li>目標 qLDPC 非局域 QEC(需要較高的 Connectivity)</li>
+                                            </ul></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <p class="dark-background">
+                                    ▲ IQM的量子位元拓樸策略。
+                                    從傳統的四邊形架構(Crystal)，到IQM獨家的六邊形Constellation架構，顯示出IQM在超導量子位元QPU設計上，針對拓樸優化的思考與嘗試。
+                                    理想的量子計算需要量子傅立葉轉換（QFT），如果量子位元間的連接性越大，則可以減少SWAP等操作來縮短電路深度。
+                                    但超導量子位元是2D的電路設計，較難達到All-to-All Connectivity，故如何提升量子晶片的操作性，一直是當前活躍的研究主題。
+                                        <span style="font-size: 0.7em; line-height: 0.8;">
+                                            <br>Ref: arxiv.org/pdf/2503.12869
+                                            <br>Ref: https://arxiv.org/pdf/2503.10903
+                                            <br>Ref: https://meetiqm.com/blog/iqm-constellation-a-new-quantum-processor-architecture-for-scalable-error-correction/
+                                        </span>
+                                        <br><br>
+                            
+                                    </p>
+                                    <div style="text-align: center;">
+                                        
+                                            <a href="../Image/iqm-move--86e22667.png"><img loading="lazy" src="../WebP/iqm-move--86e22667.webp" alt="量子電路MOVE示意與保真度曲線圖" style="width: 100%; height: auto;"></a>
+                                        
+                                    </div>
+                                    <p class="dark-background">
+                                        ▲ 用交錯隨機基準測試（Interleaved Randomized Benchmarking, IRB）來量測IQM Star量子閘的保真度（fidelity）。MOVE閘是IQM針對Star架構設計的閘。
+                                        <span style="font-size: 0.7em; line-height: 0.8;">
+                                            <br>Ref: arxiv.org/2503.10903
+                                        </span>
+                                        <br><br>
+                                    </p>
+
+
+
+
+
+                                    <br><br>
+                                    <h3>解讀IQM Roadmap</h3>
+                                    <div style="text-align: center;">
+                                        
+                                            <a href="../Image/2026IQM-roadmap--35a800f5.png"><img loading="lazy" src="../WebP/2026IQM-roadmap--35a800f5.webp" alt="量子運算發展路線圖（NISQ至FTQC）" style="width: 100%; height: auto;"></a>
+                                        
+                                    </div>
+                                    <p class="dark-background">
+                                        ▲ 讓量子電腦達到實用FTQC量產化的研發上，IQM認為是三個重點：
+                                    </p>
+                                    <ul>
+                                        <li><p><b>Quality</b>:提升量子晶片的品質，包含單個位元的Fidilty、2-Qubit Gate Fidelity，以及整個電路上Crosstalk的壓制。</p></li>
+                                        <li><p><b>Scaling</b>:在單晶片上集成大量高品質的量子位元，目標百萬顆以上。</p></li>
+                                        <li><p><b>Topology</b>:不同的Architecture可以實踐不同的閘運算自由度、減少電路深度、增加編譯的彈性。</p></li>
+                                    </ul>
+                                    <p>
+                                        <span style="font-size: 0.7em; line-height: 0.8;">
+                                            <br>Ref: Adopt from https://meetiqm.com/technology/roadmap/
+                                        </span>
+                                        <br><br>
+                                    </p>
+                                
+
+
+                                    <h3>晶片上位元佈局研究</h3>
+                                    <table border="1" cellspacing="0" cellpadding="8" width="100%">
+                                        <thead>
+                                            <tr>
+                                                <th style="text-align: center; vertical-align: middle;">
+                                                    <a href="../Image/iqm-q-q--e9290615.png"><img loading="lazy" src="../WebP/iqm-q-q--e9290615.webp" alt="超導量子位元耦合電路示意圖" style="width: 100%; height: auto;"></a>
+                                                </th>
+                                                <th width="35%" style="text-align: center; vertical-align: middle;">
+                                                    <a href="../Image/iqm-cross--198d3c33.png"><img loading="lazy" src="../WebP/iqm-cross--198d3c33.webp" alt="Q1與Q2耦合器與交叉位置曲線圖" style="width: 100%; height: auto;"></a>
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td style="text-align: center; vertical-align: middle;">透過研究不同間距，來衡量量子位元之間的耦合與串擾。</td>
+                                                <td style="text-align: center; vertical-align: middle;">覆晶封裝下，不同走線位置對量子位元的影響。</td>
+                                            </tr>
+                                            
+                                        </tbody>
+                                    </table>
+                                    <p class="dark-background">
+                                        <span style="font-size: 0.7em; line-height: 0.8;">
+                                            <br>Ref: 10.1103/PRXQuantum.4.010314
+                                        </span>
+                                        <br><br>
+                                    </p>
+
+                                    
+                                    <div style="text-align: center;">
+                                        
+                                            <a href="../Image/IMG_4373--63a7fedd.jpg"><img loading="lazy" src="../WebP/IMG_4373--63a7fedd.webp" alt="---" style="width: 100%; height: auto;"></a>
+                                        
+                                    </div>
+                                    <p class="dark-background">
+                                        ▲ 預計在APS 2026，IQM會發表在Constellation上加入遠程耦合的位元交互作用。是為了對應到qLDPC的發展。
+                                        <br><br>
+                                    </p>
+
+<br><br>
+                                    <h3>qLDPC 量子糾錯</h3>
+                                    <p>這邊來提一下為何IQM會進行遠程交互晶片設計，相關技術可以參考IBM在2024年qLDPC的工作。糾錯碼在實用計算上佔有非常重要地位，如何在最低的開銷下達到最佳的資訊傳輸和糾錯冗餘一直是工程上權衡的課題。
+                                        由於量子計算不可測量的特性，讓量子糾錯的難度更高。
+                                        超導量子位元屬於二維的量子晶片，當前最主流的量子糾錯是<b>表面碼Surface Code</b>。
+                                        Surface Code優點是對於connectivity的需求只需要鄰近的Qubit，不需要遠程交互作用，但缺點是Ancilla Qubit的數量隨系統增加同步增加，實用上會增加系統複雜度與錯誤。
+                                        IBM在2024年展示了<b>qLDPC (quantum Low-Density Parity Check code)</b>混合Surface Code的量子糾錯運算。
+                                        qLDPC需要長程的交互作用，得益於IBM多層晶片製程的佈線，可以實現較複雜的量子位元間交互連接性拓樸。
+                                    </p>
+                                    <div style="text-align: center;">
+                                        
+                                            <a href="../Image/截圖 2026-03-03 下午5.50.12--abc5ecfa.png"><img loading="lazy" src="../WebP/截圖 2026-03-03 下午5.50.12--abc5ecfa.webp" alt="---" style="width: 100%; height: auto;"></a>
+                                        
+                                    </div>
+                                    <p class="dark-background">
+                                        ▲ IBM論文中比較傳統的表面碼（Surface Code）與新型且高效的雙二分碼（Bivariate Bicycle Code 簡稱 BB code，屬於qLDPC的一種）。<br>
+                                        <b>圖a</b>是表面碼 (Surface Code)。<br>
+                                        <b>圖b</b>BB 碼 (Bivariate Bicycle Code)的幾何結構： 它被「嵌入」在一個<b>拓樸環面（Torus，甜甜圈形狀）</b>上，每個量子位元有 6 條線連出去（4 條短程，2 條長程）。<br>
+                                        <b>圖c</b>混合架構與操作。<br>
+                                        傳統表面碼如果要達到同樣的容錯水準，可能需要數千個位元，而 BB 碼只需要一百多個。
+                                        <span style="font-size: 0.7em; line-height: 0.8;">
+                                            <br>Ref: 10.1038/s41586-024-07107-7
+                                        </span>
+                                        <br><br>
+                                    </p>
+
+
+                                    <div style="text-align: center;">
+                                        
+                                            <a href="../Image/IBM_FTQC_Torus_2_K_v3_16fc27ed7f--58528765.gif"><img loading="lazy" src="../Image/IBM_FTQC_Torus_2_K_v3_16fc27ed7f--58528765.gif" alt="---" style="width: 100%; height: auto;"></a>
+                                        
+                                    </div>
+                                    <p class="dark-background">
+                                        ▲ 前面所說的BB Code嵌入在拓樸環面的示意圖，由IBM所繪製。
+                                        <span style="font-size: 0.7em; line-height: 0.8;">
+                                            <br>Ref: https://www.ibm.com/quantum/blog/large-scale-ftqc
+                                        </span>
+                                        <br><br>
+                                    </p>
+
+                                    <div style="text-align: center;">
+                                        
+                                            <a href="../Image/266d07d8-ibm-quantum_hex-vs.-loon-architecture--50c81df7.png"><img loading="lazy" src="../WebP/266d07d8-ibm-quantum_hex-vs.-loon-architecture--50c81df7.webp" alt="---" style="width: 100%; height: auto;"></a>
+                                        
+                                    </div>
+                                    <p class="dark-background">
+                                        ▲ IBM多層晶片製程的佈線，可以實現較複雜的量子位元間交互連接性拓樸。更多量子晶片介紹可以參考：<b>邁向Scalable QPU-量子晶片設計</b>。
+                                        <span style="font-size: 0.7em; line-height: 0.8;">
+                                            <br>Ref: https://thenewstack.io/ibm-cracks-code-for-building-fault-tolerant-quantum-computer/
+                                            <br>Ref: https://www.hpcwire.com/2025/06/10/ibm-sets-2029-target-for-fault-tolerant-quantum-computing/
+                                        </span>
+                                        <br><br>
+                                    </p>
+</section>
+<section class="qh-source-chapter">
+  <h3>教材深挖 3：FUJITSU：FTQC研發與挑戰</h3>
+  <p class="qh-source-note">整合自既有 Insight iHBAR 教材：ASW2026/F.html</p>
+  <p>FUJITSU是日本量子電腦整機的製造、開發商，與日本RIKEN理研量子中心有深度合作，目標是開發出日本自研自製的FTQC量子電腦。這次演講的內容主要介紹、評估邁向大規模FTQC實用化所需要面對的課題。</p>
+                                
+                                <div style="text-align: center;">
+                                    
+                                        <a href="../Image/IMG_5822.JPG"><img loading="lazy" src="../WebP/IMG_5822.webp" alt="超導量子運算研討會投影片" style="width: 100%; height: auto;"></a>
+                                    
+                                    
+                                        <a href="../Image/IMG_5832.JPG"><img loading="lazy" src="../WebP/IMG_5832.webp" alt="富士通運算技術發展圖表" style="width: 100%; height: auto;"></a>
+                                    
+                                </div>
+                                <p class="dark-background">
+                                    ▲ FUJITSU在日本有企業級資料中心、超級運算中心建置的解決方案。下方有趣的提到FUJITSU各個階段算力提升的方式：</p>
+                                    <ol>
+                                        <li><p>運算頻率提升：透過CPU高頻運算</p></li>
+                                        <li><p>多核心運算：多核心CPU</p></li>
+                                        <li><p>多叢集運算：叢集高速互聯</p></li>
+                                        <li><p>記憶體內運算/近記憶體運算：克服記憶體頻寬牆，試圖減緩記憶體-運算核心資料間交換造成的延遲。</p></li>
+                                    </ol>
+                                    <p>此外，也投入下一代量子科技、量子外延科技的計算發展。
+                                    <br><br>
+                                </p>
+                                
+
+                                <h3>量子電腦的種類</h3>
+                                <div style="text-align: center;">
+                                    
+                                        <a href="../Image/IMG_5841.JPG"><img loading="lazy" src="../WebP/IMG_5841.webp" alt="量子電腦分類示意圖" style="width: 100%; height: auto;"></a>
+                                    
+                                </div>
+                                <p class="dark-background">
+                                    ▲ 量子電腦的種類大致上可以分類為閘控量子計算(Gate-Base)和絕熱量子計算(Annealing)兩大類。在計算科學裡，這兩類量子計算算力等價，可以互相模擬，但針對不同問題所需的計算開銷不同。
+                                    閘控量子計算(Gate-Base)較容易與傳統計算做類比，而絕熱量子計算適合做最佳參數分析（即基態搜索）。FUJITSU針對多項技術都有投入開發。
+                            
+                                    
+                                    <br><br>
+                                </p>
+
+
+                                <div style="text-align: center;">
+                                    
+                                        <a href="../Image/fig-03-en-960x540.png"><img loading="lazy" src="../WebP/fig-03-en-960x540.webp" alt="量子電腦發展時間軸圖表" style="width: 100%; height: auto;"></a>
+                                    
+                                    
+                                        <a href="../Image/截圖 2026-03-10 上午11.57.56.png"><img loading="lazy" src="../WebP/截圖 2026-03-10 上午11.57.56.webp" alt="部分容錯量子計算架構示意圖" style="width: 100%; height: auto;"></a>
+                                    
+                                </div>
+                                <p class="dark-background">
+                                    ▲ FUJITSU的量子電腦路線圖。FUJITSU研究包含超導量子電腦、鑽石自旋量子電腦。「STAR架構」一種基於相位旋轉閘（phase rotation gates）的量子運算架構。
+                                    <span style="font-size: 0.7em; line-height: 0.8;">
+                                        <br>Ref: https://global.fujitsu/en-global/technology/research/quantum
+                                        <br>Ref: https://global.fujitsu/-/media/Project/Fujitsu/Fujitsu-HQ/technology/research/quantum/event-202503/FQD2025japan_guest_talk3.pdf
+                                    </span>
+                                    <br><br>
+                                </p>
+                                
+                                
+                                
+                                
+                                
+                                
+                                <br>
+                                <h3>FUJITSU和RIKEN多量子位元系統開發</h3>
+                                <div style="text-align: center;">
+                                    
+                                        <a href="../Image/IMG_5852.JPG"><img loading="lazy" src="../WebP/IMG_5852.webp" alt="富士通量子電腦研發投影片" style="width: 100%; height: auto;"></a>
+                                    
+                                </div>
+                                <p class="dark-background">
+                                    ▲ FUJITSU和RIKEN的量子計算中心負責人中村泰信(Yasunobu Nakamura)合作開發多量子位元系統。
+                                    Nakamura Sensei和台灣中研院關鍵議題研究中心的量子計算負責人 陳啟東 特聘研究員 及 蔡兆申院士 早年曾多次合作開發Josephson Junction為基礎製作量子位元的可行性，包含Cooper Pair Box, FLux Qubit等，是現代Transmon的前身，奠定大量基礎。
+
+
+                                    
+                                    <br><br>
+                                </p>
+                                
+                                
+                                
+                                <div style="text-align: center;">
+                                    
+                                        <a href="../Image/IMG_5855.JPG"><img loading="lazy" src="../WebP/IMG_5855.webp" alt="256量子位系統研發簡報投影片" style="width: 100%; height: auto;"></a>
+                                    
+                                
+                                    
+                                        <a href="../Image/IMG_5870.JPG"><img loading="lazy" src="../WebP/IMG_5870.webp" alt="量子系統散熱設計簡報投影片" style="width: 100%; height: auto;"></a>
+                                    
+                                </div>
+                                <p class="dark-background">
+                                    ▲ FUJITSU和RIKEN合作開發64位元，並希望透過模組化的方式，組合成256位元QPU。擴展研究重點包含如何沿用既有64位元的硬體設計成果、提升裝置密度，但也要避免熱功率過度上升。
+                                    
+                                    <br><br>
+                                </p>
+                                
+                                
+                                
+                                
+                                
+
+                                <h3>大尺寸超導電路面板與量子位元變異性</h3>
+                                <p>多量子位元晶片的製程開發，其實類似半導體晶圓產業，透過在大面積的晶圓上面集成大量量子電路。相關的量產議題，便牽涉到晶圓上量子位元的均質性。
+                                    由於量子相應非常敏感、約瑟夫森節需要極高的工藝，分佈在晶圓上的超導量子位元特性實際上是有一定差異的。可以透過後處理，來將晶圓上的量子位元調教到相近的特性。
+                                </p>
+                                
+                                <div style="text-align: center;">
+                                    
+                                        <a href="../Image/IMG_5918.JPG"><img loading="lazy" src="../WebP/IMG_5918.webp" alt="超導量子位元晶片簡報畫面" style="width: 100%; height: auto;"></a>
+                                    
+                                </div>
+                                <p class="dark-background">
+                                    ▲ 這張圖展示在晶圓上製備約瑟夫森節時，量子位元會因為約森夫森節的氧化層/絕緣層品質差異，展現出不一樣的阻值，如果不能精確控制量子位元的特性，會在QPU上產生非預期的串擾 （ZZ crosstalk）。
+                                    
+                                    <br><br>
+                                </p>
+
+                                <div style="text-align: center;">
+                                    
+                                        <a href="../Image/IMG_5884.JPG"><img loading="lazy" src="../WebP/IMG_5884.webp" alt="量子位元變異性改善簡報投影片" style="width: 100%; height: auto;"></a>
+                                    
+                                </div>
+                                <p class="dark-background">
+                                    ▲ RIKEN透過發展雷射加熱後處理的方式，提升量子位元的均值性。利用探針逐一量測量子位元，並施加雷射加熱調整約瑟夫森節的特性。
+
+                                    
+                                    <br><br>
+                                </p>
+                                
+                                
+                                
+                                
+                                
+                                <div style="text-align: center;">
+                                    
+                                        <a href="../Image/IMG_5926.JPG"><img loading="lazy" src="../WebP/IMG_5926.webp" alt="超導量子位元晶片簡報投影片" style="width: 100%; height: auto;"></a>
+                                    
+                                </div>
+                                <p class="dark-background">
+                                    ▲ 然而，在邁向更多量子位元的製程時，逐一量測、雷射對準加熱可能不是一個能快速擴展化的方式。
+                                    下一代的後處理，希望整合量子電路上既有的線路，直接施加偏壓電脈衝，來實踐均質化。
+                                    
+                                    <br><br>
+                                </p>
+
+
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                <h3>量子計算中心的基礎建設尺度</h3>
+                                <p>邁向「實用化」的量子計算優勢，FUJITSU的發展藍圖認為需要百萬個（～1M）物理量子位元的數量級組成的量子電腦。因為量子糾錯的需求，一個「實用的」邏輯位元，在目前的技術下，推估需要千顆個物理量子位元共同組成。
+                                    這裡說明一下，實驗上與早期量子優勢展現的實驗中，對於錯誤率的容忍較高，一個具有糾錯能力的邏輯量子位元大約在100個上下，故1000~5000個物理量子位元晶片是現在量子研究、廠商追逐的目標。
+                                    透過此類1000~5000個物理量子位元等效於20~50個邏輯量子位元的計算能力，來展示量子優勢。
+                                    如果要進行更實用、大規模的量子超級計算，一方面牽涉到大量的量子位元做併行（邏輯位元數要多）、另一方面也需要更深的邏輯電路深度（錯誤率要低、或是糾錯能力要強），對物理位元常是是平方級的成長。
+                                    然而，更大量的量子位元亦會產生更複雜的串擾，反而增加錯誤率，又需要更多資源來糾錯。這導致目前推估實用的量子計算，會需要整合百萬個量子位元才能具有實用的量子優勢。
+                                    百萬個量子位元帶來的控制儀器整合、高功率超低溫冷卻議題，將超越現在AI數據中心的耗電量，對電力基建帶來沈重的負荷。
+                                </p>
+                                <div style="text-align: center;">
+                                    
+                                        <a href="../Image/IMG_5915.JPG"><img loading="lazy" src="../WebP/IMG_5915.webp" alt="量子位元需求簡報投影片" style="width: 100%; height: auto;"></a>
+                                    
+                                </div>
+                                <p class="dark-background">
+                                    ▲ FUJITSU說明Early-FTQC和實際FTQC所需要的量子位元。
+                                    
+                                    <br><br>
+                                </p>
+                                
+                                <div style="text-align: center;">
+                                    
+                                        <a href="../Image/IMG_5943.JPG"><img loading="lazy" src="../WebP/IMG_5943.webp" alt="量子電腦系統功耗與散熱簡報" style="width: 100%; height: auto;"></a>
+                                    
+                                    
+                                        <a href="../Image/IMG_5958.JPG"><img loading="lazy" src="../WebP/IMG_5958.webp" alt="大型量子電腦耗電簡報投影片" style="width: 100%; height: auto;"></a>
+                                    
+                                </div>
+                                <p class="dark-background">
+                                    ▲ FUJITSU推算規模化的量子超算中心所帶來的冷卻與耗電議題。一方面，超大型數據中心的冷卻會有大量的噪音，這會干擾量子位元造成錯誤率上升。
+                                    另一方面，量子超算中心的耗電，粗估將是TGW3等級，是超過500座核電廠的裝置容量！
+
+
+                                    
+                                    <br><br>
+                                </p>
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                <div style="text-align: center;">
+                                    
+                                        <a href="../Image/IMG_5964.JPG"><img loading="lazy" src="../WebP/IMG_5964.webp" alt="超導量子電腦成本簡報投影片" style="width: 100%; height: auto;"></a>
+                                    
+                                 
+                                        <a href="../Image/IMG_5966.JPG"><img loading="lazy" src="../WebP/IMG_5966.webp" alt="富士通研發未來方向簡報投影片" style="width: 100%; height: auto;"></a>
+                                    
+                                </div>
+                                <p class="dark-background">
+                                    ▲ 由於上述推估量子超算中心的規模極其巨大，FUJITSU便提出一些開放問題，相關的基建要如何達成？由誰協助？以及如何降低相關的成本來增加可實踐性。
+                                    
+                                    <br><br>
+                                </p>
+                                
+                                
+                                
+                                
+                                
+                                <br><br>
+</section>
+<section class="qh-source-chapter">
+  <h3>教材深挖 4：邁向超大型量子計算：跨晶片量子互聯</h3>
+  <p class="qh-source-note">整合自既有 Insight iHBAR 教材：QC_hardware/V4.html</p>
+  <p class="dark-background">
+                                對超導量子電腦而言，隨著 Qubit 數量增加，晶片面積、佈線密度、頻率配置、微波串擾、製程良率、封裝複雜度與錯誤校正需求都會快速變得嚴苛。
+                                要實現真正可擴展的量子電腦，關鍵問題不只是「如何製造更多 Qubit」，而是如何讓大量 Qubit 在可控制、可讀出、可糾錯的條件下共同運作。
+                              </p>
+                              
+                              <p class="dark-background">
+                                因此，大型QPU的發展方向，逐漸從「單一巨大晶片」邁向<b>模組化量子系統</b>。
+                                也就是說，未來的 QPU 不一定是一顆極大的晶片，而可能是由多個量子晶片、多個封裝模組，甚至多台稀釋製冷機共同組成的量子計算叢集，<b>量子互聯（Quantum interconnection）</b>
+                                便成為實現 scalable QPU 的核心技術。
+                              </p>
+                              <br>
+                              <table width="100%" border="1" cellpadding="10" cellspacing="0"
+                                     style="border-collapse: collapse; font-family: sans-serif; border-color: #cccccc;">
+                                <thead>
+                                  <tr bgcolor="#f2f2f2" align="center">
+                                    <th width="20%">擴展方式</th>
+                                    <th width="35%">優點</th>
+                                    <th>主要瓶頸</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td><b>單一晶片放大</b></td>
+                                    <td>架構直觀，晶片內耦合距離短，控制模型相對單純。</td>
+                                    <td>晶片面積、佈線密度、製程良率、頻率擁擠與串擾會快速增加。</td>
+                                  </tr>
+                                  <tr>
+                                    <td><b>單一製冷機內多晶片</b></td>
+                                    <td>可透過 chiplet、封裝與模組化技術提升總 Qubit 數量。</td>
+                                    <td>低溫空間有限，封裝、垂直互聯與同步控制變得更複雜。</td>
+                                  </tr>
+                                  <tr>
+                                    <td><b>多製冷機量子連結</b></td>
+                                    <td>可把 QPU 分散到多台 cryostat，形成更大型的量子計算叢集。</td>
+                                    <td>需要低損耗、低熱雜訊、相位穩定且可同步的量子通道。</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+
+
+
+                              <br>
+                              <ol>
+                              <h3><li>從單一晶片到模組化 QPU</li></h3>
+                              
+                              <p class="dark-background">
+                                透過IBM Quantum 的發展路線可以清楚呈現了這種模組化趨勢。早期的量子處理器主要強調單晶片 Qubit 數量的增加，例如 Hummingbird、
+                                Eagle、Osprey 與 Condor 等處理器。
+                                然而，當系統邁向更高 Qubit 數量與錯誤校正需求時，
+                                僅僅放大單一晶片已不足以支撐長期擴展。
+                              </p>
+                              
+                              <p class="dark-background">
+                                因此，IBM 的架構開始朝向多晶片、多模組與多系統並行的方向發展。
+                                例如 Heron 架構強調較高品質的中等規模晶片；
+                                Crossbill 與 Flamingo 則代表晶片間連接與模組化封裝；
+                                Kookaburra 進一步展示多晶片量子平行化的概念。
+                                這些發展共同指向一個核心問題：
+                                <b>如何讓不同量子晶片之間有效交換量子資訊？</b>
+                              </p>
+                              <p class="dark-background">
+                                這裡需要區分兩種不同的連接方式。
+                                第一種是 <b>classical link</b>，也就是利用即時古典通訊讓多個 QPU 協同執行任務。
+                                第二種是 <b>quantum link</b>，也就是真正傳送量子態或建立量子相關性的通道。
+                                前者較容易實作，後者則更接近未來大型容錯量子電腦所需的核心能力。
+                              </p>
+                              <br>
+                              <div style="text-align: center;">
+                                
+                                  <a href="../Image/this-diagram-shows-the-quantum-processors-that-ibm-expects-to-have-ready-in-2023-condor-and-heron-in-2024-flamingo-and-cross--6cb7287a.webp"><img loading="lazy" src="../WebP/this-diagram-shows-the-quantum-processors-that-ibm-expects-to-have-ready-in-2023-condor-and-heron-in-2024-flamingo-and-cross--6cb7287a.webp" alt="量子處理器路線圖示意圖" style="width: 100%; height: auto;"></a>
+                                
+                              </div>
+                              
+                              <p class="dark-background">
+                                ▲ IBM 量子處理器從單晶片大型化走向多晶片模組化。
+                                Condor 代表單晶片 Qubit 數量的放大，而 Flamingo、Crossbill 與 Kookaburra
+                                則開始導入晶片間量子通訊與模組化擴展。值得注意的是，晶片中的互聯有分成有分成古典互聯與量子互聯。
+                                古典互聯基本上是針對微波控制/讀出的訊號，而量子互聯要求晶片間的交互作用維持量子效應。
+                                <br>
+                                <span style="font-size: 0.7em; line-height: 0.8;">
+                                  Ref: https://spectrum.ieee.org/ibm-condor
+                                </span>
+                              </p>
+                              <br>
+                              <div style="text-align: center;">
+                                
+                                    <a href="../Image/crossbill_condor_8f886198bc--23253c85.png"><img loading="lazy" src="../WebP/crossbill_condor_8f886198bc--23253c85.webp" alt="IBM量子晶片與封裝件" style="width: 70%; height: auto;"></a>
+                                
+                              </div>
+                              <p class="dark-background">
+                                ▲ IBM Quantum Crossbill (左) 和 IBM Quantum Condor (右)。Condor 是單體大晶片設計，而Crossbill採用多晶片互聯設計。
+                                <span style="font-size: 0.7em; line-height: 0.8;">
+                                    <br>Ref: https://www.ibm.com/quantum/blog/qdc-2024
+                                </span>
+                                <br><br>
+                              </p>
+                              
+       
+                              
+                              <div style="text-align: center;">
+                                
+                                  <a href="../Image/image1_00a8b8ece1--54401d8a.png"><img loading="lazy" src="../WebP/image1_00a8b8ece1--54401d8a.webp" alt="兩個Eagle量子晶片連接示意圖" style="width: 70%; height: auto;"></a>
+                                
+                              </div>
+                              
+                              <p class="dark-background">
+                                ▲ 兩個 IBM Quantum Eagle processors 透過 real-time classical link 連接。
+                                這種架構讓多個 QPU 可以在同一個系統中協同運作，但它仍屬於 classical communication，
+                                與真正的 quantum interconnect 不同。
+                                <br>
+                                <span style="font-size: 0.7em; line-height: 0.8;">
+                                  Ref: https://www.ibm.com/quantum/blog/lo-locc-circuit-cutting
+                                </span>
+                              </p>
+                       <br>
+                              <div style="text-align: center;">
+                                
+                                    <a href="../Image/Heron_Parallelization_Graphic_9109dba010--8cf3ab0a.png"><img loading="lazy" src="../WebP/Heron_Parallelization_Graphic_9109dba010--8cf3ab0a.webp" alt="Heron量子晶片互連架構圖" style="width: 70%; height: auto;"></a>
+                                
+                              </div>
+                              <p class="dark-background">
+                                ▲ IBM Heron的互聯架構，主要是共用控制/讀出的微波訊號總線，當前的控制/讀出的微波訊號是屬於古典信號控制，故這類互聯被歸類在古典互聯。
+                                <span style="font-size: 0.7em; line-height: 0.8;">
+                                    <br>Ref: https://www.ibm.com/quantum/blog/ibm-quantum-roadmap-2025
+                                </span>
+                                <br><br>
+                              </p>
+
+
+                              <h3><li>量子互聯的三個層級：C-coupler、M-coupler、L-coupler</li></h3>
+                              
+                              <p class="dark-background">
+                                IBM 將量子互聯分成不同尺度。
+                                有些互聯用於同一晶片內部，增加非鄰近 Qubit 的連通性；
+                                有些互聯用於相鄰晶片之間，形成多晶片模組；
+                                也有些互聯則負責連接同一製冷機內距離較遠的晶片平台。
+                                這些互聯技術針對同一台製冷機內的量子網路。
+                              </p>
+                              
+                              <table width="100%" border="1" cellpadding="10" cellspacing="0"
+                                     style="border-collapse: collapse; font-family: sans-serif; border-color: #cccccc;">
+                                <thead>
+                                  <tr bgcolor="#f2f2f2" align="center">
+                                    <th width="10%">互聯類型</th>
+                                    <th width="23%">連接尺度</th>
+                                    <th>功能解說</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td><b>C-coupler</b></td>
+                                    <td>同一晶片內非鄰近 Qubit 之間</td>
+                                    <td>
+                                      C-coupler 用於提高晶片內部連通性，使同一晶片上距離較遠、非鄰近的 Qubit 也能進行量子資訊傳輸。這對某些量子錯誤校正碼特別重要，因為錯誤校正不一定只依賴最近鄰 Qubit 互動。
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td><b>M-coupler</b></td>
+                                    <td>相鄰晶片之間互聯</td>
+                                    <td>
+                                      M-coupler 是短距離 chip-to-chip quantum interconnect，用於在相鄰量子晶片之間傳送量子資訊。它適合把多個較小晶片組合成更大的模組化量子處理器。
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td><b>L-coupler</b></td>
+                                    <td>同一製冷機內較遠晶片之間</td>
+                                    <td>
+                                      L-coupler 是較長距離的量子互聯，可在同一台 cryostat 內不同平台或較遠晶片之間路由量子資訊。由於傳輸距離增加，它對損耗、延遲、相位穩定性與同步控制提出更高要求。
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+
+                              <br>
+
+                              <table width="100%" border="1" cellpadding="10" cellspacing="0"
+                                     style="border-collapse: collapse; font-family: sans-serif; border-color: #cccccc;">
+                                <thead>
+                                  <tr bgcolor="#f2f2f2" align="center">
+                                    <th width="33.33333%">
+                                      <a href="../Image/IBM-C-coupler--e1765369.png"><img loading="lazy" src="../WebP/IBM-C-coupler--e1765369.webp" alt="IBM量子晶片遠距量子通訊示意圖" style="width: 100%; height: auto;"></a>
+                                      </th>
+                                    <th width="33.33333%">
+                                      <a href="../Image/IBM-M-coupler--c68980ec.png"><img loading="lazy" src="../WebP/IBM-M-coupler--c68980ec.webp" alt="IBM量子晶片互連示意圖" style="width: 100%; height: auto;"></a>
+                                      </th>
+                                    <th>
+                                      <a href="../Image/IBM-L-coupler--72c6bea3.png"><img loading="lazy" src="../WebP/IBM-L-coupler--72c6bea3.webp" alt="量子晶片互連示意圖" style="width: 100%; height: auto;"></a>
+                                      </th>
+                                  </tr>
+                                </thead>
+                              </table>
+
+<p class="dark-background">
+▲ <b>(左)C-coupler：</b> 用於提高同一晶片內部的 Qubit 連通性。在許多量子錯誤校正架構中，Qubit 不只需要與最近鄰互動，也可能需要與較遠的 Qubit 傳遞資訊。C-coupler 的目標就是讓非鄰近 Qubit 之間也能建立有效的量子通訊路徑。
+<br>
+<b>(中)M-coupler：</b> 用於相鄰量子晶片之間的短距離互聯。它可以在鄰近晶片之間傳送量子資訊，適合把多個較小晶片組合成較大的模組化量子處理器。
+<br>
+<b>(右)L-coupler：</b> 用於較長距離的量子互聯。它可在同一製冷機內不同平台上的量子晶片之間傳送量子資訊，代表量子晶片不必全部擠在同一個局部封裝區域中。但距離增加也會帶來更嚴格的損耗、延遲與傳輸速率限制。
+<br><span style="font-size: 0.7em; line-height: 0.8;">
+  Ref: IEEE Spectrum / IBM, https://spectrum.ieee.org/ibm-quantum-computer-2668978269
+</span><br><br>
+</p>
+<div style="text-align: center;">
+  
+    <a href="../Image/Quantum_Connects_Parallelization_Graphic_7460c0616a--f98eacc3.png"><img loading="lazy" src="../WebP/Quantum_Connects_Parallelization_Graphic_7460c0616a--f98eacc3.webp" alt="量子晶片間雙量子位通訊示意圖" style="width: 100%; height: auto;"></a>
+  
+</div>
+
+<p class="dark-background">
+  ▲ M-Coupler 將多個量子處理器透過連接通道共同工作，使量子計算不再侷限於單一晶片。
+  <br>
+  <span style="font-size: 0.7em; line-height: 0.8;">
+    Ref: https://www.ibm.com/quantum/blog/ibm-quantum-roadmap-2025
+  </span>
+</p>
+<br>
+
+
+<div style="text-align: center;">
+  
+    <a href="../Image/IBM_Quantum_Production_Flamingo_24_Packaged_V008_RS_COMP_V001_RS_1114573c07--2aa4dbba.jpg"><img loading="lazy" src="../WebP/IBM_Quantum_Production_Flamingo_24_Packaged_V008_RS_COMP_V001_RS_1114573c07--2aa4dbba.webp" alt="兩片金色電路板模組" style="width: 100%; height: auto;"></a>
+  
+  
+    <a href="../Image/960x0 (1)--dec0588c.webp"><img loading="lazy" src="../WebP/960x0 (1)--dec0588c.webp" alt="Flamingo L耦合器電纜示意圖" style="width: 100%; height: auto;"></a>
+
+</div>
+
+<p class="dark-background">
+  ▲ 用於IBM Flamingo的L-Copuler 展示了模組化量子處理器與長距離連接的設計方向。
+  這類架構的重點不只在於增加 Qubit 數量，而是讓多個量子模組能在可同步、可控制的條件下共同運作。
+  <span style="font-size: 0.7em; line-height: 0.8;">
+      <br>Ref: https://www.ibm.com/quantum/blog/qdc-2024
+      <br>Ref: https://www.forbes.com/sites/karlfreund/2023/12/04/ibm-launches-quantum-system-two-and-a-roadmap-to-quantum-advantage/
+  </span>
+  <br><br>
+</p>
+
+<br><br>
+<div style="text-align: center;">
+  
+    <a href="../Image/960x0--7022e068.webp"><img loading="lazy" src="../WebP/960x0--7022e068.webp" alt="新型糾錯碼耦合器連接示意圖" style="width: 100%; height: auto;"></a>
+  
+</div>
+
+<p class="dark-background">
+  ▲ C-, M-, L-Coupler可同時用於擴展量子晶片互聯。
+  <br>
+  <span style="font-size: 0.7em; line-height: 0.8;">
+    Ref: Forbes (https://www.forbes.com/sites/karlfreund/2023/12/04/ibm-launches-quantum-system-two-and-a-roadmap-to-quantum-advantage/) / IBM
+  </span>
+</p>
+<br>
+<div style="text-align: center;">
+  
+    <a href="../Image/Kookaburra_Parallelization_Graphic_afc360b38b--e07e50a3.png"><img loading="lazy" src="../WebP/Kookaburra_Parallelization_Graphic_afc360b38b--e07e50a3.webp" alt="2025多晶片量子處理器示意圖" style="width: 100%; height: auto;"></a>
+  
+</div>
+
+<p class="dark-background">
+  ▲ Kookaburra 展示多晶片量子處理器平行化互聯的概念。多個量子晶片透過量子連接共同組成更大的處理單元。
+  <span style="font-size: 0.7em; line-height: 0.8;">
+      <br>Ref: https://www.ibm.com/quantum/blog/ibm-quantum-roadmap-2025
+  </span>
+  <br><br>
+</p><br>
+
+<p class="dark-background">
+從這三種互聯可以看出，大型量子電腦的擴展其實有多個層級：第一層是同一晶片內的 Qubit 連通性；第二層是相鄰晶片之間的 chip-to-chip interconnect；第三層是同一製冷機內不同屏蔽罩之間的長距離連結；再往外，才是多台製冷機之間的inter-cryostat quantum link。
+</p>
+
+
+
+<h3><li>為什麼錯誤校正需要更高連通性？</li></h3>
+                              
+                              <p class="dark-background">
+                                在小型量子處理器中，最近鄰耦合通常已足以執行許多基本量子電路。但在QEC校正架構中，情況會變得更複雜。
+                                許多高效率的量子錯誤校正碼，例如 LDPC code，
+                                可能需要 Qubit 之間具備更高的非局域連通性。
+                                如果所有互動都必須透過最近鄰交換完成，則會引入額外的 SWAP gate、
+                                增加電路深度，並累積更多錯誤。
+                              </p>
+<br>
+                              <h4>qLDPC 量子糾錯</h4>
+                                    <p>IBM在2024年展示qLDPC量子糾錯的工作。QEC 量子糾錯碼在實用計算上佔有非常重要地位，如何在最低的開銷下達到最佳的資訊傳輸和糾錯冗餘一直是工程上權衡的課題。
+                                        由於量子計算不可測量的特性，讓量子糾錯的難度更高。超導量子位元屬於二維的量子晶片，當前最主流的量子糾錯是<b>表面碼Surface Code</b>。
+                                        Surface Code優點是對於connectivity的需求只需要鄰近的Qubit，不需要遠程交互作用，但缺點是Ancilla Qubit的數量隨系統增加同步增加，實用上會增加系統複雜度與錯誤。
+                                        IBM在2024年展示了<b>qLDPC (quantum Low-Density Parity Check code)</b>混合Surface Code的量子糾錯運算。
+                                        qLDPC需要長程的交互作用，得益於IBM多層晶片製程的佈線/C-Coupler，可以實現較複雜的量子位元間交互聯接性拓樸。
+                                    </p><br>
+                                    <div style="text-align: center;">
+                                        
+                                            <a href="../Image/截圖 2026-03-03 下午5.50.12--abc5ecfa.png"><img loading="lazy" src="../WebP/截圖 2026-03-03 下午5.50.12--abc5ecfa.webp" alt="表面碼與準循環碼網格示意圖" style="width: 100%; height: auto;"></a>
+                                        
+                                    </div>
+                                    <p class="dark-background">
+                                        ▲ IBM論文中比較傳統的表面碼（Surface Code）與新型且高效的雙二分碼（Bivariate Bicycle Code 簡稱 BB code，屬於qLDPC的一種）。<br>
+                                        <b>圖a.</b> 是表面碼 (Surface Code)。<br>
+                                        <b>圖b.</b> BB 碼 (Bivariate Bicycle Code)的幾何結構： 它被「嵌入」在一個<b>拓樸環面（Torus，甜甜圈形狀）</b>上，每個量子位元有 6 條線連出去（4 條短程，2 條長程）。<br>
+                                        <b>圖c.</b> 混合架構與操作。<br>
+                                        傳統表面碼如果要達到同樣的容錯水準，可能需要數千個位元，而 BB 碼只需要一百多個。
+                                        <span style="font-size: 0.7em; line-height: 0.8;">
+                                            <br>Ref: 10.1038/s41586-024-07107-7
+                                        </span>
+                                        <br><br>
+                                    </p>
+
+
+                                    <div style="text-align: center;">
+                                        
+                                            <a href="../Image/IBM_FTQC_Torus_2_K_v3_16fc27ed7f--58528765.gif"><img loading="lazy" src="../Image/IBM_FTQC_Torus_2_K_v3_16fc27ed7f--58528765.gif" alt="量子位長距離連接示意圖" style="width: 100%; height: auto;"></a>
+                                        
+                                    </div>
+                                    <p class="dark-background">
+                                        ▲ 前面所說的BB Code嵌入在拓樸環面的示意圖，由IBM所繪製。
+                                        <span style="font-size: 0.7em; line-height: 0.8;">
+                                            <br>Ref: https://www.ibm.com/quantum/blog/large-scale-ftqc
+                                        </span>
+                                        <br>
+                                    </p>
+                              
+                              <p class="dark-background">
+                                因此，C-coupler、M-coupler 與 L-coupler 的意義不只是「把晶片接起來」，
+                                而是為未來的錯誤校正邏輯 Qubit 提供更彈性的連通圖。
+                                從這個角度看，量子互聯不只是硬體封裝問題，
+                                也直接影響量子錯誤校正碼、編譯策略與系統架構。
+                              </p>
+                              <br>
+                              
+                              
+
+
+                              
+                              
+                              
+                              
+                              <h3><li>從拓展量子晶片到量子資料中心：邁向超大型量子計算</li></h3>
+                              
+                              <p class="dark-background">
+                                當量子電腦從單一 QPU 走向量子資料中心時，
+                                系統架構會更接近一種 hybrid quantum-classical infrastructure。
+                                在這個架構中，QPU 負責量子態演化與量子測量；
+                                classical cluster 負責編譯、排程、最佳化、錯誤解碼與 feedback；
+                                runtime system 則負責把量子任務分配到合適的硬體資源。
+                              </p>
+                              
+                              
+                              
+                              
+                              <div style="text-align: center;">
+                                
+                                  <a href="../Image/下載--3e7f9b40.jpeg"><img loading="lazy" src="../WebP/下載--3e7f9b40.webp" alt="量子晶片與量子電腦架構圖" style="width: 100%; height: auto;"></a>
+                              
+                                
+                                    <a href="../Image/960x0 (2)--351fcadf.webp"><img loading="lazy" src="../WebP/960x0 (2)--351fcadf.webp" alt="IBM量子系統發展路線圖示意" style="width: 100%; height: auto;"></a>
+                                
+                              </div>
+                              <p class="dark-background">
+                                ▲ IBM的超算-量子混合計算預想圖。規模化的量子位元計算，將從晶面內互聯、跨晶片互聯、製冷機內跨封裝互聯，將要邁向跨製冷機量子互聯，將在後續做進一步介紹。
+                                <span style="font-size: 0.7em; line-height: 0.8;">
+                                  <br>(上)Ref: https://spectrum.ieee.org/ibm-quantum-computer-2668978269
+                                    <br>(下)Ref: https://www.forbes.com/sites/karlfreund/2023/12/04/ibm-launches-quantum-system-two-and-a-roadmap-to-quantum-advantage/
+                                </span>
+                                <br><br>
+                              </p>
+                              
+                              
+                              
+                              
+                              <p class="dark-background">
+                                因此，scalable QPU 的核心並不是單一層級的突破，
+                                而是多個層級共同成熟：
+                                晶片內部需要更好的 Qubit 連通性；
+                                晶片之間需要低損耗的 chip-to-chip quantum interconnect；
+                                製冷機內部需要長距離且相位穩定的量子通道；
+                                多台製冷機之間則需要能夠維持同步與量子相關性的 inter-cryostat link。
+                              </p>
+                              <p class="dark-background">
+                                從 IBM Quantum 的發展可以看出，C-coupler、M-coupler 與 L-coupler 分別代表不同尺度的量子互聯：
+                                從晶片內非鄰近 Qubit 的連接，到相鄰晶片間的短距離連接，
+                                再到同一製冷機內較長距離的量子連接。
+                                它們共同指出一個重要方向：
+                                <b>量子電腦的未來，不只是更大的晶片，而是更好的量子網路化架構。</b>
+                              </p>
+                                
+                              </ol>
+</section>
+<section class="qh-source-chapter">
+  <h3>教材深挖 5：邁向超大型量子計算：超算-量子混合計算</h3>
+  <p class="qh-source-note">整合自既有 Insight iHBAR 教材：QC_hardware/WA.html</p>
+  <p class="dark-background">
+  當我們討論「超大型量子計算」時，直覺上常會想像一台擁有數十萬、甚至數百萬量子位元的巨大量子電腦。
+  然而，真正可用的量子計算系統並不會只是一台孤立的低溫儀器，而更接近一座結合
+  高效能運算（High Performance Computing, HPC）、古典控制系統、低溫量子處理器（QPU）、
+  即時解碼器與雲端排程軟體的「量子中心超級電腦」（Quantum-centric Supercomputer）。
+</p>
+
+<p class="dark-background">
+  在這個架構中，量子電腦不是取代傳統超級電腦，而是成為傳統高效能運算系統中的一種特殊加速器。
+  CPU 與 GPU 負責資料前處理、參數最佳化、誤差緩解、結果分析與工作流管理；
+  QPU 則負責處理某些具有量子結構的子問題，例如量子化學、材料模擬、組合最佳化或特定線性代數任務。
+</p>
+
+
+<br>
+<h4>從單機量子電腦到量子中心超級電腦</h4>
+
+<p class="dark-background">
+  傳統電腦的擴展方式，是從單一處理器走向多核心、叢集、資料中心與超級電腦。
+  類似地，量子電腦的擴展也不太可能永遠停留在「單一晶片 + 單一製冷機」的模式。
+  因為隨著量子位元數增加，系統會同時面臨低溫空間、控制線數量、讀出頻寬、校準複雜度、
+  熱負載與錯誤校正解碼速度等瓶頸。
+</p>
+
+<p class="dark-background">
+  因此，未來的大型量子計算很可能採用混合式架構：
+  由古典超算負責龐大的資料流與控制決策，再把適合量子加速的子問題送到 QPU。
+  這種模式不是「量子 vs. 古典」的競爭，而是「量子 + 古典」的協同運算。
+</p>
+<br>
+<div style="text-align: center;">
+  
+      <a href="../Image/下載 (1)--61c07389.png"><img loading="lazy" src="../WebP/下載 (1)--61c07389.webp" alt="IBM量子晶片結構示意圖" style="width: 70%; height: auto;"></a>
+  
+</div>
+<p class="dark-background">
+  ▲ IBM 繪製的架構圖，從當前的量子原型機，邁向實用化的量子計算需要加入大型古典超算機櫃整合。
+
+  <span style="font-size: 0.7em; line-height: 0.8;">
+      <br>Ref: https://spectrum.ieee.org/ibm-quantum-computer-2668978269
+  </span>
+  <br><br>
+</p>
+
+<table width="100%" border="1" cellpadding="10" cellspacing="0" style="border-collapse: collapse; font-family: sans-serif; border-color: #cccccc;">
+  <thead>
+    <tr bgcolor="#f2f2f2" align="center">
+      <th width="20%">系統層級</th>
+      <th width="20%">主要角色</th>
+      <th>在混合量子運算中的功能</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>CPU</b></td>
+      <td>通用古典運算核心</td>
+      <td>負責程式排程、資料前處理、迭代控制、演算法流程管理，以及與雲端或 HPC 系統溝通。</td>
+    </tr>
+    <tr>
+      <td><b>GPU</b></td>
+      <td>大規模平行運算核心</td>
+      <td>負責張量運算、線性代數、機器學習、變分演算法中的梯度估計，以及量子電路模擬輔助。</td>
+    </tr>
+    <tr>
+      <td><b>FPGA / ASIC</b></td>
+      <td>即時控制與解碼硬體</td>
+      <td>負責低延遲回饋、脈衝控制、快速量測判讀、量子錯誤校正 syndrome decoding。</td>
+    </tr>
+    <tr>
+      <td><b>QPU</b></td>
+      <td>量子處理器</td>
+      <td>執行量子電路，處理量子疊加、糾纏與干涉所能加速的特定子問題。</td>
+    </tr>
+    <tr>
+      <td><b>Runtime / Orchestrator</b></td>
+      <td>運算協調層</td>
+      <td>在 CPU、GPU、FPGA 與 QPU 之間分配任務，決定哪些部分適合古典處理，哪些部分送入量子硬體。</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+<h4>為什麼量子電腦需要超算？</h4>
+
+<p class="dark-background">
+  量子電腦本身並不是一台可以獨立處理所有任務的萬能機器。實際上，現在大部分量子演算法都需要大量古典運算配合。
+  例如在變分量子演算法（Variational Quantum Algorithms, VQA）中，QPU 負責執行參數化量子電路並輸出量測結果；
+  古典電腦則根據量測結果更新參數，再把新的參數送回 QPU。
+</p>
+
+<p class="dark-background">
+  這種「QPU 執行、古典電腦最佳化」的迴圈，使得量子計算天然就是一種混合計算。
+  當問題規模變大，古典端需要處理的資料、排程、最佳化與誤差緩解也會快速增加，因此超算系統會成為大型量子計算不可或缺的基礎設施。
+</p>
+<br><br>
+<table width="100%" border="1" cellpadding="10" cellspacing="0" style="border-collapse: collapse; font-family: sans-serif; border-color: #cccccc;">
+  <thead>
+    <tr bgcolor="#f2f2f2" align="center">
+      <th width="17%">混合計算任務</th>
+      <th width="25%">主要執行硬體</th>
+      <th>功能解說</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>量子電路編譯</b></td>
+      <td>CPU / GPU</td>
+      <td>將抽象量子演算法轉換成硬體可執行的閘序列，並考慮 qubit topology、coupling map 與閘誤差。</td>
+    </tr>
+    <tr>
+      <td><b>脈衝產生與控制</b></td>
+      <td>AWG / FPGA / 控制電子學</td>
+      <td>把量子閘轉換為微波脈衝、磁通脈衝與讀出脈衝，送入低溫系統操控 QPU。</td>
+    </tr>
+    <tr>
+      <td><b>量子電路執行</b></td>
+      <td>QPU</td>
+      <td>在低溫環境中利用量子疊加、糾纏與干涉執行量子操作。</td>
+    </tr>
+    <tr>
+      <td><b>量測結果處理</b></td>
+      <td>FPGA / CPU / GPU</td>
+      <td>將微弱讀出訊號轉換為 classical bitstream，並進行分類、校正與統計分析。</td>
+    </tr>
+    <tr>
+      <td><b>誤差緩解與錯誤校正</b></td>
+      <td>CPU / GPU / FPGA / ASIC</td>
+      <td>在 NISQ 階段進行誤差緩解；在容錯量子計算階段則需要即時 syndrome decoding 與回饋控制。</td>
+    </tr>
+    <tr>
+      <td><b>工作流排程</b></td>
+      <td>HPC / Cloud Runtime</td>
+      <td>管理多個使用者、多個 QPU、多種古典資源之間的任務分配與資料流。</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+<h4>超算-量子混合架構中的關鍵概念</h4>
+
+<table width="100%" border="1" cellpadding="10" cellspacing="0" style="border-collapse: collapse; font-family: sans-serif; border-color: #cccccc;">
+  <thead>
+    <tr bgcolor="#f2f2f2" align="center">
+      <th width="25%">關鍵概念</th>
+      <th>說明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>Quantum Runtime</b></td>
+      <td>負責把量子工作負載封裝成可執行任務，並協調 QPU、古典伺服器與雲端資源。</td>
+    </tr>
+    <tr>
+      <td><b>Circuit Knitting</b></td>
+      <td>將大型量子電路拆成多個較小電路，分別在不同 QPU 或不同時間執行，再由古典後處理將結果拼接回來。</td>
+    </tr>
+    <tr>
+      <td><b>Error Mitigation</b></td>
+      <td>在尚未完全容錯的量子硬體上，透過古典統計方法降低雜訊對結果的影響。</td>
+    </tr>
+    <tr>
+      <td><b>Real-time Feedback</b></td>
+      <td>量測結果必須在極短時間內回饋到控制系統，以支援動態電路與量子錯誤校正。</td>
+    </tr>
+    <tr>
+      <td><b>Resource Orchestration</b></td>
+      <td>當一個任務需要多個 QPU、多台 GPU 或多個 classical servers 時，系統必須自動管理資源配置與資料同步。</td>
+    </tr>
+    <tr>
+      <td><b>Quantum Interconnect</b></td>
+      <td>當 QPU 數量增加，系統需要能在模組之間傳送量子資訊的連結。</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+<h4>混合計算的典型流程</h4>
+
+<p class="dark-background">
+  一個量子-古典混合計算通常不是單次送出量子電路就結束，而是由多次迭代構成。
+  古典端會根據每一輪量子量測結果調整下一輪的量子電路參數，使整體流程形成封閉回饋迴圈。
+</p>
+
+<ol class="dark-background">
+    <li><p><b>問題分解：</b> 將原始科學或工程問題拆成古典可處理部分與量子加速部分。</p></li>
+    <li><p><b>量子電路產生：</b> 由古典端產生參數化量子電路或特定 quantum kernel。</p></li>
+    <li><p><b>硬體編譯：</b> 根據 QPU 拓撲、閘集合與校準資料進行 transpilation。</p></li>
+    <li><p><b>QPU 執行：</b> 在低溫量子晶片上執行電路並量測輸出。</p></li>
+    <li><p><b>古典後處理：</b> 使用 CPU/GPU 分析量測結果、估計期望值、更新參數。</p></li>
+    <li><p><b>迭代收斂：</b> 重複執行直到能量、成本函數或目標指標收斂。</p></li>
+</ol>
+<br><br>
+<div style="text-align: center;">
+    
+        <a href="../Image/42484_2025_305_Fig1_HTML--17d01681.webp"><img loading="lazy" src="../WebP/42484_2025_305_Fig1_HTML--17d01681.webp" alt="量子神經網路生成經典網路權重流程圖" style="width: 100%; height: auto;"></a>
+    
+</div>
+<p class="dark-background">
+    ▲ 量子機器學習混合計算示意圖。
+    <span style="font-size: 0.7em; line-height: 0.8;">
+        <br>Ref: Quantum-Train: rethinking hybrid quantum-classical machine learning in the model compression perspective, DOI: 10.1007/s42484-025-00305-0
+    </span>
+    <br><br>
+</p>
+
+
+
+<br>
+<h4>技術門檻</h4>
+
+<table width="100%" border="1" cellpadding="10" cellspacing="0" style="border-collapse: collapse; font-family: sans-serif; border-color: #cccccc;">
+  <thead>
+    <tr bgcolor="#f2f2f2" align="center">
+      <th width="15%">關鍵挑戰</th>
+      <th>說明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>低延遲控制</b></td>
+      <td>量子錯誤校正與動態電路需要即時判讀量測結果，並在 coherence time 內完成回饋操作。</td>
+    </tr>
+    <tr>
+      <td><b>資料流瓶頸</b></td>
+      <td>大量 qubit 的重複量測會產生龐大 bitstream，需要高速資料擷取、壓縮、分類與儲存。</td>
+    </tr>
+    <tr>
+      <td><b>跨硬體排程</b></td>
+      <td>CPU、GPU、FPGA、QPU 與雲端伺服器的運算節奏不同，必須透過 runtime 系統協調。</td>
+    </tr>
+    <tr>
+      <td><b>錯誤校正解碼</b></td>
+      <td>容錯量子計算需要即時處理 syndrome 資訊，解碼器可能需要 FPGA、ASIC 或 GPU 加速。</td>
+    </tr>
+    <tr>
+      <td><b>多 QPU 擴展</b></td>
+      <td>單一 QPU 的 qubit 數量有限，未來必須透過模組化 QPU 與量子連結擴大有效計算空間。</td>
+    </tr>
+    <tr>
+      <td><b>軟硬體共同設計</b></td>
+      <td>量子演算法、編譯器、控制脈衝、QPU 拓撲與低溫封裝必須一起設計，不能分開最佳化。</td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+<br>
+<h3>IQM與德國萊布尼茲超算中心的量子整合實驗</h3>
+
+
+
+<p>
+    2025 年IQM的研究報告(arxiv:2509.12949)整理了將一台 20 量子位元超導量子電腦整合進 Leibniz Supercomputing Centre（LRZ） HPC 基礎設施的實務經驗。
+    這個案例很重要的說明，量子電腦若要真正成為「量子加速器」，不只需要 QPU 本身，還需要場地、冷卻、網路、排程、校準與使用者訓練的完整配合。
+  </p>
+
+<br><br>
+
+<div style="text-align: center;">
+    
+        <a href="../Image/image001-1-scaled--c053ae03.webp"><img loading="lazy" src="../WebP/image001-1-scaled--c053ae03.webp" alt="量子電腦低溫冷卻系統" style="width: 80%; height: auto;"></a>
+    
+    
+        <a href="../Image/截圖 2026-05-23 晚上8.05.05--c5751556.png"><img loading="lazy" src="../WebP/截圖 2026-05-23 晚上8.05.05--c5751556.webp" alt="稀釋製冷機與量測機櫃示意圖" style="width: 80%; height: auto;"></a>
+    
+</div>
+<p class="dark-background">
+    <span style="font-size: 0.7em; line-height: 0.8;">
+        (上)Ref: https://thequantuminsider.com/2024/06/19/germany-launches-first-hybrid-quantum-computer-at-leibniz-supercomputing-centre/
+    
+        <br>(下)Ref: https://arxiv.org/pdf/2509.12949v1
+    </span>
+    <br><br>
+</p>
+    
+    
+  
+    <h4>一、環境的把控</h4>
+  
+    <p>
+      傳統 HPC 節點通常可以被視為穩定的計算資源：安裝、接電、接冷卻系統後，便能長時間提供相對固定的運算能力。然而超導量子電腦更接近一套精密實驗設備。
+      它對環境振動、聲音、電磁雜訊、溫度變化都更加敏感，因為這些擾動可能影響量子位元的相干時間、閘操作準確度與讀出品質。
+    </p>
+  
+    <p>
+      因此，在部署量子電腦前，資料中心必須先進行嚴格的場地調查，包括磁場、地板振動、聲壓、溫度與濕度等量測。這代表未來的量子資料中心，不只是「有電、有網路、有冷卻」即可，而是需要同時滿足低雜訊、高穩定度與可維護性的條件。
+    </p>
+    <br>
+    <table width="100%" border="1" cellpadding="10" cellspacing="0" style="border-collapse: collapse; font-family: sans-serif; border-color: #cccccc;">
+        <thead>
+          <tr bgcolor="#f2f2f2" align="center">
+            <th width="18%">量測項目</th>
+            <th width="42%">設備</th>
+            <th>環境要求</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>直流磁場</b><br>DC magnetic field</td>
+            <td>將三軸磁通門感測器放置於預定安裝製冷機的位置，約略位於 QPU 的高度。</td>
+            <td>每一軸皆需 &lt; 100 μT。</td>
+          </tr>
+          <tr>
+            <td><b>交流磁場</b><br>AC magnetic field</td>
+            <td>將三軸磁通門感測器放置於預定安裝製冷機的位置，約略位於 QPU 的高度。</td>
+            <td>在 5 Hz – 1000 Hz 的頻率範圍內，每一軸的峰對峰頻譜振幅需 &lt; 1 μT。</td>
+          </tr>
+          <tr>
+            <td><b>地板振動</b><br>Floor vibrations</td>
+            <td>將單軸振動感測器放置於預定安裝製冷機位置的地板上。</td>
+            <td>在 1 Hz – 200 Hz 的頻率範圍內，每一軸的 RMS 頻譜振幅需 &lt; 400 μm/s；或等效地，需符合辦公室空間的 ISO 振動限制。</td>
+          </tr>
+          <tr>
+            <td><b>聲壓</b><br>Sound pressure</td>
+            <td>將全指向性麥克風放置於製冷機所在位置。</td>
+            <td>在 20 Hz – 20 kHz 的頻率範圍內積分後，聲壓需 &lt; 80 dBA。</td>
+          </tr>
+          <tr>
+            <td><b>溫度</b><br>Temperature</td>
+            <td>將溫度計放置於預定安裝電子機櫃的位置。</td>
+            <td>在 20 – 25°C 的任一設定溫度附近，12 小時內的溫度變化需滿足 ΔT &lt; ±1°C。</td>
+          </tr>
+          <tr>
+            <td><b>濕度</b><br>Humidity</td>
+            <td>將濕度計放置於預定安裝電子機櫃的位置。</td>
+            <td>25 – 60%，且不可凝結。</td>
+          </tr>
+        </tbody>
+      </table>
+
+
+
+    <br><h4>二、校準與監控：量子電腦是動態系統</h4>
+  
+    <p>
+      超導量子位元的特性會隨時間變化，它的頻率、閘保真度、讀出保真度與雜訊狀態，都可能在數小時到數天的尺度上漂移。
+      這是量子電腦與傳統 CPU/GPU 最大的差異之一，量子電腦需要時常進行反覆校準，而這些校準不能完全依賴人工操作。
+    </p>
+  
+    <p>
+      IQM的 20-qubit 超導量子電腦具備自動化校準流程。
+      系統可以執行快速校準或完整校準，並由 HPC 中心根據使用者工作負載安排校準時段。
+      這點非常關鍵：若 QPU 要成為 HPC 資源的一部分，校準就必須被「實時」納入排程系統，
+      而不是被視為獨立外部維護事件。
+    </p>
+
+    <br><h4>三、備援電力與冷卻系統的重要性</h4>
+  
+    <p>
+      超導量子電腦需要維持在極低溫環境下運作。若發生斷電或冷卻中斷，
+      QPU 可能升溫，導致系統需要重新降溫與重新校準。這個恢復過程可能需要數天時間，
+      遠比重啟一般 HPC 節點更複雜。
+    </p>
+  
+    <p>
+      因此，IQM強調備援電力與備援冷卻水系統的重要性。
+      對資料中心而言，量子電腦的可用率不只取決於 QPU 本身，
+      也取決於整個基礎設施是否能避免非預期停機。
+    </p>
+    <br>
+    <h4>四、HPC+QC 的關鍵：把 QPU 變成可排程的加速器</h4>
+  
+    <p>
+      在 HPC+QC 架構中，量子電腦可以有兩種使用方式。第一種是遠端非同步提交：
+      使用者將量子任務送進佇列，等待 QPU 執行後取回結果。第二種則是更緊密的
+      加速器模式：QPU 被放入 classical HPC workflow 之中，與 CPU/GPU 形成
+      低延遲的混合計算迴圈。這對 VQE、量子化學、最佳化與混合量子-classical
+      演算法特別重要。
+    </p>
+  
+    <p>
+      這種整合需要一套能連接多種前端框架與硬體後端的軟體堆疊。
+      IQM論文中提到的 Munich Quantum Software Stack（MQSS）支援 Qiskit、
+      CUDA-Q、PennyLane 等介面，並透過中介表示法與 JIT 編譯機制，
+      將高階量子程式轉換成硬體可執行的低階指令。
+    </p>
+  
+    
+  
+    
+  
+    <br><h4>五、使用者導入：硬體可用不代表研究立即可行</h4>
+  
+    <p>
+      即使量子硬體已經接入 HPC 系統，使用者仍需要學習如何有效使用它。
+      對量子專家而言，重點是理解特定 QPU 的拓撲、原生閘集合與雜訊特徵；
+      對傳統 HPC 使用者而言，則需要先理解量子電路、量子測量與混合工作流程的基本概念。
+    </p>
+  
+    <p>
+      因此，成功的 HPC+QC 整合不只是技術問題，也是一個使用者教育問題。
+      IQM的案例透過 Jupyter notebook、硬體特性教學、mentor 制度與 FAQ，
+      幫助早期使用者從「可以存取量子電腦」走向「能產生實際研究成果」。
+    </p>
+    
+    
+    <p>
+      IQM的案例說明，量子電腦要進入 HPC 世界，不能只把 QPU 放進資料中心。
+      真正的 HPC+QC 整合需要五個層次同時成熟：
+    </p>
+  
+    <ul>
+      <li>適合量子硬體的低雜訊場地與環境控制；</li>
+      <li>可由 HPC 排程系統管理的自動化校準流程；</li>
+      <li>穩定的電力、冷卻與備援基礎設施；</li>
+      <li>能支援遠端提交與低延遲混合計算的軟體堆疊；</li>
+      <li>面向量子專家與 HPC 使用者的訓練與導入機制。</li>
+    </ul>
+  
+    <p>
+      未來的量子運算不會只是單一 QPU 的擴充，
+      而會是「QPU + HPC + 軟體堆疊 + 資料中心工程 + 使用者生態」的整合。
+    </p>
+<br>
+    <h3>IBM Quantum System Two 可擴展量子-超算系統規劃</h3>
+    
+<div style="text-align: center;">
+  
+    <a href="../Image/IBM-Quantum-Data-Center_Poughkeepsie-NY_Rendering-2025--d67d9898.png"><img loading="lazy" src="../WebP/IBM-Quantum-Data-Center_Poughkeepsie-NY_Rendering-2025--d67d9898.webp" alt="IBM量子資料中心示意圖" style="width: 100%; height: auto;"></a>
+
+    
+      <a href="../Image/52904644927_511a27d7d1_k--650ea13e.jpg"><img loading="lazy" src="../WebP/52904644927_511a27d7d1_k--650ea13e.webp" alt="十萬量子位超級電腦示意圖" style="width: 100%; height: auto;"></a>
+    
+    
+        <a href="../Image/Blog_Supercomputing_2024_11_19_v01_fb8bfa9d72--368459ce.webp"><img loading="lazy" src="../WebP/Blog_Supercomputing_2024_11_19_v01_fb8bfa9d72--368459ce.webp" alt="CPU、GPU、QPU示意圖" style="width: 100%; height: auto;"></a>
+    
+  </div>
+  <p class="dark-background">
+    ▲ IBM Quantum System Two 的概念圖。這類系統的重點不只是單一 QPU 的量子位元數，而是如何把低溫系統、古典控制電子學、資料中心基礎設施與多個量子處理器整合成可擴展的運算平台。
+     量子中心超級電腦的願景不只是單一 QPU 的放大，而是多個量子系統、古典伺服器與資料中心網路的整合。
+    圖中可見 classical connections 與 quantum connections 並存，代表未來大型量子運算同時需要古典資料流與量子資訊流。
+  
+    <br><span style="font-size: 0.7em; line-height: 0.8;">
+      Ref: IBM Quantum, 100,000-qubit quantum-centric supercomputer vision.
+      <br>(上)Ref: https://www.hpcwire.com/2025/06/10/ibm-sets-2029-target-for-fault-tolerant-quantum-computing/
+      <br>(中)Ref: https://newsroom.ibm.com/2023-05-21-IBM-Launches-100-Million-Partnership-with-Global-Universities-to-Develop-Novel-Technologies-Towards-a-100,000-Qubit-Quantum-Centric-Supercomputer
+      <br>(下)Ref: https://www.ibm.com/quantum/blog/supercomputing-24              
+    </span><br><br>
+  </p>
+
+
+
+
+<div style="text-align: center;">
+    <video 
+        controls 
+        style="width: 100%; height: auto;">
+        <source src="assets/source-images/IBM%20Quantum%20System%20Two_1080p.mp4" type="video/mp4">
+        
+    </video>
+</div>
+
+<p class="dark-background">
+    ▲ IBM Quantum System Two的宣傳影片。
+    <span style="font-size: 0.7em; line-height: 0.8;">
+        <br>Ref: https://www.youtube.com/watch?v=AQjKUN8PORM
+    </span>
+    <br><br>
+</p>
+    
+
+    <h3>NVIDIA的NVQLink：模組化的量子-超算整合接口</h3>
+    <div style="text-align: center;">
+        
+            <a href="../Image/nvqlink-1-jpg--17c64da0.webp"><img loading="lazy" src="../WebP/nvqlink-1-jpg--17c64da0.webp" alt="量子電腦機櫃與元件示意圖" style="width: 100%; height: auto;"></a>
+        
+        
+            <a href="../Image/nvqlink-architecture-gpu-qpu-png--c0bbb4cb.webp"><img loading="lazy" src="../WebP/nvqlink-architecture-gpu-qpu-png--c0bbb4cb.webp" alt="超級電腦與量子處理器架構圖" style="width: 100%; height: auto;"></a>
+        
+    </div>
+    <p class="dark-background">
+        ▲ NVIDIA的NVQLink，可以很明顯看出NVQLink的角色是作為超級電腦與QPU的中介。NVQLink不只是單純的信息交換器，NVQLink還整合了量子控制儀器廠商的儀器，來操作QPU。
+        具體來說，NVQLink是一個高速訊號轉譯器，會將HPC的請求，轉譯成量子電腦的控制信號，交由量子晶片運算，並轉譯量子結果，回傳給HPC。此外，由於量子晶片需要複雜的QEC實時糾錯控制，NVQLink整合的量子控制儀器也會同時進行量子計算的糾錯、校正。
+        NVQLink的解決方案，可以詮釋成將古典高速計算與量子計算的<b>接口模組化</b>，古典HPC不需要負擔量子控制的算力消耗、校正優化；而量子晶片廠商只需要與NVQLink互聯做適配。
+        
+        在接下來的混合計算中提供模組化的解決方案，可以在既有的HPC框架下導入NVQLink+QPU，不需要重新設計古典架構來適配量子計算。
+
+        <span style="font-size: 0.7em; line-height: 0.8;">
+            <br>Ref: https://developer.nvidia.com/blog/nvidia-nvqlink-architecture-integrates-accelerated-computing-with-quantum-processors/
+        </span>
+        <br><br>
+    </p>
+    
+
+
+
+    <p class="dark-background">
+        總結來說，超大型量子計算的第一層問題，是如何讓 QPU 成為高效能運算系統中的一個可用加速器。
+        這需要 runtime、編譯器、古典加速器、低延遲控制與錯誤校正解碼的整合。
+      </p>
+</section>  <section class="module">
+    
+<div class="qh-section">
+  <h3>備課資料庫：W9 取用 Error Management 與 QEC 基礎（單元 5–6）</h3>
+</div>
+<p>對 surface code，code distance \(d\) 只有在 physical operation 位於 threshold 以下時才帶來指數式 logical suppression。常用近似為</p>
+<div class="equation-card"><p>\[\varepsilon_d\propto\left(\frac{p}{p_{\rm thr}}\right)^{(d+1)/2}\]</p></div>
+<p>但 \(p\) 不是單一 qubit fidelity：cycle 包含 data/ancilla layout、entangling-gate schedule、measurement/reset、leakage、crosstalk、correlated burst、decoder accuracy 與 latency。Google 的 below-threshold 實驗同時依賴 1.1 μs cycle、real-time decoding、長時間穩定與 correlated-error analysis，正好說明 QEC 是量子與 classical control plane 的共同系統。</p>
+<p class="callout"><b>課程邊界：</b>這一週的目的不是讓學生成為 code theorist，而是能從 QEC requirement 反推 hardware architecture。</p>
+
+  </section>
+  <section class="module">
+                                    <div class="qh-section">
+                                      <h3>六、單元 5：Error Suppression 與 Error Mitigation</h3>
+                                    </div>
+                                
+                                    <h4>5.1 Three Levels of Error Management</h4>
+                                    <p>
+                                      在量子硬體中，錯誤管理可以分成三個層次：
+                                      error suppression、error mitigation 與 quantum error correction。
+                                      這三者的目標不同，所需資源與適用時機也不同。
+                                    </p>
+                                
+                                    <table>
+                                      <thead>
+                                        <tr>
+                                          <th>方法</th>
+                                          <th>核心目標</th>
+                                          <th>是否需要編碼 logical qubit</th>
+                                          <th>典型應用階段</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        <tr>
+                                          <td>Error Suppression</td>
+                                          <td>從源頭減少錯誤產生</td>
+                                          <td>否</td>
+                                          <td>硬體設計、脈衝設計、校準最佳化</td>
+                                        </tr>
+                                        <tr>
+                                          <td>Error Mitigation</td>
+                                          <td>錯誤已發生後，用統計或後處理降低偏差</td>
+                                          <td>否</td>
+                                          <td>NISQ devices、近程量子演算法</td>
+                                        </tr>
+                                        <tr>
+                                          <td>Quantum Error Correction</td>
+                                          <td>主動偵測並修正錯誤，保護 logical qubit</td>
+                                          <td>是</td>
+                                          <td>Fault-tolerant quantum computing</td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                
+                                    <h4>5.2 Error Suppression</h4>
+                                    <p>
+                                      Error suppression 的目標是在錯誤發生之前降低錯誤生成率。
+                                      對超導量子硬體而言，這包含材料改善、電路設計、微波工程、脈衝最佳化、低溫濾波、
+                                      屏蔽與 crosstalk reduction。
+                                    </p>
+                                
+                                    <h4>常見 error suppression 方法</h4>
+                                    <ul>
+                                      <li>改善材料與介面品質，降低 dielectric loss。</li>
+                                      <li>設計 Purcell filter，減少 qubit 透過 readout resonator 衰減。</li>
+                                      <li>使用 sweet spot 降低對 flux noise 或 charge noise 的敏感度。</li>
+                                      <li>使用 DRAG pulse 降低 leakage。</li>
+                                      <li>使用 echo sequence 抑制低頻 dephasing。</li>
+                                      <li>最佳化 chip layout，降低 crosstalk 與 package modes。</li>
+                                      <li>調整 pulse shape，降低頻譜外激發。</li>
+                                    </ul>
+                                
+                                    <h4>5.3 Error Mitigation</h4>
+                                    <p>
+                                      Error mitigation 不像 QEC 那樣主動修正量子態中的錯誤，
+                                      而是在多次執行 noisy quantum circuits 後，透過統計方法或後處理估計較接近理想結果的 observable。
+                                      它通常適用於 near-term quantum devices，也就是尚未具備完整 fault-tolerant QEC 的量子處理器。
+                                    </p>
+                                
+                                    <h4>常見 error mitigation 方法</h4>
+                                    <table>
+                                      <thead>
+                                        <tr>
+                                          <th>方法</th>
+                                          <th>基本概念</th>
+                                          <th>限制</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        <tr>
+                                          <td>Readout Error Mitigation</td>
+                                          <td>量測 readout confusion matrix，修正 state assignment bias</td>
+                                          <td>多量子位元時矩陣大小快速成長</td>
+                                        </tr>
+                                        <tr>
+                                          <td>Zero-Noise Extrapolation</td>
+                                          <td>刻意放大雜訊，外推回 zero-noise limit</td>
+                                          <td>需要雜訊可控且外推模型合理</td>
+                                        </tr>
+                                        <tr>
+                                          <td>Probabilistic Error Cancellation</td>
+                                          <td>用準機率方法反轉 noise channel</td>
+                                          <td>取樣成本可能很高</td>
+                                        </tr>
+                                        <tr>
+                                          <td>Symmetry Verification</td>
+                                          <td>利用問題本身的守恆量或對稱性篩選結果</td>
+                                          <td>需要演算法或物理問題具有可用對稱性</td>
+                                        </tr>
+                                        <tr>
+                                          <td>Postselection</td>
+                                          <td>丟棄不符合條件的量測結果</td>
+                                          <td>可能降低有效樣本數並引入偏差</td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                
+                                    <h4>5.4 Error Suppression vs. Error Mitigation</h4>
+                                    <p>
+                                      Error suppression 與 error mitigation 常常需要一起使用。
+                                      前者改善硬體與控制，使錯誤率降低；後者在錯誤仍不可避免時，透過統計方法降低 observable bias。
+                                      然而，這兩者都不能完全取代 quantum error correction。
+                                      若要執行任意長度、任意深度的可靠量子計算，最終仍需要 fault-tolerant QEC。
+                                    </p>
+                                
+                                    <div class="learning-check">
+                                      <h4>學習檢核</h4>
+                                      <ol>
+                                        <li>Error suppression、error mitigation 與 quantum error correction 的差異是什麼？</li>
+                                        <li>DRAG pulse 屬於 error suppression 還是 error mitigation？為什麼？</li>
+                                        <li>Readout error mitigation 的基本想法是什麼？</li>
+                                        <li>為什麼 error mitigation 不能完全取代 quantum error correction？</li>
+                                      </ol>
+                                    </div>
+                                  </section><section class="module">
+                                    <div class="qh-section">
+                                      <h3>七、單元 6：Quantum Error Correction 基礎</h3>
+                                    </div>
+                                
+                                    <h4>6.1 Why Quantum Error Correction Is Difficult</h4>
+                                    <p>
+                                      古典錯誤校正可以直接複製 bit 並進行 majority vote。
+                                      但量子資訊不能被任意複製，這是 no-cloning theorem 的結果。
+                                      此外，量子錯誤不只有 bit-flip，還包含 phase-flip 與兩者的連續組合。
+                                      因此，量子錯誤校正不能直接讀出 quantum state 本身，而必須量測不揭露邏輯資訊的 error syndrome。
+                                    </p>
+                                
+                                    <h4>QEC 面臨的基本限制</h4>
+                                    <ul>
+                                      <li>No-cloning theorem：未知量子態不能被完美複製。</li>
+                                      <li>Measurement backaction：直接量測會破壞量子疊加。</li>
+                                      <li>Continuous errors：量子錯誤可形成連續的相位或旋轉誤差。</li>
+                                      <li>Decoherence：環境會不斷引入新的錯誤。</li>
+                                      <li>Fault tolerance：校正過程本身也可能出錯。</li>
+                                    </ul>
+                                
+                                    <h4>6.2 Physical Qubits and Logical Qubits</h4>
+                                    <p>
+                                      在 QEC 中，一個 logical qubit 不是由單一 physical qubit 表示，
+                                      而是由多個 physical qubits 的糾纏態共同編碼。
+                                      這樣做的目的是讓局部錯誤可以被偵測並修正，同時不破壞 logical information。
+                                    </p>
+                                
+                                    <table>
+                                      <thead>
+                                        <tr>
+                                          <th>概念</th>
+                                          <th>意義</th>
+                                          <th>例子</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        <tr>
+                                          <td>Physical Qubit</td>
+                                          <td>實際硬體上的量子位元</td>
+                                          <td>Transmon、Fluxonium、spin qubit</td>
+                                        </tr>
+                                        <tr>
+                                          <td>Logical Qubit</td>
+                                          <td>由多個 physical qubits 編碼出的受保護量子資訊單位</td>
+                                          <td>Surface-code logical qubit</td>
+                                        </tr>
+                                        <tr>
+                                          <td>Ancilla Qubit</td>
+                                          <td>用來量測 syndrome 的輔助量子位元</td>
+                                          <td>Measure qubit、syndrome qubit</td>
+                                        </tr>
+                                        <tr>
+                                          <td>Data Qubit</td>
+                                          <td>承載 logical quantum information 的物理量子位元</td>
+                                          <td>Surface code 中的 lattice data sites</td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                
+                                    <h4>6.3 Stabilizer Formalism</h4>
+                                    <p>
+                                      Stabilizer code 使用一組彼此對易的 operators 來定義 code space。
+                                      若量子態 \(\ket{\psi}\) 屬於 code space，則對每個 stabilizer \(S_i\)，都有：
+                                    </p>
+                                
+                                    <div class="equation">
+                                      <p>\[
+                                      S_i\ket{\psi} = \ket{\psi}
+                                      \]</p>
+                                    </div>
+                                
+                                    <p>
+                                      當 physical qubit 發生錯誤時，某些 stabilizer measurement 的結果會從 \(+1\) 變成 \(-1\)。
+                                      這組變化稱為 syndrome。重要的是，syndrome 告訴我們錯誤發生在哪裡或可能發生在哪裡，
+                                      但不直接揭露 logical qubit 的量子態。
+                                    </p>
+                                
+                                    <h4>6.4 Syndrome Measurement</h4>
+                                    <p>
+                                      Syndrome measurement 通常透過 ancilla qubits 完成。
+                                      Ancilla qubit 與多個 data qubits 交互作用後，會攜帶 stabilizer parity 的資訊。
+                                      接著量測 ancilla qubit，即可得到 syndrome bit。
+                                    </p>
+                                
+                                    <p>
+                                      一個典型 syndrome extraction cycle 包含：
+                                    </p>
+                                
+                                    <ol>
+                                      <li>準備 ancilla qubit。</li>
+                                      <li>讓 ancilla 與周圍 data qubits 依序作用 two-qubit gates。</li>
+                                      <li>量測 ancilla qubit。</li>
+                                      <li>將量測結果送到 classical decoder。</li>
+                                      <li>Decoder 根據多輪 syndrome 判斷最可能的錯誤鏈。</li>
+                                      <li>更新 Pauli frame 或施加 correction。</li>
+                                    </ol>
+                                
+                                    <div class="note">
+                                      <h4>核心觀念</h4>
+                                      <p>
+                                        QEC 的關鍵不是「直接看量子態錯在哪裡」，
+                                        而是透過 stabilizer measurement 取得錯誤的間接資訊。
+                                        Ancilla qubit 的角色就是在不破壞 logical information 的情況下，讀出 error syndrome。
+                                      </p>
+                                    </div>
+                                  </section><section class="module">
+                                    <div class="qh-section">
+                                      <h3>八、單元 7：Surface Code 與超導量子晶片布局</h3>
+                                    </div>
+                                
+                                    <h4>7.1 Why Surface Code?</h4>
+                                    <p>
+                                      Surface code 是目前最重要的 quantum error correction code 之一，
+                                      特別適合超導量子晶片，原因是它主要需要局部最近鄰耦合，
+                                      可自然對應到二維量子位元陣列。
+                                    </p>
+                                
+                                    <p>
+                                      Surface code 的優點包括：
+                                    </p>
+                                
+                                    <ul>
+                                      <li>只需要局部 nearest-neighbor interactions。</li>
+                                      <li>可容忍相對較高的 physical error rate。</li>
+                                      <li>適合二維晶片布局。</li>
+                                      <li>可透過重複 syndrome measurement 偵測 time-like 與 space-like errors。</li>
+                                      <li>與超導量子位元的平面製程相容性高。</li>
+                                    </ul>
+                                
+                                    <h4>7.2 Data Qubits and Ancilla Qubits</h4>
+                                    <p>
+                                      在 surface code 中，physical qubits 通常分成 data qubits 與 ancilla qubits。
+                                      Data qubits 承載 logical quantum information；
+                                      ancilla qubits 則用來量測 stabilizers。
+                                      Stabilizers 通常可分為兩類：
+                                    </p>
+                                
+                                    <ul>
+                                      <li><strong>X-type stabilizers：</strong>用於偵測 phase-flip 類型錯誤。</li>
+                                      <li><strong>Z-type stabilizers：</strong>用於偵測 bit-flip 類型錯誤。</li>
+                                    </ul>
+                                
+                                    <p>
+                                      每一個 stabilizer 通常作用於周圍數個 data qubits。
+                                      在晶片布局中，這意味著 ancilla qubit 必須能與相鄰 data qubits 執行 two-qubit gates。
+                                    </p>
+                                
+                                    <h4>7.3 Surface-Code Cycle</h4>
+                                    <p>
+                                      Surface code 需要重複執行 syndrome extraction cycle。
+                                      每一輪 cycle 通常包含多層 two-qubit gates、ancilla measurement 與 ancilla reset。
+                                      由於 syndrome measurement 本身也會出錯，因此必須累積多輪 syndrome，交由 classical decoder 判斷錯誤歷史。
+                                    </p>
+                                
+                                    <p>
+                                      Surface-code cycle 可簡化表示為：
+                                    </p>
+                                
+                                    <ol>
+                                      <li>Initialize or reset ancilla qubits。</li>
+                                      <li>Apply scheduled two-qubit gates between ancilla and neighboring data qubits。</li>
+                                      <li>Measure ancilla qubits to obtain syndrome bits。</li>
+                                      <li>Repeat the cycle many times。</li>
+                                      <li>Feed syndrome history into decoder。</li>
+                                      <li>Update logical Pauli frame or apply correction。</li>
+                                    </ol>
+                                
+                                    <h4>7.4 Code Distance</h4>
+                                    <p>
+                                      Surface code 的保護能力通常以 code distance \(d\) 描述。
+                                      Code distance 越大，logical qubit 能容忍的 physical errors 越多，
+                                      但所需 physical qubits 數量也越多。
+                                    </p>
+                                
+                                    <div class="equation">
+                                      <p>\[
+                                      t = \left\lfloor \frac{d-1}{2} \right\rfloor
+                                      \]</p>
+                                    </div>
+                                
+                                    <p>
+                                      其中 \(t\) 是可修正的錯誤數量。
+                                      例如 distance-3 code 理論上可修正一個錯誤；distance-5 code 可修正兩個錯誤。
+                                      實際上，logical error rate 還取決於 physical error rate、錯誤相關性、decoder 效能與 leakage 管理。
+                                    </p>
+                                
+                                    <h4>7.5 Surface-Code Chip Layout</h4>
+                                    <p>
+                                      Surface code 對超導量子晶片布局提出明確要求：
+                                      qubits 需要以二維 lattice 排列，並確保 data qubits 與 ancilla qubits 之間具有規則且可校準的 nearest-neighbor coupling。
+                                      同時，晶片還必須容納 microwave drive lines、flux lines、readout resonators、readout feedlines 與封裝連接。
+                                    </p>
+                                
+                                    <table>
+                                      <thead>
+                                        <tr>
+                                          <th>布局需求</th>
+                                          <th>原因</th>
+                                          <th>工程挑戰</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        <tr>
+                                          <td>Nearest-neighbor coupling</td>
+                                          <td>支援 stabilizer measurement</td>
+                                          <td>耦合強度一致性與 residual coupling 控制</td>
+                                        </tr>
+                                        <tr>
+                                          <td>Fast ancilla measurement</td>
+                                          <td>每輪 QEC cycle 都需要讀出 syndrome</td>
+                                          <td>讀出速度、fidelity 與 crosstalk</td>
+                                        </tr>
+                                        <tr>
+                                          <td>Low leakage gates</td>
+                                          <td>Leakage 會破壞 syndrome extraction</td>
+                                          <td>Pulse shaping、reset 與 leakage detection</td>
+                                        </tr>
+                                        <tr>
+                                          <td>Scalable wiring</td>
+                                          <td>大量 qubits 需要控制與讀出通道</td>
+                                          <td>低溫線路數量、熱負載與封裝密度</td>
+                                        </tr>
+                                        <tr>
+                                          <td>Frequency allocation</td>
+                                          <td>避免 collision 與 crosstalk</td>
+                                          <td>製程變異與大規模頻率規劃</td>
+                                        </tr>
+                                        <tr>
+                                          <td>Classical decoding latency</td>
+                                          <td>需要即時處理 syndrome history</td>
+                                          <td>低延遲控制電子學與解碼器整合</td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                
+                                    <h4>7.6 From Physical Error Rate to Logical Error Rate</h4>
+                                    <p>
+                                      QEC 的目標是讓 logical error rate 隨 code distance 增加而下降。
+                                      若 physical error rate 低於 threshold，增加 code distance 可以有效降低 logical error rate。
+                                      但若 physical error rate 高於 threshold，增加更多 qubits 不一定能改善結果。
+                                    </p>
+                                
+                                    <p>
+                                      因此，fault-tolerant quantum computing 需要同時滿足：
+                                    </p>
+                                
+                                    <ul>
+                                      <li>足夠低的 single-qubit gate error。</li>
+                                      <li>足夠低的 two-qubit gate error。</li>
+                                      <li>高 fidelity、快速且低串擾的 readout。</li>
+                                      <li>低 leakage 與有效 leakage reset。</li>
+                                      <li>穩定且可擴展的校準流程。</li>
+                                      <li>低延遲、高準確度的 classical decoder。</li>
+                                    </ul>
+                                
+                                    <div class="note">
+                                      <h4>核心觀念</h4>
+                                      <p>
+                                        Surface code 不只是理論上的錯誤校正碼，也是一種硬體架構規格。
+                                        它決定了 qubit 排列、coupler 設計、readout 架構、控制時序、晶片封裝與 classical decoder 的需求。
+                                      </p>
+                                    </div>
+                                  </section>
+  <section class="module">
+    <div class="qh-section">
+      <h3>課堂整合與驗收</h3>
+    </div>
+    <p><strong>研討問題：</strong>畫出一輪 surface-code cycle 的 space-time schedule，標出最可能限制 logical performance 的五個非理想因素。</p>
+    <p><strong>完成條件：</strong>學生必須留下可檢查的推導、關係圖、比較表或 architecture decision，並能說明其物理假設與工程代價。</p>
+  </section>
+  <section class="module">
+    <div class="qh-section">
+      <h3>核心與延伸閱讀</h3><ul class="qh-reading"><li><a href="https://www.nature.com/articles/s41586-024-08449-y" target="_blank" rel="noopener">Quantum Error Correction Below the Surface Code Threshold</a><span>Google Quantum AI and Collaborators, Nature 638, 920–926 (2025), with 2026 author correction.</span><em>below-threshold surface-code memory、real-time decoder 與系統穩定性。</em></li><li><a href="https://www.nature.com/articles/s41586-026-10559-8" target="_blank" rel="noopener">Author Correction: Quantum Error Correction Below the Surface Code Threshold</a><span>Google Quantum AI and Collaborators, Nature 653, E5 (2026).</span><em>2026 年圖表標示修正；課程引用時一併保留。</em></li><li><a href="https://doi.org/10.1103/PhysRevLett.109.240504" target="_blank" rel="noopener">Characterization of Addressability by Simultaneous Randomized Benchmarking</a><span>J. M. Gambetta et al., Physical Review Letters 109, 240504 (2012).</span><em>多 qubit 同時操作的 addressability 與 crosstalk。</em></li><li><a href="https://www.nature.com/articles/s41578-021-00370-4" target="_blank" rel="noopener">Engineering High-Coherence Superconducting Qubits</a><span>I. Siddiqi, Nature Reviews Materials 6, 875–891 (2021).</span><em>不同 qubit architecture、材料損耗與 coherence 的設計 trade-off。</em></li></ul>
+    </div>
+  </section>
+</section>
+
+
+                                <div class="post-meta">
+                                    <span class="post-author">
+                                        <a href="../About/Wang.html"><img class="img-res" src="../WebP/IMG_0964_2.webp" alt="">王培儒</a>
+                                    </span>
+                                    <span class="post-category">
+                                        <a href="../SCQ_advanced/main.html"><i class="fa fa-folder" aria-hidden="true"></i>PHYS598500</a>
+                                    </span>
+                                </div><!-- /.post-meta -->
+                            
+                                <div id="prev-next-nav" class="text-center">
+                                    <a class="btn btn-gray" href="T4-8.html">← 上一頁</a> 
+                                    <a class="btn btn-gray" href="T4-10.html">下一頁 →</a>
+                                </div>
+
+                                
+
+                            </div><!-- /.post-content -->
+                        </article><!-- /.blog-post -->
+                        <!--<div id="PostComments" class="post-comments">
+                            
+                            
+                            
+                        </div> /#PostComments -->
+                        <!--<div class="respond">
+                            <h3>Post a Comment</h3>
+                            <form class="form-horizontal">
+                                <input class="form-control" type="text" placeholder="Your Name*" required>
+                                <input class="form-control" type="email" placeholder="Your Email" required>
+                                <textarea class="form-control form-control-comment" type="text" placeholder="Your Comment*" required></textarea>
+                                <button class="btn btn-green">Add a comment</button>
+                            </form>    
+                        </div> /.respond -->
+                    </div>
+                    <aside class="col-md-3">
+                        <div class="sidebar">
+                            <div class="widget">
+                                <div id="lesson-list_2">
+                                <div class="lesson-link "><a href="main.html">QH-2026F v5 · 16週總覽</a></div>
+                                <div class="lesson-link "><a href="T1-1.html">Week 1 · 從量子計算模型到硬體操作</a></div>
+                                <div class="lesson-link "><a href="T2-2.html">Week 2 · 超導電路量子化與 Transmon 設計</a></div>
+                                <div class="lesson-link "><a href="T2-3.html">Week 3 · Fluxonium：從電路改造到設計取捨</a></div>
+                                <div class="lesson-link "><a href="T3-4.html">Week 4 · 單量子位元控制：從微波脈衝到旋轉座標</a></div>
+                                <div class="lesson-link "><a href="T3-5.html">Week 5 · 耦合 Hamiltonian、兩量子位元閘與 Tunable Coupler</a></div>
+                                <div class="lesson-link "><a href="T3-6.html">Week 6 · Circuit QED、Dispersive Readout 與量測鏈</a></div>
+                                <div class="lesson-link "><a href="T4-7.html">Week 7 · 量子處理器校準：Hamiltonian Identification 與 Drift</a></div>
+                                <div class="lesson-link "><a href="T4-8.html">Week 8 · Benchmarking、多量子位元誤差與可擴展校準</a></div>
+                                <div class="lesson-link active"><a href="T4-9.html">Week 9 · 量子錯誤校正基礎：從物理誤差到 Stabilizer Syndrome</a></div>
+                                <div class="lesson-link "><a href="T4-10.html">Week 10 · Surface-Code Hardware Cycle：排程、解碼與 Logical-Qubit 資源</a></div>
+                                <div class="lesson-link "><a href="T5-11.html">Week 11 · Dilution Refrigerator、熱化與低溫線路預算</a></div>
+                                <div class="lesson-link "><a href="T5-12.html">Week 12 · 微波控制、讀出電子與訊號完整性</a></div>
+                                <div class="lesson-link "><a href="T5-13.html">Week 13 · 封裝、EM Modes、佈線擴展與全系統整合</a></div>
+                                <div class="lesson-link "><a href="T6-14.html">Week 14 · 超導量子晶片製程與 Josephson Junction Process Module</a></div>
+                                <div class="lesson-link "><a href="T6-15.html">Week 15 · Materials Loss、製程變異、Yield 與 Design–Fab–Measure Loop</a></div>
+                                <div class="lesson-link "><a href="T7-16.html">Week 16 · 前沿架構與 Hardware-Aware Quantum System Capstone</a></div>
+                                </div>
+                            </div>
+                        </div></aside>
+                </div>
+            </div>
+        </section><!-- /.section-portfolio -->
+
+    </main><!-- /#main -->
+
+    <footer id="colophon" class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-4 col-xs-6">
+                    <a href="../index_ch.html" class="site-title">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
+                    <p>一起走進新時代的前沿科學與量子科技</p>
+                    </div>
+                <div class="col-lg-offset-4 col-md-3 col-sm-4 col-md-offset-2 col-sm-offset-0 col-xs-6 ">
+                    <p class="site-title">𝐾𝐸𝐸𝑃 𝐼𝑁 𝑇𝑂𝑈𝐶𝐻</p>
+                    <ul class="list-unstyled contact-links">
+                        <li><i class="fa fa-envelope" aria-hidden="true"></i><a href="mailto:info@insight-ihbar.com">info@insight-ihbar.com</a></li>
+                        <!--<li><i class="fa fa-phone" aria-hidden="true"></i><a href="tel:+37400800000">+374 (00) 80 00 00 </a></li>
+                        <li><i class="fa fa-fax" aria-hidden="true"></i><a href="+37400900000">+374 (00) 90 00 00</a></li>
+                        <li><i class="fa-solid fa-location-dot"></i><p>Hsinchu 300, Taiwan (R.O.C.)</p></li>-->
+                    </ul>
+                </div>
+                <!--<div class="clearfix visible-xs"></div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6">
+                    <h3>Featured links</h3>
+                    <ul class="list-unstyled">
+                        <li class="active"><a href="index_ch.html">Home</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="portfolio.html">Porfolio</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>-->
+            </div>
+        </div>
+        <div class="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-8">
+                        <div class="social-links">
+                            <!--<a class="twitter-bg" href="#"><i class="fab fa-twitter"></i></a>-->
+                            <!--<<a class="facebook-bg" href="https://www.facebook.com/people/Quantum-Perspectives/61576446849628/"><i class="fab fa-facebook"></i></a>-->
+                            <!--<a class="facebook-bg" href="https://www.facebook.com/people/%E9%87%8F%E5%AD%90%E9%81%A0%E8%A6%8BQuantum-Perspectives/61576883632888/"><i class="fab fa-facebook-f"></i></a>-->
+                            <!--<a class="pinterest" href="#"><i class="fa-solid fa-microscope"></i></a>-->
+                            <!--<a class="facebook-bg" href="https://www.facebook.com/people/Insight-hbar/61576811775374/"><i class="fab fa-facebook-f"></i></a>-->
+                            <a class="linkedin-bg" href="https://www.linkedin.com/company/insight-ihbar"><i class="fab fa-linkedin"></i></a>
+                        </div><!-- /.social-links -->
+                    </div>
+                    <div class="col-xs-4">
+                        <div class="text-right">
+                            <p><span style="font-size: 16px;">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</span></p>
+                            <p>All Rights Reserved</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.copyright -->
+    </footer><!-- /#footer -->
+
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="../assets/js/bootstrap-select.min.js"></script>
+    <script src="../assets/js/jquery.slicknav.min.js"></script>
+    <script src="../assets/js/jquery.countTo.min.js"></script>
+    <script src="../assets/js/jquery.shuffle.min.js"></script>
+    <script src="../assets/js/script.js"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  
+</body>
+</html>

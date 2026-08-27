@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N39VTY949N"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-N39VTY949N');
+</script>
+    <!-- Basic Page Needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <meta name="author" content="Peir-Ru Wang">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;1,300&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/20250525-icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/20250525-icon.png">
+
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/css/style.css" rel="stylesheet">
+    <link href="../assets/css/responsive.css" rel="stylesheet">
+
+    <title>Week 11 · Dilution Refrigerator、熱化與低溫線路預算 | QH-2026F v5</title>
+    <meta name="description" content="PHYS598500 第 11 週，120 分鐘進階課程：Dilution Refrigerator、熱化與低溫線路預算">
+    <meta name="keywords" content="- 量子處理器
+- 超導量子位元
+- Qubit
+- 約瑟夫森接面
+- Transmon
+- Fluxonium
+- 量子計算
+- 量子硬體
+- 量子演算法
+- 量子晶片">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+<style>
+.qh-week-meta { margin: 20px 0; padding: 16px 18px; border-left: 4px solid #5f4b8b; background: #f6f4fa; }
+.qh-week-meta p { margin: 4px 0; }
+.qh-session-plan { width: 100%; margin: 18px 0 8px; border-collapse: collapse; }
+.qh-session-plan th, .qh-session-plan td { padding: 10px 12px; border: 1px solid #ddd; vertical-align: top; }
+.qh-session-plan th { background: #f4f4f4; }
+.qh-session-plan .qh-break td { color: #666; background: #fafafa; }
+.qh-total { text-align: right; font-weight: 700; }
+.qh-reading li { margin-bottom: 12px; }
+.qh-reading span, .qh-reading em { display: block; }
+.qh-week-list { padding-left: 0; list-style: none; }
+.qh-week-list li { margin: 0 0 13px; padding: 12px 15px; border-left: 4px solid #5f4b8b; background: #f7f7f7; }
+.qh-week-list a { font-weight: 700; }
+@media (max-width: 767px) { .qh-session-plan { display: block; overflow-x: auto; } }
+</style>
+
+
+<style id="qh-full-course-style">
+    .qh-full-lecture {
+      margin: 30px 0;
+      padding: 24px 26px;
+      border: 1px solid #d9d4e5;
+      background: #fff;
+    }
+
+    .qh-full-lecture>h2,
+    .qh-full-lecture>h3 {
+      margin-top: 0;
+    }
+
+    .qh-full-lecture h4 {
+      margin-top: 24px;
+    }
+
+    .qh-full-lecture li {
+      margin-bottom: 8px;
+    }
+
+    .qh-time {
+      display: inline-block;
+      margin-bottom: 12px;
+      padding: 4px 10px;
+      border-radius: 14px;
+      background: #5f4b8b;
+      color: #fff;
+      font-size: .9em;
+    }
+
+    .qh-board,
+    .qh-case,
+    .qh-task,
+    .qh-answer,
+    .qh-source-chapter {
+      margin: 20px 0;
+      padding: 17px 19px;
+      font-size: 15px;
+    }
+
+    .qh-board {
+      border-left: 4px solid #d0ccc8;
+      background: #fafafa;
+    }
+
+    .qh-case {
+      border-left: 4px solid #d0ccc8;
+      background: #fafafa;
+    }
+
+    .qh-task {
+      border-left: 4px solid #d0ccc8;
+      background: #fafafa;
+    }
+
+    .qh-answer {
+      border-left: 4px solid #d0ccc8;
+      background: #fafafa;
+    }
+
+    /* Section divider headings */
+    .qh-section {
+      margin: 40px 0 24px;
+      padding: 17px 19px;
+      border-left: 4px solid #355c9a;
+      background: #f3f7fc;
+    }
+
+    .qh-section h3 {
+      margin: 0 0 4px;
+      font-size: 20px;
+      font-weight: 700;
+      color: #355c9a;
+      border-bottom: none;
+    }
+
+    .qh-section h4 {
+      margin: 0;
+      font-size: 15px;
+      font-weight: 400;
+      color: #6a8ab5;
+      font-style: italic;
+    }
+
+    .qh-section>h3:first-child {
+      margin-top: 0;
+    }
+
+    /* Equation highlight — compact, not a section heading */
+    .qh-equation-highlight {
+      margin: 24px 0;
+      padding: 14px 18px;
+      border-left: 3px solid #6a6560;
+      background: #f9f8f7;
+    }
+
+    .qh-equation-label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      color: #6a6560;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    .qh-source-chapter {
+      border: 1px solid #e5e0ec;
+      background: #fdfcff;
+    }
+
+
+    .qh-source-chapter>h3 {
+      padding-bottom: 9px;
+      border-bottom: 1px solid #ddd5e8;
+    }
+
+    .qh-source-note {
+      color: #665f72;
+      font-size: .92em;
+    }
+
+    @media (max-width: 720px) {
+      .qh-full-lecture {
+        padding: 18px 15px;
+      }
+
+      .qh-board,
+      .qh-case,
+      .qh-task,
+      .qh-answer,
+      .qh-source-chapter {
+        padding: 14px 13px;
+      }
+    }
+
+    /* Supplement section styling */
+    .qh-supplement-divider {
+      margin: 36px 0 24px;
+      padding: 18px 22px;
+      border-left: 4px solid #5f4b8b;
+      background: #f6f4fa;
+    }
+
+    .qh-supplement-divider h2 {
+      margin: 0 0 5px;
+      font-size: 22px;
+    }
+
+    .qh-supplement-divider p {
+      margin: 0;
+    }
+
+    /* Tables in supplement */
+    .module table {
+      width: 100%;
+      margin: 16px 0;
+      border-collapse: collapse;
+      font-size: 15px;
+    }
+
+    .module table th,
+    .module table td {
+      padding: 10px 12px;
+      border: 1px solid #ddd;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .module table th {
+      background: #f4f4f4;
+      font-weight: 700;
+    }
+
+    /* Callout in supplement */
+    .module .callout {
+      margin: 16px 0;
+      padding: 12px 16px;
+      border-left: 4px solid #5f4b8b;
+      background: #f6f4fa;
+      font-size: 15px;
+    }
+
+    /* Lists in supplement */
+    .module ul,
+    .module ol {
+      margin: 12px 0;
+      padding-left: 24px;
+    }
+
+    .module li {
+      margin-bottom: 8px;
+      line-height: 1.6;
+      font-size: 15px;
+    }
+
+    /* Heading consistency — only direct h3 children, not inside .qh-section */
+    .module > h3 {
+      margin: 28px 0 14px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #ddd5e8;
+      font-size: 20px;
+    }
+
+    .module h4 {
+      margin: 20px 0 10px;
+      font-size: 17px;
+    }
+
+    .module p {
+      margin: 10px 0;
+      line-height: 1.7;
+    }
+  </style>
+
+<style id="qh-details-style">
+        details.dark-background {
+          background-color: #f5f5f5;
+          border: 1px solid #ddd;
+          padding: 10px;
+          border-radius: 5px;
+        }
+        details.dark-background summary {
+          cursor: pointer;
+          font-weight: bold;
+          background-color: #e0e0e0;
+          padding: 5px;
+          border-radius: 3px;
+        }
+      </style>
+
+</head>
+<body>
+
+    <header id="masthead" class="site-header">
+        <nav id="primary-navigation" class="site-navigation">
+            <div class="container">
+
+                <div class="navbar-header">                   
+                    <a href="../index_ch.html" class="site-title">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
+                </div><!-- /.navbar-header -->
+
+                <div class="collapse navbar-collapse" id="agency-navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="../index_ch.html">Home</a></li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">科普介紹<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                              <li><a href="../SCQ_elementary/main.html">超導量子位元(科普版)</a></li>
+                              <li><a href="../SCQ_advanced/main.html">超導量子位元(進階版)</a></li>
+                              <li><a href="../SpQ/main.html">半導體自旋量子位元</a></li>
+                            </ul>
+                        </li>
+                        <!--<li class="active"><a href="../SCQ_elementary/main.html">科普介紹</a></li>-->
+                        <li class="active"><a href="../QC_hardware/main.html">硬體導論</a></li>
+                        <li><a href="../QID/main.html">量子產業群像錄</a></li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">研討會筆記<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                <li><a href="../ASW2026/main.html">2026中研院超導量子電腦Workshop</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">量子諮詢<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                <li><a href="https://www.quantum-perspectives.com/About/main.html">量子遠見科技：諮詢服務</a></li>
+                                <li><a href="../About/main.html">關於我們</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="../index.html">English</a></li>                        
+                    </ul>
+                </div>
+
+            </div>   
+        </nav><!-- /.site-navigation -->
+    </header><!-- /#mastheaed -->
+
+    <div id="hero" class="hero overlay subpage-hero blog-hero">
+        <div class="hero-content">
+            <div class="hero_2-text">
+                <h1>超導量子電腦架構</h1>
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="../index_ch.html">Home</a></li>
+                  <li class="breadcrumb-item"><a href="../SCQ_advanced/main.html">PHYS598500</a></li>
+                  <!--<li class="breadcrumb-item active">約瑟夫森節</li>-->
+                </ol>
+            </div><!-- /.hero-text -->
+        </div><!-- /.hero-content -->
+    </div><!-- /.hero -->
+
+    <main id="main" class="site-main">
+
+        <section class="site-section subpage-site-section section-blog">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                        <article class="blog-post">
+                            <!--<img src="../assets/img/portfolio-1.jpg" class="img-res" alt="">-->
+                            <div class="post-content">
+
+<section id="week-11" class="course-theme">
+      <div style="text-align: center;">
+      <p class="theme-label">PHYS598500 · Week 11 · T5</p>
+      <h2>Dilution Refrigerator、熱化與低溫線路預算</h2>
+      <h3>Dilution Refrigeration, Thermalization, and Cryogenic Line Budgets</h3>
+    </div>
+  <section class="course-overview">
+    <h3>本週定位</h3>
+    <div class="qh-week-meta">
+      <p><strong>課程長度：</strong>120 分鐘</p>
+      <p><strong>核心問題：</strong>如何把室溫控制訊號送到 10 mK，而不把熱與雜訊一起送進去？</p>
+      <p><strong>難度：</strong>高／系統工程</p>
+      <p><strong>先備：</strong>thermal noise、microwave power、heat transfer basics</p>
+      <p><strong>原始教材來源：</strong>T5 modules 1, 2</p>
+    </div>
+    <h3>學習成果</h3><ul><li>理解 dilution refrigerator 各 temperature stage 的角色與 cooling-power hierarchy。</li><li>為 drive、flux、readout line 建立不同的 attenuation/filtering/thermalization 策略。</li><li>區分 static conduction、active dissipation、radiative load 與 noise-temperature requirement。</li></ul>
+    <h3>兩小時授課配置</h3><table class="qh-session-plan"><thead><tr><th>時間</th><th>形式</th><th>授課內容與當段產出</th></tr></thead><tbody><tr><td>0–10 分</td><td>定位／診斷</td><td><strong>如何送入訊號，而不把熱與雜訊一起送進 10 mK？</strong><br>以一個問題確認先備與本週接口。</td></tr><tr><td>10–35 分</td><td>概念主線 A</td><td><strong>Dilution refrigerator 各溫層能提供多少 cooling power？</strong><br>建立第一組物理概念、變數與工程語言。</td></tr><tr><td>35–60 分</td><td>推導／定量</td><td><strong>如何建立 conduction、dissipation、radiation 與 device heat budget？</strong><br>走完關鍵公式或定量關係，不停留在名詞介紹。</td></tr><tr class="qh-break"><td>60–70 分</td><td>休息</td><td><strong>Break</strong><br>保留兩小時課程的注意力恢復窗口。</td></tr><tr><td>70–95 分</td><td>概念主線 B</td><td><strong>Drive、flux 與 readout line 應如何 attenuation、filtering 與 thermalization？</strong><br>把物理結果接到元件、控制或系統架構。</td></tr><tr><td>95–110 分</td><td>案例／研討</td><td><strong>如何為三種線路畫出逐級 thermal/noise budget？</strong><br>學生留下可檢查的圖、表、推導或 architecture decision。</td></tr><tr><td>110–120 分</td><td>整合／驗收</td><td><strong>如何用 budget 決定元件位置，而不是背低溫零件名稱？</strong><br>用 exit question 檢查是否能跨層解釋。</td></tr></tbody></table><p class="qh-total">合計：120 分鐘</p>
+  </section>
+<!-- QH_FULL_LECTURE_START -->
+<section class="qh-full-lecture" id="full-T5-11">
+  <span class="qh-time">完整授課層 · 0–120 分鐘</span>
+    <div class="qh-section">
+    <h3>低溫全系統：每一條線都是 thermal path 與 noise path</h3>
+  </div>
+  <p><strong>本週驅動問題：</strong>mixing chamber 顯示 10 mK，不代表 qubit effective temperature 是 10 mK。從 black-body photons、conducted heat、attenuator thermalization 到 vibration，如何建立整機 heat/noise budget？</p>
+  <h3>0–10 分鐘：問題設定與先備診斷</h3>
+  <p>W10 告訴我們 surface code 要在 hardware cycle 內完成 syndrome extraction、decoding 與 feedback。那台 hardware 的 qubit 究竟在什麼環境裡運作？mixing chamber 顯示 10 mK，不代表 qubit effective temperature 是 10 mK。先要求學生不用查資料，以一張圖畫出本週主題從 abstract model 到真實硬體的訊息流。教師不立刻公布答案，而是收集學生把哪些層次畫成等號。全課結束時再重畫一次，用兩張圖的差異驗收是否真正建立跨層理解。</p>
+  <h3>10–35 分鐘：概念主線 A — Dilution refrigerator 各溫層能提供多少 cooling power？</h3>
+  <div class="qh-board">
+<h4>黑板主線：dilution refrigerator 各 stage 的角色（W11-C1）</h4>
+<p>modern dilution refrigerator 通常有六個溫度級。每一級的 cooling power 不同，熱負載必須逐級分配：</p>
+<table class=\"qh-session-plan\">
+<thead><tr><th>Stage</th><th>典型溫度</th><th>Cooling power</th><th>主要功能</th></tr></thead>
+<tbody>
+<tr><td>50 K plate</td><td>~50 K</td><td>~100 W</td><td>第一級熱攔截、pre-cooling</td></tr>
+<tr><td>4 K plate</td><td>~4 K</td><td>~1–5 W</td><td>HEMT、circulator、isolator 安裝</td></tr>
+<tr><td>Still (~0.7 K)</td><td>~700 mK</td><td>~100 mW</td><td>3He 蒸餾、low-frequency filter、thermal anchor</td></tr>
+<tr><td>Cold plate</td><td>~100 mK</td><td>~10 mW</td><td>IR filter、Eccosorb、attenuator</td></tr>
+<tr><td>Mixing chamber</td><td>~10 mK</td><td>~10–100 μW</td><td>量子晶片、final attenuator、circulator</td></tr>
+</tbody>
+</table>
+<p>50 K 與 4 K stage 由 pulse-tube cryocooler 提供冷卻；0.7 K 以下由 3He/4He 稀釋循環承載。MXC 的 cooling budget 只有 ~10–100 μW，這意味著每條線、每一個元件、每一處 thermal contact 都必須逐級計算。</p>
+<hr>
+<h4>黑板估算：熱佔據與衰減配置（W11-D1）</h4>
+<p>頻率 \(f\) 的 bosonic mode 在溫度 \(T\) 下平均 thermal occupation 為 \(\bar n=[\exp(hf/k_BT)-1]^{-1}\)。對 5 GHz，\(hf/k_B\approx240\) mK；理想 10 mK bath 的 \(\bar n\) 極小，但 room-temperature line 帶入的 photons 若未被逐級 attenuation 與 thermalization，仍可提高 qubit/resonator effective temperature。</p>
+<p>attenuator 不只是減少 signal，也把上游 noise 以所在 stage 的 thermal noise 取代。把所有 attenuation 放在 mixing chamber 會造成不可承受 heat load；放得太高溫則無法充分 thermalize。輸入鏈需在 50 K、4 K、still、cold plate、mixing chamber 分配 attenuation，並檢查導線 conduction、RF dissipation 與實際 anchor quality。</p>
+<h4>熱負載的定量拆解（W11-C4）</h4>
+<p>每一 stage 的 heat load 可以分為三類：</p>
+<ul>
+<li><strong>Static conduction</strong>：導線與 mechanical support 的 axial heat flow。coax outer conductor 是主要路徑。material choice（NbTi vs. stainless steel vs. Cu）決定 thermal conductivity 量級。</li>
+<li><strong>Active dissipation</strong>：attenuator 吸收的 RF power、HEMT bias current、pulse average power。attenuator 把 upstream noise thermalize 的同時，把 drive power 轉成 local heat。</li>
+<li><strong>Radiative load</strong>：black-body radiation 從高溫 stage 向低溫 stage 的 net photon flux。cold shield 與 IR filter 阻擋主要貢獻。</li>
+</ul>
+<div class="equation-card"><p>P_{\rm stage}=P_{\rm conduction}+P_{\rm dissipation}+P_{\rm radiation}+P_{\rm devices}</p></div>
+<p>只報總 watt 無法判斷是否超過最脆弱的低溫級。MXC 的 cooling budget 只有 ~10–100 μW，而每條 drive line 的 RF dissipation 就可能佔數 μW。</p>
+</div>
+  <h3>35–60 分鐘：推導/定量 — 如何建立 conduction、dissipation、radiation 與 device heat budget？（W11-C2）</h3>
+  <p>延續上面的定量框架，學生两人一組，把推導中的每個符號分成「設計可選參數、製程/裝置產生參數、必須校準參數、只能量測估計的狀態」四類。這一步迫使公式離開紙面，成為 architecture dependency。教師補充一個具體數字範例：假設 20 dB attenuator 在 still plate 吸收 10 nW drive power，這條線 alone 就佔 MXC budget 的 10%。</p>
+</section>
+
+<section class="qh-full-lecture">
+  <span class="qh-time">60–70 分鐘</span>
+  <h3>休息與黑板保留</h3>
+  <p>保留本週核心 system equation 與 dependency graph。休息後直接以既有教材展開，不重新講一次名詞表。</p>
+</section>
+
+<section class="qh-full-lecture">
+  <span class="qh-time">70–95 分鐘</span>
+    <div class="qh-section">
+    <h3>概念主線 B：Drive、flux 與 readout line 應如何 attenuation、filtering 與 thermalization？（W11-C3）</h3>
+  </div>
+  <p>下列內容不是附錄，而是本週第二段講授材料。授課時選擇與黑板模型直接相連的圖、表與段落逐一解讀；其餘留作課後複習。每一段都要追問「它改變了哪一個 Hamiltonian／control／measurement／system 參數」。</p>
+  <p>drive line 需要逐級 attenuation 把 upstream thermal noise 降到低於 qubit transition energy，同時把 attenuation 產生的 dissipation 分配到 still、cold plate 等 stage 的 cooling budget 內。flux line 以 low-frequency DC 為主，attenuation 需求較低但 thermal anchoring 仍然必要。readout output chain 在 4 K 有 HEMT amplifier（gain ~30 dB, noise ~2–5 K），需要 circulator/isolator 阻擋 amplifier noise 回流到 qubit。三條線路的不同要求正是 W11-C2 熱負載拆解的直接應用。</p>
+  <p>授課時以教材深挖 1–4 的圖、表與段落作為補充材料，不作為計時教學的主線。</p>
+</section>
+
+
+<section class="qh-full-lecture">
+  <span class="qh-time">95–110 分鐘</span>
+  <h3>案例/研討：如何為三種線路畫出逐級 thermal/noise budget？</h3>
+  <div class="qh-case">
+<h4>案例：加 100 條控制線不是線性地「多一點」（W11-CS1）</h4>
+<p>每條 coax 同時帶來 axial conduction、connector/attenuator 元件、裝配空間、grounding、RF leak 與 calibration channel。若每條線在某 stage 只增加極小 heat，乘上數百至數千條後就可能超過 cooling budget；更密集的佈線也改變 airflow、vibration、serviceability 與 failure probability。</p>
+<p>architecture review 應建立 per-line bill of thermal materials、stage-by-stage heat load、可接受 input noise、attenuation、filter、connector count 與維修策略。這也解釋為何 cryo-CMOS、multiplexing 與高密度 flex cable 是 system architecture 問題，不只是零件替換。</p>
+</div>
+  <div class="qh-task">
+    <h4>課堂任務（8–10 分鐘）</h4>
+    <p>為 drive、flux、readout output 各畫一條完整低溫鏈，逐級標 attenuation/gain、材料、熱錨與主要 failure mode。再提出一個方法驗證 qubit effective temperature，而不是相信溫度計。</p>
+  </div>
+  <div class="qh-answer">
+    <h4>教師解答與評分依據</h4>
+    <p>可由 room-temperature source 經逐級 attenuation/filter/thermal anchor 到 chip；每級需平衡上游 black-body suppression 與低溫 dissipation。qubit effective temperature 可由 \(\ket{0}/\ket{1}\) population、sideband asymmetry或 calibrated transition ratio估計，並與 resonator photon population交叉檢查。</p>
+    <p>答案不以是否使用特定名詞評分，而以是否建立「假設 → 可觀測量 → 區分實驗 → 決策」的閉環評分。學生若提出不同方案，只要能明確指出代價與可否證條件，即可成立。</p>
+  </div>
+</section>
+
+<section class="qh-full-lecture">
+  <span class="qh-time">110–120 分鐘</span>
+  <h3>整合/驗收：如何用 budget 決定元件位置，而不是背低溫零件名稱？</h3>
+  <div class="qh-board">
+<h4>Vacuum、magnetic shielding 與 auxiliary systems（W11-C5）</h4>
+<p>dilution refrigerator 不只是冷卻鏈 — 這些 auxiliary systems 直接決定 qubit coherence 的上限。</p>
+<p><strong>UHV 真空系統</strong>：dilution refrigerator outer vacuum chamber 必須維持 ~10<sup>-10</sup> Torr。這不只是熱隔離：殘餘氣體分子在 10 mK 表面會 condense 成絕緣層，改變 thermal boundary conductance。typical system 用 rotary vane pump 做 fore vacuum，turbo molecular pump 到 ~10<sup>-7</sup> Torr，再配合 ion pump 或 NEG pump 維持 UHV。 bake-out 到 150–200°C 去除 surface adsorption 是必要的，但 bake 溫度受 cryocooler 與 O-ring 限制。</p>
+<p><strong>磁屏蔽</strong>：ambient magnetic field 包括地磁場（~50 μT）和實驗室設備場。mu-metal shield 在 room temperature 提供 ~10<sup>3</sup> shielding factor，但低溫下 permeability 下降。solution 是 multi-layer：outer mu-metal + inner superconducting Pb shield（Meissner effect 在 T &lt; 7.2 K 完全排除 field）。對於 flux qubit 或 flux-tunable transmon，residual field 決定 sweet spot drift rate。typical target 是把 MXC 區域 field 壓到 &lt;1 nT。</p>
+<p><strong>輻射屏蔽</strong>：cold shield 在 50 K、4 K、still 階段阻擋 black-body photon 直接到達 MXC。IR filter 和 Eccosorb bead 吸收殘餘 high-frequency photons。stray light 從 temperature sensor wire 或 view port 進入也是已知的 qubit excitation source，需要 optical filter。</p>
+<p><strong>vibration isolation</strong>：pulse-tube cryocooler 的 mechanical motion 在 50–100 Hz 產生 vibration，透過 mechanical support 和 thermal strap 傳到 MXC。vibration 直接耦合到 qubit 的 flux 和 position，造成 dephasing。isolation 方案包括：spring mount 懸掛 still plate 以下、wire braid 代替 rigid strap、vibration damper 在 cold head 與 still 之間。</p>
+<p>這些 system 與 W11-C1 的 cooling-power hierarchy 直接相連：vacuum leak 增加 gas conduction load、shield thermal contact 不當增加 parasitic heat path、vibration 增加 effective noise temperature。budget 分析必須包含 auxiliary system 的 contribution。</p>
+</div>
+  <h4>Exit ticket</h4>
+  <ol>
+    <li>本週最重要的一條 equation／model 是什麼？它的適用近似為何？</li>
+    <li>哪一個看似局部的參數，實際會跨越 device、control 與 system 三層？</li>
+    <li>若只能做一個新實驗，什麼結果最能改變目前的 architecture decision？</li>
+  </ol>
+</section>
+<!-- QH_FULL_LECTURE_END --><section class="qh-source-chapter">
+  <h3>教材深挖 1：稀釋製冷機</h3>
+  <p class="qh-source-note">整合自既有 Insight iHBAR 教材：QC_hardware/F.html</p>
+  <p class="qh-source-plain">極低溫需求與理由 超導量子計算機必須在接近絕對零度的極低溫環境下運行,通常要求量子處理器的工作溫度維持在 10 到20 mK範圍內。如此嚴苛的溫度要求源於以下幾個關鍵原因: 實現超導特性: 量子位元所依賴的超導電路(如鋁、鈮)只有在遠低於其臨界溫度時才能表現出零電阻的超導特性。 維持量子態能隙: 量子位元的\( \ket{0} \)和 \( \ket{1} \) 態之間存在一個特定的能量差(能隙)。在較高溫度下，環境中的熱能(kBT)可能會超過這個能隙,導致量子位元在沒有外部控制的情況下隨機地在兩個狀態之間躍遷,從而引入計算錯誤。極低的溫度確保了熱能遠小於能隙,維持了量子態的穩定性。 延長相干時間: 溫度是影響量子位元相干時間的主要因素之一。熱雜訊會引起量子態的隨機漲落和能量弛豫,導致量子疊加和糾纏態的衰減(去相干)。溫度越低、熱雜訊越小、量子位元能夠保持其量子特性的時間(相干時間)就越長，從而允許執行更複雜、更長時間的量子計算。 降低熱雜訊和振動: 量子位元對環境的微小擾動非常敏感。低溫可以極大地抑制材料內部的熱運動以及來自外部環境的熱傳導和熱輻射雜訊。同時，低溫系統的設計也需要考慮減少機械振動對量子位元的影響。 提高操作精度: 量子計算依賴於對量子位元狀態的精確操控(通過微波脈衝)和測量。溫度的穩定性對於確保這些操作的準確性和可重複性至關重要。任何溫度波動都可能導致控制參數的漂移和測量結果的不確定性。 實現超高真空: 低溫表面具有強大的吸附能力(低溫沉降)，有助於在量子晶片周圍維持超高真空環境,進一步減少殘餘氣體分子對量子位元的碰撞和干擾。 簡化控制電子設備的隔離: 將某些控制或讀取電子元件(如低雜訊放大器)放置在低溫環境中，可以利用低溫降低這些元件自身的雜訊，並更容易實現與量子晶片的電磁隔離。 極低溫是克服環境雜訊、維持量子態穩定性、實現高保真度量子操作和測量的物理基礎，是超導量子計算不可或缺的條件。 稀釋製冷機的構造 簡單介紹一下濕式與乾式稀釋製冷機。 濕式 乾式 濕式是將整個低溫段浸泡在液氦4He的4K環境中。在拆裝儀器的過程會有液氦遺失，是開放循環。 乾式是將4K的冷卻部分採用閉循環，利用熱交換的方式將低溫段冷卻至4K，可以大幅減少液氦漏失。 Table Ref: Cao, H. (2021). Refrigeration Below 1 Kelvin. Journal of Low Temperature Physics. doi:10.1007/s10909-021-02606-7 現代稀釋製冷機多採用乾式(Dry / Cryogen-free)設計。 它們使用機械式製冷機，通常是脈衝管製冷機(Pulse Tube Cryocooler, PTC)，來替代Helium Bath以及1K Pot 提供預冷。 PTC 可以將系統冷卻到約4K，為稀釋製冷循環提供必要的冷卻平台。乾式系統的主要優點是無需消耗昂貴且難以處理的液氦，操作更為自動化和便捷。 然而，PTC的機械運動可能會引入振動，需要採取額外的減振措施來保護敏感的量子實驗。 多層熱控制：稀釋製冷機的冷板層級 為了移除熱量並對抗熱洩漏，稀釋製冷機內部採用了多個溫度逐級下降的平台（冷卻均溫板）。 稀釋製冷機 (Dilution Refrigerator) 區段 60K板 60K Plate 溫度約60K~100K。 4K板 4K Plate 溫度約4K。 此區連接第一級冷卻，安裝 HEMT 放大器、熱沉濾波器等元件。 1K 預冷罐(濕式才有) 1K Pot 在傳統的濕式稀釋製冷機中，使用一個通過減壓抽空的液4He 儲罐將循環的3He 預冷至約1K。 Still板（蒸餾器） Still Plate 溫度約800 mK。稀釋冷卻循環中的「Still」位置，進一步降低熱量傳導，可安裝低頻濾波器或電源線熱沉。 位於混合室上方，3He 相對於4He (此溫度下為超流體，幾乎無蒸氣壓)高得多的蒸氣壓，通過加熱將混合液中的3He蒸發出來，實現3He的提取和循環。 熱交換器 Heat Exchanger 在3He 返回混合室的途中，利用從Still 流出的冷 3He 氣體來預冷流入的較熱的3He液體，提高製冷效率。 冷板 Cold Plate 溫度約100 mK。 進入量子操作區前的緩衝層，常安裝循環器、熱沉的中介點。 MXC板 (混合腔板) MXC Plate (Mixing Chamber) 溫度約10–20 mK，發生相分離、3He 跨相界溶解致冷的核心區域。 最冷的一層，安裝量子位元晶片、TWPA、隔離器等關鍵元件，是核心操作與熱沉層。 稀釋製冷的物理原理 稀釋製冷機的工作原理基於氦的兩種穩定同位素——氦-3 (3He)和氦-4 (4He)混合物在極低溫下的獨特物理性質。 簡單的蒸發致冷，即通過抽取液體表面的蒸氣來降低溫度，存在其物理極限。即使對於沸點極低的液氦4He，通過減壓蒸發最低也只能達到約1.2K的溫度，因為隨著溫度降低，飽和蒸氣壓急劇下降，蒸發效率隨之降低。 稀釋製冷技術則利用了 3He 和 4He 混合物在溫度低於約0.87K時會發生相分離的現象。由於量子統計效應和相互作用力的差異，混合物會分成富含 3He 的濃相(Concentrated Phase)和富含 4He 的稀相 (Dilute Phase)。在極低溫下(接近0K)，濃相幾乎是純的 3He，而稀相中仍會溶解約6.4%的3He。由於密度差異，3He 濃相會浮在4He 稀相之上。 稀釋製冷的關鍵在於從位於混合室(Mixing Chamber)底部的稀相中選擇性地「抽取」3He原子。其本質在於：3He 和 4He 的蒸氣壓、統計性質與設備設計差異，自然實現了「選擇性抽取」的效果。 1. 蒸氣壓差異 4He在此溫度下蒸氣壓趨近零，幾乎不會揮發。 3He在 0.3 K 附近仍具有顯著非零蒸氣壓，會以氣體形式蒸發，可被抽氣泵移除。 因此，在 Still 區用真空泵抽氣時，實際只會抽走 3He。 2. 熱力學與統計性質差異 4He 是玻色子 → 在低溫下呈現超流體，不易逸出氣相。 3He 是費米子 → 即使與 4He 混合，在稀相中仍會「冒泡」揮發。 Ref: https://emp.kip.uni-heidelberg.de/cryotools/doku.php?id=wiki:design_construction Ref: https://commons.wikimedia.org/wiki/File:3He_4He_saturated_vapor_pressure.gif Ref: https://arxiv.org/pdf/0806.0049 稀釋製冷系統中的循環流程如下： 3He 被抽出 → 壓縮 → 預冷 → 回到混合室 4He 留在系統中，不參與循環 當稀相中的3He 被移除時，為了維持6.4%的平衡濃度，濃相中的3He原子會自發地「溶解」或「蒸發」進入稀相。這個3He 從濃相跨越相界面進入稀相的過程是一個吸熱過程(類似於液體蒸發吸熱)，從而對混合室進行冷卻。為了實現連續製冷，被抽走的3He 氣體需要在外部循環系統中經過純化、壓縮、冷凝和預冷，然後重新注入混合室。這些設計與性質的組合，使得只抽走 3He 成為可能，也讓冷卻過程不斷持續。 總結：3He 有非零蒸氣壓、較易揮發、能被泵抽出；4He 無蒸氣壓、形成超流體、不參與氣相循環。 3He與4He的量子物理差異 雖然 3He 和 4He 都能進入超流體相，但其統計性質與超流機制截然不同： 特性 4He 3He 同位素性質 玻色子（整數自旋） 費米子（半整數自旋） 統計性質 Bose-Einstein 統計 Fermi-Dirac 統計 超流溫度 約 2.17 K（λ點） 約 2.5 mK ～ 1 mK 超流機制 玻色愛因斯坦凝聚態BEC（粒子直接凝聚） 形成 Cooper 對（類似 BCS 超導） 量子相 單一 He II 相 A 相、B 相、A₁ 相 能隙 無（聲子與旋波） 有（破壞Cooper 對需能量） 3He 超流體 4He 超流體 (3He) https://fy.chalmers.se/~delsing/LowTemp/LectureHe3/Helium-3.pdf (4He) DOI:10.1088/1361-6633/ab3df5 規格 評估稀釋製冷機性能的關鍵規格包括: 基礎溫度: 系統在無外部熱負載時能達到的最低溫度。通常要求低於10mK，高性能系統可達5-8 mK。 冷卻功率: 在特定溫度點(通常是混合室的溫度，如20mK或100 mK)能夠帶走的最大熱量。這是衡量製冷機承載量子晶片、線纜和低溫電子元件散熱能力的關鍵指標。隨著量子位元數量的增加，所需的冷卻功率也隨之增加。 冷卻時間: 從室溫冷卻到基礎溫度所需的時間。對於空載系統，通常在 12-24 小時左右，但實際加載樣品和線纜後會更長。快速冷卻對於提高實驗效率很重要。 可擴展性：隨著QPU中量子位元數量的增加，所需的總冷卻功率也隨之增大。現有製冷機的冷卻能力對未來百萬級量子位元的系統可能構成瓶頸。 熱負載管理：連接QPU的控制和讀出線纜會將熱量從室溫端傳導至低溫端，必須有效管理這些熱負載，即使微瓦級的熱量也可能使系統不穩定。 實驗空間: 通常由混合室法蘭(MXC Flange) 的直徑和各級冷板之間的可用高度決定，需要足夠容納量子處理器封裝、樣品架、屏蔽層和其他低溫元件。 尺寸、成本與功耗：目前的稀釋製冷機體積龐大、價格昂貴且耗電量大，限制了量子電腦的部署和可及性。 振動水平: 對於乾式系統，脈衝管製冷機引入的振動需要被有效抑制，以避免干擾量子位元。製造商通常會提供振動數據或採用減振設計。 維護週期: 乾式系統的脈衝管冷頭和氦氣壓縮機需要定期維護。 與控制電子的整合：將部分控制電子元件集成到低溫環境中（如 Cryo-CMOS 技術）是減少延遲和佈線複雜性的趨勢，但也帶來新的散熱與機構整合挑戰。 材料在極低溫下的特性：設計和維護低溫系統需考慮材料在極低溫下的熱導率與機械性能。 低溫系統的發展趨勢是追求更高的冷卻效率、更緊湊的設計、更低的成本以及與QPU和其他子系統更緊密的集成。 緊湊型稀釋製冷機和低溫光子學等創新正在解決這些挑戰。 供應商 稀釋製冷機技術的發展與量子計算的需求緊密相連。一個趨勢是乾式(無液氦)稀釋製冷機已成為市場主導。 傳統的濕式系統需要持續供應液氮和液氦進行預冷，這不僅運行成本高昂，而且在操作和物流上也帶來諸多不便。脈衝管製冷機技術的成熟使得乾式系統成為可能。幾乎所有主要的稀釋製冷機供應商，如Bluefors、Oxford Instruments、ULVAC 和 Maybell Quantum，都將乾式系統作為其主力產品。 乾式系統大幅減少對日益稀缺的氦資源的消耗，從而提高了量子計算研究的可及性。 儘管乾式系統需要仔細處理脈衝管帶來的振動問題，但其總體優勢使其成為當前和未來量子計算實驗室的標準配置。 另一個重要趨勢是，隨著量子位元數量的增加，對稀釋製冷機冷卻功率的需求也在不斷增長。 量子計算機的規模擴展，即增加量子位元的數量以提升計算能力，是該領域的主要目標之一。 然而，每個量子位元都需要至少幾條控制和讀取線纜從室溫連接到 mK溫區。 這些線纜不可避免地會將熱量從高溫級傳導至低溫級，形成熱負載。此外，安裝在低溫級的低雜訊放大器、濾波器、衰減器等元件也會產生熱量。 當量子位元數量從幾十個擴展到數百甚至數千個時，總熱負載會顯著增加。 這就要求稀釋製冷機，特別是在最低的混合室溫級(mK級)以及中間的4K和100 mK 溫級，必須提供足夠強大的冷卻功率來抵消這些熱量，維持量子晶片的穩定工作溫度。 因此，製造商正致力於開發具有更大冷卻功率的系統(如Bluefors 的XLD 和KIDE 系列)和提高現有系統的製冷效率，以支持更大規模量子處理器的運行。 供應商 國家 主要產品/服務 關鍵特點/技術 Bluefors 芬蘭 提供多種型號的乾式稀釋製冷機系統，其產品線包括適用於不同規模實驗需求的SD(小型快速冷卻)、LD(標準)、XLD(大型實驗空間) 和KIDE (超大型，支持&gt;1000量子位元) 系列。亦提供集成的低溫測量基礎設施，包括線纜、電子元件和樣品架。 市場領導者，其可靠性、易用性和廣泛的配置選項而聞名。 Oxford Instruments NanoSci. 英國 提供包括 Proteox 和 Kelvinox 系列在內的乾式和濕式稀釋製冷機。Proteox 系列是其現代化的乾式系統平台，具有模組化設計，可根據需求配置實驗空間和測量接口。他們也強調達到極低的基礎溫度(例如Proteox 5mK 型號) 乾式/濕式系統，模組化設計，可達極低溫 Maybell Quantum 美國 專注於開發更緊湊、更易於集成和擴展的稀釋製冷機解決方案，如其"Fridge"和"Big Fridge"產品，旨在以更小的佔地面積提供相當的量子位元容量。他們也提供創新的低熱負載柔性線纜(Flexlines)。 緊湊設計，高密度，集成線纜方案</p>
+</section><section class="qh-source-chapter">
+  <h3>教材深挖 2：熱管理與熱錨定</h3>
+  <p class="qh-source-note">整合自既有 Insight iHBAR 教材：QC_hardware/M.html</p>
+  <p class="qh-source-plain">在探索量子世界與超導現象的實驗中，稀釋製冷機將系統冷卻至低於20mK的極端低溫。然而，要讓整個系統達到所需溫度並穩定運作，熱管理是不可或缺的工程挑戰。 任何微小的能量擾動（也就是熱量）都可能讓量子位元退相干，會摧毀寶貴的量子資訊，讓量子計算錯誤率升高。 這些多餘的熱量會從四面八方滲透進來，我們稱之為「熱洩漏」(Heat Leak)。 其中一個主要的洩漏途徑，就是用來控制和讀取量子位元的訊號線纜。 這些線纜上的熱量傳遞如果不加以管理，將導致： 高溫階段的熱量持續導入低溫區域，增加冷端負載。 射頻線路上的熱雜訊上升，干擾量子比特的讀寫。 系統整體冷卻效率降低，甚至無法穩定運作。 稀釋製冷機每一層冷卻板都是一個熱量攔截網。目標就是在熱量抵達最核心的 MXC 板之前，在每一層冷卻板就把它攔截並吸收。 粗略的說，每一級冷卻版負責將溫度降低一個數量級。有了冷卻區段，接著就要將訊號線路的熱吸收， 這就引出了重要技術——熱錨定 (Thermal Anchoring)、或稱為熱沉 (Heat Sinking)、熱化(Thermalisation)。 什麼是熱錨定（Thermal Anchoring）？ 熱錨定是一整個系統的設計策略，將會漏熱的物件（如同軸電纜的外層或波導外壁、結構支架）在不同區段的冷卻板上固定並有效散熱，使其溫度與所在區段一致。 目的是防止熱量從高溫區域沿著結構或線路漏到低溫區域，造成冷端過熱或噪音升高。 在實際操作中，「熱錨定」就是將訊號線纜（特別是負責導熱的外導體）在每一個冷板上都固定好。 通常會用一個導熱性極佳的高純度銅塊將線纜夾緊，再將這個銅塊鎖在冷板上。 有時還會使用熱導帶 (Thermal Strap)這種柔軟的熱導體來連接不方便直接固定的元件。 無氧銅(OFHC Cu)、紅銅合金(ETP Cu)與兩種鋁合金在不同溫度下的熱導率。 無氧銅熱導帶 Table Ref: Technology Applications, Inc. https://www.techapps.com/copper-foil-straps 在實務中，這通常包含以下組件與做法： 使用 低熱導率、低熱膨脹係數的電纜（例如 NbTi 電纜）。 在每個溫度平台（如 60K、4K、Still、Mixing Chamber）上安裝 熱錨座（Heat Sink Block）。 透過 高導熱銅箔、編織帶或金屬夾具 將外導體與冷頭良好連接。 搭配 熱膏或低溫相容焊料增強接觸熱傳導效率。 共軸纜線的外導體熱沉(Thermalisation of outer conductor) Ref: https://www.electricalengineeringtoolbox.com/2016/12/basics-of-coaxial-cables-used-in.html ▲RF射頻/微波共軸線的構造，纜線的外導體也是傳熱的路徑，「外導體熱沉」即是將共軸纜線熱錨定在冷卻板上，逐級攔截熱傳導。 Ref: Cryogenic Technology in the Microwave Engineering: Application to MIC and MMIC Very Low Noise Amplifier Design https://www.tesisenred.net/bitstream/handle/10803/10674/2de9.JLCDcap.2.pdf?sequence=3&amp;isAllowed=y ▲共軸纜線藉由熱導帶熱錨定在板上的範例設計。 Ref: Hust, J. G. (1970). Thermal Anchoring of Wires in Cryogenic Apparatus. Review of Scientific Instruments, 41(5), 622–624. doi:10.1063/1.1684599 Ref: Cryogenic Technology in the Microwave Engineering: Application to MIC and MMIC Very Low Noise Amplifier Design https://www.tesisenred.net/bitstream/handle/10803/10674/2de9.JLCDcap.2.pdf?sequence=3&amp;isAllowed=y ▲熱錨定的熱傳物理建模。\(T_1\)是熱端，\(T_3\)是通過冷卻板(或Heat Sink，溫度\(T_S\))後達到的溫度，目標溫度差\(T_3-T_S\)。使用特殊合金： 採用像不銹鋼 (Stainless Steel) 或銅鎳合金 (CuNi) 這樣導電性和導熱性都「比較差」的材料來製作線纜的部分結構。 利用超導體： 在最冷的溫區，使用像鈮鈦 (NbTi) 這樣的超導材料。當溫度低於其臨界溫度時，它變為超導體，電阻為零，訊號傳輸幾乎沒有損耗；同時，它在超導態下的熱導率也急劇下降，成為了近乎完美的訊號通道、熱量壁壘。 低溫實驗中的熱管理是一門精密的「熱量疏導工程」。 而熱錨定就是這項工程中的核心。它並非單指某個零件，而是一套系統性的設計，確保熱量都被精確地攔截和管理。</p>
+</section><section class="qh-source-chapter">
+  <h3>教材深挖 3：熱沉解決方案</h3>
+  <p class="qh-source-note">整合自既有 Insight iHBAR 教材：QC_hardware/M2.html</p>
+  <p  class="dark-background">
+                                    在低溫學中，熱沉是一個系統級的設計挑戰，通常並非單一標準組件。
+                                    RF射頻/微波訊號（如同軸電纜或波導）引入低溫環境時會攜帶熱量。
+                                    如果同軸電纜的外導體在每個溫階沒有得到良好熱沉，它就會成為一個熱捷徑，將熱量傳導至系統最冷的部分，從而降低性能並增加低溫負載。
+                                    熱沉設計目標為確保低溫系統中（尤其是稀釋製冷機內）線路的外導體能有效地在各個低溫階段冷卻（熱錨定）至該階段的溫度。
+                                    實現有效的熱沉通常需要結合使用特製的低溫相容電纜、連接器、熱連接/熱導帶以及可能的散熱器。
+                                </p>
+                                
+                                <p  class="dark-background">
+                                    熱沉組件可以分為：                                
+                                </p>
+                                <ul>
+                                    <li><p><b>外掛式</b>：由外掛的方式組合到線纜上，如熱導帶。熱導帶對於將組件（包括射頻電纜外導體和連接器）的熱量傳導至低溫恆溫器內的冷板至關重要。
+                                        熱導帶一端連接製冷機的冷卻均溫板，另一端夾住線纜。</p></li>
+                                    <li><p><b>整合式</b>：線纜/接頭自備熱錨功能。一個明顯的趨勢是，專業供應商越來越多地將熱管理功能直接集成到低溫電纜和連接器系統中。
+                                        這簡化了系統組裝並確保了有效的熱錨定。
+                                        隨著量子位元數量的增加和量子實驗的複雜化，需要更多的射頻線路，這使得有效熱沉在管理稀釋製冷機熱負載方面的重要性日益增加。</p></li>
+                                </ul>
+                                <br><br>
+                                <h3>
+                                    廠商範例
+                                </h3>
+                                
+                                <p  class="dark-background">
+                                    在前面章節中介紹的線路連接器廠商(按此連結)多半都已朝向推出整合熱錨功能的纜線（熱化連接器 Thermalized connector）。
+                                </p>
+                                
+                                
+                                <table width="100%" border="1" cellpadding="10" cellspacing="0" style="border-collapse: collapse; font-family: sans-serif; border-color: #cccccc;">
+
+                                    
+                                    <thead>
+                                        <tr bgcolor="#e9ecef">
+                                            <th width="18%" style="text-align: center; vertical-align: middle;">公司名稱<br>(點按連結)</th>
+                                            <th width="12%" style="text-align: center; vertical-align: middle;">國家/地區</th>
+                                            <th width="20%" style="text-align: center; vertical-align: middle;">主要組件焦點</th>
+                                            <th width="25%" style="text-align: center; vertical-align: middle;">關鍵技術/創新</th>
+                                            <th style="text-align: center; vertical-align: middle;">備註</th>
+                                        </tr>
+                                    </thead>
+                                
+                                    <tbody>
+                                        <tr valign="middle">
+                                            <td align="center"><strong>Technology Applications, Inc.</strong></td>
+                                            <td align="center">美國</td>
+                                            <td>低溫熱導帶 (Thermal Straps)</td>
+                                            <td>CuTS<sup>®</sup> 銅熱導帶, 石墨熱導帶</td>
+                                            <td>全球知名的低溫熱導帶供應商</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <br><br><br>
+                                <table width="100%" border="1" cellpadding="10" cellspacing="0" style="border-collapse: collapse; font-family: sans-serif; border-color: #cccccc;">
+                                    
+                                    <thead>
+                                        <tr bgcolor="#e9ecef">
+                                            <th width="30%" style="text-align: center; vertical-align: middle;">新創公司與產品範例</th>
+                                            <th style="text-align: center; vertical-align: middle;">產品圖例<br>(圖片皆取自官網)</th>
+                                        </tr>
+                                    </thead>
+                                
+                                    <tbody>
+                                        
+                                        <tr valign="middle">
+
+                                            <td align="center"><strong>Technology Applications, Inc.</strong>
+                                                    <br><br>
+                                                Thermal Straps
+                                            </td>
+                                              
+                                            <td align="left"><div style="text-align: center;">
+                                                
+                                                <a href="../Image/CuTS--8533ce21.png"><img loading="lazy" src="../WebP/CuTS--8533ce21.webp" alt="金屬電纜接頭與連接器組件圖示。" style="width: 100%; height: auto;"></a>
+                                                
+                                            </div></td>
+                                        </tr>
+                                        <tr valign="middle">
+                                            <td align="center"><strong>Quantum Microwave</strong><br>Thermalized Connector Array</td>
+                                            <td align="left">
+                                                <div style="text-align: center;">
+                                                    
+                                                        <a href="../Image/QMC-CRYOBRKT--8948c23b.png"><img loading="lazy" src="../WebP/QMC-CRYOBRKT--8948c23b.webp" alt="金色電子元件組合展示圖。" style="width: 100%; height: auto;"></a>
+                                                    
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        
+                                    </tbody>
+                                
+                                </table>
+
+
+
+                                
+                                <br><br>
+                                <div style="text-align: center;">
+                                    
+                                        <a href="../Image/Thermal Straps__A5-501 AlTS and F5-501 CuFS--e6673d2b.webp"><img loading="lazy" src="../WebP/Thermal Straps__A5-501 AlTS and F5-501 CuFS--e6673d2b.webp" alt="兩個不同材料的零件包裝。" style="width: 100%; height: auto;"></a>
+                                    
+                                </div>
+                                <p >
+                                    ▲ Technology Applications, Inc.提供不同材質的熱導帶，1100 鋁的密度大約只有銅的三分之一，熱導率則約為銅的一半，因此在本質上，鋁帶相較於銅帶最多可具有三分之一的質量優勢。可以根據熱錨功率需求和重量之間作權衡。
+                                    <br><span style="font-size: 0.7em; line-height: 0.8;">
+                                        Ref: Technology Applications, Inc.
+                                    </span><br><br>
+                                </p>
+</section><section class="qh-source-chapter">
+  <h3>教材深挖 4：輔助系統與零部件</h3>
+  <p class="qh-source-note">整合自既有 Insight iHBAR 教材：QC_hardware/J.html</p>
+  <header class="major">
+                                                                        <div class="qh-section">
+                                      <h3><li>解說</li></h3>
+                                    </div>
+                                  </header>
+                                
+                                                                    <div class="qh-section">
+                                    <h3>IV. 輔助系統與零部件</h3>
+                                  </div>
+                      
+                                  <p  class="dark-background">除了核心的量子處理器、低溫系統和控制電子設備外,一個完整的超導量子計算機還需要一系列輔助系統來確保其正常運行、保護其免受環境干擾,並進行必要的測量和數據處理。</p>
+                      
+                                  <h3>A. 真空系統(Vacuum Systems)</h3>
+                      
+                                  <ul>
+                                      <li><strong>需求:</strong> 超導量子計算機的低溫部分(稀釋製冷機內部)必須維持在超高真空(Ultra-High Vacuum, UHV)環境下。主要目的是為了熱隔離,防止殘餘氣體分子通過傳導和對流將熱量從較暖的部件傳遞到極冷的量子晶片區域。同時,UHV 環境也能最大限度地減少氣體分子與量子位元發生碰撞的可能性,這種碰撞會導致量子態的去相干。典型的壓力要求在 10<sup>-10</sup>至10<sup>-11</sup> Torr(約10<sup>-8</sup>至10<sup>-9</sup> Pa)或更低<sup>80</sup>。</li>
+                                      <li><strong>關鍵部件:</strong> 實現和維持 UHV 需要一套複雜的真空系統,主要包括:
+                                          <ul>
+                                              <li><strong>真空腔體(Vacuum Chamber):</strong> 通常是稀釋製冷機的外殼(Outer Vacuum Chamber, OVC)以及內部的真空空間。需要使用低釋氣率(Low Outgassing Rate)的材料製造,如不銹鋼,並經過適當的清潔和烘烤處理<sup>80</sup>。</li>
+                                              <li><strong>真空幫浦(Vacuum Pumps):</strong> 需要組合使用不同類型的真空幫浦來覆蓋從大氣壓到 UHV 的寬廣壓力範圍。
+                                                  <ul>
+                                                      <li><strong>初級幫浦/前級幫浦(Fore Pumps / Backing Pumps):</strong> 用於將系統從大氣壓抽到中真空範圍(約10<sup>-3</sup> Torr),並作為高真空幫浦(如渦輪分子幫浦)的前級。常見的有:
+                                                          <ul>
+                                                              <li><strong>油封旋片幫浦(Oil-sealed Rotary Vane Pumps):</strong> 傳統的機械幫浦,成本較低,但可能引入油蒸氣污染。代表型號有Leybold 的TRIVAC B/T, SOGEVAC, NEO D系列<sup>11</sup>,Edwards 的E2M 系列<sup>83</sup>。</li>
+                                                              <li><strong>乾式幫浦(Dry Pumps):</strong> 無油設計,避免了油污染,更適用於潔淨環境。包括渦卷幫浦(Scroll Pumps,如Edwards nXDS<sup>83</sup>, Agilent SH110<sup>83</sup>)、隔膜幫浦(Diaphragm Pumps,如Leybold DIVAC<sup>11</sup>)、多級羅茨幫浦(Multi-stage Roots Pumps,如Leybold ECODRY plus<sup>11</sup>)等。 </li>
+                                                          </ul>
+                                                      </li>
+                                                      <li><strong>高/超高真空幫浦(High/ Ultra-High Vacuum Pumps):</strong> 用於將壓力從中真空進一步降低到高真空(HV)或超高真空(UHV)範圍。
+                                                          <ul>
+                                                              <li><strong>渦輪分子幫浦 (Turbomolecular Pumps, TMP):</strong> 利用高速旋轉的葉片將氣體分子向下傳輸,需要前級幫浦支持。適用於HV 和部分 UHV 應用<sup>11</sup>。</li>
+                                                              <li><strong>離子幫浦(Ion Pumps / Sputter Ion Pumps, SIP):</strong> 利用電場和磁場將氣體分子電離,並將離子吸附或埋藏在鈦陰極表面,無需前級幫浦即可獨立工作在 UHV範圍,無振動。代表產品如 Gamma Vacuum 的 TiTan 系列<sup>11</sup>。</li>
+                                                              <li><strong>非蒸散型吸氣幫浦 (Non-Evaporable Getter, NEG Pumps):</strong> 利用特殊合金(如 Zr-V-Fe)在激活後對活性氣體(尤其是H<sub>2</sub>)的高效化學吸附作用來抽氣。它們具有極高的抽速、無振動、無磁場(或極低磁場)、潔淨、緊湊輕便等優點,非常適合對環境要求苛刻的量子實驗<sup>80</sup>。代表產品如 SAES Getters 的NEXTorr 和 CapaciTorr 系列<sup>80</sup>。NEG 泵通常需要與離子泵(用於抽取惰性氣體)或渦輪分子泵組合使用。</li>
+                                                              <li><strong>鈦昇華幫浦 (Titanium Sublimation Pumps, TSP):</strong> 通過加熱鈦絲使其昇華,沉積在冷表面上的鈦膜可以吸附活性氣體,通常作為輔助泵與離子泵聯用以提高抽速<sup>11</sup>。</li>
+                                                              <li><strong>低溫幫浦(Cryopumps):</strong> 利用極低溫表面(通常由閉循環製冷機冷卻)來冷凝或吸附氣體分子,對水蒸氣等具有極高抽速<sup>11</sup>。</li>
+                                                          </ul>
+                                                      </li>
+                                                  </ul>
+                                              </li>
+                                              <li><strong>真空計(Vacuum Gauges):</strong> 用於測量不同壓力範圍的真空度,如皮拉尼計(Pirani gauge)、冷陰極計 (Cold Cathode gauge)、熱陰極電離計(Hot Cathode Ionization gauge)等。</li>
+                                              <li><strong>真空閥門和法蘭 (Vacuum Valves and Flanges):</strong> 用於連接真空部件、隔離腔室以及引入樣品或儀器。需要使用高質量的UHV 兼容閥門(如VAT<sup>38</sup>) 和法蘭(如CF法蘭)。</li>
+                                          </ul>
+                                      </li>
+                                      <li><strong>供應商:</strong> 真空技術是一個成熟的產業,主要供應商包括 Leybold<sup>11</sup>, Edwards Vacuum<sup>30</sup>, Pfeiffer Vacuum<sup>38</sup>, SAES Getters (專注於NEG泵)<sup>80</sup>, Gamma Vacuum (專注於離子泵)<sup>11</sup>, Busch Vacuum Solutions<sup>85</sup>, Agilent (原 Varian)<sup>83</sup>, Welch<sup>83</sup> 以及閥門供應商 VAT<sup>38</sup>等。 </li>
+                                  </ul>
+                      
+                                  <h3>B.磁屏蔽與輻射屏蔽(Magnetic and Radiation Shielding)</h3>
+                      
+                                  <ul>
+                                      <li><strong>需求:</strong> 量子位元對環境中的磁場波動和電磁輻射極為敏感<sup>12</sup>。地磁場、實驗室內其他設備產生的磁場、甚至建築結構中的鋼筋都可能產生干擾磁場。此外,來自高溫部件的熱輻射(紅外光子)或更高能量的環境輻射(如宇宙射線產生的次級粒子)也可能激發量子位元或產生準粒子,導致去相干<sup>15</sup>。因此,必須採取有效的屏蔽措施。</li>
+                                      <li><strong>磁屏蔽技術:</strong> 目標是將量子晶片區域的環境磁場降低到極低水平(通常遠低於地磁場強度,可能在 nT 或pT量級)並保持穩定。常用技術包括:
+                                          <ul>
+                                              <li><strong>被動屏蔽 (Passive Shielding):</strong>
+                                                  <ul>
+                                                      <li><strong>高磁導率材料屏蔽:</strong> 利用具有高磁導率(High Permeability)的軟磁材料,如Mu-metal (坡莫合金的一種)或其他鎳鐵合金(如Cryoperm)或非晶態合金(如 Metglas),將外部磁力線引導到屏蔽層內,從而使屏蔽層內部的磁場減弱<sup>87</sup>。這種屏蔽層通常做成圓柱形或箱形,包圍在需要保護的區域外部。需要注意的是,標準 Mu-metal 的磁導率在低溫下會顯著下降,因此在低溫區需要使用特殊配方的低溫磁屏蔽材料<sup>88</sup>。 </li>
+                                                      <li><strong>超導屏蔽:</strong> 利用超導體的邁斯納效應(Meissner effect),即超導體在轉變為超導態時會將內部磁場完全排出(適用於Type-I 超導體或 Type-II 超導體在低於下臨界場 H<sub>c1</sub>時)<sup>90</sup>。或者利用超導體的零電阻特性,如果在零磁場環境下將超導屏蔽層冷卻到臨界溫度以下(零場冷卻, Zero-Field Cooling, ZFC),則屏蔽層內部將維持零磁場狀態,即使外部施加磁場,屏蔽層也會感應出表面電流來抵消外部磁場的穿透<sup>91</sup>。常用的超導屏蔽材料包括鉛(Pb)和鈮(Nb)<sup>88</sup>。超導屏蔽可以提供非常好的屏蔽效果,尤其對低頻磁場。</li>
+                                                  </ul>
+                                              </li>
+                                              <li><strong>主動屏蔽(Active Shielding):</strong> 通過在屏蔽區域外部或內部佈置線圈,並根據傳感器測量的外部磁場變化,實時地在線圈中通入電流,產生一個反向的補償磁場,從而動態地抵消外部磁場的干擾<sup>93</sup>。這種方法可以與被動屏蔽結合使用。</li>
+                                              <li><strong>多層結構:</strong> 為了達到極高的屏蔽因子(Shielding Factor),通常採用多層屏蔽結構。例如,可以在外部使用一層或多層高磁導率材料屏蔽,內部再加一層超導屏蔽<sup>88</sup>。層與層之間留有一定間隙可以提高屏蔽效率<sup>88</sup>。</li>
+                                          </ul>
+                                      </li>
+                                      <li><strong>輻射屏蔽:</strong>
+                                          <ul>
+                                              <li><strong>熱輻射屏蔽:</strong> 稀釋製冷機內部本身就包含多層嵌套的冷屏(Cold Shields),通常分別錨定在50K、4K和 Still (~0.7K)等溫度級,這些冷屏的主要作用就是阻擋來自較高溫級的熱輻射到達更冷的區域<sup>12</sup>。</li>
+                                              <li><strong>微波/紅外輻射屏蔽:</strong> 對於沿信號線傳播的高頻熱雜訊光子,需要在線纜中集成紅外濾波器(Infrared Filters)<sup>10</sup>。這些濾波器通常利用金屬粉末或其他吸收材料來耗散高頻能量。此外,良好的微波元件封裝和接地也能起到屏蔽作用<sup>45</sup>。</li>
+                                              <li><strong>高能粒子屏蔽:</strong> 對於來自環境的宇宙射線或放射性元素產生的α、β、γ射線,如果需要極高的穩定性(例如用於量子計量或某些基礎物理實驗),可能需要在整個實驗裝置外部增加額外的屏蔽層,如鉛板<sup>86</sup>。</li>
+                                          </ul>
+                                      </li>
+                                      <li><strong>供應商/集成商:</strong> 磁屏蔽材料和成品屏蔽罩的供應商包括Amuneal Manufacturing Corp. (與 Bluefors 合作提供低溫磁屏蔽選項)<sup>87</sup> 和 Magnetic Shields Limited (MSL,開發了用於低溫的主動線圈屏蔽技術)<sup>93</sup>。系統集成商如 Bluefors<sup>87</sup> 和 Quantum Machines (其 QCage 樣品架提供磁屏蔽選項)<sup>65</sup>也會提供集成好的屏蔽解決方案。對於大型量子計算機系統,屏蔽設計通常是系統集成商(如IBM、Google等)自行設計或與專業公司合作完成的。</li>
+                                  </ul>
+                      
+                                  <h3>C. 量測儀器(Measurement Instrumentation)</h3>
+                      
+                                  <p  class="dark-background">除了用於控制和讀取的專用電子設備外,量子計算實驗還需要一系列標準和特製的測量儀器來進行系統表徵、校準和監控。</p>
+                      
+                                  <ul>
+                                      <li><strong>向量網路分析儀 (Vector Network Analyzers, VNAs):</strong> 這是表徵微波元件和電路(包括量子位元和讀出諧振腔)響應的關鍵儀器。VNA 可以測量樣品在很寬頻率範圍內的S參數(散射參數),包括反射係數(S11, S22)和傳輸係數(S21, S12),從中可以提取出諧振頻率、品質因數(Q值)、耦合強度、損耗等重要信息<sup>46</sup>。由於量子元件的工作環境在低溫,理想情況下 VNA 測量也應在低溫下進行,或者至少需要通過精確的低溫校準程序(使用低溫校準件)來去除連接線纜和低溫環境對測量結果的影響<sup>46</sup>。NIST 等機構正在開發專用的低溫 VNA 和校準技術<sup>58</sup>。 </li>
+                                      <li><strong>信號產生器 (Signal Generators):</strong> 提供穩定、純淨的RF和微波信號源,用於測試元件響應或作為控制系統中本地振盪器(LO)的參考<sup>73</sup>。</li>
+                                      <li><strong>頻譜分析儀(Spectrum Analyzers):</strong> 用於測量信號的頻譜分佈,可用於分析信號純度、雜訊水平或檢測雜散信號<sup>73</sup>。</li>
+                                      <li><strong>功率計(Power Meters):</strong> 精確測量微波功率水平對於校準控制脈衝的幅度、確定衰減器的值以及評估系統中的熱負載非常重要<sup>46</sup>。由於量子位元操作涉及的功率非常低(可能在fW或pW量級),需要特殊的低溫功率傳感器,如測輻射熱計(Bolometer)或轉變邊緣傳感器(Transition Edge Sensor, TES),才能在mK環境下進行準確測量<sup>46</sup>。</li>
+                                      <li><strong>示波器(Oscilloscopes):</strong> 用於觀察信號的時域波形,檢查脈衝形狀、定時關係等。</li>
+                                      <li><strong>低溫溫度計/感測器(Cryogenic Thermometers/Sensors):</strong> 監測稀釋製冷機各個冷級以及樣品實際溫度是必不可少的。常用的有電阻溫度計(如Cernox, Ruthenium Oxide, PT100<sup>81</sup>)、二極管溫度計等。對於極低溫(mK級),可能需要更專業的溫度計,如庫倫阻塞溫度計(Coulomb Blockade Thermometer)或雜訊溫度計<sup>41</sup>。此外,還需要低溫磁場傳感器,例如 Paragraf 公司基於石墨烯的低溫霍爾傳感器,可以在mK溫度和強磁場下工作<sup>95</sup>。</li>
+                                      <li><strong>其他專用儀器:</strong> 可能還包括鎖相放大器(Lock-in Amplifiers)、計數器(Counters)、時間相關單光子計數(TCSPC)模塊(用於光學接口)等。</li>
+                                      <li><strong>供應商:</strong> 傳統的RF/微波測試測量儀器主要由 Keysight Technologies, Rohde & Schwarz, Anritsu 等公司提供。低溫測量和控制領域的專業供應商包括 Lake Shore Cryotronics (提供低溫傳感器、儀器、探針台等)<sup>94</sup>。NIST等國家計量機構在開發低溫測量標準和高精度儀器方面發揮著重要作用<sup>58</sup>。Paragraf 提供專業的低溫霍爾傳感器<sup>95</sup>。值得注意的是,許多量子控制系統供應商(如 Zurich Instruments<sup>54</sup>, Qblox, Quantum Machines)的產品本身就集成了部分測量功能(如數字化、信號分析)。</li>
+                                  </ul>
+                      
+                                  <h3>D. 古典計算資源 (Classical Computing Resources)</h3>
+                      
+                                  <p  class="dark-background">量子計算機並不能完全獨立工作,它需要與古典計算機緊密協作。古典計算資源在超導量子計算系統中扮演著多重角色:</p>
+                      
+                                  <ul>
+                                      <li><strong>實驗控制與編排(Experiment Control and Orchestration):</strong> 古典計算機負責運行用戶編寫的量子程序或實驗腳本,將高級指令(如量子算法步驟)轉換為底層的脈衝序列,並通過控制電子設備發送到量子處理器。它協調整個實驗流程,包括參數設置、序列執行、數據採集和存儲。</li>
+                                      <li><strong>數據處理與分析 (Data Processing and Analysis):</strong> 從量子位元讀取獲得的原始數據(通常是電壓或數字化信號)需要由古典計算機進行處理(如信號積分、閾值判斷、狀態判別),以提取出最終的量子態測量結果(0或1)<sup>7</sup>。對於更複雜的實驗,如量子態層析成像(Quantum State Tomography)或隨機基準測試 (Randomized Benchmarking),需要大量的古典計算來分析測量數據,重構量子態或評估門保真度。</li>
+                                      <li><strong>實時反饋計算(Real-time Feedback Computation):</strong> 如前所述,對於QEC 和動態校準等需要快速響應的任務,古典計算需要在極短的時間內(奈秒到微秒)完成。雖然部分實時計算由控制系統內的FPGA 或專用處理器完成<sup>50</sup>,但更複雜的計算(如QEC解碼、AI 模型推理)可能需要更強大的古典計算資源,並要求這些資源與量子控制系統之間具有極低延遲的接口<sup>7</sup>。 </li>
+                                      <li><strong>系統監控與管理(System Monitoring and Management):</strong> 古典計算機還用於監控整個系統的狀態,包括低溫系統的溫度、壓力,真空系統的狀態,電子設備的工作情況等,並進行必要的管理操作。</li>
+                                      <li><strong>用戶接口與雲連接(User Interface and Cloud Connection):</strong> 提供用戶與量子計算機交互的界面,並負責與雲端量子計算平台的連接,實現遠程任務提交、資源管理和結果獲取<sup>4</sup>。</li>
+                                  </ul>
+                      
+                                  <p  class="dark-background">實現這些功能通常需要標準的高性能工作站或伺服器,配備足夠的處理能力、內存和存儲空間,並運行特定的操作系統和控制軟件(通常由控制電子設備供應商或系統集成商提供)<sup>7</sup>。對於需要大規模並行計算或 AI加速的實時任務,越來越多的系統開始集成 GPU<sup>60</sup>。NVIDIA的DGX Quantum平台就是一個典型的例子,它將高性能 GPU與 Quantum Machines 的OPX 控制系統緊密結合,專門用於加速量子-經典混合計算任務<sup>51</sup>。</p>
+                      
+                                  <h3>E.發展趨勢分析</h3>
+                      
+                                  <p  class="dark-background">考察輔助系統的發展,可以觀察到兩個相互關聯的趨勢。其一,真空、屏蔽、測量等輔助系統的性能和集成度,對於實現和維持高性能量子位元至關重要,已成為整體系統性能的關鍵賦能因素,而非僅僅是外圍支持。量子位元對環境雜訊的極端敏感性意味著任何微小的環境擾動都可能破壞計算。輔助系統的作用正是直接對抗這些擾動源:超高真空系統通過消除氣體分子碰撞來減少去相干<sup>9</sup>;精心設計的多層磁屏蔽和輻射屏蔽則阻擋外部磁場波動和有害輻射<sup>45</sup>;信號線路中恰當的熱化、濾波和衰減設計則抑制了雜訊沿線纜的傳播<sup>15</sup>。同時,準確可靠的測量儀器和校準技術是理解、優化和驗證量子位元性能的基礎<sup>46</sup>。因此,這些輔助系統的設計水平、材料選擇、製造工藝和集成方式,直接決定了量子位元的相干時間、門保真度和整體系統的穩定性與可靠性。它們不再是簡單的配套設施,而是與核心量子元件同等重要的性能決定因素。</p>
+                      
+                                  <p  class="dark-background">其二,為了滿足實時反饋、量子糾錯和複雜校準等高級應用的需求,量子控制系統與高性能古典計算(特別是GPU加速)的融合正在不斷加深。許多重要的量子計算任務,尤其是邁向容錯計算所必需的量子糾錯,需要在量子位元的相干時間內完成“測量-古典計算-反饋操作”的閉環<sup>5</sup>。例如,QEC需要快速讀取糾錯碼的校驗子(syndrome),通過複雜的經典解碼算法判斷錯誤類型和位置,然後實時應用相應的修正脈衝<sup>5</sup>。同樣,利用AI/ML 進行自動化校準也涉及大量的實時數據處理和模型推理<sup>51</sup>。傳統的基於CPU的控制方式可能無法滿足這些任務對速度和吞吐量的要求<sup>14</sup>。GPU 由於其大規模並行處理能力,非常適合加速 QEC解碼、機器學習等計算密集型任務<sup>60</sup>。這促使業界開發出如 NVIDIA DGX Quantum 這樣的集成平台<sup>51</sup>,它將強大的GPU計算資源與低延遲的量子控制硬件(如Quantum Machines OPX)緊密耦合,使得複雜的古典計算能夠在量子控制迴路內部以極高的速度執行。這標誌著量子計算架構正朝著硬件層面深度融合的混合量子-經典模式發展,以克服未來大規模、容錯量子計算所面臨的古典計算瓶頸。</p>
+                     
+                              
+
+
+
+                                
+                                <p >
+                                    ▲
+                                    <br><span style="font-size: 0.7em; line-height: 0.8;">
+
+                                    </span><br><br>
+                                    </p>
+</section>
+  <section class="module">
+    
+<div class="qh-section">
+  <h3>進階主線：每一條線都是 thermal path 與 noise path</h3>
+</div>
+<p>室溫到 mixing chamber 的 coax 不只是訊號線。材料決定 conductive heat leak；attenuator 將上游 Johnson noise 重新 thermalize，卻把 drive power 轉成當地熱；filter 與 shielding 抑制 out-of-band photon／infrared radiation。</p>
+<p>Drive、DC/fast-flux、readout-output line 的最佳配置不同。輸入鏈追求低 effective noise temperature 與足夠 bandwidth；輸出鏈需要 isolator/circulator 阻擋 amplifier backaction；flux line 則在 DC range、rise time、mutual inductance 與 decay channel 間折衷。</p>
+<div class="equation-card"><p>\[P_{\rm stage}=P_{\rm conduction}+P_{\rm dissipation}+P_{\rm radiation}+P_{\rm devices}\]</p></div>
+<p>課堂產出應是逐級 budget，而不是 dilution refrigerator 元件名稱背誦。</p>
+
+  </section>
+  <section class="module">
+                                    <div class="qh-section">
+                                      <h3>二、單元 1：超導量子電腦的全系統架構</h3>
+                                    </div>
+                                
+                                    <h4>1.1 From Quantum Chip to Quantum Computer</h4>
+                                    <p>
+                                      超導量子晶片是量子電腦的核心，但它無法單獨運作。
+                                      為了讓晶片上的 qubits 維持量子相干性，晶片必須被放置在極低溫環境中；
+                                      為了控制 qubits，需要從室溫電子儀器送入精準的微波與磁通脈衝；
+                                      為了讀出量子態，需要從毫開爾文環境中取出極微弱的微波訊號並進行低雜訊放大。
+                                    </p>
+                                
+                                    <p>
+                                      因此，一台超導量子電腦可以被視為一個跨尺度系統：
+                                      從奈米尺度的 Josephson junction，到毫米尺度的晶片版圖，
+                                      到公分尺度的封裝與微波線路，再到公尺尺度的 dilution refrigerator 與室溫控制電子學。
+                                    </p>
+                                
+                                    <h4>超導量子電腦的主要層次</h4>
+                                    <table>
+                                      <thead>
+                                        <tr>
+                                          <th>系統層次</th>
+                                          <th>主要元件</th>
+                                          <th>功能</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        <tr>
+                                          <td>Quantum Chip Layer</td>
+                                          <td>Qubits、resonators、couplers、control lines</td>
+                                          <td>承載量子資訊、實現量子閘與讀出耦合</td>
+                                        </tr>
+                                        <tr>
+                                          <td>Packaging Layer</td>
+                                          <td>Chip package、wirebond、interposer、PCB、shielding</td>
+                                          <td>提供電氣連接、機械支撐與電磁環境控制</td>
+                                        </tr>
+                                        <tr>
+                                          <td>Cryogenic Layer</td>
+                                          <td>Dilution refrigerator、thermal stages、cold filters</td>
+                                          <td>提供低溫環境並降低熱雜訊</td>
+                                        </tr>
+                                        <tr>
+                                          <td>Microwave Layer</td>
+                                          <td>Attenuators、filters、circulators、amplifiers、coaxial cables</td>
+                                          <td>傳送控制訊號與放大量子讀出訊號</td>
+                                        </tr>
+                                        <tr>
+                                          <td>Room-Temperature Electronics</td>
+                                          <td>AWG、LO、IQ mixer、ADC、DAC、FPGA</td>
+                                          <td>產生控制波形、擷取讀出訊號、進行即時處理</td>
+                                        </tr>
+                                        <tr>
+                                          <td>Software and Calibration Layer</td>
+                                          <td>Pulse scheduler、calibration routines、compiler、decoder</td>
+                                          <td>將量子程式轉換為硬體可執行的控制流程</td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                
+                                    <h4>1.2 Full-Stack Quantum Engineering</h4>
+                                    <p>
+                                      Full-stack quantum engineering 強調量子電腦不是單一技術，而是多層系統的共同最佳化。
+                                      例如，一個 two-qubit gate 的 fidelity 可能同時受到 qubit 設計、coupler Hamiltonian、
+                                      pulse distortion、flux crosstalk、封裝模態、低溫濾波與校準演算法影響。
+                                    </p>
+                                
+                                    <p>
+                                      因此，量子電腦開發需要同時考慮以下問題：
+                                    </p>
+                                
+                                    <ul>
+                                      <li>晶片上的 Hamiltonian 是否適合高保真度控制？</li>
+                                      <li>微波訊號是否能在低熱負載下準確傳送到晶片？</li>
+                                      <li>讀出訊號是否能在不破壞 qubit coherence 的情況下被放大？</li>
+                                      <li>封裝是否引入寄生模態、串擾或額外損耗？</li>
+                                      <li>系統是否能擴展到數百、數千甚至更多 qubits？</li>
+                                      <li>控制軟體與校準流程是否能處理大規模參數最佳化？</li>
+                                    </ul>
+                                
+                                    <div class="note">
+                                      <h4>核心觀念</h4>
+                                      <p>
+                                        超導量子電腦的開發不是「先做好晶片，再接上設備」。
+                                        從一開始，晶片、封裝、線路、低溫系統、微波控制與校準軟體就必須作為同一個系統共同設計。
+                                      </p>
+                                    </div>
+                                  </section><section class="module">
+                                    <div class="qh-section">
+                                      <h3>三、單元 2：Dilution Refrigerator 與低溫系統</h3>
+                                    </div>
+                                
+                                    <h4>2.1 Why Millikelvin Temperature?</h4>
+                                    <p>
+                                      超導量子位元的 transition frequency 通常位於數 GHz，對應能量尺度約為數百毫開爾文。
+                                      若環境溫度過高，熱激發會使 qubit 從 \(\ket{0}\) 被熱激發到 \(\ket{1}\)，
+                                      造成 initialization error 與額外 dephasing。
+                                      因此，超導量子晶片通常需要被冷卻到約 10 mK 到 20 mK 的低溫環境。
+                                    </p>
+                                
+                                    <p>
+                                      低溫的目的不只是讓材料進入超導態，更重要的是降低熱 photon population、降低熱雜訊，
+                                      並讓 qubit 的基態佔有率接近 1。
+                                    </p>
+                                
+                                    <div class="equation">
+                                      <p>\[
+                                      n_{\mathrm{th}}
+                                      =
+                                      \frac{1}{e^{\hbar\omega/k_BT}-1}
+                                      \]</p>
+                                    </div>
+                                
+                                    <p>
+                                      其中 \(n_{\mathrm{th}}\) 是熱 photon 平均佔有數。
+                                      當 \(k_BT \ll \hbar\omega\) 時，熱 photon 數量大幅降低，有助於維持量子態穩定。
+                                    </p>
+                                
+                                    <h4>2.2 Dilution Refrigerator Principle</h4>
+                                    <p>
+                                      Dilution refrigerator 是目前超導量子電腦最常用的低溫平台。
+                                      它利用 helium-3 與 helium-4 的混合液在低溫下發生相分離，
+                                      並透過 helium-3 從濃縮相進入稀釋相時吸收熱量，達到毫開爾文溫度。
+                                    </p>
+                                
+                                    <p>
+                                      在實際系統中，dilution refrigerator 具有多個溫度級，每一級提供不同的冷卻能力與功能。
+                                      微波線路、濾波器、衰減器、放大器與晶片封裝都必須根據熱負載與雜訊需求安裝在適當的溫度級。
+                                    </p>
+                                
+                                    <h4>2.3 Temperature Stages</h4>
+                                    <table>
+                                      <thead>
+                                        <tr>
+                                          <th>溫度級</th>
+                                          <th>典型溫度</th>
+                                          <th>主要功能</th>
+                                          <th>常見元件</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        <tr>
+                                          <td>Room Temperature Plate</td>
+                                          <td>約 300 K</td>
+                                          <td>與室溫電子儀器連接</td>
+                                          <td>Microwave sources、AWG、ADC、DAC、control rack</td>
+                                        </tr>
+                                        <tr>
+                                          <td>First Stage</td>
+                                          <td>約 40–50 K</td>
+                                          <td>初步冷卻與熱錨定</td>
+                                          <td>Thermal anchors、low-temperature amplifiers 的外層支撐</td>
+                                        </tr>
+                                        <tr>
+                                          <td>Second Stage</td>
+                                          <td>約 3–4 K</td>
+                                          <td>進一步冷卻與放大器安裝</td>
+                                          <td>HEMT amplifier、circulators、isolators</td>
+                                        </tr>
+                                        <tr>
+                                          <td>Still Plate</td>
+                                          <td>約 700–900 mK</td>
+                                          <td>helium-3 循環與中間熱錨定</td>
+                                          <td>Attenuators、filters、thermal anchors</td>
+                                        </tr>
+                                        <tr>
+                                          <td>Cold Plate</td>
+                                          <td>約 100 mK</td>
+                                          <td>低溫濾波與中間級熱化</td>
+                                          <td>Infrared filters、Eccosorb filters、attenuators</td>
+                                        </tr>
+                                        <tr>
+                                          <td>Mixing Chamber</td>
+                                          <td>約 10–20 mK</td>
+                                          <td>量子晶片工作溫度</td>
+                                          <td>Quantum chip、sample package、final filters、circulators</td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                
+                                    <h4>2.4 Thermalization and Heat Load</h4>
+                                    <p>
+                                      每一條進入 dilution refrigerator 的線路都會帶入熱量。
+                                      若線路沒有被適當熱錨定，室溫熱雜訊可能沿著 coaxial cable 傳到量子晶片，
+                                      增加 qubit 的 effective temperature 並降低 coherence。
+                                    </p>
+                                
+                                    <p>
+                                      Thermalization 的基本策略是在不同溫度級安裝 attenuator、filter 與 thermal anchor，
+                                      使線路逐步冷卻並吸收來自高溫端的熱 photon。
+                                    </p>
+                                
+                                    <h4>熱化設計的主要考量</h4>
+                                    <ul>
+                                      <li>線材熱導率：不鏽鋼、CuNi、NbTi 與銅線具有不同熱傳導特性。</li>
+                                      <li>微波損耗：過高損耗會降低訊號強度，但可幫助熱化。</li>
+                                      <li>低溫熱負載：mixing chamber 的冷卻功率有限，線路數量不能無限制增加。</li>
+                                      <li>機械固定：熱錨定需要良好接觸以確保實際冷卻。</li>
+                                      <li>雜訊隔離：必須阻止室溫黑體輻射與高頻雜訊進入晶片。</li>
+                                    </ul>
+                                
+                                    <div class="learning-check">
+                                      <h4>學習檢核</h4>
+                                      <ol>
+                                        <li>超導量子電腦為什麼需要毫開爾文低溫，而不只是低於超導臨界溫度？</li>
+                                        <li>Dilution refrigerator 的 mixing chamber 在系統中扮演什麼角色？</li>
+                                        <li>為什麼每條線路都可能成為低溫系統的熱負載？</li>
+                                        <li>Thermalization 與 microwave signal integrity 之間有什麼 trade-off？</li>
+                                      </ol>
+                                    </div>
+                                  </section>
+  <section class="module">
+    <div class="qh-section">
+      <h3>課堂整合與驗收</h3>
+    </div>
+    <p><strong>研討問題：</strong>為 drive、flux、readout output 各畫一條完整低溫鏈，逐級標 attenuation/gain、材料、熱錨與主要 failure mode。</p>
+    <p><strong>完成條件：</strong>學生必須留下可檢查的推導、關係圖、比較表或 architecture decision，並能說明其物理假設與工程代價。</p>
+  </section>
+  <section class="module">
+    <div class="qh-section">
+      <h3>核心與延伸閱讀</h3><ul class="qh-reading"><li><a href="https://arxiv.org/abs/1806.07862" target="_blank" rel="noopener">Engineering Cryogenic Setups for 100-Qubit Scale Superconducting Circuit Systems</a><span>S. Krinner et al., EPJ Quantum Technology 6, 2 (2019).</span><em>drive、flux、output lines 的熱負載與工程設計。</em></li><li><a href="https://doi.org/10.1063/1.5089550" target="_blank" rel="noopener">A Quantum Engineer&#x27;s Guide to Superconducting Qubits</a><span>P. Krantz et al., Applied Physics Reviews 6, 021318 (2019).</span><em>控制、coherence、readout 與工程參數的主幹 review。</em></li><li><a href="https://arxiv.org/abs/2005.12667" target="_blank" rel="noopener">Circuit Quantum Electrodynamics</a><span>A. Blais et al., Reviews of Modern Physics 93, 025005 (2021).</span><em>Jaynes–Cummings、dispersive regime、讀出與環境耦合。</em></li><li><a href="https://research.google/pubs/analogmixed-signal-integrated-circuits-for-quantum-computing/" target="_blank" rel="noopener">Analog/Mixed-Signal Integrated Circuits for Quantum Computing</a><span>J. C. Bardin, IEEE BCICTS (2020).</span><em>百萬通道尺度下的控制電子與 cryogenic electronics 問題。</em></li></ul>
+    </div>
+  </section>
+</section>
+
+
+                                <div class="post-meta">
+                                    <span class="post-author">
+                                        <a href="../About/Wang.html"><img class="img-res" src="../WebP/IMG_0964_2.webp" alt="">王培儒</a>
+                                    </span>
+                                    <span class="post-category">
+                                        <a href="../SCQ_advanced/main.html"><i class="fa fa-folder" aria-hidden="true"></i>PHYS598500</a>
+                                    </span>
+                                </div><!-- /.post-meta -->
+                            
+                                <div id="prev-next-nav" class="text-center">
+                                    <a class="btn btn-gray" href="T4-10.html">← 上一頁</a> 
+                                    <a class="btn btn-gray" href="T5-12.html">下一頁 →</a>
+                                </div>
+
+                                
+
+                            </div><!-- /.post-content -->
+                        </article><!-- /.blog-post -->
+                        <!--<div id="PostComments" class="post-comments">
+                            
+                            
+                            
+                        </div> /#PostComments -->
+                        <!--<div class="respond">
+                            <h3>Post a Comment</h3>
+                            <form class="form-horizontal">
+                                <input class="form-control" type="text" placeholder="Your Name*" required>
+                                <input class="form-control" type="email" placeholder="Your Email" required>
+                                <textarea class="form-control form-control-comment" type="text" placeholder="Your Comment*" required></textarea>
+                                <button class="btn btn-green">Add a comment</button>
+                            </form>    
+                        </div> /.respond -->
+                    </div>
+                    <aside class="col-md-3">
+                        <div class="sidebar">
+                            <div class="widget">
+                                <div id="lesson-list_2">
+                                <div class="lesson-link "><a href="main.html">QH-2026F v5 · 16週總覽</a></div>
+                                <div class="lesson-link "><a href="T1-1.html">Week 1 · 從量子計算模型到硬體操作</a></div>
+                                <div class="lesson-link "><a href="T2-2.html">Week 2 · 超導電路量子化與 Transmon 設計</a></div>
+                                <div class="lesson-link "><a href="T2-3.html">Week 3 · Fluxonium：從電路改造到設計取捨</a></div>
+                                <div class="lesson-link "><a href="T3-4.html">Week 4 · 單量子位元控制：從微波脈衝到旋轉座標</a></div>
+                                <div class="lesson-link "><a href="T3-5.html">Week 5 · 耦合 Hamiltonian、兩量子位元閘與 Tunable Coupler</a></div>
+                                <div class="lesson-link "><a href="T3-6.html">Week 6 · Circuit QED、Dispersive Readout 與量測鏈</a></div>
+                                <div class="lesson-link "><a href="T4-7.html">Week 7 · 量子處理器校準：Hamiltonian Identification 與 Drift</a></div>
+                                <div class="lesson-link "><a href="T4-8.html">Week 8 · Benchmarking、多量子位元誤差與可擴展校準</a></div>
+                                <div class="lesson-link "><a href="T4-9.html">Week 9 · 量子錯誤校正基礎：從物理誤差到 Stabilizer Syndrome</a></div>
+                                <div class="lesson-link "><a href="T4-10.html">Week 10 · Surface-Code Hardware Cycle：排程、解碼與 Logical-Qubit 資源</a></div>
+                                <div class="lesson-link active"><a href="T5-11.html">Week 11 · Dilution Refrigerator、熱化與低溫線路預算</a></div>
+                                <div class="lesson-link "><a href="T5-12.html">Week 12 · 微波控制、讀出電子與訊號完整性</a></div>
+                                <div class="lesson-link "><a href="T5-13.html">Week 13 · 封裝、EM Modes、佈線擴展與全系統整合</a></div>
+                                <div class="lesson-link "><a href="T6-14.html">Week 14 · 超導量子晶片製程與 Josephson Junction Process Module</a></div>
+                                <div class="lesson-link "><a href="T6-15.html">Week 15 · Materials Loss、製程變異、Yield 與 Design–Fab–Measure Loop</a></div>
+                                <div class="lesson-link "><a href="T7-16.html">Week 16 · 前沿架構與 Hardware-Aware Quantum System Capstone</a></div>
+                                </div>
+                            </div>
+                        </div></aside>
+                </div>
+            </div>
+        </section><!-- /.section-portfolio -->
+
+    </main><!-- /#main -->
+
+    <footer id="colophon" class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-4 col-xs-6">
+                    <a href="../index_ch.html" class="site-title">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
+                    <p>一起走進新時代的前沿科學與量子科技</p>
+                    </div>
+                <div class="col-lg-offset-4 col-md-3 col-sm-4 col-md-offset-2 col-sm-offset-0 col-xs-6 ">
+                    <p class="site-title">𝐾𝐸𝐸𝑃 𝐼𝑁 𝑇𝑂𝑈𝐶𝐻</p>
+                    <ul class="list-unstyled contact-links">
+                        <li><i class="fa fa-envelope" aria-hidden="true"></i><a href="mailto:info@insight-ihbar.com">info@insight-ihbar.com</a></li>
+                        <!--<li><i class="fa fa-phone" aria-hidden="true"></i><a href="tel:+37400800000">+374 (00) 80 00 00 </a></li>
+                        <li><i class="fa fa-fax" aria-hidden="true"></i><a href="+37400900000">+374 (00) 90 00 00</a></li>
+                        <li><i class="fa-solid fa-location-dot"></i><p>Hsinchu 300, Taiwan (R.O.C.)</p></li>-->
+                    </ul>
+                </div>
+                <!--<div class="clearfix visible-xs"></div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6">
+                    <h3>Featured links</h3>
+                    <ul class="list-unstyled">
+                        <li class="active"><a href="index_ch.html">Home</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="portfolio.html">Porfolio</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>-->
+            </div>
+        </div>
+        <div class="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-8">
+                        <div class="social-links">
+                            <!--<a class="twitter-bg" href="#"><i class="fab fa-twitter"></i></a>-->
+                            <!--<<a class="facebook-bg" href="https://www.facebook.com/people/Quantum-Perspectives/61576446849628/"><i class="fab fa-facebook"></i></a>-->
+                            <!--<a class="facebook-bg" href="https://www.facebook.com/people/%E9%87%8F%E5%AD%90%E9%81%A0%E8%A6%8BQuantum-Perspectives/61576883632888/"><i class="fab fa-facebook-f"></i></a>-->
+                            <!--<a class="pinterest" href="#"><i class="fa-solid fa-microscope"></i></a>-->
+                            <!--<a class="facebook-bg" href="https://www.facebook.com/people/Insight-hbar/61576811775374/"><i class="fab fa-facebook-f"></i></a>-->
+                            <a class="linkedin-bg" href="https://www.linkedin.com/company/insight-ihbar"><i class="fab fa-linkedin"></i></a>
+                        </div><!-- /.social-links -->
+                    </div>
+                    <div class="col-xs-4">
+                        <div class="text-right">
+                            <p><span style="font-size: 16px;">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</span></p>
+                            <p>All Rights Reserved</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.copyright -->
+    </footer><!-- /#footer -->
+
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="../assets/js/bootstrap-select.min.js"></script>
+    <script src="../assets/js/jquery.slicknav.min.js"></script>
+    <script src="../assets/js/jquery.countTo.min.js"></script>
+    <script src="../assets/js/jquery.shuffle.min.js"></script>
+    <script src="../assets/js/script.js"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  
+</body>
+</html>

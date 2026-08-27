@@ -1,0 +1,1561 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N39VTY949N"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-N39VTY949N');
+</script>
+    <!-- Basic Page Needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <meta name="author" content="Peir-Ru Wang">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;1,300&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/20250525-icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/20250525-icon.png">
+
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/css/style.css" rel="stylesheet">
+    <link href="../assets/css/responsive.css" rel="stylesheet">
+
+    <title>Week 7 · 量子處理器校準：Hamiltonian Identification 與 Drift | QH-2026F v5</title>
+    <meta name="description" content="PHYS598500 第 7 週，120 分鐘進階課程：量子處理器校準：Hamiltonian Identification 與 Drift">
+    <meta name="keywords" content="- 量子處理器
+- 超導量子位元
+- Qubit
+- 約瑟夫森接面
+- Transmon
+- Fluxonium
+- 量子計算
+- 量子硬體
+- 量子演算法
+- 量子晶片">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+<style>
+.qh-week-meta { margin: 20px 0; padding: 16px 18px; border-left: 4px solid #5f4b8b; background: #f6f4fa; }
+.qh-week-meta p { margin: 4px 0; }
+.qh-session-plan { width: 100%; margin: 18px 0 8px; border-collapse: collapse; }
+.qh-session-plan th, .qh-session-plan td { padding: 10px 12px; border: 1px solid #ddd; vertical-align: top; }
+.qh-session-plan th { background: #f4f4f4; }
+.qh-session-plan .qh-break td { color: #666; background: #fafafa; }
+.qh-total { text-align: right; font-weight: 700; }
+.qh-reading li { margin-bottom: 12px; }
+.qh-reading span, .qh-reading em { display: block; }
+.qh-week-list { padding-left: 0; list-style: none; }
+.qh-week-list li { margin: 0 0 13px; padding: 12px 15px; border-left: 4px solid #5f4b8b; background: #f7f7f7; }
+.qh-week-list a { font-weight: 700; }
+@media (max-width: 767px) { .qh-session-plan { display: block; overflow-x: auto; } }
+</style>
+
+
+<style id="qh-full-course-style">
+    .qh-full-lecture {
+      margin: 30px 0;
+      padding: 24px 26px;
+      border: 1px solid #d9d4e5;
+      background: #fff;
+    }
+
+    .qh-full-lecture>h2,
+    .qh-full-lecture>h3 {
+      margin-top: 0;
+    }
+
+    .qh-full-lecture h4 {
+      margin-top: 24px;
+    }
+
+    .qh-full-lecture li {
+      margin-bottom: 8px;
+    }
+
+    .qh-time {
+      display: inline-block;
+      margin-bottom: 12px;
+      padding: 4px 10px;
+      border-radius: 14px;
+      background: #5f4b8b;
+      color: #fff;
+      font-size: .9em;
+    }
+
+    .qh-board,
+    .qh-case,
+    .qh-task,
+    .qh-answer,
+    .qh-source-chapter {
+      margin: 20px 0;
+      padding: 17px 19px;
+      font-size: 15px;
+    }
+
+    .qh-board {
+      border-left: 4px solid #d0ccc8;
+      background: #fafafa;
+    }
+
+    .qh-case {
+      border-left: 4px solid #d0ccc8;
+      background: #fafafa;
+    }
+
+    .qh-task {
+      border-left: 4px solid #d0ccc8;
+      background: #fafafa;
+    }
+
+    .qh-answer {
+      border-left: 4px solid #d0ccc8;
+      background: #fafafa;
+    }
+
+    /* Section divider headings */
+    .qh-section {
+      margin: 40px 0 24px;
+      padding: 17px 19px;
+      border-left: 4px solid #355c9a;
+      background: #f3f7fc;
+    }
+
+    .qh-section h3 {
+      margin: 0 0 4px;
+      font-size: 20px;
+      font-weight: 700;
+      color: #355c9a;
+      border-bottom: none;
+    }
+
+    .qh-section h4 {
+      margin: 0;
+      font-size: 15px;
+      font-weight: 400;
+      color: #6a8ab5;
+      font-style: italic;
+    }
+
+    .qh-section>h3:first-child {
+      margin-top: 0;
+    }
+
+    /* Equation highlight — compact, not a section heading */
+    .qh-equation-highlight {
+      margin: 24px 0;
+      padding: 14px 18px;
+      border-left: 3px solid #6a6560;
+      background: #f9f8f7;
+    }
+
+    .qh-equation-label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      color: #6a6560;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    .qh-source-chapter {
+      border: 1px solid #e5e0ec;
+      background: #fdfcff;
+    }
+
+
+    .qh-source-chapter>h3 {
+      padding-bottom: 9px;
+      border-bottom: 1px solid #ddd5e8;
+    }
+
+    .qh-source-note {
+      color: #665f72;
+      font-size: .92em;
+    }
+
+    @media (max-width: 720px) {
+      .qh-full-lecture {
+        padding: 18px 15px;
+      }
+
+      .qh-board,
+      .qh-case,
+      .qh-task,
+      .qh-answer,
+      .qh-source-chapter {
+        padding: 14px 13px;
+      }
+    }
+
+    /* Supplement section styling */
+    .qh-supplement-divider {
+      margin: 36px 0 24px;
+      padding: 18px 22px;
+      border-left: 4px solid #5f4b8b;
+      background: #f6f4fa;
+    }
+
+    .qh-supplement-divider h2 {
+      margin: 0 0 5px;
+      font-size: 22px;
+    }
+
+    .qh-supplement-divider p {
+      margin: 0;
+    }
+
+    /* Tables in supplement */
+    .module table {
+      width: 100%;
+      margin: 16px 0;
+      border-collapse: collapse;
+      font-size: 15px;
+    }
+
+    .module table th,
+    .module table td {
+      padding: 10px 12px;
+      border: 1px solid #ddd;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .module table th {
+      background: #f4f4f4;
+      font-weight: 700;
+    }
+
+    /* Callout in supplement */
+    .module .callout {
+      margin: 16px 0;
+      padding: 12px 16px;
+      border-left: 4px solid #5f4b8b;
+      background: #f6f4fa;
+      font-size: 15px;
+    }
+
+    /* Lists in supplement */
+    .module ul,
+    .module ol {
+      margin: 12px 0;
+      padding-left: 24px;
+    }
+
+    .module li {
+      margin-bottom: 8px;
+      line-height: 1.6;
+      font-size: 15px;
+    }
+
+    /* Heading consistency — only direct h3 children, not inside .qh-section */
+    .module > h3 {
+      margin: 28px 0 14px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #ddd5e8;
+      font-size: 20px;
+    }
+
+    .module h4 {
+      margin: 20px 0 10px;
+      font-size: 17px;
+    }
+
+    .module p {
+      margin: 10px 0;
+      line-height: 1.7;
+    }
+  </style>
+
+<style id="qh-details-style">
+        details.dark-background {
+          background-color: #f5f5f5;
+          border: 1px solid #ddd;
+          padding: 10px;
+          border-radius: 5px;
+        }
+        details.dark-background summary {
+          cursor: pointer;
+          font-weight: bold;
+          background-color: #e0e0e0;
+          padding: 5px;
+          border-radius: 3px;
+        }
+      </style>
+
+</head>
+<body>
+
+    <header id="masthead" class="site-header">
+        <nav id="primary-navigation" class="site-navigation">
+            <div class="container">
+
+                <div class="navbar-header">                   
+                    <a href="../index_ch.html" class="site-title">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
+                </div><!-- /.navbar-header -->
+
+                <div class="collapse navbar-collapse" id="agency-navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="../index_ch.html">Home</a></li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">科普介紹<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                              <li><a href="../SCQ_elementary/main.html">超導量子位元(科普版)</a></li>
+                              <li><a href="../SCQ_advanced/main.html">超導量子位元(進階版)</a></li>
+                              <li><a href="../SpQ/main.html">半導體自旋量子位元</a></li>
+                            </ul>
+                        </li>
+                        <!--<li class="active"><a href="../SCQ_elementary/main.html">科普介紹</a></li>-->
+                        <li class="active"><a href="../QC_hardware/main.html">硬體導論</a></li>
+                        <li><a href="../QID/main.html">量子產業群像錄</a></li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">研討會筆記<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                <li><a href="../ASW2026/main.html">2026中研院超導量子電腦Workshop</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">量子諮詢<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                <li><a href="https://www.quantum-perspectives.com/About/main.html">量子遠見科技：諮詢服務</a></li>
+                                <li><a href="../About/main.html">關於我們</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="../index.html">English</a></li>                        
+                    </ul>
+                </div>
+
+            </div>   
+        </nav><!-- /.site-navigation -->
+    </header><!-- /#mastheaed -->
+
+    <div id="hero" class="hero overlay subpage-hero blog-hero">
+        <div class="hero-content">
+            <div class="hero_2-text">
+                <h1>超導量子電腦架構</h1>
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="../index_ch.html">Home</a></li>
+                  <li class="breadcrumb-item"><a href="../SCQ_advanced/main.html">PHYS598500</a></li>
+                  <!--<li class="breadcrumb-item active">約瑟夫森節</li>-->
+                </ol>
+            </div><!-- /.hero-text -->
+        </div><!-- /.hero-content -->
+    </div><!-- /.hero -->
+
+    <main id="main" class="site-main">
+
+        <section class="site-section subpage-site-section section-blog">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                        <article class="blog-post">
+                            <!--<img src="../assets/img/portfolio-1.jpg" class="img-res" alt="">-->
+                            <div class="post-content">
+
+<section id="week-7" class="course-theme">
+      <div style="text-align: center;">
+      <p class="theme-label">PHYS598500 · Week 7 · T4</p>
+      <h2>量子處理器校準：Hamiltonian Identification 與 Drift</h2>
+      <h3>Processor Calibration: Hamiltonian Identification and Drift</h3>
+    </div>
+  <section class="course-overview">
+    <h3>本週定位</h3>
+    <div class="qh-week-meta">
+      <p><strong>課程長度：</strong>120 分鐘</p>
+      <p><strong>核心問題：</strong>量子晶片開機後，如何逐層辨識參數並建立可執行的 gate set？</p>
+      <p><strong>難度：</strong>高</p>
+      <p><strong>先備：</strong>第 5–7 週、curve fitting、basic statistics</p>
+      <p><strong>原始教材來源：</strong>T4 modules 1, 2</p>
+    </div>
+    <h3>學習成果</h3><ul><li>把 spectroscopy、Rabi、Ramsey、\(T_1\)、\(T_2\)、readout calibration 排成依賴圖。</li><li>區分 parameter estimate、control update、validation metric 與 health monitoring。</li><li>理解 TLS、quasiparticle、temperature、electronics drift 對 calibration cadence 的影響。</li></ul>
+    <h3>兩小時授課配置</h3><table class="qh-session-plan"><thead><tr><th>時間</th><th>形式</th><th>授課內容與當段產出</th></tr></thead><tbody><tr><td>0–10 分</td><td>定位／診斷</td><td><strong>量子晶片開機後，最先必須知道哪些參數？</strong><br>以一個問題確認先備與本週接口。</td></tr><tr><td>10–35 分</td><td>概念主線 A</td><td><strong>Spectroscopy、Rabi、Ramsey、T1/T2 與 readout 應按什麼依賴順序執行？</strong><br>建立第一組物理概念、變數與工程語言。</td></tr><tr><td>35–60 分</td><td>推導／定量</td><td><strong>如何把 measure → fit → update → validate 變成 calibration graph？</strong><br>走完關鍵公式或定量關係，不停留在名詞介紹。</td></tr><tr class="qh-break"><td>60–70 分</td><td>休息</td><td><strong>Break</strong><br>保留兩小時課程的注意力恢復窗口。</td></tr><tr><td>70–95 分</td><td>概念主線 B</td><td><strong>一組校準參數在 drift 下可以信任多久？</strong><br>把物理結果接到元件、控制或系統架構。</td></tr><tr><td>95–110 分</td><td>案例／研討</td><td><strong>Frequency drift 如何污染下游 gate 與 readout？</strong><br>學生留下可檢查的圖、表、推導或 architecture decision。</td></tr><tr><td>110–120 分</td><td>整合／驗收</td><td><strong>最小可運作的 calibration dependency graph 必須包含什麼？</strong><br>用 exit question 檢查是否能跨層解釋。</td></tr></tbody></table><p class="qh-total">合計：120 分鐘</p>
+  </section>
+<!-- QH_FULL_LECTURE_START -->
+<section class="qh-full-lecture" id="full-T4-7">
+  <span class="qh-time">完整授課層 · 0–120 分鐘</span>
+    <div class="qh-section">
+    <h3>Calibration as system identification：從 spectroscopy 到可追蹤的控制參數</h3>
+  </div>
+  <p><strong>本週驅動問題：</strong>校準不是逐一把旋鈕調到最好，而是在 noisy、drifting、partially observed system 中估計參數。如何設計 calibration dependency graph，避免一項更新破壞其他項目？</p>
+  <div class="qh-section">
+    <h3>0–10 分鐘：問題設定與先備診斷 <span class="qh-concept-id">W7-C5</span></h3>
+  </div>
+  <p><strong>W7-C5 先備診斷：</strong>量子晶片開機後，最先必須知道哪些參數？先要求學生不用查資料，以一張圖畫出本週主題從抽象模型到真實硬體的訊息流。教師不立刻公布答案，而是收集學生把哪些層次畫成等號。全課結束時再重畫一次，用兩張圖的差異驗收是否真正建立跨層理解。</p>
+  <p><strong>W6 回顧：</strong>學生已理解 readout chain（resonator → amplifier → ADC → classifier）與 readout fidelity 的限制。本週聚焦：如何逐層辨識 Hamiltonian 參數並建立可追蹤的 calibration dependency graph。</p>
+  <div class="qh-section">
+    <h3>10–35 分鐘：Spectroscopy、Rabi、Ramsey、T1/T2 與 readout 應按什麼依賴順序執行？ <span class="qh-concept-id">W7-C1</span></h3>
+  </div>
+  <div class="qh-board">
+<h4>黑板主線：量測模型、估計值與控制參數</h4>
+<p>以 Rabi calibration 為例，理想 excited-state probability 可寫成 \(P_1(A)=c_0+c_1\cos(\kappa A+\phi)\)，但實驗資料還包含 SPAM、decay、amplitude nonlinearity 與 shot noise。fit 得到的 \(\hat\kappa\) 不是永恆常數，而是帶 covariance、timestamp 與有效條件的估計。校準資料庫應保存 estimate、uncertainty、fit quality、device state 與 upstream dependency。</p>
+<p>單量子位元最小校準鏈可寫成：resonator spectroscopy → qubit spectroscopy → readout classifier → Rabi amplitude → Ramsey detuning → DRAG/leakage → randomized benchmarking。順序有因果性：若 frequency 已 drift，直接重做 amplitude 可能用錯 rotating frame；若 readout classifier 已失效，所有 population-based fit 都會偏差。</p>
+<h4>\(T_1,T_2^*,T_{2,\mathrm{echo}}\) 不是三個互換分數 <span class="qh-concept-id">W7-C2</span></h4>
+<p><strong>W7-C2：</strong>能量弛豫限制 coherence：\(1/T_2=1/(2T_1)+1/T_\phi\)。</p>
+<ul>
+<li>\(T_1\)（能量弛豫）：qubit 從 \(\ket{1}\) 衰減到 \(\ket{0}\) 的時間，由 TLS 吸收、quasiparticle tunneling、Purcell decay 等 energy-exchange 通道決定。</li>
+<li>\(T_2^*\)（自由感應衰減）：Ramsey 實驗測得，對 low-frequency detuning noise 與 inhomogeneous broadening 敏感，\(1/T_2^* = 1/(2T_1) + 1/T_\phi\)。</li>
+<li>\(T_{2,\mathrm{echo}}\)（spin-echo）：在等待時間中插入 \(X_\pi\) pulse refocus quasi-static dephasing，測得的 \(T_2\) 通常大於 \(T_2^*\)。</li>
+</ul>
+<p>\(T_2^*\) 與 \(T_{2,\mathrm{echo}}\) 的差距是 noise spectrum 的線索：若差距大，dephasing 主要由 slow \(1/f\) noise 貢獻；若差距小，存在 broadband 或 fast noise。校準系統應利用差異定位 noise source，而非挑較漂亮的數值展示。</p>
+</div>
+  <div class="qh-section">
+    <h3>35–60 分鐘：如何把 measure → fit → update → validate 變成 calibration graph？ <span class="qh-concept-id">W7-D1</span></h3>
+  </div>
+  <div class="qh-board">
+<h4>黑板推導：calibration loop 的定量模型 <span class="qh-concept-id">W7-D1</span></h4>
+<p><strong>W7-D1：</strong>每一個 calibration 步驟都可寫成四階段閉環：</p>
+<p>
+\text{measure}\rightarrow\text{fit}\rightarrow\text{update}\rightarrow\text{validate}\rightarrow\text{monitor}
+</p>
+<p><strong>Measure：</strong>對每個實驗 protocol（spectroscopy、Rabi、Ramsey、\(T_1\)、\(T_2\)）收集 raw data。量測本身受 SPAM error、shot noise、instrument drift 影響。</p>
+<p><strong>Fit：</strong>將 data 代入物理模型（例如 Rabi oscillation 的 cosine 模型、\(T_1\) 的 exponential decay），透過 curve fitting 取得 parameter estimate \(\hat\theta\) 與 covariance matrix。fit quality（reduced \(\chi^2\)、residual pattern）決定 estimate 的可信度。</p>
+<p><strong>Update：</strong>將 \(\hat\theta\) 寫入 control parameter database。每個 entry 包含 estimate、uncertainty、timestamp、fit quality、upstream dependency。若 upstream parameter 改變（例如 qubit frequency 漂移），下游 estimate 可能 stale。</p>
+<p><strong>Validate：</strong>用獨立的 experiment 驗證 update 是否有效。例如更新 \(\pi\)-pulse amplitude 後，用 Ramsey 確認 detuning 沒有被破壞，或用 reference state 確認 readout classifier 仍然可靠。</p>
+</div>
+  <p>學生兩人一組，把推導中的每個符號分成「設計可選參數、製程/裝置產生參數、必須校準參數、只能量測估計的狀態」四類。這一步迫使公式離開紙面，成為 architecture dependency。</p>
+</section>
+
+<section class="qh-full-lecture">
+  <span class="qh-time">60–70 分鐘</span>
+  <div class="qh-section">
+    <h3>休息與黑板保留</h3>
+  </div>
+  <p>保留本週核心 Hamiltonian／system equation 與 dependency graph。休息後直接以既有教材展開，不重新講一次名詞表。</p>
+</section>
+
+<section class="qh-full-lecture">
+  <span class="qh-time">70–95 分鐘</span>
+    <div class="qh-section">
+    <h3>一組校準參數在 drift 下可以信任多久？ <span class="qh-concept-id">W7-C4</span></h3>
+  </div>
+  <p>下列內容不是附錄，而是本週第二段講授材料。授課時選擇與黑板模型直接相連的圖、表與段落逐一解讀；其餘留作課後複習。每一段都要追問「它改變了哪一個 Hamiltonian／control／measurement／system 參數」。</p>
+  <section class="qh-source-chapter">
+  <h3>教材深挖 1：退相干時間漂移 <span class="qh-concept-id">W7-C4</span></h3>
+  <p class="qh-source-note">整合自既有 Insight iHBAR 教材：SCQ_elementary/M.html</p>
+  <p>
+                              超導量子電腦不是一台校正一次就能長時間穩定運作的機器，量子位元的頻率、能量鬆弛時間 \(T_1\)、相位退相干時間 \(T_2\)、讀出響應與雙量子位元閘參數，仍然會隨時間漂移。因此，實際運行量子處理器時，必須反覆進行校正。
+                            </p>
+                          
+                            <p>
+                              在超導量子電腦中，校正通常包括量子位元頻率、微波脈衝振幅、脈衝長度、相位、讀出閾值、耦合器偏壓與雙量子位元閘條件。這些參數都依賴量子位元當下的頻譜與退相干環境。量子硬體本身具有時間依賴性，超導量子位元是由微影製程製成的人工原子，它會與材料表面的缺陷、Josephson junction 中的氧化層、非平衡態準粒子事件、封裝模態、背景輻射與控制線路中的雜訊耦合。這些環境自由度會改變量子位元的退相干通道，使得昨天量到的最佳參數，今天不一定仍然最佳。
+                            </p>
+
+                          
+                            
+                              <p>
+                                如果量子位元頻率漂移，原本準確的 \(\pi\) pulse 可能不再剛好完成一次位元翻轉。如果 \(T_1\) 下降，量子位元在閘操作或讀出前就有更高機率從激發態衰退回基態。如果讀出 resonator 的響應改變，原本設定好的分類閾值就可能提高誤判率。因此，量子電腦需要頻繁校正，本質上是因為它的操作點與錯誤模型會隨時間改變。
+                              </p>
+                          
+
+                            <p>量子位元原本應該只按照我們設計、預期的控制脈衝演化，但實際上它會透過某些物理路徑，把能量或相位資訊洩漏到環境中。這些「資訊洩漏的路徑」稱為「退相干通道」。</p>
+                            <table width="100%" border="1" cellpadding="10" cellspacing="0" style="border-collapse: collapse; font-family: sans-serif; border-color: #cccccc;">
+                              <tr>
+                                <th style="width: 50%; border: 1px solid black; padding: 10px; text-align: center;">
+                                  <p><b>能量鬆弛通道</b></p>
+                                </th>
+                                <th style="width: 50%; border: 1px solid black; padding: 10px; text-align: center;">
+                                <p><b>相位退相干通道</b></p>
+                                </th>
+                              </tr>
+                            
+                              <tr>
+                                <td style="border: 1px solid black; padding: 10px; vertical-align: top;">
+                                  <ol>
+                                    <li>
+                                      <p>TLS 缺陷吸收能量</p>
+                                    </li>
+                                    <li>
+                                      <p>準粒子穿越 Josephson junction</p>
+                                    </li>
+                                    <li>
+                                      <p>Purcell decay，能量經由 resonator 或讀出線路流失</p>
+                                    </li>
+                                    <li>
+                                      <p>聲子或封裝模態吸收能量</p>
+                                    </li>
+                                    <li>
+                                      <p>表面介電損耗</p>
+                                    </li>
+                                  </ol>
+                                </td>
+                            
+                                <td style="border: 1px solid black; padding: 10px; vertical-align: top;">
+                                  <ol>
+                                    <li>
+                                      <p>磁通雜訊</p>
+                                    </li>
+                                    <li>
+                                      <p>電荷雜訊</p>
+                                    </li>
+                                    <li>
+                                      <p>TLS 頻率漂移</p>
+                                    </li>
+                                    <li>
+                                      <p>臨界電流雜訊</p>
+                                    </li>
+                                    <li>
+                                      <p>讀出光子殘留造成 AC Stark shift</p>
+                                    </li>
+                                    <li>
+                                      <p>低頻 \(1/f\) 噪聲</p>
+                                    </li>
+                                  </ol>
+                                </td>
+                              </tr>
+                            </table>
+                            <div style="text-align: center;">
+                              
+                                <a href="../Image/截圖 2026-06-29 下午3.59.04.png"><img loading="lazy" src="../WebP/截圖 2026-06-29 下午3.59.04.webp" alt="超導量子位元雜訊與退相干示意圖" style="width: 100%; height: auto;"></a>
+                              
+                            </div>
+                            <p class="dark-background">
+                              ▲ 退相干的來源示意圖。<b>a. </b>由八個 transmon 量子位元構成的量子位元晶片之光學影像；這些量子位元採用\(Al/AlO_x/Al\) Josephson junctions（JJs），周圍採用鈮（\(Nb\)）微波電路。量子位元間透過諧振器與相鄰量子位元耦合，並各自搭配一個的諧振器用於量子態讀出，並可將訊號多工傳輸至共同匯流排。
+                              <b>b. </b>退相干可能來自表面與界面上的缺陷層或非晶層，會產生寄生的介電損耗。
+                              <b>c. </b>超導薄膜與基板中的非平衡態激發，可能由游離輻射、高能射線、或殘留磁場引發。這些噪聲源尤其會產生準粒子、熱聲子與磁通渦旋。
+                              <b>d. </b>微觀尺度的電荷缺陷與自旋缺陷會造成\(1/f\) 的漲落噪聲，使量子位元電路受到隨時間變化的電場或磁場偏置；若缺陷存在於穿隧層中，還可能導致約瑟夫森接面電感產生變化。
+                              <b>e. </b>純相位退相干\(T_\phi\)(pure dephasing)來自於環境中的噪聲對量子位元的<b>能階擾動</b>；縱向弛豫退相干 \(T_1\) (longitudinal relaxation)為環境中的擾動對量子位元產生<b>能量交換</b>，產生衰減。
+                              
+                              <span style="font-size: 0.7em; line-height: 0.8;">
+                                <br>Ref: 10.1038/s41578-021-00370-4
+                              </span>
+                              <br><br>
+                            </p>
+
+
+                            <div style="text-align: center;">
+                              
+                                  <a href="../Image/截圖 2026-07-03 下午4.06.45.png"><img loading="lazy" src="../WebP/截圖 2026-07-03 下午4.06.45.webp" alt="超導量子電路雜訊來源示意圖" style="width: 60%; height: auto;"></a>
+                              
+                          </div>
+                          <p class="dark-background">
+                              ▲ 退相干的來源示意圖。包含控制電路的噪聲、材料核自旋擾動、材料的熱聲子、電荷漲落、電磁波干擾、偏置磁場擾動與磁渦流捕捉。在穿隧層附近，準粒子穿隧事件會嚴重干擾量子位元的特性。
+
+                              <span style="font-size: 0.7em; line-height: 0.8;">
+                                  <br>Ref: 10.1557/mrs.2013.229
+                              </span>
+                              <br><br>
+                          </p>
+
+                            
+                             
+                            <h3>材料表面與 Josephson junction 是退相干噪聲的主要來源</h3>
+                            
+                            <p>
+                              超導量子位元的電場會分布在金屬邊緣、基板表面、氧化穿隧層、封裝中。若這些區域存在缺陷或污染物，量子位元就可能與它們耦合。特別是在 Josephson junction 附近，氧化鋁穿隧層非常薄，局部原子排列、雜質與缺陷都可能影響臨界電流與微波損耗。
+                            </p>
+                          
+                            <p>
+                              表面吸附分子、殘留光阻、氧化物、污染與結構缺陷都可能形成電偶極漲落。這些微觀自由度的狀態切換，會造成電荷雜訊、頻率雜訊或 \(T_1\) 波動。從校正角度來看，這代表每一顆量子位元都可能有自己的漂移特性，不同晶片、不同製程批次、甚至同一晶片上的不同位置，都可能有不同的穩定性。
+                            </p>
+                          
+                            
+                            <div style="text-align: center;">
+                              
+                                  <a href="../Image/截圖 2026-06-29 下午3.41.48.png"><img loading="lazy" src="../WebP/截圖 2026-06-29 下午3.41.48.webp" alt="超導量子位元電極與約瑟夫森接面示意圖" style="width: 90%; height: auto;"></a>
+                              
+                          </div>
+                          <p class="dark-background">
+                              ▲ 金屬邊緣、基板表面、氧化穿隧層、封裝都會影響、干擾超導量子位元的量子相干特性。<b>b. </b>約瑟夫森接面非晶 \(AlO_x\) 穿隧層中缺陷類型示意圖，包含原子缺陷TLS二能階系統（原子在缺陷形成的雙位能井間躍遷）、氫雜質與被捕獲的電子。
+                              <b>c. </b>表面缺陷示意圖，呈現量子位元電極及其天然氧化鋁層的剖面；該氧化層中存在結構性TLS二能階系統。此外，氫（\(H\)）與氧（\(O_2\)）等吸附物會提供表面自旋。製程殘留物，例如光阻、空氣污染物，以及因電路圖案化造成的基板表面非晶化，也是表面退相干擾動的來源。
+
+                              <span style="font-size: 0.7em; line-height: 0.8;">
+                                  <br>Ref: doi.org/10.1038/s41534-019-0224-1
+                              </span>
+                              <br><br>
+                          </p>
+                            
+
+                          <div style="text-align: center;">
+                            
+                                <a href="../Image/截圖 2026-07-03 下午4.06.26.png"><img loading="lazy" src="../WebP/截圖 2026-07-03 下午4.06.26.webp" alt="超導量子位與缺陷示意圖" style="width: 100%; height: auto;"></a>
+                            
+                            </div>
+                            <p class="dark-background">
+                            ▲ 另一篇示意材料中退相干來源的示意研究。包含被捕獲的電子、氫雜質、原子在缺陷形成的TLS二能階系統、還有原子間未配對的懸鍵。
+                            <span style="font-size: 0.7em; line-height: 0.8;">
+                                <br>
+                                Ref: 10.53829/ntr202411fr1
+                                
+                            </span>
+                            <br><br>
+                            </p>
+                        
+
+                            <h3>TLS 缺陷：造成退相干的物理機制模型 <span class="qh-concept-id">W7-C3</span></h3>
+                            
+                              <p>
+                                Two-level systems，簡稱 TLS，是超導量子位元中常見的材料缺陷模型。如前述可以來自非晶氧化層、表面吸附物、殘留污染、Josephson junction 穿隧層或金屬—基板介面中的微觀結構。這些缺陷可以被視為另一組微小的雙能階系統。當 TLS 的能階差接近量子位元頻率時，量子位元可能把能量轉移給 TLS，導致 \(T_1\) 降低。
+                              </p>
+                            
+                              <div style="text-align: center;">
+                                
+                                  <a href="../Image/截圖 2026-06-29 下午4.00.18.png"><img loading="lazy" src="../WebP/截圖 2026-06-29 下午4.00.18.webp" alt="量子位元與雙井勢能示意圖" style="width: 100%; height: auto;"></a>
+                                
+                              </div>
+                              <p class="dark-background">
+                                ▲ 雙位能井形成的簡易TLS模型。物理模型中如果TLS直接與Qubit耦合，會探討耦合強度\(g\)；此外材料中也存在大量的TLS會間接干擾量子系統，常視為背景場擾動來處理。
+                                <span style="font-size: 0.7em; line-height: 0.8;">
+                                  <br>Ref: 10.1038/s41578-021-00370-4
+                                </span>
+                                <br><br>
+                              </p>
+                              <p>
+                                對可調頻量子位元而言，TLS 會在頻譜中留下可辨識的痕跡。例如，量子位元頻率掃過某個 TLS 時，可能出現avoided crossing、Rabi 頻率異常或局部損耗增加。這也是為什麼量子位元不只是一個計算元件，也是一個敏感的材料探針：透過量子位元的退相干與頻譜變化，可以反推出晶片中缺陷的存在與耦合特性。
+                              </p>
+                            
+                              <div style="text-align: center;">
+                                
+                                  <a href="../Image/截圖 2026-07-03 下午2.19.50.png"><img loading="lazy" src="../WebP/截圖 2026-07-03 下午2.19.50.webp" alt="缺陷與量子位能階示意圖" style="width: 70%; height: auto;"></a>
+                                
+                              </div>
+                              <p class="dark-background">
+                                ▲ Qubit與TLS直接耦合時，如果調整Qubit的能階接近TLS的能階時，會出現兩者能態的混成，這類現象稱作avoided crossing。此時，兩者共振效應很強，Qubit的能量會大量洩露給TLS造成能量衰減的退相干，\(T_1\)會下降。
+                                <span style="font-size: 0.7em; line-height: 0.8;">
+                                  <br>Ref: 10.1103/PhysRevLett.121.090502
+                                </span>
+                                <br><br>
+                              </p>
+                              
+                            
+                              <table>
+                                <thead>
+                                  <tr>
+                                    <th style="width: 25%;">
+                                      <a href="../Image/PRXQuantum.3.040332.png"><img loading="lazy" src="../WebP/PRXQuantum.3.040332.webp" alt="約瑟夫森接面電荷與臨界電流波動示意圖" style="width: 100%; height: auto;"></a>
+                                  </th>
+                                    <th>
+                                      <a href="../Image/截圖 2026-07-03 下午2.21.32.png"><img loading="lazy" src="../WebP/截圖 2026-07-03 下午2.21.32.webp" alt="磁通與拉比頻率熱圖與TLS能階圖" style="width: 100%; height: auto;"></a>
+                                    </th>
+                                  </tr>
+                                </thead>
+                              </table>
+
+
+                              <p class="dark-background">
+                                ▲ 材料中的TLS有很多種，也能透過實驗方法來區分不同種類的TLS。這篇研究討論電子漲落（TLS1~TLS3）和臨界電流漲落（TLS4~TLS5）兩類的TLS現象。
+                                <span style="font-size: 0.7em; line-height: 0.8;">
+                                  <br>Ref: 10.1103/PRXQuantum.3.040332
+                                </span>
+                                <br><br>
+                              </p>
+
+                              
+                            
+                              
+                            
+                              <h3>\(T_1\) drift：同一顆量子位元的特性會隨頻率與時間改變</h3>
+                              <p>
+                                TLS 並不一定穩定停在同一個頻率。它們可能受到鄰近缺陷、局部電荷環境、應變場或低頻雜訊影響，導致自己的能階也發生漂移。當 TLS 頻率漂移時，量子位元看到的損耗環境也會漂移。這就是 decoherence time drift 的一個重要物理圖像：不是量子位元單獨在漂，而是量子位元周圍的缺陷環境也在緩慢變動。
+                              </p>
+                              <p>
+                                能量鬆弛時間 \(T_1\) 描述量子位元從激發態 \(\ket{1}\) 回到基態 \(\ket{0}\) 的時間。若 \(T_1\) 很長，代表量子位元可以較久地保存能量資訊；若 \(T_1\) 變短，閘操作與量測期間發生錯誤的機率就會上升。
+                              </p>
+                            
+                              <p>
+                                但 \(T_1\) 不是一個固定常數。實驗中可以看到，當調整量子位元頻率掃過不同區域時，某些頻率附近會出現明顯的 \(T_1\) 降低。這通常表示量子位元和某些TLS局部缺陷接近共振，使能量更容易從量子位元流向缺陷環境。更重要的是，這些low \(T_1\) 區域本身也會隨時間變化，造成所謂的 decoherence time drift （\(T_1\) drift）。
+                              </p>
+                            
+                              
+                            
+                              <div style="text-align: center;">
+                                
+                                  <a href="../Image/截圖 2026-07-03 下午2.20.10.png"><img loading="lazy" src="../WebP/截圖 2026-07-03 下午2.20.10.webp" alt="頻率時間解析T1熱圖與統計圖" style="width: 100%; height: auto;"></a>
+                                
+                              </div>
+                              <p class="dark-background">
+                                ▲ 這張圖針對時間和頻率空間掃掠進行 \(T_1\) 數值量測，橫軸是調整Qubit的頻率、縱軸是量測不同時間的\(T_1\)表現。固定時間時（固定縱軸），調整可以Qubit頻率可以發現\(T_1\)有較長（藍）和短（紅），\(T_1\)變短表示Qubit有與TLS強耦合。
+                                接著改變時間，可以發現與TLS共振頻率會隨時間變化（可以觀察紅色區域）。可以看出 \(T_1\) 在頻率與時間兩個方向上都不均勻。某些頻率區域長時間保持較低的 \(T_1\)，某些區域則出現漂移、變寬或突然變差。對量子電腦來說，這意味著最佳操作頻率不是永久固定的；它可能需要避開新的損耗區域，或者在校正流程中重新估計錯誤率。
+                                <span style="font-size: 0.7em; line-height: 0.8;">
+                                  <br>Ref: 10.1103/PhysRevLett.121.090502
+                                </span>
+                                <br><br>
+                              </p>
+                            
+                              
+
+                              
+
+
+
+                            <br><br>
+                            <p>
+                                <span style="font-size: 0.5em; line-height: 0.8;">
+                                    本文部分內容透過 AI 協作，經作者編輯審核。
+                                </span>
+                            </p>
+</section>
+
+<section class="qh-full-lecture">
+  <span class="qh-time">95–110 分鐘</span>
+  <div class="qh-section">
+    <h3>案例/研討：Frequency drift 如何污染下游 gate 與 readout？ <span class="qh-concept-id">W7-CS1</span></h3>
+  </div>
+  <div class="qh-case">
+<h4>漂移案例：頻率、振幅還是 readout 在變？ <span class="qh-concept-id">W7-CS1</span></h4>
+<p>每小時重測發現 Rabi oscillation 的 apparent contrast 下降。可能是 drive amplitude drift、qubit frequency detuning、\(T_1\) 降低、readout cloud overlap 或 thermal population 上升。最小診斷 sequence 應加入 Ramsey、reference state readout、\(T_1\) 與 room-temperature power monitor；只有 Rabi 一張圖不足以識別參數。</p>
+<p>若 calibration graph 中 qubit frequency 是 amplitude 與 DRAG 的 upstream parameter，frequency 更新後應標記下游 calibration stale，但不一定全部立刻重做。scheduler 可依 sensitivity 與當前 workload 選擇必要子圖，這也是大規模系統不能靠人工 checklist 的原因。</p>
+</div>
+</section>
+
+<section class="qh-full-lecture">
+<span class="qh-time">110–120 分鐘</span>
+<div class="qh-section">
+  <h3>整合/驗收：最小可運作的 calibration dependency graph 必須包含什麼？</h3>
+</div>
+<div class="qh-task">
+  <h4>課堂任務（8–10 分鐘）</h4>
+  <p>設計一個五參數 calibration dependency graph：readout threshold、qubit frequency、\(\pi\) amplitude、DRAG、two-qubit phase。為每個節點指定觸發條件、驗收 metric 與失效後需要 invalidation 的下游節點。</p>
+</div>
+<div class="qh-answer">
+  <h4>教師解答與評分依據</h4>
+  <p>readout threshold 是 population-based calibration 的觀測基礎；qubit frequency 是 pulse frame 的上游；\(\pi\) amplitude 與 DRAG 互相影響；two-qubit phase 又依賴 single-qubit frame。觸發可來自時間、metric degradation、溫度/頻率事件或上游更新。invalidation 應依 sensitivity，不要無條件全系統重跑。</p>
+  <p>答案不以是否使用特定名詞評分，而以是否建立「假設 → 可觀測量 → 區分實驗 → 決策」的閉環評分。學生若提出不同方案，只要能明確指出代價與可否證條件，即可成立。</p>
+</div>
+<h4>Exit ticket</h4>
+<ol>
+  <li>本週最重要的一條 equation／model 是什麼？它的適用近似為何？</li>
+  <li>哪一個看似局部的參數，實際會跨越 device、control 與 system 三層？</li>
+  <li>若只能做一個新實驗，什麼結果最能改變目前的 architecture decision？</li>
+</ol>
+</section>
+<!-- QH_FULL_LECTURE_END -->
+<!-- Supplementary review material — preserved source chapters outside timed teaching -->
+<!-- 不計入 120 分鐘授課時間 -->
+<section class="qh-source-chapter">
+  <h3>教材深挖 2：計算科學與二階系統（TLS）</h3>
+  <p class="qh-source-note">整合自既有 Insight iHBAR 教材：SCQ_advanced/I.html</p>
+  <p >
+                                        現代電腦運作的原理利用位元進行資訊的儲存、邏輯閘進行運算。資訊會以二進制的編碼表示成0與1的代碼，再將一系列位元依指定的方式變成0或1的狀態，來儲存資訊。例如說，想要儲存19這個數字資訊，換算成二進制表示為10011，這時候可以如果記憶體為八個位元做存儲：
+                                      </p>
+                                  
+                                  <p >
+                                        <p>\[ \ket{bit_1} \ket{bit_2} \ket{bit_3} \ket{bit_4} \ket{bit_5} \ket{bit_6} \ket{bit_7} \ket{bit_8} \]</p>
+                                        狀態改變成：
+                                        <p>\[ \ket{0} \ket{0} \ket{0} \ket{1} \ket{0} \ket{0} \ket{1} \ket{1} \]</p>
+                                    </p>
+                                  
+                                      <p >
+                                        在量子簡諧振子中，不同能階 \( n \)，可以用 \( a^\dagger \) 和 \( a \) 來聯繫：
+                                      </p>
+                                  
+                                      <p >
+                                        <p>\[
+                                        \ket{n+1} = \frac{a^\dagger}{ \sqrt{n+1}} \ket{n}, \quad \ket{n-1} = \frac{a}{ \sqrt{n} }\ket{n}, \quad \ket{n} = \frac{(a^\dagger)^n}{\sqrt{n!}} \ket{0}
+                                        \]</p>
+                                      </p>
+                                  
+                                      <p >
+                                        在此情況下：
+                                      </p>
+                                  
+                                      <p >
+                                        <p>\[
+                                        a^\dagger = 
+                                  \left(\begin{matrix}
+                                  0 &1 & 0 & \cdots \\
+                                  0 & 0 & \sqrt{2} & \cdots \\
+                                  0 & 0 & 0 & \cdots \\
+                                  \vdots & \vdots & \vdots & \ddots \\
+                                        \end{matrix}\right)
+                                        \]</p>
+                                  </p>
+                                  
+                                      <p >
+                                  <p>\[
+                                        a =
+                                        \left(\begin{matrix}
+                                  0 & 0 & 0 & \cdots \\
+                                  1 & 0 & 0 & \cdots \\
+                                  0 & \sqrt{2} & 0 & \cdots \\
+                                  \vdots & \vdots & \vdots & \ddots \\
+                                        \end{matrix}\right)
+                                        \]</p>
+                                      </p>
+                                  
+                                      <p >
+                                        這是一個無窮維的量子系統。一個超導量子位元是取 Transmon 的基態 \( \ket{0} \)（或 \( \ket{g} \)）與第一激發態 \( \ket{1} \)（或 \( \ket{e} \)）作為運算單元。在量子計算的二維框架下：
+                                      </p>
+                                  
+                                      <p >
+                                        <p>\[
+                                        a^\dagger \rightarrow \sigma^+ = 
+                                        \begin{bmatrix}
+                                        0 & 1 \\
+                                        0 & 0 \\
+                                        \end{bmatrix}, \quad
+                                        a \rightarrow \sigma^- = 
+                                        \begin{bmatrix}
+                                        0 & 0 \\
+                                        1 & 0 \\
+                                        \end{bmatrix}
+                                        \]</p>
+                                      </p>
+                                  
+                                      <p >
+                                        此時可以定義：
+                                      </p>
+                                  
+                                      <p >
+                                        <p>\[
+                                        \sigma_x = \sigma^+ + \sigma^- = 
+                                        \begin{bmatrix}
+                                        0 & 1 \\
+                                        1 & 0 \\
+                                        \end{bmatrix}, \quad
+                                        \sigma_y = i \left(\sigma^+ - \sigma^- \right)= 
+                                        \begin{bmatrix}
+                                        0 & -i \\
+                                        i & 0 \\
+                                        \end{bmatrix}, \quad
+                                        \sigma_z = \mathbb{I} - 2\sigma^+\sigma^- = 
+                                        \begin{bmatrix}
+                                        1 & 0 \\
+                                        0 & -1 \\
+                                        \end{bmatrix}
+                                        \]</p>
+                                      </p>
+                                  
+                                      <p >
+                                        即是大名鼎鼎的包立矩陣。這邊有一些代數結構：
+                                      </p>
+                                  
+                                      <p >
+                                        <p>\[
+                                        \{\sigma^-, \sigma^+\} = \sigma^-\sigma^+ + \sigma^+\sigma^- = \mathbb{I} = 
+                                        \begin{bmatrix}
+                                        1 & 0 \\
+                                        0 & 1 \\
+                                        \end{bmatrix}, \quad
+                                        [\sigma^-, \sigma^+] = \sigma^-\sigma^+ - \sigma^+\sigma^- = \sigma_z = 
+                                        \begin{bmatrix}
+                                        1 & 0 \\
+                                        0 & -1 \\
+                                        \end{bmatrix}
+                                        \]</p>
+                                      </p>
+                                  
+                                      <p >
+                                        對於 \( i, j, k = x, y, z \)：
+                                      </p>
+                                  
+                                      <p >
+                                        <p>\[
+                                        \sigma_i \sigma_j = \delta_{ij}\mathbb{I} + i\epsilon_{ijk}\sigma_k
+                                        \]</p>
+                                      </p>
+                                  
+                                      <p >
+                                        包立矩陣與三維空間的旋轉高度相關。但讀者也許想問，為何二維的位元系統會出現三維旋轉呢？下一節將討論所謂的量子位元與布洛赫球表示。
+                                      </p>
+</section>
+<section class="qh-source-chapter">
+  <h3>教材深挖 3：量子位元與布洛赫球表示</h3>
+  <p class="qh-source-note">整合自既有 Insight iHBAR 教材：SCQ_advanced/J.html</p>
+  <p >
+                              布洛赫球是一個用來幾何化描述量子位元狀態的工具。在二維量子位元系統中，任何量子態都可以表示為基態 \( \ket{0} \) 和激發態 \( \ket{1} \) 的線性組合：
+                            </p>
+                        
+                            <p >
+                              <p>\[
+                              \ket{\psi} = \alpha \ket{0} + \beta \ket{1},
+                              \]</p>
+                              其中 \( \alpha, \beta \) 為複數，滿足正規化條件 \( |\alpha|^2 + |\beta|^2 = 1 \)。
+                            </p>
+                        
+                            <p >
+                              若將 \( \alpha \) 和 \( \beta \) 表示為球坐標系中的參數，我們可以寫成：
+                            </p>
+                        
+                            <p >
+                              <p>\[
+                              \ket{\psi} = \cos\left(\frac{\theta}{2}\right)\ket{0} + e^{i\phi}\sin\left(\frac{\theta}{2}\right)\ket{1},
+                              \]</p>
+                              其中 \( \theta \) 是 \( z \)-軸與量子態向量的夾角，\( \phi \) 是 \( x \)-\( y \) 平面內的相位角。
+                            </p>
+                        
+                            <p >
+                              這個表示法使得量子位元的狀態可以被視為一個位於半徑為1的三維球面上的點，這就是布洛赫球。布洛赫球上的特殊點包括：
+                            </p>
+                        
+                            <ul>
+                              <li>北極 (\( \theta = 0 \)): 對應 \( \ket{0} \)</li>
+                              <li>南極 (\( \theta = \pi \)): 對應 \( \ket{1} \)</li>
+                              <li>赤道 (\( \theta = \pi/2 \)): 對應等幅超位置態，例如 \( \frac{1}{\sqrt{2}}(\ket{0} + e^{i\phi}\ket{1}) \)</li>
+                            </ul>
+                        
+                            <p >
+                              布洛赫球的三個坐標軸對應於包立矩陣的期望值：
+                            </p>
+                        
+                            <p >
+                              <p>\[
+                              x = \langle \sigma_x \rangle, \quad y = \langle \sigma_y \rangle, \quad z = \langle \sigma_z \rangle,
+                              \]</p>
+                              其中：
+                              <p>\[
+                              \langle \sigma_x \rangle = 2\text{Re}(\alpha^*\beta), \quad \langle \sigma_y \rangle = 2\text{Im}(\alpha^*\beta), \quad \langle \sigma_z \rangle = |\alpha|^2 - |\beta|^2.
+                              \]</p>
+                            </p>
+                        
+                            <p >
+                              透過布洛赫球表示，我們可以直觀地觀察量子位元的狀態演化。例如，若量子位元受到一個旋轉操作 \( R_x(\theta) = e^{-i\theta \sigma_x / 2} \)，其狀態會沿著 \( x \)-軸旋轉角度 \( \theta \)。這種幾何化描述對量子計算的控制與觀測提供了極大的便利。
+                            </p>
+                        
+                            <p >
+                              布洛赫球不僅是描述單個量子位元的工具，也是理解量子閘操作、量子糾纏以及相干性的基石。在後續內容中，我們將進一步探討如何利用布洛赫球來進行量子計算的設計與模擬。
+                            </p>
+</section>
+<section class="qh-source-chapter">
+  <h3>教材深挖 4：如何控制超導量子位元</h3>
+  <p class="qh-source-note">整合自既有 Insight iHBAR 教材：SCQ_elementary/K.html</p>
+  <p >
+                                最常見的作法為拉比震盪（Rabi Oscillation），透過施加特定頻率的電場震盪脈衝（Pulse） \( P(t) \)。先來看 Qubit 受到 \( \pi \) -pulse從 \( \ket{\ 0} \rightarrow \ket{\ 1} \)，利用 Bloch 球進行可視化：
+                                </p>
+
+
+                                <div style="text-align: center;">
+                                
+                                    <a href="../Image/pi pulse.gif"><img loading="lazy" src="../Image/pi pulse.gif" alt="圖示展示球面上的量子態及脈衝波形。" style="width: 100%; height: auto;"></a>
+                                
+                                </div>
+
+                                <p style="font-weight: bold; font-size: 1.2em;">控制 Qubit 的主要參數</p>
+                                        
+                                        <ul>
+                                            <li><b>脈衝的振幅（Amplitude \( A \)）：</b> 改變 Qubit 的狀態（Block sphere 的轉角）</li>
+                                            <li><b>脈衝的時長（Duration \( T \)）：</b> 改變 Qubit 的狀態（Block sphere 的轉角）</li>
+                                            <li><b>脈衝的頻率（Frequency \( \omega_d \)）：</b> 決定是否能精確驅動 Qubit</li>
+                                            <li><b>脈衝的包絡（Envelop \( F(t, \tau) \)）：</b> 影響漏態（Leakage）</li>
+                                        </ul>
+                                <p >
+                                一個完整的脈衝可以表達為：
+                                <p>\[
+                                    P(t) = A \cdot F(t, \tau) \cdot \sin(\omega_q t)
+                                \]</p>
+
+
+                                舉例如下：
+                                </p>
+
+                                
+                                <div style="text-align: center;">
+                                
+                                    <a href="../Image/pulse.png"><img loading="lazy" src="../WebP/pulse.webp" alt="振幅、時間與脈衝圖示說明" style="width: 100%; height: auto;"></a>
+                                
+                                </div>
+
+                                    
+                                <p >
+                                一般來說因為Qubit相干時間很短，會希望盡可能短的時間操作完Qubit的運算，以超導量子位元而言，相干時間能維持達微秒（μs）當前的技術而言已經很久了，故超導量子位元脈衝多半固定在奈秒等級（\(ns\)）。故操作Qubit的狀態一般採用調控脈衝的振幅的大小來決定轉角。 <br>
+                                (實驗中驅動大約\(10ns\)左右\(^a\))<br>
+                                <span style="font-size: 0.7em; line-height: 0.8;">\(^a\) 10.1103/PRXQuantum.5.030353</span><br><br>
+                                </p>
+
+                                <p >
+                                可以藉由 Bloch 球進行可視化，在這邊畫出對\( X \) 軸轉 \(0.25\pi \)、\( 0.5\pi \)、\(0.75\pi\)和\(\pi\)-pulse。可以發現說利用振幅的大小可以決定轉動的角度。
+                                </p>
+
+
+                                <div style="text-align: center;">
+                                
+                                    <a href="../Image/4 amplitude--d5162819.gif"><img loading="lazy" src="../Image/4 amplitude--d5162819.gif" alt="球面表示與四個脈衝的波形圖。" style="width: 100%; height: auto;"></a>
+                                
+                                </div>
+                                <p >
+                                同樣的，也可以討論利用不同脈衝的時長\(T\)來達到相同的 \( \pi \) -pulse從 \( \ket{\ 0} \rightarrow \ket{\ 1} \)
+                                </p>
+                                <div style="text-align: center;">
+                                
+                                    <a href="../Image/4 duration compare--6b7090af.gif"><img loading="lazy" src="../Image/4 duration compare--6b7090af.gif" alt="量子球面與四個餘弦脈衝圖示" style="width: 100%; height: auto;"></a>
+                                
+                                </div>
+
+                                <p >
+                                當然，讀者也許會想說，既然超導Qubit相干時間很短，那脈衝的時長\(T\)越短越好。下一節我們就會提到，越尖的脈衝會引入更多不相關的震動頻率，導致Qubit的操作出現誤差。實務上，如何決定脈衝的時長\(T\)與脈衝的震幅\(A\)，一直是Qubit日常校正的一環。良好的校正會得到優質的量子計算效果，反之，光是誤差就可以導致計算不如古典電腦來的準確。
+                                </p>
+
+                                <p >
+                                    <span style="font-size: 0.7em; line-height: 0.8;">Pulse shape:<br>
+                                    10.1103/PRXQuantum.5.030353<br>
+                                    10.1103/PhysRevLett.116.020501<br></span>
+                                </p>
+</section>
+<section class="qh-source-chapter">
+  <h3>教材深挖 5：控制誤差1-頻率失諧</h3>
+  <p class="qh-source-note">整合自既有 Insight iHBAR 教材：SCQ_elementary/L.html</p>
+  <div style="text-align: center;">
+                                
+                                    <a href="../Image/xy_tra.gif"><img loading="lazy" src="../Image/xy_tra.gif" alt="圓球上的量子狀態與脈衝圖表。" style="width: 100%; height: auto;"></a>
+                                
+                                </div>
+
+
+                                <div style="text-align: center;">
+                                
+                                    <a href="../Image/xy_tra_npi.gif"><img loading="lazy" src="../Image/xy_tra_npi.gif" alt="量子球面與正弦波特徵曲線圖。" style="width: 100%; height: auto;"></a>
+                                
+                                </div>
+
+                                <p >
+
+                                </p>
+
+
+                                <p  class="dark-background">
+                                
+                                    <br>
+                                
+                                    <span style="font-size: 0.7em; line-height: 0.8;">
+                                        
+                                    </span>
+                                </p>
+</section>
+
+
+<!-- Supplementary: preserved source material outside timed teaching -->
+<!-- 以下為保留的 v2 原始教材補充內容，不計入 120 分鐘授課時間。 -->
+  <p class="qh-source-note">Q_Tech/G.html — 量子測量/感測，非本週校準主題，保留原始教材完整性。</p>
+<section class="qh-source-chapter">
+  <h3>教材深挖 6：量子測量</h3>
+  <p class="qh-source-note">整合自既有 Insight iHBAR 教材：Q_Tech/G.html</p>
+  <h3>
+                                        技術原理與背景
+                                    </h3>
+                                    <p>
+                                        量子測量（也稱量子感測與計量）是指利用量子力學效應提高測量精度和靈敏度的技術與方法。傳統測量受限於經典物理的極限，例如電路噪聲、熱噪聲等；而量子測量希望利用如**量子糾纏**、**疊加**和**壓縮態**等量子現象，突破這些限制。根據量子力學，測量一個物理量的極限不確定度（噪聲下限）可以因為使用特殊的量子態而降低，例如利用光場的壓縮真空態可以壓低一個正交分量的噪聲，從而超越經典“射頻光子噪聲極限”。此外，糾纏態感測器陣列可以實現超越獨立感測器平均的精度提升（Heisenberg極限，相較於經典感測的√N提升更快）。常見的量子測量包括原子鐘、量子磁力計、量子加速度計、量子雷達、干涉式重力計等。
+                                    </p>
+                                    <p>
+                                        量子測量的核心在於巧妙地準備一個對目標參數高度敏感的量子態，經過與被測參數的相互作用後，通過測量態的變化來推斷參數值。例如，原子鐘利用原子或離子的兩個能階之間的躍遷頻率作為時間標準，由於量子態演化的高穩定性，可以比傳統石英鐘準確數個數量級。再如量子磁力計常採用鍺原子氣體的自旋預測進行磁場感測，量子態的相位受外界磁場影響，通過干涉即可測得極微弱的磁場。量子測量理論還討論測量的極限，如量子克拉美-饒(lower bound)及量子費雪資訊等概念，用以描述在給定量子態下可達到的最優估計精度。
+                                    </p>
+                                    <h3>
+                                        目前的技術進展與實作方式
+                                    </h3>
+                                    <p>
+                                        量子測量/感測是量子技術中相對較為成熟的一支，一些實用裝置已經出現或正在開發中。最知名的例子是**原子鐘**：傳統銫原子鐘已運行數十年，而近年的光鐘（使用光頻躍遷，如鍶-光晶格鐘）精度更是達到驚人的$10^{-18}$量級，即在3億年內誤差不超過1秒。DARPA等機構還推動開發<strong>晶片級原子鐘</strong>（如ACES計畫），讓原子鐘小型化到可穿戴/可移動的程度。原子鐘的改進直接帶動GPS導航、電信同步等行業的效能提升。
+                                    </p>
+                                    <p>
+                                        在**量子磁力計**方面，利用冷原子、自旋陀螺儀或NV中心（金剛石氮-空位色心）的裝置，已實現對極微弱磁場（如人腦神經電流產生的femtotesla量級磁場）的測量。其中以NV中心為基礎的磁力顯微鏡可以在室溫操作，並提供奈米級空間解析度，被應用於觀測材料中的磁疇結構、生物分子標記等。光泵原子磁力計在醫學上則被用來取代超導量子干涉儀(SQUID)測量腦磁圖，裝置更簡便且不需液氦冷卻。
+                                    </p>
+                                    <p>
+                                        **量子加速度計/重力計**是另一活躍領域。基於冷原子幹涉儀的重力梯度儀已達到商用水平，美國的AOSense公司與NASA合作開發的量子重力梯度儀可以利用原子干涉來繪製局部引力場分佈，用於地下資源勘測或隱蔽目標探測。英國和法國的研究團隊也演示了車載的冷原子重力計原型，可在移動中量測地質構造。在導航方面，結合量子加速度計和量子陀螺儀有望提供無GPS依賴的高精度慣性導航系統。目前有多家歐洲初創如Quantum Navigation公司致力於此。
+                                    </p>
+                                    <p>
+                                        **量子雷達**（或稱量子illumination）利用糾纏光子提高雷達對低截面目標的偵測性能。理論上，量子雷達的訊噪比可達傳統雷達的4倍。中國、加拿大等國有進行量子雷達樣機的研製。不過，因為實際隱形目標的雷達截面複雜且干擾因素多，量子雷達能否真正帶來顛覆性優勢仍有待實測評估。
+                                    </p>
+                                    <p>
+                                        最後值得一提的是**量子計量標準**的進展。量子計量將基本物理常數引入國際單位制SI中——例如2019年起秒的定義以銫原子躍遷頻率為基礎，千克的定義改以普朗克常數固定值為基礎（透過量子電磁現象實現）。這些改變彰顯量子現象已成為人類最準確測量的根本。可以說，量子測量技術正悄然滲透到我們計量體系與高科技應用的方方面面。
+                                    </p>
+                                    <h3>
+                                        應用領域與實際用途
+                                    </h3>
+                                    <p>
+                                        量子測量技術的高精度特性，使其在多個領域有重要應用。首先在<strong>國防與安全</strong>上，精密的原子鐘和量子慣性導航可用於戰略武器或潛艇導航，避免對GPS的依賴；高靈敏磁場感測器可用於偵測隱蔽目標（如水下潛艇的磁簽）；量子重力梯度儀則可用於地下空洞或隧道探測。在<strong>地質與資源勘察</strong>中，量子重力計能比傳統重力計更快感知重力異常，用於油礦探勘或地震監測。在<strong>醫學成像</strong>領域，原子磁力計正嘗試用於腦磁圖（MEG），希望替代昂貴笨重的傳統技術，使得腦功能成像更普及。量子光學傳感器（比如基於壓縮光的干涉儀）則有機會應用於生物成像，降低光對樣品的擾動。
+                                    </p>
+                                    <p>
+                                        在<strong>時間頻率傳遞</strong>方面，擁有更精確的原子鐘也意味著可建立更精準的時間同步網路，用於金融高頻交易時間戳、電網同步等。特別是當量子鐘小型化後，可裝設於通信基站或伺服器機房，提供獨立於GPS的高精度時間源。在<strong>科研</strong>上，量子測量裝置是探索前沿物理的利器。例如利用原子干涉測試等效原理、檢驗引力理論，用超高精度光譜測量尋找物理常數隨時間漂移的跡象等。
+                                    </p>
+                                    <p>
+                                        整體而言，量子測量瞄準的是所有需要極致精度的場合。雖然一般日常應用對精度要求沒那麼高，但在尖端科技和產業中，測量精度的每一點提升都可能帶來質的飛躍。因此量子測量技術一方面服務於國防戰略等關鍵領域，另一方面也將隨著成本降低逐步下放，如高精度導航終端、醫療檢測設備等走入民用市場。
+                                    </p>
+                                    <h3>
+                                        當前挑戰與未來發展趨勢
+                                    </h3>
+                                    <p>
+                                        量子測量裝置要廣泛應用，仍需克服一些瓶頸。首先是**環境穩定性和可攜性**：許多高精度量子感測器對環境條件要求嚴苛，例如原子干涉儀需要在實驗室裡隔震運行，冷原子設備需要激光和真空系統，這些都限制了外場部署。為了解決這點，研究者正努力縮小系統尺寸並提高抗干擾能力，比如利用微機電系統(MEMS)技術製造小型真空腔或激光晶片。其次，**資料讀出與解讀**也是挑戰。量子感測器往往輸出大量高頻數據，需要即時的處理和濾波，以從中提取有意義的信號，這對電子硬體和演算法都提出要求。
+                                    </p>
+                                    <p>
+                                        另一層面，**標準化與認證**也是量子測量走向產業的必經過程。以原子鐘為例，各國計量院需要對新型光鐘進行比對認證，才能取代舊的銫鐘成為新的標準。對於醫療磁測設備，則需要經過臨床試驗和監管批准。這些過程都需要時間和努力。在量子雷達等軍事應用上，目前也缺乏公開的測試數據來證實其優越性。
+                                    </p>
+                                    <p>
+                                        展望未來，量子測量技術很可能與AI、自動控制等技術結合。例如使用機器學習來分析量子傳感器信號，濾除雜訊或辨識模式；或者用量子網絡將分散的感測器連接，構成協同的感測陣列，提高精度和覆蓋範圍（所謂的量子分散式感測）。一個值得關注的趨勢是多種量子感測器的集成，例如將原子鐘、加速度計、磁力計組成一個多功能量子探測平台，提供全面的信息感知。
+                                    </p>
+                                    <p>
+                                        總之，量子測量雖然低調但意義重大。根據Frost & Sullivan的分析，量子技術未來將催生超高靈敏度的感測器、原子鐘、通信與成像設備，徹底改變國防、安全、工業與醫療市場。隨著技術日益成熟、成本下降，我們有理由相信，量子測量設備將從實驗室走向更廣闊的天地，在未來的高科技基礎設施中扮演不可或缺的角色。
+                                    </p>
+                                    <h3>
+                                        相關研究機構、公司或產品
+                                    </h3>
+                                    <p>
+                                        量子測量/感測領域聚集了眾多頂尖的物理實驗室和創新公司。在時間頻率領域，美國<strong>國家標準技術研究院 (NIST)</strong> 的時間頻率分部、法國<strong>國家時間實驗室 SYRTE</strong>、日本<strong>情報通信研究機構 (NICT)</strong>等都在競逐開發新一代光鐘。商業方面，美國的 <strong>Microsemi (Microchip)</strong> 公司販售高性能原子鐘產品，瑞士<strong>Oscilloquartz</strong>等提供小型原子鐘以應用於電信。此外歐盟有頻率比對專案將多台光鐘通過光纖連網，比對精度達到10<sup>-18</sup>量級，這本身也是一種量子測量的應用。
+                                    </p>
+                                    <p>
+                                        量子磁力計和慣性感測方面，開發NV中心傳感的有如<strong>Qnami</strong>（瑞士）等初創公司，已推出基於NV探針的磁場成像裝置。美國的<strong>AOSense</strong> 公司是冷原子干涉儀應用的先鋒，產品線涵蓋原子慣導、重力計等。英國有<strong>M Squared</strong>公司與多所大學合作研製量子冷原子感測器，他們演示的便攜式重力計原型獲得廣泛關注。<strong>Boeing</strong> 和<strong>Lockheed Martin</strong> 等大型航太公司也對量子感測展現興趣，投入研究經費希望在下一代導航和探測系統中搶占先機。
+                                    </p>
+                                    <p>
+                                        在醫療方面，德國的 <strong>QuSpin</strong> 公司生產可放置於房間溫度環境的光泵原子磁計，用於腦磁圖試驗；澳洲的<strong>Quantum Brilliance</strong> 則開發基於鑽石量子色心的小型量子傳感器，聲稱未來可用於可穿戴醫療裝置。在量子雷達領域，加拿大<strong>國家研究委員會 (NRC)</strong>、中國電子科技集團等都有相關計畫。值得一提的是，各國國防部門普遍對量子感測抱以很大期望，因為它們多數不需要長期維護且抗干擾能力強，可以用於一些關鍵環境。
+                                    </p>
+                                    <p>
+                                        總體而言，量子測量的研發版圖橫跨學術與產業。許多技術起源於大學或國家實驗室，隨後透過初創公司或技術轉移推向應用。例如，牛津大學的研究衍生出 <strong>Oxford Quantum Circuits</strong> 公司（部分專注於量子射頻傳感），麻省理工的研究人員創辦了 <strong>Atom Computing</strong> 公司（開發原子陣列量子技術，包括感測）。各國的量子國家計畫也都將量子感測列為重點資助方向之一（例如美國國防預研局DARPA的量子感測專項）。可以預見，隨著技術突破和應用需求驅動，量子測量相關的產品和公司將在未來數年持續增加，形成新的高科技產業鏈。
+                                    </p>
+</section>
+</section>
+</section>
+  <section class="module">
+    
+<div class="qh-section">
+  <h3>進階主線：Calibration 是帶不確定度的 system identification</h3>
+</div>
+<p>校準不是獨立實驗清單，而是有先後依賴的 estimation/control graph：先找 resonator 與 qubit frequency，再建立 readout classifier、pulse amplitude/phase、DRAG、virtual-Z，最後才有可信的 gate benchmark。</p>
+<p>每個節點至少應保存 parameter estimate、uncertainty、validity window 與 upstream dependency。若 qubit frequency 漂移，受影響的不只 Ramsey，而可能是 pulse detuning、two-qubit gate、multiplexed readout 與 frequency-collision map。</p>
+<div class="equation-card"><p>\[\text{measure}\rightarrow\text{fit}\rightarrow\text{update}\rightarrow\text{validate}\rightarrow\text{monitor}\]</p></div>
+<p>慢速 drift 與突發 correlated event 必須分開處理；平均 \(T_1\) 不能代表整段運行期間的可靠度。</p>
+
+  </section>
+  <section class="module">
+                                    <div class="qh-section">
+                                      <h3>二、單元 1：為什麼量子晶片需要校準？</h3>
+                                    </div>
+                                
+                                    <h4>1.1 Calibration as Hamiltonian Identification</h4>
+                                    <p>
+                                      在理想的量子電路模型中，我們假設每一個量子閘都能精準作用於指定的 qubit。
+                                      然而在真實超導量子晶片中，量子閘是由微波脈衝、磁通脈衝、耦合器調控與讀出鏈共同實現。
+                                      因此，每一個抽象量子閘背後都對應到一組需要校準的實驗參數。
+                                    </p>
+                                
+                                    <p>
+                                      從物理角度來看，校準可以被理解為一種 Hamiltonian identification：
+                                      我們透過實驗量測找出真實系統的頻率、耦合、耗散、非線性與雜訊特性，
+                                      再根據這些資訊設計控制脈衝，使實際演化盡可能接近理想量子閘。
+                                    </p>
+                                
+                                    <h4>常見需要校準的參數</h4>
+                                    <table>
+                                      <thead>
+                                        <tr>
+                                          <th>校準項目</th>
+                                          <th>物理意義</th>
+                                          <th>影響</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        <tr>
+                                          <td>Qubit frequency</td>
+                                          <td>\(\ket{0} \leftrightarrow \ket{1}\) transition frequency</td>
+                                          <td>決定 microwave drive frequency 與 detuning</td>
+                                        </tr>
+                                        <tr>
+                                          <td>Drive amplitude</td>
+                                          <td>微波脈衝強度</td>
+                                          <td>決定 Rabi frequency 與旋轉角度</td>
+                                        </tr>
+                                        <tr>
+                                          <td>Drive phase</td>
+                                          <td>微波相位</td>
+                                          <td>決定 Bloch sphere 上的旋轉軸</td>
+                                        </tr>
+                                        <tr>
+                                          <td>Pulse duration</td>
+                                          <td>脈衝作用時間</td>
+                                          <td>決定 \(\pi\)、\(\pi/2\) gate 的完成時間</td>
+                                        </tr>
+                                        <tr>
+                                          <td>Readout threshold</td>
+                                          <td>區分 \(\ket{0}\)、\(\ket{1}\) 的判別界線</td>
+                                          <td>影響 readout fidelity</td>
+                                        </tr>
+                                        <tr>
+                                          <td>Coupler bias</td>
+                                          <td>可調耦合器的工作點</td>
+                                          <td>影響 two-qubit gate strength 與 residual coupling</td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                
+                                    <h4>1.2 Sources of Drift and Instability</h4>
+                                    <p>
+                                      超導量子晶片的參數會受到多種因素影響而隨時間漂移。
+                                      例如溫度波動、磁通雜訊、電荷偏移、低溫電子元件漂移、微波源相位雜訊、材料缺陷與環境 two-level systems
+                                      都可能改變 qubit frequency、coherence time 或 readout response。
+                                    </p>
+                                
+                                    <p>
+                                      因此，量子電腦的運作不是單純「製作晶片並執行程式」，
+                                      而是一個持續的閉迴路流程：
+                                    </p>
+                                
+                                    <ol>
+                                      <li>Characterization：量測系統目前狀態。</li>
+                                      <li>Calibration：調整控制與讀出參數。</li>
+                                      <li>Benchmarking：評估量子閘與量測品質。</li>
+                                      <li>Optimization：根據結果改善控制策略。</li>
+                                      <li>Monitoring：追蹤長時間漂移與錯誤模式。</li>
+                                    </ol>
+                                
+                                    <div class="note">
+                                      <h4>核心觀念</h4>
+                                      <p>
+                                        量子校準不是附屬步驟，而是量子電腦能否運作的核心技術。
+                                        對超導量子平台而言，量子閘的品質通常不是由單一硬體參數決定，
+                                        而是由 Hamiltonian、雜訊、控制脈衝、讀出鏈與校準演算法共同決定。
+                                      </p>
+                                    </div>
+                                  </section><section class="module">
+                                    <div class="qh-section">
+                                      <h3>三、單元 2：單量子位元校準</h3>
+                                    </div>
+                                
+                                    <h4>2.1 Qubit Spectroscopy</h4>
+                                    <p>
+                                      單量子位元校準的第一步通常是找出 qubit frequency。
+                                      在 spectroscopy 實驗中，我們掃描 microwave drive frequency，
+                                      並量測 qubit 是否被激發到 \(\ket{1}\)。
+                                      當 drive frequency 接近 \(\omega_{01}\) 時，qubit 會被有效激發，因此可觀察到 resonance peak。
+                                    </p>
+                                
+                                    <p>
+                                      Qubit spectroscopy 可用來取得：
+                                    </p>
+                                
+                                    <ul>
+                                      <li>\(\omega_{01}\)：\(\ket{0} \rightarrow \ket{1}\) transition frequency。</li>
+                                      <li>\(\omega_{12}\)：\(\ket{1} \rightarrow \ket{2}\) transition frequency。</li>
+                                      <li>Anharmonicity：\(\alpha = \omega_{12} - \omega_{01}\)。</li>
+                                      <li>Flux tunability：對 tunable qubit，可量測 frequency 隨 flux bias 的變化。</li>
+                                    </ul>
+                                
+                                    <h4>2.2 Power Rabi Calibration</h4>
+                                    <p>
+                                      Power Rabi 實驗用來校準 microwave pulse amplitude 與 qubit rotation angle 的關係。
+                                      在固定 drive frequency 與 pulse duration 下，逐步改變 drive amplitude，
+                                      並量測 qubit 處於 \(\ket{1}\) 的機率。
+                                      當 amplitude 增加時，qubit population 會呈現 Rabi oscillation。
+                                    </p>
+                                
+                                    <div class="equation">
+                                      <p>\[
+                                      P_1(A)
+                                      \approx
+                                      \frac{1}{2}
+                                      \left[
+                                      1 - \cos\left(\theta(A)\right)
+                                      \right]
+                                      \]</p>
+                                    </div>
+                                
+                                    <p>
+                                      其中 \(A\) 是脈衝振幅，\(\theta(A)\) 是對應的 Bloch sphere rotation angle。
+                                      透過 Power Rabi，可以找出：
+                                    </p>
+                                
+                                    <ul>
+                                      <li>\(\pi\)-pulse amplitude：實現 \(X_\pi\) gate。</li>
+                                      <li>\(\pi/2\)-pulse amplitude：實現 \(X_{\pi/2}\) 或 \(Y_{\pi/2}\) gate。</li>
+                                      <li>Drive linearity：檢查脈衝振幅與旋轉角度是否近似線性。</li>
+                                      <li>Leakage onset：觀察高功率下是否激發到非計算態 \(\ket{2}\)。</li>
+                                    </ul>
+                                
+                                    <h4>2.3 Ramsey Experiment</h4>
+                                    <p>
+                                      Ramsey 實驗用來量測 qubit frequency detuning 與 dephasing time。
+                                      典型 Ramsey pulse sequence 為：
+                                    </p>
+                                
+                                    <div class="equation">
+                                      <p>\[
+                                      X_{\pi/2}
+                                      \;-\;
+                                      \tau
+                                      \;-\;
+                                      X_{\pi/2}
+                                      \;-\;
+                                      \mathrm{measurement}
+                                      \]</p>
+                                    </div>
+                                
+                                    <p>
+                                      第一個 \(\pi/2\) pulse 將 qubit 從 \(\ket{0}\) 放到赤道平面，
+                                      在等待時間 \(\tau\) 中，qubit 相位會因 detuning 與雜訊累積；
+                                      第二個 \(\pi/2\) pulse 將相位資訊轉換成 population difference。
+                                    </p>
+                                
+                                    <p>
+                                      Ramsey fringe 通常可近似寫為：
+                                    </p>
+                                
+                                    <div class="equation">
+                                      <p>\[
+                                      P_1(\tau)
+                                      =
+                                      A e^{-\tau/T_2^*}
+                                      \cos(\Delta \tau + \phi)
+                                      +
+                                      B
+                                      \]</p>
+                                    </div>
+                                
+                                    <p>
+                                      其中 \(T_2^*\) 是包含低頻雜訊與 inhomogeneous broadening 的 dephasing time，
+                                      \(\Delta\) 則是 drive frequency 與 qubit frequency 之間的 detuning。
+                                    </p>
+                                
+                                    <h4>2.4 \(T_1\) Relaxation Measurement</h4>
+                                    <p>
+                                      \(T_1\) 表示 qubit 從激發態 \(\ket{1}\) 衰減回基態 \(\ket{0}\) 的能量弛豫時間。
+                                      典型 \(T_1\) 實驗流程為：
+                                    </p>
+                                
+                                    <ol>
+                                      <li>使用 \(X_\pi\) pulse 將 qubit 從 \(\ket{0}\) 激發到 \(\ket{1}\)。</li>
+                                      <li>等待時間 \(\tau\)。</li>
+                                      <li>量測 qubit 仍在 \(\ket{1}\) 的機率。</li>
+                                    </ol>
+                                
+                                    <div class="equation">
+                                      <p>\[
+                                      P_1(\tau)
+                                      =
+                                      P_1(0)e^{-\tau/T_1}
+                                      +
+                                      P_{\mathrm{thermal}}
+                                      \]</p>
+                                    </div>
+                                
+                                    <p>
+                                      \(T_1\) 可能受到 dielectric loss、Purcell effect、quasiparticles、radiation loss、
+                                      package modes、two-level systems 與控制線耦合等因素限制。
+                                    </p>
+                                
+                                    <h4>2.5 \(T_2\) and Spin Echo</h4>
+                                    <p>
+                                      \(T_2\) 描述 qubit phase coherence 的衰減。
+                                      一般而言，dephasing 同時受到 energy relaxation 與 pure dephasing 影響：
+                                    </p>
+                                
+                                    <div class="equation">
+                                      <p>\[
+                                      \frac{1}{T_2}
+                                      =
+                                      \frac{1}{2T_1}
+                                      +
+                                      \frac{1}{T_\phi}
+                                      \]</p>
+                                    </div>
+                                
+                                    <p>
+                                      Ramsey 實驗測得的是 \(T_2^*\)，它對慢速頻率漂移與低頻雜訊敏感。
+                                      若在等待時間中插入一個 \(X_\pi\) pulse，可以形成 spin echo sequence：
+                                    </p>
+                                
+                                    <div class="equation">
+                                      <p>\[
+                                      X_{\pi/2}
+                                      \;-\;
+                                      \frac{\tau}{2}
+                                      \;-\;
+                                      X_{\pi}
+                                      \;-\;
+                                      \frac{\tau}{2}
+                                      \;-\;
+                                      X_{\pi/2}
+                                      \;-\;
+                                      \mathrm{measurement}
+                                      \]</p>
+                                    </div>
+                                
+                                    <p>
+                                      Spin echo 可以抵消部分慢速 dephasing，因此通常測得 \(T_2^{\mathrm{echo}}\)，
+                                      並用來判斷雜訊頻譜與 dephasing 來源。
+                                    </p>
+                                
+                                    <h4>2.6 Single-Qubit Gate Fidelity</h4>
+                                    <p>
+                                      Single-qubit gate fidelity 衡量實際量子閘與理想量子閘之間的接近程度。
+                                      造成 single-qubit gate error 的因素包括：
+                                    </p>
+                                
+                                    <ul>
+                                      <li>Pulse amplitude error：旋轉角度不準。</li>
+                                      <li>Pulse phase error：旋轉軸偏移。</li>
+                                      <li>Frequency detuning：drive frequency 未準確對準 qubit transition。</li>
+                                      <li>Decoherence during gate：gate 過程中發生 \(T_1\) 或 \(T_2\) 衰減。</li>
+                                      <li>Leakage：激發到 \(\ket{2}\) 或更高能階。</li>
+                                      <li>Control crosstalk：脈衝同時影響到非目標 qubit。</li>
+                                      <li>Pulse distortion：低溫線路或電子儀器造成波形失真。</li>
+                                    </ul>
+                                
+                                    <div class="learning-check">
+                                      <h4>學習檢核</h4>
+                                      <ol>
+                                        <li>Power Rabi 實驗如何找出 \(\pi\)-pulse？</li>
+                                        <li>Ramsey 實驗可以同時提供哪些資訊？</li>
+                                        <li>\(T_1\)、\(T_2^*\)、\(T_2^{\mathrm{echo}}\) 的物理差異是什麼？</li>
+                                        <li>為什麼 single-qubit gate fidelity 不只受到 coherence time 影響？</li>
+                                      </ol>
+                                    </div>
+                                  </section>
+  <section class="module">
+    <div class="qh-section">
+      <h3>課堂整合與驗收</h3>
+    </div>
+    <p><strong>研討問題：</strong>建立最小 calibration dependency graph；任選一個 parameter drift，向下追蹤它會污染哪些 gate、metric 與實驗。</p>
+    <p><strong>完成條件：</strong>學生必須留下可檢查的推導、關係圖、比較表或 architecture decision，並能說明其物理假設與工程代價。</p>
+  </section>
+  <section class="module">
+    <div class="qh-section">
+      <h3>核心與延伸閱讀</h3><ul class="qh-reading"><li><a href="https://doi.org/10.1063/1.5089550" target="_blank" rel="noopener">A Quantum Engineer&#x27;s Guide to Superconducting Qubits</a><span>P. Krantz et al., Applied Physics Reviews 6, 021318 (2019).</span><em>控制、coherence、readout 與工程參數的主幹 review。</em></li><li><a href="https://doi.org/10.1103/PhysRevLett.106.180504" target="_blank" rel="noopener">Scalable and Robust Randomized Benchmarking of Quantum Processes</a><span>E. Magesan, J. M. Gambetta and J. Emerson, Physical Review Letters 106, 180504 (2011).</span><em>Randomized benchmarking 的可擴展理論基礎。</em></li><li><a href="https://www.nature.com/articles/s41578-021-00370-4" target="_blank" rel="noopener">Engineering High-Coherence Superconducting Qubits</a><span>I. Siddiqi, Nature Reviews Materials 6, 875–891 (2021).</span><em>不同 qubit architecture、材料損耗與 coherence 的設計 trade-off。</em></li><li><a href="https://www.nature.com/articles/s41586-024-08449-y" target="_blank" rel="noopener">Quantum Error Correction Below the Surface Code Threshold</a><span>Google Quantum AI and Collaborators, Nature 638, 920–926 (2025), with 2026 author correction.</span><em>below-threshold surface-code memory、real-time decoder 與系統穩定性。</em></li></ul>
+    </div>
+  </section>
+
+                                <div class="post-meta">
+                                    <span class="post-author">
+                                        <a href="../About/Wang.html"><img class="img-res" src="../WebP/IMG_0964_2.webp" alt="">王培儒</a>
+                                    </span>
+                                    <span class="post-category">
+                                        <a href="../SCQ_advanced/main.html"><i class="fa fa-folder" aria-hidden="true"></i>PHYS598500</a>
+                                    </span>
+                                </div><!-- /.post-meta -->
+                            
+                                <div id="prev-next-nav" class="text-center">
+                                    <a class="btn btn-gray" href="T3-6.html">← 上一頁</a> 
+                                    <a class="btn btn-gray" href="T4-8.html">下一頁 →</a>
+                                </div>
+
+                                
+
+                            </div><!-- /.post-content -->
+                        </article><!-- /.blog-post -->
+                        <!--<div id="PostComments" class="post-comments">
+                            
+                            
+                            
+                        </div> /#PostComments -->
+                        <!--<div class="respond">
+                            <h3>Post a Comment</h3>
+                            <form class="form-horizontal">
+                                <input class="form-control" type="text" placeholder="Your Name*" required>
+                                <input class="form-control" type="email" placeholder="Your Email" required>
+                                <textarea class="form-control form-control-comment" type="text" placeholder="Your Comment*" required></textarea>
+                                <button class="btn btn-green">Add a comment</button>
+                            </form>    
+                        </div> /.respond -->
+                    </div>
+                    <aside class="col-md-3">
+                        <div class="sidebar">
+                            <div class="widget">
+                                <div id="lesson-list_2">
+                                <div class="lesson-link "><a href="main.html">QH-2026F v5 · 16週總覽</a></div>
+                                <div class="lesson-link "><a href="T1-1.html">Week 1 · 從量子計算模型到硬體操作</a></div>
+                                <div class="lesson-link "><a href="T2-2.html">Week 2 · 超導電路量子化與 Transmon 設計</a></div>
+                                <div class="lesson-link "><a href="T2-3.html">Week 3 · Fluxonium：從電路改造到設計取捨</a></div>
+                                <div class="lesson-link "><a href="T3-4.html">Week 4 · 單量子位元控制：從微波脈衝到旋轉座標</a></div>
+                                <div class="lesson-link "><a href="T3-5.html">Week 5 · 耦合 Hamiltonian、兩量子位元閘與 Tunable Coupler</a></div>
+                                <div class="lesson-link "><a href="T3-6.html">Week 6 · Circuit QED、Dispersive Readout 與量測鏈</a></div>
+                                <div class="lesson-link active"><a href="T4-7.html">Week 7 · 量子處理器校準：Hamiltonian Identification 與 Drift</a></div>
+                                <div class="lesson-link "><a href="T4-8.html">Week 8 · Benchmarking、多量子位元誤差與可擴展校準</a></div>
+                                <div class="lesson-link "><a href="T4-9.html">Week 9 · 量子錯誤校正基礎：從物理誤差到 Stabilizer Syndrome</a></div>
+                                <div class="lesson-link "><a href="T4-10.html">Week 10 · Surface-Code Hardware Cycle：排程、解碼與 Logical-Qubit 資源</a></div>
+                                <div class="lesson-link "><a href="T5-11.html">Week 11 · Dilution Refrigerator、熱化與低溫線路預算</a></div>
+                                <div class="lesson-link "><a href="T5-12.html">Week 12 · 微波控制、讀出電子與訊號完整性</a></div>
+                                <div class="lesson-link "><a href="T5-13.html">Week 13 · 封裝、EM Modes、佈線擴展與全系統整合</a></div>
+                                <div class="lesson-link "><a href="T6-14.html">Week 14 · 超導量子晶片製程與 Josephson Junction Process Module</a></div>
+                                <div class="lesson-link "><a href="T6-15.html">Week 15 · Materials Loss、製程變異、Yield 與 Design–Fab–Measure Loop</a></div>
+                                <div class="lesson-link "><a href="T7-16.html">Week 16 · 前沿架構與 Hardware-Aware Quantum System Capstone</a></div>
+                                </div>
+                            </div>
+                        </div></aside>
+                </div>
+            </div>
+
+    </main><!-- /#main -->
+
+    <footer id="colophon" class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-4 col-xs-6">
+                    <a href="../index_ch.html" class="site-title">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
+                    <p>一起走進新時代的前沿科學與量子科技</p>
+                    </div>
+                <div class="col-lg-offset-4 col-md-3 col-sm-4 col-md-offset-2 col-sm-offset-0 col-xs-6 ">
+                    <p class="site-title">𝐾𝐸𝐸𝑃 𝐼𝑁 𝑇𝑂𝑈𝐶𝐻</p>
+                    <ul class="list-unstyled contact-links">
+                        <li><i class="fa fa-envelope" aria-hidden="true"></i><a href="mailto:info@insight-ihbar.com">info@insight-ihbar.com</a></li>
+                        <!--<li><i class="fa fa-phone" aria-hidden="true"></i><a href="tel:+37400800000">+374 (00) 80 00 00 </a></li>
+                        <li><i class="fa fa-fax" aria-hidden="true"></i><a href="+37400900000">+374 (00) 90 00 00</a></li>
+                        <li><i class="fa-solid fa-location-dot"></i><p>Hsinchu 300, Taiwan (R.O.C.)</p></li>-->
+                    </ul>
+                </div>
+                <!--<div class="clearfix visible-xs"></div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6">
+                    <h3>Featured links</h3>
+                    <ul class="list-unstyled">
+                        <li class="active"><a href="index_ch.html">Home</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="portfolio.html">Porfolio</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>-->
+            </div>
+        </div>
+        <div class="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-8">
+                        <div class="social-links">
+                            <!--<a class="twitter-bg" href="#"><i class="fab fa-twitter"></i></a>-->
+                            <!--<<a class="facebook-bg" href="https://www.facebook.com/people/Quantum-Perspectives/61576446849628/"><i class="fab fa-facebook"></i></a>-->
+                            <!--<a class="facebook-bg" href="https://www.facebook.com/people/%E9%87%8F%E5%AD%90%E9%81%A0%E8%A6%8BQuantum-Perspectives/61576883632888/"><i class="fab fa-facebook-f"></i></a>-->
+                            <!--<a class="pinterest" href="#"><i class="fa-solid fa-microscope"></i></a>-->
+                            <!--<a class="facebook-bg" href="https://www.facebook.com/people/Insight-hbar/61576811775374/"><i class="fab fa-facebook-f"></i></a>-->
+                            <a class="linkedin-bg" href="https://www.linkedin.com/company/insight-ihbar"><i class="fab fa-linkedin"></i></a>
+                        </div><!-- /.social-links -->
+                    </div>
+                    <div class="col-xs-4">
+                        <div class="text-right">
+                            <p><span style="font-size: 16px;">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</span></p>
+                            <p>All Rights Reserved</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.copyright -->
+    </footer><!-- /#footer -->
+
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="../assets/js/bootstrap-select.min.js"></script>
+    <script src="../assets/js/jquery.slicknav.min.js"></script>
+    <script src="../assets/js/jquery.countTo.min.js"></script>
+    <script src="../assets/js/jquery.shuffle.min.js"></script>
+    <script src="../assets/js/script.js"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  
+</body>
+</html>
