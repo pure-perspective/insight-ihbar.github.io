@@ -426,6 +426,8 @@
     }
   </style>
 
+  <link rel="stylesheet" href="assets/slide-deck.css">
+
 </head>
 
 <body>
@@ -495,7 +497,7 @@
             <article class="blog-post">
               <!--<img src="../assets/img/portfolio-1.jpg" class="img-res" alt="">-->
               <div class="post-content">
-                <div style="text-align: center;">
+                <div class="theme-header" style="text-align: center;">
                   <p class="theme-label">PHYS598500 · Week 2 · T2</p>
                   <h2>超導電路量子化與 Transmon 設計</h2>
                   <h3>Circuit Quantization and Transmon Design</h3>
@@ -508,7 +510,7 @@
                     <div class="qh-week-meta">
                       <p><strong>課程長度：</strong>120 分鐘</p>
                       <p><strong>核心問題：</strong>一張超導電路圖，如何一路變成可設計的 Transmon？</p>
-                      <p><strong>先備：</strong>Lagrangian/Hamiltonian mechanics、LC circuit、基礎 superconductivity</p>
+                      <p data-slide-hidden="true"><strong>先備：</strong>Lagrangian/Hamiltonian mechanics、LC circuit、基礎 superconductivity</p>
 
                     </div>
 
@@ -541,20 +543,43 @@
                       </li>
                     </ol>
                   </section>
+                  <template data-slide-only data-slide-title="本週推導地圖">
+                    <div class="qh-board">
+                      <h4>從電路圖走到可製作的 qubit</h4>
+                      <p>
+                        Circuit topology → generalized coordinates → Lagrangian → Hamiltonian →
+                        spectrum → Transmon design parameters
+                      </p>
+                    </div>
+                  </template>
                   <div class="qh-section">
                     <h3>Transmon的性質</h3>
                     </div>
                     <h4>當前主流的超導量子位元</h4>
-                  <div style="text-align: center;">
+                  <div id="w2-transmon-architecture-source" style="text-align: center;">
                     <a href="../Image/Transmon.png">
-                      <img src="../WebP/Transmon.webp" alt="單JJ轉換器和對稱、非對稱SQUID轉換器電路圖" style="width: 98%; height: auto;">
+                      <img src="../WebP/Transmon.webp" alt="單JJ轉換器和對稱、非對稱SQUID轉換器電路圖" style="width: 98%; height: auto;" data-slide-width="82%" data-slide-max-height="330" data-slide-align="center" data-slide-x="0" data-slide-y="-8" data-slide-fit="contain">
                     </a>
                   </div>
-                  <div style="text-align: center;">
+                  <template data-slide-only data-slide-title="Transmon 架構圖：從拓撲辨識設計自由度"
+                    data-slide-use="#w2-transmon-architecture-source">
+                    <div class="qh-board">
+                      <h4>讀圖順序</h4>
+                      <p>先分辨 single-JJ 與 SQUID loop，再問外加磁通是否能改變有效 Josephson energy。</p>
+                    </div>
+                  </template>
+                  <div id="w2-transmon-spectrum-source" style="text-align: center;">
                     <a href="../Image/Transmon state.png">
-                      <img src="../WebP/Transmon state.webp" alt="潛能曲線及量子能級示意圖" style="width: 50%; height: auto;">
+                      <img src="../WebP/Transmon state.webp" alt="潛能曲線及量子能級示意圖" style="width: 50%; height: auto;" data-slide-width="58%" data-slide-max-height="330" data-slide-align="right" data-slide-x="-28" data-slide-y="-6" data-slide-fit="contain">
                     </a>
                   </div>
+                  <template data-slide-only data-slide-title="Transmon 能譜圖：非諧性在哪裡？"
+                    data-slide-use="#w2-transmon-spectrum-source">
+                    <div class="qh-answer">
+                      <h4>講解焦點</h4>
+                      <p>比較相鄰 transition 的間距；只有非等間距，微波脈衝才有機會選擇性控制 \(\lvert0\rangle\leftrightarrow\lvert1\rangle\)。</p>
+                    </div>
+                  </template>
                   <p>
                     <span style="font-size: 0.7em; line-height: 0.8;">Ref:
                       DOI:10.48550/arXiv.2203.04164</span><br><br>
@@ -2275,8 +2300,8 @@
                 </div><!-- /.post-meta -->
 
                 <div id="prev-next-nav" class="text-center">
-                                    <a class="btn btn-gray" href="T1-1.html">← 上一頁</a> 
-                                    <a class="btn btn-gray" href="T2-2S.html">下一頁 →</a>
+                                    <a class="btn btn-gray" href="T2-2.html">← 上一頁</a> 
+                                    <a class="btn btn-gray" href="T2-3.html">下一頁 →</a>
                                 </div>
 
 
@@ -2303,8 +2328,8 @@
                                 <div id="lesson-list_2">
                                 <div class="lesson-link "><a href="main.html">QH-2026F v5 · 16週總覽</a></div>
                                 <div class="lesson-link "><a href="T1-1.html">Week 1 · 從量子計算模型到硬體操作</a></div>
-                                <div class="lesson-link active"><a href="T2-2.html">Week 2 · 超導電路量子化與 Transmon 設計</a></div>
-                                <div class="lesson-link "><a href="T2-2S.html">Week 2S · 超導電路量子化與 Transmon 設計-Slide</a></div>
+                                <div class="lesson-link "><a href="T2-2.html">Week 2 · 超導電路量子化與 Transmon 設計</a></div>
+                                <div class="lesson-link active"><a href="T2-2S.html">Week 2S · 超導電路量子化與 Transmon 設計-Slide</a></div>
                                 <div class="lesson-link "><a href="T2-3.html">Week 3 · Fluxonium：從電路改造到設計取捨</a></div>
                                 <div class="lesson-link "><a href="T3-4.html">Week 4 · 單量子位元控制：從微波脈衝到旋轉座標</a></div>
                                 <div class="lesson-link "><a href="T3-5.html">Week 5 · 耦合 Hamiltonian、兩量子位元閘與 Tunable Coupler</a></div>
@@ -2382,6 +2407,53 @@
   </footer><!-- /#footer -->
 
 
+  <!-- 原始文章是唯一內容來源；Slide 模式在瀏覽器中即時由文章生成。 -->
+  <div class="qh-mode-toggle" role="group" aria-label="顯示模式">
+    <button type="button" class="qh-mode-button is-active" data-qh-view="article" aria-pressed="true">網頁</button>
+    <button type="button" class="qh-mode-button" data-qh-view="slides" aria-pressed="false">Slide</button>
+  </div>
+
+  <div id="qh-slide-root" class="qhs-root" hidden aria-hidden="true"
+    data-qhs-course="PHYS598500" data-qhs-week="WEEK 2"
+    data-qhs-topic="超導電路量子化與 Transmon 設計" data-qhs-title-suffix="QH-2026F v5">
+    <header class="qhs-header">
+      <a class="qhs-brand" href="main.html" aria-label="回到 QH-2026F 課程總覽">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
+      <span class="qhs-divider" aria-hidden="true"></span>
+      <div class="qhs-identity">
+        <strong>PHYS598500 · WEEK 2</strong>
+        <span>超導電路量子化與 Transmon 設計</span>
+      </div>
+      <button class="qhs-icon-button" type="button" data-qhs-action="fullscreen" aria-label="切換全螢幕"
+        title="全螢幕（F）">⛶</button>
+    </header>
+
+    <nav class="qhs-rail" aria-label="每一頁預覽">
+      <div class="qhs-thumb-panel">
+        <div class="qhs-thumb-head"><strong>每一頁預覽</strong><span class="qhs-thumb-total">—</span></div>
+        <div class="qhs-thumb-list" role="list"></div>
+      </div>
+      <button class="qhs-rail-handle" type="button" aria-label="展開或收合每一頁預覽" aria-expanded="false">
+        <span>每一頁預覽</span>
+      </button>
+    </nav>
+
+    <main class="qhs-stage" aria-label="Slide 顯示區">
+      <div class="qhs-scaler"></div>
+    </main>
+
+    <footer class="qhs-controls" aria-label="Slide 控制列">
+      <button class="qhs-control-button" type="button" data-qhs-action="previous" aria-label="上一頁">←</button>
+      <div class="qhs-progress-wrap">
+        <input class="qhs-range" type="range" min="1" value="1" aria-label="Slide 進度">
+        <div class="qhs-counter" aria-live="polite"><strong>01</strong><span>/ —</span></div>
+      </div>
+      <button class="qhs-control-button" type="button" data-qhs-action="next" aria-label="下一頁">→</button>
+    </footer>
+
+    <div class="qhs-live" aria-live="polite" aria-atomic="true"></div>
+  </div>
+
+
 
   <!-- Bootstrap core JavaScript
     ================================================== -->
@@ -2394,6 +2466,7 @@
   <script src="../assets/js/jquery.shuffle.min.js"></script>
   <script src="../assets/js/script.js"></script>
   <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script src="assets/slide-deck.js"></script>
 
 </body>
 
