@@ -1,34 +1,94 @@
 [
-    { "title": "超導量子電腦硬體指南 (2025)：目錄", "file": "main.html" },
-    { "title": "超導量子電腦當前的應用模式", "file": "A.html" },
-    { "title": "超導量子電腦-硬體解構", "file": "B.html" },
-    { "title": "微波元件解說", "file": "C.html" },
-    { "title": "微波元件廠商", "file": "H.html" },
-    { "title": "特殊導線與接頭", "file": "U2.html" },
-    { "title": "特殊導線與接頭-廠商", "file": "O.html" , "status": "new" , "date": "2025-07-03"},
-    { "title": "稀釋製冷機", "file": "F.html" , "status": "new" , "date": "2025-07-17"},
-    { "title": "熱管理與熱錨定", "file": "M.html" , "status": "new" , "date": "2025-07-07"},
-    { "title": "熱沉解決方案", "file": "M2.html" , "status": "new" , "date": "2025-07-09"},
-    { "title": "控制電子系統", "file": "G.html" , "status": "new" , "date": "2025-07-14"},    
-    { "title": "邁向Scalable QPU：量子晶片設計", "file": "U.html" , "status": "revise" , "date": "2026-05-26" , "note": "新增晶片上IBM Heron & Loon" , "anchor": "20260526"},
-    { "title": "邁向Scalable QPU：串擾議題", "file": "V2.html" , "status": "new" , "date": "2025-06-23"},
-    { "title": "邁向超大型量子計算：跨晶片連接", "file": "V4.html" , "status": "new" , "date": "2026-05-25"},
-    { "title": "邁向超大型量子計算：製冷機間量子連結", "file": "W.html" ,"status": "new" , "date": "2026-05-23"},
-    { "title": "邁向超大型量子計算：超算-量子混合運算", "file": "WA.html" ,"status": "new" , "date": "2026-05-24"},
-    { "title": "光整合：全光控制", "file": "X.html" ,"enabled": false},
-    { "title": "光整合：「全量子」量子電腦", "file": "X.html" ,"enabled": false},
-    { "title": "Cryo-CMOS, ", "file": "模板_en.html" ,"enabled": false},
-    { "title": "輔助系統與零部件", "file": "J.html" ,"enabled": false},
-    { "title": "微波元件廠商-TWPA", "file": "K.html" ,"enabled": false},
-    { "title": "微波元件廠商-隔離器", "file": "L.html" ,"enabled": false},
-    { "title": "整合系統與解決方案提供商", "file": "N.html" ,"enabled": false},
-    { "title": "整體系統集成、挑戰與未來展望", "file": "text.html" ,"enabled": false},
-    { "title": "定向耦合器製造商", "file": "P.html" ,"enabled": false},
-    { "title": "射頻終端器製造商", "file": "Q.html" ,"enabled": false},
-    { "title": "帶通濾波器製造商", "file": "R.html" ,"enabled": false, "next":""},
-    { "title": "低通濾波器製造商", "file": "S.html" ,"enabled": false, "next":""},
-    { "title": "循環器製造商", "file": "T.html" ,"enabled": false},
-    { "title": "核心硬體組件", "file": "D.html" ,"enabled": false},
-    { "title": "量子處理器 (QPU)", "file": "E.html" ,"enabled": false, "next":""},
-    { "title": "軟體", "file": "" ,"enabled": false, "next":""}
+  {
+    "title": "超導量子電腦硬體指南 (2025)：目錄",
+    "file": "main.html",
+    "status": "revised"
+  },
+  {
+    "title": "超導量子電腦當前的應用模式",
+    "file": "A.html",
+    "status": "revised"
+  },
+  {
+    "title": "超導量子電腦-硬體解構",
+    "file": "B.html",
+    "status": "revised"
+  },
+  {
+    "title": "微波元件解說",
+    "file": "C.html",
+    "status": "revised"
+  },
+  {
+    "title": "微波元件廠商",
+    "file": "H.html",
+    "status": "revised"
+  },
+  {
+    "title": "特殊導線與接頭",
+    "file": "U2.html",
+    "status": "revised"
+  },
+  {
+    "title": "特殊導線與接頭-廠商",
+    "file": "O.html",
+    "status": "new",
+    "date": "2025-07-03"
+  },
+  {
+    "title": "稀釋製冷機",
+    "file": "F.html",
+    "status": "new",
+    "date": "2025-07-17"
+  },
+  {
+    "title": "熱管理與熱錨定",
+    "file": "M.html",
+    "status": "new",
+    "date": "2025-07-07"
+  },
+  {
+    "title": "熱沉解決方案",
+    "file": "M2.html",
+    "status": "new",
+    "date": "2025-07-09"
+  },
+  {
+    "title": "控制電子系統",
+    "file": "G.html",
+    "status": "new",
+    "date": "2025-07-14"
+  },
+  {
+    "title": "邁向Scalable QPU：量子晶片設計",
+    "file": "U.html",
+    "status": "revised",
+    "date": "2026-05-26",
+    "note": "新增晶片上IBM Heron & Loon",
+    "anchor": "20260526"
+  },
+  {
+    "title": "邁向Scalable QPU：串擾議題",
+    "file": "V2.html",
+    "status": "new",
+    "date": "2025-06-23"
+  },
+  {
+    "title": "邁向超大型量子計算：跨晶片連接",
+    "file": "V4.html",
+    "status": "new",
+    "date": "2026-05-25"
+  },
+  {
+    "title": "邁向超大型量子計算：製冷機間量子連結",
+    "file": "W.html",
+    "status": "new",
+    "date": "2026-05-23"
+  },
+  {
+    "title": "邁向超大型量子計算：超算-量子混合運算",
+    "file": "WA.html",
+    "status": "new",
+    "date": "2026-05-24"
+  }
 ]

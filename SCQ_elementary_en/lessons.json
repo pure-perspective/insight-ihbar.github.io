@@ -1,16 +1,74 @@
 [
-    { "title": "Superconducting Qubits (Elementary Version): Menu", "file": "main.html" },
-    { "title": "Josephson Junction", "file": "A.html" },
-    { "title": "What is a Superconducting Qubit?", "file": "B.html" },
-    { "title": "Overview of Superconducting Circuit Qubit Types", "file": "C.html" },
-    { "title": "Early Types of Superconducting Qubits", "file": "D.html" },
-    { "title": "Modern Mainstream Superconducting Qubits", "file": "E.html" },
-    { "title": "Superconducting Qubits under Electron Microscopy", "file": "F.html" },
-    { "title": "Other Types of Qubits", "file": "G.html" },
-    { "title": "What Does a Superconducting Quantum Computer Look Like?", "file": "H.html" },
-    { "title": "How Are Signals Delivered to Qubits?", "file": "I.html" },
-    { "title": "QPU Topology", "file": "J.html" },
-    { "title": "Decoherence-Time Drift", "file": "M.html"  , "status": "new" , "date": "2026-07-30"},
-    { "title": "How to Control a Superconducting Qubit", "file": "K.html" },
-    { "title": "Control Error 1 - Frequency Detuning", "file": "L.html" }
+  {
+    "title": "Superconducting Qubits (Elementary Version): Menu",
+    "file": "main.html",
+    "status": "revised"
+  },
+  {
+    "title": "Josephson Junction",
+    "file": "A.html",
+    "status": "revised"
+  },
+  {
+    "title": "What is a Superconducting Qubit?",
+    "file": "B.html",
+    "status": "revised"
+  },
+  {
+    "title": "Overview of Superconducting Circuit Qubit Types",
+    "file": "C.html",
+    "status": "revised"
+  },
+  {
+    "title": "Early Types of Superconducting Qubits",
+    "file": "D.html",
+    "status": "revised"
+  },
+  {
+    "title": "Modern Mainstream Superconducting Qubits",
+    "file": "E.html",
+    "status": "new",
+    "date": "2025-01-23"
+  },
+  {
+    "title": "Superconducting Qubits under Electron Microscopy",
+    "file": "F.html",
+    "status": "revised"
+  },
+  {
+    "title": "Other Types of Qubits",
+    "file": "G.html",
+    "status": "revised"
+  },
+  {
+    "title": "What Does a Superconducting Quantum Computer Look Like?",
+    "file": "H.html",
+    "status": "revised"
+  },
+  {
+    "title": "How Are Signals Delivered to Qubits?",
+    "file": "I.html",
+    "status": "revised"
+  },
+  {
+    "title": "QPU Topology",
+    "file": "J.html",
+    "status": "revised"
+  },
+  {
+    "title": "Decoherence-Time Drift",
+    "file": "M.html",
+    "status": "new",
+    "date": "2026-07-09"
+  },
+  {
+    "title": "How to Control a Superconducting Qubit",
+    "file": "K.html",
+    "status": "revised"
+  },
+  {
+    "title": "Control Error 1 - Frequency Detuning",
+    "file": "L.html",
+    "status": "revised"
+  }
 ]

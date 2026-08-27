@@ -1,17 +1,77 @@
 [
-    { "title": "超導量子位元(進階版):目錄", "file": "main.html" },
-    { "title": "量子計算硬體基礎", "file": "A.html" },
-    { "title": "量子LC電路介紹", "file": "B.html" },
-    { "title": "LC電路的正則量子化", "file": "C.html" },
-    { "title": "動能與位能項的互換", "file": "D.html" },
-    { "title": "形式化 Lagrangian 動能與位能的互換", "file": "E.html" },
-    { "title": "約瑟夫森節的非線性電感性質", "file": "F.html" },
-    { "title": "雙約瑟夫森節（SQUID）的非線性電感性質", "file": "G.html" },
-    { "title": "Transmon的性質", "file": "H.html" },
-    { "title": "計算科學與二階系統（TLS）", "file": "I.html" },
-    { "title": "量子位元與布洛赫球表示", "file": "J.html" },
-    { "title": "驅動 LC 電路", "file": "K.html" },
-    { "title": "雙LC電路耦合", "file": "L.html" },
-    { "title": "附錄：電磁場下薛丁格方程式的機率流", "file": "appA.html" },
-    { "title": "附錄：微擾理論下的能階修正計算", "file": "appB.html" }
+  {
+    "title": "超導量子位元(進階版):目錄",
+    "file": "main.html",
+    "status": "revised"
+  },
+  {
+    "title": "量子計算硬體基礎",
+    "file": "A.html",
+    "status": "revised"
+  },
+  {
+    "title": "量子LC電路介紹",
+    "file": "B.html",
+    "status": "revised"
+  },
+  {
+    "title": "LC電路的正則量子化",
+    "file": "C.html",
+    "status": "revised"
+  },
+  {
+    "title": "動能與位能項的互換",
+    "file": "D.html",
+    "status": "revised"
+  },
+  {
+    "title": "形式化 Lagrangian 動能與位能的互換",
+    "file": "E.html",
+    "status": "revised"
+  },
+  {
+    "title": "約瑟夫森節的非線性電感性質",
+    "file": "F.html",
+    "status": "revised"
+  },
+  {
+    "title": "雙約瑟夫森節（SQUID）的非線性電感性質",
+    "file": "G.html",
+    "status": "revised"
+  },
+  {
+    "title": "Transmon的性質",
+    "file": "H.html",
+    "status": "revised"
+  },
+  {
+    "title": "計算科學與二階系統（TLS）",
+    "file": "I.html",
+    "status": "revised"
+  },
+  {
+    "title": "量子位元與布洛赫球表示",
+    "file": "J.html",
+    "status": "revised"
+  },
+  {
+    "title": "驅動 LC 電路",
+    "file": "K.html",
+    "status": "revised"
+  },
+  {
+    "title": "雙LC電路耦合",
+    "file": "L.html",
+    "status": "revised"
+  },
+  {
+    "title": "附錄：電磁場下薛丁格方程式的機率流",
+    "file": "appA.html",
+    "status": "revised"
+  },
+  {
+    "title": "附錄：微擾理論下的能階修正計算",
+    "file": "appB.html",
+    "status": "revised"
+  }
 ]

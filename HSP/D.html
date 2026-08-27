@@ -413,7 +413,7 @@
                                 
                                 <div class="post-meta">
                                     <span class="post-author">
-                                        <a href="../About/Wang.html"><img class="img-res" src="../Image/IMG_0964_2.JPG" alt="">王培儒</a>
+                                        <a href="../About/Wang.html"><img class="img-res" src="../WebP/IMG_0964_2.webp" alt="">王培儒</a>
                                     </span>
                                     <span class="post-category">
                                         <a href="../HSP/main.html"><i class="fa fa-folder" aria-hidden="true"></i>隱藏子群問題</a>
@@ -421,34 +421,11 @@
                                 </div><!-- /.post-meta -->
                             
                                 
-                                <div id="prev-next-nav" class="text-center"></div>
+                                <div id="prev-next-nav" class="text-center">
+                                    <a class="btn btn-gray" href="C.html">← 上一頁</a> 
+                                </div>
 
-                                <script>
-                                fetch("lessons.json")
-  .then(res => res.json())
-  .then(pages => {
-    // 過濾掉 disabled 的頁面
-    pages = pages.filter(p => p.enabled !== false);
-
-    const current = location.pathname.split("/").pop();
-    const index = pages.findIndex(p => p.file === current);
-    let html = "";
-
-    if (index > 0) {
-      const prev = pages[index - 1];
-      html += `<a class="btn btn-gray" href="\({prev.file}">← 上一頁</a> `;
-    }
-
-    html += `<a class="btn btn-gray" href="../HSP_en/\){current}" style="margin: 0 10px;">English Version</a>`;
-
-    if (index < pages.length - 1) {
-      const next = pages[index + 1];
-      html += `<a class="btn btn-gray" href="\({next.file}">下一頁 →</a>`;
-    }
-
-    document.getElementById("prev-next-nav").innerHTML = html;
-  });
-</script>
+                                
 
                             </div><!-- /.post-content -->
                         </article><!-- /.blog-post -->
@@ -469,48 +446,16 @@
                     </div>
                     <aside class="col-md-3">
                         <div class="sidebar">
-                            <!--<div class="widget search-form">
-                                <h4 class="widget-title">Search the blog</h4>
-                                <form class="form-group">
-                                    <input type="text" class="form-control" placeholder="Search" required>
-                                    <button class="btn btn-green" type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
-                                </form>
-                            </div> /.search-form -->
-                            <!--<div class="widget widget-recent-posts">
-                                <h4 class="widget-title">Recent posts</h4>
-                                <ul class="list-unstyled">
-                                    <li><a href="#">Inside The Lipsum</a></li>
-                                    <li><a href="#">Oscar Wilde</a></li>
-                                    <li><a href="#">Jeffrey Ween</a></li>
-                                    <li><a href="#">Responsive Design</a></li>
-                                    <li><a href="#">Development</a></li>
-                                </ul>
-                            </div> /.widget-recent-posts -->
-                            
-
                             <div class="widget">
-                                <!--<h4 class="widget-title"><a href="./main.html">科普版：目錄</a></h4>-->
-                                <div id="lesson-list_2"></div>
+                                <div id="lesson-list_2">
+                                <div class="lesson-link "><a href="main.html">隱藏子群問題：引言</a></div>
+                                <div class="lesson-link "><a href="A.html">群論</a></div>
+                                <div class="lesson-link "><a href="B.html">陪集</a></div>
+                                <div class="lesson-link "><a href="C.html">穩定子、克萊因幾何</a></div>
+                                <div class="lesson-link active"><a href="D.html">量子力學與量子重力探測之研究報告</a></div>
+                                </div>
                             </div>
-                            <script>
-fetch("lessons.json")
-  .then(res => res.json())
-  .then(pages => {
-    const current = location.pathname.split("/").pop();
-    const list = pages
-      .filter(p => p.enabled !== false) // ← 這行：只顯示 enabled 沒被關閉的項目
-      .map(p => {
-        const isActive = p.file === current ? "active" : "";
-        return `<div class="lesson-link \){isActive}"><a href="\({p.file}">\){p.title}</a></div>`;
-      })
-      .join("");
-    document.getElementById("lesson-list_2").innerHTML = list;
-  });
-</script>
-  
-                        </div><!-- /.sidebar -->
-                        
-                    </aside>
+                        </div></aside>
                 </div>
             </div>
         </section><!-- /.section-portfolio -->

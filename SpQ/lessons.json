@@ -1,12 +1,38 @@
 [
-    { "title": "半導體自旋量子位元:引言", "file": "main.html" , "status": "new" , "date": "2025-07-21"},
-    { "title": "什麼是半導體自旋量子位元？", "file": "A.html" , "status": "new" , "date": "2025-07-28"},
-    { "title": "控制自旋量子位元？", "file": "C.html" ,"enabled": false},
-    { "title": "半導體自旋量子位元的種類與編碼方式", "file": "B.html" , "status": "new" , "date": "2025-07-29"},
-    { "title": "半導體自旋量子位元的主流材料", "file": "D.html" , "status": "new" , "date": "2025-07-30"},
-    { "title": "單量子點的特性", "file": "E.html" , "status": "new" , "date": "2025-08-15"},
-    { "title": "雙量子點的特性", "file": "F.html" , "status": "new" , "date": "2025-08-18"},
-    { "title": "Shuttled", "file": "H.html" ,"enabled": false},
-    { "title": "Measure", "file": "F.html" ,"enabled": false},
-    { "title": "超導-自旋-拓樸複合量子位元", "file": "G.html" , "status": "new" , "date": "2025-07-31"}
+  {
+    "title": "半導體自旋量子位元:引言",
+    "file": "main.html",
+    "status": "new",
+    "date": "2025-07-21"
+  },
+  {
+    "title": "什麼是半導體自旋量子位元？",
+    "file": "A.html",
+    "status": "new",
+    "date": "2025-07-28"
+  },
+  {
+    "title": "半導體自旋量子位元的種類與編碼方式",
+    "file": "B.html",
+    "status": "new",
+    "date": "2025-07-29"
+  },
+  {
+    "title": "半導體自旋量子位元的主流材料",
+    "file": "D.html",
+    "status": "new",
+    "date": "2025-07-30"
+  },
+  {
+    "title": "單量子點的特性",
+    "file": "E.html",
+    "status": "new",
+    "date": "2025-08-15"
+  },
+  {
+    "title": "超導-自旋-拓樸複合量子位元",
+    "file": "G.html",
+    "status": "new",
+    "date": "2025-07-31"
+  }
 ]

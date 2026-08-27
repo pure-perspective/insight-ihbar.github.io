@@ -1,23 +1,127 @@
 [
-    { "title": "Quantum Industry Dictionary", "file": "main.html"},
-    { "title": "VTT", "file": "VTT.html" , "status": "new" , "date": "2025-10-08"},
-    { "title": "QURECA", "file": "QURECA.html" , "status": "new" , "date": "2025-10-09"},
-    { "title": "AQT", "file": "AQT.html" , "status": "new" , "date": "2025-10-09"},
-    { "title": "IonQ", "file": "IonQ.html" , "status": "new" , "date": "2025-10-10"},
-    { "title": "SQC", "file": "SQC.html" , "status": "new" , "date": "2025-10-11"},
-    { "title": "Rigetti", "file": "Rigetti.html" , "status": "new" , "date": "2025-10-11"},
-    { "title": "Atom-Computing", "file": "Atom-Computing.html" , "status": "new" , "date": "2025-10-12"},
-    { "title": "Infleqtion", "file": "Infleqtion.html" , "status": "new" , "date": "2025-10-13"},
-    { "title": "QuEra", "file": "QuEra.html" , "status": "new" , "date": "2025-10-21"},
-    { "title": "Safran", "file": "Safran.html" , "status": "new" , "date": "2025-10-24"},
-    { "title": "eleQtron", "file": "eleQtron.html" , "status": "new" , "date": "2025-11-02"},
-    { "title": "Q Nu Labs", "file": "Q-Nu.html" , "status": "new" , "date": "2025-11-06"},
-    { "title": "Oxford Ionics", "file": "Oxford-Ionics.html" , "status": "new" , "date": "2025-11-05"},
-    { "title": "Quobly", "file": "Quobly.html" , "status": "new" , "date": "2025-11-06"},
-    { "title": "ID-Quantique", "file": "ID-Quantique.html" , "status": "new" , "date": "2025-11-06"},
-    { "title": "SEEQC", "file": "Seeqc.html" , "status": "new" , "date": "2025-11-12"},
-    { "title": "QUDORA", "file": "QUDORA.html" , "status": "new" , "date": "2025-11-15"},
-    { "title": "IQM", "file": "IQM.html" , "status": "new" , "date": "2025-11-16"},
-    { "title": "Qilimanjaro", "file": "Qilimanjaro.html" , "status": "new" , "date": "2025-11-17"},
-    { "title": "Quantum-Motion", "file": "Quantum-Motion.html" , "status": "new" , "date": "2025-11-20"}
+  {
+    "title": "Quantum Industry Dictionary",
+    "file": "main.html",
+    "status": "revised"
+  },
+  {
+    "title": "VTT",
+    "file": "VTT.html",
+    "status": "new",
+    "date": "2025-10-08"
+  },
+  {
+    "title": "QURECA",
+    "file": "QURECA.html",
+    "status": "new",
+    "date": "2025-10-09"
+  },
+  {
+    "title": "AQT",
+    "file": "AQT.html",
+    "status": "new",
+    "date": "2025-10-09"
+  },
+  {
+    "title": "IonQ",
+    "file": "IonQ.html",
+    "status": "new",
+    "date": "2025-10-10"
+  },
+  {
+    "title": "SQC",
+    "file": "SQC.html",
+    "status": "new",
+    "date": "2025-10-11"
+  },
+  {
+    "title": "Rigetti",
+    "file": "Rigetti.html",
+    "status": "new",
+    "date": "2025-10-11"
+  },
+  {
+    "title": "Atom-Computing",
+    "file": "Atom-Computing.html",
+    "status": "new",
+    "date": "2025-10-12"
+  },
+  {
+    "title": "Infleqtion",
+    "file": "Infleqtion.html",
+    "status": "new",
+    "date": "2025-10-13"
+  },
+  {
+    "title": "QuEra",
+    "file": "QuEra.html",
+    "status": "new",
+    "date": "2025-10-21"
+  },
+  {
+    "title": "Safran",
+    "file": "Safran.html",
+    "status": "new",
+    "date": "2025-10-24"
+  },
+  {
+    "title": "eleQtron",
+    "file": "eleQtron.html",
+    "status": "new",
+    "date": "2025-11-02"
+  },
+  {
+    "title": "Q Nu Labs",
+    "file": "Q-Nu.html",
+    "status": "new",
+    "date": "2025-11-06"
+  },
+  {
+    "title": "Oxford Ionics",
+    "file": "Oxford-Ionics.html",
+    "status": "new",
+    "date": "2025-11-05"
+  },
+  {
+    "title": "Quobly",
+    "file": "Quobly.html",
+    "status": "new",
+    "date": "2025-11-06"
+  },
+  {
+    "title": "ID-Quantique",
+    "file": "ID-Quantique.html",
+    "status": "new",
+    "date": "2025-11-06"
+  },
+  {
+    "title": "SEEQC",
+    "file": "Seeqc.html",
+    "status": "new",
+    "date": "2025-11-12"
+  },
+  {
+    "title": "QUDORA",
+    "file": "QUDORA.html",
+    "status": "new",
+    "date": "2025-11-15"
+  },
+  {
+    "title": "IQM",
+    "file": "IQM.html",
+    "status": "new",
+    "date": "2025-11-16"
+  },
+  {
+    "title": "Qilimanjaro",
+    "file": "Qilimanjaro.html",
+    "status": "new",
+    "date": "2025-11-17"
+  },
+  {
+    "title": "Quantum-Motion",
+    "file": "Quantum-Motion.html",
+    "status": "new",
+    "date": "2025-11-20"
+  }
 ]

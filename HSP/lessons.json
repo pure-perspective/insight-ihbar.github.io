@@ -1,8 +1,27 @@
 [
-    { "title": "隱藏子群問題：引言", "file": "main.html" },
-    { "title": "群論", "file": "A.html" },
-    { "title": "陪集", "file": "B.html" },
-    { "title": "穩定子、克萊因幾何", "file": "C.html" },
-    { "title": "量子力學與量子重力探測之研究報告", "file": "D.html" }
-
+  {
+    "title": "隱藏子群問題：引言",
+    "file": "main.html",
+    "status": "revised"
+  },
+  {
+    "title": "群論",
+    "file": "A.html",
+    "status": "revised"
+  },
+  {
+    "title": "陪集",
+    "file": "B.html",
+    "status": "revised"
+  },
+  {
+    "title": "穩定子、克萊因幾何",
+    "file": "C.html",
+    "status": "revised"
+  },
+  {
+    "title": "量子力學與量子重力探測之研究報告",
+    "file": "D.html",
+    "status": "revised"
+  }
 ]

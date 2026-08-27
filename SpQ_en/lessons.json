@@ -1,10 +1,38 @@
 [
-    { "title": "Semiconductor Spin Qubits: Intoduction", "file": "main.html" , "status": "new" , "date": "2025-07-21"},
-    { "title": "What are Spin Qubits?", "file": "A.html" , "status": "new" , "date": "2025-07-28"},
-    { "title": "Types and Encoding Schemes of Semiconductor Spin Qubits", "file": "B.html" , "status": "new" , "date": "2025-07-29"},
-    { "title": "Mainstream Materials for Semiconductor Spin Qubits", "file": "D.html" , "status": "new" , "date": "2025-07-30"},
-    { "title": "Characteristics of a Single Quantum Dot", "file": "E.html" , "status": "new" , "date": "2025-08-15"},
-    { "title": "Characteristics of Double Quantum Dots", "file": "F.html" , "status": "new" , "date": "2025-08-18"},
-    { "title": "Hybrid Superconducting-Spin-Topological Qubits", "file": "G.html" , "status": "new" , "date": "2025-07-31"},
-    { "title": "控制誤差1-頻率失諧", "file": "L.html" ,"enabled": false}
+  {
+    "title": "Semiconductor Spin Qubits: Intoduction",
+    "file": "main.html",
+    "status": "new",
+    "date": "2025-07-21"
+  },
+  {
+    "title": "What are Spin Qubits?",
+    "file": "A.html",
+    "status": "new",
+    "date": "2025-07-28"
+  },
+  {
+    "title": "Types and Encoding Schemes of Semiconductor Spin Qubits",
+    "file": "B.html",
+    "status": "new",
+    "date": "2025-07-29"
+  },
+  {
+    "title": "Mainstream Materials for Semiconductor Spin Qubits",
+    "file": "D.html",
+    "status": "new",
+    "date": "2025-07-30"
+  },
+  {
+    "title": "Characteristics of a Single Quantum Dot",
+    "file": "E.html",
+    "status": "new",
+    "date": "2025-08-15"
+  },
+  {
+    "title": "Hybrid Superconducting-Spin-Topological Qubits",
+    "file": "G.html",
+    "status": "new",
+    "date": "2025-07-31"
+  }
 ]
