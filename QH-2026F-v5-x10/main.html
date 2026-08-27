@@ -1,39 +1,41 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
+
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-N39VTY949N"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N39VTY949N"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
 
-  gtag('config', 'G-N39VTY949N');
-</script>
-    <!-- Basic Page Needs
+    gtag('config', 'G-N39VTY949N');
+  </script>
+  <!-- Basic Page Needs
     ================================================== -->
-    <meta charset="utf-8">
-    <meta name="author" content="Peir-Ru Wang">
-    
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta charset="utf-8">
+  <meta name="author" content="Peir-Ru Wang">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;1,300&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="apple-mobile-web-app-capable" content="yes">
 
-    <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/20250525-icon.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/20250525-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;1,300&display=swap"
+    rel="stylesheet">
 
-    <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../assets/css/style.css" rel="stylesheet">
-    <link href="../assets/css/responsive.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-    <title>QH-2026F v5 · 16週總覽</title>
-    <meta name="description" content="PHYS598500 進階超導量子電腦架構，16 個兩小時授課單元。">
-    <meta name="keywords" content="- 量子處理器
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/20250525-icon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/20250525-icon.png">
+
+  <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/css/style.css" rel="stylesheet">
+  <link href="../assets/css/responsive.css" rel="stylesheet">
+
+  <title>QH-2026F v5 · 16週總覽</title>
+  <meta name="description" content="PHYS598500 進階超導量子電腦架構，16 個兩小時授課單元。">
+  <meta name="keywords" content="- 量子處理器
 - 超導量子位元
 - Qubit
 - 約瑟夫森接面
@@ -44,662 +46,1313 @@
 - 量子演算法
 - 量子晶片">
 
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
 
-<style>
-.qh-week-meta { margin: 20px 0; padding: 16px 18px; border-left: 4px solid #5f4b8b; background: #f6f4fa; }
-.qh-week-meta p { margin: 4px 0; }
-.qh-session-plan { width: 100%; margin: 18px 0 8px; border-collapse: collapse; }
-.qh-session-plan th, .qh-session-plan td { padding: 10px 12px; border: 1px solid #ddd; vertical-align: top; }
-.qh-session-plan th { background: #f4f4f4; }
-.qh-session-plan .qh-break td { color: #666; background: #fafafa; }
-.qh-total { text-align: right; font-weight: 700; }
-.qh-reading li { margin-bottom: 12px; }
-.qh-reading span, .qh-reading em { display: block; }
-.qh-week-list { padding-left: 0; list-style: none; }
-.qh-week-list li { margin: 0 0 13px; padding: 12px 15px; border-left: 4px solid #5f4b8b; background: #f7f7f7; }
-.qh-week-list a { font-weight: 700; }
-.qh-semester-map {
-  margin: 30px 0 38px;
-  padding: 28px;
-  border: 1px solid #ded8ea;
-  border-radius: 18px;
-  background: linear-gradient(180deg, #faf9fc 0%, #f3f0f8 100%);
-}
-.qh-roadmap-heading { margin: 0 0 26px; text-align: center; }
-.qh-roadmap-heading h2 { margin: 0 0 6px; }
-.qh-roadmap-heading p { margin: 0; color: #625a70; }
-.qh-roadmap-stage { max-width: 900px; margin: 0 auto; }
-.qh-theme-node {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  width: fit-content;
-  margin: 0 auto 14px;
-  padding: 10px 20px;
-  border-radius: 999px;
-  background: #2d2342;
-  color: #fff;
-  font-weight: 700;
-  box-shadow: 0 8px 20px rgba(45, 35, 66, 0.16);
-}
-.qh-theme-code {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 42px;
-  min-height: 30px;
-  padding: 3px 9px;
-  border-radius: 999px;
-  background: #fff;
-  color: #5f4b8b;
-  font-size: 0.9em;
-}
-.qh-week-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 14px;
-}
-.qh-week-grid.qh-one { grid-template-columns: minmax(260px, 360px); justify-content: center; }
-.qh-week-grid.qh-two { grid-template-columns: repeat(2, minmax(0, 280px)); justify-content: center; }
-.qh-week-grid.qh-four { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-.qh-week-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 104px;
-  padding: 16px 14px;
-  border: 1px solid #ddd5eb;
-  border-top: 4px solid #7a61aa;
-  border-radius: 12px;
-  background: #fff;
-  color: #2e2935;
-  text-align: center;
-  text-decoration: none;
-  box-shadow: 0 5px 14px rgba(45, 35, 66, 0.08);
-  transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
-}
-.qh-week-card:hover,
-.qh-week-card:focus {
-  border-color: #7a61aa;
-  color: #2e2935;
-  text-decoration: none;
-  transform: translateY(-2px);
-  box-shadow: 0 9px 20px rgba(45, 35, 66, 0.14);
-}
-.qh-week-number {
-  margin-bottom: 7px;
-  color: #6b538f;
-  font-size: 0.84em;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-}
-.qh-week-title { font-size: 1.04em; font-weight: 700; line-height: 1.45; }
-.qh-roadmap-arrow { position: relative; height: 46px; }
-.qh-roadmap-arrow::before {
-  content: "";
-  position: absolute;
-  top: 7px;
-  bottom: 10px;
-  left: 50%;
-  width: 2px;
-  background: #8c7aa8;
-  transform: translateX(-50%);
-}
-.qh-roadmap-arrow::after {
-  content: "";
-  position: absolute;
-  bottom: 3px;
-  left: 50%;
-  width: 0;
-  height: 0;
-  border-top: 8px solid #8c7aa8;
-  border-right: 6px solid transparent;
-  border-left: 6px solid transparent;
-  transform: translateX(-50%);
-}
-@media (max-width: 767px) { .qh-session-plan { display: block; overflow-x: auto; } }
-@media (max-width: 767px) {
-  .qh-semester-map { padding: 22px 14px; }
-  .qh-theme-node { width: 100%; }
-  .qh-week-grid,
-  .qh-week-grid.qh-one,
-  .qh-week-grid.qh-two,
-  .qh-week-grid.qh-four { grid-template-columns: 1fr; }
-  .qh-week-card { min-height: 84px; }
-}
-.qh-question-atlas { margin-top: 34px; }
-.qh-question-atlas-heading {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 24px;
-  margin-bottom: 24px;
-  padding-bottom: 18px;
-  border-bottom: 1px solid #ddd5e8;
-}
-.qh-question-atlas-heading h3 { margin: 2px 0 8px; }
-.qh-question-atlas-heading p { margin: 0; color: #655d70; }
-.qh-question-eyebrow { color: #765ca1 !important; font-size: 1.5em; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
-.qh-question-controls { display: flex; flex: 0 0 auto; gap: 8px; }
-.qh-question-controls button {
-  padding: 8px 13px;
-  border: 1px solid #cfc4df;
-  border-radius: 999px;
-  background: #fff;
-  color: #4b3a67;
-  font-weight: 700;
-}
-.qh-question-controls button:hover, .qh-question-controls button:focus { border-color: #71559d; background: #f6f2fb; }
-.qh-question-theme { margin: 0 0 28px; padding: 20px; border: 1px solid #e0d9e9; border-radius: 16px; background: #faf9fc; }
-.qh-question-theme-heading { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
-.qh-question-theme-heading h4 { margin: 0 0 2px; }
-.qh-question-theme-heading p { margin: 0; color: #71697b; font-size: 16px; }
-.qh-question-theme-code {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 48px;
-  min-height: 36px;
-  border-radius: 999px;
-  background: #332647;
-  color: #fff;
-  font-weight: 700;
-}
-.qh-question-week { margin-top: 10px; border: 1px solid #ddd5e8; border-radius: 12px; background: #fff; overflow: hidden; }
-.qh-question-week[open] { border-color: #a994c6; box-shadow: 0 7px 18px rgba(45, 35, 66, .08); }
-.qh-question-week summary {
-  font-size: 18px;
-  display: grid;
-  grid-template-columns: auto 1fr auto auto;
-  align-items: center;
-  gap: 12px;
-  padding: 14px 16px;
-  cursor: pointer;
-  list-style: none;
-}
-.qh-question-week summary::-webkit-details-marker { display: none; }
-.qh-question-week summary::after { content: "+"; grid-column: 4; color: #705596; font-size: 1.3em; line-height: 1; }
-.qh-question-week[open] summary::after { content: "−"; }
-.qh-question-week-number { color: #705596; font-size: .86em; font-weight: 700; letter-spacing: .05em; }
-.qh-question-count { padding: 3px 8px; border-radius: 999px; background: #f1edf7; color: #66547e; font-size: .78em; font-weight: 700; }
-.qh-question-week-body { padding: 2px 18px 18px 52px; border-top: 1px solid #eee9f3; }
-.qh-question-week-body ol { margin: 14px 0 12px; padding-left: 24px; }
-.qh-question-week-body li { margin: 0 0 9px; padding-left: 3px; line-height: 1.55; }
-.qh-question-week-link { display: inline-block; font-weight: 700; }
-@media (max-width: 767px) {
-  .qh-question-atlas-heading { align-items: stretch; flex-direction: column; }
-  .qh-question-controls { width: 100%; }
-  .qh-question-controls button { flex: 1; }
-  .qh-question-theme { padding: 15px 12px; }
-  .qh-question-week summary { grid-template-columns: auto 1fr auto; gap: 9px; padding: 13px 12px; }
-  .qh-question-week summary::after { grid-column: 3; grid-row: 1; }
-  .qh-question-count { display: none; }
-  .qh-question-week-body { padding: 2px 13px 15px 20px; }
-}
+  <style>
+    .qh-week-meta {
+      margin: 20px 0;
+      padding: 16px 18px;
+      border-left: 4px solid #5f4b8b;
+      background: #f6f4fa;
+    }
+
+    .qh-week-meta p {
+      margin: 4px 0;
+    }
+
+    .qh-session-plan {
+      width: 100%;
+      margin: 18px 0 8px;
+      border-collapse: collapse;
+    }
+
+    .qh-session-plan th,
+    .qh-session-plan td {
+      padding: 10px 12px;
+      border: 1px solid #ddd;
+      vertical-align: top;
+    }
+
+    .qh-session-plan th {
+      background: #f4f4f4;
+    }
+
+    .qh-session-plan .qh-break td {
+      color: #666;
+      background: #fafafa;
+    }
+
+    .qh-total {
+      text-align: right;
+      font-weight: 700;
+    }
+
+    .qh-reading li {
+      margin-bottom: 12px;
+    }
+
+    .qh-reading span,
+    .qh-reading em {
+      display: block;
+    }
+
+    .qh-week-list {
+      padding-left: 0;
+      list-style: none;
+    }
+
+    .qh-week-list li {
+      margin: 0 0 13px;
+      padding: 12px 15px;
+      border-left: 4px solid #5f4b8b;
+      background: #f7f7f7;
+    }
+
+    .qh-week-list a {
+      font-weight: 700;
+    }
+
+    .qh-semester-map {
+      margin: 30px 0 38px;
+      padding: 28px;
+      border: 1px solid #ded8ea;
+      border-radius: 18px;
+      background: linear-gradient(180deg, #faf9fc 0%, #f3f0f8 100%);
+    }
+
+    .qh-roadmap-heading {
+      margin: 0 0 26px;
+      text-align: center;
+    }
+
+    .qh-roadmap-heading h2 {
+      margin: 0 0 6px;
+    }
+
+    .qh-roadmap-heading p {
+      margin: 0;
+      color: #625a70;
+    }
+
+    .qh-roadmap-stage {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .qh-theme-node {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: fit-content;
+      margin: 0 auto 14px;
+      padding: 10px 20px;
+      border-radius: 999px;
+      background: #2d2342;
+      color: #fff;
+      font-weight: 700;
+      box-shadow: 0 8px 20px rgba(45, 35, 66, 0.16);
+    }
+
+    .qh-theme-code {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 42px;
+      min-height: 30px;
+      padding: 3px 9px;
+      border-radius: 999px;
+      background: #fff;
+      color: #5f4b8b;
+      font-size: 0.9em;
+    }
+
+    .qh-week-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .qh-week-grid.qh-one {
+      grid-template-columns: minmax(260px, 360px);
+      justify-content: center;
+    }
+
+    .qh-week-grid.qh-two {
+      grid-template-columns: repeat(2, minmax(0, 280px));
+      justify-content: center;
+    }
+
+    .qh-week-grid.qh-four {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .qh-week-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 104px;
+      padding: 16px 14px;
+      border: 1px solid #ddd5eb;
+      border-top: 4px solid #7a61aa;
+      border-radius: 12px;
+      background: #fff;
+      color: #2e2935;
+      text-align: center;
+      text-decoration: none;
+      box-shadow: 0 5px 14px rgba(45, 35, 66, 0.08);
+      transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
+    }
+
+    .qh-week-card:hover,
+    .qh-week-card:focus {
+      border-color: #7a61aa;
+      color: #2e2935;
+      text-decoration: none;
+      transform: translateY(-2px);
+      box-shadow: 0 9px 20px rgba(45, 35, 66, 0.14);
+    }
+
+    .qh-week-number {
+      margin-bottom: 7px;
+      color: #6b538f;
+      font-size: 0.84em;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+    }
+
+    .qh-week-title {
+      font-size: 1.04em;
+      font-weight: 700;
+      line-height: 1.45;
+    }
+
+    .qh-roadmap-arrow {
+      position: relative;
+      height: 46px;
+    }
+
+    .qh-roadmap-arrow::before {
+      content: "";
+      position: absolute;
+      top: 7px;
+      bottom: 10px;
+      left: 50%;
+      width: 2px;
+      background: #8c7aa8;
+      transform: translateX(-50%);
+    }
+
+    .qh-roadmap-arrow::after {
+      content: "";
+      position: absolute;
+      bottom: 3px;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-top: 8px solid #8c7aa8;
+      border-right: 6px solid transparent;
+      border-left: 6px solid transparent;
+      transform: translateX(-50%);
+    }
+
+    @media (max-width: 767px) {
+      .qh-session-plan {
+        display: block;
+        overflow-x: auto;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .qh-semester-map {
+        padding: 22px 14px;
+      }
+
+      .qh-theme-node {
+        width: 100%;
+      }
+
+      .qh-week-grid,
+      .qh-week-grid.qh-one,
+      .qh-week-grid.qh-two,
+      .qh-week-grid.qh-four {
+        grid-template-columns: 1fr;
+      }
+
+      .qh-week-card {
+        min-height: 84px;
+      }
+    }
+
+    .qh-question-atlas {
+      margin-top: 34px;
+    }
+
+    .qh-question-atlas-heading {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 24px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid #ddd5e8;
+    }
+
+    .qh-question-atlas-heading h3 {
+      margin: 2px 0 8px;
+    }
+
+    .qh-question-atlas-heading p {
+      margin: 0;
+      color: #655d70;
+    }
+
+    .qh-question-eyebrow {
+      color: #765ca1 !important;
+      font-size: 1.5em;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .qh-question-controls {
+      display: flex;
+      flex: 0 0 auto;
+      gap: 8px;
+    }
+
+    .qh-question-controls button {
+      padding: 8px 13px;
+      border: 1px solid #cfc4df;
+      border-radius: 999px;
+      background: #fff;
+      color: #4b3a67;
+      font-weight: 700;
+    }
+
+    .qh-question-controls button:hover,
+    .qh-question-controls button:focus {
+      border-color: #71559d;
+      background: #f6f2fb;
+    }
+
+    .qh-question-theme {
+      margin: 0 0 28px;
+      padding: 20px;
+      border: 1px solid #e0d9e9;
+      border-radius: 16px;
+      background: #faf9fc;
+    }
+
+    .qh-question-theme-heading {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .qh-question-theme-heading h4 {
+      margin: 0 0 2px;
+    }
+
+    .qh-question-theme-heading p {
+      margin: 0;
+      color: #71697b;
+      font-size: 16px;
+    }
+
+    .qh-question-theme-code {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 48px;
+      min-height: 36px;
+      border-radius: 999px;
+      background: #332647;
+      color: #fff;
+      font-weight: 700;
+    }
+
+    .qh-question-week {
+      margin-top: 10px;
+      border: 1px solid #ddd5e8;
+      border-radius: 12px;
+      background: #fff;
+      overflow: hidden;
+    }
+
+    .qh-question-week[open] {
+      border-color: #a994c6;
+      box-shadow: 0 7px 18px rgba(45, 35, 66, .08);
+    }
+
+    .qh-question-week summary {
+      font-size: 18px;
+      display: grid;
+      grid-template-columns: auto 1fr auto auto;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 16px;
+      cursor: pointer;
+      list-style: none;
+    }
+
+    .qh-question-week summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .qh-question-week summary::after {
+      content: "+";
+      grid-column: 4;
+      color: #705596;
+      font-size: 1.3em;
+      line-height: 1;
+    }
+
+    .qh-question-week[open] summary::after {
+      content: "−";
+    }
+
+    .qh-question-week-number {
+      color: #705596;
+      font-size: .86em;
+      font-weight: 700;
+      letter-spacing: .05em;
+    }
+
+    .qh-question-count {
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: #f1edf7;
+      color: #66547e;
+      font-size: .78em;
+      font-weight: 700;
+    }
+
+    .qh-question-week-body {
+      padding: 2px 18px 18px 52px;
+      border-top: 1px solid #eee9f3;
+    }
+
+    .qh-question-week-body ol {
+      margin: 14px 0 12px;
+      padding-left: 24px;
+    }
+
+    .qh-question-week-body li {
+      margin: 0 0 9px;
+      padding-left: 3px;
+      line-height: 1.55;
+    }
+
+    .qh-question-week-link {
+      display: inline-block;
+      font-weight: 700;
+    }
+
+    @media (max-width: 767px) {
+      .qh-question-atlas-heading {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .qh-question-controls {
+        width: 100%;
+      }
+
+      .qh-question-controls button {
+        flex: 1;
+      }
+
+      .qh-question-theme {
+        padding: 15px 12px;
+      }
+
+      .qh-question-week summary {
+        grid-template-columns: auto 1fr auto;
+        gap: 9px;
+        padding: 13px 12px;
+      }
+
+      .qh-question-week summary::after {
+        grid-column: 3;
+        grid-row: 1;
+      }
+
+      .qh-question-count {
+        display: none;
+      }
+
+      .qh-question-week-body {
+        padding: 2px 13px 15px 20px;
+      }
+    }
 
 
-.qh-question-draft { color: #c0392b; font-weight: 700; }</style>
+    .qh-question-draft {
+      color: #c0392b;
+      font-weight: 700;
+    }
+  </style>
 
+  <link rel="stylesheet" href="qh-mobile-math-overflow.css" data-uniweb-fix="mobile-math-overflow">
 </head>
+
 <body>
 
-    <header id="masthead" class="site-header">
-        <nav id="primary-navigation" class="site-navigation">
-            <div class="container">
+  <header id="masthead" class="site-header">
+    <nav id="primary-navigation" class="site-navigation">
+      <div class="container">
 
-                <div class="navbar-header">                   
-                    <a href="../index_ch.html" class="site-title">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
-                </div><!-- /.navbar-header -->
+        <div class="navbar-header">
+          <a href="../index_ch.html" class="site-title">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
+        </div><!-- /.navbar-header -->
 
-                <div class="collapse navbar-collapse" id="agency-navbar-collapse">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="../index_ch.html">Home</a></li>
-                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">科普介紹<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
-                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-                              <li><a href="../SCQ_elementary/main.html">超導量子位元(科普版)</a></li>
-                              <li><a href="../SCQ_advanced/main.html">超導量子位元(進階版)</a></li>
-                              <li><a href="../SpQ/main.html">半導體自旋量子位元</a></li>
-                            </ul>
-                        </li>
-                        <!--<li class="active"><a href="../SCQ_elementary/main.html">科普介紹</a></li>-->
-                        <li class="active"><a href="../QC_hardware/main.html">硬體導論</a></li>
-                        <li><a href="../QID/main.html">量子產業群像錄</a></li>
-                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">研討會筆記<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
-                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-                                <li><a href="../ASW2026/main.html">2026中研院超導量子電腦Workshop</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">量子諮詢<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
-                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-                                <li><a href="https://www.quantum-perspectives.com/About/main.html">量子遠見科技：諮詢服務</a></li>
-                                <li><a href="../About/main.html">關於我們</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="../index.html">English</a></li>                        
-                    </ul>
-                </div>
-
-            </div>   
-        </nav><!-- /.site-navigation -->
-    </header><!-- /#mastheaed -->
-
-    <div id="hero" class="hero overlay subpage-hero blog-hero">
-        <div class="hero-content">
-            <div class="hero_2-text">
-                <h1>超導量子電腦架構</h1>
-                <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="../index_ch.html">Home</a></li>
-                  <li class="breadcrumb-item"><a href="../SCQ_advanced/main.html">PHYS598500</a></li>
-                  <!--<li class="breadcrumb-item active">約瑟夫森節</li>-->
-                </ol>
-            </div><!-- /.hero-text -->
-        </div><!-- /.hero-content -->
-    </div><!-- /.hero -->
-
-    <main id="main" class="site-main">
-
-        <section class="site-section subpage-site-section section-blog">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-9">
-                        <article class="blog-post">
-                            <!--<img src="../assets/img/portfolio-1.jpg" class="img-res" alt="">-->
-                            <div class="post-content">
-
-<section id="qh-2026f-v5" class="course-theme">
-  <div style="text-align: center;">
-    <p class="theme-label">PHYS598500 · 2026 Fall · 16 weeks</p>
-    <h2>進階超導量子電腦架構</h2>
-    <h3>Advanced Superconducting Quantum Computer Architecture</h3>
-  </div>
-  <section class="course-overview">
-    <h3>課程定位</h3>
-    <p>課程由 computation model 進入 qubit Hamiltonian，再依序處理 qubit design、control、coupling、readout、calibration、benchmarking、stabilizer QEC、surface-code cycle、低溫系統、電子、封裝、製程與 full-system capstone。</p>
-  </section>
-<section class="qh-semester-map" aria-labelledby="semester-map-title">
-    <header class="qh-roadmap-heading">
-      <h2 id="semester-map-title">整學期課程地圖 · v5</h2>
-      <p>把量子計算做成一台機器</p>
-    </header>
-
-    <div class="qh-roadmap-stage">
-      <div class="qh-theme-node"><span class="qh-theme-code">T1</span><span>計算如何變成物理操作</span></div>
-      <div class="qh-week-grid qh-one">
-
-        <a class="qh-week-card" href="T1-1.html"><span class="qh-week-number">W1</span><span class="qh-week-title">從演算法走到硬體操作</span><br><span class="qh-question-draft">（Draft）</span></a>
+        <div class="collapse navbar-collapse" id="agency-navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="../index_ch.html">Home</a></li>
+            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">科普介紹<i
+                  class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+              <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                <li><a href="../SCQ_elementary/main.html">超導量子位元(科普版)</a></li>
+                <li><a href="../SCQ_advanced/main.html">超導量子位元(進階版)</a></li>
+                <li><a href="../SpQ/main.html">半導體自旋量子位元</a></li>
+              </ul>
+            </li>
+            <!--<li class="active"><a href="../SCQ_elementary/main.html">科普介紹</a></li>-->
+            <li class="active"><a href="../QC_hardware/main.html">硬體導論</a></li>
+            <li><a href="../QID/main.html">量子產業群像錄</a></li>
+            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">研討會筆記<i
+                  class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+              <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                <li><a href="../ASW2026/main.html">2026中研院超導量子電腦Workshop</a></li>
+              </ul>
+            </li>
+            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">量子諮詢<i
+                  class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+              <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                <li><a href="https://www.quantum-perspectives.com/About/main.html">量子遠見科技：諮詢服務</a></li>
+                <li><a href="../About/main.html">關於我們</a></li>
+              </ul>
+            </li>
+            <li><a href="../index.html">English</a></li>
+          </ul>
+        </div>
 
       </div>
-    </div>
+    </nav><!-- /.site-navigation -->
+  </header><!-- /#mastheaed -->
 
-    <div class="qh-roadmap-arrow" aria-hidden="true"></div>
+  <div id="hero" class="hero overlay subpage-hero blog-hero">
+    <div class="hero-content">
+      <div class="hero_2-text">
+        <h1>超導量子電腦架構</h1>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="../index_ch.html">Home</a></li>
+          <li class="breadcrumb-item"><a href="../SCQ_advanced/main.html">PHYS598500</a></li>
+          <!--<li class="breadcrumb-item active">約瑟夫森節</li>-->
+        </ol>
+      </div><!-- /.hero-text -->
+    </div><!-- /.hero-content -->
+  </div><!-- /.hero -->
 
-    <div class="qh-roadmap-stage">
-      <div class="qh-theme-node"><span class="qh-theme-code">T2</span><span>從電路做出量子位元</span></div>
-      <div class="qh-week-grid qh-two">
+  <main id="main" class="site-main">
 
-        <a class="qh-week-card" href="T2-2.html"><span class="qh-week-number">W2</span><span class="qh-week-title">把電路變成 Transmon</span></a>
+    <section class="site-section subpage-site-section section-blog">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-9">
+            <article class="blog-post">
+              <!--<img src="../assets/img/portfolio-1.jpg" class="img-res" alt="">-->
+              <div class="post-content">
 
-        <a class="qh-week-card" href="T2-3.html"><span class="qh-week-number">W3</span><span class="qh-week-title">Charge Noise與Fluxonium</span></a>
+                <section id="qh-2026f-v5" class="course-theme">
+                  <div style="text-align: center;">
+                    <p class="theme-label">PHYS598500 · 2026 Fall · 16 weeks</p>
+                    <h2>超導量子電腦架構</h2>
+                    <h3>Advanced Superconducting Quantum Computer Architecture</h3>
+                  </div>
+                  <section class="course-overview">
+                    <h3>課程定位</h3>
+                    <p>課程由 computation model 進入 qubit Hamiltonian，再依序處理 qubit
+                      design、control、coupling、readout、calibration、benchmarking、stabilizer QEC、surface-code
+                      cycle、低溫系統、電子、封裝、製程與 full-system capstone。</p>
+                  </section>
+                  <section class="qh-semester-map" aria-labelledby="semester-map-title">
+                    <header class="qh-roadmap-heading">
+                      <h2 id="semester-map-title">整學期課程地圖 · v5</h2>
+                      <p>把量子計算做成一台機器</p>
+                    </header>
 
-      </div>
-    </div>
+                    <div class="qh-roadmap-stage">
+                      <div class="qh-theme-node"><span class="qh-theme-code">T1</span><span>計算如何變成物理操作</span></div>
+                      <div class="qh-week-grid qh-one">
 
-    <div class="qh-roadmap-arrow" aria-hidden="true"></div>
+                        <a class="qh-week-card" href="T1-1.html"><span class="qh-week-number">W1</span><span
+                            class="qh-week-title">從演算法走到硬體操作</span><br><span
+                            class="qh-question-draft">（Draft）</span></a>
 
-    <div class="qh-roadmap-stage">
-      <div class="qh-theme-node"><span class="qh-theme-code">T3</span><span>控制、連接與讀出量子位元</span></div>
-      <div class="qh-week-grid ">
+                      </div>
+                    </div>
 
-        <a class="qh-week-card" href="T3-4.html"><span class="qh-week-number">W4</span><span class="qh-week-title">用微波控制一顆</span><br><span class="qh-question-draft">（Draft）</span></a>
+                    <div class="qh-roadmap-arrow" aria-hidden="true"></div>
 
-        <a class="qh-week-card" href="T3-5.html"><span class="qh-week-number">W5</span><span class="qh-week-title">讓兩顆量子位元互動</span><br><span class="qh-question-draft">（Draft）</span></a>
+                    <div class="qh-roadmap-stage">
+                      <div class="qh-theme-node"><span class="qh-theme-code">T2</span><span>從電路做出量子位元</span></div>
+                      <div class="qh-week-grid qh-two">
 
-        <a class="qh-week-card" href="T3-6.html"><span class="qh-week-number">W6</span><span class="qh-week-title">把量子態讀成訊號</span><br><span class="qh-question-draft">（Draft）</span></a>
+                        <a class="qh-week-card" href="T2-2.html"><span class="qh-week-number">W2</span><span
+                            class="qh-week-title">把電路變成 Transmon</span></a>
 
-      </div>
-    </div>
+                        <a class="qh-week-card" href="T2-3.html"><span class="qh-week-number">W3</span><span
+                            class="qh-week-title">Charge Noise與Fluxonium</span></a>
 
-    <div class="qh-roadmap-arrow" aria-hidden="true"></div>
+                      </div>
+                    </div>
 
-    <div class="qh-roadmap-stage">
-      <div class="qh-theme-node"><span class="qh-theme-code">T4</span><span>校準、驗證與量子糾錯</span></div>
-      <div class="qh-week-grid qh-four">
+                    <div class="qh-roadmap-arrow" aria-hidden="true"></div>
 
-        <a class="qh-week-card" href="T4-7.html"><span class="qh-week-number">W7</span><span class="qh-week-title">辨識並校準晶片</span><br><span class="qh-question-draft">（Draft）</span></a>
+                    <div class="qh-roadmap-stage">
+                      <div class="qh-theme-node"><span class="qh-theme-code">T3</span><span>控制、連接與讀出量子位元</span></div>
+                      <div class="qh-week-grid ">
 
-        <a class="qh-week-card" href="T4-8.html"><span class="qh-week-number">W8</span><span class="qh-week-title">衡量誤差與效能</span><br><span class="qh-question-draft">（Draft）</span></a>
+                        <a class="qh-week-card" href="T3-4.html"><span class="qh-week-number">W4</span><span
+                            class="qh-week-title">用微波控制一顆</span><br><span class="qh-question-draft">（Draft）</span></a>
 
-        <a class="qh-week-card" href="T4-9.html"><span class="qh-week-number">W9</span><span class="qh-week-title">用 Syndrome 找錯誤</span><br><span class="qh-question-draft">（Draft）</span></a>
+                        <a class="qh-week-card" href="T3-5.html"><span class="qh-week-number">W5</span><span
+                            class="qh-week-title">讓兩顆量子位元互動</span><br><span class="qh-question-draft">（Draft）</span></a>
 
-        <a class="qh-week-card" href="T4-10.html"><span class="qh-week-number">W10</span><span class="qh-week-title"> QEC 量子糾錯</span><br><span class="qh-question-draft">（Draft）</span></a>
+                        <a class="qh-week-card" href="T3-6.html"><span class="qh-week-number">W6</span><span
+                            class="qh-week-title">把量子態讀成訊號</span><br><span class="qh-question-draft">（Draft）</span></a>
 
-      </div>
-    </div>
+                      </div>
+                    </div>
 
-    <div class="qh-roadmap-arrow" aria-hidden="true"></div>
+                    <div class="qh-roadmap-arrow" aria-hidden="true"></div>
 
-    <div class="qh-roadmap-stage">
-      <div class="qh-theme-node"><span class="qh-theme-code">T5</span><span>低溫、訊號與系統整合</span></div>
-      <div class="qh-week-grid ">
+                    <div class="qh-roadmap-stage">
+                      <div class="qh-theme-node"><span class="qh-theme-code">T4</span><span>校準、驗證與量子糾錯</span></div>
+                      <div class="qh-week-grid qh-four">
 
-        <a class="qh-week-card" href="T5-11.html"><span class="qh-week-number">W11</span><span class="qh-week-title">冷卻晶片與控制熱流</span><br><span class="qh-question-draft">（Draft）</span></a>
+                        <a class="qh-week-card" href="T4-7.html"><span class="qh-week-number">W7</span><span
+                            class="qh-week-title">辨識並校準晶片</span><br><span class="qh-question-draft">（Draft）</span></a>
 
-        <a class="qh-week-card" href="T5-12.html"><span class="qh-week-number">W12</span><span class="qh-week-title">把控制與讀出訊號送進送出</span><br><span class="qh-question-draft">（Draft）</span></a>
+                        <a class="qh-week-card" href="T4-8.html"><span class="qh-week-number">W8</span><span
+                            class="qh-week-title">衡量誤差與效能</span><br><span class="qh-question-draft">（Draft）</span></a>
 
-        <a class="qh-week-card" href="T5-13.html"><span class="qh-week-number">W13</span><span class="qh-week-title">封裝、佈線與擴充</span><br><span class="qh-question-draft">（Draft）</span></a>
+                        <a class="qh-week-card" href="T4-9.html"><span class="qh-week-number">W9</span><span
+                            class="qh-week-title">用 Syndrome 找錯誤</span><br><span
+                            class="qh-question-draft">（Draft）</span></a>
 
-      </div>
-    </div>
+                        <a class="qh-week-card" href="T4-10.html"><span class="qh-week-number">W10</span><span
+                            class="qh-week-title"> QEC 量子糾錯</span><br><span class="qh-question-draft">（Draft）</span></a>
 
-    <div class="qh-roadmap-arrow" aria-hidden="true"></div>
+                      </div>
+                    </div>
 
-    <div class="qh-roadmap-stage">
-      <div class="qh-theme-node"><span class="qh-theme-code">T6</span><span>把設計穩定做成晶片</span></div>
-      <div class="qh-week-grid qh-two">
+                    <div class="qh-roadmap-arrow" aria-hidden="true"></div>
 
-        <a class="qh-week-card" href="T6-14.html"><span class="qh-week-number">W14</span><span class="qh-week-title">把版圖製造成晶片</span><br><span class="qh-question-draft">（Draft）</span></a>
+                    <div class="qh-roadmap-stage">
+                      <div class="qh-theme-node"><span class="qh-theme-code">T5</span><span>低溫、訊號與系統整合</span></div>
+                      <div class="qh-week-grid ">
 
-        <a class="qh-week-card" href="T6-15.html"><span class="qh-week-number">W15</span><span class="qh-week-title">控制材料損耗與製程變異</span><br><span class="qh-question-draft">（Draft）</span></a>
+                        <a class="qh-week-card" href="T5-11.html"><span class="qh-week-number">W11</span><span
+                            class="qh-week-title">冷卻晶片與控制熱流</span><br><span class="qh-question-draft">（Draft）</span></a>
 
-      </div>
-    </div>
+                        <a class="qh-week-card" href="T5-12.html"><span class="qh-week-number">W12</span><span
+                            class="qh-week-title">把控制與讀出訊號送進送出</span><br><span
+                            class="qh-question-draft">（Draft）</span></a>
 
-    <div class="qh-roadmap-arrow" aria-hidden="true"></div>
+                        <a class="qh-week-card" href="T5-13.html"><span class="qh-week-number">W13</span><span
+                            class="qh-week-title">封裝、佈線與擴充</span><br><span class="qh-question-draft">（Draft）</span></a>
 
-    <div class="qh-roadmap-stage">
-      <div class="qh-theme-node"><span class="qh-theme-code">T7</span><span>整合成完整量子電腦</span></div>
-      <div class="qh-week-grid qh-one">
+                      </div>
+                    </div>
 
-        <a class="qh-week-card" href="T7-16.html"><span class="qh-week-number">W16</span><span class="qh-week-title">做完整系統架構選擇</span><br><span class="qh-question-draft">（Draft）</span></a>
+                    <div class="qh-roadmap-arrow" aria-hidden="true"></div>
 
-      </div>
-    </div>
+                    <div class="qh-roadmap-stage">
+                      <div class="qh-theme-node"><span class="qh-theme-code">T6</span><span>把設計穩定做成晶片</span></div>
+                      <div class="qh-week-grid qh-two">
 
-  </section>
-  <section class="module">
-    <h3>Theme 配置</h3>
-    <table style="width:80%; margin:0 auto;"><thead><tr><th>Theme</th><th>定位</th><th>週數</th></tr></thead><tbody><tr><td>T1</td><td>Principles</td><td>1 週</td></tr><tr><td>T2</td><td>Qubit Physics</td><td>2 週</td></tr><tr><td>T3</td><td>Control &amp; Readout</td><td>3 週</td></tr><tr><td>T4</td><td>Calibration &amp; QEC</td><td>4 週</td></tr><tr><td>T5</td><td>Full-System Architecture</td><td>3 週</td></tr><tr><td>T6</td><td>Fabrication</td><td>2 週</td></tr><tr><td>T7</td><td>Frontier &amp; Capstone</td><td>1 週</td></tr></tbody></table>
-  </section>
-  <section class="module qh-question-atlas" id="weekly-core-questions" aria-labelledby="weekly-core-title">
-    <header class="qh-question-atlas-heading">
-      <div>
-        <p class="qh-question-eyebrow">W1–W16 · Question Map</p>
-        <h3 id="weekly-core-title">每週教學核心問題</h3>
-        <p>先看整學期順序；採用模組化，每週一個大主題下分成5~6的子主題，約略等於20分種左右的上課篇幅。</p>
-      </div>
-      <div class="qh-question-controls" aria-label="核心問題展開控制">
-        <button type="button" id="qh-expand-all">全部展開</button>
-        <button type="button" id="qh-collapse-all">全部收合</button>
-      </div>
-    </header>
-    <section class="qh-question-theme" aria-labelledby="questions-t1">
-      <header class="qh-question-theme-heading">
-        <span class="qh-question-theme-code">T1</span>
-        <div><h4 id="questions-t1">從計算模型走到物理操作</h4><p>Principles</p></div>
-      </header>
-      <details class="qh-question-week">
-        <summary>
-          <span class="qh-question-week-number">W1</span>
-          <strong>從量子計算模型到硬體操作</strong><span class="qh-question-draft">（Draft）</span>
-          <span class="qh-question-count">6 題</span>
-        </summary>
-        <div class="qh-question-week-body">
-          <ol><li><p>一個量子演算法步驟，究竟要求硬體做什麼？</p></li><li><p>為什麼封閉量子演化必須是 unitary、因而可逆？</p></li><li><p>一個 logical gate 如何變成可分解的 unitary operation？</p></li><li><p>一個 unitary operation 如何由 time-dependent Hamiltonian 產生？</p></li><li><p>Measurement、reset 與 classical feedback 在哪裡接上 unitary chain？</p></li><li><p>後續課程將沿著哪些抽象層追蹤誤差與資源？</p></li></ol>
-          <a class="qh-question-week-link" href="T1-1.html">查看 W1 完整頁面 →</a>
-        </div>
-      </details>
-    </section>
-    <section class="qh-question-theme" aria-labelledby="questions-t2">
-      <header class="qh-question-theme-heading">
-        <span class="qh-question-theme-code">T2</span>
-        <div><h4 id="questions-t2">從電路做出量子位元</h4><p>Qubit Design</p></div>
-      </header>
-      <details class="qh-question-week" open>
-        <summary>
-          <span class="qh-question-week-number">W2</span>
-          <strong>超導電路量子化與 Transmon 設計</strong>
-          <span class="qh-question-count">6 題</span>
-        </summary>
-        <div class="qh-question-week-body">
-          <ol><li><p>電路圖裡，哪些量可以成為自由度？</p></li><li><p>怎麼把電路變成 Hamiltonian？</p></li><li><p>Josephson junction 為何能做出 qubit？</p></li><li><p>Transmon 用什麼換到抗 charge noise？</p></li><li><p>目標頻率如何變成版圖與製程參數？</p></li><li><p>這套設計何時不該再用？</p></li></ol>
-          <a class="qh-question-week-link" href="T2-2.html">查看 W2 完整頁面 →</a>
-        </div>
-      </details>
-      <details class="qh-question-week" open>
-        <summary>
-          <span class="qh-question-week-number">W3</span>
-          <strong>Fluxonium：從電路改造到設計取捨</strong>
-          <span class="qh-question-count">6 題</span>
-        </summary>
-        <div class="qh-question-week-body">
-          <ol>
-            <li><p>為什麼要在 Transmon 電路之外再加入 superinductor？</p></li>
-            <li><p>Selection rule </p></li>
-            <li><p>Inductive energy 如何改變位能與能譜？</p></li>
-            <li><p>External flux 如何改變工作點與波函數？</p></li>
-            <li><p>Fluxonium 保護了哪些 noise，又引入哪些代價？</p></li>
-            <li><p>什麼條件下應選 Fluxonium，而不是 Transmon？</p></li></ol>
-          <a class="qh-question-week-link" href="T2-3.html">查看 W3 完整頁面 →</a>
-        </div>
-      </details>
-    </section>
-    <section class="qh-question-theme" aria-labelledby="questions-t3">
-      <header class="qh-question-theme-heading">
-        <span class="qh-question-theme-code">T3</span>
-        <div><h4 id="questions-t3">控制、連接並讀出量子位元</h4><p>Control &amp; Readout</p></div>
-      </header>
-      <details class="qh-question-week">
-        <summary>
-          <span class="qh-question-week-number">W4</span>
-          <strong>單量子位元控制：從微波脈衝到旋轉座標</strong><span class="qh-question-draft">（Draft）</span>
-          <span class="qh-question-count">6 題</span>
-        </summary>
-        <div class="qh-question-week-body">
-          <ol><li><p>室溫的 I/Q waveform 如何變成 qubit 的目標旋轉？</p></li><li><p>Drive 的頻率、相位、振幅與時間分別控制什麼？</p></li><li><p>Rotating frame 與 RWA 為什麼能簡化控制問題？</p></li><li><p>Pulse 為什麼會造成 leakage 與 waveform distortion？</p></li><li><p>如何把粗略脈衝校準成可驗證的 Xπ/2 gate？</p></li><li><p>哪些 observable 能區分振幅、失諧、相位與失真誤差？</p></li></ol>
-          <a class="qh-question-week-link" href="T3-4.html">查看 W4 完整頁面 →</a>
-        </div>
-      </details>
-      <details class="qh-question-week">
-        <summary>
-          <span class="qh-question-week-number">W5</span>
-          <strong>耦合 Hamiltonian、兩量子位元閘與 Tunable Coupler</strong><span class="qh-question-draft">（Draft）</span>
-          <span class="qh-question-count">6 題</span>
-        </summary>
-        <div class="qh-question-week-body">
-          <ol><li><p>如何只在需要時打開兩顆 qubit 的 interaction？</p></li><li><p>不同耦合電路會在 Hamiltonian 中產生哪些項？</p></li><li><p>Exchange、ZZ 與 avoided crossing 有什麼不同？</p></li><li><p>iSWAP、CZ 與 cross-resonance 應依什麼條件選擇？</p></li><li><p>Spectator error、crosstalk 與 frequency collision 如何隨晶片擴大？</p></li><li><p>如何把 connectivity graph 變成 interaction 與 error budget？</p></li></ol>
-          <a class="qh-question-week-link" href="T3-5.html">查看 W5 完整頁面 →</a>
-        </div>
-      </details>
-      <details class="qh-question-week">
-        <summary>
-          <span class="qh-question-week-number">W6</span>
-          <strong>Circuit QED、Dispersive Readout 與量測鏈</strong><span class="qh-question-draft">（Draft）</span>
-          <span class="qh-question-count">6 題</span>
-        </summary>
-        <div class="qh-question-week-body">
-          <ol><li><p>如何把不可見的量子態轉成可分類的電壓？</p></li><li><p>Qubit–resonator coupling 如何由 Jaynes–Cummings model 描述？</p></li><li><p>Dispersive shift、readout contrast 與 Purcell loss 如何互相制約？</p></li><li><p>量子態如何一路穿過 resonator、amplifier 與 IQ classifier？</p></li><li><p>如何建立從 readout tone 到 IQ cloud 的 signal/noise budget？</p></li><li><p>Readout speed、fidelity 與 backaction 應如何共同驗收？</p></li></ol>
-          <a class="qh-question-week-link" href="T3-6.html">查看 W6 完整頁面 →</a>
-        </div>
-      </details>
-    </section>
-    <section class="qh-question-theme" aria-labelledby="questions-t4">
-      <header class="qh-question-theme-heading">
-        <span class="qh-question-theme-code">T4</span>
-        <div><h4 id="questions-t4">校準、驗證並保護量子資訊</h4><p>Calibration &amp; QEC</p></div>
-      </header>
-      <details class="qh-question-week">
-        <summary>
-          <span class="qh-question-week-number">W7</span>
-          <strong>量子處理器校準：Hamiltonian Identification 與 Drift</strong><span class="qh-question-draft">（Draft）</span>
-          <span class="qh-question-count">6 題</span>
-        </summary>
-        <div class="qh-question-week-body">
-          <ol><li><p>量子晶片開機後，最先必須知道哪些參數？</p></li><li><p>Spectroscopy、Rabi、Ramsey、T1/T2 與 readout 應按什麼依賴順序執行？</p></li><li><p>如何把 measure → fit → update → validate 變成 calibration graph？</p></li><li><p>一組校準參數在 drift 下可以信任多久？</p></li><li><p>Frequency drift 如何污染下游 gate 與 readout？</p></li><li><p>最小可運作的 calibration dependency graph 必須包含什麼？</p></li></ol>
-          <a class="qh-question-week-link" href="T4-7.html">查看 W7 完整頁面 →</a>
-        </div>
-      </details>
-      <details class="qh-question-week">
-        <summary>
-          <span class="qh-question-week-number">W8</span>
-          <strong>Benchmarking、多量子位元誤差與可擴展校準</strong><span class="qh-question-draft">（Draft）</span>
-          <span class="qh-question-count">6 題</span>
-        </summary>
-        <div class="qh-question-week-body">
-          <ol><li><p>漂亮的 average fidelity 可能隱藏哪些失效模式？</p></li><li><p>RB 與 interleaved RB 實際測到什麼？</p></li><li><p>RB decay model 依賴哪些 noise 假設？</p></li><li><p>如何分別看見 leakage、crosstalk 與 correlated error？</p></li><li><p>為什麼單一 gate 很好，整個 circuit layer 仍可能很差？</p></li><li><p>如何讓每個 benchmark metric 對應可排除的 failure hypothesis？</p></li></ol>
-          <a class="qh-question-week-link" href="T4-8.html">查看 W8 完整頁面 →</a>
-        </div>
-      </details>
-      <details class="qh-question-week">
-        <summary>
-          <span class="qh-question-week-number">W9</span>
-          <strong>量子錯誤校正基礎：從物理誤差到 Stabilizer Syndrome</strong><span class="qh-question-draft">（Draft）</span>
-          <span class="qh-question-count">6 題</span>
-        </summary>
-        <div class="qh-question-week-body">
-          <ol><li><p>物理誤差與計算失敗是同一件事嗎？</p></li><li><p>量子資訊不能複製，冗餘從哪裡來？</p></li><li><p>怎麼知道哪裡出錯，又不直接讀出答案？</p></li><li><p>Stabilizer 到底壓縮了什麼資訊？</p></li><li><p>Code distance 能保證什麼，又不能保證什麼？</p></li><li><p>為什麼下一步需要 Surface code？</p></li></ol>
-          <a class="qh-question-week-link" href="T4-9.html">查看 W9 完整頁面 →</a>
-        </div>
-      </details>
-      <details class="qh-question-week">
-        <summary>
-          <span class="qh-question-week-number">W10</span>
-          <strong>Surface-Code Hardware Cycle：排程、解碼與 Logical-Qubit 資源</strong><span class="qh-question-draft">（Draft）</span>
-          <span class="qh-question-count">6 題</span>
-        </summary>
-        <div class="qh-question-week-body">
-          <ol><li><p>為什麼 Surface code 適合超導量子晶片？</p></li><li><p>一輪 syndrome extraction 應該怎麼排？</p></li><li><p>Syndrome measurement 本身會出錯，怎麼辦？</p></li><li><p>Decoder 要多快才夠快？</p></li><li><p>Physical error 降低，logical error 就一定下降嗎？</p></li><li><p>一顆 logical qubit 真正需要多少硬體與古典資源？</p></li></ol>
-          <a class="qh-question-week-link" href="T4-10.html">查看 W10 完整頁面 →</a>
-        </div>
-      </details>
-    </section>
-    <section class="qh-question-theme" aria-labelledby="questions-t5">
-      <header class="qh-question-theme-heading">
-        <span class="qh-question-theme-code">T5</span>
-        <div><h4 id="questions-t5">讓低溫、訊號與系統一起運作</h4><p>Full-System Architecture</p></div>
-      </header>
-      <details class="qh-question-week">
-        <summary>
-          <span class="qh-question-week-number">W11</span>
-          <strong>Dilution Refrigerator、熱化與低溫線路預算</strong><span class="qh-question-draft">（Draft）</span>
-          <span class="qh-question-count">6 題</span>
-        </summary>
-        <div class="qh-question-week-body">
-          <ol><li><p>如何送入訊號，而不把熱與雜訊一起送進 10 mK？</p></li><li><p>Dilution refrigerator 各溫層能提供多少 cooling power？</p></li><li><p>如何建立 conduction、dissipation、radiation 與 device heat budget？</p></li><li><p>Drive、flux 與 readout line 應如何 attenuation、filtering 與 thermalization？</p></li><li><p>如何為三種線路畫出逐級 thermal/noise budget？</p></li><li><p>如何用 budget 決定元件位置，而不是背低溫零件名稱？</p></li></ol>
-          <a class="qh-question-week-link" href="T5-11.html">查看 W11 完整頁面 →</a>
-        </div>
-      </details>
-      <details class="qh-question-week">
-        <summary>
-          <span class="qh-question-week-number">W12</span>
-          <strong>微波控制、讀出電子與訊號完整性</strong><span class="qh-question-draft">（Draft）</span>
-          <span class="qh-question-count">6 題</span>
-        </summary>
-        <div class="qh-question-week-body">
-          <ol><li><p>電子儀器規格如何轉變成 quantum error？</p></li><li><p>DAC、AWG、LO、IQ mixer 與 clock 如何形成控制鏈？</p></li><li><p>如何建立 amplifier cascade 的 gain、noise 與 dynamic-range budget？</p></li><li><p>Multiplexed readout 會遇到哪些 intermodulation、ADC 與分類問題？</p></li><li><p>如何由 readout target 反推 electronics requirements？</p></li><li><p>如何驗收 room-temperature 到 qubit 的 signal-integrity chain？</p></li></ol>
-          <a class="qh-question-week-link" href="T5-12.html">查看 W12 完整頁面 →</a>
-        </div>
-      </details>
-      <details class="qh-question-week">
-        <summary>
-          <span class="qh-question-week-number">W13</span>
-          <strong>封裝、EM Modes、佈線擴展與全系統整合</strong><span class="qh-question-draft">（Draft）</span>
-          <span class="qh-question-count">6 題</span>
-        </summary>
-        <div class="qh-question-week-body">
-          <ol><li><p>當 qubit 數量增加，為什麼封裝也會成為 Hamiltonian 的一部分？</p></li><li><p>Package cavity、slotline、ground return、bond wire 與 seam loss 如何影響 qubit？</p></li><li><p>如何從 EM mode 與 participation 指標建立驗收條件？</p></li><li><p>I/O density、heat load、3D wiring 與 cryogenic control 如何共同限制擴充？</p></li><li><p>如何進行一次 100-qubit package/wiring architecture review？</p></li><li><p>系統擴充時，最先爆掉的三個 budget 可能是什麼？</p></li></ol>
-          <a class="qh-question-week-link" href="T5-13.html">查看 W13 完整頁面 →</a>
-        </div>
-      </details>
-    </section>
-    <section class="qh-question-theme" aria-labelledby="questions-t6">
-      <header class="qh-question-theme-heading">
-        <span class="qh-question-theme-code">T6</span>
-        <div><h4 id="questions-t6">把設計穩定做成晶片</h4><p>Fabrication</p></div>
-      </header>
-      <details class="qh-question-week">
-        <summary>
-          <span class="qh-question-week-number">W14</span>
-          <strong>超導量子晶片製程與 Josephson Junction Process Module</strong><span class="qh-question-draft">（Draft）</span>
-          <span class="qh-question-count">6 題</span>
-        </summary>
-        <div class="qh-question-week-body">
-          <ol><li><p>版圖上的 EJ、EC 如何被製程真正做出來？</p></li><li><p>Substrate、base metal、lithography、etch、lift-off 與 cleaning 如何形成製程流程？</p></li><li><p>如何從 Rn、Ic 與 EJ 建立 Josephson-junction process module？</p></li><li><p>PCM、overlay、residue 與 surface treatment 如何接受低溫驗證？</p></li><li><p>每個 process step 應監控哪些 CTQ、PCM 與 defect？</p></li><li><p>如何建立 design parameter → process control 的映射？</p></li></ol>
-          <a class="qh-question-week-link" href="T6-14.html">查看 W14 完整頁面 →</a>
-        </div>
-      </details>
-      <details class="qh-question-week">
-        <summary>
-          <span class="qh-question-week-number">W15</span>
-          <strong>Materials Loss、製程變異、Yield 與 Design–Fab–Measure Loop</strong><span class="qh-question-draft">（Draft）</span>
-          <span class="qh-question-count">6 題</span>
-        </summary>
-        <div class="qh-question-week-body">
-          <ol><li><p>如何把『這顆 qubit 不好』轉成可重複的製程知識？</p></li><li><p>TLS、surface/interface loss、quasiparticle 與 participation ratio 如何影響 T1？</p></li><li><p>如何從製程變異分布推到 frequency collision 與 chip yield？</p></li><li><p>Split lot、PCM 與 cryogenic test 如何形成 design–fab–measure loop？</p></li><li><p>如何設計 frequency spread 或 T1-tail 的 split-lot experiment？</p></li><li><p>如何從追求 best device 改成管理 manufacturable distribution？</p></li></ol>
-          <a class="qh-question-week-link" href="T6-15.html">查看 W15 完整頁面 →</a>
-        </div>
-      </details>
-    </section>
-    <section class="qh-question-theme" aria-labelledby="questions-t7">
-      <header class="qh-question-theme-heading">
-        <span class="qh-question-theme-code">T7</span>
-        <div><h4 id="questions-t7">整合成完整量子電腦架構</h4><p>Capstone</p></div>
-      </header>
-      <details class="qh-question-week">
-        <summary>
-          <span class="qh-question-week-number">W16</span>
-          <strong>前沿架構與 Hardware-Aware Quantum System Capstone</strong><span class="qh-question-draft">（Draft）</span>
-          <span class="qh-question-count">6 題</span>
-        </summary>
-        <div class="qh-question-week-body">
-          <ol><li><p>面向可用量子計算，整體架構應如何選擇？</p></li><li><p>如何從 workload 推出 logical-qubit、error 與 latency requirements？</p></li><li><p>如何由 logical requirements 向下配置 code、qubit、coupling 與 control？</p></li><li><p>Modular、2D/3D I/O、cryo-control 與不同 qubit branches 如何比較？</p></li><li><p>如何完成 QPU、control、fabrication 與 QEC 的整體 architecture review？</p></li><li><p>如何區分 demonstrated、projected、assumed 與 kill criterion？</p></li></ol>
-          <a class="qh-question-week-link" href="T7-16.html">查看 W16 完整頁面 →</a>
-        </div>
-      </details>
-    </section>
-  </section>
-  <script>
-  (() => {
-    const atlas = document.getElementById("weekly-core-questions");
-    if (!atlas) return;
-    const weeks = () => atlas.querySelectorAll("details.qh-question-week");
-    document.getElementById("qh-expand-all")?.addEventListener("click", () => weeks().forEach(item => item.open = true));
-    document.getElementById("qh-collapse-all")?.addEventListener("click", () => weeks().forEach(item => item.open = false));
-  })();
-  </script>
-</section>
+                        <a class="qh-week-card" href="T6-14.html"><span class="qh-week-number">W14</span><span
+                            class="qh-week-title">把版圖製造成晶片</span><br><span class="qh-question-draft">（Draft）</span></a>
+
+                        <a class="qh-week-card" href="T6-15.html"><span class="qh-week-number">W15</span><span
+                            class="qh-week-title">控制材料損耗與製程變異</span><br><span
+                            class="qh-question-draft">（Draft）</span></a>
+
+                      </div>
+                    </div>
+
+                    <div class="qh-roadmap-arrow" aria-hidden="true"></div>
+
+                    <div class="qh-roadmap-stage">
+                      <div class="qh-theme-node"><span class="qh-theme-code">T7</span><span>整合成完整量子電腦</span></div>
+                      <div class="qh-week-grid qh-one">
+
+                        <a class="qh-week-card" href="T7-16.html"><span class="qh-week-number">W16</span><span
+                            class="qh-week-title">做完整系統架構選擇</span><br><span class="qh-question-draft">（Draft）</span></a>
+
+                      </div>
+                    </div>
+
+                  </section>
+                  <section class="module">
+                    <h3>Theme 配置</h3>
+                    <table style="width:80%; margin:0 auto;">
+                      <thead>
+                        <tr>
+                          <th>Theme</th>
+                          <th>定位</th>
+                          <th>週數</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>T1</td>
+                          <td>Principles</td>
+                          <td>1 週</td>
+                        </tr>
+                        <tr>
+                          <td>T2</td>
+                          <td>Qubit Physics</td>
+                          <td>2 週</td>
+                        </tr>
+                        <tr>
+                          <td>T3</td>
+                          <td>Control &amp; Readout</td>
+                          <td>3 週</td>
+                        </tr>
+                        <tr>
+                          <td>T4</td>
+                          <td>Calibration &amp; QEC</td>
+                          <td>4 週</td>
+                        </tr>
+                        <tr>
+                          <td>T5</td>
+                          <td>Full-System Architecture</td>
+                          <td>3 週</td>
+                        </tr>
+                        <tr>
+                          <td>T6</td>
+                          <td>Fabrication</td>
+                          <td>2 週</td>
+                        </tr>
+                        <tr>
+                          <td>T7</td>
+                          <td>Frontier &amp; Capstone</td>
+                          <td>1 週</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </section>
+                  <section class="module qh-question-atlas" id="weekly-core-questions"
+                    aria-labelledby="weekly-core-title">
+                    <header class="qh-question-atlas-heading">
+                      <div>
+                        <p class="qh-question-eyebrow">W1–W16 · Question Map</p>
+                        <h3 id="weekly-core-title">每週教學核心問題</h3>
+                        <p>先看整學期順序；採用模組化，每週一個大主題下分成5~6的子主題，約略等於20分種左右的上課篇幅。</p>
+                      </div>
+                      <div class="qh-question-controls" aria-label="核心問題展開控制">
+                        <button type="button" id="qh-expand-all">全部展開</button>
+                        <button type="button" id="qh-collapse-all">全部收合</button>
+                      </div>
+                    </header>
+                    <section class="qh-question-theme" aria-labelledby="questions-t1">
+                      <header class="qh-question-theme-heading">
+                        <span class="qh-question-theme-code">T1</span>
+                        <div>
+                          <h4 id="questions-t1">從計算模型走到物理操作</h4>
+                          <p>Principles</p>
+                        </div>
+                      </header>
+                      <details class="qh-question-week">
+                        <summary>
+                          <span class="qh-question-week-number">W1</span>
+                          <strong>從量子計算模型到硬體操作</strong><span class="qh-question-draft">（Draft）</span>
+                          <span class="qh-question-count">6 題</span>
+                        </summary>
+                        <div class="qh-question-week-body">
+                          <ol>
+                            <li>
+                              <p>一個量子演算法步驟，究竟要求硬體做什麼？</p>
+                            </li>
+                            <li>
+                              <p>為什麼封閉量子演化必須是 unitary、因而可逆？</p>
+                            </li>
+                            <li>
+                              <p>一個 logical gate 如何變成可分解的 unitary operation？</p>
+                            </li>
+                            <li>
+                              <p>一個 unitary operation 如何由 time-dependent Hamiltonian 產生？</p>
+                            </li>
+                            <li>
+                              <p>Measurement、reset 與 classical feedback 在哪裡接上 unitary chain？</p>
+                            </li>
+                            <li>
+                              <p>後續課程將沿著哪些抽象層追蹤誤差與資源？</p>
+                            </li>
+                          </ol>
+                          <a class="qh-question-week-link" href="T1-1.html">查看 W1 完整頁面 →</a>
+                        </div>
+                      </details>
+                    </section>
+                    <section class="qh-question-theme" aria-labelledby="questions-t2">
+                      <header class="qh-question-theme-heading">
+                        <span class="qh-question-theme-code">T2</span>
+                        <div>
+                          <h4 id="questions-t2">從電路做出量子位元</h4>
+                          <p>Qubit Design</p>
+                        </div>
+                      </header>
+                      <details class="qh-question-week" open>
+                        <summary>
+                          <span class="qh-question-week-number">W2</span>
+                          <strong>超導電路量子化與 Transmon 設計</strong>
+                          <span class="qh-question-count">6 題</span>
+                        </summary>
+                        <div class="qh-question-week-body">
+                          <ol>
+                            <li>
+                              <p>電路圖裡，哪些量可以成為自由度？</p>
+                            </li>
+                            <li>
+                              <p>怎麼把電路變成 Hamiltonian？</p>
+                            </li>
+                            <li>
+                              <p>Josephson junction 為何能做出 qubit？</p>
+                            </li>
+                            <li>
+                              <p>Transmon 用什麼換到抗 charge noise？</p>
+                            </li>
+                            <li>
+                              <p>目標頻率如何變成版圖與製程參數？</p>
+                            </li>
+                            <li>
+                              <p>這套設計何時不該再用？</p>
+                            </li>
+                          </ol>
+                          <a class="qh-question-week-link" href="T2-2.html">查看 W2 完整頁面 →</a>
+                        </div>
+                      </details>
+                      <details class="qh-question-week" open>
+                        <summary>
+                          <span class="qh-question-week-number">W3</span>
+                          <strong>Fluxonium：從電路改造到設計取捨</strong>
+                          <span class="qh-question-count">6 題</span>
+                        </summary>
+                        <div class="qh-question-week-body">
+                          <ol>
+                            <li>
+                              <p>為什麼要在 Transmon 電路之外再加入 superinductor？</p>
+                            </li>
+                            <li>
+                              <p>Selection rule </p>
+                            </li>
+                            <li>
+                              <p>Inductive energy 如何改變位能與能譜？</p>
+                            </li>
+                            <li>
+                              <p>External flux 如何改變工作點與波函數？</p>
+                            </li>
+                            <li>
+                              <p>Fluxonium 保護了哪些 noise，又引入哪些代價？</p>
+                            </li>
+                            <li>
+                              <p>什麼條件下應選 Fluxonium，而不是 Transmon？</p>
+                            </li>
+                          </ol>
+                          <a class="qh-question-week-link" href="T2-3.html">查看 W3 完整頁面 →</a>
+                        </div>
+                      </details>
+                    </section>
+                    <section class="qh-question-theme" aria-labelledby="questions-t3">
+                      <header class="qh-question-theme-heading">
+                        <span class="qh-question-theme-code">T3</span>
+                        <div>
+                          <h4 id="questions-t3">控制、連接並讀出量子位元</h4>
+                          <p>Control &amp; Readout</p>
+                        </div>
+                      </header>
+                      <details class="qh-question-week">
+                        <summary>
+                          <span class="qh-question-week-number">W4</span>
+                          <strong>單量子位元控制：從微波脈衝到旋轉座標</strong><span class="qh-question-draft">（Draft）</span>
+                          <span class="qh-question-count">6 題</span>
+                        </summary>
+                        <div class="qh-question-week-body">
+                          <ol>
+                            <li>
+                              <p>室溫的 I/Q waveform 如何變成 qubit 的目標旋轉？</p>
+                            </li>
+                            <li>
+                              <p>Drive 的頻率、相位、振幅與時間分別控制什麼？</p>
+                            </li>
+                            <li>
+                              <p>Rotating frame 與 RWA 為什麼能簡化控制問題？</p>
+                            </li>
+                            <li>
+                              <p>Pulse 為什麼會造成 leakage 與 waveform distortion？</p>
+                            </li>
+                            <li>
+                              <p>如何把粗略脈衝校準成可驗證的 Xπ/2 gate？</p>
+                            </li>
+                            <li>
+                              <p>哪些 observable 能區分振幅、失諧、相位與失真誤差？</p>
+                            </li>
+                          </ol>
+                          <a class="qh-question-week-link" href="T3-4.html">查看 W4 完整頁面 →</a>
+                        </div>
+                      </details>
+                      <details class="qh-question-week">
+                        <summary>
+                          <span class="qh-question-week-number">W5</span>
+                          <strong>耦合 Hamiltonian、兩量子位元閘與 Tunable Coupler</strong><span
+                            class="qh-question-draft">（Draft）</span>
+                          <span class="qh-question-count">6 題</span>
+                        </summary>
+                        <div class="qh-question-week-body">
+                          <ol>
+                            <li>
+                              <p>如何只在需要時打開兩顆 qubit 的 interaction？</p>
+                            </li>
+                            <li>
+                              <p>不同耦合電路會在 Hamiltonian 中產生哪些項？</p>
+                            </li>
+                            <li>
+                              <p>Exchange、ZZ 與 avoided crossing 有什麼不同？</p>
+                            </li>
+                            <li>
+                              <p>iSWAP、CZ 與 cross-resonance 應依什麼條件選擇？</p>
+                            </li>
+                            <li>
+                              <p>Spectator error、crosstalk 與 frequency collision 如何隨晶片擴大？</p>
+                            </li>
+                            <li>
+                              <p>如何把 connectivity graph 變成 interaction 與 error budget？</p>
+                            </li>
+                          </ol>
+                          <a class="qh-question-week-link" href="T3-5.html">查看 W5 完整頁面 →</a>
+                        </div>
+                      </details>
+                      <details class="qh-question-week">
+                        <summary>
+                          <span class="qh-question-week-number">W6</span>
+                          <strong>Circuit QED、Dispersive Readout 與量測鏈</strong><span
+                            class="qh-question-draft">（Draft）</span>
+                          <span class="qh-question-count">6 題</span>
+                        </summary>
+                        <div class="qh-question-week-body">
+                          <ol>
+                            <li>
+                              <p>如何把不可見的量子態轉成可分類的電壓？</p>
+                            </li>
+                            <li>
+                              <p>Qubit–resonator coupling 如何由 Jaynes–Cummings model 描述？</p>
+                            </li>
+                            <li>
+                              <p>Dispersive shift、readout contrast 與 Purcell loss 如何互相制約？</p>
+                            </li>
+                            <li>
+                              <p>量子態如何一路穿過 resonator、amplifier 與 IQ classifier？</p>
+                            </li>
+                            <li>
+                              <p>如何建立從 readout tone 到 IQ cloud 的 signal/noise budget？</p>
+                            </li>
+                            <li>
+                              <p>Readout speed、fidelity 與 backaction 應如何共同驗收？</p>
+                            </li>
+                          </ol>
+                          <a class="qh-question-week-link" href="T3-6.html">查看 W6 完整頁面 →</a>
+                        </div>
+                      </details>
+                    </section>
+                    <section class="qh-question-theme" aria-labelledby="questions-t4">
+                      <header class="qh-question-theme-heading">
+                        <span class="qh-question-theme-code">T4</span>
+                        <div>
+                          <h4 id="questions-t4">校準、驗證並保護量子資訊</h4>
+                          <p>Calibration &amp; QEC</p>
+                        </div>
+                      </header>
+                      <details class="qh-question-week">
+                        <summary>
+                          <span class="qh-question-week-number">W7</span>
+                          <strong>量子處理器校準：Hamiltonian Identification 與 Drift</strong><span
+                            class="qh-question-draft">（Draft）</span>
+                          <span class="qh-question-count">6 題</span>
+                        </summary>
+                        <div class="qh-question-week-body">
+                          <ol>
+                            <li>
+                              <p>量子晶片開機後，最先必須知道哪些參數？</p>
+                            </li>
+                            <li>
+                              <p>Spectroscopy、Rabi、Ramsey、T1/T2 與 readout 應按什麼依賴順序執行？</p>
+                            </li>
+                            <li>
+                              <p>如何把 measure → fit → update → validate 變成 calibration graph？</p>
+                            </li>
+                            <li>
+                              <p>一組校準參數在 drift 下可以信任多久？</p>
+                            </li>
+                            <li>
+                              <p>Frequency drift 如何污染下游 gate 與 readout？</p>
+                            </li>
+                            <li>
+                              <p>最小可運作的 calibration dependency graph 必須包含什麼？</p>
+                            </li>
+                          </ol>
+                          <a class="qh-question-week-link" href="T4-7.html">查看 W7 完整頁面 →</a>
+                        </div>
+                      </details>
+                      <details class="qh-question-week">
+                        <summary>
+                          <span class="qh-question-week-number">W8</span>
+                          <strong>Benchmarking、多量子位元誤差與可擴展校準</strong><span class="qh-question-draft">（Draft）</span>
+                          <span class="qh-question-count">6 題</span>
+                        </summary>
+                        <div class="qh-question-week-body">
+                          <ol>
+                            <li>
+                              <p>漂亮的 average fidelity 可能隱藏哪些失效模式？</p>
+                            </li>
+                            <li>
+                              <p>RB 與 interleaved RB 實際測到什麼？</p>
+                            </li>
+                            <li>
+                              <p>RB decay model 依賴哪些 noise 假設？</p>
+                            </li>
+                            <li>
+                              <p>如何分別看見 leakage、crosstalk 與 correlated error？</p>
+                            </li>
+                            <li>
+                              <p>為什麼單一 gate 很好，整個 circuit layer 仍可能很差？</p>
+                            </li>
+                            <li>
+                              <p>如何讓每個 benchmark metric 對應可排除的 failure hypothesis？</p>
+                            </li>
+                          </ol>
+                          <a class="qh-question-week-link" href="T4-8.html">查看 W8 完整頁面 →</a>
+                        </div>
+                      </details>
+                      <details class="qh-question-week">
+                        <summary>
+                          <span class="qh-question-week-number">W9</span>
+                          <strong>量子錯誤校正基礎：從物理誤差到 Stabilizer Syndrome</strong><span
+                            class="qh-question-draft">（Draft）</span>
+                          <span class="qh-question-count">6 題</span>
+                        </summary>
+                        <div class="qh-question-week-body">
+                          <ol>
+                            <li>
+                              <p>物理誤差與計算失敗是同一件事嗎？</p>
+                            </li>
+                            <li>
+                              <p>量子資訊不能複製，冗餘從哪裡來？</p>
+                            </li>
+                            <li>
+                              <p>怎麼知道哪裡出錯，又不直接讀出答案？</p>
+                            </li>
+                            <li>
+                              <p>Stabilizer 到底壓縮了什麼資訊？</p>
+                            </li>
+                            <li>
+                              <p>Code distance 能保證什麼，又不能保證什麼？</p>
+                            </li>
+                            <li>
+                              <p>為什麼下一步需要 Surface code？</p>
+                            </li>
+                          </ol>
+                          <a class="qh-question-week-link" href="T4-9.html">查看 W9 完整頁面 →</a>
+                        </div>
+                      </details>
+                      <details class="qh-question-week">
+                        <summary>
+                          <span class="qh-question-week-number">W10</span>
+                          <strong>Surface-Code Hardware Cycle：排程、解碼與 Logical-Qubit 資源</strong><span
+                            class="qh-question-draft">（Draft）</span>
+                          <span class="qh-question-count">6 題</span>
+                        </summary>
+                        <div class="qh-question-week-body">
+                          <ol>
+                            <li>
+                              <p>為什麼 Surface code 適合超導量子晶片？</p>
+                            </li>
+                            <li>
+                              <p>一輪 syndrome extraction 應該怎麼排？</p>
+                            </li>
+                            <li>
+                              <p>Syndrome measurement 本身會出錯，怎麼辦？</p>
+                            </li>
+                            <li>
+                              <p>Decoder 要多快才夠快？</p>
+                            </li>
+                            <li>
+                              <p>Physical error 降低，logical error 就一定下降嗎？</p>
+                            </li>
+                            <li>
+                              <p>一顆 logical qubit 真正需要多少硬體與古典資源？</p>
+                            </li>
+                          </ol>
+                          <a class="qh-question-week-link" href="T4-10.html">查看 W10 完整頁面 →</a>
+                        </div>
+                      </details>
+                    </section>
+                    <section class="qh-question-theme" aria-labelledby="questions-t5">
+                      <header class="qh-question-theme-heading">
+                        <span class="qh-question-theme-code">T5</span>
+                        <div>
+                          <h4 id="questions-t5">讓低溫、訊號與系統一起運作</h4>
+                          <p>Full-System Architecture</p>
+                        </div>
+                      </header>
+                      <details class="qh-question-week">
+                        <summary>
+                          <span class="qh-question-week-number">W11</span>
+                          <strong>Dilution Refrigerator、熱化與低溫線路預算</strong><span class="qh-question-draft">（Draft）</span>
+                          <span class="qh-question-count">6 題</span>
+                        </summary>
+                        <div class="qh-question-week-body">
+                          <ol>
+                            <li>
+                              <p>如何送入訊號，而不把熱與雜訊一起送進 10 mK？</p>
+                            </li>
+                            <li>
+                              <p>Dilution refrigerator 各溫層能提供多少 cooling power？</p>
+                            </li>
+                            <li>
+                              <p>如何建立 conduction、dissipation、radiation 與 device heat budget？</p>
+                            </li>
+                            <li>
+                              <p>Drive、flux 與 readout line 應如何 attenuation、filtering 與 thermalization？</p>
+                            </li>
+                            <li>
+                              <p>如何為三種線路畫出逐級 thermal/noise budget？</p>
+                            </li>
+                            <li>
+                              <p>如何用 budget 決定元件位置，而不是背低溫零件名稱？</p>
+                            </li>
+                          </ol>
+                          <a class="qh-question-week-link" href="T5-11.html">查看 W11 完整頁面 →</a>
+                        </div>
+                      </details>
+                      <details class="qh-question-week">
+                        <summary>
+                          <span class="qh-question-week-number">W12</span>
+                          <strong>微波控制、讀出電子與訊號完整性</strong><span class="qh-question-draft">（Draft）</span>
+                          <span class="qh-question-count">6 題</span>
+                        </summary>
+                        <div class="qh-question-week-body">
+                          <ol>
+                            <li>
+                              <p>電子儀器規格如何轉變成 quantum error？</p>
+                            </li>
+                            <li>
+                              <p>DAC、AWG、LO、IQ mixer 與 clock 如何形成控制鏈？</p>
+                            </li>
+                            <li>
+                              <p>如何建立 amplifier cascade 的 gain、noise 與 dynamic-range budget？</p>
+                            </li>
+                            <li>
+                              <p>Multiplexed readout 會遇到哪些 intermodulation、ADC 與分類問題？</p>
+                            </li>
+                            <li>
+                              <p>如何由 readout target 反推 electronics requirements？</p>
+                            </li>
+                            <li>
+                              <p>如何驗收 room-temperature 到 qubit 的 signal-integrity chain？</p>
+                            </li>
+                          </ol>
+                          <a class="qh-question-week-link" href="T5-12.html">查看 W12 完整頁面 →</a>
+                        </div>
+                      </details>
+                      <details class="qh-question-week">
+                        <summary>
+                          <span class="qh-question-week-number">W13</span>
+                          <strong>封裝、EM Modes、佈線擴展與全系統整合</strong><span class="qh-question-draft">（Draft）</span>
+                          <span class="qh-question-count">6 題</span>
+                        </summary>
+                        <div class="qh-question-week-body">
+                          <ol>
+                            <li>
+                              <p>當 qubit 數量增加，為什麼封裝也會成為 Hamiltonian 的一部分？</p>
+                            </li>
+                            <li>
+                              <p>Package cavity、slotline、ground return、bond wire 與 seam loss 如何影響 qubit？</p>
+                            </li>
+                            <li>
+                              <p>如何從 EM mode 與 participation 指標建立驗收條件？</p>
+                            </li>
+                            <li>
+                              <p>I/O density、heat load、3D wiring 與 cryogenic control 如何共同限制擴充？</p>
+                            </li>
+                            <li>
+                              <p>如何進行一次 100-qubit package/wiring architecture review？</p>
+                            </li>
+                            <li>
+                              <p>系統擴充時，最先爆掉的三個 budget 可能是什麼？</p>
+                            </li>
+                          </ol>
+                          <a class="qh-question-week-link" href="T5-13.html">查看 W13 完整頁面 →</a>
+                        </div>
+                      </details>
+                    </section>
+                    <section class="qh-question-theme" aria-labelledby="questions-t6">
+                      <header class="qh-question-theme-heading">
+                        <span class="qh-question-theme-code">T6</span>
+                        <div>
+                          <h4 id="questions-t6">把設計穩定做成晶片</h4>
+                          <p>Fabrication</p>
+                        </div>
+                      </header>
+                      <details class="qh-question-week">
+                        <summary>
+                          <span class="qh-question-week-number">W14</span>
+                          <strong>超導量子晶片製程與 Josephson Junction Process Module</strong><span
+                            class="qh-question-draft">（Draft）</span>
+                          <span class="qh-question-count">6 題</span>
+                        </summary>
+                        <div class="qh-question-week-body">
+                          <ol>
+                            <li>
+                              <p>版圖上的 EJ、EC 如何被製程真正做出來？</p>
+                            </li>
+                            <li>
+                              <p>Substrate、base metal、lithography、etch、lift-off 與 cleaning 如何形成製程流程？</p>
+                            </li>
+                            <li>
+                              <p>如何從 Rn、Ic 與 EJ 建立 Josephson-junction process module？</p>
+                            </li>
+                            <li>
+                              <p>PCM、overlay、residue 與 surface treatment 如何接受低溫驗證？</p>
+                            </li>
+                            <li>
+                              <p>每個 process step 應監控哪些 CTQ、PCM 與 defect？</p>
+                            </li>
+                            <li>
+                              <p>如何建立 design parameter → process control 的映射？</p>
+                            </li>
+                          </ol>
+                          <a class="qh-question-week-link" href="T6-14.html">查看 W14 完整頁面 →</a>
+                        </div>
+                      </details>
+                      <details class="qh-question-week">
+                        <summary>
+                          <span class="qh-question-week-number">W15</span>
+                          <strong>Materials Loss、製程變異、Yield 與 Design–Fab–Measure Loop</strong><span
+                            class="qh-question-draft">（Draft）</span>
+                          <span class="qh-question-count">6 題</span>
+                        </summary>
+                        <div class="qh-question-week-body">
+                          <ol>
+                            <li>
+                              <p>如何把『這顆 qubit 不好』轉成可重複的製程知識？</p>
+                            </li>
+                            <li>
+                              <p>TLS、surface/interface loss、quasiparticle 與 participation ratio 如何影響 T1？</p>
+                            </li>
+                            <li>
+                              <p>如何從製程變異分布推到 frequency collision 與 chip yield？</p>
+                            </li>
+                            <li>
+                              <p>Split lot、PCM 與 cryogenic test 如何形成 design–fab–measure loop？</p>
+                            </li>
+                            <li>
+                              <p>如何設計 frequency spread 或 T1-tail 的 split-lot experiment？</p>
+                            </li>
+                            <li>
+                              <p>如何從追求 best device 改成管理 manufacturable distribution？</p>
+                            </li>
+                          </ol>
+                          <a class="qh-question-week-link" href="T6-15.html">查看 W15 完整頁面 →</a>
+                        </div>
+                      </details>
+                    </section>
+                    <section class="qh-question-theme" aria-labelledby="questions-t7">
+                      <header class="qh-question-theme-heading">
+                        <span class="qh-question-theme-code">T7</span>
+                        <div>
+                          <h4 id="questions-t7">整合成完整量子電腦架構</h4>
+                          <p>Capstone</p>
+                        </div>
+                      </header>
+                      <details class="qh-question-week">
+                        <summary>
+                          <span class="qh-question-week-number">W16</span>
+                          <strong>前沿架構與 Hardware-Aware Quantum System Capstone</strong><span
+                            class="qh-question-draft">（Draft）</span>
+                          <span class="qh-question-count">6 題</span>
+                        </summary>
+                        <div class="qh-question-week-body">
+                          <ol>
+                            <li>
+                              <p>面向可用量子計算，整體架構應如何選擇？</p>
+                            </li>
+                            <li>
+                              <p>如何從 workload 推出 logical-qubit、error 與 latency requirements？</p>
+                            </li>
+                            <li>
+                              <p>如何由 logical requirements 向下配置 code、qubit、coupling 與 control？</p>
+                            </li>
+                            <li>
+                              <p>Modular、2D/3D I/O、cryo-control 與不同 qubit branches 如何比較？</p>
+                            </li>
+                            <li>
+                              <p>如何完成 QPU、control、fabrication 與 QEC 的整體 architecture review？</p>
+                            </li>
+                            <li>
+                              <p>如何區分 demonstrated、projected、assumed 與 kill criterion？</p>
+                            </li>
+                          </ol>
+                          <a class="qh-question-week-link" href="T7-16.html">查看 W16 完整頁面 →</a>
+                        </div>
+                      </details>
+                    </section>
+                  </section>
+                  <script>
+                    (() => {
+                      const atlas = document.getElementById("weekly-core-questions");
+                      if (!atlas) return;
+                      const weeks = () => atlas.querySelectorAll("details.qh-question-week");
+                      document.getElementById("qh-expand-all")?.addEventListener("click", () => weeks().forEach(item => item.open = true));
+                      document.getElementById("qh-collapse-all")?.addEventListener("click", () => weeks().forEach(item => item.open = false));
+                    })();
+                  </script>
+                </section>
 
 
-                                <div class="post-meta">
-                                    <span class="post-author">
-                                        <a href="../About/Wang.html"><img class="img-res" src="../WebP/IMG_0964_2.webp" alt="">王培儒</a>
-                                    </span>
-                                    <span class="post-category">
-                                        <a href="../SCQ_advanced/main.html"><i class="fa fa-folder" aria-hidden="true"></i>PHYS598500</a>
-                                    </span>
-                                </div><!-- /.post-meta -->
-                            
-                                <div id="prev-next-nav" class="text-center">
+                <div class="post-meta">
+                  <span class="post-author">
+                    <a href="../About/Wang.html"><img class="img-res" src="../WebP/IMG_0964_2.webp" alt="">王培儒</a>
+                  </span>
+                  <span class="post-category">
+                    <a href="../SCQ_advanced/main.html"><i class="fa fa-folder" aria-hidden="true"></i>PHYS598500</a>
+                  </span>
+                </div><!-- /.post-meta -->
+
+                <div id="prev-next-nav" class="text-center">
                                     <a class="btn btn-gray" href="T1-1.html">下一頁 →</a>
                                 </div>
 
-                                
 
-                            </div><!-- /.post-content -->
-                        </article><!-- /.blog-post -->
-                        <!--<div id="PostComments" class="post-comments">
+
+              </div><!-- /.post-content -->
+            </article><!-- /.blog-post -->
+            <!--<div id="PostComments" class="post-comments">
                             
                             
                             
                         </div> /#PostComments -->
-                        <!--<div class="respond">
+            <!--<div class="respond">
                             <h3>Post a Comment</h3>
                             <form class="form-horizontal">
                                 <input class="form-control" type="text" placeholder="Your Name*" required>
@@ -708,8 +1361,8 @@
                                 <button class="btn btn-green">Add a comment</button>
                             </form>    
                         </div> /.respond -->
-                    </div>
-                    <aside class="col-md-3">
+          </div>
+          <aside class="col-md-3">
                         <div class="sidebar">
                             <div class="widget">
                                 <div id="lesson-list_2">
@@ -734,29 +1387,29 @@
                                 </div>
                             </div>
                         </div></aside>
-                </div>
-            </div>
-        </section><!-- /.section-portfolio -->
+        </div>
+      </div>
+    </section><!-- /.section-portfolio -->
 
-    </main><!-- /#main -->
+  </main><!-- /#main -->
 
-    <footer id="colophon" class="site-footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3 col-sm-4 col-xs-6">
-                    <a href="../index_ch.html" class="site-title">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
-                    <p>一起走進新時代的前沿科學與量子科技</p>
-                    </div>
-                <div class="col-lg-offset-4 col-md-3 col-sm-4 col-md-offset-2 col-sm-offset-0 col-xs-6 ">
-                    <p class="site-title">𝐾𝐸𝐸𝑃 𝐼𝑁 𝑇𝑂𝑈𝐶𝐻</p>
-                    <ul class="list-unstyled contact-links">
-                        <li><i class="fa fa-envelope" aria-hidden="true"></i><a href="mailto:info@insight-ihbar.com">info@insight-ihbar.com</a></li>
-                        <!--<li><i class="fa fa-phone" aria-hidden="true"></i><a href="tel:+37400800000">+374 (00) 80 00 00 </a></li>
+  <footer id="colophon" class="site-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3 col-sm-4 col-xs-6">
+          <a href="../index_ch.html" class="site-title">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
+          <p>一起走進新時代的前沿科學與量子科技</p>
+        </div>
+        <div class="col-lg-offset-4 col-md-3 col-sm-4 col-md-offset-2 col-sm-offset-0 col-xs-6 ">
+          <p class="site-title">𝐾𝐸𝐸𝑃 𝐼𝑁 𝑇𝑂𝑈𝐶𝐻</p>
+          <ul class="list-unstyled contact-links">
+            <li><i class="fa fa-envelope" aria-hidden="true"></i><a href="mailto:info@insight-ihbar.com">info@insight-ihbar.com</a></li>
+            <!--<li><i class="fa fa-phone" aria-hidden="true"></i><a href="tel:+37400800000">+374 (00) 80 00 00 </a></li>
                         <li><i class="fa fa-fax" aria-hidden="true"></i><a href="+37400900000">+374 (00) 90 00 00</a></li>
                         <li><i class="fa-solid fa-location-dot"></i><p>Hsinchu 300, Taiwan (R.O.C.)</p></li>-->
-                    </ul>
-                </div>
-                <!--<div class="clearfix visible-xs"></div>
+          </ul>
+        </div>
+        <!--<div class="clearfix visible-xs"></div>
                 <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6">
                     <h3>Featured links</h3>
                     <ul class="list-unstyled">
@@ -766,45 +1419,47 @@
                         <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </div>-->
+      </div>
+    </div>
+    <div class="copyright">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-8">
+            <div class="social-links">
+              <!--<a class="twitter-bg" href="#"><i class="fab fa-twitter"></i></a>-->
+              <!--<<a class="facebook-bg" href="https://www.facebook.com/people/Quantum-Perspectives/61576446849628/"><i class="fab fa-facebook"></i></a>-->
+              <!--<a class="facebook-bg" href="https://www.facebook.com/people/%E9%87%8F%E5%AD%90%E9%81%A0%E8%A6%8BQuantum-Perspectives/61576883632888/"><i class="fab fa-facebook-f"></i></a>-->
+              <!--<a class="pinterest" href="#"><i class="fa-solid fa-microscope"></i></a>-->
+              <!--<a class="facebook-bg" href="https://www.facebook.com/people/Insight-hbar/61576811775374/"><i class="fab fa-facebook-f"></i></a>-->
+              <a class="linkedin-bg" href="https://www.linkedin.com/company/insight-ihbar"><i
+                  class="fab fa-linkedin"></i></a>
+            </div><!-- /.social-links -->
+          </div>
+          <div class="col-xs-4">
+            <div class="text-right">
+              <p><span style="font-size: 16px;">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</span></p>
+              <p>All Rights Reserved</p>
             </div>
+          </div>
         </div>
-        <div class="copyright">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xs-8">
-                        <div class="social-links">
-                            <!--<a class="twitter-bg" href="#"><i class="fab fa-twitter"></i></a>-->
-                            <!--<<a class="facebook-bg" href="https://www.facebook.com/people/Quantum-Perspectives/61576446849628/"><i class="fab fa-facebook"></i></a>-->
-                            <!--<a class="facebook-bg" href="https://www.facebook.com/people/%E9%87%8F%E5%AD%90%E9%81%A0%E8%A6%8BQuantum-Perspectives/61576883632888/"><i class="fab fa-facebook-f"></i></a>-->
-                            <!--<a class="pinterest" href="#"><i class="fa-solid fa-microscope"></i></a>-->
-                            <!--<a class="facebook-bg" href="https://www.facebook.com/people/Insight-hbar/61576811775374/"><i class="fab fa-facebook-f"></i></a>-->
-                            <a class="linkedin-bg" href="https://www.linkedin.com/company/insight-ihbar"><i class="fab fa-linkedin"></i></a>
-                        </div><!-- /.social-links -->
-                    </div>
-                    <div class="col-xs-4">
-                        <div class="text-right">
-                            <p><span style="font-size: 16px;">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</span></p>
-                            <p>All Rights Reserved</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div><!-- /.copyright -->
-    </footer><!-- /#footer -->
+      </div>
+    </div><!-- /.copyright -->
+  </footer><!-- /#footer -->
 
 
 
-    <!-- Bootstrap core JavaScript
+  <!-- Bootstrap core JavaScript
     ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="../assets/js/bootstrap.min.js"></script>
-    <script src="../assets/js/bootstrap-select.min.js"></script>
-    <script src="../assets/js/jquery.slicknav.min.js"></script>
-    <script src="../assets/js/jquery.countTo.min.js"></script>
-    <script src="../assets/js/jquery.shuffle.min.js"></script>
-    <script src="../assets/js/script.js"></script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-  
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/bootstrap-select.min.js"></script>
+  <script src="../assets/js/jquery.slicknav.min.js"></script>
+  <script src="../assets/js/jquery.countTo.min.js"></script>
+  <script src="../assets/js/jquery.shuffle.min.js"></script>
+  <script src="../assets/js/script.js"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
 </body>
+
 </html>
