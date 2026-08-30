@@ -342,7 +342,7 @@
     }
 
     /* Heading consistency — only direct h3 children, not inside .qh-section */
-    .module > h3 {
+    .module>h3 {
       margin: 28px 0 14px;
       padding-bottom: 8px;
       border-bottom: 1px solid #ddd5e8;
@@ -508,44 +508,176 @@
                     <h3>本週定位</h3>
                     <div class="qh-week-meta">
                       <p><strong>課程長度：</strong>120 分鐘</p>
-                      <p><strong>核心問題：</strong>一張超導電路圖，如何一路變成可設計的 Transmon？</p>
+                      <p><strong>核心問題：</strong>我們能不能用超導電路製造一顆可以自行設計的人工原子？</p>
                       <p><strong>先備：</strong>Lagrangian/Hamiltonian mechanics、LC circuit、基礎 superconductivity</p>
 
                     </div>
 
                   </section>
 
-                  <section class="qh-supplement-divider">
+<section class="qh-supplement-divider" id="w2-question-map">
                     <h3>W2
-                      <strong>超導電路量子化與 Transmon 設計</strong>
+                      <strong>人工原子與 Transmon：五問主線</strong>
                     </h3>
-                    <p>6 題</p>
+                    <p>5 題</p>
 
                     <ol>
-                      <li>
-                        <p>電路圖裡，哪些量可以成為自由度？</p>
-                      </li>
-                      <li>
-                        <p>怎麼把電路變成 Hamiltonian？</p>
-                      </li>
-                      <li>
-                        <p>Josephson junction 為何能做出 qubit？</p>
-                      </li>
-                      <li>
-                        <p>Transmon 用什麼換到抗 charge noise？</p>
-                      </li>
-                      <li>
-                        <p>目標頻率如何變成版圖與製程參數？</p>
-                      </li>
-                      <li>
-                        <p>這套設計何時不該再用？</p>
-                      </li>
+                      <li><p>一個巨觀電路為什麼可能具有量子能階？</p></li>
+                      <li><p>超導電路中，什麼東西扮演位置與動量？</p></li>
+                      <li><p>為什麼最簡單的人工原子仍然不是 qubit？</p></li>
+                      <li><p>Josephson junction 如何塑造人工原子的能階？</p></li>
+                      <li><p>為什麼人工原子最後設計成 Transmon？</p></li>
                     </ol>
                   </section>
+
+                  <section class="qh-full-lecture" id="w2-five-questions">
+                    <div class="qh-section">
+                      <h3>前言：我們能不能用電路製造一顆原子？</h3>
+                    </div>
+                    <p>
+                      自然原子的離散能階來自電子在庫倫位能中的量子運動；超導量子位元則由電荷、磁通量與
+                      Josephson phase 的量子運動形成。這一週不以公式推導作為故事主角，而是沿著一個問題前進：
+                      <strong>如果自然原子的大小、頻率與能階幾乎不能由我們決定，我們能不能製造一顆可以自行設計的人工原子？</strong>
+                    </p>
+                    <p><a class="btn btn-gray" href="T2-outlook.html">先看 T2 十問次序與 Outlook</a></p>
+
+                    <table class="qh-session-plan">
+                      <thead>
+                        <tr><th>時間</th><th>問題</th><th>本段產出</th></tr>
+                      </thead>
+                      <tbody>
+                        <tr><td>0–10 分</td><td>人工原子開場與先備診斷</td><td>自然原子／電路人工原子的比較圖</td></tr>
+                        <tr><td>10–30 分</td><td>問題一：巨觀電路的量子能階</td><td>巨觀量子相位與電路模式的概念鏈</td></tr>
+                        <tr><td>30–50 分</td><td>問題二：電路的共軛變數</td><td>\((\Phi,Q)\) 與 \((\varphi,n)\) 對照</td></tr>
+                        <tr><td>50–70 分</td><td>問題三：LC oscillator 的限制</td><td>等間距能譜與不可選擇控制</td></tr>
+                        <tr><td>70–95 分</td><td>問題四：Josephson nonlinearity</td><td>cosine potential 與 anharmonicity</td></tr>
+                        <tr><td>95–115 分</td><td>問題五：Transmon 的設計選擇</td><td>charge dispersion／anharmonicity trade-off</td></tr>
+                        <tr><td>115–120 分</td><td>Exit ticket 與逆向作業</td><td>geometry → Hamiltonian 假說</td></tr>
+                      </tbody>
+                    </table>
+
+                    <div class="qh-section">
+                      <h3>問題一：一個巨觀電路為什麼可能具有量子能階？</h3>
+                    </div>
+                    <span class="qh-time">10–30 分鐘</span>
+                    <p>
+                      「巨觀」不等於「必然古典」。超導體中的 Cooper pairs 形成具有共同相位的凝聚態；在低溫、低損耗與受控電磁環境下，
+                      電路的集體模式可以保持足夠長的量子相干性。量子化的不是某一顆電子的位置，而是整個電路模式的電荷、磁通量與相位自由度。
+                    </p>
+                    <ul>
+                      <li>超導凝聚態與 Cooper-pair condensate</li>
+                      <li>巨觀量子相位</li>
+                      <li>低損耗電路與低溫環境</li>
+                      <li>集體電路模式的量子化</li>
+                    </ul>
+                    <div class="qh-board">
+                      <p><strong>核心判斷：</strong>電路是否具有量子能階，取決於它是否存在可辨認、可量子化並能與環境足夠隔離的集體自由度。</p>
+                    </div>
+
+                    <div class="qh-section">
+                      <h3>問題二：超導電路中，什麼東西扮演位置與動量？</h3>
+                    </div>
+                    <span class="qh-time">30–50 分鐘</span>
+                    <p>
+                      機械系統以 position 與 momentum 描述狀態；電路則可用 node flux 與 node charge 描述。
+                      Josephson circuit 中常改用 dimensionless phase \(\varphi\) 與 Cooper-pair number \(n\)。
+                    </p>
+                    <div class="qh-board">
+                      <p>\[
+                        [\hat\Phi,\hat Q]=i\hbar,
+                        \qquad
+                        [\hat\varphi,\hat n]=i.
+                      \]</p>
+                    </div>
+                    <p>
+                      因此 charge 與 phase 不能同時具有任意精確的值。後面所有 qubit 類型的差異，實際上都可視為在不同能量尺度下，重新安排這一對共軛變數的 fluctuation、localization 與 sensitivity。
+                    </p>
+
+                    <div class="qh-section">
+                      <h3>問題三：為什麼最簡單的人工原子仍然不是 qubit？</h3>
+                    </div>
+                    <span class="qh-time">50–70 分鐘</span>
+                    <p>量子化的 LC circuit 已經具有離散能階：</p>
+                    <div class="qh-board">
+                      <p>\[
+                        \hat H_{LC}=\frac{\hat Q^2}{2C}+\frac{\hat\Phi^2}{2L}
+                        =\hbar\omega\left(\hat a^\dagger\hat a+\frac12\right),
+                        \qquad \omega=\frac1{\sqrt{LC}}.
+                      \]</p>
+                    </div>
+                    <p>
+                      但相鄰能階完全等距，\(\omega_{01}=\omega_{12}=\cdots\)。一個 resonant microwave tone 不只看見
+                      \(\ket0\leftrightarrow\ket1\)，也會看見更高階 transition。因此「有量子能階」不等於「能把最低兩態隔離成 qubit」。
+                    </p>
+                    <div class="qh-task">
+                      <p><strong>課堂任務：</strong>畫出 harmonic 與 anharmonic spectrum，標示同一頻率的 drive 會連接哪些 transition。</p>
+                    </div>
+
+                    <div class="qh-section">
+                      <h3>問題四：Josephson junction 如何塑造人工原子的能階？</h3>
+                    </div>
+                    <span class="qh-time">70–95 分鐘</span>
+                    <p>Josephson tunneling 提供不耗散、由 phase 控制的非線性元件：</p>
+                    <div class="qh-board">
+                      <p>\[
+                        I=I_c\sin\varphi,
+                        \qquad
+                        V=\frac{\Phi_0}{2\pi}\dot\varphi,
+                        \qquad
+                        U_J(\varphi)=-E_J\cos\varphi.
+                      \]</p>
+                    </div>
+                    <p>
+                      線性電感的 quadratic potential 只能產生 harmonic spectrum；Josephson junction 的 cosine potential 則提供 nonlinear inductance。
+                      展開 cosine 時，quadratic term 建立主要振盪頻率，higher-order terms 破壞等間距，產生可供選擇控制的 anharmonic spectrum。
+                    </p>
+
+                    <div class="qh-section">
+                      <h3>問題五：為什麼人工原子最後設計成 Transmon？</h3>
+                    </div>
+                    <span class="qh-time">95–115 分鐘</span>
+                    <div class="qh-board">
+                      <p>\[
+                        \hat H_{\mathrm T}=4E_C(\hat n-n_g)^2-E_J\cos\hat\varphi.
+                      \]</p>
+                    </div>
+                    <p>
+                      Charge qubit 對 offset charge \(n_g\) 很敏感。Transmon 透過增加 shunt capacitance 降低 \(E_C\)，提高
+                      \(E_J/E_C\)，使能量對 \(n_g\) 的 charge dispersion 指數受到壓低；代價是 anharmonicity 的絕對值減小，
+                      control selectivity 與 gate speed 之間必須重新取捨。
+                    </p>
+                    <ul>
+                      <li>得到：較低 charge dispersion、成熟的 microwave control、可設計的頻率範圍。</li>
+                      <li>付出：較弱 anharmonicity、可能的 leakage、fixed／tunable design 的不同 noise 與 calibration 負擔。</li>
+                      <li>設計觀念：Transmon 不是「最好的人造原子」，而是一組在 noise sensitivity、control 與製造可行性之間成功的參數選擇。</li>
+                    </ul>
+                    <div class="qh-answer">
+                      <p><strong>本週結論：</strong>具有離散能階還不等於 qubit；必須利用 Josephson nonlinearity 製造可選擇控制的能譜，再利用 \(E_J/E_C\) 調整 charge sensitivity 與 anharmonicity 的交換。</p>
+                    </div>
+
+                    <div class="qh-section">
+                      <h3>逆向作業：從晶片照片反推人工原子</h3>
+                    </div>
+                    <p><strong>作業問題：</strong>給你一張超導量子晶片的局部影像，你能從幾何結構反推出它可能實現的 Hamiltonian 嗎？</p>
+                    <ol>
+                      <li><strong>辨認結構：</strong>標出 qubit pads、Josephson junction、ground、drive line、readout resonator；不確定處必須明確註記。</li>
+                      <li><strong>geometry → parameter：</strong>說明 pad geometry、junction area、spacing 與 line length 分別影響哪些電路參數。</li>
+                      <li><strong>parameter → Hamiltonian：</strong>指出影像中的哪些結構主要控制 \(E_C\)、\(E_J\) 與 coupling term。</li>
+                      <li><strong>Hamiltonian → observable：</strong>預測 pad 變大、junction 變小或與 resonator 距離縮短時，\(f_{01}\)、anharmonicity、charge dispersion 或 coupling 如何改變。</li>
+                      <li><strong>推論邊界：</strong>列出僅靠影像不能知道、必須由製程資料、EM simulation 或實驗量測取得的資訊。</li>
+                    </ol>
+                    <div class="qh-case">
+                      <p><strong>作業主鏈：</strong>晶片結構 → 幾何參數 → lumped-element model → Hamiltonian term → spectrum／control hypothesis。這是一題有證據邊界的逆向設計題，不要求學生在 W2 完成完整系統架構判斷。</p>
+                    </div>
+                  </section>
+
+                  <div class="qh-section">
+                    <h3>既有推導與延伸教材</h3>
+                  </div>
                   <div class="qh-section">
                     <h3>Transmon的性質</h3>
-                    </div>
-                    <h4>當前主流的超導量子位元</h4>
+                  </div>
+                  <h4>當前主流的超導量子位元</h4>
                   <div style="text-align: center;">
                     <a href="../Image/Transmon.png">
                       <img src="../WebP/Transmon.webp" alt="單JJ轉換器和對稱、非對稱SQUID轉換器電路圖" style="width: 98%; height: auto;">
@@ -637,8 +769,8 @@
 
                   <div class="qh-section">
                     <h3>LC電路的正則量子化</h3>
-                    </div>
-                    <h4>簡諧振蕩</h4>
+                  </div>
+                  <h4>簡諧振蕩</h4>
                   <p>
                     量子物理中常見的簡諧振蕩，經過量子化後能產生離散的能階，這正是量子計算基礎中的量子位元所依賴的概念。量子位元需要以具有量子效應的元件為基礎，利用超導體作為量子材料，結合 LC
                     振蕩電路的概念，製造出超導量子位元。本節將首先討論 LC 電路的量子化過程。
@@ -1270,8 +1402,8 @@
 
                     <div class="qh-section">
                       <h3>約瑟夫森節的非線性電感性質</h3>
-                      </div>
-                      <h4>非線性使得精確控制量子位元成為可能</h4>
+                    </div>
+                    <h4>非線性使得精確控制量子位元成為可能</h4>
 
                     <h4>約瑟夫森接面的量子描述</h4>
                     <div style="text-align: center;">
@@ -1722,8 +1854,8 @@
                   <section class="qh-supplement-source">
                     <div class="qh-section">
                       <h3>雙約瑟夫森節（SQUID）的非線性電感性質</h3>
-                      </div>
-                      <h4>頻率可調式量子位元</h4>
+                    </div>
+                    <h4>頻率可調式量子位元</h4>
                     <div style="text-align: center;">
                       <a href="../Image/SQUID.png">
                         <img src="../WebP/SQUID.webp" alt="圓形導體及電流與磁場示意圖" style="width: 50%; height: auto;">
@@ -1854,8 +1986,8 @@
 
                         <div class="qh-section">
                           <h3>Tunable Transmon</h3>
-                          </div>
-                          <h4>可調頻率的Transmon</h4>
+                        </div>
+                        <h4>可調頻率的Transmon</h4>
 
                         <div style="text-align: center;">
                           <a href="../Image/SQUID transmon.png">
@@ -2208,7 +2340,7 @@
 
                   </section>
 
-                  
+
 
                   <section class="module">
                     <div class="qh-section">

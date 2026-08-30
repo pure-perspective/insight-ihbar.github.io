@@ -1,39 +1,41 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
+
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-N39VTY949N"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N39VTY949N"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
 
-  gtag('config', 'G-N39VTY949N');
-</script>
-    <!-- Basic Page Needs
+    gtag('config', 'G-N39VTY949N');
+  </script>
+  <!-- Basic Page Needs
     ================================================== -->
-    <meta charset="utf-8">
-    <meta name="author" content="Peir-Ru Wang">
-    
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta charset="utf-8">
+  <meta name="author" content="Peir-Ru Wang">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;1,300&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="apple-mobile-web-app-capable" content="yes">
 
-    <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/20250525-icon.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/20250525-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;1,300&display=swap"
+    rel="stylesheet">
 
-    <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../assets/css/style.css" rel="stylesheet">
-    <link href="../assets/css/responsive.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-    <title>Week 3 · Fluxonium：從電路改造到設計取捨 | QH-2026F v5</title>
-    <meta name="description" content="PHYS598500 第 3 週，120 分鐘進階課程：Fluxonium：從電路改造到設計取捨">
-    <meta name="keywords" content="- 量子處理器
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/20250525-icon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/20250525-icon.png">
+
+  <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/css/style.css" rel="stylesheet">
+  <link href="../assets/css/responsive.css" rel="stylesheet">
+
+  <title>Week 3 · Fluxonium：從電路改造到設計取捨 | QH-2026F v5</title>
+  <meta name="description" content="PHYS598500 第 3 週，120 分鐘進階課程：Fluxonium：從電路改造到設計取捨">
+  <meta name="keywords" content="- 量子處理器
 - 超導量子位元
 - Qubit
 - 約瑟夫森接面
@@ -44,31 +46,87 @@
 - 量子演算法
 - 量子晶片">
 
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
 
-<style>
-.qh-week-meta { margin: 20px 0; padding: 16px 18px; border-left: 4px solid #5f4b8b; background: #f6f4fa; }
-.qh-week-meta p { margin: 4px 0; }
-.qh-session-plan { width: 100%; margin: 18px 0 8px; border-collapse: collapse; }
-.qh-session-plan th, .qh-session-plan td { padding: 10px 12px; border: 1px solid #ddd; vertical-align: top; }
-.qh-session-plan th { background: #f4f4f4; }
-.qh-session-plan .qh-break td { color: #666; background: #fafafa; }
-.qh-total { text-align: right; font-weight: 700; }
-.qh-reading li { margin-bottom: 12px; }
-.qh-reading span, .qh-reading em { display: block; }
-.qh-week-list { padding-left: 0; list-style: none; }
-.qh-week-list li { margin: 0 0 13px; padding: 12px 15px; border-left: 4px solid #5f4b8b; background: #f7f7f7; }
-.qh-week-list a { font-weight: 700; }
-@media (max-width: 767px) { .qh-session-plan { display: block; overflow-x: auto; } }
-</style>
+  <style>
+    .qh-week-meta {
+      margin: 20px 0;
+      padding: 16px 18px;
+      border-left: 4px solid #5f4b8b;
+      background: #f6f4fa;
+    }
+
+    .qh-week-meta p {
+      margin: 4px 0;
+    }
+
+    .qh-session-plan {
+      width: 100%;
+      margin: 18px 0 8px;
+      border-collapse: collapse;
+    }
+
+    .qh-session-plan th,
+    .qh-session-plan td {
+      padding: 10px 12px;
+      border: 1px solid #ddd;
+      vertical-align: top;
+    }
+
+    .qh-session-plan th {
+      background: #f4f4f4;
+    }
+
+    .qh-session-plan .qh-break td {
+      color: #666;
+      background: #fafafa;
+    }
+
+    .qh-total {
+      text-align: right;
+      font-weight: 700;
+    }
+
+    .qh-reading li {
+      margin-bottom: 12px;
+    }
+
+    .qh-reading span,
+    .qh-reading em {
+      display: block;
+    }
+
+    .qh-week-list {
+      padding-left: 0;
+      list-style: none;
+    }
+
+    .qh-week-list li {
+      margin: 0 0 13px;
+      padding: 12px 15px;
+      border-left: 4px solid #5f4b8b;
+      background: #f7f7f7;
+    }
+
+    .qh-week-list a {
+      font-weight: 700;
+    }
+
+    @media (max-width: 767px) {
+      .qh-session-plan {
+        display: block;
+        overflow-x: auto;
+      }
+    }
+  </style>
 
 
-<style id="qh-full-course-style">
+  <style id="qh-full-course-style">
     .qh-full-lecture {
       margin: 30px 0;
       padding: 24px 26px;
@@ -284,7 +342,7 @@
     }
 
     /* Heading consistency — only direct h3 children, not inside .qh-section */
-    .module > h3 {
+    .module>h3 {
       margin: 28px 0 14px;
       padding-bottom: 8px;
       border-bottom: 1px solid #ddd5e8;
@@ -302,554 +360,937 @@
     }
   </style>
 
-<style id="qh-details-style">
-        details.dark-background {
-          background-color: #f5f5f5;
-          border: 1px solid #ddd;
-          padding: 10px;
-          border-radius: 5px;
-        }
-        details.dark-background summary {
-          cursor: pointer;
-          font-weight: bold;
-          background-color: #e0e0e0;
-          padding: 5px;
-          border-radius: 3px;
-        }
-      </style>
+  <style id="qh-details-style">
+    details.dark-background {
+      background-color: #f5f5f5;
+      border: 1px solid #ddd;
+      padding: 10px;
+      border-radius: 5px;
+    }
+
+    details.dark-background summary {
+      cursor: pointer;
+      font-weight: bold;
+      background-color: #e0e0e0;
+      padding: 5px;
+      border-radius: 3px;
+    }
+  </style>
 
   <link rel="stylesheet" href="qh-mobile-math-overflow.css" data-uniweb-fix="mobile-math-overflow">
 </head>
+
 <body>
 
-    <header id="masthead" class="site-header">
-        <nav id="primary-navigation" class="site-navigation">
-            <div class="container">
+  <header id="masthead" class="site-header">
+    <nav id="primary-navigation" class="site-navigation">
+      <div class="container">
 
-                <div class="navbar-header">                   
-                    <a href="../index_ch.html" class="site-title">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
-                </div><!-- /.navbar-header -->
+        <div class="navbar-header">
+          <a href="../index_ch.html" class="site-title">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
+        </div><!-- /.navbar-header -->
 
-                <div class="collapse navbar-collapse" id="agency-navbar-collapse">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="../index_ch.html">Home</a></li>
-                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">科普介紹<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
-                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-                              <li><a href="../SCQ_elementary/main.html">超導量子位元(科普版)</a></li>
-                              <li><a href="../SCQ_advanced/main.html">超導量子位元(進階版)</a></li>
-                              <li><a href="../SpQ/main.html">半導體自旋量子位元</a></li>
-                            </ul>
-                        </li>
-                        <!--<li class="active"><a href="../SCQ_elementary/main.html">科普介紹</a></li>-->
-                        <li class="active"><a href="../QC_hardware/main.html">硬體導論</a></li>
-                        <li><a href="../QID/main.html">量子產業群像錄</a></li>
-                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">研討會筆記<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
-                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-                                <li><a href="../ASW2026/main.html">2026中研院超導量子電腦Workshop</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">量子諮詢<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
-                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-                                <li><a href="https://www.quantum-perspectives.com/About/main.html">量子遠見科技：諮詢服務</a></li>
-                                <li><a href="../About/main.html">關於我們</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="../index.html">English</a></li>                        
+        <div class="collapse navbar-collapse" id="agency-navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="../index_ch.html">Home</a></li>
+            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">科普介紹<i
+                  class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+              <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                <li><a href="../SCQ_elementary/main.html">超導量子位元(科普版)</a></li>
+                <li><a href="../SCQ_advanced/main.html">超導量子位元(進階版)</a></li>
+                <li><a href="../SpQ/main.html">半導體自旋量子位元</a></li>
+              </ul>
+            </li>
+            <!--<li class="active"><a href="../SCQ_elementary/main.html">科普介紹</a></li>-->
+            <li class="active"><a href="../QC_hardware/main.html">硬體導論</a></li>
+            <li><a href="../QID/main.html">量子產業群像錄</a></li>
+            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">研討會筆記<i
+                  class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+              <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                <li><a href="../ASW2026/main.html">2026中研院超導量子電腦Workshop</a></li>
+              </ul>
+            </li>
+            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">量子諮詢<i
+                  class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+              <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                <li><a href="https://www.quantum-perspectives.com/About/main.html">量子遠見科技：諮詢服務</a></li>
+                <li><a href="../About/main.html">關於我們</a></li>
+              </ul>
+            </li>
+            <li><a href="../index.html">English</a></li>
+          </ul>
+        </div>
+
+      </div>
+    </nav><!-- /.site-navigation -->
+  </header><!-- /#mastheaed -->
+
+  <div id="hero" class="hero overlay subpage-hero blog-hero">
+    <div class="hero-content">
+      <div class="hero_2-text">
+        <h1>超導量子電腦架構</h1>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="../index_ch.html">Home</a></li>
+          <li class="breadcrumb-item"><a href="./main.html">PHYS598500</a></li>
+          <!--<li class="breadcrumb-item active">約瑟夫森節</li>-->
+        </ol>
+      </div><!-- /.hero-text -->
+    </div><!-- /.hero-content -->
+  </div><!-- /.hero -->
+
+  <main id="main" class="site-main">
+
+    <section class="site-section subpage-site-section section-blog">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-9">
+            <article class="blog-post">
+              <!--<img src="../assets/img/portfolio-1.jpg" class="img-res" alt="">-->
+              <div class="post-content">
+
+                <section id="week-3" class="course-theme">
+                  <div style="text-align: center;">
+                    <p class="theme-label">PHYS598500 · Week 3 · T2</p>
+                    <h2>Fluxonium：從電路改造到設計取捨</h2>
+                    <h3>Fluxonium: From Circuit Modification to Design Trade-offs</h3>
+                  </div>
+                  <section class="course-overview">
+                    <h3>本週定位</h3>
+                    <p><strong>課程長度：</strong>120 分鐘</p>
+                    <p><strong>核心問題：</strong>如何從 noise operator、matrix element 與 symmetry 出發，理解 Fluxonium 並反向設計 protected-qubit Hamiltonian？</p>
+                    <p><strong>難度：</strong>很高</p>
+                    <p><strong>先備：</strong>W2 circuit quantization、Transmon energy scales、external flux、matrix element
+                    </p>
+                    <p><strong>原始教材來源：</strong>T2 modules 5, 6</p>
+                    <h3>學習成果</h3>
+                    <ul>
+                      <li>由 noise operator、spectral density 與 matrix element 判斷 transition 是否被允許或抑制</li>
+                      <li>區分 sweet spot、selection rule 與 matrix-element suppression，並同時檢查 controllability</li>
+                      <li>由新增的 inductive energy 解釋 Fluxonium 位能、能譜、wavefunction 與 flux dependence</li>
+                      <li>用 dephasing、relaxation、controllability 與 leakage 四項判準閱讀 beyond-Fluxonium 架構</li>
                     </ul>
-                </div>
-
-            </div>   
-        </nav><!-- /.site-navigation -->
-    </header><!-- /#mastheaed -->
-
-    <div id="hero" class="hero overlay subpage-hero blog-hero">
-        <div class="hero-content">
-            <div class="hero_2-text">
-                <h1>超導量子電腦架構</h1>
-                <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="../index_ch.html">Home</a></li>
-                  <li class="breadcrumb-item"><a href="./main.html">PHYS598500</a></li>
-                  <!--<li class="breadcrumb-item active">約瑟夫森節</li>-->
-                </ol>
-            </div><!-- /.hero-text -->
-        </div><!-- /.hero-content -->
-    </div><!-- /.hero -->
-
-    <main id="main" class="site-main">
-
-        <section class="site-section subpage-site-section section-blog">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-9">
-                        <article class="blog-post">
-                            <!--<img src="../assets/img/portfolio-1.jpg" class="img-res" alt="">-->
-                            <div class="post-content">
-
-<section id="week-3" class="course-theme">
-      <div style="text-align: center;">
-      <p class="theme-label">PHYS598500 · Week 3 · T2</p>
-      <h2>Fluxonium：從電路改造到設計取捨</h2>
-      <h3>Fluxonium: From Circuit Modification to Design Trade-offs</h3>
-    </div>
-  <section class="course-overview">
-    <h3>本週定位</h3>
-    <p><strong>課程長度：</strong>120 分鐘</p>
-    <p><strong>核心問題：</strong>在 Transmon 電路之外加入 superinductor，究竟得到什麼保護、又付出什麼代價？</p>
-    <p><strong>難度：</strong>很高</p>
-    <p><strong>先備：</strong>W2 circuit quantization、Transmon energy scales、external flux、matrix element</p>
-    <p><strong>原始教材來源：</strong>T2 modules 5, 6</p>
-    <h3>學習成果</h3>
-    <ul>
-    <li>由新增的 inductive energy 解釋 Fluxonium 位能、能譜與 flux dependence</li>
-    <li>用 wavefunction parity 與 operator matrix element 分析 control、readout 與 relaxation</li>
-    <li>以 noise、thermal population、control、readout 與 fabrication 比較 Transmon／Fluxonium</li>
-    </ul>
-</section><!-- QH_FULL_LECTURE_START -->
-<div class="qh-section">
-  <h3>Fluxonium 與量子位元架構比較：protected spectrum 的代價</h3>
-</div>
-<p><strong>本週驅動問題：</strong>fluxonium 透過大電感與 Josephson junction 形成不同於 transmon 的能譜；哪些 transition 被保護、哪些 control/readout 變得更難？如何避免把單一 coherence 紀錄誤認成整體架構優勢？</p>
-  <div class="qh-section">
-  <h3>0–10 分鐘：問題設定與先備診斷</h3>
-</div>
-  <p><strong>W3-C1 先備診斷：</strong>先要求學生不用查資料，以一張圖畫出本週主題從抽象模型到真實硬體的訊息流。教師不立刻公布答案，而是收集學生把哪些層次畫成等號。全課結束時再重畫一次，用兩張圖的差異驗收是否真正建立跨層理解。</p>
-  <div class="qh-section">
-  <h3>10–35 分鐘：核心模型與黑板推導</h3>
-</div>
-  <div>
-  <p></p>
-<h4>黑板模型：三個能量尺度</h4>
-<p>fluxonium 可用 \(\hat H=4E_C\hat n^2+\frac12E_L(\hat\varphi-\varphi_{\mathrm{ext}})^2-E_J\cos\hat\varphi\) 描述。與 transmon 相比，多了 superinductance 對應的 \(E_L=(\Phi_0/2\pi)^2/L\)，並以 external flux 改變 potential landscape。不同 well 中的 wavefunction、tunneling 與 selection rule 共同決定 transition frequency。</p>
-<p>在 half-flux sweet spot 附近，一階 flux sensitivity 可降低；但低 transition frequency 會提高 thermal population 的要求，drive/readout matrix element 也可能與常見 transmon 直覺不同。protected 並非不受任何 noise，而是某些 perturbation operator 在特定工作點的 matrix element 或一階導數被壓低。</p>
-<h4>比較方法</h4>
-<p>比較 qubit modality 時至少同時列出：工作頻率、anharmonicity、sweet spot、dominant noise operator、gate primitive、readout contrast、reset、fabrication complexity、coupler compatibility 與 frequency allocation。只比較最佳 \(T_1\) 會忽略 control stack 與 yield。</p>
-</div>
-  <div class="qh-section">
-  <h3>35–60 分鐘：推導／定量 — External flux 如何改變工作點與波函數？</h3>
-</div>
-  <div>
-  <p></p>
-<h4>位能圖與波函數直覺</h4>
-<p>fluxonium 的 total potential 是 cosine 與 parabolic term 的疊加：\(U(\varphi)=-E_J\cos\varphi+\frac12E_L(\varphi-\varphi_{\rm ext})^2\)。在 half-flux sweet spot \(\varphi_{\rm ext}=\pi\) 附近，引入半磁通座標 \(x=\varphi-\pi\)，則 \(U(x)=U(-x)\)，potential 對稱。因此本徵態具有確定宇稱：ground state \(\ket{0}\) 為偶宇稱、first excited state \(\ket{1}\) 為奇宇稱，依此類推。bonding 與 anti-bonding 的直覺仍然適用，但關鍵推論來自宇稱而非 wavefunction 在 phase space 中的分佈位置。</p>
-<h4>選擇定則推導</h4>
-<p>考慮 perturbation \(\hat V=\hat O\,F(t)\)，其中 \(\hat O\) 是 noise operator。transition rate 正比於 matrix element 平方乘以 noise spectral density：\(\Gamma_{m\to n}\propto|\langle m|\hat O|n\rangle|^2\,S_F(\omega_{mn})\)；比例常數取決於 \(S_F\) 的譜密度常規與單位。關鍵在於 matrix element \(\langle m|\hat O|n\rangle\) 的大小：</p>
-<ul>
-<li><strong>偶算符（even operator）：</strong>在對稱 potential 下，偶算符在相反宇稱態之間的 matrix element 為零。因此若 noise operator 為偶，它不能引起 \(\ket{0}\leftrightarrow\ket{1}\) 躍遷。</li>
-<li><strong>奇算符（odd operator）：</strong>奇算符可能連接相反宇稱的態，實際大小取決於具體裝置參數。fluxonium 的 \(\hat n\) 和 \(x=\varphi-\pi\) 都是奇算符，因此它們原則上可以連接 \(\ket{0}\) 與 \(\ket{1}\)；matrix element 的大小需 device-specific 計算，不能僅從宇稱推論其大小。</li>
-<li><strong>補充說明：</strong>某些 fluxonium 設計中 \(\hat n\) 的 matrix element 確實較小，但這來自 device-dependent 的 wavefunction 重疊與局域化特性，而非宇稱選擇定則。</li>
-</ul>
-<h4>近似與條件</h4>
-<p>宇稱選擇定則來自半磁通處的 exact symmetry \(U(x)=U(-x)\)；\(E_J\gg E_L\)（deep cosine wells）與 \(E_J\gg E_C\)（charge suppression）僅是 deep-well 與 bonding 直覺的條件，並非宇稱成立的必要條件。 \(\Phi_{\rm ext}\approx\Phi_0/2\)（sweet spot 操作）。在 sweet spot 處，\(\partial\omega_{01}/\partial\Phi_{\rm ext}=0\)，一階 flux sensitivity 消失；偏離 sweet spot 時，sensitivity 恢復，其大小需依具體裝置參數計算。</p>
-<h4>符號分類活動</h4>
-<p>學生兩人一組，把推導中的每個符號分成「設計可選參數（\(E_J,E_L,E_C,\Phi_{\rm ext}\)）、製程/裝置產生參數（junction area, oxide thickness）、必須校準參數（實際 \(\omega_{01}\)、sweet spot 位置）、只能量測估計的狀態（thermal population、residual flux offset）」四類。這一步迫使公式離開紙面，成為 archi<div class="qh-section">
-  <h3>Selection rule 為什麼會改變控制與讀出方式？</h3>
-</div>Selection rule 為什麼會改變控制與讀出方式？</h2>
-  <div>
-  <p></p>
-<h4>Sweet-spot 保護 vs. Relaxation matrix element（W3-C3）</h4>
-<p>half-flux sweet spot 的保護是針對 dephasing（一階 flux sensitivity 消失），但 relaxation 取決於 noise spectral density 在 transition frequency 處的 matrix element。sweet spot 操作抑制一階 flux sensitivity（dephasing 保護），但 relaxation 仍取決於 noise spectral density 在 transition frequency 處的 matrix element；某些 operator matrix element 可能因 wavefunction 重疊或選擇定則被抑制，但並非所有 noise channel 都被保護。這意味著 sweet spot 操作是 dephasing 保護，不保證 relaxation 保護。</p>
-<h4>Thermal population 與低頻 transition 的代價（W3-C5）</h4>
-<p>fluxonium 的 computational transition 可能低至 500 MHz（\(hf/k_B\approx24\) mK）。以 \(f=500\) MHz 為例：在 T=50 mK 時，\(p_1/p_0=e^{-24/50}\approx0.62\)，\(p_1\approx0.38\)；在 T=20 mK 時，\(p_1/p_0\approx0.30\)，\(p_1\approx0.23\)。低頻 fluxonium 的 thermal population 顯著高於高頻 transmon，這需要 active reset 或其他控制策略。</p>
-<h4>Control 與 readout 的 trade-off（W3-C5）</h4>
-<p>fluxonium 的 \(\hat n\) matrix element 可能較 transmon 小，這意味著 microwave drive 耦合較弱——gate speed 可能受影響，具體取決於 device design。readout contrast 也因 \(\hat\varphi\) 耦合到 resonator 的機制不同而需重新設計。某些 fluxonium 架構使用更高頻的 transition 做 readout 以避開 thermal population，但這要求 control electronics 支援額外頻帶。</p>
-<h4>Transmon vs. Fluxonium 架構對比（W3-C5）</h4>
-<table class="qh-session-plan">
-<thead><tr><th>維度</th><th>Transmon</th><th>Fluxonium</th></tr></thead>
-<tbody>
-<tr><td>Hamiltonian</td><td>\(4E_C\hat n^2-E_J\cos\hat\varphi\)</td><td>\(4E_C\hat n^2+\frac12E_L(\hat\varphi-\varphi_{\rm ext})^2-E_J\cos\hat\varphi\)</td></tr>
-<tr><td>Sweet spot</td><td>\(E_J/E_C\gg1\) 鈍化 charge noise</td><td>\(\Phi_{\rm ext}\approx\Phi_0/2\) 鈍化 flux noise</td></tr>
-<tr><td>Typical frequency</td><td>數 GHz</td><td>可能較低，取決於 design</td></tr>
-<tr><td>Thermal pop. at 20 mK</td><td>低（因頻率高）</td><td>可能較高（因頻率低）</td></tr>
-<tr><td>Gate speed</td><td>取決於 drive matrix element 與 device</td><td>drive matrix element 可能較小，取決於 device</td></tr>
-<tr><td>Fabrication</td><td>單 JJ 或 SQUID，成熟製程</td><td>Superinductor（JJ array），製程複雜度高</td></tr>
-<tr><td>Scalability</td><td>單 JJ 或 SQUID 結構相對簡單</td><td>Superinductor（JJ array）增加製程複雜度</td></tr>
-</tbody>
-</table></div>
-<h4>Layout-to-Hamiltonian 映射（W3-C6）</h4>
-<p>每一項版圖參數都映射到 Hamiltonian 中的某一項：junction area 決定 \(E_J\)、capacitor pad geometry 決定 \(E_C\)、superinductor 的 JJ array 設計決定 \(E_L\)、flux line 的 inductance 決定 flux bias 精度與 bandwidth。chip design 不是畫電路，而是直接雕刻 Hamiltonian 的參數空間。製程變異使 \(E_J\) 有 spread，對應 frequency 偏離——版圖參數到 Hamiltonian 的映射讓 design 能直接雕刻參數空間，但也使製程變異直接影響 qubit 性能。</p>
-
-
-
-
-
-
-
-
-
-
-
-  
-<div class="qh-section">
-  <h3>Noise operator、Fermi golden rule 與 selection rule 如何指向 Fluxonium？</h3>
-</div>
-<div>
-
-<h4>Fermi golden rule 的出發點</h4>
-<p>relaxation 與 dephasing 的定量描述從 Fermi golden rule 開始。system Hamiltonian \(\hat H_0\) 的本徵態 \(\ket{n}\) 之間，perturbation \(\hat V(t)=\hat O\,F(t)\) 引起的 transition rate 為：</p>
-<div class="qh-board"><p>\[\Gamma_{m\to n}=\frac{2\pi}{\hbar}\,|\langle n|\hat O|m\rangle|^2\,S_F(\omega_{mn})\]</p></div>
-<p>其中 \(S_F(\omega)\) 是 noise spectral density，\(\hat O\) 是 noise operator。這個式子把 decoherence 拆成兩個獨立問題：<strong>matrix element</strong> 由 Hamiltonian 的 eigenstate 結構決定，<strong>spectral density</strong> 由 noise source 的頻率分佈決定。</p>
-
-<h4>Charge noise 與 noise operator \(\hat n\)</h4>
-<p>charge noise 來自 oxide defect、two-level system (TLS) 或 gate voltage fluctuation。它耦合到 Cooper-pair number operator \(\hat n\)：</p>
-<div class="qh-board"><p>\[\hat V_{\rm charge}(t)=e\,\delta n_g(t)\,\hat n\]</p></div>
-<p>charge noise 的 spectral density 在低頻呈現 \(1/f\) 行為。在 transmon 中，增大 \(E_J/E_C\) 使 \(\langle 0|\hat n|1\rangle\) 指數下降，因此 transmon 對 charge noise 高度不敏感。</p>
-
-<h4>Flux noise 與 noise operator \(\hat\varphi\)</h4>
-<p>flux noise 來自 surface spin bath，耦合到 phase operator \(\hat\varphi\)。dephasing rate：</p>
-<div class="qh-board"><p>\[\frac{1}{T_\phi}\propto\left(\frac{\partial\omega_{01}}{\partial\Phi_{\rm ext}}\right)^2 S_\Phi(\omega\approx 0)\]</p></div>
-<p>在 transmon 中，\(\omega_{01}\) 對 flux 不直接依賴。在 fluxonium 中，\(\omega_{01}\) 明確依賴 \(\Phi_{\rm ext}\)——但 half-flux sweet spot 提供了另一種保護。</p>
-
-<h4>Fluxonium sweet spot 的 dephasing 保護</h4>
-<p>在 \(\Phi_{\rm ext}=\Phi_0/2\)（half-flux）處：</p>
-<ul>
-<li>potential \(U(x)=U(-x)\) 具有 reflection symmetry</li>
-<li>\(\partial\omega_{01}/\partial\Phi_{\rm ext}=0\)，一階 flux sensitivity 消失</li>
-<li>dephasing 由二階 term 主導，通常比一階小一個數量級</li>
-</ul>
-<p>這與 transmon 的 charge-protection 機制不同：transmon 透過 \(E_J/E_C\gg1\) 壓低 matrix element，fluxonium sweet spot 透過 symmetry 壓低 frequency derivative。兩者都是「保護」，但作用在 Fermi golden rule 的不同因子。</p>
-
-<h4>Selection rule 與 relaxation matrix element</h4>
-<p>在 half-flux sweet spot，\(\ket{0}\) 為偶宇稱、\(\ket{1}\) 為奇宇稱。noise operator 的 parity 決定它能否引起 \(\ket{0}\leftrightarrow\ket{1}\) 躍遷：</p>
-<ul>
-<li><strong>\(\hat n\)（charge operator）：</strong>odd parity。原則上可以連接偶/奇態，但 fluxonium 的 wavefunction 分佈在多個 phase wells，\(\langle 0|\hat n|1\rangle\) 的實際大小取決於 wavefunction overlap。</li>
-<li><strong>\(\hat\varphi\)（phase operator）：</strong>odd parity。同樣原則上允許 \(\ket{0}\leftrightarrow\ket{1}\)，但實際大小需 device-specific 計算。</li>
-<li><strong>\(\hat n^2\)、\(\hat\varphi^2\) 等 even operator：</strong>selection rule 禁止連接 \(\ket{0}\leftrightarrow\ket{1}\)。</li>
-</ul>
-
-<h4>比較：Transmon 與 Fluxonium 的 protection 哲學</h4>
-<table class="qh-session-plan">
-<thead><tr><th>Noise channel</th><th>Transmon 保護機制</th><th>Fluxonium 保護機制</th></tr></thead>
-<tbody>
-<tr><td>Charge noise</td><td>\(E_J/E_C\gg1\) 壓低 \(\langle 0|\hat n|1\rangle\)</td><td>wavefunction multi-well structure 降低 \(\hat n\) matrix element</td></tr>
-<tr><td>Flux noise</td><td>無 flux bias，\(\omega_{01}\) 對 flux 不敏感</td><td>half-flux sweet spot 使 \(\partial\omega_{01}/\partial\Phi=0\)</td></tr>
-<tr><td>Photon-assisted (even operator)</td><td>無 selection rule 保護</td><td>parity selection rule 嚴格禁止</td></tr>
-<tr><td>Protection nature</td><td>Parameter regime（large ratio）</td><td>Symmetry（exact at sweet spot）</td></tr>
-</tbody>
-</table></div>
-
-<h4>代價：低頻 transition 與 thermal population</h4>
-<p>fluxonium 的 protected spectrum 來自 \(E_L\ll E_J\) 參數區，這也使 computational transition 頻率可能低至 0.5–2 GHz。以 \(f=800\) MHz 為例，\(hf/k_B\approx38\) mK，在 T=20 mK 時 \(p_1\approx0.16\)。</p>
-<ul>
-<li>active reset 幾乎是必需的</li>
-<li>readout 若用 \(\ket{1}\leftrightarrow\ket{2}\) transition 需要額外 control line</li>
-<li>drive matrix element 小則 \(\pi\)-pulse 時間可能超過 transmon</li>
-</ul>
-
-<h4>Fermi golden rule 的完整圖景</h4>
-<p>比較 coherence 時不能只看 \(T_1\) 數字——必須同時檢查 noise operator、matrix element、spectral density 三個因子。同一個 \(T_1\) 紀錄，來自 matrix element suppression 還是來自 spectral density 較低，對 scaling 的意義完全不同。</p>
-
-
-<div class="qh-section">
-  <h3>案例／研討：Fluxonium 保護了哪些 noise，又引入哪些代價？</h3>
-</div>
-  <div class="qh-case">
-  <p></p>
-<h4>系統案例：低頻 fluxonium 的 thermal population</h4>
-<p>對 \(f_{01}=500\,\mathrm{MHz}\)，能量尺度 \(hf/k_B\approx24\,\mathrm{mK}\)。即使 mixing chamber 顯示 10 mK，若 qubit effective temperature 是 50 mK，excited-to-ground Boltzmann ratio 約 \(e^{-hf/k_BT}\approx e^{-0.48}\approx0.62\)，絕不能假設自然初始化到 ground state。實際值還受非平衡 photons 與 coupling 影響，但此估算立即說明 active reset 與 thermalization design 的重要性。</p>
-<p>同一顆裝置可能同時具有低頻 computational transition 與較高頻 transition 可供 readout/control。architecture 必須決定使用哪條 transition、如何避免 spectator excitation，以及控制電子與 resonator 頻帶是否支援。</p>
-</div>
-  <div class="qh-task">
-    <h4>課堂任務（8–10 分鐘）</h4>
-    <p>設計一張 transmon 與 fluxonium 的 architecture review 表。每組必須提出一個 fluxonium 的真實優點、一個由同一特性衍生的代價，以及一個能在實驗上區分『真正保護』與『偶然最佳樣品』的測試。</p>
-  </div>
-  <div class="qh-answer">
-    <h4>教師解答與評分依據</h4>
-    <p>例如 half-flux sweet spot 降低一階 flux sensitivity，但低頻 transition 增加 thermal initialization 與頻帶整合負擔。應跨 flux bias、跨時間與跨多顆 device 量測 coherence、gate fidelity、thermal population 與 yield，而不是只引用單點最佳 \(T_1\)。</p>
-    <p>答案不以是否使用特定名詞評分，而以是否建立「假設 → 可觀測量 → 區分實驗 → 決策」的閉環評分。學生若提出不同方案，只要能明確指出代價與可否證條件，即可成立。</p>
-  </div>
-
-  <div class="qh-section">
-  <h3>整合／驗收：什麼條件下應選 Fluxonium，而不是 Transmon？</h3>
-</div>
-  <div>
-    <h4>Exit ticket</h4>
-    <ol>
-      <li>本週最重要的一條 equation／model 是什麼？它的適用近似為何？</li>
-      <li>哪一個看似局部的參數，實際會跨越 device、control 與 system 三層？</li>
-      <li>若只能做一個新實驗，什麼結果最能改變目前的 architecture decision？</li>
-    </ol>
-    <p><strong>跨層驗收：</strong>全課開始時每位學生畫了一張「抽象模型 → 真實硬體」的訊息流圖。現在請重畫一次。兩張圖的差異就是本週學習的證據。若兩張圖完全一樣，說明 fluxonium 的 trade-off 尚未真正內化。</p>
-    <p><strong>下週預告：</strong>W4 將從 driven two-level system 出發，推到 rotating frame 與 RWA。你需要帶著本週建立的 qubit Hamiltonian 與 matrix element 直覺進入 W4——否則 lab-frame 到 rotating-frame 的轉換只是一堆符號遊戲。</p>
-  </div>
-<!-- QH_FULL_LECTURE_END -->
-  <section class="module">
-    
-<div class="qh-section">
-  <h3>進階主線：Protected spectrum 不等於免費的高品質 qubit</h3>
-</div>
-<div class="equation-card"><p>\[H=4E_C\hat n^2+\frac12E_L(\hat\varphi-\varphi_{\rm ext})^2-E_J\cos\hat\varphi\]</p></div>
-<p>superinductor 使 phase 可以跨越多個 cosine wells，外加磁通改變位能對稱性。sweet spot 可降低一階 flux sensitivity；某些 transition matrix element 的抑制可延長 \(T_1\)。但低 qubit frequency 會提高 thermal population，弱 matrix element 也可能讓 reset、control 與 readout 更困難。</p>
-<p>因此比較 qubit 不應只看最高 coherence：還要一起看 gate time、readout contrast、初始化、coupler、array parasitic modes、fabrication reproducibility 與 control-channel count。</p>
-<p><b>跨層接口：</b>本週結束時，學生應能把「版圖元件」映射到 Hamiltonian term，再把 term 映射到 spectrum、matrix element 與工程風險。</p>
-
-  </section>
-  <section class="module">
-                                      <div class="qh-section">
-                                        <h3>六、單元 5：Fluxonium Qubit</h3>
-                                      </div>
-                                  
-                                      <h4>5.1 Motivation for Fluxonium</h4>
-                                      <p>
-                                        Fluxonium 是一種由 Josephson junction、電容與 superinductor 組成的超導量子位元。
-                                        它可以被視為對傳統 flux qubit 與 charge qubit 的重新設計：
-                                        透過加入一個非常大的電感，Fluxonium 形成特殊的 potential landscape，
-                                        使其同時具有較強的非線性、可調的能階結構與對某些雜訊通道的保護。
-                                      </p>
-                                  
-                                      <p>
-                                        與 Transmon 相比，Fluxonium 通常具有較低的 qubit transition frequency、
-                                        較大的 anharmonicity，以及在特定操作點上較長的 relaxation time。
-                                        這使 Fluxonium 成為近年超導量子位元研究中的重要方向之一。
-                                      </p>
-                                  
-                                      <h4>5.2 Circuit Components of Fluxonium</h4>
-                                      <p>
-                                        Fluxonium 的基本電路包含三個主要部分：
-                                      </p>
-                                  
-                                      <ul>
-                                        <li><strong>Josephson junction：</strong>提供非線性 cosine potential。</li>
-                                        <li><strong>Capacitor：</strong>提供 charging energy \(E_C\)。</li>
-                                        <li><strong>Superinductor：</strong>提供很小的 inductive energy \(E_L\)，並形成 phase confinement。</li>
-                                      </ul>
-                                  
-                                      <p>
-                                        Superinductor 是 Fluxonium 的關鍵元件。
-                                        它通常需要提供非常大的電感，同時保持低損耗與低寄生電容。
-                                        實作方式可能包含 Josephson junction array、高動能電感材料或其他高阻抗結構。
-                                      </p>
-                                  
-                                      <h4>5.3 Fluxonium Hamiltonian</h4>
-                                      <p>
-                                        Fluxonium Hamiltonian 可寫為：
-                                      </p>
-                                  
-                                      <div class="equation">
-                                        <p>\[
-                                        \hat{H}_{\mathrm{fluxonium}}
-                                        =
-                                        4E_C\hat{n}^2
-                                        -
-                                        E_J\cos\hat{\varphi}
-                                        +
-                                        \frac{1}{2}E_L
-                                        \left(
-                                        \hat{\varphi}
-                                        -
-                                        \varphi_{\mathrm{ext}}
-                                        \right)^2
-                                        \]</p>
-                                      </div>
-                                  
-                                      <p>
-                                        其中：
-                                      </p>
-                                  
-                                      <ul>
-                                        <li>\(\hat{n}\)：與相位 \(\hat{\varphi}\) 共軛的 Cooper pair number operator。</li>
-                                        <li>\(\hat{\varphi}\)：junction phase difference。</li>
-                                        <li>\(\varphi_{\mathrm{ext}} = 2\pi\Phi_{\mathrm{ext}}/\Phi_0\)：由外加磁通量控制的相位偏移。</li>
-                                        <li>\(E_C\)：charging energy，控制電荷動能項。</li>
-                                        <li>\(E_J\)：Josephson energy，控制 cosine potential 的深度。</li>
-                                        <li>\(E_L\)：inductive energy，由 superinductor 決定。</li>
-                                      </ul>
-                                  
-                                      <h4>5.4 Roles of \(E_C\), \(E_J\), and \(E_L\)</h4>
-                                  
-                                      <table>
-                                        <thead>
-                                          <tr>
-                                            <th>能量尺度</th>
-                                            <th>物理來源</th>
-                                            <th>在 Fluxonium 中的角色</th>
-                                          </tr>
-                                        </thead>
-                                        <tbody>
-                                          <tr>
-                                            <td>\(E_C\)</td>
-                                            <td>電容</td>
-                                            <td>決定相位波函數的量子漲落與電荷動能</td>
-                                          </tr>
-                                          <tr>
-                                            <td>\(E_J\)</td>
-                                            <td>Josephson junction</td>
-                                            <td>提供非線性週期 potential，決定能階非諧性</td>
-                                          </tr>
-                                          <tr>
-                                            <td>\(E_L\)</td>
-                                            <td>Superinductor</td>
-                                            <td>提供弱的 parabolic confinement，塑造多井 potential 結構</td>
-                                          </tr>
-                                        </tbody>
-                                      </table>
-                                  
-                                      <p>
-                                        Fluxonium 的物理特色來自三個能量尺度之間的競爭。
-                                        \(E_J\) 形成週期性的 cosine potential；
-                                        \(E_L\) 透過 superinductor 提供一個緩慢變化的拋物線約束；
-                                        \(E_C\) 則決定波函數在相位空間中的量子漲落程度。
-                                        透過調整這些參數，可以設計出不同的能階結構與選擇定則。
-                                      </p>
-                                  
-                                      <h4>5.5 Flux Bias and Sweet Spot</h4>
-                                      <p>
-                                        Fluxonium 的能階可透過外加磁通量 \(\Phi_{\mathrm{ext}}\) 調控。
-                                        在半個磁通量量子附近，也就是 \(\Phi_{\mathrm{ext}} \approx \Phi_0/2\)，
-                                        Fluxonium 常出現對一階 flux noise 不敏感的 sweet spot。
-                                        在此操作點，qubit frequency 對外加磁通量的微小擾動具有較低敏感度，
-                                        因此有助於提升 dephasing time。
-                                      </p>
-                                  
-                                      <p>
-                                        Sweet spot 的概念非常重要。
-                                        它代表系統參數的一個特殊點，使得 qubit transition frequency 對某種雜訊的一階導數為零：
-                                      </p>
-                                  
-                                      <div class="equation">
-                                        <p>\[
-                                        \frac{\partial \omega_{01}}{\partial \Phi_{\mathrm{ext}}} = 0
-                                        \]</p>
-                                      </div>
-                                  
-                                      <p>
-                                        這類設計原理在超導量子位元中非常常見，例如 Transmon 降低 charge noise sensitivity，
-                                        Fluxonium 在特定 flux bias 下降低 flux noise sensitivity。
-                                      </p>
-                                  
-                                      <h4>5.6 Relaxation Error and Transition Matrix Element Suppression</h4>
-                                      <p>
-                                        量子位元的 relaxation error 通常指 \(\ket{1} \rightarrow \ket{0}\) 的能量弛豫，
-                                        對應到 \(T_1\) 限制。對超導電路而言，relaxation rate 與環境雜訊頻譜以及 qubit
-                                        對該雜訊通道的耦合矩陣元素有關。
-                                      </p>
-                                  
-                                      <p>
-                                        若某個雜訊通道可由 operator \(\hat{O}\) 描述，則 \(\ket{1}\) 與 \(\ket{0}\)
-                                        之間的 transition matrix element 大致為：
-                                      </p>
-                                  
-                                      <div class="equation">
-                                        <p>\[
-                                        \left|\langle 0|\hat{O}|1\rangle\right|^2
-                                        \]</p>
-                                      </div>
-                                  
-                                      <p>
-                                        當這個矩陣元素被抑制時，即使環境中存在雜訊，qubit 也較不容易透過該通道發生能量弛豫。
-                                        Fluxonium 的某些能階結構與波函數分佈可以使特定 transition matrix elements 變小，
-                                        進而降低 relaxation error。
-                                      </p>
-                                  
-                                      <h4>物理直覺</h4>
-                                      <p>
-                                        Fluxonium 的低能態可能分佈在不同的 phase wells 或具有不同的 parity-like structure。
-                                        若兩個狀態之間的波函數重疊很小，或對某些雜訊 operator 的選擇定則導致耦合受抑制，
-                                        則 \(\ket{1} \rightarrow \ket{0}\) 的躍遷機率會降低。
-                                        這就是 transition matrix element suppression 對 relaxation-error reduction 的核心意義。
-                                      </p>
-                                  
-                                      <h4>5.7 Transmon vs. Fluxonium</h4>
-                                  
-                                      <table>
-                                        <thead>
-                                          <tr>
-                                            <th>比較項目</th>
-                                            <th>Transmon</th>
-                                            <th>Fluxonium</th>
-                                          </tr>
-                                        </thead>
-                                        <tbody>
-                                          <tr>
-                                            <td>主要設計策略</td>
-                                            <td>提高 \(E_J/E_C\)，降低 charge dispersion</td>
-                                            <td>加入 superinductor，塑造特殊 phase potential</td>
-                                          </tr>
-                                          <tr>
-                                            <td>典型頻率</td>
-                                            <td>通常為數 GHz</td>
-                                            <td>可低於一般 Transmon，視設計而定</td>
-                                          </tr>
-                                          <tr>
-                                            <td>Anharmonicity</td>
-                                            <td>中等，約由 \(E_C\) 決定</td>
-                                            <td>通常可具有較大的非諧性</td>
-                                          </tr>
-                                          <tr>
-                                            <td>主要雜訊考量</td>
-                                            <td>charge noise、flux noise、dielectric loss、Purcell loss</td>
-                                            <td>flux noise、dielectric loss、inductor loss、quasiparticle loss</td>
-                                          </tr>
-                                          <tr>
-                                            <td>控制優勢</td>
-                                            <td>架構成熟，控制與讀出技術完整</td>
-                                            <td>長 coherence 與特殊能階結構具研究潛力</td>
-                                          </tr>
-                                          <tr>
-                                            <td>工程挑戰</td>
-                                            <td>頻率碰撞、串擾、leakage、封裝限制</td>
-                                            <td>superinductor 製作、模式控制、參數穩定性</td>
-                                          </tr>
-                                        </tbody>
-                                      </table>
-                                  
-                                      <div class="note">
-                                        <h4>核心觀念</h4>
-                                        <p>
-                                          Transmon 主要透過降低 charge sensitivity 來提升穩定性；
-                                          Fluxonium 則透過 superinductor 與特殊能階結構，進一步利用波函數與矩陣元素設計來降低特定錯誤通道。
-                                        </p>
-                                      </div>
-                                  
-                                      <div class="learning-check">
-                                        <h4>學習檢核</h4>
-                                        <ol>
-                                          <li>Fluxonium 為什麼需要 superinductor？</li>
-                                          <li>\(E_C\)、\(E_J\)、\(E_L\) 分別控制哪些物理性質？</li>
-                                          <li>什麼是 flux sweet spot？它如何幫助降低 dephasing？</li>
-                                          <li>Transition matrix element suppression 如何降低 relaxation error？</li>
-                                          <li>Transmon 與 Fluxonium 的設計哲學有何不同？</li>
-                                        </ol>
-                                      </div>
-                                    </section>
-  <section class="module">
-    <div class="qh-section">
-      <h3>課堂整合與驗收</h3>
-    </div>
-    <p><strong>研討問題：</strong>在同一張表比較 transmon 與 fluxonium：Hamiltonian、sweet spot、主要控制算符、readout、thermal issue、製程與可擴展性。</p>
-    <p><strong>完成條件：</strong>學生必須留下可檢查的推導、關係圖、比較表或 architecture decision，並能說明其物理假設與工程代價。</p>
-  </section>
-  <section class="module">
-    <div class="qh-section">
-      <h3>核心與延伸閱讀</h3><ul class="qh-reading"><li><a href="https://arxiv.org/abs/0906.0831" target="_blank" rel="noopener">Fluxonium: Single Cooper-Pair Circuit Free of Charge Offsets</a><span>V. E. Manucharyan et al., Science 326, 113–116 (2009).</span><em>Fluxonium 與 superinductor 的原始論文。</em></li><li><a href="https://www.nature.com/articles/s41534-022-00644-x" target="_blank" rel="noopener">High Fidelity Two-Qubit Gates on Fluxoniums Using a Tunable Coupler</a><span>I. N. Moskalenko et al., npj Quantum Information 8, 130 (2022).</span><em>Fluxonium 控制、reset、耦合與多量子位元工程。</em></li><li><a href="https://arxiv.org/abs/1610.03438" target="_blank" rel="noopener">Introduction to Quantum Electromagnetic Circuits</a><span>U. Vool and M. H. Devoret, International Journal of Circuit Theory and Applications 45, 897–934 (2017).</span><em>從電路圖、Lagrangian 到量子 Hamiltonian 的核心讀物。</em></li><li><a href="https://www.nature.com/articles/s41578-021-00370-4" target="_blank" rel="noopener">Engineering High-Coherence Superconducting Qubits</a><span>I. Siddiqi, Nature Reviews Materials 6, 875–891 (2021).</span><em>不同 qubit architecture、材料損耗與 coherence 的設計 trade-off。</em></li></ul>
-    </div>
-  </section>
 </section>
 
+                  <section class="qh-supplement-divider" id="w3-question-map">
+                    <h3>W3
+                      <strong>Fluxonium 與 Protected-Qubit Hamiltonian Engineering：五問主線</strong>
+                    </h3>
+                    <p>5 題</p>
+                    <ol>
+                      <li><p>外界擾動在什麼條件下能造成量子 transition？</p></li>
+                      <li><p>什麼樣的量子態結構，能抑制 noise transition，卻仍保留 control transition？</p></li>
+                      <li><p>加入 superinductor，會在 Josephson circuit 的 Hamiltonian 中增加什麼？</p></li>
+                      <li><p>Fluxonium 如何利用 \(E_C,E_J,E_L\) 與 external flux 塑造波函數，實現保護條件？</p></li>
+                      <li><p>我們能否從 noise operator 反推出一個 protected-qubit Hamiltonian？</p></li>
+                    </ol>
+                  </section>
 
-                                <div class="post-meta">
-                                    <span class="post-author">
-                                        <a href="../About/Wang.html"><img class="img-res" src="../WebP/IMG_0964_2.webp" alt="">王培儒</a>
-                                    </span>
-                                    <span class="post-category">
-                                        <a href="./main.html"><i class="fa fa-folder" aria-hidden="true"></i>PHYS598500</a>
-                                    </span>
-                                </div><!-- /.post-meta -->
-                            
-                                <div id="prev-next-nav" class="text-center">
+                  <section class="qh-full-lecture" id="w3-five-questions">
+                    <div class="qh-section">
+                      <h3>前言：從參數最佳化走向 Hamiltonian engineering</h3>
+                    </div>
+                    <p>
+                      上週 Transmon 展示了如何選擇 \(E_J/E_C\)，在 charge sensitivity 與 anharmonicity 之間取得平衡。
+                      但如果我們不只調整參數，而是直接增加 Hamiltonian 的項、改變 symmetry 或增加自由度，是否能讓特定 error transition 從物理上變得困難？
+                    </p>
+                    <p><a class="btn btn-gray" href="T2-outlook.html">查看 T2 十問的整體推進</a></p>
+
+                    <table class="qh-session-plan">
+                      <thead><tr><th>時間</th><th>問題</th><th>本段產出</th></tr></thead>
+                      <tbody>
+                        <tr><td>0–10 分</td><td>W2 回顧與問題設定</td><td>Transmon trade-off → error-target design</td></tr>
+                        <tr><td>10–30 分</td><td>問題一：noise 如何造成 transition</td><td>operator × matrix element × spectrum</td></tr>
+                        <tr><td>30–50 分</td><td>問題二：受保護但可控制的態</td><td>sweet spot／selection rule／suppression</td></tr>
+                        <tr><td>50–70 分</td><td>問題三：加入 superinductor</td><td>Transmon → Fluxonium Hamiltonian</td></tr>
+                        <tr><td>70–95 分</td><td>問題四：能量尺度與波函數工程</td><td>\(E_C,E_J,E_L,\Phi_{\rm ext}\) 映射</td></tr>
+                        <tr><td>95–118 分</td><td>問題五：Beyond-Fluxonium 名詞巡禮</td><td>四項判準與三條進階路線</td></tr>
+                        <tr><td>118–120 分</td><td>Exit ticket</td><td>帶走一個自學入口</td></tr>
+                      </tbody>
+                    </table>
+
+                    <div class="qh-section">
+                      <h3>問題一：外界擾動在什麼條件下能造成量子 transition？</h3>
+                    </div>
+                    <span class="qh-time">10–30 分鐘</span>
+                    <div class="qh-board">
+                      <p>\[
+                        \hat V(t)=\hat O F(t),
+                        \qquad
+                        \Gamma_{i\rightarrow f}\propto
+                        \left|\langle f|\hat O|i\rangle\right|^2S_F(\omega_{fi}).
+                      \]</p>
+                    </div>
+                    <p>
+                      一個 transition 是否發生、發生多快，由兩件事共同決定：環境在 transition frequency 是否有 noise power，
+                      以及系統的 eigenstate structure 是否讓 coupling operator 具有非零 matrix element。
+                    </p>
+                    <ul>
+                      <li><strong>Noise source \(F(t)\)：</strong>環境實際提供的 fluctuation。</li>
+                      <li><strong>Noise operator \(\hat O\)：</strong>該 fluctuation 透過哪個系統自由度耦合。</li>
+                      <li><strong>Spectral density \(S_F(\omega)\)：</strong>環境在各頻率提供多少擾動。</li>
+                      <li><strong>Transition matrix element：</strong>Hamiltonian 的 eigenstates 是否允許該 operator 連接初態與末態。</li>
+                    </ul>
+                    <p><strong>教學邊界：</strong>allowed 不代表一定很強；forbidden 與 merely suppressed 也不是同一件事。</p>
+
+                    <div class="qh-section">
+                      <h3>問題二：什麼樣的量子態結構，能抑制 noise transition，卻仍保留 control transition？</h3>
+                    </div>
+                    <span class="qh-time">30–50 分鐘</span>
+                    <p>環境與控制都透過某個 operator 作用在 qubit 上，但兩者不必使用同一個 operator：</p>
+                    <div class="qh-board">
+                      <p>\[
+                        \Gamma_1\propto
+                        \left|\langle0|\hat O_{\rm noise}|1\rangle\right|^2S_{\rm noise}(\omega_{01}),
+                        \qquad
+                        \Omega_R\propto A\left|\langle0|\hat O_{\rm drive}|1\rangle\right|.
+                      \]</p>
+                    </div>
+                    <p>必須區分三種 protection：</p>
+                    <ol>
+                      <li><strong>Sweet-spot protection：</strong>\(\partial\omega_{01}/\partial\lambda=0\)，主要降低低頻 parameter fluctuation 所造成的 dephasing。</li>
+                      <li><strong>Selection-rule protection：</strong>因 symmetry 與 operator parity，使特定 matrix element 嚴格為零。</li>
+                      <li><strong>Matrix-element suppression：</strong>transition 並未被 symmetry 禁止，但因 localization 或 wavefunction overlap 而非常小。</li>
+                    </ol>
+                    <div class="qh-answer">
+                      <p><strong>核心矛盾：</strong>我們希望 environment 難以控制量子態，卻仍要保留人為控制它的途徑。保護必須是 operator-specific，而不是把所有 coupling 一起關掉。</p>
+                    </div>
+
+                    <div class="qh-section">
+                      <h3>問題三：加入 superinductor，會在 Josephson circuit 的 Hamiltonian 中增加什麼？</h3>
+                    </div>
+                    <span class="qh-time">50–70 分鐘</span>
+                    <p>Transmon-like circuit：</p>
+                    <div class="qh-board"><p>\[
+                      \hat H_{\rm T}=4E_C(\hat n-n_g)^2-E_J\cos\hat\varphi
+                    \]</p></div>
+                    <p>加入 superinductor 與 external flux 後：</p>
+                    <div class="qh-board"><p>\[
+                      \hat H_{\rm F}=4E_C\hat n^2-E_J\cos\hat\varphi
+                      +\frac12E_L(\hat\varphi-\varphi_{\rm ext})^2.
+                    \]</p></div>
+                    <ul>
+                      <li>Superinductor 提供很小的 inductive energy \(E_L\)。</li>
+                      <li>Cosine potential 上疊加 parabolic confinement，形成新的 multi-well landscape。</li>
+                      <li>External flux 成為調整 potential symmetry 與 operating point 的設計參數。</li>
+                      <li>版圖中的 capacitor、small junction、JJ-array superinductor 與 flux loop 分別映射到 \(E_C,E_J,E_L,\Phi_{\rm ext}\)。</li>
+                    </ul>
+                    <div class="qh-answer">
+                      <p><strong>核心句：</strong>Fluxonium 不是單純換一組參數，而是為 Hamiltonian 增加一個新的 energy term。</p>
+                    </div>
+
+                    <div class="qh-section">
+                      <h3>問題四：Fluxonium 如何利用 \(E_C,E_J,E_L\) 與 external flux 塑造波函數，實現保護條件？</h3>
+                    </div>
+                    <span class="qh-time">70–95 分鐘</span>
+                    <div class="qh-board"><p>\[
+                      U(\varphi)=-E_J\cos\varphi+
+                      \frac12E_L(\varphi-\varphi_{\rm ext})^2.
+                    \]</p></div>
+                    <ul>
+                      <li><strong>\(E_J\)：</strong>決定 cosine wells 的深度。</li>
+                      <li><strong>\(E_L\)：</strong>決定 global confinement 與不同 wells 的相對能量。</li>
+                      <li><strong>\(E_C\)：</strong>決定 phase fluctuation、tunneling 與 wavefunction spread。</li>
+                      <li><strong>\(\Phi_{\rm ext}\)：</strong>改變 potential symmetry 與 operating point。</li>
+                    </ul>
+                    <p>
+                      在 half-flux 附近，令 \(x=\varphi-\pi\)，可得到 \(U(x)=U(-x)\)，本徵態因而具有確定 parity。
+                      但 \(\hat n\) 與 \(x\) 都是 odd operator，原則上可以連接相反宇稱的 \(\ket0\) 與 \(\ket1\)；若 matrix element 很小，
+                      必須歸因於具體裝置中的 wavefunction localization／overlap，而不能錯誤地一律稱為 parity-forbidden。
+                    </p>
+                    <p>
+                      同時，\(\partial\omega_{01}/\partial\Phi_{\rm ext}=0\) 是 sweet-spot 的 dephasing protection；
+                      它不自動保證 relaxation protection。後者仍需檢查對應 operator 的 matrix element 與 noise spectrum。
+                    </p>
+
+                    <div class="qh-section">
+                      <h3>問題五：我們能否從 noise operator 反推出一個 protected-qubit Hamiltonian？</h3>
+                    </div>
+                    <span class="qh-time">95–118 分鐘</span>
+                    <p>先在黑板建立四個不可省略的設計條件：</p>
+                    <div class="qh-board"><p>\[
+                      \boxed{
+                      \begin{aligned}
+                      \text{Dephasing protection:}\quad
+                      &\frac{\partial\omega_{01}}{\partial\lambda}\approx0,\\[4pt]
+                      \text{Relaxation protection:}\quad
+                      &\langle0|\hat O_{\rm noise}|1\rangle\approx0,\\[4pt]
+                      \text{Controllability:}\quad
+                      &\langle0|\hat O_{\rm drive}|1\rangle\neq0,\\[4pt]
+                      \text{Leakage suppression:}\quad
+                      &\Delta_{\rm leakage}\ \text{足夠大}.
+                      \end{aligned}}
+                    \]</p></div>
+
+                    <h4>進階 Topic 名詞巡禮：三條 Beyond-Fluxonium 路線</h4>
+                    <p>
+                      這一段的目的不是在二十分鐘內教完三種架構，而是讓學生第一次看見：改參數、增加自由度、改造 Josephson potential、改變材料，
+                      分別是在 Hamiltonian 的哪個層次工作，並留下日後自行學習的關鍵字。
+                    </p>
+
+                    <h4>1. \(0-\pi\) qubit：增加自由度與 disconnected state support</h4>
+                    <p>
+                      Fluxonium 主要仍可視為有效單自由度問題 \(H=H(\varphi,n)\)；\(0-\pi\) circuit 則提升為多模態 Hamiltonian，
+                      例如 \(H=H(\phi,\theta)\)。其 logical states 可在 generalized-coordinate space 中具有近乎不相交的支撐，
+                      並搭配 near degeneracy，同時追求較小 transition matrix element 與較低 frequency susceptibility。
+                    </p>
+                    <ul>
+                      <li>關鍵字：multimode protection、disjoint support、near degeneracy、hardware symmetry。</li>
+                      <li>工程挑戰：large superinductance、low stray capacitance、元件匹配與寄生模態。</li>
+                    </ul>
+
+                    <h4>2. \(\cos(2\varphi)\) qubit：直接改造 Josephson potential 的週期性</h4>
+                    <div class="qh-board"><p>\[
+                      U_J(\varphi)=-\sum_kE_k\cos(k\varphi),
+                      \qquad
+                      U(\varphi)=-E_2\cos(2\varphi).
+                    \]</p></div>
+                    <p>
+                      一般 \(\cos\varphi\) 對應 single-Cooper-pair tunneling；有效 \(\cos(2\varphi)\) 項可對應 two-Cooper-pair process，
+                      形成不同的週期性與 Cooper-pair parity structure，使某些 charge-induced transitions 受到 symmetry 抑制。
+                    </p>
+                    <ul>
+                      <li>關鍵字：Josephson-potential engineering、Fourier component、two-Cooper-pair tunneling、parity sector。</li>
+                      <li>自學問題：我們是否只能接受自然 junction 的 \(-E_J\cos\varphi\)，還是可以工程化 current-phase relation？</li>
+                    </ul>
+
+                    <h4>3. Ferro-transmon：改造材料，也是在改造 Hamiltonian</h4>
+                    <div class="qh-board"><p>\[
+                      E_J\longrightarrow E_J(M)
+                    \]</p></div>
+                    <p>
+                      Ferromagnetic Josephson-junction 路線讓 Josephson element 的有效參數依賴磁性狀態，或更一般地改變 current-phase relation。
+                      Hysteretic behavior 可提供近似 digital frequency tuning；但磁性自由度也同時帶來 magnetic fluctuation 這個新的 noise source。
+                    </p>
+                    <ul>
+                      <li>關鍵字：ferromagnetic Josephson junction、hysteretic tuning、magnetic-state control。</li>
+                      <li>核心提醒：Hamiltonian engineering 不一定等於 protection engineering；新的 control knob 也可能帶來新的 noise operator。</li>
+                    </ul>
+
+                    <div class="qh-task">
+                      <h4>第五問課堂任務</h4>
+                      <p>給每組一個 dominant noise：A 組 \(\hat O_{\rm noise}=\hat n\)，B 組 \(\hat O_{\rm noise}=\hat\varphi\)。每組選擇一條上述路線並回答：</p>
+                      <ol>
+                        <li>要新增或修改哪一個 Hamiltonian term？</li>
+                        <li>Logical states 依靠什麼 symmetry 或 wavefunction structure 被區分？</li>
+                        <li>哪一個 unwanted matrix element 預期被壓低？</li>
+                        <li>要用哪一個不同的 drive operator 保留 controllability？</li>
+                        <li>如何保持足夠的 \(\Delta_{\rm leakage}\)，又會新增什麼 noise channel 或 fabrication sensitivity？</li>
+                      </ol>
+                    </div>
+
+                    <div class="qh-answer">
+                      <p><strong>本週結論：</strong>Fluxonium 不是答案，而是 Hamiltonian engineering 的第一個完整案例。學生離開課堂時不必會設計所有 protected qubits，但應能用四項判準辨認不同架構試圖保護什麼、如何保留控制，以及代價藏在哪裡。</p>
+                    </div>
+
+                    <div class="qh-case">
+                      <h4>保留但延後回答的架構題</h4>
+                      <p><strong>什麼條件下應選 Fluxonium，而不是 Transmon？</strong></p>
+                      <p>
+                        這題不刪除，但不作為 W3 的第五問。W3 只留下 provisional answer；等學生依序學過 W4 control、W5 coupling、W6 readout、
+                        W11 thermalization、W14–W15 fabrication／yield 後，在 W16 重新回答，形成正式 architecture decision。
+                      </p>
+                    </div>
+                  </section>
+
+                  <div class="qh-section">
+                    <h3>既有 Fluxonium 推導、案例與延伸教材</h3>
+                  </div>
+                  <!-- QH_FULL_LECTURE_START -->
+                  <div class="qh-section">
+                    <h3>Fluxonium 與量子位元架構比較：protected spectrum 的代價</h3>
+                  </div>
+                  <p><strong>本週驅動問題：</strong>fluxonium 透過大電感與 Josephson junction 形成不同於 transmon 的能譜；哪些 transition 被保護、哪些
+                    control/readout 變得更難？如何避免把單一 coherence 紀錄誤認成整體架構優勢？</p>
+                  <div class="qh-section">
+                    <h3>0–10 分鐘：問題設定與先備診斷</h3>
+                  </div>
+                  <p><strong>W3-C1
+                      先備診斷：</strong>先要求學生不用查資料，以一張圖畫出本週主題從抽象模型到真實硬體的訊息流。教師不立刻公布答案，而是收集學生把哪些層次畫成等號。全課結束時再重畫一次，用兩張圖的差異驗收是否真正建立跨層理解。
+                  </p>
+                  <div class="qh-section">
+                    <h3>10–35 分鐘：核心模型與黑板推導</h3>
+                  </div>
+                  <div>
+                    <p></p>
+                    <h4>黑板模型：三個能量尺度</h4>
+                    <p>fluxonium 可用 \(\hat H=4E_C\hat
+                      n^2+\frac12E_L(\hat\varphi-\varphi_{\mathrm{ext}})^2-E_J\cos\hat\varphi\) 描述。與 transmon 相比，多了
+                      superinductance 對應的 \(E_L=(\Phi_0/2\pi)^2/L\)，並以 external flux 改變 potential landscape。不同 well 中的
+                      wavefunction、tunneling 與 selection rule 共同決定 transition frequency。</p>
+                    <p>在 half-flux sweet spot 附近，一階 flux sensitivity 可降低；但低 transition frequency 會提高 thermal population
+                      的要求，drive/readout matrix element 也可能與常見 transmon 直覺不同。protected 並非不受任何 noise，而是某些 perturbation
+                      operator 在特定工作點的 matrix element 或一階導數被壓低。</p>
+                    <h4>比較方法</h4>
+                    <p>比較 qubit modality 時至少同時列出：工作頻率、anharmonicity、sweet spot、dominant noise operator、gate
+                      primitive、readout contrast、reset、fabrication complexity、coupler compatibility 與 frequency
+                      allocation。只比較最佳 \(T_1\) 會忽略 control stack 與 yield。</p>
+                  </div>
+                  <div class="qh-section">
+                    <h3>35–60 分鐘：推導／定量 — External flux 如何改變工作點與波函數？</h3>
+                  </div>
+                  <div>
+                    <p></p>
+                    <h4>位能圖與波函數直覺</h4>
+                    <p>fluxonium 的 total potential 是 cosine 與 parabolic term
+                      的疊加：\(U(\varphi)=-E_J\cos\varphi+\frac12E_L(\varphi-\varphi_{\rm ext})^2\)。在 half-flux sweet spot
+                      \(\varphi_{\rm ext}=\pi\) 附近，引入半磁通座標 \(x=\varphi-\pi\)，則 \(U(x)=U(-x)\)，potential
+                      對稱。因此本徵態具有確定宇稱：ground state \(\ket{0}\) 為偶宇稱、first excited state \(\ket{1}\) 為奇宇稱，依此類推。bonding 與
+                      anti-bonding 的直覺仍然適用，但關鍵推論來自宇稱而非 wavefunction 在 phase space 中的分佈位置。</p>
+                    <h4>選擇定則推導</h4>
+                    <p>考慮 perturbation \(\hat V=\hat O\,F(t)\)，其中 \(\hat O\) 是 noise operator。transition rate 正比於 matrix
+                      element 平方乘以 noise spectral density：\(\Gamma_{m\to n}\propto|\langle m|\hat
+                      O|n\rangle|^2\,S_F(\omega_{mn})\)；比例常數取決於 \(S_F\) 的譜密度常規與單位。關鍵在於 matrix element \(\langle m|\hat
+                      O|n\rangle\) 的大小：</p>
+                    <ul>
+                      <li><strong>偶算符（even operator）：</strong>在對稱 potential 下，偶算符在相反宇稱態之間的 matrix element 為零。因此若 noise
+                        operator 為偶，它不能引起 \(\ket{0}\leftrightarrow\ket{1}\) 躍遷。</li>
+                      <li><strong>奇算符（odd operator）：</strong>奇算符可能連接相反宇稱的態，實際大小取決於具體裝置參數。fluxonium 的 \(\hat n\) 和
+                        \(x=\varphi-\pi\) 都是奇算符，因此它們原則上可以連接 \(\ket{0}\) 與 \(\ket{1}\)；matrix element 的大小需
+                        device-specific 計算，不能僅從宇稱推論其大小。</li>
+                      <li><strong>補充說明：</strong>某些 fluxonium 設計中 \(\hat n\) 的 matrix element 確實較小，但這來自 device-dependent
+                        的 wavefunction 重疊與局域化特性，而非宇稱選擇定則。</li>
+                    </ul>
+                    <h4>近似與條件</h4>
+                    <p>宇稱選擇定則來自半磁通處的 exact symmetry \(U(x)=U(-x)\)；\(E_J\gg E_L\)（deep cosine wells）與 \(E_J\gg
+                      E_C\)（charge suppression）僅是 deep-well 與 bonding 直覺的條件，並非宇稱成立的必要條件。 \(\Phi_{\rm
+                      ext}\approx\Phi_0/2\)（sweet spot 操作）。在 sweet spot 處，\(\partial\omega_{01}/\partial\Phi_{\rm
+                      ext}=0\)，一階 flux sensitivity 消失；偏離 sweet spot 時，sensitivity 恢復，其大小需依具體裝置參數計算。</p>
+                    <h4>符號分類活動</h4>
+                    <p>學生兩人一組，把推導中的每個符號分成「設計可選參數（\(E_J,E_L,E_C,\Phi_{\rm ext}\)）、製程/裝置產生參數（junction area, oxide
+                      thickness）、必須校準參數（實際 \(\omega_{01}\)、sweet spot 位置）、只能量測估計的狀態（thermal population、residual flux
+                      offset）」四類。這一步迫使公式離開紙面，成為 archi
+                    <div class="qh-section">
+                      <h3>Selection rule 為什麼會改變控制與讀出方式？</h3>
+                    </div>Selection rule 為什麼會改變控制與讀出方式？</h2>
+                    <div>
+                      <p></p>
+                      <h4>Sweet-spot 保護 vs. Relaxation matrix element（W3-C3）</h4>
+                      <p>half-flux sweet spot 的保護是針對 dephasing（一階 flux sensitivity 消失），但 relaxation 取決於 noise spectral
+                        density 在 transition frequency 處的 matrix element。sweet spot 操作抑制一階 flux sensitivity（dephasing
+                        保護），但 relaxation 仍取決於 noise spectral density 在 transition frequency 處的 matrix element；某些
+                        operator matrix element 可能因 wavefunction 重疊或選擇定則被抑制，但並非所有 noise channel 都被保護。這意味著 sweet spot 操作是
+                        dephasing 保護，不保證 relaxation 保護。</p>
+                      <h4>Thermal population 與低頻 transition 的代價（W3-C5）</h4>
+                      <p>fluxonium 的 computational transition 可能低至 500 MHz（\(hf/k_B\approx24\) mK）。以 \(f=500\) MHz 為例：在
+                        T=50 mK 時，\(p_1/p_0=e^{-24/50}\approx0.62\)，\(p_1\approx0.38\)；在 T=20 mK
+                        時，\(p_1/p_0\approx0.30\)，\(p_1\approx0.23\)。低頻 fluxonium 的 thermal population 顯著高於高頻
+                        transmon，這需要 active reset 或其他控制策略。</p>
+                      <h4>Control 與 readout 的 trade-off（W3-C5）</h4>
+                      <p>fluxonium 的 \(\hat n\) matrix element 可能較 transmon 小，這意味著 microwave drive 耦合較弱——gate speed
+                        可能受影響，具體取決於 device design。readout contrast 也因 \(\hat\varphi\) 耦合到 resonator 的機制不同而需重新設計。某些
+                        fluxonium 架構使用更高頻的 transition 做 readout 以避開 thermal population，但這要求 control electronics 支援額外頻帶。
+                      </p>
+                      <h4>Transmon vs. Fluxonium 架構對比（W3-C5）</h4>
+                      <table class="qh-session-plan">
+                        <thead>
+                          <tr>
+                            <th>維度</th>
+                            <th>Transmon</th>
+                            <th>Fluxonium</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>Hamiltonian</td>
+                            <td>\(4E_C\hat n^2-E_J\cos\hat\varphi\)</td>
+                            <td>\(4E_C\hat n^2+\frac12E_L(\hat\varphi-\varphi_{\rm ext})^2-E_J\cos\hat\varphi\)</td>
+                          </tr>
+                          <tr>
+                            <td>Sweet spot</td>
+                            <td>\(E_J/E_C\gg1\) 鈍化 charge noise</td>
+                            <td>\(\Phi_{\rm ext}\approx\Phi_0/2\) 鈍化 flux noise</td>
+                          </tr>
+                          <tr>
+                            <td>Typical frequency</td>
+                            <td>數 GHz</td>
+                            <td>可能較低，取決於 design</td>
+                          </tr>
+                          <tr>
+                            <td>Thermal pop. at 20 mK</td>
+                            <td>低（因頻率高）</td>
+                            <td>可能較高（因頻率低）</td>
+                          </tr>
+                          <tr>
+                            <td>Gate speed</td>
+                            <td>取決於 drive matrix element 與 device</td>
+                            <td>drive matrix element 可能較小，取決於 device</td>
+                          </tr>
+                          <tr>
+                            <td>Fabrication</td>
+                            <td>單 JJ 或 SQUID，成熟製程</td>
+                            <td>Superinductor（JJ array），製程複雜度高</td>
+                          </tr>
+                          <tr>
+                            <td>Scalability</td>
+                            <td>單 JJ 或 SQUID 結構相對簡單</td>
+                            <td>Superinductor（JJ array）增加製程複雜度</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <h4>Layout-to-Hamiltonian 映射（W3-C6）</h4>
+                    <p>每一項版圖參數都映射到 Hamiltonian 中的某一項：junction area 決定 \(E_J\)、capacitor pad geometry 決定
+                      \(E_C\)、superinductor 的 JJ array 設計決定 \(E_L\)、flux line 的 inductance 決定 flux bias 精度與
+                      bandwidth。chip design 不是畫電路，而是直接雕刻 Hamiltonian 的參數空間。製程變異使 \(E_J\) 有 spread，對應 frequency 偏離——版圖參數到
+                      Hamiltonian 的映射讓 design 能直接雕刻參數空間，但也使製程變異直接影響 qubit 性能。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                    <div class="qh-section">
+                      <h3>Noise operator、Fermi golden rule 與 selection rule 如何指向 Fluxonium？</h3>
+                    </div>
+                    <div>
+
+                      <h4>Fermi golden rule 的出發點</h4>
+                      <p>relaxation 與 dephasing 的定量描述從 Fermi golden rule 開始。system Hamiltonian \(\hat H_0\) 的本徵態
+                        \(\ket{n}\) 之間，perturbation \(\hat V(t)=\hat O\,F(t)\) 引起的 transition rate 為：</p>
+                      <div class="qh-board">
+                        <p>\[\Gamma_{m\to n}=\frac{2\pi}{\hbar}\,|\langle n|\hat O|m\rangle|^2\,S_F(\omega_{mn})\]</p>
+                      </div>
+                      <p>其中 \(S_F(\omega)\) 是 noise spectral density，\(\hat O\) 是 noise operator。這個式子把 decoherence
+                        拆成兩個獨立問題：<strong>matrix element</strong> 由 Hamiltonian 的 eigenstate 結構決定，<strong>spectral
+                          density</strong> 由 noise source 的頻率分佈決定。</p>
+
+                      <h4>Charge noise 與 noise operator \(\hat n\)</h4>
+                      <p>charge noise 來自 oxide defect、two-level system (TLS) 或 gate voltage fluctuation。它耦合到 Cooper-pair
+                        number operator \(\hat n\)：</p>
+                      <div class="qh-board">
+                        <p>\[\hat V_{\rm charge}(t)=e\,\delta n_g(t)\,\hat n\]</p>
+                      </div>
+                      <p>charge noise 的 spectral density 在低頻呈現 \(1/f\) 行為。在 transmon 中，增大 \(E_J/E_C\) 使 \(\langle 0|\hat
+                        n|1\rangle\) 指數下降，因此 transmon 對 charge noise 高度不敏感。</p>
+
+                      <h4>Flux noise 與 noise operator \(\hat\varphi\)</h4>
+                      <p>flux noise 來自 surface spin bath，耦合到 phase operator \(\hat\varphi\)。dephasing rate：</p>
+                      <div class="qh-board">
+                        <p>\[\frac{1}{T_\phi}\propto\left(\frac{\partial\omega_{01}}{\partial\Phi_{\rm ext}}\right)^2
+                          S_\Phi(\omega\approx 0)\]</p>
+                      </div>
+                      <p>在 transmon 中，\(\omega_{01}\) 對 flux 不直接依賴。在 fluxonium 中，\(\omega_{01}\) 明確依賴 \(\Phi_{\rm
+                        ext}\)——但 half-flux sweet spot 提供了另一種保護。</p>
+
+                      <h4>Fluxonium sweet spot 的 dephasing 保護</h4>
+                      <p>在 \(\Phi_{\rm ext}=\Phi_0/2\)（half-flux）處：</p>
+                      <ul>
+                        <li>potential \(U(x)=U(-x)\) 具有 reflection symmetry</li>
+                        <li>\(\partial\omega_{01}/\partial\Phi_{\rm ext}=0\)，一階 flux sensitivity 消失</li>
+                        <li>dephasing 由二階 term 主導，通常比一階小一個數量級</li>
+                      </ul>
+                      <p>這與 transmon 的 charge-protection 機制不同：transmon 透過 \(E_J/E_C\gg1\) 壓低 charge dispersion，fluxonium
+                        sweet spot 透過 symmetry 壓低 frequency derivative。兩者都是「保護」，但作用在 Fermi golden rule 的不同因子。</p>
+
+                      <h4>Selection rule 與 relaxation matrix element</h4>
+                      <p>在 half-flux sweet spot，\(\ket{0}\) 為偶宇稱、\(\ket{1}\) 為奇宇稱。noise operator 的 parity 決定它能否引起
+                        \(\ket{0}\leftrightarrow\ket{1}\) 躍遷：</p>
+                      <ul>
+                        <li><strong>\(\hat n\)（charge operator）：</strong>odd parity。原則上可以連接偶/奇態，但 fluxonium 的
+                          wavefunction 分佈在多個 phase wells，\(\langle 0|\hat n|1\rangle\) 的實際大小取決於 wavefunction overlap。
+                        </li>
+                        <li><strong>\(\hat\varphi\)（phase operator）：</strong>odd parity。同樣原則上允許
+                          \(\ket{0}\leftrightarrow\ket{1}\)，但實際大小需 device-specific 計算。</li>
+                        <li><strong>\(\hat n^2\)、\(\hat\varphi^2\) 等 even operator：</strong>selection rule 禁止連接
+                          \(\ket{0}\leftrightarrow\ket{1}\)。</li>
+                      </ul>
+
+                      <h4>比較：Transmon 與 Fluxonium 的 protection 哲學</h4>
+                      <table class="qh-session-plan">
+                        <thead>
+                          <tr>
+                            <th>Noise channel</th>
+                            <th>Transmon 保護機制</th>
+                            <th>Fluxonium 保護機制</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>Charge noise</td>
+                            <td>\(E_J/E_C\gg1\) 壓低 energy 對 \(n_g\) 的 charge dispersion</td>
+                            <td>wavefunction multi-well structure 降低 \(\hat n\) matrix element</td>
+                          </tr>
+                          <tr>
+                            <td>Flux noise</td>
+                            <td>無 flux bias，\(\omega_{01}\) 對 flux 不敏感</td>
+                            <td>half-flux sweet spot 使 \(\partial\omega_{01}/\partial\Phi=0\)</td>
+                          </tr>
+                          <tr>
+                            <td>Photon-assisted (even operator)</td>
+                            <td>無 selection rule 保護</td>
+                            <td>parity selection rule 嚴格禁止</td>
+                          </tr>
+                          <tr>
+                            <td>Protection nature</td>
+                            <td>Parameter regime（large ratio）</td>
+                            <td>Symmetry（exact at sweet spot）</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+
+                    <h4>代價：低頻 transition 與 thermal population</h4>
+                    <p>fluxonium 的 protected spectrum 來自 \(E_L\ll E_J\) 參數區，這也使 computational transition 頻率可能低至 0.5–2
+                      GHz。以 \(f=800\) MHz 為例，\(hf/k_B\approx38\) mK，在 T=20 mK 時 \(p_1\approx0.16\)。</p>
+                    <ul>
+                      <li>active reset 幾乎是必需的</li>
+                      <li>readout 若用 \(\ket{1}\leftrightarrow\ket{2}\) transition 需要額外 control line</li>
+                      <li>drive matrix element 小則 \(\pi\)-pulse 時間可能超過 transmon</li>
+                    </ul>
+
+                    <h4>Fermi golden rule 的完整圖景</h4>
+                    <p>比較 coherence 時不能只看 \(T_1\) 數字——必須同時檢查 noise operator、matrix element、spectral density 三個因子。同一個
+                      \(T_1\) 紀錄，來自 matrix element suppression 還是來自 spectral density 較低，對 scaling 的意義完全不同。</p>
+
+
+                    <div class="qh-section">
+                      <h3>案例／研討：Fluxonium 保護了哪些 noise，又引入哪些代價？</h3>
+                    </div>
+                    <div class="qh-case">
+                      <p></p>
+                      <h4>系統案例：低頻 fluxonium 的 thermal population</h4>
+                      <p>對 \(f_{01}=500\,\mathrm{MHz}\)，能量尺度 \(hf/k_B\approx24\,\mathrm{mK}\)。即使 mixing chamber 顯示 10
+                        mK，若 qubit effective temperature 是 50 mK，excited-to-ground Boltzmann ratio 約
+                        \(e^{-hf/k_BT}\approx e^{-0.48}\approx0.62\)，絕不能假設自然初始化到 ground state。實際值還受非平衡 photons 與
+                        coupling 影響，但此估算立即說明 active reset 與 thermalization design 的重要性。</p>
+                      <p>同一顆裝置可能同時具有低頻 computational transition 與較高頻 transition 可供 readout/control。architecture 必須決定使用哪條
+                        transition、如何避免 spectator excitation，以及控制電子與 resonator 頻帶是否支援。</p>
+                    </div>
+                    <div class="qh-task">
+                      <h4>課堂任務（8–10 分鐘）</h4>
+                      <p>設計一張 transmon 與 fluxonium 的 architecture review 表。每組必須提出一個 fluxonium
+                        的真實優點、一個由同一特性衍生的代價，以及一個能在實驗上區分『真正保護』與『偶然最佳樣品』的測試。</p>
+                    </div>
+                    <div class="qh-answer">
+                      <h4>教師解答與評分依據</h4>
+                      <p>例如 half-flux sweet spot 降低一階 flux sensitivity，但低頻 transition 增加 thermal initialization
+                        與頻帶整合負擔。應跨 flux bias、跨時間與跨多顆 device 量測 coherence、gate fidelity、thermal population 與
+                        yield，而不是只引用單點最佳 \(T_1\)。</p>
+                      <p>答案不以是否使用特定名詞評分，而以是否建立「假設 → 可觀測量 → 區分實驗 → 決策」的閉環評分。學生若提出不同方案，只要能明確指出代價與可否證條件，即可成立。</p>
+                    </div>
+
+                    <div class="qh-section">
+                      <h3>整合／驗收：什麼條件下應選 Fluxonium，而不是 Transmon？</h3>
+                    </div>
+                    <div>
+                      <h4>Exit ticket</h4>
+                      <ol>
+                        <li>本週最重要的一條 equation／model 是什麼？它的適用近似為何？</li>
+                        <li>哪一個看似局部的參數，實際會跨越 device、control 與 system 三層？</li>
+                        <li>若只能做一個新實驗，什麼結果最能改變目前的 architecture decision？</li>
+                      </ol>
+                      <p><strong>跨層驗收：</strong>全課開始時每位學生畫了一張「抽象模型 → 真實硬體」的訊息流圖。現在請重畫一次。兩張圖的差異就是本週學習的證據。若兩張圖完全一樣，說明
+                        fluxonium 的 trade-off 尚未真正內化。</p>
+                      <p><strong>下週預告：</strong>W4 將從 driven two-level system 出發，推到 rotating frame 與 RWA。你需要帶著本週建立的 qubit
+                        Hamiltonian 與 matrix element 直覺進入 W4——否則 lab-frame 到 rotating-frame 的轉換只是一堆符號遊戲。</p>
+                    </div>
+                    <!-- QH_FULL_LECTURE_END -->
+                    <section class="module">
+
+                      <div class="qh-section">
+                        <h3>進階主線：Protected spectrum 不等於免費的高品質 qubit</h3>
+                      </div>
+                      <div class="equation-card">
+                        <p>\[H=4E_C\hat n^2+\frac12E_L(\hat\varphi-\varphi_{\rm ext})^2-E_J\cos\hat\varphi\]</p>
+                      </div>
+                      <p>superinductor 使 phase 可以跨越多個 cosine wells，外加磁通改變位能對稱性。sweet spot 可降低一階 flux sensitivity；某些
+                        transition matrix element 的抑制可延長 \(T_1\)。但低 qubit frequency 會提高 thermal population，弱 matrix
+                        element 也可能讓 reset、control 與 readout 更困難。</p>
+                      <p>因此比較 qubit 不應只看最高 coherence：還要一起看 gate time、readout contrast、初始化、coupler、array parasitic
+                        modes、fabrication reproducibility 與 control-channel count。</p>
+                      <p><b>跨層接口：</b>本週結束時，學生應能把「版圖元件」映射到 Hamiltonian term，再把 term 映射到 spectrum、matrix element 與工程風險。
+                      </p>
+
+                    </section>
+                    <section class="module">
+                      <div class="qh-section">
+                        <h3>六、單元 5：Fluxonium Qubit</h3>
+                      </div>
+
+                      <h4>5.1 Motivation for Fluxonium</h4>
+                      <p>
+                        Fluxonium 是一種由 Josephson junction、電容與 superinductor 組成的超導量子位元。
+                        它可以被視為對傳統 flux qubit 與 charge qubit 的重新設計：
+                        透過加入一個非常大的電感，Fluxonium 形成特殊的 potential landscape，
+                        使其同時具有較強的非線性、可調的能階結構與對某些雜訊通道的保護。
+                      </p>
+
+                      <p>
+                        與 Transmon 相比，Fluxonium 通常具有較低的 qubit transition frequency、
+                        較大的 anharmonicity，以及在特定操作點上較長的 relaxation time。
+                        這使 Fluxonium 成為近年超導量子位元研究中的重要方向之一。
+                      </p>
+
+                      <h4>5.2 Circuit Components of Fluxonium</h4>
+                      <p>
+                        Fluxonium 的基本電路包含三個主要部分：
+                      </p>
+
+                      <ul>
+                        <li><strong>Josephson junction：</strong>提供非線性 cosine potential。</li>
+                        <li><strong>Capacitor：</strong>提供 charging energy \(E_C\)。</li>
+                        <li><strong>Superinductor：</strong>提供很小的 inductive energy \(E_L\)，並形成 phase confinement。</li>
+                      </ul>
+
+                      <p>
+                        Superinductor 是 Fluxonium 的關鍵元件。
+                        它通常需要提供非常大的電感，同時保持低損耗與低寄生電容。
+                        實作方式可能包含 Josephson junction array、高動能電感材料或其他高阻抗結構。
+                      </p>
+
+                      <h4>5.3 Fluxonium Hamiltonian</h4>
+                      <p>
+                        Fluxonium Hamiltonian 可寫為：
+                      </p>
+
+                      <div class="equation">
+                        <p>\[
+                          \hat{H}_{\mathrm{fluxonium}}
+                          =
+                          4E_C\hat{n}^2
+                          -
+                          E_J\cos\hat{\varphi}
+                          +
+                          \frac{1}{2}E_L
+                          \left(
+                          \hat{\varphi}
+                          -
+                          \varphi_{\mathrm{ext}}
+                          \right)^2
+                          \]</p>
+                      </div>
+
+                      <p>
+                        其中：
+                      </p>
+
+                      <ul>
+                        <li>\(\hat{n}\)：與相位 \(\hat{\varphi}\) 共軛的 Cooper pair number operator。</li>
+                        <li>\(\hat{\varphi}\)：junction phase difference。</li>
+                        <li>\(\varphi_{\mathrm{ext}} = 2\pi\Phi_{\mathrm{ext}}/\Phi_0\)：由外加磁通量控制的相位偏移。</li>
+                        <li>\(E_C\)：charging energy，控制電荷動能項。</li>
+                        <li>\(E_J\)：Josephson energy，控制 cosine potential 的深度。</li>
+                        <li>\(E_L\)：inductive energy，由 superinductor 決定。</li>
+                      </ul>
+
+                      <h4>5.4 Roles of \(E_C\), \(E_J\), and \(E_L\)</h4>
+
+                      <table>
+                        <thead>
+                          <tr>
+                            <th>能量尺度</th>
+                            <th>物理來源</th>
+                            <th>在 Fluxonium 中的角色</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>\(E_C\)</td>
+                            <td>電容</td>
+                            <td>決定相位波函數的量子漲落與電荷動能</td>
+                          </tr>
+                          <tr>
+                            <td>\(E_J\)</td>
+                            <td>Josephson junction</td>
+                            <td>提供非線性週期 potential，決定能階非諧性</td>
+                          </tr>
+                          <tr>
+                            <td>\(E_L\)</td>
+                            <td>Superinductor</td>
+                            <td>提供弱的 parabolic confinement，塑造多井 potential 結構</td>
+                          </tr>
+                        </tbody>
+                      </table>
+
+                      <p>
+                        Fluxonium 的物理特色來自三個能量尺度之間的競爭。
+                        \(E_J\) 形成週期性的 cosine potential；
+                        \(E_L\) 透過 superinductor 提供一個緩慢變化的拋物線約束；
+                        \(E_C\) 則決定波函數在相位空間中的量子漲落程度。
+                        透過調整這些參數，可以設計出不同的能階結構與選擇定則。
+                      </p>
+
+                      <h4>5.5 Flux Bias and Sweet Spot</h4>
+                      <p>
+                        Fluxonium 的能階可透過外加磁通量 \(\Phi_{\mathrm{ext}}\) 調控。
+                        在半個磁通量量子附近，也就是 \(\Phi_{\mathrm{ext}} \approx \Phi_0/2\)，
+                        Fluxonium 常出現對一階 flux noise 不敏感的 sweet spot。
+                        在此操作點，qubit frequency 對外加磁通量的微小擾動具有較低敏感度，
+                        因此有助於提升 dephasing time。
+                      </p>
+
+                      <p>
+                        Sweet spot 的概念非常重要。
+                        它代表系統參數的一個特殊點，使得 qubit transition frequency 對某種雜訊的一階導數為零：
+                      </p>
+
+                      <div class="equation">
+                        <p>\[
+                          \frac{\partial \omega_{01}}{\partial \Phi_{\mathrm{ext}}} = 0
+                          \]</p>
+                      </div>
+
+                      <p>
+                        這類設計原理在超導量子位元中非常常見，例如 Transmon 降低 charge noise sensitivity，
+                        Fluxonium 在特定 flux bias 下降低 flux noise sensitivity。
+                      </p>
+
+                      <h4>5.6 Relaxation Error and Transition Matrix Element Suppression</h4>
+                      <p>
+                        量子位元的 relaxation error 通常指 \(\ket{1} \rightarrow \ket{0}\) 的能量弛豫，
+                        對應到 \(T_1\) 限制。對超導電路而言，relaxation rate 與環境雜訊頻譜以及 qubit
+                        對該雜訊通道的耦合矩陣元素有關。
+                      </p>
+
+                      <p>
+                        若某個雜訊通道可由 operator \(\hat{O}\) 描述，則 \(\ket{1}\) 與 \(\ket{0}\)
+                        之間的 transition matrix element 大致為：
+                      </p>
+
+                      <div class="equation">
+                        <p>\[
+                          \left|\langle 0|\hat{O}|1\rangle\right|^2
+                          \]</p>
+                      </div>
+
+                      <p>
+                        當這個矩陣元素被抑制時，即使環境中存在雜訊，qubit 也較不容易透過該通道發生能量弛豫。
+                        Fluxonium 的某些能階結構與波函數分佈可以使特定 transition matrix elements 變小，
+                        進而降低 relaxation error。
+                      </p>
+
+                      <h4>物理直覺</h4>
+                      <p>
+                        Fluxonium 的低能態可能分佈在不同的 phase wells 或具有不同的 parity-like structure。
+                        若兩個狀態之間的波函數重疊很小，或對某些雜訊 operator 的選擇定則導致耦合受抑制，
+                        則 \(\ket{1} \rightarrow \ket{0}\) 的躍遷機率會降低。
+                        這就是 transition matrix element suppression 對 relaxation-error reduction 的核心意義。
+                      </p>
+
+                      <h4>5.7 Transmon vs. Fluxonium</h4>
+
+                      <table>
+                        <thead>
+                          <tr>
+                            <th>比較項目</th>
+                            <th>Transmon</th>
+                            <th>Fluxonium</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>主要設計策略</td>
+                            <td>提高 \(E_J/E_C\)，降低 charge dispersion</td>
+                            <td>加入 superinductor，塑造特殊 phase potential</td>
+                          </tr>
+                          <tr>
+                            <td>典型頻率</td>
+                            <td>通常為數 GHz</td>
+                            <td>可低於一般 Transmon，視設計而定</td>
+                          </tr>
+                          <tr>
+                            <td>Anharmonicity</td>
+                            <td>中等，約由 \(E_C\) 決定</td>
+                            <td>通常可具有較大的非諧性</td>
+                          </tr>
+                          <tr>
+                            <td>主要雜訊考量</td>
+                            <td>charge noise、flux noise、dielectric loss、Purcell loss</td>
+                            <td>flux noise、dielectric loss、inductor loss、quasiparticle loss</td>
+                          </tr>
+                          <tr>
+                            <td>控制優勢</td>
+                            <td>架構成熟，控制與讀出技術完整</td>
+                            <td>長 coherence 與特殊能階結構具研究潛力</td>
+                          </tr>
+                          <tr>
+                            <td>工程挑戰</td>
+                            <td>頻率碰撞、串擾、leakage、封裝限制</td>
+                            <td>superinductor 製作、模式控制、參數穩定性</td>
+                          </tr>
+                        </tbody>
+                      </table>
+
+                      <div class="note">
+                        <h4>核心觀念</h4>
+                        <p>
+                          Transmon 主要透過降低 charge sensitivity 來提升穩定性；
+                          Fluxonium 則透過 superinductor 與特殊能階結構，進一步利用波函數與矩陣元素設計來降低特定錯誤通道。
+                        </p>
+                      </div>
+
+                      <div class="learning-check">
+                        <h4>學習檢核</h4>
+                        <ol>
+                          <li>Fluxonium 為什麼需要 superinductor？</li>
+                          <li>\(E_C\)、\(E_J\)、\(E_L\) 分別控制哪些物理性質？</li>
+                          <li>什麼是 flux sweet spot？它如何幫助降低 dephasing？</li>
+                          <li>Transition matrix element suppression 如何降低 relaxation error？</li>
+                          <li>Transmon 與 Fluxonium 的設計哲學有何不同？</li>
+                        </ol>
+                      </div>
+                    </section>
+                    <section class="module">
+                      <div class="qh-section">
+                        <h3>課堂整合與驗收</h3>
+                      </div>
+                      <p><strong>研討問題：</strong>在同一張表比較 transmon 與 fluxonium：Hamiltonian、sweet
+                        spot、主要控制算符、readout、thermal issue、製程與可擴展性。</p>
+                      <p><strong>完成條件：</strong>學生必須留下可檢查的推導、關係圖、比較表或 architecture decision，並能說明其物理假設與工程代價。</p>
+                    </section>
+                    <section class="module">
+                      <div class="qh-section">
+                        <h3>核心與延伸閱讀</h3>
+                        <ul class="qh-reading">
+                          <li><a href="https://arxiv.org/abs/0906.0831" target="_blank" rel="noopener">Fluxonium: Single
+                              Cooper-Pair Circuit Free of Charge Offsets</a><span>V. E. Manucharyan et al., Science 326,
+                              113–116 (2009).</span><em>Fluxonium 與 superinductor 的原始論文。</em></li>
+                          <li><a href="https://www.nature.com/articles/s41534-022-00644-x" target="_blank" rel="noopener">High Fidelity Two-Qubit Gates on Fluxoniums Using a Tunable
+                              Coupler</a><span>I. N. Moskalenko et al., npj Quantum Information 8, 130
+                              (2022).</span><em>Fluxonium 控制、reset、耦合與多量子位元工程。</em></li>
+                          <li><a href="https://arxiv.org/abs/1610.03438" target="_blank" rel="noopener">Introduction to
+                              Quantum Electromagnetic Circuits</a><span>U. Vool and M. H. Devoret, International Journal
+                              of Circuit Theory and Applications 45, 897–934 (2017).</span><em>從電路圖、Lagrangian 到量子
+                              Hamiltonian 的核心讀物。</em></li>
+                          <li><a href="https://www.nature.com/articles/s41578-021-00370-4" target="_blank" rel="noopener">Engineering High-Coherence Superconducting Qubits</a><span>I. Siddiqi,
+                              Nature Reviews Materials 6, 875–891 (2021).</span><em>不同 qubit architecture、材料損耗與
+                              coherence 的設計 trade-off。</em></li>
+                        </ul>
+                      </div>
+                    </section>
+                </section>
+
+
+                <div class="post-meta">
+                  <span class="post-author">
+                    <a href="../About/Wang.html"><img class="img-res" src="../WebP/IMG_0964_2.webp" alt="">王培儒</a>
+                  </span>
+                  <span class="post-category">
+                    <a href="./main.html"><i class="fa fa-folder" aria-hidden="true"></i>PHYS598500</a>
+                  </span>
+                </div><!-- /.post-meta -->
+
+                <div id="prev-next-nav" class="text-center">
                                     <a class="btn btn-gray" href="T2-2S.html">← 上一頁</a> 
                                     <a class="btn btn-gray" href="T3-4.html">下一頁 →</a>
                                 </div>
 
-                                
 
-                            </div><!-- /.post-content -->
-                        </article><!-- /.blog-post -->
-                        <!--<div id="PostComments" class="post-comments">
+
+              </div><!-- /.post-content -->
+            </article><!-- /.blog-post -->
+            <!--<div id="PostComments" class="post-comments">
                             
                             
                             
                         </div> /#PostComments -->
-                        <!--<div class="respond">
+            <!--<div class="respond">
                             <h3>Post a Comment</h3>
                             <form class="form-horizontal">
                                 <input class="form-control" type="text" placeholder="Your Name*" required>
@@ -858,8 +1299,8 @@
                                 <button class="btn btn-green">Add a comment</button>
                             </form>    
                         </div> /.respond -->
-                    </div>
-                    <aside class="col-md-3">
+          </div>
+          <aside class="col-md-3">
                         <div class="sidebar">
                             <div class="widget">
                                 <div id="lesson-list_2">
@@ -884,29 +1325,29 @@
                                 </div>
                             </div>
                         </div></aside>
-                </div>
-            </div>
-        </section><!-- /.section-portfolio -->
+        </div>
+      </div>
+    </section><!-- /.section-portfolio -->
 
-    </main><!-- /#main -->
+  </main><!-- /#main -->
 
-    <footer id="colophon" class="site-footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3 col-sm-4 col-xs-6">
-                    <a href="../index_ch.html" class="site-title">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
-                    <p>一起走進新時代的前沿科學與量子科技</p>
-                    </div>
-                <div class="col-lg-offset-4 col-md-3 col-sm-4 col-md-offset-2 col-sm-offset-0 col-xs-6 ">
-                    <p class="site-title">𝐾𝐸𝐸𝑃 𝐼𝑁 𝑇𝑂𝑈𝐶𝐻</p>
-                    <ul class="list-unstyled contact-links">
-                        <li><i class="fa fa-envelope" aria-hidden="true"></i><a href="mailto:info@insight-ihbar.com">info@insight-ihbar.com</a></li>
-                        <!--<li><i class="fa fa-phone" aria-hidden="true"></i><a href="tel:+37400800000">+374 (00) 80 00 00 </a></li>
+  <footer id="colophon" class="site-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3 col-sm-4 col-xs-6">
+          <a href="../index_ch.html" class="site-title">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
+          <p>一起走進新時代的前沿科學與量子科技</p>
+        </div>
+        <div class="col-lg-offset-4 col-md-3 col-sm-4 col-md-offset-2 col-sm-offset-0 col-xs-6 ">
+          <p class="site-title">𝐾𝐸𝐸𝑃 𝐼𝑁 𝑇𝑂𝑈𝐶𝐻</p>
+          <ul class="list-unstyled contact-links">
+            <li><i class="fa fa-envelope" aria-hidden="true"></i><a href="mailto:info@insight-ihbar.com">info@insight-ihbar.com</a></li>
+            <!--<li><i class="fa fa-phone" aria-hidden="true"></i><a href="tel:+37400800000">+374 (00) 80 00 00 </a></li>
                         <li><i class="fa fa-fax" aria-hidden="true"></i><a href="+37400900000">+374 (00) 90 00 00</a></li>
                         <li><i class="fa-solid fa-location-dot"></i><p>Hsinchu 300, Taiwan (R.O.C.)</p></li>-->
-                    </ul>
-                </div>
-                <!--<div class="clearfix visible-xs"></div>
+          </ul>
+        </div>
+        <!--<div class="clearfix visible-xs"></div>
                 <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6">
                     <h3>Featured links</h3>
                     <ul class="list-unstyled">
@@ -916,45 +1357,47 @@
                         <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </div>-->
+      </div>
+    </div>
+    <div class="copyright">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-8">
+            <div class="social-links">
+              <!--<a class="twitter-bg" href="#"><i class="fab fa-twitter"></i></a>-->
+              <!--<<a class="facebook-bg" href="https://www.facebook.com/people/Quantum-Perspectives/61576446849628/"><i class="fab fa-facebook"></i></a>-->
+              <!--<a class="facebook-bg" href="https://www.facebook.com/people/%E9%87%8F%E5%AD%90%E9%81%A0%E8%A6%8BQuantum-Perspectives/61576883632888/"><i class="fab fa-facebook-f"></i></a>-->
+              <!--<a class="pinterest" href="#"><i class="fa-solid fa-microscope"></i></a>-->
+              <!--<a class="facebook-bg" href="https://www.facebook.com/people/Insight-hbar/61576811775374/"><i class="fab fa-facebook-f"></i></a>-->
+              <a class="linkedin-bg" href="https://www.linkedin.com/company/insight-ihbar"><i
+                  class="fab fa-linkedin"></i></a>
+            </div><!-- /.social-links -->
+          </div>
+          <div class="col-xs-4">
+            <div class="text-right">
+              <p><span style="font-size: 16px;">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</span></p>
+              <p>All Rights Reserved</p>
             </div>
+          </div>
         </div>
-        <div class="copyright">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xs-8">
-                        <div class="social-links">
-                            <!--<a class="twitter-bg" href="#"><i class="fab fa-twitter"></i></a>-->
-                            <!--<<a class="facebook-bg" href="https://www.facebook.com/people/Quantum-Perspectives/61576446849628/"><i class="fab fa-facebook"></i></a>-->
-                            <!--<a class="facebook-bg" href="https://www.facebook.com/people/%E9%87%8F%E5%AD%90%E9%81%A0%E8%A6%8BQuantum-Perspectives/61576883632888/"><i class="fab fa-facebook-f"></i></a>-->
-                            <!--<a class="pinterest" href="#"><i class="fa-solid fa-microscope"></i></a>-->
-                            <!--<a class="facebook-bg" href="https://www.facebook.com/people/Insight-hbar/61576811775374/"><i class="fab fa-facebook-f"></i></a>-->
-                            <a class="linkedin-bg" href="https://www.linkedin.com/company/insight-ihbar"><i class="fab fa-linkedin"></i></a>
-                        </div><!-- /.social-links -->
-                    </div>
-                    <div class="col-xs-4">
-                        <div class="text-right">
-                            <p><span style="font-size: 16px;">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</span></p>
-                            <p>All Rights Reserved</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div><!-- /.copyright -->
-    </footer><!-- /#footer -->
+      </div>
+    </div><!-- /.copyright -->
+  </footer><!-- /#footer -->
 
 
 
-    <!-- Bootstrap core JavaScript
+  <!-- Bootstrap core JavaScript
     ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="../assets/js/bootstrap.min.js"></script>
-    <script src="../assets/js/bootstrap-select.min.js"></script>
-    <script src="../assets/js/jquery.slicknav.min.js"></script>
-    <script src="../assets/js/jquery.countTo.min.js"></script>
-    <script src="../assets/js/jquery.shuffle.min.js"></script>
-    <script src="../assets/js/script.js"></script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-  
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/bootstrap-select.min.js"></script>
+  <script src="../assets/js/jquery.slicknav.min.js"></script>
+  <script src="../assets/js/jquery.countTo.min.js"></script>
+  <script src="../assets/js/jquery.shuffle.min.js"></script>
+  <script src="../assets/js/script.js"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
 </body>
+
 </html>
