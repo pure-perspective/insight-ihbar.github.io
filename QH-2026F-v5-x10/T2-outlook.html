@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N39VTY949N"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-N39VTY949N');
+  </script>
+  <!-- Basic Page Needs
+    ================================================== -->
+  <meta charset="utf-8">
+  <meta name="author" content="Peir-Ru Wang">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;1,300&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/20250525-icon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/20250525-icon.png">
+
+  <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/css/style.css" rel="stylesheet">
+  <link href="../assets/css/responsive.css" rel="stylesheet">
+
+  <title>T2 Outlook · 從人工原子到 Protected Qubit | QH-2026F v5</title>
+  <meta name="description" content="PHYS598500 T2 Outlook：W2–W3 十問的次序、接口與 protected-qubit 進階學習地圖">
+  <meta name="keywords" content="- 量子處理器
+- 超導量子位元
+- Qubit
+- 約瑟夫森接面
+- Transmon
+- Fluxonium
+- 量子計算
+- 量子硬體
+- 量子演算法
+- 量子晶片">
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+  <style>
+    .qh-week-meta {
+      margin: 20px 0;
+      padding: 16px 18px;
+      border-left: 4px solid #5f4b8b;
+      background: #f6f4fa;
+    }
+
+    .qh-week-meta p {
+      margin: 4px 0;
+    }
+
+    .qh-session-plan {
+      width: 100%;
+      margin: 18px 0 8px;
+      border-collapse: collapse;
+    }
+
+    .qh-session-plan th,
+    .qh-session-plan td {
+      padding: 10px 12px;
+      border: 1px solid #ddd;
+      vertical-align: top;
+    }
+
+    .qh-session-plan th {
+      background: #f4f4f4;
+    }
+
+    .qh-session-plan .qh-break td {
+      color: #666;
+      background: #fafafa;
+    }
+
+    .qh-total {
+      text-align: right;
+      font-weight: 700;
+    }
+
+    .qh-reading li {
+      margin-bottom: 12px;
+    }
+
+    .qh-reading span,
+    .qh-reading em {
+      display: block;
+    }
+
+    .qh-week-list {
+      padding-left: 0;
+      list-style: none;
+    }
+
+    .qh-week-list li {
+      margin: 0 0 13px;
+      padding: 12px 15px;
+      border-left: 4px solid #5f4b8b;
+      background: #f7f7f7;
+    }
+
+    .qh-week-list a {
+      font-weight: 700;
+    }
+
+    @media (max-width: 767px) {
+      .qh-session-plan {
+        display: block;
+        overflow-x: auto;
+      }
+    }
+  </style>
+
+
+  <style id="qh-full-course-style">
+    .qh-full-lecture {
+      margin: 30px 0;
+      padding: 24px 26px;
+      border: 1px solid #d9d4e5;
+      background: #fff;
+    }
+
+    .qh-full-lecture>h2,
+    .qh-full-lecture>h3 {
+      margin-top: 0;
+    }
+
+    .qh-full-lecture h4 {
+      margin-top: 24px;
+    }
+
+    .qh-full-lecture li {
+      margin-bottom: 8px;
+    }
+
+    .qh-time {
+      display: inline-block;
+      margin-bottom: 12px;
+      padding: 4px 10px;
+      border-radius: 14px;
+      background: #5f4b8b;
+      color: #fff;
+      font-size: .9em;
+    }
+
+    .qh-board,
+    .qh-case,
+    .qh-task,
+    .qh-answer,
+    .qh-source-chapter {
+      margin: 20px 0;
+      padding: 17px 19px;
+      font-size: 15px;
+    }
+
+    .qh-board {
+      border-left: 4px solid #d0ccc8;
+      background: #fafafa;
+    }
+
+    .qh-case {
+      border-left: 4px solid #d0ccc8;
+      background: #fafafa;
+    }
+
+    .qh-task {
+      border-left: 4px solid #d0ccc8;
+      background: #fafafa;
+    }
+
+    .qh-answer {
+      border-left: 4px solid #d0ccc8;
+      background: #fafafa;
+    }
+
+    /* Section divider headings */
+    .qh-section {
+      margin: 40px 0 24px;
+      padding: 17px 19px;
+      border-left: 4px solid #355c9a;
+      background: #f3f7fc;
+    }
+
+    .qh-section h3 {
+      margin: 0 0 4px;
+      font-size: 20px;
+      font-weight: 700;
+      color: #355c9a;
+      border-bottom: none;
+    }
+
+    .qh-section h4 {
+      margin: 0;
+      font-size: 15px;
+      font-weight: 400;
+      color: #6a8ab5;
+      font-style: italic;
+    }
+
+    .qh-section>h3:first-child {
+      margin-top: 0;
+    }
+
+    /* Equation highlight — compact, not a section heading */
+    .qh-equation-highlight {
+      margin: 24px 0;
+      padding: 14px 18px;
+      border-left: 3px solid #6a6560;
+      background: #f9f8f7;
+    }
+
+    .qh-equation-label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      color: #6a6560;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    .qh-source-chapter {
+      border: 1px solid #e5e0ec;
+      background: #fdfcff;
+    }
+
+
+    .qh-source-chapter>h3 {
+      padding-bottom: 9px;
+      border-bottom: 1px solid #ddd5e8;
+    }
+
+    .qh-source-note {
+      color: #665f72;
+      font-size: .92em;
+    }
+
+    @media (max-width: 720px) {
+      .qh-full-lecture {
+        padding: 18px 15px;
+      }
+
+      .qh-board,
+      .qh-case,
+      .qh-task,
+      .qh-answer,
+      .qh-source-chapter {
+        padding: 14px 13px;
+      }
+    }
+
+    /* Supplement section styling */
+    .qh-supplement-divider {
+      margin: 36px 0 24px;
+      padding: 18px 22px;
+      border-left: 4px solid #5f4b8b;
+      background: #f6f4fa;
+    }
+
+    .qh-supplement-divider h2 {
+      margin: 0 0 5px;
+      font-size: 22px;
+    }
+
+    .qh-supplement-divider p {
+      margin: 0;
+    }
+
+    /* Tables in supplement */
+    .module table {
+      width: 100%;
+      margin: 16px 0;
+      border-collapse: collapse;
+      font-size: 15px;
+    }
+
+    .module table th,
+    .module table td {
+      padding: 10px 12px;
+      border: 1px solid #ddd;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .module table th {
+      background: #f4f4f4;
+      font-weight: 700;
+    }
+
+    /* Callout in supplement */
+    .module .callout {
+      margin: 16px 0;
+      padding: 12px 16px;
+      border-left: 4px solid #5f4b8b;
+      background: #f6f4fa;
+      font-size: 15px;
+    }
+
+    /* Lists in supplement */
+    .module ul,
+    .module ol {
+      margin: 12px 0;
+      padding-left: 24px;
+    }
+
+    .module li {
+      margin-bottom: 8px;
+      line-height: 1.6;
+      font-size: 15px;
+    }
+
+    /* Heading consistency — only direct h3 children, not inside .qh-section */
+    .module>h3 {
+      margin: 28px 0 14px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #ddd5e8;
+      font-size: 20px;
+    }
+
+    .module h4 {
+      margin: 20px 0 10px;
+      font-size: 17px;
+    }
+
+    .module p {
+      margin: 10px 0;
+      line-height: 1.7;
+    }
+  </style>
+
+
+  <style id="qh-details-style">
+    details.dark-background {
+      margin: 24px 0;
+      background-color: #3a3632;
+      border: none;
+      padding: 0;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    details.dark-background summary {
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 16px;
+      color: #e8e4e0;
+      background-color: #4a4540;
+      padding: 14px 20px;
+      border-radius: 0;
+      list-style: none;
+      transition: background-color 0.2s;
+    }
+
+    details.dark-background summary:hover {
+      background-color: #5a5550;
+    }
+
+    details.dark-background summary::-webkit-details-marker {
+      display: none;
+    }
+
+    details.dark-background summary::marker {
+      content: "";
+    }
+
+    details.dark-background summary::before {
+      content: "▸";
+      display: inline-block;
+      margin-right: 8px;
+      font-size: 12px;
+      transition: transform 0.2s;
+    }
+
+    details.dark-background[open] summary::before {
+      transform: rotate(90deg);
+    }
+
+    details.dark-background summary h3 {
+      margin: 0;
+      font-size: inherit;
+      font-weight: inherit;
+      color: inherit;
+      line-height: 1.4;
+    }
+
+    details.dark-background> :not(summary) {
+      padding: 20px;
+      color: #d0ccc8;
+    }
+
+    details.dark-background> :not(summary) p {
+      color: #c8c4c0;
+      line-height: 1.7;
+    }
+  </style>
+
+  <link rel="stylesheet" href="qh-mobile-math-overflow.css" data-uniweb-fix="mobile-math-overflow">
+</head>
+
+<body>
+
+  <header id="masthead" class="site-header">
+    <nav id="primary-navigation" class="site-navigation">
+      <div class="container">
+
+        <div class="navbar-header">
+          <a href="../index_ch.html" class="site-title">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
+        </div><!-- /.navbar-header -->
+
+        <div class="collapse navbar-collapse" id="agency-navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="../index_ch.html">Home</a></li>
+            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">科普介紹<i
+                  class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+              <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                <li><a href="../SCQ_elementary/main.html">超導量子位元(科普版)</a></li>
+                <li><a href="../SCQ_advanced/main.html">超導量子位元(進階版)</a></li>
+                <li><a href="../SpQ/main.html">半導體自旋量子位元</a></li>
+              </ul>
+            </li>
+            <!--<li class="active"><a href="../SCQ_elementary/main.html">科普介紹</a></li>-->
+            <li class="active"><a href="../QC_hardware/main.html">硬體導論</a></li>
+            <li><a href="../QID/main.html">量子產業群像錄</a></li>
+            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">研討會筆記<i
+                  class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+              <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                <li><a href="../ASW2026/main.html">2026中研院超導量子電腦Workshop</a></li>
+              </ul>
+            </li>
+            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">量子諮詢<i
+                  class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+              <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                <li><a href="https://www.quantum-perspectives.com/About/main.html">量子遠見科技：諮詢服務</a></li>
+                <li><a href="../About/main.html">關於我們</a></li>
+              </ul>
+            </li>
+            <li><a href="../index.html">English</a></li>
+          </ul>
+        </div>
+
+      </div>
+    </nav><!-- /.site-navigation -->
+  </header><!-- /#mastheaed -->
+
+  <div id="hero" class="hero overlay subpage-hero blog-hero">
+    <div class="hero-content">
+      <div class="hero_2-text">
+        <h1>超導量子電腦架構</h1>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="../index_ch.html">Home</a></li>
+          <li class="breadcrumb-item"><a href="../SCQ_advanced/main.html">PHYS598500</a></li>
+          <!--<li class="breadcrumb-item active">約瑟夫森節</li>-->
+        </ol>
+      </div><!-- /.hero-text -->
+    </div><!-- /.hero-content -->
+  </div><!-- /.hero -->
+
+  <main id="main" class="site-main">
+
+    <section class="site-section subpage-site-section section-blog">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-9">
+            <article class="blog-post">
+              <!--<img src="../assets/img/portfolio-1.jpg" class="img-res" alt="">-->
+              <div class="post-content">
+                <div style="text-align: center;">
+                  <p class="theme-label">PHYS598500 · T2 Outlook · Week 2–3</p>
+                  <h2>從人工原子到 Protected Qubit</h2>
+                  <h3>十問的次序、接口與進階學習地圖</h3>
+                </div>
+
+                <section id="t2-outlook" class="course-theme">
+                  <section class="course-overview">
+                    <h3>這兩週共同在回答什麼？</h3>
+                    <div class="qh-week-meta">
+                      <p><strong>範圍：</strong>W2 人工原子與 Transmon；W3 Fluxonium 與 Hamiltonian engineering
+                      </p>
+                      <p><strong>共同問題：</strong>如何先用電路做出可控制的量子能譜，再從欲抑制的 error operator 反向改造 Hamiltonian？</p>
+                      <p><strong>十問方向：</strong>quantization → conjugate variables → anharmonicity → Transmon trade-off →
+                        noise operator → protection → Fluxonium → Hamiltonian engineering</p>
+                    </div>
+                    <p>
+                      W2 與 W3 不是兩份互不相干的 qubit 簡介。W2 建立「人工原子如何成立」；W3 把同一套語言反過來使用：
+                      已知環境透過哪個 operator 製造錯誤，我們能否設計 eigenstates、symmetry 與 Hamiltonian term，使該錯誤比較難發生？
+                    </p>
+                  </section>
+
+                  <section class="qh-supplement-divider">
+                    <h3>T2
+                      <strong>十問總表</strong>
+                    </h3>
+                    <p>W2 五問 + W3 五問</p>
+                  </section>
+
+                  <table class="qh-session-plan">
+                    <thead>
+                      <tr>
+                        <th>序號</th>
+                        <th>週次</th>
+                        <th>核心問題</th>
+                        <th>本問新建立的能力</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>1</td>
+                        <td rowspan="5" class="text-center" style="vertical-align: middle;">W2</td>
+                        <td>一個巨觀電路為什麼可能具有量子能階？</td>
+                        <td>辨認可量子化、可隔離的集體電路模式</td>
+                      </tr>
+                      <tr>
+                        <td>2</td>
+                        <td>超導電路中，什麼東西扮演位置與動量？</td>
+                        <td>使用 \((\Phi,Q)\)、\((\varphi,n)\) 描述量子自由度</td>
+                      </tr>
+                      <tr>
+                        <td>3</td>
+                        <td>為什麼最簡單的人工原子仍然不是 qubit？</td>
+                        <td>區分離散能階與可選擇控制的兩能階子空間</td>
+                      </tr>
+                      <tr>
+                        <td>4</td>
+                        <td>Josephson junction 如何塑造人工原子的能階？</td>
+                        <td>由 cosine nonlinearity 解釋 anharmonicity</td>
+                      </tr>
+                      <tr>
+                        <td>5</td>
+                        <td>為什麼人工原子最後設計成 Transmon？</td>
+                        <td>用 \(E_J/E_C\) 分析 charge dispersion／anharmonicity trade-off</td>
+                      </tr>
+                      <tr>
+                        <td>6</td>
+                        <td rowspan="5" class="text-center" style="vertical-align: middle;">W3</td>
+                        <td>外界擾動在什麼條件下能造成量子 transition？</td>
+                        <td>把 decoherence 拆成 noise spectrum 與 operator matrix element</td>
+                      </tr>
+                      <tr>
+                        <td>7</td>
+                        <td>什麼樣的量子態結構能抑制 noise，卻仍保留 control？</td>
+                        <td>區分 sweet spot、selection rule、suppression 與 controllability</td>
+                      </tr>
+                      <tr>
+                        <td>8</td>
+                        <td>加入 superinductor，會在 Hamiltonian 中增加什麼？</td>
+                        <td>由 circuit modification 寫出新的 energy term</td>
+                      </tr>
+                      <tr>
+                        <td>9</td>
+                        <td>Fluxonium 如何利用 \(E_C,E_J,E_L,\Phi_{\rm ext}\) 實現保護？</td>
+                        <td>把參數映射到 potential、wavefunction 與 matrix element</td>
+                      </tr>
+                      <tr>
+                        <td>10</td>
+                        <td>Hamiltonian engineering：如何從欲抑制的 error operator 出發，設計下一種 qubit Hamiltonian？</td>
+                        <td>以四項判準閱讀 \(0-\pi\)、\(\cos2\varphi\) 與 ferro-transmon</td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+
+                  <div class="qh-section">
+                    <h3>第二週：先讓「電路可以成為原子」成立</h3>
+                  </div>
+                  <h4>第 1 問 → 第 2 問：從存在性走到可計算的自由度</h4>
+                  <p>
+                    第 1 問先回答為什麼巨觀電路仍可能有量子行為，避免學生一開始就把 circuit quantization 當成純形式操作。
+                    但只說「超導體很量子」還不足以寫 Hamiltonian，所以第 2 問立刻指定共軛變數：\((\Phi,Q)\) 或 \((\varphi,n)\)。
+                  </p>
+
+                  <h4>第 2 問 → 第 3 問：量子化成功，不代表 qubit 成功</h4>
+                  <p>
+                    有了共軛變數，就能量子化 LC mode；第 3 問隨即指出它的限制。這一步刻意把「discrete spectrum」與
+                    「selectively addressable qubit subspace」分開，否則學生很容易以為任何 oscillator 的最低兩態都自然是一顆好 qubit。
+                  </p>
+
+                  <h4>第 3 問 → 第 4 問：失敗條件決定需要的元件</h4>
+                  <p>
+                    LC oscillator 的問題是等間距，因此下一步不是任意加入元件，而是尋找低損耗 nonlinearity。
+                    Josephson junction 的 cosine potential 正好回答第 3 問暴露出的需求：製造 anharmonic spectrum。
+                  </p>
+
+                  <h4>第 4 問 → 第 5 問：做出 qubit 後，仍要選擇參數區域</h4>
+                  <p>
+                    Josephson junction 讓人工原子成為可能，但 charge qubit 仍對 \(n_g\) 敏感。Transmon 並沒有換掉基本 Hamiltonian，
+                    而是藉由較大的 shunt capacitance 選擇大 \(E_J/E_C\) regime，以較低 charge dispersion 換取較弱 anharmonicity。
+                  </p>
+                  <div class="qh-answer">
+                    <p><strong>W2 的推進：</strong>量子模式存在 → 找到共軛變數 → 發現 harmonic limitation → 加入 Josephson nonlinearity →
+                      選擇 Transmon parameter regime。</p>
+                  </div>
+
+                  <div class="qh-section">
+                    <h3>第三週：從「做出 qubit」轉向「設計錯誤不容易發生」</h3>
+                  </div>
+                  <h4>第 5 問 → 第 6 問：Parameter sensitivity 不是全部的 decoherence</h4>
+                  <p>
+                    Transmon 展示了如何降低一種 parameter sensitivity；W3 接著問更一般的問題：環境究竟透過哪個 operator、在哪個頻率，
+                    連接哪兩個 eigenstates？因此第 6 問用 transition rate 把 Hamiltonian structure 與 environment spectrum 接起來。
+                  </p>
+                  <div class="qh-board">
+                    <p>\[
+                      \Gamma_{i\to f}\propto
+                      |\langle f|\hat O|i\rangle|^2S_F(\omega_{fi}).
+                      \]</p>
+                  </div>
+
+                  <h4>第 6 問 → 第 7 問：知道錯誤如何發生，才能定義保護</h4>
+                  <p>
+                    第 7 問不是先介紹某一種 qubit，而是建立判斷工具：sweet spot 處理低頻 parameter fluctuation；selection rule 依賴 symmetry；
+                    small overlap 造成 matrix-element suppression。並且立刻加入 control operator，避免把「無法被環境驅動」誤寫成「誰都無法控制」。
+                  </p>
+
+                  <h4>第 7 問 → 第 8 問：Fluxonium 是第一個具體實現</h4>
+                  <p>
+                    原理建立後，第 8 問才加入 superinductor。學生此時看到的不只是新元件名稱，而是 circuit modification 如何增加
+                    \(\tfrac12E_L(\varphi-\varphi_{\rm ext})^2\) 這個 Hamiltonian term。
+                  </p>
+
+                  <h4>第 8 問 → 第 9 問：新增一項之後，必須追到 eigenstate structure</h4>
+                  <p>
+                    Hamiltonian 多一項不會自動等於「受到保護」。第 9 問繼續追蹤 \(E_C,E_J,E_L,\Phi_{\rm ext}\) 如何改變 potential、
+                    parity、localization、tunneling、transition frequency 與 matrix element，並分開檢查 dephasing 與 relaxation。
+                  </p>
+
+                  <h4>第 9 問 → 第 10 問：由 Fluxonium 案例推廣到 Hamiltonian engineering</h4>
+                  <p>
+                    如果 W3 停在 Fluxonium，學生只會多認識一種 qubit。第 10 問把 Fluxonium 的設計邏輯一般化為 Hamiltonian engineering：先指定 dominant noise operator 與四項設計條件，
+                    再巡覽增加自由度的 \(0-\pi\)、改造 Josephson potential 的 \(\cos2\varphi\)，以及以材料狀態改變 \(E_J\) 的 ferro-transmon。
+                  </p>
+                  <div class="qh-answer">
+                    <p><strong>W3 的推進：</strong>noise 如何造成 transition → 受保護但仍可控制的條件 → 新增 Hamiltonian term → 塑造
+                      wavefunction／matrix element → 從 error target 反向設計新 qubit。</p>
+                  </div>
+
+                  <div class="qh-section">
+                    <h3>十問共同使用的公式骨架</h3>
+                  </div>
+                  <h4>1. LC oscillator：離散但等間距</h4>
+                  <div class="qh-board">
+                    <p>\[
+                      \hat H_{LC}=\frac{\hat Q^2}{2C}+\frac{\hat\Phi^2}{2L}
+                      =\hbar\omega\left(\hat a^\dagger\hat a+\frac12\right)
+                      \]</p>
+                  </div>
+                  <h4>2. Transmon：用參數區域降低 charge dispersion</h4>
+                  <div class="qh-board">
+                    <p>\[
+                      \hat H_{\rm T}=4E_C(\hat n-n_g)^2-E_J\cos\hat\varphi
+                      \]</p>
+                  </div>
+                  <h4>3. Transition：operator matrix element 與 environment spectrum 同時重要</h4>
+                  <div class="qh-board">
+                    <p>\[
+                      \hat V(t)=\hat O F(t),\qquad
+                      \Gamma_{i\to f}\propto|\langle f|\hat O|i\rangle|^2S_F(\omega_{fi})
+                      \]</p>
+                  </div>
+                  <h4>4. Fluxonium：增加 inductive energy 與 external-flux control</h4>
+                  <div class="qh-board">
+                    <p>\[
+                      \hat H_{\rm F}=4E_C\hat n^2-E_J\cos\hat\varphi
+                      +\frac12E_L(\hat\varphi-\varphi_{\rm ext})^2
+                      \]</p>
+                  </div>
+                  <h4>5. Protected-qubit 四項判準</h4>
+                  <div class="qh-board">
+                    <p>\[
+                      \begin{aligned}
+                      &\frac{\partial\omega_{01}}{\partial\lambda}\approx0,\\
+                      &\langle0|\hat O_{\rm noise}|1\rangle\approx0,\\
+                      &\langle0|\hat O_{\rm drive}|1\rangle\neq0,\\
+                      &\Delta_{\rm leakage}\ \text{足夠大}.
+                      \end{aligned}
+                      \]</p>
+                  </div>
+
+                  <div class="qh-section">
+                    <h3>兩個刻意保留的跨週任務</h3>
+                  </div>
+                  <h4>W2：從晶片影像逆向推回 Hamiltonian</h4>
+                  <p>
+                    版本五的 geometry → parameter → Hamiltonian → spectrum／control 鏈改作逆向作業。學生在尚未具備完整架構知識時，
+                    只需提出有證據邊界的單一 Transmon-cell 假說，並指出哪些資訊必須靠 simulation、製程資料或量測補足。
+                  </p>
+                  <h4>W3：何時應選 Fluxonium，而不是 Transmon？</h4>
+                  <p>
+                    這題值得保留，但不在 W3 假裝完成。學生先留下 provisional answer；之後依序補上 control、coupling、readout、thermalization、
+                    fabrication 與 yield，最後在 W16 重新作 architecture decision。前後答案的差異，就是跨層學習的證據。
+                  </p>
+
+                  <div class="qh-section">
+                    <h3>通往 W4：從 eigenstate structure 進入 control</h3>
+                  </div>
+                  <p>
+                    T2 結束時，學生已知道 drive 是否有效取決於 \(\langle0|\hat O_{\rm drive}|1\rangle\)，也知道 anharmonicity 與 leakage
+                    gap
+                    會限制選擇控制。W4 因而可以自然接上 time-dependent drive、rotating frame、Rabi rate 與 DRAG，而不會把 pulse control 變成與裝置
+                    Hamiltonian 無關的技巧清單。
+                  </p>
+
+                </section>
+
+                <div class="post-meta">
+                  <span class="post-author">
+                    <a href="../About/Wang.html"><img class="img-res" src="../WebP/IMG_0964_2.webp" alt="">王培儒</a>
+                  </span>
+                  <span class="post-category">
+                    <a href="../SCQ_advanced/main.html"><i class="fa fa-folder" aria-hidden="true"></i>PHYS598500</a>
+                  </span>
+                </div><!-- /.post-meta -->
+
+                <div id="prev-next-nav" class="text-center">
+                                    <a class="btn btn-gray" href="T1-1.html">← 上一頁</a> 
+                                    <a class="btn btn-gray" href="../QH-2026F-v5-x10_en/T2-outlook.html" style="margin: 0 10px;">English Version</a>
+                                    <a class="btn btn-gray" href="T2-2.html">下一頁 →</a>
+                                </div>
+              </div><!-- /.post-content -->
+            </article><!-- /.blog-post -->
+            <!--<div id="PostComments" class="post-comments">
+                            
+                            
+                            
+                        </div> /#PostComments -->
+            <!--<div class="respond">
+                            <h3>Post a Comment</h3>
+                            <form class="form-horizontal">
+                                <input class="form-control" type="text" placeholder="Your Name*" required>
+                                <input class="form-control" type="email" placeholder="Your Email" required>
+                                <textarea class="form-control form-control-comment" type="text" placeholder="Your Comment*" required></textarea>
+                                <button class="btn btn-green">Add a comment</button>
+                            </form>    
+                        </div> /.respond -->
+          </div>
+          <aside class="col-md-3">
+                        <div class="sidebar">
+                            <div class="widget">
+                                <div id="lesson-list_2">
+                                <div class="lesson-link "><a href="main.html">QH-2026F v5 · 16週總覽</a></div>
+                                <div class="lesson-link "><a href="T1-1.html">Week 1 · 從量子計算模型到硬體操作</a></div>
+                                <div class="lesson-link active"><a href="T2-outlook.html">T2 Outlook · 從人工原子到 Protected Qubit | QH-2026F v5</a></div>
+                                <div class="lesson-link "><a href="T2-2.html">Week 2 · 超導電路量子化與 Transmon 設計</a></div>
+                                <div class="lesson-link "><a href="T2-2S.html">Week 2S · 超導電路量子化與 Transmon 設計-Slide</a></div>
+                                <div class="lesson-link "><a href="T2-3.html">Week 3 · Fluxonium：從電路改造到設計取捨</a></div>
+                                <div class="lesson-link "><a href="T3-4.html">Week 4 · 單量子位元控制：從微波脈衝到旋轉座標</a></div>
+                                <div class="lesson-link "><a href="T3-5.html">Week 5 · 耦合 Hamiltonian、兩量子位元閘與 Tunable Coupler</a></div>
+                                <div class="lesson-link "><a href="T3-6.html">Week 6 · Circuit QED、Dispersive Readout 與量測鏈</a></div>
+                                <div class="lesson-link "><a href="T4-10.html">Week 10 · Surface-Code Hardware Cycle：排程、解碼與 Logical-Qubit 資源</a></div>
+                                <div class="lesson-link "><a href="T4-7.html">Week 7 · 量子處理器校準：Hamiltonian Identification 與 Drift</a></div>
+                                <div class="lesson-link "><a href="T4-8.html">Week 8 · Benchmarking、多量子位元誤差與可擴展校準</a></div>
+                                <div class="lesson-link "><a href="T4-9.html">Week 9 · 量子錯誤校正基礎：從物理誤差到 Stabilizer Syndrome</a></div>
+                                <div class="lesson-link "><a href="T5-11.html">Week 11 · Dilution Refrigerator、熱化與低溫線路預算</a></div>
+                                <div class="lesson-link "><a href="T5-12.html">Week 12 · 微波控制、讀出電子與訊號完整性</a></div>
+                                <div class="lesson-link "><a href="T5-13.html">Week 13 · 封裝、EM Modes、佈線擴展與全系統整合</a></div>
+                                <div class="lesson-link "><a href="T6-14.html">Week 14 · 超導量子晶片製程與 Josephson Junction Process Module</a></div>
+                                <div class="lesson-link "><a href="T6-15.html">Week 15 · Materials Loss、製程變異、Yield 與 Design–Fab–Measure Loop</a></div>
+                                <div class="lesson-link "><a href="T7-16.html">Week 16 · 前沿架構與 Hardware-Aware Quantum System Capstone</a></div>
+                                </div>
+                            </div>
+                        </div></aside>
+        </div>
+      </div>
+    </section><!-- /.section-portfolio -->
+
+  </main><!-- /#main -->
+
+  <footer id="colophon" class="site-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3 col-sm-4 col-xs-6">
+          <a href="../index_ch.html" class="site-title">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
+          <p>一起走進新時代的前沿科學與量子科技</p>
+        </div>
+        <div class="col-lg-offset-4 col-md-3 col-sm-4 col-md-offset-2 col-sm-offset-0 col-xs-6 ">
+          <p class="site-title">𝐾𝐸𝐸𝑃 𝐼𝑁 𝑇𝑂𝑈𝐶𝐻</p>
+          <ul class="list-unstyled contact-links">
+            <li><i class="fa fa-envelope" aria-hidden="true"></i><a href="mailto:info@insight-ihbar.com">info@insight-ihbar.com</a></li>
+            <!--<li><i class="fa fa-phone" aria-hidden="true"></i><a href="tel:+37400800000">+374 (00) 80 00 00 </a></li>
+                        <li><i class="fa fa-fax" aria-hidden="true"></i><a href="+37400900000">+374 (00) 90 00 00</a></li>
+                        <li><i class="fa-solid fa-location-dot"></i><p>Hsinchu 300, Taiwan (R.O.C.)</p></li>-->
+          </ul>
+        </div>
+        <!--<div class="clearfix visible-xs"></div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6">
+                    <h3>Featured links</h3>
+                    <ul class="list-unstyled">
+                        <li class="active"><a href="index_ch.html">Home</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="portfolio.html">Porfolio</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>-->
+      </div>
+    </div>
+    <div class="copyright">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-8">
+            <div class="social-links">
+              <!--<a class="twitter-bg" href="#"><i class="fab fa-twitter"></i></a>-->
+              <!--<<a class="facebook-bg" href="https://www.facebook.com/people/Quantum-Perspectives/61576446849628/"><i class="fab fa-facebook"></i></a>-->
+              <!--<a class="facebook-bg" href="https://www.facebook.com/people/%E9%87%8F%E5%AD%90%E9%81%A0%E8%A6%8BQuantum-Perspectives/61576883632888/"><i class="fab fa-facebook-f"></i></a>-->
+              <!--<a class="pinterest" href="#"><i class="fa-solid fa-microscope"></i></a>-->
+              <!--<a class="facebook-bg" href="https://www.facebook.com/people/Insight-hbar/61576811775374/"><i class="fab fa-facebook-f"></i></a>-->
+              <a class="linkedin-bg" href="https://www.linkedin.com/company/insight-ihbar"><i
+                  class="fab fa-linkedin"></i></a>
+            </div><!-- /.social-links -->
+          </div>
+          <div class="col-xs-4">
+            <div class="text-right">
+              <p><span style="font-size: 16px;">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</span></p>
+              <p>All Rights Reserved</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!-- /.copyright -->
+  </footer><!-- /#footer -->
+
+
+
+  <!-- Bootstrap core JavaScript
+    ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/bootstrap-select.min.js"></script>
+  <script src="../assets/js/jquery.slicknav.min.js"></script>
+  <script src="../assets/js/jquery.countTo.min.js"></script>
+  <script src="../assets/js/jquery.shuffle.min.js"></script>
+  <script src="../assets/js/script.js"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</body>
+
+</html>

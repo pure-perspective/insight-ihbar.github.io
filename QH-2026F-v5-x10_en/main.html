@@ -1,0 +1,1450 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N39VTY949N"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-N39VTY949N');
+  </script>
+  <!-- Basic Page Needs
+    ================================================== -->
+  <meta charset="utf-8">
+  <meta name="author" content="Peir-Ru Wang">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;1,300&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/20250525-icon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/20250525-icon.png">
+
+  <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/css/style.css" rel="stylesheet">
+  <link href="../assets/css/responsive.css" rel="stylesheet">
+
+  <title>QH-2026F v5 · 16-Week Overview</title>
+  <meta name="description" content="PHYS598500 Advanced Superconducting Quantum Computer Architecture, 16 two-hour lecture units.">
+  <meta name="keywords" content="- Quantum Processor
+- Superconducting Qubit
+- Qubit
+- Josephson Junction
+- Transmon
+- Fluxonium
+- Quantum Computing
+- Quantum Hardware
+- Quantum Algorithms
+- Quantum Chip">
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+  <style>
+    .qh-week-meta {
+      margin: 20px 0;
+      padding: 16px 18px;
+      border-left: 4px solid #5f4b8b;
+      background: #f6f4fa;
+    }
+
+    .qh-week-meta p {
+      margin: 4px 0;
+    }
+
+    .qh-session-plan {
+      width: 100%;
+      margin: 18px 0 8px;
+      border-collapse: collapse;
+    }
+
+    .qh-session-plan th,
+    .qh-session-plan td {
+      padding: 10px 12px;
+      border: 1px solid #ddd;
+      vertical-align: top;
+    }
+
+    .qh-session-plan th {
+      background: #f4f4f4;
+    }
+
+    .qh-session-plan .qh-break td {
+      color: #666;
+      background: #fafafa;
+    }
+
+    .qh-total {
+      text-align: right;
+      font-weight: 700;
+    }
+
+    .qh-reading li {
+      margin-bottom: 12px;
+    }
+
+    .qh-reading span,
+    .qh-reading em {
+      display: block;
+    }
+
+    .qh-week-list {
+      padding-left: 0;
+      list-style: none;
+    }
+
+    .qh-week-list li {
+      margin: 0 0 13px;
+      padding: 12px 15px;
+      border-left: 4px solid #5f4b8b;
+      background: #f7f7f7;
+    }
+
+    .qh-week-list a {
+      font-weight: 700;
+    }
+
+    .qh-semester-map {
+      margin: 30px 0 38px;
+      padding: 28px;
+      border: 1px solid #ded8ea;
+      border-radius: 18px;
+      background: linear-gradient(180deg, #faf9fc 0%, #f3f0f8 100%);
+    }
+
+    .qh-roadmap-heading {
+      margin: 0 0 26px;
+      text-align: center;
+    }
+
+    .qh-roadmap-heading h2 {
+      margin: 0 0 6px;
+    }
+
+    .qh-roadmap-heading p {
+      margin: 0;
+      color: #625a70;
+    }
+
+    .qh-roadmap-stage {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .qh-theme-node {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: fit-content;
+      margin: 0 auto 14px;
+      padding: 10px 20px;
+      border-radius: 999px;
+      background: #2d2342;
+      color: #fff;
+      font-weight: 700;
+      box-shadow: 0 8px 20px rgba(45, 35, 66, 0.16);
+    }
+
+    .qh-theme-code {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 42px;
+      min-height: 30px;
+      padding: 3px 9px;
+      border-radius: 999px;
+      background: #fff;
+      color: #5f4b8b;
+      font-size: 0.9em;
+    }
+
+    .qh-week-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .qh-week-grid.qh-one {
+      grid-template-columns: minmax(260px, 360px);
+      justify-content: center;
+    }
+
+    .qh-week-grid.qh-two {
+      grid-template-columns: repeat(2, minmax(0, 280px));
+      justify-content: center;
+    }
+
+    .qh-week-grid.qh-four {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .qh-week-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 104px;
+      padding: 16px 14px;
+      border: 1px solid #ddd5eb;
+      border-top: 4px solid #7a61aa;
+      border-radius: 12px;
+      background: #fff;
+      color: #2e2935;
+      text-align: center;
+      text-decoration: none;
+      box-shadow: 0 5px 14px rgba(45, 35, 66, 0.08);
+      transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
+    }
+
+    .qh-week-card:hover,
+    .qh-week-card:focus {
+      border-color: #7a61aa;
+      color: #2e2935;
+      text-decoration: none;
+      transform: translateY(-2px);
+      box-shadow: 0 9px 20px rgba(45, 35, 66, 0.14);
+    }
+
+    .qh-week-number {
+      margin-bottom: 7px;
+      color: #6b538f;
+      font-size: 0.84em;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+    }
+
+    .qh-week-title {
+      font-size: 1.04em;
+      font-weight: 700;
+      line-height: 1.45;
+    }
+
+    .qh-roadmap-arrow {
+      position: relative;
+      height: 46px;
+    }
+
+    .qh-roadmap-arrow::before {
+      content: "";
+      position: absolute;
+      top: 7px;
+      bottom: 10px;
+      left: 50%;
+      width: 2px;
+      background: #8c7aa8;
+      transform: translateX(-50%);
+    }
+
+    .qh-roadmap-arrow::after {
+      content: "";
+      position: absolute;
+      bottom: 3px;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-top: 8px solid #8c7aa8;
+      border-right: 6px solid transparent;
+      border-left: 6px solid transparent;
+      transform: translateX(-50%);
+    }
+
+    @media (max-width: 767px) {
+      .qh-session-plan {
+        display: block;
+        overflow-x: auto;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .qh-semester-map {
+        padding: 22px 14px;
+      }
+
+      .qh-theme-node {
+        width: 100%;
+      }
+
+      .qh-week-grid,
+      .qh-week-grid.qh-one,
+      .qh-week-grid.qh-two,
+      .qh-week-grid.qh-four {
+        grid-template-columns: 1fr;
+      }
+
+      .qh-week-card {
+        min-height: 84px;
+      }
+    }
+
+    .qh-question-atlas {
+      margin-top: 34px;
+    }
+
+    .qh-question-atlas-heading {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 24px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid #ddd5e8;
+    }
+
+    .qh-question-atlas-heading h3 {
+      margin: 2px 0 8px;
+    }
+
+    .qh-question-atlas-heading p {
+      margin: 0;
+      color: #655d70;
+    }
+
+    .qh-question-eyebrow {
+      color: #765ca1 !important;
+      font-size: 1.5em;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .qh-question-controls {
+      display: flex;
+      flex: 0 0 auto;
+      gap: 8px;
+    }
+
+    .qh-question-controls button {
+      padding: 8px 13px;
+      border: 1px solid #cfc4df;
+      border-radius: 999px;
+      background: #fff;
+      color: #4b3a67;
+      font-weight: 700;
+    }
+
+    .qh-question-controls button:hover,
+    .qh-question-controls button:focus {
+      border-color: #71559d;
+      background: #f6f2fb;
+    }
+
+    .qh-question-theme {
+      margin: 0 0 28px;
+      padding: 20px;
+      border: 1px solid #e0d9e9;
+      border-radius: 16px;
+      background: #faf9fc;
+    }
+
+    .qh-question-theme-heading {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .qh-question-theme-heading h4 {
+      margin: 0 0 2px;
+    }
+
+    .qh-question-theme-heading p {
+      margin: 0;
+      color: #71697b;
+      font-size: 16px;
+    }
+
+    .qh-question-theme-code {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 48px;
+      min-height: 36px;
+      border-radius: 999px;
+      background: #332647;
+      color: #fff;
+      font-weight: 700;
+    }
+
+    .qh-question-week {
+      margin-top: 10px;
+      border: 1px solid #ddd5e8;
+      border-radius: 12px;
+      background: #fff;
+      overflow: hidden;
+    }
+
+    .qh-question-week[open] {
+      border-color: #a994c6;
+      box-shadow: 0 7px 18px rgba(45, 35, 66, .08);
+    }
+
+    .qh-question-week summary {
+      font-size: 18px;
+      display: grid;
+      grid-template-columns: auto 1fr auto auto;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 16px;
+      cursor: pointer;
+      list-style: none;
+    }
+
+    .qh-question-week summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .qh-question-week summary::after {
+      content: "+";
+      grid-column: 4;
+      color: #705596;
+      font-size: 1.3em;
+      line-height: 1;
+    }
+
+    .qh-question-week[open] summary::after {
+      content: "−";
+    }
+
+    .qh-question-week-number {
+      color: #705596;
+      font-size: .86em;
+      font-weight: 700;
+      letter-spacing: .05em;
+    }
+
+    .qh-question-count {
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: #f1edf7;
+      color: #66547e;
+      font-size: .78em;
+      font-weight: 700;
+    }
+
+    .qh-question-week-body {
+      padding: 2px 18px 18px 52px;
+      border-top: 1px solid #eee9f3;
+    }
+
+    .qh-question-week-body ol {
+      margin: 14px 0 12px;
+      padding-left: 24px;
+    }
+
+    .qh-question-week-body li {
+      margin: 0 0 9px;
+      padding-left: 3px;
+      line-height: 1.55;
+    }
+
+    .qh-question-week-link {
+      display: inline-block;
+      font-weight: 700;
+    }
+
+    @media (max-width: 767px) {
+      .qh-question-atlas-heading {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .qh-question-controls {
+        width: 100%;
+      }
+
+      .qh-question-controls button {
+        flex: 1;
+      }
+
+      .qh-question-theme {
+        padding: 15px 12px;
+      }
+
+      .qh-question-week summary {
+        grid-template-columns: auto 1fr auto;
+        gap: 9px;
+        padding: 13px 12px;
+      }
+
+      .qh-question-week summary::after {
+        grid-column: 3;
+        grid-row: 1;
+      }
+
+      .qh-question-count {
+        display: none;
+      }
+
+      .qh-question-week-body {
+        padding: 2px 13px 15px 20px;
+      }
+    }
+
+
+    .qh-question-draft {
+      color: #c0392b;
+      font-weight: 700;
+    }
+  </style>
+
+  <link rel="stylesheet" href="qh-mobile-math-overflow.css" data-uniweb-fix="mobile-math-overflow">
+</head>
+
+<body>
+
+  <header id="masthead" class="site-header">
+        <nav id="primary-navigation" class="site-navigation">
+            <div class="container">
+
+                <div class="navbar-header">                   
+                    <a href="../index.html" class="site-title">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
+                </div><!-- /.navbar-header -->
+
+                <div class="collapse navbar-collapse" id="agency-navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="../index.html">Home</a></li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Qubit Physics<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                              <li><a href="../SCQ_elementary_en/main.html">Superconducting Qubits (Elementary)</a></li>
+                              <li><a href="../SCQ_advanced_en/main.html">Superconducting Qubits (Advanced)</a></li>
+                              <li><a href="../SpQ_en/main.html">Semiconductor Spin Qubits</a></li>
+                            </ul>
+                        </li>
+                        <!--<li class="active"><a href="../SCQ_elementary/main.html">科普介紹</a></li>-->
+                        <li class="active"><a href="../QC_hardware_en/main.html">Hardware</a></li>
+                        <li><a href="../QID_en/main.html">Quantum Industries</a></li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Workshop Note<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                <li><a href="../ASW2026_en/main.html">2026 Academia Sinica SCQC Winter Workshop</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Consultance<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                <li><a href="https://www.quantum-perspectives.com/About_en/main.html">Taiwan Market Outreach Services</a></li>
+                                <li><a href="../About_en/main.html">About Us</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="../index.html">中文版</a></li>                        
+                    </ul>
+                </div>
+
+            </div>   
+        </nav><!-- /.site-navigation -->
+    </header><!-- /#mastheaed -->
+
+  <div id="hero" class="hero overlay subpage-hero blog-hero">
+    <div class="hero-content">
+      <div class="hero_2-text">
+        <h1>Superconducting Quantum Computer Architecture</h1>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+          <li class="breadcrumb-item"><a href="../SCQ_advanced_en/main.html">PHYS598500</a></li>
+          <!--<li class="breadcrumb-item active">約瑟夫森節</li>-->
+        </ol>
+      </div><!-- /.hero-text -->
+    </div><!-- /.hero-content -->
+  </div><!-- /.hero -->
+
+  <main id="main" class="site-main">
+
+    <section class="site-section subpage-site-section section-blog">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-9">
+            <article class="blog-post">
+              <!--<img src="../assets/img/portfolio-1.jpg" class="img-res" alt="">-->
+              <div class="post-content">
+
+                <section id="qh-2026f-v5" class="course-theme">
+                  <div style="text-align: center;">
+                    <p class="theme-label">PHYS598500 · 2026 Fall · 16 weeks</p>
+                    <h2>Superconducting Quantum Computer Architecture</h2>
+                    <h3>Advanced Superconducting Quantum Computer Architecture</h3>
+                  </div>
+                  <section class="course-overview">
+                    <h3>Course Positioning</h3>
+                    <p>The course proceeds from the computation model to the qubit Hamiltonian, then sequentially addresses qubit design, control, coupling, readout, calibration, benchmarking, stabilizer QEC, surface-code cycle, cryogenic systems, electronics, packaging, fabrication processes, and a full-system capstone.</p>
+                  </section>
+                  <section class="qh-semester-map" aria-labelledby="semester-map-title">
+                    <header class="qh-roadmap-heading">
+                      <h2 id="semester-map-title">Full-Semester Course Map · v5</h2>
+                      <p>Building Quantum Computing into a Machine</p>
+                    </header>
+
+                    <div class="qh-roadmap-stage">
+                      <div class="qh-theme-node"><span class="qh-theme-code">T1</span><span>How Computation Becomes Physical Operations</span></div>
+                      <div class="qh-week-grid qh-one">
+
+                        <a class="qh-week-card" href="T1-1.html"><span class="qh-week-number">W1</span><span
+                            class="qh-week-title">From Algorithms to Hardware Operations</span><br><span
+                            class="qh-question-draft">(Draft)</span></a>
+
+                      </div>
+                    </div>
+
+                    <div class="qh-roadmap-arrow" aria-hidden="true"></div>
+
+                    <div class="qh-roadmap-stage">
+                      <div class="qh-theme-node"><span class="qh-theme-code">T2</span><span>Fabricating Qubits from Circuits</span></div>
+                      <div class="qh-week-grid qh-two">
+
+                        <a class="qh-week-card" href="T2-2.html"><span class="qh-week-number">W2</span><span
+                            class="qh-week-title">Turning Circuits into Transmons</span></a>
+
+                        <a class="qh-week-card" href="T2-3.html"><span class="qh-week-number">W3</span><span
+                            class="qh-week-title">Charge Noise and Fluxonium</span></a>
+
+                      </div>
+                    </div>
+
+                    <div class="qh-roadmap-arrow" aria-hidden="true"></div>
+
+                    <div class="qh-roadmap-stage">
+                      <div class="qh-theme-node"><span class="qh-theme-code">T3</span><span>Controlling, Coupling, and Reading Out Qubits</span></div>
+                      <div class="qh-week-grid ">
+
+                        <a class="qh-week-card" href="T3-4.html"><span class="qh-week-number">W4</span><span
+                            class="qh-week-title">Controlling a Single Qubit with Microwaves</span><br><span class="qh-question-draft">(Draft)</span></a>
+
+                        <a class="qh-week-card" href="T3-5.html"><span class="qh-week-number">W5</span><span
+                            class="qh-week-title">Enabling Interaction Between Two Qubits</span><br><span class="qh-question-draft">(Draft)</span></a>
+
+                        <a class="qh-week-card" href="T3-6.html"><span class="qh-week-number">W6</span><span
+                            class="qh-week-title">Translating Quantum States into Signals</span><br><span class="qh-question-draft">(Draft)</span></a>
+
+                      </div>
+                    </div>
+
+                    <div class="qh-roadmap-arrow" aria-hidden="true"></div>
+
+                    <div class="qh-roadmap-stage">
+                      <div class="qh-theme-node"><span class="qh-theme-code">T4</span><span>Calibration, Verification, and Quantum Error Correction</span></div>
+                      <div class="qh-week-grid qh-four">
+
+                        <a class="qh-week-card" href="T4-7.html"><span class="qh-week-number">W7</span><span
+                            class="qh-week-title">Identifying and Calibrating Chips</span><br><span class="qh-question-draft">(Draft)</span></a>
+
+                        <a class="qh-week-card" href="T4-8.html"><span class="qh-week-number">W8</span><span
+                            class="qh-week-title">Measuring Errors and Performance</span><br><span class="qh-question-draft">(Draft)</span></a>
+
+                        <a class="qh-week-card" href="T4-9.html"><span class="qh-week-number">W9</span><span
+                            class="qh-week-title">Detecting Errors Using Syndromes</span><br><span
+                            class="qh-question-draft">(Draft)</span></a>
+
+                        <a class="qh-week-card" href="T4-10.html"><span class="qh-week-number">W10</span><span
+                            class="qh-week-title"> QEC Quantum Error Correction</span><br><span class="qh-question-draft">(Draft)</span></a>
+
+                      </div>
+                    </div>
+
+                    <div class="qh-roadmap-arrow" aria-hidden="true"></div>
+
+                    <div class="qh-roadmap-stage">
+                      <div class="qh-theme-node"><span class="qh-theme-code">T5</span><span>Cryogenics, Signal, and System Integration</span></div>
+                      <div class="qh-week-grid ">
+
+                        <a class="qh-week-card" href="T5-11.html"><span class="qh-week-number">W11</span><span
+                            class="qh-week-title">Cooling the Chip and Managing Heat Flow</span><br><span class="qh-question-draft">(Draft)</span></a>
+
+                        <a class="qh-week-card" href="T5-12.html"><span class="qh-week-number">W12</span><span
+                            class="qh-week-title">Routing Control and Readout Signals In and Out</span><br><span
+                            class="qh-question-draft">(Draft)</span></a>
+
+                        <a class="qh-week-card" href="T5-13.html"><span class="qh-week-number">W13</span><span
+                            class="qh-week-title">Packaging, Wiring, and Scalability</span><br><span class="qh-question-draft">(Draft)</span></a>
+
+                      </div>
+                    </div>
+
+                    <div class="qh-roadmap-arrow" aria-hidden="true"></div>
+
+                    <div class="qh-roadmap-stage">
+                      <div class="qh-theme-node"><span class="qh-theme-code">T6</span><span>Stabilizing Designs into Chips</span></div>
+                      <div class="qh-week-grid qh-two">
+
+                        <a class="qh-week-card" href="T6-14.html"><span class="qh-week-number">W14</span><span
+                            class="qh-week-title">Fabricating Layouts into Chips</span><br><span class="qh-question-draft">(Draft)</span></a>
+
+                        <a class="qh-week-card" href="T6-15.html"><span class="qh-week-number">W15</span><span
+                            class="qh-week-title">Controlling Material Losses and Process Variations</span><br><span
+                            class="qh-question-draft">(Draft)</span></a>
+
+                      </div>
+                    </div>
+
+                    <div class="qh-roadmap-arrow" aria-hidden="true"></div>
+
+                    <div class="qh-roadmap-stage">
+                      <div class="qh-theme-node"><span class="qh-theme-code">T7</span><span>Integrating a Complete Quantum Computer</span></div>
+                      <div class="qh-week-grid qh-one">
+
+                        <a class="qh-week-card" href="T7-16.html"><span class="qh-week-number">W16</span><span
+                            class="qh-week-title">Making Comprehensive System Architecture Choices</span><br><span class="qh-question-draft">(Draft)</span></a>
+
+                      </div>
+                    </div>
+
+                  </section>
+                  <section class="module">
+                    <h3>Theme Configuration</h3>
+                    <table style="width:80%; margin:0 auto;">
+                      <thead>
+                        <tr>
+                          <th>Theme</th>
+                          <th>Positioning</th>
+                          <th>Weeks</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>T1</td>
+                          <td>Principles</td>
+                          <td>1 Week</td>
+                        </tr>
+                        <tr>
+                          <td>T2</td>
+                          <td>Qubit Physics</td>
+                          <td>2 Weeks</td>
+                        </tr>
+                        <tr>
+                          <td>T3</td>
+                          <td>Control &amp; Readout</td>
+                          <td>3 Weeks</td>
+                        </tr>
+                        <tr>
+                          <td>T4</td>
+                          <td>Calibration &amp; QEC</td>
+                          <td>4 Weeks</td>
+                        </tr>
+                        <tr>
+                          <td>T5</td>
+                          <td>Full-System Architecture</td>
+                          <td>3 Weeks</td>
+                        </tr>
+                        <tr>
+                          <td>T6</td>
+                          <td>Fabrication</td>
+                          <td>2 Weeks</td>
+                        </tr>
+                        <tr>
+                          <td>T7</td>
+                          <td>Frontier &amp; Capstone</td>
+                          <td>1 Week</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </section>
+                  <section class="module qh-question-atlas" id="weekly-core-questions"
+                    aria-labelledby="weekly-core-title">
+                    <header class="qh-question-atlas-heading">
+                      <div>
+                        <p class="qh-question-eyebrow">W1–W16 · Question Map</p>
+                        <h3 id="weekly-core-title">Core Teaching Questions per Week</h3>
+                        <p>Review the full semester sequence; adopt a modular structure with one major theme per week, divided into 5–6 subtopics, each roughly corresponding to a 20-minute lecture segment.</p>
+                      </div>
+                      <div class="qh-question-controls" aria-label="Expand Core Questions Control">
+                        <button type="button" id="qh-expand-all">Expand All</button>
+                        <button type="button" id="qh-collapse-all">Collapse All</button>
+                      </div>
+                    </header>
+                    <section class="qh-question-theme" aria-labelledby="questions-t1">
+                      <header class="qh-question-theme-heading">
+                        <span class="qh-question-theme-code">T1</span>
+                        <div>
+                          <h4 id="questions-t1">From Computational Models to Physical Operations</h4>
+                          <p>Principles</p>
+                        </div>
+                      </header>
+                      <details class="qh-question-week">
+                        <summary>
+                          <span class="qh-question-week-number">W1</span>
+                          <strong>From Quantum Computational Models to Hardware Operations</strong><span class="qh-question-draft">(Draft)</span>
+                          <span class="qh-question-count">6 Questions</span>
+                        </summary>
+                        <div class="qh-question-week-body">
+                          <ol>
+                            <li>
+                              <p>What exactly does a step in a quantum algorithm require the hardware to do?</p>
+                            </li>
+                            <li>
+                              <p>Why must closed quantum evolution be unitary and therefore reversible?</p>
+                            </li>
+                            <li>
+                              <p>How does a logical gate become a decomposable unitary operation?</p>
+                            </li>
+                            <li>
+                              <p>How is a unitary operation generated by a time-dependent Hamiltonian?</p>
+                            </li>
+                            <li>
+                              <p>Where do measurement, reset, and classical feedback interface with the unitary chain?</p>
+                            </li>
+                            <li>
+                              <p>Along which abstraction layers will subsequent courses track errors and resources?</p>
+                            </li>
+                          </ol>
+                          <a class="qh-question-week-link" href="T1-1.html">View Full Page for W1 →</a>
+                        </div>
+                      </details>
+                    </section>
+                    <section class="qh-question-theme" aria-labelledby="questions-t2">
+                      <header class="qh-question-theme-heading">
+                        <span class="qh-question-theme-code">T2</span>
+                        <div>
+                          <h4 id="questions-t2">Fabricating Qubits from Circuits</h4>
+                          <p>Qubit Design</p>
+                        </div>
+                      </header>
+                      <details class="qh-question-week" open>
+                        <summary>
+                          <span class="qh-question-week-number">W2</span>
+                          <strong>Quantization of Superconducting Circuits and Transmon Design</strong>
+                          <span class="qh-question-count">5 Questions</span>
+                        </summary>
+                        <div class="qh-question-week-body">
+                          <ol>
+                            <li>
+                              <p>What Are Artificial Atoms?</p>
+                            </li>
+                            <li>
+                              <p>How Do We Quantize a Circuit?</p>
+                            </li>
+                            <li>
+                              <p>How Do We Select the Computational Subspace?<br>
+                                \(\to\) Anharmonicity and the Josephson Junction</p>
+                            </li>
+                            <li>
+                              <p>How Do We Make a Qubit Tunable?<br>
+                                \(\to\) SQUID and Tunable Qubits</p>
+                            </li>
+                            <li>
+                              <p>Why Did the Transmon Become the Mainstream Superconducting Qubit?<br>
+                                \(\to\) Charge-Noise Suppression and the Anharmonicity Trade-off</p>
+                            </li>
+                          </ol>
+                          <a class="qh-question-week-link" href="T2-2.html">View full page for W2 →</a>
+                        </div>
+                      </details>
+                      <details class="qh-question-week" open>
+                        <summary>
+                          <span class="qh-question-week-number">W3</span>
+                          <strong>Fluxonium: From Circuit Modification to Design Trade-offs</strong>
+                          <span class="qh-question-count">6 Questions</span>
+                        </summary>
+                        <div class="qh-question-week-body">
+                          <ol>
+                            <li>
+                              <p>Why add a superinductor beyond the Transmon circuit?</p>
+                            </li>
+                            <li>
+                              <p>Selection rule </p>
+                            </li>
+                            <li>
+                              <p>How does inductive energy modify the potential and energy spectrum?</p>
+                            </li>
+                            <li>
+                              <p>How does external flux alter the operating point and wavefunction?</p>
+                            </li>
+                            <li>
+                              <p>Which noise sources are suppressed by Fluxonium, and what costs are introduced?</p>
+                            </li>
+                            <li>
+                              <p>Under what conditions should Fluxonium be chosen over Transmon?</p>
+                            </li>
+                          </ol>
+                          <a class="qh-question-week-link" href="T2-3.html">View full page for W3 →</a>
+                        </div>
+                      </details>
+                    </section>
+                    <section class="qh-question-theme" aria-labelledby="questions-t3">
+                      <header class="qh-question-theme-heading">
+                        <span class="qh-question-theme-code">T3</span>
+                        <div>
+                          <h4 id="questions-t3">Controlling, Connecting, and Reading Out Qubits</h4>
+                          <p>Control &amp; Readout</p>
+                        </div>
+                      </header>
+                      <details class="qh-question-week">
+                        <summary>
+                          <span class="qh-question-week-number">W4</span>
+                          <strong>Single-Qubit Control: From Microwave Pulses to the Rotating Frame</strong><span class="qh-question-draft">(Draft)</span>
+                          <span class="qh-question-count">6 Questions</span>
+                        </summary>
+                        <div class="qh-question-week-body">
+                          <ol>
+                            <li>
+                              <p>How do room-temperature I/Q waveforms translate into target qubit rotations?</p>
+                            </li>
+                            <li>
+                              <p>What aspects of the drive are controlled by frequency, phase, amplitude, and duration?</p>
+                            </li>
+                            <li>
+                              <p>Why do the rotating frame and RWA simplify control problems?</p>
+                            </li>
+                            <li>
+                              <p>Why do pulses cause leakage and waveform distortion?</p>
+                            </li>
+                            <li>
+                              <p>How to calibrate a rough pulse into a verifiable Xπ/2 gate?</p>
+                            </li>
+                            <li>
+                              <p>Which observables can distinguish amplitude, detuning, phase, and distortion errors?</p>
+                            </li>
+                          </ol>
+                          <a class="qh-question-week-link" href="T3-4.html">View full page for W4 →</a>
+                        </div>
+                      </details>
+                      <details class="qh-question-week">
+                        <summary>
+                          <span class="qh-question-week-number">W5</span>
+                          <strong>Coupling Hamiltonians, Two-Qubit Gates, and Tunable Couplers</strong><span
+                            class="qh-question-draft">(Draft)</span>
+                          <span class="qh-question-count">6 Questions</span>
+                        </summary>
+                        <div class="qh-question-week-body">
+                          <ol>
+                            <li>
+                              <p>How to enable interaction between two qubits only when needed?</p>
+                            </li>
+                            <li>
+                              <p>What terms do different coupling circuits introduce into the Hamiltonian?</p>
+                            </li>
+                            <li>
+                              <p>What are the differences between exchange, ZZ, and avoided crossing interactions?</p>
+                            </li>
+                            <li>
+                              <p>Under what conditions should iSWAP, CZ, or cross-resonance gates be selected?</p>
+                            </li>
+                            <li>
+                              <p>How do spectator errors, crosstalk, and frequency collisions scale with chip size?</p>
+                            </li>
+                            <li>
+                              <p>How to translate a connectivity graph into interaction requirements and an error budget?</p>
+                            </li>
+                          </ol>
+                          <a class="qh-question-week-link" href="T3-5.html">View full page for W5 →</a>
+                        </div>
+                      </details>
+                      <details class="qh-question-week">
+                        <summary>
+                          <span class="qh-question-week-number">W6</span>
+                          <strong>Circuit QED, Dispersive Readout, and the Measurement Chain</strong><span
+                            class="qh-question-draft">(Draft)</span>
+                          <span class="qh-question-count">6 Questions</span>
+                        </summary>
+                        <div class="qh-question-week-body">
+                          <ol>
+                            <li>
+                              <p>How to convert invisible quantum states into classifiable voltages?</p>
+                            </li>
+                            <li>
+                              <p>How is qubit–resonator coupling described by the Jaynes–Cummings model?</p>
+                            </li>
+                            <li>
+                              <p>How do dispersive shift, readout contrast, and Purcell loss constrain each other?</p>
+                            </li>
+                            <li>
+                              <p>How does a quantum state propagate through the resonator, amplifier, and IQ classifier?</p>
+                            </li>
+                            <li>
+                              <p>How to establish a signal-to-noise budget from the readout tone to the IQ cloud?</p>
+                            </li>
+                            <li>
+                              <p>How should readout speed, fidelity, and backaction be jointly validated?</p>
+                            </li>
+                          </ol>
+                          <a class="qh-question-week-link" href="T3-6.html">View full W6 page →</a>
+                        </div>
+                      </details>
+                    </section>
+                    <section class="qh-question-theme" aria-labelledby="questions-t4">
+                      <header class="qh-question-theme-heading">
+                        <span class="qh-question-theme-code">T4</span>
+                        <div>
+                          <h4 id="questions-t4">Calibration, Verification, and Protection of Quantum Information</h4>
+                          <p>Calibration &amp; QEC</p>
+                        </div>
+                      </header>
+                      <details class="qh-question-week">
+                        <summary>
+                          <span class="qh-question-week-number">W7</span>
+                          <strong>Quantum Processor Calibration: Hamiltonian Identification and Drift</strong><span
+                            class="qh-question-draft">(Draft)</span>
+                          <span class="qh-question-count">6 Questions</span>
+                        </summary>
+                        <div class="qh-question-week-body">
+                          <ol>
+                            <li>
+                              <p>Which parameters must be determined first after powering up the quantum chip?</p>
+                            </li>
+                            <li>
+                              <p>In what dependency order should spectroscopy, Rabi, Ramsey, T1/T2, and readout be executed?</p>
+                            </li>
+                            <li>
+                              <p>How to transform measure → fit → update → validate into a calibration graph?</p>
+                            </li>
+                            <li>
+                              <p>For how long can a set of calibration parameters be trusted under drift?</p>
+                            </li>
+                            <li>
+                              <p>How does frequency drift corrupt downstream gates and readout?</p>
+                            </li>
+                            <li>
+                              <p>What must a minimal operational calibration dependency graph contain?</p>
+                            </li>
+                          </ol>
+                          <a class="qh-question-week-link" href="T4-7.html">View full W7 page →</a>
+                        </div>
+                      </details>
+                      <details class="qh-question-week">
+                        <summary>
+                          <span class="qh-question-week-number">W8</span>
+                          <strong>Benchmarking, Multi-Qubit Errors, and Scalable Calibration</strong><span class="qh-question-draft">(Draft)</span>
+                          <span class="qh-question-count">6 Questions</span>
+                        </summary>
+                        <div class="qh-question-week-body">
+                          <ol>
+                            <li>
+                              <p>What failure modes might be hidden by a high average fidelity?</p>
+                            </li>
+                            <li>
+                              <p>What do RB and interleaved RB actually measure?</p>
+                            </li>
+                            <li>
+                              <p>What noise assumptions does the RB decay model rely on?</p>
+                            </li>
+                            <li>
+                              <p>How to distinguish leakage, crosstalk, and correlated errors?</p>
+                            </li>
+                            <li>
+                              <p>Why might a single gate perform well while an entire circuit layer performs poorly?</p>
+                            </li>
+                            <li>
+                              <p>How to map each benchmark metric to a falsifiable failure hypothesis?</p>
+                            </li>
+                          </ol>
+                          <a class="qh-question-week-link" href="T4-8.html">View full W8 page →</a>
+                        </div>
+                      </details>
+                      <details class="qh-question-week">
+                        <summary>
+                          <span class="qh-question-week-number">W9</span>
+                          <strong>Foundations of Quantum Error Correction: From Physical Errors to Stabilizer Syndromes</strong><span
+                            class="qh-question-draft">(Draft)</span>
+                          <span class="qh-question-count">6 Questions</span>
+                        </summary>
+                        <div class="qh-question-week-body">
+                          <ol>
+                            <li>
+                              <p>Are physical errors and computational failures the same thing?</p>
+                            </li>
+                            <li>
+                              <p>Since quantum information cannot be cloned, where does redundancy come from?</p>
+                            </li>
+                            <li>
+                              <p>How to detect errors without directly measuring the answer?</p>
+                            </li>
+                            <li>
+                              <p>What information do stabilizers actually compress?</p>
+                            </li>
+                            <li>
+                              <p>What does code distance guarantee, and what does it not guarantee?</p>
+                            </li>
+                            <li>
+                              <p>Why is the surface code needed next?</p>
+                            </li>
+                          </ol>
+                          <a class="qh-question-week-link" href="T4-9.html">View full page for W9 →</a>
+                        </div>
+                      </details>
+                      <details class="qh-question-week">
+                        <summary>
+                          <span class="qh-question-week-number">W10</span>
+                          <strong>Surface-Code Hardware Cycle: Scheduling, Decoding, and Logical-Qubit Resources</strong><span
+                            class="qh-question-draft">(Draft)</span>
+                          <span class="qh-question-count">6 Questions</span>
+                        </summary>
+                        <div class="qh-question-week-body">
+                          <ol>
+                            <li>
+                              <p>Why is the surface code suitable for superconducting quantum chips?</p>
+                            </li>
+                            <li>
+                              <p>How should a round of syndrome extraction be scheduled?</p>
+                            </li>
+                            <li>
+                              <p>Syndrome measurements themselves can fail; how do we handle this?</p>
+                            </li>
+                            <li>
+                              <p>How fast must the decoder be?</p>
+                            </li>
+                            <li>
+                              <p>Does reducing physical error rates guarantee a reduction in logical error rates?</p>
+                            </li>
+                            <li>
+                              <p>What are the actual hardware and classical resource requirements for a single logical qubit?</p>
+                            </li>
+                          </ol>
+                          <a class="qh-question-week-link" href="T4-10.html">View full page for W10 →</a>
+                        </div>
+                      </details>
+                    </section>
+                    <section class="qh-question-theme" aria-labelledby="questions-t5">
+                      <header class="qh-question-theme-heading">
+                        <span class="qh-question-theme-code">T5</span>
+                        <div>
+                          <h4 id="questions-t5">Integrating Cryogenics, Signals, and System Operation</h4>
+                          <p>Full-System Architecture</p>
+                        </div>
+                      </header>
+                      <details class="qh-question-week">
+                        <summary>
+                          <span class="qh-question-week-number">W11</span>
+                          <strong>Dilution Refrigerators, Thermalization, and Cryogenic Line Budgets</strong><span class="qh-question-draft">(Draft)</span>
+                          <span class="qh-question-count">6 Questions</span>
+                        </summary>
+                        <div class="qh-question-week-body">
+                          <ol>
+                            <li>
+                              <p>How to deliver signals without introducing heat and noise into the 10 mK stage?</p>
+                            </li>
+                            <li>
+                              <p>What cooling power is available at each temperature stage of a dilution refrigerator?</p>
+                            </li>
+                            <li>
+                              <p>How to establish budgets for conduction, dissipation, radiation, and device heat load?</p>
+                            </li>
+                            <li>
+                              <p>How should drive, flux, and readout lines be attenuated, filtered, and thermalized?</p>
+                            </li>
+                            <li>
+                              <p>How to construct stage-by-stage thermal and noise budgets for the three types of lines?</p>
+                            </li>
+                            <li>
+                              <p>How to use budgets to determine component placement rather than memorizing cryogenic part names?</p>
+                            </li>
+                          </ol>
+                          <a class="qh-question-week-link" href="T5-11.html">View full page for W11 →</a>
+                        </div>
+                      </details>
+                      <details class="qh-question-week">
+                        <summary>
+                          <span class="qh-question-week-number">W12</span>
+                          <strong>Microwave Control, Readout Electronics, and Signal Integrity</strong><span class="qh-question-draft">(Draft)</span>
+                          <span class="qh-question-count">6 Questions</span>
+                        </summary>
+                        <div class="qh-question-week-body">
+                          <ol>
+                            <li>
+                              <p>How do electronic instrument specifications translate into quantum errors?</p>
+                            </li>
+                            <li>
+                              <p>How do DACs, AWGs, LOs, IQ mixers, and clocks form the control chain?</p>
+                            </li>
+                            <li>
+                              <p>How to establish gain, noise, and dynamic-range budgets for an amplifier cascade?</p>
+                            </li>
+                            <li>
+                              <p>What intermodulation, ADC, and classification issues arise in multiplexed readout?</p>
+                            </li>
+                            <li>
+                              <p>How to derive electronics requirements from readout targets?</p>
+                            </li>
+                            <li>
+                              <p>How to validate the signal-integrity chain from room temperature to the qubit?</p>
+                            </li>
+                          </ol>
+                          <a class="qh-question-week-link" href="T5-12.html">View full page for W12 →</a>
+                        </div>
+                      </details>
+                      <details class="qh-question-week">
+                        <summary>
+                          <span class="qh-question-week-number">W13</span>
+                          <strong>Packaging, EM Modes, Wiring Scalability, and Full-System Integration</strong><span class="qh-question-draft">(Draft)</span>
+                          <span class="qh-question-count">6 Questions</span>
+                        </summary>
+                        <div class="qh-question-week-body">
+                          <ol>
+                            <li>
+                              <p>As qubit counts increase, why does packaging become part of the Hamiltonian?</p>
+                            </li>
+                            <li>
+                              <p>How do package cavities, slotlines, ground returns, bond wires, and seam losses affect qubits?</p>
+                            </li>
+                            <li>
+                              <p>How to establish acceptance criteria based on EM modes and participation ratios?</p>
+                            </li>
+                            <li>
+                              <p>How do I/O density, heat load, 3D wiring, and cryogenic control jointly limit scalability?</p>
+                            </li>
+                            <li>
+                              <p>How to conduct a package/wiring architecture review for a 100-qubit system?</p>
+                            </li>
+                            <li>
+                              <p>Which three budgets are most likely to be exceeded first as the system scales?</p>
+                            </li>
+                          </ol>
+                          <a class="qh-question-week-link" href="T5-13.html">View full W13 page →</a>
+                        </div>
+                      </details>
+                    </section>
+                    <section class="qh-question-theme" aria-labelledby="questions-t6">
+                      <header class="qh-question-theme-heading">
+                        <span class="qh-question-theme-code">T6</span>
+                        <div>
+                          <h4 id="questions-t6">Stabilizing Designs into Chips</h4>
+                          <p>Fabrication</p>
+                        </div>
+                      </header>
+                      <details class="qh-question-week">
+                        <summary>
+                          <span class="qh-question-week-number">W14</span>
+                          <strong>Superconducting Quantum Chip Fabrication and Josephson Junction Process Module</strong><span
+                            class="qh-question-draft">(Draft)</span>
+                          <span class="qh-question-count">6 Questions</span>
+                        </summary>
+                        <div class="qh-question-week-body">
+                          <ol>
+                            <li>
+                              <p>How are $E_J$ and $E_C$ on the layout physically realized by the fabrication process?</p>
+                            </li>
+                            <li>
+                              <p>How do substrate, base metal, lithography, etch, lift-off, and cleaning form the process flow?</p>
+                            </li>
+                            <li>
+                              <p>How to establish a Josephson junction process module from $R_n$, $I_c$, and $E_J$?</p>
+                            </li>
+                            <li>
+                              <p>How are PCM, overlay, residue, and surface treatment validated at cryogenic temperatures?</p>
+                            </li>
+                            <li>
+                              <p>Which CTQs, PCMs, and defects should be monitored for each process step?</p>
+                            </li>
+                            <li>
+                              <p>How to establish a mapping from design parameters to process control?</p>
+                            </li>
+                          </ol>
+                          <a class="qh-question-week-link" href="T6-14.html">View full W14 page →</a>
+                        </div>
+                      </details>
+                      <details class="qh-question-week">
+                        <summary>
+                          <span class="qh-question-week-number">W15</span>
+                          <strong>Materials Loss, Process Variation, Yield, and the Design–Fab–Measure Loop</strong><span
+                            class="qh-question-draft">(Draft)</span>
+                          <span class="qh-question-count">6 Questions</span>
+                        </summary>
+                        <div class="qh-question-week-body">
+                          <ol>
+                            <li>
+                              <p>How to translate "this qubit is bad" into reproducible process knowledge?</p>
+                            </li>
+                            <li>
+                              <p>How do TLS, surface/interface loss, quasiparticles, and participation ratio affect $T_1$?</p>
+                            </li>
+                            <li>
+                              <p>How to derive frequency collision and chip yield from process variation distributions?</p>
+                            </li>
+                            <li>
+                              <p>How do split lots, PCM, and cryogenic testing form the design–fab–measure loop?</p>
+                            </li>
+                            <li>
+                              <p>How to design a split-lot experiment for frequency spread or $T_1$ tail?</p>
+                            </li>
+                            <li>
+                              <p>How to shift from pursuing the best device to managing a manufacturable distribution?</p>
+                            </li>
+                          </ol>
+                          <a class="qh-question-week-link" href="T6-15.html">View full W15 page →</a>
+                        </div>
+                      </details>
+                    </section>
+                    <section class="qh-question-theme" aria-labelledby="questions-t7">
+                      <header class="qh-question-theme-heading">
+                        <span class="qh-question-theme-code">T7</span>
+                        <div>
+                          <h4 id="questions-t7">Integration into a Complete Quantum Computer Architecture</h4>
+                          <p>Capstone</p>
+                        </div>
+                      </header>
+                      <details class="qh-question-week">
+                        <summary>
+                          <span class="qh-question-week-number">W16</span>
+                          <strong>Frontier Architectures and Hardware-Aware Quantum System Capstone</strong><span
+                            class="qh-question-draft">(Draft)</span>
+                          <span class="qh-question-count">6 Questions</span>
+                        </summary>
+                        <div class="qh-question-week-body">
+                          <ol>
+                            <li>
+                              <p>How should the overall architecture be selected for practical quantum computing?</p>
+                            </li>
+                            <li>
+                              <p>How to derive logical-qubit, error, and latency requirements from workloads?</p>
+                            </li>
+                            <li>
+                              <p>How to allocate code, qubits, coupling, and control downward from logical requirements?</p>
+                            </li>
+                            <li>
+                              <p>How to compare modular designs, 2D/3D I/O, cryo-control, and different qubit branches?</p>
+                            </li>
+                            <li>
+                              <p>How to conduct an overall architecture review of the QPU, control, fabrication, and QEC?</p>
+                            </li>
+                            <li>
+                              <p>How to distinguish between demonstrated, projected, assumed, and kill criteria?</p>
+                            </li>
+                          </ol>
+                          <a class="qh-question-week-link" href="T7-16.html">View full W16 page →</a>
+                        </div>
+                      </details>
+                    </section>
+                  </section>
+                  <script>
+                    (() => {
+                      const atlas = document.getElementById("weekly-core-questions");
+                      if (!atlas) return;
+                      const weeks = () => atlas.querySelectorAll("details.qh-question-week");
+                      document.getElementById("qh-expand-all")?.addEventListener("click", () => weeks().forEach(item => item.open = true));
+                      document.getElementById("qh-collapse-all")?.addEventListener("click", () => weeks().forEach(item => item.open = false));
+                    })();
+                  </script>
+                </section>
+
+
+                <div class="post-meta">
+                  <span class="post-author">
+                    <a href="../About_en/Wang.html"><img class="img-res" src="../WebP/IMG_0964_2.webp" alt="">Peir-Ru Wang</a>
+                  </span>
+                  <span class="post-category">
+                    <a href="../SCQ_advanced_en/main.html"><i class="fa fa-folder" aria-hidden="true"></i>PHYS598500</a>
+                  </span>
+                </div><!-- /.post-meta -->
+
+                <div id="prev-next-nav" class="text-center">
+                                    <a class="btn btn-gray" href="../QH-2026F-v5-x10/main.html" style="margin: 0 10px;">中文版</a>
+                                    <a class="btn btn-gray" href="T2-outlook.html">Next →</a>
+                                </div>
+
+
+
+              </div><!-- /.post-content -->
+            </article><!-- /.blog-post -->
+            <!--<div id="PostComments" class="post-comments">
+                            
+                            
+                            
+                        </div> /#PostComments -->
+            <!--<div class="respond">
+                            <h3>Post a Comment</h3>
+                            <form class="form-horizontal">
+                                <input class="form-control" type="text" placeholder="Your Name*" required>
+                                <input class="form-control" type="email" placeholder="Your Email" required>
+                                <textarea class="form-control form-control-comment" type="text" placeholder="Your Comment*" required></textarea>
+                                <button class="btn btn-green">Add a comment</button>
+                            </form>    
+                        </div> /.respond -->
+          </div>
+          <aside class="col-md-3">
+                        <div class="sidebar">
+                            <div class="widget">
+                                <div id="lesson-list_2">
+                                <div class="lesson-link active"><a href="main.html">QH-2026F v5 · 16-Week Overview</a></div>
+                                <div class="lesson-link "><a href="T2-outlook.html">T2 Outlook · From Artificial Atoms to Protected Qubits | QH-2026F v5</a></div>
+                                <div class="lesson-link "><a href="T2-2.html">Week 2 · Superconducting-Circuit Quantization and Transmon Design | QH-2026F v5</a></div>
+                                <div class="lesson-link "><a href="T2-2S.html">Week 2 Slides · Superconducting-Circuit Quantization and Transmon Design | QH-2026F v5</a></div>
+                                <div class="lesson-link "><a href="T2-3.html">Week 3 · Fluxonium: From Circuit Modification to Design Trade-offs | QH-2026F v5</a></div>
+                                <div class="lesson-link "><a href="T1-1SA.html">Week 1 Manual Slides · From Quantum Computing Models to Hardware Operations | QH-2026F v5</a></div>
+                                <div class="lesson-link "><a href="T2-2SA.html">Week 2 Manual Slides · Superconducting-Circuit Quantization and Transmon Design | QH-2026F v5</a></div>
+                                <div class="lesson-link "><a href="T2-3SA.html">Week 3 Manual Slides · Fluxonium and Protected-Qubit Hamiltonian Engineering | QH-2026F v5</a></div>
+                                </div>
+                            </div>
+                        </div></aside>
+        </div>
+      </div>
+    </section><!-- /.section-portfolio -->
+
+  </main><!-- /#main -->
+
+  <footer id="colophon" class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-4 col-xs-6">
+                    <a href="../index.html" class="site-title">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
+                    <p>Exploring the Quantum Technology Together.</p>
+                    </div>
+                <div class="col-lg-offset-4 col-md-3 col-sm-4 col-md-offset-2 col-sm-offset-0 col-xs-6 ">
+                    <p class="site-title">𝐾𝐸𝐸𝑃 𝐼𝑁 𝑇𝑂𝑈𝐶𝐻</p>
+                    <ul class="list-unstyled contact-links">
+                        <li><i class="fa fa-envelope" aria-hidden="true"></i><a href="mailto:info@insight-ihbar.com">info@insight-ihbar.com</a></li>
+                        <!--<li><i class="fa fa-phone" aria-hidden="true"></i><a href="tel:+37400800000">+374 (00) 80 00 00 </a></li>
+                        <li><i class="fa fa-fax" aria-hidden="true"></i><a href="+37400900000">+374 (00) 90 00 00</a></li>
+                        <li><i class="fa-solid fa-location-dot"></i><p>Hsinchu 300, Taiwan (R.O.C.)</p></li>-->
+                    </ul>
+                </div>
+                <!--<div class="clearfix visible-xs"></div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6">
+                    <h3>Featured links</h3>
+                    <ul class="list-unstyled">
+                        <li class="active"><a href="index_ch.html">Home</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="portfolio.html">Porfolio</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>-->
+            </div>
+        </div>
+        <div class="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-8">
+                        <div class="social-links">
+                            <!--<a class="twitter-bg" href="#"><i class="fab fa-twitter"></i></a>-->
+                            <!--<<a class="facebook-bg" href="https://www.facebook.com/people/Quantum-Perspectives/61576446849628/"><i class="fab fa-facebook"></i></a>-->
+                            <!--<a class="facebook-bg" href="https://www.facebook.com/people/%E9%87%8F%E5%AD%90%E9%81%A0%E8%A6%8BQuantum-Perspectives/61576883632888/"><i class="fab fa-facebook-f"></i></a>-->
+                            <!--<a class="pinterest" href="#"><i class="fa-solid fa-microscope"></i></a>-->
+                            <!--<a class="facebook-bg" href="https://www.facebook.com/people/Insight-hbar/61576811775374/"><i class="fab fa-facebook-f"></i></a>-->
+                            <a class="linkedin-bg" href="https://www.linkedin.com/company/insight-ihbar"><i class="fab fa-linkedin"></i></a>
+                        </div><!-- /.social-links -->
+                    </div>
+                    <div class="col-xs-4">
+                        <div class="text-right">
+                            <p><span style="font-size: 16px;">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</span></p>
+                            <p>All Rights Reserved</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.copyright -->
+    </footer><!-- /#footer -->
+
+
+
+  <!-- Bootstrap core JavaScript
+    ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/bootstrap-select.min.js"></script>
+  <script src="../assets/js/jquery.slicknav.min.js"></script>
+  <script src="../assets/js/jquery.countTo.min.js"></script>
+  <script src="../assets/js/jquery.shuffle.min.js"></script>
+  <script src="../assets/js/script.js"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</body>
+
+</html>

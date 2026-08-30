@@ -452,161 +452,1137 @@
                   <div style="text-align: center;">
                     <p class="theme-label">PHYS598500 · Week 3 · T2</p>
                     <h2>Fluxonium：從電路改造到設計取捨</h2>
-                    <h3>Fluxonium: From Circuit Modification to Design Trade-offs</h3>
+                    <h3>Fluxonium: From Circuit Modification to Protected-Qubit Design</h3>
                   </div>
-                  <section class="course-overview">
+
+                  <div class="course-overview">
                     <h3>本週定位</h3>
                     <p><strong>課程長度：</strong>120 分鐘</p>
-                    <p><strong>核心問題：</strong>如何從 noise operator、matrix element 與 symmetry 出發，理解 Fluxonium 並反向設計 protected-qubit Hamiltonian？</p>
+                    <p><strong>核心問題：</strong>如何從 noise operator、matrix element 與 symmetry 出發理解 Fluxonium，並將這些原理推廣成 Hamiltonian engineering？</p>
                     <p><strong>難度：</strong>很高</p>
-                    <p><strong>先備：</strong>W2 circuit quantization、Transmon energy scales、external flux、matrix element
-                    </p>
+                    <p><strong>先備：</strong>W2 circuit quantization、Transmon energy scales、external flux、matrix element</p>
                     <p><strong>原始教材來源：</strong>T2 modules 5, 6</p>
                     <h3>學習成果</h3>
                     <ul>
-                      <li>由 noise operator、spectral density 與 matrix element 判斷 transition 是否被允許或抑制</li>
-                      <li>區分 sweet spot、selection rule 與 matrix-element suppression，並同時檢查 controllability</li>
-                      <li>由新增的 inductive energy 解釋 Fluxonium 位能、能譜、wavefunction 與 flux dependence</li>
-                      <li>用 dephasing、relaxation、controllability 與 leakage 四項判準閱讀 beyond-Fluxonium 架構</li>
+                      <li>由 noise operator、spectral density 與 matrix element 判斷 transition 是否被允許、禁止或抑制。</li>
+                      <li>區分 sweet spot、selection rule 與 matrix-element suppression，並同時檢查 controllability。</li>
+                      <li>由 superinductor 所增加的 inductive energy 解釋 Fluxonium 位能、能譜、wavefunction 與 flux dependence。</li>
+                      <li>用 dephasing protection、relaxation protection、controllability 與 leakage suppression 四項判準閱讀 Hamiltonian-engineered qubit 架構。</li>
                     </ul>
-</section>
+                  </div>
 
-                  <section class="qh-supplement-divider" id="w3-question-map">
-                    <h3>W3
-                      <strong>Fluxonium 與 Protected-Qubit Hamiltonian Engineering：五問主線</strong>
-                    </h3>
+                  <div class="qh-supplement-divider" id="w3-question-map">
+                    <h3>W3 <strong>Fluxonium 與 Protected-Qubit Hamiltonian Engineering：五問主線</strong></h3>
                     <p>5 題</p>
                     <ol>
                       <li><p>外界擾動在什麼條件下能造成量子 transition？</p></li>
                       <li><p>什麼樣的量子態結構，能抑制 noise transition，卻仍保留 control transition？</p></li>
                       <li><p>加入 superinductor，會在 Josephson circuit 的 Hamiltonian 中增加什麼？</p></li>
                       <li><p>Fluxonium 如何利用 \(E_C,E_J,E_L\) 與 external flux 塑造波函數，實現保護條件？</p></li>
-                      <li><p>我們能否從 noise operator 反推出一個 protected-qubit Hamiltonian？</p></li>
+                      <li><p>Hamiltonian engineering：如何從欲抑制的 error operator 出發，設計下一種 qubit Hamiltonian？</p></li>
                     </ol>
-                  </section>
+                  </div>
 
-                  <section class="qh-full-lecture" id="w3-five-questions">
                     <div class="qh-section">
-                      <h3>前言：從參數最佳化走向 Hamiltonian engineering</h3>
+                      <h3>前言：從 Transmon 的參數最佳化走向 Hamiltonian engineering</h3>
                     </div>
                     <p>
                       上週 Transmon 展示了如何選擇 \(E_J/E_C\)，在 charge sensitivity 與 anharmonicity 之間取得平衡。
-                      但如果我們不只調整參數，而是直接增加 Hamiltonian 的項、改變 symmetry 或增加自由度，是否能讓特定 error transition 從物理上變得困難？
+                      但降低 parameter sensitivity 並不等於所有 error transition 都消失。這週進一步追問：我們能否直接設計量子態、
+                      coupling operator 與 Hamiltonian term，使環境難以引發 relaxation；而當環境難以驅動 transition 時，我們自己是否也會更難控制它？
                     </p>
+                    <p><strong>本週驅動問題：</strong>Fluxonium 透過大電感與 Josephson junction 形成不同於 Transmon 的能譜；哪些 transition 被保護、哪些 control／readout 變得更難？如何避免把單一 coherence 紀錄誤認成整體架構優勢？</p>
                     <p><a class="btn btn-gray" href="T2-outlook.html">查看 T2 十問的整體推進</a></p>
 
                     <table class="qh-session-plan">
                       <thead><tr><th>時間</th><th>問題</th><th>本段產出</th></tr></thead>
                       <tbody>
-                        <tr><td>0–10 分</td><td>W2 回顧與問題設定</td><td>Transmon trade-off → error-target design</td></tr>
+                        <tr><td>0–10 分</td><td>W2 回顧與先備診斷</td><td>Transmon trade-off → error-target design</td></tr>
                         <tr><td>10–30 分</td><td>問題一：noise 如何造成 transition</td><td>operator × matrix element × spectrum</td></tr>
-                        <tr><td>30–50 分</td><td>問題二：受保護但可控制的態</td><td>sweet spot／selection rule／suppression</td></tr>
-                        <tr><td>50–70 分</td><td>問題三：加入 superinductor</td><td>Transmon → Fluxonium Hamiltonian</td></tr>
-                        <tr><td>70–95 分</td><td>問題四：能量尺度與波函數工程</td><td>\(E_C,E_J,E_L,\Phi_{\rm ext}\) 映射</td></tr>
-                        <tr><td>95–118 分</td><td>問題五：Beyond-Fluxonium 名詞巡禮</td><td>四項判準與三條進階路線</td></tr>
-                        <tr><td>118–120 分</td><td>Exit ticket</td><td>帶走一個自學入口</td></tr>
+                        <tr><td>30–50 分</td><td>問題二：受保護但可控制的量子態</td><td>sweet spot／selection rule／suppression</td></tr>
+                        <tr><td>50–70 分</td><td>問題三：加入 superinductor</td><td>circuit modification → Hamiltonian term</td></tr>
+                        <tr><td>70–95 分</td><td>問題四：能量尺度與波函數工程</td><td>\(E_C,E_J,E_L,\Phi_{\rm ext}\) → spectrum／matrix element</td></tr>
+                        <tr><td>95–118 分</td><td>問題五：Hamiltonian engineering</td><td>四項判準、反向設計方法與三條進階路線</td></tr>
+                        <tr><td>118–120 分</td><td>Exit ticket</td><td>帶走一個可繼續自學的入口</td></tr>
                       </tbody>
                     </table>
 
-                    <div class="qh-section">
+                    <div class="qh-case">
+                      <h4>0–10 分鐘先備診斷</h4>
+                      <p>
+                        先要求學生不用查資料，以一張圖畫出本週主題從抽象模型到真實硬體的訊息流。教師不立刻公布答案，而是收集學生把哪些層次畫成等號。
+                        全課結束時再重畫一次，用兩張圖的差異驗收是否真正建立跨層理解。
+                      </p>
+                    </div>
+
+                    <div class="qh-section" id="w3-q1">
                       <h3>問題一：外界擾動在什麼條件下能造成量子 transition？</h3>
                     </div>
                     <span class="qh-time">10–30 分鐘</span>
-                    <div class="qh-board">
-                      <p>\[
-                        \hat V(t)=\hat O F(t),
-                        \qquad
-                        \Gamma_{i\rightarrow f}\propto
-                        \left|\langle f|\hat O|i\rangle\right|^2S_F(\omega_{fi}).
-                      \]</p>
-                    </div>
                     <p>
-                      一個 transition 是否發生、發生多快，由兩件事共同決定：環境在 transition frequency 是否有 noise power，
-                      以及系統的 eigenstate structure 是否讓 coupling operator 具有非零 matrix element。
+                      不從 transition-rate 公式開始背，而從「系統、環境與兩者的耦合」開始。最一般的弱耦合寫法是
                     </p>
-                    <ul>
-                      <li><strong>Noise source \(F(t)\)：</strong>環境實際提供的 fluctuation。</li>
-                      <li><strong>Noise operator \(\hat O\)：</strong>該 fluctuation 透過哪個系統自由度耦合。</li>
-                      <li><strong>Spectral density \(S_F(\omega)\)：</strong>環境在各頻率提供多少擾動。</li>
-                      <li><strong>Transition matrix element：</strong>Hamiltonian 的 eigenstates 是否允許該 operator 連接初態與末態。</li>
-                    </ul>
-                    <p><strong>教學邊界：</strong>allowed 不代表一定很強；forbidden 與 merely suppressed 也不是同一件事。</p>
+                    <p>\[
+                      \hat H_{\rm tot}
+                      =\hat H_{\rm S}(\lambda_0)+\hat H_{\rm B}+\hat H_{\rm SB},
+                      \qquad
+                      \hat H_{\rm S}(\lambda_0)\ket n=E_n\ket n.
+                    \]</p>
+                    <p>
+                      \(\hat H_{\rm S}\) 決定能階與 eigenstates，\(\hat H_{\rm B}\) 描述環境；真正決定環境能否改變 qubit state 的是
+                      \(\hat H_{\rm SB}\)。若某個 circuit parameter 受到小擾動 \(\lambda(t)=\lambda_0+\delta\lambda(t)\)，直接對 Hamiltonian 展開：
+                    </p>
+                    <p>\[
+                      \begin{aligned}
+                      \hat H_{\rm S}(\lambda_0+\delta\lambda)
+                      &\simeq \hat H_0
+                      +\delta\lambda(t)
+                      \left.\frac{\partial\hat H_{\rm S}}{\partial\lambda}\right|_{\lambda_0}
+                      +O(\delta\lambda^2)\\
+                      &\equiv \hat H_0+F(t)\hat O.
+                      \end{aligned}
+                    \]</p>
+                    <p>
+                      因此 \(F(t)\) 不是抽象的「noise」而已，它是實際 fluctuation；\(\hat O=\partial_\lambda\hat H_{\rm S}\) 則由 circuit Hamiltonian 決定。
+                      若環境也要量子化，寫成 \(\hat H_{\rm SB}=\sum_\alpha\hat O_\alpha\otimes\hat B_\alpha\)；在 semiclassical noise model 中，
+                      \(\hat B_\alpha\) 由 stochastic function \(F_\alpha(t)\) 取代。兩種寫法都保留同一個 system-side coupling operator。
+                    </p>
 
-                    <div class="qh-section">
+                    <h4>第一步：把 coupling operator 展開到 energy eigenbasis</h4>
+                    <p>\[
+                      \hat O=\sum_{m,n}O_{mn}\ket m\!\bra n,
+                      \qquad O_{mn}=\langle m|\hat O|n\rangle.
+                    \]</p>
+                    <p>這一步立刻把同一個 perturbation 分成兩種物理作用：</p>
+                    <p>\[
+                      \hat V(t)=F(t)
+                      \left[
+                      \underbrace{\sum_n O_{nn}\ket n\!\bra n}_{\text{diagonal：改變相位與 transition frequency}}
+                      +
+                      \underbrace{\sum_{m\ne n}O_{mn}\ket m\!\bra n}_{\text{off-diagonal：改變 population}}
+                      \right].
+                    \]</p>
+                    <ul>
+                      <li><strong>Diagonal part：</strong>每個能階得到不同的瞬時 energy shift，長時間累積成隨機 phase，造成 dephasing。</li>
+                      <li><strong>Off-diagonal part：</strong>若 \(O_{fi}\neq0\)，perturbation 才有可能把 \(\ket i\) 連到 \(\ket f\)，造成 excitation 或 relaxation。</li>
+                    </ul>
+
+                    <h4>第二步：在 interaction picture 中推導 transition amplitude</h4>
+                    <p>
+                      定義 Bohr frequency \(\omega_{mn}=(E_m-E_n)/\hbar\)。在 \(\hat H_0\) 的 interaction picture 中，
+                    </p>
+                    <p>\[
+                      \hat V_I(t)=F(t)\sum_{m,n}O_{mn}e^{i\omega_{mn}t}\ket m\!\bra n.
+                    \]</p>
+                    <p>Interaction-picture Schrödinger equation 與 Dyson expansion 的一階項是</p>
+                    <p>\[
+                      i\hbar\frac{d}{dt}\ket{\psi_I(t)}=\hat V_I(t)\ket{\psi_I(t)},
+                      \qquad
+                      \hat U_I(t,0)\simeq
+                      1-\frac{i}{\hbar}\int_0^t dt'\,\hat V_I(t').
+                    \]</p>
+                    <p>若系統起始於 \(\ket i\)，投影到 \(\ket f\) 就得到一階 \(i\to f\) amplitude：</p>
+                    <p>\[
+                      c_f^{(1)}(t)
+                      =-\frac{i}{\hbar}O_{fi}
+                      \int_0^t dt'\,F(t')e^{i\omega_{fi}t'}.
+                    \]</p>
+                    <p>所以 transition probability 是</p>
+                    <p>\[
+                      P_{i\to f}(t)
+                      =\frac{|O_{fi}|^2}{\hbar^2}
+                      \left|
+                      \int_0^t dt'\,F(t')e^{i\omega_{fi}t'}
+                      \right|^2.
+                    \]</p>
+                    <p>
+                      這一行已經給出兩個必要條件：第一，\(O_{fi}\) 不能被 symmetry 強迫為零；第二，\(F(t)\) 必須在 \(|\omega_{fi}|\) 附近具有 Fourier component。
+                      有限觀察時間下的共振寬度約為 \(1/t\)；長時間極限才逐漸逼近嚴格的 energy conservation。
+                    </p>
+
+                    <h4>第三步：同一條公式分別導出 coherent drive 與 stochastic-noise transition</h4>
+                    <p>
+                      對人為 drive，令 \(F(t)=F_d\cos\omega_dt\)。在 \(\omega_d\simeq|\omega_{fi}|\) 且 rotating-wave approximation 成立時，
+                    </p>
+                    <p>\[
+                      \Omega_{fi}=\frac{F_d|O_{fi}|}{\hbar},
+                      \qquad
+                      P_{i\to f}(t)=
+                      \frac{\Omega_{fi}^2}{\Omega_{fi}^2+\Delta^2}
+                      \sin^2\!\left(\frac{t}{2}\sqrt{\Omega_{fi}^2+\Delta^2}\right),
+                      \quad \Delta=\omega_d-|\omega_{fi}|.
+                    \]</p>
+                    <p>
+                      這說明 control transition 的強弱由 drive-operator matrix element 決定。對 stationary random noise，則定義 correlation function 與 two-sided spectral density：
+                    </p>
+                    <p>\[
+                      C_F(\tau)=\langle F(\tau)F(0)\rangle,
+                      \qquad
+                      S_F(\omega)=\int_{-\infty}^{\infty}d\tau\,
+                      e^{i\omega\tau}C_F(\tau).
+                    \]</p>
+                    <p>把 amplitude 取 ensemble average，得到</p>
+                    <p>\[
+                      \begin{aligned}
+                      \big\langle P_{i\to f}(t)\big\rangle
+                      &=\frac{|O_{fi}|^2}{\hbar^2}
+                      \int_0^t dt_1\int_0^t dt_2\,
+                      e^{i\omega_{fi}(t_1-t_2)}C_F(t_2-t_1)\\
+                      &\xrightarrow[t\gg\tau_c]{}
+                      t\,\frac{|O_{fi}|^2}{\hbar^2}S_F(\omega_{if}),
+                      \qquad \omega_{if}=\frac{E_i-E_f}{\hbar}.
+                      \end{aligned}
+                    \]</p>
+                    <p>因此 Fermi golden rule 的 transition rate 為</p>
+                    <p>\[
+                      \boxed{
+                      \Gamma_{i\to f}
+                      =\frac{1}{\hbar^2}
+                      \left|\langle f|\hat O|i\rangle\right|^2
+                      S_F(\omega_{if})}.
+                    \]</p>
+                    <p>
+                      這個結果使用 weak coupling、stationary bath、\(t\) 長於 bath correlation time，以及可忽略高階 back-action 的近似。
+                      若教材把 \(2\pi\)、\(\hbar\) 或 density of states 吸收到 spectral density 的定義中，前因子會寫成
+                      \(2\pi/\hbar\) 等形式；必須先對照 \(S_F\) 的定義，不能只比公式外觀。
+                    </p>
+
+                    <h4>第四步：由 upward／downward rates 得到 \(T_1\)</h4>
+                    <p>令 \(\omega_{01}=(E_1-E_0)/\hbar>0\)，同一個 noise channel 給出</p>
+                    <p>\[
+                      \Gamma_\downarrow
+                      =\frac{|O_{01}|^2}{\hbar^2}S_F(+\omega_{01}),
+                      \qquad
+                      \Gamma_\uparrow
+                      =\frac{|O_{01}|^2}{\hbar^2}S_F(-\omega_{01}),
+                      \qquad
+                      \frac{1}{T_1}=\Gamma_\downarrow+\Gamma_\uparrow.
+                    \]</p>
+                    <p>
+                      對 thermal bath，detailed balance 給出
+                      \(S_F(-\omega)=e^{-\hbar\omega/k_BT}S_F(+\omega)\)。低溫時通常 \(\Gamma_\uparrow\ll\Gamma_\downarrow\)，但低頻 qubit 或有效環境溫度偏高時，
+                      upward transition 與 thermal population 不能忽略。若有多個不相關 channel，總 rate 是各 channel rate 相加；相關 channel 則需要 cross-spectral density \(S_{\alpha\beta}(\omega)\)。
+                      這裡的 upward／downward rate 使用 unsymmetrized quantum-noise spectrum；symmetrized spectrum 會丟掉能量流向，不能單獨區分兩者。
+                    </p>
+
+                    <h4>第五步：回到 diagonal coupling，推導 dephasing 與 sweet spot</h4>
+                    <p>Diagonal part 不直接交換 population，而是改變兩能階之差：</p>
+                    <p>\[
+                      \delta\omega_{01}(t)
+                      =\frac{F(t)}{\hbar}\bigl(O_{11}-O_{00}\bigr),
+                      \qquad
+                      \delta\phi(t)=\int_0^t dt'\,\delta\omega_{01}(t').
+                    \]</p>
+                    <p>
+                      若 \(F(t)=\delta\lambda(t)\) 且 \(\hat O=\partial_\lambda\hat H_0\)，Hellmann–Feynman theorem 直接連接 diagonal matrix element 與 frequency sensitivity：
+                    </p>
+                    <p>\[
+                      O_{nn}=\left\langle n\left|\frac{\partial\hat H_0}{\partial\lambda}\right|n\right\rangle
+                      =\frac{\partial E_n}{\partial\lambda},
+                      \qquad
+                      \frac{O_{11}-O_{00}}{\hbar}
+                      =\frac{\partial\omega_{01}}{\partial\lambda}.
+                    \]</p>
+                    <p>因此</p>
+                    <p>\[
+                      \delta\omega_{01}(t)
+                      \simeq
+                      \frac{\partial\omega_{01}}{\partial\lambda}\delta\lambda(t)
+                      +\frac12\frac{\partial^2\omega_{01}}{\partial\lambda^2}\delta\lambda^2(t)+\cdots.
+                    \]</p>
+                    <p>
+                      Sweet spot \(\partial_\lambda\omega_{01}=0\) 只消除一階 frequency fluctuation；二階 sensitivity、其他 noise parameter 與 finite-frequency relaxation 仍然存在。
+                      Ramsey、echo 或 dynamical-decoupling sequence 量到的 dephasing，則是低頻 \(S_\lambda(\omega)\) 經各自 filter function 加權後的結果。
+                    </p>
+
+                    <h4>第六步：把抽象的 \(F(t)\hat O\) 映射回 superconducting circuit</h4>
+                    <p>以含 charge、Josephson 與 inductive energy 的 Hamiltonian 為例：</p>
+                    <p>\[
+                      \hat H_0
+                      =4E_C(\hat n-n_g)^2
+                      -E_J\cos\hat\varphi
+                      +\frac12E_L(\hat\varphi-\varphi_{\rm ext})^2.
+                    \]</p>
+                    <p>小幅 parameter noise 不是額外猜一個 operator，而是直接微分：</p>
+                    <p>\[
+                      \delta\hat H(t)
+                      \simeq
+                      \delta n_g(t)\underbrace{\big[-8E_C(\hat n-n_g)\big]}_{\hat O_{n_g}}
+                      +\delta\varphi_{\rm ext}(t)
+                      \underbrace{\big[-E_L(\hat\varphi-\varphi_{\rm ext})\big]}_{\hat O_{\Phi}}
+                      +\delta E_J(t)\underbrace{\big[-\cos\hat\varphi\big]}_{\hat O_{E_J}}.
+                    \]</p>
+                    <p>
+                      若使用實際 flux \(\Phi_{\rm ext}\)，還要乘上
+                      \(\partial\varphi_{\rm ext}/\partial\Phi_{\rm ext}=2\pi/\Phi_0\)。同樣地，電容式 microwave drive 通常透過 \(\hat n\) 耦合。
+                      所以同一組 eigenstates 必須分別計算不同 operator 的 diagonal sensitivity 與 off-diagonal matrix element。
+                    </p>
+
+                    <h4>Charge-like noise：\(\hat n\) 與 offset charge</h4>
+                    <p>Charge noise 可來自 oxide defect、two-level system（TLS）或 gate-voltage fluctuation，並耦合到 Cooper-pair number：</p>
+                    <p>\[
+                      \hat V_{\rm charge}(t)
+                      =-8E_C\,\delta n_g(t)(\hat n-n_g)
+                      \simeq-8E_C\,\delta n_g(t)\hat n,
+                      \qquad
+                      \delta n_g=\frac{C_g\delta V_g}{2e}.
+                    \]</p>
+                    <p>
+                      低頻 charge noise 常呈現 \(1/f\) 特性。Transmon 增大 \(E_J/E_C\) 後，受到指數壓低的是能量對 offset charge
+                      \(n_g\) 的 charge dispersion；這是 frequency sensitivity 的鈍化，不能等同於
+                      \(\langle0|\hat n|1\rangle\) 指數下降。
+                    </p>
+
+                    <h4>Flux-like noise：低頻 dephasing 與 finite-frequency transition 必須分開</h4>
+                    <p>Flux noise 可來自 surface-spin bath。低頻部分主要透過 frequency sensitivity 造成 dephasing：</p>
+                    <p>\[
+                      \text{dephasing weight}
+                      \propto
+                      \left(\frac{\partial\omega_{01}}{\partial\Phi_{\rm ext}}\right)^2
+                      S_\Phi(\omega\approx0).
+                    \]</p>
+                    <p>同一個 flux channel 在 \(\omega_{01}\) 附近的 noise，則透過 off-diagonal matrix element 造成 transition：</p>
+                    <p>\[
+                      \Gamma_{1\to0}^{(\Phi)}
+                      =\frac{1}{\hbar^2}
+                      \left|
+                      \left\langle0\left|
+                      \frac{\partial\hat H_0}{\partial\Phi_{\rm ext}}
+                      \right|1\right\rangle
+                      \right|^2
+                      S_\Phi(+\omega_{01}).
+                    \]</p>
+                    <p>
+                      所以 sweet spot 與 relaxation protection 不是同一個敘述；前者控制 diagonal sensitivity，後者還要檢查 finite-frequency spectrum 與 off-diagonal matrix element。
+                    </p>
+
+                    <h4>完整判斷鏈</h4>
+                    <p>在 weak-coupling、Markovian exponential decay 的近似下，整條推導可壓成：</p>
+                    <p>\[
+                      \boxed{
+                      \text{circuit 與 bias}
+                      \Rightarrow \hat H_0(\lambda)
+                      \Rightarrow \{E_n,\ket n\}
+                      \Rightarrow \hat O_\lambda=\partial_\lambda\hat H_0
+                      \Rightarrow
+                      \begin{cases}
+                      O_{nn}\ \text{與}\ S_\lambda(0) &\Rightarrow T_\phi,\\
+                      O_{mn}\ \text{與}\ S_\lambda(\omega_{nm}) &\Rightarrow T_1\ \text{與 excitation},
+                      \end{cases}
+                      \Rightarrow T_2^{-1}=(2T_1)^{-1}+T_\phi^{-1}.}
+                    \]</p>
+                    <p>
+                      外界擾動造成某一條 transition，必須同時滿足：環境經由明確的 \(\hat O\) 耦合、\(\langle f|\hat O|i\rangle\neq0\)、
+                      且 \(S_F\) 在所需 Bohr frequency 有 spectral weight。Allowed 只表示不被 symmetry 禁止，不代表 transition 一定很強；
+                      forbidden 是 exact zero，suppressed 則是非零但很小。比較 coherence 時也不能只看單一 \(T_1\)：matrix-element suppression 與較低 environmental spectral density 對 device scaling 的意義不同。
+                    </p>
+
+                    <div class="qh-answer">
+                      <p><strong>問題一結論：</strong>decoherence 不能只歸因於「環境很吵」。完整答案必須從 \(\hat H_0\) 出發，指出 fluctuation parameter、由 \(\partial_\lambda\hat H_0\) 得到的 coupling operator、eigenstates、diagonal／off-diagonal matrix element，以及 \(S_F(0)\) 或 \(S_F(\omega_{01})\) 的 relevant frequency。</p>
+                    </div>
+
+                    <div class="qh-section" id="w3-q2">
                       <h3>問題二：什麼樣的量子態結構，能抑制 noise transition，卻仍保留 control transition？</h3>
                     </div>
                     <span class="qh-time">30–50 分鐘</span>
-                    <p>環境與控制都透過某個 operator 作用在 qubit 上，但兩者不必使用同一個 operator：</p>
-                    <div class="qh-board">
-                      <p>\[
-                        \Gamma_1\propto
-                        \left|\langle0|\hat O_{\rm noise}|1\rangle\right|^2S_{\rm noise}(\omega_{01}),
-                        \qquad
-                        \Omega_R\propto A\left|\langle0|\hat O_{\rm drive}|1\rangle\right|.
-                      \]</p>
-                    </div>
-                    <p>必須區分三種 protection：</p>
+                    <p>
+                      問題一已得到 transition 的兩個乘因子：environmental spectrum 與 system matrix element。問題二先固定環境無法完全消失，改問能否設計
+                      \(\ket0,\ket1\) 的 wavefunction、symmetry 與 logical encoding，使 dominant noise operator 幾乎看不見 logical transition，
+                      同時讓另一個可控制的 operator 仍能作用。
+                    </p>
+                    <p>環境造成的 relaxation 與人為施加的 control 具有相同的數學骨架：</p>
+                    <p>\[
+                      \hat V_{\rm noise}(t)=\hat O_{\rm noise}F_{\rm noise}(t),
+                      \qquad
+                      \Gamma_\downarrow=
+                      \frac{1}{\hbar^2}
+                      \left|\langle0|\hat O_{\rm noise}|1\rangle\right|^2
+                      S_{\rm noise}(+\omega_{01}),
+                    \]</p>
+                    <p>\[
+                      \hat V_{\rm drive}(t)=\hat O_{\rm drive}A\cos\omega_dt,
+                      \qquad
+                      \Omega_R=\frac{A}{\hbar}
+                      \left|\langle0|\hat O_{\rm drive}|1\rangle\right|.
+                    \]</p>
+                    <p>
+                      兩式的差別不在「noise 是壞的、drive 是好的」，而在它們是否經由同一個 physical port 與同一個 operator 耦合。
+                      若 \(\hat O_{\rm noise}=\hat O_{\rm drive}\)，壓低 qubit matrix element 會同時延長 \(T_1\) 與降低 Rabi rate；
+                      若兩者具有不同的 symmetry、spatial profile 或 frequency dependence，才可能對 environment 弱、對 control 強。
+                    </p>
+
+                    <h4>第一步：把所有 operator 投影到 logical subspace</h4>
+                    <p>定義 logical projector</p>
+                    <p>\[
+                      \hat P_{\rm L}=\ket0\!\bra0+\ket1\!\bra1.
+                    \]</p>
+                    <p>任一 Hermitian operator 在 logical subspace 中都可以分解成</p>
+                    <p>\[
+                      \hat P_{\rm L}\hat O\hat P_{\rm L}
+                      =\bar O\,\hat I
+                      +\frac{O_{11}-O_{00}}{2}\hat\sigma_z
+                      +\operatorname{Re}O_{01}\,\hat\sigma_x
+                      -\operatorname{Im}O_{01}\,\hat\sigma_y,
+                      \qquad
+                      \bar O=\frac{O_{00}+O_{11}}{2}.
+                    \]</p>
+                    <p>因此 state protection 的物理要求可以直接讀成：</p>
+                    <ul>
+                      <li><strong>環境難以分辨 logical states：</strong>\(O_{11}^{\rm noise}-O_{00}^{\rm noise}\approx0\)，降低一階 dephasing。</li>
+                      <li><strong>環境難以交換 logical population：</strong>\(O_{01}^{\rm noise}\approx0\)，降低 relaxation／excitation。</li>
+                      <li><strong>人為控制不是 identity：</strong>\(O_{01}^{\rm drive}\neq0\)，保留 transverse control；需要 logical \(Z\) control 時，drive 的 diagonal difference 也必須可調。</li>
+                    </ul>
+                    <p>理想情況可濃縮為</p>
+                    <p>\[
+                      \boxed{
+                      \hat P_{\rm L}\hat O_{\rm noise}\hat P_{\rm L}
+                      \simeq c\hat I,
+                      \qquad
+                      \left|\langle0|\hat O_{\rm drive}|1\rangle\right|
+                      \neq0.}
+                    \]</p>
+                    <p>
+                      這個條件必須逐一套用到 dominant noise channels。對 charge noise 成立，不代表對 flux、critical-current、dielectric-loss 或 quasiparticle channel 也成立。
+                    </p>
+
+                    <h4>第二步：exact symmetry 如何產生 selection rule？</h4>
+                    <p>
+                      假設存在 parity-type unitary symmetry \(\hat{\mathcal P}\)，滿足
+                      \(\hat{\mathcal P}^2=\hat I\) 與 \([\hat H_0,\hat{\mathcal P}]=0\)。能量 eigenstates 可同時選成 symmetry eigenstates：
+                    </p>
+                    <p>\[
+                      \hat{\mathcal P}\ket n=p_n\ket n,
+                      \qquad p_n=\pm1.
+                    \]</p>
+                    <p>若 coupling operator 在此 symmetry 下具有 parity \(\eta_O=\pm1\)，</p>
+                    <p>\[
+                      \hat{\mathcal P}\hat O\hat{\mathcal P}^{\dagger}=\eta_O\hat O,
+                    \]</p>
+                    <p>則 matrix element 必須滿足</p>
+                    <p>\[
+                      \begin{aligned}
+                      O_{mn}
+                      &=\langle m|\hat O|n\rangle\\
+                      &=\langle m|\hat{\mathcal P}^{\dagger}
+                      (\hat{\mathcal P}\hat O\hat{\mathcal P}^{\dagger})
+                      \hat{\mathcal P}|n\rangle\\
+                      &=p_mp_n\eta_O\,O_{mn}.
+                      \end{aligned}
+                    \]</p>
+                    <p>所以</p>
+                    <p>\[
+                      \boxed{p_mp_n\eta_O=-1\quad\Longrightarrow\quad O_{mn}=0.}
+                    \]</p>
+                    <ul>
+                      <li>若 \(\ket m,\ket n\) parity 相反，even operator 的 matrix element 為零，odd operator 可以連接兩態。</li>
+                      <li>若兩態 parity 相同，odd operator 的 matrix element 為零，even operator 才可能連接兩態。</li>
+                      <li>「可以」只表示 symmetry 沒有強迫它為零；實際大小仍取決於 wavefunction。</li>
+                    </ul>
+                    <p>
+                      這正是分離 noise 與 control 的第一種方法：讓 \(\hat O_{\rm noise}\) 具有被禁止的 parity，讓 \(\hat O_{\rm drive}\) 具有被允許的 parity。
+                      在 half-flux Fluxonium 的對稱位能中，states 具有確定 parity；但要特別注意，\(\hat n\) 與相對於對稱中心的 phase operator 都是 odd operator，
+                      因此相反 parity 的 \(0\leftrightarrow1\) transition 是 parity-allowed。若該 matrix element 很小，物理來源是 wavefunction／tunneling suppression，而不是把它誤稱為 parity-forbidden。
+                    </p>
+
+                    <h4>第三步：exact selection rule 如何被 symmetry-breaking perturbation 打開？</h4>
+                    <p>若真實裝置含有小的 symmetry-breaking term，</p>
+                    <p>\[
+                      \hat H=\hat H_0+\epsilon\hat W,
+                      \qquad [\hat W,\hat{\mathcal P}]\neq0,
+                    \]</p>
+                    <p>一階 perturbation theory 給出</p>
+                    <p>\[
+                      \ket{\widetilde n}
+                      \simeq\ket n+\epsilon\sum_{k\neq n}
+                      \frac{\langle k|\hat W|n\rangle}{E_n-E_k}\ket k.
+                    \]</p>
+                    <p>
+                      原本嚴格為零的 \(\langle0|\hat O|1\rangle\)，會因 opposite-symmetry admixture 變成 \(O(\epsilon)\)；對應 transition rate 通常由
+                      matrix element 的平方開始成為 \(O(\epsilon^2)\)。因此聲稱「symmetry protected」時，還必須列出 flux detuning、junction mismatch、stray capacitance、offset charge
+                      或 control-line asymmetry 如何破壞 symmetry，而不能只展示理想 Hamiltonian。
+                    </p>
+
+                    <h4>第四步：wavefunction overlap suppression 不等於 exact zero</h4>
+                    <p>在廣義座標 \(x\) 的 representation 中，</p>
+                    <p>\[
+                      O_{01}=\langle0|\hat O|1\rangle
+                      =\int dx\,\psi_0^*(x)\,\hat O(x,-i\partial_x)\,\psi_1(x).
+                    \]</p>
+                    <p>
+                      若 logical wavefunctions localized 在不同 wells、不同 regions，或多維 configuration space 中近乎 disjoint support，對某些 local／smooth operator 的積分可以非常小。
+                      這種 suppression 可以隨 barrier action、有效質量或 energy-scale ratio 呈 exponential scaling，但通常不是 exact zero：finite tunneling、disorder、mode mixing
+                      與 operator 的 derivative structure 都可能留下 residual matrix element。
+                    </p>
+                    <p>
+                      所以必須把兩種敘述分開：<strong>selection-rule forbidden</strong> 是由 symmetry algebra 得到零；
+                      <strong>overlap suppressed</strong> 是由具體 eigenfunction 積分得到小量。前者主要問 symmetry-breaking perturbation，後者主要問參數 scaling 與 fabrication variation。
+                    </p>
+                    <p>
+                      多自由度或 encoded state structure 還可以把 dominant fluctuation 變成 common-mode action，使
+                      \(\hat P_{\rm L}(\sum_j c_j\hat O_j)\hat P_{\rm L}\simeq c\hat I\)。但這只保護指定的 collective channel；
+                      local disorder 或 differential noise 若投影成 \(\sigma_z\) 或 \(\sigma_{x,y}\)，仍會造成 decoherence。
+                    </p>
+
+                    <h4>第五步：sweet spot 是 diagonal protection，不是 transition selection rule</h4>
+                    <p>對 parameter noise \(\lambda\)，問題一的 Hellmann–Feynman relation 給出</p>
+                    <p>\[
+                      \frac{\partial\omega_{01}}{\partial\lambda}
+                      =\frac{1}{\hbar}
+                      \left(
+                      \left\langle1\left|\frac{\partial\hat H_0}{\partial\lambda}\right|1\right\rangle
+                      -
+                      \left\langle0\left|\frac{\partial\hat H_0}{\partial\lambda}\right|0\right\rangle
+                      \right).
+                    \]</p>
+                    <p>
+                      Sweet spot \(\partial_\lambda\omega_{01}=0\) 表示兩個 logical states 對該 fluctuation 具有相同的一階 diagonal response，環境較難由 frequency shift 分辨它們。
+                      它並沒有要求
+                      \(\langle0|\partial_\lambda\hat H_0|1\rangle=0\)，所以不能自動推出較長 \(T_1\)。反過來，off-diagonal matrix element 很小也不保證
+                      \(O_{11}-O_{00}\) 很小。
+                    </p>
+                    <p>因此必須區分三種 protection：</p>
                     <ol>
                       <li><strong>Sweet-spot protection：</strong>\(\partial\omega_{01}/\partial\lambda=0\)，主要降低低頻 parameter fluctuation 所造成的 dephasing。</li>
-                      <li><strong>Selection-rule protection：</strong>因 symmetry 與 operator parity，使特定 matrix element 嚴格為零。</li>
-                      <li><strong>Matrix-element suppression：</strong>transition 並未被 symmetry 禁止，但因 localization 或 wavefunction overlap 而非常小。</li>
+                      <li><strong>Selection-rule protection：</strong>因 exact symmetry 與 operator parity，使特定 matrix element 嚴格為零。</li>
+                      <li><strong>Matrix-element suppression：</strong>transition 未被 symmetry 禁止，但因 wavefunction localization 或 overlap 很小而受到抑制。</li>
+                    </ol>
+
+                    <h4>第六步：direct transition 太弱時，control 還有哪些路徑？</h4>
+                    <p>
+                      保留 controllability 不等於一定要把 protected \(0\leftrightarrow1\) transition 做得很強。常見方法有：
+                    </p>
+                    <ol>
+                      <li><strong>使用不同 operator／port：</strong>例如 dominant loss 透過 charge-like operator，但 control 使用 flux-like operator；或反過來利用 operator parity。</li>
+                      <li><strong>使用 auxiliary level：</strong>讓 \(0\leftrightarrow a\) 與 \(1\leftrightarrow a\) 為 allowed transitions，再用 two-tone／Raman process 實現 logical rotation。</li>
+                      <li><strong>暫時打破 protection：</strong>idle 時停在 protected point，gate 時施加 bias 或 parametric modulation，短暫混合 states，pulse 後回到 protected Hamiltonian。</li>
+                      <li><strong>經由 virtual transitions readout：</strong>即使 \(O_{01}\) 很小，\(\ket0\)、\(\ket1\) 到 higher states 的不同 virtual coupling 仍可產生 dispersive contrast。</li>
+                    </ol>
+                    <p>以 detuned auxiliary state \(\ket a\) 為例，消去 \(\ket a\) 後的有效 Raman coupling 具有</p>
+                    <p>\[
+                      \Omega_{\rm eff}\sim
+                      \frac{\Omega_{0a}\Omega_{a1}}{2\Delta_a},
+                    \]</p>
+                    <p>
+                      但 auxiliary-state population、AC Stark shift、additional decay path 與 calibration complexity 都會成為代價。暫時打破 symmetry 也不是免費的：
+                      control pulse 可能同時打開原本被禁止的 noise channel。
+                    </p>
+                    <p>Dispersive readout 也可以利用 higher-state virtual transitions，而不要求直接 qubit transition 很強。在 rotating-wave、dispersive approximation 下可示意為</p>
+                    <p>\[
+                      \chi_j\simeq
+                      \sum_{k<j}\frac{|g_{kj}|^2}{\omega_{jk}-\omega_r}
+                      -\sum_{k>j}\frac{|g_{jk}|^2}{\omega_{kj}-\omega_r},
+                      \qquad
+                      \chi=\chi_1-\chi_0,
+                      \qquad
+                      \omega_{ab}=\frac{E_a-E_b}{\hbar}>0\ \text{for }a>b.
+                    \]</p>
+                    <p>
+                      這條路徑仍需檢查 critical photon number、Purcell decay、near-resonant higher transition 與 measurement-induced leakage。
+                    </p>
+
+                    <table class="qh-session-plan">
+                      <thead><tr><th>Noise channel</th><th>Transmon 的主要策略</th><th>Fluxonium 可使用的策略</th></tr></thead>
+                      <tbody>
+                        <tr><td>Charge noise</td><td>大 \(E_J/E_C\) 壓低 energy 對 \(n_g\) 的 charge dispersion</td><td>Multi-well wavefunction structure 可改變 \(\hat n\) matrix element</td></tr>
+                        <tr><td>Flux noise</td><td>Fixed-frequency design 不直接使用 flux bias；tunable design 另行檢查 sweet spot</td><td>Half-flux sweet spot 使 \(\partial\omega_{01}/\partial\Phi=0\)</td></tr>
+                        <tr><td>Even-operator perturbation</td><td>依具體 symmetry 判斷</td><td>Half-flux parity 可使某些 transition 嚴格禁止</td></tr>
+                        <tr><td>Protection nature</td><td>Parameter regime 與 energy-dispersion engineering</td><td>Symmetry、sweet spot 與 wavefunction engineering</td></tr>
+                        <tr><td>Control operator</td><td>通常以 capacitive \(\hat n\) drive 直接控制 \(0\leftrightarrow1\)</td><td>依 matrix-element hierarchy 選擇 charge／flux drive 或 higher transition</td></tr>
+                        <tr><td>Leakage</td><td>較弱 anharmonicity 要限制 drive bandwidth</td><td>較強 anharmonicity 有利，但 rich multilevel spectrum 仍須逐條檢查</td></tr>
+                      </tbody>
+                    </table>
+
+                    <h4>第七步：較強 drive 不能用來掩蓋所有 controllability 問題</h4>
+                    <p>
+                      若 \(O_{01}^{\rm drive}\) 很小，增加 amplitude \(A\) 的確可以恢復 \(\Omega_R\)，但同一個 pulse 也會耦合到 \(\ket{k\ge2}\)。定義與 drive 最近的 leakage detuning：
+                    </p>
+                    <p>\[
+                      \Delta_{\rm leakage}
+                      =\min_{i\in\{0,1\},\,k\ge2}
+                      \left|\omega_{ki}-\omega_d\right|.
+                    \]</p>
+                    <p>對 off-resonant leakage channel，最低階估計為</p>
+                    <p>\[
+                      P_{\rm leakage}
+                      \sim
+                      \sum_{i\in\{0,1\},\,k\ge2}
+                      \left|
+                      \frac{A\langle k|\hat O_{\rm drive}|i\rangle}
+                      {\hbar(\omega_{ki}-\omega_d)}
+                      \right|^2.
+                    \]</p>
+                    <p>
+                      因此合理的 state structure 不只要使 \(O_{01}^{\rm noise}\) 小，還要讓 desired drive matrix element 與 undesired leakage matrix elements 形成足夠大的 hierarchy。
+                      對直接 resonant control，通常需要 \(\Omega_R\ll\Delta_{\rm leakage}\)；實際 gate 還要加入 pulse spectrum、AC Stark shift、counter-rotating term 與 calibration error。
+                    </p>
+
+                    <h4>完整設計檢查順序</h4>
+                    <ol>
+                      <li>指定 logical states \(\ket0,\ket1\) 與所有 dominant \(\hat O_{\rm noise}^{(\alpha)}\)。</li>
+                      <li>計算每個 projected operator：\(O_{11}-O_{00}\) 與 \(O_{01}\)，分別判斷 dephasing 與 transition protection。</li>
+                      <li>說明小 matrix element 來自 exact symmetry、wavefunction overlap，還是只來自較低 environmental \(S(\omega)\)。</li>
+                      <li>加入 realistic asymmetry，檢查 forbidden matrix element 對 mismatch／bias error 的 scaling。</li>
+                      <li>選擇 \(\hat O_{\rm drive}\)、direct 或 auxiliary transition，計算 Rabi rate。</li>
+                      <li>列出所有 nearby transitions，檢查 leakage、readout、reset 與 thermalization，而不是只驗證 idle coherence。</li>
                     </ol>
                     <div class="qh-answer">
-                      <p><strong>核心矛盾：</strong>我們希望 environment 難以控制量子態，卻仍要保留人為控制它的途徑。保護必須是 operator-specific，而不是把所有 coupling 一起關掉。</p>
+                      <p><strong>問題二結論：</strong>理想量子態結構使 dominant noise operator 在 logical subspace 中近似 identity，卻讓可選擇的 drive operator 保留 transverse component。實作上必須同時驗證 symmetry／overlap 的來源、symmetry-breaking sensitivity、Rabi rate、auxiliary path 與 leakage；protection 是 operator-specific 的 state engineering，不是把所有 coupling 一起關掉。</p>
                     </div>
 
-                    <div class="qh-section">
+                    <div class="qh-section" id="w3-q3">
                       <h3>問題三：加入 superinductor，會在 Josephson circuit 的 Hamiltonian 中增加什麼？</h3>
                     </div>
                     <span class="qh-time">50–70 分鐘</span>
-                    <p>Transmon-like circuit：</p>
-                    <div class="qh-board"><p>\[
-                      \hat H_{\rm T}=4E_C(\hat n-n_g)^2-E_J\cos\hat\varphi
-                    \]</p></div>
-                    <p>加入 superinductor 與 external flux 後：</p>
-                    <div class="qh-board"><p>\[
-                      \hat H_{\rm F}=4E_C\hat n^2-E_J\cos\hat\varphi
-                      +\frac12E_L(\hat\varphi-\varphi_{\rm ext})^2.
-                    \]</p></div>
+                    <h4>為什麼不只繼續調整 Transmon 的 \(E_J/E_C\)？</h4>
+                    <p>
+                      Fluxonium 可以視為對 charge／flux qubit 設計的重新安排：它不是只在原有 Transmon Hamiltonian 裡換一組數值，
+                      而是加入非常大的電感，形成新的 global confinement、flux dependence 與 multi-well potential landscape。
+                      與 Transmon 相比，Fluxonium 常具有較低 computational frequency、較大的 anharmonicity，並可在特定工作點得到較長 relaxation time。
+                    </p>
+
+                    <h4>Fluxonium 的三個主要元件</h4>
                     <ul>
-                      <li>Superinductor 提供很小的 inductive energy \(E_L\)。</li>
-                      <li>Cosine potential 上疊加 parabolic confinement，形成新的 multi-well landscape。</li>
-                      <li>External flux 成為調整 potential symmetry 與 operating point 的設計參數。</li>
-                      <li>版圖中的 capacitor、small junction、JJ-array superinductor 與 flux loop 分別映射到 \(E_C,E_J,E_L,\Phi_{\rm ext}\)。</li>
+                      <li><strong>Josephson junction：</strong>提供 nonlinear cosine potential 與 \(E_J\)。</li>
+                      <li><strong>Capacitor：</strong>提供 charging energy \(E_C\)。</li>
+                      <li><strong>Superinductor：</strong>提供很小的 inductive energy \(E_L\) 與 phase confinement。</li>
+                    </ul>
+                    <p>
+                      Superinductor 必須同時具有非常大的電感、低損耗與低 parasitic capacitance。實作可能使用 Josephson-junction array、
+                      高 kinetic-inductance 材料或其他高阻抗結構；這些實作也會帶來 array modes、製程變異與寄生耦合。
+                    </p>
+
+                    <h4>第一步：從 branch flux 寫出三個 circuit-element energies</h4>
+                    <p>
+                      選擇跨 small junction 的 branch flux 作為 generalized coordinate：
+                    </p>
+                    <p>\[
+                      \Phi(t)=\int^t V(t')dt',
+                      \qquad
+                      \varphi=\frac{2\pi\Phi}{\Phi_0},
+                      \qquad
+                      \varphi_{\rm ext}=\frac{2\pi\Phi_{\rm ext}}{\Phi_0}.
+                    \]</p>
+                    <p>Capacitor、Josephson junction 與 linear inductor 分別提供</p>
+                    <p>\[
+                      T_C=\frac12C_\Sigma\dot\Phi^2,
+                      \qquad
+                      U_J=-E_J\cos\varphi,
+                      \qquad
+                      U_L=\frac{(\Phi-\Phi_{\rm ext})^2}{2L}.
+                    \]</p>
+                    <p>
+                      這裡 external flux 的位置取決於 gauge 與 coordinate choice；物理內容是 fluxoid constraint 使 small-junction phase、superinductor phase 與 external flux 不再彼此獨立。
+                    </p>
+
+                    <h4>第二步：由 Lagrangian 做 Legendre transform</h4>
+                    <p>Lagrangian 為 kinetic energy 減 potential energy：</p>
+                    <p>\[
+                      \mathcal L
+                      =\frac12C_\Sigma\dot\Phi^2
+                      +E_J\cos\!\left(\frac{2\pi\Phi}{\Phi_0}\right)
+                      -\frac{(\Phi-\Phi_{\rm ext})^2}{2L}.
+                    \]</p>
+                    <p>與 \(\Phi\) 共軛的 canonical charge 是</p>
+                    <p>\[
+                      Q=\frac{\partial\mathcal L}{\partial\dot\Phi}
+                      =C_\Sigma\dot\Phi,
+                      \qquad
+                      n=\frac{Q}{2e},
+                      \qquad
+                      [\hat\Phi,\hat Q]=i\hbar
+                      \Longleftrightarrow
+                      [\hat\varphi,\hat n]=i.
+                    \]</p>
+                    <p>做 Legendre transform：</p>
+                    <p>\[
+                      \begin{aligned}
+                      \hat H
+                      &=\hat Q\dot{\hat\Phi}-\mathcal L\\
+                      &=\frac{\hat Q^2}{2C_\Sigma}
+                      -E_J\cos\hat\varphi
+                      +\frac{(\hat\Phi-\Phi_{\rm ext})^2}{2L}\\
+                      &=4E_C\hat n^2
+                      -E_J\cos\hat\varphi
+                      +\frac12E_L(\hat\varphi-\varphi_{\rm ext})^2,
+                      \end{aligned}
+                    \]</p>
+                    <p>其中</p>
+                    <p>\[
+                      E_C=\frac{e^2}{2C_\Sigma},
+                      \qquad
+                      E_L=\frac{1}{L}\left(\frac{\Phi_0}{2\pi}\right)^2.
+                    \]</p>
+                    <p>
+                      所以問題三最直接的答案是：<strong>superinductor 增加 quadratic inductive-energy term</strong>
+                      \(\tfrac12E_L(\hat\varphi-\varphi_{\rm ext})^2\)。但更重要的反直覺是
+                      \(L\) 越大，\(E_L\) 越小；superinductor 提供的是曲率很小、範圍卻遍及許多 cosine wells 的 global confinement。
+                    </p>
+
+                    <h4>第三步：兩種常見 gauge 寫法是同一個 Hamiltonian</h4>
+                    <p>把新 coordinate 定義成 \(\hat\theta=\hat\varphi-\varphi_{\rm ext}\)，可改寫為</p>
+                    <p>\[
+                      \hat H
+                      =4E_C\hat n^2
+                      +\frac12E_L\hat\theta^2
+                      -E_J\cos(\hat\theta+\varphi_{\rm ext}).
+                    \]</p>
+                    <p>因此文獻中常見的兩種形式</p>
+                    <p>\[
+                      -E_J\cos\hat\varphi
+                      +\frac12E_L(\hat\varphi-\varphi_{\rm ext})^2
+                      \qquad\text{與}\qquad
+                      -E_J\cos(\hat\theta+\varphi_{\rm ext})
+                      +\frac12E_L\hat\theta^2
+                    \]</p>
+                    <p>
+                      只差 coordinate shift。推導與數值計算必須從頭到尾選定同一個 gauge，不能同時在 cosine 與 parabola 重複加入 external-flux shift。
+                    </p>
+
+                    <h4>第四步：為什麼 inductive shunt 會改變 phase coordinate 與 offset charge？</h4>
+                    <p>Transmon-like circuit 寫成</p>
+                    <p>\[
+                      \hat H_{\rm T}=4E_C(\hat n-n_g)^2-E_J\cos\hat\varphi.
+                    \]</p>
+                    <p>
+                      沒有 inductive term 時，potential 是 \(2\pi\)-periodic，phase 是 compact coordinate，\(n_g\) 會進入 wavefunction 的 boundary condition。
+                      加入 inductor 後，quadratic term 使 \(\varphi\) 成為定義在整條 real line 的 extended coordinate，\(\varphi\to\varphi+2\pi\) 會移到另一個 cosine well，
+                      不再是同一個 configuration point。
+                    </p>
+                    <p>若暫時保留 offset charge，</p>
+                    <p>\[
+                      \hat H=4E_C(\hat n-n_g)^2+U(\hat\varphi),
+                      \qquad
+                      \hat U_g=e^{in_g\hat\varphi},
+                      \qquad
+                      \hat U_g^\dagger(\hat n-n_g)\hat U_g=\hat n.
+                    \]</p>
+                    <p>
+                      因 \(\varphi\in\mathbb R\)，這個 unitary transformation 不會引入 compact-coordinate 的 twisted boundary condition，static \(n_g\) 可由 low-energy Hamiltonian 消去。
+                      這是 Fluxonium「free of charge offsets」的結構性來源；它不表示所有 capacitive loss 或 \(\hat n\)-coupled finite-frequency noise 都消失。
+                    </p>
+
+                    <h4>第五步：Josephson-junction array 為什麼可以近似成 superinductor？</h4>
+                    <p>
+                      實作上常用 \(N\) 個較大的 Josephson junction 串聯。令每顆 array junction 的 phase drop 為 \(\theta_j\)，且
+                      \(E_{J,a}\gg E_{C,a}\)，使每顆 junction 很少發生 quantum phase slip。對小 \(\theta_j\) 展開：
+                    </p>
+                    <p>\[
+                      -E_{J,a}\cos\theta_j
+                      \simeq-E_{J,a}+\frac12E_{J,a}\theta_j^2.
+                    \]</p>
+                    <p>若 collective phase drop 為 \(\Theta=\sum_{j=1}^{N}\theta_j\)，最低能量分布近似 \(\theta_j=\Theta/N\)，因此</p>
+                    <p>\[
+                      U_{\rm array}
+                      \simeq\sum_{j=1}^{N}\frac12E_{J,a}\left(\frac{\Theta}{N}\right)^2
+                      =\frac12\frac{E_{J,a}}{N}\Theta^2
+                      \equiv\frac12E_L\Theta^2.
+                    \]</p>
+                    <p>所以在最簡單且均勻的 array approximation 中，</p>
+                    <p>\[
+                      E_L\simeq\frac{E_{J,a}}{N},
+                      \qquad
+                      L_{\rm array}\simeq
+                      N\frac{(\Phi_0/2\pi)^2}{E_{J,a}}.
+                    \]</p>
+                    <p>
+                      串聯 junction 數增加，總電感增大而 effective \(E_L\) 下降。但 \(N\) 不能任意增加：junction capacitance、island-to-ground capacitance、parameter disorder
+                      與 array length 會共同產生一整組 internal plasma／array modes。
+                    </p>
+
+                    <h4>第六步：新增 quadratic term 後，位能在數學上發生什麼？</h4>
+                    <p>Effective potential 是</p>
+                    <p>\[
+                      U(\varphi)
+                      =-E_J\cos\varphi
+                      +\frac12E_L(\varphi-\varphi_{\rm ext})^2.
+                    \]</p>
+                    <p>Local minima \(\varphi_m\) 滿足</p>
+                    <p>\[
+                      E_J\sin\varphi_m
+                      +E_L(\varphi_m-\varphi_{\rm ext})=0,
+                    \]</p>
+                    <p>而每個 minimum 附近的 curvature 與 small-oscillation energy scale 約為</p>
+                    <p>\[
+                      U''(\varphi_m)=E_J\cos\varphi_m+E_L,
+                      \qquad
+                      \hbar\omega_{p,m}\simeq
+                      \sqrt{8E_C\big(E_J\cos\varphi_m+E_L\big)}.
+                    \]</p>
+                    <p>
+                      當 \(E_J/E_L\) 很大時，cosine 產生許多 local wells，緩慢變化的 parabola 決定各 wells 的 global energy ordering。忽略 local zero-point correction 時，
+                    </p>
+                    <p>\[
+                      U_m\approx-E_J+\frac12E_L(2\pi m-\varphi_{\rm ext})^2.
+                    \]</p>
+                    <p>
+                      External flux 因而可以重新排列不同 fluxoid-like wells；在 \(\varphi_{\rm ext}=\pi\) 時，相鄰 wells 可成為對稱的 degenerate pair。
+                      \(E_C\) 與 barrier 決定 inter-well tunneling，這正是問題四要繼續追蹤的 wavefunction engineering。
+                    </p>
+
+                    <h4>第七步：什麼條件下 array 才能只留下單一 \(E_L\)？</h4>
+                    <p>
+                      真實 array 並不是沒有 dynamics 的理想線圈。保留所有 array-island fluxes 時，Hamiltonian 具有 capacitance matrix 與多個 Josephson cosine：
+                    </p>
+                    <p>\[
+                      \hat H_{\rm array}
+                      =\frac12\hat{\mathbf Q}^{\mathsf T}\mathbf C^{-1}\hat{\mathbf Q}
+                      -\sum_{j=1}^{N}E_{J,a}^{(j)}\cos\hat\theta_j.
+                    \]</p>
+                    <p>把它約化成單一 quadratic term，至少需要：</p>
+                    <ol>
+                      <li>每顆 array junction 位於 \(E_{J,a}/E_{C,a}\gg1\) 的近線性 regime，quantum phase-slip rate 足夠低。</li>
+                      <li>最低 internal array-mode frequency 高於 qubit、control 與 readout 的 relevant frequency range。</li>
+                      <li>Array modes 與 qubit collective coordinate 的 hybridization 足夠弱，或已明確納入 multimode Hamiltonian。</li>
+                      <li>Ground capacitance、junction disorder、dielectric loss 與 quasiparticle loss 不會把 superinductor 變成新的 dominant noise source。</li>
+                    </ol>
+                    <p>
+                      一旦這些條件失效，「加入 superinductor」就不再只是多一個 \(\tfrac12E_L\varphi^2\)：還會多出 parasitic modes、avoided crossings、additional decay／leakage paths
+                      與 fabrication sensitivity。
+                    </p>
+
+                    <h4>Superinductor 為什麼不是直接換成大 resistor？</h4>
+                    <p>
+                      Superinductance 的目標是零 DC resistance、低 dissipation，並在工作頻帶提供高於 Cooper-pair resistance quantum
+                      \(R_Q=h/(2e)^2\approx6.45\,\mathrm{k}\Omega\) 的 impedance，同時把 self-resonance 推到工作頻帶之外。
+                      大 resistor 雖然也可能有高 impedance，卻帶來實部 admittance、Johnson–Nyquist noise 與能量耗散，不能提供同樣的 coherent Hamiltonian term。
+                    </p>
+
+                    <ul>
+                      <li>\(\hat n\)：與 phase \(\hat\varphi\) 共軛的 Cooper-pair number operator。</li>
+                      <li>\(\hat\varphi\)：small junction 的 phase difference。</li>
+                      <li>\(\varphi_{\rm ext}=2\pi\Phi_{\rm ext}/\Phi_0\)：external flux 所造成的 phase offset。</li>
+                      <li>\(E_C\)：charging energy，控制 charge kinetic term。</li>
+                      <li>\(E_J\)：Josephson energy，控制 cosine wells 的深度。</li>
+                      <li>\(E_L\)：inductive energy，由 superinductor 決定。</li>
                     </ul>
                     <div class="qh-answer">
-                      <p><strong>核心句：</strong>Fluxonium 不是單純換一組參數，而是為 Hamiltonian 增加一個新的 energy term。</p>
+                      <p><strong>核心句：</strong>Fluxonium 不是單純換一組參數，而是用 superinductor 為 Hamiltonian 增加 global quadratic confinement。Ideal model 新增 \(\tfrac12E_L(\hat\varphi-\varphi_{\rm ext})^2\)；真實裝置則必須再驗證 JJ array 的 phase slip、self-resonance、internal modes 與 loss 是否可以安全消去。</p>
                     </div>
 
-                    <div class="qh-section">
+                    <h4>Layout-to-Hamiltonian mapping</h4>
+                    <table class="qh-session-plan">
+                      <thead><tr><th>版圖／裝置結構</th><th>主要參數</th><th>進一步影響</th></tr></thead>
+                      <tbody>
+                        <tr><td>Capacitor pad geometry</td><td>總電容與 \(E_C\)</td><td>Phase fluctuation、anharmonicity、coupling capacitance</td></tr>
+                        <tr><td>Small-junction area／oxide</td><td>\(I_c\) 與 \(E_J\)</td><td>Cosine-well depth、spectrum、fabrication spread</td></tr>
+                        <tr><td>JJ-array 或高阻抗結構</td><td>\(L\) 與 \(E_L\)</td><td>Global confinement、array parasitic modes、loss</td></tr>
+                        <tr><td>Array junction count／area</td><td>\(E_L\)、phase-slip amplitude</td><td>Inductance、linearity、array length 與製程累積誤差</td></tr>
+                        <tr><td>Array island ground capacitance</td><td>Internal-mode frequencies</td><td>Self-resonance、mode hybridization、readout／drive leakage</td></tr>
+                        <tr><td>Flux loop／flux line</td><td>\(\Phi_{\rm ext}\)</td><td>Sweet-spot position、bias precision、bandwidth、flux noise</td></tr>
+                      </tbody>
+                    </table>
+                    <p>
+                      Chip design 不是只畫電路，而是直接雕刻 Hamiltonian 的參數空間；同時，製程變異也會直接變成 \(E_J,E_C,E_L\) spread、
+                      frequency offset 與 yield 問題。
+                    </p>
+
+                    <div class="qh-task">
+                      <h4>符號分類活動</h4>
+                      <p>
+                        將本問中的符號分成四類：設計可選參數（\(E_J,E_L,E_C,\Phi_{\rm ext}\)）、製程／裝置產生參數（junction area、oxide thickness）、
+                        必須校準參數（實際 \(\omega_{01}\)、sweet-spot 位置）、只能量測估計的狀態（thermal population、residual flux offset）。
+                      </p>
+                    </div>
+
+                    <div class="qh-section" id="w3-q4">
                       <h3>問題四：Fluxonium 如何利用 \(E_C,E_J,E_L\) 與 external flux 塑造波函數，實現保護條件？</h3>
                     </div>
                     <span class="qh-time">70–95 分鐘</span>
-                    <div class="qh-board"><p>\[
-                      U(\varphi)=-E_J\cos\varphi+
-                      \frac12E_L(\varphi-\varphi_{\rm ext})^2.
-                    \]</p></div>
-                    <ul>
-                      <li><strong>\(E_J\)：</strong>決定 cosine wells 的深度。</li>
-                      <li><strong>\(E_L\)：</strong>決定 global confinement 與不同 wells 的相對能量。</li>
-                      <li><strong>\(E_C\)：</strong>決定 phase fluctuation、tunneling 與 wavefunction spread。</li>
-                      <li><strong>\(\Phi_{\rm ext}\)：</strong>改變 potential symmetry 與 operating point。</li>
-                    </ul>
                     <p>
-                      在 half-flux 附近，令 \(x=\varphi-\pi\)，可得到 \(U(x)=U(-x)\)，本徵態因而具有確定 parity。
-                      但 \(\hat n\) 與 \(x\) 都是 odd operator，原則上可以連接相反宇稱的 \(\ket0\) 與 \(\ket1\)；若 matrix element 很小，
-                      必須歸因於具體裝置中的 wavefunction localization／overlap，而不能錯誤地一律稱為 parity-forbidden。
+                      問題三已由 circuit 得到 Fluxonium Hamiltonian。問題四不再只問「多了哪一項」，而是追蹤每個 energy scale 如何改變 eigenvalue problem：
                     </p>
+                    <p>\[
+                      \hat H
+                      =4E_C\hat n^2
+                      -E_J\cos\hat\varphi
+                      +\frac12E_L(\hat\varphi-\varphi_{\rm ext})^2,
+                      \qquad [\hat\varphi,\hat n]=i.
+                    \]</p>
+
+                    <h4>第一步：把 Hamiltonian 寫成 phase-basis Schrödinger equation</h4>
+                    <p>在 phase basis 中 \(\hat n=-i\partial_\varphi\)，因此</p>
+                    <p>\[
+                      \left[
+                      -4E_C\frac{\partial^2}{\partial\varphi^2}
+                      +U(\varphi)
+                      \right]\psi_k(\varphi)
+                      =E_k\psi_k(\varphi),
+                    \]</p>
+                    <p>其中</p>
+                    <p>\[
+                      U(\varphi)=-E_J\cos\varphi
+                      +\frac12E_L(\varphi-\varphi_{\rm ext})^2.
+                    \]</p>
                     <p>
-                      同時，\(\partial\omega_{01}/\partial\Phi_{\rm ext}=0\) 是 sweet-spot 的 dephasing protection；
-                      它不自動保證 relaxation protection。後者仍需檢查對應 operator 的 matrix element 與 noise spectrum。
+                      與普通一維 Schrödinger equation 比較，phase particle 的 effective mass 為
+                    </p>
+                    <p>\[
+                      m_\varphi=\frac{\hbar^2}{8E_C}.
+                    \]</p>
+                    <p>
+                      所以 \(E_C\) 不只是「charging-energy 數字」：它決定 phase particle 的量子動能與有效質量；\(E_J,E_L,\varphi_{\rm ext}\) 則共同決定它所看見的 potential landscape。
                     </p>
 
-                    <div class="qh-section">
-                      <h3>問題五：我們能否從 noise operator 反推出一個 protected-qubit Hamiltonian？</h3>
+                    <h4>三個能量尺度的競爭</h4>
+                    <table class="qh-session-plan">
+                      <thead><tr><th>能量尺度</th><th>物理來源</th><th>在 Fluxonium 中的角色</th></tr></thead>
+                      <tbody>
+                        <tr><td>\(E_C\)</td><td>Capacitance</td><td>決定 phase wavefunction 的量子漲落、spread 與 inter-well tunneling</td></tr>
+                        <tr><td>\(E_J\)</td><td>Josephson junction</td><td>形成 periodic cosine wells，控制 well depth 與 nonlinearity</td></tr>
+                        <tr><td>\(E_L\)</td><td>Superinductor</td><td>提供緩慢的 parabolic confinement，決定不同 wells 的相對能量</td></tr>
+                        <tr><td>\(\Phi_{\rm ext}\)</td><td>External flux</td><td>平移 parabolic term，控制 potential symmetry 與 operating point</td></tr>
+                      </tbody>
+                    </table>
+                    <p>
+                      Fluxonium 的物理特色不是某一個單獨參數，而是 \(E_C,E_J,E_L\) 的競爭。調整它們會同時改變 wavefunction localization、
+                      tunneling、transition frequency、anharmonicity、operator matrix element 與 leakage spectrum。
+                    </p>
+
+                    <h4>第二步：先在單一 well 內讀出 localization 與 zero-point fluctuation</h4>
+                    <p>令 \(\varphi_m\) 為某一 local minimum，並定義</p>
+                    <p>\[
+                      K_m=U''(\varphi_m)=E_J\cos\varphi_m+E_L.
+                    \]</p>
+                    <p>在 \(\varphi_m\) 附近做 harmonic expansion，得到</p>
+                    <p>\[
+                      \hbar\omega_{p,m}\simeq\sqrt{8E_CK_m},
+                      \qquad
+                      \varphi_{{\rm zpf},m}=\left(\frac{2E_C}{K_m}\right)^{1/4},
+                      \qquad
+                      n_{{\rm zpf},m}=\left(\frac{K_m}{32E_C}\right)^{1/4}.
+                    \]</p>
+                    <p>這三個量直接給出參數直覺：</p>
+                    <ul>
+                      <li><strong>增大 \(E_C\)：</strong>phase particle 變輕，\(\psi(\varphi)\) 變寬，inter-well tunneling 增強；charging kinetic term 在能譜中的作用也更強。</li>
+                      <li><strong>增大 \(E_J\)：</strong>cosine wells 變深、barrier 變高，local curvature 增大，但不同 wells 間的 tunneling 通常下降。</li>
+                      <li><strong>減小 \(E_L\)：</strong>global parabola 變平，相鄰 fluxoid-like wells 的 energy detuning 下降，更多 wells 進入低能 spectrum。</li>
+                      <li><strong>改變 \(\varphi_{\rm ext}\)：</strong>不直接改變 cosine barrier，而是平移 parabola，重新排列不同 wells 的相對能量。</li>
+                    </ul>
+                    <p>
+                      Deep-well regime 的 tunnel splitting 可概略寫成
+                      \(\Delta\sim\hbar\omega_p e^{-S}\)，其中 semiclassical action \(S\) 隨 barrier height 與 effective mass 增加。
+                      因此較大 \(E_J/E_C\) 通常使 states 更 localized、\(\Delta\) 更小；精確值仍須由完整 potential 求解。
+                    </p>
+
+                    <h4>第三步：external flux 如何選擇不同 wells？</h4>
+                    <p>在 \(E_J/E_L\gg1\) 時，local minima 接近 \(\varphi_m\simeq2\pi m\)，其 localized-state energy 可先估為</p>
+                    <p>\[
+                      E_m^{\rm loc}
+                      \approx -E_J
+                      +\frac12E_L(2\pi m-\varphi_{\rm ext})^2
+                      +\frac12\hbar\omega_{p,m}.
+                    \]</p>
+                    <p>對 external flux 的斜率對應 persistent current：</p>
+                    <p>\[
+                      I_m=-\frac{\partial E_m^{\rm loc}}{\partial\Phi_{\rm ext}}
+                      \approx
+                      \frac{2\pi E_L}{\Phi_0}(2\pi m-\varphi_{\rm ext}).
+                    \]</p>
+                    <p>
+                      當兩個 localized wells 的 energies 接近時，tunneling 使 crossing 變成 avoided crossing。External flux 控制的是 well detuning；
+                      \(E_J/E_C\) 主要控制 tunnel gap；\(E_L\) 則同時控制 well detuning 的尺度與 persistent-current slope。
+                    </p>
+
+                    <h4>Half-flux potential、parity 與 wavefunction</h4>
+                    <p>
+                      在 \(\varphi_{\rm ext}=\pi\) 令 \(x=\varphi-\pi\)，Hamiltonian 變成
+                    </p>
+                    <p>\[
+                      \hat H_{1/2}
+                      =-4E_C\frac{\partial^2}{\partial x^2}
+                      +E_J\cos x+\frac12E_Lx^2,
+                      \qquad
+                      U(x)=U(-x).
+                    \]</p>
+                    <p>
+                      Potential 具有 exact reflection symmetry，
+                      eigenstates 因而可具有確定 parity：ground state \(\ket0\) 為偶、first excited state \(\ket1\) 為奇。
+                      Bonding／anti-bonding 直覺可以輔助理解，但 selection rule 的嚴格推論來自 symmetry 與 operator parity。
+                    </p>
+                    <p>若只保留左右兩個 localized states \(\ket L,\ket R\)，low-energy Hamiltonian 可寫成</p>
+                    <p>\[
+                      \hat H_{\rm 2w}
+                      =-\frac12\left(\Delta\hat\sigma_x+\epsilon\hat\sigma_z\right),
+                      \qquad
+                      \epsilon\simeq2I_p\,\delta\Phi,
+                      \qquad
+                      \delta\Phi=\Phi_{\rm ext}-\frac{\Phi_0}{2}.
+                    \]</p>
+                    <p>其 qubit splitting 與 half-flux eigenstates 為</p>
+                    <p>\[
+                      \hbar\omega_{01}=\sqrt{\Delta^2+\epsilon^2},
+                      \qquad
+                      \ket0\simeq\frac{\ket L+\ket R}{\sqrt2},
+                      \qquad
+                      \ket1\simeq\frac{\ket L-\ket R}{\sqrt2}.
+                    \]</p>
+                    <p>
+                      偏離 half flux 時 \(|\epsilon|\) 增加，eigenstates 逐漸 localized；在 half flux 則形成 even／odd superpositions。
+                      這個 two-well model 提供直覺，但 higher plasmon states、其他 wells 與真實 matrix elements仍須由完整 Hamiltonian 計算。
+                    </p>
+                    <ul>
+                      <li>\(\hat n\) 與 \(x=\varphi-\pi\) 都是 odd operator，原則上可以連接偶、奇態。</li>
+                      <li>若 \(\langle0|\hat n|1\rangle\) 或 \(\langle0|x|1\rangle\) 很小，不能只說「parity forbidden」；必須檢查 device-specific wavefunction overlap。</li>
+                      <li>\(\hat n^2\)、\(x^2\) 等 even operator 在相反 parity states 間可由 selection rule 嚴格禁止。</li>
+                    </ul>
+                    <p>
+                      Exact parity 來自 half-flux 處的 \(U(x)=U(-x)\)。\(E_J\gg E_L\) 與 \(E_J\gg E_C\) 是 deep-well／bonding 圖像常用的條件，
+                      但不是 parity symmetry 成立的必要條件。偏離 half flux 時 symmetry 與一階 flux sensitivity 會恢復，其大小需依裝置參數計算。
+                    </p>
+
+                    <h4>第四步：從 symmetry 與 two-well model 推導 flux sweet spot</h4>
+                    <p>External-flux coupling operator 是</p>
+                    <p>\[
+                      \frac{\partial\hat H}{\partial\Phi_{\rm ext}}
+                      =-\frac{2\pi E_L}{\Phi_0}
+                      (\hat\varphi-\varphi_{\rm ext}).
+                    \]</p>
+                    <p>
+                      在 half flux，\(x=\varphi-\pi\) 是 odd operator，而任何 parity eigenstate 都滿足 \(\langle n|x|n\rangle=0\)。由 Hellmann–Feynman theorem，
+                    </p>
+                    <p>\[
+                      \left.\frac{\partial E_n}{\partial\Phi_{\rm ext}}\right|_{\Phi_0/2}=0,
+                      \qquad
+                      \boxed{
+                      \left.\frac{\partial\omega_{01}}{\partial\Phi_{\rm ext}}
+                      \right|_{\Phi_0/2}=0.}
+                    \]</p>
+                    <p>Two-well model 給出同一結論：</p>
+                    <p>\[
+                      \frac{\partial\omega_{01}}{\partial\Phi_{\rm ext}}
+                      =\frac{1}{\hbar}
+                      \frac{\epsilon}{\sqrt{\Delta^2+\epsilon^2}}
+                      \frac{\partial\epsilon}{\partial\Phi_{\rm ext}}
+                      \xrightarrow[\epsilon\to0]{}0.
+                    \]</p>
+                    <p>
+                      在此 operating point，一階 flux sensitivity 消失，dephasing 由 higher-order term 主導。但 sweet spot 不自動保證 relaxation protection；
+                      relaxation 仍須檢查相應 operator 的 matrix element 與 \(S_F(\omega_{01})\)。
+                    </p>
+                    <p>而且在 two-well approximation 中</p>
+                    <p>\[
+                      \left.\frac{\partial^2\omega_{01}}{\partial\Phi_{\rm ext}^2}
+                      \right|_{\Phi_0/2}
+                      \simeq\frac{(2I_p)^2}{\hbar\Delta}.
+                    \]</p>
+                    <p>
+                      所以把 tunnel gap \(\Delta\) 做得非常小，雖可降低 \(\omega_{01}\) 與部分 transition matrix element，卻會增加 sweet spot 的二階 curvature，
+                      並加重 thermal initialization 與慢控制問題。Protection 仍然是多目標 trade-off。
+                    </p>
+
+                    <h4>第五步：逐一檢查 noise operator，而不是籠統說「Fluxonium 被保護」</h4>
+                    <table class="qh-session-plan">
+                      <thead><tr><th>Fluctuation</th><th>System operator（half flux）</th><th>Parity</th><th>直接結論</th></tr></thead>
+                      <tbody>
+                        <tr><td>External-flux noise</td><td>\(x=\varphi-\pi\)</td><td>Odd</td><td>Diagonal element 為零，提供一階 dephasing sweet spot；\(0\leftrightarrow1\) relaxation 是 allowed</td></tr>
+                        <tr><td>Capacitive／electric loss</td><td>\(\hat n\)</td><td>Odd</td><td>\(0\leftrightarrow1\) allowed，但 matrix element 可因低頻 inter-well transition 而受抑制</td></tr>
+                        <tr><td>Critical-current／\(E_J\) noise</td><td>\(-\cos\varphi\)</td><td>Even</td><td>相反 parity 間的 transition forbidden；diagonal sensitivity 仍需計算</td></tr>
+                        <tr><td>Inductive-energy／\(E_L\) noise</td><td>\(\tfrac12x^2\)</td><td>Even</td><td>相反 parity 間的 transition forbidden；可能保留 frequency fluctuation</td></tr>
+                      </tbody>
+                    </table>
+                    <p>
+                      Fluxonium 的低能態可分布在不同 phase wells。若兩個 states 的 wavefunction overlap 很小，某些 operator 的 transition matrix element
+                      也會變小，使 \(\ket1\rightarrow\ket0\) 經該 noise channel 的機率降低。這是 wavefunction engineering；它與 exact parity selection rule
+                      必須分開命名。
+                    </p>
+                    <p>
+                      對 Hamiltonian \(\hat H=4E_C\hat n^2+U(\hat\varphi)\)，commutator 提供一條非常有用的 exact relation：
+                    </p>
+                    <p>\[
+                      [\hat H,\hat\varphi]=-8iE_C\hat n,
+                      \qquad
+                      \left|\langle0|\hat n|1\rangle\right|
+                      =\frac{\hbar\omega_{01}}{8E_C}
+                      \left|\langle0|\hat\varphi|1\rangle\right|.
+                    \]</p>
+                    <p>
+                      這說明 half-flux 的 \(0\leftrightarrow1\) transition 即使具有不小的 phase dipole，低 \(\omega_{01}\) 仍會壓低 charge matrix element。
+                      因此 capacitive／dielectric relaxation 可以受到抑制，而 flux-like operator 的 relaxation 不會自動得到同樣的 suppression；仍須乘上各自的
+                      \(S_{\rm noise}(\omega_{01})\)。
+                    </p>
+
+                    <h4>第六步：protection 必須與 control、readout、leakage 一起驗證</h4>
+                    <p>對 capacitive 與 flux-like drive，直接 Rabi rates 分別具有</p>
+                    <p>\[
+                      \Omega_R^{(n)}\propto
+                      A_n\left|\langle0|\hat n|1\rangle\right|,
+                      \qquad
+                      \Omega_R^{(\varphi)}\propto
+                      A_\varphi\left|\langle0|x|1\rangle\right|.
+                    \]</p>
+                    <p>
+                      Charge matrix element 小會讓 capacitive direct gate 變慢；Fluxonium 的 higher transition，例如 \(1\leftrightarrow2\)，可能具有大得多的 charge matrix element，
+                      因此 control／readout 可利用 operator hierarchy、auxiliary level 或不同 coupling port。代價是 pulse sequence、frequency allocation 與 leakage analysis 更複雜。
+                    </p>
+                    <p>至少要同時計算</p>
+                    <p>\[
+                      \alpha=\omega_{12}-\omega_{01},
+                      \qquad
+                      \Delta_{\rm leakage}
+                      =\min_{i\in\{0,1\},\,k\ge2}
+                      |\omega_{ki}-\omega_d|,
+                      \qquad
+                      \Omega_R\ll\Delta_{\rm leakage}.
+                    \]</p>
+                    <p>
+                      Fluxonium 常有較大 anharmonicity，但同時具有 rich multilevel spectrum；「anharmonicity 大」不能取代逐條檢查 drive matrix element、near resonance、
+                      array modes 與 multiphoton leakage。
+                    </p>
+
+                    <h4>Protected spectrum 的直接代價：低頻與 thermal population</h4>
+                    <p>
+                      Fluxonium 的 protected regime 常伴隨較低 computational frequency。以 \(f_{01}=500\,\mathrm{MHz}\) 為例，
+                      \(hf/k_B\approx24\,\mathrm{mK}\)：在 \(T=50\,\mathrm{mK}\) 時，\(p_1/p_0\approx e^{-24/50}\approx0.62\)，
+                      \(p_1\approx0.38\)；在 \(T=20\,\mathrm{mK}\) 時，\(p_1/p_0\approx0.30\)，\(p_1\approx0.23\)。
+                    </p>
+                    <p>
+                      另一個常用尺度是 \(f_{01}=800\,\mathrm{MHz}\)，此時 \(hf/k_B\approx38\,\mathrm{mK}\)，在 \(20\,\mathrm{mK}\) 時
+                      \(p_1\approx0.13\)（只作 thermal-order estimate；實際值仍受非平衡 photons 與有效溫度影響）。低頻 transition 使 active reset、
+                      thermalization 與額外 readout transition 成為設計問題。
+                    </p>
+
+                    <h4>完整驗證流程：由參數走到 protection claim</h4>
+                    <ol>
+                      <li>指定 \(E_C,E_J,E_L,\Phi_{\rm ext}\)，求出 \(U(\varphi)\)、local minima 與 barrier。</li>
+                      <li>對完整 Hamiltonian diagonalize，畫出 \(E_k(\Phi)\) 與 \(\psi_k(\varphi)\)，不能只依賴 two-well 圖像。</li>
+                      <li>計算 \(\partial_\lambda\omega_{01}\) 與二階 curvature，確認 sweet spot 對哪個 parameter 成立。</li>
+                      <li>對每個 dominant noise channel 計算 \(\langle0|\hat O_{\rm noise}|1\rangle\) 與對應 \(S_{\rm noise}(\omega_{01})\)。</li>
+                      <li>計算 drive／readout operator 的 matrix elements、Rabi rate、dispersive path 與 \(\Delta_{\rm leakage}\)。</li>
+                      <li>把 \(\omega_{01}\) 與 refrigerator／effective temperature 比較，加入 thermal population、reset 與 bandwidth constraint。</li>
+                    </ol>
+
+                    <div class="qh-case">
+                      <h4>系統案例：mixing-chamber temperature 不等於 qubit effective temperature</h4>
+                      <p>
+                        即使 mixing chamber 顯示 10 mK，若 qubit effective temperature 是 50 mK，500 MHz Fluxonium 也不能假設自然初始化到 ground state。
+                        同一顆裝置可能同時具有低頻 computational transition 與較高頻 transition 可供 readout／control；因此要決定使用哪條 transition、
+                        如何避免 spectator excitation，以及 electronics 與 resonator 頻帶是否支援。
+                      </p>
+                    </div>
+
+                    <div class="learning-check">
+                      <h4>問題四學習檢核</h4>
+                      <ol>
+                        <li>Fluxonium 為什麼需要 superinductor？</li>
+                        <li>\(E_C,E_J,E_L\) 分別如何改變 potential 與 wavefunction？</li>
+                        <li>Flux sweet spot 如何降低 dephasing？</li>
+                        <li>為什麼 sweet spot 不能自動推出較長 \(T_1\)？</li>
+                        <li>如何區分 parity-forbidden 與 overlap-suppressed transition？</li>
+                        <li>為什麼低 \(\omega_{01}\) 會壓低 \(\hat n\) matrix element，卻不保證 \(x\) matrix element 同樣變小？</li>
+                        <li>若 direct charge drive 太弱，應先檢查哪一條 auxiliary transition 與哪一個 leakage channel？</li>
+                      </ol>
+                    </div>
+
+                    <div class="qh-section" id="w3-q5">
+                      <h3>問題五：Hamiltonian engineering——如何從欲抑制的 error operator 出發，設計下一種 qubit Hamiltonian？</h3>
                     </div>
                     <span class="qh-time">95–118 分鐘</span>
-                    <p>先在黑板建立四個不可省略的設計條件：</p>
+                    <p>
+                      前四問已用 Fluxonium 建立從 noise source、operator、Hamiltonian 到 eigenstate／matrix element 的完整鏈。第五問把 Fluxonium 視為第一個完整案例，並將方向反過來：
+                      <strong>若先指定 dominant error operator，我們需要改變參數、增加自由度、創造新的 symmetry，還是改造 Josephson element 本身？</strong>
+                    </p>
+
+                    <h4>Protected-qubit 的四個不可省略條件</h4>
                     <div class="qh-board"><p>\[
                       \boxed{
                       \begin{aligned}
@@ -620,650 +1596,188 @@
                       &\Delta_{\rm leakage}\ \text{足夠大}.
                       \end{aligned}}
                     \]</p></div>
+                    <p>這四項不是四個可任選的優點，而是一個 protected-qubit proposal 必須同時回答的 design specification：</p>
+                    <ol>
+                      <li><strong>Dephasing：</strong>哪一個 fluctuation parameter \(\lambda\) 被鈍化？只在單一 sweet spot，還是在一段 parameter range？</li>
+                      <li><strong>Relaxation：</strong>哪一個 \(\hat O_{\rm noise}\) 的 matrix element 被壓低？是 exact symmetry 還是 approximate overlap suppression？</li>
+                      <li><strong>Control：</strong>若 noise coupling 被壓低，使用哪一個不同的 \(\hat O_{\rm drive}\)、哪一條 transition 或哪一個 auxiliary level 控制？</li>
+                      <li><strong>Leakage：</strong>保護 logical states 時，有沒有同時製造鄰近 parasitic states、dense spectrum 或新的 leakage path？</li>
+                    </ol>
 
-                    <h4>進階 Topic 名詞巡禮：三條 Beyond-Fluxonium 路線</h4>
+                    <h4>從 error target 反推 Hamiltonian 的六個步驟</h4>
+                    <ol>
+                      <li><strong>指定 error：</strong>先寫出 dominant fluctuation \(F(t)\)、coupling operator \(\hat O_{\rm noise}\) 與 relevant frequency range；低頻 dephasing 與 \(\omega_{01}\) 附近的 relaxation 要分開。</li>
+                      <li><strong>指定 state structure：</strong>決定要利用 sweet spot、exact symmetry、wavefunction localization、near degeneracy，或多自由度的 disjoint support。</li>
+                      <li><strong>合成 candidate Hamiltonian：</strong>選擇要改變的 parameter regime、增加的 energy term、額外自由度、Josephson Fourier component 或 material-dependent element。</li>
+                      <li><strong>驗證 protection：</strong>求 spectrum／eigenstates，計算 \(\partial\omega_{01}/\partial\lambda\) 與 \(\langle0|\hat O_{\rm noise}|1\rangle\)，不能只靠位能圖宣稱「受到保護」。</li>
+                      <li><strong>驗證可操作性：</strong>檢查 \(\hat O_{\rm drive}\)、Rabi rate、readout path、auxiliary transition、\(\Delta_{\rm leakage}\) 與 reset。</li>
+                      <li><strong>映射回硬體：</strong>把每個 Hamiltonian term 映射到 capacitor、junction、superinductor、loop 或材料，再列出新引入的 loss、disorder、parasitic mode 與 fabrication sensitivity。</li>
+                    </ol>
+                    <div class="qh-answer">
+                      <p><strong>反推鏈：</strong>error operator → desired eigenstate structure → Hamiltonian term／symmetry → spectrum 與 matrix-element test → control／leakage test → circuit／material implementation。</p>
+                    </div>
+
+                    <h4>進階 Topic 名詞巡禮：Hamiltonian engineering 的三條延伸路線</h4>
                     <p>
-                      這一段的目的不是在二十分鐘內教完三種架構，而是讓學生第一次看見：改參數、增加自由度、改造 Josephson potential、改變材料，
-                      分別是在 Hamiltonian 的哪個層次工作，並留下日後自行學習的關鍵字。
+                      這裡的教學目的就是建立名詞與概念入口：學生不必在本週完成每種架構的完整推導，但必須看見不同路線分別在 Hamiltonian 的哪個層次工作，
+                      日後讀到新 qubit proposal 時，能用同一組四項判準自行拆解。
                     </p>
 
                     <h4>1. \(0-\pi\) qubit：增加自由度與 disconnected state support</h4>
                     <p>
-                      Fluxonium 主要仍可視為有效單自由度問題 \(H=H(\varphi,n)\)；\(0-\pi\) circuit 則提升為多模態 Hamiltonian，
-                      例如 \(H=H(\phi,\theta)\)。其 logical states 可在 generalized-coordinate space 中具有近乎不相交的支撐，
-                      並搭配 near degeneracy，同時追求較小 transition matrix element 與較低 frequency susceptibility。
+                      Fluxonium 主要仍可視為有效單自由度問題 \(H=H(\varphi,n)\)；\(0-\pi\) circuit 把問題提升為多模態 Hamiltonian，
+                      例如 \(H=H(\phi,\theta)\)。實際 circuit 使用兩個 Josephson junction、兩個大電感與兩個大電容，目的不是再找一個普通 sweet spot，
+                      而是讓 logical states 在 generalized-coordinate space 中具有近乎不相交的支撐，同時使 logical energies 接近簡併：
                     </p>
+                    <div class="qh-board"><p>\[
+                      \text{disjoint support}\Rightarrow
+                      \text{small transition matrix element},
+                      \qquad
+                      \text{near degeneracy}\Rightarrow
+                      \text{small frequency susceptibility}.
+                    \]</p></div>
                     <ul>
-                      <li>關鍵字：multimode protection、disjoint support、near degeneracy、hardware symmetry。</li>
-                      <li>工程挑戰：large superinductance、low stray capacitance、元件匹配與寄生模態。</li>
+                      <li><strong>Dephasing：</strong>near degeneracy 降低部分 parameter sensitivity。</li>
+                      <li><strong>Relaxation：</strong>logical-state support 分離可壓低 local-operator matrix elements。</li>
+                      <li><strong>Control：</strong>必須設計能跨越 protected subspaces 的 drive path，常需 auxiliary states 或 symmetry-breaking control。</li>
+                      <li><strong>Leakage：</strong>multimode spectrum 與寄生模態必須一起檢查。</li>
+                      <li><strong>工程挑戰：</strong>large superinductance、low stray capacitance、元件匹配與 disorder-induced mode coupling。</li>
                     </ul>
+                    <p><strong>自學問題：</strong>為什麼增加一個自由度，可能做到單一 phase coordinate 難以同時做到的保護？</p>
 
-                    <h4>2. \(\cos(2\varphi)\) qubit：直接改造 Josephson potential 的週期性</h4>
+                    <h4>2. \(\cos(2\varphi)\) qubit：直接工程化 Josephson potential</h4>
+                    <p>一般 Josephson junction 提供 \(-E_J\cos\varphi\)。更一般地，可把 current-phase relation 的 Fourier components 寫成：</p>
                     <div class="qh-board"><p>\[
                       U_J(\varphi)=-\sum_kE_k\cos(k\varphi),
                       \qquad
                       U(\varphi)=-E_2\cos(2\varphi).
                     \]</p></div>
                     <p>
-                      一般 \(\cos\varphi\) 對應 single-Cooper-pair tunneling；有效 \(\cos(2\varphi)\) 項可對應 two-Cooper-pair process，
-                      形成不同的週期性與 Cooper-pair parity structure，使某些 charge-induced transitions 受到 symmetry 抑制。
+                      \(\cos\varphi\) 對應 single-Cooper-pair tunneling；有效 \(\cos(2\varphi)\) 可對應 two-Cooper-pair process，建立不同週期性與
+                      Cooper-pair parity sectors，使某些 charge-induced transitions 受到 symmetry 抑制。這把 Hamiltonian engineering 從「加入 \(L\)、\(C\)」
+                      提升成「直接選擇 Josephson potential 的 Fourier content」。
                     </p>
                     <ul>
-                      <li>關鍵字：Josephson-potential engineering、Fourier component、two-Cooper-pair tunneling、parity sector。</li>
-                      <li>自學問題：我們是否只能接受自然 junction 的 \(-E_J\cos\varphi\)，還是可以工程化 current-phase relation？</li>
+                      <li><strong>Dephasing：</strong>檢查 logical splitting 對 offset charge、flux 與元件 asymmetry 的敏感度。</li>
+                      <li><strong>Relaxation：</strong>利用 parity sectors 壓低會改變受保護 parity 的 transition。</li>
+                      <li><strong>Control：</strong>控制脈衝若必須暫時打破 parity，要檢查保護與 gate speed 的交換。</li>
+                      <li><strong>Leakage：</strong>新的 periodicity 會重排 spectrum；必須確認非計算態與 unwanted Fourier components。</li>
+                      <li><strong>工程挑戰：</strong>如何實現占優勢的 \(E_2\)，並抑制殘餘 \(E_1\cos\varphi\) 與 fabrication asymmetry。</li>
                     </ul>
+                    <p><strong>自學問題：</strong>我們是否一定只能接受自然 junction 給出的 \(-E_J\cos\varphi\)，還是可以工程化它的 Fourier components？</p>
 
                     <h4>3. Ferro-transmon：改造材料，也是在改造 Hamiltonian</h4>
                     <div class="qh-board"><p>\[
                       E_J\longrightarrow E_J(M)
                     \]</p></div>
                     <p>
-                      Ferromagnetic Josephson-junction 路線讓 Josephson element 的有效參數依賴磁性狀態，或更一般地改變 current-phase relation。
-                      Hysteretic behavior 可提供近似 digital frequency tuning；但磁性自由度也同時帶來 magnetic fluctuation 這個新的 noise source。
+                      Ferromagnetic Josephson-junction 路線不是單純增加 linear circuit element，而是讓 Josephson energy 或更一般的 current-phase relation
+                      依賴磁性狀態。Hybrid ferro-transmon 可利用 hysteretic behavior，使 qubit frequency 透過 magnetic pulse 進行近似 digital tuning；
+                      但磁性自由度也會同時帶來 magnetic fluctuation 與 domain dynamics 等新 noise source。
                     </p>
                     <ul>
-                      <li>關鍵字：ferromagnetic Josephson junction、hysteretic tuning、magnetic-state control。</li>
-                      <li>核心提醒：Hamiltonian engineering 不一定等於 protection engineering；新的 control knob 也可能帶來新的 noise operator。</li>
+                      <li><strong>Dephasing：</strong>digital／hysteretic operating point 可能降低某些連續 bias sensitivity，但必須量測 magnetic-state stability。</li>
+                      <li><strong>Relaxation：</strong>不會僅因使用 ferroic material 自動得到 matrix-element protection；仍須指出 \(\hat O_{\rm noise}\)。</li>
+                      <li><strong>Control：</strong>磁性狀態提供新的 nonvolatile tuning knob。</li>
+                      <li><strong>Leakage：</strong>需檢查額外 material excitations 與 modified current-phase relation 所引入的 levels。</li>
+                      <li><strong>工程挑戰：</strong>magnetic fluctuation、hysteresis reproducibility、材料介面與製程整合。</li>
                     </ul>
+                    <p><strong>核心提醒：</strong>Hamiltonian engineering 不一定等於 protection engineering；新的 control knob 也可能同時帶來新的 noise operator。</p>
+
+                    <h4>四項判準 × 三條路線</h4>
+                    <table class="qh-session-plan">
+                      <thead><tr><th>路線</th><th>主要改造層次</th><th>保護直覺</th><th>首先要追問的代價</th></tr></thead>
+                      <tbody>
+                        <tr><td>Fluxonium</td><td>增加 inductive-energy term</td><td>Sweet spot、multi-well wavefunction、matrix-element engineering</td><td>低頻、thermal population、weak drive、superinductor modes</td></tr>
+                        <tr><td>\(0-\pi\)</td><td>增加自由度與 hardware symmetry</td><td>Disjoint support + near degeneracy</td><td>Multimode leakage、disorder、large \(L/C\)</td></tr>
+                        <tr><td>\(\cos2\varphi\)</td><td>改造 Josephson-potential periodicity</td><td>Cooper-pair parity sectors</td><td>Residual \(\cos\varphi\)、control-induced symmetry breaking</td></tr>
+                        <tr><td>Ferro-transmon</td><td>改造 material-dependent Josephson element</td><td>新的 hysteretic／nonvolatile control knob</td><td>新的 magnetic noise；不自動等於 protected qubit</td></tr>
+                      </tbody>
+                    </table>
+
+                    <h4>Fluxonium 自身的設計取捨：protected spectrum 不是免費的</h4>
+                    <p>
+                      以四項判準回頭檢查 Fluxonium，必須同時列出工作頻率、anharmonicity、sweet spot、dominant noise operator、gate primitive、
+                      readout contrast、reset、fabrication complexity、coupler compatibility 與 frequency allocation。只比較最佳 \(T_1\) 會忽略 control stack 與 yield。
+                    </p>
+                    <table class="qh-session-plan">
+                      <thead><tr><th>維度</th><th>Transmon</th><th>Fluxonium</th></tr></thead>
+                      <tbody>
+                        <tr><td>Hamiltonian</td><td>\(4E_C\hat n^2-E_J\cos\hat\varphi\)</td><td>\(4E_C\hat n^2+\frac12E_L(\hat\varphi-\varphi_{\rm ext})^2-E_J\cos\hat\varphi\)</td></tr>
+                        <tr><td>主要設計策略</td><td>大 \(E_J/E_C\)，降低 charge dispersion</td><td>加入 superinductor，塑造 phase potential 與 wavefunction</td></tr>
+                        <tr><td>Sweet spot</td><td>Fixed／tunable design 分別檢查 charge／flux sensitivity</td><td>\(\Phi_{\rm ext}\approx\Phi_0/2\) 鈍化一階 flux sensitivity</td></tr>
+                        <tr><td>Typical frequency</td><td>通常為數 GHz</td><td>可能低至 0.5–2 GHz，視 design 而定</td></tr>
+                        <tr><td>Anharmonicity</td><td>中等，約由 \(E_C\) 決定</td><td>通常可具有較大的非諧性</td></tr>
+                        <tr><td>Thermal population</td><td>高頻時通常較低</td><td>低頻時較高，可能需要 active reset</td></tr>
+                        <tr><td>Gate speed</td><td>成熟 microwave control；仍受 leakage 限制</td><td>Drive matrix element 可能較小，需 device-specific design</td></tr>
+                        <tr><td>Readout</td><td>Dispersive readout 技術成熟</td><td>若使用 \(\ket1\leftrightarrow\ket2\) 或其他較高 transition，可能需要額外 control line、頻帶與 transition selection</td></tr>
+                        <tr><td>主要 noise／loss</td><td>Charge、dielectric、Purcell、flux（tunable）、quasiparticle</td><td>Flux、dielectric、inductor／array modes、quasiparticle</td></tr>
+                        <tr><td>Fabrication</td><td>單 JJ 或 SQUID，製程成熟</td><td>Superinductor／JJ array 增加複雜度與 parameter spread</td></tr>
+                        <tr><td>Scalability</td><td>Control、readout 與 coupler 生態完整；仍面對 frequency collision、crosstalk、leakage 與 packaging 限制</td><td>需共同處理 coupler compatibility、frequency allocation、array modes、parameter stability 與 control-channel count</td></tr>
+                      </tbody>
+                    </table>
+
+                    <div class="qh-case">
+                      <h4>案例／研討：如何區分「真正保護」與「偶然最佳樣品」？</h4>
+                      <p>
+                        每組提出一個 Fluxonium 的真實優點、一個由同一特性衍生的代價，以及一個可區分 protection mechanism 與偶然低 noise sample 的實驗。
+                        例如 half-flux sweet spot 降低一階 flux sensitivity，但低頻 transition 增加 thermal initialization 與頻帶整合負擔。
+                      </p>
+                      <p>
+                        驗證不應只引用單點最佳 \(T_1\)，而應跨 flux bias、跨時間、跨多顆 devices 比較 coherence、gate fidelity、thermal population 與 yield。
+                        評分依據是能否建立「假設 → 可觀測量 → 區分實驗 → 決策」的閉環。
+                      </p>
+                    </div>
 
                     <div class="qh-task">
-                      <h4>第五問課堂任務</h4>
-                      <p>給每組一個 dominant noise：A 組 \(\hat O_{\rm noise}=\hat n\)，B 組 \(\hat O_{\rm noise}=\hat\varphi\)。每組選擇一條上述路線並回答：</p>
+                      <h4>第五問課堂任務：從 dominant noise 反向設計</h4>
+                      <p>A 組使用 \(\hat O_{\rm noise}=\hat n\)，B 組使用 \(\hat O_{\rm noise}=\hat\varphi\)。每組選擇一條 Hamiltonian-engineering 路線並回答：</p>
                       <ol>
                         <li>要新增或修改哪一個 Hamiltonian term？</li>
                         <li>Logical states 依靠什麼 symmetry 或 wavefunction structure 被區分？</li>
-                        <li>哪一個 unwanted matrix element 預期被壓低？</li>
-                        <li>要用哪一個不同的 drive operator 保留 controllability？</li>
-                        <li>如何保持足夠的 \(\Delta_{\rm leakage}\)，又會新增什麼 noise channel 或 fabrication sensitivity？</li>
+                        <li>哪一個 unwanted matrix element 預期被壓低？它是 exact zero 還是 approximate suppression？</li>
+                        <li>要用哪一個不同的 drive operator 或 auxiliary transition 保留 controllability？</li>
+                        <li>如何保持足夠的 \(\Delta_{\rm leakage}\)？</li>
+                        <li>這項改造會產生什麼新的 noise channel、parasitic mode 或 fabrication sensitivity？</li>
                       </ol>
                     </div>
 
-                    <div class="qh-answer">
-                      <p><strong>本週結論：</strong>Fluxonium 不是答案，而是 Hamiltonian engineering 的第一個完整案例。學生離開課堂時不必會設計所有 protected qubits，但應能用四項判準辨認不同架構試圖保護什麼、如何保留控制，以及代價藏在哪裡。</p>
-                    </div>
-
                     <div class="qh-case">
-                      <h4>保留但延後回答的架構題</h4>
+                      <h4>保留但延後完成的 architecture question</h4>
                       <p><strong>什麼條件下應選 Fluxonium，而不是 Transmon？</strong></p>
                       <p>
-                        這題不刪除，但不作為 W3 的第五問。W3 只留下 provisional answer；等學生依序學過 W4 control、W5 coupling、W6 readout、
-                        W11 thermalization、W14–W15 fabrication／yield 後，在 W16 重新回答，形成正式 architecture decision。
+                        這題不刪除，但不取代本週的 protected-Hamiltonian 第五問。W3 只留下 provisional answer；學生依序學過 W4 control、W5 coupling、
+                        W6 readout、W11 thermalization、W14–W15 fabrication／yield 後，在 W16 重新回答，形成正式 architecture decision。
                       </p>
                     </div>
-                  </section>
 
-                  <div class="qh-section">
-                    <h3>既有 Fluxonium 推導、案例與延伸教材</h3>
-                  </div>
-                  <!-- QH_FULL_LECTURE_START -->
-                  <div class="qh-section">
-                    <h3>Fluxonium 與量子位元架構比較：protected spectrum 的代價</h3>
-                  </div>
-                  <p><strong>本週驅動問題：</strong>fluxonium 透過大電感與 Josephson junction 形成不同於 transmon 的能譜；哪些 transition 被保護、哪些
-                    control/readout 變得更難？如何避免把單一 coherence 紀錄誤認成整體架構優勢？</p>
-                  <div class="qh-section">
-                    <h3>0–10 分鐘：問題設定與先備診斷</h3>
-                  </div>
-                  <p><strong>W3-C1
-                      先備診斷：</strong>先要求學生不用查資料，以一張圖畫出本週主題從抽象模型到真實硬體的訊息流。教師不立刻公布答案，而是收集學生把哪些層次畫成等號。全課結束時再重畫一次，用兩張圖的差異驗收是否真正建立跨層理解。
-                  </p>
-                  <div class="qh-section">
-                    <h3>10–35 分鐘：核心模型與黑板推導</h3>
-                  </div>
-                  <div>
-                    <p></p>
-                    <h4>黑板模型：三個能量尺度</h4>
-                    <p>fluxonium 可用 \(\hat H=4E_C\hat
-                      n^2+\frac12E_L(\hat\varphi-\varphi_{\mathrm{ext}})^2-E_J\cos\hat\varphi\) 描述。與 transmon 相比，多了
-                      superinductance 對應的 \(E_L=(\Phi_0/2\pi)^2/L\)，並以 external flux 改變 potential landscape。不同 well 中的
-                      wavefunction、tunneling 與 selection rule 共同決定 transition frequency。</p>
-                    <p>在 half-flux sweet spot 附近，一階 flux sensitivity 可降低；但低 transition frequency 會提高 thermal population
-                      的要求，drive/readout matrix element 也可能與常見 transmon 直覺不同。protected 並非不受任何 noise，而是某些 perturbation
-                      operator 在特定工作點的 matrix element 或一階導數被壓低。</p>
-                    <h4>比較方法</h4>
-                    <p>比較 qubit modality 時至少同時列出：工作頻率、anharmonicity、sweet spot、dominant noise operator、gate
-                      primitive、readout contrast、reset、fabrication complexity、coupler compatibility 與 frequency
-                      allocation。只比較最佳 \(T_1\) 會忽略 control stack 與 yield。</p>
-                  </div>
-                  <div class="qh-section">
-                    <h3>35–60 分鐘：推導／定量 — External flux 如何改變工作點與波函數？</h3>
-                  </div>
-                  <div>
-                    <p></p>
-                    <h4>位能圖與波函數直覺</h4>
-                    <p>fluxonium 的 total potential 是 cosine 與 parabolic term
-                      的疊加：\(U(\varphi)=-E_J\cos\varphi+\frac12E_L(\varphi-\varphi_{\rm ext})^2\)。在 half-flux sweet spot
-                      \(\varphi_{\rm ext}=\pi\) 附近，引入半磁通座標 \(x=\varphi-\pi\)，則 \(U(x)=U(-x)\)，potential
-                      對稱。因此本徵態具有確定宇稱：ground state \(\ket{0}\) 為偶宇稱、first excited state \(\ket{1}\) 為奇宇稱，依此類推。bonding 與
-                      anti-bonding 的直覺仍然適用，但關鍵推論來自宇稱而非 wavefunction 在 phase space 中的分佈位置。</p>
-                    <h4>選擇定則推導</h4>
-                    <p>考慮 perturbation \(\hat V=\hat O\,F(t)\)，其中 \(\hat O\) 是 noise operator。transition rate 正比於 matrix
-                      element 平方乘以 noise spectral density：\(\Gamma_{m\to n}\propto|\langle m|\hat
-                      O|n\rangle|^2\,S_F(\omega_{mn})\)；比例常數取決於 \(S_F\) 的譜密度常規與單位。關鍵在於 matrix element \(\langle m|\hat
-                      O|n\rangle\) 的大小：</p>
-                    <ul>
-                      <li><strong>偶算符（even operator）：</strong>在對稱 potential 下，偶算符在相反宇稱態之間的 matrix element 為零。因此若 noise
-                        operator 為偶，它不能引起 \(\ket{0}\leftrightarrow\ket{1}\) 躍遷。</li>
-                      <li><strong>奇算符（odd operator）：</strong>奇算符可能連接相反宇稱的態，實際大小取決於具體裝置參數。fluxonium 的 \(\hat n\) 和
-                        \(x=\varphi-\pi\) 都是奇算符，因此它們原則上可以連接 \(\ket{0}\) 與 \(\ket{1}\)；matrix element 的大小需
-                        device-specific 計算，不能僅從宇稱推論其大小。</li>
-                      <li><strong>補充說明：</strong>某些 fluxonium 設計中 \(\hat n\) 的 matrix element 確實較小，但這來自 device-dependent
-                        的 wavefunction 重疊與局域化特性，而非宇稱選擇定則。</li>
-                    </ul>
-                    <h4>近似與條件</h4>
-                    <p>宇稱選擇定則來自半磁通處的 exact symmetry \(U(x)=U(-x)\)；\(E_J\gg E_L\)（deep cosine wells）與 \(E_J\gg
-                      E_C\)（charge suppression）僅是 deep-well 與 bonding 直覺的條件，並非宇稱成立的必要條件。 \(\Phi_{\rm
-                      ext}\approx\Phi_0/2\)（sweet spot 操作）。在 sweet spot 處，\(\partial\omega_{01}/\partial\Phi_{\rm
-                      ext}=0\)，一階 flux sensitivity 消失；偏離 sweet spot 時，sensitivity 恢復，其大小需依具體裝置參數計算。</p>
-                    <h4>符號分類活動</h4>
-                    <p>學生兩人一組，把推導中的每個符號分成「設計可選參數（\(E_J,E_L,E_C,\Phi_{\rm ext}\)）、製程/裝置產生參數（junction area, oxide
-                      thickness）、必須校準參數（實際 \(\omega_{01}\)、sweet spot 位置）、只能量測估計的狀態（thermal population、residual flux
-                      offset）」四類。這一步迫使公式離開紙面，成為 archi
-                    <div class="qh-section">
-                      <h3>Selection rule 為什麼會改變控制與讀出方式？</h3>
-                    </div>Selection rule 為什麼會改變控制與讀出方式？</h2>
-                    <div>
-                      <p></p>
-                      <h4>Sweet-spot 保護 vs. Relaxation matrix element（W3-C3）</h4>
-                      <p>half-flux sweet spot 的保護是針對 dephasing（一階 flux sensitivity 消失），但 relaxation 取決於 noise spectral
-                        density 在 transition frequency 處的 matrix element。sweet spot 操作抑制一階 flux sensitivity（dephasing
-                        保護），但 relaxation 仍取決於 noise spectral density 在 transition frequency 處的 matrix element；某些
-                        operator matrix element 可能因 wavefunction 重疊或選擇定則被抑制，但並非所有 noise channel 都被保護。這意味著 sweet spot 操作是
-                        dephasing 保護，不保證 relaxation 保護。</p>
-                      <h4>Thermal population 與低頻 transition 的代價（W3-C5）</h4>
-                      <p>fluxonium 的 computational transition 可能低至 500 MHz（\(hf/k_B\approx24\) mK）。以 \(f=500\) MHz 為例：在
-                        T=50 mK 時，\(p_1/p_0=e^{-24/50}\approx0.62\)，\(p_1\approx0.38\)；在 T=20 mK
-                        時，\(p_1/p_0\approx0.30\)，\(p_1\approx0.23\)。低頻 fluxonium 的 thermal population 顯著高於高頻
-                        transmon，這需要 active reset 或其他控制策略。</p>
-                      <h4>Control 與 readout 的 trade-off（W3-C5）</h4>
-                      <p>fluxonium 的 \(\hat n\) matrix element 可能較 transmon 小，這意味著 microwave drive 耦合較弱——gate speed
-                        可能受影響，具體取決於 device design。readout contrast 也因 \(\hat\varphi\) 耦合到 resonator 的機制不同而需重新設計。某些
-                        fluxonium 架構使用更高頻的 transition 做 readout 以避開 thermal population，但這要求 control electronics 支援額外頻帶。
-                      </p>
-                      <h4>Transmon vs. Fluxonium 架構對比（W3-C5）</h4>
-                      <table class="qh-session-plan">
-                        <thead>
-                          <tr>
-                            <th>維度</th>
-                            <th>Transmon</th>
-                            <th>Fluxonium</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td>Hamiltonian</td>
-                            <td>\(4E_C\hat n^2-E_J\cos\hat\varphi\)</td>
-                            <td>\(4E_C\hat n^2+\frac12E_L(\hat\varphi-\varphi_{\rm ext})^2-E_J\cos\hat\varphi\)</td>
-                          </tr>
-                          <tr>
-                            <td>Sweet spot</td>
-                            <td>\(E_J/E_C\gg1\) 鈍化 charge noise</td>
-                            <td>\(\Phi_{\rm ext}\approx\Phi_0/2\) 鈍化 flux noise</td>
-                          </tr>
-                          <tr>
-                            <td>Typical frequency</td>
-                            <td>數 GHz</td>
-                            <td>可能較低，取決於 design</td>
-                          </tr>
-                          <tr>
-                            <td>Thermal pop. at 20 mK</td>
-                            <td>低（因頻率高）</td>
-                            <td>可能較高（因頻率低）</td>
-                          </tr>
-                          <tr>
-                            <td>Gate speed</td>
-                            <td>取決於 drive matrix element 與 device</td>
-                            <td>drive matrix element 可能較小，取決於 device</td>
-                          </tr>
-                          <tr>
-                            <td>Fabrication</td>
-                            <td>單 JJ 或 SQUID，成熟製程</td>
-                            <td>Superinductor（JJ array），製程複雜度高</td>
-                          </tr>
-                          <tr>
-                            <td>Scalability</td>
-                            <td>單 JJ 或 SQUID 結構相對簡單</td>
-                            <td>Superinductor（JJ array）增加製程複雜度</td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
-                    <h4>Layout-to-Hamiltonian 映射（W3-C6）</h4>
-                    <p>每一項版圖參數都映射到 Hamiltonian 中的某一項：junction area 決定 \(E_J\)、capacitor pad geometry 決定
-                      \(E_C\)、superinductor 的 JJ array 設計決定 \(E_L\)、flux line 的 inductance 決定 flux bias 精度與
-                      bandwidth。chip design 不是畫電路，而是直接雕刻 Hamiltonian 的參數空間。製程變異使 \(E_J\) 有 spread，對應 frequency 偏離——版圖參數到
-                      Hamiltonian 的映射讓 design 能直接雕刻參數空間，但也使製程變異直接影響 qubit 性能。</p>
-
-
-
-
-
-
-
-
-
-
-
-
-                    <div class="qh-section">
-                      <h3>Noise operator、Fermi golden rule 與 selection rule 如何指向 Fluxonium？</h3>
-                    </div>
-                    <div>
-
-                      <h4>Fermi golden rule 的出發點</h4>
-                      <p>relaxation 與 dephasing 的定量描述從 Fermi golden rule 開始。system Hamiltonian \(\hat H_0\) 的本徵態
-                        \(\ket{n}\) 之間，perturbation \(\hat V(t)=\hat O\,F(t)\) 引起的 transition rate 為：</p>
-                      <div class="qh-board">
-                        <p>\[\Gamma_{m\to n}=\frac{2\pi}{\hbar}\,|\langle n|\hat O|m\rangle|^2\,S_F(\omega_{mn})\]</p>
-                      </div>
-                      <p>其中 \(S_F(\omega)\) 是 noise spectral density，\(\hat O\) 是 noise operator。這個式子把 decoherence
-                        拆成兩個獨立問題：<strong>matrix element</strong> 由 Hamiltonian 的 eigenstate 結構決定，<strong>spectral
-                          density</strong> 由 noise source 的頻率分佈決定。</p>
-
-                      <h4>Charge noise 與 noise operator \(\hat n\)</h4>
-                      <p>charge noise 來自 oxide defect、two-level system (TLS) 或 gate voltage fluctuation。它耦合到 Cooper-pair
-                        number operator \(\hat n\)：</p>
-                      <div class="qh-board">
-                        <p>\[\hat V_{\rm charge}(t)=e\,\delta n_g(t)\,\hat n\]</p>
-                      </div>
-                      <p>charge noise 的 spectral density 在低頻呈現 \(1/f\) 行為。在 transmon 中，增大 \(E_J/E_C\) 使 \(\langle 0|\hat
-                        n|1\rangle\) 指數下降，因此 transmon 對 charge noise 高度不敏感。</p>
-
-                      <h4>Flux noise 與 noise operator \(\hat\varphi\)</h4>
-                      <p>flux noise 來自 surface spin bath，耦合到 phase operator \(\hat\varphi\)。dephasing rate：</p>
-                      <div class="qh-board">
-                        <p>\[\frac{1}{T_\phi}\propto\left(\frac{\partial\omega_{01}}{\partial\Phi_{\rm ext}}\right)^2
-                          S_\Phi(\omega\approx 0)\]</p>
-                      </div>
-                      <p>在 transmon 中，\(\omega_{01}\) 對 flux 不直接依賴。在 fluxonium 中，\(\omega_{01}\) 明確依賴 \(\Phi_{\rm
-                        ext}\)——但 half-flux sweet spot 提供了另一種保護。</p>
-
-                      <h4>Fluxonium sweet spot 的 dephasing 保護</h4>
-                      <p>在 \(\Phi_{\rm ext}=\Phi_0/2\)（half-flux）處：</p>
-                      <ul>
-                        <li>potential \(U(x)=U(-x)\) 具有 reflection symmetry</li>
-                        <li>\(\partial\omega_{01}/\partial\Phi_{\rm ext}=0\)，一階 flux sensitivity 消失</li>
-                        <li>dephasing 由二階 term 主導，通常比一階小一個數量級</li>
-                      </ul>
-                      <p>這與 transmon 的 charge-protection 機制不同：transmon 透過 \(E_J/E_C\gg1\) 壓低 charge dispersion，fluxonium
-                        sweet spot 透過 symmetry 壓低 frequency derivative。兩者都是「保護」，但作用在 Fermi golden rule 的不同因子。</p>
-
-                      <h4>Selection rule 與 relaxation matrix element</h4>
-                      <p>在 half-flux sweet spot，\(\ket{0}\) 為偶宇稱、\(\ket{1}\) 為奇宇稱。noise operator 的 parity 決定它能否引起
-                        \(\ket{0}\leftrightarrow\ket{1}\) 躍遷：</p>
-                      <ul>
-                        <li><strong>\(\hat n\)（charge operator）：</strong>odd parity。原則上可以連接偶/奇態，但 fluxonium 的
-                          wavefunction 分佈在多個 phase wells，\(\langle 0|\hat n|1\rangle\) 的實際大小取決於 wavefunction overlap。
-                        </li>
-                        <li><strong>\(\hat\varphi\)（phase operator）：</strong>odd parity。同樣原則上允許
-                          \(\ket{0}\leftrightarrow\ket{1}\)，但實際大小需 device-specific 計算。</li>
-                        <li><strong>\(\hat n^2\)、\(\hat\varphi^2\) 等 even operator：</strong>selection rule 禁止連接
-                          \(\ket{0}\leftrightarrow\ket{1}\)。</li>
-                      </ul>
-
-                      <h4>比較：Transmon 與 Fluxonium 的 protection 哲學</h4>
-                      <table class="qh-session-plan">
-                        <thead>
-                          <tr>
-                            <th>Noise channel</th>
-                            <th>Transmon 保護機制</th>
-                            <th>Fluxonium 保護機制</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td>Charge noise</td>
-                            <td>\(E_J/E_C\gg1\) 壓低 energy 對 \(n_g\) 的 charge dispersion</td>
-                            <td>wavefunction multi-well structure 降低 \(\hat n\) matrix element</td>
-                          </tr>
-                          <tr>
-                            <td>Flux noise</td>
-                            <td>無 flux bias，\(\omega_{01}\) 對 flux 不敏感</td>
-                            <td>half-flux sweet spot 使 \(\partial\omega_{01}/\partial\Phi=0\)</td>
-                          </tr>
-                          <tr>
-                            <td>Photon-assisted (even operator)</td>
-                            <td>無 selection rule 保護</td>
-                            <td>parity selection rule 嚴格禁止</td>
-                          </tr>
-                          <tr>
-                            <td>Protection nature</td>
-                            <td>Parameter regime（large ratio）</td>
-                            <td>Symmetry（exact at sweet spot）</td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
-
-                    <h4>代價：低頻 transition 與 thermal population</h4>
-                    <p>fluxonium 的 protected spectrum 來自 \(E_L\ll E_J\) 參數區，這也使 computational transition 頻率可能低至 0.5–2
-                      GHz。以 \(f=800\) MHz 為例，\(hf/k_B\approx38\) mK，在 T=20 mK 時 \(p_1\approx0.16\)。</p>
-                    <ul>
-                      <li>active reset 幾乎是必需的</li>
-                      <li>readout 若用 \(\ket{1}\leftrightarrow\ket{2}\) transition 需要額外 control line</li>
-                      <li>drive matrix element 小則 \(\pi\)-pulse 時間可能超過 transmon</li>
-                    </ul>
-
-                    <h4>Fermi golden rule 的完整圖景</h4>
-                    <p>比較 coherence 時不能只看 \(T_1\) 數字——必須同時檢查 noise operator、matrix element、spectral density 三個因子。同一個
-                      \(T_1\) 紀錄，來自 matrix element suppression 還是來自 spectral density 較低，對 scaling 的意義完全不同。</p>
-
-
-                    <div class="qh-section">
-                      <h3>案例／研討：Fluxonium 保護了哪些 noise，又引入哪些代價？</h3>
-                    </div>
-                    <div class="qh-case">
-                      <p></p>
-                      <h4>系統案例：低頻 fluxonium 的 thermal population</h4>
-                      <p>對 \(f_{01}=500\,\mathrm{MHz}\)，能量尺度 \(hf/k_B\approx24\,\mathrm{mK}\)。即使 mixing chamber 顯示 10
-                        mK，若 qubit effective temperature 是 50 mK，excited-to-ground Boltzmann ratio 約
-                        \(e^{-hf/k_BT}\approx e^{-0.48}\approx0.62\)，絕不能假設自然初始化到 ground state。實際值還受非平衡 photons 與
-                        coupling 影響，但此估算立即說明 active reset 與 thermalization design 的重要性。</p>
-                      <p>同一顆裝置可能同時具有低頻 computational transition 與較高頻 transition 可供 readout/control。architecture 必須決定使用哪條
-                        transition、如何避免 spectator excitation，以及控制電子與 resonator 頻帶是否支援。</p>
-                    </div>
-                    <div class="qh-task">
-                      <h4>課堂任務（8–10 分鐘）</h4>
-                      <p>設計一張 transmon 與 fluxonium 的 architecture review 表。每組必須提出一個 fluxonium
-                        的真實優點、一個由同一特性衍生的代價，以及一個能在實驗上區分『真正保護』與『偶然最佳樣品』的測試。</p>
-                    </div>
                     <div class="qh-answer">
-                      <h4>教師解答與評分依據</h4>
-                      <p>例如 half-flux sweet spot 降低一階 flux sensitivity，但低頻 transition 增加 thermal initialization
-                        與頻帶整合負擔。應跨 flux bias、跨時間與跨多顆 device 量測 coherence、gate fidelity、thermal population 與
-                        yield，而不是只引用單點最佳 \(T_1\)。</p>
-                      <p>答案不以是否使用特定名詞評分，而以是否建立「假設 → 可觀測量 → 區分實驗 → 決策」的閉環評分。學生若提出不同方案，只要能明確指出代價與可否證條件，即可成立。</p>
+                      <p><strong>本週結論：</strong>Fluxonium 不是 protected-qubit 問題的終點，而是 Hamiltonian engineering 的第一個完整案例。學生離開課堂時不必會設計所有 advanced qubits，但應能用四項判準辨認一種新架構試圖保護什麼、如何保留 control、leakage 在哪裡，以及代價藏在哪個新自由度或製程中。</p>
                     </div>
 
-                    <div class="qh-section">
-                      <h3>整合／驗收：什麼條件下應選 Fluxonium，而不是 Transmon？</h3>
-                    </div>
-                    <div>
-                      <h4>Exit ticket</h4>
-                      <ol>
-                        <li>本週最重要的一條 equation／model 是什麼？它的適用近似為何？</li>
-                        <li>哪一個看似局部的參數，實際會跨越 device、control 與 system 三層？</li>
-                        <li>若只能做一個新實驗，什麼結果最能改變目前的 architecture decision？</li>
-                      </ol>
-                      <p><strong>跨層驗收：</strong>全課開始時每位學生畫了一張「抽象模型 → 真實硬體」的訊息流圖。現在請重畫一次。兩張圖的差異就是本週學習的證據。若兩張圖完全一樣，說明
-                        fluxonium 的 trade-off 尚未真正內化。</p>
-                      <p><strong>下週預告：</strong>W4 將從 driven two-level system 出發，推到 rotating frame 與 RWA。你需要帶著本週建立的 qubit
-                        Hamiltonian 與 matrix element 直覺進入 W4——否則 lab-frame 到 rotating-frame 的轉換只是一堆符號遊戲。</p>
-                    </div>
-                    <!-- QH_FULL_LECTURE_END -->
-                    <section class="module">
+                    <h4>課堂整合與 Exit ticket</h4>
+                    <ol>
+                      <li>本週最重要的一條 equation／model 是什麼？它的適用近似為何？</li>
+                      <li>哪一個看似局部的參數，實際會跨越 device、control 與 system 三層？</li>
+                      <li>若只能做一個新實驗，什麼結果最能改變目前的 architecture decision？</li>
+                      <li>從 \(0-\pi\)、\(\cos2\varphi\)、ferro-transmon 中選一個名詞，寫下你下一步需要查清楚的 Hamiltonian term、symmetry 與 dominant noise。</li>
+                    </ol>
+                    <p>
+                      <strong>跨層驗收：</strong>重畫課程開始時的「抽象模型 → 真實硬體」訊息流圖。兩張圖的差異就是本週學習的證據。
+                      完成條件是留下可檢查的推導、關係圖、比較表或 provisional decision，並能說明其物理假設與工程代價。
+                    </p>
+                    <p>
+                      <strong>下週預告：</strong>W4 將從 driven two-level system 出發，推到 rotating frame 與 RWA。學生要帶著本週建立的 qubit Hamiltonian、
+                      matrix element 與 leakage-gap 直覺進入 W4，才能理解 pulse control 為何受裝置能譜限制。
+                    </p>
 
-                      <div class="qh-section">
-                        <h3>進階主線：Protected spectrum 不等於免費的高品質 qubit</h3>
-                      </div>
-                      <div class="equation-card">
-                        <p>\[H=4E_C\hat n^2+\frac12E_L(\hat\varphi-\varphi_{\rm ext})^2-E_J\cos\hat\varphi\]</p>
-                      </div>
-                      <p>superinductor 使 phase 可以跨越多個 cosine wells，外加磁通改變位能對稱性。sweet spot 可降低一階 flux sensitivity；某些
-                        transition matrix element 的抑制可延長 \(T_1\)。但低 qubit frequency 會提高 thermal population，弱 matrix
-                        element 也可能讓 reset、control 與 readout 更困難。</p>
-                      <p>因此比較 qubit 不應只看最高 coherence：還要一起看 gate time、readout contrast、初始化、coupler、array parasitic
-                        modes、fabrication reproducibility 與 control-channel count。</p>
-                      <p><b>跨層接口：</b>本週結束時，學生應能把「版圖元件」映射到 Hamiltonian term，再把 term 映射到 spectrum、matrix element 與工程風險。
-                      </p>
-
-                    </section>
-                    <section class="module">
-                      <div class="qh-section">
-                        <h3>六、單元 5：Fluxonium Qubit</h3>
-                      </div>
-
-                      <h4>5.1 Motivation for Fluxonium</h4>
-                      <p>
-                        Fluxonium 是一種由 Josephson junction、電容與 superinductor 組成的超導量子位元。
-                        它可以被視為對傳統 flux qubit 與 charge qubit 的重新設計：
-                        透過加入一個非常大的電感，Fluxonium 形成特殊的 potential landscape，
-                        使其同時具有較強的非線性、可調的能階結構與對某些雜訊通道的保護。
-                      </p>
-
-                      <p>
-                        與 Transmon 相比，Fluxonium 通常具有較低的 qubit transition frequency、
-                        較大的 anharmonicity，以及在特定操作點上較長的 relaxation time。
-                        這使 Fluxonium 成為近年超導量子位元研究中的重要方向之一。
-                      </p>
-
-                      <h4>5.2 Circuit Components of Fluxonium</h4>
-                      <p>
-                        Fluxonium 的基本電路包含三個主要部分：
-                      </p>
-
-                      <ul>
-                        <li><strong>Josephson junction：</strong>提供非線性 cosine potential。</li>
-                        <li><strong>Capacitor：</strong>提供 charging energy \(E_C\)。</li>
-                        <li><strong>Superinductor：</strong>提供很小的 inductive energy \(E_L\)，並形成 phase confinement。</li>
-                      </ul>
-
-                      <p>
-                        Superinductor 是 Fluxonium 的關鍵元件。
-                        它通常需要提供非常大的電感，同時保持低損耗與低寄生電容。
-                        實作方式可能包含 Josephson junction array、高動能電感材料或其他高阻抗結構。
-                      </p>
-
-                      <h4>5.3 Fluxonium Hamiltonian</h4>
-                      <p>
-                        Fluxonium Hamiltonian 可寫為：
-                      </p>
-
-                      <div class="equation">
-                        <p>\[
-                          \hat{H}_{\mathrm{fluxonium}}
-                          =
-                          4E_C\hat{n}^2
-                          -
-                          E_J\cos\hat{\varphi}
-                          +
-                          \frac{1}{2}E_L
-                          \left(
-                          \hat{\varphi}
-                          -
-                          \varphi_{\mathrm{ext}}
-                          \right)^2
-                          \]</p>
-                      </div>
-
-                      <p>
-                        其中：
-                      </p>
-
-                      <ul>
-                        <li>\(\hat{n}\)：與相位 \(\hat{\varphi}\) 共軛的 Cooper pair number operator。</li>
-                        <li>\(\hat{\varphi}\)：junction phase difference。</li>
-                        <li>\(\varphi_{\mathrm{ext}} = 2\pi\Phi_{\mathrm{ext}}/\Phi_0\)：由外加磁通量控制的相位偏移。</li>
-                        <li>\(E_C\)：charging energy，控制電荷動能項。</li>
-                        <li>\(E_J\)：Josephson energy，控制 cosine potential 的深度。</li>
-                        <li>\(E_L\)：inductive energy，由 superinductor 決定。</li>
-                      </ul>
-
-                      <h4>5.4 Roles of \(E_C\), \(E_J\), and \(E_L\)</h4>
-
-                      <table>
-                        <thead>
-                          <tr>
-                            <th>能量尺度</th>
-                            <th>物理來源</th>
-                            <th>在 Fluxonium 中的角色</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td>\(E_C\)</td>
-                            <td>電容</td>
-                            <td>決定相位波函數的量子漲落與電荷動能</td>
-                          </tr>
-                          <tr>
-                            <td>\(E_J\)</td>
-                            <td>Josephson junction</td>
-                            <td>提供非線性週期 potential，決定能階非諧性</td>
-                          </tr>
-                          <tr>
-                            <td>\(E_L\)</td>
-                            <td>Superinductor</td>
-                            <td>提供弱的 parabolic confinement，塑造多井 potential 結構</td>
-                          </tr>
-                        </tbody>
-                      </table>
-
-                      <p>
-                        Fluxonium 的物理特色來自三個能量尺度之間的競爭。
-                        \(E_J\) 形成週期性的 cosine potential；
-                        \(E_L\) 透過 superinductor 提供一個緩慢變化的拋物線約束；
-                        \(E_C\) 則決定波函數在相位空間中的量子漲落程度。
-                        透過調整這些參數，可以設計出不同的能階結構與選擇定則。
-                      </p>
-
-                      <h4>5.5 Flux Bias and Sweet Spot</h4>
-                      <p>
-                        Fluxonium 的能階可透過外加磁通量 \(\Phi_{\mathrm{ext}}\) 調控。
-                        在半個磁通量量子附近，也就是 \(\Phi_{\mathrm{ext}} \approx \Phi_0/2\)，
-                        Fluxonium 常出現對一階 flux noise 不敏感的 sweet spot。
-                        在此操作點，qubit frequency 對外加磁通量的微小擾動具有較低敏感度，
-                        因此有助於提升 dephasing time。
-                      </p>
-
-                      <p>
-                        Sweet spot 的概念非常重要。
-                        它代表系統參數的一個特殊點，使得 qubit transition frequency 對某種雜訊的一階導數為零：
-                      </p>
-
-                      <div class="equation">
-                        <p>\[
-                          \frac{\partial \omega_{01}}{\partial \Phi_{\mathrm{ext}}} = 0
-                          \]</p>
-                      </div>
-
-                      <p>
-                        這類設計原理在超導量子位元中非常常見，例如 Transmon 降低 charge noise sensitivity，
-                        Fluxonium 在特定 flux bias 下降低 flux noise sensitivity。
-                      </p>
-
-                      <h4>5.6 Relaxation Error and Transition Matrix Element Suppression</h4>
-                      <p>
-                        量子位元的 relaxation error 通常指 \(\ket{1} \rightarrow \ket{0}\) 的能量弛豫，
-                        對應到 \(T_1\) 限制。對超導電路而言，relaxation rate 與環境雜訊頻譜以及 qubit
-                        對該雜訊通道的耦合矩陣元素有關。
-                      </p>
-
-                      <p>
-                        若某個雜訊通道可由 operator \(\hat{O}\) 描述，則 \(\ket{1}\) 與 \(\ket{0}\)
-                        之間的 transition matrix element 大致為：
-                      </p>
-
-                      <div class="equation">
-                        <p>\[
-                          \left|\langle 0|\hat{O}|1\rangle\right|^2
-                          \]</p>
-                      </div>
-
-                      <p>
-                        當這個矩陣元素被抑制時，即使環境中存在雜訊，qubit 也較不容易透過該通道發生能量弛豫。
-                        Fluxonium 的某些能階結構與波函數分佈可以使特定 transition matrix elements 變小，
-                        進而降低 relaxation error。
-                      </p>
-
-                      <h4>物理直覺</h4>
-                      <p>
-                        Fluxonium 的低能態可能分佈在不同的 phase wells 或具有不同的 parity-like structure。
-                        若兩個狀態之間的波函數重疊很小，或對某些雜訊 operator 的選擇定則導致耦合受抑制，
-                        則 \(\ket{1} \rightarrow \ket{0}\) 的躍遷機率會降低。
-                        這就是 transition matrix element suppression 對 relaxation-error reduction 的核心意義。
-                      </p>
-
-                      <h4>5.7 Transmon vs. Fluxonium</h4>
-
-                      <table>
-                        <thead>
-                          <tr>
-                            <th>比較項目</th>
-                            <th>Transmon</th>
-                            <th>Fluxonium</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td>主要設計策略</td>
-                            <td>提高 \(E_J/E_C\)，降低 charge dispersion</td>
-                            <td>加入 superinductor，塑造特殊 phase potential</td>
-                          </tr>
-                          <tr>
-                            <td>典型頻率</td>
-                            <td>通常為數 GHz</td>
-                            <td>可低於一般 Transmon，視設計而定</td>
-                          </tr>
-                          <tr>
-                            <td>Anharmonicity</td>
-                            <td>中等，約由 \(E_C\) 決定</td>
-                            <td>通常可具有較大的非諧性</td>
-                          </tr>
-                          <tr>
-                            <td>主要雜訊考量</td>
-                            <td>charge noise、flux noise、dielectric loss、Purcell loss</td>
-                            <td>flux noise、dielectric loss、inductor loss、quasiparticle loss</td>
-                          </tr>
-                          <tr>
-                            <td>控制優勢</td>
-                            <td>架構成熟，控制與讀出技術完整</td>
-                            <td>長 coherence 與特殊能階結構具研究潛力</td>
-                          </tr>
-                          <tr>
-                            <td>工程挑戰</td>
-                            <td>頻率碰撞、串擾、leakage、封裝限制</td>
-                            <td>superinductor 製作、模式控制、參數穩定性</td>
-                          </tr>
-                        </tbody>
-                      </table>
-
-                      <div class="note">
-                        <h4>核心觀念</h4>
-                        <p>
-                          Transmon 主要透過降低 charge sensitivity 來提升穩定性；
-                          Fluxonium 則透過 superinductor 與特殊能階結構，進一步利用波函數與矩陣元素設計來降低特定錯誤通道。
-                        </p>
-                      </div>
-
-                      <div class="learning-check">
-                        <h4>學習檢核</h4>
-                        <ol>
-                          <li>Fluxonium 為什麼需要 superinductor？</li>
-                          <li>\(E_C\)、\(E_J\)、\(E_L\) 分別控制哪些物理性質？</li>
-                          <li>什麼是 flux sweet spot？它如何幫助降低 dephasing？</li>
-                          <li>Transition matrix element suppression 如何降低 relaxation error？</li>
-                          <li>Transmon 與 Fluxonium 的設計哲學有何不同？</li>
-                        </ol>
-                      </div>
-                    </section>
-                    <section class="module">
-                      <div class="qh-section">
-                        <h3>課堂整合與驗收</h3>
-                      </div>
-                      <p><strong>研討問題：</strong>在同一張表比較 transmon 與 fluxonium：Hamiltonian、sweet
-                        spot、主要控制算符、readout、thermal issue、製程與可擴展性。</p>
-                      <p><strong>完成條件：</strong>學生必須留下可檢查的推導、關係圖、比較表或 architecture decision，並能說明其物理假設與工程代價。</p>
-                    </section>
-                    <section class="module">
-                      <div class="qh-section">
-                        <h3>核心與延伸閱讀</h3>
-                        <ul class="qh-reading">
-                          <li><a href="https://arxiv.org/abs/0906.0831" target="_blank" rel="noopener">Fluxonium: Single
-                              Cooper-Pair Circuit Free of Charge Offsets</a><span>V. E. Manucharyan et al., Science 326,
-                              113–116 (2009).</span><em>Fluxonium 與 superinductor 的原始論文。</em></li>
-                          <li><a href="https://www.nature.com/articles/s41534-022-00644-x" target="_blank" rel="noopener">High Fidelity Two-Qubit Gates on Fluxoniums Using a Tunable
-                              Coupler</a><span>I. N. Moskalenko et al., npj Quantum Information 8, 130
-                              (2022).</span><em>Fluxonium 控制、reset、耦合與多量子位元工程。</em></li>
-                          <li><a href="https://arxiv.org/abs/1610.03438" target="_blank" rel="noopener">Introduction to
-                              Quantum Electromagnetic Circuits</a><span>U. Vool and M. H. Devoret, International Journal
-                              of Circuit Theory and Applications 45, 897–934 (2017).</span><em>從電路圖、Lagrangian 到量子
-                              Hamiltonian 的核心讀物。</em></li>
-                          <li><a href="https://www.nature.com/articles/s41578-021-00370-4" target="_blank" rel="noopener">Engineering High-Coherence Superconducting Qubits</a><span>I. Siddiqi,
-                              Nature Reviews Materials 6, 875–891 (2021).</span><em>不同 qubit architecture、材料損耗與
-                              coherence 的設計 trade-off。</em></li>
-                        </ul>
-                      </div>
-                    </section>
+                    <h4>核心與延伸閱讀</h4>
+                    <ul class="qh-reading">
+                      <li><a href="https://arxiv.org/abs/0906.0831" target="_blank" rel="noopener">Fluxonium: Single Cooper-Pair Circuit Free of Charge Offsets</a><span>V. E. Manucharyan et al., Science 326, 113–116 (2009).</span><em>Fluxonium 與 superinductor 的原始論文。</em></li>
+                      <li><a href="https://www.nature.com/articles/s41534-022-00644-x" target="_blank" rel="noopener">High Fidelity Two-Qubit Gates on Fluxoniums Using a Tunable Coupler</a><span>I. N. Moskalenko et al., npj Quantum Information 8, 130 (2022).</span><em>Fluxonium 控制、reset、耦合與多量子位元工程。</em></li>
+                      <li><a href="https://arxiv.org/abs/1610.03438" target="_blank" rel="noopener">Introduction to Quantum Electromagnetic Circuits</a><span>U. Vool and M. H. Devoret, International Journal of Circuit Theory and Applications 45, 897–934 (2017).</span><em>從電路圖、Lagrangian 到量子 Hamiltonian 的核心讀物。</em></li>
+                      <li><a href="https://www.nature.com/articles/s41578-021-00370-4" target="_blank" rel="noopener">Engineering High-Coherence Superconducting Qubits</a><span>I. Siddiqi, Nature Reviews Materials 6, 875–891 (2021).</span><em>不同 qubit architecture、材料損耗與 coherence 的設計 trade-off。</em></li>
+                    </ul>
                 </section>
 
 
@@ -1278,6 +1792,7 @@
 
                 <div id="prev-next-nav" class="text-center">
                                     <a class="btn btn-gray" href="T2-2S.html">← 上一頁</a> 
+                                    <a class="btn btn-gray" href="../QH-2026F-v5-x10_en/T2-3.html" style="margin: 0 10px;">English Version</a>
                                     <a class="btn btn-gray" href="T3-4.html">下一頁 →</a>
                                 </div>
 
@@ -1306,6 +1821,7 @@
                                 <div id="lesson-list_2">
                                 <div class="lesson-link "><a href="main.html">QH-2026F v5 · 16週總覽</a></div>
                                 <div class="lesson-link "><a href="T1-1.html">Week 1 · 從量子計算模型到硬體操作</a></div>
+                                <div class="lesson-link "><a href="T2-outlook.html">T2 Outlook · 從人工原子到 Protected Qubit | QH-2026F v5</a></div>
                                 <div class="lesson-link "><a href="T2-2.html">Week 2 · 超導電路量子化與 Transmon 設計</a></div>
                                 <div class="lesson-link "><a href="T2-2S.html">Week 2S · 超導電路量子化與 Transmon 設計-Slide</a></div>
                                 <div class="lesson-link active"><a href="T2-3.html">Week 3 · Fluxonium：從電路改造到設計取捨</a></div>

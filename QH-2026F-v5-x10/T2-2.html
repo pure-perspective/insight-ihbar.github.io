@@ -515,257 +515,403 @@
 
                   </section>
 
-<section class="qh-supplement-divider" id="w2-question-map">
+                  <section class="qh-supplement-divider" id="w2-question-map">
                     <h3>W2
                       <strong>人工原子與 Transmon：五問主線</strong>
                     </h3>
                     <p>5 題</p>
 
                     <ol>
-                      <li><p>一個巨觀電路為什麼可能具有量子能階？</p></li>
-                      <li><p>超導電路中，什麼東西扮演位置與動量？</p></li>
-                      <li><p>為什麼最簡單的人工原子仍然不是 qubit？</p></li>
-                      <li><p>Josephson junction 如何塑造人工原子的能階？</p></li>
-                      <li><p>為什麼人工原子最後設計成 Transmon？</p></li>
+                      <li>
+                        <p>一個巨觀電路為什麼可能具有量子能階？</p>
+                      </li>
+                      <li>
+                        <p>超導電路中，什麼東西扮演位置與動量？</p>
+                      </li>
+                      <li>
+                        <p>為什麼最簡單的人工原子仍然不是 qubit？</p>
+                      </li>
+                      <li>
+                        <p>Josephson junction 如何塑造人工原子的能階？</p>
+                      </li>
+                      <li>
+                        <p>為什麼人工原子最後設計成 Transmon？</p>
+                      </li>
                     </ol>
                   </section>
 
-                  <section class="qh-full-lecture" id="w2-five-questions">
-                    <div class="qh-section">
-                      <h3>前言：我們能不能用電路製造一顆原子？</h3>
-                    </div>
-                    <p>
-                      自然原子的離散能階來自電子在庫倫位能中的量子運動；超導量子位元則由電荷、磁通量與
-                      Josephson phase 的量子運動形成。這一週不以公式推導作為故事主角，而是沿著一個問題前進：
-                      <strong>如果自然原子的大小、頻率與能階幾乎不能由我們決定，我們能不能製造一顆可以自行設計的人工原子？</strong>
-                    </p>
-                    <p><a class="btn btn-gray" href="T2-outlook.html">先看 T2 十問次序與 Outlook</a></p>
-
-                    <table class="qh-session-plan">
-                      <thead>
-                        <tr><th>時間</th><th>問題</th><th>本段產出</th></tr>
-                      </thead>
-                      <tbody>
-                        <tr><td>0–10 分</td><td>人工原子開場與先備診斷</td><td>自然原子／電路人工原子的比較圖</td></tr>
-                        <tr><td>10–30 分</td><td>問題一：巨觀電路的量子能階</td><td>巨觀量子相位與電路模式的概念鏈</td></tr>
-                        <tr><td>30–50 分</td><td>問題二：電路的共軛變數</td><td>\((\Phi,Q)\) 與 \((\varphi,n)\) 對照</td></tr>
-                        <tr><td>50–70 分</td><td>問題三：LC oscillator 的限制</td><td>等間距能譜與不可選擇控制</td></tr>
-                        <tr><td>70–95 分</td><td>問題四：Josephson nonlinearity</td><td>cosine potential 與 anharmonicity</td></tr>
-                        <tr><td>95–115 分</td><td>問題五：Transmon 的設計選擇</td><td>charge dispersion／anharmonicity trade-off</td></tr>
-                        <tr><td>115–120 分</td><td>Exit ticket 與逆向作業</td><td>geometry → Hamiltonian 假說</td></tr>
-                      </tbody>
-                    </table>
-
-                    <div class="qh-section">
-                      <h3>問題一：一個巨觀電路為什麼可能具有量子能階？</h3>
-                    </div>
-                    <span class="qh-time">10–30 分鐘</span>
-                    <p>
-                      「巨觀」不等於「必然古典」。超導體中的 Cooper pairs 形成具有共同相位的凝聚態；在低溫、低損耗與受控電磁環境下，
-                      電路的集體模式可以保持足夠長的量子相干性。量子化的不是某一顆電子的位置，而是整個電路模式的電荷、磁通量與相位自由度。
-                    </p>
-                    <ul>
-                      <li>超導凝聚態與 Cooper-pair condensate</li>
-                      <li>巨觀量子相位</li>
-                      <li>低損耗電路與低溫環境</li>
-                      <li>集體電路模式的量子化</li>
-                    </ul>
-                    <div class="qh-board">
-                      <p><strong>核心判斷：</strong>電路是否具有量子能階，取決於它是否存在可辨認、可量子化並能與環境足夠隔離的集體自由度。</p>
-                    </div>
-
-                    <div class="qh-section">
-                      <h3>問題二：超導電路中，什麼東西扮演位置與動量？</h3>
-                    </div>
-                    <span class="qh-time">30–50 分鐘</span>
-                    <p>
-                      機械系統以 position 與 momentum 描述狀態；電路則可用 node flux 與 node charge 描述。
-                      Josephson circuit 中常改用 dimensionless phase \(\varphi\) 與 Cooper-pair number \(n\)。
-                    </p>
-                    <div class="qh-board">
-                      <p>\[
-                        [\hat\Phi,\hat Q]=i\hbar,
-                        \qquad
-                        [\hat\varphi,\hat n]=i.
-                      \]</p>
-                    </div>
-                    <p>
-                      因此 charge 與 phase 不能同時具有任意精確的值。後面所有 qubit 類型的差異，實際上都可視為在不同能量尺度下，重新安排這一對共軛變數的 fluctuation、localization 與 sensitivity。
-                    </p>
-
-                    <div class="qh-section">
-                      <h3>問題三：為什麼最簡單的人工原子仍然不是 qubit？</h3>
-                    </div>
-                    <span class="qh-time">50–70 分鐘</span>
-                    <p>量子化的 LC circuit 已經具有離散能階：</p>
-                    <div class="qh-board">
-                      <p>\[
-                        \hat H_{LC}=\frac{\hat Q^2}{2C}+\frac{\hat\Phi^2}{2L}
-                        =\hbar\omega\left(\hat a^\dagger\hat a+\frac12\right),
-                        \qquad \omega=\frac1{\sqrt{LC}}.
-                      \]</p>
-                    </div>
-                    <p>
-                      但相鄰能階完全等距，\(\omega_{01}=\omega_{12}=\cdots\)。一個 resonant microwave tone 不只看見
-                      \(\ket0\leftrightarrow\ket1\)，也會看見更高階 transition。因此「有量子能階」不等於「能把最低兩態隔離成 qubit」。
-                    </p>
-                    <div class="qh-task">
-                      <p><strong>課堂任務：</strong>畫出 harmonic 與 anharmonic spectrum，標示同一頻率的 drive 會連接哪些 transition。</p>
-                    </div>
-
-                    <div class="qh-section">
-                      <h3>問題四：Josephson junction 如何塑造人工原子的能階？</h3>
-                    </div>
-                    <span class="qh-time">70–95 分鐘</span>
-                    <p>Josephson tunneling 提供不耗散、由 phase 控制的非線性元件：</p>
-                    <div class="qh-board">
-                      <p>\[
-                        I=I_c\sin\varphi,
-                        \qquad
-                        V=\frac{\Phi_0}{2\pi}\dot\varphi,
-                        \qquad
-                        U_J(\varphi)=-E_J\cos\varphi.
-                      \]</p>
-                    </div>
-                    <p>
-                      線性電感的 quadratic potential 只能產生 harmonic spectrum；Josephson junction 的 cosine potential 則提供 nonlinear inductance。
-                      展開 cosine 時，quadratic term 建立主要振盪頻率，higher-order terms 破壞等間距，產生可供選擇控制的 anharmonic spectrum。
-                    </p>
-
-                    <div class="qh-section">
-                      <h3>問題五：為什麼人工原子最後設計成 Transmon？</h3>
-                    </div>
-                    <span class="qh-time">95–115 分鐘</span>
-                    <div class="qh-board">
-                      <p>\[
-                        \hat H_{\mathrm T}=4E_C(\hat n-n_g)^2-E_J\cos\hat\varphi.
-                      \]</p>
-                    </div>
-                    <p>
-                      Charge qubit 對 offset charge \(n_g\) 很敏感。Transmon 透過增加 shunt capacitance 降低 \(E_C\)，提高
-                      \(E_J/E_C\)，使能量對 \(n_g\) 的 charge dispersion 指數受到壓低；代價是 anharmonicity 的絕對值減小，
-                      control selectivity 與 gate speed 之間必須重新取捨。
-                    </p>
-                    <ul>
-                      <li>得到：較低 charge dispersion、成熟的 microwave control、可設計的頻率範圍。</li>
-                      <li>付出：較弱 anharmonicity、可能的 leakage、fixed／tunable design 的不同 noise 與 calibration 負擔。</li>
-                      <li>設計觀念：Transmon 不是「最好的人造原子」，而是一組在 noise sensitivity、control 與製造可行性之間成功的參數選擇。</li>
-                    </ul>
-                    <div class="qh-answer">
-                      <p><strong>本週結論：</strong>具有離散能階還不等於 qubit；必須利用 Josephson nonlinearity 製造可選擇控制的能譜，再利用 \(E_J/E_C\) 調整 charge sensitivity 與 anharmonicity 的交換。</p>
-                    </div>
-
-                    <div class="qh-section">
-                      <h3>逆向作業：從晶片照片反推人工原子</h3>
-                    </div>
-                    <p><strong>作業問題：</strong>給你一張超導量子晶片的局部影像，你能從幾何結構反推出它可能實現的 Hamiltonian 嗎？</p>
-                    <ol>
-                      <li><strong>辨認結構：</strong>標出 qubit pads、Josephson junction、ground、drive line、readout resonator；不確定處必須明確註記。</li>
-                      <li><strong>geometry → parameter：</strong>說明 pad geometry、junction area、spacing 與 line length 分別影響哪些電路參數。</li>
-                      <li><strong>parameter → Hamiltonian：</strong>指出影像中的哪些結構主要控制 \(E_C\)、\(E_J\) 與 coupling term。</li>
-                      <li><strong>Hamiltonian → observable：</strong>預測 pad 變大、junction 變小或與 resonator 距離縮短時，\(f_{01}\)、anharmonicity、charge dispersion 或 coupling 如何改變。</li>
-                      <li><strong>推論邊界：</strong>列出僅靠影像不能知道、必須由製程資料、EM simulation 或實驗量測取得的資訊。</li>
-                    </ol>
-                    <div class="qh-case">
-                      <p><strong>作業主鏈：</strong>晶片結構 → 幾何參數 → lumped-element model → Hamiltonian term → spectrum／control hypothesis。這是一題有證據邊界的逆向設計題，不要求學生在 W2 完成完整系統架構判斷。</p>
-                    </div>
-                  </section>
-
                   <div class="qh-section">
-                    <h3>既有推導與延伸教材</h3>
-                  </div>
-                  <div class="qh-section">
-                    <h3>Transmon的性質</h3>
-                  </div>
-                  <h4>當前主流的超導量子位元</h4>
-                  <div style="text-align: center;">
-                    <a href="../Image/Transmon.png">
-                      <img src="../WebP/Transmon.webp" alt="單JJ轉換器和對稱、非對稱SQUID轉換器電路圖" style="width: 98%; height: auto;">
-                    </a>
-                  </div>
-                  <div style="text-align: center;">
-                    <a href="../Image/Transmon state.png">
-                      <img src="../WebP/Transmon state.webp" alt="潛能曲線及量子能級示意圖" style="width: 50%; height: auto;">
-                    </a>
+                    <h3>前言：我們能不能用電路製造一顆原子？</h3>
                   </div>
                   <p>
-                    <span style="font-size: 0.7em; line-height: 0.8;">Ref:
-                      DOI:10.48550/arXiv.2203.04164</span><br><br>
+                    自然原子的離散能階來自電子在庫倫位能中的量子運動；超導量子位元則由電荷、磁通量與
+                    Josephson phase 的量子運動形成。這一週不以公式推導作為故事主角，而是沿著一個問題前進：
+                    <strong>如果自然原子的大小、頻率與能階幾乎不能由我們決定，我們能不能製造一顆可以自行設計的人工原子？</strong>
+                  </p>
+                  <p><a class="btn btn-gray" href="T2-outlook.html">先看 T2 十問次序與 Outlook</a></p>
+
+                  <table class="qh-session-plan">
+                    <thead>
+                      <tr>
+                        <th>時間</th>
+                        <th>問題</th>
+                        <th>本段產出</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>0–10 分</td>
+                        <td>人工原子開場與先備診斷</td>
+                        <td>自然原子／電路人工原子的比較圖</td>
+                      </tr>
+                      <tr>
+                        <td>10–30 分</td>
+                        <td>問題一：巨觀電路的量子能階</td>
+                        <td>巨觀量子相位與電路模式的概念鏈</td>
+                      </tr>
+                      <tr>
+                        <td>30–50 分</td>
+                        <td>問題二：電路的共軛變數</td>
+                        <td>\((\Phi,Q)\) 與 \((\varphi,n)\) 對照</td>
+                      </tr>
+                      <tr>
+                        <td>50–70 分</td>
+                        <td>問題三：LC oscillator 的限制</td>
+                        <td>等間距能譜與不可選擇控制</td>
+                      </tr>
+                      <tr>
+                        <td>70–95 分</td>
+                        <td>問題四：Josephson nonlinearity</td>
+                        <td>cosine potential 與 anharmonicity</td>
+                      </tr>
+                      <tr>
+                        <td>95–115 分</td>
+                        <td>問題五：Transmon 的設計選擇</td>
+                        <td>charge dispersion／anharmonicity trade-off</td>
+                      </tr>
+                      <tr>
+                        <td>115–120 分</td>
+                        <td>Exit ticket 與逆向作業</td>
+                        <td>geometry → Hamiltonian 假說</td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                  <div class="qh-section">
+                    <h3>問題一：一個巨觀電路為什麼可能具有量子能階？</h3>
+                  </div>
+                  <span class="qh-time">10–30 分鐘</span>
+                  <p>
+                    「巨觀」不等於「必然古典」。超導體中的 Cooper pairs 形成具有共同相位的凝聚態；在低溫、低損耗與受控電磁環境下，
+                    電路的集體模式可以保持足夠長的量子相干性。量子化的不是某一顆電子的位置，而是整個電路模式的電荷、磁通量與相位自由度。
+                  </p>
+
+                  <h4>先拆開一個常見誤解：粒子很多，不代表自由度一定很多</h4>
+                  <p>
+                    一塊超導金屬當然含有極大量的電子；但我們在低能量下不必逐一追蹤每顆電子。電子先形成 Cooper pairs，
+                    再凝聚成一個具有長程相位關係的多體量子態。它可以用一個巨觀 order parameter 表示：
+                  </p>
+                  <p>\[
+                    \Psi(\mathbf r,t)=\sqrt{n_s(\mathbf r,t)}\,e^{i\theta(\mathbf r,t)}.
+                    \]</p>
+                  <p>
+                    這裡 \(n_s\) 描述凝聚態密度，\(\theta\) 描述相位。絕對相位本身不是可觀測量；不同超導節點之間的
+                    gauge-invariant phase difference 才會進入電流、磁通量與電路能量。也就是說，許多微觀粒子可以一起形成少數幾個
+                    可控制的<strong>集體座標</strong>。真正要問的不是「電路裡有多少電子」，而是「低能量動力學最後剩下幾個獨立模式」。
+                  </p>
+                  <p>
+                    類比而言，一根音叉也由大量原子組成，但最低振動可由一個 normal-mode amplitude 描述。超導電路的關鍵差別是：
+                    這個集體模式可以在低溫與低損耗環境中進入量子極限，而不只表現為古典振動。
+                  </p>
+
+                  <h4>從巨觀相位到一個可以量子化的電路模式</h4>
+                  <p>
+                    超導體提供的並不只是「電阻等於零」。superconducting gap 抑制低能 quasiparticle excitation，凝聚態則提供相位剛性；
+                    配合適當的電容、電感與邊界條件，整個電路可只留下少數低損耗的 electromagnetic modes。對其中一個模式，可先用
+                    branch flux 作為座標：
+                  </p>
+                  <p>\[
+                    \Phi(t)\equiv\int^t V(t')\,dt',
+                    \qquad
+                    \varphi\equiv\frac{2\pi\Phi}{\Phi_0},
+                    \qquad
+                    \Phi_0=\frac{h}{2e}.
+                    \]</p>
+                  <p>
+                    電容儲存 electric energy，電感儲存 magnetic energy。若先看最簡單的單一 LC mode，它的 classical Hamiltonian 是
+                  </p>
+                  <p>\[
+                    H_{\rm mode}(\Phi,Q)
+                    =\frac{Q^2}{2C_{\rm eff}}+\frac{\Phi^2}{2L_{\rm eff}},
+                    \qquad
+                    \omega=\frac{1}{\sqrt{L_{\rm eff}C_{\rm eff}}}.
+                    \]</p>
+                  <p>
+                    第一項讓任意 charge accumulation 付出能量，第二項讓 flux 偏離平衡點時付出能量；兩者共同把這個自由度束縛成一個
+                    normal mode。把這對電路變數提升為量子算符後，模式便成為 quantum harmonic oscillator：
+                  </p>
+                  <p>\[
+                    \hat H_{\rm mode}
+                    =\hbar\omega\left(\hat a^\dagger\hat a+\frac12\right),
+                    \qquad
+                    E_m=\hbar\omega\left(m+\frac12\right),
+                    \quad m=0,1,2,\ldots
+                    \]</p>
+                  <p>
+                    這就是「巨觀電路具有離散量子能階」的最短存在性證明：先找到一個有 restoring energy 的集體模式，再量子化該模式。
+                    問題二會正式回答 \(\Phi\) 與 \(Q\) 為何構成共軛變數；問題三則會追問：這串等間距能階為什麼仍然不能直接當作 qubit。
+                  </p>
+
+                  <h4>能階存在是一回事，實驗上看得見又是另一回事</h4>
+                  <p>
+                    形式上量子化之後一定有 \(E_m\)；但若 thermal fluctuation 或環境造成的 linewidth 大於能階尺度，實驗只會看到近似連續的
+                    古典響應。要讓最低幾個能階可辨認，至少需要
+                  </p>
+                  <p>\[
+                    k_BT\ll\hbar\omega,
+                    \qquad
+                    \hbar\kappa,\;\hbar\gamma_\phi\ll\hbar\omega,
+                    \]</p>
+                  <p>
+                    其中 \(\kappa\) 是 mode energy decay rate，\(\gamma_\phi\) 是 dephasing rate。第一個條件抑制熱激發，後兩個條件避免
+                    能階被 relaxation 與 phase noise 展寬到無法分辨。熱平衡下的平均 excitation number 為
+                  </p>
+                  <p>\[
+                    \bar n_{\rm th}=\frac{1}{e^{\hbar\omega/k_BT}-1}.
+                    \]</p>
+                  <p>
+                    例如 \(f=\omega/2\pi=5\,\mathrm{GHz}\) 時，\(hf/k_B\approx0.24\,\mathrm{K}\)。若晶片模式真的熱化到
+                    \(T=20\,\mathrm{mK}\)，則 \(\bar n_{\rm th}\approx6\times10^{-6}\)：系統幾乎都在 ground state。
+                    實驗中仍須以 attenuation、filtering、shielding 與良好的封裝，避免 hot photons 與外界雜訊把有效溫度拉高。
+                  </p>
+
+                  <h4>為什麼日常電路看起來仍然是古典的？</h4>
+                  <p>
+                    日常 RLC circuit 並不是「沒有量子力學」，而是量子結構通常被三件事遮住：室溫使許多能階同時被佔據；電阻與環境耦合使
+                    linewidth 變寬；強驅動又讓模式包含大量 quanta。對平均 photon number \(N=|\alpha|^2\gg1\) 的 coherent state，
+                    相對 fluctuation 約按 \(1/\sqrt N\) 縮小，因此運動自然逼近 classical waveform。超導、稀釋製冷與 microwave engineering
+                    的作用，就是把同一類電路推回 \(N\sim0,1\) 且 loss 足夠小的區域。
+                  </p>
+
+                  <p>因此，一個巨觀電路能顯示量子能階，需要依序完成四個環節：</p>
+                  <ul>
+                    <li><strong>超導凝聚態與 Cooper-pair condensate：</strong>把大量電子組織成一個相位相干的低能多體態。</li>
+                    <li><strong>巨觀量子相位：</strong>讓不同節點之間的 phase difference 成為可進入電路動力學的集體變數。</li>
+                    <li><strong>低損耗電路與低溫環境：</strong>使 \(k_BT\) 與 energy linewidth 都小於 mode quantum \(\hbar\omega\)。</li>
+                    <li><strong>集體電路模式的量子化：</strong>由 circuit energy 找出 bounded normal mode，得到離散的 \(E_m\)。</li>
+                  </ul>
+                  <p>
+                    <strong>核心判斷：</strong>電路是否具有量子能階，取決於它是否存在可辨認、可量子化並能與環境足夠隔離的集體自由度。
+                    「具有離散能階」只完成了人工原子的第一步；能不能只選擇性控制其中兩階，則是後面三問要解決的設計問題。
+                  </p>
+
+                  <div class="qh-section">
+                    <h3>單元 2：什麼是超導量子位元？</h3>
+                  </div>
+                  <h4>2.1 Artificial Atoms from Superconducting Circuits</h4>
+                  <p>
+                    超導量子位元可以被視為人工原子。
+                    自然原子的能階來自電子在原子核庫倫位能中的量子化運動；
+                    超導量子位元的能階則來自電路中電荷、磁通量與 Josephson phase 的量子化運動。
+                  </p>
+
+                  <p>
+                    在古典 LC 電路中，能量在電容的電場能與電感的磁場能之間交換，形成諧振。
+                    若把 LC 電路量子化，它會形成 quantum harmonic oscillator。
+                    然而，理想 harmonic oscillator 的能階間距完全相等，無法單獨選取最低兩個能階作為 qubit。
+                    因此，超導 qubit 必須引入非線性，使能階間距不再相等。
                   </p>
 
 
-                  <section class="module">
-                    <div class="qh-section">
-                      <h3>單元 2：什麼是超導量子位元？</h3>
-                    </div>
-                    <h4>2.1 Artificial Atoms from Superconducting Circuits</h4>
-                    <p>
-                      超導量子位元可以被視為人工原子。
-                      自然原子的能階來自電子在原子核庫倫位能中的量子化運動；
-                      超導量子位元的能階則來自電路中電荷、磁通量與 Josephson phase 的量子化運動。
-                    </p>
+                  <div class="qh-section">
+                    <h3>超導現象與 Josephson Junction</h3>
+                  </div>
 
-                    <p>
-                      在古典 LC 電路中，能量在電容的電場能與電感的磁場能之間交換，形成諧振。
-                      若把 LC 電路量子化，它會形成 quantum harmonic oscillator。
-                      然而，理想 harmonic oscillator 的能階間距完全相等，無法單獨選取最低兩個能階作為 qubit。
-                      因此，超導 qubit 必須引入非線性，使能階間距不再相等。
-                    </p>
+                  <h4>3.1 Superconductivity</h4>
+                  <p>
+                    超導是一種低溫量子凝聚態現象。當某些材料被冷卻到臨界溫度 \(T_c\) 以下時，
+                    電阻消失，並且會排斥內部磁場，這稱為 Meissner effect。
+                    在微觀層次中，電子透過與晶格振動的交互作用形成 Cooper pairs，
+                    大量 Cooper pairs 進一步凝聚成具有共同相位的巨觀量子態。
+                  </p>
 
-                    <h4>2.2 Why Nonlinearity Is Necessary</h4>
-                    <p>
-                      若量子電路的能階為等間距，則從 \(\ket{0}\) 到 \(\ket{1}\) 的頻率與
-                      從 \(\ket{1}\) 到 \(\ket{2}\) 的頻率相同。
-                      這會導致微波控制無法只針對 qubit 子空間 \(\ket{0}, \ket{1}\)，
-                      而容易激發到更高能階。
-                    </p>
+                  <h4>超導體的重要特性</h4>
+                  <ul>
+                    <li><strong>Zero resistance：</strong>直流電阻消失，使電路耗散大幅降低。</li>
+                    <li><strong>Meissner effect：</strong>超導體排斥磁場，形成磁通量屏蔽。</li>
+                    <li><strong>Cooper pair condensate：</strong>電子成對凝聚，形成巨觀量子相干態。</li>
+                    <li><strong>Macroscopic phase：</strong>超導態可用一個巨觀相位 \(\phi\) 描述。</li>
+                    <li><strong>Flux quantization：</strong>超導迴路中的磁通量以 \(\Phi_0 = h/2e\) 為單位量子化。</li>
+                  </ul>
 
-                    <p>
-                      Josephson junction 提供了超導量子電路所需的非線性電感。
-                      透過這個非線性，超導電路可以形成不等間距能階，使最低兩個能階能夠被用作量子位元。
-                    </p>
+                  <h4>3.2 Macroscopic Quantum Phase</h4>
+                  <p>
+                    超導凝聚態可以用一個巨觀波函數描述：
+                  </p>
 
-                    <h4>2.3 Types of Superconducting Qubits</h4>
-                    <p>
-                      不同超導量子位元可以根據主要能量尺度與電路設計分為多種類型。
-                      常見的例子包括 Charge Qubit、Flux Qubit、Phase Qubit、Transmon、Fluxonium 與 0-π Qubit。
-                      在現代 gate-based superconducting quantum computing 中，Transmon 是最廣泛使用的設計之一；
-                      Fluxonium 則因其長 coherence、較低 relaxation rate 與特殊能階結構而受到高度關注。
-                    </p>
 
-                    <table>
-                      <thead>
-                        <tr>
-                          <th>Qubit 類型</th>
-                          <th>主要自由度</th>
-                          <th>設計特色</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>Charge Qubit</td>
-                          <td>Cooper pair number</td>
-                          <td>對電荷敏感，控制性佳但容易受 charge noise 影響</td>
-                        </tr>
-                        <tr>
-                          <td>Flux Qubit</td>
-                          <td>磁通量與環流方向</td>
-                          <td>以超導迴路中的 persistent current 狀態作為基礎</td>
-                        </tr>
-                        <tr>
-                          <td>Transmon</td>
-                          <td>Josephson phase</td>
-                          <td>透過增加電容降低 charge noise sensitivity</td>
-                        </tr>
-                        <tr>
-                          <td>Fluxonium</td>
-                          <td>Phase across Josephson junction and superinductor</td>
-                          <td>使用 superinductor 形成特殊能階與雜訊保護</td>
-                        </tr>
-                      </tbody>
-                    </table>
+                  <p>\[
+                    \Psi({r}) = |\Psi({r})| e^{i\phi({r})}
+                    \]</p>
+                  <p>
+                    其中 \(\phi\) 是超導相位。對超導量子電路而言，
+                    這個相位不只是抽象變數，而是可以作為電路自由度並被量子化。
+                    因此，超導量子電路中的重要變數通常包含電荷數 \(n\) 與相位 \(\varphi\)，
+                    並滿足類似位置與動量的共軛關係。</p>
 
-                  </section>
+
+
+                  <p>\[
+                    [\hat{\varphi}, \hat{n}] = i
+                    \]</p>
+
+                  <div class="qh-section">
+                    <h3>問題二：超導電路中，什麼東西扮演位置與動量？</h3>
+                  </div>
+                  <span class="qh-time">30–50 分鐘</span>
+                  <p>
+                    機械系統以 position 與 momentum 描述狀態；電路則可用 node flux 與 node charge 描述。
+                    Josephson circuit 中常改用 dimensionless phase \(\varphi\) 與 Cooper-pair number \(n\)。
+                  </p>
+
+                  <h4>第一步：不要把 voltage 當成 generalized coordinate</h4>
+                  <p>
+                    對一個電路節點，先選 ground 作為參考，定義 node voltage \(V(t)\)。但 Lagrangian mechanics 需要的是一個座標及其
+                    time derivative，因此我們定義 node flux
+                  </p>
+                  <p>\[
+                    \Phi(t)\equiv\int_{-\infty}^{t}V(t')\,dt',
+                    \qquad
+                    \dot\Phi(t)=V(t).
+                    \]</p>
+                  <p>
+                    名稱雖然叫 flux，它並不一定等於某個線圈內的磁通量；它首先是 voltage 的時間積分，單位同樣是 weber。
+                    對連接節點 \(i,j\) 的 branch，branch flux 是 \(\Phi_i-\Phi_j\)。選定 spanning tree 與 ground 後，
+                    獨立 node flux 就構成電路的 generalized coordinates。
+                  </p>
+
+                  <h4>第二步：從 LC energy 讀出 canonical momentum</h4>
+                  <p>
+                    對最簡單的平行 LC mode，capacitor voltage 是 \(\dot\Phi\)，inductor current 是 \(\Phi/L\)。因此
+                    electric energy 與 magnetic energy 分別為
+                  </p>
+                  <p>\[
+                    T=\frac12C\dot\Phi^2,
+                    \qquad
+                    U=\frac{\Phi^2}{2L}.
+                    \]</p>
+                  <p>
+                    電路 Lagrangian 取 kinetic-like energy 減 potential-like energy：
+                  </p>
+                  <p>\[
+                    \mathcal L(\Phi,\dot\Phi)
+                    =\frac12C\dot\Phi^2-\frac{\Phi^2}{2L}.
+                    \]</p>
+                  <p>
+                    與 \(\Phi\) 共軛的 canonical momentum 由定義直接算出：
+                  </p>
+                  <p>\[
+                    Q\equiv\frac{\partial\mathcal L}{\partial\dot\Phi}
+                    =C\dot\Phi=CV.
+                    \]</p>
+                  <p>
+                    \(CV\) 正是 capacitor 上儲存的 charge。也就是說，node charge 不是靠類比猜出的「動量」；
+                    它是從 circuit Lagrangian 對 \(\dot\Phi\) 微分後必然得到的 canonical momentum。
+                  </p>
+
+                  <h4>第三步：Legendre transform 得到 Hamiltonian</h4>
+                  <p>
+                    由 \(\dot\Phi=Q/C\)，執行 Legendre transform：
+                  </p>
+                  <p>\[
+                    H(\Phi,Q)
+                    =Q\dot\Phi-\mathcal L
+                    =\frac{Q^2}{2C}+\frac{\Phi^2}{2L}.
+                    \]</p>
+                  <p>
+                    因此機械 oscillator 與 LC oscillator 的對應不是只停在圖像類比，而是完整的 canonical mapping：
+                  </p>
+                  <ul>
+                    <li>\(x\longleftrightarrow\Phi\)：描述系統偏離平衡點的 generalized coordinate。</li>
+                    <li>\(p\longleftrightarrow Q\)：由 Lagrangian 對 generalized velocity 微分得到的 canonical momentum。</li>
+                    <li>\(m\longleftrightarrow C\)：決定「動量項」\(Q^2/2C\) 的尺度。</li>
+                    <li>\(k\longleftrightarrow1/L\)：決定 restoring potential \(\Phi^2/2L\) 的曲率。</li>
+                  </ul>
+
+                  <h4>第四步：canonical quantization</h4>
+                  <p>
+                    把 classical canonical pair 提升為 operators，並施加
+                  </p>
+                  <p>\[
+                    [\hat\Phi,\hat Q]=i\hbar,
+                    \qquad
+                    \Delta\Phi\,\Delta Q\geq\frac{\hbar}{2}.
+                    \]</p>
+                  <p>
+                    在 flux representation 中，state 是 \(\psi(\Phi)\)，而
+                  </p>
+                  <p>\[
+                    \hat\Phi\,\psi(\Phi)=\Phi\,\psi(\Phi),
+                    \qquad
+                    \hat Q\,\psi(\Phi)=-i\hbar\frac{\partial}{\partial\Phi}\psi(\Phi).
+                    \]</p>
+                  <p>
+                    所以一個 state 若在 flux 上非常 localized，就必須包含很廣的 charge distribution；反之亦然。
+                    這個 uncertainty relation 之後會成為 qubit design 的核心，而不是只有形式上的量子化規則。
+                  </p>
+
+                  <h4>第五步：Josephson circuit 改用 phase 與 Cooper-pair number</h4>
+                  <p>
+                    對超導節點，把有單位的 flux 與 charge 重新縮放：
+                  </p>
+                  <p>\[
+                    \varphi\equiv\frac{2\pi\Phi}{\Phi_0}
+                    =\frac{2e}{\hbar}\Phi,
+                    \qquad
+                    n\equiv\frac{Q}{2e},
+                    \qquad
+                    \Phi_0=\frac{h}{2e}.
+                    \]</p>
+                  <p>
+                    \(n\) 的正負會隨 branch orientation convention 改變；重要的是 \(2en\) 表示以 Cooper-pair charge 為單位的節點電荷。
+                    代入上一個 commutator：
+                  </p>
+                  <p>\[
+                    [\hat\varphi,\hat n]
+                    =\frac{2e}{\hbar}\frac{1}{2e}[\hat\Phi,\hat Q]
+                    =i.
+                    \]</p>
+                  <p>
+                    因而在 phase representation 中
+                  </p>
+                  <p>\[
+                    \hat n=-i\frac{\partial}{\partial\varphi},
+                    \qquad
+                    e^{\pm i\hat\varphi}\ket n=\ket{n\pm1}.
+                    \]</p>
+                  <p>
+                    最後一式把 phase 與 charge 的物理關係說得很清楚：\(e^{\pm i\hat\varphi}\) 會讓島上的 Cooper-pair number 改變一個單位。
+                    因此 Josephson term 也可寫成
+                  </p>
+                  <p>\[
+                    -E_J\cos\hat\varphi
+                    =-\frac{E_J}{2}\left(e^{i\hat\varphi}+e^{-i\hat\varphi}\right),
+                    \]</p>
+                  <p>
+                    它在 phase picture 是 cosine potential；在 charge picture 則是相鄰 charge states 之間的 coherent tunneling。
+                    兩種圖像描述的是同一個 Hamiltonian。
+                  </p>
+
+                  <p>
+                    因此 charge 與 phase 不能同時具有任意精確的值。後面所有 qubit 類型的差異，實際上都可視為在不同能量尺度下，
+                    重新安排這一對共軛變數的 fluctuation、localization 與 sensitivity。較大的 charging energy 傾向限制 charge fluctuation，
+                    較大的 Josephson energy 則傾向把 phase 限制在 cosine potential 的 minimum 附近；兩者不可能同時被任意壓窄。
+                  </p>
+                  <p>
+                    <strong>問題二結論：</strong>超導電路中的「位置」是 node flux \(\Phi\) 或 dimensionless phase \(\varphi\)；
+                    對應的「動量」是 node charge \(Q\) 或 Cooper-pair number \(n\)。這不是命名習慣，而是由
+                    \(\mathcal L(\Phi,\dot\Phi)\) 的 canonical structure 推導出來。
+                  </p>
 
                   <div class="qh-section">
                     <h3>LC電路的正則量子化</h3>
@@ -1288,49 +1434,398 @@
                   </details>
                   <br><br>
 
-                  <section class="qh-supplement-source">
+                  <section class="module">
 
                     <div class="qh-section">
-                      <h3>超導現象與 Josephson Junction</h3>
+                      <h3>進階主線：Circuit → Lagrangian → Hamiltonian → Spectrum</h3>
                     </div>
+                    <p><em>（W2-C1, W2-D1, W2-D2）</em>對節點磁通 \(\Phi\) 而言，電容網路提供 kinetic term，電感與 Josephson junction 提供
+                      potential term：</p>
+                    <p>\[\mathcal L=\frac12\dot{\Phi}^{T} C\dot{\Phi}-U(\Phi),\qquad Q=\frac{\partial\mathcal
+                      L}{\partial\dot{\Phi}}\]</p>
+                    <p>Legendre transform 得到 \(H(\Phi, Q)\)，再施加 \([\hat\Phi_i,\hat Q_j]=i\hbar\delta_{ij}\)。線性 LC
+                      電路只產生等距能階；Josephson term</p>
+                    <p>\[U_J(\varphi)=-E_J\cos\varphi,\qquad E_J=\frac{\Phi_0 I_c}{2\pi}\]</p>
+                    <p>才打破 harmonicity，使最低兩能階可以被選擇性控制。進階課需要讓學生實際走完一次「由 schematic 到 Hamiltonian」；只背 transmon 公式不足以判斷寄生
+                      mode、coupling 與 layout 變更的後果。</p>
+                    <p class="callout"><b>邊界：</b>本週不深入 BCS microscopic derivation；超導體在這裡主要提供 macroscopic phase、低損耗
+                      wiring 與 Josephson element。微觀材料損耗留到 T6。</p>
 
-                    <h4>3.1 Superconductivity</h4>
+
+
+
+
+                    <section class="module">
+                      <div class="qh-section">
+                        <h3>課堂整合與驗收</h3>
+                      </div>
+                      <p><strong>研討問題：</strong>由一個含 \(C\)、\(L\)、JJ 的單節點電路寫出 \(\mathcal L\)、canonical charge 與
+                        \(H\)，並指出哪個參數由版圖或製程控制。</p>
+                      <p><strong>完成條件：</strong>學生必須留下可檢查的推導、關係圖、比較表或 architecture decision，並能說明其物理假設與工程代價。</p>
+                    </section>
+                    <section class="module">
+                      <div class="qh-section">
+                        <h3>核心與延伸閱讀</h3>
+                      </div>
+                      <ul class="qh-reading">
+                        <li><a href="https://arxiv.org/abs/1610.03438" target="_blank" rel="noopener">Introduction to
+                            Quantum Electromagnetic Circuits</a><span>U. Vool and M. H. Devoret, International Journal
+                            of
+                            Circuit Theory and Applications 45, 897–934 (2017).</span><em>從電路圖、Lagrangian 到量子
+                            Hamiltonian
+                            的核心讀物。</em></li>
+                        <li><a href="https://arxiv.org/abs/1204.0587" target="_blank" rel="noopener">Black-box
+                            Superconducting Circuit Quantization</a><span>S. E. Nigg et al., Physical Review Letters
+                            108,
+                            240502 (2012).</span><em>把分佈式電磁環境與 Josephson 非線性轉成有效 Hamiltonian。</em></li>
+                        <li><a href="https://doi.org/10.1063/1.5089550" target="_blank" rel="noopener">A Quantum
+                            Engineer&#x27;s Guide to Superconducting Qubits</a><span>P. Krantz et al., Applied Physics
+                            Reviews 6, 021318 (2019).</span><em>控制、coherence、readout 與工程參數的主幹 review。</em></li>
+                        <li><a href="https://www.nature.com/articles/s41578-021-00370-4" target="_blank" rel="noopener">Engineering High-Coherence Superconducting Qubits</a><span>I. Siddiqi, Nature
+                            Reviews Materials 6, 875–891 (2021).</span><em>不同 qubit architecture、材料損耗與 coherence 的設計
+                            trade-off。</em></li>
+                      </ul>
+                    </section>
+                    <div class="qh-section">
+                      <h3>問題三：為什麼最簡單的人工原子仍然不是 qubit？</h3>
+                    </div>
+                    <span class="qh-time">50–70 分鐘</span>
+                    <p>量子化的 LC circuit 已經具有離散能階：</p>
+                    <p>\[
+                      \hat H_{LC}=\frac{\hat Q^2}{2C}+\frac{\hat\Phi^2}{2L}
+                      =\hbar\omega\left(\hat a^\dagger\hat a+\frac12\right),
+                      \qquad \omega=\frac1{\sqrt{LC}}.
+                      \]</p>
+
+                    <h4>先確認：LC circuit 的確已經是量子系統</h4>
                     <p>
-                      超導是一種低溫量子凝聚態現象。當某些材料被冷卻到臨界溫度 \(T_c\) 以下時，
-                      電阻消失，並且會排斥內部磁場，這稱為 Meissner effect。
-                      在微觀層次中，電子透過與晶格振動的交互作用形成 Cooper pairs，
-                      大量 Cooper pairs 進一步凝聚成具有共同相位的巨觀量子態。
+                      定義 characteristic impedance \(Z=\sqrt{L/C}\)，可把 flux 與 charge operators 寫成
+                    </p>
+                    <p>\[
+                      \hat\Phi=\Phi_{\rm zpf}(\hat a+\hat a^\dagger),
+                      \qquad
+                      \hat Q=-iQ_{\rm zpf}(\hat a-\hat a^\dagger),
+                      \]</p>
+                    <p>\[
+                      \Phi_{\rm zpf}=\sqrt{\frac{\hbar Z}{2}},
+                      \qquad
+                      Q_{\rm zpf}=\sqrt{\frac{\hbar}{2Z}},
+                      \qquad
+                      \Phi_{\rm zpf}Q_{\rm zpf}=\frac{\hbar}{2}.
+                      \]</p>
+                    <p>
+                      即使在 ground state，flux 與 charge 仍有 zero-point fluctuation。能量本徵態
+                      \(\ket m\) 也是真正離散的：
+                    </p>
+                    <p>\[
+                      E_m=\hbar\omega\left(m+\frac12\right),
+                      \qquad m=0,1,2,\ldots
+                      \]</p>
+                    <p>
+                      所以問題不在於 LC oscillator「不夠量子」。它的問題恰好相反：它是一個太理想的 linear quantum system，
+                      每一階都遵循完全相同的規則。
                     </p>
 
-                    <h4>超導體的重要特性</h4>
+                    <h4>等間距能譜使所有相鄰 transition 頻率重疊</h4>
+                    <p>
+                      相鄰能階的 transition frequency 是
+                    </p>
+                    <p>\[
+                      \omega_{m,m+1}
+                      =\frac{E_{m+1}-E_m}{\hbar}
+                      =\omega,
+                      \]</p>
+                    <p>
+                      因此
+                    </p>
+                    <p>\[
+                      \omega_{01}=\omega_{12}=\omega_{23}=\cdots.
+                      \]</p>
+                    <p>
+                      一個 resonant microwave tone 不只看見 \(\ket0\leftrightarrow\ket1\)，也會看見更高階 transition。
+                      頻率選擇無法告訴系統「只使用最低兩階」。
+                    </p>
+
+                    <h4>從 drive Hamiltonian 看見 leakage 為何不可避免</h4>
+                    <p>
+                      假設以電容耦合的 microwave voltage 驅動 oscillator。忽略不影響主旨的 coupling prefactor，可將控制項寫成
+                    </p>
+                    <p>\[
+                      \hat H_d(t)
+                      =\hbar\epsilon(t)(\hat a+\hat a^\dagger).
+                      \]</p>
+                    <p>
+                      相鄰能階的 matrix element 為
+                    </p>
+                    <p>\[
+                      \langle m+1|\hat a+\hat a^\dagger|m\rangle
+                      =\sqrt{m+1}.
+                      \]</p>
+                    <p>
+                      drive 一開始把 \(\ket0\) 推向 \(\ket1\)；一旦 \(\ket1\) 有 population，同一個頻率又正好 resonant 地驅動
+                      \(\ket1\rightarrow\ket2\)，而且 matrix element 是 \(\sqrt2\) 倍。再往上依此類推。
+                      因此 \(\{\ket0,\ket1\}\) 並不是在這個控制下封閉的 invariant subspace。
+                    </p>
+
+                    <h4>更強的說法：linear drive 產生 coherent state，不會產生純 \(\ket1\)</h4>
+                    <p>
+                      在 rotating-wave approximation 下，受驅 harmonic oscillator 可寫成
+                    </p>
+                    <p>\[
+                      \hat H_{\rm rot}(t)
+                      =\hbar\bigl[\epsilon(t)\hat a^\dagger+\epsilon^*(t)\hat a\bigr].
+                      \]</p>
+                    <p>
+                      若初態是 vacuum，任何這類 linear pulse 最後只會做 displacement：
+                    </p>
+                    <p>\[
+                      \ket0\longrightarrow\hat D(\alpha)\ket0=\ket\alpha,
+                      \qquad
+                      P_m=e^{-|\alpha|^2}\frac{|\alpha|^{2m}}{m!}.
+                      \]</p>
+                    <p>
+                      想讓 \(P_1\) 最大時需取 \(|\alpha|^2=1\)，但此時
+                      \(P_1^{\rm max}=e^{-1}\approx0.368\)，其餘 population 仍分散在 \(\ket0,\ket2,\ldots\)。
+                      換句話說，對 bare harmonic oscillator 做一個傳統 qubit「\(\pi\)-pulse」並不能把 \(\ket0\) 確定地翻到 \(\ket1\)。
+                    </p>
+
+                    <h4>qubit 還需要 spectral addressability</h4>
+                    <p>
+                      定義 anharmonicity
+                    </p>
+                    <p>\[
+                      \alpha\equiv\omega_{12}-\omega_{01}.
+                      \]</p>
+                    <p>
+                      harmonic oscillator 有 \(\alpha=0\)。若引入 nonlinearity 使 \(\alpha\neq0\)，drive frequency 才能以
+                      \(\omega_{01}\) 選中 computational transition，同時對 \(\omega_{12}\) 保持 off-resonant。對簡單 pulse，
+                      通常希望
+                    </p>
+                    <p>\[
+                      |\alpha|\gg\Omega_R,\;\kappa,\;\gamma_\phi,
+                      \]</p>
+                    <p>
+                      其中 \(\Omega_R\) 是 Rabi rate。drive 太快時頻寬變寬，leakage amplitude 通常按
+                      \(\Omega_R/|\alpha|\) 的量級增加；drive 太慢又會累積 decoherence。這就是之後 pulse shaping 與
+                      DRAG control 所處理的 speed–leakage trade-off。
+                    </p>
+                    <p>
+                      <strong>精確說法：</strong>harmonic oscillator 不是不能承載量子資訊；利用多個 Fock states、cat states 或其他
+                      bosonic encoding，仍可把 oscillator 當作 logical qubit。但若只允許一般 linear microwave control，
+                      bare LC oscillator 不能自然提供一個可獨立操作的最低兩能階 qubit。
+                    </p>
+                    <p><strong>課堂任務：</strong>畫出 harmonic 與 anharmonic spectrum，標示同一頻率的 drive 會連接哪些 transition。</p>
+                    <p>
+                      <strong>問題三結論：</strong>「能階離散」只保證系統是量子的；「能階不等距」才讓
+                      \(\ket0\leftrightarrow\ket1\) 能被頻率選擇，並把 leakage 壓到可控制的程度。
+                    </p>
+
+                    <h4>2.2 Why Nonlinearity Is Necessary</h4>
+                    <p>
+                      若量子電路的能階為等間距，則從 \(\ket{0}\) 到 \(\ket{1}\) 的頻率與
+                      從 \(\ket{1}\) 到 \(\ket{2}\) 的頻率相同。
+                      這會導致微波控制無法只針對 qubit 子空間 \(\ket{0}, \ket{1}\)，
+                      而容易激發到更高能階。
+                    </p>
+
+                    <p>
+                      Josephson junction 提供了超導量子電路所需的非線性電感。
+                      透過這個非線性，超導電路可以形成不等間距能階，使最低兩個能階能夠被用作量子位元。
+                    </p>
+
+                    <h4>4.1 From LC Circuit to Quantum LC Oscillator</h4>
+                    <p>
+                      在古典電路中，LC 振盪器的能量在電容與電感之間交換。
+                      電容儲存電場能，電感儲存磁場能。
+                      若將 LC 振盪器量子化，會得到等間距能階：
+                    </p>
+
+
+                    <p>\[
+                      E_m = \hbar\omega\left(m + \frac{1}{2}\right)
+                      \]</p>
+                    <p>
+                      這樣的 harmonic oscillator 並不適合作為 qubit，因為相鄰能階間距相同，
+                      控制脈衝無法只選擇 \(\ket{0} \leftrightarrow \ket{1}\) transition。
+                    </p>
+
+                    <div class="qh-section">
+                      <h3>問題四：Josephson junction 如何塑造人工原子的能階？</h3>
+                    </div>
+                    <span class="qh-time">70–95 分鐘</span>
+                    <p>Josephson tunneling 提供不耗散、由 phase 控制的非線性元件：</p>
+                    <p>\[
+                      I=I_c\sin\varphi,
+                      \qquad
+                      V=\frac{\Phi_0}{2\pi}\dot\varphi,
+                      \qquad
+                      U_J(\varphi)=-E_J\cos\varphi.
+                      \]</p>
+
+                    <h4>Josephson energy 不是另外假設的：它可由兩條 Josephson relations 積分得到</h4>
+                    <p>
+                      理想 junction 的 supercurrent branch 滿足 \(I=I_c\sin\varphi\)，phase 隨 voltage 的演化則滿足
+                      \(V=(\Phi_0/2\pi)\dot\varphi\)。流入元件的瞬時功率為
+                    </p>
+                    <p>\[
+                      P=IV
+                      =I_c\sin\varphi\,
+                      \frac{\Phi_0}{2\pi}\dot\varphi.
+                      \]</p>
+                    <p>
+                      若這份功率儲存在 junction potential 中，則
+                    </p>
+                    <p>\[
+                      \frac{dU_J}{dt}
+                      =\frac{dU_J}{d\varphi}\dot\varphi
+                      =\frac{\Phi_0 I_c}{2\pi}\sin\varphi\,\dot\varphi.
+                      \]</p>
+                    <p>
+                      因而
+                    </p>
+                    <p>\[
+                      \frac{dU_J}{d\varphi}=E_J\sin\varphi,
+                      \qquad
+                      E_J\equiv\frac{\Phi_0 I_c}{2\pi}
+                      =\frac{\hbar I_c}{2e},
+                      \]</p>
+                    <p>
+                      積分後得到
+                    </p>
+                    <p>\[
+                      U_J(\varphi)=-E_J\cos\varphi+\text{constant}.
+                      \]</p>
+                    <p>
+                      所謂「Josephson junction 提供 cosine potential」，因此不是把電路硬套進某個原子模型，而是從可量測的
+                      current–phase relation 直接導出的 energy landscape。
+                    </p>
+
+                    <h4>它像電感，但不是線性電感</h4>
+                    <p>
+                      對線性電感，\(I=\Phi/L\)，所以 potential 永遠是 quadratic。對 junction，
+                      \(\dot I=I_c\cos\varphi\,\dot\varphi\)。比較 \(V=L_J\dot I\) 可得 differential inductance
+                    </p>
+                    <p>\[
+                      L_J(\varphi)
+                      =\frac{\Phi_0}{2\pi I_c\cos\varphi}.
+                      \]</p>
+                    <p>
+                      \(L_J\) 隨 phase 改變，這就是 nonlinearity 的電路語言。小振幅且 \(\varphi\approx0\) 時，
+                      \(L_J(0)=\Phi_0/(2\pi I_c)\)，junction 看起來近似線性；振幅增大後，\(\cos\varphi\) 的變化便不能忽略。
+                      理想 Josephson supercurrent 同時又是不耗散的，這使 junction 能在低損耗電路中提供一般 resistor 或 semiconductor diode
+                      難以兼得的強 nonlinearity。實際元件仍有 junction capacitance、quasiparticle loss 與材料缺陷，不能把「理想不耗散」誤解為完全沒有 loss。
+                    </p>
+
+                    <h4>加入 capacitance 後，phase 變成在 cosine potential 中運動的量子座標</h4>
+                    <p>
+                      將 junction 與總電容 \(C_\Sigma\) 合在一起，charging energy 定義為
+                    </p>
+                    <p>\[
+                      E_C\equiv\frac{e^2}{2C_\Sigma}.
+                      \]</p>
+                    <p>
+                      Hamiltonian 成為
+                    </p>
+                    <p>\[
+                      \hat H
+                      =4E_C(\hat n-n_g)^2-E_J\cos\hat\varphi.
+                      \]</p>
+                    <p>
+                      在「量子粒子」圖像中，\(\varphi\) 是 position，\(n\) 是 momentum；\(E_C\) 決定 kinetic-energy scale，
+                      \(E_J\) 則決定 periodic potential 的深度。改變 junction critical current 會改變 \(E_J\)，改變 shunt capacitance
+                      會改變 \(E_C\)，所以這顆人工原子的「質量、束縛強度與能譜」都能由電路設計。
+                    </p>
+
+                    <h4>cosine 的 higher-order terms 破壞等間距</h4>
+                    <p>
+                      在線性化近似中只保留 potential minimum 附近的 quadratic term：
+                    </p>
+                    <p>\[
+                      -E_J\cos\varphi
+                      =-E_J+\frac{E_J}{2}\varphi^2
+                      -\frac{E_J}{24}\varphi^4
+                      +\frac{E_J}{720}\varphi^6-\cdots.
+                      \]</p>
+                    <p>
+                      線性電感的 quadratic potential 只能產生 harmonic spectrum；Josephson junction 的 cosine potential 則提供
+                      nonlinear inductance。
+                      展開 cosine 時，quadratic term 建立主要振盪頻率，higher-order terms 破壞等間距，產生可供選擇控制的 anharmonic spectrum。
+                    </p>
+                    <p>
+                      先把 quadratic part 當作 harmonic oscillator：
+                    </p>
+                    <p>\[
+                      \hat H_0
+                      =4E_C\hat n^2+\frac{E_J}{2}\hat\varphi^2-E_J,
+                      \qquad
+                      \hbar\omega_p=\sqrt{8E_JE_C}.
+                      \]</p>
+                    <p>
+                      對應的 zero-point amplitudes 可取為
+                    </p>
+                    <p>\[
+                      \hat\varphi=\varphi_{\rm zpf}(\hat a+\hat a^\dagger),
+                      \qquad
+                      \hat n=i n_{\rm zpf}(\hat a^\dagger-\hat a),
+                      \]</p>
+                    <p>\[
+                      \varphi_{\rm zpf}
+                      =\left(\frac{2E_C}{E_J}\right)^{1/4},
+                      \qquad
+                      n_{\rm zpf}
+                      =\left(\frac{E_J}{32E_C}\right)^{1/4},
+                      \qquad
+                      \varphi_{\rm zpf}n_{\rm zpf}=\frac12.
+                      \]</p>
+                    <p>
+                      現在把 quartic term
+                      \(-E_J\hat\varphi^4/24\) 當作一階 perturbation。因為
+                    </p>
+                    <p>\[
+                      \langle m|(\hat a+\hat a^\dagger)^4|m\rangle
+                      =6m^2+6m+3,
+                      \]</p>
+                    <p>
+                      得到低能階近似
+                    </p>
+                    <p>\[
+                      E_m\approx
+                      -E_J+\sqrt{8E_JE_C}\left(m+\frac12\right)
+                      -\frac{E_C}{12}(6m^2+6m+3).
+                      \]</p>
+                    <p>
+                      因此相鄰 transition 不再等頻：
+                    </p>
+                    <p>\[
+                      \hbar\omega_{m,m+1}
+                      \approx\sqrt{8E_JE_C}-E_C(m+1),
+                      \]</p>
+                    <p>\[
+                      \hbar\omega_{01}\approx\sqrt{8E_JE_C}-E_C,
+                      \qquad
+                      \hbar\omega_{12}\approx\sqrt{8E_JE_C}-2E_C,
+                      \]</p>
+                    <p>\[
+                      \alpha\equiv\omega_{12}-\omega_{01}
+                      \approx-\frac{E_C}{\hbar}.
+                      \]</p>
+                    <p>
+                      負號表示能階越高，相鄰間距越小。這個結果來自 cosine 的 negative quartic correction；
+                      它正是讓 \(\omega_{01}\) drive 對 \(\omega_{12}\) 失諧、使最低兩階得以被選擇控制的來源。
+                    </p>
+
+                    <h4>同一個 cosine 在兩種 basis 中提供兩種直覺</h4>
                     <ul>
-                      <li><strong>Zero resistance：</strong>直流電阻消失，使電路耗散大幅降低。</li>
-                      <li><strong>Meissner effect：</strong>超導體排斥磁場，形成磁通量屏蔽。</li>
-                      <li><strong>Cooper pair condensate：</strong>電子成對凝聚，形成巨觀量子相干態。</li>
-                      <li><strong>Macroscopic phase：</strong>超導態可用一個巨觀相位 \(\phi\) 描述。</li>
-                      <li><strong>Flux quantization：</strong>超導迴路中的磁通量以 \(\Phi_0 = h/2e\) 為單位量子化。</li>
+                      <li><strong>phase basis：</strong>\(-E_J\cos\varphi\) 是 periodic wells；\(E_J/E_C\) 越大，低能
+                        wavefunction 越集中在某個 minimum 附近。</li>
+                      <li><strong>charge basis：</strong>\(-E_J\cos\hat\varphi\) 連接 \(\ket n\) 與 \(\ket{n\pm1}\)，使原本交叉的
+                        charge-state energies 形成 avoided crossings。</li>
                     </ul>
-
-                    <h4>3.2 Macroscopic Quantum Phase</h4>
                     <p>
-                      超導凝聚態可以用一個巨觀波函數描述：
+                      <strong>問題四結論：</strong>Josephson junction 不是單純「再加一個電感」，而是把 quadratic potential
+                      換成可由 \(E_J\) 設計的 cosine potential。quadratic part 決定主要頻率，quartic 與更高階項則製造
+                      anharmonicity；人工原子的可控制能譜由此產生。
                     </p>
-
-
-                    <p>\[
-                      \Psi({r}) = |\Psi({r})| e^{i\phi({r})}
-                      \]</p>
-                    <p>
-                      其中 \(\phi\) 是超導相位。對超導量子電路而言，
-                      這個相位不只是抽象變數，而是可以作為電路自由度並被量子化。
-                      因此，超導量子電路中的重要變數通常包含電荷數 \(n\) 與相位 \(\varphi\)，
-                      並滿足類似位置與動量的共軛關係。</p>
-
-
-
-                    <p>\[
-                      [\hat{\varphi}, \hat{n}] = i
-                      \]</p>
 
                     <h4>3.3 Josephson Junction</h4>
                     <p>
@@ -1647,28 +2142,8 @@
 
                       </div><!-- /.post-content -->
                     </div>
-                  </section>
 
 
-                  <section class="module">
-                    <div class="qh-section">
-                      <h3>單元 4：Transmon Qubit</h3>
-                    </div>
-                    <h4>4.1 From LC Circuit to Quantum LC Oscillator</h4>
-                    <p>
-                      在古典電路中，LC 振盪器的能量在電容與電感之間交換。
-                      電容儲存電場能，電感儲存磁場能。
-                      若將 LC 振盪器量子化，會得到等間距能階：
-                    </p>
-
-
-                    <p>\[
-                      E_m = \hbar\omega\left(m + \frac{1}{2}\right)
-                      \]</p>
-                    <p>
-                      這樣的 harmonic oscillator 並不適合作為 qubit，因為相鄰能階間距相同，
-                      控制脈衝無法只選擇 \(\ket{0} \leftrightarrow \ket{1}\) transition。
-                    </p>
 
                     <h4>4.2 Nonlinear LC Circuit</h4>
                     <p>
@@ -1688,6 +2163,207 @@
                       <li>與微波控制線、讀出共振腔或耦合器之間的電容耦合。</li>
                     </ul>
 
+                    <div class="qh-section">
+                      <h3>問題五：為什麼人工原子最後設計成 Transmon？</h3>
+                    </div>
+                    <span class="qh-time">95–115 分鐘</span>
+                    <p>\[
+                      \hat H_{\mathrm T}=4E_C(\hat n-n_g)^2-E_J\cos\hat\varphi.
+                      \]</p>
+                    <p>
+                      Charge qubit 對 offset charge \(n_g\) 很敏感。Transmon 透過增加 shunt capacitance 降低 \(E_C\)，提高
+                      \(E_J/E_C\)，使能量對 \(n_g\) 的 charge dispersion 指數受到壓低；代價是 anharmonicity 的絕對值減小，
+                      control selectivity 與 gate speed 之間必須重新取捨。
+                    </p>
+
+                    <h4>先看原始 charge qubit 的問題出在哪裡</h4>
+                    <p>
+                      在 charge basis 中，若先令 \(E_J=0\)，每個整數 Cooper-pair number \(n\) 都對應一條 charging parabola：
+                    </p>
+                    <p>\[
+                      E_n(n_g)=4E_C(n-n_g)^2.
+                      \]</p>
+                    <p>
+                      \(n_g\) 由 gate voltage、背景 trapped charge 與環境中的 offset-charge fluctuation 決定。
+                      在 \(n_g=1/2\) 附近，只保留 \(\ket{n=0}\) 與 \(\ket{n=1}\) 時，
+                      Josephson tunneling 給出近似矩陣
+                    </p>
+                    <p>\[
+                      \hat H_{\{0,1\}}
+                      \approx
+                      \begin{pmatrix}
+                      4E_Cn_g^2 & -E_J/2\\
+                      -E_J/2 & 4E_C(1-n_g)^2
+                      \end{pmatrix}.
+                      \]</p>
+                    <p>
+                      因而兩能階 splitting 約為
+                    </p>
+                    <p>\[
+                      \hbar\omega_{01}
+                      \approx\sqrt{\bigl[4E_C(1-2n_g)\bigr]^2+E_J^2}.
+                      \]</p>
+                    <p>
+                      在 \(n_g=1/2\) 正好有 charge sweet spot，
+                      \(\partial\omega_{01}/\partial n_g=0\)；但只要工作點漂離 sweet spot，frequency 就會快速改變。
+                      若背景 charge 發生跳動，qubit frequency 也跟著跳動。只靠精確 bias 在一個點上，並不是穩健的硬體保護。
+                    </p>
+
+                    <h4>Transmon 的硬體動作很簡單：把電容做大</h4>
+                    <p>
+                      對總電容 \(C_\Sigma\)，
+                    </p>
+                    <p>\[
+                      E_C=\frac{e^2}{2C_\Sigma}.
+                      \]</p>
+                    <p>
+                      加入大型 shunt capacitor 使 \(C_\Sigma\) 增加、\(E_C\) 降低，而 junction critical current 仍可獨立設定 \(E_J\)。
+                      因此 \(E_J/E_C\) 可以由 charge-qubit regime 推向 \(E_J/E_C\gg1\) 的 transmon regime。
+                      這不是換了一個 Hamiltonian，而是把同一個 Hamiltonian 移到另一個參數區。
+                    </p>
+                    <p>
+                      在 phase picture 中，較大的 \(E_J/E_C\) 使 low-energy wavefunctions 集中在 cosine minimum 附近；
+                      相鄰 wells 之間的 quantum phase slip amplitude 變小。offset charge \(n_g\) 在這個圖像中扮演
+                      periodic potential 的 boundary phase，而 energy 對 \(n_g\) 的依賴正是由 inter-well tunneling 造成。
+                      barrier 相對變高後，energy band 對 \(n_g\) 變平。
+                    </p>
+
+                    <h4>關鍵不只是「變小」，而是 charge dispersion 指數變小</h4>
+                    <p>
+                      在 \(E_J/E_C\gg1\) 的漸近區，能階對 offset charge 的主要依賴可寫成
+                    </p>
+                    <p>\[
+                      E_m(n_g)\approx\bar E_m
+                      -\frac{\epsilon_m}{2}\cos(2\pi n_g),
+                      \]</p>
+                    <p>
+                      其中 charge-dispersion amplitude 的主導尺度為
+                    </p>
+                    <p>\[
+                      \epsilon_m
+                      \propto
+                      E_C\,
+                      \exp\!\left[-\sqrt{8E_J/E_C}\right]
+                      \times
+                      \text{algebraic prefactor}.
+                      \]</p>
+                    <p>
+                      因而提高 \(E_J/E_C\) 時，
+                      \(\partial\omega_{01}/\partial n_g\) 不只是按 \(1/(E_J/E_C)\) 緩慢下降，而是得到 exponential suppression。
+                      Transmon 的價值就在這個不對稱交換：用相對溫和的參數改動，換到非常強的 charge-noise dephasing suppression。
+                    </p>
+
+                    <h4>但 nonlinearity 沒有免費保留</h4>
+                    <p>
+                      問題四已得到
+                    </p>
+                    <p>\[
+                      \hbar\omega_{01}\approx\sqrt{8E_JE_C}-E_C,
+                      \qquad
+                      \alpha\equiv\omega_{12}-\omega_{01}
+                      \approx-\frac{E_C}{\hbar}.
+                      \]</p>
+                    <p>
+                      shunt capacitance 使 \(E_C\) 下降，因此 \(|\alpha|\) 也近似線性下降。所幸 charge dispersion 是
+                      exponential suppression，而 anharmonicity 只按 \(E_C\) 線性減小；於是存在一段實用的參數窗：
+                      charge noise 已經很弱，但 \(\omega_{01}\) 與 \(\omega_{12}\) 仍分得開。
+                    </p>
+                    <p>
+                      對指定的 transition frequency 與 anharmonicity，這兩個近似式也可反過來作 first-pass design：
+                    </p>
+                    <p>\[
+                      \frac{E_C}{h}\approx\frac{|\alpha|}{2\pi},
+                      \qquad
+                      \frac{E_J}{E_C}
+                      \approx\frac18
+                      \left(\frac{hf_{01}+E_C}{E_C}\right)^2.
+                      \]</p>
+                    <p>
+                      實際設計仍需 numerical diagonalization、junction fabrication model 與 electromagnetic simulation，
+                      但這兩式已能顯示 pad capacitance、junction critical current、frequency 與 leakage 之間的方向關係。
+                    </p>
+
+                    <h4>保護沒有把控制一起關掉</h4>
+                    <p>
+                      capacitive microwave drive 主要透過 \(\hat n\) 耦合。在 harmonic approximation 中
+                    </p>
+                    <p>\[
+                      |\langle0|\hat n|1\rangle|
+                      \approx
+                      \left(\frac{E_J}{32E_C}\right)^{1/4}\neq0.
+                      \]</p>
+                    <p>
+                      所以 \(E_J/E_C\) 增大時，charge dispersion 被壓低，但 \(0\leftrightarrow1\) electric-dipole matrix element
+                      並沒有一起消失。這讓 transmon 同時保留成熟的 microwave drive 與 dispersive readout。
+                      反面是：同一個非零 matrix element 也表示 transmon 並沒有自動免疫所有 high-frequency electric noise；
+                      它主要解決的是低頻 offset-charge dephasing，而不是全面的 relaxation protection。
+                    </p>
+
+                    <h4>fixed-frequency 與 tunable transmon 是下一層交換</h4>
+                    <p>
+                      單一 junction 給 fixed \(E_J\)，結構較簡單，也沒有額外 flux-noise channel；代價是 fabrication variation
+                      直接變成 frequency spread，可能造成 frequency collision。若用對稱 dc SQUID 取代單一 junction，則
+                    </p>
+                    <p>\[
+                      E_{J,\mathrm{eff}}(\Phi_{\rm ext})
+                      =2E_{J0}
+                      \left|\cos\!\left(\pi\frac{\Phi_{\rm ext}}{\Phi_0}\right)\right|,
+                      \]</p>
+                    <p>
+                      qubit frequency 因而可調，可避開 collision 或執行 flux-mediated gate；但離開 flux sweet spot 後，
+                      \(\partial\omega_{01}/\partial\Phi_{\rm ext}\neq0\)，flux noise、control-line crosstalk 與
+                      calibration 負擔也隨之增加。
+                    </p>
+
+                    <h4>用四項設計判準重新看 Transmon</h4>
+                    <ul>
+                      <li><strong>Dephasing protection：</strong>\(\partial\omega_{01}/\partial n_g\) 因 charge dispersion
+                        而受到 exponential suppression。</li>
+                      <li><strong>Relaxation protection：</strong>不具一般性的 \(\langle0|\hat O_{\rm
+                        noise}|1\rangle\approx0\)；材料 loss、Purcell loss 與高頻 electric noise 仍須另外工程化。</li>
+                      <li><strong>Controllability：</strong>\(\langle0|\hat n|1\rangle\neq0\)，保留有效的 microwave control 與
+                        readout coupling。</li>
+                      <li><strong>Leakage suppression：</strong>\(\Delta_{\rm leakage}\sim\hbar|\alpha|\) 有限；必須在 gate
+                        speed、pulse shaping 與剩餘 anharmonicity 間取捨。</li>
+                    </ul>
+
+                    <ul>
+                      <li>得到：較低 charge dispersion、成熟的 microwave control、可設計的頻率範圍。</li>
+                      <li>付出：較弱 anharmonicity、可能的 leakage、fixed／tunable design 的不同 noise 與 calibration 負擔。</li>
+                      <li>設計觀念：Transmon 不是「最好的人造原子」，而是一組在 noise sensitivity、control 與製造可行性之間成功的參數選擇。</li>
+                    </ul>
+                    <p>
+                      <strong>本週結論：</strong>具有離散能階還不等於 qubit；必須利用 Josephson nonlinearity 製造可選擇控制的能譜，
+                      再利用 \(E_J/E_C\) 調整 charge sensitivity 與 anharmonicity 的交換。Transmon 之所以成為主流，不是因為它把所有
+                      noise 都消除，而是因為它利用 exponential-versus-linear scaling 找到一個特別有效、又仍可控制與製造的 Pareto point。
+                    </p>
+
+                    <div class="qh-section">
+                      <h3>既有推導與延伸教材</h3>
+                    </div>
+                    <div class="qh-section">
+                      <h3>Transmon的性質</h3>
+                    </div>
+                    <h4>當前主流的超導量子位元</h4>
+                    <div style="text-align: center;">
+                      <a href="../Image/Transmon.png">
+                        <img src="../WebP/Transmon.webp" alt="單JJ轉換器和對稱、非對稱SQUID轉換器電路圖" style="width: 98%; height: auto;">
+                      </a>
+                    </div>
+                    <div style="text-align: center;">
+                      <a href="../Image/Transmon state.png">
+                        <img src="../WebP/Transmon state.webp" alt="潛能曲線及量子能級示意圖" style="width: 50%; height: auto;">
+                      </a>
+                    </div>
+                    <p>
+                      <span style="font-size: 0.7em; line-height: 0.8;">Ref:
+                        DOI:10.48550/arXiv.2203.04164</span><br><br>
+                    </p>
+
+
+                    <div class="qh-section">
+                      <h3>單元 4：Transmon Qubit</h3>
+                    </div>
                     <h4>4.3 Transmon Hamiltonian</h4>
                     <p>
                       Transmon Hamiltonian 可寫為：
@@ -1835,568 +2511,591 @@
                       </ol>
                     </div>
 
-                  </section>
-                  <section class="module">
-
-                    <div class="qh-section">
-                      <h3>進階主線：設計不是把 \(E_J/E_C\) 做得越大越好</h3>
-                    </div>
-                    <p>\[H=4E_C(\hat n-n_g)^2-E_J\cos\hat\varphi\]</p>
-                    <p>在 \(E_J/E_C\gg1\) 的 transmon regime，低能階近似</p>
-                    <p>\[\hbar\omega_{01}\approx\sqrt{8E_JE_C}-E_C,\qquad
-                      \alpha\equiv\omega_{12}-\omega_{01}\approx-\frac{E_C}{\hbar}\]</p>
-                    <p>charge dispersion 隨 \(\exp[-\sqrt{8E_J/E_C}]\)（帶有能階依賴的代數前因子）指數下降，但 anharmonicity 只以較慢尺度下降。這是
-                      transmon 成功的核心；代價是 pulse selectivity、leakage、frequency crowding 與 fabrication spread 必須一起設計。</p>
-                    <p>固定頻率 transmon 減少 flux-noise sensitivity；SQUID transmon 提供可調頻率與 gate mechanism，卻引入 flux line、sweet
-                      spot 與 drift 問題。真正的設計問題是 noise、control、coupling、yield 與 calibration 的聯立最佳化。</p>
-
-                  </section>
-                  <section class="qh-supplement-source">
-                    <div class="qh-section">
-                      <h3>雙約瑟夫森節（SQUID）的非線性電感性質</h3>
-                    </div>
-                    <h4>頻率可調式量子位元</h4>
-                    <div style="text-align: center;">
-                      <a href="../Image/SQUID.png">
-                        <img src="../WebP/SQUID.webp" alt="圓形導體及電流與磁場示意圖" style="width: 50%; height: auto;">
-                      </a>
-                    </div>
-
-
-
-                    <div class="qh-source-plain">
-                      <!--<img src="../assets/img/portfolio-1.jpg" class="img-res" alt="">-->
-                      <div class="post-content">
-                        <p>
-                          將兩組約瑟夫森節 \(J_1\)、\(J_2\) 相組，中間形成一個閉環，通入磁通 \( \Phi_B \) 與電壓 \( V \)。在前一節中，超導函數的相位對閉環的積分需滿足：
-                          \[
-                          \oint \nabla \theta(r) \cdot d\vec{l} - \frac{q}{\hbar} \Phi_B = 2\pi N
-                          \]
-                          因為在接面不連續會貢獻 \( \Delta\theta_1 \)、\( \Delta\theta_2 \)，\( q = -2e \)，帶入得：
-                          \[
-                          \Delta\theta_2 - \Delta\theta_1 + 2\pi \frac{\Phi_B}{\Phi_0} = 2\pi N
-                          \]
-                          \[
-                          \Delta\theta_2 = \Delta\theta_1 - 2\pi \frac{\Phi_B}{\Phi_0} + 2\pi N
-                          \]
-                        </p>
-                        <p>
-                          當整個 SQUID 通入電流 \( I = I_1 + I_2 \)，並使用前一節約瑟夫森節電流的關係式（這裡考慮對稱的 SQUID，即兩個約瑟夫森節的特性 \( I_c \)
-                          相同），計算得：
-                          \[
-                          I = I_1 + I_2 = I_0 (\sin\Delta\theta_1 + \sin\Delta\theta_2)
-                          \]
-                          \[
-                          I = I_0 \left[\sin\Delta\theta_1 + \sin\left(\Delta\theta_1 - 2\pi \frac{\Phi_B}{\Phi_0} +
-                          2\pi N\right)\right]
-                          \]
-                          \[
-                          I = I_0 \left[\sin\Delta\theta_1 + \sin\left(\Delta\theta_1 - 2\pi
-                          \frac{\Phi_B}{\Phi_0}\right)\right]
-                          \]
-                          利用三角恆等式化簡：
-                          \[
-                          I = I_0 \left[2 \sin\left(\frac{\Delta\theta_1 + \Delta\theta_1 - 2\pi
-                          \frac{\Phi_B}{\Phi_0}}{2}\right)
-                          \cos\left(\frac{\Delta\theta_1 - \Delta\theta_1 + 2\pi \frac{\Phi_B}{\Phi_0}}{2}\right)\right]
-                          \]
-                          \[
-                          I = 2I_0 \cos\left(\frac{\Phi_B}{\Phi_0} \pi\right) \sin\left(\Delta\theta_1 -
-                          \frac{\Phi_B}{\Phi_0} \pi\right)
-                          \]
-                        </p>
-                        <p>
-                          前一節提到約瑟夫森節具有電感的性質，同理我們可以討論 SQUID 的電感性質。將電流對時間微分：
-                          \[
-                          \dot{I} = 2I_0 \cos\left(\frac{\Phi_B}{\Phi_0} \pi\right) \cos\left(\Delta\theta_1 -
-                          \frac{\Phi_B}{\Phi_0} \pi\right) \dot{\Delta\theta_1}
-                          \]
-                          而 \( \dot{\Delta\theta_1} \) 與電壓 \( V \) 的關係為：
-                          \[
-                          V = \frac{\hbar}{2e} \dot{\Delta\theta_1} = \frac{\Phi_0}{2\pi} \dot{\Delta\theta_1}
-                          \]
-                          帶入後可得電感值：
-                          \[
-                          L_{\text{SQUID}}(\Delta\theta_1, \Phi_B) = \left[\frac{2\pi}{\Phi_0} \cdot 2I_0
-                          \cos\left(\frac{\Phi_B}{\Phi_0} \pi\right)
-                          \cos\left(\Delta\theta_1 - \frac{\Phi_B}{\Phi_0} \pi\right)\right]
-                          \]
-                        </p>
-                        <p>
-                          可以注意到 \( L_{\text{SQUID}} \) 的值會受到外加磁通 \( \Phi_B \) 的影響，這為後來 Tunable Transmon 調整頻率的關鍵。定義變數 \(
-                          \Phi \)：
-                          \[
-                          \Phi \equiv \frac{\Delta\theta_1}{\pi} \Phi_0 - \Phi_B = \frac{\Phi_0}{\pi}
-                          \left(\Delta\theta_1 - \frac{\Phi}{\Phi_0} \pi\right)
-                          \]
-                          並有：
-                          \[
-                          \dot{\Phi} = \frac{\Phi_0}{\pi} \dot{\Delta\theta_1}
-                          \]
-                          電壓 \( V \) 和電流 \( I \) 分別為：
-                          \[
-                          V = \frac{1}{2} \dot{\Phi}, \quad I = 2I_0 \cos\left(\frac{\Phi_B}{\Phi_0} \pi\right)
-                          \sin\left(\frac{\Phi}{\Phi_0} \pi\right)
-                          \]
-                        </p>
-                        <p>
-                          固定外場 \( \Phi_B \) 下，一組 SQUID 儲存的能量為：
-                          \[
-                          E = \int IV \, dt = \int \left[2I_0 \cos\left(\frac{\Phi_B}{\Phi_0} \pi\right)
-                          \sin\left(\frac{\Phi}{\Phi_0} \pi\right) \cdot \frac{1}{2} \dot{\Phi}\right] dt
-                          \]
-                          化簡得：
-                          \[
-                          E = I_0 \cos\left(\frac{\Phi_B}{\Phi_0} \pi\right) \int \sin\left(\frac{\Phi}{\Phi_0}
-                          \pi\right) d\Phi
-                          \]
-                          \[
-                          E = -\frac{I_0 \Phi_0}{\pi} \cos\left(\frac{\Phi_B}{\Phi_0} \pi\right)
-                          \cos\left(\frac{\pi}{\Phi_0} \Phi\right)
-                          \]
-                        </p>
-
-
-
-
-
-
-
-
-
-
-                        <!-- /.post-meta -->
-
-
-
-
-
-                      </div><!-- /.post-content -->
-                    </div>
-                  </section>
-
-
-                  <section class="qh-supplement-source">
-
-
-                    <div class="qh-source-plain">
-                      <!--<img src="../assets/img/portfolio-1.jpg" class="img-res" alt="">-->
-                      <div clas s="post-content">
-
-
-                        <div class="qh-section">
-                          <h3>Tunable Transmon</h3>
-                        </div>
-                        <h4>可調頻率的Transmon</h4>
-
-                        <div style="text-align: center;">
-                          <a href="../Image/SQUID transmon.png">
-                            <img src="../WebP/SQUID transmon.webp" alt="簡單的幾何圖形和符號插圖。" style="width:60%; height: auto;">
-                          </a>
-                        </div>
-                        <p>
-                          ▲由兩個約瑟夫森節組合成可調電感值的\(LC\)電路。
-
-                        </p>
-                        <p>
-                          前文提及約瑟夫森節具有電感性質，Transmon即是LC電路中的電感替換成約瑟夫森節。本節直接討論 Tunable Transmon，採用 SQUID
-                          當作電感。實務上因為材料製作的不均一性，不同 Transmon 會有不一樣的特性，如果採用 Tunable Transmon，可以透過微調磁通量 \( \Phi_B \) 的方式使
-                          Qubit 性質一致。此外，我們在前面量子化 LC 電路時，\([ \Phi, Q ] = i\hbar\) 是一對正則變量，利用 SQUID 的推導可以很自然地將磁通量 \( \Phi
-                          \) 與相位差 \( \Delta\theta \) 做聯繫，即：
-                          \[
-                          \Phi \equiv \frac{\Delta\theta_1}{\pi} \Phi_0 - \Phi_B
-                          \]
-                        </p>
-                        <p>
-                          現在我們寫下 Hamiltonian：
-                          \[
-                          \mathcal{H} = \frac{Q^2}{2C} + \frac{\Phi_\#^2}{2L} = \frac{Q^2}{2C} + \frac{(I_0
-                          \pi)}{2\Phi_0} \cos\left(\frac{\Phi_B}{\Phi_0} \pi\right) \Phi^2 - \frac{I_0}{24}
-                          \left(\frac{\pi}{\Phi_0}\right)^3 \cos\left(\frac{\Phi_B}{\Phi_0} \pi\right) \Phi^4 + \cdots
-                          \]
-                          \[
-                          = \frac{Q^2}{2C} + \frac{\Phi^2}{2L} - \frac{1}{24L} \left(\frac{\pi}{\Phi_0}\right)^2 \Phi^4
-                          + \cdots
-                          \]
-                          其中：
-                          \[
-                          L = \left(\frac{I_0 \pi}{\Phi_0} \cos\left(\frac{\Phi_B}{\Phi_0} \pi\right)\right)^{-1}
-                          \]
-                        </p>
-
-
-                        <p>
-                          現在我們要討論非線性對於能階的改變，前文我們選擇新的變量 \( a \)、\( a^\dagger \)：
-                          \[
-                          a = \sqrt{\frac{1}{2\hbar} \sqrt{ \frac{L}{C}}} \left(\sqrt{\frac{C}{L}} \Phi + iQ\right),
-                          \quad
-                          a^\dagger = \sqrt{\frac{1}{2\hbar} \sqrt{ \frac{L}{C}}} \left(\sqrt{\frac{C}{L}} \Phi -
-                          iQ\right)
-                          \]
-                          反之：
-                          \[
-                          \Phi = \sqrt{\frac{\hbar}{2 }\sqrt{ \frac{L}{C}}} (a^\dagger + a), \quad
-                          Q = i\sqrt{\frac{\hbar}{2} \sqrt{ \frac{C}{L}}} (a^\dagger - a)
-                          \]
-
-                        </p>
-                        <p>
-                          將 Hamiltonian 表達式展開為：
-                          \[
-                          \mathcal{H} = \frac{\hbar}{\sqrt{LC}} \left[a^\dagger a + \frac{1}{2}\right] - \frac{1}{24L}
-                          \left(\frac{\pi}{\Phi_0}\right)^2 \left[i \sqrt{\frac{\hbar}{2\sqrt{L/C}}} (a^\dagger +
-                          a)\right]^4
-                          \]
-                          化簡後：
-                          \[
-                          \mathcal{H} = \frac{\hbar}{\sqrt{LC}} \left[a^\dagger a + \frac{1}{2}\right] -
-                          \frac{\hbar^2}{96C} \left(\frac{\pi}{\Phi_0}\right)^2 (a^\dagger + a)^4
-                          \]
-                          該表達式包含線性和非線性項，線性項描述的是量子簡諧振子的能階，而非線性項源自於 Josephson 節對於能階的修正。
-                        </p>
-
-                        <p>
-                          利用微擾理論，當 \( \mathcal{H} = H_0 + \Delta H \)， \( \ket{E_0^m} \to \ket{E^m} \)、 \( E_0^m \to E^m
-                          = E_0^m + \delta E^m \)，我們知道對能階 \( E_0^m \) 的修正 \( \delta E^m \) 為：
-                        </p>
-
-                        <p style="text-align:center">
-                          \[
-                          \delta E^m = \langle E_0^m | \Delta H | E_0^m \rangle = \langle E_0^m |
-                          \left[-\frac{\hbar^2}{96C} \left(\frac{\pi}{\Phi_0}\right)^2 (a^\dagger + a)^4\right] | E_0^m
-                          \rangle
-                          \]
-                        </p>
-
-                        <p>
-                          計算如下：
-                        </p>
-
-                        <p style="text-align:center">
-                          \[
-                          \langle E_0^m | (a^\dagger + a)^4 | E_0^m \rangle = \langle E_0^m | (aa + aa^\dagger +
-                          a^\dagger a + a^\dagger a^\dagger)^2 | E_0^m \rangle
-                          \]
-                        </p>
-
-                        <p>
-                          展開為：
-                        </p>
-
-                        <p style="text-align:center">
-                          \[
-                          \langle E_0^m | aa(aa + aa^\dagger + a^\dagger a + a^\dagger a^\dagger) + aa^\dagger(aa +
-                          aa^\dagger + a^\dagger a + a^\dagger a^\dagger)
-                          + a^\dagger a(aa + aa^\dagger + a^\dagger a + a^\dagger a^\dagger) + a^\dagger a^\dagger(aa +
-                          aa^\dagger + a^\dagger a + a^\dagger a^\dagger) \ket{ E_0^m }
-                          \]
-                        </p>
-
-                        <p>
-                          因為取期望值，只會留下 \( a, a^\dagger \) 次數相等的項，剩下：
-                        </p>
-
-                        <p style="text-align:center">
-                          \[
-                          \langle E_0^m | aaa^\dagger a^\dagger + aa^\dagger aa^\dagger + aa^\dagger a^\dagger a +
-                          a^\dagger aaa^\dagger + a^\dagger aa^\dagger a + a^\dagger a^\dagger aa | E_0^m \rangle
-                          \]
-                        </p>
-
-                        <p>
-                          繼續簡化：
-                        </p>
-
-                        <p style="text-align:center">
-                          \[
-                          \langle E_0^m | a(a^\dagger a + 1)a^\dagger + aa^\dagger aa^\dagger + (a^\dagger a +
-                          1)a^\dagger a + a^\dagger a(a^\dagger a + 1) + a^\dagger aa^\dagger a + a^\dagger (aa^\dagger
-                          - 1)a | E_0^m \rangle
-                          \]
-                        </p>
-
-                        <p>
-                          再整理為：
-                        </p>
-
-                        <p style="text-align:center">
-                          \[
-                          \langle E_0^m | aa^\dagger aa^\dagger + aa^\dagger + aa^\dagger aa^\dagger + a^\dagger
-                          aa^\dagger a + a^\dagger a + a^\dagger aa^\dagger a + a^\dagger a + a^\dagger aa^\dagger a +
-                          a^\dagger aa^\dagger a - a^\dagger a | E_0^m \rangle
-                          \]
-                        </p>
-
-                        <p>
-                          進一步簡化：
-                        </p>
-
-                        <p style="text-align:center">
-                          \[
-                          \langle E_0^m | 2aa^\dagger aa^\dagger + aa^\dagger + 4a^\dagger aa^\dagger a + a^\dagger a |
-                          E_0^m \rangle
-                          \]
-                          \[
-                          = \langle E_0^m | 2(a^\dagger a + 1)(a^\dagger a + 1) + (a^\dagger a + 1) + 4a^\dagger
-                          aa^\dagger a + a^\dagger a | E_0^m \rangle
-                          \]
-                        </p>
-
-                        <p>
-                          最終得到：
-                        </p>
-
-                        <p style="text-align:center">
-                          \[
-                          \langle E_0^m | 6a^\dagger aa^\dagger a + 6a^\dagger a + 3 | E_0^m \rangle = 6m^2 + 6m + 3
-                          \]
-                        </p>
-
-                        <p>
-                          定義能階差：
-                        </p>
-
-                        <p style="text-align:center">
-                          \[
-                          \Delta E^m_{m-1} = \frac{\hbar}{\sqrt{LC}} - \frac{\hbar^2}{96C}
-                          \left(\frac{\pi}{\Phi_0}\right)^2 \left\{6[m^2 - (m-1)^2] + 6\right\}
-                          \]
-                        </p>
-
-                        <p style="text-align:center">
-                          \[
-                          = \frac{\hbar}{\sqrt{LC}} - \frac{\hbar^2 \pi^2}{96C} \frac{e^2}{\pi^2 \hbar^2} \left[6(2m -
-                          1) + 6\right]
-                          \]
-                        </p>
-
-                        <p>
-                          最終得到：
-                        </p>
-
-                        <p style="text-align:center">
-                          \[
-                          \Delta E^m_{m-1} = \frac{\hbar}{\sqrt{LC}} - m\frac{e^2}{8C}
-                          \]
-                        </p>
-
-                        <p>
-                          計算 \( \Delta E^{21} - \Delta E^{10} \)：
-                        </p>
-
-                        <p style="text-align:center">
-                          \[
-                          \Delta E^{21} - \Delta E^{10} = \left(\frac{\hbar}{\sqrt{LC}} - 2\frac{e^2}{8C}\right) -
-                          \left(\frac{\hbar}{\sqrt{LC}} - \frac{e^2}{8C}\right)
-                          \]
-                        </p>
-
-                        <p style="text-align:center">
-                          \[
-                          = -\frac{e^2}{8C} \equiv -E_C
-                          \]
-                        </p>
-
-                        <p>
-                          \( E_C \) 表示其非線性效應。
-                        </p>
-
-                        <p>
-                          <span style="font-size: 0.7em; line-height: 0.8;">Ref:
-                            DOI:10.1103/RevModPhys.93.025005</span><br><br>
-
-
-                        </p>
-
-
-                        <!-- /.post-meta -->
-
-
-
-
-
-                      </div><!-- /.post-content -->
-                    </div>
-                  </section>
-
-                  <section class="module">
-
-                    <div class="qh-section">
-                      <h3>單元 1：超導量子晶片版圖導論</h3>
-                    </div>
-                    <h4>1.1 What Is a Superconducting Quantum Chip?</h4>
+
+                    <section class="module">
+
+                      <div class="qh-section">
+                        <h3>進階主線：設計不是把 \(E_J/E_C\) 做得越大越好</h3>
+                      </div>
+                      <p>\[H=4E_C(\hat n-n_g)^2-E_J\cos\hat\varphi\]</p>
+                      <p>在 \(E_J/E_C\gg1\) 的 transmon regime，低能階近似</p>
+                      <p>\[\hbar\omega_{01}\approx\sqrt{8E_JE_C}-E_C,\qquad
+                        \alpha\equiv\omega_{12}-\omega_{01}\approx-\frac{E_C}{\hbar}\]</p>
+                      <p>charge dispersion 隨 \(\exp[-\sqrt{8E_J/E_C}]\)（帶有能階依賴的代數前因子）指數下降，但 anharmonicity 只以較慢尺度下降。這是
+                        transmon 成功的核心；代價是 pulse selectivity、leakage、frequency crowding 與 fabrication spread 必須一起設計。</p>
+                      <p>固定頻率 transmon 減少 flux-noise sensitivity；SQUID transmon 提供可調頻率與 gate mechanism，卻引入 flux
+                        line、sweet
+                        spot 與 drift 問題。真正的設計問題是 noise、control、coupling、yield 與 calibration 的聯立最佳化。</p>
+
+                    </section>
+                    <section class="qh-supplement-source">
+                      <div class="qh-section">
+                        <h3>雙約瑟夫森節（SQUID）的非線性電感性質</h3>
+                      </div>
+                      <h4>頻率可調式量子位元</h4>
+                      <div style="text-align: center;">
+                        <a href="../Image/SQUID.png">
+                          <img src="../WebP/SQUID.webp" alt="圓形導體及電流與磁場示意圖" style="width: 50%; height: auto;">
+                        </a>
+                      </div>
+
+
+
+                      <div class="qh-source-plain">
+                        <!--<img src="../assets/img/portfolio-1.jpg" class="img-res" alt="">-->
+                        <div class="post-content">
+                          <p>
+                            將兩組約瑟夫森節 \(J_1\)、\(J_2\) 相組，中間形成一個閉環，通入磁通 \( \Phi_B \) 與電壓 \( V \)。在前一節中，超導函數的相位對閉環的積分需滿足：
+                            \[
+                            \oint \nabla \theta(r) \cdot d\vec{l} - \frac{q}{\hbar} \Phi_B = 2\pi N
+                            \]
+                            因為在接面不連續會貢獻 \( \Delta\theta_1 \)、\( \Delta\theta_2 \)，\( q = -2e \)，帶入得：
+                            \[
+                            \Delta\theta_2 - \Delta\theta_1 + 2\pi \frac{\Phi_B}{\Phi_0} = 2\pi N
+                            \]
+                            \[
+                            \Delta\theta_2 = \Delta\theta_1 - 2\pi \frac{\Phi_B}{\Phi_0} + 2\pi N
+                            \]
+                          </p>
+                          <p>
+                            當整個 SQUID 通入電流 \( I = I_1 + I_2 \)，並使用前一節約瑟夫森節電流的關係式（這裡考慮對稱的 SQUID，即兩個約瑟夫森節的特性 \( I_c \)
+                            相同），計算得：
+                            \[
+                            I = I_1 + I_2 = I_0 (\sin\Delta\theta_1 + \sin\Delta\theta_2)
+                            \]
+                            \[
+                            I = I_0 \left[\sin\Delta\theta_1 + \sin\left(\Delta\theta_1 - 2\pi \frac{\Phi_B}{\Phi_0} +
+                            2\pi N\right)\right]
+                            \]
+                            \[
+                            I = I_0 \left[\sin\Delta\theta_1 + \sin\left(\Delta\theta_1 - 2\pi
+                            \frac{\Phi_B}{\Phi_0}\right)\right]
+                            \]
+                            利用三角恆等式化簡：
+                            \[
+                            I = I_0 \left[2 \sin\left(\frac{\Delta\theta_1 + \Delta\theta_1 - 2\pi
+                            \frac{\Phi_B}{\Phi_0}}{2}\right)
+                            \cos\left(\frac{\Delta\theta_1 - \Delta\theta_1 + 2\pi
+                            \frac{\Phi_B}{\Phi_0}}{2}\right)\right]
+                            \]
+                            \[
+                            I = 2I_0 \cos\left(\frac{\Phi_B}{\Phi_0} \pi\right) \sin\left(\Delta\theta_1 -
+                            \frac{\Phi_B}{\Phi_0} \pi\right)
+                            \]
+                          </p>
+                          <p>
+                            前一節提到約瑟夫森節具有電感的性質，同理我們可以討論 SQUID 的電感性質。將電流對時間微分：
+                            \[
+                            \dot{I} = 2I_0 \cos\left(\frac{\Phi_B}{\Phi_0} \pi\right) \cos\left(\Delta\theta_1 -
+                            \frac{\Phi_B}{\Phi_0} \pi\right) \dot{\Delta\theta_1}
+                            \]
+                            而 \( \dot{\Delta\theta_1} \) 與電壓 \( V \) 的關係為：
+                            \[
+                            V = \frac{\hbar}{2e} \dot{\Delta\theta_1} = \frac{\Phi_0}{2\pi} \dot{\Delta\theta_1}
+                            \]
+                            帶入後可得電感值：
+                            \[
+                            L_{\text{SQUID}}(\Delta\theta_1, \Phi_B) = \left[\frac{2\pi}{\Phi_0} \cdot 2I_0
+                            \cos\left(\frac{\Phi_B}{\Phi_0} \pi\right)
+                            \cos\left(\Delta\theta_1 - \frac{\Phi_B}{\Phi_0} \pi\right)\right]
+                            \]
+                          </p>
+                          <p>
+                            可以注意到 \( L_{\text{SQUID}} \) 的值會受到外加磁通 \( \Phi_B \) 的影響，這為後來 Tunable Transmon 調整頻率的關鍵。定義變數
+                            \(
+                            \Phi \)：
+                            \[
+                            \Phi \equiv \frac{\Delta\theta_1}{\pi} \Phi_0 - \Phi_B = \frac{\Phi_0}{\pi}
+                            \left(\Delta\theta_1 - \frac{\Phi}{\Phi_0} \pi\right)
+                            \]
+                            並有：
+                            \[
+                            \dot{\Phi} = \frac{\Phi_0}{\pi} \dot{\Delta\theta_1}
+                            \]
+                            電壓 \( V \) 和電流 \( I \) 分別為：
+                            \[
+                            V = \frac{1}{2} \dot{\Phi}, \quad I = 2I_0 \cos\left(\frac{\Phi_B}{\Phi_0} \pi\right)
+                            \sin\left(\frac{\Phi}{\Phi_0} \pi\right)
+                            \]
+                          </p>
+                          <p>
+                            固定外場 \( \Phi_B \) 下，一組 SQUID 儲存的能量為：
+                            \[
+                            E = \int IV \, dt = \int \left[2I_0 \cos\left(\frac{\Phi_B}{\Phi_0} \pi\right)
+                            \sin\left(\frac{\Phi}{\Phi_0} \pi\right) \cdot \frac{1}{2} \dot{\Phi}\right] dt
+                            \]
+                            化簡得：
+                            \[
+                            E = I_0 \cos\left(\frac{\Phi_B}{\Phi_0} \pi\right) \int \sin\left(\frac{\Phi}{\Phi_0}
+                            \pi\right) d\Phi
+                            \]
+                            \[
+                            E = -\frac{I_0 \Phi_0}{\pi} \cos\left(\frac{\Phi_B}{\Phi_0} \pi\right)
+                            \cos\left(\frac{\pi}{\Phi_0} \Phi\right)
+                            \]
+                          </p>
+
+
+
+
+
+
+
+
+
+
+                          <!-- /.post-meta -->
+
+
+
+
+
+                        </div><!-- /.post-content -->
+                      </div>
+                    </section>
+
+
+                    <section class="qh-supplement-source">
+
+
+                      <div class="qh-source-plain">
+                        <!--<img src="../assets/img/portfolio-1.jpg" class="img-res" alt="">-->
+                        <div clas s="post-content">
+
+
+                          <div class="qh-section">
+                            <h3>Tunable Transmon</h3>
+                          </div>
+                          <h4>可調頻率的Transmon</h4>
+
+                          <div style="text-align: center;">
+                            <a href="../Image/SQUID transmon.png">
+                              <img src="../WebP/SQUID transmon.webp" alt="簡單的幾何圖形和符號插圖。" style="width:60%; height: auto;">
+                            </a>
+                          </div>
+                          <p>
+                            ▲由兩個約瑟夫森節組合成可調電感值的\(LC\)電路。
+
+                          </p>
+                          <p>
+                            前文提及約瑟夫森節具有電感性質，Transmon即是LC電路中的電感替換成約瑟夫森節。本節直接討論 Tunable Transmon，採用 SQUID
+                            當作電感。實務上因為材料製作的不均一性，不同 Transmon 會有不一樣的特性，如果採用 Tunable Transmon，可以透過微調磁通量 \( \Phi_B \) 的方式使
+                            Qubit 性質一致。此外，我們在前面量子化 LC 電路時，\([ \Phi, Q ] = i\hbar\) 是一對正則變量，利用 SQUID 的推導可以很自然地將磁通量 \(
+                            \Phi
+                            \) 與相位差 \( \Delta\theta \) 做聯繫，即：
+                            \[
+                            \Phi \equiv \frac{\Delta\theta_1}{\pi} \Phi_0 - \Phi_B
+                            \]
+                          </p>
+                          <p>
+                            現在我們寫下 Hamiltonian：
+                            \[
+                            \mathcal{H} = \frac{Q^2}{2C} + \frac{\Phi_\#^2}{2L} = \frac{Q^2}{2C} + \frac{(I_0
+                            \pi)}{2\Phi_0} \cos\left(\frac{\Phi_B}{\Phi_0} \pi\right) \Phi^2 - \frac{I_0}{24}
+                            \left(\frac{\pi}{\Phi_0}\right)^3 \cos\left(\frac{\Phi_B}{\Phi_0} \pi\right) \Phi^4 + \cdots
+                            \]
+                            \[
+                            = \frac{Q^2}{2C} + \frac{\Phi^2}{2L} - \frac{1}{24L} \left(\frac{\pi}{\Phi_0}\right)^2
+                            \Phi^4
+                            + \cdots
+                            \]
+                            其中：
+                            \[
+                            L = \left(\frac{I_0 \pi}{\Phi_0} \cos\left(\frac{\Phi_B}{\Phi_0} \pi\right)\right)^{-1}
+                            \]
+                          </p>
+
+
+                          <p>
+                            現在我們要討論非線性對於能階的改變，前文我們選擇新的變量 \( a \)、\( a^\dagger \)：
+                            \[
+                            a = \sqrt{\frac{1}{2\hbar} \sqrt{ \frac{L}{C}}} \left(\sqrt{\frac{C}{L}} \Phi + iQ\right),
+                            \quad
+                            a^\dagger = \sqrt{\frac{1}{2\hbar} \sqrt{ \frac{L}{C}}} \left(\sqrt{\frac{C}{L}} \Phi -
+                            iQ\right)
+                            \]
+                            反之：
+                            \[
+                            \Phi = \sqrt{\frac{\hbar}{2 }\sqrt{ \frac{L}{C}}} (a^\dagger + a), \quad
+                            Q = i\sqrt{\frac{\hbar}{2} \sqrt{ \frac{C}{L}}} (a^\dagger - a)
+                            \]
+
+                          </p>
+                          <p>
+                            將 Hamiltonian 表達式展開為：
+                            \[
+                            \mathcal{H} = \frac{\hbar}{\sqrt{LC}} \left[a^\dagger a + \frac{1}{2}\right] - \frac{1}{24L}
+                            \left(\frac{\pi}{\Phi_0}\right)^2 \left[i \sqrt{\frac{\hbar}{2\sqrt{L/C}}} (a^\dagger +
+                            a)\right]^4
+                            \]
+                            化簡後：
+                            \[
+                            \mathcal{H} = \frac{\hbar}{\sqrt{LC}} \left[a^\dagger a + \frac{1}{2}\right] -
+                            \frac{\hbar^2}{96C} \left(\frac{\pi}{\Phi_0}\right)^2 (a^\dagger + a)^4
+                            \]
+                            該表達式包含線性和非線性項，線性項描述的是量子簡諧振子的能階，而非線性項源自於 Josephson 節對於能階的修正。
+                          </p>
+
+                          <p>
+                            利用微擾理論，當 \( \mathcal{H} = H_0 + \Delta H \)， \( \ket{E_0^m} \to \ket{E^m} \)、 \( E_0^m \to
+                            E^m
+                            = E_0^m + \delta E^m \)，我們知道對能階 \( E_0^m \) 的修正 \( \delta E^m \) 為：
+                          </p>
+
+                          <p style="text-align:center">
+                            \[
+                            \delta E^m = \langle E_0^m | \Delta H | E_0^m \rangle = \langle E_0^m |
+                            \left[-\frac{\hbar^2}{96C} \left(\frac{\pi}{\Phi_0}\right)^2 (a^\dagger + a)^4\right] |
+                            E_0^m
+                            \rangle
+                            \]
+                          </p>
+
+                          <p>
+                            計算如下：
+                          </p>
+
+                          <p style="text-align:center">
+                            \[
+                            \langle E_0^m | (a^\dagger + a)^4 | E_0^m \rangle = \langle E_0^m | (aa + aa^\dagger +
+                            a^\dagger a + a^\dagger a^\dagger)^2 | E_0^m \rangle
+                            \]
+                          </p>
+
+                          <p>
+                            展開為：
+                          </p>
+
+                          <p style="text-align:center">
+                            \[
+                            \langle E_0^m | aa(aa + aa^\dagger + a^\dagger a + a^\dagger a^\dagger) + aa^\dagger(aa +
+                            aa^\dagger + a^\dagger a + a^\dagger a^\dagger)
+                            + a^\dagger a(aa + aa^\dagger + a^\dagger a + a^\dagger a^\dagger) + a^\dagger a^\dagger(aa
+                            +
+                            aa^\dagger + a^\dagger a + a^\dagger a^\dagger) \ket{ E_0^m }
+                            \]
+                          </p>
+
+                          <p>
+                            因為取期望值，只會留下 \( a, a^\dagger \) 次數相等的項，剩下：
+                          </p>
+
+                          <p style="text-align:center">
+                            \[
+                            \langle E_0^m | aaa^\dagger a^\dagger + aa^\dagger aa^\dagger + aa^\dagger a^\dagger a +
+                            a^\dagger aaa^\dagger + a^\dagger aa^\dagger a + a^\dagger a^\dagger aa | E_0^m \rangle
+                            \]
+                          </p>
+
+                          <p>
+                            繼續簡化：
+                          </p>
+
+                          <p style="text-align:center">
+                            \[
+                            \langle E_0^m | a(a^\dagger a + 1)a^\dagger + aa^\dagger aa^\dagger + (a^\dagger a +
+                            1)a^\dagger a + a^\dagger a(a^\dagger a + 1) + a^\dagger aa^\dagger a + a^\dagger
+                            (aa^\dagger
+                            - 1)a | E_0^m \rangle
+                            \]
+                          </p>
+
+                          <p>
+                            再整理為：
+                          </p>
+
+                          <p style="text-align:center">
+                            \[
+                            \langle E_0^m | aa^\dagger aa^\dagger + aa^\dagger + aa^\dagger aa^\dagger + a^\dagger
+                            aa^\dagger a + a^\dagger a + a^\dagger aa^\dagger a + a^\dagger a + a^\dagger aa^\dagger a +
+                            a^\dagger aa^\dagger a - a^\dagger a | E_0^m \rangle
+                            \]
+                          </p>
+
+                          <p>
+                            進一步簡化：
+                          </p>
+
+                          <p style="text-align:center">
+                            \[
+                            \langle E_0^m | 2aa^\dagger aa^\dagger + aa^\dagger + 4a^\dagger aa^\dagger a + a^\dagger a
+                            |
+                            E_0^m \rangle
+                            \]
+                            \[
+                            = \langle E_0^m | 2(a^\dagger a + 1)(a^\dagger a + 1) + (a^\dagger a + 1) + 4a^\dagger
+                            aa^\dagger a + a^\dagger a | E_0^m \rangle
+                            \]
+                          </p>
+
+                          <p>
+                            最終得到：
+                          </p>
+
+                          <p style="text-align:center">
+                            \[
+                            \langle E_0^m | 6a^\dagger aa^\dagger a + 6a^\dagger a + 3 | E_0^m \rangle = 6m^2 + 6m + 3
+                            \]
+                          </p>
+
+                          <p>
+                            定義能階差：
+                          </p>
+
+                          <p style="text-align:center">
+                            \[
+                            \Delta E^m_{m-1} = \frac{\hbar}{\sqrt{LC}} - \frac{\hbar^2}{96C}
+                            \left(\frac{\pi}{\Phi_0}\right)^2 \left\{6[m^2 - (m-1)^2] + 6\right\}
+                            \]
+                          </p>
+
+                          <p style="text-align:center">
+                            \[
+                            = \frac{\hbar}{\sqrt{LC}} - \frac{\hbar^2 \pi^2}{96C} \frac{e^2}{\pi^2 \hbar^2} \left[6(2m -
+                            1) + 6\right]
+                            \]
+                          </p>
+
+                          <p>
+                            最終得到：
+                          </p>
+
+                          <p style="text-align:center">
+                            \[
+                            \Delta E^m_{m-1} = \frac{\hbar}{\sqrt{LC}} - m\frac{e^2}{8C}
+                            \]
+                          </p>
+
+                          <p>
+                            計算 \( \Delta E^{21} - \Delta E^{10} \)：
+                          </p>
+
+                          <p style="text-align:center">
+                            \[
+                            \Delta E^{21} - \Delta E^{10} = \left(\frac{\hbar}{\sqrt{LC}} - 2\frac{e^2}{8C}\right) -
+                            \left(\frac{\hbar}{\sqrt{LC}} - \frac{e^2}{8C}\right)
+                            \]
+                          </p>
+
+                          <p style="text-align:center">
+                            \[
+                            = -\frac{e^2}{8C} \equiv -E_C
+                            \]
+                          </p>
+
+                          <p>
+                            \( E_C \) 表示其非線性效應。
+                          </p>
+
+                          <p>
+                            <span style="font-size: 0.7em; line-height: 0.8;">Ref:
+                              DOI:10.1103/RevModPhys.93.025005</span><br><br>
+
+
+                          </p>
+
+
+                          <!-- /.post-meta -->
+
+
+
+
+
+                        </div><!-- /.post-content -->
+                      </div>
+                    </section>
+
+                    <h4>2.3 Types of Superconducting Qubits</h4>
                     <p>
-                      超導量子晶片是一種以微奈米製程製作的低溫量子電路。
-                      在晶片上，量子位元、讀出共振腔、耦合器、控制線與接地結構被設計成特定的微波電路。
-                      當晶片被冷卻到約 10 mK 到數十 mK 的低溫環境時，超導金屬中的電子形成 Cooper pairs，
-                      電路的能量耗散大幅降低，使得特定電路模式可以展現量子化能階。
-                    </p>
-
-                    <p>
-                      從工程觀點來看，超導量子晶片同時是一個微波電路、低溫電子系統與人工量子系統。
-                      因此，理解超導量子晶片需要結合量子力學、電磁學、電路理論、材料科學與微奈米製程。
-                    </p>
-
-                    <h4>1.2 Typical Layout Elements</h4>
-                    <p>
-                      一個典型的超導量子晶片通常包含以下幾類元件：
+                      不同超導量子位元可以根據主要能量尺度與電路設計分為多種類型。
+                      常見的例子包括 Charge Qubit、Flux Qubit、Phase Qubit、Transmon、Fluxonium 與 0-π Qubit。
+                      在現代 gate-based superconducting quantum computing 中，Transmon 是最廣泛使用的設計之一；
+                      Fluxonium 則因其長 coherence、較低 relaxation rate 與特殊能階結構而受到高度關注。
                     </p>
 
                     <table>
                       <thead>
                         <tr>
-                          <th>晶片元件</th>
-                          <th>功能</th>
-                          <th>物理角色</th>
+                          <th>Qubit 類型</th>
+                          <th>主要自由度</th>
+                          <th>設計特色</th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
-                          <td>Qubit</td>
-                          <td>儲存與處理量子資訊</td>
-                          <td>由非線性超導電路形成的人工原子</td>
+                          <td>Charge Qubit</td>
+                          <td>Cooper pair number</td>
+                          <td>對電荷敏感，控制性佳但容易受 charge noise 影響</td>
                         </tr>
                         <tr>
-                          <td>Readout Resonator</td>
-                          <td>讀出 qubit 狀態</td>
-                          <td>與 qubit dispersively coupled 的微波共振腔</td>
+                          <td>Flux Qubit</td>
+                          <td>磁通量與環流方向</td>
+                          <td>以超導迴路中的 persistent current 狀態作為基礎</td>
                         </tr>
                         <tr>
-                          <td>Drive Line</td>
-                          <td>施加 microwave pulse 控制 qubit</td>
-                          <td>產生一量子位元旋轉操作</td>
+                          <td>Transmon</td>
+                          <td>Josephson phase</td>
+                          <td>透過增加電容降低 charge noise sensitivity</td>
                         </tr>
                         <tr>
-                          <td>Flux Line</td>
-                          <td>調控 qubit 或 coupler 的頻率</td>
-                          <td>透過外加磁通量改變 Josephson energy</td>
-                        </tr>
-                        <tr>
-                          <td>Coupler</td>
-                          <td>連接兩個或多個 qubits</td>
-                          <td>提供可固定或可調式的量子耦合</td>
-                        </tr>
-                        <tr>
-                          <td>Ground Plane</td>
-                          <td>提供電磁參考地與屏蔽</td>
-                          <td>影響微波模式、串擾與封裝效應</td>
-                        </tr>
-                        <tr>
-                          <td>Air Bridge / Crossover</td>
-                          <td>連接接地平面或跨越訊號線</td>
-                          <td>降低 slotline mode 與寄生耦合</td>
+                          <td>Fluxonium</td>
+                          <td>Phase across Josephson junction and superinductor</td>
+                          <td>使用 superinductor 形成特殊能階與雜訊保護</td>
                         </tr>
                       </tbody>
                     </table>
 
-                    <h4>1.3 From Circuit Layout to Hamiltonian</h4>
-                    <p>
-                      超導量子晶片的版圖不只是幾何圖案，它對應到具體的電路參數，例如電容、電感、耦合強度、
-                      共振頻率與損耗通道。這些參數進一步決定系統的 Hamiltonian。
-                    </p>
 
-                    <p>
-                      例如，一個 Transmon qubit 的大面積金屬 pad 決定總電容 \(C_\Sigma\)，
-                      Josephson junction 決定 Josephson energy \(E_J\)，而兩者共同決定 qubit frequency、
-                      anharmonicity 與對電荷雜訊的敏感度。
-                    </p>
 
-                    <div class="qh-board">
-                      <h4>核心觀念</h4>
+                    <section class="module">
+
+                      <div class="qh-section">
+                        <h3>單元 1：超導量子晶片版圖導論</h3>
+                      </div>
+                      <h4>1.1 What Is a Superconducting Quantum Chip?</h4>
                       <p>
-                        在超導量子晶片中，「版圖設計」就是「Hamiltonian engineering」。
-                        一個看似幾何的設計選擇，最終會轉換成量子系統的頻率、耦合、雜訊敏感度與可控制性。
+                        超導量子晶片是一種以微奈米製程製作的低溫量子電路。
+                        在晶片上，量子位元、讀出共振腔、耦合器、控制線與接地結構被設計成特定的微波電路。
+                        當晶片被冷卻到約 10 mK 到數十 mK 的低溫環境時，超導金屬中的電子形成 Cooper pairs，
+                        電路的能量耗散大幅降低，使得特定電路模式可以展現量子化能階。
                       </p>
-                    </div>
 
-                    <div class="qh-task">
-                      <h4>學習檢核</h4>
-                      <ol>
-                        <li>超導量子晶片與傳統 CMOS 晶片最大的差異是什麼？</li>
-                        <li>為什麼 readout resonator 需要與 qubit 耦合？</li>
-                        <li>為什麼晶片版圖會影響 qubit 的 Hamiltonian？</li>
-                      </ol>
-                    </div>
+                      <p>
+                        從工程觀點來看，超導量子晶片同時是一個微波電路、低溫電子系統與人工量子系統。
+                        因此，理解超導量子晶片需要結合量子力學、電磁學、電路理論、材料科學與微奈米製程。
+                      </p>
+
+                      <h4>1.2 Typical Layout Elements</h4>
+                      <p>
+                        一個典型的超導量子晶片通常包含以下幾類元件：
+                      </p>
+
+                      <table>
+                        <thead>
+                          <tr>
+                            <th>晶片元件</th>
+                            <th>功能</th>
+                            <th>物理角色</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>Qubit</td>
+                            <td>儲存與處理量子資訊</td>
+                            <td>由非線性超導電路形成的人工原子</td>
+                          </tr>
+                          <tr>
+                            <td>Readout Resonator</td>
+                            <td>讀出 qubit 狀態</td>
+                            <td>與 qubit dispersively coupled 的微波共振腔</td>
+                          </tr>
+                          <tr>
+                            <td>Drive Line</td>
+                            <td>施加 microwave pulse 控制 qubit</td>
+                            <td>產生一量子位元旋轉操作</td>
+                          </tr>
+                          <tr>
+                            <td>Flux Line</td>
+                            <td>調控 qubit 或 coupler 的頻率</td>
+                            <td>透過外加磁通量改變 Josephson energy</td>
+                          </tr>
+                          <tr>
+                            <td>Coupler</td>
+                            <td>連接兩個或多個 qubits</td>
+                            <td>提供可固定或可調式的量子耦合</td>
+                          </tr>
+                          <tr>
+                            <td>Ground Plane</td>
+                            <td>提供電磁參考地與屏蔽</td>
+                            <td>影響微波模式、串擾與封裝效應</td>
+                          </tr>
+                          <tr>
+                            <td>Air Bridge / Crossover</td>
+                            <td>連接接地平面或跨越訊號線</td>
+                            <td>降低 slotline mode 與寄生耦合</td>
+                          </tr>
+                        </tbody>
+                      </table>
+
+                      <h4>1.3 From Circuit Layout to Hamiltonian</h4>
+                      <p>
+                        超導量子晶片的版圖不只是幾何圖案，它對應到具體的電路參數，例如電容、電感、耦合強度、
+                        共振頻率與損耗通道。這些參數進一步決定系統的 Hamiltonian。
+                      </p>
+
+                      <p>
+                        例如，一個 Transmon qubit 的大面積金屬 pad 決定總電容 \(C_\Sigma\)，
+                        Josephson junction 決定 Josephson energy \(E_J\)，而兩者共同決定 qubit frequency、
+                        anharmonicity 與對電荷雜訊的敏感度。
+                      </p>
+
+                      <div class="qh-board">
+                        <h4>核心觀念</h4>
+                        <p>
+                          在超導量子晶片中，「版圖設計」就是「Hamiltonian engineering」。
+                          一個看似幾何的設計選擇，最終會轉換成量子系統的頻率、耦合、雜訊敏感度與可控制性。
+                        </p>
+                      </div>
+
+                      <div class="qh-task">
+                        <h4>學習檢核</h4>
+                        <ol>
+                          <li>超導量子晶片與傳統 CMOS 晶片最大的差異是什麼？</li>
+                          <li>為什麼 readout resonator 需要與 qubit 耦合？</li>
+                          <li>為什麼晶片版圖會影響 qubit 的 Hamiltonian？</li>
+                        </ol>
+                      </div>
 
 
-                  </section>
+                    </section>
 
-                  <section class="module">
-
+                    <section class="module">
+                      <div class="qh-section">
+                        <h3>課堂整合與驗收</h3>
+                      </div>
+                      <p><strong>研討問題：</strong>給定 \(f_{01}\) 與 target anharmonicity，估算 \(E_C\)、\(E_J\)、總電容及
+                        \(I_c\)，再說明近似在哪裡可能失效。</p>
+                      <p><strong>完成條件：</strong>學生必須留下可檢查的推導、關係圖、比較表或 architecture decision，並能說明其物理假設與工程代價。</p>
+                    </section>
+                    <section class="module">
+                      <div class="qh-section">
+                        <h3>核心與延伸閱讀</h3>
+                      </div>
+                      <ul class="qh-reading">
+                        <li><a href="https://doi.org/10.1103/PhysRevA.76.042319" target="_blank" rel="noopener">Charge-insensitive Qubit Design Derived from the Cooper Pair Box</a><span>J.
+                            Koch et al., Physical Review A 76, 042319 (2007).</span><em>Transmon 的 \(E_J/E_C\)、charge
+                            dispersion 與 anharmonicity trade-off。</em></li>
+                        <li><a href="https://doi.org/10.1063/1.5089550" target="_blank" rel="noopener">A Quantum
+                            Engineer&#x27;s Guide to Superconducting Qubits</a><span>P. Krantz et al., Applied Physics
+                            Reviews 6, 021318 (2019).</span><em>控制、coherence、readout 與工程參數的主幹 review。</em></li>
+                        <li><a href="https://www.nature.com/articles/s41578-021-00370-4" target="_blank" rel="noopener">Engineering High-Coherence Superconducting Qubits</a><span>I. Siddiqi, Nature
+                            Reviews Materials 6, 875–891 (2021).</span><em>不同 qubit architecture、材料損耗與 coherence 的設計
+                            trade-off。</em></li>
+                        <li><a href="https://doi.org/10.1103/PhysRevResearch.5.043001" target="_blank" rel="noopener">Mitigation of Frequency Collisions in Superconducting Quantum
+                            Processors</a><span>J. B. Hertzberg et al., Physical Review Research 5, 043001
+                            (2023).</span><em>製程變異如何轉成 qubit frequency spread、collision 與 yield。</em></li>
+                      </ul>
+                    </section>
                     <div class="qh-section">
-                      <h3>進階主線：Circuit → Lagrangian → Hamiltonian → Spectrum</h3>
+                      <h3>逆向作業：從晶片照片反推人工原子</h3>
                     </div>
-                    <p><em>（W2-C1, W2-D1, W2-D2）</em>對節點磁通 \(\Phi\) 而言，電容網路提供 kinetic term，電感與 Josephson junction 提供
-                      potential term：</p>
-                    <p>\[\mathcal L=\frac12\dot{\Phi}^{T} C\dot{\Phi}-U(\Phi),\qquad Q=\frac{\partial\mathcal
-                      L}{\partial\dot{\Phi}}\]</p>
-                    <p>Legendre transform 得到 \(H(\Phi, Q)\)，再施加 \([\hat\Phi_i,\hat Q_j]=i\hbar\delta_{ij}\)。線性 LC
-                      電路只產生等距能階；Josephson term</p>
-                    <p>\[U_J(\varphi)=-E_J\cos\varphi,\qquad E_J=\frac{\Phi_0 I_c}{2\pi}\]</p>
-                    <p>才打破 harmonicity，使最低兩能階可以被選擇性控制。進階課需要讓學生實際走完一次「由 schematic 到 Hamiltonian」；只背 transmon 公式不足以判斷寄生
-                      mode、coupling 與 layout 變更的後果。</p>
-                    <p class="callout"><b>邊界：</b>本週不深入 BCS microscopic derivation；超導體在這裡主要提供 macroscopic phase、低損耗
-                      wiring 與 Josephson element。微觀材料損耗留到 T6。</p>
-
+                    <p><strong>作業問題：</strong>給你一張超導量子晶片的局部影像，你能從幾何結構反推出它可能實現的 Hamiltonian 嗎？</p>
+                    <ol>
+                      <li><strong>辨認結構：</strong>標出 qubit pads、Josephson junction、ground、drive line、readout
+                        resonator；不確定處必須明確註記。</li>
+                      <li><strong>geometry → parameter：</strong>說明 pad geometry、junction area、spacing 與 line length
+                        分別影響哪些電路參數。</li>
+                      <li><strong>parameter → Hamiltonian：</strong>指出影像中的哪些結構主要控制 \(E_C\)、\(E_J\) 與 coupling term。</li>
+                      <li><strong>Hamiltonian → observable：</strong>預測 pad 變大、junction 變小或與 resonator
+                        距離縮短時，\(f_{01}\)、anharmonicity、charge dispersion 或 coupling 如何改變。</li>
+                      <li><strong>推論邊界：</strong>列出僅靠影像不能知道、必須由製程資料、EM simulation 或實驗量測取得的資訊。</li>
+                    </ol>
+                    <div class="qh-case">
+                      <p><strong>作業主鏈：</strong>晶片結構 → 幾何參數 → lumped-element model → Hamiltonian term → spectrum／control
+                        hypothesis。這是一題有證據邊界的逆向設計題，不要求學生在 W2 完成完整系統架構判斷。</p>
+                    </div>
                   </section>
 
-
-
-                  <section class="module">
-                    <div class="qh-section">
-                      <h3>課堂整合與驗收</h3>
-                    </div>
-                    <p><strong>研討問題：</strong>由一個含 \(C\)、\(L\)、JJ 的單節點電路寫出 \(\mathcal L\)、canonical charge 與
-                      \(H\)，並指出哪個參數由版圖或製程控制。</p>
-                    <p><strong>完成條件：</strong>學生必須留下可檢查的推導、關係圖、比較表或 architecture decision，並能說明其物理假設與工程代價。</p>
-                  </section>
-                  <section class="module">
-                    <div class="qh-section">
-                      <h3>課堂整合與驗收</h3>
-                    </div>
-                    <p><strong>研討問題：</strong>給定 \(f_{01}\) 與 target anharmonicity，估算 \(E_C\)、\(E_J\)、總電容及
-                      \(I_c\)，再說明近似在哪裡可能失效。</p>
-                    <p><strong>完成條件：</strong>學生必須留下可檢查的推導、關係圖、比較表或 architecture decision，並能說明其物理假設與工程代價。</p>
-                  </section>
-                  <section class="module">
-                    <div class="qh-section">
-                      <h3>核心與延伸閱讀</h3>
-                    </div>
-                    <ul class="qh-reading">
-                      <li><a href="https://arxiv.org/abs/1610.03438" target="_blank" rel="noopener">Introduction to
-                          Quantum Electromagnetic Circuits</a><span>U. Vool and M. H. Devoret, International Journal of
-                          Circuit Theory and Applications 45, 897–934 (2017).</span><em>從電路圖、Lagrangian 到量子 Hamiltonian
-                          的核心讀物。</em></li>
-                      <li><a href="https://arxiv.org/abs/1204.0587" target="_blank" rel="noopener">Black-box
-                          Superconducting Circuit Quantization</a><span>S. E. Nigg et al., Physical Review Letters 108,
-                          240502 (2012).</span><em>把分佈式電磁環境與 Josephson 非線性轉成有效 Hamiltonian。</em></li>
-                      <li><a href="https://doi.org/10.1063/1.5089550" target="_blank" rel="noopener">A Quantum
-                          Engineer&#x27;s Guide to Superconducting Qubits</a><span>P. Krantz et al., Applied Physics
-                          Reviews 6, 021318 (2019).</span><em>控制、coherence、readout 與工程參數的主幹 review。</em></li>
-                      <li><a href="https://www.nature.com/articles/s41578-021-00370-4" target="_blank" rel="noopener">Engineering High-Coherence Superconducting Qubits</a><span>I. Siddiqi, Nature
-                          Reviews Materials 6, 875–891 (2021).</span><em>不同 qubit architecture、材料損耗與 coherence 的設計
-                          trade-off。</em></li>
-                    </ul>
-                  </section>
-                  <section class="module">
-                    <div class="qh-section">
-                      <h3>核心與延伸閱讀</h3>
-                    </div>
-                    <ul class="qh-reading">
-                      <li><a href="https://doi.org/10.1103/PhysRevA.76.042319" target="_blank" rel="noopener">Charge-insensitive Qubit Design Derived from the Cooper Pair Box</a><span>J.
-                          Koch et al., Physical Review A 76, 042319 (2007).</span><em>Transmon 的 \(E_J/E_C\)、charge
-                          dispersion 與 anharmonicity trade-off。</em></li>
-                      <li><a href="https://doi.org/10.1063/1.5089550" target="_blank" rel="noopener">A Quantum
-                          Engineer&#x27;s Guide to Superconducting Qubits</a><span>P. Krantz et al., Applied Physics
-                          Reviews 6, 021318 (2019).</span><em>控制、coherence、readout 與工程參數的主幹 review。</em></li>
-                      <li><a href="https://www.nature.com/articles/s41578-021-00370-4" target="_blank" rel="noopener">Engineering High-Coherence Superconducting Qubits</a><span>I. Siddiqi, Nature
-                          Reviews Materials 6, 875–891 (2021).</span><em>不同 qubit architecture、材料損耗與 coherence 的設計
-                          trade-off。</em></li>
-                      <li><a href="https://doi.org/10.1103/PhysRevResearch.5.043001" target="_blank" rel="noopener">Mitigation of Frequency Collisions in Superconducting Quantum
-                          Processors</a><span>J. B. Hertzberg et al., Physical Review Research 5, 043001
-                          (2023).</span><em>製程變異如何轉成 qubit frequency spread、collision 與 yield。</em></li>
-                    </ul>
-                  </section>
                 </section>
                 <div class="post-meta">
                   <span class="post-author">
@@ -2408,7 +3107,8 @@
                 </div><!-- /.post-meta -->
 
                 <div id="prev-next-nav" class="text-center">
-                                    <a class="btn btn-gray" href="T1-1.html">← 上一頁</a> 
+                                    <a class="btn btn-gray" href="T2-outlook.html">← 上一頁</a> 
+                                    <a class="btn btn-gray" href="../QH-2026F-v5-x10_en/T2-2.html" style="margin: 0 10px;">English Version</a>
                                     <a class="btn btn-gray" href="T2-2S.html">下一頁 →</a>
                                 </div>
 
@@ -2436,6 +3136,7 @@
                                 <div id="lesson-list_2">
                                 <div class="lesson-link "><a href="main.html">QH-2026F v5 · 16週總覽</a></div>
                                 <div class="lesson-link "><a href="T1-1.html">Week 1 · 從量子計算模型到硬體操作</a></div>
+                                <div class="lesson-link "><a href="T2-outlook.html">T2 Outlook · 從人工原子到 Protected Qubit | QH-2026F v5</a></div>
                                 <div class="lesson-link active"><a href="T2-2.html">Week 2 · 超導電路量子化與 Transmon 設計</a></div>
                                 <div class="lesson-link "><a href="T2-2S.html">Week 2S · 超導電路量子化與 Transmon 設計-Slide</a></div>
                                 <div class="lesson-link "><a href="T2-3.html">Week 3 · Fluxonium：從電路改造到設計取捨</a></div>

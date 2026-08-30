@@ -1,0 +1,1823 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N39VTY949N"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-N39VTY949N');
+  </script>
+  <!-- Basic Page Needs
+    ================================================== -->
+  <meta charset="utf-8">
+  <meta name="author" content="Peir-Ru Wang">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;1,300&amp;display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/20250525-icon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/20250525-icon.png">
+
+  <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/css/style.css" rel="stylesheet">
+  <link href="../assets/css/responsive.css" rel="stylesheet">
+
+  <title>Week 1 Manual Slides · From Quantum Computing Models to Hardware Operations | QH-2026F v5</title>
+  <meta name="description" content="PHYS598500 Week 1 manual slides: from quantum computing models to hardware operations">
+  <meta name="keywords" content="- Quantum Processor
+- Superconducting Qubit
+- Qubit
+- Josephson Junction
+- Transmon
+- Fluxonium
+- Quantum Computing
+- Quantum Hardware
+- Quantum Algorithms
+- Quantum Chip">
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+  <style>
+    .qh-week-meta {
+      margin: 20px 0;
+      padding: 16px 18px;
+      border-left: 4px solid #5f4b8b;
+      background: #f6f4fa;
+    }
+
+    .qh-week-meta p {
+      margin: 4px 0;
+    }
+
+    .qh-session-plan {
+      width: 100%;
+      margin: 18px 0 8px;
+      border-collapse: collapse;
+    }
+
+    .qh-session-plan th,
+    .qh-session-plan td {
+      padding: 10px 12px;
+      border: 1px solid #ddd;
+      vertical-align: top;
+    }
+
+    .qh-session-plan th {
+      background: #f4f4f4;
+    }
+
+    .qh-session-plan .qh-break td {
+      color: #666;
+      background: #fafafa;
+    }
+
+    .qh-total {
+      text-align: right;
+      font-weight: 700;
+    }
+
+    .qh-reading li {
+      margin-bottom: 12px;
+    }
+
+    .qh-reading span,
+    .qh-reading em {
+      display: block;
+    }
+
+    .qh-week-list {
+      padding-left: 0;
+      list-style: none;
+    }
+
+    .qh-week-list li {
+      margin: 0 0 13px;
+      padding: 12px 15px;
+      border-left: 4px solid #5f4b8b;
+      background: #f7f7f7;
+    }
+
+    .qh-week-list a {
+      font-weight: 700;
+    }
+
+    @media (max-width: 767px) {
+      .qh-session-plan {
+        display: block;
+        overflow-x: auto;
+      }
+    }
+  </style>
+
+
+  <style id="qh-full-course-style">
+    .qh-full-lecture {
+      margin: 30px 0;
+      padding: 24px 26px;
+      border: 1px solid #d9d4e5;
+      background: #fff;
+    }
+
+    .qh-full-lecture>h2,
+    .qh-full-lecture>h3 {
+      margin-top: 0;
+    }
+
+    .qh-full-lecture h4 {
+      margin-top: 24px;
+    }
+
+    .qh-full-lecture li {
+      margin-bottom: 8px;
+    }
+
+    .qh-time {
+      display: inline-block;
+      margin-bottom: 12px;
+      padding: 4px 10px;
+      border-radius: 14px;
+      background: #5f4b8b;
+      color: #fff;
+      font-size: .9em;
+    }
+
+    .qh-board,
+    .qh-case,
+    .qh-task,
+    .qh-answer,
+    .qh-source-chapter {
+      margin: 20px 0;
+      padding: 17px 19px;
+      font-size: 15px;
+    }
+
+    .qh-board {
+      border-left: 4px solid #d0ccc8;
+      background: #fafafa;
+    }
+
+    .qh-case {
+      border-left: 4px solid #d0ccc8;
+      background: #fafafa;
+    }
+
+    .qh-task {
+      border-left: 4px solid #d0ccc8;
+      background: #fafafa;
+    }
+
+    .qh-answer {
+      border-left: 4px solid #d0ccc8;
+      background: #fafafa;
+    }
+
+    /* Section divider headings */
+    .qh-section {
+      margin: 40px 0 24px;
+      padding: 17px 19px;
+      border-left: 4px solid #355c9a;
+      background: #f3f7fc;
+    }
+
+    .qh-section h3 {
+      margin: 0 0 4px;
+      font-size: 20px;
+      font-weight: 700;
+      color: #355c9a;
+      border-bottom: none;
+    }
+
+    .qh-section h4 {
+      margin: 0;
+      font-size: 15px;
+      font-weight: 400;
+      color: #6a8ab5;
+      font-style: italic;
+    }
+
+    .qh-section>h3:first-child {
+      margin-top: 0;
+    }
+
+    /* Equation highlight — compact, not a section heading */
+    .qh-equation-highlight {
+      margin: 24px 0;
+      padding: 14px 18px;
+      border-left: 3px solid #6a6560;
+      background: #f9f8f7;
+    }
+
+    .qh-equation-label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      color: #6a6560;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    .qh-source-chapter {
+      border: 1px solid #e5e0ec;
+      background: #fdfcff;
+    }
+
+
+    .qh-source-chapter>h3 {
+      padding-bottom: 9px;
+      border-bottom: 1px solid #ddd5e8;
+    }
+
+    .qh-source-note {
+      color: #665f72;
+      font-size: .92em;
+    }
+
+    @media (max-width: 720px) {
+      .qh-full-lecture {
+        padding: 18px 15px;
+      }
+
+      .qh-board,
+      .qh-case,
+      .qh-task,
+      .qh-answer,
+      .qh-source-chapter {
+        padding: 14px 13px;
+      }
+    }
+
+    /* Supplement section styling */
+    .qh-supplement-divider {
+      margin: 36px 0 24px;
+      padding: 18px 22px;
+      border-left: 4px solid #5f4b8b;
+      background: #f6f4fa;
+    }
+
+    .qh-supplement-divider h2 {
+      margin: 0 0 5px;
+      font-size: 22px;
+    }
+
+    .qh-supplement-divider p {
+      margin: 0;
+    }
+
+    /* Tables in supplement */
+    .module table {
+      width: 100%;
+      margin: 16px 0;
+      border-collapse: collapse;
+      font-size: 15px;
+    }
+
+    .module table th,
+    .module table td {
+      padding: 10px 12px;
+      border: 1px solid #ddd;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .module table th {
+      background: #f4f4f4;
+      font-weight: 700;
+    }
+
+    /* Callout in supplement */
+    .module .callout {
+      margin: 16px 0;
+      padding: 12px 16px;
+      border-left: 4px solid #5f4b8b;
+      background: #f6f4fa;
+      font-size: 15px;
+    }
+
+    /* Lists in supplement */
+    .module ul,
+    .module ol {
+      margin: 12px 0;
+      padding-left: 24px;
+    }
+
+    .module li {
+      margin-bottom: 8px;
+      line-height: 1.6;
+      font-size: 15px;
+    }
+
+    /* Heading consistency — only direct h3 children, not inside .qh-section */
+    .module>h3 {
+      margin: 28px 0 14px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #ddd5e8;
+      font-size: 20px;
+    }
+
+    .module h4 {
+      margin: 20px 0 10px;
+      font-size: 17px;
+    }
+
+    .module p {
+      margin: 10px 0;
+      line-height: 1.7;
+    }
+  </style>
+
+  <style id="qh-details-style">
+    details.dark-background {
+      background-color: #f5f5f5;
+      border: 1px solid #ddd;
+      padding: 10px;
+      border-radius: 5px;
+    }
+
+    details.dark-background summary {
+      cursor: pointer;
+      font-weight: bold;
+      background-color: #e0e0e0;
+      padding: 5px;
+      border-radius: 3px;
+    }
+  </style>
+
+  <link rel="stylesheet" href="assets/slide-deck.css"><link rel="stylesheet" href="qh-mobile-math-overflow.css" data-uniweb-fix="mobile-math-overflow">
+<style>
+    #qhs-manual-slides[hidden] {
+      display: none !important;
+    }
+
+    .qhs-article-cover-source,
+    .qhs-article-slide-source {
+      display: block;
+    }
+
+    .qhs-slide .qhs-content-inner {
+      position: relative;
+    }
+
+    .qhs-slide.qhs-absolute-layout .qhs-content-inner {
+      min-height: 100%;
+    }
+
+    .qhs-cover .qhs-content-inner {
+      min-height: 0;
+      align-self: center;
+    }
+
+    .qhs-slide,
+    .qhs-slide h1,
+    .qhs-slide h2,
+    .qhs-slide h3,
+    .qhs-slide h4,
+    .qhs-slide h5,
+    .qhs-slide h6,
+    .qhs-slide p,
+    .qhs-slide li,
+    .qhs-slide th,
+    .qhs-slide td,
+    .qhs-slide summary,
+    .qhs-slide figcaption {
+      font-family: "Montserrat", "Noto Sans TC", system-ui, sans-serif;
+    }
+
+    .qhs-cover .theme-header {
+      width: 100%;
+      max-width: 1200px;
+      margin-inline: auto;
+    }
+
+    .qhs-cover .theme-header h2 {
+      margin: 0 auto;
+      font-size: 58px;
+      font-weight: 700;
+      line-height: 1.12;
+      letter-spacing: -0.025em;
+    }
+
+    .qhs-cover .theme-header h3,
+    .qhs-cover .theme-header h4 {
+      margin: 26px auto 0;
+      font-size: 28px;
+      font-weight: 500;
+      line-height: 1.3;
+      letter-spacing: 0;
+      opacity: 0.82;
+    }
+
+    .qhs-cover .theme-header h3:empty,
+    .qhs-cover .theme-header h4:empty {
+      display: none;
+    }
+
+    .qhs-slide:not(.qhs-cover) .qhs-slide-title {
+      margin-top: 4px !important;
+    }
+
+    body.qh-slide-active .qhs-header {
+      padding-right: 470px;
+    }
+
+    body.qh-slide-active .qhs-icon-button {
+      right: 205px;
+    }
+
+    .qhs-click-mode-button {
+      position: absolute;
+      top: 14px;
+      right: 255px;
+      min-width: 200px;
+      height: 36px;
+      padding: 0 14px;
+      color: var(--qhs-purple);
+      background: var(--qhs-purple-soft);
+      border: 0;
+      border-radius: 999px;
+      cursor: pointer;
+      font: 700 12px/1 "Montserrat", "Noto Sans TC", sans-serif;
+    }
+
+    .qhs-click-mode-button:hover,
+    .qhs-click-mode-button:focus-visible,
+    .qhs-click-mode-button.is-active {
+      color: #fff;
+      background: var(--qhs-purple);
+      outline: none;
+    }
+
+    @media (max-width: 720px) {
+      body.qh-slide-active .qhs-header {
+        padding-right: 140px;
+      }
+
+      .qhs-click-mode-button {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header id="masthead" class="site-header">
+        <nav id="primary-navigation" class="site-navigation">
+            <div class="container">
+
+                <div class="navbar-header">                   
+                    <a href="../index.html" class="site-title">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
+                </div><!-- /.navbar-header -->
+
+                <div class="collapse navbar-collapse" id="agency-navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="../index.html">Home</a></li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Qubit Physics<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                              <li><a href="../SCQ_elementary_en/main.html">Superconducting Qubits (Elementary)</a></li>
+                              <li><a href="../SCQ_advanced_en/main.html">Superconducting Qubits (Advanced)</a></li>
+                              <li><a href="../SpQ_en/main.html">Semiconductor Spin Qubits</a></li>
+                            </ul>
+                        </li>
+                        <!--<li class="active"><a href="../SCQ_elementary/main.html">科普介紹</a></li>-->
+                        <li class="active"><a href="../QC_hardware_en/main.html">Hardware</a></li>
+                        <li><a href="../QID_en/main.html">Quantum Industries</a></li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Workshop Note<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                <li><a href="../ASW2026_en/main.html">2026 Academia Sinica SCQC Winter Workshop</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Consultance<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                <li><a href="https://www.quantum-perspectives.com/About_en/main.html">Taiwan Market Outreach Services</a></li>
+                                <li><a href="../About_en/main.html">About Us</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="../index.html">中文版</a></li>                        
+                    </ul>
+                </div>
+
+            </div>   
+        </nav><!-- /.site-navigation -->
+    </header><!-- /#mastheaed -->
+
+  <div id="hero" class="hero overlay subpage-hero blog-hero">
+    <div class="hero-content">
+      <div class="hero_2-text">
+        <h1>Superconducting Quantum Computer Architecture</h1>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+          <li class="breadcrumb-item"><a href="./main.html">PHYS598500</a></li>
+          <!--<li class="breadcrumb-item active">約瑟夫森節</li>-->
+        </ol>
+      </div><!-- /.hero-text -->
+    </div><!-- /.hero-content -->
+  </div><!-- /.hero -->
+
+  <main id="main" class="site-main">
+
+    <section class="site-section subpage-site-section section-blog">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-9">
+            <article class="blog-post">
+              <!--<img src="../assets/img/portfolio-1.jpg" class="img-res" alt="">-->
+              <div class="post-content"><div id="qhs-article-content" class="course-theme"></div></div><!-- /.post-content -->
+            </article><!-- /.blog-post -->
+            <!--<div id="PostComments" class="post-comments">
+                            
+                            
+                            
+                        </div> /#PostComments -->
+            <!--<div class="respond">
+                            <h3>Post a Comment</h3>
+                            <form class="form-horizontal">
+                                <input class="form-control" type="text" placeholder="Your Name*" required>
+                                <input class="form-control" type="email" placeholder="Your Email" required>
+                                <textarea class="form-control form-control-comment" type="text" placeholder="Your Comment*" required></textarea>
+                                <button class="btn btn-green">Add a comment</button>
+                            </form>    
+                        </div> /.respond -->
+          
+                        <div id="prev-next-nav" class="text-center">
+                                    <a class="btn btn-gray" href="T2-3.html">← Previous</a> 
+                                    <a class="btn btn-gray" href="T2-2SA.html">Next →</a>
+                                </div>
+                    </div>
+          <aside class="col-md-3">
+                        <div class="sidebar">
+                            <div class="widget">
+                                <div id="lesson-list_2">
+                                <div class="lesson-link "><a href="main.html">QH-2026F v5 · 16-Week Overview</a></div>
+                                <div class="lesson-link "><a href="T2-outlook.html">T2 Outlook · From Artificial Atoms to Protected Qubits | QH-2026F v5</a></div>
+                                <div class="lesson-link "><a href="T2-2.html">Week 2 · Superconducting-Circuit Quantization and Transmon Design | QH-2026F v5</a></div>
+                                <div class="lesson-link "><a href="T2-2S.html">Week 2 Slides · Superconducting-Circuit Quantization and Transmon Design | QH-2026F v5</a></div>
+                                <div class="lesson-link "><a href="T2-3.html">Week 3 · Fluxonium: From Circuit Modification to Design Trade-offs | QH-2026F v5</a></div>
+                                <div class="lesson-link active"><a href="T1-1SA.html">Week 1 Manual Slides · From Quantum Computing Models to Hardware Operations | QH-2026F v5</a></div>
+                                <div class="lesson-link "><a href="T2-2SA.html">Week 2 Manual Slides · Superconducting-Circuit Quantization and Transmon Design | QH-2026F v5</a></div>
+                                <div class="lesson-link "><a href="T2-3SA.html">Week 3 Manual Slides · Fluxonium and Protected-Qubit Hamiltonian Engineering | QH-2026F v5</a></div>
+                                </div>
+                            </div>
+                        </div></aside>
+        </div>
+      </div>
+    </section><!-- /.section-portfolio -->
+
+  </main><!-- /#main -->
+
+  <footer id="colophon" class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-4 col-xs-6">
+                    <a href="../index.html" class="site-title">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
+                    <p>Exploring the Quantum Technology Together.</p>
+                    </div>
+                <div class="col-lg-offset-4 col-md-3 col-sm-4 col-md-offset-2 col-sm-offset-0 col-xs-6 ">
+                    <p class="site-title">𝐾𝐸𝐸𝑃 𝐼𝑁 𝑇𝑂𝑈𝐶𝐻</p>
+                    <ul class="list-unstyled contact-links">
+                        <li><i class="fa fa-envelope" aria-hidden="true"></i><a href="mailto:info@insight-ihbar.com">info@insight-ihbar.com</a></li>
+                        <!--<li><i class="fa fa-phone" aria-hidden="true"></i><a href="tel:+37400800000">+374 (00) 80 00 00 </a></li>
+                        <li><i class="fa fa-fax" aria-hidden="true"></i><a href="+37400900000">+374 (00) 90 00 00</a></li>
+                        <li><i class="fa-solid fa-location-dot"></i><p>Hsinchu 300, Taiwan (R.O.C.)</p></li>-->
+                    </ul>
+                </div>
+                <!--<div class="clearfix visible-xs"></div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6">
+                    <h3>Featured links</h3>
+                    <ul class="list-unstyled">
+                        <li class="active"><a href="index_ch.html">Home</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="portfolio.html">Porfolio</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>-->
+            </div>
+        </div>
+        <div class="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-8">
+                        <div class="social-links">
+                            <!--<a class="twitter-bg" href="#"><i class="fab fa-twitter"></i></a>-->
+                            <!--<<a class="facebook-bg" href="https://www.facebook.com/people/Quantum-Perspectives/61576446849628/"><i class="fab fa-facebook"></i></a>-->
+                            <!--<a class="facebook-bg" href="https://www.facebook.com/people/%E9%87%8F%E5%AD%90%E9%81%A0%E8%A6%8BQuantum-Perspectives/61576883632888/"><i class="fab fa-facebook-f"></i></a>-->
+                            <!--<a class="pinterest" href="#"><i class="fa-solid fa-microscope"></i></a>-->
+                            <!--<a class="facebook-bg" href="https://www.facebook.com/people/Insight-hbar/61576811775374/"><i class="fab fa-facebook-f"></i></a>-->
+                            <a class="linkedin-bg" href="https://www.linkedin.com/company/insight-ihbar"><i class="fab fa-linkedin"></i></a>
+                        </div><!-- /.social-links -->
+                    </div>
+                    <div class="col-xs-4">
+                        <div class="text-right">
+                            <p><span style="font-size: 16px;">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</span></p>
+                            <p>All Rights Reserved</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.copyright -->
+    </footer><!-- /#footer -->
+
+
+
+  <!-- Bootstrap core JavaScript
+    ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/bootstrap-select.min.js"></script>
+  <script src="../assets/js/jquery.slicknav.min.js"></script>
+  <script src="../assets/js/jquery.countTo.min.js"></script>
+  <script src="../assets/js/jquery.shuffle.min.js"></script>
+  <script src="../assets/js/script.js"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<!--
+    MANUAL SLIDE SOURCE — SLIDES ARE THE SINGLE SOURCE OF TRUTH
+
+    1. Each direct child <section data-manual-slide> is exactly one slide.
+    2. Reorder whole sections to reorder slides.
+    3. Move HTML between sections to merge or split slides; the browser never auto-splits them.
+    4. Each data-cover heading is inherited by the following slides until the next data-cover.
+    5. Question cover slides use data-article-hidden=true so Article keeps the original question heading only once.
+    6. data-slide-hidden and data-article-hidden can be used on slides or individual child elements.
+    7. Free Slide-only placement uses data-slide-position=absolute plus data-slide-left/top/width/height.
+    8. Article mode is generated from the same nested HTML, in the same order.
+    --><!--
+    MANUAL SLIDE SOURCE — SLIDES ARE THE SINGLE SOURCE OF TRUTH
+
+    1. Each direct child <section data-manual-slide> is exactly one slide.
+    2. Reorder whole sections to reorder slides; the browser never auto-splits them.
+    3. Article mode is generated from the same translated nested HTML, in the same order.
+    4. Slide-only question covers are hidden from Article with data-article-hidden=true.
+    5. Each data-cover heading is inherited until the next data-cover.
+    6. data-slide-hidden and data-article-hidden work on slides or individual child elements.
+    7. Free Slide-only placement uses data-slide-position=absolute plus left/top/width/height.
+    --><div id="qhs-manual-slides" hidden="hidden"><section data-manual-slide data-cover>
+      <div style="text-align: center;" class="theme-header">
+            <p class="theme-label">PHYS598500 · Week 1 · T1</p>
+            <h2>From Quantum Computing Models to Hardware Operations</h2>
+            <h3>From Quantum Computation Models to Hardware Operations</h3>
+          </div>
+    </section>
+
+    <section data-manual-slide>
+      <section class="course-overview"><h3>Week Overview</h3><div class="qh-week-meta">
+            <p><strong>Course Duration:</strong>120 minutes</p>
+            <p><strong>Core Question:</strong>How does a step in a quantum algorithm ultimately become a controllable, measurable hardware operation?</p>
+            <p><strong>Difficulty:</strong>Prerequisite integration / cross-layer orientation</p>
+            <p><strong>Prerequisites:</strong>Linear algebra, introductory quantum mechanics, and basic logic gates</p>
+            <p><strong>Original Source Material:</strong>T1 modules 1, 2, 3, 4, 5, 6, 7</p>
+          </div></section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="course-overview"><h3>Learning Outcomes</h3><ul><li>Build a cross-layer map from algorithm → logical operation → unitary → Hamiltonian → waveform → measurement.</li><li>Understand why closed-system quantum evolution is unitary and reversible, and distinguish the roles of measurement and reset.</li><li>Identify the new resources, control degrees of freedom, and failure modes introduced at each abstraction layer.</li></ul></section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="course-overview"><h3>120-Minute Session Plan</h3><table class="qh-session-plan"><thead><tr><th>Time</th><th>Format</th><th>Content and Deliverable</th></tr></thead><tbody><tr><td>0–10 min</td><td>Orientation / diagnostic</td><td><strong>What does a step in a quantum algorithm actually require the hardware to do?</strong><br>Use one question to check prerequisites and establish this week's interfaces.</td></tr><tr><td>10–35 min</td><td>Conceptual throughline A</td><td><strong>Why must closed-system quantum evolution be unitary and therefore reversible?</strong><br>Establish the first set of physical concepts, variables, and engineering language.</td></tr><tr><td>35–60 min</td><td>Derivation / quantitative analysis</td><td><strong>How does a logical gate become a decomposable unitary operation?</strong><br>Complete the key derivation or quantitative relation instead of stopping at terminology.</td></tr><tr class="qh-break"><td>60–70 min</td><td>Break</td><td><strong>Break</strong><br>Preserve an attention-recovery interval within the two-hour class.</td></tr><tr><td>70–95 min</td><td>Conceptual throughline B</td><td><strong>How is a unitary operation generated by a time-dependent Hamiltonian?</strong><br>Connect the physical result to components, control, or system architecture.</td></tr><tr><td>95–110 min</td><td>Case study / discussion</td><td><strong>Where do measurement, reset, and classical feedback connect to the unitary chain?</strong><br>Students leave a checkable diagram, table, derivation, or architecture decision.</td></tr><tr><td>110–120 min</td><td>Synthesis / assessment</td><td><strong>Across which abstraction layers will later weeks track errors and resources?</strong><br>Use an exit question to check whether students can explain across layers.</td></tr></tbody></table></section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="course-overview"><p class="qh-total">Total: 120 minutes</p></section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="qh-lecture-block" id="week1-full-lecture"><span class="qh-timing">Extended teaching-preparation library · Select by the six questions</span><div class="qh-section">
+        <h3>Week 1 Extension: From a “Function” to Controllable Physical Evolution</h3>
+      </div><p>This week is not another review of introductory quantum information. It establishes the cross-layer language that the rest of the course will repeatedly use. By the end, students must be able to follow one question downward: What function do we want to compute? How is that function embedded in a reversible map? How is the reversible map represented as a unitary circuit? How is that unitary realized by an actual time-dependent Hamiltonian, control waveforms, and a measurement chain? Omitting any layer makes it easy to mistake “the abstract algorithm can be written down” for “the hardware can already execute it reliably.”</p><p>The Landauer principle, Bennett reversible computation, and the adiabatic model are retained below as extended preparation material. The scheduled throughline uses only six core questions to establish the interfaces algorithm → unitary → Hamiltonian → control → measurement; Week 1 need not exhaust every model of computation.</p></section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="qh-lecture-block" id="week1-full-lecture"><div class="qh-instructor-note">
+          <h4>How to Use This Material</h4>
+          <p>“Board derivation” marks content that should actually be worked through; “class activity” requires time for student writing or discussion; “instructor answer” resolves layers students commonly confuse. If preparation is weaker, reduce the complexity-theory extension, but do not remove reversible embedding or the logical-to-physical chain: those are the essential interfaces for this week.</p>
+        </div></section>
+    </section>
+
+    <section data-manual-slide data-cover data-article-hidden="true">
+      <div class="theme-header" data-article-hidden="true" style="text-align: center;">
+        <h2>Q1. What Does an Algorithmic Step Ask the Hardware to Do?</h2>
+        <h3>Semantics, Representation, and Physical Realization</h3>
+      </div>
+    </section>
+
+    <section data-manual-slide>
+      <section class="qh-lecture-block" id="week1-opening"><span class="qh-timing">0–10 minutes</span><h3>1. Opening Diagnostic: Computation Does Not Float Outside the Physical World</h3><p>Begin with a seemingly simple operation: input two bits and output their AND, \(f(a,b)=a\land b\). Mathematically it is only a four-row truth table; in a program it may be only one operator. In a real device, however, we must also specify which degrees of freedom carry the inputs, how the system evolves, when the output is read, where heat and noise flow, and whether the same operation can be repeated within a finite error budget.</p><p>“Computation” therefore contains at least three kinds of questions. First, the<strong>semantic question</strong>: which inputs should correspond to which outputs? Second, the<strong>representation question</strong>: do we encode the task using bits, qubits, registers, circuits, or a Hamiltonian? Third, the<strong>implementation question</strong>: which physical system and control procedure actually generate the required transformation? These layers can be mapped to one another, but they cannot simply be equated.</p></section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="qh-lecture-block" id="week1-opening"><div class="qh-student-task">
+          <h4>Opening Prompt: Three Minutes of Individual Writing, Two Minutes of Class Synthesis</h4>
+          <p>A NAND gate can generate any Boolean function. Why, then, can we not simply say, “NAND is universal, so a quantum computer only needs to implement NAND”? Identify at least one mathematical obstacle and one physical obstacle.</p>
+        </div></section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="qh-lecture-block" id="week1-opening"><div class="qh-instructor-note">
+          <h4>Instructor Answer</h4>
+          <p>The mathematical obstacle is that NAND is a many-to-one map: output 0 corresponds to three possible inputs, so the input cannot be uniquely recovered from the output and the map cannot directly be the unitary evolution of a closed quantum system. The physical obstacle is that a correct truth table still specifies neither energy levels, coupling, pulses, dissipation, nor measurement. This does not mean that a quantum computer cannot compute NAND; it means that NAND must be<strong>embedded in a larger reversible map</strong>, such as \((a,b,c)\mapsto(a,b,c\oplus ab)\), and then realized by controllable physical evolution.</p>
+        </div></section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="qh-lecture-block" id="week1-opening"><div class="qh-board">
+          <h4>The Full Chain for This Week</h4>
+          <p>
+            </p><p>\[
+              f(x)\ \longrightarrow\ U_f:\ket{x,y}\mapsto\ket{x,y\oplus f(x)}
+              \ \longrightarrow\ \{G_1,G_2,\ldots,G_m\}
+              \ \longrightarrow\ H(t)
+              \ \longrightarrow\ \text{control waveform}
+              \ \longrightarrow\ \text{measurement record}.
+            \]</p>
+          
+          <p>The arrows are not repeated synonyms. Crossing each layer introduces different design freedoms and failure modes.</p>
+        </div></section>
+    </section>
+
+    <section data-manual-slide data-cover data-article-hidden="true">
+      <div class="theme-header" data-article-hidden="true" style="text-align: center;">
+        <h2>Q2. How Do Boolean Maps Become Reversible and Unitary?</h2>
+        <h3>From Permutations to Hamiltonian Evolution</h3>
+      </div>
+    </section>
+
+    <section data-manual-slide>
+      <section class="qh-lecture-block" id="week1-models"><span class="qh-timing">10–35 minutes</span><h3>2. Representation, Transformation, and Physical Realization: Four Computational Descriptions Must Not Be Confused</h3><h4>2.1 Boolean Map: Specifying Only Inputs and Outputs</h4><p>A Boolean function is \(f:\{0,1\}^n\to\{0,1\}^m\). It tells us which bit strings map to which outputs, but it specifies neither execution order, temporary storage, energy cost, nor hardware. For example, the truth table of \(f(a,b)=a\land b\) is:</p></section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="qh-lecture-block" id="week1-models"><table>
+          <thead><tr><th>\(a\)</th><th>\(b\)</th><th>\(a\land b\)</th><th>Can the input be recovered from the output?</th></tr></thead>
+          <tbody>
+            <tr><td>0</td><td>0</td><td>0</td><td rowspan="3">No: three inputs merge into the same output</td></tr>
+            <tr><td>0</td><td>1</td><td>0</td></tr>
+            <tr><td>1</td><td>0</td><td>0</td></tr>
+            <tr><td>1</td><td>1</td><td>1</td><td>Only this row is distinguishable</td></tr>
+          </tbody>
+        </table><p>When domain and codomain have the same size, a reversible function on a finite set must be a permutation: every input has one output, and every output has exactly one preimage. NOT swaps two states and is therefore reversible; AND, OR, and NAND discard input information and are not permutations.</p></section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="qh-lecture-block" id="week1-models"><h4>2.2 Reversible Circuit: Retaining Enough Information to Make the Map One-to-One</h4><p>CNOT acts as \((a,b)\mapsto(a,a\oplus b)\). Applying CNOT a second time restores the input, so \( \mathrm{CNOT}^{-1}=\mathrm{CNOT}\). The Toffoli gate acts as:</p><p>
+          </p><p>\[
+            T(a,b,c)=(a,b,c\oplus ab).
+          \]</p><p>When the third bit is initialized to \(c=0\), its output is exactly \(ab\), while \(a,b\) are not erased. Toffoli does not “compress two inputs directly into one AND output.” It preserves the inputs in a larger state space and writes AND into the target bit. That extra space is not decorative formalism; it is the cost of reversible embedding.</p></section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="qh-lecture-block" id="week1-models"><table>
+          <thead><tr><th>Input \((a,b,0)\)</th><th>Toffoli output</th><th>Third bit</th></tr></thead>
+          <tbody>
+            <tr><td>000</td><td>000</td><td>0</td></tr>
+            <tr><td>010</td><td>010</td><td>0</td></tr>
+            <tr><td>100</td><td>100</td><td>0</td></tr>
+            <tr><td>110</td><td>111</td><td>1</td></tr>
+          </tbody>
+        </table></section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="qh-lecture-block" id="week1-models"><h4>2.3 Unitary Circuit: Extending a Permutation to a Linear Space of Complex Amplitudes</h4><p>A classical reversible gate permutes the computational basis; a quantum gate must act linearly on every superposition while preserving inner products. If \(U^\dagger U=I\), then for any \(\ket{\psi},\ket{\phi}\):</p><p>
+          </p><p>\[
+            \langle U\psi\vert U\phi\rangle
+            =\langle\psi\vert U^\dagger U\vert\phi\rangle
+            =\langle\psi\vert\phi\rangle.
+          \]</p><p>Norm, orthogonality, and distinguishability are therefore preserved. If two orthogonal inputs were sent to the same output, their output inner product would change from 0 to 1, violating unitary preservation of the inner product. This is the precise reason a many-to-one Boolean gate cannot directly serve as a quantum gate.</p></section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="qh-lecture-block" id="week1-models"><h4>2.4 Hamiltonian Evolution: The Device Must Still Be Able to Generate the Unitary</h4><p>An abstract circuit divides evolution into \(U=G_m\cdots G_2G_1\); a real closed system is governed by the Schrödinger equation:</p><p>
+          </p><p>\[
+            i\hbar\frac{d}{dt}\ket{\psi(t)}=H(t)\ket{\psi(t)},
+            \qquad
+            U(t)=\mathcal T\exp\!\left[-\frac{i}{\hbar}\int_0^tH(\tau)d\tau\right].
+          \]</p><p>Specifying \(U\) is not the same as specifying \(H(t)\). The same logical gate can be realized with different pulse shapes, frames, coupling mechanisms, and durations, which produce different leakage, decoherence, crosstalk, and calibration burdens. Later discussions of the transmon, microwave control, and readout will repeatedly return to this distinction.</p></section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="qh-lecture-block" id="week1-models"><h4>2.5 Resource Questions Begin Only After Reversible Embedding</h4><p>Writing an irreversible function as \(U_f\) proves only that a reversible representation exists; it does not say that representation is cheap. Suppose a classical program contains many intermediate variables \(g_1(x),g_2(x),\ldots\). The most direct reversible simulation retains the history of every step, so space can grow with execution time. Frequent uncomputation recycles ancillas but increases circuit depth. A space–time trade-off therefore appears immediately: retaining more work registers can avoid recomputation, while aggressively cleaning registers saves qubits at the cost of extra gates.</p><p>Fault-tolerant quantum computing amplifies this trade-off. A logical qubit is not one physical qubit, and a non-Clifford operation can cost far more than a Clifford gate. Consequently, saying that two algorithms both have polynomial complexity is not enough to determine which can be implemented first. A practical resource estimate must track logical qubits, T count, T depth, connectivity, error-correction cycles, and the allowed failure probability. This hardware course will not complete fault-tolerant costing in Week 1, but from this point onward it will not treat ancillas and abstract gates as free symbols.</p></section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="qh-lecture-block" id="week1-models"><div class="qh-worked-example">
+          <h4>Mini-Example: Two Resource Accounts for the Same Function</h4>
+          <p>Suppose we compute \(g=a\oplus b\) followed by \(h=g\land c\). Plan A retains \(g\) until the end, requiring one workspace bit but no recomputation. Plan B uncomputes \(g\) immediately after use; if \(g\) is needed again, two CNOTs must be reapplied. Both plans compute the same output function, yet they differ in peak workspace, total gate count, and error exposure. When students later encounter compiler optimization, they should first ask which cost function is actually being minimized.</p>
+        </div></section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="qh-lecture-block" id="week1-models"><div class="qh-student-task">
+          <h4>Class Activity: Classify Instead of Memorizing Terms (5 minutes)</h4>
+          <p>Classify each statement as “semantics / reversible logic / unitary circuit / physical control”: (1) evaluate \(f(x)\); (2) add an ancilla to preserve the input; (3) decompose the operation into CNOTs and single-qubit rotations; (4) execute \(X_{\pi/2}\) with a 20 ns microwave pulse; (5) threshold a resonator IQ point as 0 or 1. Then identify the two steps most easily hidden by software simulation.</p>
+        </div></section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="qh-lecture-block" id="week1-models"><div class="qh-instructor-note">
+          <h4>Instructor Answer</h4>
+          <p>In order: semantics, reversible logic, unitary circuit, physical control, and measurement plus classical post-processing. Steps four and five are most easily concealed by abstract simulation, but the ancillas and garbage management in step two also change qubit count and circuit depth directly and cannot be treated as free resources.</p>
+        </div></section>
+    </section>
+
+    <section data-manual-slide data-cover data-article-hidden="true">
+      <div class="theme-header" data-article-hidden="true" style="text-align: center;">
+        <h2>Q3. What Do Landauer and Bennett Tell Us about Reversibility?</h2>
+        <h3>Information Erasure, Resources, and Uncomputation</h3>
+      </div>
+    </section>
+
+    <section data-manual-slide>
+      <section class="qh-lecture-block" id="week1-landauer"><span class="qh-timing">35–60 minutes</span><h3>3. From Information Erasure to Reversible Computation: Landauer and Bennett Solve Different Problems</h3><h4>3.1 Why Reset Is the Key Issue, Rather Than the Power Consumption of a Particular Transistor</h4><p>Consider a memory bit whose initial values 0 and 1 each occur with probability one half. For this ensemble, the Shannon entropy is:</p><p>
+          </p><p>\[
+            H(X)=-\sum_xp(x)\log_2p(x)
+            =-\frac12\log_2\frac12-\frac12\log_2\frac12
+            =1\ \text{bit}.
+          \]</p></section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="qh-lecture-block" id="week1-landauer"><p>After RESET-TO-0, both initial states enter 0, so the output distribution becomes \(p(0)=1,p(1)=0\) and the information entropy falls to zero. From the perspective of the memory subsystem, one bit of information has been lost. If the total system obeys the second law, this entropy reduction cannot disappear without cost; in the quasistatic, isothermal, idealized limit, the environment must receive at least:</p><p>
+          </p><p>\[
+            \Delta S_{\mathrm{env}}\ge k_B\ln 2,
+            \qquad
+            Q_{\min}=T\Delta S_{\mathrm{env}}\ge k_BT\ln2.
+          \]</p><p>This lower bound does not mean that “every logic gate must dissipate exactly \(k_BT\ln2\).” Real CMOS switching energy is usually far larger; reversible logic can also consume energy through finite-speed operation, damping, leakage current, and control errors. The Landauer principle makes the more precise statement that:<strong>logically irreversible information erasure has a minimum thermodynamic cost that cannot be eliminated merely by improving engineering efficiency.</strong>。</p></section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="qh-lecture-block" id="week1-landauer"><div class="qh-worked-example">
+          <h4>Worked Example A: The Landauer Bound at 300 K and 10 mK</h4>
+          <p>Take \(k_B=1.380649\times10^{-23}\,\mathrm{J/K}\). At room temperature, \(T=300\,\mathrm K\):</p>
+          <p>
+            </p><p>\[
+              Q_{\min}=k_BT\ln2
+              \approx(1.380649\times10^{-23})(300)(0.693)
+              \approx2.87\times10^{-21}\,\mathrm J.
+            \]</p>
+          
+          <p>For a hypothetical thermal bath at \(T=10\,\mathrm{mK}\) in a dilution refrigerator, the formal lower bound becomes approximately \(9.57\times10^{-26}\,\mathrm J\). This does not imply that “the total energy consumption of a low-temperature quantum computer must be tiny.” A real system also includes room-temperature microwave electronics, attenuation chains, amplifiers, a cryocooler, and the refrigerator coefficient of performance. The Landauer bound is a theoretical lower bound on information erasure, not a formula for estimating total machine power.</p>
+        </div></section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="qh-lecture-block" id="week1-landauer"><h4>3.2 Logical Reversibility Is Not Thermodynamic Reversibility</h4><p>Logical reversibility asks whether the input can be uniquely recovered from the output. Thermodynamic reversibility asks whether the entire physical process can make total entropy production approach zero in the quasistatic limit. The former is a property of a map; the latter is a property of a trajectory and its dissipation. A reversible truth table can still dissipate substantial energy when switched rapidly with strong damping. Conversely, an extremely energy-efficient irreversible gate does not remove the theoretical lower bound associated with reset.</p><p>This distinction is especially important for quantum hardware. Schrödinger evolution of a closed system is unitary, but an experimental device must initialize, measure, reset, perform classical feedback, and continually exchange energy with its environment. “Quantum evolution is reversible” does not imply that “an entire quantum computer has no dissipation.”</p></section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="qh-lecture-block" id="week1-landauer"><h4>3.3 Erasing a Biased Bit: The Cost Is Not Always Exactly One Bit</h4><p>If the memory contains 1 with probability \(p\) and 0 with probability \(1-p\), its initial Shannon entropy is the binary entropy:</p><p>
+          </p><p>\[
+            H_2(p)=-p\log_2p-(1-p)\log_2(1-p).
+          \]</p><p>After an ideal reset, the entropy is zero, so the minimum environmental entropy increase corresponds to \(k_B\ln2\,H_2(p)\). At \(p=1/2\), this reduces to \(k_B\ln2\). As \(p\to0\) or \(1\), the ensemble is already almost known and the theoretical lower bound approaches zero. Thus the Landauer cost depends on the amount of information discarded, not on mechanically multiplying every circuit symbol by a fixed constant.</p><p>Likewise, if a reset protocol knows the input distribution, its energy landscape can be biased to approach a lower average work. If the controller does not know the individual microstate, it must still account for the ensemble. The key issue is the condition connecting logical information to thermodynamic entropy, not a blanket identification of Shannon entropy with thermodynamic entropy in every situation.</p></section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="qh-lecture-block" id="week1-landauer"><h4>3.4 Bennett's Compute–Copy–Uncompute Procedure</h4><p>If a sequence of classical computations directly overwrites intermediate registers, the old information is discarded. Bennett's central method is to rewrite every step as reversible evolution and temporarily retain the history; after obtaining the result, copy it into a clean register, then run the original computation backward to restore the workspace to its initial state:</p><ol>
+          <li><strong>Compute：</strong>\((x,0,0)\mapsto(x,g(x),f(x))\)。</li>
+          <li><strong>Copy：</strong>\((x,g,f,0)\mapsto(x,g,f,f)\). A classical basis state can be copied with CNOT; this is not the copying of an unknown quantum state.</li>
+          <li><strong>Uncompute：</strong>Apply \(U_f^{-1}\) to the first three registers to obtain \((x,0,0,f(x))\).</li>
+        </ol></section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="qh-lecture-block" id="week1-landauer"><p>Only the required input and output remain; temporary garbage returns to a standard state and can be reused. The cost is extra space, additional circuit depth, and the need for sufficiently accurate inverse operations. This idea remains part of the basic syntax of quantum-algorithm design: if oracle, ancilla, and arithmetic circuits are not uncomputed, garbage becomes entangled with the answer and damages later interference.</p></section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="qh-lecture-block" id="week1-landauer"><div class="qh-worked-example">
+          <h4>Worked Example B: Compute \(f(a,b)=a\oplus b\) and Clear the Temporary Garbage</h4>
+          <p>Prepare four bits \((a,b,g,y)\), with \(g=0,y=0\). First write the parity into \(g\) using two CNOTs:</p>
+          <p>
+            </p><p>\[
+              (a,b,0,0)
+              \xrightarrow{\mathrm{CNOT}_{a\to g}}
+              (a,b,a,0)
+              \xrightarrow{\mathrm{CNOT}_{b\to g}}
+              (a,b,a\oplus b,0).
+            \]</p>
+          
+          <p>Next copy \(g\) to output \(y\): \((a,b,a\oplus b,0)\to(a,b,a\oplus b,a\oplus b)\). Discarding \(g\) at this point would erase information. The correct procedure is to run the original two CNOTs in reverse:</p>
+          <p>
+            </p><p>\[
+              (a,b,a\oplus b,a\oplus b)
+              \xrightarrow{\mathrm{CNOT}_{b\to g}}
+              (a,b,a,a\oplus b)
+              \xrightarrow{\mathrm{CNOT}_{a\to g}}
+              (a,b,0,a\oplus b).
+            \]</p>
+          
+          <p>The output remains while the work bit returns to 0. Because CNOT is self-inverse, the reverse circuit is easy to see in this example; for a general \(U\), every \(G_i^{-1}\) must be applied in the opposite order.</p>
+        </div></section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="qh-lecture-block" id="week1-landauer"><div class="qh-student-task">
+          <h4>Class Activity: Build a Clean AND Oracle (7 minutes)</h4>
+          <p>Use a Toffoli to compute \(ab\), together with a separate output bit \(y\). Draw compute, copy, and uncompute stages that leave the final state \((a,b,0,y\oplus ab)\). Label each register as input, workspace, or output.</p>
+        </div></section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="qh-lecture-block" id="week1-landauer"><div class="qh-instructor-note">
+          <h4>Instructor Answer and Follow-Up</h4>
+          <p>First apply \(T_{a,b\to g}\) to obtain \(g=ab\), then use CNOT\(_{g\to y}\) to write into \(y\), and finally apply Toffoli again to clear \(g\). Ask why \(g\) cannot simply be reset: reset erases information correlated with the input, and for a quantum superposition, reset or trace-out also destroys coherence. Then ask why copying does not violate the no-cloning theorem: CNOT copies only a classical label in the specified computational basis; an unknown superposition generally produces an entangled state, not two independent copies of \(\ket{\psi}\).</p>
+        </div></section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="qh-lecture-block" id="week1-landauer"><div class="qh-board">
+          <h4>Board Summary: Three Statements That Must Not Be Confused</h4>
+          <ol>
+            <li>A general irreversible function can be embedded in a reversible function, but the ancillas, depth, and garbage required by the embedding are not free.</li>
+            <li>Logical reversibility can avoid the unavoidable lower bound of information erasure, but it does not make a real device automatically dissipation-free.</li>
+            <li>The unitarity of quantum gates is compatible with Bennett reversible computation, but initialization, measurement, and feedback in a quantum computer are still open-system processes.</li>
+          </ol>
+        </div></section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="qh-lecture-block" id="week1-break"><span class="qh-timing">60–70 minutes</span><h3>Break and Board Content to Retain</h3><p>Keep \(f(x)\to U_f\to G_i\to H(t)\) and compute–copy–uncompute on the board. After the break, do not restart with basic terminology; ask directly: if a unitary can evolve states only one-to-one, why does measurement appear to produce a many-to-one classical outcome?</p></section>
+    </section>
+
+    <section data-manual-slide data-cover data-article-hidden="true">
+      <div class="theme-header" data-article-hidden="true" style="text-align: center;">
+        <h2>Q4. How Do Unitary Dynamics, Measurement, and Computation Models Connect?</h2>
+        <h3>Gate-Based and Adiabatic Views of Physical Evolution</h3>
+      </div>
+    </section>
+
+    <section data-manual-slide>
+      <section class="qh-lecture-block" id="week1-quantum-models"><span class="qh-timing">70–95 minutes</span><h3>4. Interfaces among Unitary Evolution, Measurement, the Gate Model, and the Adiabatic Model</h3><h4>4.1 Why Closed-System Evolution Is Reversible</h4><p>If \(H(t)=H^\dagger(t)\), the propagator \(U(t)\) generated by the Schrödinger equation satisfies \(U^\dagger U=I\). For a time-independent Hamiltonian, \(U(t)=e^{-iHt/\hbar}\), whose inverse is \(U(-t)=U^\dagger(t)\). This mathematical property means that the information in the complete pure state is retained in complex amplitudes. It does not guarantee that we know those amplitudes experimentally, nor that the environment has not carried away phase information.</p><p>For a single qubit, suppose the control Hamiltonian is:</p><p>
+          </p><p>\[
+            H=\frac{\hbar\Omega}{2}\sigma_x,
+            \qquad
+            U(t)=\cos\frac{\Omega t}{2}I-i\sin\frac{\Omega t}{2}\sigma_x.
+          \]</p></section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="qh-lecture-block" id="week1-quantum-models"><p>Choose \(t=\pi/\Omega\). Then \(U=-i\sigma_x\), which is an \(X\) gate up to a global phase. This derivation connects the abstract \(X\) to an actionable parameter \(\Omega t\). If the pulse area is not \(\pi\), the drive detuning is nonzero, or other levels participate, the actual \(U\) departs from the ideal gate.</p></section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="qh-lecture-block" id="week1-quantum-models"><h4>4.2 Measurement Is Not “Just Another Ordinary Unitary Gate”</h4><p>A projective measurement is described by projectors \(\{P_m\}\). For a density matrix \(\rho\), the probability of outcome \(m\) and the corresponding conditional state are:</p><p>
+          </p><p>\[
+            p(m)=\operatorname{Tr}(P_m\rho),\qquad
+            \rho_m=\frac{P_m\rho P_m}{p(m)}.
+          \]</p><p>If the measurement record is ignored, the nonselective system state becomes \(\rho'=\sum_mP_m\rho P_m\). This is a completely positive trace-preserving map, but it is generally not unitary on the system Hilbert space. Measuring \(\ket{+}=(\ket{0}+\ket{1})/\sqrt2\) in the \(Z\) basis and forgetting the result changes a pure state with off-diagonal coherence into:</p><p>
+          </p><p>\[
+            \rho'=\frac12\ket{0}\bra{0}+\frac12\ket{1}\bra{1}.
+          \]</p></section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="qh-lecture-block" id="week1-quantum-models"><p>If the system, apparatus, and environment are combined into a larger closed system, the measurement interaction can still first be described by unitary entanglement, for example \(\ket{0}\ket{A_0}\to\ket{0}\ket{A_0'}\) and \(\ket{1}\ket{A_0}\to\ket{1}\ket{A_1'}\). The apparently irreversible part arises because we retain only a subsystem, read a classical record, or ignore the environment. This directly echoes the first half of the class: preserving information requires enlarging the state space.</p></section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="qh-lecture-block" id="week1-quantum-models"><div class="qh-student-task">
+          <h4>Concept Check (4 minutes)</h4>
+          <p>Someone claims: “Quantum mechanics is unitary, so after measurement the measured qubit alone can completely reverse its premeasurement superposition.” Identify the error. The answer must mention the system boundary rather than merely writing “collapse.”</p>
+        </div></section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="qh-lecture-block" id="week1-quantum-models"><div class="qh-instructor-note">
+          <h4>Instructor Answer</h4>
+          <p>The measurement record is already correlated with the apparatus and environment. Acting only on the measured qubit generally cannot recover phase information distributed among other degrees of freedom. Discussing global reversibility would require control of the complete state, including apparatus and environment, which is normally impossible after readout. The point is not to declare vaguely that “the laws of nature are irreversible”; it is to explain why the chosen subsystem channel is no longer unitary.</p>
+        </div></section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="qh-lecture-block" id="week1-quantum-models"><h4>4.3 Gate Model: Discrete Instructions Still Hide Continuous-Time Evolution</h4><p>The gate model organizes an algorithm using registers, a gate sequence, and measurement. A universal gate set means that any target unitary can be approximated to the desired accuracy by a finite gate set; it does not mean that the hardware needs only one kind of component. On a superconducting platform, single-qubit rotations, two-qubit entangling interactions, virtual frame updates, readout, and reset have entirely different control paths.</p><p>From the compilation perspective, a logical circuit is first decomposed into a native gate set. From the control perspective, each native gate is then translated into a flux or microwave waveform. Conceptually:</p><p>
+          </p><p>\[
+            H(t;\theta)
+            =H_0+\sum_k u_k(t;\theta)H_k,
+          \]</p><p>Here \(H_0\) is the drift Hamiltonian, \(H_k\) are controllable couplings, \(u_k(t)\) are waveforms, and \(\theta\) contains amplitude, phase, frequency, duration, and envelope. Calibration adjusts \(\theta\) so that the actual propagator \(U(\theta)\) approaches the target gate while suppressing leakage, crosstalk, and sensitivity.</p></section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="qh-lecture-block" id="week1-quantum-models"><h4>4.4 Adiabatic Computation: Representing Computation by a Ground-State Path</h4><p>A different description does not apply gates in sequence; it designs a family of Hamiltonians:</p><p>
+          </p><p>\[
+            H(s)=(1-s)H_{\mathrm{init}}+sH_{\mathrm{problem}},
+            \qquad s=t/T\in[0,1].
+          \]</p><p>The system is first prepared in an easily accessible ground state of \(H_{\mathrm{init}}\). If the evolution is sufficiently slow and a nonzero spectral gap from the excited states is maintained along the path, the final state ideally remains close to the ground state of \(H_{\mathrm{problem}}\). Roughly speaking, the required time is highly sensitive to the minimum gap \(\Delta_{\min}\); a common adiabatic condition has the form:</p><p>
+          </p><p>\[
+            T\gg
+            \max_s\frac{
+              \left\ket{\langle1(s)\vert\partial_sH\vert0(s)}\right|
+            }{\Delta(s)^2}.
+          \]</p></section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="qh-lecture-block" id="week1-quantum-models"><p>This is not a universal assumption-free equality. It reminds the engineer that the problem includes not only the final Hamiltonian but also the entire path, the minimum gap, initialization, thermal excitation, and the control schedule. If the gap shrinks rapidly with system size, “evolving slowly” may require an unacceptable amount of time.</p></section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="qh-lecture-block" id="week1-quantum-models"><h4>4.5 Equivalent Computational Power Does Not Imply Equivalent Engineering Cost</h4><p>The result of Aharonov and collaborators shows that the standard circuit model and adiabatic quantum computation can simulate each other with polynomial overhead under appropriate conditions. This is equivalence at the computational-model layer; it does not mean that the devices have identical coherence demands, coupler topology, control bandwidth, temperature, calibration, or noise susceptibility.</p></section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="qh-lecture-block" id="week1-quantum-models"><table>
+          <thead><tr><th>Comparison Dimension</th><th>Gate model</th><th>Adiabatic／Hamiltonian model</th></tr></thead>
+          <tbody>
+            <tr><td>Program Representation</td><td>Discrete gate sequence</td><td>Continuous Hamiltonian path</td></tr>
+            <tr><td>Key Resources</td><td>gate count、depth、fidelity</td><td>minimum gap、schedule、path control</td></tr>
+            <tr><td>Primary Error Language</td><td>over/under rotation、dephasing、leakage</td><td>non-adiabatic transition、thermal excitation、control distortion</td></tr>
+            <tr><td>Final Readout</td><td>Measurement at the end of or during the circuit</td><td>Final energy / bit-configuration measurement</td></tr>
+            <tr><td>Hardware Question</td><td>Native gates and calibration</td><td>Programmable couplings, the gap, and the annealing schedule</td></tr>
+          </tbody>
+        </table></section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="qh-lecture-block" id="week1-quantum-models"><p>When studying a computational model, ask “which problems can be computed efficiently?” When studying hardware architecture, ask “which control degrees of freedom must be exposed to realize that model under finite noise and resource constraints?” The questions are connected, but their evaluation metrics differ.</p></section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="qh-lecture-block" id="week1-quantum-models"><div class="qh-worked-example">
+          <h4>Worked Example C: How an Avoided Crossing Determines Adiabatic Difficulty</h4>
+          <p>Consider the simplified two-level model:</p>
+          <p>
+            </p><p>\[
+              H(s)=A(1-2s)\sigma_z+B\sigma_x.
+            \]</p>
+          
+          <p>Its instantaneous energies are \(E_\pm(s)=\pm\sqrt{A^2(1-2s)^2+B^2}\), with energy gap:</p>
+          <p>
+            </p><p>\[
+              \Delta(s)=E_+-E_-=2\sqrt{A^2(1-2s)^2+B^2}.
+            \]</p>
+          
+          <p>The minimum gap occurs at \(s=1/2\), giving \(\Delta_{\min}=2|B|\). Halving the transverse coupling \(B\) halves the gap. Because the adiabatic timescale is often sensitive to \(1/\Delta_{\min}^2\), the required time can grow by roughly a factor of four. This example shows that even when the final problem Hamiltonian is unchanged, altering only the intermediate coupling path can drastically change implementation cost.</p>
+          <p>Longer evolution is not always better. Moving too quickly produces nonadiabatic transitions; moving too slowly gives thermal excitation, dephasing, and low-frequency noise more time to act. The real optimum is a joint result of open-system dynamics, temperature, gap, and schedule—not a monotonic rule that “slower is always better.”</p>
+        </div></section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="qh-lecture-block" id="week1-quantum-models"><div class="qh-board">
+          <h4>Board Summary for This Section</h4>
+          <p>
+            </p><p>
+              \text{model equivalence}
+              \not\Rightarrow
+              \text{identical physical resource}
+              \not\Rightarrow
+              \text{identical engineering difficulty}.
+            </p>
+          
+        </div></section>
+    </section>
+
+    <section data-manual-slide data-cover data-article-hidden="true">
+      <div class="theme-header" data-article-hidden="true" style="text-align: center;">
+        <h2>Q5. How Does a Logical Requirement Become a Hardware Experiment?</h2>
+        <h3>Compilation, Control, Readout, and Validation</h3>
+      </div>
+    </section>
+
+    <section data-manual-slide>
+      <section class="qh-lecture-block" id="week1-end-to-end-case"><span class="qh-timing">95–110 minutes</span><h3>5. Complete Case Study: Taking \(f(a,b)=ab\) from a Logical Requirement to Superconducting Hardware</h3><p>The first four sections established the languages of functions, reversible embedding, unitaries, and Hamiltonians. We now connect these layers into one engineering chain. AND is chosen deliberately because it is simple, not because real quantum algorithms only perform AND. It is sufficient to expose the new question introduced at every layer. If a three-qubit example cannot be described clearly across layers, a larger algorithm will merely hide interface problems behind more gates.</p></section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="qh-lecture-block" id="week1-end-to-end-case"><h4>5.1 Requirement Layer: First Specify Which Outputs Must Be Retained</h4><p>The original requirement is to compute \(ab\) from two classical input bits \(a,b\). If we write only \(f:\{0,1\}^2\to\{0,1\}\), the output has one bit and the map is irreversible. The quantum version is first rewritten as:</p><p>
+          </p><p>\[
+            U_f\ket{a,b,y}
+            =\ket{a,b,y\oplus ab}.
+          \]</p><p>When \(y=0\), the third register receives the answer; when \(y=1\), it receives the complement of the answer. Retaining \(a,b\) and using XOR are not superfluous formalities: they make the eight computational-basis states undergo a one-to-one permutation. At this point \(U_f\) is exactly the Toffoli gate. Its matrix is an \(8\times8\) permutation matrix and is therefore naturally unitary.</p></section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="qh-lecture-block" id="week1-end-to-end-case"><div class="qh-board">
+          <h4>First Interface Check</h4>
+          <p>If a requirement document says only “output AND,” the compiler still does not know whether the inputs must be preserved, how the output register is initialized, whether ancillas must be restored, or whether measurement-based cleanup is acceptable. These choices change qubit count, depth, and reusability. A logical specification must at least state the register contract.</p>
+        </div></section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="qh-lecture-block" id="week1-end-to-end-case"><h4>5.2 Circuit Layer: Toffoli Is Not a Single Hardware Button</h4><p>An abstract circuit diagram can contain one CCX symbol, but most platforms do not provide an ideal three-body interaction as a native instruction. The compiler must decompose it into single-qubit rotations and two-qubit entangling gates. A common exact decomposition uses Hadamard, \(T=R_z(\pi/4)\), \(T^\dagger\), and several CNOTs; if only a particular relative phase is required, a shorter relative-phase Toffoli may be used. The two versions can appear to have the same truth table on the computational basis while acting differently on the phases of a superposition, so a classical truth table alone cannot validate them.</p><p>The compiler therefore needs to know how the output will be used. If measurement immediately follows CCX, some phase freedom may be exploitable. If CCX appears inside an interference circuit, an untracked relative phase directly changes the answer. This is the difference between “semantic similarity” and “full unitary equivalence.”</p><p>Suppose the chip's native set consists of virtual \(R_z(\theta)\), microwave \(X_{\pi/2}\), and one calibrated \(CZ\). The compilation chain can be conceptualized as:</p><p>
+          </p></section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="qh-lecture-block" id="week1-end-to-end-case"><p>\[
+            \mathrm{CCX}
+            \longrightarrow
+            \{H,T,T^\dagger,\mathrm{CNOT}\}
+            \longrightarrow
+            \{R_z(\theta),X_{\pi/2},CZ\}
+            \longrightarrow
+            \{u_k(t)\}.
+          \]</p><p>The second arrow uses a basis conversion such as \(\mathrm{CNOT}_{c,t}=H_tCZ_{c,t}H_t\); \(H\) can in turn be composed from \(R_z\) and \(X_{\pi/2}\). A real compiler also inserts routing according to the coupling graph, merges adjacent rotations, cancels inverse gates, and accounts for the pulse-level schedule. Logical depth, native two-qubit depth, and wall-clock duration are therefore three distinct quantities.</p></section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="qh-lecture-block" id="week1-end-to-end-case"><h4>5.3 Device Model: Writing the Qubits and Coupling into the Hamiltonian</h4><p>Two weakly anharmonic transmons can be described by a truncated Duffing-oscillator model:</p><p>
+          </p><p>\[
+            \frac{H_0}{\hbar}
+            =\sum_{i=1}^{2}
+              \left[
+              \omega_i b_i^\dagger b_i
+              +\frac{\alpha_i}{2}b_i^{\dagger2}b_i^2
+              \right]
+              +g\left(b_1^\dagger b_2+b_1b_2^\dagger\right).
+          \]</p><p>Here \(\omega_i\) is the qubit transition frequency, \(\alpha_i&lt;0\) is the anharmonicity, and \(g\) is the exchange coupling. Treating each transmon as a perfect two-level system misses leakage channels such as \(\ket{2}\); retaining too many levels rapidly increases simulation cost. Model order is itself an engineering trade-off.</p><p>A single-qubit microwave drive can be written as:</p><p>
+          </p></section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="qh-lecture-block" id="week1-end-to-end-case"><p>\[
+            \frac{H_d(t)}{\hbar}
+            =\Omega(t)\cos(\omega_dt+\phi)
+              \left(b+b^\dagger\right).
+          \]</p><p>In the rotating frame and under the rotating-wave approximation, the amplitude, phase, and duration of a resonant drive determine the Bloch-sphere rotation axis and angle. An ideal \(X_{\pi/2}\) requires a calibrated pulse area. A pulse that is too short may cause leakage through spectral broadening; one that is too long increases exposure to decoherence. Realizing a two-qubit \(CZ\) depends on device architecture: it may use flux tuning near an avoided crossing, a tunable coupler, or another conditional-phase mechanism. The instruction “apply CZ” does not determine a unique waveform.</p></section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="qh-lecture-block" id="week1-end-to-end-case"><div class="qh-worked-example">
+          <h4>Estimation Example: How Does Gate Fidelity Accumulate through a Circuit?</h4>
+          <p>Suppose one CCX decomposition requires six two-qubit gates and nine physical single-qubit pulses, while virtual \(R_z\) is provisionally treated as a zero-duration frame update. If the average two-qubit fidelity is \(F_2=0.99\), the single-qubit fidelity is \(F_1=0.999\), and errors are very crudely assumed to be independent and stochastic, the gate-only success fraction is approximately:</p>
+          <p>
+            </p><p>\[
+              F_{\mathrm{rough}}\approx F_2^6F_1^9
+              =0.99^6\times0.999^9\approx0.933.
+            \]</p>
+          
+          <p>This is not a rigorous process-fidelity prediction because it ignores coherent errors, correlated noise, crosstalk, SPAM, and compiler cancellation. It does, however, make one point clear: a logical specification containing one CCX does not imply a hardware cost of “one gate.” If two-qubit fidelity improves to 0.995 with all other assumptions unchanged, the crude estimate rises to about 0.962. Improving the most expensive primitive often has more system-level impact than fine-tuning an already high single-qubit fidelity.</p>
+        </div></section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="qh-lecture-block" id="week1-end-to-end-case"><h4>5.4 Control, Calibration, and Readout: The Real Output Is Data, Not a Ket</h4><p>Control electronics convert a gate schedule into digital waveforms, which travel through DACs, mixers, cables, and the cryogenic chain to the chip. The waveform at the qubit is not identical to the AWG file: frequency response, delay, attenuation, reflection, and crosstalk all modify it. Calibration uses measurement data to infer and update amplitude, frequency, phase, duration, and compensation parameters; it is not a one-time calculation that remains valid forever.</p><p>After the circuit runs, the readout-resonator response is amplified and down-converted into an IQ trajectory. An integration kernel compresses the time series into one IQ point, and a classifier labels it 0 or 1. For a three-qubit Toffoli experiment, the final classical dataset is a collection of bit-string counts over different inputs and repeated shots—not a direct view of \(\ket{a,b,y\oplus ab}\). Validation must include at least:</p></section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="qh-lecture-block" id="week1-end-to-end-case"><ol>
+          <li>Construct the conditional probability \(P(z_{\mathrm{out}}\mid z_{\mathrm{in}})\) for all eight basis inputs.</li>
+          <li>Estimate readout-assignment error separately from gate error so that a classifier problem is not counted entirely as CCX error.</li>
+          <li>Use a superposition input or a process-oriented test to check the phase action, because a truth table cannot reveal relative phase.</li>
+          <li>Repeat the measurement over time to identify calibration drift instead of reporting only one best result.</li>
+        </ol></section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="qh-lecture-block" id="week1-end-to-end-case"><h4>5.5 Build an Executable Validation Ladder</h4><p>If the complete CCX fails, the space of possible causes is too large. Engineering validation should proceed from small units to larger ones, establishing independent evidence at each layer. First verify the qubit spectrum, anharmonicity, \(T_1/T_2\), and readout assignment. Second calibrate single-qubit amplitude, DRAG parameters, and phase. Third calibrate every required two-qubit edge. Fourth test simultaneous operations and crosstalk. Only then execute the compiled CCX. Without a credible baseline at the previous layer, failure at the next layer cannot be assigned uniquely.</p><p>Tests at every layer should also distinguish three timescales: coherent dynamics within one pulse, calibration drift over minutes to hours, and device-state changes across days. A circuit succeeding in one hundred shots proves at most that the output can be generated at that moment. To become a reusable system capability, we must know how often recalibration is required, whether failures can be detected automatically, and whether calibration reconverges without manual plot selection.</p></section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="qh-lecture-block" id="week1-end-to-end-case"><div class="qh-board">
+          <h4>Criteria for Moving from Demonstration to Capability</h4>
+          <p>One attractive result is a demonstration. A specified, tested, budgeted, repeatable, and diagnosable procedure is closer to a deployable capability. This distinction will recur throughout the later discussion of complete quantum-computing systems.</p>
+        </div></section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="qh-lecture-block" id="week1-end-to-end-case"><div class="qh-student-task">
+          <h4>Class Activity: Cross-Layer Fault Localization (6 minutes)</h4>
+          <p>The experiment finds that for basis input \(110\), the fraction of output \(111\) is only 0.82, while most other inputs exceed 0.95. Propose one possible cause at each of the specification, compilation, control, device, and measurement layers, and specify a next experiment that can distinguish each cause. “The noise is large” is not an acceptable answer.</p>
+        </div></section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="qh-lecture-block" id="week1-end-to-end-case"><div class="qh-instructor-note">
+          <h4>Instructor Reference Answer</h4>
+          <ul>
+            <li><strong>Specification：</strong>The target-bit initialization or bit ordering is incorrect; compare the simulator output with the raw bit ordering.</li>
+            <li><strong>Compilation：</strong>Routing or qubit mapping sends a critical CNOT through a poor-quality edge; fix the layout and compare different transpilation results.</li>
+            <li><strong>Control：</strong>The amplitude or drift of a conditional-phase pulse is incorrect; run the corresponding pair's Ramsey or conditional-phase calibration.</li>
+            <li><strong>Device：</strong>Leakage near \(\ket{11}\) or a particular avoided crossing; measure qutrit populations or use a leakage-sensitive measurement.</li>
+            <li><strong>Measurement：</strong>Simultaneous readout assignment or crosstalk is especially poor for \(\ket{111}\); independently prepare all eight basis states and construct the full assignment matrix.</li>
+          </ul>
+          <p>The point is not to guess one unique cause, but to turn the vague statement “the result is poor” into falsifiable, layer-specific hypotheses. This is one distinction between a quantum-hardware engineer and someone who only calls a circuit API.</p>
+        </div></section>
+    </section>
+
+    <section data-manual-slide data-cover data-article-hidden="true">
+      <div class="theme-header" data-article-hidden="true" style="text-align: center;">
+        <h2>Q6. How Do We Track Errors and Resources across Abstraction Layers?</h2>
+        <h3>A Cross-Layer Validation Framework</h3>
+      </div>
+    </section>
+
+    <section data-manual-slide>
+      <section class="qh-lecture-block" id="week1-synthesis"><span class="qh-timing">110–120 minutes</span><h3>6. Synthesis: Read the Entire Course through One Matrix</h3><p>The purpose of this week is not to memorize the history of reversible computing. It is to establish a matrix that can locate issues repeatedly throughout all sixteen weeks. Whenever a claim about quantum technology appears, first ask which layer it addresses, which interfaces it assumes, and where the cost has been moved.</p></section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="qh-lecture-block" id="week1-synthesis"><table>
+          <thead><tr><th>Layer</th><th>Core Object</th><th>Question at This Layer</th><th>Common Misjudgment</th><th>Observable Evidence</th></tr></thead>
+          <tbody>
+            <tr><td>Problem / semantics</td><td>\(f(x)\)、cost function、sampling task</td><td>What exactly counts as the answer?</td><td>Treating the problem definition as the execution method</td><td>Correctness conditions and input/output specification</td></tr>
+            <tr><td>Reversible embedding</td><td>\(U_f\)、ancilla、garbage</td><td>How is information preserved and temporary storage cleaned?</td><td>Treating ancillas and uncomputation as free</td><td>register contract、qubit count</td></tr>
+            <tr><td>Logical circuit</td><td>unitary、gate、depth</td><td>How is the algorithm decomposed?</td><td>Treating logical gate count as physical cost</td><td>logical resources、error budget</td></tr>
+            <tr><td>Compilation</td><td>native gates、routing、schedule</td><td>How does the implementation satisfy topology and the instruction set?</td><td>Looking only at the abstract circuit diagram</td><td>two-qubit depth、duration、mapping</td></tr>
+            <tr><td>Device</td><td>Energy levels, coupling, and \(H_0\)</td><td>Which degrees of freedom can the device provide?</td><td>Treating a qubit as an ideal two-level system</td><td>spectrum、coherence、leakage</td></tr>
+            <tr><td>Control</td><td>\(u_k(t)\)、pulse、calibration</td><td>How is the target propagator generated?</td><td>Treating a gate symbol as a physical operation</td><td>Rabi/Ramsey、RB、drift data</td></tr>
+            <tr><td>Measurement</td><td>IQ record、POVM、classifier</td><td>How is a state converted into trustworthy data?</td><td>Treating a readout bit as the actual state</td><td>assignment matrix、SNR、shots</td></tr>
+            <tr><td>System</td><td>cryo、electronics、software stack</td><td>Can the whole system remain stable, scale, and operate repeatedly?</td><td>Using the best value of one component to represent the whole machine</td><td>uptime、throughput、calibration overhead</td></tr>
+          </tbody>
+        </table></section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="qh-lecture-block" id="week1-synthesis"><div class="qh-student-task">
+          <h4>Exit Ticket: Answer Independently before Class Ends</h4>
+          <ol>
+            <li>Why is the functional universality of NAND insufficient to define quantum hardware directly?</li>
+            <li>Which operation is constrained by the Landauer principle, and what does the principle not claim?</li>
+            <li>Why is Bennett uncomputation more than an energy-saving technique in a quantum algorithm?</li>
+            <li>Why does the computational equivalence of the gate and adiabatic models not imply identical hardware?</li>
+            <li>After a CCX truth table succeeds, which two additional kinds of tests are needed before the CCX implementation is trustworthy?</li>
+          </ol>
+        </div></section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="qh-lecture-block" id="week1-synthesis"><div class="qh-instructor-note">
+          <h4>Exit-Ticket Answer Guide</h4>
+          <ol>
+            <li>NAND is many-to-one and cannot directly be unitary; moreover, a truth table specifies no Hamiltonian, control, or measurement.</li>
+            <li>The principle gives the minimum entropy/heat cost of information erasure in an ideal isothermal limit. It does not say that every gate dissipates exactly \(k_BT\ln2\), and it is not a whole-machine power formula.</li>
+            <li>If garbage remains entangled with the answer, it carries which-path information and damages interference. Ancillas must be restored before reuse and before a clean output state is obtained.</li>
+            <li>The two models require different control degrees of freedom, primary resources, noise channels, minimum gaps, calibration procedures, and topologies.</li>
+            <li>At minimum, a phase-sensitive or superposition test and a SPAM/readout characterization are required. Drift over time and leakage should also be examined.</li>
+          </ol>
+        </div></section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="qh-lecture-block" id="week1-synthesis"><h4>Connection to the Next Week</h4><p>Next week begins superconducting circuits. Students should carry forward this week's interface questions: a Josephson junction is not a “natural qubit gate”; it supplies nonlinearity. After deriving a quantized Hamiltonian from the junction and capacitor, one must still choose operating levels, coupling methods, a drive operator, a readout channel, and a calibration procedure. The logical-to-physical chain established this week will become concrete again in every later device topic.</p></section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="qh-lecture-block" id="week1-synthesis"><h4>Further Reading and Original Sources</h4><ul>
+          <li>R. Landauer, <a href="https://doi.org/10.1147/rd.53.0183" target="_blank" rel="noopener">Irreversibility and Heat Generation in the Computing Process</a>: the original discussion of information erasure and thermodynamic cost.</li>
+          <li>C. H. Bennett, <a href="https://doi.org/10.1147/rd.176.0525" target="_blank" rel="noopener">Logical Reversibility of Computation</a>: the classic source for reversible simulation and history cleanup.</li>
+          <li>D. Aharonov et al., <a href="https://arxiv.org/abs/quant-ph/0405098" target="_blank" rel="noopener">Adiabatic Quantum Computation is Equivalent to Standard Quantum Computation</a>: for understanding the scope and assumptions of model equivalence.</li>
+          <li>M. A. Nielsen and I. L. Chuang, <em>Quantum Computation and Quantum Information</em>: systematic background on reversible circuits, unitaries, measurement, and the circuit model.</li>
+        </ul></section>
+    </section>
+
+    <section data-manual-slide data-cover data-article-hidden="true">
+      <div class="theme-header" data-article-hidden="true" style="text-align: center;">
+        <h2>Extended Foundations and Reference Modules</h2>
+        <h3>Optional Review and Self-Study Material</h3>
+      </div>
+    </section>
+
+    <section data-manual-slide>
+      <section class="module"><div class="qh-section">
+        <h3>Advanced Throughline: Do Not Turn Week 1 into an Introduction to Quantum Information</h3>
+      </div><p>This week assumes that students have already encountered kets, tensor products, and basic quantum gates. The class should not reteach every prerequisite; it should establish three descriptive layers:</p><ol>
+        <li><b>Computational semantics:</b>inputs, outputs, computable functions, and complexity.</li>
+        <li><b>Logical representation:</b>reversible gates, unitary circuits, measurement, and classical feed-forward.</li>
+        <li><b>Physical realization:</b>the time-dependent Hamiltonian \(H(t)\), control pulses, and the measurement chain.</li>
+      </ol></section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="module"><p>Landauer identifies the physical cost of “information erasure”; Bennett shows how a general computation can be rewritten as logically reversible by preserving history and applying uncomputation. The unitary evolution of quantum gates is therefore not merely a statement that “quantum mechanics is mysterious.” It is the intersection of information preservation, reversible dynamics, and implementable control.</p><div class="equation-card"><p>\[\ket{\psi(t)}=\mathcal T\exp\!\left[-\frac{i}{\hbar}\int_0^t H(\tau)d\tau\right]\ket{\psi(0)}\]</p></div><p>Finally, compare the circuit model with the adiabatic/Hamiltonian model. They can be polynomially equivalent in computational power, but they expose different hardware control parameters, gaps, noise channels, and calibration problems.</p></section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="module"><div class="qh-section">
+                <h3>2. Module 1: Classical Logic Gates and Boolean Computation</h3>
+              </div><h4>1.1 Classical Bits and Boolean Logic</h4><p>
+                Classical computation uses the bit as its most basic unit of information, and each bit can take only the value 0 or 1. At the hardware layer, these values usually correspond to high and low voltage, the presence or absence of charge, a magnetization direction, or another pair of stably distinguishable physical states. Boolean algebra allows complex logical operations to be decomposed into basic logic gates.
+              </p></section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="module"><h4>Core Concepts</h4><ul>
+                <li>Bit: the smallest unit of classical information.</li>
+                <li>Boolean algebra: represents logical false and true using 0 and 1.</li>
+                <li>Truth table: tabulates the correspondence between a logic gate's inputs and outputs.</li>
+                <li>Logic gate: a basic component that implements a Boolean operation.</li>
+              </ul></section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="module"><h4>Basic Logic Gates</h4><table>
+                <thead>
+                  <tr>
+                    <th>Gate</th>
+                    <th>Input</th>
+                    <th>Output</th>
+                    <th>Functional Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>NOT</td>
+                    <td>A</td>
+                    <td>¬A</td>
+                    <td>Changes 0 to 1 and 1 to 0.</td>
+                  </tr>
+                  <tr>
+                    <td>AND</td>
+                    <td>A, B</td>
+                    <td>A ∧ B</td>
+                    <td>The output is 1 only when both inputs are 1.</td>
+                  </tr>
+                  <tr>
+                    <td>OR</td>
+                    <td>A, B</td>
+                    <td>A ∨ B</td>
+                    <td>The output is 1 whenever either input is 1.</td>
+                  </tr>
+                  <tr>
+                    <td>XOR</td>
+                    <td>A, B</td>
+                    <td>A ⊕ B</td>
+                    <td>The output is 1 when the two inputs differ.</td>
+                  </tr>
+                  <tr>
+                    <td>NAND</td>
+                    <td>A, B</td>
+                    <td>¬(A ∧ B)</td>
+                    <td>The inverted output of AND; a universal gate in classical logic.</td>
+                  </tr>
+                </tbody>
+              </table></section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="module"><h4>1.2 Universal Classical Computation</h4><p>
+                In classical computation, NAND or NOR gates can provide universal computation. That is, any Boolean logic circuit can be composed from sufficiently many NAND gates or sufficiently many NOR gates. This idea is important for understanding universal quantum gate sets later.
+              </p></section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="module"><div class="learning-check">
+                <h4>Learning Check</h4>
+                <ol>
+                  <li>Why can NAND serve as a universal classical gate?</li>
+                  <li>Construct NOT, AND, and OR from NAND gates.</li>
+                  <li>What is the relationship between Boolean logic and a physical hardware circuit?</li>
+                </ol>
+              </div></section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="module"><div class="qh-section">
+                <h3>3. Module 2: Modern Computer Architecture and Models of Computation</h3>
+              </div><h4>2.1 Von Neumann Architecture</h4><p>
+                Most modern computers are based on the von Neumann architecture and consist primarily of a CPU, memory, input/output devices, and buses. Programs and data share memory, and the CPU executes instructions through a fetch–decode–execute cycle.
+              </p></section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="module"><h4>Main Components</h4><ul>
+                <li><strong>CPU：</strong>Executes instructions and processes data.</li>
+                <li><strong>ALU：</strong>Performs arithmetic and logical operations.</li>
+                <li><strong>Register：</strong>High-speed storage registers inside the CPU.</li>
+                <li><strong>Memory hierarchy：</strong>A hierarchy of memory with different speeds and capacities, including cache, RAM, and SSD/HDD storage.</li>
+                <li><strong>Bus：</strong>Transmits data, addresses, and control signals.</li>
+              </ul></section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="module"><h4>2.2 From Classical Circuits to Computation</h4><p>
+                A classical logic gate by itself performs only a local logical operation. Large collections of gates form adders, multipliers, registers, control units, and memory systems, which in turn form the CPU and a complete modern computer architecture.
+              </p><p>
+                From the perspective of a model of computation, a classical computer can be understood as a state machine: at each step, the system moves from its current state to a next state according to the input. Most classical logical operations, however, are irreversible. The output of an AND gate, for example, does not uniquely determine its two inputs.
+              </p><div class="note">
+                <h4>Connection to Quantum Computing</h4>
+                <p>
+                  The closed evolution of a quantum system must be described by a unitary matrix, and unitary evolution is necessarily reversible. Building computation on quantum mechanics therefore requires us to reconsider whether computation itself can be performed reversibly.
+                </p>
+              </div></section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="module"><div class="qh-section">
+                <h3>4. Module 3: Reversible Computing</h3>
+              </div><h4>3.1 Irreversible Computation and Information Loss</h4><p>
+                Many gates in classical logic compress input information. An AND gate has four possible input pairs but only one output bit, so the input cannot be recovered uniquely from the output. This many-to-one mapping is called irreversible computation.
+              </p><p>
+                From a physical perspective, information loss and energy dissipation are deeply connected. Research on reversible computation shows that avoiding information loss can, in principle, reduce the heat dissipation caused by information erasure.
+              </p></section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="module"><h4>3.2 Reversible Gates</h4><p>
+                A reversible logic gate requires a one-to-one map between inputs and outputs, so the output must retain enough information to reconstruct the input. Common reversible gates include CNOT, Toffoli, and Fredkin gates.
+              </p><table>
+                <thead>
+                  <tr>
+                    <th>Reversible Gate</th>
+                    <th>Action</th>
+                    <th>Importance</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>CNOT</td>
+                    <td>Flip the target bit when the control bit is 1.</td>
+                    <td>One of the most important two-qubit gates in quantum computing.</td>
+                  </tr>
+                  <tr>
+                    <td>Toffoli Gate</td>
+                    <td>Flip the target bit when both control bits are 1.</td>
+                    <td>Can construct reversible classical computation; also called controlled-controlled-NOT.</td>
+                  </tr>
+                  <tr>
+                    <td>Fredkin Gate</td>
+                    <td>Swap two target bits conditionally on the control bit.</td>
+                    <td>A representative example of reversible logic and conditional swapping.</td>
+                  </tr>
+                </tbody>
+              </table></section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="module"><h4>3.3 Why Quantum Computing Must Be Reversible</h4><p>
+                In quantum mechanics, the time evolution of a closed system is described by a unitary operator. A unitary operator has an inverse, so quantum-state evolution must be mathematically reversible. A quantum gate therefore cannot compress multiple inputs into the same output as a classical AND gate does.
+              </p></section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="module"><div class="learning-check">
+                <h4>Learning Check</h4>
+                <ol>
+                  <li>Why is AND not a reversible logic gate?</li>
+                  <li>How does the Toffoli gate implement reversible classical computation?</li>
+                  <li>Why must a quantum-computing gate be represented by a unitary matrix?</li>
+                </ol>
+              </div></section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="module"><div class="qh-section">
+                <h3>5. Module 4: Quantum Mechanics as a Language of Computation</h3>
+              </div><h4>4.1 Quantum State and Hilbert Space</h4><p>
+                The basic unit of quantum information is the qubit. Unlike a classical bit, which can only be 0 or 1, a qubit can occupy a linear superposition of \(|0\rangle\) and \(|1\rangle\):
+              </p><div class="equation">
+                |ψ⟩ = α|0⟩ + β|1⟩
+              </div><p>
+                Here \(\alpha\) and \(\beta\) are complex amplitudes satisfying the normalization condition:
+              </p><div class="equation">
+                |α|² + |β|² = 1
+              </div><p>
+                This equation shows that a quantum state is not merely a probability distribution but a complex vector carrying phase information. Phase cannot be measured directly, yet it changes interference outcomes and is a central source of the power of quantum algorithms beyond classical intuition.
+              </p></section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="module"><h4>4.2 Superposition, Phase, and Interference</h4><p>
+                A superposition means that a quantum system has amplitudes on multiple basis states. It should not be reduced to the phrase “simultaneously 0 and 1.” More precisely, a qubit is a vector in Hilbert space, and \(|0\rangle\) and \(|1\rangle\) form a basis.
+              </p><ul>
+                <li><strong>Superposition：</strong>A quantum state can be a linear combination of multiple basis states.</li>
+                <li><strong>Relative phase：</strong>The relative phase between amplitudes affects interference.</li>
+                <li><strong>Interference：</strong>Amplitudes can interfere constructively or destructively, changing measurement probabilities.</li>
+                <li><strong>Measurement：</strong>Measurement projects the quantum state onto a chosen measurement basis.</li>
+              </ul></section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="module"><h4>4.3 Measurement and Born Rule</h4><p>
+                If the qubit is in \(|\psi\rangle=\alpha|0\rangle+\beta|1\rangle\), a measurement in the computational basis returns 0 with probability \(|\alpha|^2\) and 1 with probability \(|\beta|^2\). This is the Born rule.
+              </p><p>
+                Measurement differs from unitary evolution. Unitary evolution is continuous, linear, and reversible; measurement projects the quantum state onto a particular outcome and introduces probabilities. This distinction is essential for understanding quantum readout, quantum error correction, and quantum control.
+              </p></section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="module"><h4>4.4 Tensor Product and Multi-Qubit States</h4><p>
+                The state space of a multiqubit system is constructed by a tensor product. The basis for two qubits is:
+              </p><div class="equation">
+                |00⟩, |01⟩, |10⟩, |11⟩
+              </div><p>
+                A general two-qubit state can therefore be written as:
+              </p><div class="equation">
+                |ψ⟩ = c₀₀|00⟩ + c₀₁|01⟩ + c₁₀|10⟩ + c₁₁|11⟩
+              </div><p>
+                For \(n\) qubits, the state-space dimension is \(2^n\). This exponential growth is one source of quantum computation's expressive power, but it also makes control, simulation, and error correction exceptionally challenging.
+              </p></section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="module"><div class="qh-section">
+                <h3>6. Module 5: Quantum Gates and Gate-Based Quantum Computing</h3>
+              </div><h4>5.1 Quantum Gates as Unitary Operators</h4><p>
+                A quantum gate is a unitary operator acting on qubit states. A quantum circuit can be viewed as a sequence of unitary operations followed by a measurement that produces classical output.
+              </p></section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="module"><h4>Common Single-Qubit Gates</h4><table>
+                <thead>
+                  <tr>
+                    <th>Gate</th>
+                    <th>Action</th>
+                    <th>Physical or Geometric Meaning</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>X gate</td>
+                    <td>|0⟩ ↔ |1⟩</td>
+                    <td>Analogous to the classical NOT gate; a \(\pi\) rotation about the \(x\) axis of the Bloch sphere.</td>
+                  </tr>
+                  <tr>
+                    <td>Y gate</td>
+                    <td>A bit flip with phase</td>
+                    <td>A \(\pi\) rotation about the \(y\) axis.</td>
+                  </tr>
+                  <tr>
+                    <td>Z gate</td>
+                    <td>\(|1\rangle\) acquires a minus sign</td>
+                    <td>Changes relative phase; a \(\pi\) rotation about the \(z\) axis.</td>
+                  </tr>
+                  <tr>
+                    <td>Hadamard gate</td>
+                    <td>Creates a superposition of \(|0\rangle\) and \(|1\rangle\)</td>
+                    <td>Converts the computational basis to a superposition basis.</td>
+                  </tr>
+                  <tr>
+                    <td>S gate</td>
+                    <td>Applies a \(\pi/2\) phase.</td>
+                    <td>phase gate。</td>
+                  </tr>
+                  <tr>
+                    <td>T gate</td>
+                    <td>Applies a \(\pi/4\) phase.</td>
+                    <td>Commonly used for universal quantum computation.</td>
+                  </tr>
+                  <tr>
+                    <td>Rₓ, Rᵧ, Rᶻ</td>
+                    <td>Rotation about a Bloch-sphere axis</td>
+                    <td>Corresponds to continuous rotations in physical quantum control.</td>
+                  </tr>
+                </tbody>
+              </table></section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="module"><h4>Common Two-Qubit Gates</h4><table>
+                <thead>
+                  <tr>
+                    <th>Gate</th>
+                    <th>Action</th>
+                    <th>Importance</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>CNOT</td>
+                    <td>Flip the target qubit conditionally on the state of the control qubit.</td>
+                    <td>Can generate entanglement; a fundamental two-qubit gate in quantum circuits.</td>
+                  </tr>
+                  <tr>
+                    <td>CZ</td>
+                    <td>Apply a minus sign when both qubits are in \(|1\rangle\).</td>
+                    <td>Common in superconducting quantum computing and closely related to the implementation of entangling gates.</td>
+                  </tr>
+                  <tr>
+                    <td>SWAP</td>
+                    <td>Swap the states of two qubits.</td>
+                    <td>Used to reposition quantum information on a quantum chip with limited connectivity.</td>
+                  </tr>
+                </tbody>
+              </table></section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="module"><h4>5.2 Universal Quantum Gate Set</h4><p>
+                Analogous to NAND in classical computation, quantum computation also has the concept of a universal gate set. A set of gates is universal if it can approximate any unitary operation. Common examples include:
+              </p><ul>
+                <li>Arbitrary single-qubit rotations plus one entangling two-qubit gate.</li>
+                <li>Clifford gates plus the T gate.</li>
+                <li>Combinations such as H, S, T, and CNOT.</li>
+              </ul></section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="module"><h4>5.3 Gate-Based Quantum Computing Model</h4><p>
+                Gate-based quantum computing represents computation as a quantum circuit. The workflow usually contains the following steps:
+              </p><ol>
+                <li><strong>Initialization：</strong>Prepare qubits in a known initial state such as \(|0\rangle\).</li>
+                <li><strong>Unitary evolution：</strong>Apply a sequence of quantum gates.</li>
+                <li><strong>Entanglement generation：</strong>Create quantum correlations through two-qubit gates.</li>
+                <li><strong>Measurement：</strong>Convert the quantum state into a classical bit string.</li>
+                <li><strong>Classical post-processing：</strong>Perform statistical analysis of the measurement outcomes.</li>
+              </ol></section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="module"><div class="note">
+                <h4>Connection to Superconducting Quantum Chips</h4>
+                <p>
+                  On a superconducting platform, single-qubit gates are usually implemented with microwave pulses, while two-qubit gates rely on qubit–qubit coupling, tunable couplers, or frequency control. Abstract quantum gates must therefore be translated into concrete microwave-control waveforms and chip-design parameters.
+                </p>
+              </div></section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="module"><div class="qh-section">
+                <h3>7. Module 6: Adiabatic Quantum Computing</h3>
+              </div><h4>6.1 From the Quantum Gate Model to Hamiltonian Evolution</h4><p>
+                Gate-based quantum computing represents computation as a discrete sequence of quantum gates. Adiabatic quantum computing takes a different view: computation is not assembled gate by gate but is carried out through slow variation of the system Hamiltonian.
+              </p><p>
+                In adiabatic quantum computing, the system begins in the ground state of an easily prepared initial Hamiltonian. The Hamiltonian then changes slowly into the problem Hamiltonian. If the evolution is sufficiently slow, the adiabatic theorem says that the system remains near the instantaneous ground state. Measuring the final system yields an answer encoded in the ground state of the problem Hamiltonian.
+              </p></section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="module"><h4>6.2 Basic Formulation</h4><p>
+                A common adiabatic evolution can be written as:
+              </p><div class="equation">
+                H(s) = (1 - s)H₀ + sHₚ,  0 ≤ s ≤ 1
+              </div><ul>
+                <li><strong>H₀：</strong>The initial Hamiltonian, whose ground state is easy to prepare.</li>
+                <li><strong>Hₚ：</strong>The problem Hamiltonian, whose ground state encodes the answer.</li>
+                <li><strong>s：</strong>A parameter that varies slowly with time.</li>
+                <li><strong>Energy gap：</strong>The energy gap between the ground and first excited states, which determines the required evolution time.</li>
+              </ul></section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="module"><h4>6.3 Gate-Based vs. Adiabatic Quantum Computing</h4><table>
+                <thead>
+                  <tr>
+                    <th>Comparison Item</th>
+                    <th>Gate-Based Quantum Computing</th>
+                    <th>Adiabatic Quantum Computing</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Computational Method</td>
+                    <td>Discrete quantum gates</td>
+                    <td>Continuous Hamiltonian evolution</td>
+                  </tr>
+                  <tr>
+                    <td>Core Language</td>
+                    <td>Quantum circuit</td>
+                    <td>Energy landscape / Hamiltonian</td>
+                  </tr>
+                  <tr>
+                    <td>Primary Challenges</td>
+                    <td>Gate fidelity、decoherence、crosstalk</td>
+                    <td>Minimum gap, evolution time, and noise</td>
+                  </tr>
+                  <tr>
+                    <td>Typical Applications</td>
+                    <td>Quantum algorithms, quantum simulation, and quantum chemistry</td>
+                    <td>Optimization, quantum annealing, and ground-state search</td>
+                  </tr>
+                  <tr>
+                    <td>Relation to Superconducting Platforms</td>
+                    <td>One of the mainstream models for superconducting transmon systems</td>
+                    <td>Related to superconducting flux qubits and quantum annealing</td>
+                  </tr>
+                </tbody>
+              </table></section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="module"><div class="learning-check">
+                <h4>Learning Check</h4>
+                <ol>
+                  <li>What is the main difference between gate-based and adiabatic quantum computing?</li>
+                  <li>Why is the energy gap important in adiabatic computing?</li>
+                  <li>How does adiabatic quantum computing convert an optimization problem into a physical problem?</li>
+                </ol>
+              </div></section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="module"><div class="qh-section">
+                <h3>8. Module 7: From Abstract Quantum Computation to a Superconducting Quantum Chip</h3>
+              </div><p>
+                The final goal of this topic is to establish an important idea: quantum computation is not only a collection of mathematical quantum gates or algorithms; it must be realized in a concrete physical system. In superconducting quantum computing, qubits are artificial quantum systems constructed from circuit elements such as Josephson junctions, capacitors, inductors, and microwave resonators.
+              </p><p>
+                Later topics will progressively translate the abstract concepts of this topic into their physical counterparts on superconducting quantum chips:
+              </p></section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="module"><table>
+                <thead>
+                  <tr>
+                    <th>Abstract Quantum-Computing Concept</th>
+                    <th>Corresponding Element on a Superconducting Quantum Chip</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Qubit</td>
+                    <td>Superconducting qubits such as the transmon and fluxonium.</td>
+                  </tr>
+                  <tr>
+                    <td>Quantum gate</td>
+                    <td>Microwave pulse、flux pulse、tunable coupling。</td>
+                  </tr>
+                  <tr>
+                    <td>Hamiltonian</td>
+                    <td>A circuit Hamiltonian determined by capacitance, inductance, Josephson energy, and coupling terms.</td>
+                  </tr>
+                  <tr>
+                    <td>Measurement</td>
+                    <td>A readout resonator and dispersive readout.</td>
+                  </tr>
+                  <tr>
+                    <td>Decoherence</td>
+                    <td>\(T_1\) relaxation, \(T_2\) dephasing, material loss, and control noise.</td>
+                  </tr>
+                  <tr>
+                    <td>Quantum error correction</td>
+                    <td>Surface code、ancilla qubits、syndrome measurement。</td>
+                  </tr>
+                </tbody>
+              </table></section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="module"><div class="qh-section">
+            <h3>In-Class Synthesis and Assessment</h3>
+          </div><p><strong>Discussion Prompt:</strong>Choose one step of a quantum algorithm and express it separately as a logical operation, a unitary block, and a possible Hamiltonian/control realization.</p><p><strong>Completion Criteria:</strong>Students must leave a checkable derivation, relation diagram, comparison table, or architecture decision, and be able to explain its physical assumptions and engineering costs.</p></section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="module"><div class="qh-section">
+            <h3>Core and Further Reading</h3><ul class="qh-reading"><li><a href="https://doi.org/10.1147/RD.53.0183" target="_blank" rel="noopener">Irreversibility and Heat Generation in the Computing Process</a><span>R. Landauer, IBM Journal of Research and Development 5, 183–191 (1961).</span><em>The original argument connecting logical irreversibility to physical dissipation.</em></li><li><a href="https://doi.org/10.1147/rd.176.0525" target="_blank" rel="noopener">Logical Reversibility of Computation</a><span>C. H. Bennett, IBM Journal of Research and Development 17, 525–532 (1973).</span><em>The original construction of reversible universal computation and uncomputation.</em></li><li><a href="https://arxiv.org/abs/quant-ph/0405098" target="_blank" rel="noopener">Adiabatic Quantum Computation is Equivalent to Standard Quantum Computation</a><span>D. Aharonov et al., SIAM Journal on Computing 37, 166–194 (2007).</span><em>The computational equivalence of the circuit model and the Hamiltonian/adiabatic model.</em></li><li><a href="https://doi.org/10.1063/1.5089550" target="_blank" rel="noopener">A Quantum Engineer's Guide to Superconducting Qubits</a><span>P. Krantz et al., Applied Physics Reviews 6, 021318 (2019).</span><em>A core review of control, coherence, readout, and engineering parameters.</em></li></ul>
+          </div></section>
+    </section></div><div class="qh-mode-toggle" role="group" aria-label="Display mode">
+    <button type="button" class="qh-mode-button" data-qh-view="article" aria-pressed="false">Article</button>
+    <button type="button" class="qh-mode-button is-active" data-qh-view="slides" aria-pressed="true">Slides</button>
+  </div>
+
+  <div id="qh-slide-root" class="qhs-root" hidden aria-hidden="true" data-qhs-course="PHYS598500" data-qhs-week="WEEK 1" data-qhs-no-click-advance="true" data-qhs-topic="From Quantum Computing Models to Hardware Operations" data-qhs-title-suffix="QH-2026F v5 · Manual Slides">
+    <header class="qhs-header">
+      <a class="qhs-brand" href="main.html" aria-label="Return to the QH-2026F course overview">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
+      <span class="qhs-divider" aria-hidden="true"></span>
+      <div class="qhs-identity">
+        <strong>PHYS598500 · WEEK 1</strong>
+        <span>From Quantum Computing Models to Hardware Operations · Manual Slides</span>
+      </div>
+      <button class="qhs-click-mode-button is-active" type="button" data-qhs-action="no-click-advance" aria-pressed="true" aria-label="Toggle mouse click and drag slide advance" title="Mouse clicks and horizontal drags will not change slides">Click/drag page change: Off</button>
+      <button class="qhs-icon-button" type="button" data-qhs-action="fullscreen" aria-label="Toggle fullscreen" title="Fullscreen (F)">⛶</button>
+    </header>
+
+    <nav class="qhs-rail" aria-label="Slide previews">
+      <div class="qhs-thumb-panel">
+        <div class="qhs-thumb-head"><strong>Slide previews</strong><span class="qhs-thumb-total">—</span></div>
+        <div class="qhs-thumb-list" role="list"></div>
+      </div>
+      <button class="qhs-rail-handle" type="button" aria-label="Expand or collapse slide previews" aria-expanded="false"><span>Slide previews</span></button>
+    </nav>
+
+    <main class="qhs-stage" aria-label="Slide display area">
+      <div class="qhs-scaler"></div>
+    </main>
+
+    <footer class="qhs-controls" aria-label="Slide controls">
+      <button class="qhs-control-button" type="button" data-qhs-action="previous" aria-label="Previous slide">←</button>
+      <div class="qhs-progress-wrap">
+        <input class="qhs-range" type="range" min="1" value="1" aria-label="Slide progress">
+        <div class="qhs-counter" aria-live="polite"><strong>01</strong><span>/ —</span></div>
+      </div>
+      <button class="qhs-control-button" type="button" data-qhs-action="next" aria-label="Next slide">→</button>
+    </footer>
+
+    <div class="qhs-live" aria-live="polite" aria-atomic="true"></div>
+  </div><script src="assets/manual-slide-deck.js"></script></body>
+
+</html>

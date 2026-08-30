@@ -1,0 +1,2765 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N39VTY949N"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-N39VTY949N');
+  </script>
+  <!-- Basic Page Needs
+    ================================================== -->
+  <meta charset="utf-8">
+  <meta name="author" content="Peir-Ru Wang">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;1,300&amp;display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/20250525-icon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/20250525-icon.png">
+
+  <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/css/style.css" rel="stylesheet">
+  <link href="../assets/css/responsive.css" rel="stylesheet">
+
+  <title>Week 3 Manual Slides · Fluxonium and Protected-Qubit Hamiltonian Engineering | QH-2026F v5</title>
+  <meta name="description"
+    content="PHYS598500 Week 3, 120-minute advanced lecture: Fluxonium—From Circuit Modification to Design Trade-offs">
+  <meta name="keywords" content="- Quantum Processor
+- Superconducting Qubit
+- Qubit
+- Josephson Junction
+- Transmon
+- Fluxonium
+- Quantum Computing
+- Quantum Hardware
+- Quantum Algorithms
+- Quantum Chip">
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+  <style>
+    .qh-week-meta {
+      margin: 20px 0;
+      padding: 16px 18px;
+      border-left: 4px solid #5f4b8b;
+      background: #f6f4fa;
+    }
+
+    .qh-week-meta p {
+      margin: 4px 0;
+    }
+
+    .qh-session-plan {
+      width: 100%;
+      margin: 18px 0 8px;
+      border-collapse: collapse;
+    }
+
+    .qh-session-plan th,
+    .qh-session-plan td {
+      padding: 10px 12px;
+      border: 1px solid #ddd;
+      vertical-align: top;
+    }
+
+    .qh-session-plan th {
+      background: #f4f4f4;
+    }
+
+    .qh-session-plan .qh-break td {
+      color: #666;
+      background: #fafafa;
+    }
+
+    .qh-total {
+      text-align: right;
+      font-weight: 700;
+    }
+
+    .qh-reading li {
+      margin-bottom: 12px;
+    }
+
+    .qh-reading span,
+    .qh-reading em {
+      display: block;
+    }
+
+    .qh-week-list {
+      padding-left: 0;
+      list-style: none;
+    }
+
+    .qh-week-list li {
+      margin: 0 0 13px;
+      padding: 12px 15px;
+      border-left: 4px solid #5f4b8b;
+      background: #f7f7f7;
+    }
+
+    .qh-week-list a {
+      font-weight: 700;
+    }
+
+    @media (max-width: 767px) {
+      .qh-session-plan {
+        display: block;
+        overflow-x: auto;
+      }
+    }
+  </style>
+
+
+  <style id="qh-full-course-style">
+    .qh-full-lecture {
+      margin: 30px 0;
+      padding: 24px 26px;
+      border: 1px solid #d9d4e5;
+      background: #fff;
+    }
+
+    .qh-full-lecture>h2,
+    .qh-full-lecture>h3 {
+      margin-top: 0;
+    }
+
+    .qh-full-lecture h4 {
+      margin-top: 24px;
+    }
+
+    .qh-full-lecture li {
+      margin-bottom: 8px;
+    }
+
+    .qh-time {
+      display: inline-block;
+      margin-bottom: 12px;
+      padding: 4px 10px;
+      border-radius: 14px;
+      background: #5f4b8b;
+      color: #fff;
+      font-size: .9em;
+    }
+
+    .qh-board,
+    .qh-case,
+    .qh-task,
+    .qh-answer,
+    .qh-source-chapter {
+      margin: 20px 0;
+      padding: 17px 19px;
+      font-size: 15px;
+    }
+
+    .qh-board {
+      border-left: 4px solid #d0ccc8;
+      background: #fafafa;
+    }
+
+    .qh-case {
+      border-left: 4px solid #d0ccc8;
+      background: #fafafa;
+    }
+
+    .qh-task {
+      border-left: 4px solid #d0ccc8;
+      background: #fafafa;
+    }
+
+    .qh-answer {
+      border-left: 4px solid #d0ccc8;
+      background: #fafafa;
+    }
+
+    /* Section divider headings */
+    .qh-section {
+      margin: 40px 0 24px;
+      padding: 17px 19px;
+      border-left: 4px solid #355c9a;
+      background: #f3f7fc;
+    }
+
+    .qh-section h3 {
+      margin: 0 0 4px;
+      font-size: 20px;
+      font-weight: 700;
+      color: #355c9a;
+      border-bottom: none;
+    }
+
+    .qh-section h4 {
+      margin: 0;
+      font-size: 15px;
+      font-weight: 400;
+      color: #6a8ab5;
+      font-style: italic;
+    }
+
+    .qh-section>h3:first-child {
+      margin-top: 0;
+    }
+
+    /* Equation highlight — compact, not a section heading */
+    .qh-equation-highlight {
+      margin: 24px 0;
+      padding: 14px 18px;
+      border-left: 3px solid #6a6560;
+      background: #f9f8f7;
+    }
+
+    .qh-equation-label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      color: #6a6560;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    .qh-source-chapter {
+      border: 1px solid #e5e0ec;
+      background: #fdfcff;
+    }
+
+
+    .qh-source-chapter>h3 {
+      padding-bottom: 9px;
+      border-bottom: 1px solid #ddd5e8;
+    }
+
+    .qh-source-note {
+      color: #665f72;
+      font-size: .92em;
+    }
+
+    @media (max-width: 720px) {
+      .qh-full-lecture {
+        padding: 18px 15px;
+      }
+
+      .qh-board,
+      .qh-case,
+      .qh-task,
+      .qh-answer,
+      .qh-source-chapter {
+        padding: 14px 13px;
+      }
+    }
+
+    /* Supplement section styling */
+    .qh-supplement-divider {
+      margin: 36px 0 24px;
+      padding: 18px 22px;
+      border-left: 4px solid #5f4b8b;
+      background: #f6f4fa;
+    }
+
+    .qh-supplement-divider h2 {
+      margin: 0 0 5px;
+      font-size: 22px;
+    }
+
+    .qh-supplement-divider p {
+      margin: 0;
+    }
+
+    /* Tables in supplement */
+    .module table {
+      width: 100%;
+      margin: 16px 0;
+      border-collapse: collapse;
+      font-size: 15px;
+    }
+
+    .module table th,
+    .module table td {
+      padding: 10px 12px;
+      border: 1px solid #ddd;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .module table th {
+      background: #f4f4f4;
+      font-weight: 700;
+    }
+
+    /* Callout in supplement */
+    .module .callout {
+      margin: 16px 0;
+      padding: 12px 16px;
+      border-left: 4px solid #5f4b8b;
+      background: #f6f4fa;
+      font-size: 15px;
+    }
+
+    /* Lists in supplement */
+    .module ul,
+    .module ol {
+      margin: 12px 0;
+      padding-left: 24px;
+    }
+
+    .module li {
+      margin-bottom: 8px;
+      line-height: 1.6;
+      font-size: 15px;
+    }
+
+    /* Heading consistency — only direct h3 children, not inside .qh-section */
+    .module>h3 {
+      margin: 28px 0 14px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #ddd5e8;
+      font-size: 20px;
+    }
+
+    .module h4 {
+      margin: 20px 0 10px;
+      font-size: 17px;
+    }
+
+    .module p {
+      margin: 10px 0;
+      line-height: 1.7;
+    }
+  </style>
+
+  <style id="qh-details-style">
+    details.dark-background {
+      background-color: #f5f5f5;
+      border: 1px solid #ddd;
+      padding: 10px;
+      border-radius: 5px;
+    }
+
+    details.dark-background summary {
+      cursor: pointer;
+      font-weight: bold;
+      background-color: #e0e0e0;
+      padding: 5px;
+      border-radius: 3px;
+    }
+  </style>
+
+  <link rel="stylesheet" href="assets/slide-deck.css">
+  <link rel="stylesheet" href="qh-mobile-math-overflow.css" data-uniweb-fix="mobile-math-overflow">
+  <style>
+    #qhs-manual-slides[hidden] {
+      display: none !important;
+    }
+
+    .qhs-article-cover-source,
+    .qhs-article-slide-source {
+      display: block;
+    }
+
+    .qhs-slide .qhs-content-inner {
+      position: relative;
+    }
+
+    .qhs-slide.qhs-absolute-layout .qhs-content-inner {
+      min-height: 100%;
+    }
+
+    .qhs-cover .qhs-content-inner {
+      min-height: 0;
+      align-self: center;
+    }
+
+    .qhs-slide,
+    .qhs-slide h1,
+    .qhs-slide h2,
+    .qhs-slide h3,
+    .qhs-slide h4,
+    .qhs-slide h5,
+    .qhs-slide h6,
+    .qhs-slide p,
+    .qhs-slide li,
+    .qhs-slide th,
+    .qhs-slide td,
+    .qhs-slide summary,
+    .qhs-slide figcaption {
+      font-family: "Montserrat", "Noto Sans TC", system-ui, sans-serif;
+    }
+
+    .qhs-cover .theme-header {
+      width: 100%;
+      max-width: 1200px;
+      margin-inline: auto;
+    }
+
+    .qhs-cover .theme-header h2 {
+      margin: 0 auto;
+      font-size: 58px;
+      font-weight: 700;
+      line-height: 1.12;
+      letter-spacing: -0.025em;
+    }
+
+    .qhs-cover .theme-header h3,
+    .qhs-cover .theme-header h4 {
+      margin: 26px auto 0;
+      font-size: 28px;
+      font-weight: 500;
+      line-height: 1.3;
+      letter-spacing: 0;
+      opacity: 0.82;
+    }
+
+    .qhs-cover .theme-header h3:empty,
+    .qhs-cover .theme-header h4:empty {
+      display: none;
+    }
+
+    .qhs-slide:not(.qhs-cover) .qhs-slide-title {
+      margin-top: 4px !important;
+    }
+
+    body.qh-slide-active .qhs-header {
+      padding-right: 470px;
+    }
+
+    body.qh-slide-active .qhs-icon-button {
+      right: 205px;
+    }
+
+    .qhs-click-mode-button {
+      position: absolute;
+      top: 14px;
+      right: 255px;
+      min-width: 200px;
+      height: 36px;
+      padding: 0 14px;
+      color: var(--qhs-purple);
+      background: var(--qhs-purple-soft);
+      border: 0;
+      border-radius: 999px;
+      cursor: pointer;
+      font: 700 12px/1 "Montserrat", "Noto Sans TC", sans-serif;
+    }
+
+    .qhs-click-mode-button:hover,
+    .qhs-click-mode-button:focus-visible,
+    .qhs-click-mode-button.is-active {
+      color: #fff;
+      background: var(--qhs-purple);
+      outline: none;
+    }
+
+    @media (max-width: 720px) {
+      body.qh-slide-active .qhs-header {
+        padding-right: 140px;
+      }
+
+      .qhs-click-mode-button {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header id="masthead" class="site-header">
+    <nav id="primary-navigation" class="site-navigation">
+      <div class="container">
+
+        <div class="navbar-header">
+          <a href="../index.html" class="site-title">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
+        </div><!-- /.navbar-header -->
+
+        <div class="collapse navbar-collapse" id="agency-navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="../index.html">Home</a></li>
+            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Qubit Physics<i
+                  class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+              <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                <li><a href="../SCQ_elementary_en/main.html">Superconducting Qubits (Elementary)</a></li>
+                <li><a href="../SCQ_advanced_en/main.html">Superconducting Qubits (Advanced)</a></li>
+                <li><a href="../SpQ_en/main.html">Semiconductor Spin Qubits</a></li>
+              </ul>
+            </li>
+            <!--<li class="active"><a href="../SCQ_elementary/main.html">科普介紹</a></li>-->
+            <li class="active"><a href="../QC_hardware_en/main.html">Hardware</a></li>
+            <li><a href="../QID_en/main.html">Quantum Industries</a></li>
+            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Workshop Note<i
+                  class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+              <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                <li><a href="../ASW2026_en/main.html">2026 Academia Sinica SCQC Winter Workshop</a></li>
+              </ul>
+            </li>
+            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Consultance<i
+                  class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+              <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                <li><a href="https://www.quantum-perspectives.com/About_en/main.html">Taiwan Market Outreach
+                    Services</a></li>
+                <li><a href="../About_en/main.html">About Us</a></li>
+              </ul>
+            </li>
+            <li><a href="../index.html">中文版</a></li>
+          </ul>
+        </div>
+
+      </div>
+    </nav><!-- /.site-navigation -->
+  </header><!-- /#mastheaed -->
+
+  <div id="hero" class="hero overlay subpage-hero blog-hero">
+    <div class="hero-content">
+      <div class="hero_2-text">
+        <h1>Superconducting Quantum Computer Architecture</h1>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+          <li class="breadcrumb-item"><a href="./main.html">PHYS598500</a></li>
+          <!--<li class="breadcrumb-item active">約瑟夫森節</li>-->
+        </ol>
+      </div><!-- /.hero-text -->
+    </div><!-- /.hero-content -->
+  </div><!-- /.hero -->
+
+  <main id="main" class="site-main">
+
+    <section class="site-section subpage-site-section section-blog">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-9">
+            <article class="blog-post">
+              <!--<img src="../assets/img/portfolio-1.jpg" class="img-res" alt="">-->
+              <div class="post-content">
+                <div id="qhs-article-content" class="course-theme"></div>
+              </div><!-- /.post-content -->
+            </article><!-- /.blog-post -->
+            <!--<div id="PostComments" class="post-comments">
+                            
+                            
+                            
+                        </div> /#PostComments -->
+            <!--<div class="respond">
+                            <h3>Post a Comment</h3>
+                            <form class="form-horizontal">
+                                <input class="form-control" type="text" placeholder="Your Name*" required>
+                                <input class="form-control" type="email" placeholder="Your Email" required>
+                                <textarea class="form-control form-control-comment" type="text" placeholder="Your Comment*" required></textarea>
+                                <button class="btn btn-green">Add a comment</button>
+                            </form>    
+                        </div> /.respond -->
+          
+                        <div id="prev-next-nav" class="text-center">
+                                    <a class="btn btn-gray" href="T2-2SA.html">← Previous</a> 
+                                </div>
+                    </div>
+          <aside class="col-md-3">
+                        <div class="sidebar">
+                            <div class="widget">
+                                <div id="lesson-list_2">
+                                <div class="lesson-link "><a href="main.html">QH-2026F v5 · 16-Week Overview</a></div>
+                                <div class="lesson-link "><a href="T2-outlook.html">T2 Outlook · From Artificial Atoms to Protected Qubits | QH-2026F v5</a></div>
+                                <div class="lesson-link "><a href="T2-2.html">Week 2 · Superconducting-Circuit Quantization and Transmon Design | QH-2026F v5</a></div>
+                                <div class="lesson-link "><a href="T2-2S.html">Week 2 Slides · Superconducting-Circuit Quantization and Transmon Design | QH-2026F v5</a></div>
+                                <div class="lesson-link "><a href="T2-3.html">Week 3 · Fluxonium: From Circuit Modification to Design Trade-offs | QH-2026F v5</a></div>
+                                <div class="lesson-link "><a href="T1-1SA.html">Week 1 Manual Slides · From Quantum Computing Models to Hardware Operations | QH-2026F v5</a></div>
+                                <div class="lesson-link "><a href="T2-2SA.html">Week 2 Manual Slides · Superconducting-Circuit Quantization and Transmon Design | QH-2026F v5</a></div>
+                                <div class="lesson-link active"><a href="T2-3SA.html">Week 3 Manual Slides · Fluxonium and Protected-Qubit Hamiltonian Engineering | QH-2026F v5</a></div>
+                                </div>
+                            </div>
+                        </div></aside>
+        </div>
+      </div>
+    </section><!-- /.section-portfolio -->
+
+  </main><!-- /#main -->
+
+  <footer id="colophon" class="site-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3 col-sm-4 col-xs-6">
+          <a href="../index.html" class="site-title">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
+          <p>Exploring the Quantum Technology Together.</p>
+        </div>
+        <div class="col-lg-offset-4 col-md-3 col-sm-4 col-md-offset-2 col-sm-offset-0 col-xs-6 ">
+          <p class="site-title">𝐾𝐸𝐸𝑃 𝐼𝑁 𝑇𝑂𝑈𝐶𝐻</p>
+          <ul class="list-unstyled contact-links">
+            <li><i class="fa fa-envelope" aria-hidden="true"></i><a href="mailto:info@insight-ihbar.com">info@insight-ihbar.com</a></li>
+            <!--<li><i class="fa fa-phone" aria-hidden="true"></i><a href="tel:+37400800000">+374 (00) 80 00 00 </a></li>
+                        <li><i class="fa fa-fax" aria-hidden="true"></i><a href="+37400900000">+374 (00) 90 00 00</a></li>
+                        <li><i class="fa-solid fa-location-dot"></i><p>Hsinchu 300, Taiwan (R.O.C.)</p></li>-->
+          </ul>
+        </div>
+        <!--<div class="clearfix visible-xs"></div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6">
+                    <h3>Featured links</h3>
+                    <ul class="list-unstyled">
+                        <li class="active"><a href="index_ch.html">Home</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="portfolio.html">Porfolio</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>-->
+      </div>
+    </div>
+    <div class="copyright">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-8">
+            <div class="social-links">
+              <!--<a class="twitter-bg" href="#"><i class="fab fa-twitter"></i></a>-->
+              <!--<<a class="facebook-bg" href="https://www.facebook.com/people/Quantum-Perspectives/61576446849628/"><i class="fab fa-facebook"></i></a>-->
+              <!--<a class="facebook-bg" href="https://www.facebook.com/people/%E9%87%8F%E5%AD%90%E9%81%A0%E8%A6%8BQuantum-Perspectives/61576883632888/"><i class="fab fa-facebook-f"></i></a>-->
+              <!--<a class="pinterest" href="#"><i class="fa-solid fa-microscope"></i></a>-->
+              <!--<a class="facebook-bg" href="https://www.facebook.com/people/Insight-hbar/61576811775374/"><i class="fab fa-facebook-f"></i></a>-->
+              <a class="linkedin-bg" href="https://www.linkedin.com/company/insight-ihbar"><i
+                  class="fab fa-linkedin"></i></a>
+            </div><!-- /.social-links -->
+          </div>
+          <div class="col-xs-4">
+            <div class="text-right">
+              <p><span style="font-size: 16px;">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</span></p>
+              <p>All Rights Reserved</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!-- /.copyright -->
+  </footer><!-- /#footer -->
+
+
+
+  <!-- Bootstrap core JavaScript
+    ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/bootstrap-select.min.js"></script>
+  <script src="../assets/js/jquery.slicknav.min.js"></script>
+  <script src="../assets/js/jquery.countTo.min.js"></script>
+  <script src="../assets/js/jquery.shuffle.min.js"></script>
+  <script src="../assets/js/script.js"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <!--
+    MANUAL SLIDE SOURCE — SLIDES ARE THE SINGLE SOURCE OF TRUTH
+
+    1. Each direct child <section data-manual-slide> is exactly one slide.
+    2. Reorder whole sections to reorder slides.
+    3. Move HTML between sections to merge or split slides; the browser never auto-splits them.
+    4. Each data-cover heading is inherited by the following slides until the next data-cover.
+    5. Question cover slides use data-article-hidden=true so Article keeps the original question heading only once.
+    6. data-slide-hidden and data-article-hidden can be used on slides or individual child elements.
+    7. Free Slide-only placement uses data-slide-position=absolute plus data-slide-left/top/width/height.
+    8. Article mode is generated from the same nested HTML, in the same order.
+    -->
+  <div id="qhs-manual-slides" hidden="hidden">
+    <section data-manual-slide data-cover>
+      <div style="text-align: center;" class="theme-header">
+        <p class="theme-label">PHYS598500 · Week 3 · T2</p>
+        <h2>Protected-Qubit Design through Hamiltonian Engineering</h2>
+        <h3>Selection Rules, Superinductors, and Fluxonium</h3>
+      </div>
+    </section>
+
+    <section data-manual-slide>
+      <div class="course-overview">
+        <h3>Weekly Focus</h3>
+        <p><strong>Course Duration:</strong> 120 minutes</p>
+        <p><strong>Core Question:</strong> How can we understand fluxonium through noise operators, matrix elements, and
+          symmetry, then generalize those principles into Hamiltonian engineering?</p>
+        <p><strong>Difficulty:</strong> Very high</p>
+        <p><strong>Prerequisites:</strong> W2 circuit quantization, Transmon energy scales, external flux, matrix
+          element</p>
+        <p><strong>Original Source Material:</strong> T2 modules 5, 6</p>
+        <h3>Learning Objectives</h3>
+        <ul>
+          <li>Use the noise operator, spectral density, and matrix element to determine whether a transition is allowed,
+            forbidden, or suppressed.</li>
+          <li>Distinguish a sweet spot, a selection rule, and matrix-element suppression while also checking
+            controllability.</li>
+          <li>Use the inductive energy added by a superinductor to explain the fluxonium potential, spectrum,
+            wavefunction, and flux dependence.</li>
+          <li>Evaluate Hamiltonian-engineered qubit architectures using four criteria: dephasing protection, relaxation
+            protection, controllability, and leakage suppression.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section data-manual-slide>
+      <div class="qh-supplement-divider" id="w3-question-map">
+        <h3>W3 <strong>Fluxonium and Protected-Qubit Hamiltonian Engineering: A Five-Question Throughline</strong></h3>
+        <p>5 Questions</p>
+        <ol>
+          <li>
+            <p>Under what conditions can an external perturbation cause a quantum transition?</p>
+          </li>
+          <li>
+            <p>What quantum-state structures can suppress noise transitions while preserving control transitions?</p>
+          </li>
+          <li>
+            <p>What does adding a superinductor contribute to the Hamiltonian of a Josephson circuit?</p>
+          </li>
+          <li>
+            <p>How does fluxonium use \(E_C,E_J,E_L\) and external flux to shape its wavefunctions and realize
+              protection conditions?</p>
+          </li>
+          <li>
+            <p>Hamiltonian engineering: how can we design the Hamiltonian of a new qubit starting from the error
+              operator we want to suppress?</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section data-manual-slide>
+      <div class="qh-section">
+        <h3>Introduction: From Transmon Parameter Optimization to Hamiltonian Engineering</h3>
+      </div>
+      <p>
+        Last week, the transmon showed how choosing \(E_J/E_C\) balances charge sensitivity against anharmonicity. But
+        reduced parameter sensitivity does not mean that every error transition disappears. This week asks a deeper
+        question: can we directly design the quantum states, coupling operators, and Hamiltonian terms so that the
+        environment has difficulty causing relaxation? And if the environment cannot readily drive a transition, will
+        that transition also become harder for us to control?
+      </p>
+      <p><strong>Driving question for this week:</strong> By combining a large inductance with a Josephson junction,
+        fluxonium creates a spectrum unlike the transmon's. Which transitions are protected, and which control or
+        readout operations become more difficult? How do we avoid mistaking a single coherence record for an overall
+        architectural advantage?</p>
+      <p><a class="btn btn-gray" href="T2-outlook.html">View the overall progression of the ten T2 questions</a></p>
+    </section>
+
+    <section data-manual-slide>
+      <table class="qh-session-plan">
+        <thead>
+          <tr>
+            <th>Time</th>
+            <th>Question</th>
+            <th>Outcome</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>0–10 min</td>
+            <td>W2 review and prerequisite diagnostic</td>
+            <td>Transmon trade-off → error-target design</td>
+          </tr>
+          <tr>
+            <td>10–30 min</td>
+            <td>Question 1: How noise causes a transition</td>
+            <td>operator × matrix element × spectrum</td>
+          </tr>
+          <tr>
+            <td>30–50 min</td>
+            <td>Question 2: Quantum states that are protected yet controllable</td>
+            <td>sweet spot/selection rule/suppression</td>
+          </tr>
+          <tr>
+            <td>50–70 min</td>
+            <td>Question 3: Adding a superinductor</td>
+            <td>circuit modification → Hamiltonian term</td>
+          </tr>
+          <tr>
+            <td>70–95 min</td>
+            <td>Question 4: Energy-scale and wavefunction engineering</td>
+            <td>\(E_C,E_J,E_L,\Phi_{\rm ext}\) → spectrum/matrix element</td>
+          </tr>
+          <tr>
+            <td>95–118 min</td>
+            <td>Question 5: Hamiltonian engineering</td>
+            <td>Four criteria, a reverse-design method, and three advanced directions</td>
+          </tr>
+          <tr>
+            <td>118–120 min</td>
+            <td>Exit ticket</td>
+            <td>Leave with an entry point for continued self-study</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section data-manual-slide>
+      <div class="qh-case">
+        <h4>0–10 min prerequisite diagnostic</h4>
+        <p>
+          First ask students, without consulting references, to draw on one page the flow of information from the
+          abstract model to the real hardware for this week's topic. Do not reveal the answer immediately; instead,
+          collect which layers students mistakenly equate. At the end of the class, have them redraw the diagram and use
+          the differences between the two versions to assess whether they have developed genuine cross-layer
+          understanding.
+        </p>
+      </div>
+    </section>
+
+    <section data-manual-slide data-cover data-article-hidden="true">
+      <div class="theme-header" data-article-hidden="true" style="text-align: center;">
+        <h2>Q1. When Can an External Perturbation Cause a Quantum Transition?</h2>
+        <h3>Coupling Operators, Matrix Elements, and Noise Spectra</h3>
+      </div>
+    </section>
+
+    <section data-manual-slide>
+      <div class="qh-section" id="w3-q1">
+        <h3>Question 1: Under what conditions can an external perturbation cause a quantum transition?</h3>
+      </div>
+      <span class="qh-time">10–30 minutes</span>
+      <p>
+        Do not begin by memorizing a transition-rate formula. Begin with the system, the environment, and their
+        coupling. The most general weak-coupling form is
+      </p>
+      <p>\[
+        \hat H_{\rm tot}
+        =\hat H_{\rm S}(\lambda_0)+\hat H_{\rm B}+\hat H_{\rm SB},
+        \qquad
+        \hat H_{\rm S}(\lambda_0)\ket n=E_n\ket n.
+        \]</p>
+      <p>
+        \(\hat H_{\rm S}\) determines the energy levels and eigenstates, while \(\hat H_{\rm B}\) describes the
+        environment. What actually determines whether the environment can change the qubit state is \(\hat H_{\rm SB}\).
+        If a circuit parameter experiences a small perturbation \(\lambda(t)=\lambda_0+\delta\lambda(t)\), expand the
+        Hamiltonian directly:
+      </p>
+      <p>\[
+        \begin{aligned}
+        \hat H_{\rm S}(\lambda_0+\delta\lambda)
+        &amp;\simeq \hat H_0
+        +\delta\lambda(t)
+        \left.\frac{\partial\hat H_{\rm S}}{\partial\lambda}\right|_{\lambda_0}
+        +O(\delta\lambda^2)\\
+        &amp;\equiv \hat H_0+F(t)\hat O.
+        \end{aligned}
+        \]</p>
+    </section>
+
+    <section data-manual-slide>
+      <p>
+        Thus \(F(t)\) is not merely an abstract “noise”; it is the actual fluctuation, while \(\hat
+        O=\partial_\lambda\hat H_{\rm S}\) is determined by the circuit Hamiltonian. If the environment is also
+        quantized, write \(\hat H_{\rm SB}=\sum_\alpha\hat O_\alpha\otimes\hat B_\alpha\); in a semiclassical noise
+        model, \(\hat B_\alpha\) is replaced by a stochastic function \(F_\alpha(t)\). Both descriptions retain the same
+        system-side coupling operator.
+      </p>
+      <h4>Step 1: Expand the coupling operator in the energy eigenbasis</h4>
+      <p>\[
+        \hat O=\sum_{m,n}O_{mn}\ket m\!\bra n,
+        \qquad O_{mn}=\langle m|\hat O|n\rangle.
+        \]</p>
+      <p>This immediately separates the same perturbation into two physical effects:</p>
+      <p>\[
+        \hat V(t)=F(t)
+        \left[
+        \underbrace{\sum_n O_{nn}\ket n\!\bra n}_{\text{diagonal: changes phase and transition frequency}}
+        +
+        \underbrace{\sum_{m\ne n}O_{mn}\ket m\!\bra n}_{\text{off-diagonal: changes population}}
+        \right].
+        \]</p>
+    </section>
+
+    <section data-manual-slide>
+      <ul>
+        <li><strong>Diagonal part: </strong> Each level receives a different instantaneous energy shift, accumulating a
+          random phase over time and causing dephasing.</li>
+        <li><strong>Off-diagonal part: </strong> Only if \(O_{fi}\neq0\) can the perturbation connect \(\ket i\) to
+          \(\ket f\) and cause excitation or relaxation.</li>
+      </ul>
+      <h4>Step 2: Derive the transition amplitude in the interaction picture</h4>
+      <p>
+        Define the Bohr frequency \(\omega_{mn}=(E_m-E_n)/\hbar\). In the interaction picture of \(\hat H_0\),
+      </p>
+      <p>\[
+        \hat V_I(t)=F(t)\sum_{m,n}O_{mn}e^{i\omega_{mn}t}\ket m\!\bra n.
+        \]</p>
+      <p>The interaction-picture Schrödinger equation and the first-order term of the Dyson expansion are</p>
+      <p>\[
+        i\hbar\frac{d}{dt}\ket{\psi_I(t)}=\hat V_I(t)\ket{\psi_I(t)},
+        \qquad
+        \hat U_I(t,0)\simeq
+        1-\frac{i}{\hbar}\int_0^t dt'\,\hat V_I(t').
+        \]</p>
+    </section>
+
+    <section data-manual-slide>
+      <p>If the system begins in \(\ket i\), projection onto \(\ket f\) gives the first-order \(i\to f\) amplitude:</p>
+      <p>\[
+        c_f^{(1)}(t)
+        =-\frac{i}{\hbar}O_{fi}
+        \int_0^t dt'\,F(t')e^{i\omega_{fi}t'}.
+        \]</p>
+      <p>The transition probability is therefore</p>
+      <p>\[
+        P_{i\to f}(t)
+        =\frac{|O_{fi}|^2}{\hbar^2}
+        \left|
+        \int_0^t dt'\,F(t')e^{i\omega_{fi}t'}
+        \right|^2.
+        \]</p>
+      <p>
+        This line already gives two necessary conditions. First, symmetry must not force \(O_{fi}\) to zero. Second,
+        \(F(t)\) must have a Fourier component near \(|\omega_{fi}|\). For a finite observation time, the resonance
+        width is approximately \(1/t\); strict energy conservation emerges only gradually in the long-time limit.
+      </p>
+      <h4>Step 3: Derive coherent-drive and stochastic-noise transitions from the same formula</h4>
+    </section>
+
+    <section data-manual-slide>
+      <p>
+        For an intentional drive, let \(F(t)=F_d\cos\omega_dt\). When \(\omega_d\simeq|\omega_{fi}|\) and the
+        rotating-wave approximation holds,
+      </p>
+      <p>\[
+        \Omega_{fi}=\frac{F_d|O_{fi}|}{\hbar},
+        \qquad
+        P_{i\to f}(t)=
+        \frac{\Omega_{fi}^2}{\Omega_{fi}^2+\Delta^2}
+        \sin^2\!\left(\frac{t}{2}\sqrt{\Omega_{fi}^2+\Delta^2}\right),
+        \quad \Delta=\omega_d-|\omega_{fi}|.
+        \]</p>
+      <p>
+        This shows that the strength of a control transition is set by the drive-operator matrix element. For stationary
+        random noise, define the correlation function and two-sided spectral density:
+      </p>
+      <p>\[
+        C_F(\tau)=\langle F(\tau)F(0)\rangle,
+        \qquad
+        S_F(\omega)=\int_{-\infty}^{\infty}d\tau\,
+        e^{i\omega\tau}C_F(\tau).
+        \]</p>
+      <p>Ensemble-averaging the amplitude gives</p>
+      <p>\[
+        \begin{aligned}
+        \big\langle P_{i\to f}(t)\big\rangle
+        &amp;=\frac{|O_{fi}|^2}{\hbar^2}
+        \int_0^t dt_1\int_0^t dt_2\,
+        e^{i\omega_{fi}(t_1-t_2)}C_F(t_2-t_1)\\
+        &amp;\xrightarrow[t\gg\tau_c]{}
+        t\,\frac{|O_{fi}|^2}{\hbar^2}S_F(\omega_{if}),
+        \qquad \omega_{if}=\frac{E_i-E_f}{\hbar}.
+        \end{aligned}
+        \]</p>
+    </section>
+
+    <section data-manual-slide>
+      <p>The Fermi-golden-rule transition rate is therefore</p>
+      <p>\[
+        \boxed{
+        \Gamma_{i\to f}
+        =\frac{1}{\hbar^2}
+        \left|\langle f|\hat O|i\rangle\right|^2
+        S_F(\omega_{if})}.
+        \]</p>
+      <p>
+        This result assumes weak coupling, a stationary bath, \(t\) longer than the bath correlation time, and
+        negligible higher-order back-action. If a text absorbs \(2\pi\), \(\hbar\), or the density of states into the
+        definition of spectral density, the prefactor may instead appear in forms such as \(2\pi/\hbar\). Always compare
+        the definition of \(S_F\) before comparing the visual form of equations.
+      </p>
+      <h4>Step 4: Obtain \(T_1\) from the upward and downward rates</h4>
+      <p>Let \(\omega_{01}=(E_1-E_0)/\hbar&gt;0\). The same noise channel gives</p>
+      <p>\[
+        \Gamma_\downarrow
+        =\frac{|O_{01}|^2}{\hbar^2}S_F(+\omega_{01}),
+        \qquad
+        \Gamma_\uparrow
+        =\frac{|O_{01}|^2}{\hbar^2}S_F(-\omega_{01}),
+        \qquad
+        \frac{1}{T_1}=\Gamma_\downarrow+\Gamma_\uparrow.
+        \]</p>
+    </section>
+
+    <section data-manual-slide>
+      <p>
+        For a thermal bath, detailed balance gives \(S_F(-\omega)=e^{-\hbar\omega/k_BT}S_F(+\omega)\). At low
+        temperature, usually \(\Gamma_\uparrow\ll\Gamma_\downarrow\), but upward transitions and thermal population
+        cannot be neglected for a low-frequency qubit or a high effective environmental temperature. For multiple
+        uncorrelated channels, the total rate is the sum of the channel rates; correlated channels require the
+        cross-spectral density \(S_{\alpha\beta}(\omega)\). These upward and downward rates use the unsymmetrized
+        quantum-noise spectrum. A symmetrized spectrum loses the direction of energy flow and cannot distinguish the two
+        on its own.
+      </p>
+      <h4>Step 5: Return to diagonal coupling and derive dephasing and the sweet spot</h4>
+      <p>The diagonal part does not directly exchange population; it changes the energy difference between the two
+        levels:</p>
+      <p>\[
+        \delta\omega_{01}(t)
+        =\frac{F(t)}{\hbar}\bigl(O_{11}-O_{00}\bigr),
+        \qquad
+        \delta\phi(t)=\int_0^t dt'\,\delta\omega_{01}(t').
+        \]</p>
+    </section>
+
+    <section data-manual-slide>
+      <p>
+        If \(F(t)=\delta\lambda(t)\) and \(\hat O=\partial_\lambda\hat H_0\), the Hellmann–Feynman theorem directly
+        connects the diagonal matrix element to frequency sensitivity:
+      </p>
+      <p>\[
+        O_{nn}=\left\langle n\left|\frac{\partial\hat H_0}{\partial\lambda}\right|n\right\rangle
+        =\frac{\partial E_n}{\partial\lambda},
+        \qquad
+        \frac{O_{11}-O_{00}}{\hbar}
+        =\frac{\partial\omega_{01}}{\partial\lambda}.
+        \]</p>
+      <p>Therefore,</p>
+      <p>\[
+        \delta\omega_{01}(t)
+        \simeq
+        \frac{\partial\omega_{01}}{\partial\lambda}\delta\lambda(t)
+        +\frac12\frac{\partial^2\omega_{01}}{\partial\lambda^2}\delta\lambda^2(t)+\cdots.
+        \]</p>
+      <p>
+        A sweet spot \(\partial_\lambda\omega_{01}=0\) eliminates only first-order frequency fluctuations. Second-order
+        sensitivity, other noise parameters, and finite-frequency relaxation remain. Dephasing measured by Ramsey, echo,
+        or dynamical-decoupling sequences is the low-frequency \(S_\lambda(\omega)\) weighted by the corresponding
+        filter function.
+      </p>
+    </section>
+
+    <section data-manual-slide>
+      <h4>Step 6: Map the abstract \(F(t)\hat O\) back onto a superconducting circuit</h4>
+      <p>Consider a Hamiltonian containing charging, Josephson, and inductive energies:</p>
+      <p>\[
+        \hat H_0
+        =4E_C(\hat n-n_g)^2
+        -E_J\cos\hat\varphi
+        +\frac12E_L(\hat\varphi-\varphi_{\rm ext})^2.
+        \]</p>
+      <p>A small parameter fluctuation does not require guessing an extra operator; differentiate directly:</p>
+      <p>\[
+        \delta\hat H(t)
+        \simeq
+        \delta n_g(t)\underbrace{\big[-8E_C(\hat n-n_g)\big]}_{\hat O_{n_g}}
+        +\delta\varphi_{\rm ext}(t)
+        \underbrace{\big[-E_L(\hat\varphi-\varphi_{\rm ext})\big]}_{\hat O_{\Phi}}
+        +\delta E_J(t)\underbrace{\big[-\cos\hat\varphi\big]}_{\hat O_{E_J}}.
+        \]</p>
+      <p>
+        If the physical flux \(\Phi_{\rm ext}\) is used, multiply additionally by \(\partial\varphi_{\rm
+        ext}/\partial\Phi_{\rm ext}=2\pi/\Phi_0\). Likewise, a capacitive microwave drive usually couples through \(\hat
+        n\). The diagonal sensitivity and off-diagonal matrix element must therefore be computed separately for
+        different operators using the same set of eigenstates.
+      </p>
+    </section>
+
+    <section data-manual-slide>
+      <h4>Charge-like noise: \(\hat n\) and offset charge</h4>
+      <p>Charge noise can arise from oxide defects, two-level systems (TLSs), or gate-voltage fluctuations and couples
+        to the Cooper-pair number:</p>
+      <p>\[
+        \hat V_{\rm charge}(t)
+        =-8E_C\,\delta n_g(t)(\hat n-n_g)
+        \simeq-8E_C\,\delta n_g(t)\hat n,
+        \qquad
+        \delta n_g=\frac{C_g\delta V_g}{2e}.
+        \]</p>
+      <p>
+        Low-frequency charge noise often has \(1/f\) behavior. After increasing \(E_J/E_C\) in a transmon, what is
+        exponentially suppressed is the charge dispersion—the dependence of energy on offset charge \(n_g\). This is a
+        flattening of frequency sensitivity and must not be equated with exponential suppression of \(\langle0|\hat
+        n|1\rangle\).
+      </p>
+      <h4>Flux-like noise: low-frequency dephasing and finite-frequency transitions must be separated</h4>
+      <p>Flux noise can arise from a surface-spin bath. Its low-frequency component primarily causes dephasing through
+        frequency sensitivity:</p>
+    </section>
+
+    <section data-manual-slide>
+      <p>\[
+        \text{dephasing weight}
+        \propto
+        \left(\frac{\partial\omega_{01}}{\partial\Phi_{\rm ext}}\right)^2
+        S_\Phi(\omega\approx0).
+        \]</p>
+      <p>Noise in the same flux channel near \(\omega_{01}\) instead causes transitions through the off-diagonal matrix
+        element:</p>
+      <p>\[
+        \Gamma_{1\to0}^{(\Phi)}
+        =\frac{1}{\hbar^2}
+        \left|
+        \left\langle0\left|
+        \frac{\partial\hat H_0}{\partial\Phi_{\rm ext}}
+        \right|1\right\rangle
+        \right|^2
+        S_\Phi(+\omega_{01}).
+        \]</p>
+      <p>
+        A sweet spot and relaxation protection are therefore not the same statement. The former controls diagonal
+        sensitivity; the latter also requires examining the finite-frequency spectrum and off-diagonal matrix element.
+      </p>
+      <h4>Complete decision chain</h4>
+      <p>Under the weak-coupling, Markovian exponential-decay approximation, the full derivation can be compressed to:
+      </p>
+    </section>
+
+    <section data-manual-slide>
+      <p>\[
+        \boxed{
+        \text{circuit and bias}
+        \Rightarrow \hat H_0(\lambda)
+        \Rightarrow \{E_n,\ket n\}
+        \Rightarrow \hat O_\lambda=\partial_\lambda\hat H_0
+        \Rightarrow
+        \begin{cases}
+        O_{nn}\ \text{and}\ S_\lambda(0) &amp;\Rightarrow T_\phi,\\
+        O_{mn}\ \text{and}\ S_\lambda(\omega_{nm}) &amp;\Rightarrow T_1\ \text{and excitation},
+        \end{cases}
+        \Rightarrow T_2^{-1}=(2T_1)^{-1}+T_\phi^{-1}.}
+        \]</p>
+      <p>
+        For an external perturbation to cause a particular transition, three conditions must hold simultaneously: the
+        environment must couple through a definite \(\hat O\); \(\langle f|\hat O|i\rangle\neq0\); and \(S_F\) must have
+        spectral weight at the required Bohr frequency. “Allowed” means only that symmetry does not forbid the
+        transition, not that it is necessarily strong. “Forbidden” means exactly zero; “suppressed” means nonzero but
+        small. Coherence comparisons must also go beyond a single \(T_1\): matrix-element suppression and reduced
+        environmental spectral density have different implications for device scaling.
+      </p>
+      <div class="qh-answer">
+        <p><strong>Conclusion to Question 1:</strong> Decoherence cannot be attributed merely to “a noisy environment.”
+          A complete answer must begin from \(\hat H_0\) and identify the fluctuating parameter; the coupling operator
+          derived from \(\partial_\lambda\hat H_0\); the eigenstates; the diagonal and off-diagonal matrix elements; and
+          the relevant frequency in \(S_F(0)\) or \(S_F(\omega_{01})\).</p>
+      </div>
+    </section>
+
+    <section data-manual-slide data-cover data-article-hidden="true">
+      <div class="theme-header" data-article-hidden="true" style="text-align: center;">
+        <h2>Q2. How Can We Suppress Noise Transitions While Preserving Control?</h2>
+        <h3>Selection Rules, Wavefunction Overlap, and Controllability</h3>
+      </div>
+    </section>
+
+    <section data-manual-slide>
+      <div class="qh-section" id="w3-q2">
+        <h3>Question 2: What quantum-state structures can suppress noise transitions while preserving control
+          transitions?</h3>
+      </div>
+      <span class="qh-time">30–50 minutes</span>
+      <p>
+        Question 1 identified two multiplicative factors in a transition: the environmental spectrum and the system
+        matrix element. In Question 2, assume that the environment cannot be eliminated entirely and ask instead whether
+        the wavefunctions, symmetry, and logical encoding of \(\ket0,\ket1\) can be designed so that the dominant noise
+        operator barely sees the logical transition while another controllable operator remains effective.
+      </p>
+      <p>Environment-induced relaxation and intentional control have the same mathematical skeleton:</p>
+      <p>\[
+        \hat V_{\rm noise}(t)=\hat O_{\rm noise}F_{\rm noise}(t),
+        \qquad
+        \Gamma_\downarrow=
+        \frac{1}{\hbar^2}
+        \left|\langle0|\hat O_{\rm noise}|1\rangle\right|^2
+        S_{\rm noise}(+\omega_{01}),
+        \]</p>
+    </section>
+
+    <section data-manual-slide>
+      <p>\[
+        \hat V_{\rm drive}(t)=\hat O_{\rm drive}A\cos\omega_dt,
+        \qquad
+        \Omega_R=\frac{A}{\hbar}
+        \left|\langle0|\hat O_{\rm drive}|1\rangle\right|.
+        \]</p>
+      <p>
+        The difference between these expressions is not that “noise is bad and drive is good,” but whether they couple
+        through the same physical port and operator. If \(\hat O_{\rm noise}=\hat O_{\rm drive}\), reducing the qubit
+        matrix element simultaneously lengthens \(T_1\) and lowers the Rabi rate. Only when the two have different
+        symmetry, spatial profiles, or frequency dependence can coupling be weak to the environment yet strong to
+        control.
+      </p>
+      <h4>Step 1: Project every operator into the logical subspace</h4>
+      <p>Define the logical projector</p>
+      <p>\[
+        \hat P_{\rm L}=\ket0\!\bra0+\ket1\!\bra1.
+        \]</p>
+      <p>Any Hermitian operator can be decomposed in the logical subspace as</p>
+    </section>
+
+    <section data-manual-slide>
+      <p>\[
+        \hat P_{\rm L}\hat O\hat P_{\rm L}
+        =\bar O\,\hat I
+        +\frac{O_{11}-O_{00}}{2}\hat\sigma_z
+        +\operatorname{Re}O_{01}\,\hat\sigma_x
+        -\operatorname{Im}O_{01}\,\hat\sigma_y,
+        \qquad
+        \bar O=\frac{O_{00}+O_{11}}{2}.
+        \]</p>
+      <p>The physical requirements for state protection can therefore be read directly as:</p>
+      <ul>
+        <li><strong>The environment has difficulty distinguishing the logical states:</strong>\(O_{11}^{\rm
+          noise}-O_{00}^{\rm noise}\approx0\), reducing first-order dephasing.</li>
+        <li><strong>The environment has difficulty exchanging logical population:</strong>\(O_{01}^{\rm
+          noise}\approx0\), reducing relaxation and excitation.</li>
+        <li><strong>Intentional control is not the identity:</strong>\(O_{01}^{\rm drive}\neq0\), preserving transverse
+          control; when logical \(Z\) control is needed, the drive's diagonal difference must also be tunable.</li>
+      </ul>
+      <p>The ideal case can be summarized as</p>
+    </section>
+
+    <section data-manual-slide>
+      <p>\[
+        \boxed{
+        \hat P_{\rm L}\hat O_{\rm noise}\hat P_{\rm L}
+        \simeq c\hat I,
+        \qquad
+        \left|\langle0|\hat O_{\rm drive}|1\rangle\right|
+        \neq0.}
+        \]</p>
+      <p>
+        This condition must be applied separately to every dominant noise channel. Holding for charge noise does not
+        imply that it also holds for flux, critical-current, dielectric-loss, or quasiparticle channels.
+      </p>
+      <h4>Step 2: How does exact symmetry produce a selection rule?</h4>
+      <p>
+        Suppose a parity-type unitary symmetry \(\hat{\mathcal P}\) exists and satisfies \(\hat{\mathcal P}^2=\hat I\)
+        and \([\hat H_0,\hat{\mathcal P}]=0\). The energy eigenstates can be chosen simultaneously as symmetry
+        eigenstates:
+      </p>
+      <p>\[
+        \hat{\mathcal P}\ket n=p_n\ket n,
+        \qquad p_n=\pm1.
+        \]</p>
+      <p>If the coupling operator has parity \(\eta_O=\pm1\) under this symmetry,</p>
+      <p>\[
+        \hat{\mathcal P}\hat O\hat{\mathcal P}^{\dagger}=\eta_O\hat O,
+        \]</p>
+    </section>
+
+    <section data-manual-slide>
+      <p>then the matrix element must satisfy</p>
+      <p>\[
+        \begin{aligned}
+        O_{mn}
+        &amp;=\langle m|\hat O|n\rangle\\
+        &amp;=\langle m|\hat{\mathcal P}^{\dagger}
+        (\hat{\mathcal P}\hat O\hat{\mathcal P}^{\dagger})
+        \hat{\mathcal P}|n\rangle\\
+        &amp;=p_mp_n\eta_O\,O_{mn}.
+        \end{aligned}
+        \]</p>
+      <p>Therefore,</p>
+      <p>\[
+        \boxed{p_mp_n\eta_O=-1\quad\Longrightarrow\quad O_{mn}=0.}
+        \]</p>
+      <ul>
+        <li>If \(\ket m,\ket n\) have opposite parity, an even operator has a zero matrix element while an odd operator
+          can connect the states.</li>
+        <li>If the two states have the same parity, an odd operator has a zero matrix element while an even operator may
+          connect them.</li>
+        <li>“May” means only that symmetry does not force the matrix element to zero; its actual magnitude still depends
+          on the wavefunctions.</li>
+      </ul>
+    </section>
+
+    <section data-manual-slide>
+      <p>
+        This is the first way to separate noise from control: give \(\hat O_{\rm noise}\) a forbidden parity and \(\hat
+        O_{\rm drive}\) an allowed parity. In the symmetric half-flux fluxonium potential, states have definite parity.
+        Note carefully, however, that \(\hat n\) and the phase operator relative to the symmetry center are both odd
+        operators, so the \(0\leftrightarrow1\) transition between states of opposite parity is parity-allowed. If that
+        matrix element is small, the physical origin is wavefunction or tunneling suppression; it must not be mislabeled
+        parity-forbidden.
+      </p>
+      <h4>Step 3: How does a symmetry-breaking perturbation open an exact selection rule?</h4>
+      <p>If the real device contains a small symmetry-breaking term,</p>
+      <p>\[
+        \hat H=\hat H_0+\epsilon\hat W,
+        \qquad [\hat W,\hat{\mathcal P}]\neq0,
+        \]</p>
+      <p>first-order perturbation theory gives</p>
+      <p>\[
+        \ket{\widetilde n}
+        \simeq\ket n+\epsilon\sum_{k\neq n}
+        \frac{\langle k|\hat W|n\rangle}{E_n-E_k}\ket k.
+        \]</p>
+    </section>
+
+    <section data-manual-slide>
+      <p>
+        A \(\langle0|\hat O|1\rangle\) that was exactly zero becomes \(O(\epsilon)\) through opposite-symmetry
+        admixture, and the corresponding transition rate generally begins at \(O(\epsilon^2)\) because it depends on the
+        squared matrix element. Thus, a claim of “symmetry protection” must also specify how flux detuning, junction
+        mismatch, stray capacitance, offset charge, or control-line asymmetry breaks the symmetry; showing only the
+        ideal Hamiltonian is insufficient.
+      </p>
+      <h4>Step 4: Wavefunction-overlap suppression is not the same as an exact zero</h4>
+      <p>In the representation of generalized coordinate \(x\),</p>
+      <p>\[
+        O_{01}=\langle0|\hat O|1\rangle
+        =\int dx\,\psi_0^*(x)\,\hat O(x,-i\partial_x)\,\psi_1(x).
+        \]</p>
+    </section>
+
+    <section data-manual-slide>
+      <p>
+        If logical wavefunctions are localized in different wells or regions, or have nearly disjoint support in a
+        multidimensional configuration space, the integral for certain local or smooth operators can be extremely small.
+        This suppression may scale exponentially with the barrier action, effective mass, or an energy-scale ratio, but
+        it is usually not exactly zero: finite tunneling, disorder, mode mixing, and the derivative structure of the
+        operator can all leave a residual matrix element.
+      </p>
+      <p>
+        The two statements must therefore be kept separate:<strong>selection-rule forbidden</strong> A zero obtained
+        from symmetry algebra;
+        <strong>overlap suppressed</strong> A small value obtained from an explicit eigenfunction integral. The former
+        is governed primarily by symmetry-breaking perturbations; the latter by parameter scaling and fabrication
+        variation.
+      </p>
+      <p>
+        A multi-degree-of-freedom or encoded-state structure can also make a dominant fluctuation act in common mode, so
+        that \(\hat P_{\rm L}(\sum_j c_j\hat O_j)\hat P_{\rm L}\simeq c\hat I\). This protects only the specified
+        collective channel; local disorder or differential noise that projects onto \(\sigma_z\) or \(\sigma_{x,y}\)
+        still causes decoherence.
+      </p>
+      <h4>Step 5: A sweet spot is diagonal protection, not a transition selection rule</h4>
+    </section>
+
+    <section data-manual-slide>
+      <p>For parameter noise \(\lambda\), the Hellmann–Feynman relation from Question 1 gives</p>
+      <p>\[
+        \frac{\partial\omega_{01}}{\partial\lambda}
+        =\frac{1}{\hbar}
+        \left(
+        \left\langle1\left|\frac{\partial\hat H_0}{\partial\lambda}\right|1\right\rangle
+        -
+        \left\langle0\left|\frac{\partial\hat H_0}{\partial\lambda}\right|0\right\rangle
+        \right).
+        \]</p>
+      <p>
+        A sweet spot \(\partial_\lambda\omega_{01}=0\) means that the two logical states have the same first-order
+        diagonal response to that fluctuation, making them harder for the environment to distinguish through a frequency
+        shift. It does not require \(\langle0|\partial_\lambda\hat H_0|1\rangle=0\) and therefore does not automatically
+        imply a longer \(T_1\). Conversely, a small off-diagonal matrix element does not guarantee that
+        \(O_{11}-O_{00}\) is small.
+      </p>
+      <p>Three forms of protection must therefore be distinguished:</p>
+    </section>
+
+    <section data-manual-slide>
+      <ol>
+        <li><strong>Sweet-spot protection: </strong>\(\partial\omega_{01}/\partial\lambda=0\), primarily reducing
+          dephasing caused by low-frequency parameter fluctuations.</li>
+        <li><strong>Selection-rule protection: </strong> Exact symmetry and operator parity force a particular matrix
+          element to be exactly zero.</li>
+        <li><strong>Matrix-element suppression: </strong> The transition is not forbidden by symmetry but is suppressed
+          by wavefunction localization or small overlap.</li>
+      </ol>
+      <h4>Step 6: When the direct transition is too weak, what control paths remain?</h4>
+      <p>
+        Preserving controllability does not require making the protected \(0\leftrightarrow1\) transition strong. Common
+        methods include:
+      </p>
+    </section>
+
+    <section data-manual-slide>
+      <ol>
+        <li><strong>Use a different operator or port:</strong> For example, dominant loss may couple through a
+          charge-like operator while control uses a flux-like operator, or vice versa, exploiting operator parity.</li>
+        <li><strong>Use an auxiliary level:</strong> Make \(0\leftrightarrow a\) and \(1\leftrightarrow a\) allowed
+          transitions, then implement a logical rotation with a two-tone or Raman process.</li>
+        <li><strong>Temporarily break the protection:</strong> Remain at the protected point while idle; during a gate,
+          apply a bias or parametric modulation that temporarily mixes the states, then return to the protected
+          Hamiltonian after the pulse.</li>
+        <li><strong>Read out through virtual transitions:</strong> Even when \(O_{01}\) is very small, the differing
+          virtual couplings from \(\ket0\) and \(\ket1\) to higher states can still produce dispersive contrast.</li>
+      </ol>
+      <p>For a detuned auxiliary state \(\ket a\), eliminating \(\ket a\) gives an effective Raman coupling of the form
+      </p>
+      <p>\[
+        \Omega_{\rm eff}\sim
+        \frac{\Omega_{0a}\Omega_{a1}}{2\Delta_a},
+        \]</p>
+    </section>
+
+    <section data-manual-slide>
+      <p>
+        The costs include auxiliary-state population, AC Stark shifts, additional decay paths, and calibration
+        complexity. Temporarily breaking symmetry is not free either: a control pulse may also open a previously
+        forbidden noise channel.
+      </p>
+      <p>Dispersive readout can likewise use virtual transitions through higher states without requiring a strong direct
+        qubit transition. Under the rotating-wave and dispersive approximations, it can be represented schematically as
+      </p>
+      <p>\[
+        \chi_j\simeq
+        \sum_{k<j}\frac{|g_{kj}|^2}{\omega_{jk}-\omega_r} -\sum_{k>j}\frac{|g_{jk}|^2}{\omega_{kj}-\omega_r},
+          \qquad
+          \chi=\chi_1-\chi_0,
+          \qquad
+          \omega_{ab}=\frac{E_a-E_b}{\hbar}&gt;0\ \text{for }a&gt;b.
+          \]</j}\frac{|g_{kj}|^2}{\omega_{jk}-\omega_r}></p>
+      <p>
+        This route still requires checking the critical photon number, Purcell decay, near-resonant higher transitions,
+        and measurement-induced leakage.
+      </p>
+    </section>
+
+    <section data-manual-slide>
+      <table class="qh-session-plan">
+        <thead>
+          <tr>
+            <th>Noise channel</th>
+            <th>Primary transmon strategy</th>
+            <th>Strategies available to fluxonium</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Charge noise</td>
+            <td>Large \(E_J/E_C\) suppresses charge dispersion of the energy with respect to \(n_g\)</td>
+            <td>A multiwell wavefunction structure can modify the \(\hat n\) matrix element</td>
+          </tr>
+          <tr>
+            <td>Flux noise</td>
+            <td>A fixed-frequency design does not directly use flux bias; a tunable design requires a separate
+              sweet-spot analysis</td>
+            <td>The half-flux sweet spot makes \(\partial\omega_{01}/\partial\Phi=0\)</td>
+          </tr>
+          <tr>
+            <td>Even-operator perturbation</td>
+            <td>Determined by the specific symmetry</td>
+            <td>Half-flux parity can strictly forbid certain transitions</td>
+          </tr>
+          <tr>
+            <td>Protection nature</td>
+            <td>Parameter-regime and energy-dispersion engineering</td>
+            <td>Symmetry, sweet spots, and wavefunction engineering</td>
+          </tr>
+          <tr>
+            <td>Control operator</td>
+            <td>Usually controlled directly through a capacitive \(\hat n\) drive on \(0\leftrightarrow1\)</td>
+            <td>Choose charge drive, flux drive, or a higher transition according to the matrix-element hierarchy</td>
+          </tr>
+          <tr>
+            <td>Leakage</td>
+            <td>Weaker anharmonicity constrains drive bandwidth</td>
+            <td>Stronger anharmonicity helps, but every transition in the rich multilevel spectrum must still be checked
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section data-manual-slide>
+      <h4>Step 7: A stronger drive cannot conceal every controllability problem</h4>
+      <p>
+        If \(O_{01}^{\rm drive}\) is very small, increasing amplitude \(A\) can indeed restore \(\Omega_R\), but the
+        same pulse also couples to \(\ket{k\ge2}\). Define the closest leakage detuning from the drive:
+      </p>
+      <p>\[
+        \Delta_{\rm leakage}
+        =\min_{i\in\{0,1\},\,k\ge2}
+        \left|\omega_{ki}-\omega_d\right|.
+        \]</p>
+      <p>For an off-resonant leakage channel, the lowest-order estimate is</p>
+      <p>\[
+        P_{\rm leakage}
+        \sim
+        \sum_{i\in\{0,1\},\,k\ge2}
+        \left|
+        \frac{A\langle k|\hat O_{\rm drive}|i\rangle}
+        {\hbar(\omega_{ki}-\omega_d)}
+        \right|^2.
+        \]</p>
+      <p>
+        A useful state structure must therefore do more than make \(O_{01}^{\rm noise}\) small: it must create a
+        sufficiently large hierarchy between the desired drive matrix element and undesired leakage matrix elements.
+        Direct resonant control generally requires \(\Omega_R\ll\Delta_{\rm leakage}\); an actual gate must also account
+        for the pulse spectrum, AC Stark shift, counter-rotating terms, and calibration error.
+      </p>
+    </section>
+
+    <section data-manual-slide>
+      <h4>Complete design-check sequence</h4>
+      <ol>
+        <li>Specify the logical states \(\ket0,\ket1\) and every dominant \(\hat O_{\rm noise}^{(\alpha)}\).</li>
+        <li>Compute each projected operator: \(O_{11}-O_{00}\) and \(O_{01}\), evaluating dephasing and transition
+          protection separately.</li>
+        <li>State whether a small matrix element comes from exact symmetry, wavefunction overlap, or merely a smaller
+          environmental \(S(\omega)\).</li>
+        <li>Add realistic asymmetry and determine how a forbidden matrix element scales with mismatch or bias error.
+        </li>
+        <li>Choose \(\hat O_{\rm drive}\) and either a direct or auxiliary transition, then calculate the Rabi rate.
+        </li>
+        <li>List every nearby transition and check leakage, readout, reset, and thermalization—not only idle coherence.
+        </li>
+      </ol>
+    </section>
+
+    <section data-manual-slide>
+      <div class="qh-answer">
+        <p><strong>Conclusion to Question 2:</strong> An ideal state structure makes the dominant noise operator
+          approximately the identity in the logical subspace while retaining a transverse component in a selectable
+          drive operator. An implementation must jointly verify the origin of symmetry or overlap, sensitivity to
+          symmetry breaking, Rabi rate, auxiliary paths, and leakage. Protection is operator-specific state engineering,
+          not the elimination of all coupling.</p>
+      </div>
+    </section>
+
+    <section data-manual-slide data-cover data-article-hidden="true">
+      <div class="theme-header" data-article-hidden="true" style="text-align: center;">
+        <h2>Q3. What Does a Superinductor Add to the Hamiltonian?</h2>
+        <h3>Inductive Energy and the Fluxonium Circuit</h3>
+      </div>
+    </section>
+
+    <section data-manual-slide>
+      <div class="qh-section" id="w3-q3">
+        <h3>Question 3: What does adding a superinductor contribute to the Hamiltonian of a Josephson circuit?</h3>
+      </div>
+      <span class="qh-time">50–70 minutes</span>
+      <h4>Why not simply continue adjusting the transmon's \(E_J/E_C\)?</h4>
+      <p>
+        Fluxonium can be viewed as a rearrangement of charge- and flux-qubit design. It does not merely substitute a
+        different set of numbers into the transmon Hamiltonian; it adds a very large inductance, creating new global
+        confinement, flux dependence, and a multiwell potential landscape. Compared with the transmon, fluxonium
+        commonly has a lower computational frequency, greater anharmonicity, and a longer relaxation time at selected
+        operating points.
+      </p>
+      <h4>The three principal elements of fluxonium</h4>
+    </section>
+
+    <section data-manual-slide>
+      <ul>
+        <li><strong>Josephson junction: </strong> Provides the nonlinear cosine potential and \(E_J\).</li>
+        <li><strong>Capacitor: </strong> Provides the charging energy \(E_C\).</li>
+        <li><strong>Superinductor: </strong> Provides the small inductive energy \(E_L\) and phase confinement.</li>
+      </ul>
+      <p>
+        A superinductor must combine very large inductance, low loss, and low parasitic capacitance. It may be
+        implemented with a Josephson-junction array, a high-kinetic-inductance material, or another high-impedance
+        structure. These implementations also introduce array modes, process variation, and parasitic coupling.
+      </p>
+      <h4>Step 1: Write the three circuit-element energies using branch flux</h4>
+      <p>
+        Choose the branch flux across the small junction as the generalized coordinate:
+      </p>
+      <p>\[
+        \Phi(t)=\int^t V(t')dt',
+        \qquad
+        \varphi=\frac{2\pi\Phi}{\Phi_0},
+        \qquad
+        \varphi_{\rm ext}=\frac{2\pi\Phi_{\rm ext}}{\Phi_0}.
+        \]</p>
+    </section>
+
+    <section data-manual-slide>
+      <p>The capacitor, Josephson junction, and linear inductor respectively contribute</p>
+      <p>\[
+        T_C=\frac12C_\Sigma\dot\Phi^2,
+        \qquad
+        U_J=-E_J\cos\varphi,
+        \qquad
+        U_L=\frac{(\Phi-\Phi_{\rm ext})^2}{2L}.
+        \]</p>
+      <p>
+        The location of external flux in this expression depends on the gauge and coordinate choice. The physical
+        content is that the fluxoid constraint makes the small-junction phase, superinductor phase, and external flux
+        mutually dependent.
+      </p>
+      <h4>Step 2: Perform a Legendre transform on the Lagrangian</h4>
+      <p>The Lagrangian is kinetic energy minus potential energy:</p>
+      <p>\[
+        \mathcal L
+        =\frac12C_\Sigma\dot\Phi^2
+        +E_J\cos\!\left(\frac{2\pi\Phi}{\Phi_0}\right)
+        -\frac{(\Phi-\Phi_{\rm ext})^2}{2L}.
+        \]</p>
+      <p>The canonical charge conjugate to \(\Phi\) is</p>
+    </section>
+
+    <section data-manual-slide>
+      <p>\[
+        Q=\frac{\partial\mathcal L}{\partial\dot\Phi}
+        =C_\Sigma\dot\Phi,
+        \qquad
+        n=\frac{Q}{2e},
+        \qquad
+        [\hat\Phi,\hat Q]=i\hbar
+        \Longleftrightarrow
+        [\hat\varphi,\hat n]=i.
+        \]</p>
+      <p>Perform the Legendre transform:</p>
+      <p>\[
+        \begin{aligned}
+        \hat H
+        &amp;=\hat Q\dot{\hat\Phi}-\mathcal L\\
+        &amp;=\frac{\hat Q^2}{2C_\Sigma}
+        -E_J\cos\hat\varphi
+        +\frac{(\hat\Phi-\Phi_{\rm ext})^2}{2L}\\
+        &amp;=4E_C\hat n^2
+        -E_J\cos\hat\varphi
+        +\frac12E_L(\hat\varphi-\varphi_{\rm ext})^2,
+        \end{aligned}
+        \]</p>
+      <p>where</p>
+      <p>\[
+        E_C=\frac{e^2}{2C_\Sigma},
+        \qquad
+        E_L=\frac{1}{L}\left(\frac{\Phi_0}{2\pi}\right)^2.
+        \]</p>
+    </section>
+
+    <section data-manual-slide>
+      <p>
+        The most direct answer to Question 3 is therefore:<strong>A superinductor adds a quadratic inductive-energy
+          term</strong>
+        \(\tfrac12E_L(\hat\varphi-\varphi_{\rm ext})^2\). More importantly and counterintuitively, larger \(L\) means
+        smaller \(E_L\). A superinductor supplies global confinement with low curvature that extends across many cosine
+        wells.
+      </p>
+      <h4>Step 3: Two common gauge expressions represent the same Hamiltonian</h4>
+      <p>Define the new coordinate as \(\hat\theta=\hat\varphi-\varphi_{\rm ext}\); the Hamiltonian can be rewritten as
+      </p>
+      <p>\[
+        \hat H
+        =4E_C\hat n^2
+        +\frac12E_L\hat\theta^2
+        -E_J\cos(\hat\theta+\varphi_{\rm ext}).
+        \]</p>
+      <p>Thus the two forms commonly seen in the literature</p>
+      <p>\[
+        -E_J\cos\hat\varphi
+        +\frac12E_L(\hat\varphi-\varphi_{\rm ext})^2
+        \qquad\text{and}\qquad
+        -E_J\cos(\hat\theta+\varphi_{\rm ext})
+        +\frac12E_L\hat\theta^2
+        \]</p>
+    </section>
+
+    <section data-manual-slide>
+      <p>
+        differ only by a coordinate shift. A derivation or numerical calculation must use one gauge consistently from
+        beginning to end; the external-flux shift must not be added to both the cosine and the parabola.
+      </p>
+      <h4>Step 4: Why does an inductive shunt change the phase coordinate and offset charge?</h4>
+      <p>A transmon-like circuit can be written as</p>
+      <p>\[
+        \hat H_{\rm T}=4E_C(\hat n-n_g)^2-E_J\cos\hat\varphi.
+        \]</p>
+      <p>
+        Without an inductive term, the potential is \(2\pi\)-periodic, phase is a compact coordinate, and \(n_g\) enters
+        the wavefunction boundary condition. Adding the inductor makes \(\varphi\) an extended coordinate on the full
+        real line: \(\varphi\to\varphi+2\pi\) moves to another cosine well and is no longer the same configuration
+        point.
+      </p>
+      <p>If offset charge is retained temporarily,</p>
+    </section>
+
+    <section data-manual-slide>
+      <p>\[
+        \hat H=4E_C(\hat n-n_g)^2+U(\hat\varphi),
+        \qquad
+        \hat U_g=e^{in_g\hat\varphi},
+        \qquad
+        \hat U_g^\dagger(\hat n-n_g)\hat U_g=\hat n.
+        \]</p>
+      <p>
+        Because \(\varphi\in\mathbb R\), this unitary transformation does not introduce the twisted boundary condition
+        of a compact coordinate, and static \(n_g\) can be removed from the low-energy Hamiltonian. This is the
+        structural origin of fluxonium being “free of charge offsets.” It does not mean that every capacitive-loss
+        channel or finite-frequency noise coupled through \(\hat n\) disappears.
+      </p>
+      <h4>Step 5: Why can a Josephson-junction array approximate a superinductor?</h4>
+      <p>
+        In practice, \(N\) larger Josephson junctions are often connected in series. Let the phase drop across each
+        array junction be \(\theta_j\), with \(E_{J,a}\gg E_{C,a}\) so that quantum phase slips in each junction are
+        rare. Expanding for small \(\theta_j\):
+      </p>
+      <p>\[
+        -E_{J,a}\cos\theta_j
+        \simeq-E_{J,a}+\frac12E_{J,a}\theta_j^2.
+        \]</p>
+      <p>If the collective phase drop is \(\Theta=\sum_{j=1}^{N}\theta_j\), the lowest-energy distribution is
+        approximately \(\theta_j=\Theta/N\), so</p>
+    </section>
+
+    <section data-manual-slide>
+      <p>\[
+        U_{\rm array}
+        \simeq\sum_{j=1}^{N}\frac12E_{J,a}\left(\frac{\Theta}{N}\right)^2
+        =\frac12\frac{E_{J,a}}{N}\Theta^2
+        \equiv\frac12E_L\Theta^2.
+        \]</p>
+      <p>Therefore, in the simplest uniform-array approximation,</p>
+      <p>\[
+        E_L\simeq\frac{E_{J,a}}{N},
+        \qquad
+        L_{\rm array}\simeq
+        N\frac{(\Phi_0/2\pi)^2}{E_{J,a}}.
+        \]</p>
+      <p>
+        Adding series junctions increases total inductance and lowers effective \(E_L\). But \(N\) cannot be increased
+        arbitrarily: junction capacitance, island-to-ground capacitance, parameter disorder, and array length together
+        create a family of internal plasma or array modes.
+      </p>
+      <h4>Step 6: What happens mathematically to the potential after the quadratic term is added?</h4>
+      <p>The effective potential is</p>
+      <p>\[
+        U(\varphi)
+        =-E_J\cos\varphi
+        +\frac12E_L(\varphi-\varphi_{\rm ext})^2.
+        \]</p>
+    </section>
+
+    <section data-manual-slide>
+      <p>Local minima \(\varphi_m\) satisfy</p>
+      <p>\[
+        E_J\sin\varphi_m
+        +E_L(\varphi_m-\varphi_{\rm ext})=0,
+        \]</p>
+      <p>The curvature near each minimum and the small-oscillation energy scale are approximately</p>
+      <p>\[
+        U''(\varphi_m)=E_J\cos\varphi_m+E_L,
+        \qquad
+        \hbar\omega_{p,m}\simeq
+        \sqrt{8E_C\big(E_J\cos\varphi_m+E_L\big)}.
+        \]</p>
+      <p>
+        When \(E_J/E_L\) is large, the cosine produces many local wells while the slowly varying parabola sets their
+        global energy ordering. Ignoring local zero-point corrections,
+      </p>
+      <p>\[
+        U_m\approx-E_J+\frac12E_L(2\pi m-\varphi_{\rm ext})^2.
+        \]</p>
+    </section>
+
+    <section data-manual-slide>
+      <p>
+        External flux can therefore reorder different fluxoid-like wells. At \(\varphi_{\rm ext}=\pi\), neighboring
+        wells can become a symmetric degenerate pair. \(E_C\) and the barrier determine interwell tunneling—the
+        wavefunction engineering pursued in Question 4.
+      </p>
+      <h4>Step 7: Under what conditions can an array be reduced to a single \(E_L\)?</h4>
+      <p>
+        A real array is not an ideal coil without dynamics. When all array-island fluxes are retained, the Hamiltonian
+        contains a capacitance matrix and multiple Josephson cosines:
+      </p>
+      <p>\[
+        \hat H_{\rm array}
+        =\frac12\hat{\mathbf Q}^{\mathsf T}\mathbf C^{-1}\hat{\mathbf Q}
+        -\sum_{j=1}^{N}E_{J,a}^{(j)}\cos\hat\theta_j.
+        \]</p>
+      <p>Reducing it to one quadratic term requires at least:</p>
+    </section>
+
+    <section data-manual-slide>
+      <ol>
+        <li>Each array junction lies in the approximately linear regime \(E_{J,a}/E_{C,a}\gg1\) and has a sufficiently
+          low quantum phase-slip rate.</li>
+        <li>The lowest internal array-mode frequency lies above the relevant qubit, control, and readout frequency
+          range.</li>
+        <li>Hybridization between array modes and the qubit collective coordinate is sufficiently weak, or is explicitly
+          included in a multimode Hamiltonian.</li>
+        <li>Ground capacitance, junction disorder, dielectric loss, and quasiparticle loss do not turn the superinductor
+          into a new dominant noise source.</li>
+      </ol>
+      <p>
+        Once these conditions fail, “adding a superinductor” no longer means adding only \(\tfrac12E_L\varphi^2\). It
+        also adds parasitic modes, avoided crossings, additional decay and leakage paths, and fabrication sensitivity.
+      </p>
+      <h4>Why not simply replace the superinductor with a large resistor?</h4>
+    </section>
+
+    <section data-manual-slide>
+      <p>
+        The goal of superinductance is zero DC resistance, low dissipation, and an impedance above the Cooper-pair
+        resistance quantum \(R_Q=h/(2e)^2\approx6.45\,\mathrm{k}\Omega\) across the operating band, while pushing
+        self-resonance outside that band. A large resistor may also have high impedance, but it introduces real
+        admittance, Johnson–Nyquist noise, and energy dissipation, and cannot provide the same coherent Hamiltonian
+        term.
+      </p>
+      <ul>
+        <li>\(\hat n\): the Cooper-pair number operator conjugate to phase \(\hat\varphi\).</li>
+        <li>\(\hat\varphi\): the phase difference across the small junction.</li>
+        <li>\(\varphi_{\rm ext}=2\pi\Phi_{\rm ext}/\Phi_0\): the phase offset caused by external flux.</li>
+        <li>\(E_C\): the charging energy, controlling the charge kinetic term.</li>
+        <li>\(E_J\): the Josephson energy, controlling the depth of the cosine wells.</li>
+        <li>\(E_L\): the inductive energy, set by the superinductor.</li>
+      </ul>
+    </section>
+
+    <section data-manual-slide>
+      <div class="qh-answer">
+        <p><strong>Core statement:</strong> Fluxonium is not merely a different parameter set; it uses a superinductor
+          to add global quadratic confinement to the Hamiltonian. The ideal model adds
+          \(\tfrac12E_L(\hat\varphi-\varphi_{\rm ext})^2\). A real device must additionally verify that phase slips,
+          self-resonance, internal modes, and loss in the JJ array can be safely eliminated.</p>
+      </div>
+      <h4>Layout-to-Hamiltonian mapping</h4>
+    </section>
+
+    <section data-manual-slide>
+      <table class="qh-session-plan">
+        <thead>
+          <tr>
+            <th>Layout/device structure</th>
+            <th>Primary parameter</th>
+            <th>Further impact</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Capacitor pad geometry</td>
+            <td>Total capacitance and \(E_C\)</td>
+            <td>Phase fluctuation, anharmonicity, coupling capacitance</td>
+          </tr>
+          <tr>
+            <td>Small-junction area/oxide</td>
+            <td>\(I_c\) and \(E_J\)</td>
+            <td>Cosine-well depth, spectrum, fabrication spread</td>
+          </tr>
+          <tr>
+            <td>JJ array or high-impedance structure</td>
+            <td>\(L\) and \(E_L\)</td>
+            <td>Global confinement, array parasitic modes, loss</td>
+          </tr>
+          <tr>
+            <td>Array junction count/area</td>
+            <td>\(E_L\), phase-slip amplitude</td>
+            <td>Inductance, linearity, array length, and accumulated process error</td>
+          </tr>
+          <tr>
+            <td>Array island ground capacitance</td>
+            <td>Internal-mode frequencies</td>
+            <td>Self-resonance, mode hybridization, readout/drive leakage</td>
+          </tr>
+          <tr>
+            <td>Flux loop/flux line</td>
+            <td>\(\Phi_{\rm ext}\)</td>
+            <td>Sweet-spot position, bias precision, bandwidth, flux noise</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section data-manual-slide>
+      <p>
+        Chip design does not merely draw a circuit; it directly sculpts the Hamiltonian's parameter space. At the same
+        time, process variation becomes \(E_J,E_C,E_L\) spread, frequency offsets, and yield problems.
+      </p>
+      <div class="qh-task">
+        <h4>Symbol-classification activity</h4>
+        <p>
+          Classify the symbols in this question into four groups: selectable design parameters (\(E_J,E_L,E_C,\Phi_{\rm
+          ext}\)); fabrication/device-generated parameters (junction area, oxide thickness); parameters that must be
+          calibrated (actual \(\omega_{01}\), sweet-spot location); and states that can only be estimated by measurement
+          (thermal population, residual flux offset).
+        </p>
+      </div>
+    </section>
+
+    <section data-manual-slide data-cover data-article-hidden="true">
+      <div class="theme-header" data-article-hidden="true" style="text-align: center;">
+        <h2>Q4. How Does Fluxonium Shape Wavefunctions to Realize Protection?</h2>
+        <h3>\(E_C\), \(E_J\), \(E_L\), and External Flux</h3>
+      </div>
+    </section>
+
+    <section data-manual-slide>
+      <div class="qh-section" id="w3-q4">
+        <h3>Question 4: How does fluxonium use \(E_C,E_J,E_L\) and external flux to shape its wavefunctions and realize
+          protection conditions?</h3>
+      </div>
+      <span class="qh-time">70–95 minutes</span>
+      <p>
+        Question 3 derived the fluxonium Hamiltonian from the circuit. Question 4 goes beyond asking “what term was
+        added” and tracks how each energy scale changes the eigenvalue problem:
+      </p>
+      <p>\[
+        \hat H
+        =4E_C\hat n^2
+        -E_J\cos\hat\varphi
+        +\frac12E_L(\hat\varphi-\varphi_{\rm ext})^2,
+        \qquad [\hat\varphi,\hat n]=i.
+        \]</p>
+      <h4>Step 1: Write the Hamiltonian as a phase-basis Schrödinger equation</h4>
+      <p>In the phase basis, \(\hat n=-i\partial_\varphi\), so</p>
+      <p>\[
+        \left[
+        -4E_C\frac{\partial^2}{\partial\varphi^2}
+        +U(\varphi)
+        \right]\psi_k(\varphi)
+        =E_k\psi_k(\varphi),
+        \]</p>
+    </section>
+
+    <section data-manual-slide>
+      <p>where</p>
+      <p>\[
+        U(\varphi)=-E_J\cos\varphi
+        +\frac12E_L(\varphi-\varphi_{\rm ext})^2.
+        \]</p>
+      <p>
+        Comparing with an ordinary one-dimensional Schrödinger equation, the effective mass of the phase particle is
+      </p>
+      <p>\[
+        m_\varphi=\frac{\hbar^2}{8E_C}.
+        \]</p>
+      <p>
+        Thus \(E_C\) is more than a “charging-energy number”: it sets the quantum kinetic energy and effective mass of
+        the phase particle, while \(E_J,E_L,\varphi_{\rm ext}\) jointly determine the potential landscape it sees.
+      </p>
+      <h4>Competition among three energy scales</h4>
+    </section>
+
+    <section data-manual-slide>
+      <table class="qh-session-plan">
+        <thead>
+          <tr>
+            <th>Energy scale</th>
+            <th>Physical origin</th>
+            <th>Role in fluxonium</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>\(E_C\)</td>
+            <td>Capacitance</td>
+            <td>Sets quantum fluctuations, spread, and interwell tunneling of the phase wavefunction</td>
+          </tr>
+          <tr>
+            <td>\(E_J\)</td>
+            <td>Josephson junction</td>
+            <td>Forms periodic cosine wells and controls well depth and nonlinearity</td>
+          </tr>
+          <tr>
+            <td>\(E_L\)</td>
+            <td>Superinductor</td>
+            <td>Provides slowly varying parabolic confinement and sets the relative energies of different wells</td>
+          </tr>
+          <tr>
+            <td>\(\Phi_{\rm ext}\)</td>
+            <td>External flux</td>
+            <td>Shifts the parabolic term and controls potential symmetry and the operating point</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>
+        Fluxonium's physics comes not from one parameter but from competition among \(E_C,E_J,E_L\). Tuning them
+        simultaneously changes wavefunction localization, tunneling, transition frequencies, anharmonicity, operator
+        matrix elements, and the leakage spectrum.
+      </p>
+    </section>
+
+    <section data-manual-slide>
+      <h4>Step 2: First read localization and zero-point fluctuations within one well</h4>
+      <p>Let \(\varphi_m\) denote a local minimum and define</p>
+      <p>\[
+        K_m=U''(\varphi_m)=E_J\cos\varphi_m+E_L.
+        \]</p>
+      <p>A harmonic expansion around \(\varphi_m\) gives</p>
+      <p>\[
+        \hbar\omega_{p,m}\simeq\sqrt{8E_CK_m},
+        \qquad
+        \varphi_{{\rm zpf},m}=\left(\frac{2E_C}{K_m}\right)^{1/4},
+        \qquad
+        n_{{\rm zpf},m}=\left(\frac{K_m}{32E_C}\right)^{1/4}.
+        \]</p>
+      <p>These three quantities provide direct parameter intuition:</p>
+    </section>
+
+    <section data-manual-slide>
+      <ul>
+        <li><strong>Increase \(E_C\):</strong> The phase particle becomes lighter, \(\psi(\varphi)\) broadens, interwell
+          tunneling grows, and the charging kinetic term plays a stronger role in the spectrum.</li>
+        <li><strong>Increase \(E_J\):</strong> The cosine wells deepen, the barriers rise, and the local curvature
+          increases, but tunneling between wells generally decreases.</li>
+        <li><strong>Decrease \(E_L\):</strong> The global parabola flattens, the energy detuning between neighboring
+          fluxoid-like wells decreases, and more wells enter the low-energy spectrum.</li>
+        <li><strong>Change \(\varphi_{\rm ext}\):</strong> This does not directly change the cosine barrier; it shifts
+          the parabola and reorders the relative energies of the wells.</li>
+      </ul>
+      <p>
+        In the deep-well regime, the tunnel splitting can be written schematically as \(\Delta\sim\hbar\omega_p
+        e^{-S}\), where the semiclassical action \(S\) increases with barrier height and effective mass. Larger
+        \(E_J/E_C\) therefore generally localizes the states more strongly and reduces \(\Delta\); the exact value still
+        requires solving the full potential.
+      </p>
+      <h4>Step 3: How does external flux select different wells?</h4>
+    </section>
+
+    <section data-manual-slide>
+      <p>When \(E_J/E_L\gg1\), local minima lie near \(\varphi_m\simeq2\pi m\) and their localized-state energies can
+        first be estimated as</p>
+      <p>\[
+        E_m^{\rm loc}
+        \approx -E_J
+        +\frac12E_L(2\pi m-\varphi_{\rm ext})^2
+        +\frac12\hbar\omega_{p,m}.
+        \]</p>
+      <p>The slope with respect to external flux corresponds to the persistent current:</p>
+      <p>\[
+        I_m=-\frac{\partial E_m^{\rm loc}}{\partial\Phi_{\rm ext}}
+        \approx
+        \frac{2\pi E_L}{\Phi_0}(2\pi m-\varphi_{\rm ext}).
+        \]</p>
+      <p>
+        When the energies of two localized wells approach each other, tunneling turns the crossing into an avoided
+        crossing. External flux controls well detuning; \(E_J/E_C\) primarily controls the tunnel gap; and \(E_L\)
+        controls both the detuning scale and the persistent-current slope.
+      </p>
+      <h4>Half-flux potential, parity, and wavefunctions</h4>
+      <p>
+        At \(\varphi_{\rm ext}=\pi\), let \(x=\varphi-\pi\). The Hamiltonian becomes
+      </p>
+    </section>
+
+    <section data-manual-slide>
+      <p>\[
+        \hat H_{1/2}
+        =-4E_C\frac{\partial^2}{\partial x^2}
+        +E_J\cos x+\frac12E_Lx^2,
+        \qquad
+        U(x)=U(-x).
+        \]</p>
+      <p>
+        The potential has exact reflection symmetry, so eigenstates can have definite parity: the ground state \(\ket0\)
+        is even and the first excited state \(\ket1\) is odd. The bonding/antibonding picture provides intuition, but a
+        rigorous selection rule follows from symmetry and operator parity.
+      </p>
+      <p>Retaining only the left and right localized states \(\ket L,\ket R\), the low-energy Hamiltonian can be written
+        as</p>
+      <p>\[
+        \hat H_{\rm 2w}
+        =-\frac12\left(\Delta\hat\sigma_x+\epsilon\hat\sigma_z\right),
+        \qquad
+        \epsilon\simeq2I_p\,\delta\Phi,
+        \qquad
+        \delta\Phi=\Phi_{\rm ext}-\frac{\Phi_0}{2}.
+        \]</p>
+      <p>Its qubit splitting and half-flux eigenstates are</p>
+      <p>\[
+        \hbar\omega_{01}=\sqrt{\Delta^2+\epsilon^2},
+        \qquad
+        \ket0\simeq\frac{\ket L+\ket R}{\sqrt2},
+        \qquad
+        \ket1\simeq\frac{\ket L-\ket R}{\sqrt2}.
+        \]</p>
+    </section>
+
+    <section data-manual-slide>
+      <p>
+        Away from half flux, \(|\epsilon|\) increases and the eigenstates gradually localize; at half flux they form
+        even and odd superpositions. This two-well model supplies intuition, but higher plasmon states, other wells, and
+        actual matrix elements must be calculated from the complete Hamiltonian.
+      </p>
+      <ul>
+        <li>Both \(\hat n\) and \(x=\varphi-\pi\) are odd operators and can in principle connect even and odd states.
+        </li>
+        <li>If \(\langle0|\hat n|1\rangle\) or \(\langle0|x|1\rangle\) is small, it is not enough to say
+          “parity-forbidden”; the device-specific wavefunction overlap must be checked.</li>
+        <li>Even operators such as \(\hat n^2\) and \(x^2\) can be strictly forbidden by a selection rule between
+          opposite-parity states.</li>
+      </ul>
+      <p>
+        Exact parity follows from \(U(x)=U(-x)\) at half flux. Conditions such as \(E_J\gg E_L\) and \(E_J\gg E_C\) are
+        useful in the deep-well/bonding picture but are not required for parity symmetry. Away from half flux, symmetry
+        is broken and first-order flux sensitivity returns, with a magnitude that depends on device parameters.
+      </p>
+    </section>
+
+    <section data-manual-slide>
+      <h4>Step 4: Derive the flux sweet spot from symmetry and the two-well model</h4>
+      <p>The external-flux coupling operator is</p>
+      <p>\[
+        \frac{\partial\hat H}{\partial\Phi_{\rm ext}}
+        =-\frac{2\pi E_L}{\Phi_0}
+        (\hat\varphi-\varphi_{\rm ext}).
+        \]</p>
+      <p>
+        At half flux, \(x=\varphi-\pi\) is an odd operator, and every parity eigenstate satisfies \(\langle
+        n|x|n\rangle=0\). By the Hellmann–Feynman theorem,
+      </p>
+      <p>\[
+        \left.\frac{\partial E_n}{\partial\Phi_{\rm ext}}\right|_{\Phi_0/2}=0,
+        \qquad
+        \boxed{
+        \left.\frac{\partial\omega_{01}}{\partial\Phi_{\rm ext}}
+        \right|_{\Phi_0/2}=0.}
+        \]</p>
+      <p>The two-well model gives the same conclusion:</p>
+      <p>\[
+        \frac{\partial\omega_{01}}{\partial\Phi_{\rm ext}}
+        =\frac{1}{\hbar}
+        \frac{\epsilon}{\sqrt{\Delta^2+\epsilon^2}}
+        \frac{\partial\epsilon}{\partial\Phi_{\rm ext}}
+        \xrightarrow[\epsilon\to0]{}0.
+        \]</p>
+    </section>
+
+    <section data-manual-slide>
+      <p>
+        At this operating point, first-order flux sensitivity vanishes and dephasing is dominated by higher-order terms.
+        But a sweet spot does not automatically ensure relaxation protection; relaxation still requires the relevant
+        operator matrix element and \(S_F(\omega_{01})\) to be checked.
+      </p>
+      <p>Moreover, in the two-well approximation,</p>
+      <p>\[
+        \left.\frac{\partial^2\omega_{01}}{\partial\Phi_{\rm ext}^2}
+        \right|_{\Phi_0/2}
+        \simeq\frac{(2I_p)^2}{\hbar\Delta}.
+        \]</p>
+      <p>
+        Making the tunnel gap \(\Delta\) extremely small can reduce \(\omega_{01}\) and some transition matrix elements,
+        but it increases the second-order curvature at the sweet spot and aggravates thermal-initialization and
+        slow-control problems. Protection remains a multiobjective trade-off.
+      </p>
+      <h4>Step 5: Check each noise operator instead of saying vaguely that “fluxonium is protected”</h4>
+    </section>
+
+    <section data-manual-slide>
+      <table class="qh-session-plan">
+        <thead>
+          <tr>
+            <th>Fluctuation</th>
+            <th>System operator(half flux)</th>
+            <th>Parity</th>
+            <th>Direct conclusion</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>External-flux noise</td>
+            <td>\(x=\varphi-\pi\)</td>
+            <td>Odd</td>
+            <td>The diagonal element vanishes, providing a first-order dephasing sweet spot; \(0\leftrightarrow1\)
+              relaxation is allowed</td>
+          </tr>
+          <tr>
+            <td>Capacitive/electric loss</td>
+            <td>\(\hat n\)</td>
+            <td>Odd</td>
+            <td>\(0\leftrightarrow1\) is allowed, but its matrix element may be suppressed for a low-frequency interwell
+              transition</td>
+          </tr>
+          <tr>
+            <td>Critical-current/\(E_J\) noise</td>
+            <td>\(-\cos\varphi\)</td>
+            <td>Even</td>
+            <td>Transitions between opposite parities are forbidden; diagonal sensitivity must still be calculated</td>
+          </tr>
+          <tr>
+            <td>Inductive-energy/\(E_L\) noise</td>
+            <td>\(\tfrac12x^2\)</td>
+            <td>Even</td>
+            <td>Transitions between opposite parities are forbidden; frequency fluctuations may remain</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section data-manual-slide>
+      <p>
+        Fluxonium's low-energy states can occupy different phase wells. If two wavefunctions have little overlap,
+        transition matrix elements of some operators also shrink, reducing the probability of \(\ket1\rightarrow\ket0\)
+        through that noise channel. This is wavefunction engineering and must be named separately from an exact parity
+        selection rule.
+      </p>
+      <p>
+        For Hamiltonian \(\hat H=4E_C\hat n^2+U(\hat\varphi)\), the commutator provides a very useful exact relation:
+      </p>
+      <p>\[
+        [\hat H,\hat\varphi]=-8iE_C\hat n,
+        \qquad
+        \left|\langle0|\hat n|1\rangle\right|
+        =\frac{\hbar\omega_{01}}{8E_C}
+        \left|\langle0|\hat\varphi|1\rangle\right|.
+        \]</p>
+      <p>
+        This shows that, even when the half-flux \(0\leftrightarrow1\) transition has a sizable phase dipole, low
+        \(\omega_{01}\) still suppresses the charge matrix element. Capacitive/dielectric relaxation can therefore be
+        suppressed, whereas relaxation through a flux-like operator does not automatically receive the same suppression;
+        each must still be multiplied by its own \(S_{\rm noise}(\omega_{01})\).
+      </p>
+      <h4>Step 6: Protection must be verified together with control, readout, and leakage</h4>
+    </section>
+
+    <section data-manual-slide>
+      <p>For capacitive and flux-like drives, the direct Rabi rates respectively take the forms</p>
+      <p>\[
+        \Omega_R^{(n)}\propto
+        A_n\left|\langle0|\hat n|1\rangle\right|,
+        \qquad
+        \Omega_R^{(\varphi)}\propto
+        A_\varphi\left|\langle0|x|1\rangle\right|.
+        \]</p>
+      <p>
+        A small charge matrix element slows a direct capacitive gate. Higher transitions in fluxonium, such as
+        \(1\leftrightarrow2\), may have much larger charge matrix elements, so control and readout can use the operator
+        hierarchy, an auxiliary level, or a different coupling port. The cost is more complicated pulse sequences,
+        frequency allocation, and leakage analysis.
+      </p>
+      <p>At minimum, compute simultaneously</p>
+      <p>\[
+        \alpha=\omega_{12}-\omega_{01},
+        \qquad
+        \Delta_{\rm leakage}
+        =\min_{i\in\{0,1\},\,k\ge2}
+        |\omega_{ki}-\omega_d|,
+        \qquad
+        \Omega_R\ll\Delta_{\rm leakage}.
+        \]</p>
+      <p>
+        Fluxonium often has greater anharmonicity but also a rich multilevel spectrum. “Large anharmonicity” cannot
+        replace checking every drive matrix element, near resonance, array mode, and multiphoton leakage channel.
+      </p>
+    </section>
+
+    <section data-manual-slide>
+      <h4>A direct cost of a protected spectrum: low frequency and thermal population</h4>
+      <p>
+        Fluxonium's protected regime often comes with a lower computational frequency. For example, with
+        \(f_{01}=500\,\mathrm{MHz}\), \(hf/k_B\approx24\,\mathrm{mK}\): at \(T=50\,\mathrm{mK}\), \(p_1/p_0\approx
+        e^{-24/50}\approx0.62\) and \(p_1\approx0.38\); at \(T=20\,\mathrm{mK}\), \(p_1/p_0\approx0.30\) and
+        \(p_1\approx0.23\).
+      </p>
+      <p>
+        Another useful scale is \(f_{01}=800\,\mathrm{MHz}\), for which \(hf/k_B\approx38\,\mathrm{mK}\); at
+        \(20\,\mathrm{mK}\), \(p_1\approx0.13\) (only a thermal-order estimate; the actual value also depends on
+        nonequilibrium photons and effective temperature). A low-frequency transition turns active reset,
+        thermalization, and additional readout transitions into design problems.
+      </p>
+      <h4>Complete validation workflow: from parameters to a protection claim</h4>
+    </section>
+
+    <section data-manual-slide>
+      <ol>
+        <li>Specify \(E_C,E_J,E_L,\Phi_{\rm ext}\), then find \(U(\varphi)\), the local minima, and the barriers.</li>
+        <li>Diagonalize the complete Hamiltonian and plot \(E_k(\Phi)\) and \(\psi_k(\varphi)\); do not rely only on the
+          two-well picture.</li>
+        <li>Calculate \(\partial_\lambda\omega_{01}\) and the second-order curvature, confirming which parameter the
+          sweet spot protects against.</li>
+        <li>For each dominant noise channel, calculate \(\langle0|\hat O_{\rm noise}|1\rangle\) and the corresponding
+          \(S_{\rm noise}(\omega_{01})\).</li>
+        <li>Calculate the drive/readout operator matrix elements, Rabi rate, dispersive path, and \(\Delta_{\rm
+          leakage}\).</li>
+        <li>Compare \(\omega_{01}\) with the refrigerator and effective temperatures, then include thermal population,
+          reset, and bandwidth constraints.</li>
+      </ol>
+    </section>
+
+    <section data-manual-slide>
+      <div class="qh-case">
+        <h4>System case: mixing-chamber temperature is not qubit effective temperature</h4>
+        <p>
+          Even if the mixing chamber reads 10 mK, a 500 MHz fluxonium cannot be assumed to initialize naturally in the
+          ground state if its effective temperature is 50 mK. The same device may have both a low-frequency
+          computational transition and higher-frequency transitions useful for readout and control. One must therefore
+          choose which transition to use, prevent spectator excitation, and verify that the electronics and resonator
+          bandwidth support the plan.
+        </p>
+      </div>
+    </section>
+
+    <section data-manual-slide>
+      <div class="learning-check">
+        <h4>Question 4 learning check</h4>
+        <ol>
+          <li>Why does fluxonium require a superinductor?</li>
+          <li>How does each \(E_C,E_J,E_L\) change the potential and wavefunction?</li>
+          <li>How does a flux sweet spot reduce dephasing?</li>
+          <li>Why does a sweet spot not automatically imply a longer \(T_1\)?</li>
+          <li>How do we distinguish a parity-forbidden transition from an overlap-suppressed transition?</li>
+          <li>Why does low \(\omega_{01}\) suppress the \(\hat n\) matrix element without guaranteeing that the \(x\)
+            matrix element is equally small?</li>
+          <li>If direct charge drive is too weak, which auxiliary transition and leakage channel should be checked
+            first?</li>
+        </ol>
+      </div>
+    </section>
+
+    <section data-manual-slide data-cover data-article-hidden="true">
+      <div class="theme-header" data-article-hidden="true" style="text-align: center;">
+        <h2>Q5. How Can Hamiltonian Engineering Begin from the Noise Operator?</h2>
+        <h3>Protection Criteria and Reverse Design</h3>
+      </div>
+    </section>
+
+    <section data-manual-slide>
+      <div class="qh-section" id="w3-q5">
+        <h3>Question 5: Hamiltonian engineering—how can the next qubit Hamiltonian be designed by starting from the
+          error operator to be suppressed?</h3>
+      </div>
+      <span class="qh-time">95–118 minutes</span>
+      <p>
+        The first four questions used fluxonium to build the complete chain from noise source and operator to
+        Hamiltonian, eigenstates, and matrix elements. Question 5 treats fluxonium as the first complete case and
+        reverses the direction:
+        <strong>If the dominant error operator is specified first, should we change parameters, add degrees of freedom,
+          create a new symmetry, or modify the Josephson element itself?</strong>
+      </p>
+      <h4>Four indispensable conditions for a protected qubit</h4>
+      <div class="qh-board">
+        <p>\[
+          \boxed{
+          \begin{aligned}
+          \text{Dephasing protection:}\quad
+          &amp;\frac{\partial\omega_{01}}{\partial\lambda}\approx0,\\[4pt]
+          \text{Relaxation protection:}\quad
+          &amp;\langle0|\hat O_{\rm noise}|1\rangle\approx0,\\[4pt]
+          \text{Controllability:}\quad
+          &amp;\langle0|\hat O_{\rm drive}|1\rangle\neq0,\\[4pt]
+          \text{Leakage suppression:}\quad
+          &amp;\Delta_{\rm leakage}\ \text{sufficiently large}.
+          \end{aligned}}
+          \]</p>
+      </div>
+    </section>
+
+    <section data-manual-slide>
+      <p>These are not four optional advantages; they form a design specification that every protected-qubit proposal
+        must answer in full:</p>
+      <ol>
+        <li><strong>Dephasing: </strong> Which fluctuating parameter \(\lambda\) is flattened? Only at one sweet spot,
+          or across a finite parameter range?</li>
+        <li><strong>Relaxation: </strong> Which \(\hat O_{\rm noise}\) matrix element is suppressed? By exact symmetry
+          or approximate overlap suppression?</li>
+        <li><strong>Control: </strong> If noise coupling is suppressed, which different \(\hat O_{\rm drive}\),
+          transition, or auxiliary level is used for control?</li>
+        <li><strong>Leakage: </strong> Does protecting the logical states simultaneously create nearby parasitic states,
+          a dense spectrum, or a new leakage path?</li>
+      </ol>
+      <h4>Six steps for reverse-engineering a Hamiltonian from an error target</h4>
+    </section>
+
+    <section data-manual-slide>
+      <ol>
+        <li><strong>Specify the error:</strong> First write the dominant fluctuation \(F(t)\), coupling operator \(\hat
+          O_{\rm noise}\), and relevant frequency range. Separate low-frequency dephasing from relaxation near
+          \(\omega_{01}\).</li>
+        <li><strong>Specify the state structure:</strong> Decide whether to use a sweet spot, exact symmetry,
+          wavefunction localization, near degeneracy, or disjoint support in multiple degrees of freedom.</li>
+        <li><strong>Synthesize a candidate Hamiltonian:</strong> Choose the parameter regime to change, the energy term
+          or degree of freedom to add, the Josephson Fourier component, or the material-dependent element.</li>
+        <li><strong>Validate protection:</strong> Solve for the spectrum and eigenstates and calculate
+          \(\partial\omega_{01}/\partial\lambda\) and \(\langle0|\hat O_{\rm noise}|1\rangle\); a potential diagram
+          alone cannot establish protection.</li>
+        <li><strong>Validate operability:</strong> Check \(\hat O_{\rm drive}\), the Rabi rate, readout path, auxiliary
+          transition, \(\Delta_{\rm leakage}\), and reset.</li>
+        <li><strong>Map back to hardware:</strong> Map every Hamiltonian term onto a capacitor, junction, superinductor,
+          loop, or material, then list newly introduced loss, disorder, parasitic modes, and fabrication sensitivity.
+        </li>
+      </ol>
+    </section>
+
+    <section data-manual-slide>
+      <div class="qh-answer">
+        <p><strong>Reverse-design chain:</strong> error operator → desired eigenstate structure → Hamiltonian
+          term/symmetry → spectrum and matrix-element test → control/leakage test → circuit/material implementation.</p>
+      </div>
+      <h4>Advanced topic survey: three directions extending Hamiltonian engineering</h4>
+      <p>
+        The teaching objective here is explicitly to create entry points into the terminology and concepts. Students
+        need not complete a full derivation of every architecture this week, but they must see which layer of the
+        Hamiltonian each direction modifies. When they later encounter a new qubit proposal, they should be able to
+        analyze it independently with the same four criteria.
+      </p>
+      <h4>1. \(0-\pi\) qubit: adding degrees of freedom and disconnected state support</h4>
+    </section>
+
+    <section data-manual-slide>
+      <p>
+        Fluxonium can still be viewed primarily as an effective single-degree-of-freedom problem \(H=H(\varphi,n)\). A
+        \(0-\pi\) circuit promotes the problem to a multimode Hamiltonian, for example \(H=H(\phi,\theta)\). The
+        physical circuit uses two Josephson junctions, two large inductors, and two large capacitors. Its goal is not to
+        find another ordinary sweet spot, but to give the logical states nearly disjoint support in
+        generalized-coordinate space while bringing their logical energies close to degeneracy:
+      </p>
+      <div class="qh-board">
+        <p>\[
+          \text{disjoint support}\Rightarrow
+          \text{small transition matrix element},
+          \qquad
+          \text{near degeneracy}\Rightarrow
+          \text{small frequency susceptibility}.
+          \]</p>
+      </div>
+    </section>
+
+    <section data-manual-slide>
+      <ul>
+        <li><strong>Dephasing: </strong> Near degeneracy reduces some parameter sensitivities.</li>
+        <li><strong>Relaxation: </strong> Separated logical-state support can suppress local-operator matrix elements.
+        </li>
+        <li><strong>Control: </strong> A drive path crossing the protected subspaces must be designed, often using
+          auxiliary states or symmetry-breaking control.</li>
+        <li><strong>Leakage: </strong> The multimode spectrum and parasitic modes must be checked together.</li>
+        <li><strong>Engineering challenges:</strong> Large superinductance, low stray capacitance, component matching,
+          and disorder-induced mode coupling.</li>
+      </ul>
+      <p><strong>Self-study question:</strong> Why can adding one degree of freedom enable protection that is difficult
+        to achieve simultaneously with a single phase coordinate?</p>
+      <h4>2. \(\cos(2\varphi)\) qubit: engineering the Josephson potential directly</h4>
+    </section>
+
+    <section data-manual-slide>
+      <p>An ordinary Josephson junction provides \(-E_J\cos\varphi\). More generally, the Fourier components of the
+        current–phase relation can be written as:</p>
+      <div class="qh-board">
+        <p>\[
+          U_J(\varphi)=-\sum_kE_k\cos(k\varphi),
+          \qquad
+          U(\varphi)=-E_2\cos(2\varphi).
+          \]</p>
+      </div>
+      <p>
+        \(\cos\varphi\) corresponds to single-Cooper-pair tunneling; an effective \(\cos(2\varphi)\) may correspond to a
+        two-Cooper-pair process, creating a different periodicity and Cooper-pair parity sectors so that symmetry
+        suppresses some charge-induced transitions. This elevates Hamiltonian engineering from “adding \(L\) and \(C\)”
+        to “directly selecting the Fourier content of the Josephson potential.”
+      </p>
+    </section>
+
+    <section data-manual-slide>
+      <ul>
+        <li><strong>Dephasing: </strong> Check the sensitivity of the logical splitting to offset charge, flux, and
+          component asymmetry.</li>
+        <li><strong>Relaxation: </strong> Use parity sectors to suppress transitions that change the protected parity.
+        </li>
+        <li><strong>Control: </strong> If a control pulse must temporarily break parity, evaluate the trade-off between
+          protection and gate speed.</li>
+        <li><strong>Leakage: </strong> The new periodicity rearranges the spectrum; noncomputational states and unwanted
+          Fourier components must be identified.</li>
+        <li><strong>Engineering challenges:</strong> How can dominant \(E_2\) be realized while suppressing residual
+          \(E_1\cos\varphi\) and fabrication asymmetry?</li>
+      </ul>
+      <p><strong>Self-study question:</strong> Must we accept only the \(-E_J\cos\varphi\) naturally supplied by a
+        junction, or can its Fourier components be engineered?</p>
+      <h4>3. Ferro-transmon: modifying the material also modifies the Hamiltonian</h4>
+    </section>
+
+    <section data-manual-slide>
+      <div class="qh-board">
+        <p>\[
+          E_J\longrightarrow E_J(M)
+          \]</p>
+      </div>
+      <p>
+        The ferromagnetic Josephson-junction direction does not simply add a linear circuit element. It makes the
+        Josephson energy, or more generally the current–phase relation, depend on a magnetic state. A hybrid
+        ferro-transmon can exploit hysteretic behavior so that magnetic pulses provide approximately digital tuning of
+        qubit frequency. But magnetic degrees of freedom simultaneously introduce new noise sources, including magnetic
+        fluctuations and domain dynamics.
+      </p>
+    </section>
+
+    <section data-manual-slide>
+      <ul>
+        <li><strong>Dephasing: </strong> A digital/hysteretic operating point may reduce some continuous-bias
+          sensitivities, but magnetic-state stability must be measured.</li>
+        <li><strong>Relaxation: </strong> Using a ferroic material does not automatically produce matrix-element
+          protection; \(\hat O_{\rm noise}\) must still be identified.</li>
+        <li><strong>Control: </strong> The magnetic state provides a new nonvolatile tuning knob.</li>
+        <li><strong>Leakage: </strong> Check additional material excitations and levels introduced by the modified
+          current–phase relation.</li>
+        <li><strong>Engineering challenges:</strong> Magnetic fluctuations, hysteresis reproducibility, material
+          interfaces, and process integration.</li>
+      </ul>
+      <p><strong>Core reminder:</strong> Hamiltonian engineering is not necessarily protection engineering; a new
+        control knob may simultaneously introduce a new noise operator.</p>
+      <h4>Four criteria × three directions</h4>
+    </section>
+
+    <section data-manual-slide>
+      <table class="qh-session-plan">
+        <thead>
+          <tr>
+            <th>Direction</th>
+            <th>Primary layer modified</th>
+            <th>Protection intuition</th>
+            <th>First cost to investigate</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Fluxonium</td>
+            <td>Add an inductive-energy term</td>
+            <td>Sweet spot, multi-well wavefunction, matrix-element engineering</td>
+            <td>Low frequency, thermal population, weak drive, and superinductor modes</td>
+          </tr>
+          <tr>
+            <td>\(0-\pi\)</td>
+            <td>Add degrees of freedom and hardware symmetry</td>
+            <td>Disjoint support + near degeneracy</td>
+            <td>Multimode leakage, disorder, large \(L/C\)</td>
+          </tr>
+          <tr>
+            <td>\(\cos2\varphi\)</td>
+            <td>Modify the periodicity of the Josephson potential</td>
+            <td>Cooper-pair parity sectors</td>
+            <td>Residual \(\cos\varphi\), control-induced symmetry breaking</td>
+          </tr>
+          <tr>
+            <td>Ferro-transmon</td>
+            <td>Modify a material-dependent Josephson element</td>
+            <td>A new hysteretic/nonvolatile control knob</td>
+            <td>New magnetic noise; not automatically a protected qubit</td>
+          </tr>
+        </tbody>
+      </table>
+      <h4>Fluxonium's own design trade-offs: a protected spectrum is not free</h4>
+    </section>
+
+    <section data-manual-slide>
+      <p>
+        Evaluating fluxonium with the four criteria requires listing the operating frequency, anharmonicity, sweet spot,
+        dominant noise operator, gate primitive, readout contrast, reset, fabrication complexity, coupler compatibility,
+        and frequency allocation. Comparing only the best \(T_1\) ignores the control stack and yield.
+      </p>
+    </section>
+
+    <section data-manual-slide>
+      <table class="qh-session-plan">
+        <thead>
+          <tr>
+            <th>Dimension</th>
+            <th>Transmon</th>
+            <th>Fluxonium</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Hamiltonian</td>
+            <td>\(4E_C\hat n^2-E_J\cos\hat\varphi\)</td>
+            <td>\(4E_C\hat n^2+\frac12E_L(\hat\varphi-\varphi_{\rm ext})^2-E_J\cos\hat\varphi\)</td>
+          </tr>
+          <tr>
+            <td>Primary design strategy</td>
+            <td>Large \(E_J/E_C\) to reduce charge dispersion</td>
+            <td>Add a superinductor to shape the phase potential and wavefunction</td>
+          </tr>
+          <tr>
+            <td>Sweet spot</td>
+            <td>Evaluate charge and flux sensitivity separately for fixed and tunable designs</td>
+            <td>\(\Phi_{\rm ext}\approx\Phi_0/2\) flattens first-order flux sensitivity</td>
+          </tr>
+          <tr>
+            <td>Typical frequency</td>
+            <td>Usually several GHz</td>
+            <td>May be as low as 0.5–2 GHz, depending on the design</td>
+          </tr>
+          <tr>
+            <td>Anharmonicity</td>
+            <td>Moderate, set approximately by \(E_C\)</td>
+            <td>Can usually provide greater anharmonicity</td>
+          </tr>
+          <tr>
+            <td>Thermal population</td>
+            <td>Usually lower at high frequency</td>
+            <td>Higher at low frequency; active reset may be required</td>
+          </tr>
+          <tr>
+            <td>Gate speed</td>
+            <td>Mature microwave control, still limited by leakage</td>
+            <td>The drive matrix element may be smaller and requires device-specific design</td>
+          </tr>
+          <tr>
+            <td>Readout</td>
+            <td>Mature dispersive-readout techniques</td>
+            <td>Using \(\ket1\leftrightarrow\ket2\) or another higher transition may require an additional control line,
+              frequency band, and transition selection</td>
+          </tr>
+          <tr>
+            <td>Primary noise/loss</td>
+            <td>Charge, dielectric, Purcell, flux(tunable), quasiparticle</td>
+            <td>Flux, dielectric, inductor/array modes, quasiparticle</td>
+          </tr>
+          <tr>
+            <td>Fabrication</td>
+            <td>Single JJ or SQUID; mature fabrication</td>
+            <td>The superinductor/JJ array adds complexity and parameter spread</td>
+          </tr>
+          <tr>
+            <td>Scalability</td>
+            <td>A complete ecosystem for control, readout, and couplers, while frequency collisions, crosstalk, leakage,
+              and packaging constraints remain</td>
+            <td>Coupler compatibility, frequency allocation, array modes, parameter stability, and control-channel count
+              must be handled together</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section data-manual-slide>
+      <div class="qh-case">
+        <h4>Case discussion: How do we distinguish “genuine protection” from an unusually good sample?</h4>
+        <p>
+          Each group proposes one real advantage of fluxonium, one cost arising from the same feature, and one
+          experiment that distinguishes a protection mechanism from an accidentally low-noise sample. For example, the
+          half-flux sweet spot reduces first-order flux sensitivity, but a low-frequency transition increases the
+          burdens of thermal initialization and frequency-band integration.
+        </p>
+        <p>
+          Validation should not cite only the best single-point \(T_1\). It should compare coherence, gate fidelity,
+          thermal population, and yield across flux biases, times, and multiple devices. Grading asks whether students
+          can close the loop from hypothesis to observable, discriminating experiment, and decision.
+        </p>
+      </div>
+    </section>
+
+    <section data-manual-slide>
+      <div class="qh-task">
+        <h4>Question 5 in-class task: reverse-design from dominant noise</h4>
+        <p>Group A uses \(\hat O_{\rm noise}=\hat n\) and Group B uses \(\hat O_{\rm noise}=\hat\varphi\). Each group
+          selects one Hamiltonian-engineering direction and answers:</p>
+        <ol>
+          <li>Which Hamiltonian term should be added or modified?</li>
+          <li>What symmetry or wavefunction structure distinguishes the logical states?</li>
+          <li>Which unwanted matrix element is expected to be suppressed? Is it an exact zero or approximate
+            suppression?</li>
+          <li>Which different drive operator or auxiliary transition will preserve controllability?</li>
+          <li>How will a sufficiently large \(\Delta_{\rm leakage}\) be maintained?</li>
+          <li>What new noise channel, parasitic mode, or fabrication sensitivity will this modification create?</li>
+        </ol>
+      </div>
+    </section>
+
+    <section data-manual-slide>
+      <div class="qh-case">
+        <h4>Architecture question retained for later completion</h4>
+        <p><strong>Under what conditions should Fluxonium be chosen over Transmon?</strong></p>
+        <p>
+          This question is retained but does not replace this week's fifth question on protected Hamiltonians. W3
+          records only a provisional answer. After students study control in W4, coupling in W5, readout in W6,
+          thermalization in W11, and fabrication/yield in W14–W15, they revisit it in W16 and form a formal architecture
+          decision.
+        </p>
+      </div>
+      <div class="qh-answer">
+        <p><strong>Conclusion for this week:</strong> Fluxonium is not the endpoint of the protected-qubit problem; it
+          is the first complete case of Hamiltonian engineering. Students need not leave class able to design every
+          advanced qubit. They should, however, be able to use the four criteria to identify what a new architecture
+          attempts to protect, how it retains control, where leakage appears, and which new degree of freedom or
+          fabrication step hides the cost.</p>
+      </div>
+      <h4>In-class synthesis and exit ticket</h4>
+    </section>
+
+    <section data-manual-slide>
+      <ol>
+        <li>What is the most important equation or model this week, and under which approximations does it apply?</li>
+        <li>Which apparently local parameter actually crosses the device, control, and system layers?</li>
+        <li>If only one new experiment could be performed, which result would most strongly change the current
+          architecture decision?</li>
+        <li>Choose one term from \(0-\pi\), \(\cos2\varphi\), and ferro-transmon. Write down the Hamiltonian term,
+          symmetry, and dominant noise that you need to clarify next.</li>
+      </ol>
+      <p>
+        <strong>Cross-layer assessment:</strong> Redraw the “abstract model → real hardware” information-flow diagram
+        from the start of the class. The difference between the two diagrams is the evidence of this week's learning.
+        Completion requires a checkable derivation, relation diagram, comparison table, or provisional decision,
+        together with an explanation of its physical assumptions and engineering costs.
+      </p>
+    </section>
+
+    <section data-manual-slide>
+      <p>
+        <strong>Next week:</strong> W4 will begin with a driven two-level system and derive the rotating frame and RWA.
+        Students should carry this week's intuition for the qubit Hamiltonian, matrix elements, and leakage gap into W4
+        to understand why pulse control is constrained by the device spectrum.
+      </p>
+      <h4>Core and Further Reading</h4>
+    </section>
+
+    <section data-manual-slide>
+      <ul class="qh-reading">
+        <li><a href="https://arxiv.org/abs/0906.0831" target="_blank" rel="noopener">Fluxonium: Single Cooper-Pair
+            Circuit Free of Charge Offsets</a><span>V. E. Manucharyan et al., Science 326, 113–116 (2009).</span><em>The
+            original papers on fluxonium and the superinductor.</em></li>
+        <li><a href="https://www.nature.com/articles/s41534-022-00644-x" target="_blank" rel="noopener">High Fidelity
+            Two-Qubit Gates on Fluxoniums Using a Tunable Coupler</a><span>I. N. Moskalenko et al., npj Quantum
+            Information 8, 130 (2022).</span><em>Fluxonium control, reset, coupling, and multiqubit engineering.</em>
+        </li>
+        <li><a href="https://arxiv.org/abs/1610.03438" target="_blank" rel="noopener">Introduction to Quantum
+            Electromagnetic Circuits</a><span>U. Vool and M. H. Devoret, International Journal of Circuit Theory and
+            Applications 45, 897–934 (2017).</span><em>A core reading on going from a circuit diagram and Lagrangian to
+            a quantum Hamiltonian.</em></li>
+        <li><a href="https://www.nature.com/articles/s41578-021-00370-4" target="_blank" rel="noopener">Engineering
+            High-Coherence Superconducting Qubits</a><span>I. Siddiqi, Nature Reviews Materials 6, 875–891
+            (2021).</span><em>Design trade-offs among qubit architectures, material loss, and coherence.</em></li>
+      </ul>
+    </section>
+  </div>
+  <div class="qh-mode-toggle" role="group" aria-label="Display mode">
+    <button type="button" class="qh-mode-button" data-qh-view="article" aria-pressed="false">Article</button>
+    <button type="button" class="qh-mode-button is-active" data-qh-view="slides" aria-pressed="true">Slides</button>
+  </div>
+
+  <div id="qh-slide-root" class="qhs-root" hidden aria-hidden="true" data-qhs-course="PHYS598500" data-qhs-week="WEEK 3"
+    data-qhs-no-click-advance="true" data-qhs-topic="Fluxonium and Protected-Qubit Hamiltonian Engineering"
+    data-qhs-title-suffix="QH-2026F v5 · Manual Slides">
+    <header class="qhs-header">
+      <a class="qhs-brand" href="main.html" aria-label="Return to the QH-2026F course overview">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
+      <span class="qhs-divider" aria-hidden="true"></span>
+      <div class="qhs-identity">
+        <strong>PHYS598500 · WEEK 3</strong>
+        <span>Fluxonium and Protected-Qubit Hamiltonian Engineering · Manual Slides</span>
+      </div>
+      <button class="qhs-click-mode-button is-active" type="button" data-qhs-action="no-click-advance"
+        aria-pressed="true" aria-label="Toggle mouse click and drag slide advance"
+        title="Mouse clicks and horizontal drags will not change slides">Click/drag page change: Off</button>
+      <button class="qhs-icon-button" type="button" data-qhs-action="fullscreen" aria-label="Toggle fullscreen"
+        title="Fullscreen (F)">⛶</button>
+    </header>
+
+    <nav class="qhs-rail" aria-label="Slide previews">
+      <div class="qhs-thumb-panel">
+        <div class="qhs-thumb-head"><strong>Slide previews</strong><span class="qhs-thumb-total">—</span></div>
+        <div class="qhs-thumb-list" role="list"></div>
+      </div>
+      <button class="qhs-rail-handle" type="button" aria-label="Expand or collapse slide previews"
+        aria-expanded="false"><span>Slide previews</span></button>
+    </nav>
+
+    <main class="qhs-stage" aria-label="Slide display area">
+      <div class="qhs-scaler"></div>
+    </main>
+
+    <footer class="qhs-controls" aria-label="Slide controls">
+      <button class="qhs-control-button" type="button" data-qhs-action="previous" aria-label="Previous slide">←</button>
+      <div class="qhs-progress-wrap">
+        <input class="qhs-range" type="range" min="1" value="1" aria-label="Slide progress">
+        <div class="qhs-counter" aria-live="polite"><strong>01</strong><span>/ —</span></div>
+      </div>
+      <button class="qhs-control-button" type="button" data-qhs-action="next" aria-label="Next slide">→</button>
+    </footer>
+
+    <div class="qhs-live" aria-live="polite" aria-atomic="true"></div>
+  </div>
+  <script src="assets/manual-slide-deck.js"></script>
+</body>
+
+</html>

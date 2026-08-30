@@ -1,0 +1,3792 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N39VTY949N"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-N39VTY949N');
+  </script>
+  <!-- Basic Page Needs
+    ================================================== -->
+  <meta charset="utf-8">
+  <meta name="author" content="Peir-Ru Wang">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;1,300&amp;display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/20250525-icon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/20250525-icon.png">
+
+  <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/css/style.css" rel="stylesheet">
+  <link href="../assets/css/responsive.css" rel="stylesheet">
+
+  <title>Week 2 Manual Slides · Superconducting-Circuit Quantization and Transmon Design | QH-2026F v5</title>
+  <meta name="description"
+    content="PHYS598500 Week 2, a 120-minute advanced class: superconducting-circuit quantization and Transmon design">
+  <meta name="keywords" content="- Quantum Processor
+- Superconducting Qubit
+- Qubit
+- Josephson Junction
+- Transmon
+- Fluxonium
+- Quantum Computing
+- Quantum Hardware
+- Quantum Algorithms
+- Quantum Chip">
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+  <style>
+    .qh-week-meta {
+      margin: 20px 0;
+      padding: 16px 18px;
+      border-left: 4px solid #5f4b8b;
+      background: #f6f4fa;
+    }
+
+    .qh-week-meta p {
+      margin: 4px 0;
+    }
+
+    .qh-session-plan {
+      width: 100%;
+      margin: 18px 0 8px;
+      border-collapse: collapse;
+    }
+
+    .qh-session-plan th,
+    .qh-session-plan td {
+      padding: 10px 12px;
+      border: 1px solid #ddd;
+      vertical-align: top;
+    }
+
+    .qh-session-plan th {
+      background: #f4f4f4;
+    }
+
+    .qh-session-plan .qh-break td {
+      color: #666;
+      background: #fafafa;
+    }
+
+    .qh-total {
+      text-align: right;
+      font-weight: 700;
+    }
+
+    .qh-reading li {
+      margin-bottom: 12px;
+    }
+
+    .qh-reading span,
+    .qh-reading em {
+      display: block;
+    }
+
+    .qh-week-list {
+      padding-left: 0;
+      list-style: none;
+    }
+
+    .qh-week-list li {
+      margin: 0 0 13px;
+      padding: 12px 15px;
+      border-left: 4px solid #5f4b8b;
+      background: #f7f7f7;
+    }
+
+    .qh-week-list a {
+      font-weight: 700;
+    }
+
+    @media (max-width: 767px) {
+      .qh-session-plan {
+        display: block;
+        overflow-x: auto;
+      }
+    }
+  </style>
+
+
+  <style id="qh-full-course-style">
+    .qh-full-lecture {
+      margin: 30px 0;
+      padding: 24px 26px;
+      border: 1px solid #d9d4e5;
+      background: #fff;
+    }
+
+    .qh-full-lecture>h2,
+    .qh-full-lecture>h3 {
+      margin-top: 0;
+    }
+
+    .qh-full-lecture h4 {
+      margin-top: 24px;
+    }
+
+    .qh-full-lecture li {
+      margin-bottom: 8px;
+    }
+
+    .qh-time {
+      display: inline-block;
+      margin-bottom: 12px;
+      padding: 4px 10px;
+      border-radius: 14px;
+      background: #5f4b8b;
+      color: #fff;
+      font-size: .9em;
+    }
+
+    .qh-board,
+    .qh-case,
+    .qh-task,
+    .qh-answer,
+    .qh-source-chapter {
+      margin: 20px 0;
+      padding: 17px 19px;
+      font-size: 15px;
+    }
+
+    .qh-board {
+      border-left: 4px solid #d0ccc8;
+      background: #fafafa;
+    }
+
+    .qh-case {
+      border-left: 4px solid #d0ccc8;
+      background: #fafafa;
+    }
+
+    .qh-task {
+      border-left: 4px solid #d0ccc8;
+      background: #fafafa;
+    }
+
+    .qh-answer {
+      border-left: 4px solid #d0ccc8;
+      background: #fafafa;
+    }
+
+    /* Section divider headings */
+    .qh-section {
+      margin: 40px 0 24px;
+      padding: 17px 19px;
+      border-left: 4px solid #355c9a;
+      background: #f3f7fc;
+    }
+
+    .qh-section h3 {
+      margin: 0 0 4px;
+      font-size: 20px;
+      font-weight: 700;
+      color: #355c9a;
+      border-bottom: none;
+    }
+
+    .qh-section h4 {
+      margin: 0;
+      font-size: 15px;
+      font-weight: 400;
+      color: #6a8ab5;
+      font-style: italic;
+    }
+
+    .qh-section>h3:first-child {
+      margin-top: 0;
+    }
+
+    /* Equation highlight — compact, not a section heading */
+    .qh-equation-highlight {
+      margin: 24px 0;
+      padding: 14px 18px;
+      border-left: 3px solid #6a6560;
+      background: #f9f8f7;
+    }
+
+    .qh-equation-label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      color: #6a6560;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    .qh-source-chapter {
+      border: 1px solid #e5e0ec;
+      background: #fdfcff;
+    }
+
+
+    .qh-source-chapter>h3 {
+      padding-bottom: 9px;
+      border-bottom: 1px solid #ddd5e8;
+    }
+
+    .qh-source-note {
+      color: #665f72;
+      font-size: .92em;
+    }
+
+    @media (max-width: 720px) {
+      .qh-full-lecture {
+        padding: 18px 15px;
+      }
+
+      .qh-board,
+      .qh-case,
+      .qh-task,
+      .qh-answer,
+      .qh-source-chapter {
+        padding: 14px 13px;
+      }
+    }
+
+    /* Supplement section styling */
+    .qh-supplement-divider {
+      margin: 36px 0 24px;
+      padding: 18px 22px;
+      border-left: 4px solid #5f4b8b;
+      background: #f6f4fa;
+    }
+
+    .qh-supplement-divider h2 {
+      margin: 0 0 5px;
+      font-size: 22px;
+    }
+
+    .qh-supplement-divider p {
+      margin: 0;
+    }
+
+    /* Tables in supplement */
+    .module table {
+      width: 100%;
+      margin: 16px 0;
+      border-collapse: collapse;
+      font-size: 15px;
+    }
+
+    .module table th,
+    .module table td {
+      padding: 10px 12px;
+      border: 1px solid #ddd;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .module table th {
+      background: #f4f4f4;
+      font-weight: 700;
+    }
+
+    /* Callout in supplement */
+    .module .callout {
+      margin: 16px 0;
+      padding: 12px 16px;
+      border-left: 4px solid #5f4b8b;
+      background: #f6f4fa;
+      font-size: 15px;
+    }
+
+    /* Lists in supplement */
+    .module ul,
+    .module ol {
+      margin: 12px 0;
+      padding-left: 24px;
+    }
+
+    .module li {
+      margin-bottom: 8px;
+      line-height: 1.6;
+      font-size: 15px;
+    }
+
+    /* Heading consistency — only direct h3 children, not inside .qh-section */
+    .module>h3 {
+      margin: 28px 0 14px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #ddd5e8;
+      font-size: 20px;
+    }
+
+    .module h4 {
+      margin: 20px 0 10px;
+      font-size: 17px;
+    }
+
+    .module p {
+      margin: 10px 0;
+      line-height: 1.7;
+    }
+  </style>
+
+
+  <style id="qh-details-style">
+    details.dark-background {
+      margin: 24px 0;
+      background-color: #3a3632;
+      border: none;
+      padding: 0;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    details.dark-background summary {
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 16px;
+      color: #e8e4e0;
+      background-color: #4a4540;
+      padding: 14px 20px;
+      border-radius: 0;
+      list-style: none;
+      transition: background-color 0.2s;
+    }
+
+    details.dark-background summary:hover {
+      background-color: #5a5550;
+    }
+
+    details.dark-background summary::-webkit-details-marker {
+      display: none;
+    }
+
+    details.dark-background summary::marker {
+      content: "";
+    }
+
+    details.dark-background summary::before {
+      content: "▸";
+      display: inline-block;
+      margin-right: 8px;
+      font-size: 12px;
+      transition: transform 0.2s;
+    }
+
+    details.dark-background[open] summary::before {
+      transform: rotate(90deg);
+    }
+
+    details.dark-background summary h3 {
+      margin: 0;
+      font-size: inherit;
+      font-weight: inherit;
+      color: inherit;
+      line-height: 1.4;
+    }
+
+    details.dark-background> :not(summary) {
+      padding: 20px;
+      color: #d0ccc8;
+    }
+
+    details.dark-background> :not(summary) p {
+      color: #c8c4c0;
+      line-height: 1.7;
+    }
+  </style>
+
+  <link rel="stylesheet" href="assets/slide-deck.css">
+
+  <link rel="stylesheet" href="qh-mobile-math-overflow.css" data-uniweb-fix="mobile-math-overflow">
+  <style>
+    #qhs-manual-slides[hidden] {
+      display: none !important;
+    }
+
+    .qhs-article-cover-source,
+    .qhs-article-slide-source {
+      display: block;
+    }
+
+    .qhs-slide .qhs-content-inner {
+      position: relative;
+    }
+
+    .qhs-slide.qhs-absolute-layout .qhs-content-inner {
+      min-height: 100%;
+    }
+
+    .qhs-cover .qhs-content-inner {
+      min-height: 0;
+      align-self: center;
+    }
+
+    .qhs-slide,
+    .qhs-slide h1,
+    .qhs-slide h2,
+    .qhs-slide h3,
+    .qhs-slide h4,
+    .qhs-slide h5,
+    .qhs-slide h6,
+    .qhs-slide p,
+    .qhs-slide li,
+    .qhs-slide th,
+    .qhs-slide td,
+    .qhs-slide summary,
+    .qhs-slide figcaption {
+      font-family: "Montserrat", "Noto Sans TC", system-ui, sans-serif;
+    }
+
+    .qhs-cover .theme-header {
+      width: 100%;
+      max-width: 1200px;
+      margin-inline: auto;
+    }
+
+    .qhs-cover .theme-header h2 {
+      margin: 0 auto;
+      font-size: 58px;
+      font-weight: 700;
+      line-height: 1.12;
+      letter-spacing: -0.025em;
+    }
+
+    .qhs-cover .theme-header h3,
+    .qhs-cover .theme-header h4 {
+      margin: 26px auto 0;
+      font-size: 28px;
+      font-weight: 500;
+      line-height: 1.3;
+      letter-spacing: 0;
+      opacity: 0.82;
+    }
+
+    .qhs-cover .theme-header h3:empty,
+    .qhs-cover .theme-header h4:empty {
+      display: none;
+    }
+
+    .qhs-slide:not(.qhs-cover) .qhs-slide-title {
+      margin-top: 4px !important;
+    }
+
+    body.qh-slide-active .qhs-header {
+      padding-right: 470px;
+    }
+
+    body.qh-slide-active .qhs-icon-button {
+      right: 205px;
+    }
+
+    .qhs-click-mode-button {
+      position: absolute;
+      top: 14px;
+      right: 255px;
+      min-width: 200px;
+      height: 36px;
+      padding: 0 14px;
+      color: var(--qhs-purple);
+      background: var(--qhs-purple-soft);
+      border: 0;
+      border-radius: 999px;
+      cursor: pointer;
+      font: 700 12px/1 "Montserrat", "Noto Sans TC", sans-serif;
+    }
+
+    .qhs-click-mode-button:hover,
+    .qhs-click-mode-button:focus-visible,
+    .qhs-click-mode-button.is-active {
+      color: #fff;
+      background: var(--qhs-purple);
+      outline: none;
+    }
+
+    @media (max-width: 720px) {
+      body.qh-slide-active .qhs-header {
+        padding-right: 140px;
+      }
+
+      .qhs-click-mode-button {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header id="masthead" class="site-header">
+    <nav id="primary-navigation" class="site-navigation">
+      <div class="container">
+
+        <div class="navbar-header">
+          <a href="../index.html" class="site-title">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
+        </div><!-- /.navbar-header -->
+
+        <div class="collapse navbar-collapse" id="agency-navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="../index.html">Home</a></li>
+            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Qubit Physics<i
+                  class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+              <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                <li><a href="../SCQ_elementary_en/main.html">Superconducting Qubits (Elementary)</a></li>
+                <li><a href="../SCQ_advanced_en/main.html">Superconducting Qubits (Advanced)</a></li>
+                <li><a href="../SpQ_en/main.html">Semiconductor Spin Qubits</a></li>
+              </ul>
+            </li>
+            <!--<li class="active"><a href="../SCQ_elementary/main.html">科普介紹</a></li>-->
+            <li class="active"><a href="../QC_hardware_en/main.html">Hardware</a></li>
+            <li><a href="../QID_en/main.html">Quantum Industries</a></li>
+            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Workshop Note<i
+                  class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+              <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                <li><a href="../ASW2026_en/main.html">2026 Academia Sinica SCQC Winter Workshop</a></li>
+              </ul>
+            </li>
+            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Consultance<i
+                  class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+              <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                <li><a href="https://www.quantum-perspectives.com/About_en/main.html">Taiwan Market Outreach
+                    Services</a></li>
+                <li><a href="../About_en/main.html">About Us</a></li>
+              </ul>
+            </li>
+            <li><a href="../index.html">中文版</a></li>
+          </ul>
+        </div>
+
+      </div>
+    </nav><!-- /.site-navigation -->
+  </header><!-- /#mastheaed -->
+
+  <div id="hero" class="hero overlay subpage-hero blog-hero">
+    <div class="hero-content">
+      <div class="hero_2-text">
+        <h1>Superconducting Quantum Computer Architecture</h1>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+          <li class="breadcrumb-item"><a href="../SCQ_advanced_en/main.html">PHYS598500</a></li>
+          <!--<li class="breadcrumb-item active">約瑟夫森節</li>-->
+        </ol>
+      </div><!-- /.hero-text -->
+    </div><!-- /.hero-content -->
+  </div><!-- /.hero -->
+
+  <main id="main" class="site-main">
+
+    <section class="site-section subpage-site-section section-blog">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-9">
+            <article class="blog-post">
+              <!--<img src="../assets/img/portfolio-1.jpg" class="img-res" alt="">-->
+              <div class="post-content">
+                <div id="qhs-article-content" class="course-theme"></div>
+              </div><!-- /.post-content -->
+            </article><!-- /.blog-post -->
+            <!--<div id="PostComments" class="post-comments">
+                            
+                            
+                            
+                        </div> /#PostComments -->
+            <!--<div class="respond">
+                            <h3>Post a Comment</h3>
+                            <form class="form-horizontal">
+                                <input class="form-control" type="text" placeholder="Your Name*" required>
+                                <input class="form-control" type="email" placeholder="Your Email" required>
+                                <textarea class="form-control form-control-comment" type="text" placeholder="Your Comment*" required></textarea>
+                                <button class="btn btn-green">Add a comment</button>
+                            </form>    
+                        </div> /.respond -->
+          
+                        <div id="prev-next-nav" class="text-center">
+                                    <a class="btn btn-gray" href="T1-1SA.html">← Previous</a> 
+                                    <a class="btn btn-gray" href="T2-3SA.html">Next →</a>
+                                </div>
+                    </div>
+          <aside class="col-md-3">
+                        <div class="sidebar">
+                            <div class="widget">
+                                <div id="lesson-list_2">
+                                <div class="lesson-link "><a href="main.html">QH-2026F v5 · 16-Week Overview</a></div>
+                                <div class="lesson-link "><a href="T2-outlook.html">T2 Outlook · From Artificial Atoms to Protected Qubits | QH-2026F v5</a></div>
+                                <div class="lesson-link "><a href="T2-2.html">Week 2 · Superconducting-Circuit Quantization and Transmon Design | QH-2026F v5</a></div>
+                                <div class="lesson-link "><a href="T2-2S.html">Week 2 Slides · Superconducting-Circuit Quantization and Transmon Design | QH-2026F v5</a></div>
+                                <div class="lesson-link "><a href="T2-3.html">Week 3 · Fluxonium: From Circuit Modification to Design Trade-offs | QH-2026F v5</a></div>
+                                <div class="lesson-link "><a href="T1-1SA.html">Week 1 Manual Slides · From Quantum Computing Models to Hardware Operations | QH-2026F v5</a></div>
+                                <div class="lesson-link active"><a href="T2-2SA.html">Week 2 Manual Slides · Superconducting-Circuit Quantization and Transmon Design | QH-2026F v5</a></div>
+                                <div class="lesson-link "><a href="T2-3SA.html">Week 3 Manual Slides · Fluxonium and Protected-Qubit Hamiltonian Engineering | QH-2026F v5</a></div>
+                                </div>
+                            </div>
+                        </div></aside>
+        </div>
+      </div>
+    </section><!-- /.section-portfolio -->
+
+  </main><!-- /#main -->
+
+  <footer id="colophon" class="site-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3 col-sm-4 col-xs-6">
+          <a href="../index.html" class="site-title">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
+          <p>Exploring the Quantum Technology Together.</p>
+        </div>
+        <div class="col-lg-offset-4 col-md-3 col-sm-4 col-md-offset-2 col-sm-offset-0 col-xs-6 ">
+          <p class="site-title">𝐾𝐸𝐸𝑃 𝐼𝑁 𝑇𝑂𝑈𝐶𝐻</p>
+          <ul class="list-unstyled contact-links">
+            <li><i class="fa fa-envelope" aria-hidden="true"></i><a href="mailto:info@insight-ihbar.com">info@insight-ihbar.com</a></li>
+            <!--<li><i class="fa fa-phone" aria-hidden="true"></i><a href="tel:+37400800000">+374 (00) 80 00 00 </a></li>
+                        <li><i class="fa fa-fax" aria-hidden="true"></i><a href="+37400900000">+374 (00) 90 00 00</a></li>
+                        <li><i class="fa-solid fa-location-dot"></i><p>Hsinchu 300, Taiwan (R.O.C.)</p></li>-->
+          </ul>
+        </div>
+        <!--<div class="clearfix visible-xs"></div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6">
+                    <h3>Featured links</h3>
+                    <ul class="list-unstyled">
+                        <li class="active"><a href="index_ch.html">Home</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="portfolio.html">Porfolio</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>-->
+      </div>
+    </div>
+    <div class="copyright">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-8">
+            <div class="social-links">
+              <!--<a class="twitter-bg" href="#"><i class="fab fa-twitter"></i></a>-->
+              <!--<<a class="facebook-bg" href="https://www.facebook.com/people/Quantum-Perspectives/61576446849628/"><i class="fab fa-facebook"></i></a>-->
+              <!--<a class="facebook-bg" href="https://www.facebook.com/people/%E9%87%8F%E5%AD%90%E9%81%A0%E8%A6%8BQuantum-Perspectives/61576883632888/"><i class="fab fa-facebook-f"></i></a>-->
+              <!--<a class="pinterest" href="#"><i class="fa-solid fa-microscope"></i></a>-->
+              <!--<a class="facebook-bg" href="https://www.facebook.com/people/Insight-hbar/61576811775374/"><i class="fab fa-facebook-f"></i></a>-->
+              <a class="linkedin-bg" href="https://www.linkedin.com/company/insight-ihbar"><i
+                  class="fab fa-linkedin"></i></a>
+            </div><!-- /.social-links -->
+          </div>
+          <div class="col-xs-4">
+            <div class="text-right">
+              <p><span style="font-size: 16px;">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</span></p>
+              <p>All Rights Reserved</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!-- /.copyright -->
+  </footer><!-- /#footer -->
+
+
+
+  <!-- The article remains the sole content source; Slide mode is generated live in the browser. -->
+  <!-- Bootstrap core JavaScript
+    ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/bootstrap-select.min.js"></script>
+  <script src="../assets/js/jquery.slicknav.min.js"></script>
+  <script src="../assets/js/jquery.countTo.min.js"></script>
+  <script src="../assets/js/jquery.shuffle.min.js"></script>
+  <script src="../assets/js/script.js"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <!--
+    MANUAL SLIDE SOURCE — SLIDES ARE THE SINGLE SOURCE OF TRUTH
+
+    1. Each direct child <section data-manual-slide> is exactly one slide.
+    2. Reorder whole sections to reorder slides.
+    3. Move HTML between sections to merge or split slides; no heading/weight algorithm will split them.
+    4. A data-cover slide's first h1/h2/h3 sets the label inherited by following slides until the next data-cover.
+    5. data-cover and data-divider select those slide layouts.
+    6. data-auto-fit="false" disables automatic down-scaling for a slide.
+    7. Article mode is generated from the same nested HTML structure, in the same order.
+    8. data-slide-hidden="true" on a child hides that child only in Slides; Article keeps it.
+    9. data-slide-hidden="true" on the section hides the whole slide; Article keeps the section.
+   10. data-article-hidden="true" on a section keeps that section out of Article mode.
+   11. details/summary remains collapsible in Article; Slides omit summary and show the body as static content.
+   12. For free Slide-only placement, use data-slide-position="absolute" with data-slide-left/top/width/height.
+       right, bottom, max-width, max-height, z, x, y, align, and fit are also supported.
+   13. data-article-hidden="true" on any child hides only that child in Article; Slides keep it.
+    -->
+  <div id="qhs-manual-slides" hidden="hidden">
+    <section data-manual-slide data-cover>
+      <div class="theme-header" style="text-align: center;">
+        <p class="theme-label">PHYS598500 · Week 2 · T2</p>
+        <h2>Quantization of Superconducting Circuits and Transmon Design</h2>
+        <h3>Circuit Quantization and Transmon Design</h3>
+      </div>
+    </section>
+
+    <section data-manual-slide>
+      <section class="course-overview">
+        <h3>Weekly Focus</h3>
+        <div class="qh-week-meta">
+          <p><strong>Course Duration:</strong> 120 minutes</p>
+          <p><strong>Core Question:</strong> Can we use a superconducting circuit to build an artificial atom whose
+            properties we can design?</p>
+          <p data-slide-hidden="true"><strong>Prerequisites:</strong> Lagrangian/Hamiltonian mechanics, LC circuits, and
+            basic superconductivity</p>
+
+        </div>
+      </section>
+      <section class="qh-supplement-divider" id="w2-question-map">
+        <h3>W2
+          <strong>Artificial Atoms and Transmons: A Five-Question Throughline</strong>
+        </h3>
+        <p>5 Questions</p>
+        <ol>
+          <li>
+            <p>Why can a macroscopic circuit have quantum energy levels?</p>
+          </li>
+          <li>
+            <p>What plays the roles of position and momentum in a superconducting circuit?</p>
+          </li>
+          <li>
+            <p>Why is the simplest artificial atom still not a qubit?</p>
+          </li>
+          <li>
+            <p>How does a Josephson junction shape the energy levels of an artificial atom?</p>
+          </li>
+          <li>
+            <p>Why is the artificial atom ultimately designed as a Transmon?</p>
+          </li>
+        </ol>
+      </section>
+    </section>
+
+    <section data-manual-slide data-cover>
+      <div class="theme-header" style="text-align: center;">
+        <h2>Q1. What Are Artificial Atoms?</h2>
+        <h3></h3>
+      </div>
+    </section>
+
+    <section data-manual-slide data-auto-fit="false">
+      <div class="qh-section">
+        <h3>Natural Atoms</h3>
+      </div>
+      <div style="text-align: center;" data-slide-position="absolute" data-slide-left="2%" data-slide-top="105px"
+        data-slide-width="46%" data-slide-height="430px" data-slide-z="1" data-slide-fit="contain">
+        <a href="../Image/NIST_periodictable_June24_iupac_Page_1.png">
+          <img src="../WebP/NIST_periodictable_June24_iupac_Page_1.webp" alt="---" style="width: 100%; height: auto;">
+        </a>
+        <p data-article-hidden="true"><span style="font-size: 0.7em; line-height: 0.8;">
+            Ref: https://www.nist.gov/pml/periodic-table-elements
+          </span></p>
+      </div>
+      <p data-slide-hidden="true">
+        ▲
+        <span style="font-size: 0.7em; line-height: 0.8;">
+          <br>Ref: https://www.nist.gov/pml/periodic-table-elements
+        </span>
+      </p>
+      <div style="text-align: center;" data-slide-position="absolute" data-slide-left="52%" data-slide-top="105px"
+        data-slide-width="46%" data-slide-height="430px" data-slide-z="1" data-slide-fit="contain">
+        <a href="../Image/FIGURA1-IONQ.jpg">
+          <img src="../WebP/FIGURA1-IONQ.webp" alt="---" style="width: 100%; height: auto;">
+        </a>
+      </div>
+      <p data-slide-hidden="true">
+        ▲
+        <span style="font-size: 0.7em; line-height: 0.8;">
+          <br>Ref: https://www.nist.gov/pml/periodic-table-elements
+        </span>
+      </p>
+
+    </section>
+
+
+    <section data-manual-slide>
+      <section class="module">
+        <div class="qh-section">
+          <h3>Properties of the transmon</h3>
+        </div>
+        <h4>The current mainstream superconducting qubit</h4>
+        <div style="text-align: center;"><a href="../Image/Transmon.png"><img src="../WebP/Transmon.webp" alt="Circuit diagrams of single-JJ, symmetric-SQUID, and asymmetric-SQUID transmons" style="width: 98%; height: auto;"></a></div>
+
+        <div style="text-align: center;"><a href="../Image/Transmon state.png"><img src="../WebP/Transmon state.webp" alt="Potential curves and quantum energy-level diagrams" style="width: 50%; height: auto;"></a></div>
+        <p>
+          <span style="font-size: 0.7em; line-height: 0.8;">Ref:
+            DOI:10.48550/arXiv.2203.04164</span><br><br>
+        </p>
+      </section>
+    </section>
+
+    <section data-manual-slide>
+      <div class="qh-section">
+        <h3>Can We Build an Atom from a Circuit?</h3>
+      </div>
+      <p>
+        The discrete energy levels of a natural atom arise from the quantum motion of electrons in a Coulomb potential;
+        those of a superconducting qubit arise from the quantum motion of charge, flux, and Josephson phase. This week,
+        formula derivations are not the protagonist. Instead, the story follows one question:
+        <strong>If we have almost no control over the size, frequency, or energy levels of a natural atom, can we build
+          an artificial atom whose properties we can design ourselves?</strong>
+      </p>
+      <p>
+        A <strong>natural-atom qubit</strong> uses a real microscopic atom or ion and selects two well-resolved,
+        sufficiently long-lived quantum states as \(|0\rangle\) and \(|1\rangle\). Their underlying spectrum is
+        supplied by nature; the
+        experimental task is to isolate, control, and read out the chosen transition. An <strong>artificial-atom
+          qubit</strong> instead uses a fabricated nonlinear superconducting circuit whose collective charge, flux, and
+        phase motion produces discrete quantum levels. Both systems encode information in a controlled two-state
+        subspace, but the artificial atom allows its transition frequency, anharmonicity, coupling, and noise
+        sensitivity to be engineered through circuit elements and design parameters. In either case, possessing
+        discrete levels alone is not enough: the two computational states must also be addressable, coherent, and
+        measurable.
+      </p>
+      <p><a class="btn btn-gray" href="T2-outlook.html">Preview the Sequence and Outlook for the Ten T2 Questions</a>
+      </p>
+    </section>
+
+    <section data-manual-slide
+      data-slide-hidden="true">
+      <table class="qh-session-plan">
+        <thead>
+          <tr>
+            <th>Time</th>
+            <th>Question</th>
+            <th>Outcome</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>0–10 min</td>
+            <td>Opening on Artificial Atoms and Prerequisite Diagnosis</td>
+            <td>Comparison Diagram: Natural Atoms and Circuit-Based Artificial Atoms</td>
+          </tr>
+          <tr>
+            <td>10–30 min</td>
+            <td>Question 1: Quantum Energy Levels in a Macroscopic Circuit</td>
+            <td>Conceptual Chain from Macroscopic Quantum Phase to Circuit Modes</td>
+          </tr>
+          <tr>
+            <td>30–50 min</td>
+            <td>Question 2: Conjugate Variables of a Circuit</td>
+            <td>Comparison of \((\Phi,Q)\) and \((\varphi,n)\)</td>
+          </tr>
+          <tr>
+            <td>50–70 min</td>
+            <td>Question 3: Limitations of the LC Oscillator</td>
+            <td>Equally Spaced Spectrum and the Inability to Address One Transition Selectively</td>
+          </tr>
+          <tr>
+            <td>70–95 min</td>
+            <td>Question 4: Josephson Nonlinearity</td>
+            <td>Cosine Potential and Anharmonicity</td>
+          </tr>
+          <tr>
+            <td>95–115 min</td>
+            <td>Question 5: The Transmon Design Choice</td>
+            <td>charge dispersion/anharmonicity trade-off</td>
+          </tr>
+          <tr>
+            <td>115–120 min</td>
+            <td>Exit Ticket and Reverse-Design Assignment</td>
+            <td>geometry → Hamiltonian hypothesis</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+
+    <section data-manual-slide>
+      <div class="qh-section">
+        <h3>Module 2: What Is a Superconducting Qubit?</h3>
+      </div>
+      <h4>Artificial Atoms from Superconducting Circuits</h4>
+      <p>
+        A superconducting qubit can be regarded as an artificial atom. A natural atom's energy levels arise from the
+        quantized motion of electrons in the Coulomb potential of its nucleus; a superconducting qubit's levels arise
+        from the quantized motion of charge, flux, and Josephson phase in a circuit.
+      </p>
+      <p>
+        In a classical LC circuit, energy oscillates between the capacitor's electric-field energy and the inductor's
+        magnetic-field energy. Quantizing an LC circuit produces a quantum harmonic oscillator. Its levels, however, are
+        exactly equally spaced, making it impossible to isolate the lowest two levels as a qubit. A superconducting
+        qubit must therefore introduce nonlinearity so that adjacent level spacings differ.
+      </p>
+    </section>
+
+
+    <section data-manual-slide>
+      <div class="qh-section">
+        <h3>Question 1: Why Can a Macroscopic Circuit Have Quantum Energy Levels?</h3>
+      </div>
+      <p>
+        “Macroscopic” does not mean “necessarily classical.” Cooper pairs in a superconductor form a condensate with a
+        shared phase. At low temperature, with low loss and a controlled electromagnetic environment, collective circuit
+        modes can retain quantum coherence long enough to be useful. What is quantized is not the position of an
+        individual electron, but the charge, flux, and phase degrees of freedom of the circuit mode as a whole.
+      </p>
+      <h4>First Correct a Common Misconception: Many Particles Do Not Necessarily Mean Many Degrees of Freedom</h4>
+      <p>
+        A piece of superconducting metal certainly contains an enormous number of electrons, but at low energy we do not
+        need to track them individually. The electrons first form Cooper pairs and then condense into a many-body
+        quantum state with long-range phase coherence. It can be represented by a macroscopic order parameter:
+      </p>
+      <p>\[
+        \Psi(\mathbf r,t)=\sqrt{n_s(\mathbf r,t)}\,e^{i\theta(\mathbf r,t)}.
+        \]</p>
+    </section>
+
+    <section data-manual-slide>
+      <p>
+        Here \(n_s\) describes the condensate density and \(\theta\) its phase. The absolute phase is not itself
+        observable; the gauge-invariant phase difference between superconducting nodes is what enters the current,
+        magnetic flux, and circuit energy. In other words, many microscopic particles can collectively form a small
+        number of controllable<strong>collective coordinates</strong>. The real question is not “How many electrons are
+        in the circuit?” but “How many independent modes remain in its low-energy dynamics?”
+      </p>
+      <p>
+        By analogy, a tuning fork also contains many atoms, yet its lowest vibration can be described by a single
+        normal-mode amplitude. The crucial difference for a superconducting circuit is that this collective mode can
+        enter the quantum limit in a cold, low-loss environment instead of behaving only as a classical vibration.
+      </p>
+      <h4>From a Macroscopic Phase to a Quantizable Circuit Mode</h4>
+      <p>
+        A superconductor provides more than “zero resistance.” The superconducting gap suppresses low-energy
+        quasiparticle excitations, while the condensate provides phase stiffness. With suitable capacitances,
+        inductances, and boundary conditions, the circuit can retain only a few low-loss electromagnetic modes. For one
+        such mode, begin by choosing the branch flux as the coordinate:
+      </p>
+    </section>
+
+    <section data-manual-slide>
+      <p>\[
+        \Phi(t)\equiv\int^t V(t')\,dt',
+        \qquad
+        \varphi\equiv\frac{2\pi\Phi}{\Phi_0},
+        \qquad
+        \Phi_0=\frac{h}{2e}.
+        \]</p>
+      <p>
+        A capacitor stores electric energy and an inductor stores magnetic energy. For the simplest single LC mode, the
+        classical Hamiltonian is
+      </p>
+      <p>\[
+        H_{\rm mode}(\Phi,Q)
+        =\frac{Q^2}{2C_{\rm eff}}+\frac{\Phi^2}{2L_{\rm eff}},
+        \qquad
+        \omega=\frac{1}{\sqrt{L_{\rm eff}C_{\rm eff}}}.
+        \]</p>
+      <p>
+        The first term assigns an energy cost to charge accumulation; the second assigns a cost when the flux departs
+        from equilibrium. Together they confine the degree of freedom into a normal mode. Promoting these circuit
+        variables to quantum operators turns the mode into a quantum harmonic oscillator:
+      </p>
+      <p>\[
+        \hat H_{\rm mode}
+        =\hbar\omega\left(\hat a^\dagger\hat a+\frac12\right),
+        \qquad
+        E_m=\hbar\omega\left(m+\frac12\right),
+        \quad m=0,1,2,\ldots
+        \]</p>
+    </section>
+
+    <section data-manual-slide>
+      <p>
+        This is the shortest existence proof that a macroscopic circuit can have discrete quantum levels: first identify
+        a collective mode with a restoring energy, then quantize that mode. Question 2 will formally explain why
+        \(\Phi\) and \(Q\) form a conjugate pair; Question 3 will then ask why this ladder of equally spaced levels
+        still cannot serve directly as a qubit.
+      </p>
+      <h4>The Existence of Energy Levels Is One Thing; Resolving Them Experimentally Is Another</h4>
+      <p>
+        Formal quantization guarantees \(E_m\). But if thermal fluctuations or the environment-induced linewidth exceed
+        the level spacing, an experiment will reveal only an approximately continuous classical response. Resolving the
+        lowest few levels requires at least
+      </p>
+      <p>\[
+        k_BT\ll\hbar\omega,
+        \qquad
+        \hbar\kappa,\;\hbar\gamma_\phi\ll\hbar\omega,
+        \]</p>
+      <p>
+        where \(\kappa\) is the mode's energy-decay rate and \(\gamma_\phi\) its dephasing rate. The first condition
+        suppresses thermal excitation; the other two prevent relaxation and phase noise from broadening the levels
+        beyond recognition. The mean thermal excitation number is
+      </p>
+    </section>
+
+    <section data-manual-slide>
+      <p>\[
+        \bar n_{\rm th}=\frac{1}{e^{\hbar\omega/k_BT}-1}.
+        \]</p>
+      <p>
+        For example, when \(f=\omega/2\pi=5\,\mathrm{GHz}\), \(hf/k_B\approx0.24\,\mathrm{K}\). If the chip mode is
+        genuinely thermalized to \(T=20\,\mathrm{mK}\), then \(\bar n_{\rm th}\approx6\times10^{-6}\): the system is
+        almost always in its ground state. In practice, attenuation, filtering, shielding, and good packaging are still
+        required to keep hot photons and external noise from raising the effective temperature.
+      </p>
+      <h4>Why Do Everyday Circuits Still Look Classical?</h4>
+      <p>
+        An ordinary RLC circuit is not “devoid of quantum mechanics.” Its quantum structure is usually hidden by three
+        effects: room temperature populates many levels; resistance and environmental coupling broaden the linewidth;
+        and strong driving fills the mode with many quanta. For a coherent state with mean photon number
+        \(N=|\alpha|^2\gg1\), relative fluctuations shrink approximately as \(1/\sqrt N\), so the motion approaches a
+        classical waveform. Superconductivity, dilution refrigeration, and microwave engineering push the same kind of
+        circuit back into the regime \(N\sim0,1\) with sufficiently low loss.
+      </p>
+    </section>
+
+    <section data-manual-slide>
+      <p>A macroscopic circuit can therefore exhibit quantum energy levels only after four links are established in
+        sequence:</p>
+      <ul>
+        <li>
+          <strong>Superconducting condensate and Cooper-pair condensate:</strong> organize many electrons into a
+          phase-coherent low-energy many-body state.
+        </li>
+        <li>
+          <strong>Macroscopic quantum phase:</strong> makes the phase difference between nodes a collective variable
+          that enters circuit dynamics.
+        </li>
+        <li>
+          <strong>Low-loss circuit and low-temperature environment:</strong> keep both \(k_BT\) and the energy
+          linewidth below the mode quantum \(\hbar\omega\).
+        </li>
+        <li>
+          <strong>Quantization of a collective circuit mode:</strong> identify a bounded normal mode from the circuit
+          energy and obtain discrete levels \(E_m\).
+        </li>
+      </ul>
+      <p>
+        <strong>Core criterion:</strong> Whether a circuit has quantum energy levels depends on whether it possesses a
+        collective degree of freedom that can be identified, quantized, and isolated sufficiently well from the
+        environment. “Having discrete levels” completes only the first step toward an artificial atom. Selective control
+        of just two levels is the design problem addressed by the next three questions.
+      </p>
+    </section>
+
+
+
+
+    <section data-manual-slide>
+      <section class="module">
+        <section class="module">
+          <h4>1.3 From Circuit Layout to Hamiltonian</h4>
+          <p>
+            The layout of a superconducting quantum chip is not merely a geometric pattern. It maps to concrete circuit
+            parameters such as capacitance, inductance, coupling strength, resonance frequency, and loss channels. Those
+            parameters in turn determine the system Hamiltonian.
+          </p>
+          <p>
+            For example, the large metal pads of a transmon set the total capacitance \(C_\Sigma\), the Josephson
+            junction
+            sets the Josephson energy \(E_J\), and together they determine the qubit frequency, anharmonicity, and
+            charge-noise sensitivity.
+          </p>
+          <div class="qh-board">
+            <h4>Core concept</h4>
+            <p>
+              In a superconducting quantum chip, “layout design” is “Hamiltonian engineering.” An apparently geometric
+              design choice ultimately becomes the frequency, coupling, noise sensitivity, and controllability of the
+              quantum system.
+            </p>
+          </div>
+          <div class="qh-task">
+            <h4>Learning Check</h4>
+            <ol>
+              <li>What is the greatest difference between a superconducting quantum chip and a conventional CMOS chip?
+              </li>
+              <li>Why must the readout resonator be coupled to the qubit?</li>
+              <li>Why does chip layout affect the qubit Hamiltonian?</li>
+            </ol>
+          </div>
+        </section>
+      </section>
+    </section>
+
+    <section data-manual-slide data-cover>
+      <div class="theme-header" style="text-align: center;">
+        <h2>Q2. How Do We Quantize a Circuit?</h2>
+        <h3></h3>
+      </div>
+    </section>
+
+    <section data-manual-slide>
+      <div class="qh-section">
+        <h3>Canonical Quantization of an LC Circuit</h3>
+      </div>
+      <h4>Harmonic Oscillation</h4>
+      <p>
+        The harmonic oscillator is ubiquitous in quantum physics and produces discrete energy levels when quantized—the
+        same fundamental concept on which qubits rely. Starting with a superconducting material and the idea of an LC
+        oscillator, one can build a superconducting qubit from circuit elements that exhibit quantum behavior. This
+        section first discusses the quantization of an LC circuit.
+      </p>
+    </section>
+
+    <section data-manual-slide>
+      <div style="text-align: center;"><a href="../Image/LC.png"><img src="../WebP/LC.webp" alt="Minimalist black animal motif." style="width: 30%; height: auto;"></a></div>
+      <p>
+        ▲ A basic \(LC\) oscillator circuit contains an inductor \(L\) and a capacitor \(C\). Define the charge on the
+        capacitor as \(Q\); a changing capacitor charge, \(\dot{Q}\), is the current flowing in the circuit. The
+        energies stored in the capacitor and inductor are \[
+        E_C = \frac{Q^2}{2C}, \quad E_L = \frac{L\dot{Q}^2}{2}.
+        \]. We may regard \(E_L\) as the kinetic-energy term \(T\) and \(E_C\) as the potential-energy term \(U\), and
+        thereby define the Lagrangian \(L\): \[
+        \mathcal{L}(\dot{Q}, Q) = T - U = \frac{L\dot{Q}^2}{2} - \frac{Q^2}{2C}.
+        \]
+      </p>
+    </section>
+
+    <section data-manual-slide>
+      <p>
+        From the Euler–Lagrange equation, \[
+        \frac{d}{dt} \frac{\partial \mathcal{L}}{\partial \dot{Q}} - \frac{\partial \mathcal{L}}{\partial Q}
+        = 0,
+        \], we obtain \[
+        L\ddot{Q} + \frac{Q}{C} = 0 \implies \ddot{Q} + \frac{Q}{LC} = 0,
+        \], which describes simple harmonic motion at frequency \(\omega = \frac{1}{\sqrt{LC}}\).
+      </p>
+    </section>
+
+    <section data-manual-slide>
+      <div class="qh-section">
+        <h3>Quantizing a Classical LC Circuit</h3>
+      </div>
+      <h4>What Is Canonical Quantization?</h4>
+      <p>
+        Canonical quantization is a method for introducing quantum structure into a classical system. Its central step
+        is to replace the Poisson structure of Hamiltonian mechanics with commutation relations. The preceding section
+        gave the Lagrangian; a Legendre transform now yields the Hamiltonian.
+      </p>
+    </section>
+
+    <section data-manual-slide>
+      <div class="qh-section">
+        <h3>LC Circuit</h3>
+      </div>
+      <h4>Basic Relations for an LC Circuit</h4>
+      <p>
+        An LC circuit consists of a capacitor \(C\) and an inductor \(L\). Their defining relations are \[
+        \left\{
+        \begin{aligned}
+        \text{Capacitor:}\qquad
+        I_C &amp;= C\frac{dV_C}{dt},\\[6pt]
+        \text{Inductor:}\qquad
+        V_L &amp;= L\frac{dI_L}{dt}.
+        \end{aligned}
+        \right.
+        \]. Because the instantaneous power is \(IV\), the energy stored in the circuit elements can be written as \[
+        E=\int_{0}^{t}IV\,dt.
+        \].
+      </p>
+    </section>
+
+    <section data-manual-slide>
+      <p>
+        Let \(Q\) denote the charge on the capacitor, so the circuit current is \(I=\dot{Q}\). The energies stored in
+        the capacitor and inductor are \[
+        \left\{
+        \begin{aligned}
+        E_C &amp;= \frac{Q^2}{2C},\\[6pt]
+        E_L &amp;= \frac{L\dot{Q}^{\,2}}{2}.
+        \end{aligned}
+        \right.
+        \]. These forms correspond to a mass–spring system, \[
+        \left\{
+        \begin{aligned}
+        E_C &amp;= \frac{Q^2}{2C},\\[6pt]
+        E_L &amp;= \frac{L\dot{Q}^{\,2}}{2}
+        \end{aligned}
+        \right.
+        \quad\longleftrightarrow\quad
+        \left\{
+        \begin{aligned}
+        V &amp;= \frac{1}{2}Kx^2,\\[6pt]
+        T &amp;= \frac{1}{2}m\dot{x}^{\,2}.
+        \end{aligned}
+        \right.
+        \], where \(x\) is the displacement of mass \(m\) and \(K\) is the spring constant. The mapping between the two
+        systems is \[
+        Q\longleftrightarrow x,
+        \qquad
+        L\longleftrightarrow m,
+        \qquad
+        \frac{1}{C}\longleftrightarrow K.
+        \].
+      </p>
+      <p>
+        Define the flux variable \(\Phi\) across the inductor: \[
+        \Phi
+        \equiv
+        \int_{0}^{t}V_L\,dt
+        =
+        \int_{0}^{t}
+        L\frac{dI_L}{dt}\,dt
+        =
+        LI_L
+        =
+        L\dot{Q}.
+        \]. Because the capacitor and inductor in the LC circuit have the same terminal voltage, \(V_L=V_C\), it follows
+        that \[
+        \frac{d\Phi}{dt}
+        =
+        V_L
+        =
+        V_C
+        =
+        \frac{Q}{C}.
+        \]. The relation between charge \(Q\) and flux variable \(\Phi\) is therefore \[
+        Q=C\dot{\Phi}.
+        \].
+      </p>
+    </section>
+
+    <section data-manual-slide>
+      <p>
+        Substituting \(Q=C\dot{\Phi}\) and \(\Phi=L\dot{Q}\) into the energy expression gives \[
+        \left\{
+        \begin{aligned}
+        E_C
+        &amp;=
+        \frac{Q^2}{2C}
+        =
+        \frac{C\dot{\Phi}^{\,2}}{2},\\[8pt]
+        E_L
+        &amp;=
+        \frac{L\dot{Q}^{\,2}}{2}
+        =
+        \frac{\Phi^2}{2L}.
+        \end{aligned}
+        \right.
+        \]. Thus, when \(\Phi\) is used as the generalized coordinate, the capacitive energy plays the role of kinetic
+        energy and the inductive energy plays the role of potential energy.
+      </p>
+      <p>
+        The LC-circuit Lagrangian \(\mathcal{L}\) is \[
+        \mathcal{L}
+        =
+        E_C-E_L
+        =
+        \frac{C\dot{\Phi}^{\,2}}{2}
+        -
+        \frac{\Phi^2}{2L}.
+        \].
+      </p>
+      <p>
+        The canonical momentum \(\Pi\) corresponding to generalized coordinate \(\Phi\) is defined by \[
+        \Pi
+        \equiv
+        \frac{\partial\mathcal{L}}
+        {\partial\dot{\Phi}}
+        =
+        C\dot{\Phi}
+        =
+        Q.
+        \]. In an LC circuit, the canonical momentum conjugate to flux \(\Phi\) is therefore charge \(Q\).
+      </p>
+      <p>
+        The Hamiltonian \(\mathcal{H}\) is defined by the Legendre transform \[
+        \mathcal{H}
+        \equiv
+        \Pi\dot{\Phi}-\mathcal{L}.
+        \]. Substituting \(\Pi=Q=C\dot{\Phi}\) gives \[
+        \mathcal{H}
+        =
+        \frac{Q^2}{2C}
+        +
+        \frac{\Phi^2}{2L}.
+        \].
+      </p>
+      <div class="qh-equation-highlight">
+        <p>
+          \[
+          [\hat{\Phi},\hat{Q}]
+          =
+          i\hbar
+          \quad\longleftrightarrow\quad
+          [x,p]
+          =
+          i\hbar.
+          \]
+        </p>
+      </div>
+    </section>
+
+    <section data-manual-slide>
+      <details class="dark-background">
+        <summary>
+          <h3>Choice of Canonical Coordinate (Optional)</h3>
+        </summary>
+        <p>
+          The canonical momentum \(\Phi_\#\) is defined by \[
+          \Phi_\# \equiv \frac{\partial \mathcal{L}}{\partial \dot{Q}} = \mathcal{L}\dot{Q} \leftrightarrow
+          \dot{Q} = \frac{\Phi_\#}{L}.
+          \]. Here \(\Phi_\#\) has the units of flux and can be regarded as the flux inside the inductor. The
+          Hamiltonian
+          \(H(\Phi_\#, Q)\) is defined as \[
+          \mathcal{H} \equiv \Phi_\# \dot{Q} - \mathcal{L} = \frac{\Phi_\#^2}{2L} + \frac{Q^2}{2C}.
+          \].
+        </p>
+        <p>
+          In a quantum system, canonical coordinate \(q\) and canonical momentum \(p\) obey the commutation relation \[
+          [x, p] = i\hbar.
+          \]. For the parameters used here, the quantization condition is \[
+          [Q, \Phi_\#] = i\hbar.
+          \].
+        </p>
+        <p style="text-align:justify; color:blue;">
+          We currently use the notation \(\Phi_\#\), the reverse of the convention in traditional treatments. Because
+          the
+          Hamiltonian is symmetric in the roles of \(\Phi_\#\) and \(Q\), it can appear that either may be chosen as
+          coordinate or momentum, even though kinetic and potential energy enter the Lagrangian asymmetrically. We
+          therefore reverse the usual convention here, treating the flux part as the generalized coordinate \(\Phi\) and
+          \(Q\) as the generalized momentum.
+        </p>
+      </details>
+    </section>
+
+    <section data-manual-slide>
+      <details class="dark-background">
+        <p style="text-align:justify; color:blue;">
+          With this choice, the quantization condition becomes \[
+          [\Phi, Q] = i\hbar,
+          \], which differs from our earlier choice by a minus sign: \[
+          \Phi = -\Phi_\#.
+          \]. This sign can also be explained by the antisymmetry of the Lagrangian transformation.
+        </p>
+        <p>
+          One common explanation is that the linear inductor will later be replaced by a nonlinear inductive element,
+          the
+          Josephson junction, whose nonlinear term is easier to interpret as potential energy. Yet a qubit is later
+          driven
+          by applying a voltage to its capacitor, which would then appear to drive the kinetic rather than potential
+          energy. For calculation, the assignment of “kinetic” and “potential” makes no physical difference.
+        </p>
+        <p>
+
+          Introduce the new variables \(a\) and \(a^\dagger\): \[
+          a = \sqrt{\frac{1}{2\hbar} \sqrt{\frac{L}{C}}} \left( Q + i\sqrt{\frac{C}{L}} \Phi_\# \right),
+          \quad
+          a^\dagger = \sqrt{\frac{1}{2\hbar} \sqrt{\frac{L}{C}}} \left( Q - i\sqrt{\frac{C}{L}} \Phi_\#
+          \right).
+          \]. Conversely, \[
+          Q = \sqrt{\frac{\hbar}{2} \sqrt{\frac{C}{L}}} (a^\dagger + a), \quad
+          \Phi_\# = i\sqrt{\frac{\hbar}{2} \sqrt{\frac{L}{C}}} (a^\dagger - a).
+          \].
+        </p>
+      </details>
+    </section>
+
+    <section data-manual-slide>
+      <details class="dark-background">
+        <p>
+          It is straightforward to show \([a, a^\dagger] = 1\): \[
+          [a, a^\dagger] = aa^\dagger - a^\dagger a = \frac{1}{2\hbar} \sqrt{\frac{L}{C}} \left[ Q, \Phi_\#
+          \right] = 1.
+          \]. Using \(a\) and \(a^\dagger\), rewrite the Hamiltonian \(H(\Phi_\#, Q)\) as \[
+          \mathcal{H} = \frac{\Phi_\#^2}{2L} + \frac{Q^2}{2C} = \frac{\hbar \omega}{4} \left[ - (a^\dagger -
+          a)^2 + (a^\dagger + a)^2 \right],
+          \], where \(\omega = \frac{1}{\sqrt{LC}}\). Expanding gives \[
+          \mathcal{H} = \frac{\hbar \omega}{2} \left[ a^\dagger a + a^\dagger a + 1 \right] = \hbar \omega
+          \left[ a^\dagger a + \frac{1}{2} \right].
+          \].
+        </p>
+        <p>
+          The final quantized Hamiltonian has adjacent energy levels separated by \(\hbar \omega\).
+        </p>
+      </details>
+    </section>
+
+    <section data-manual-slide>
+      <details class="dark-background">
+        <div class="qh-section">
+          <h3>Interchanging the Kinetic- and Potential-Energy Terms</h3>
+        </div>
+        <h4>Strict Definition of Canonical Coordinates</h4>
+        <p>
+          To quantize correctly through commutation relations, the correspondence involving \(x, p\) must be defined
+          strictly; otherwise a sign discrepancy can arise. From the preceding section, \[
+          \dot{\Phi}_\# = \frac{d}{dt} \frac{\partial \mathcal{L}}{\partial \dot{Q}} = \frac{\partial
+          \mathcal{L}}{\partial Q} = -\frac{Q}{C} \implies Q = -C\dot{\Phi}_\#.
+          \]. We now transform the Lagrangian \(L\) into momentum space.
+        </p>
+        <p>
+          Define the new Lagrangian \(\bar{\mathcal{L}}\) by \[
+          \bar{\mathcal{L}} \equiv \mathcal{L} - \frac{d}{dt} (\Phi_\# Q) = \mathcal{L} - \dot{\Phi}_\# Q -
+          \Phi_\# \dot{Q},
+          \]. Expanding gives \[
+          \bar{\mathcal{L}} = \frac{L\dot{Q}^2}{2} - \frac{Q^2}{2C} - \dot{\Phi}_\# Q - \Phi_\# \dot{Q} =
+          \frac{\Phi_\#^2}{2L} - \frac{C\dot{\Phi}_\#^2}{2} + C\dot{\Phi}_\#^2 - \frac{\Phi_\#^2}{L},
+          \], which simplifies to \[
+          \bar{\mathcal{L}} = \frac{C\dot{\Phi}_\#^2}{2} - \frac{\Phi_\#^2}{2L}.
+          \].
+        </p>
+      </details>
+    </section>
+
+    <section data-manual-slide>
+      <details class="dark-background">
+        <p>
+          Notice that now \(\mathcal{L}(Q, \dot{Q}) \to \bar{\mathcal{L}}(\Phi_\#, \dot{\Phi}_\#)\), so the roles of
+          kinetic and potential energy are interchanged. At the same time, \(\bar{\mathcal{L}} = -\mathcal{L}\),
+          reflecting the antisymmetry of the Lagrangian transformation. To absorb this antisymmetry, define the new
+          variable \[
+          \Phi = -\Phi_\#.
+          \], which gives \[
+          \bar{\mathcal{L}}(\dot{\Phi}, \Phi) = \frac{C\dot{\Phi}^2}{2} - \frac{\Phi^2}{2L}.
+          \].
+        </p>
+        <p>
+          The corresponding canonical momentum \(\Pi\), using the preceding result and its relation to \(Q\), is \[
+          \Pi \equiv \frac{\partial \bar{\mathcal{L}}}{\partial \dot{\Phi}} = C\dot{\Phi} = -C\dot{\Phi}_\#
+          = Q \implies \dot{\Phi} = \frac{\Pi}{C} = \frac{Q}{C}.
+          \].
+        </p>
+        <p>
+          The Hamiltonian \(\bar{\mathcal{H}}\) is defined by \[
+          \bar{\mathcal{H}} = \Pi\dot{\Phi} - \bar{\mathcal{L}} = \frac{\Pi^2}{C} - \frac{\Pi^2}{2C} +
+          \frac{\Phi^2}{2L} = \frac{\Pi^2}{2C} + \frac{\Phi^2}{2L},
+          \] and is identical to the earlier \(\mathcal{H}\). The quantization condition is now \[
+          [\Phi, \Pi] = [\Phi, Q] = i\hbar,
+          \], the conventional condition.
+        </p>
+      </details>
+    </section>
+
+    <section data-manual-slide>
+      <details class="dark-background">
+        <p>
+          Define new variables \(a\) and \(a^\dagger\): \[
+          a = \sqrt{\frac{1}{2\hbar} \sqrt{\frac{L}{C}}} \left( \sqrt{\frac{C}{L}} \Phi + iQ \right), \quad
+          a^\dagger = \sqrt{\frac{1}{2\hbar} \sqrt{\frac{L}{C}}} \left( \sqrt{\frac{C}{L}} \Phi - iQ
+          \right).
+          \] Conversely: \[
+          \Phi = \sqrt{\frac{\hbar}{2} \sqrt{\frac{L}{C}}} (a^\dagger + a), \quad
+          Q = i\sqrt{\frac{\hbar}{2} \sqrt{\frac{C}{L}}} (a^\dagger - a).
+          \]
+        </p>
+        <p>
+          It is straightforward to show that \([a, a^\dagger] = 1\): \[
+          [a, a^\dagger] = aa^\dagger - a^\dagger a = \frac{1}{2\hbar} \sqrt{\frac{L}{C}} \left[ \Phi, Q
+          \right] = 1.
+          \] The Hamiltonian \(H(\Phi, Q)\) can therefore be rewritten as: \[
+          \mathcal{H} = \frac{\Phi^2}{2L} + \frac{Q^2}{2C} = \frac{\hbar}{4\sqrt{LC}} \left[ (a^\dagger +
+          a)^2 - (a^\dagger - a)^2 \right].
+          \] Since \(\omega = \frac{1}{\sqrt{LC}}\), expanding gives: \[
+          \mathcal{H} = \frac{\hbar \omega}{4} \left[ (a^\dagger + a)^2 - (a^\dagger - a)^2 \right] = \hbar
+          \omega \left[ a^\dagger a + \frac{1}{2} \right].
+          \]
+        </p>
+        <p>
+          Finally, we again obtain the quantized Hamiltonian, in which adjacent energy levels differ by \(\hbar
+          \omega\).
+        </p>
+      </details>
+    </section>
+
+    <section data-manual-slide>
+      <details class="dark-background">
+        <div class="qh-section">
+          <h3>Formal interchange of Lagrangian kinetic and potential terms</h3>
+        </div>
+        <h4>Streamlined derivation</h4>
+        <p>
+          Starting from \(L(\dot{Q}, Q)\), and using the antisymmetry between the Lagrangian kinetic and potential
+          terms,
+          we define the canonical momentum \(\Phi\) associated with \(\dot{Q}\) by manually inserting a minus sign to
+          absorb that antisymmetry (otherwise the resulting Hamiltonian would be negative): \[
+          \Phi \equiv -\frac{\partial \mathcal{L}}{\partial \dot{Q}} \implies \dot{\Phi} = -\frac{\partial
+          \mathcal{L}}{\partial Q}.
+          \] We then transform the Lagrangian into \((\dot{\Phi}, \Phi)\) space—that is, the momentum-space Lagrangian
+          \(\bar{\mathcal{L}}\): \[
+          \bar{\mathcal{L}} \equiv \mathcal{L} + \frac{d}{dt} (\Phi Q) = \mathcal{L} + \dot{\Phi} Q + \Phi
+          \dot{Q}.
+          \]
+        </p>
+      </details>
+    </section>
+
+    <section data-manual-slide>
+      <details class="dark-background">
+        <p>
+          Using differentials, one can show that \(\bar{\mathcal{L}} = \bar{\mathcal{L}}(\dot{\Phi}, \Phi)\) is a
+          function
+          in \((\dot{\Phi}, \Phi)\) space: \[
+          d\bar{\mathcal{L}} = d\mathcal{L} + d(\dot{\Phi} Q) + d(\Phi \dot{Q}) = \frac{\partial
+          \mathcal{L}}{\partial \dot{Q}} d\dot{Q} + \frac{\partial \mathcal{L}}{\partial Q} dQ +
+          Qd\dot{\Phi} + \dot{\Phi}dQ + \dot{Q}d\Phi + \Phi d\dot{Q}.
+          \] After expansion, because \(-\Phi = \frac{\partial \mathcal{L}}{\partial \dot{Q}}\), we obtain: \[
+          d\bar{\mathcal{L}} = -\Phi d\dot{Q} - \dot{\Phi} dQ + Q d\dot{\Phi} + \dot{\Phi} dQ + \dot{Q}
+          d\Phi + \Phi d\dot{Q} = Q d\dot{\Phi} + \dot{Q} d\Phi.
+          \]
+        </p>
+        <p>
+          At this point, the canonical momentum \(\Pi\) associated with \(\dot{\Phi}\) is: \[
+          \Pi = \frac{\partial \bar{\mathcal{L}}}{\partial \dot{\Phi}} = Q,
+          \] which is identical to the original \(Q\). The corresponding Hamiltonian \(\bar{\mathcal{H}}\) is defined
+          as:
+          \[
+          \bar{\mathcal{H}} = \Pi \dot{\Phi} - \bar{\mathcal{L}} = Q\dot{\Phi} - \mathcal{L} - \dot{\Phi} Q
+          - \Phi \dot{Q} = -\mathcal{L} - \Phi \dot{Q}.
+          \] Its final form is: \[
+          \bar{\mathcal{H}}(Q, \Phi) = -\mathcal{L} - \Phi \dot{Q}.
+          \]
+        </p>
+        <p>
+          This lets us streamline the subsequent derivations by following only these steps:
+        </p>
+      </details>
+    </section>
+
+    <section data-manual-slide>
+      <details class="dark-background">
+        <ol>
+          <li>Write down \(L(\dot{Q}, Q)\).</li>
+          <li>Define \(\Phi \equiv -\frac{\partial \mathcal{L}}{\partial \dot{Q}}\) and obtain the relation among
+            \(\dot{Q}\) and \(\Phi\).</li>
+          <li>Directly find the corresponding Hamiltonian: \[
+            \bar{\mathcal{H}}(Q, \Phi) = -\mathcal{L} - \Phi \dot{Q},
+            \] and substitute \(\dot{Q}\) into the relation above.
+          </li>
+          <li>Quantization condition: \[
+            [Q, \Phi] = i\hbar.
+            \]
+          </li>
+        </ol>
+        <p>
+          This avoids the cumbersome transformation \(L(\dot{Q}, Q) \to \bar{\mathcal{L}}(\dot{\Phi}, \Phi) \to
+          \bar{\mathcal{H}}(Q,
+          \Phi)\). This is especially useful when external-force coupling terms are introduced later—for example, when
+          deriving how a qubit is driven and read out, how an external signal interacts with a qubit, or how two qubits
+          couple. The longer derivation would produce a situation analogous to momentum \(p
+          \to p - eA\) in an electromagnetic field, making the intermediate transformations extremely complicated.
+        </p>
+        <p style="text-align:justify; color:blue;">
+          Note: Observe that: \[
+          \bar{\mathcal{H}}(Q, \Phi) = -\mathcal{L} - \Phi \dot{Q} = -\mathcal{L} + \frac{\partial
+          \mathcal{L}}{\partial \dot{Q}} \dot{Q} = H(\Phi, Q).
+          \] \(H(\Phi, Q)\) is the familiar conventional Hamiltonian. At the same time, \(\bar{\mathcal{H}} = H\) once
+          again reveals the symmetry between the kinetic and potential terms of the Hamiltonian.
+
+        </p>
+      </details>
+    </section>
+
+
+    <section data-manual-slide>
+      <div class="qh-section">
+        <h3>Question 2: What Plays the Roles of Position and Momentum in a Superconducting Circuit?</h3>
+      </div>
+      <p>
+        A mechanical system is described by position and momentum; a circuit can be described by node flux and node
+        charge. In a Josephson circuit, one often uses the dimensionless phase \(\varphi\) and Cooper-pair number \(n\)
+        instead.
+      </p>
+      <h4>Step 1: Do Not Treat Voltage as the Generalized Coordinate</h4>
+      <p>
+        For a circuit node, first choose ground as the reference and define the node voltage \(V(t)\). Lagrangian
+        mechanics requires a coordinate and its time derivative, however, so we define the node flux
+      </p>
+      <p>\[
+        \Phi(t)\equiv\int_{-\infty}^{t}V(t')\,dt',
+        \qquad
+        \dot\Phi(t)=V(t).
+        \]</p>
+    </section>
+
+    <section data-manual-slide>
+      <p>
+        Despite its name, this flux need not equal the magnetic flux inside a particular coil; it is first of all the
+        time integral of voltage and has the same unit, the weber. For a branch connecting node \(i,j\), the branch flux
+        is \(\Phi_i-\Phi_j\). After choosing ground and a spanning tree, the independent node fluxes form the
+        generalized coordinates of the circuit.
+      </p>
+      <h4>Step 2: Read the Canonical Momentum from the LC Energy</h4>
+      <p>
+        For the simplest parallel LC mode, the capacitor voltage is \(\dot\Phi\) and the inductor current is \(\Phi/L\).
+        The electric and magnetic energies are therefore
+      </p>
+      <p>\[
+        T=\frac12C\dot\Phi^2,
+        \qquad
+        U=\frac{\Phi^2}{2L}.
+        \]</p>
+      <p>
+        The circuit Lagrangian is kinetic-like energy minus potential-like energy:
+      </p>
+      <p>\[
+        \mathcal L(\Phi,\dot\Phi)
+        =\frac12C\dot\Phi^2-\frac{\Phi^2}{2L}.
+        \]</p>
+      <p>
+        The canonical momentum conjugate to \(\Phi\) follows directly from the definition:
+      </p>
+    </section>
+
+    <section data-manual-slide>
+      <p>\[
+        Q\equiv\frac{\partial\mathcal L}{\partial\dot\Phi}
+        =C\dot\Phi=CV.
+        \]</p>
+      <p>
+        \(CV\) is exactly the charge stored on the capacitor. Node charge is therefore not merely guessed by analogy to
+        be “momentum”; it is the canonical momentum that necessarily results from differentiating the circuit Lagrangian
+        with respect to \(\dot\Phi\).
+      </p>
+      <h4>Step 3: Obtain the Hamiltonian by a Legendre Transform</h4>
+      <p>
+        Starting from \(\dot\Phi=Q/C\), perform the Legendre transform:
+      </p>
+      <p>\[
+        H(\Phi,Q)
+        =Q\dot\Phi-\mathcal L
+        =\frac{Q^2}{2C}+\frac{\Phi^2}{2L}.
+        \]</p>
+      <p>
+        The correspondence between a mechanical oscillator and an LC oscillator is therefore a complete canonical
+        mapping, not merely a visual analogy:
+      </p>
+    </section>
+
+    <section data-manual-slide>
+      <ul>
+        <li>\(x\longleftrightarrow\Phi\): the generalized coordinate describing displacement from equilibrium.</li>
+        <li>\(p\longleftrightarrow Q\): the canonical momentum obtained by differentiating the Lagrangian with respect
+          to generalized velocity.</li>
+        <li>\(m\longleftrightarrow C\): sets the scale of the “momentum term” \(Q^2/2C\).</li>
+        <li>\(k\longleftrightarrow1/L\): sets the curvature of the restoring potential \(\Phi^2/2L\).</li>
+      </ul>
+      <h4>Step 4: Canonical Quantization</h4>
+      <p>
+        Promote the classical canonical pair to operators and impose
+      </p>
+      <p>\[
+        [\hat\Phi,\hat Q]=i\hbar,
+        \qquad
+        \Delta\Phi\,\Delta Q\geq\frac{\hbar}{2}.
+        \]</p>
+      <p>
+        In the flux representation, the state is \(\psi(\Phi)\) and
+      </p>
+      <p>\[
+        \hat\Phi\,\psi(\Phi)=\Phi\,\psi(\Phi),
+        \qquad
+        \hat Q\,\psi(\Phi)=-i\hbar\frac{\partial}{\partial\Phi}\psi(\Phi).
+        \]</p>
+    </section>
+
+    <section data-manual-slide>
+      <p>
+        A state that is highly localized in flux must therefore have a broad charge distribution, and vice versa. This
+        uncertainty relation will become a central qubit-design principle rather than remaining merely a formal
+        quantization rule.
+      </p>
+      <h4>Step 5: Use Phase and Cooper-Pair Number for a Josephson Circuit</h4>
+      <p>
+        For a superconducting node, rescale the dimensional flux and charge:
+      </p>
+      <p>\[
+        \varphi\equiv\frac{2\pi\Phi}{\Phi_0}
+        =\frac{2e}{\hbar}\Phi,
+        \qquad
+        n\equiv\frac{Q}{2e},
+        \qquad
+        \Phi_0=\frac{h}{2e}.
+        \]</p>
+      <p>
+        The sign of \(n\) changes with the branch-orientation convention; what matters is that \(2en\) expresses node
+        charge in units of the Cooper-pair charge. Substitution into the preceding commutator gives:
+      </p>
+      <p>\[
+        [\hat\varphi,\hat n]
+        =\frac{2e}{\hbar}\frac{1}{2e}[\hat\Phi,\hat Q]
+        =i.
+        \]</p>
+      <p>
+        Hence, in the phase representation,
+      </p>
+    </section>
+
+    <section data-manual-slide>
+      <p>\[
+        \hat n=-i\frac{\partial}{\partial\varphi},
+        \qquad
+        e^{\pm i\hat\varphi}\ket n=\ket{n\pm1}.
+        \]</p>
+      <p>
+        The final expression makes the physical relation between phase and charge explicit: \(e^{\pm i\hat\varphi}\)
+        changes the Cooper-pair number on the island by one. The Josephson term can therefore also be written as
+      </p>
+      <p>\[
+        -E_J\cos\hat\varphi
+        =-\frac{E_J}{2}\left(e^{i\hat\varphi}+e^{-i\hat\varphi}\right),
+        \]</p>
+      <p>
+        In the phase picture it is a cosine potential; in the charge picture it is coherent tunneling between adjacent
+        charge states. The two pictures describe the same Hamiltonian.
+      </p>
+      <p>
+        Charge and phase therefore cannot both have arbitrarily precise values. The differences among later qubit types
+        can all be viewed as rearrangements, at different energy scales, of the fluctuations, localization, and
+        sensitivity of this conjugate pair. A larger charging energy tends to restrict charge fluctuations; a larger
+        Josephson energy tends to localize phase near a minimum of the cosine potential. The two cannot both be narrowed
+        without limit.
+      </p>
+    </section>
+
+    <section data-manual-slide>
+      <p>
+        <strong>Conclusion to Question 2:</strong> The “position” in a superconducting circuit is the node flux \(\Phi\)
+        or dimensionless phase \(\varphi\); the corresponding “momentum” is the node charge \(Q\) or Cooper-pair number
+        \(n\). This is not a naming convention; it follows from the canonical structure of \(\mathcal
+        L(\Phi,\dot\Phi)\).
+      </p>
+    </section>
+
+
+    <section data-manual-slide>
+      <section class="module">
+        <div class="qh-section">
+          <h3>Advanced throughline: Circuit → Lagrangian → Hamiltonian → Spectrum</h3>
+        </div>
+        <p><em>(W2-C1, W2-D1, W2-D2)</em>For node flux \(\Phi\), the capacitive network provides the kinetic term, while
+          inductors and Josephson junctions provide the potential term:</p>
+        <p>\[\mathcal L=\frac12\dot{\Phi}^{T} C\dot{\Phi}-U(\Phi),\qquad Q=\frac{\partial\mathcal
+          L}{\partial\dot{\Phi}}\]</p>
+        <p>A Legendre transform gives \(H(\Phi, Q)\), after which we impose \([\hat\Phi_i,\hat Q_j]=i\hbar\delta_{ij}\).
+          A
+          linear LC circuit produces only equally spaced energy levels; it is the Josephson term</p>
+        <p>\[U_J(\varphi)=-E_J\cos\varphi,\qquad E_J=\frac{\Phi_0 I_c}{2\pi}\]</p>
+      </section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="module">
+        <p>that breaks harmonicity and allows selective control of the two lowest levels. In an advanced course,
+          students
+          need to complete the full path from schematic to Hamiltonian at least once; memorizing the transmon formula is
+          not enough to predict the consequences of parasitic modes, coupling, or layout changes.</p>
+        <p class="callout"><b>Boundary:</b>This week does not go deeply into the microscopic BCS derivation. Here,
+          superconductors primarily provide a macroscopic phase, low-loss wiring, and the Josephson element. Microscopic
+          material loss is deferred to T6.</p>
+      </section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="module">
+        <section class="module">
+          <div class="qh-section">
+            <h3>Classroom Integration and Assessment</h3>
+          </div>
+          <p><strong>Discussion question:</strong> For a single-node circuit containing \(C\), \(L\), and a JJ, write
+            down
+            \(\mathcal L\), the canonical charge, and \(H\); then identify which parameter is controlled by layout or
+            fabrication.</p>
+          <p><strong>Completion criterion:</strong> Students must leave a checkable derivation, relationship diagram,
+            comparison table, or architecture decision, and must be able to explain its physical assumptions and
+            engineering
+            costs.</p>
+        </section>
+      </section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="module">
+        <section class="module">
+          <div class="qh-section">
+            <h3>Core and Further Reading</h3>
+          </div>
+          <ul class="qh-reading">
+            <li>
+              <a href="https://arxiv.org/abs/1610.03438" target="_blank" rel="noopener">Introduction to
+                Quantum Electromagnetic Circuits</a><span>U. Vool and M. H. Devoret, International Journal
+                of
+                Circuit Theory and Applications 45, 897–934 (2017).</span><em>A core reading on going from a circuit
+                diagram
+                and Lagrangian to a quantum Hamiltonian.</em>
+            </li>
+            <li>
+              <a href="https://arxiv.org/abs/1204.0587" target="_blank" rel="noopener">Black-box
+                Superconducting Circuit Quantization</a><span>S. E. Nigg et al., Physical Review Letters
+                108,
+                240502 (2012).</span><em>Turns a distributed electromagnetic environment and Josephson nonlinearity into
+                an
+                effective Hamiltonian.</em>
+            </li>
+            <li>
+              <a href="https://doi.org/10.1063/1.5089550" target="_blank" rel="noopener">A Quantum
+                Engineer's Guide to Superconducting Qubits</a><span>P. Krantz et al., Applied Physics
+                Reviews 6, 021318 (2019).</span><em>A foundational review of control, coherence, readout, and
+                engineering
+                parameters.</em>
+            </li>
+            <li>
+              <a href="https://www.nature.com/articles/s41578-021-00370-4" target="_blank" rel="noopener">Engineering
+                High-Coherence Superconducting Qubits</a><span>I. Siddiqi, Nature
+                Reviews Materials 6, 875–891 (2021).</span><em>Design trade-offs among different qubit architectures,
+                material loss, and coherence.</em>
+            </li>
+          </ul>
+        </section>
+      </section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="module">
+        <div class="qh-section">
+          <h3>Question 3: Why is the simplest artificial atom still not a qubit?</h3>
+        </div>
+        <p>A quantized LC circuit already has discrete energy levels:</p>
+        <p>\[
+          \hat H_{LC}=\frac{\hat Q^2}{2C}+\frac{\hat\Phi^2}{2L}
+          =\hbar\omega\left(\hat a^\dagger\hat a+\frac12\right),
+          \qquad \omega=\frac1{\sqrt{LC}}.
+          \]</p>
+        <h4>First establish that an LC circuit really is a quantum system</h4>
+        <p>
+          Define the characteristic impedance \(Z=\sqrt{L/C}\), so the flux and charge operators can be written as
+        </p>
+        <p>\[
+          \hat\Phi=\Phi_{\rm zpf}(\hat a+\hat a^\dagger),
+          \qquad
+          \hat Q=-iQ_{\rm zpf}(\hat a-\hat a^\dagger),
+          \]</p>
+      </section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="module">
+        <p>\[
+          \Phi_{\rm zpf}=\sqrt{\frac{\hbar Z}{2}},
+          \qquad
+          Q_{\rm zpf}=\sqrt{\frac{\hbar}{2Z}},
+          \qquad
+          \Phi_{\rm zpf}Q_{\rm zpf}=\frac{\hbar}{2}.
+          \]</p>
+        <p>
+          Even in the ground state, flux and charge retain zero-point fluctuations. The energy eigenstates \(\ket m\)
+          are
+          also genuinely discrete:
+        </p>
+        <p>\[
+          E_m=\hbar\omega\left(m+\frac12\right),
+          \qquad m=0,1,2,\ldots
+          \]</p>
+        <p>
+          The problem, then, is not that the LC oscillator is “insufficiently quantum.” Quite the opposite: it is an
+          overly ideal linear quantum system in which every rung obeys exactly the same rule.
+        </p>
+        <h4>An equally spaced spectrum makes all adjacent transition frequencies coincide</h4>
+        <p>
+          The transition frequency between adjacent levels is
+        </p>
+        <p>\[
+          \omega_{m,m+1}
+          =\frac{E_{m+1}-E_m}{\hbar}
+          =\omega,
+          \]</p>
+      </section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="module">
+        <p>
+          Therefore,
+        </p>
+        <p>\[
+          \omega_{01}=\omega_{12}=\omega_{23}=\cdots.
+          \]</p>
+        <p>
+          A resonant microwave tone sees not only \(\ket0\leftrightarrow\ket1\) but also every higher transition.
+          Frequency selectivity cannot tell the system to use only the two lowest levels.
+        </p>
+        <h4>The drive Hamiltonian shows why leakage is unavoidable</h4>
+        <p>
+          Suppose the oscillator is driven by a capacitively coupled microwave voltage. Ignoring a coupling prefactor
+          that
+          does not affect the main point, the control term can be written as
+        </p>
+        <p>\[
+          \hat H_d(t)
+          =\hbar\epsilon(t)(\hat a+\hat a^\dagger).
+          \]</p>
+        <p>
+          The matrix element between adjacent levels is
+        </p>
+      </section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="module">
+        <p>\[
+          \langle m+1|\hat a+\hat a^\dagger|m\rangle
+          =\sqrt{m+1}.
+          \]</p>
+        <p>
+          The drive initially pushes \(\ket0\) toward \(\ket1\). Once \(\ket1\) acquires population, the same frequency
+          also drives \(\ket1\rightarrow\ket2\) exactly on resonance, with a matrix element larger by a factor of
+          \(\sqrt2\). The same pattern continues upward. Therefore, \(\{\ket0,\ket1\}\) is not a closed invariant
+          subspace
+          under this control.
+        </p>
+        <h4>A stronger statement: a linear drive creates a coherent state, not a pure \(\ket1\) state</h4>
+        <p>
+          Under the rotating-wave approximation, a driven harmonic oscillator can be written as
+        </p>
+        <p>\[
+          \hat H_{\rm rot}(t)
+          =\hbar\bigl[\epsilon(t)\hat a^\dagger+\epsilon^*(t)\hat a\bigr].
+          \]</p>
+        <p>
+          If the initial state is the vacuum, any such linear pulse can only produce a displacement:
+        </p>
+        <p>\[
+          \ket0\longrightarrow\hat D(\alpha)\ket0=\ket\alpha,
+          \qquad
+          P_m=e^{-|\alpha|^2}\frac{|\alpha|^{2m}}{m!}.
+          \]</p>
+      </section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="module">
+        <p>
+          To maximize \(P_1\) one must choose \(|\alpha|^2=1\), but then \(P_1^{\rm max}=e^{-1}\approx0.368\), and the
+          remaining population is still distributed over \(\ket0,\ket2,\ldots\). In other words, applying a conventional
+          qubit “\(\pi\) pulse” to a bare harmonic oscillator cannot deterministically flip \(\ket0\) to \(\ket1\).
+        </p>
+        <h4>A qubit also requires spectral addressability</h4>
+        <p>
+          Define the anharmonicity
+        </p>
+        <p>\[
+          \alpha\equiv\omega_{12}-\omega_{01}.
+          \]</p>
+        <p>
+          For a harmonic oscillator, \(\alpha=0\). Only when nonlinearity makes \(\alpha\neq0\) can the drive frequency
+          select the computational transition through \(\omega_{01}\) while remaining off-resonant from \(\omega_{12}\).
+          For a simple pulse, we generally want
+        </p>
+        <p>\[
+          |\alpha|\gg\Omega_R,\;\kappa,\;\gamma_\phi,
+          \]</p>
+      </section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="module">
+        <p>
+          where \(\Omega_R\) is the Rabi rate. A faster drive has a broader bandwidth, and the leakage amplitude
+          typically
+          increases on the scale of \(\Omega_R/|\alpha|\); a slower drive instead accumulates more decoherence. This is
+          the speed–leakage trade-off later addressed by pulse shaping and DRAG control.
+        </p>
+        <p>
+          <strong>A precise statement:</strong> A harmonic oscillator is not incapable of carrying quantum information.
+          With multiple Fock states, cat states, or another bosonic encoding, an oscillator can still serve as a logical
+          qubit. But if only ordinary linear microwave control is allowed, a bare LC oscillator does not naturally
+          provide
+          an independently controllable two-lowest-level qubit.
+        </p>
+        <p><strong>In-class task:</strong> Draw harmonic and anharmonic spectra and mark which transitions are connected
+          by a drive at the same frequency.</p>
+        <p>
+          <strong>Conclusion to Question 3:</strong>“Discrete energy levels” only guarantee that the system is quantum;
+          “unequally spaced energy levels” are what make \(\ket0\leftrightarrow\ket1\) frequency-selective and suppress
+          leakage to a controllable level.
+        </p>
+        <h4>2.2 Why Nonlinearity Is Necessary</h4>
+      </section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="module">
+        <p>
+          If a quantum circuit has equally spaced levels, the frequency from \(\ket{0}\) to \(\ket{1}\) is identical to
+          the frequency from \(\ket{1}\) to \(\ket{2}\). Microwave control therefore cannot address only the qubit
+          subspace \(\ket{0}, \ket{1}\) and will readily excite higher levels.
+        </p>
+        <p>
+          A Josephson junction supplies the nonlinear inductance required by superconducting quantum circuits. Through
+          this nonlinearity, a superconducting circuit can acquire unequally spaced energy levels, allowing its two
+          lowest
+          levels to serve as a qubit.
+        </p>
+        <h4>4.1 From LC Circuit to Quantum LC Oscillator</h4>
+        <p>
+          In a classical circuit, an LC oscillator exchanges energy between its capacitor and inductor. The capacitor
+          stores electric-field energy, while the inductor stores magnetic-field energy. Quantizing the LC oscillator
+          gives equally spaced energy levels:
+        </p>
+        <p>\[
+          E_m = \hbar\omega\left(m + \frac{1}{2}\right)
+          \]</p>
+      </section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="module">
+        <p>
+          Such a harmonic oscillator is unsuitable as a qubit because adjacent levels have the same spacing, so a
+          control
+          pulse cannot select only the \(\ket{0} \leftrightarrow \ket{1}\) transition.
+        </p>
+      </section>
+    </section>
+
+    <section data-manual-slide data-cover>
+      <div class="theme-header" style="text-align: center;">
+        <h2>Q3. How Do We Select the Computational Subspace?</h2>
+        <h3>Anharmonicity and the Josephson Junction</h3>
+      </div>
+    </section>
+
+    <section data-manual-slide>
+      <div class="qh-section">
+        <h3>Superconductivity and the Josephson Junction</h3>
+      </div>
+      <h4>Superconductivity</h4>
+      <p>
+        Superconductivity is a low-temperature quantum-condensed phase. When certain materials are cooled below a
+        critical temperature \(T_c\), their resistance vanishes and they expel magnetic fields from their interior—the
+        Meissner effect. Microscopically, electrons interact with lattice vibrations to form Cooper pairs, and many
+        Cooper pairs condense into a macroscopic quantum state with a common phase.
+      </p>
+      <h4>Important Properties of Superconductors</h4>
+      <ul>
+        <li>
+          <strong>Zero resistance: </strong> DC resistance vanishes, greatly reducing circuit dissipation.
+        </li>
+        <li>
+          <strong>Meissner effect: </strong> A superconductor expels magnetic fields and provides magnetic-flux
+          screening.
+        </li>
+        <li>
+          <strong>Cooper pair condensate: </strong> Electrons pair and condense into a macroscopically coherent
+          quantum state.
+        </li>
+        <li>
+          <strong>Macroscopic phase: </strong> The superconducting state can be described by a macroscopic phase
+          \(\phi\).
+        </li>
+        <li>
+          <strong>Flux quantization: </strong> Magnetic flux in a superconducting loop is quantized in units of
+          \(\Phi_0 = h/2e\).
+        </li>
+      </ul>
+    </section>
+
+    <section data-manual-slide>
+
+      <h4>3.2 Macroscopic Quantum Phase</h4>
+      <p>
+        A superconducting condensate can be described by a macroscopic wavefunction:
+      </p>
+      <p>\[
+        \Psi({r}) = |\Psi({r})| e^{i\phi({r})}
+        \]</p>
+
+      <p>
+        Here \(\phi\) is the superconducting phase. In a superconducting quantum circuit, this phase is not merely an
+        abstract variable; it can be a circuit degree of freedom and can be quanized. The important circuit variables
+        therefore commonly include the charge number \(n\) and phase \(\varphi\), which obey a conjugate relation
+        analogous to position and momentum.</p>
+      <p>\[
+        [\hat{\varphi}, \hat{n}] = i
+        \]</p>
+    </section>
+
+    <section data-manual-slide>
+      <section class="module">
+        <div class="qh-section">
+          <h3>Question 4: How does a Josephson junction shape the energy levels of an artificial atom?</h3>
+        </div>
+        <p>Josephson tunneling provides a nondissipative, phase-controlled nonlinear element:</p>
+        <p>\[
+          I=I_c\sin\varphi,
+          \qquad
+          V=\frac{\Phi_0}{2\pi}\dot\varphi,
+          \qquad
+          U_J(\varphi)=-E_J\cos\varphi.
+          \]</p>
+        <h4>The Josephson energy is not a separate assumption: it follows by integrating the two Josephson relations
+        </h4>
+        <p>
+          The supercurrent branch of an ideal junction obeys \(I=I_c\sin\varphi\), while the phase evolves with voltage
+          according to \(V=(\Phi_0/2\pi)\dot\varphi\). The instantaneous power flowing into the element is
+        </p>
+        <p>\[
+          P=IV
+          =I_c\sin\varphi\,
+          \frac{\Phi_0}{2\pi}\dot\varphi.
+          \]</p>
+        <p>
+          If this power is stored in the junction potential, then
+        </p>
+      </section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="module">
+        <p>\[
+          \frac{dU_J}{dt}
+          =\frac{dU_J}{d\varphi}\dot\varphi
+          =\frac{\Phi_0 I_c}{2\pi}\sin\varphi\,\dot\varphi.
+          \]</p>
+        <p>
+          and therefore
+        </p>
+        <p>\[
+          \frac{dU_J}{d\varphi}=E_J\sin\varphi,
+          \qquad
+          E_J\equiv\frac{\Phi_0 I_c}{2\pi}
+          =\frac{\hbar I_c}{2e},
+          \]</p>
+        <p>
+          Integrating gives
+        </p>
+        <p>\[
+          U_J(\varphi)=-E_J\cos\varphi+\text{constant}.
+          \]</p>
+        <p>
+          Thus, saying that “a Josephson junction provides a cosine potential” does not mean forcing the circuit into a
+          preconceived atomic model. The energy landscape follows directly from the measurable current–phase relation.
+        </p>
+        <h4>It behaves like an inductor, but not a linear one</h4>
+      </section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="module">
+        <p>
+          For a linear inductor, \(I=\Phi/L\), so the potential is always quadratic. For a junction, \(\dot
+          I=I_c\cos\varphi\,\dot\varphi\). Comparing \(V=L_J\dot I\) gives the differential inductance
+        </p>
+        <p>\[
+          L_J(\varphi)
+          =\frac{\Phi_0}{2\pi I_c\cos\varphi}.
+          \]</p>
+        <p>
+          \(L_J\) varies with phase: this is the circuit-language description of nonlinearity. For small amplitudes with
+          \(\varphi\approx0\), \(L_J(0)=\Phi_0/(2\pi I_c)\) and the junction appears approximately linear; at larger
+          amplitudes, the variation of \(\cos\varphi\) can no longer be neglected. At the same time, the ideal Josephson
+          supercurrent is nondissipative, so a junction can provide strong nonlinearity in a low-loss circuit—a
+          combination difficult to achieve with an ordinary resistor or semiconductor diode. Real devices still have
+          junction capacitance, quasiparticle loss, and material defects; “ideally nondissipative” must not be mistaken
+          for completely lossless.
+        </p>
+        <h4>With capacitance included, phase becomes a quantum coordinate moving in a cosine potential</h4>
+        <p>
+          Combine the junction with a total capacitance \(C_\Sigma\) and define the charging energy as
+        </p>
+      </section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="module">
+        <p>\[
+          E_C\equiv\frac{e^2}{2C_\Sigma}.
+          \]</p>
+        <p>
+          The Hamiltonian becomes
+        </p>
+        <p>\[
+          \hat H
+          =4E_C(\hat n-n_g)^2-E_J\cos\hat\varphi.
+          \]</p>
+        <p>
+          In the “quantum particle” picture, \(\varphi\) is position and \(n\) is momentum; \(E_C\) sets the
+          kinetic-energy scale, while \(E_J\) sets the depth of the periodic potential. Changing the junction critical
+          current changes \(E_J\), and changing the shunt capacitance changes \(E_C\). The “mass, confinement strength,
+          and spectrum” of this artificial atom can therefore all be designed through its circuit.
+        </p>
+        <h4>Higher-order terms of the cosine break equal spacing</h4>
+        <p>
+          In the linearized approximation, retain only the quadratic term near a potential minimum:
+        </p>
+        <p>\[
+          -E_J\cos\varphi
+          =-E_J+\frac{E_J}{2}\varphi^2
+          -\frac{E_J}{24}\varphi^4
+          +\frac{E_J}{720}\varphi^6-\cdots.
+          \]</p>
+      </section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="module">
+        <p>
+          The quadratic potential of a linear inductor can produce only a harmonic spectrum; the cosine potential of a
+          Josephson junction provides a nonlinear inductance. When the cosine is expanded, the quadratic term
+          establishes
+          the dominant oscillation frequency, while the higher-order terms break the equal spacing and produce an
+          anharmonic spectrum that can be selectively controlled.
+        </p>
+        <p>
+          First treat the quadratic part as a harmonic oscillator:
+        </p>
+        <p>\[
+          \hat H_0
+          =4E_C\hat n^2+\frac{E_J}{2}\hat\varphi^2-E_J,
+          \qquad
+          \hbar\omega_p=\sqrt{8E_JE_C}.
+          \]</p>
+        <p>
+          The corresponding zero-point amplitudes may be chosen as
+        </p>
+        <p>\[
+          \hat\varphi=\varphi_{\rm zpf}(\hat a+\hat a^\dagger),
+          \qquad
+          \hat n=i n_{\rm zpf}(\hat a^\dagger-\hat a),
+          \]</p>
+        <p>\[
+          \varphi_{\rm zpf}
+          =\left(\frac{2E_C}{E_J}\right)^{1/4},
+          \qquad
+          n_{\rm zpf}
+          =\left(\frac{E_J}{32E_C}\right)^{1/4},
+          \qquad
+          \varphi_{\rm zpf}n_{\rm zpf}=\frac12.
+          \]</p>
+      </section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="module">
+        <p>
+          Now treat the quartic term \(-E_J\hat\varphi^4/24\) as a first-order perturbation. Because
+        </p>
+        <p>\[
+          \langle m|(\hat a+\hat a^\dagger)^4|m\rangle
+          =6m^2+6m+3,
+          \]</p>
+        <p>
+          we obtain the low-energy approximation
+        </p>
+        <p>\[
+          E_m\approx
+          -E_J+\sqrt{8E_JE_C}\left(m+\frac12\right)
+          -\frac{E_C}{12}(6m^2+6m+3).
+          \]</p>
+        <p>
+          Thus adjacent transitions no longer have the same frequency:
+        </p>
+        <p>\[
+          \hbar\omega_{m,m+1}
+          \approx\sqrt{8E_JE_C}-E_C(m+1),
+          \]</p>
+        <p>\[
+          \hbar\omega_{01}\approx\sqrt{8E_JE_C}-E_C,
+          \qquad
+          \hbar\omega_{12}\approx\sqrt{8E_JE_C}-2E_C,
+          \]</p>
+        <p>\[
+          \alpha\equiv\omega_{12}-\omega_{01}
+          \approx-\frac{E_C}{\hbar}.
+          \]</p>
+      </section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="module">
+        <p>
+          The minus sign means that the spacing between adjacent levels decreases at higher energy. This result comes
+          from
+          the negative quartic correction of the cosine; it is precisely what detunes the \(\omega_{01}\) drive from
+          \(\omega_{12}\) and makes selective control of the two lowest levels possible.
+        </p>
+        <h4>The same cosine provides two complementary intuitions in two different bases</h4>
+        <ul>
+          <li>
+            <strong>phase basis: </strong>\(-E_J\cos\varphi\) forms periodic wells; as \(E_J/E_C\) increases, the
+            low-energy wavefunction becomes more localized near one minimum.
+          </li>
+          <li>
+            <strong>charge basis: </strong>\(-E_J\cos\hat\varphi\) couples \(\ket n\) and \(\ket{n\pm1}\), turning
+            crossings of the bare charge-state energies into avoided crossings.
+          </li>
+        </ul>
+        <p>
+          <strong>Conclusion to Question 4:</strong> A Josephson junction does not simply “add another inductor”; it
+          replaces a quadratic potential with a cosine potential designable through \(E_J\). Its quadratic part sets the
+          dominant frequency, while its quartic and higher-order terms create anharmonicity. This is how an artificial
+          atom acquires a controllable spectrum.
+        </p>
+        <h4>3.3 Josephson Junction</h4>
+      </section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="module">
+        <p>
+          A Josephson junction consists of two superconductors separated by an ultrathin insulating layer. It is
+          commonly
+          called an SIS junction: superconductor–insulator–superconductor. Although the middle layer is insulating,
+          Cooper
+          pairs can still cross the junction by quantum tunneling and form a Josephson current.
+        </p>
+        <h4>Josephson Relations</h4>
+        <p>
+          The current through a Josephson junction depends nonlinearly on the phase difference:
+        </p>
+        <p>\[
+          I = I_c \sin\varphi
+          \]</p>
+        <p>
+          When a voltage \(V\) exists across the junction, the phase difference evolves in time:
+        </p>
+        <p>\[
+          V = \frac{\Phi_0}{2\pi}\frac{d\varphi}{dt}
+          \]</p>
+        <p>
+          where \(\Phi_0 = h/2e\) is the superconducting flux quantum. The Josephson energy can be written as:
+        </p>
+        <p>\[
+          E_J = \frac{\Phi_0 I_c}{2\pi}
+          \]</p>
+      </section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="module">
+
+        <h4>Josephson Junction as a Nonlinear Inductor</h4>
+        <p>
+          The key value of a Josephson junction is that it provides nonlinear inductance. The energy of an ordinary
+          linear
+          inductor is approximately quadratic in phase; the Josephson-junction energy is instead:
+        </p>
+        <p>\[
+          U_J(\varphi) = -E_J \cos\varphi
+          \]</p>
+        <p>
+          This cosine potential makes the circuit's energy levels unequally spaced, allowing the two lowest levels of
+          the
+          quantum oscillator to be selected as a qubit.
+        </p>
+        <div class="qh-board">
+          <h4>Core concept</h4>
+          <p>
+            Without a Josephson junction, a superconducting LC circuit is only an approximate harmonic oscillator. With
+            a
+            Josephson junction, the circuit gains enough nonlinearity to form an addressable quantum two-level system.
+          </p>
+        </div>
+      </section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="module">
+        <div class="qh-task">
+          <h4>Learning Check</h4>
+          <ol>
+            <li>Why can Cooper pairs cross the insulating layer of a Josephson junction?</li>
+            <li>What is the relation between Josephson current and phase difference?</li>
+            <li>Why can a Josephson junction be regarded as a nonlinear inductor?</li>
+          </ol>
+        </div>
+      </section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="module">
+        <div class="qh-section">
+          <h3>The nonlinear inductive nature of the Josephson junction</h3>
+        </div>
+        <h4>Nonlinearity enables precise qubit control</h4>
+        <h4>Quantum description of a Josephson junction</h4>
+        <div style="text-align: center;"><a href="../Image/JJ.png"><img src="../WebP/JJ--f7ec7a89.webp" alt="A simple diagram showing options A and B." style="width: 50%; height: auto;"></a></div>
+      </section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="module">
+        <div class="qh-source-plain">
+          <div class="post-content">
+            <p>
+              ▲ A Josephson junction whose intrinsic material properties are described by \(H_0\). A voltage \(V\) is
+              applied
+              across the junction, and the interaction between the superconducting wavefunctions is represented by
+              \(K\), with
+              equation of motion: \[
+              i\hbar \frac{\partial}{\partial t}
+              \begin{pmatrix}
+              \sqrt{n_A} e^{i\theta_A} \\
+              \sqrt{n_B} e^{i\theta_B}
+              \end{pmatrix}
+              =
+              \begin{pmatrix}
+              H_0 - \frac{qV}{2} &amp; K \\
+              K &amp; H_0 + \frac{qV}{2}
+              \end{pmatrix}
+              \begin{pmatrix}
+              \sqrt{n_A} e^{i\theta_A} \\
+              \sqrt{n_B} e^{i\theta_B}
+              \end{pmatrix}.
+              \] For \(q = -2e\) (a Cooper pair), the equation becomes: \[
+              i\hbar \frac{\partial}{\partial t}
+              \begin{pmatrix}
+              \sqrt{n_A} e^{i\theta_A} \\
+              \sqrt{n_B} e^{i\theta_B}
+              \end{pmatrix}
+              =
+              \begin{pmatrix}
+              H_0 + eV &amp; K \\
+              K &amp; H_0 - eV
+              \end{pmatrix}
+              \begin{pmatrix}
+              \sqrt{n_A} e^{i\theta_A} \\
+              \sqrt{n_B} e^{i\theta_B}
+              \end{pmatrix}.
+              \]
+            </p>
+            <details class="dark-background">
+              <p>
+                The first equation is: \[
+                i\hbar \frac{\partial}{\partial t} (\sqrt{n_A} e^{i\theta_A}) =
+                \frac{i}{2} \frac{e^{i\theta_A}}{\sqrt{n_A}} \frac{\partial n_A}{\partial t}
+                - \sqrt{n_A} e^{i\theta_A} \frac{\partial \theta_A}{\partial t}
+                = (H_0 + eV) \sqrt{n_A} e^{i\theta_A} + K\sqrt{n_B} e^{i\theta_B}.
+                \] Separating real and imaginary parts gives: \[
+                \frac{i}{2}\hbar \frac{\partial n_A}{\partial t} - n_A \hbar \frac{\partial
+                \theta_A}{\partial t} =
+                (H_0 + eV)n_A + K\sqrt{n_A n_B} e^{i(\theta_B - \theta_A)}.
+                \] Its complex-conjugate equation is: \[
+                -\frac{i}{2}\hbar \frac{\partial n_A}{\partial t} - n_A \hbar \frac{\partial
+                \theta_A}{\partial t} =
+                (H_0 + eV)n_A + K\sqrt{n_A n_B} e^{-i(\theta_B - \theta_A)}.
+                \]
+              </p>
+            </details>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="module">
+        <div class="qh-source-plain">
+          <div class="post-content">
+            <details class="dark-background">
+              <table border="1" style="width:100%; text-align:center;">
+                <tr>
+                  <th>
+                    Adding the two equations gives: \[
+                    -2n_A \hbar \frac{\partial \theta_A}{\partial t} = 2(H_0 + eV)n_A + 2K\sqrt{n_A n_B}
+                    \cos(\theta_B - \theta_A),
+                    \] Rearranging yields the equation for \(\theta_A\): \[
+                    \hbar \frac{\partial \theta_A}{\partial t} = -(H_0 + eV) - K\sqrt{\frac{n_B}{n_A}}
+                    \cos(\theta_B - \theta_A).
+                    \]
+                  </th>
+                </tr>
+                <tr>
+                  <th>
+                    Subtracting the two equations gives: \[
+                    i\hbar \frac{\partial n_A}{\partial t} = 2iK\sqrt{n_A n_B} \sin(\theta_B - \theta_A),
+                    \] That is: \[
+                    \hbar \frac{\partial n_A}{\partial t} = 2K\sqrt{n_A n_B} \sin(\theta_B - \theta_A).
+                    \]
+                  </th>
+                </tr>
+
+              </table>
+            </details>
+            <details class="dark-background">
+              <p>
+                The second equation is: \[
+                i\hbar \frac{\partial}{\partial t} (\sqrt{n_B} e^{i\theta_B}) =
+                \frac{i}{2} \frac{e^{i\theta_B}}{\sqrt{n_B}} \frac{\partial n_B}{\partial t}
+                - \sqrt{n_B} e^{i\theta_B} \frac{\partial \theta_B}{\partial t}
+                = K\sqrt{n_A} e^{i\theta_A} + (H_0 - eV)\sqrt{n_B} e^{i\theta_B}.
+                \] Splitting it gives: \[
+                \frac{i}{2}\hbar \frac{\partial n_B}{\partial t} - n_B \hbar \frac{\partial
+                \theta_B}{\partial t} =
+                K\sqrt{n_A n_B} e^{-i(\theta_B - \theta_A)} + (H_0 - eV)n_B.
+                \] Its complex-conjugate equation is: \[
+                -\frac{i}{2}\hbar \frac{\partial n_B}{\partial t} - n_B \hbar \frac{\partial
+                \theta_B}{\partial t} =
+                K\sqrt{n_A n_B} e^{i(\theta_B - \theta_A)} + (H_0 - eV)n_B.
+                \]
+              </p>
+            </details>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="module">
+        <div class="qh-source-plain">
+          <div class="post-content">
+            <details class="dark-background">
+              <table border="1" style="width:100%; text-align:center;">
+                <tr>
+                  <th>
+                    Adding the two equations gives: \[
+                    -2n_B \hbar \frac{\partial \theta_B}{\partial t} = 2K\sqrt{n_A n_B} \cos(\theta_B -
+                    \theta_A) + 2(H_0 - eV)n_B,
+                    \] Rearranging yields the equation for \(\theta_B\): \[
+                    \hbar \frac{\partial \theta_B}{\partial t} = -(H_0 - eV) - K\sqrt{\frac{n_A}{n_B}}
+                    \cos(\theta_B - \theta_A).
+                    \]
+
+                  </th>
+                </tr>
+                <tr>
+                  <th>
+                    Subtracting the two equations gives: \[
+                    i\hbar \frac{\partial n_B}{\partial t} = -2iK\sqrt{n_A n_B} \sin(\theta_B - \theta_A),
+                    \] That is: \[
+                    \hbar \frac{\partial n_B}{\partial t} = -2K\sqrt{n_A n_B} \sin(\theta_B - \theta_A).
+                    \]
+                  </th>
+                </tr>
+
+              </table>
+            </details>
+            <p>
+              Rearrangement gives the following equations:
+            </p>
+            <ul>
+              <li>For \(\theta_A\): \[
+                \hbar \frac{\partial \theta_A}{\partial t} = -(H_0 + eV) - K\sqrt{\frac{n_B}{n_A}}
+                \cos(\theta_B - \theta_A).
+                \]
+              </li>
+              <li>For \(\theta_B\): \[
+                \hbar \frac{\partial \theta_B}{\partial t} = -(H_0 - eV) - K\sqrt{\frac{n_A}{n_B}}
+                \cos(\theta_B - \theta_A).
+                \]
+              </li>
+              <li>For \(n_A\): \[
+                \hbar \frac{\partial n_A}{\partial t} = 2K\sqrt{n_A n_B} \sin(\theta_B - \theta_A).
+                \]
+              </li>
+              <li>For \(n_B\): \[
+                \hbar \frac{\partial n_B}{\partial t} = -2K\sqrt{n_A n_B} \sin(\theta_B - \theta_A).
+                \]
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="module">
+        <div class="qh-source-plain">
+          <div class="post-content">
+            <p>
+              Define the phase difference \(\Delta \theta = \theta_B - \theta_A\) and subtract the first two equations
+              to
+              obtain: \[
+              \hbar \frac{\partial \Delta \theta}{\partial t} = 2eV + \frac{K}{\hbar} \left( \frac{n_B -
+              n_A}{\sqrt{n_A n_B}} \right) \cos\Delta \theta.
+              \] Combine the latter two equations and define the current \(I\) as: \[
+              -\frac{\partial n_A}{\partial t} = \frac{\partial n_B}{\partial t} \equiv \frac{I}{-2e}.
+              \] Rearranging gives: \[
+              I = \frac{4eK}{\hbar} \sqrt{n_A n_B} \sin\Delta \theta \equiv I_c \sin\Delta \theta,
+              \] where \(I_c\) is the critical current of the Josephson junction.
+            </p>
+            <p>
+              Define the nonlinear inductance of the Josephson junction: \[
+              L_J(\Delta \theta) = \left(\frac{2e}{\hbar I_c \cos\Delta \theta}\right).
+              \] The energy stored in an inductor is: \[
+              E = \int IV dt = \int I_0 \sin\Delta \theta \cdot \frac{\hbar}{q} \frac{\partial \Delta
+              \theta}{\partial t} dt
+              = -\frac{I_0 \hbar}{2e} \cos\Delta \theta \equiv -\frac{I_0 \Phi_0}{2\pi} \cos\Delta \theta,
+              \] where the flux quantum is \(\Phi_0 = \frac{2\pi\hbar}{2e}\), and define: \[
+              E_J = \frac{I_0 \Phi_0}{2\pi}.
+              \]
+            </p>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="module">
+        <div class="qh-source-plain">
+          <div class="post-content">
+            <div style="text-align: center;"><a href="../Image/LC JJ circuit.png"><img src="../WebP/LC JJ circuit.webp" alt="A simple pentagonal design element." style="width: 80%; height: auto;"></a></div>
+            <p>
+              ▲ A linear \(LC\) circuit becomes a nonlinear \(LC\) circuit by incorporating the nonlinear inductance of
+              a
+              Josephson junction. \(L_J\) is the junction inductance.
+
+            </p>
+          </div>
+        </div>
+        <h4>4.2 Nonlinear LC Circuit</h4>
+        <p>
+          A transmon can be understood as a nonlinear LC oscillator. It replaces an ordinary linear inductor with a
+          Josephson junction and adds a large shunt capacitance. The Josephson junction supplies nonlinearity, while the
+          shunt capacitor lowers the charging energy, making the qubit insensitive to offset-charge noise.
+        </p>
+      </section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="module">
+        <p>
+          The basic transmon circuit contains:
+        </p>
+        <ul>
+          <li>One Josephson junction or SQUID loop.</li>
+          <li>A large shunt capacitor.</li>
+          <li>Capacitive coupling to microwave control lines, a readout resonator, or a coupler.</li>
+        </ul>
+      </section>
+    </section>
+
+
+    <section data-manual-slide>
+      <section class="module">
+        <div class="qh-section">
+          <h3>Transmon Qubit</h3>
+        </div>
+        <h4>Transmon Hamiltonian</h4>
+        <p>
+          The transmon Hamiltonian can be written as:
+        </p>
+        <p>\[
+          \hat{H}_{\mathrm{transmon}}
+          =
+          4E_C(\hat{n} - n_g)^2
+          -
+          E_J\cos\hat{\varphi}
+          \]</p>
+        <p>
+          where:
+        </p>
+
+        <ul>
+          <li>\(\hat{n}\): Cooper pair number operator.</li>
+          <li>\(\hat{\varphi}\): the superconducting phase difference across the Josephson junction.</li>
+          <li>\(n_g\): offset charge, representing environmental charge noise or gate-induced charge.</li>
+          <li>\(E_C = e^2 / 2C_\Sigma\): the charging energy, set by the total capacitance \(C_\Sigma\).</li>
+          <li>\(E_J = \Phi_0 I_c / 2\pi\): the Josephson energy, set by the junction critical current.</li>
+        </ul>
+        <p>
+          An important transmon design condition is:
+        </p>
+        <p>\[
+          \frac{E_J}{E_C} \gg 1
+          \]</p>
+        <p>
+          In this regime, the sensitivity of the energy levels to offset charge \(n_g\) is strongly suppressed, while
+          enough anharmonicity remains for the two lowest levels to serve as a qubit.
+        </p>
+
+      </section>
+    </section>
+
+    <section data-manual-slide>
+      <h4>Energy Spectrum and Anharmonicity</h4>
+      <section class="module">
+        <p>
+          Under the approximation \(E_J/E_C \gg 1\), the lowest transmon levels form an approximate weakly anharmonic
+          oscillator. Its \(\ket{0} \rightarrow \ket{1}\) transition frequency is approximately:
+        </p>
+        <p>\[
+          \omega_{01}
+          \approx
+          \frac{\sqrt{8E_JE_C} - E_C}{\hbar}
+          \]</p>
+        <p>
+          The transmon anharmonicity is approximately:
+        </p>
+        <p>\[
+          \alpha
+          =
+          \omega_{12} - \omega_{01}
+          \approx
+          -\frac{E_C}{\hbar}
+          \]</p>
+        <p>
+          Anharmonicity is an important parameter for quantum-gate control. If \(|\alpha|\) is too small, microwave
+          pulses
+          readily cause leakage into \(\ket{2}\); if \(|\alpha|\) is too large, it usually implies larger \(E_C\) and
+          potentially greater charge-noise sensitivity. A transmon must therefore balance charge-noise protection
+          against
+          control selectivity.
+        </p>
+
+      </section>
+    </section>
+
+    <section data-manual-slide>
+      <h4>Design of \(E_C\) and \(E_J\)</h4>
+      <section class="module">
+        <p>
+          The core of transmon design is choosing suitable \(E_C\), \(E_J\), and \(E_J/E_C\). These parameters are set
+          respectively by chip geometry, materials, and the Josephson-junction process.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Parameter</th>
+              <th>Definition</th>
+              <th>Determined by</th>
+              <th>Design impact</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>\(E_C\)</td>
+              <td>\(e^2/2C_\Sigma\)</td>
+              <td>Total capacitance, pad area, coupling capacitance, and packaging environment</td>
+              <td>Sets anharmonicity and charge-noise sensitivity</td>
+            </tr>
+            <tr>
+              <td>\(E_J\)</td>
+              <td>\(\Phi_0 I_c/2\pi\)</td>
+              <td>Josephson-junction area, oxide thickness, and critical-current density</td>
+              <td>Sets qubit frequency and potential depth</td>
+            </tr>
+            <tr>
+              <td>\(E_J/E_C\)</td>
+              <td>Ratio of Josephson energy to charging energy</td>
+              <td>Joint design of the junction and capacitor</td>
+              <td>Controls the trade-off between charge dispersion and anharmonicity</td>
+            </tr>
+          </tbody>
+        </table>
+        <h4>4.6 Fixed-Frequency and Tunable Transmon</h4>
+      </section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="module">
+        <p>
+          Transmons may be divided into fixed-frequency and tunable types. A fixed-frequency transmon uses a single
+          Josephson junction, so its frequency is largely fixed after fabrication. A tunable transmon replaces the
+          single
+          junction with a SQUID loop, allowing the effective Josephson energy to be controlled by an applied magnetic
+          flux.
+        </p>
+        <p>\[
+          E_J(\Phi_{\mathrm{ext}})
+          \approx
+          E_{J,\mathrm{max}}
+          \left|
+          \cos\left(\pi\frac{\Phi_{\mathrm{ext}}}{\Phi_0}\right)
+          \right|
+          \]</p>
+        <p>
+          A tunable transmon offers greater control flexibility for frequency tuning, two-qubit gates, and avoiding
+          frequency collisions, but it also increases sensitivity to flux noise.
+        </p>
+        <div class="qh-board">
+          <h4>Design intuition</h4>
+          <p>
+            The transmon's success comes from a simple but profound design strategy: use a larger capacitance to lower
+            \(E_C\), sacrifice some anharmonicity, and gain exponential protection against charge noise.
+          </p>
+        </div>
+        <div class="qh-task">
+          <h4>Learning Check</h4>
+          <ol>
+            <li>Why is a simple quantum LC oscillator unsuitable as a qubit?</li>
+            <li>What role does the Josephson junction play in a transmon?</li>
+            <li>Why must a transmon be designed in the \(E_J/E_C \gg 1\) regime?</li>
+            <li>What problems arise when \(E_C\) is too large or too small?</li>
+            <li>What are the advantages and disadvantages of fixed-frequency and tunable transmons?</li>
+          </ol>
+        </div>
+      </section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="module">
+        <section class="module">
+          <div class="qh-section">
+            <h3>Advanced throughline: design does not mean making \(E_J/E_C\) as large as possible</h3>
+          </div>
+          <p>\[H=4E_C(\hat n-n_g)^2-E_J\cos\hat\varphi\]</p>
+          <p>In the transmon regime \(E_J/E_C\gg1\), the low-energy levels approximately satisfy</p>
+          <p>\[\hbar\omega_{01}\approx\sqrt{8E_JE_C}-E_C,\qquad
+            \alpha\equiv\omega_{12}-\omega_{01}\approx-\frac{E_C}{\hbar}\]</p>
+          <p>Charge dispersion decreases exponentially with \(\exp[-\sqrt{8E_J/E_C}]\) (with a level-dependent algebraic
+            prefactor), while anharmonicity decreases only on a slower scale. This is central to the transmon's success.
+            The
+            price is that pulse selectivity, leakage, frequency crowding, and fabrication spread must be designed
+            together.
+          </p>
+        </section>
+      </section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="module">
+        <section class="module">
+          <p>Fixed-frequency transmons reduce flux-noise sensitivity; SQUID transmons provide tunable frequency and gate
+            mechanisms but introduce flux-line, sweet-spot, and drift issues. The real design problem is a joint
+            optimization of noise, control, coupling, yield, and calibration.</p>
+        </section>
+      </section>
+    </section>
+
+    <section data-manual-slide data-cover>
+      <div class="theme-header" style="text-align: center;">
+        <h2>Q4. How Do We Make a Qubit Tunable?</h2>
+        <h3>SQUID and Tunable Qubits</h3>
+      </div>
+    </section>
+
+    <section data-manual-slide>
+      <section class="module">
+        <section class="qh-supplement-source">
+          <div class="qh-section">
+            <h3>Nonlinear inductive properties of a two-junction SQUID</h3>
+          </div>
+          <h4>Frequency-tunable qubits</h4>
+          <div style="text-align: center;"><a href="../Image/SQUID.png"><img src="../WebP/SQUID.webp" alt="Circular conductor with current and magnetic-field diagram" style="width: 50%; height: auto;"></a>
+          </div>
+        </section>
+      </section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="module">
+        <section class="qh-supplement-source">
+          <div class="qh-source-plain">
+            <div class="post-content">
+              <p>
+                Combine two Josephson junctions \(J_1\) and \(J_2\) to form a closed loop threaded by flux \( \Phi_B \)
+                and
+                subject to voltage \( V \). From the previous section, the loop integral of the superconducting phase
+                must
+                satisfy: \[
+                \oint \nabla \theta(r) \cdot d\vec{l} - \frac{q}{\hbar} \Phi_B = 2\pi N
+                \] Since the discontinuities at the junctions contribute \( \Delta\theta_1 \) and \( \Delta\theta_2 \),
+                with \(
+                q = -2e \), substitution gives: \[
+                \Delta\theta_2 - \Delta\theta_1 + 2\pi \frac{\Phi_B}{\Phi_0} = 2\pi N
+                \] \[
+                \Delta\theta_2 = \Delta\theta_1 - 2\pi \frac{\Phi_B}{\Phi_0} + 2\pi N
+                \]
+              </p>
+              <p>
+                When current \( I = I_1 + I_2 \) is sent through the entire SQUID, use the Josephson current relation
+                from the
+                previous section. For a symmetric SQUID, the two Josephson junctions have identical properties \( I_c
+                \). We
+                obtain: \[
+                I = I_1 + I_2 = I_0 (\sin\Delta\theta_1 + \sin\Delta\theta_2)
+                \] \[
+                I = I_0 \left[\sin\Delta\theta_1 + \sin\left(\Delta\theta_1 - 2\pi \frac{\Phi_B}{\Phi_0} +
+                2\pi N\right)\right]
+                \] \[
+                I = I_0 \left[\sin\Delta\theta_1 + \sin\left(\Delta\theta_1 - 2\pi
+                \frac{\Phi_B}{\Phi_0}\right)\right]
+                \] Applying a trigonometric identity gives: \[
+                I = I_0 \left[2 \sin\left(\frac{\Delta\theta_1 + \Delta\theta_1 - 2\pi
+                \frac{\Phi_B}{\Phi_0}}{2}\right)
+                \cos\left(\frac{\Delta\theta_1 - \Delta\theta_1 + 2\pi
+                \frac{\Phi_B}{\Phi_0}}{2}\right)\right]
+                \] \[
+                I = 2I_0 \cos\left(\frac{\Phi_B}{\Phi_0} \pi\right) \sin\left(\Delta\theta_1 -
+                \frac{\Phi_B}{\Phi_0} \pi\right)
+                \]
+              </p>
+            </div>
+          </div>
+        </section>
+      </section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="module">
+        <section class="qh-supplement-source">
+          <div class="qh-source-plain">
+            <div class="post-content">
+              <p>
+                The previous section showed that a Josephson junction behaves inductively; the inductive behavior of a
+                SQUID can
+                be analyzed similarly. Differentiate the current with respect to time: \[
+                \dot{I} = 2I_0 \cos\left(\frac{\Phi_B}{\Phi_0} \pi\right) \cos\left(\Delta\theta_1 -
+                \frac{\Phi_B}{\Phi_0} \pi\right) \dot{\Delta\theta_1}
+                \] The relation among \( \dot{\Delta\theta_1} \) and voltage \( V \) is: \[
+                V = \frac{\hbar}{2e} \dot{\Delta\theta_1} = \frac{\Phi_0}{2\pi} \dot{\Delta\theta_1}
+                \] Substitution gives the inductance: \[
+                L_{\text{SQUID}}(\Delta\theta_1, \Phi_B) = \left[\frac{2\pi}{\Phi_0} \cdot 2I_0
+                \cos\left(\frac{\Phi_B}{\Phi_0} \pi\right)
+                \cos\left(\Delta\theta_1 - \frac{\Phi_B}{\Phi_0} \pi\right)\right]
+                \]
+              </p>
+              <p>
+                Notice that \( L_{\text{SQUID}} \) depends on the applied flux \( \Phi_B \). This is the key to
+                frequency tuning
+                in a tunable transmon. Define the variable \(
+                \Phi \): \[
+                \Phi \equiv \frac{\Delta\theta_1}{\pi} \Phi_0 - \Phi_B = \frac{\Phi_0}{\pi}
+                \left(\Delta\theta_1 - \frac{\Phi}{\Phi_0} \pi\right)
+                \] with: \[
+                \dot{\Phi} = \frac{\Phi_0}{\pi} \dot{\Delta\theta_1}
+                \] The voltage \( V \) and current \( I \) are respectively: \[
+                V = \frac{1}{2} \dot{\Phi}, \quad I = 2I_0 \cos\left(\frac{\Phi_B}{\Phi_0} \pi\right)
+                \sin\left(\frac{\Phi}{\Phi_0} \pi\right)
+                \]
+              </p>
+            </div>
+          </div>
+        </section>
+      </section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="module">
+        <section class="qh-supplement-source">
+          <div class="qh-source-plain">
+            <div class="post-content">
+              <p>
+                At fixed external field \( \Phi_B \), the energy stored in a SQUID is: \[
+                E = \int IV \, dt = \int \left[2I_0 \cos\left(\frac{\Phi_B}{\Phi_0} \pi\right)
+                \sin\left(\frac{\Phi}{\Phi_0} \pi\right) \cdot \frac{1}{2} \dot{\Phi}\right] dt
+                \] Simplifying gives: \[
+                E = I_0 \cos\left(\frac{\Phi_B}{\Phi_0} \pi\right) \int \sin\left(\frac{\Phi}{\Phi_0}
+                \pi\right) d\Phi
+                \] \[
+                E = -\frac{I_0 \Phi_0}{\pi} \cos\left(\frac{\Phi_B}{\Phi_0} \pi\right)
+                \cos\left(\frac{\pi}{\Phi_0} \Phi\right)
+                \]
+              </p>
+            </div>
+          </div>
+        </section>
+      </section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="module">
+        <section class="qh-supplement-source">
+          <div class="qh-source-plain">
+            <div clas="" s="post-content">
+              <div class="qh-section">
+                <h3>Tunable Transmon</h3>
+              </div>
+              <h4>Frequency-tunable transmon</h4>
+              <div style="text-align: center;"><a href="../Image/SQUID transmon.png"><img src="../WebP/SQUID transmon.webp" alt="A simple illustration of geometric shapes and symbols." style="width:60%; height: auto;"></a>
+              </div>
+              <p>
+                ▲ A \(LC\) circuit composed of two Josephson junctions, with tunable inductance.
+
+              </p>
+            </div>
+          </div>
+        </section>
+      </section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="module">
+        <section class="qh-supplement-source">
+          <div class="qh-source-plain">
+            <div clas="" s="post-content">
+              <p>
+                As discussed above, a Josephson junction has inductive properties, and a transmon is an LC circuit whose
+                inductor is replaced by a Josephson junction. Here we consider a tunable transmon directly, using a
+                SQUID as the
+                inductor. In practice, fabrication nonuniformity gives different transmons different properties. With
+                tunable
+                transmons, small adjustments of magnetic flux \( \Phi_B \) can bring qubit properties into alignment. In
+                addition, when quantizing the LC circuit above, \([ \Phi, Q ] = i\hbar\) formed a canonical pair. The
+                SQUID
+                derivation naturally relates magnetic flux \(
+                \Phi
+                \) to phase difference \( \Delta\theta \): \[
+                \Phi \equiv \frac{\Delta\theta_1}{\pi} \Phi_0 - \Phi_B
+                \]
+              </p>
+              <p>
+                We now write the Hamiltonian: \[
+                \mathcal{H} = \frac{Q^2}{2C} + \frac{\Phi_\#^2}{2L} = \frac{Q^2}{2C} + \frac{(I_0
+                \pi)}{2\Phi_0} \cos\left(\frac{\Phi_B}{\Phi_0} \pi\right) \Phi^2 - \frac{I_0}{24}
+                \left(\frac{\pi}{\Phi_0}\right)^3 \cos\left(\frac{\Phi_B}{\Phi_0} \pi\right) \Phi^4 + \cdots
+                \] \[
+                = \frac{Q^2}{2C} + \frac{\Phi^2}{2L} - \frac{1}{24L} \left(\frac{\pi}{\Phi_0}\right)^2
+                \Phi^4
+                + \cdots
+                \] where: \[
+                L = \left(\frac{I_0 \pi}{\Phi_0} \cos\left(\frac{\Phi_B}{\Phi_0} \pi\right)\right)^{-1}
+                \]
+              </p>
+            </div>
+          </div>
+        </section>
+      </section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="module">
+        <section class="qh-supplement-source">
+          <div class="qh-source-plain">
+            <div clas="" s="post-content">
+              <p>
+                We now examine how nonlinearity changes the energy levels. Above, we chose new variables \( a \) and \(
+                a^\dagger \): \[
+                a = \sqrt{\frac{1}{2\hbar} \sqrt{ \frac{L}{C}}} \left(\sqrt{\frac{C}{L}} \Phi + iQ\right),
+                \quad
+                a^\dagger = \sqrt{\frac{1}{2\hbar} \sqrt{ \frac{L}{C}}} \left(\sqrt{\frac{C}{L}} \Phi -
+                iQ\right)
+                \] Conversely: \[
+                \Phi = \sqrt{\frac{\hbar}{2 }\sqrt{ \frac{L}{C}}} (a^\dagger + a), \quad
+                Q = i\sqrt{\frac{\hbar}{2} \sqrt{ \frac{C}{L}}} (a^\dagger - a)
+                \]
+
+              </p>
+              <p>
+                Expand the Hamiltonian as: \[
+                \mathcal{H} = \frac{\hbar}{\sqrt{LC}} \left[a^\dagger a + \frac{1}{2}\right] - \frac{1}{24L}
+                \left(\frac{\pi}{\Phi_0}\right)^2 \left[i \sqrt{\frac{\hbar}{2\sqrt{L/C}}} (a^\dagger +
+                a)\right]^4
+                \] After simplification: \[
+                \mathcal{H} = \frac{\hbar}{\sqrt{LC}} \left[a^\dagger a + \frac{1}{2}\right] -
+                \frac{\hbar^2}{96C} \left(\frac{\pi}{\Phi_0}\right)^2 (a^\dagger + a)^4
+                \] This expression contains linear and nonlinear terms. The linear term describes the levels of a
+                quantum
+                harmonic oscillator, while the nonlinear term is the Josephson-junction correction to those levels.
+              </p>
+              <p>
+                Using perturbation theory, when \( \mathcal{H} = H_0 + \Delta H \), \( \ket{E_0^m} \to \ket{E^m} \), and
+                \(
+                E_0^m \to
+                E^m
+                = E_0^m + \delta E^m \), the correction \( \delta E^m \) to level \( E_0^m \) is:
+              </p>
+            </div>
+          </div>
+        </section>
+      </section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="module">
+        <section class="qh-supplement-source">
+          <div class="qh-source-plain">
+            <div clas="" s="post-content">
+              <p style="text-align:center">
+                \[
+                \delta E^m = \langle E_0^m | \Delta H | E_0^m \rangle = \langle E_0^m |
+                \left[-\frac{\hbar^2}{96C} \left(\frac{\pi}{\Phi_0}\right)^2 (a^\dagger + a)^4\right] |
+                E_0^m
+                \rangle
+                \]
+              </p>
+              <p>
+                The calculation proceeds as follows:
+              </p>
+              <p style="text-align:center">
+                \[
+                \langle E_0^m | (a^\dagger + a)^4 | E_0^m \rangle = \langle E_0^m | (aa + aa^\dagger +
+                a^\dagger a + a^\dagger a^\dagger)^2 | E_0^m \rangle
+                \]
+              </p>
+              <p>
+                Expanding gives:
+              </p>
+              <p style="text-align:center">
+                \[
+                \langle E_0^m | aa(aa + aa^\dagger + a^\dagger a + a^\dagger a^\dagger) + aa^\dagger(aa +
+                aa^\dagger + a^\dagger a + a^\dagger a^\dagger)
+                + a^\dagger a(aa + aa^\dagger + a^\dagger a + a^\dagger a^\dagger) + a^\dagger a^\dagger(aa
+                +
+                aa^\dagger + a^\dagger a + a^\dagger a^\dagger) \ket{ E_0^m }
+                \]
+              </p>
+              <p>
+                Because we take an expectation value, only terms with equal numbers of \( a, a^\dagger \) remain:
+              </p>
+            </div>
+          </div>
+        </section>
+      </section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="module">
+        <section class="qh-supplement-source">
+          <div class="qh-source-plain">
+            <div clas="" s="post-content">
+              <p style="text-align:center">
+                \[
+                \langle E_0^m | aaa^\dagger a^\dagger + aa^\dagger aa^\dagger + aa^\dagger a^\dagger a +
+                a^\dagger aaa^\dagger + a^\dagger aa^\dagger a + a^\dagger a^\dagger aa | E_0^m \rangle
+                \]
+              </p>
+              <p>
+                Continuing to simplify:
+              </p>
+              <p style="text-align:center">
+                \[
+                \langle E_0^m | a(a^\dagger a + 1)a^\dagger + aa^\dagger aa^\dagger + (a^\dagger a +
+                1)a^\dagger a + a^\dagger a(a^\dagger a + 1) + a^\dagger aa^\dagger a + a^\dagger
+                (aa^\dagger
+                - 1)a | E_0^m \rangle
+                \]
+              </p>
+              <p>
+                Rearranging again:
+              </p>
+              <p style="text-align:center">
+                \[
+                \langle E_0^m | aa^\dagger aa^\dagger + aa^\dagger + aa^\dagger aa^\dagger + a^\dagger
+                aa^\dagger a + a^\dagger a + a^\dagger aa^\dagger a + a^\dagger a + a^\dagger aa^\dagger a +
+                a^\dagger aa^\dagger a - a^\dagger a | E_0^m \rangle
+                \]
+              </p>
+              <p>
+                Simplifying further:
+              </p>
+            </div>
+          </div>
+        </section>
+      </section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="module">
+        <section class="qh-supplement-source">
+          <div class="qh-source-plain">
+            <div clas="" s="post-content">
+              <p style="text-align:center">
+                \[
+                \langle E_0^m | 2aa^\dagger aa^\dagger + aa^\dagger + 4a^\dagger aa^\dagger a + a^\dagger a
+                |
+                E_0^m \rangle
+                \]
+                \[
+                = \langle E_0^m | 2(a^\dagger a + 1)(a^\dagger a + 1) + (a^\dagger a + 1) + 4a^\dagger
+                aa^\dagger a + a^\dagger a | E_0^m \rangle
+                \]
+              </p>
+              <p>
+                Finally, we obtain:
+              </p>
+              <p style="text-align:center">
+                \[
+                \langle E_0^m | 6a^\dagger aa^\dagger a + 6a^\dagger a + 3 | E_0^m \rangle = 6m^2 + 6m + 3
+                \]
+              </p>
+              <p>
+                Define the energy-level spacing:
+              </p>
+              <p style="text-align:center">
+                \[
+                \Delta E^m_{m-1} = \frac{\hbar}{\sqrt{LC}} - \frac{\hbar^2}{96C}
+                \left(\frac{\pi}{\Phi_0}\right)^2 \left\{6[m^2 - (m-1)^2] + 6\right\}
+                \]
+              </p>
+              <p style="text-align:center">
+                \[
+                = \frac{\hbar}{\sqrt{LC}} - \frac{\hbar^2 \pi^2}{96C} \frac{e^2}{\pi^2 \hbar^2} \left[6(2m -
+                1) + 6\right]
+                \]
+              </p>
+              <p>
+                Finally, we obtain:
+              </p>
+            </div>
+          </div>
+        </section>
+      </section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="module">
+        <section class="qh-supplement-source">
+          <div class="qh-source-plain">
+            <div clas="" s="post-content">
+              <p style="text-align:center">
+                \[
+                \Delta E^m_{m-1} = \frac{\hbar}{\sqrt{LC}} - m\frac{e^2}{8C}
+                \]
+              </p>
+              <p>
+                Calculate \( \Delta E^{21} - \Delta E^{10} \):
+              </p>
+              <p style="text-align:center">
+                \[
+                \Delta E^{21} - \Delta E^{10} = \left(\frac{\hbar}{\sqrt{LC}} - 2\frac{e^2}{8C}\right) -
+                \left(\frac{\hbar}{\sqrt{LC}} - \frac{e^2}{8C}\right)
+                \]
+              </p>
+              <p style="text-align:center">
+                \[
+                = -\frac{e^2}{8C} \equiv -E_C
+                \]
+              </p>
+              <p>
+                \( E_C \) represents its nonlinear effect.
+              </p>
+              <p>
+                <span style="font-size: 0.7em; line-height: 0.8;">Ref:
+                  DOI:10.1103/RevModPhys.93.025005</span><br><br>
+
+
+              </p>
+            </div>
+          </div>
+        </section>
+        <h4>2.3 Types of Superconducting Qubits</h4>
+      </section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="module">
+        <p>
+          Superconducting qubits can be classified into several types according to their dominant energy scales and
+          circuit designs. Common examples include the charge qubit, flux qubit, phase qubit, transmon, fluxonium, and
+          0–π
+          qubit. In modern gate-based superconducting quantum computing, the transmon is among the most widely used
+          designs; fluxonium has also attracted substantial attention for its long coherence, low relaxation rate, and
+          distinctive level structure.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Qubit type</th>
+              <th>Primary degree of freedom</th>
+              <th>Design features</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Charge Qubit</td>
+              <td>Cooper pair number</td>
+              <td>Charge-sensitive, with good controllability but strong susceptibility to charge noise</td>
+            </tr>
+            <tr>
+              <td>Flux Qubit</td>
+              <td>Magnetic flux and circulation direction</td>
+              <td>Based on persistent-current states in a superconducting loop</td>
+            </tr>
+            <tr>
+              <td>Transmon</td>
+              <td>Josephson phase</td>
+              <td>Uses increased capacitance to reduce charge-noise sensitivity</td>
+            </tr>
+            <tr>
+              <td>Fluxonium</td>
+              <td>Phase across Josephson junction and superinductor</td>
+              <td>Uses a superinductor to create a distinctive level structure and noise protection</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="module">
+        <section class="module">
+          <div class="qh-section">
+            <h3>Introduction to superconducting quantum-chip layout</h3>
+          </div>
+          <h4>What Is a Superconducting Quantum Chip?</h4>
+          <p>
+            A superconducting quantum chip is a cryogenic quantum circuit fabricated with micro- and nanofabrication
+            processes. Qubits, readout resonators, couplers, control lines, and grounding structures are laid out as
+            specific microwave circuits on the chip. When the chip is cooled to roughly 10 mK to several tens of
+            millikelvin, electrons in the superconducting metal form Cooper pairs and circuit dissipation falls sharply,
+            allowing selected circuit modes to exhibit quantized energy levels.
+          </p>
+          <p>
+            From an engineering perspective, a superconducting quantum chip is simultaneously a microwave circuit, a
+            cryogenic electronic system, and an artificial quantum system. Understanding it therefore requires quantum
+            mechanics, electromagnetism, circuit theory, materials science, and micro- and nanofabrication.
+          </p>
+          
+        </section>
+      </section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="module">
+        <section class="module">
+          <h4> Typical Layout Elements</h4>
+          <p>
+            A typical superconducting quantum chip usually contains the following classes of components:
+          </p>
+          <table>
+            <thead>
+              <tr>
+                <th>Chip component</th>
+                <th>Function</th>
+                <th>Physical role</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Qubit</td>
+                <td>Stores and processes quantum information</td>
+                <td>An artificial atom formed by a nonlinear superconducting circuit</td>
+              </tr>
+              <tr>
+                <td>Readout Resonator</td>
+                <td>Reads out the qubit state</td>
+                <td>A microwave resonator dispersively coupled to the qubit</td>
+              </tr>
+              <tr>
+                <td>Drive Line</td>
+                <td>Applies microwave pulses to control the qubit</td>
+                <td>Produces single-qubit rotations</td>
+              </tr>
+              <tr>
+                <td>Flux Line</td>
+                <td>Tunes the frequency of a qubit or coupler</td>
+                <td>Changes Josephson energy through applied magnetic flux</td>
+              </tr>
+              <tr>
+                <td>Coupler</td>
+                <td>Connects two or more qubits</td>
+                <td>Provides fixed or tunable quantum coupling</td>
+              </tr>
+              <tr>
+                <td>Ground Plane</td>
+                <td>Provides an electromagnetic ground reference and shielding</td>
+                <td>Affects microwave modes, crosstalk, and packaging effects</td>
+              </tr>
+              <tr>
+                <td>Air Bridge / Crossover</td>
+                <td>Connects ground planes or crosses signal lines</td>
+                <td>Suppresses slotline modes and parasitic coupling</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+      </section>
+    </section>
+
+    <section data-manual-slide data-cover>
+      <div class="theme-header" style="text-align: center;">
+        <h2>Q5. How Does the Transmon Balance Noise Protection and Controllability?</h2>
+        <h3>Charge-Noise Suppression and the Anharmonicity Trade-off</h3>
+      </div>
+    </section>
+
+    <section data-manual-slide>
+      <section class="module">
+        <div class="qh-section">
+          <h3>Question 5: Why is the artificial atom ultimately designed as a transmon?</h3>
+        </div>
+        <p>\[
+          \hat H_{\mathrm T}=4E_C(\hat n-n_g)^2-E_J\cos\hat\varphi.
+          \]</p>
+        <p>
+          A charge qubit is highly sensitive to offset charge \(n_g\). By increasing the shunt capacitance, a transmon
+          lowers \(E_C\) and raises \(E_J/E_C\), exponentially suppressing the charge dispersion of the energy with
+          respect to \(n_g\). The cost is a smaller magnitude of anharmonicity, requiring a new trade-off between
+          control
+          selectivity and gate speed.
+        </p>
+        <h4>First identify the problem with the original charge qubit</h4>
+        <p>
+          In the charge basis, first set \(E_J=0\). Each integer Cooper-pair number \(n\) then corresponds to a charging
+          parabola:
+        </p>
+        <p>\[
+          E_n(n_g)=4E_C(n-n_g)^2.
+          \]</p>
+      </section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="module">
+        <p>
+          \(n_g\) is set by the gate voltage, background trapped charge, and environmental offset-charge fluctuations.
+          Near \(n_g=1/2\), retaining only \(\ket{n=0}\) and \(\ket{n=1}\), Josephson tunneling gives the approximate
+          matrix
+        </p>
+        <p>\[
+          \hat H_{\{0,1\}}
+          \approx
+          \begin{pmatrix}
+          4E_Cn_g^2 &amp; -E_J/2\\
+          -E_J/2 &amp; 4E_C(1-n_g)^2
+          \end{pmatrix}.
+          \]</p>
+        <p>
+          so the two-level splitting is approximately
+        </p>
+        <p>\[
+          \hbar\omega_{01}
+          \approx\sqrt{\bigl[4E_C(1-2n_g)\bigr]^2+E_J^2}.
+          \]</p>
+        <p>
+          At exactly \(n_g=1/2\) there is a charge sweet spot, \(\partial\omega_{01}/\partial n_g=0\); but once the
+          operating point drifts away, the frequency changes rapidly. If the background charge jumps, the qubit
+          frequency
+          jumps with it. Precise biasing at one point alone is not robust hardware protection.
+        </p>
+        <h4>The transmon's hardware move is simple: make the capacitance large</h4>
+      </section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="module">
+        <p>
+          For total capacitance \(C_\Sigma\),
+        </p>
+        <p>\[
+          E_C=\frac{e^2}{2C_\Sigma}.
+          \]</p>
+        <p>
+          Adding a large shunt capacitor increases \(C_\Sigma\) and lowers \(E_C\), while the junction critical current
+          can still set \(E_J\) independently. Thus \(E_J/E_C\) can be shifted from the charge-qubit regime toward the
+          transmon regime of \(E_J/E_C\gg1\). This does not introduce a different Hamiltonian; it moves the same
+          Hamiltonian into another parameter regime.
+        </p>
+        <p>
+          In the phase picture, larger \(E_J/E_C\) localizes low-energy wavefunctions near a cosine minimum and reduces
+          the quantum phase-slip amplitude between neighboring wells. Offset charge \(n_g\) plays the role of a boundary
+          phase for the periodic potential; the dependence of energy on \(n_g\) comes precisely from interwell
+          tunneling.
+          As the relative barrier height grows, the energy band flattens with respect to \(n_g\).
+        </p>
+        <h4>The key is not merely that it becomes smaller: charge dispersion is exponentially suppressed</h4>
+      </section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="module">
+        <p>
+          In the asymptotic regime \(E_J/E_C\gg1\), the dominant dependence of an energy level on offset charge can be
+          written as
+        </p>
+        <p>\[
+          E_m(n_g)\approx\bar E_m
+          -\frac{\epsilon_m}{2}\cos(2\pi n_g),
+          \]</p>
+        <p>
+          where the leading scale of the charge-dispersion amplitude is
+        </p>
+        <p>\[
+          \epsilon_m
+          \propto
+          E_C\,
+          \exp\!\left[-\sqrt{8E_J/E_C}\right]
+          \times
+          \text{algebraic prefactor}.
+          \]</p>
+        <p>
+          As \(E_J/E_C\) is increased, \(\partial\omega_{01}/\partial n_g\) does not merely fall slowly as
+          \(1/(E_J/E_C)\); it receives exponential suppression. The transmon's value lies in this asymmetric exchange: a
+          relatively modest parameter change buys very strong suppression of charge-noise dephasing.
+        </p>
+        <h4>But the nonlinearity is not preserved for free</h4>
+        <p>
+          Question 4 gave
+        </p>
+      </section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="module">
+        <p>\[
+          \hbar\omega_{01}\approx\sqrt{8E_JE_C}-E_C,
+          \qquad
+          \alpha\equiv\omega_{12}-\omega_{01}
+          \approx-\frac{E_C}{\hbar}.
+          \]</p>
+        <p>
+          The shunt capacitance lowers \(E_C\), so \(|\alpha|\) also decreases approximately linearly. Fortunately,
+          charge
+          dispersion is exponentially suppressed, whereas anharmonicity decreases only linearly with \(E_C\). A
+          practical
+          parameter window therefore exists in which charge noise is already weak but \(\omega_{01}\) and
+          \(\omega_{12}\)
+          remain distinguishable.
+        </p>
+        <p>
+          For a target transition frequency and anharmonicity, these two approximations can also be inverted for a
+          first-pass design:
+        </p>
+        <p>\[
+          \frac{E_C}{h}\approx\frac{|\alpha|}{2\pi},
+          \qquad
+          \frac{E_J}{E_C}
+          \approx\frac18
+          \left(\frac{hf_{01}+E_C}{E_C}\right)^2.
+          \]</p>
+        <p>
+          A real design still requires numerical diagonalization, a junction-fabrication model, and electromagnetic
+          simulation. Nevertheless, these two equations already show the directional relations among pad capacitance,
+          junction critical current, frequency, and leakage.
+        </p>
+      </section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="module">
+        <h4>Protection does not turn off control along with noise</h4>
+        <p>
+          A capacitive microwave drive couples primarily through \(\hat n\). In the harmonic approximation,
+        </p>
+        <p>\[
+          |\langle0|\hat n|1\rangle|
+          \approx
+          \left(\frac{E_J}{32E_C}\right)^{1/4}\neq0.
+          \]</p>
+        <p>
+          Thus, increasing \(E_J/E_C\) suppresses charge dispersion without eliminating the \(0\leftrightarrow1\)
+          electric-dipole matrix element. The transmon therefore retains effective microwave drive and dispersive
+          readout.
+          The converse is that the same nonzero matrix element means a transmon is not automatically immune to all
+          high-frequency electric noise. It primarily addresses low-frequency offset-charge dephasing, not relaxation in
+          general.
+        </p>
+        <h4>Fixed-frequency and tunable transmons introduce the next trade-off</h4>
+      </section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="module">
+        <p>
+          A single junction gives a fixed \(E_J\), with a simpler structure and no additional flux-noise channel; the
+          cost
+          is that fabrication variation directly becomes frequency spread and may cause frequency collisions. If a
+          symmetric dc SQUID replaces the single junction, then
+        </p>
+        <p>\[
+          E_{J,\mathrm{eff}}(\Phi_{\rm ext})
+          =2E_{J0}
+          \left|\cos\!\left(\pi\frac{\Phi_{\rm ext}}{\Phi_0}\right)\right|,
+          \]</p>
+        <p>
+          The qubit frequency becomes tunable, allowing collisions to be avoided or flux-mediated gates to be performed.
+          But away from the flux sweet spot, \(\partial\omega_{01}/\partial\Phi_{\rm ext}\neq0\); flux noise,
+          control-line
+          crosstalk, and calibration overhead all increase.
+        </p>
+        <h4>Reassessing the transmon with four design criteria</h4>
+      </section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="module">
+        <ul>
+          <li>
+            <strong>Dephasing protection: </strong>\(\partial\omega_{01}/\partial n_g\) receives exponential suppression
+            from charge dispersion.
+          </li>
+          <li>
+            <strong>Relaxation protection: </strong> There is no generic \(\langle0|\hat O_{\rm
+            noise}|1\rangle\approx0\); material loss, Purcell loss, and high-frequency electric noise must still be
+            engineered separately.
+          </li>
+          <li>
+            <strong>Controllability: </strong>\(\langle0|\hat n|1\rangle\neq0\), preserving effective microwave control
+            and readout coupling.
+          </li>
+          <li>
+            <strong>Leakage suppression: </strong>\(\Delta_{\rm leakage}\sim\hbar|\alpha|\) is finite; gate speed, pulse
+            shaping, and residual anharmonicity must be balanced.
+          </li>
+        </ul>
+        <ul>
+          <li>Benefits: lower charge dispersion, mature microwave control, and a designable frequency range.</li>
+          <li>Costs: weaker anharmonicity, possible leakage, and different noise and calibration burdens for fixed and
+            tunable designs.</li>
+          <li>Design principle: the transmon is not the “best artificial atom,” but a successful parameter choice
+            balancing noise sensitivity, control, and manufacturability.</li>
+        </ul>
+      </section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="module">
+        <p>
+          <strong>Conclusion for this week:</strong> Discrete energy levels alone do not make a qubit. Josephson
+          nonlinearity must create a selectively controllable spectrum, after which \(E_J/E_C\) tunes the trade-off
+          between charge sensitivity and anharmonicity. The transmon became mainstream not because it eliminates every
+          source of noise, but because exponential-versus-linear scaling places it at an especially effective Pareto
+          point
+          that remains controllable and manufacturable.
+        </p>
+      </section>
+    </section>
+
+
+
+    <section data-manual-slide>
+      <section class="module">
+        <section class="module">
+          <div class="qh-section">
+            <h3>Classroom Integration and Assessment</h3>
+          </div>
+          <p><strong>Discussion question:</strong> Given \(f_{01}\) and a target anharmonicity, estimate \(E_C\),
+            \(E_J\),
+            the total capacitance, and \(I_c\); then explain where the approximation may fail.</p>
+          <p><strong>Completion criterion:</strong> Students must leave a checkable derivation, relationship diagram,
+            comparison table, or architecture decision, and must be able to explain its physical assumptions and
+            engineering
+            costs.</p>
+        </section>
+      </section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="module">
+        <section class="module">
+          <div class="qh-section">
+            <h3>Core and Further Reading</h3>
+          </div>
+          <ul class="qh-reading">
+            <li>
+              <a href="https://doi.org/10.1103/PhysRevA.76.042319" target="_blank" rel="noopener">Charge-insensitive
+                Qubit
+                Design Derived from the Cooper Pair Box</a><span>J.
+                Koch et al., Physical Review A 76, 042319 (2007).</span><em>The trade-off among transmon \(E_J/E_C\),
+                charge
+                dispersion, and anharmonicity.</em>
+            </li>
+            <li>
+              <a href="https://doi.org/10.1063/1.5089550" target="_blank" rel="noopener">A Quantum
+                Engineer's Guide to Superconducting Qubits</a><span>P. Krantz et al., Applied Physics
+                Reviews 6, 021318 (2019).</span><em>A foundational review of control, coherence, readout, and
+                engineering
+                parameters.</em>
+            </li>
+            <li>
+              <a href="https://www.nature.com/articles/s41578-021-00370-4" target="_blank" rel="noopener">Engineering
+                High-Coherence Superconducting Qubits</a><span>I. Siddiqi, Nature
+                Reviews Materials 6, 875–891 (2021).</span><em>Design trade-offs among different qubit architectures,
+                material loss, and coherence.</em>
+            </li>
+            <li>
+              <a href="https://doi.org/10.1103/PhysRevResearch.5.043001" target="_blank" rel="noopener">Mitigation of
+                Frequency Collisions in Superconducting Quantum
+                Processors</a><span>J. B. Hertzberg et al., Physical Review Research 5, 043001
+                (2023).</span><em>How process variation becomes qubit-frequency spread, collisions, and yield loss.</em>
+            </li>
+          </ul>
+        </section>
+      </section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="module">
+        <div class="qh-section">
+          <h3>Reverse-engineering assignment: infer the artificial atom from a chip image</h3>
+        </div>
+        <p><strong>Assignment question:</strong> Given a local image of a superconducting quantum chip, can you infer
+          the
+          Hamiltonian it might implement from the geometry?</p>
+        <ol>
+          <li>
+            <strong>Identify the structures:</strong> Mark the qubit pads, Josephson junction, ground, drive line, and
+            readout resonator; explicitly label any uncertain identification.
+          </li>
+          <li>
+            <strong>geometry → parameter: </strong> Explain which circuit parameters are affected by pad geometry,
+            junction area, spacing, and line length.
+          </li>
+          <li>
+            <strong>parameter → Hamiltonian: </strong> Identify which structures in the image primarily control \(E_C\),
+            \(E_J\), and the coupling term.
+          </li>
+          <li>
+            <strong>Hamiltonian → observable: </strong> Predict how \(f_{01}\), anharmonicity, charge dispersion, or
+            coupling changes when the pads grow larger, the junction becomes smaller, or the resonator is moved closer.
+          </li>
+          <li>
+            <strong>Limits of inference:</strong> List the information that cannot be known from an image alone and must
+            come from process data, EM simulation, or experimental measurement.
+          </li>
+        </ol>
+      </section>
+    </section>
+
+    <section data-manual-slide>
+      <section class="module">
+        <div class="qh-case">
+          <p><strong>Assignment throughline:</strong> Chip structure → geometric parameters → lumped-element model →
+            Hamiltonian term → spectrum/control hypothesis. This is a reverse-design problem with explicit evidentiary
+            limits; students are not expected to infer the complete system architecture in W2.</p>
+        </div>
+      </section>
+    </section>
+  </div>
+
+  <div class="qh-mode-toggle" role="group" aria-label="Display mode">
+    <button type="button" class="qh-mode-button" data-qh-view="article" aria-pressed="false">Article</button>
+    <button type="button" class="qh-mode-button is-active" data-qh-view="slides" aria-pressed="true">Slides</button>
+  </div>
+
+  <div id="qh-slide-root" class="qhs-root" hidden aria-hidden="true" data-qhs-course="PHYS598500" data-qhs-week="WEEK 2"
+    data-qhs-no-click-advance="true" data-qhs-topic="Superconducting-Circuit Quantization and Transmon Design"
+    data-qhs-title-suffix="QH-2026F v5 · Manual Slides">
+    <header class="qhs-header">
+      <a class="qhs-brand" href="main.html" aria-label="Return to the QH-2026F course overview">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
+      <span class="qhs-divider" aria-hidden="true"></span>
+      <div class="qhs-identity">
+        <strong>PHYS598500 · WEEK 2</strong>
+        <span>Superconducting-Circuit Quantization and Transmon Design · Manual Slides</span>
+      </div>
+      <button class="qhs-click-mode-button is-active" type="button" data-qhs-action="no-click-advance"
+        aria-pressed="true" aria-label="Toggle mouse click and drag slide advance"
+        title="Mouse clicks and horizontal drags will not change slides">Click/drag page change: Off</button>
+      <button class="qhs-icon-button" type="button" data-qhs-action="fullscreen" aria-label="Toggle fullscreen"
+        title="Fullscreen (F)">⛶</button>
+    </header>
+
+    <nav class="qhs-rail" aria-label="Slide previews">
+      <div class="qhs-thumb-panel">
+        <div class="qhs-thumb-head"><strong>Slide previews</strong><span class="qhs-thumb-total">—</span></div>
+        <div class="qhs-thumb-list" role="list"></div>
+      </div>
+      <button class="qhs-rail-handle" type="button" aria-label="Expand or collapse slide previews"
+        aria-expanded="false"><span>Slide previews</span></button>
+    </nav>
+
+    <main class="qhs-stage" aria-label="Slide display area">
+      <div class="qhs-scaler"></div>
+    </main>
+
+    <footer class="qhs-controls" aria-label="Slide controls">
+      <button class="qhs-control-button" type="button" data-qhs-action="previous" aria-label="Previous slide">←</button>
+      <div class="qhs-progress-wrap">
+        <input class="qhs-range" type="range" min="1" value="1" aria-label="Slide progress">
+        <div class="qhs-counter" aria-live="polite"><strong>01</strong><span>/ —</span></div>
+      </div>
+      <button class="qhs-control-button" type="button" data-qhs-action="next" aria-label="Next slide">→</button>
+    </footer>
+
+    <div class="qhs-live" aria-live="polite" aria-atomic="true"></div>
+  </div>
+  <script src="assets/manual-slide-deck.js"></script>
+</body>
+
+</html>

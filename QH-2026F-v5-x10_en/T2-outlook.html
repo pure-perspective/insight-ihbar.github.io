@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N39VTY949N"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-N39VTY949N');
+  </script>
+  <!-- Basic Page Needs
+    ================================================== -->
+  <meta charset="utf-8">
+  <meta name="author" content="Peir-Ru Wang">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;1,300&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/20250525-icon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/20250525-icon.png">
+
+  <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/css/style.css" rel="stylesheet">
+  <link href="../assets/css/responsive.css" rel="stylesheet">
+
+  <title>T2 Outlook · From Artificial Atoms to Protected Qubits | QH-2026F v5</title>
+  <meta name="description" content="PHYS598500 T2 Outlook: the sequence, interfaces, and advanced-learning map for the ten questions in W2–W3">
+  <meta name="keywords" content="- Quantum Processor
+- Superconducting Qubit
+- Qubit
+- Josephson Junction
+- Transmon
+- Fluxonium
+- Quantum Computing
+- Quantum Hardware
+- Quantum Algorithms
+- Quantum Chip">
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+  <style>
+    .qh-week-meta {
+      margin: 20px 0;
+      padding: 16px 18px;
+      border-left: 4px solid #5f4b8b;
+      background: #f6f4fa;
+    }
+
+    .qh-week-meta p {
+      margin: 4px 0;
+    }
+
+    .qh-session-plan {
+      width: 100%;
+      margin: 18px 0 8px;
+      border-collapse: collapse;
+    }
+
+    .qh-session-plan th,
+    .qh-session-plan td {
+      padding: 10px 12px;
+      border: 1px solid #ddd;
+      vertical-align: top;
+    }
+
+    .qh-session-plan th {
+      background: #f4f4f4;
+    }
+
+    .qh-session-plan .qh-break td {
+      color: #666;
+      background: #fafafa;
+    }
+
+    .qh-total {
+      text-align: right;
+      font-weight: 700;
+    }
+
+    .qh-reading li {
+      margin-bottom: 12px;
+    }
+
+    .qh-reading span,
+    .qh-reading em {
+      display: block;
+    }
+
+    .qh-week-list {
+      padding-left: 0;
+      list-style: none;
+    }
+
+    .qh-week-list li {
+      margin: 0 0 13px;
+      padding: 12px 15px;
+      border-left: 4px solid #5f4b8b;
+      background: #f7f7f7;
+    }
+
+    .qh-week-list a {
+      font-weight: 700;
+    }
+
+    @media (max-width: 767px) {
+      .qh-session-plan {
+        display: block;
+        overflow-x: auto;
+      }
+    }
+  </style>
+
+
+  <style id="qh-full-course-style">
+    .qh-full-lecture {
+      margin: 30px 0;
+      padding: 24px 26px;
+      border: 1px solid #d9d4e5;
+      background: #fff;
+    }
+
+    .qh-full-lecture>h2,
+    .qh-full-lecture>h3 {
+      margin-top: 0;
+    }
+
+    .qh-full-lecture h4 {
+      margin-top: 24px;
+    }
+
+    .qh-full-lecture li {
+      margin-bottom: 8px;
+    }
+
+    .qh-time {
+      display: inline-block;
+      margin-bottom: 12px;
+      padding: 4px 10px;
+      border-radius: 14px;
+      background: #5f4b8b;
+      color: #fff;
+      font-size: .9em;
+    }
+
+    .qh-board,
+    .qh-case,
+    .qh-task,
+    .qh-answer,
+    .qh-source-chapter {
+      margin: 20px 0;
+      padding: 17px 19px;
+      font-size: 15px;
+    }
+
+    .qh-board {
+      border-left: 4px solid #d0ccc8;
+      background: #fafafa;
+    }
+
+    .qh-case {
+      border-left: 4px solid #d0ccc8;
+      background: #fafafa;
+    }
+
+    .qh-task {
+      border-left: 4px solid #d0ccc8;
+      background: #fafafa;
+    }
+
+    .qh-answer {
+      border-left: 4px solid #d0ccc8;
+      background: #fafafa;
+    }
+
+    /* Section divider headings */
+    .qh-section {
+      margin: 40px 0 24px;
+      padding: 17px 19px;
+      border-left: 4px solid #355c9a;
+      background: #f3f7fc;
+    }
+
+    .qh-section h3 {
+      margin: 0 0 4px;
+      font-size: 20px;
+      font-weight: 700;
+      color: #355c9a;
+      border-bottom: none;
+    }
+
+    .qh-section h4 {
+      margin: 0;
+      font-size: 15px;
+      font-weight: 400;
+      color: #6a8ab5;
+      font-style: italic;
+    }
+
+    .qh-section>h3:first-child {
+      margin-top: 0;
+    }
+
+    /* Equation highlight — compact, not a section heading */
+    .qh-equation-highlight {
+      margin: 24px 0;
+      padding: 14px 18px;
+      border-left: 3px solid #6a6560;
+      background: #f9f8f7;
+    }
+
+    .qh-equation-label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      color: #6a6560;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    .qh-source-chapter {
+      border: 1px solid #e5e0ec;
+      background: #fdfcff;
+    }
+
+
+    .qh-source-chapter>h3 {
+      padding-bottom: 9px;
+      border-bottom: 1px solid #ddd5e8;
+    }
+
+    .qh-source-note {
+      color: #665f72;
+      font-size: .92em;
+    }
+
+    @media (max-width: 720px) {
+      .qh-full-lecture {
+        padding: 18px 15px;
+      }
+
+      .qh-board,
+      .qh-case,
+      .qh-task,
+      .qh-answer,
+      .qh-source-chapter {
+        padding: 14px 13px;
+      }
+    }
+
+    /* Supplement section styling */
+    .qh-supplement-divider {
+      margin: 36px 0 24px;
+      padding: 18px 22px;
+      border-left: 4px solid #5f4b8b;
+      background: #f6f4fa;
+    }
+
+    .qh-supplement-divider h2 {
+      margin: 0 0 5px;
+      font-size: 22px;
+    }
+
+    .qh-supplement-divider p {
+      margin: 0;
+    }
+
+    /* Tables in supplement */
+    .module table {
+      width: 100%;
+      margin: 16px 0;
+      border-collapse: collapse;
+      font-size: 15px;
+    }
+
+    .module table th,
+    .module table td {
+      padding: 10px 12px;
+      border: 1px solid #ddd;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .module table th {
+      background: #f4f4f4;
+      font-weight: 700;
+    }
+
+    /* Callout in supplement */
+    .module .callout {
+      margin: 16px 0;
+      padding: 12px 16px;
+      border-left: 4px solid #5f4b8b;
+      background: #f6f4fa;
+      font-size: 15px;
+    }
+
+    /* Lists in supplement */
+    .module ul,
+    .module ol {
+      margin: 12px 0;
+      padding-left: 24px;
+    }
+
+    .module li {
+      margin-bottom: 8px;
+      line-height: 1.6;
+      font-size: 15px;
+    }
+
+    /* Heading consistency — only direct h3 children, not inside .qh-section */
+    .module>h3 {
+      margin: 28px 0 14px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #ddd5e8;
+      font-size: 20px;
+    }
+
+    .module h4 {
+      margin: 20px 0 10px;
+      font-size: 17px;
+    }
+
+    .module p {
+      margin: 10px 0;
+      line-height: 1.7;
+    }
+  </style>
+
+
+  <style id="qh-details-style">
+    details.dark-background {
+      margin: 24px 0;
+      background-color: #3a3632;
+      border: none;
+      padding: 0;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    details.dark-background summary {
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 16px;
+      color: #e8e4e0;
+      background-color: #4a4540;
+      padding: 14px 20px;
+      border-radius: 0;
+      list-style: none;
+      transition: background-color 0.2s;
+    }
+
+    details.dark-background summary:hover {
+      background-color: #5a5550;
+    }
+
+    details.dark-background summary::-webkit-details-marker {
+      display: none;
+    }
+
+    details.dark-background summary::marker {
+      content: "";
+    }
+
+    details.dark-background summary::before {
+      content: "▸";
+      display: inline-block;
+      margin-right: 8px;
+      font-size: 12px;
+      transition: transform 0.2s;
+    }
+
+    details.dark-background[open] summary::before {
+      transform: rotate(90deg);
+    }
+
+    details.dark-background summary h3 {
+      margin: 0;
+      font-size: inherit;
+      font-weight: inherit;
+      color: inherit;
+      line-height: 1.4;
+    }
+
+    details.dark-background> :not(summary) {
+      padding: 20px;
+      color: #d0ccc8;
+    }
+
+    details.dark-background> :not(summary) p {
+      color: #c8c4c0;
+      line-height: 1.7;
+    }
+  </style>
+
+  <link rel="stylesheet" href="qh-mobile-math-overflow.css" data-uniweb-fix="mobile-math-overflow">
+</head>
+
+<body>
+
+  <header id="masthead" class="site-header">
+        <nav id="primary-navigation" class="site-navigation">
+            <div class="container">
+
+                <div class="navbar-header">                   
+                    <a href="../index.html" class="site-title">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
+                </div><!-- /.navbar-header -->
+
+                <div class="collapse navbar-collapse" id="agency-navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="../index.html">Home</a></li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Qubit Physics<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                              <li><a href="../SCQ_elementary_en/main.html">Superconducting Qubits (Elementary)</a></li>
+                              <li><a href="../SCQ_advanced_en/main.html">Superconducting Qubits (Advanced)</a></li>
+                              <li><a href="../SpQ_en/main.html">Semiconductor Spin Qubits</a></li>
+                            </ul>
+                        </li>
+                        <!--<li class="active"><a href="../SCQ_elementary/main.html">科普介紹</a></li>-->
+                        <li class="active"><a href="../QC_hardware_en/main.html">Hardware</a></li>
+                        <li><a href="../QID_en/main.html">Quantum Industries</a></li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Workshop Note<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                <li><a href="../ASW2026_en/main.html">2026 Academia Sinica SCQC Winter Workshop</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Consultance<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                <li><a href="https://www.quantum-perspectives.com/About_en/main.html">Taiwan Market Outreach Services</a></li>
+                                <li><a href="../About_en/main.html">About Us</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="../index.html">中文版</a></li>                        
+                    </ul>
+                </div>
+
+            </div>   
+        </nav><!-- /.site-navigation -->
+    </header><!-- /#mastheaed -->
+
+  <div id="hero" class="hero overlay subpage-hero blog-hero">
+    <div class="hero-content">
+      <div class="hero_2-text">
+        <h1>Superconducting Quantum Computer Architecture</h1>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+          <li class="breadcrumb-item"><a href="../SCQ_advanced_en/main.html">PHYS598500</a></li>
+          <!--<li class="breadcrumb-item active">約瑟夫森節</li>-->
+        </ol>
+      </div><!-- /.hero-text -->
+    </div><!-- /.hero-content -->
+  </div><!-- /.hero -->
+
+  <main id="main" class="site-main">
+
+    <section class="site-section subpage-site-section section-blog">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-9">
+            <article class="blog-post">
+              <!--<img src="../assets/img/portfolio-1.jpg" class="img-res" alt="">-->
+              <div class="post-content">
+                <div style="text-align: center;">
+                  <p class="theme-label">PHYS598500 · T2 Outlook · Week 2–3</p>
+                  <h2>From Artificial Atoms to Protected Qubits</h2>
+                  <h3>Sequence, Interfaces, and Advanced-Learning Map for the Ten Questions</h3>
+                </div>
+
+                <section id="t2-outlook" class="course-theme">
+                  <section class="course-overview">
+                    <h3>What Are These Two Weeks Answering Together?</h3>
+                    <div class="qh-week-meta">
+                      <p><strong>Scope:</strong> W2: artificial atoms and the Transmon; W3: Fluxonium and Hamiltonian engineering
+                      </p>
+                      <p><strong>Shared question:</strong> How do we first use a circuit to create a controllable quantum spectrum, and then redesign the Hamiltonian backward from the error operator we want to suppress?</p>
+                      <p><strong>Direction of the ten questions:</strong> quantization → conjugate variables → anharmonicity → Transmon trade-off →
+                        noise operator → protection → Fluxonium → Hamiltonian engineering</p>
+                    </div>
+                    <p>
+                      W2 and W3 are not two unrelated introductions to qubits. W2 establishes how an artificial atom can exist; W3 uses the same language in reverse: once we know which operator the environment uses to create errors, can we design eigenstates, symmetries, and Hamiltonian terms that make those errors less likely?
+                    </p>
+                  </section>
+
+                  <section class="qh-supplement-divider">
+                    <h3>T2
+                      <strong>Overview of the Ten Questions</strong>
+                    </h3>
+                    <p>Five W2 Questions + Five W3 Questions</p>
+                  </section>
+
+                  <table class="qh-session-plan">
+                    <thead>
+                      <tr>
+                        <th>No.</th>
+                        <th>Week</th>
+                        <th>Core Question</th>
+                        <th>Capability Established by This Question</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>1</td>
+                        <td rowspan="5" class="text-center" style="vertical-align: middle;">W2</td>
+                        <td>Why can a macroscopic circuit have quantum energy levels?</td>
+                        <td>Identify collective circuit modes that can be quantized and isolated</td>
+                      </tr>
+                      <tr>
+                        <td>2</td>
+                        <td>What plays the roles of position and momentum in a superconducting circuit?</td>
+                        <td>Use \((\Phi,Q)\) and \((\varphi,n)\) to describe quantum degrees of freedom</td>
+                      </tr>
+                      <tr>
+                        <td>3</td>
+                        <td>Why is the simplest artificial atom still not a qubit?</td>
+                        <td>Distinguish discrete energy levels from a selectively controllable two-level subspace</td>
+                      </tr>
+                      <tr>
+                        <td>4</td>
+                        <td>How does a Josephson junction shape the energy levels of an artificial atom?</td>
+                        <td>Explain anharmonicity through cosine nonlinearity</td>
+                      </tr>
+                      <tr>
+                        <td>5</td>
+                        <td>Why is the artificial atom ultimately designed as a Transmon?</td>
+                        <td>Use \(E_J/E_C\) to analyze the charge-dispersion/anharmonicity trade-off</td>
+                      </tr>
+                      <tr>
+                        <td>6</td>
+                        <td rowspan="5" class="text-center" style="vertical-align: middle;">W3</td>
+                        <td>Under what conditions can an external perturbation cause a quantum transition?</td>
+                        <td>Decompose decoherence into the noise spectrum and operator matrix elements</td>
+                      </tr>
+                      <tr>
+                        <td>7</td>
+                        <td>What quantum-state structures suppress noise while preserving control?</td>
+                        <td>Distinguish sweet spots, selection rules, suppression, and controllability</td>
+                      </tr>
+                      <tr>
+                        <td>8</td>
+                        <td>What does adding a superinductor contribute to the Hamiltonian?</td>
+                        <td>Write the new energy term introduced by a circuit modification</td>
+                      </tr>
+                      <tr>
+                        <td>9</td>
+                        <td>How does Fluxonium use \(E_C,E_J,E_L,\Phi_{\rm ext}\) to realize protection?</td>
+                        <td>Map parameters to the potential, wavefunctions, and matrix elements</td>
+                      </tr>
+                      <tr>
+                        <td>10</td>
+                        <td>Hamiltonian engineering: how can we design the Hamiltonian of a new qubit starting from the error operator we want to suppress?</td>
+                        <td>Use four criteria to analyze \(0-\pi\), \(\cos2\varphi\), and the ferro-transmon</td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+
+                  <div class="qh-section">
+                    <h3>Week 2: First Establish That a Circuit Can Become an Atom</h3>
+                  </div>
+                  <h4>Question 1 → Question 2: From Existence to Calculable Degrees of Freedom</h4>
+                  <p>
+                    Question 1 first explains why a macroscopic circuit can still behave quantum mechanically, so students do not initially mistake circuit quantization for a purely formal exercise. But saying only that “superconductors are quantum” is not enough to write a Hamiltonian, so Question 2 immediately identifies the conjugate variables: \((\Phi,Q)\) or \((\varphi,n)\).
+                  </p>
+
+                  <h4>Question 2 → Question 3: Successful Quantization Does Not Yet Mean a Successful Qubit</h4>
+                  <p>
+                    Once the conjugate variables are known, the LC mode can be quantized; Question 3 immediately exposes its limitation. This step deliberately separates a discrete spectrum from a selectively addressable qubit subspace. Otherwise students can easily assume that the two lowest states of any oscillator automatically form a good qubit.
+                  </p>
+
+                  <h4>Question 3 → Question 4: The Failure Condition Determines the Required Element</h4>
+                  <p>
+                    The LC oscillator fails because its levels are equally spaced. The next step is therefore not to add an arbitrary element, but to seek low-loss nonlinearity. The cosine potential of a Josephson junction addresses the need exposed by Question 3: it creates an anharmonic spectrum.
+                  </p>
+
+                  <h4>Question 4 → Question 5: After Building a Qubit, We Still Must Choose Its Parameter Regime</h4>
+                  <p>
+                    The Josephson junction makes an artificial atom possible, but a charge qubit remains sensitive to \(n_g\). The Transmon does not replace the basic Hamiltonian; it uses a larger shunt capacitance to enter the large-\(E_J/E_C\) regime, trading reduced charge dispersion for weaker anharmonicity.
+                  </p>
+                  <div class="qh-answer">
+                    <p><strong>W2 progression:</strong> Existence of a quantum mode → identify conjugate variables → discover the harmonic limitation → add Josephson nonlinearity → choose the Transmon parameter regime.</p>
+                  </div>
+
+                  <div class="qh-section">
+                    <h3>Week 3: Shift from “Building a Qubit” to “Making Errors Harder to Produce”</h3>
+                  </div>
+                  <h4>Question 5 → Question 6: Parameter Sensitivity Is Not All of Decoherence</h4>
+                  <p>
+                    The Transmon shows how to reduce one type of parameter sensitivity. W3 then asks a more general question: through which operator, and at what frequency, does the environment connect which pair of eigenstates? Question 6 therefore uses the transition rate to connect Hamiltonian structure to the environmental spectrum.
+                  </p>
+                  <div class="qh-board">
+                    <p>\[
+                      \Gamma_{i\to f}\propto
+                      |\langle f|\hat O|i\rangle|^2S_F(\omega_{fi}).
+                      \]</p>
+                  </div>
+
+                  <h4>Question 6 → Question 7: We Can Define Protection Only after Understanding How Errors Occur</h4>
+                  <p>
+                    Question 7 does not begin by introducing a particular qubit. It first establishes diagnostic tools: a sweet spot addresses low-frequency parameter fluctuations; a selection rule relies on symmetry; and small overlap produces matrix-element suppression. The control operator is introduced immediately so that “the environment cannot drive it” is not mistakenly rewritten as “nobody can control it.”
+                  </p>
+
+                  <h4>Question 7 → Question 8: Fluxonium as the First Concrete Realization</h4>
+                  <p>
+                    Only after the principle is established does Question 8 introduce the superinductor. Students then see more than the name of a new component: they see how a circuit modification adds the Hamiltonian term \(\tfrac12E_L(\varphi-\varphi_{\rm ext})^2\).
+                  </p>
+
+                  <h4>Question 8 → Question 9: After Adding a Term, Follow It through to the Eigenstate Structure</h4>
+                  <p>
+                    An additional Hamiltonian term does not automatically mean “protection.” Question 9 traces how \(E_C,E_J,E_L,\Phi_{\rm ext}\) changes the potential, parity, localization, tunneling, transition frequencies, and matrix elements, while examining dephasing and relaxation separately.
+                  </p>
+
+                  <h4>Question 9 → Question 10: Generalize the Fluxonium Case into Hamiltonian Engineering</h4>
+                  <p>
+                    If W3 ended with Fluxonium, students would merely have learned one more qubit type. Question 10 generalizes Fluxonium's design logic into Hamiltonian engineering: first specify the dominant noise operator and four design criteria, then survey \(0-\pi\), which adds degrees of freedom; \(\cos2\varphi\), which redesigns the Josephson potential; and the ferro-transmon, which uses a material state to modify \(E_J\).
+                  </p>
+                  <div class="qh-answer">
+                    <p><strong>W3 progression:</strong> How noise causes transitions → conditions for protection with retained control → add a Hamiltonian term → shape wavefunctions and matrix elements → design a new qubit backward from the target error.</p>
+                  </div>
+
+                  <div class="qh-section">
+                    <h3>Shared Formula Framework for the Ten Questions</h3>
+                  </div>
+                  <h4>1. LC oscillator: discrete but equally spaced</h4>
+                  <div class="qh-board">
+                    <p>\[
+                      \hat H_{LC}=\frac{\hat Q^2}{2C}+\frac{\hat\Phi^2}{2L}
+                      =\hbar\omega\left(\hat a^\dagger\hat a+\frac12\right)
+                      \]</p>
+                  </div>
+                  <h4>2. Transmon: reduce charge dispersion by choosing a parameter regime</h4>
+                  <div class="qh-board">
+                    <p>\[
+                      \hat H_{\rm T}=4E_C(\hat n-n_g)^2-E_J\cos\hat\varphi
+                      \]</p>
+                  </div>
+                  <h4>3. Transitions: both operator matrix elements and the environmental spectrum matter</h4>
+                  <div class="qh-board">
+                    <p>\[
+                      \hat V(t)=\hat O F(t),\qquad
+                      \Gamma_{i\to f}\propto|\langle f|\hat O|i\rangle|^2S_F(\omega_{fi})
+                      \]</p>
+                  </div>
+                  <h4>4. Fluxonium: add inductive energy and external-flux control</h4>
+                  <div class="qh-board">
+                    <p>\[
+                      \hat H_{\rm F}=4E_C\hat n^2-E_J\cos\hat\varphi
+                      +\frac12E_L(\hat\varphi-\varphi_{\rm ext})^2
+                      \]</p>
+                  </div>
+                  <h4>5. Four protected-qubit criteria</h4>
+                  <div class="qh-board">
+                    <p>\[
+                      \begin{aligned}
+                      &\frac{\partial\omega_{01}}{\partial\lambda}\approx0,\\
+                      &\langle0|\hat O_{\rm noise}|1\rangle\approx0,\\
+                      &\langle0|\hat O_{\rm drive}|1\rangle\neq0,\\
+                      &\Delta_{\rm leakage}\ \text{sufficiently large}.
+                      \end{aligned}
+                      \]</p>
+                  </div>
+
+                  <div class="qh-section">
+                    <h3>Two Deliberately Retained Cross-Week Tasks</h3>
+                  </div>
+                  <h4>W2: Infer the Hamiltonian Backward from a Chip Image</h4>
+                  <p>
+                    The geometry → parameter → Hamiltonian → spectrum/control chain in Version 5 becomes a reverse-design assignment. Before they have full architecture knowledge, students need only propose one evidence-bounded hypothesis for a Transmon cell and identify which missing information requires simulation, fabrication data, or measurement.
+                  </p>
+                  <h4>W3: When Should Fluxonium Be Chosen over a Transmon?</h4>
+                  <p>
+                    This question is worth retaining, but W3 should not pretend to complete it. Students first leave a provisional answer; after adding control, coupling, readout, thermalization, fabrication, and yield in sequence, they revisit the architecture decision in W16. The difference between the two answers is evidence of cross-layer learning.
+                  </p>
+
+                  <div class="qh-section">
+                    <h3>Toward W4: From Eigenstate Structure to Control</h3>
+                  </div>
+                  <p>
+                    By the end of T2, students know that the effectiveness of a drive depends on \(\langle0|\hat O_{\rm drive}|1\rangle\), and that anharmonicity and the leakage gap constrain selective control. W4 can therefore proceed naturally to time-dependent drives, the rotating frame, Rabi rates, and DRAG without turning pulse control into a list of techniques disconnected from the device Hamiltonian.
+                  </p>
+
+                </section>
+
+                <div class="post-meta">
+                  <span class="post-author">
+                    <a href="../About_en/Wang.html"><img class="img-res" src="../WebP/IMG_0964_2.webp" alt="">Peir-Ru Wang</a>
+                  </span>
+                  <span class="post-category">
+                    <a href="../SCQ_advanced_en/main.html"><i class="fa fa-folder" aria-hidden="true"></i>PHYS598500</a>
+                  </span>
+                </div><!-- /.post-meta -->
+
+                <div id="prev-next-nav" class="text-center">
+                                    <a class="btn btn-gray" href="main.html">← Previous</a> 
+                                    <a class="btn btn-gray" href="../QH-2026F-v5-x10/T2-outlook.html" style="margin: 0 10px;">中文版</a>
+                                    <a class="btn btn-gray" href="T2-2.html">Next →</a>
+                                </div>
+              </div><!-- /.post-content -->
+            </article><!-- /.blog-post -->
+            <!--<div id="PostComments" class="post-comments">
+                            
+                            
+                            
+                        </div> /#PostComments -->
+            <!--<div class="respond">
+                            <h3>Post a Comment</h3>
+                            <form class="form-horizontal">
+                                <input class="form-control" type="text" placeholder="Your Name*" required>
+                                <input class="form-control" type="email" placeholder="Your Email" required>
+                                <textarea class="form-control form-control-comment" type="text" placeholder="Your Comment*" required></textarea>
+                                <button class="btn btn-green">Add a comment</button>
+                            </form>    
+                        </div> /.respond -->
+          </div>
+          <aside class="col-md-3">
+                        <div class="sidebar">
+                            <div class="widget">
+                                <div id="lesson-list_2">
+                                <div class="lesson-link "><a href="main.html">QH-2026F v5 · 16-Week Overview</a></div>
+                                <div class="lesson-link active"><a href="T2-outlook.html">T2 Outlook · From Artificial Atoms to Protected Qubits | QH-2026F v5</a></div>
+                                <div class="lesson-link "><a href="T2-2.html">Week 2 · Superconducting-Circuit Quantization and Transmon Design | QH-2026F v5</a></div>
+                                <div class="lesson-link "><a href="T2-2S.html">Week 2 Slides · Superconducting-Circuit Quantization and Transmon Design | QH-2026F v5</a></div>
+                                <div class="lesson-link "><a href="T2-3.html">Week 3 · Fluxonium: From Circuit Modification to Design Trade-offs | QH-2026F v5</a></div>
+                                <div class="lesson-link "><a href="T1-1SA.html">Week 1 Manual Slides · From Quantum Computing Models to Hardware Operations | QH-2026F v5</a></div>
+                                <div class="lesson-link "><a href="T2-2SA.html">Week 2 Manual Slides · Superconducting-Circuit Quantization and Transmon Design | QH-2026F v5</a></div>
+                                <div class="lesson-link "><a href="T2-3SA.html">Week 3 Manual Slides · Fluxonium and Protected-Qubit Hamiltonian Engineering | QH-2026F v5</a></div>
+                                </div>
+                            </div>
+                        </div></aside>
+        </div>
+      </div>
+    </section><!-- /.section-portfolio -->
+
+  </main><!-- /#main -->
+
+  <footer id="colophon" class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-4 col-xs-6">
+                    <a href="../index.html" class="site-title">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
+                    <p>Exploring the Quantum Technology Together.</p>
+                    </div>
+                <div class="col-lg-offset-4 col-md-3 col-sm-4 col-md-offset-2 col-sm-offset-0 col-xs-6 ">
+                    <p class="site-title">𝐾𝐸𝐸𝑃 𝐼𝑁 𝑇𝑂𝑈𝐶𝐻</p>
+                    <ul class="list-unstyled contact-links">
+                        <li><i class="fa fa-envelope" aria-hidden="true"></i><a href="mailto:info@insight-ihbar.com">info@insight-ihbar.com</a></li>
+                        <!--<li><i class="fa fa-phone" aria-hidden="true"></i><a href="tel:+37400800000">+374 (00) 80 00 00 </a></li>
+                        <li><i class="fa fa-fax" aria-hidden="true"></i><a href="+37400900000">+374 (00) 90 00 00</a></li>
+                        <li><i class="fa-solid fa-location-dot"></i><p>Hsinchu 300, Taiwan (R.O.C.)</p></li>-->
+                    </ul>
+                </div>
+                <!--<div class="clearfix visible-xs"></div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6">
+                    <h3>Featured links</h3>
+                    <ul class="list-unstyled">
+                        <li class="active"><a href="index_ch.html">Home</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="portfolio.html">Porfolio</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>-->
+            </div>
+        </div>
+        <div class="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-8">
+                        <div class="social-links">
+                            <!--<a class="twitter-bg" href="#"><i class="fab fa-twitter"></i></a>-->
+                            <!--<<a class="facebook-bg" href="https://www.facebook.com/people/Quantum-Perspectives/61576446849628/"><i class="fab fa-facebook"></i></a>-->
+                            <!--<a class="facebook-bg" href="https://www.facebook.com/people/%E9%87%8F%E5%AD%90%E9%81%A0%E8%A6%8BQuantum-Perspectives/61576883632888/"><i class="fab fa-facebook-f"></i></a>-->
+                            <!--<a class="pinterest" href="#"><i class="fa-solid fa-microscope"></i></a>-->
+                            <!--<a class="facebook-bg" href="https://www.facebook.com/people/Insight-hbar/61576811775374/"><i class="fab fa-facebook-f"></i></a>-->
+                            <a class="linkedin-bg" href="https://www.linkedin.com/company/insight-ihbar"><i class="fab fa-linkedin"></i></a>
+                        </div><!-- /.social-links -->
+                    </div>
+                    <div class="col-xs-4">
+                        <div class="text-right">
+                            <p><span style="font-size: 16px;">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</span></p>
+                            <p>All Rights Reserved</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.copyright -->
+    </footer><!-- /#footer -->
+
+
+
+  <!-- Bootstrap core JavaScript
+    ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/bootstrap-select.min.js"></script>
+  <script src="../assets/js/jquery.slicknav.min.js"></script>
+  <script src="../assets/js/jquery.countTo.min.js"></script>
+  <script src="../assets/js/jquery.shuffle.min.js"></script>
+  <script src="../assets/js/script.js"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</body>
+
+</html>

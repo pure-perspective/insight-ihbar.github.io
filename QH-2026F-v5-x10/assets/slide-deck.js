@@ -365,33 +365,12 @@
 
       const screen = document.createElement("div");
       screen.className = "qhs-thumb-screen";
-      const preview = document.createElement("div");
-      preview.className = "qhs-thumb-preview";
-
-      const previewKicker = document.createElement("span");
-      previewKicker.className = "qhs-thumb-preview-kicker";
-      previewKicker.textContent = `${weekLabel} · ${pad(index + 1)}`;
-
-      const previewTitle = document.createElement("strong");
-      previewTitle.className = "qhs-thumb-preview-title";
-      previewTitle.textContent = labelFor(slide, index);
-
-      const previewSummary = document.createElement("span");
-      previewSummary.className = "qhs-thumb-preview-summary";
-      const content = slide.querySelector(".qhs-content-inner");
-      const summary = cleanText(content);
-      previewSummary.textContent = summary.length > 86 ? `${summary.slice(0, 86)}…` : summary;
-
-      const previewMeta = document.createElement("span");
-      previewMeta.className = "qhs-thumb-preview-meta";
-      const contentTypes = [];
-      if (content?.querySelector("img")) contentTypes.push("圖");
-      if (content?.querySelector("table")) contentTypes.push("表");
-      if (content?.querySelector("mjx-container") || /\\\(|\\\[/.test(content?.textContent || "")) contentTypes.push("式");
-      previewMeta.textContent = contentTypes.length ? contentTypes.join(" · ") : "內容";
-
-      preview.append(previewKicker, previewTitle, previewSummary, previewMeta);
-      screen.appendChild(preview);
+      const canvas = document.createElement("div");
+      canvas.className = "qhs-thumb-canvas";
+      const clone = sanitizeClone(slide);
+      clone.classList.remove("is-active", "was-active");
+      canvas.appendChild(clone);
+      screen.appendChild(canvas);
 
       const label = document.createElement("span");
       label.className = "qhs-thumb-label";
