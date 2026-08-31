@@ -34,7 +34,7 @@
   <link href="../assets/css/responsive.css" rel="stylesheet">
 
   <title>T2 Outlook · From Artificial Atoms to Protected Qubits | QH-2026F v5</title>
-  <meta name="description" content="PHYS598500 T2 Outlook: the sequence, interfaces, and advanced-learning map for the fifteen questions in W2–W4">
+  <meta name="description" content="PHYS598500 T2 Outlook: the sequence, interfaces, and advanced-learning map for the ten questions in W2–W3">
   <meta name="keywords" content="- Quantum Processor
 - Superconducting Qubit
 - Qubit
@@ -494,30 +494,31 @@
               <!--<img src="../assets/img/portfolio-1.jpg" class="img-res" alt="">-->
               <div class="post-content">
                 <div style="text-align: center;">
-                  <p class="theme-label">PHYS598500 · T2 Outlook · Week 2–4</p>
+                  <p class="theme-label">PHYS598500 · T2 Outlook · Week 2–3</p>
                   <h2>From Artificial Atoms to Protected Qubits</h2>
-                  <h3>Sequence, Interfaces, and Advanced-Learning Map for the Fifteen Questions</h3>
+                  <h3>Sequence, Interfaces, and Advanced-Learning Map for the Ten Questions</h3>
                 </div>
 
                 <section id="t2-outlook" class="course-theme">
                   <section class="course-overview">
-                    <h3>What Are These Three Weeks Answering Together?</h3>
+                    <h3>What Are These Two Weeks Answering Together?</h3>
                     <div class="qh-week-meta">
-                      <p><strong>Scope:</strong> W2: circuit quantization and Josephson anharmonicity; W3: tunability and the C-shunted Transmon; W4: noise, Fluxonium, and Hamiltonian engineering
+                      <p><strong>Scope:</strong> W2: artificial atoms and the Transmon; W3: Fluxonium and Hamiltonian engineering
                       </p>
                       <p><strong>Shared question:</strong> How do we first use a circuit to create a controllable quantum spectrum, and then redesign the Hamiltonian backward from the error operator we want to suppress?</p>
-                      <p><strong>Direction of the fifteen questions:</strong> artificial atoms → circuit quantization → computational subspace → Josephson anharmonicity → tunability → C-shunt → Transmon trade-off → noise operator → protection → Fluxonium → Hamiltonian engineering</p>
+                      <p><strong>Direction of the ten questions:</strong> quantization → conjugate variables → anharmonicity → Transmon trade-off →
+                        noise operator → protection → Fluxonium → Hamiltonian engineering</p>
                     </div>
                     <p>
-                      The three weeks form one continuous argument. W2 establishes how a Josephson circuit becomes an addressable artificial atom. W3 asks how SQUID tunability and a shunt capacitor reshape that atom into a practical Transmon, while exposing control parameters as possible noise channels. W4 then uses the same language in reverse: once we know which operator the environment uses to create errors, can we design eigenstates, symmetries, and Hamiltonian terms that make those errors less likely?
+                      W2 and W3 are not two unrelated introductions to qubits. W2 establishes how an artificial atom can exist; W3 uses the same language in reverse: once we know which operator the environment uses to create errors, can we design eigenstates, symmetries, and Hamiltonian terms that make those errors less likely?
                     </p>
                   </section>
 
                   <section class="qh-supplement-divider">
                     <h3>T2
-                      <strong>Overview of the Fifteen Questions</strong>
+                      <strong>Overview of the Ten Questions</strong>
                     </h3>
-                    <p>Five W2 Questions + Five W3 Questions + Five W4 Questions</p>
+                    <p>Five W2 Questions + Five W3 Questions</p>
                   </section>
 
                   <table class="qh-session-plan">
@@ -538,73 +539,47 @@
                       </tr>
                       <tr>
                         <td>2</td>
-                        <td>What Are the Dynamical Variables of a Circuit?</td>
-                        <td>Use flux \(\Phi\) and charge \(Q\) to describe circuit degrees of freedom</td>
+                        <td>How Do We Quantize a Circuit?</td>
+                        <td>Use \((\Phi,Q)\) and \((\varphi,n)\) to describe quantum degrees of freedom</td>
                       </tr>
                       <tr>
                         <td>3</td>
-                        <td>How Do We Construct and Quantize a Circuit Hamiltonian?</td>
-                        <td>Translate circuit elements into energy terms and promote \((\Phi,Q)\) to quantum operators</td>
-                      </tr>
-                      <tr>
-                        <td>4</td>
                         <td>How Do We Select the Computational Subspace?</td>
                         <td>Distinguish discrete energy levels from a selectively controllable two-level subspace</td>
                       </tr>
                       <tr>
+                        <td>4</td>
+                        <td>How Do We Make a Qubit Tunable?</td>
+                        <td>Explain anharmonicity through cosine nonlinearity</td>
+                      </tr>
+                      <tr>
                         <td>5</td>
-                        <td>How Does the Josephson Junction Turn a Quantum Circuit into a Controllable Qubit?</td>
-                        <td>Use \((\varphi,n)\) to connect cosine nonlinearity, anharmonicity, leakage, and frequency-selective control</td>
+                        <td>How Does the Transmon Balance Noise Protection and Controllability?</td>
+                        <td>Use \(E_J/E_C\) to analyze the charge-dispersion/anharmonicity trade-off</td>
                       </tr>
                       <tr>
                         <td>6</td>
                         <td rowspan="5" class="text-center" style="vertical-align: middle;">W3</td>
-                        <td>Why Do We Need a Tunable Qubit?</td>
-                        <td>Relate frequency tunability to control, coupling, frequency allocation, and calibration</td>
+                        <td>When Can an External Perturbation Cause a Quantum Transition?</td>
+                        <td>Decompose decoherence into the noise spectrum and operator matrix elements</td>
                       </tr>
                       <tr>
                         <td>7</td>
-                        <td>How Does a SQUID Make the Josephson Energy Tunable?</td>
-                        <td>Connect external flux to the effective Josephson energy and qubit frequency</td>
-                      </tr>
-                      <tr>
-                        <td>8</td>
-                        <td>How Does a Shunt Capacitor Turn a Josephson Circuit into a Transmon?</td>
-                        <td>Explain how increased capacitance reduces \(E_C\), suppresses charge dispersion, and produces the Transmon regime</td>
-                      </tr>
-                      <tr>
-                        <td>9</td>
-                        <td>How Does \(E_J/E_C\) Balance Noise Protection and Controllability?</td>
-                        <td>Analyze the trade-off among charge sensitivity, anharmonicity, leakage, and gate control</td>
-                      </tr>
-                      <tr>
-                        <td>10</td>
-                        <td>How Does Tunability Also Create Sensitivity to Noise?</td>
-                        <td>Identify control parameters as possible noise channels and introduce coupling operators and transition matrix elements</td>
-                      </tr>
-                      <tr>
-                        <td>11</td>
-                        <td rowspan="5" class="text-center" style="vertical-align: middle;">W4</td>
-                        <td>What Determines the Rate of a Noise-Induced Quantum Transition?</td>
-                        <td>Combine the noise spectrum at the transition frequency with the relevant operator matrix element</td>
-                      </tr>
-                      <tr>
-                        <td>12</td>
                         <td>How Can We Suppress Noise Transitions While Preserving Control?</td>
                         <td>Distinguish sweet spots, selection rules, suppression, and controllability</td>
                       </tr>
                       <tr>
-                        <td>13</td>
+                        <td>8</td>
                         <td>What Does a Superinductor Add to the Hamiltonian?</td>
-                        <td>Write the inductive energy introduced by a circuit modification</td>
+                        <td>Write the new energy term introduced by a circuit modification</td>
                       </tr>
                       <tr>
-                        <td>14</td>
+                        <td>9</td>
                         <td>How Does Fluxonium Shape Wavefunctions to Realize Protection?</td>
                         <td>Map parameters to the potential, wavefunctions, and matrix elements</td>
                       </tr>
                       <tr>
-                        <td>15</td>
+                        <td>10</td>
                         <td>How Can Hamiltonian Engineering Begin from the Noise Operator?</td>
                         <td>Use four criteria to analyze \(0-\pi\), \(\cos2\varphi\), and the ferro-transmon</td>
                       </tr>
@@ -615,65 +590,35 @@
                   <div class="qh-section">
                     <h3>Week 2: First Establish That a Circuit Can Become an Atom</h3>
                   </div>
-                  <h4>Question 1 → Question 2: From Existence to Circuit Variables</h4>
+                  <h4>Question 1 → Question 2: From Existence to Calculable Degrees of Freedom</h4>
                   <p>
-                    Question 1 first explains why a macroscopic circuit can still behave quantum mechanically, so students do not initially mistake circuit quantization for a purely formal exercise. But saying only that “superconductors are quantum” is not enough to write a Hamiltonian, so Question 2 first introduces the more concrete flux-charge pair \((\Phi,Q)\).
+                    Question 1 first explains why a macroscopic circuit can still behave quantum mechanically, so students do not initially mistake circuit quantization for a purely formal exercise. But saying only that “superconductors are quantum” is not enough to write a Hamiltonian, so Question 2 immediately identifies the conjugate variables: \((\Phi,Q)\) or \((\varphi,n)\).
                   </p>
 
-                  <h4>Question 2 → Question 3: From Circuit Variables to a Quantum Hamiltonian</h4>
+                  <h4>Question 2 → Question 3: Successful Quantization Does Not Yet Mean a Successful Qubit</h4>
                   <p>
-                    Once flux and charge are identified, Question 3 translates capacitors and inductors into energy terms and promotes \((\Phi,Q)\) to quantum operators. This keeps the construction of the Hamiltonian separate from the harder phase-number representation introduced later.
+                    Once the conjugate variables are known, the LC mode can be quantized; Question 3 immediately exposes its limitation. This step deliberately separates a discrete spectrum from a selectively addressable qubit subspace. Otherwise students can easily assume that the two lowest states of any oscillator automatically form a good qubit.
                   </p>
 
-                  <h4>Question 3 → Question 4: A Discrete Spectrum Is Not Yet a Qubit</h4>
+                  <h4>Question 3 → Question 4: The Failure Condition Determines the Required Element</h4>
                   <p>
-                    Quantizing an LC mode produces discrete but equally spaced levels. Question 4 therefore separates the existence of eigenstates from the ability to isolate and selectively address a computational subspace.
+                    The LC oscillator fails because its levels are equally spaced. The next step is therefore not to add an arbitrary element, but to seek low-loss nonlinearity. The cosine potential of a Josephson junction addresses the need exposed by Question 3: it creates an anharmonic spectrum.
                   </p>
 
-                  <h4>Question 4 → Question 5: The Failure Condition Determines the Required Element</h4>
+                  <h4>Question 4 → Question 5: After Building a Qubit, We Still Must Choose Its Parameter Regime</h4>
                   <p>
-                    The harmonic oscillator fails because all adjacent transitions have the same frequency. Question 5 introduces the harder phase-number pair \((\varphi,n)\) only when it becomes physically necessary, then follows the Josephson cosine potential to an anharmonic spectrum, leakage suppression, and frequency-selective control.
+                    The Josephson junction makes an artificial atom possible, but a charge qubit remains sensitive to \(n_g\). The Transmon does not replace the basic Hamiltonian; it uses a larger shunt capacitance to enter the large-\(E_J/E_C\) regime, trading reduced charge dispersion for weaker anharmonicity.
                   </p>
                   <div class="qh-answer">
-                    <p><strong>W2 progression:</strong> Existence of a quantum mode → identify \((\Phi,Q)\) → construct and quantize the Hamiltonian → define the computational subspace → introduce \((\varphi,n)\) and Josephson anharmonicity.</p>
+                    <p><strong>W2 progression:</strong> Existence of a quantum mode → identify conjugate variables → discover the harmonic limitation → add Josephson nonlinearity → choose the Transmon parameter regime.</p>
                   </div>
 
                   <div class="qh-section">
-                    <h3>Week 3: From Tunability to the C-Shunted Transmon</h3>
+                    <h3>Week 3: Shift from “Building a Qubit” to “Making Errors Harder to Produce”</h3>
                   </div>
-                  <h4>Question 5 → Question 6: From an Addressable Qubit to a Useful Operating Frequency</h4>
+                  <h4>Question 5 → Question 6: Parameter Sensitivity Is Not All of Decoherence</h4>
                   <p>
-                    Josephson anharmonicity makes selective control possible, but a processor also needs frequency allocation, calibration, and controllable interactions. Question 6 motivates tunability before introducing the circuit mechanism that realizes it.
-                  </p>
-                  <h4>Question 6 → Question 7: Tunability Requires a Flux-Dependent Josephson Energy</h4>
-                  <p>
-                    Question 7 introduces the SQUID as a circuit element whose effective Josephson energy depends on external flux. Students can then connect a control knob to a Hamiltonian parameter and to the qubit transition frequency.
-                  </p>
-
-                  <h4>Question 7 → Question 8: Tunability Alone Does Not Produce a Robust Qubit</h4>
-                  <p>
-                    After establishing flux tunability, Question 8 follows one concrete circuit modification—the shunt capacitor—through \(C\uparrow\), \(E_C\downarrow\), reduced charge dispersion, and the emergence of the Transmon regime.
-                  </p>
-
-                  <h4>Question 8 → Question 9: A Parameter Regime Is a Design Trade-off</h4>
-                  <p>
-                    Increasing \(E_J/E_C\) suppresses charge dispersion but also reduces anharmonicity. Question 9 makes students balance charge sensitivity, leakage, and gate control instead of treating “larger \(E_J/E_C\)” as an unlimited improvement.
-                  </p>
-
-                  <h4>Question 9 → Question 10: The Same Knob Can Carry Control and Noise</h4>
-                  <p>
-                    W3 ends by observing that a parameter used for control can also fluctuate. Question 10 introduces \(\delta H=(\partial H/\partial\lambda)\delta\lambda(t)\) and the corresponding transition matrix element, providing the conceptual bridge to a quantitative treatment of noise in W4.
-                  </p>
-                  <div class="qh-answer">
-                    <p><strong>W3 progression:</strong> Motivate tunability → implement it with a SQUID → add a C-shunt → balance the Transmon regime → recognize control parameters as noise channels.</p>
-                  </div>
-
-                  <div class="qh-section">
-                    <h3>Week 4: Shift from Noise Transitions to Protected-Qubit Design</h3>
-                  </div>
-                  <h4>Question 10 → Question 11: From a Noise Channel to a Transition Rate</h4>
-                  <p>
-                    Question 10 identifies how a fluctuating parameter enters the Hamiltonian. Question 11 adds the missing environmental information and combines the operator matrix element with the noise spectrum at the transition frequency.
+                    The Transmon shows how to reduce one type of parameter sensitivity. W3 then asks a more general question: through which operator, and at what frequency, does the environment connect which pair of eigenstates? Question 6 therefore uses the transition rate to connect Hamiltonian structure to the environmental spectrum.
                   </p>
                   <div class="qh-board">
                     <p>\[
@@ -681,28 +626,32 @@
                       |\langle f|\hat O|i\rangle|^2S_F(\omega_{fi}).
                       \]</p>
                   </div>
-                  <h4>Question 11 → Question 12: Define Protection without Losing Control</h4>
+
+                  <h4>Question 6 → Question 7: We Can Define Protection Only after Understanding How Errors Occur</h4>
                   <p>
-                    Question 12 distinguishes sweet spots, symmetry-based selection rules, and small-overlap suppression. The control operator remains explicit so that suppressing an environmental transition is not confused with making the qubit uncontrollable.
+                    Question 7 does not begin by introducing a particular qubit. It first establishes diagnostic tools: a sweet spot addresses low-frequency parameter fluctuations; a selection rule relies on symmetry; and small overlap produces matrix-element suppression. The control operator is introduced immediately so that “the environment cannot drive it” is not mistakenly rewritten as “nobody can control it.”
                   </p>
-                  <h4>Question 12 → Question 13: Fluxonium as the First Concrete Realization</h4>
+
+                  <h4>Question 7 → Question 8: Fluxonium as the First Concrete Realization</h4>
                   <p>
-                    Only after the protection criteria are established does Question 13 introduce the superinductor and the Hamiltonian term \(\tfrac12E_L(\varphi-\varphi_{\rm ext})^2\).
+                    Only after the principle is established does Question 8 introduce the superinductor. Students then see more than the name of a new component: they see how a circuit modification adds the Hamiltonian term \(\tfrac12E_L(\varphi-\varphi_{\rm ext})^2\).
                   </p>
-                  <h4>Question 13 → Question 14: Follow the New Term into the Eigenstates</h4>
+
+                  <h4>Question 8 → Question 9: After Adding a Term, Follow It through to the Eigenstate Structure</h4>
                   <p>
-                    Question 14 traces how \(E_C,E_J,E_L,\Phi_{\rm ext}\) shape the potential, localization, parity, transition frequencies, and matrix elements while keeping dephasing and relaxation distinct.
+                    An additional Hamiltonian term does not automatically mean “protection.” Question 9 traces how \(E_C,E_J,E_L,\Phi_{\rm ext}\) changes the potential, parity, localization, tunneling, transition frequencies, and matrix elements, while examining dephasing and relaxation separately.
                   </p>
-                  <h4>Question 14 → Question 15: Generalize Fluxonium into Hamiltonian Engineering</h4>
+
+                  <h4>Question 9 → Question 10: Generalize the Fluxonium Case into Hamiltonian Engineering</h4>
                   <p>
-                    Question 15 turns the Fluxonium example into a reusable design method: begin with the dominant noise operator, impose protection and control criteria, and then compare \(0-\pi\), \(\cos2\varphi\), and the ferro-transmon.
+                    If W3 ended with Fluxonium, students would merely have learned one more qubit type. Question 10 generalizes Fluxonium's design logic into Hamiltonian engineering: first specify the dominant noise operator and four design criteria, then survey \(0-\pi\), which adds degrees of freedom; \(\cos2\varphi\), which redesigns the Josephson potential; and the ferro-transmon, which uses a material state to modify \(E_J\).
                   </p>
                   <div class="qh-answer">
-                    <p><strong>W4 progression:</strong> Quantify noise-induced transitions → define protection with retained control → add a superinductor → shape wavefunctions and matrix elements → design backward from the target error.</p>
+                    <p><strong>W3 progression:</strong> How noise causes transitions → conditions for protection with retained control → add a Hamiltonian term → shape wavefunctions and matrix elements → design a new qubit backward from the target error.</p>
                   </div>
 
                   <div class="qh-section">
-                    <h3>Shared Formula Framework for the Fifteen Questions</h3>
+                    <h3>Shared Formula Framework for the Ten Questions</h3>
                   </div>
                   <h4>1. LC oscillator: discrete but equally spaced</h4>
                   <div class="qh-board">
@@ -750,23 +699,24 @@
                   <p>
                     The geometry → parameter → Hamiltonian → spectrum/control chain in Version 5 becomes a reverse-design assignment. Before they have full architecture knowledge, students need only propose one evidence-bounded hypothesis for a Transmon cell and identify which missing information requires simulation, fabrication data, or measurement.
                   </p>
-                  <h4>W4: When Should Fluxonium Be Chosen over a Transmon?</h4>
+                  <h4>W3: When Should Fluxonium Be Chosen over a Transmon?</h4>
                   <p>
-                    This question is worth retaining, but W4 should not pretend to complete it. Students first leave a provisional answer; after adding control, coupling, readout, thermalization, fabrication, and yield in sequence, they revisit the architecture decision in W16. The difference between the two answers is evidence of cross-layer learning.
+                    This question is worth retaining, but W3 should not pretend to complete it. Students first leave a provisional answer; after adding control, coupling, readout, thermalization, fabrication, and yield in sequence, they revisit the architecture decision in W16. The difference between the two answers is evidence of cross-layer learning.
                   </p>
 
                   <div class="qh-section">
-                    <h3>Toward W5: From Eigenstate Structure to Control</h3>
+                    <h3>Toward W4: From Eigenstate Structure to Control</h3>
                   </div>
                   <p>
-                    By the end of T2, students know that the effectiveness of a drive depends on \(\langle0|\hat O_{\rm drive}|1\rangle\), and that anharmonicity and the leakage gap constrain selective control. W5 can therefore proceed naturally to time-dependent drives, the rotating frame, Rabi rates, and DRAG without turning pulse control into a list of techniques disconnected from the device Hamiltonian.
+                    By the end of T2, students know that the effectiveness of a drive depends on \(\langle0|\hat O_{\rm drive}|1\rangle\), and that anharmonicity and the leakage gap constrain selective control. W4 can therefore proceed naturally to time-dependent drives, the rotating frame, Rabi rates, and DRAG without turning pulse control into a list of techniques disconnected from the device Hamiltonian.
                   </p>
 
                 </section>
 
                 <div class="post-meta">
                   <span class="post-author">
-                    <a href="../About_en/Wang.html"><img class="img-res" src="../WebP/IMG_0964_2.webp" alt="">Peir-Ru Wang</a>
+                    <a href="../About_en/Wang.html"><img class="img-res" src="../../ImagePool/IMG_0964_2.JPG"
+                        alt="">Peir-Ru Wang</a>
                   </span>
                   <span class="post-category">
                     <a href="../SCQ_advanced_en/main.html"><i class="fa fa-folder" aria-hidden="true"></i>PHYS598500</a>
@@ -807,10 +757,6 @@
                                 <div class="lesson-link "><a href="T1-1SA.html">Week 1 Manual Slides · From Quantum Computing Models to Hardware Operations | QH-2026F v5</a></div>
                                 <div class="lesson-link "><a href="T2-2SA.html">Week 2 Manual Slides · Superconducting-Circuit Quantization and Transmon Design | QH-2026F v5</a></div>
                                 <div class="lesson-link "><a href="T2-3SA.html">Week 3 Manual Slides · Fluxonium and Protected-Qubit Hamiltonian Engineering | QH-2026F v5</a></div>
-                                <div class="lesson-link "><a href="T1A-1SA.html">Week 1A Manual Slides · Computation Is Physical | QH-2026F v5</a></div>
-                                <div class="lesson-link "><a href="T2A-SA.html">Week 2 Manual Slides · Circuit Quantization and Josephson Anharmonicity | QH-2026F v5</a></div>
-                                <div class="lesson-link "><a href="T3A-SA.html">Week 3 Manual Slides · Tunability and the C-Shunted Transmon | QH-2026F v5</a></div>
-                                <div class="lesson-link "><a href="T4A-SA.html">Week 4 Manual Slides · Noise, Fluxonium, and Protected-Qubit Hamiltonian Engineering | QH-2026F v5</a></div>
                                 </div>
                             </div>
                         </div></aside>

@@ -34,7 +34,7 @@
   <link href="../assets/css/style.css" rel="stylesheet">
   <link href="../assets/css/responsive.css" rel="stylesheet">
 
-  <title>Week 2 Manual Slides · Superconducting-Circuit Quantization and Transmon Design | QH-2026F v5</title>
+  <title>Week 3 Manual Slides · Tunability and the C-Shunted Transmon | QH-2026F v5</title>
   <meta name="description"
     content="PHYS598500 Week 2, a 120-minute advanced class: superconducting-circuit quantization and Transmon design">
   <meta name="keywords" content="- Quantum Processor
@@ -633,8 +633,8 @@
                         </div> /.respond -->
           
                         <div id="prev-next-nav" class="text-center">
-                                    <a class="btn btn-gray" href="T1-1SA.html">← Previous</a> 
-                                    <a class="btn btn-gray" href="T2-3SA.html">Next →</a>
+                                    <a class="btn btn-gray" href="T2A-SA.html">← Previous</a> 
+                                    <a class="btn btn-gray" href="T4A-SA.html">Next →</a>
                                 </div>
                     </div>
           <aside class="col-md-3">
@@ -647,11 +647,11 @@
                                 <div class="lesson-link "><a href="T2-2S.html">Week 2 Slides · Superconducting-Circuit Quantization and Transmon Design | QH-2026F v5</a></div>
                                 <div class="lesson-link "><a href="T2-3.html">Week 3 · Fluxonium: From Circuit Modification to Design Trade-offs | QH-2026F v5</a></div>
                                 <div class="lesson-link "><a href="T1-1SA.html">Week 1 Manual Slides · From Quantum Computing Models to Hardware Operations | QH-2026F v5</a></div>
-                                <div class="lesson-link active"><a href="T2-2SA.html">Week 2 Manual Slides · Superconducting-Circuit Quantization and Transmon Design | QH-2026F v5</a></div>
+                                <div class="lesson-link "><a href="T2-2SA.html">Week 2 Manual Slides · Superconducting-Circuit Quantization and Transmon Design | QH-2026F v5</a></div>
                                 <div class="lesson-link "><a href="T2-3SA.html">Week 3 Manual Slides · Fluxonium and Protected-Qubit Hamiltonian Engineering | QH-2026F v5</a></div>
                                 <div class="lesson-link "><a href="T1A-1SA.html">Week 1A Manual Slides · Computation Is Physical | QH-2026F v5</a></div>
                                 <div class="lesson-link "><a href="T2A-SA.html">Week 2 Manual Slides · Circuit Quantization and Josephson Anharmonicity | QH-2026F v5</a></div>
-                                <div class="lesson-link "><a href="T3A-SA.html">Week 3 Manual Slides · Tunability and the C-Shunted Transmon | QH-2026F v5</a></div>
+                                <div class="lesson-link active"><a href="T3A-SA.html">Week 3 Manual Slides · Tunability and the C-Shunted Transmon | QH-2026F v5</a></div>
                                 <div class="lesson-link "><a href="T4A-SA.html">Week 4 Manual Slides · Noise, Fluxonium, and Protected-Qubit Hamiltonian Engineering | QH-2026F v5</a></div>
                                 </div>
                             </div>
@@ -750,9 +750,9 @@
   <div id="qhs-manual-slides" hidden="hidden">
     <section data-manual-slide data-cover>
       <div class="theme-header" style="text-align: center;">
-        <p class="theme-label">PHYS598500 · Week 2 · T2</p>
-        <h2>Quantization of Superconducting Circuits and Transmon Design</h2>
-        <h3>Circuit Quantization and Transmon Design</h3>
+        <p class="theme-label">PHYS598500 · Week 3 · T2</p>
+        <h2>Tunability and the C-Shunted Transmon</h2>
+        <h3>From SQUID Control to Noise-Aware Parameter Design</h3>
       </div>
     </section>
 
@@ -769,25 +769,25 @@
         </div>
       </section>
       <section class="qh-supplement-divider" id="w2-question-map">
-        <h3>W2
-          <strong>Artificial Atoms and Transmons: A Five-Question Throughline</strong>
+        <h3>W3
+          <strong>Tunability and the C-Shunted Transmon: A Five-Question Throughline</strong>
         </h3>
         <p>5 Questions</p>
         <ol>
           <li>
-            <p>Why can a macroscopic circuit have quantum energy levels?</p>
+            <p>Why Do We Need a Tunable Qubit?</p>
           </li>
           <li>
-            <p>What plays the roles of position and momentum in a superconducting circuit?</p>
+            <p>How Does a SQUID Make the Josephson Energy Tunable?</p>
           </li>
           <li>
-            <p>Why is the simplest artificial atom still not a qubit?</p>
+            <p>How Does a Shunt Capacitor Turn a Josephson Circuit into a Transmon?</p>
           </li>
           <li>
-            <p>How does a Josephson junction shape the energy levels of an artificial atom?</p>
+            <p>How Does \(E_J/E_C\) Balance Noise Protection and Controllability?</p>
           </li>
           <li>
-            <p>Why is the artificial atom ultimately designed as a Transmon?</p>
+            <p>How Does Tunability Also Create Sensitivity to Noise?</p>
           </li>
         </ol>
       </section>
@@ -795,7 +795,99 @@
 
     <section data-manual-slide data-cover>
       <div class="theme-header" style="text-align: center;">
-        <h2>Q1. What Are Artificial Atoms?</h2>
+        <h2>Q1. Why Do We Need a Tunable Qubit?</h2>
+        <h3>Frequency Allocation, Calibration, and Controlled Interaction</h3>
+      </div>
+    </section>
+    <section data-manual-slide>
+      <div class="qh-section"><h3>Tunability Is a System-Level Resource</h3></div>
+      <p>A useful qubit frequency is not chosen in isolation. It must avoid collisions, match control and readout constraints, and sometimes approach another mode to activate an interaction.</p>
+      <div class="qh-board"><p>\[
+        \omega_{01}=\omega_{01}(\lambda),\qquad
+        \Delta_{ij}=\omega_i-\omega_j.
+      \]</p></div>
+      <div class="qh-answer"><p><strong>Design question:</strong> Which operations require dynamic tuning, and which only require a one-time frequency trim?</p></div>
+    </section>
+
+    <section data-manual-slide data-cover>
+      <div class="theme-header" style="text-align: center;">
+        <h2>Q2. How Does a SQUID Make the Josephson Energy Tunable?</h2>
+        <h3>External Flux as a Hamiltonian Control Parameter</h3>
+      </div>
+    </section>
+    <section data-manual-slide>
+      <div class="qh-section"><h3>Replace One Junction with a Two-Junction Loop</h3></div>
+      <p>For a symmetric SQUID with negligible loop inductance, interference between the two junction paths produces a flux-dependent effective Josephson energy.</p>
+      <div class="qh-board"><p>\[
+        E_{J,\mathrm{eff}}(\Phi_{\mathrm{ext}})
+        =2E_{J0}\left|\cos\!\left(\pi\frac{\Phi_{\mathrm{ext}}}{\Phi_0}\right)\right|,
+        \qquad
+        \omega_{01}\approx\frac{\sqrt{8E_{J,\mathrm{eff}}E_C}-E_C}{\hbar}.
+      \]</p></div>
+      <p>Junction asymmetry limits the minimum effective \(E_J\), while loop inductance modifies the simple interference relation.</p>
+    </section>
+
+    <section data-manual-slide data-cover>
+      <div class="theme-header" style="text-align: center;">
+        <h2>Q3. How Does a Shunt Capacitor Turn a Josephson Circuit into a Transmon?</h2>
+        <h3>From Circuit Modification to the Large-\(E_J/E_C\) Regime</h3>
+      </div>
+    </section>
+    <section data-manual-slide>
+      <div class="qh-section"><h3>Follow the Hardware Change through the Hamiltonian</h3></div>
+      <div class="qh-board"><p>\[
+        C_\Sigma\uparrow
+        \Rightarrow E_C=\frac{e^2}{2C_\Sigma}\downarrow
+        \Rightarrow \frac{E_J}{E_C}\uparrow
+        \Rightarrow \text{charge dispersion}\downarrow.
+      \]</p></div>
+      <p>The circuit remains a Josephson charge circuit, but the enlarged shunt capacitance spreads the wavefunction over many charge states and exponentially reduces sensitivity to offset charge.</p>
+    </section>
+
+    <section data-manual-slide data-cover>
+      <div class="theme-header" style="text-align: center;">
+        <h2>Q4. How Does \(E_J/E_C\) Balance Noise Protection and Controllability?</h2>
+        <h3>Charge Dispersion, Anharmonicity, Leakage, and Gate Control</h3>
+      </div>
+    </section>
+    <section data-manual-slide>
+      <div class="qh-section"><h3>The Transmon Regime Is a Compromise, Not a Limit</h3></div>
+      <div class="qh-board"><p>\[
+        \omega_{01}\approx\frac{\sqrt{8E_JE_C}-E_C}{\hbar},
+        \qquad
+        \alpha\equiv\omega_{12}-\omega_{01}\approx-\frac{E_C}{\hbar}.
+      \]</p></div>
+      <p>Increasing \(E_J/E_C\) suppresses charge dispersion, but decreasing \(E_C\) also weakens anharmonicity and tightens the pulse-shaping requirement for avoiding leakage.</p>
+    </section>
+
+    <section data-manual-slide data-cover>
+      <div class="theme-header" style="text-align: center;">
+        <h2>Q5. How Does Tunability Also Create Sensitivity to Noise?</h2>
+        <h3>From a Control Parameter to a Noise Operator</h3>
+      </div>
+    </section>
+    <section data-manual-slide>
+      <div class="qh-section"><h3>The Same Parameter Can Carry a Command or an Error</h3></div>
+      <div class="qh-board"><p>\[
+        \delta\hat H(t)=
+        \frac{\partial\hat H}{\partial\lambda}\,\delta\lambda(t),
+        \qquad
+        O_{01}=\left\langle0\left|\frac{\partial\hat H}{\partial\lambda}\right|1\right\rangle.
+      \]</p></div>
+      <p>At a sweet spot, \(\partial\omega_{01}/\partial\lambda=0\) suppresses first-order dephasing. This does not by itself guarantee a vanishing transition matrix element or immunity to finite-frequency noise.</p>
+      <div class="qh-answer"><p><strong>Bridge to W4:</strong> identifying the coupling operator is only half the problem; the transition rate also depends on the environmental spectrum.</p></div>
+    </section>
+
+    <section data-manual-slide data-divider>
+      <section class="qh-supplement-divider">
+        <h3>Supplementary Source Bank</h3>
+        <p>Detailed derivations and device examples retained from the original W2 Transmon material</p>
+      </section>
+    </section>
+
+    <section data-manual-slide data-cover>
+      <div class="theme-header" style="text-align: center;">
+        <h2>Source Bank A. What Are Artificial Atoms?</h2>
         <h3></h3>
       </div>
     </section>
@@ -1139,7 +1231,7 @@
 
     <section data-manual-slide data-cover>
       <div class="theme-header" style="text-align: center;">
-        <h2>Q2. How Do We Quantize a Circuit?</h2>
+        <h2>Source Bank B. How Do We Quantize a Circuit?</h2>
         <h3></h3>
       </div>
     </section>
@@ -2070,7 +2162,7 @@
 
     <section data-manual-slide data-cover>
       <div class="theme-header" style="text-align: center;">
-        <h2>Q3. How Do We Select the Computational Subspace?</h2>
+        <h2>Source Bank C. How Do We Select the Computational Subspace?</h2>
         <h3>Anharmonicity and the Josephson Junction</h3>
       </div>
     </section>
@@ -2864,7 +2956,7 @@
 
     <section data-manual-slide data-cover>
       <div class="theme-header" style="text-align: center;">
-        <h2>Q4. How Do We Make a Qubit Tunable?</h2>
+        <h2>Source Bank D. How Do We Make a Qubit Tunable?</h2>
         <h3>SQUID and Tunable Qubits</h3>
       </div>
     </section>
@@ -3395,7 +3487,7 @@
 
     <section data-manual-slide data-cover>
       <div class="theme-header" style="text-align: center;">
-        <h2>Q5. How Does the Transmon Balance Noise Protection and Controllability?</h2>
+        <h2>Source Bank E. How Does the Transmon Balance Noise Protection and Controllability?</h2>
         <h3>Charge-Noise Suppression and the Anharmonicity Trade-off</h3>
       </div>
     </section>

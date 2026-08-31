@@ -603,11 +603,11 @@
                       <div class="qh-week-grid">
 
                         <a class="qh-week-card" href="T2-2.html"><span class="qh-week-number">W2</span><span
-                            class="qh-week-title">Quantizing Circuits and Creating Anharmonicity</span></a>
-                        <a class="qh-week-card" href="T2-outlook.html"><span class="qh-week-number">W3</span><span
-                            class="qh-week-title">Tunability and the C-Shunted Transmon</span></a>
-                        <a class="qh-week-card" href="T2-3.html"><span class="qh-week-number">W4</span><span
-                            class="qh-week-title">Noise, Fluxonium, and Protected-Qubit Design</span></a>
+                            class="qh-week-title">Turning Circuits into Transmons</span></a>
+                            <a class="qh-week-card" href="T2-2.html"><span class="qh-week-number">W2</span><span
+                              class="qh-week-title">Turning Circuits into Transmons</span></a>
+                        <a class="qh-week-card" href="T2-3.html"><span class="qh-week-number">W3</span><span
+                            class="qh-week-title">Charge Noise and Fluxonium</span></a>
 
                       </div>
                     </div>
@@ -716,7 +716,7 @@
                         <tr>
                           <td>T2</td>
                           <td>Qubit Physics</td>
-                          <td>3 Weeks</td>
+                          <td>2 Weeks</td>
                         </tr>
                         <tr>
                           <td>T3</td>
@@ -731,7 +731,7 @@
                         <tr>
                           <td>T5</td>
                           <td>Full-System Architecture</td>
-                          <td>2 Weeks</td>
+                          <td>3 Weeks</td>
                         </tr>
                         <tr>
                           <td>T6</td>
@@ -809,7 +809,7 @@
                       <details class="qh-question-week" open>
                         <summary>
                           <span class="qh-question-week-number">W2</span>
-                          <strong>Circuit Quantization and Josephson Anharmonicity</strong>
+                          <strong>Quantization of Superconducting Circuits and Transmon Design</strong>
                           <span class="qh-question-count">5 Questions</span>
                         </summary>
                         <div class="qh-question-week-body">
@@ -818,16 +818,19 @@
                               <p>What Are Artificial Atoms?</p>
                             </li>
                             <li>
-                              <p>What Are the Dynamical Variables of a Circuit?</p>
+                              <p>How Do We Quantize a Circuit?</p>
                             </li>
                             <li>
-                              <p>How Do We Construct and Quantize a Circuit Hamiltonian?</p>
+                              <p>How Do We Select the Computational Subspace?<br>
+                                \(\to\) Anharmonicity and the Josephson Junction</p>
                             </li>
                             <li>
-                              <p>How Do We Select the Computational Subspace?</p>
+                              <p>How Do We Make a Qubit Tunable?<br>
+                                \(\to\) SQUID and Tunable Qubits</p>
                             </li>
                             <li>
-                              <p>How Does the Josephson Junction Turn a Quantum Circuit into a Controllable Qubit?</p>
+                              <p>Why Did the Transmon Become the Mainstream Superconducting Qubit?<br>
+                                \(\to\) Charge-Noise Suppression and the Anharmonicity Trade-off</p>
                             </li>
                           </ol>
                           <a class="qh-question-week-link" href="T2-2.html">View full page for W2 →</a>
@@ -836,55 +839,31 @@
                       <details class="qh-question-week" open>
                         <summary>
                           <span class="qh-question-week-number">W3</span>
-                          <strong>Tunability and the C-Shunted Transmon</strong>
-                          <span class="qh-question-count">5 Questions</span>
+                          <strong>Fluxonium: From Circuit Modification to Design Trade-offs</strong>
+                          <span class="qh-question-count">6 Questions</span>
                         </summary>
                         <div class="qh-question-week-body">
                           <ol>
                             <li>
-                              <p>Why Do We Need a Tunable Qubit?</p>
+                              <p>Why add a superinductor beyond the Transmon circuit?</p>
                             </li>
                             <li>
-                              <p>How Does a SQUID Make the Josephson Energy Tunable?</p>
+                              <p>Selection rule </p>
                             </li>
                             <li>
-                              <p>How Does a Shunt Capacitor Turn a Josephson Circuit into a Transmon?</p>
+                              <p>How does inductive energy modify the potential and energy spectrum?</p>
                             </li>
                             <li>
-                              <p>How Does \(E_J/E_C\) Balance Noise Protection and Controllability?</p>
+                              <p>How does external flux alter the operating point and wavefunction?</p>
                             </li>
                             <li>
-                              <p>How Does Tunability Also Create Sensitivity to Noise?</p>
+                              <p>Which noise sources are suppressed by Fluxonium, and what costs are introduced?</p>
+                            </li>
+                            <li>
+                              <p>Under what conditions should Fluxonium be chosen over Transmon?</p>
                             </li>
                           </ol>
-                          <a class="qh-question-week-link" href="T2-outlook.html">View T2 outlook for W3 →</a>
-                        </div>
-                      </details>
-                      <details class="qh-question-week" open>
-                        <summary>
-                          <span class="qh-question-week-number">W4</span>
-                          <strong>Noise, Fluxonium, and Protected-Qubit Hamiltonian Engineering</strong>
-                          <span class="qh-question-count">5 Questions</span>
-                        </summary>
-                        <div class="qh-question-week-body">
-                          <ol>
-                            <li>
-                              <p>What Determines the Rate of a Noise-Induced Quantum Transition?</p>
-                            </li>
-                            <li>
-                              <p>How Can We Suppress Noise Transitions While Preserving Control?</p>
-                            </li>
-                            <li>
-                              <p>What Does a Superinductor Add to the Hamiltonian?</p>
-                            </li>
-                            <li>
-                              <p>How Does Fluxonium Shape Wavefunctions to Realize Protection?</p>
-                            </li>
-                            <li>
-                              <p>How Can Hamiltonian Engineering Begin from the Noise Operator?</p>
-                            </li>
-                          </ol>
-                          <a class="qh-question-week-link" href="T2-3.html">View full page for W4 →</a>
+                          <a class="qh-question-week-link" href="T2-3.html">View full page for W3 →</a>
                         </div>
                       </details>
                     </section>
@@ -898,7 +877,7 @@
                       </header>
                       <details class="qh-question-week">
                         <summary>
-                          <span class="qh-question-week-number">W5</span>
+                          <span class="qh-question-week-number">W4</span>
                           <strong>Single-Qubit Control: From Microwave Pulses to the Rotating Frame</strong><span class="qh-question-draft">(Draft)</span>
                           <span class="qh-question-count">6 Questions</span>
                         </summary>
@@ -923,12 +902,12 @@
                               <p>Which observables can distinguish amplitude, detuning, phase, and distortion errors?</p>
                             </li>
                           </ol>
-                          <a class="qh-question-week-link" href="T3-4.html">View full page for W5 →</a>
+                          <a class="qh-question-week-link" href="T3-4.html">View full page for W4 →</a>
                         </div>
                       </details>
                       <details class="qh-question-week">
                         <summary>
-                          <span class="qh-question-week-number">W6</span>
+                          <span class="qh-question-week-number">W5</span>
                           <strong>Coupling Hamiltonians, Two-Qubit Gates, and Tunable Couplers</strong><span
                             class="qh-question-draft">(Draft)</span>
                           <span class="qh-question-count">6 Questions</span>
@@ -954,12 +933,12 @@
                               <p>How to translate a connectivity graph into interaction requirements and an error budget?</p>
                             </li>
                           </ol>
-                          <a class="qh-question-week-link" href="T3-5.html">View full page for W6 →</a>
+                          <a class="qh-question-week-link" href="T3-5.html">View full page for W5 →</a>
                         </div>
                       </details>
                       <details class="qh-question-week">
                         <summary>
-                          <span class="qh-question-week-number">W7</span>
+                          <span class="qh-question-week-number">W6</span>
                           <strong>Circuit QED, Dispersive Readout, and the Measurement Chain</strong><span
                             class="qh-question-draft">(Draft)</span>
                           <span class="qh-question-count">6 Questions</span>
@@ -985,7 +964,7 @@
                               <p>How should readout speed, fidelity, and backaction be jointly validated?</p>
                             </li>
                           </ol>
-                          <a class="qh-question-week-link" href="T3-6.html">View full W7 page →</a>
+                          <a class="qh-question-week-link" href="T3-6.html">View full W6 page →</a>
                         </div>
                       </details>
                     </section>
@@ -999,7 +978,7 @@
                       </header>
                       <details class="qh-question-week">
                         <summary>
-                          <span class="qh-question-week-number">W8</span>
+                          <span class="qh-question-week-number">W7</span>
                           <strong>Quantum Processor Calibration: Hamiltonian Identification and Drift</strong><span
                             class="qh-question-draft">(Draft)</span>
                           <span class="qh-question-count">6 Questions</span>
@@ -1025,12 +1004,12 @@
                               <p>What must a minimal operational calibration dependency graph contain?</p>
                             </li>
                           </ol>
-                          <a class="qh-question-week-link" href="T4-7.html">View full W8 page →</a>
+                          <a class="qh-question-week-link" href="T4-7.html">View full W7 page →</a>
                         </div>
                       </details>
                       <details class="qh-question-week">
                         <summary>
-                          <span class="qh-question-week-number">W9</span>
+                          <span class="qh-question-week-number">W8</span>
                           <strong>Benchmarking, Multi-Qubit Errors, and Scalable Calibration</strong><span class="qh-question-draft">(Draft)</span>
                           <span class="qh-question-count">6 Questions</span>
                         </summary>
@@ -1055,12 +1034,12 @@
                               <p>How to map each benchmark metric to a falsifiable failure hypothesis?</p>
                             </li>
                           </ol>
-                          <a class="qh-question-week-link" href="T4-8.html">View full W9 page →</a>
+                          <a class="qh-question-week-link" href="T4-8.html">View full W8 page →</a>
                         </div>
                       </details>
                       <details class="qh-question-week">
                         <summary>
-                          <span class="qh-question-week-number">W10</span>
+                          <span class="qh-question-week-number">W9</span>
                           <strong>Foundations of Quantum Error Correction: From Physical Errors to Stabilizer Syndromes</strong><span
                             class="qh-question-draft">(Draft)</span>
                           <span class="qh-question-count">6 Questions</span>
@@ -1086,12 +1065,12 @@
                               <p>Why is the surface code needed next?</p>
                             </li>
                           </ol>
-                          <a class="qh-question-week-link" href="T4-9.html">View full page for W10 →</a>
+                          <a class="qh-question-week-link" href="T4-9.html">View full page for W9 →</a>
                         </div>
                       </details>
                       <details class="qh-question-week">
                         <summary>
-                          <span class="qh-question-week-number">W11</span>
+                          <span class="qh-question-week-number">W10</span>
                           <strong>Surface-Code Hardware Cycle: Scheduling, Decoding, and Logical-Qubit Resources</strong><span
                             class="qh-question-draft">(Draft)</span>
                           <span class="qh-question-count">6 Questions</span>
@@ -1117,7 +1096,7 @@
                               <p>What are the actual hardware and classical resource requirements for a single logical qubit?</p>
                             </li>
                           </ol>
-                          <a class="qh-question-week-link" href="T4-10.html">View full page for W11 →</a>
+                          <a class="qh-question-week-link" href="T4-10.html">View full page for W10 →</a>
                         </div>
                       </details>
                     </section>
@@ -1131,8 +1110,8 @@
                       </header>
                       <details class="qh-question-week">
                         <summary>
-                          <span class="qh-question-week-number">W12</span>
-                          <strong>Cryogenic Signal Delivery, Electronics, and Line Budgets</strong><span class="qh-question-draft">(Draft)</span>
+                          <span class="qh-question-week-number">W11</span>
+                          <strong>Dilution Refrigerators, Thermalization, and Cryogenic Line Budgets</strong><span class="qh-question-draft">(Draft)</span>
                           <span class="qh-question-count">6 Questions</span>
                         </summary>
                         <div class="qh-question-week-body">
@@ -1144,19 +1123,49 @@
                               <p>What cooling power is available at each temperature stage of a dilution refrigerator?</p>
                             </li>
                             <li>
-                              <p>How do conduction, dissipation, radiation, and electronic noise jointly constrain the signal chain?</p>
+                              <p>How to establish budgets for conduction, dissipation, radiation, and device heat load?</p>
                             </li>
                             <li>
                               <p>How should drive, flux, and readout lines be attenuated, filtered, and thermalized?</p>
                             </li>
                             <li>
-                              <p>How do DACs, AWGs, LOs, IQ mixers, clocks, and amplifiers form the room-temperature control and readout chain?</p>
+                              <p>How to construct stage-by-stage thermal and noise budgets for the three types of lines?</p>
                             </li>
                             <li>
-                              <p>How can thermal, gain, noise, and dynamic-range budgets determine component placement from room temperature to the qubit?</p>
+                              <p>How to use budgets to determine component placement rather than memorizing cryogenic part names?</p>
                             </li>
                           </ol>
-                          <a class="qh-question-week-link" href="T5-11.html">View full page for W12 →</a>
+                          <a class="qh-question-week-link" href="T5-11.html">View full page for W11 →</a>
+                        </div>
+                      </details>
+                      <details class="qh-question-week">
+                        <summary>
+                          <span class="qh-question-week-number">W12</span>
+                          <strong>Microwave Control, Readout Electronics, and Signal Integrity</strong><span class="qh-question-draft">(Draft)</span>
+                          <span class="qh-question-count">6 Questions</span>
+                        </summary>
+                        <div class="qh-question-week-body">
+                          <ol>
+                            <li>
+                              <p>How do electronic instrument specifications translate into quantum errors?</p>
+                            </li>
+                            <li>
+                              <p>How do DACs, AWGs, LOs, IQ mixers, and clocks form the control chain?</p>
+                            </li>
+                            <li>
+                              <p>How to establish gain, noise, and dynamic-range budgets for an amplifier cascade?</p>
+                            </li>
+                            <li>
+                              <p>What intermodulation, ADC, and classification issues arise in multiplexed readout?</p>
+                            </li>
+                            <li>
+                              <p>How to derive electronics requirements from readout targets?</p>
+                            </li>
+                            <li>
+                              <p>How to validate the signal-integrity chain from room temperature to the qubit?</p>
+                            </li>
+                          </ol>
+                          <a class="qh-question-week-link" href="T5-12.html">View full page for W12 →</a>
                         </div>
                       </details>
                       <details class="qh-question-week">
@@ -1316,7 +1325,8 @@
 
                 <div class="post-meta">
                   <span class="post-author">
-                    <a href="../About_en/Wang.html"><img class="img-res" src="../WebP/IMG_0964_2.webp" alt="">Peir-Ru Wang</a>
+                    <a href="../About_en/Wang.html"><img class="img-res" src="../../ImagePool/IMG_0964_2.JPG"
+                        alt="">Peir-Ru Wang</a>
                   </span>
                   <span class="post-category">
                     <a href="../SCQ_advanced_en/main.html"><i class="fa fa-folder" aria-hidden="true"></i>PHYS598500</a>
@@ -1359,10 +1369,6 @@
                                 <div class="lesson-link "><a href="T1-1SA.html">Week 1 Manual Slides · From Quantum Computing Models to Hardware Operations | QH-2026F v5</a></div>
                                 <div class="lesson-link "><a href="T2-2SA.html">Week 2 Manual Slides · Superconducting-Circuit Quantization and Transmon Design | QH-2026F v5</a></div>
                                 <div class="lesson-link "><a href="T2-3SA.html">Week 3 Manual Slides · Fluxonium and Protected-Qubit Hamiltonian Engineering | QH-2026F v5</a></div>
-                                <div class="lesson-link "><a href="T1A-1SA.html">Week 1A Manual Slides · Computation Is Physical | QH-2026F v5</a></div>
-                                <div class="lesson-link "><a href="T2A-SA.html">Week 2 Manual Slides · Circuit Quantization and Josephson Anharmonicity | QH-2026F v5</a></div>
-                                <div class="lesson-link "><a href="T3A-SA.html">Week 3 Manual Slides · Tunability and the C-Shunted Transmon | QH-2026F v5</a></div>
-                                <div class="lesson-link "><a href="T4A-SA.html">Week 4 Manual Slides · Noise, Fluxonium, and Protected-Qubit Hamiltonian Engineering | QH-2026F v5</a></div>
                                 </div>
                             </div>
                         </div></aside>
