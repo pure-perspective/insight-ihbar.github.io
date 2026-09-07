@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N39VTY949N"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-N39VTY949N');
+  </script>
+  <!-- Basic Page Needs
+    ================================================== -->
+  <meta charset="utf-8">
+  <meta name="author" content="Peir-Ru Wang">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;1,300&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/20250525-icon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/20250525-icon.png">
+
+  <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/css/style.css" rel="stylesheet">
+  <link href="../assets/css/responsive.css" rel="stylesheet">
+
+  <title>QH-2026F v5 · 16-Week Overview</title>
+  <meta name="description"
+    content="PHYS598500 Advanced Superconducting Quantum Computer Architecture, 16 two-hour lecture units.">
+  <meta name="keywords" content="- Quantum Processor
+- Superconducting Qubit
+- Qubit
+- Josephson Junction
+- Transmon
+- Fluxonium
+- Quantum Computing
+- Quantum Hardware
+- Quantum Algorithms
+- Quantum Chip">
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+  <style>
+    .qh-week-meta {
+      margin: 20px 0;
+      padding: 16px 18px;
+      border-left: 4px solid #5f4b8b;
+      background: #f6f4fa;
+    }
+
+    .qh-week-meta p {
+      margin: 4px 0;
+    }
+
+    .qh-session-plan {
+      width: 100%;
+      margin: 18px 0 8px;
+      border-collapse: collapse;
+    }
+
+    .qh-session-plan th,
+    .qh-session-plan td {
+      padding: 10px 12px;
+      border: 1px solid #ddd;
+      vertical-align: top;
+    }
+
+    .qh-session-plan th {
+      background: #f4f4f4;
+    }
+
+    .qh-session-plan .qh-break td {
+      color: #666;
+      background: #fafafa;
+    }
+
+    .qh-total {
+      text-align: right;
+      font-weight: 700;
+    }
+
+    .qh-reading li {
+      margin-bottom: 12px;
+    }
+
+    .qh-reading span,
+    .qh-reading em {
+      display: block;
+    }
+
+    .qh-week-list {
+      padding-left: 0;
+      list-style: none;
+    }
+
+    .qh-week-list li {
+      margin: 0 0 13px;
+      padding: 12px 15px;
+      border-left: 4px solid #5f4b8b;
+      background: #f7f7f7;
+    }
+
+    .qh-week-list a {
+      font-weight: 700;
+    }
+
+    .qh-semester-map {
+      margin: 30px 0 38px;
+      padding: 28px;
+      border: 1px solid #ded8ea;
+      border-radius: 18px;
+      background: linear-gradient(180deg, #faf9fc 0%, #f3f0f8 100%);
+    }
+
+    .qh-roadmap-heading {
+      margin: 0 0 26px;
+      text-align: center;
+    }
+
+    .qh-roadmap-heading h2 {
+      margin: 0 0 6px;
+    }
+
+    .qh-roadmap-heading p {
+      margin: 0;
+      color: #625a70;
+    }
+
+    .qh-roadmap-stage {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .qh-theme-node {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: fit-content;
+      margin: 0 auto 14px;
+      padding: 10px 20px;
+      border-radius: 999px;
+      background: #2d2342;
+      color: #fff;
+      font-weight: 700;
+      box-shadow: 0 8px 20px rgba(45, 35, 66, 0.16);
+    }
+
+    .qh-theme-code {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 42px;
+      min-height: 30px;
+      padding: 3px 9px;
+      border-radius: 999px;
+      background: #fff;
+      color: #5f4b8b;
+      font-size: 0.9em;
+    }
+
+    .qh-week-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .qh-week-grid.qh-one {
+      grid-template-columns: minmax(260px, 360px);
+      justify-content: center;
+    }
+
+    .qh-week-grid.qh-two {
+      grid-template-columns: repeat(2, minmax(0, 280px));
+      justify-content: center;
+    }
+
+    .qh-week-grid.qh-four {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .qh-week-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 104px;
+      padding: 16px 14px;
+      border: 1px solid #ddd5eb;
+      border-top: 4px solid #7a61aa;
+      border-radius: 12px;
+      background: #fff;
+      color: #2e2935;
+      text-align: center;
+      text-decoration: none;
+      box-shadow: 0 5px 14px rgba(45, 35, 66, 0.08);
+      transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
+    }
+
+    .qh-week-card--static {
+      cursor: default;
+    }
+
+    .qh-week-card--static:hover,
+    .qh-week-card--static:focus {
+      border-color: #ddd5eb;
+      transform: none;
+      box-shadow: 0 5px 14px rgba(45, 35, 66, 0.08);
+    }
+
+    .qh-week-card:not(.qh-week-card--static):hover,
+    .qh-week-card:not(.qh-week-card--static):focus {
+      border-color: #7a61aa;
+      color: #2e2935;
+      text-decoration: none;
+      transform: translateY(-2px);
+      box-shadow: 0 9px 20px rgba(45, 35, 66, 0.14);
+    }
+
+    .qh-week-number {
+      margin-bottom: 7px;
+      color: #6b538f;
+      font-size: 0.84em;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+    }
+
+    .qh-week-title {
+      font-size: 1.04em;
+      font-weight: 700;
+      line-height: 1.45;
+    }
+
+    .qh-roadmap-arrow {
+      position: relative;
+      height: 46px;
+    }
+
+    .qh-roadmap-arrow::before {
+      content: "";
+      position: absolute;
+      top: 7px;
+      bottom: 10px;
+      left: 50%;
+      width: 2px;
+      background: #8c7aa8;
+      transform: translateX(-50%);
+    }
+
+    .qh-roadmap-arrow::after {
+      content: "";
+      position: absolute;
+      bottom: 3px;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-top: 8px solid #8c7aa8;
+      border-right: 6px solid transparent;
+      border-left: 6px solid transparent;
+      transform: translateX(-50%);
+    }
+
+    @media (max-width: 767px) {
+      .qh-session-plan {
+        display: block;
+        overflow-x: auto;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .qh-semester-map {
+        padding: 22px 14px;
+      }
+
+      .qh-theme-node {
+        width: 100%;
+      }
+
+      .qh-week-grid,
+      .qh-week-grid.qh-one,
+      .qh-week-grid.qh-two,
+      .qh-week-grid.qh-four {
+        grid-template-columns: 1fr;
+      }
+
+      .qh-week-card {
+        min-height: 84px;
+      }
+    }
+
+    .qh-question-atlas {
+      margin-top: 34px;
+    }
+
+    .qh-question-atlas-heading {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 24px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid #ddd5e8;
+    }
+
+    .qh-question-atlas-heading h3 {
+      margin: 2px 0 8px;
+    }
+
+    .qh-question-atlas-heading p {
+      margin: 0;
+      color: #655d70;
+    }
+
+    .qh-question-eyebrow {
+      color: #765ca1 !important;
+      font-size: 1.5em;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .qh-question-controls {
+      display: flex;
+      flex: 0 0 auto;
+      gap: 8px;
+    }
+
+    .qh-question-controls button {
+      padding: 8px 13px;
+      border: 1px solid #cfc4df;
+      border-radius: 999px;
+      background: #fff;
+      color: #4b3a67;
+      font-weight: 700;
+    }
+
+    .qh-question-controls button:hover,
+    .qh-question-controls button:focus {
+      border-color: #71559d;
+      background: #f6f2fb;
+    }
+
+    .qh-question-theme {
+      margin: 0 0 28px;
+      padding: 20px;
+      border: 1px solid #e0d9e9;
+      border-radius: 16px;
+      background: #faf9fc;
+    }
+
+    .qh-question-theme-heading {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .qh-question-theme-heading h4 {
+      margin: 0 0 2px;
+    }
+
+    .qh-question-theme-heading p {
+      margin: 0;
+      color: #71697b;
+      font-size: 16px;
+    }
+
+    .qh-question-theme-code {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 48px;
+      min-height: 36px;
+      border-radius: 999px;
+      background: #332647;
+      color: #fff;
+      font-weight: 700;
+    }
+
+    .qh-question-week {
+      margin-top: 10px;
+      border: 1px solid #ddd5e8;
+      border-radius: 12px;
+      background: #fff;
+      overflow: hidden;
+    }
+
+    .qh-question-week[open] {
+      border-color: #a994c6;
+      box-shadow: 0 7px 18px rgba(45, 35, 66, .08);
+    }
+
+    .qh-question-week summary {
+      font-size: 18px;
+      display: grid;
+      grid-template-columns: auto 1fr auto auto;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 16px;
+      cursor: pointer;
+      list-style: none;
+    }
+
+    .qh-question-week summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .qh-question-week summary::after {
+      content: "+";
+      grid-column: 4;
+      color: #705596;
+      font-size: 1.3em;
+      line-height: 1;
+    }
+
+    .qh-question-week[open] summary::after {
+      content: "−";
+    }
+
+    .qh-question-week-number {
+      color: #705596;
+      font-size: .86em;
+      font-weight: 700;
+      letter-spacing: .05em;
+    }
+
+    .qh-question-count {
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: #f1edf7;
+      color: #66547e;
+      font-size: .78em;
+      font-weight: 700;
+    }
+
+    .qh-question-week-body {
+      padding: 2px 18px 18px 52px;
+      border-top: 1px solid #eee9f3;
+    }
+
+    .qh-question-week-body ol {
+      margin: 14px 0 12px;
+      padding-left: 24px;
+    }
+
+    .qh-question-week-body li {
+      margin: 0 0 9px;
+      padding-left: 3px;
+      line-height: 1.55;
+    }
+
+    @media (max-width: 767px) {
+      .qh-question-atlas-heading {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .qh-question-controls {
+        width: 100%;
+      }
+
+      .qh-question-controls button {
+        flex: 1;
+      }
+
+      .qh-question-theme {
+        padding: 15px 12px;
+      }
+
+      .qh-question-week summary {
+        grid-template-columns: auto 1fr auto;
+        gap: 9px;
+        padding: 13px 12px;
+      }
+
+      .qh-question-week summary::after {
+        grid-column: 3;
+        grid-row: 1;
+      }
+
+      .qh-question-count {
+        display: none;
+      }
+
+      .qh-question-week-body {
+        padding: 2px 13px 15px 20px;
+      }
+    }
+
+
+    .qh-question-draft {
+      color: #c0392b;
+      font-weight: 700;
+    }
+  </style>
+
+  <link rel="stylesheet" href="qh-mobile-math-overflow.css" data-uniweb-fix="mobile-math-overflow">
+</head>
+
+<body>
+
+  <header id="masthead" class="site-header">
+    <nav id="primary-navigation" class="site-navigation">
+      <div class="container">
+
+        <div class="navbar-header">
+          <a href="../index.html" class="site-title">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
+        </div><!-- /.navbar-header -->
+
+        <div class="collapse navbar-collapse" id="agency-navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="../index.html">Home</a></li>
+            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Qubit Physics<i
+                  class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+              <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                <li><a href="../SCQ_elementary_en/main.html">Superconducting Qubits (Elementary)</a></li>
+                <li><a href="../SCQ_advanced_en/main.html">Superconducting Qubits (Advanced)</a></li>
+                <li><a href="../SpQ_en/main.html">Semiconductor Spin Qubits</a></li>
+              </ul>
+            </li>
+            <!--<li class="active"><a href="../SCQ_elementary/main.html">科普介紹</a></li>-->
+            <li class="active"><a href="../QC_hardware_en/main.html">Hardware</a></li>
+            <li><a href="../QID_en/main.html">Quantum Industries</a></li>
+            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Workshop Note<i
+                  class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+              <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                <li><a href="../ASW2026_en/main.html">2026 Academia Sinica SCQC Winter Workshop</a></li>
+              </ul>
+            </li>
+            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Consultance<i
+                  class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+              <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                <li><a href="https://www.quantum-perspectives.com/About_en/main.html">Taiwan Market Outreach
+                    Services</a></li>
+                <li><a href="../About_en/main.html">About Us</a></li>
+              </ul>
+            </li>
+            <li><a href="../index.html">中文版</a></li>
+          </ul>
+        </div>
+
+      </div>
+    </nav><!-- /.site-navigation -->
+  </header><!-- /#mastheaed -->
+
+  <div id="hero" class="hero overlay subpage-hero blog-hero">
+    <div class="hero-content">
+      <div class="hero_2-text">
+        <h1>Superconducting Quantum Computer Architecture</h1>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+          <li class="breadcrumb-item"><a href="../SCQ_advanced_en/main.html">PHYS598500</a></li>
+          <!--<li class="breadcrumb-item active">約瑟夫森節</li>-->
+        </ol>
+      </div><!-- /.hero-text -->
+    </div><!-- /.hero-content -->
+  </div><!-- /.hero -->
+
+  <main id="main" class="site-main">
+
+    <section class="site-section subpage-site-section section-blog">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-9">
+            <article class="blog-post">
+              <!--<img src="../assets/img/portfolio-1.jpg" class="img-res" alt="">-->
+              <div class="post-content">
+
+                <section id="qh-2026f-v5" class="course-theme">
+                  <div style="text-align: center;">
+                    <p class="theme-label">PHYS598500 · 2026 Fall · 16 weeks</p>
+                    <h2>Superconducting Quantum Computer Architecture</h2>
+                    <h3>Advanced Superconducting Quantum Computer Architecture</h3>
+                  </div>
+                  <section class="course-overview">
+                    <h3>Course Positioning</h3>
+                    <p>The course proceeds from the computation model to the qubit Hamiltonian, then sequentially
+                      addresses qubit design, control, coupling, readout, calibration, benchmarking, stabilizer QEC,
+                      surface-code cycle, cryogenic systems, electronics, packaging, fabrication processes, and a
+                      full-system capstone.</p>
+                  </section>
+                  <section class="qh-semester-map" aria-labelledby="semester-map-title">
+                    <header class="qh-roadmap-heading">
+                      <h2 id="semester-map-title">Full-Semester Course Map · v5</h2>
+                      <p>Building Quantum Computing into a Machine</p>
+                    </header>
+
+                    <div class="qh-roadmap-stage">
+                      <div class="qh-theme-node"><span class="qh-theme-code">T1</span><span>How Computation Becomes
+                          Physical Operations</span></div>
+                      <div class="qh-week-grid qh-one">
+
+                        <a class="qh-week-card" href="T1-1.html"><span class="qh-week-number">W1</span><span
+                            class="qh-week-title">From Algorithms to Hardware Operations</span></a>
+
+                      </div>
+                    </div>
+
+                    <div class="qh-roadmap-arrow" aria-hidden="true"></div>
+
+                    <div class="qh-roadmap-stage">
+                      <div class="qh-theme-node"><span class="qh-theme-code">T2</span><span>Fabricating Qubits from
+                          Circuits</span></div>
+                      <div class="qh-week-grid">
+
+                        <div class="qh-week-card qh-week-card--static"><span class="qh-week-number">W2</span><span
+                            class="qh-week-title">Quantizing Circuits and Creating Anharmonicity</span></div>
+                        <div class="qh-week-card qh-week-card--static"><span class="qh-week-number">W3</span><span
+                            class="qh-week-title">Tunability and the C-Shunted Transmon</span></div>
+                        <div class="qh-week-card qh-week-card--static"><span class="qh-week-number">W4</span><span
+                            class="qh-week-title">Noise, Fluxonium, and Protected-Qubit Design</span></div>
+
+                      </div>
+                    </div>
+
+                    <div class="qh-roadmap-arrow" aria-hidden="true"></div>
+
+                    <div class="qh-roadmap-stage">
+                      <div class="qh-theme-node"><span class="qh-theme-code">T3</span><span>Controlling, Coupling, and
+                          Reading Out Qubits</span></div>
+                      <div class="qh-week-grid">
+
+                        <div class="qh-week-card qh-week-card--static"><span class="qh-week-number">W5</span><span
+                            class="qh-week-title">Controlling a Single Qubit with Microwaves</span></div>
+
+                        <div class="qh-week-card qh-week-card--static"><span class="qh-week-number">W6</span><span
+                            class="qh-week-title">Enabling Interaction Between Two Qubits</span></div>
+
+                        <div class="qh-week-card qh-week-card--static"><span class="qh-week-number">W7</span><span
+                            class="qh-week-title">Translating Quantum States into Signals</span></div>
+
+                      </div>
+                    </div>
+
+                    <div class="qh-roadmap-arrow" aria-hidden="true"></div>
+
+                    <div class="qh-roadmap-stage">
+                      <div class="qh-theme-node"><span class="qh-theme-code">T4</span><span>Calibration, Verification,
+                          and Quantum Error Correction</span></div>
+                      <div class="qh-week-grid qh-four">
+
+                        <div class="qh-week-card qh-week-card--static"><span class="qh-week-number">W8</span><span
+                            class="qh-week-title">Identifying and Calibrating Chips</span></div>
+
+                        <div class="qh-week-card qh-week-card--static"><span class="qh-week-number">W9</span><span
+                            class="qh-week-title">Measuring Errors and Performance</span></div>
+
+                        <div class="qh-week-card qh-week-card--static"><span class="qh-week-number">W10</span><span
+                            class="qh-week-title">Detecting Errors Using Syndromes</span></div>
+
+                        <div class="qh-week-card qh-week-card--static"><span class="qh-week-number">W11</span><span
+                            class="qh-week-title"> QEC Quantum Error Correction</span></div>
+
+                      </div>
+                    </div>
+
+                    <div class="qh-roadmap-arrow" aria-hidden="true"></div>
+
+                    <div class="qh-roadmap-stage">
+                      <div class="qh-theme-node"><span class="qh-theme-code">T5</span><span>Cryogenics, Signal, and
+                          System Integration</span></div>
+                      <div class="qh-week-grid qh-two">
+
+                        <div class="qh-week-card qh-week-card--static"><span class="qh-week-number">W12</span><span
+                            class="qh-week-title">Cooling the Chip and Managing Heat Flow</span></div>
+
+
+                        <div class="qh-week-card qh-week-card--static"><span class="qh-week-number">W13</span><span
+                            class="qh-week-title">Packaging, Wiring, and Scalability</span></div>
+
+                      </div>
+                    </div>
+
+                    <div class="qh-roadmap-arrow" aria-hidden="true"></div>
+
+                    <div class="qh-roadmap-stage">
+                      <div class="qh-theme-node"><span class="qh-theme-code">T6</span><span>Stabilizing Designs into
+                          Chips</span></div>
+                      <div class="qh-week-grid qh-two">
+
+                        <div class="qh-week-card qh-week-card--static"><span class="qh-week-number">W14</span><span
+                            class="qh-week-title">Fabricating Layouts into Chips</span></div>
+
+                        <div class="qh-week-card qh-week-card--static"><span class="qh-week-number">W15</span><span
+                            class="qh-week-title">Challenges of Quantum Processors</span></div>
+
+                      </div>
+                    </div>
+
+                    <div class="qh-roadmap-arrow" aria-hidden="true"></div>
+
+                    <div class="qh-roadmap-stage">
+                      <div class="qh-theme-node"><span class="qh-theme-code">T7</span><span>Integrating a Complete
+                          Quantum Computer</span></div>
+                      <div class="qh-week-grid qh-one">
+
+                        <div class="qh-week-card qh-week-card--static"><span class="qh-week-number">W16</span><span
+                            class="qh-week-title">Making Comprehensive System Architecture Choices</span></div>
+
+                      </div>
+                    </div>
+
+                  </section>
+                  
+                  
+                  <script>
+                    (() => {
+                      const atlas = document.getElementById("weekly-core-questions");
+                      if (!atlas) return;
+                      const weeks = () => atlas.querySelectorAll("details.qh-question-week");
+                      document.getElementById("qh-expand-all")?.addEventListener("click", () => weeks().forEach(item => item.open = true));
+                      document.getElementById("qh-collapse-all")?.addEventListener("click", () => weeks().forEach(item => item.open = false));
+                    })();
+                  </script>
+                </section>
+
+
+                <div class="post-meta">
+                  <!--<span class="post-author">
+                    <a href="../About_en/Wang.html"><img class="img-res" src="../../ImagePool/IMG_0964_2.JPG"
+                        alt="">Peir-Ru Wang</a>
+                  </span>-->
+                  <span class="post-category">
+                    <a href="../SCQ_advanced_en/main.html"><i class="fa fa-folder" aria-hidden="true"></i>PHYS598500</a>
+                  </span>
+                </div><!-- /.post-meta -->
+
+                <div id="prev-next-nav" class="text-center">
+                                    <a class="btn btn-gray" href="T1-1.html">Next →</a>
+                                </div>
+
+
+
+              </div><!-- /.post-content -->
+            </article><!-- /.blog-post -->
+            <!--<div id="PostComments" class="post-comments">
+                            
+                            
+                            
+                        </div> /#PostComments -->
+            <!--<div class="respond">
+                            <h3>Post a Comment</h3>
+                            <form class="form-horizontal">
+                                <input class="form-control" type="text" placeholder="Your Name*" required>
+                                <input class="form-control" type="email" placeholder="Your Email" required>
+                                <textarea class="form-control form-control-comment" type="text" placeholder="Your Comment*" required></textarea>
+                                <button class="btn btn-green">Add a comment</button>
+                            </form>    
+                        </div> /.respond -->
+          </div>
+          <aside class="col-md-3">
+                        <div class="sidebar">
+                            <div class="widget">
+                                <div id="lesson-list_2">
+                                <div class="lesson-link active"><a href="main.html">QH-2026F v5 · 16-Week Overview</a></div>
+                                <div class="lesson-link "><a href="T1-1.html">Week 1 Manual Slides · Computation Is Physical | QH-2026F v5</a></div>
+                                </div>
+                            </div>
+                        </div></aside>
+        </div>
+      </div>
+    </section><!-- /.section-portfolio -->
+
+  </main><!-- /#main -->
+
+  <footer id="colophon" class="site-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3 col-sm-4 col-xs-6">
+          <a href="../index.html" class="site-title">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
+          <p>Exploring the Quantum Technology Together.</p>
+        </div>
+        <div class="col-lg-offset-4 col-md-3 col-sm-4 col-md-offset-2 col-sm-offset-0 col-xs-6 ">
+          <p class="site-title">𝐾𝐸𝐸𝑃 𝐼𝑁 𝑇𝑂𝑈𝐶𝐻</p>
+          <ul class="list-unstyled contact-links">
+            <li><i class="fa fa-envelope" aria-hidden="true"></i><a href="mailto:info@insight-ihbar.com">info@insight-ihbar.com</a></li>
+            <!--<li><i class="fa fa-phone" aria-hidden="true"></i><a href="tel:+37400800000">+374 (00) 80 00 00 </a></li>
+                        <li><i class="fa fa-fax" aria-hidden="true"></i><a href="+37400900000">+374 (00) 90 00 00</a></li>
+                        <li><i class="fa-solid fa-location-dot"></i><p>Hsinchu 300, Taiwan (R.O.C.)</p></li>-->
+          </ul>
+        </div>
+        <!--<div class="clearfix visible-xs"></div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6">
+                    <h3>Featured links</h3>
+                    <ul class="list-unstyled">
+                        <li class="active"><a href="index_ch.html">Home</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="portfolio.html">Porfolio</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>-->
+      </div>
+    </div>
+    <div class="copyright">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-8">
+            <div class="social-links">
+              <!--<a class="twitter-bg" href="#"><i class="fab fa-twitter"></i></a>-->
+              <!--<<a class="facebook-bg" href="https://www.facebook.com/people/Quantum-Perspectives/61576446849628/"><i class="fab fa-facebook"></i></a>-->
+              <!--<a class="facebook-bg" href="https://www.facebook.com/people/%E9%87%8F%E5%AD%90%E9%81%A0%E8%A6%8BQuantum-Perspectives/61576883632888/"><i class="fab fa-facebook-f"></i></a>-->
+              <!--<a class="pinterest" href="#"><i class="fa-solid fa-microscope"></i></a>-->
+              <!--<a class="facebook-bg" href="https://www.facebook.com/people/Insight-hbar/61576811775374/"><i class="fab fa-facebook-f"></i></a>-->
+              <a class="linkedin-bg" href="https://www.linkedin.com/company/insight-ihbar"><i
+                  class="fab fa-linkedin"></i></a>
+            </div><!-- /.social-links -->
+          </div>
+          <div class="col-xs-4">
+            <div class="text-right">
+              <p><span style="font-size: 16px;">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</span></p>
+              <p>All Rights Reserved</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!-- /.copyright -->
+  </footer><!-- /#footer -->
+
+
+
+  <!-- Bootstrap core JavaScript
+    ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/bootstrap-select.min.js"></script>
+  <script src="../assets/js/jquery.slicknav.min.js"></script>
+  <script src="../assets/js/jquery.countTo.min.js"></script>
+  <script src="../assets/js/jquery.shuffle.min.js"></script>
+  <script src="../assets/js/script.js"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</body>
+
+</html>
