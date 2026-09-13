@@ -3,7 +3,7 @@
   const root = document.querySelector("#qh-slide-root");
   const articleContent = document.querySelector("#qhs-article-content");
   const modeButtons = Array.from(document.querySelectorAll("[data-qh-view]"));
-  if (!source || !root || !articleContent) return;
+  if (!source || !root || !articleContent || modeButtons.length === 0) return;
 
   const stage = root.querySelector(".qhs-stage");
   const scaler = root.querySelector(".qhs-scaler");
