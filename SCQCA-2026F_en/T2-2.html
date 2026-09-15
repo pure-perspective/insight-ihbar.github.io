@@ -5332,29 +5332,7 @@
 
         <section data-manual-slide data-auto-fit="false" data-slide-class="qh-platform-hero-slide">
             <p class="qh-prelude-kicker">Hardware landscape · one platform at a time</p>
-            <h3>Trapped Ions · Atomic Qubits in a Quantum CCD</h3>
-            <div class="qh-platform-layout qh-has-vendor-rail qh-platform-visual-only">
-                <figure class="qh-platform-figure">
-                    <a href="../Image/nature-2023-trapped-ion-quantum-computer.webp"><img src="../WebP/nature-2023-trapped-ion-quantum-computer.webp" alt="Nature schematic of an ion-trap quantum processor showing seven trapped ions, laser beams, and surrounding electrodes"></a>
-                    <figcaption>Ion-trap quantum processor: laser beams manipulate seven trapped-ion qubits between
-                        surrounding electrodes. E. Cartlidge, <em>Nature</em> (24 May 2023),
-                        <a href="https://www.nature.com/articles/d41586-023-01644-3" target="_blank" rel="noopener">source</a>.
-                    </figcaption>
-                </figure>
-                            <aside class="qh-vendor-rail" aria-label="Representative companies">
-                    <a href="../Image/ionq.svg"><img src="../Image/ionq.svg" alt="IonQ logo"></a>
-                    <a href="../Image/quantinuum.svg"><img src="../Image/quantinuum.svg" alt="Quantinuum logo"></a>
-                    <a href="../Image/Logo-AQT-Alpine-Quantum-Technologies.svg"><img src="../Image/Logo-AQT-Alpine-Quantum-Technologies.svg" alt="AQT logo"></a>
-                    <a href="../Image/eleqtron.svg"><img src="../Image/eleqtron.svg" alt="eleQtron logo"></a>
-                </aside>
-            </div>
-        </section>
-
-        
-
-        <section data-manual-slide data-auto-fit="false" data-slide-class="qh-platform-hero-slide">
-            <p class="qh-prelude-kicker">Hardware landscape · one platform at a time</p>
-            <h3>Semiconductor Spins · Two Electrons, One CNOT</h3>
+            <h3>Semiconductor Spins</h3>
             <div class="qh-platform-layout qh-has-vendor-rail qh-platform-visual-only">
                 <figure class="qh-platform-figure">
                     <a href="../Image/zajac-2018-silicon-spin-cnot.png"><img src="../WebP/zajac-2018-silicon-spin-cnot.webp" alt="Silicon silicon-germanium double quantum dot with two electron spin qubits and a micromagnet gradient"></a>
@@ -5374,11 +5352,35 @@
             </div>
         </section>
 
+        <section data-manual-slide data-auto-fit="false" data-slide-class="qh-platform-hero-slide">
+            <p class="qh-prelude-kicker">Hardware landscape · one platform at a time</p>
+            <h3>Trapped Ions · Atomic Qubits</h3>
+            <div class="qh-platform-layout qh-has-vendor-rail qh-platform-visual-only">
+                <figure class="qh-platform-figure">
+                    <a href="../Image/nature-2023-trapped-ion-quantum-computer.webp"><img src="../WebP/nature-2023-trapped-ion-quantum-computer.webp" alt="Nature schematic of an ion-trap quantum processor showing seven trapped ions, laser beams, and surrounding electrodes"></a>
+                    <figcaption>Ion-trap quantum processor: laser beams manipulate seven trapped-ion qubits between
+                        surrounding electrodes. E. Cartlidge, <em>Nature</em> (24 May 2023),
+                        <a href="https://www.nature.com/articles/d41586-023-01644-3" target="_blank" rel="noopener">source</a>.
+                    </figcaption>
+                </figure>
+                            <aside class="qh-vendor-rail" aria-label="Representative companies">
+                    <a href="../Image/ionq.svg"><img src="../Image/ionq.svg" alt="IonQ logo"></a>
+                    <a href="../Image/quantinuum.svg"><img src="../Image/quantinuum.svg" alt="Quantinuum logo"></a>
+                    <a href="../Image/Logo-AQT-Alpine-Quantum-Technologies.svg"><img src="../Image/Logo-AQT-Alpine-Quantum-Technologies.svg" alt="AQT logo"></a>
+                    <a href="../Image/eleqtron.svg"><img src="../Image/eleqtron.svg" alt="eleQtron logo"></a>
+                </aside>
+            </div>
+        </section>
+
+        
+
+        
+
         
 
         <section data-manual-slide data-auto-fit="false" data-slide-class="qh-platform-photonics-slide">
             <p class="qh-prelude-kicker">Hardware landscape · one platform at a time</p>
-            <h3>Photonics · Light Is Both the Qubit and the Bus</h3>
+            <h3>Photonics</h3>
             </p>
             <div class="qh-platform-layout qh-has-vendor-rail qh-platform-visual-only">
                 <figure class="qh-platform-figure qh-photonic-v36">
@@ -5411,7 +5413,7 @@
         </section>
         <section class="qh-divincenzo-slide" data-manual-slide data-auto-fit="false"
             data-slide-class="qh-divincenzo-slide">
-            <h3>DiVincenzo Criteria: A Hardware Design Contract</h3>
+            <h3>DiVincenzo Criteria: A Hardware Design Guidance</h3>
             <div class="qh-criteria-grid qh-divincenzo-criteria">
                 <div class="qh-criterion"><b>1 · Scalable qubits</b><span>A scalable physical system with
                         well-characterized qubits</span></div>
@@ -7180,6 +7182,247 @@
             if (document.fonts?.ready) document.fonts.ready.then(refreshAfterTypeset).catch(() => { });
         })();
 
+    </script>
+    <style id="qh-v51-equation-reveals">
+        /* Two-stage hide. `is-measuring` keeps the space so the deck's auto-fit sizes the
+           page for the COMPLETE derivation; the geometry measured in that state is then
+           frozen box by box, so collapsing a step can no longer re-centre or re-flow
+           anything that is already on screen. */
+        .qhs-slide .qh-reveal-step.is-measuring {
+            visibility: hidden;
+        }
+
+        .qhs-slide .qh-reveal-step.is-pending {
+            display: none !important;
+        }
+
+        .qhs-slide .qh-reveal-step {
+            animation: qh-reveal-in .18s ease both;
+        }
+
+        @keyframes qh-reveal-in {
+            from { opacity: 0; }
+            to   { opacity: 1; }
+        }
+
+        /* A frozen container keeps its full-derivation height, so its own position inside
+           a centred grid row never changes; its children simply stack from the top. */
+        .qhs-slide [data-qh-frozen] {
+            align-self: stretch;
+            justify-content: flex-start;
+            align-content: start;
+        }
+
+        .qhs-slide .qhs-content-inner[data-qh-reveal]::after {
+            content: attr(data-qh-reveal-left);
+            position: absolute;
+            right: 0;
+            bottom: -18px;
+            color: #b3aabf;
+            font-size: 13px;
+            letter-spacing: .04em;
+            pointer-events: none;
+        }
+    </style>
+    <script id="qh-v51-equation-reveal-driver">
+        (() => {
+            const HOST = ".qhs-slide.qh-deriv";
+            const FROZEN = ["height", "min-height", "max-height", "flex"];
+
+            const hasMath = (el) =>
+                el.querySelector('mjx-container[display="true"]') ||
+                (el.tagName === "MJX-CONTAINER" && el.getAttribute("display") === "true");
+
+            // Equations are not always direct children of .qhs-content-inner: the two-column
+            // pages nest them. Use whichever container holds the most equation siblings.
+            function pickHost(inner) {
+                const candidates = [inner].concat(
+                    Array.from(inner.querySelectorAll(".qh-well-math, .qh-zoo-math, .cw2-stack, .qh-deriv-split > div"))
+                );
+                let best = null, bestCount = 0;
+                candidates.forEach((c) => {
+                    const n = Array.from(c.children).filter(hasMath).length;
+                    if (n > bestCount) { best = c; bestCount = n; }
+                });
+                return bestCount >= 2 ? best : null;
+            }
+
+            function mark(slide) {
+                if (slide.dataset.qhRevealMarked === "1") return;
+                const inner = slide.querySelector(".qhs-content-inner");
+                if (!inner) return;
+                const host = pickHost(inner);
+                if (!host) { slide.dataset.qhRevealMarked = "1"; return; }
+
+                // A step is the lead sentence PLUS the equation it introduces - they appear
+                // together. Otherwise the prose sits on screen describing an equation that
+                // is not there yet.
+                const groups = [];
+                let run = [];
+                Array.from(host.children).forEach((el) => {
+                    run.push(el);
+                    if (hasMath(el)) { groups.push(run); run = []; }
+                });
+                // anything trailing the last equation (a closing note) rides with it
+                if (run.length && groups.length) groups[groups.length - 1].push(...run);
+
+                // group 0 is the opening line / recap and always stays visible
+                groups.slice(1).forEach((group, index) => {
+                    group.forEach((el) => {
+                        el.classList.add("qh-reveal-step", "is-measuring");
+                        el.dataset.qhStep = String(index + 1);
+                        el.setAttribute("aria-hidden", "true");
+                    });
+                });
+                host.dataset.qhRevealHost = "1";
+                inner.setAttribute("data-qh-reveal", "");
+                slide.dataset.qhRevealMarked = "1";
+            }
+
+            // Every box between the step container and the slide frame, bottom-up.
+            function chainOf(inner) {
+                const host = inner.querySelector("[data-qh-reveal-host]");
+                const out = [];
+                for (let el = host; el && el !== inner; el = el.parentElement) out.push(el);
+                return out;
+            }
+
+            // Nail down the layout measured with the whole derivation still in place: the
+            // deck's fit transform, and the height of each container around the steps. A
+            // container whose height cannot change cannot move, whatever is hidden inside.
+            function freeze(slide) {
+                if (slide.dataset.qhRevealLocked === "1") return;
+                if (Date.now() < Number(slide.dataset.qhRefreezeAt || 0)) return;
+                const inner = slide.querySelector(".qhs-content-inner");
+                if (!inner || !inner.hasAttribute("data-qh-reveal") || !inner.offsetHeight) return;
+
+                chainOf(inner).forEach((el) => {
+                    const h = el.offsetHeight;
+                    if (!h) return;
+                    el.dataset.qhFrozen = String(h);
+                    el.style.setProperty("height", h + "px", "important");
+                    el.style.setProperty("min-height", h + "px", "important");
+                    el.style.setProperty("max-height", h + "px", "important");
+                    el.style.setProperty("flex", "0 0 " + h + "px", "important");
+                });
+
+                slide.dataset.qhFitStyle = inner.getAttribute("style") || "";
+                slide.dataset.qhRevealLocked = "1";
+                watch(inner, slide);
+                apply(inner, Number(slide.dataset.qhShownWanted || 0));
+            }
+
+            // The deck re-fits on every activation; put the frozen transform back.
+            function watch(inner, slide) {
+                if (inner.dataset.qhWatched === "1") return;
+                inner.dataset.qhWatched = "1";
+                new MutationObserver(() => {
+                    if (slide.dataset.qhRevealLocked !== "1") return;
+                    const want = slide.dataset.qhFitStyle || "";
+                    if ((inner.getAttribute("style") || "") !== want) inner.setAttribute("style", want);
+                }).observe(inner, { attributes: true, attributeFilter: ["style"] });
+            }
+
+            // Release the frozen geometry so the deck can fit the page again (window
+            // resize, fullscreen); the reveal position is remembered and re-applied.
+            function thaw(slide) {
+                const inner = slide.querySelector(".qhs-content-inner");
+                if (!inner || slide.dataset.qhRevealLocked !== "1") return;
+                slide.dataset.qhShownWanted = inner.dataset.qhShown || "0";
+                slide.dataset.qhRevealLocked = "0";
+                slide.dataset.qhRefreezeAt = String(Date.now() + 400);
+                chainOf(inner).forEach((el) => {
+                    FROZEN.forEach((p) => el.style.removeProperty(p));
+                    delete el.dataset.qhFrozen;
+                });
+                inner.querySelectorAll(".qh-reveal-step").forEach((el) => {
+                    el.classList.remove("is-pending");
+                    el.classList.add("is-measuring");
+                });
+                inner.removeAttribute("style");
+                delete slide.dataset.qhFitStyle;
+            }
+
+            const stepIds = (inner) => {
+                const ids = [];
+                inner.querySelectorAll(".qh-reveal-step").forEach((el) => {
+                    if (ids[ids.length - 1] !== el.dataset.qhStep) ids.push(el.dataset.qhStep);
+                });
+                return ids;
+            };
+
+            function apply(inner, shown) {
+                const ids = stepIds(inner);
+                shown = Math.max(0, Math.min(shown, ids.length));
+                ids.forEach((id, i) => {
+                    const hide = i >= shown;
+                    inner.querySelectorAll('.qh-reveal-step[data-qh-step="' + id + '"]').forEach((el) => {
+                        el.classList.remove("is-measuring");
+                        el.classList.toggle("is-pending", hide);
+                        if (hide) el.setAttribute("aria-hidden", "true");
+                        else el.removeAttribute("aria-hidden");
+                    });
+                });
+                inner.dataset.qhShown = String(shown);
+                const left = ids.length - shown;
+                inner.setAttribute("data-qh-reveal-left", left ? "+" + left : "");
+            }
+
+            const activeSlide = () => document.querySelector(".qhs-slide.is-active");
+            const activeInner = () =>
+                document.querySelector(".qhs-slide.is-active .qhs-content-inner[data-qh-reveal]");
+
+            function step(delta) {
+                const inner = activeInner();
+                if (!inner || inner.dataset.qhShown === undefined) return false;
+                const now = Number(inner.dataset.qhShown);
+                const next = now + delta;
+                if (next < 0 || next > stepIds(inner).length) return false;
+                apply(inner, next);
+                return true;
+            }
+
+            function sweep() {
+                document.querySelectorAll(HOST).forEach(mark);
+                const s = activeSlide();
+                if (s && s.matches(HOST)) freeze(s);
+            }
+
+            document.addEventListener("click", (event) => {
+                if (!activeInner()) return;
+                if (event.target.closest("a, button, input, select, textarea, label, summary, [contenteditable='true']")) return;
+                if (!event.target.closest(".qhs-stage")) return;
+                if (!step(+1)) return;          // everything shown -> let the deck change page
+                event.preventDefault();
+                event.stopImmediatePropagation();
+            }, true);
+
+            document.addEventListener("keydown", (event) => {
+                if (event.altKey || event.ctrlKey || event.metaKey || !activeInner()) return;
+                const forward = ["ArrowRight", "ArrowDown", "PageDown", " "].includes(event.key);
+                const backward = ["ArrowLeft", "ArrowUp", "PageUp"].includes(event.key);
+                const handled = forward ? step(+1) : backward ? step(-1) : false;
+                if (!handled) return;
+                event.preventDefault();
+                event.stopImmediatePropagation();
+            }, true);
+
+            let resizeTimer = 0;
+            window.addEventListener("resize", () => {
+                clearTimeout(resizeTimer);
+                document.querySelectorAll(HOST).forEach(thaw);
+                resizeTimer = setTimeout(sweep, 450);
+            });
+
+            const start = () => { sweep(); setTimeout(sweep, 300); setTimeout(sweep, 900); };
+            if (window.MathJax?.startup?.promise) {
+                window.MathJax.startup.promise.then(start).catch(start);
+            } else {
+                window.addEventListener("load", () => setTimeout(start, 700));
+            }
+            // a slide only gets frozen once it has actually been fitted, i.e. on activation
+            setInterval(sweep, 250);
+        })();
     </script>
 </body>
 
