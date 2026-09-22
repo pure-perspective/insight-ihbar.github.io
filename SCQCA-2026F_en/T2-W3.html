@@ -6418,6 +6418,104 @@ html {
         }
     </style>
 
+    <style id="qh-w03-v50-bleed">
+        /* p12: the Barends 2014 chip picture on its own, flush with the top and bottom
+           edges of the slide on the right. The slide body clips its content and sits
+           between the 86 px header and the 50 px footer, so on this page the body and
+           the content frame stop being positioning boxes and the figure is placed
+           against the slide itself. The footer rule and page number end where the
+           picture begins, so they stay visible. */
+        .qhs-slide.qh-v50-bleed {
+            --qh-bleed-w: 626px;        /* 810 px tall at the scan's 1364 : 1764 */
+        }
+
+        .qhs-slide.qh-v50-bleed .qhs-slide-body,
+        .qhs-slide.qh-v50-bleed .qhs-content-inner {
+            position: static;
+            overflow: visible;
+        }
+
+        .qhs-slide.qh-v50-bleed .qh-v50-bleed-fig {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 3;
+            width: var(--qh-bleed-w);
+            margin: 0;
+        }
+
+        .qhs-slide.qh-v50-bleed .qh-v50-bleed-fig img {
+            display: block;
+            width: 100% !important;
+            height: 100% !important;
+            max-width: none !important;
+            max-height: none !important;
+            margin: 0;
+            object-fit: contain;
+            object-position: right center;
+            mix-blend-mode: multiply;
+        }
+
+        /* the reference, bottom left of the picture, just above the footer rule */
+        .qhs-slide.qh-v50-bleed .qh-v50-bleed-fig figcaption {
+            position: absolute;
+            right: calc(100% + 24px);
+            bottom: 62px;
+            width: max-content;
+            max-width: 600px;
+            margin: 0;
+            text-align: right;
+        }
+
+        .qhs-slide.qh-v50-bleed .qhs-slide-foot {
+            margin-right: calc(var(--qh-bleed-w) + 24px);
+        }
+    </style>
+
+    <style id="qh-w03-v50-protofig-corner">
+        /* p21: the Physica C drawing of the same box in the empty top-right corner, beside
+           the title. It is placed against the slide itself - on this page the body and the
+           content frame are not positioning boxes, and the figure is out of the flex flow -
+           so the three panels underneath keep exactly their layout. */
+        .qhs-slide.qh-w03-protofig .qhs-slide-body,
+        .qhs-slide.qh-w03-protofig .qhs-content-inner {
+            position: static;
+        }
+
+        .qhs-slide.qh-w03-protofig .qh-v50-corner-fig {
+            position: absolute;
+            top: 14px;                  /* below the top accent bar */
+            left: 924px;                /* centred on the free corner, x 812-1361 */
+            z-index: 2;
+            width: 324px;               /* 248 px tall at the scan's 1974 : 1510 */
+            height: 248px;              /* ends 10 px above the panels (y 272) */
+            margin: 0;
+        }
+
+        .qhs-slide.qh-w03-protofig .qh-v50-corner-fig img {
+            display: block;
+            width: 100% !important;
+            height: 100% !important;
+            max-width: none !important;
+            max-height: none !important;
+            margin: 0;
+            object-fit: contain;
+            mix-blend-mode: multiply;
+        }
+
+        .qhs-slide.qh-w03-protofig .qh-v50-corner-fig figcaption {
+            position: absolute;
+            right: calc(100% + 18px);
+            bottom: 0;
+            width: max-content;
+            margin: 0;
+            text-align: right;
+        }
+    </style>
+
+
+
 
 
 </head>
@@ -6632,11 +6730,10 @@ html {
           <div class="two-col wide-left">
             <div>
               <p class="lead">
-                In class, we discussed circuit quantization and the transmon regime \( \frac{E_J}{E_C} \gg 1 \).Historically, the Cooper-pair box (CPB), typically operated in the charge-dominated regime \(E_C \gtrsim E_J \), was one of the earliest superconducting platforms to demonstrate coherent quantum control (Y. Nakamura, Yu. A. Pashkin, and J. S. Tsai, Nature 398, 786–788 (1999)). Yet, modern superconducting processors predominantly employ transmon architectures. 
+                In class, we discussed circuit quantization and the transmon regime \( \frac{E_J}{E_C} \gg 1 \).Historically, the Cooper-pair box (CPB), typically operated in the charge-dominated regime \(E_C \gtrsim E_J \), was one of the earliest superconducting platforms to demonstrate coherent quantum control (<b>Y. Nakamura, Yu. A. Pashkin, and J. S. Tsai, Nature 398, 786–788 (1999)</b>). Yet, modern superconducting processors predominantly employ transmon architectures. 
                 <br><br>If the Cooper-pair box was already capable of coherent control, why did the field transition to the transmon? Detail the core engineering trade-off involved, and explain why the transmon is fundamentally better suited for robust, scalable quantum control. Furthermore, what is sacrificed when \( \frac{E_J}{E_C}\) is increased to transmon regime?
-                
                 </p>
-              
+              <p class="lead"><br>Transmon Ref: Koch et al., Phys. Rev. A 76, 042319 (2007)</p>
             </div>
             
           </div>
@@ -6866,6 +6963,12 @@ html {
             </figure>
           </div>
         </section>
+        <section data-manual-slide data-auto-fit="false" data-slide-class="qh-v50-bleed">
+          <figure class="qh-v50-bleed-fig">
+            <a href="../Image/barends-2014-nat508-five-xmon-xy-z-lines.png"><img src="../WebP/barends-2014-nat508-five-xmon-xy-z-lines.webp" alt="Photograph of a five-Xmon chip with the XY and Z control lines of each qubit labelled, and a schematic separating readout, qubits and control"></a>
+            <figcaption>Barends <em>et al.</em>, <em>Nature</em> <strong>508</strong>, 500 (2014)</figcaption>
+          </figure>
+        </section>
         <section data-manual-slide data-cover data-title="Control Circuit">
           <div class="theme-header" style="text-align: center;">
             <h2>Control Circuit</h2>
@@ -6874,9 +6977,11 @@ html {
 
         
 
+        
+
         <section data-manual-slide data-auto-fit="true" data-slide-class="qh-deriv qh-deriv-setup qh-cpb-setup">
           <p class="qh-prelude-kicker">Cooper-pair box · step 1 of 15</p>
-          <h3>The Cooper-pair box circuit</h3>
+          <h3>The control circuit</h3>
           <div class="qh-deriv-split">
             <figure class="qh-deriv-fig qh-cpb-figure">
               <svg viewBox="0 0 440 320" role="img"
@@ -6900,7 +7005,7 @@ html {
                   <text x="70" y="188">−</text>
                 </g>
                 <g fill="#5f4b8b" stroke="none" font-family="Montserrat, sans-serif" font-size="15" font-weight="600" text-anchor="middle">
-                  <text x="263" y="38">island · V · n</text>
+                  <text x="263" y="38">island, V, n</text>
                   <text x="306" y="306">reservoir (ground)</text>
                 </g>
               </svg>
@@ -6959,8 +7064,8 @@ html {
           \[
           \begin{aligned}
             p_\varphi
-            &amp;=C\left(\frac{\hbar}{2e}\right)V
-            +C_g\left(\frac{\hbar}{2e}\right)\left(V-V_g\right)\\[3pt]
+            &amp;=\left(C+C_g\right)\left(\frac{\hbar}{2e}\right)V
+            -C_gV_g\frac{\hbar}{2e}\\[3pt]
             &amp;=\left(\frac{\hbar}{2e}\right)
             \underbrace{\left[CV+C_g\left(V-V_g\right)\right]}_{Q_{\rm isl}}
             =\left(\frac{\hbar}{2e}\right)Q_{\rm isl}\\[3pt]
@@ -7216,6 +7321,10 @@ html {
       <figcaption>Nakamura, Pashkin &amp; Tsai, <em>Physica B</em> (2000)</figcaption>
     </figure>
   </div>
+  <figure class="qh-v50-corner-fig">
+    <a href="../Image/tsai-2002-physicac-cpb-squid-probe-sem.png"><img src="../WebP/tsai-2002-physicac-cpb-squid-probe-sem.webp" alt="Micrograph and three-dimensional schematic of the same kind of box, showing that its junction is a two-junction SQUID loop, with the gate and the probe junction marked"></a>
+    <figcaption>Tsai, Nakamura &amp; Pashkin, <em>Physica C</em> (2002)</figcaption>
+  </figure>
 </section>
 <section data-manual-slide data-auto-fit="true" data-title="How does the transmon improve the CPB?" data-slide-class="qh-deriv qh-deriv-tight qh-v32-cpb-answer">
   <p class="qh-prelude-kicker">Visual answer</p>
@@ -7361,27 +7470,24 @@ html {
           <div class="qh-deriv-split">
             <figure class="qh-deriv-fig">
               <svg viewBox="0 0 440 320" role="img"
-                aria-label="Cooper-pair box: a gate voltage V_g drives the island through the gate capacitor C_g; the island connects to the grounded reservoir through a Josephson junction E_J in parallel with its capacitance C"
+                aria-label="Cooper-pair box: an ac gate voltage V_g(t) drives the island through the gate capacitor C_g; the island connects to the grounded reservoir through a Josephson junction E_J in parallel with its capacitance C"
                 fill="none" stroke="#302840" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
                 <rect x="156" y="50" width="219" height="130" rx="12" fill="#efeaf7" stroke="#b9aed0" stroke-width="2" stroke-dasharray="7 6" />
-                <path d="M70 144 V80 H148 M148 56 V104 M164 56 V104 M164 80 H350" />
+                <path d="M84 144 V80 H148 M148 56 V104 M164 56 V104 M164 80 H350" />
                 <path d="M250 80 V172 M250 188 V272 M226 172 H274 M226 188 H274 M350 80 V166 M350 194 V272" />
                 <path d="M336 166 L364 194 M364 166 L336 194" stroke-width="4" />
-                <path d="M70 196 V272 H350 M210 272 V286 M192 286 H228 M199 294 H221 M206 302 H214" />
-                <circle cx="70" cy="170" r="26" />
+                <path d="M84 196 V272 H350 M210 272 V286 M192 286 H228 M199 294 H221 M206 302 H214" />
+                <circle cx="84" cy="170" r="26" />
+                <path d="M68 170 C72 158, 80 158, 84 170 S96 182, 100 170" />
                 <g fill="#302840" stroke="none" font-family="Cambria Math, Times New Roman, serif" font-style="italic" font-size="22" text-anchor="middle">
                   <text x="156" y="134">C<tspan baseline-shift="sub" font-size="72%">g</tspan></text>
-                  <text x="24" y="178">V<tspan baseline-shift="sub" font-size="72%">g</tspan></text>
+                  <text x="53" y="178" text-anchor="end">V<tspan baseline-shift="sub" font-size="72%">g</tspan>(t)</text>
                   <text x="388" y="188">E<tspan baseline-shift="sub" font-size="72%">J</tspan></text>
                   <text x="196" y="188">C</text>
                   <text x="318" y="188">φ</text>
                 </g>
-                <g fill="#302840" stroke="none" font-family="Montserrat, sans-serif" font-size="20" text-anchor="middle">
-                  <text x="70" y="164">+</text>
-                  <text x="70" y="188">−</text>
-                </g>
                 <g fill="#5f4b8b" stroke="none" font-family="Montserrat, sans-serif" font-size="15" font-weight="600" text-anchor="middle">
-                  <text x="263" y="38">island · V · n</text>
+                  <text x="263" y="38">island, V, n</text>
                   <text x="306" y="306">reservoir (ground)</text>
                 </g>
               </svg>
@@ -7396,7 +7502,7 @@ html {
                 \text{Drop }n_g^2 \quad \to \quad
                 \mathcal H(t)=
                 \underbrace{4E_Cn^2-E_J\cos\varphi}_{\mathcal H_0}
-                +\underbrace{\left[-8E_Cn_g(t)n\right]}_{\mathcal H_d(t)}
+                +\underbrace{\left[-8E_C\cdot n_g(t)\cdot n\right]}_{\mathcal H_d(t)}
                 \]
               </div>
               <div>
@@ -7478,8 +7584,8 @@ html {
                 \]
               </div>
               \[
-              =\exp\!\left[-\frac{i}{\hbar}
-              \int_0^t\mathcal H_0\,dt'\right]*|\psi_{\rm lab}(0)\rangle,
+              =\mathcal T\exp\!\left[-\frac{i}{\hbar}
+              \int_0^t\mathcal H_0(s)\,ds\right]*|\psi_{\rm lab}(0)\rangle,
               \]
               <div class="qh-result">
                 \[
@@ -7502,7 +7608,8 @@ html {
               <div class="qh-key">
                 \[
                 \begin{aligned}
-                U_0(t)&amp;=e^{-i\mathcal H_0t/\hbar},
+                U_0(t)&amp;=\mathcal T\exp\!\left[-\frac{i}{\hbar}
+                \int_0^t\mathcal H_0(s)\,ds\right] ,
                 &amp;U_0^\dagger(t)U_0(t)&amp;=\mathbb I,\\
                 |\Theta(t)\rangle&amp;=U_0^\dagger(t)|\psi_{\rm lab}(t)\rangle
                 \end{aligned}
@@ -7605,6 +7712,15 @@ html {
             \end{aligned}
             \]
           </div>
+          <div class="qh-v35-eq">
+            \[
+            \begin{aligned}
+            \mathcal H_I=U_p^\dagger \mathcal H_d U_p
+            =U_p^\dagger \cdot i\hbar\Omega(t)(a^\dagger-a) \cdot  U_p
+            =i\hbar\Omega(t)\cdot (U_p^\dagger a^\dagger  U_p-U_p^\dagger a  U_p)  
+            \end{aligned}
+            \]
+            </div>
 
           <p class="qh-step-label">Choose the harmonic part as the reference</p>
           <div class="qh-v35-eq">
@@ -7618,13 +7734,16 @@ html {
           \]
           </div>
 
-          <p class="qh-step-label">Transform \(a\) and \(a^\dagger\)</p>
+          <p class="qh-step-label">Transform</p>
           <div class="qh-v35-eq">
           \[
           \begin{aligned}
           \frac{d}{dt}\!\left(U_p^\dagger aU_p\right)
-          &amp;=\frac{i}{\hbar}U_p^\dagger[\mathcal H_p,a]U_p
-          =-i\omega_p\left(U_p^\dagger aU_p\right),\\[2pt]
+          &amp;=\left(\frac{i}{\hbar}H_pU_p^\dagger\right) a U_p + U_p^\dagger a \left(-\frac{i}{\hbar} H_p U_p\right)
+          =\frac{i}{\hbar}U_p^\dagger[\mathcal H_p,a]U_p
+          =-i\omega_p\left(U_p^\dagger aU_p\right)\\[2pt]
+          \left(U_p^\dagger aU_p\right)(t)&amp;=\left(U_p^\dagger aU_p\right)(0)\cdot e^{-i\omega_p t}=a\cdot e^{-i\omega_p t}
+          \\[2pt]
           U_p^\dagger aU_p&amp;=ae^{-i\omega_pt},
           \qquad
           U_p^\dagger a^\dagger U_p=a^\dagger e^{+i\omega_pt}
@@ -7693,10 +7812,10 @@ html {
             <div class="qh-v40-ladder qh-step-host">
               <p class="qh-step-label">What that operator does</p>
               \[
-              \left(a^\dagger-a\right)\left|0\right\rangle=a^\dagger\left|0\right\rangle=\left|1\right\rangle
+              \left(a^\dagger+a\right)\left|0\right\rangle=a^\dagger\left|0\right\rangle=\left|1\right\rangle
               \]
               \[
-              \left(a^\dagger-a\right)\left|1\right\rangle=-a\left|1\right\rangle=-\left|0\right\rangle
+              \left(a^\dagger+a\right)\left|1\right\rangle=a\left|1\right\rangle=\left|0\right\rangle
               \]
               <svg viewBox="0 0 300 250" role="img"
                 aria-label="Two energy levels, the ground state at the bottom and the first excited state at the top, with one curved arrow going up and another coming back down"
@@ -7860,27 +7979,27 @@ html {
         
         <section data-manual-slide data-auto-fit="true" data-slide-class="qh-deriv qh-deriv-tight" data-block="rot">
           <p class="qh-prelude-kicker">Control · step 12 of 24</p>
-          <h3>Rotate every rung at \(\omega_d\)</h3>
-          <p>Step 10 rotated two levels. Rotate all of them at once, each by its own rung number:</p>
+          <h3>Rotate at \(\omega_{01}\)</h3>
+          <p>Rotate all of them at once, each by its own rung number:</p>
           \[
-          \hat{U}(t)=e^{i\omega_dt\,a^\dagger a},
+          \hat{U}(t)=e^{i\omega_{01}t\,a^\dagger a},
           \qquad
           \hat{\mathcal{H}}_{\rm rot}=\hat{U}\hat{\mathcal{H}}\hat{U}^\dagger+i\hbar\left(\partial_t\hat{U}\right)\hat{U}^\dagger
           \]
           <div class="qh-deriv-split qh-deriv-halves">
             <div>
-              <p>Diagonal, at \(\omega_d=\omega_{01}\):</p>
+              <p>Diagonal:</p>
               \[
-              E_j-j\hbar\omega_d=\frac{j\left(j-1\right)}{2}\alpha
+              E_j-j\hbar\omega_{01}=\frac{j\left(j-1\right)}{2}\alpha
               \]
             </div>
             <div>
-              <p>For \(s(t)=1\) and \(\phi_d=0\):</p>
+              <p>For \(f(t)=\sin\left(\omega_{01} t+\phi_d \right)\) and \(\phi_d=0\):</p>
               \[
               i\sin(\omega_dt)
               \left(a^\dagger e^{i\omega_dt}-ae^{-i\omega_dt}\right)
               =-\frac{a^\dagger+a}{2}
-              +\frac{a^\dagger e^{2i\omega_dt}+ae^{-2i\omega_dt}}{2}
+              +\underbrace{\frac{a^\dagger e^{2i\omega_dt}+ae^{-2i\omega_dt}}{2}}_{drop}
               \]
             </div>
           </div>
