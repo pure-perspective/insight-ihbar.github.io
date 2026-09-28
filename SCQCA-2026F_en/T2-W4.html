@@ -34,9 +34,9 @@
     <link href="../assets/css/style.css" rel="stylesheet">
     <link href="../assets/css/responsive.css" rel="stylesheet">
 
-    <title>Week 3 Manual Slides · Tunability and the C-Shunted Transmon | QH-2026F v5</title>
+    <title>Week 4 Manual Slides · Noise, Fluxonium, and Protected-Qubit Design | QH-2026F v5</title>
     <meta name="description"
-        content="PHYS598500 Week 3 manual slides on SQUID tunability, the C-shunted transmon, and noise-aware parameter design.">
+        content="PHYS598500 Week 4 manual slides on noise operators, selection rules, superinductors, fluxonium, and protected-qubit design.">
     <meta name="keywords" content="- Quantum Processor
 - Superconducting Qubit
 - Qubit
@@ -6514,9 +6514,1578 @@ html {
         }
     </style>
 
+    <style id="qh-w04-v04-fluxonium">
+        /* Array micrograph: give the maths the width, cap the figure. */
+        .qhs-slide.qh-w04-arrayfig .qh-deriv-split {
+            grid-template-columns: minmax(0, .74fr) minmax(0, 1.26fr);
+            align-items: center;
+        }
 
+        .qhs-slide.qh-w04-arrayfig .qh-deriv-fig img {
+            width: auto !important;
+            max-width: 100% !important;
+            max-height: 300px !important;
+        }
+    </style>
 
+    <style id="qh-w04-v07-noise-sources">
+        /* v07 - the noise-source pages (fabrication, materials, TLS, epitaxial barrier)
+           and the noise chain. Figures get fixed px heights: a width in fr or % grows
+           ~8% after auto-fit has measured the page. The deck-wide 390px image cap is
+           !important, so every size here is too. */
+        /* A grid, not a flex row: the reveal driver freezes every box between a step
+           host and the frame with flex: 0 0 <height>px, which in a flex ROW would pin
+           the maths column's width to its height. Grid items ignore flex. */
+        .qhs-slide.qh-w04-figpage .qh-w04-figrow {
+            display: grid;
+            grid-template-columns: max-content minmax(0, 1fr);
+            align-items: start;
+            justify-content: center;
+            column-gap: 26px;
+            margin: 2px 0 0;
+        }
 
+        .qhs-slide.qh-w04-barrier .qh-w04-figrow,
+        .qhs-slide.qh-w04-drift .qh-w04-figrow {
+            grid-template-columns: max-content;
+        }
+
+        .qhs-slide.qh-w04-epi .qh-w04-figrow {
+            grid-template-columns: repeat(3, max-content);
+        }
+
+        .qhs-slide.qh-w04-figpage .qh-w04-fig {
+            width: min-content;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .qhs-slide.qh-w04-figpage .qh-w04-fig img {
+            display: block;
+            margin: 0 auto;
+            width: auto !important;
+            max-width: none !important;
+            height: var(--qh-fig-h, 470px) !important;
+            max-height: var(--qh-fig-h, 470px) !important;
+            mix-blend-mode: multiply;
+        }
+
+        .qhs-slide.qh-w04-figpage .qh-w04-fig figcaption {
+            margin-top: 6px;
+            color: var(--qhs-muted);
+            text-align: center;
+        }
+
+        .qhs-slide.qh-w04-figpage .qh-w04-side {
+            min-width: 0;
+            align-self: center;
+        }
+
+        .qhs-slide.qh-w04-figpage .qh-w04-side .qh-step-label {
+            margin: 10px 0 0;
+        }
+
+        .qhs-slide.qh-w04-figpage .qhs-content-inner > p.qh-hp-source {
+            margin: 8px 0 0;
+        }
+
+        /* per-page figure heights */
+        .qhs-slide.qh-w04-dolan { --qh-fig-h: 500px; }
+        .qhs-slide.qh-w04-channels { --qh-fig-h: 500px; }
+        .qhs-slide.qh-w04-where { --qh-fig-h: 436px; }
+        .qhs-slide.qh-w04-barrier { --qh-fig-h: 500px; }
+        .qhs-slide.qh-w04-tls { --qh-fig-h: 500px; }
+        .qhs-slide.qh-w04-crossing { --qh-fig-h: 480px; }
+        .qhs-slide.qh-w04-drift { --qh-fig-h: 500px; }
+        .qhs-slide.qh-w04-epi { --qh-fig-h: 420px; }
+        .qhs-slide.qh-w04-types .qh-w04-fig-wide { --qh-fig-h: 384px; }
+        .qhs-slide.qh-w04-types .qh-w04-fig-thumb { --qh-fig-h: 140px; }
+
+        /* p4: the two channels, each with the matrix element and the spectrum it reads */
+        .qhs-slide.qh-w04-channels .qh-w04-chan {
+            margin: 0 0 16px;
+            padding: 2px 16px 14px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .qhs-slide.qh-w04-channels .qh-w04-chan-t1 {
+            border-left: 4px solid #f0c040;
+            background: #fef9e7;
+        }
+
+        .qhs-slide.qh-w04-channels .qh-w04-chan-tphi {
+            border-left: 4px solid #b9aed0;
+            background: #f6f3fa;
+        }
+
+        .qhs-slide .qh-w04-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px 8px;
+        }
+
+        .qhs-slide .qh-w04-chip {
+            display: inline-block;
+            padding: 4px 12px;
+            border: 1px solid var(--qhs-line);
+            border-radius: 999px;
+            background: #fff;
+            color: var(--qhs-ink);
+            font-size: 17px;
+            line-height: 1.25;
+            white-space: nowrap;
+        }
+
+        /* p5: the MRS schematic is portrait, so at page height it would be 356 px wide and
+           its labels unreadable. It runs flush with the slide's top and bottom edges on
+           the right instead (the W03 v50 p12 recipe: auto-fit off, body and frame static,
+           figure placed against the slide, footer shortened to end where it begins). */
+        .qhs-slide.qh-w04-where {
+            --qh-bleed-w: 588px;        /* 810 px tall at the scan's 1064 : 1466 */
+        }
+
+        .qhs-slide.qh-w04-where .qhs-slide-body,
+        .qhs-slide.qh-w04-where .qhs-content-inner {
+            position: static;
+            overflow: visible;
+        }
+
+        .qhs-slide.qh-w04-where .qh-w04-figrow,
+        .qhs-slide.qh-w04-where .qhs-content-inner > p.qh-hp-source {
+            width: 760px;
+        }
+
+        .qhs-slide.qh-w04-where .qh-w04-figrow {
+            justify-content: start;
+        }
+
+        .qhs-slide.qh-w04-where .qh-w04-bleed {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 3;
+            width: var(--qh-bleed-w);
+            margin: 0;
+        }
+
+        .qhs-slide.qh-w04-where .qh-w04-bleed img {
+            display: block;
+            width: 100% !important;
+            height: 100% !important;
+            max-width: none !important;
+            max-height: none !important;
+            margin: 0;
+            object-fit: contain;
+            object-position: right center;
+            mix-blend-mode: multiply;
+        }
+
+        .qhs-slide.qh-w04-where .qhs-slide-foot {
+            margin-right: calc(var(--qh-bleed-w) + 24px);
+        }
+
+        /* p9: the data figure on top, the schematic and the two coupling operators below */
+        .qhs-slide.qh-w04-types .qh-w04-typerow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 22px;
+            margin-top: 8px;
+        }
+
+        .qhs-slide.qh-w04-types .qh-w04-typerow .qh-w04-fig {
+            margin: 0;
+        }
+
+        .qhs-slide.qh-w04-types .qh-w04-typerow .qh-key {
+            margin: 0;
+        }
+
+        /* p11: three figures of one paper on one row */
+        .qhs-slide.qh-w04-epi .qh-w04-figrow {
+            gap: 28px;
+        }
+
+        .qhs-slide.qh-w04-epi .qh-result {
+            width: max-content;
+            margin: 12px auto 0;
+        }
+
+        /* noise chain overview: five lines that stand for the whole section, set larger
+           than the 25px derivation maths and spaced out down the page */
+        .qhs-slide.qh-w04-chain0 .qhs-content-inner > mjx-container[display="true"] {
+            margin: 22px 0 !important;
+            font-size: 34px !important;
+        }
+
+        /* noise chain: the summary map sits centred in its box */
+        .qhs-slide.qh-w04-chainmap .qh-result {
+            width: max-content;
+            margin: 6px auto 10px;
+            padding: 6px 48px;
+        }
+
+        .qhs-slide.qh-w04-master .qh-deriv-grid {
+            margin-top: 2px;
+        }
+        /* v07b (2026-09-27): single-figure pages. The picture is centred and fills the
+           slide from under the title down to the footer rule (auto-fit off, body and frame
+           static, figure placed against the slide); the reference sits in the footer. */
+        .qhs-slide.qh-w04-full {
+            --qh-full-top: 174px;       /* the title bar ends at 171 px */
+        }
+
+        .qhs-slide.qh-w04-full .qhs-slide-body,
+        .qhs-slide.qh-w04-full .qhs-content-inner {
+            position: static;
+            overflow: visible;
+        }
+
+        .qhs-slide.qh-w04-full .qh-w04-fullfig {
+            position: absolute;
+            top: var(--qh-full-top);
+            bottom: 56px;               /* the footer rule is at 760 px */
+            left: 68px;
+            right: 68px;
+            z-index: 2;
+            margin: 0;
+        }
+
+        .qhs-slide.qh-w04-full .qh-w04-fullfig img {
+            display: block;
+            width: 100% !important;
+            height: 100% !important;
+            max-width: none !important;
+            max-height: none !important;
+            margin: 0;
+            object-fit: contain;
+            object-position: center;
+            mix-blend-mode: multiply;
+        }
+
+        .qhs-slide.qh-w04-full .qhs-content-inner > p.qh-hp-source {
+            position: absolute;
+            left: 68px;
+            bottom: 17px;
+            width: auto;
+            max-width: 900px;
+            margin: 0;
+        }
+
+        /* p14: the npj figure takes the space left of the full-height MRS picture */
+        .qhs-slide.qh-w04-where.qh-w04-full .qh-w04-fullfig {
+            right: calc(var(--qh-bleed-w) + 24px);
+        }
+
+        .qhs-slide.qh-w04-where.qh-w04-full .qhs-content-inner > p.qh-hp-source {
+            max-width: 560px;
+        }
+
+        /* p13: plain headings for the two channel lists */
+        .qhs-slide.qh-w04-channels .qh-w04-chan-head {
+            margin: 10px 0 10px;
+            color: var(--qhs-ink);
+            font-size: 22px;
+            font-weight: 700;
+        }
+
+        /* p18: data figure larger, the schematic beside the reference */
+        .qhs-slide.qh-w04-types.qh-w04-types2 .qh-w04-fig-wide { --qh-fig-h: 408px; }
+        .qhs-slide.qh-w04-types.qh-w04-types2 .qh-w04-fig-thumb { --qh-fig-h: 130px; }
+
+        .qhs-slide.qh-w04-types.qh-w04-types2 .qh-w04-typerow {
+            justify-content: flex-start;
+            gap: 18px;
+        }
+
+        .qhs-slide.qh-w04-types.qh-w04-types2 .qh-w04-typerow p.qh-hp-source {
+            margin: 0;
+        }
+
+        /* p2-p5: no step-by-step equations. The driver only turns into a step what
+           `is-pending` actually hides, so pinning pending elements visible makes the
+           page static (it then turns on the first click). */
+        .qhs-slide.qh-w04-noreveal .qhs-content-inner .qh-reveal-step.is-pending {
+            display: block !important;
+        }
+        /* p2 (Josephson junction): the three display equations in the side column kept
+           MathJax's default 17px margins and ran 34px past the grid, over the reference. */
+        .qhs-slide.qh-jj-overview-slide .qh-jj-side mjx-container[display="true"] {
+            margin: 8px 0 !important;
+        }
+        /* the Krantz page: Bloch-sphere strip on top, T1 trace and the Ramsey animation below,
+           together filling the same box as the single-figure pages (290 + 12 + 278 = 580 px) */
+        .qhs-slide.qh-w04-krantz .qh-w04-krantz-box {
+            position: absolute;
+            top: var(--qh-full-top);
+            bottom: 56px;
+            left: 68px;
+            right: 68px;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .qhs-slide.qh-w04-krantz .qh-w04-krantz-box figure {
+            margin: 0;
+        }
+
+        .qhs-slide.qh-w04-krantz .qh-w04-kr-row {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .qhs-slide.qh-w04-krantz .qh-w04-krantz-box img {
+            display: block;
+            width: auto !important;
+            max-width: none !important;
+            height: 278px !important;
+            max-height: none !important;
+            mix-blend-mode: multiply;
+        }
+
+        .qhs-slide.qh-w04-krantz .qh-w04-kr-bloch img {
+            height: 290px !important;
+        }
+        /* p26: the derivation on the left, Krantz Fig. 4(c) on the right. The picture column
+           has a fixed px width so it does not grow after auto-fit has measured the page. */
+        .qhs-slide.qh-w04-chain-fig .qh-w04-chainfig-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 500px;
+            column-gap: 26px;
+            align-items: start;
+        }
+
+        .qhs-slide.qh-w04-chain-fig .qh-w04-chainfig {
+            margin: 0;
+            text-align: center;
+        }
+
+        .qhs-slide.qh-w04-chain-fig .qh-w04-chainfig img {
+            display: block;
+            width: 500px !important;
+            height: auto !important;
+            max-width: none !important;
+            max-height: none !important;
+            margin: 0 auto;
+            mix-blend-mode: multiply;
+        }
+
+        .qhs-slide.qh-w04-chain-fig .qh-w04-chainfig figcaption {
+            margin-top: 4px;
+            text-align: center;
+        }
+    </style>
+
+    <style id="qh-w04-v09-potential">
+        /* v09: two slider pages. The formula and sliders sit on top, the three potentials
+           (Josephson term, inductive term, sum) below on one fixed axis per page. */
+        .qhs-slide.qh-w04-pot .qh-pot-top {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 0.92fr);
+            gap: 26px;
+            align-items: center;
+        }
+
+        .qhs-slide.qh-w04-pot .qh-pot-eq {
+            margin: 0;
+        }
+
+        .qhs-slide.qh-w04-pot .qh-pot-controls {
+            display: grid;
+            gap: 4px;
+        }
+
+        .qhs-slide.qh-w04-pot .qh-pot-ctl {
+            display: grid;
+            grid-template-columns: 64px minmax(0, 1fr) 118px;
+            align-items: center;
+            gap: 12px;
+            margin: 0;
+            font-size: 22px;
+            font-weight: 400;
+        }
+
+        .qhs-slide.qh-w04-pot .qh-pot-ctl input[type="range"] {
+            width: 100%;
+            height: 24px;
+            margin: 0;
+            accent-color: var(--qhs-purple);
+            cursor: pointer;
+        }
+
+        .qhs-slide.qh-w04-pot .qh-pot-val {
+            color: var(--qhs-ink);
+            font-size: 19px;
+            font-variant-numeric: tabular-nums;
+            text-align: right;
+            white-space: nowrap;
+        }
+
+        .qhs-slide.qh-w04-pot .qh-pot-readout {
+            color: var(--qhs-muted);
+            font-size: 18px;
+            text-align: right;
+        }
+
+        .qhs-slide.qh-w04-pot .qh-pot-plots {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 18px;
+            margin-top: 12px;
+        }
+
+        .qhs-slide.qh-w04-pot .qh-pot-panel {
+            min-width: 0;
+        }
+
+        .qhs-slide.qh-w04-pot .qh-pot-head {
+            margin-bottom: 2px;
+            color: var(--qhs-ink);
+            font-size: 22px;
+            text-align: center;
+        }
+
+        .qhs-slide.qh-w04-pot .qh-pot-plot {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        .qhs-slide.qh-w04-pot .qh-pot-plot text {
+            fill: #6d6974;
+            font-size: 14px;
+        }
+
+        .qhs-slide.qh-w04-pot .qhs-content-inner > p.qh-hp-source {
+            margin: 8px 0 0;
+        }
+    </style>
+
+    <style id="qh-w04-v11-papers">
+        /* v11: equation-led paper inserts placed between the two interactive potential pages. */
+        .qh-lit-title-scan,
+        .qh-lit-figure {
+            margin: 0;
+        }
+
+        .qhs-slide.qh-w04-paper .qh-lit-title-scan {
+            display: grid;
+            place-items: center;
+            min-height: 0;
+            overflow: hidden;
+        }
+
+        .qhs-slide.qh-w04-paper .qh-lit-title-scan img {
+            display: block;
+            width: 100% !important;
+            height: 252px !important;
+            max-width: none !important;
+            max-height: none !important;
+            object-fit: contain;
+            mix-blend-mode: multiply;
+        }
+
+        .qhs-slide.qh-w04-paper .qh-lit-eq-pair {
+            display: grid;
+            grid-template-columns: minmax(0, 1.22fr) minmax(0, 0.78fr);
+            gap: 24px;
+            align-items: stretch;
+            margin-top: 12px;
+        }
+
+        .qhs-slide.qh-w04-paper .qh-lit-eq-panel {
+            display: grid;
+            align-content: center;
+            min-width: 0;
+            padding: 12px 18px;
+            border-left: 4px solid var(--qhs-purple);
+            background: #f5f2f8;
+        }
+
+        .qhs-slide.qh-w04-paper .qh-lit-eq-panel mjx-container[display="true"] {
+            margin: 5px 0;
+        }
+
+        .qhs-slide.qh-w04-paper .qh-lit-regime {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px;
+        }
+
+        .qhs-slide.qh-w04-paper .qh-lit-regime > div {
+            display: grid;
+            place-items: center;
+            min-height: 76px;
+            padding: 8px 10px;
+            border: 1px solid #d8d1e2;
+            border-radius: 8px;
+            background: #fff;
+        }
+
+        .qhs-slide.qh-w04-paper .qh-lit-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.48fr) minmax(300px, 0.52fr);
+            gap: 28px;
+            align-items: center;
+        }
+
+        .qhs-slide.qh-w04-paper .qh-lit-grid.qh-lit-grid-balanced {
+            grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+        }
+
+        .qhs-slide.qh-w04-paper .qh-lit-grid.qh-lit-grid-portrait {
+            grid-template-columns: minmax(420px, 0.78fr) minmax(0, 1.22fr);
+        }
+
+        .qhs-slide.qh-w04-paper .qh-lit-figure img {
+            display: block;
+            width: 100% !important;
+            height: 420px !important;
+            max-width: none !important;
+            max-height: none !important;
+            object-fit: contain;
+            mix-blend-mode: multiply;
+        }
+
+        .qhs-slide.qh-w04-paper .qh-lit-grid-portrait .qh-lit-figure img {
+            height: 455px !important;
+        }
+
+        .qhs-slide.qh-w04-paper .qh-lit-figure figcaption {
+            margin-top: 4px;
+            color: var(--qhs-muted);
+            font-size: 14px;
+            line-height: 1.25;
+            text-align: center;
+        }
+
+        .qhs-slide.qh-w04-paper .qh-lit-math {
+            display: grid;
+            gap: 8px;
+            align-content: center;
+        }
+
+        .qhs-slide.qh-w04-paper .qh-lit-math > div {
+            padding: 9px 12px;
+            border-left: 4px solid #8b6aad;
+            background: #f6f3f9;
+        }
+
+        .qhs-slide.qh-w04-paper .qh-lit-math mjx-container[display="true"] {
+            margin: 4px 0;
+        }
+
+        .qhs-slide.qh-w04-paper .qh-lit-arrow {
+            color: var(--qhs-purple-deep);
+            font-size: 31px;
+            font-weight: 800;
+            text-align: center;
+        }
+
+        .qhs-slide.qh-w04-paper .qh-lit-metrics {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .qhs-slide.qh-w04-paper .qh-lit-metric {
+            display: grid;
+            place-items: center;
+            min-height: 78px;
+            padding: 8px 10px;
+            border-radius: 8px;
+            background: #302840;
+            color: #fff;
+            font-size: 22px;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .qhs-slide.qh-w04-paper .qh-lit-metric mjx-container {
+            color: inherit;
+        }
+
+        .qhs-slide.qh-w04-paper .qh-lit-source {
+            margin: 8px 0 0;
+            color: #6f6875;
+            font-size: 13px;
+            line-height: 1.25;
+            text-align: right;
+        }
+
+        .qhs-slide.qh-w04-paper .qh-lit-source a {
+            font-weight: 700;
+        }
+
+        .qhs-slide.qh-w04-paper .qh-lit-short {
+            margin: 3px 0;
+            color: var(--qhs-muted);
+            font-size: 17px;
+            line-height: 1.3;
+            text-align: center;
+        }
+
+        .qhs-slide.qh-w04-matrix-only {
+            grid-template-rows: minmax(0, 1fr);
+            background: #fff;
+        }
+
+        .qhs-slide.qh-w04-matrix-only .qhs-slide-head,
+        .qhs-slide.qh-w04-matrix-only .qhs-slide-foot,
+        .qhs-slide.qh-w04-matrix-only .qhs-title-host {
+            display: none;
+        }
+
+        .qhs-slide.qh-w04-matrix-only .qhs-slide-body {
+            display: grid;
+            min-height: 0;
+            padding: 24px 30px;
+            place-items: center;
+            overflow: hidden;
+        }
+
+        .qhs-slide.qh-w04-matrix-only .qhs-content-inner {
+            display: grid;
+            width: 100%;
+            height: 100%;
+            min-height: 0;
+            place-items: center;
+        }
+
+        .qhs-slide.qh-w04-matrix-only .qh-w04-matrix-stage {
+            display: grid;
+            width: 100%;
+            align-content: center;
+            justify-items: center;
+            gap: 18px;
+            color: #111;
+            font-size: 22px;
+            line-height: 1.1;
+        }
+
+        .qhs-slide.qh-w04-matrix-only .qh-w04-matrix-stage mjx-container[display="true"] {
+            margin: 0;
+        }
+    </style>
+
+    <style id="qh-w04-v17-layout">
+        /* v17 (2026-09-28): layout only. No sentence, equation or picture was changed;
+           pictures take the room their page leaves them. The paper pages (46-51) lose
+           the large right-aligned "... · DOI" line and use the deck's small reference in
+           the footer band, like the single-figure pages. Sizes are slide px: the frame
+           under the title runs from 174 px to the footer rule at 760 px. */
+
+        /* ---- shared: reference in the footer band, bottom left ---- */
+        .qhs-slide.qh-v17-footref .qhs-slide-body,
+        .qhs-slide.qh-v17-footref .qhs-content-inner {
+            position: static;
+            overflow: visible;
+        }
+
+        .qhs-slide.qh-v17-footref .qhs-content-inner > p.qh-hp-source {
+            position: absolute;
+            left: 68px;
+            bottom: 17px;
+            width: auto;
+            max-width: 900px;
+            margin: 0;
+            text-align: left;
+        }
+
+        /* ---- p2 Josephson junction: the drawing was width-limited in a 692 px column
+           and sat at the top with 190 px empty under it ---- */
+        .qhs-slide.qh-jj-overview-slide .qh-jj-layout {
+            grid-template-columns: minmax(0, 1fr) 400px;
+            align-items: center;
+        }
+
+        .qhs-slide.qh-jj-overview-slide .qh-jj-main-figure img {
+            width: 100% !important;
+            height: auto !important;
+            max-width: 100% !important;
+            max-height: none !important;
+        }
+
+        /* ---- p5 asymmetric SQUID (full scale): Krantz Fig. 2 fills the height ---- */
+        .qhs-slide.qh-w03-asymmetric .qh-deriv-split {
+            grid-template-columns: 580px minmax(0, 1fr);
+        }
+
+        .qhs-slide.qh-w03-asymmetric .qh-deriv-fig img {
+            width: 100% !important;
+            height: auto !important;
+            max-width: 100% !important;
+            max-height: none !important;
+        }
+
+        /* ---- p6 flux bias: the SEM was width-limited while the Xmon column had slack ---- */
+        .qhs-slide.qh-w03-flux-merge .qh-flux-merge-grid {
+            grid-template-columns: 684px 676px;
+        }
+
+        /* ---- p8, p9 hardware pairs (full scale) ---- */
+        .qhs-slide.qh-v17-hw1 .qh-v31-grid {
+            grid-template-columns: minmax(0, 1.307fr) minmax(0, 1.268fr);
+        }
+
+        /* ---- p14 two channels: figure from the title to the footer rule ---- */
+        .qhs-slide.qh-w04-channels {
+            --qh-fig-h: 580px;
+        }
+
+        .qhs-slide.qh-w04-channels .qh-w04-figrow {
+            margin-top: 3px;
+        }
+
+        /* ---- p17 AlOx barrier, p21 T1 drift: one picture, as large as the frame ---- */
+        .qhs-slide.qh-w04-barrier .qh-w04-figrow,
+        .qhs-slide.qh-w04-drift .qh-w04-figrow {
+            position: absolute;
+            top: 174px;
+            bottom: 56px;
+            left: 68px;
+            right: 68px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+        }
+
+        .qhs-slide.qh-w04-barrier .qh-w04-fig,
+        .qhs-slide.qh-w04-drift .qh-w04-fig {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+        }
+
+        .qhs-slide.qh-w04-barrier .qh-w04-fig img,
+        .qhs-slide.qh-w04-drift .qh-w04-fig img {
+            flex: 1 1 0%;
+            min-height: 0;
+            width: 100% !important;
+            height: auto !important;
+            max-width: none !important;
+            max-height: none !important;
+            object-fit: contain;
+        }
+
+        .qhs-slide.qh-w04-drift .qh-w04-fig figcaption {
+            flex: 0 0 auto;
+            margin-top: 4px;
+        }
+
+        /* ---- p22 epitaxial barrier: the three figures ran 530 px past the slide in one
+           row. Fig. 1 over Fig. 2 on the left, the spectroscopy (Fig. 3) full height on
+           the right ---- */
+        .qhs-slide.qh-w04-epi .qh-w04-figrow.qh-w04-epi-row {
+            position: absolute;
+            top: 174px;
+            bottom: 56px;
+            left: 68px;
+            right: 68px;
+            display: grid;
+            grid-template-columns: var(--qh-v17-epi-w, 447px) auto;
+            grid-template-rows: auto auto;
+            grid-template-areas: "f1 f3" "f2 f3";
+            column-gap: 44px;
+            row-gap: 12px;
+            align-content: center;
+            justify-content: center;
+            margin: 0;
+        }
+
+        .qhs-slide.qh-w04-epi .qh-w04-epi-row > figure {
+            width: auto;
+            margin: 0;
+        }
+
+        .qhs-slide.qh-w04-epi .qh-w04-epi-row > figure:nth-child(1) { grid-area: f1; }
+        .qhs-slide.qh-w04-epi .qh-w04-epi-row > figure:nth-child(2) { grid-area: f2; }
+        .qhs-slide.qh-w04-epi .qh-w04-epi-row > figure:nth-child(3) { grid-area: f3; align-self: center; }
+
+        .qhs-slide.qh-w04-epi .qh-w04-epi-row > figure:nth-child(1) img,
+        .qhs-slide.qh-w04-epi .qh-w04-epi-row > figure:nth-child(2) img {
+            width: var(--qh-v17-epi-w, 447px) !important;
+            height: auto !important;
+            max-width: none !important;
+            max-height: none !important;
+        }
+
+        .qhs-slide.qh-w04-epi .qh-w04-epi-row > figure:nth-child(3) img {
+            width: auto !important;
+            height: var(--qh-v17-epi-h, 552px) !important;
+            max-width: none !important;
+            max-height: none !important;
+        }
+
+        .qhs-slide.qh-w04-epi .qh-w04-epi-row figcaption {
+            margin-top: 4px;
+        }
+
+        /* ---- p24: display maths 6 px apart instead of 17 px, so the page is shrunk less
+           (it was the smallest page in the deck, auto-fit 0.72) ---- */
+        .qhs-slide.qh-v17-knobs .qhs-content-inner > mjx-container[display="true"] {
+            margin: 6px 0 !important;
+        }
+
+        .qhs-slide.qh-v17-knobs .qh-key mjx-container[display="true"] {
+            margin: 4px 0 !important;
+        }
+
+        /* ---- p25 (full scale): the Krantz picture column 500 -> 528 px ---- */
+        .qhs-slide.qh-w04-chain-fig .qh-w04-chainfig-grid {
+            grid-template-columns: minmax(0, 1fr) 528px;
+        }
+
+        .qhs-slide.qh-w04-chain-fig .qh-w04-chainfig img {
+            width: 528px !important;
+        }
+
+        /* ---- p37 fluxonium circuit (full scale): the micrograph was capped at 361 px ---- */
+        .qhs-slide.qh-v17-fluxfig .two-col {
+            grid-template-columns: 644px minmax(0, 1fr);
+        }
+
+        .qhs-slide.qh-v17-fluxfig .visual img {
+            width: 100% !important;
+            height: auto !important;
+            max-width: 100% !important;
+            max-height: none !important;
+        }
+
+        /* ---- p46-p51 paper pages ---- */
+        .qhs-slide.qh-w04-paper .qhs-slide-title {
+            text-wrap: balance;
+        }
+
+        /* p46, p49: title scan larger; the regime cells get half the row so no
+           formula runs out of its box */
+        .qhs-slide.qh-v17-card .qh-lit-eq-pair {
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        }
+
+        .qhs-slide.qh-v17-card.qh-w04-paper-lin .qh-lit-title-scan img {
+            height: 404px !important;
+        }
+
+        .qhs-slide.qh-v17-card.qh-w04-paper-nguyen .qh-lit-title-scan img {
+            height: 309px !important;
+        }
+
+        /* p47, p48, p50: the wide paper figure across the page, the formula boxes in one
+           row under it (side by side the figure was ~690 px wide and the boxes overflowed) */
+        .qhs-slide.qh-v17-stack .qh-lit-grid,
+        .qhs-slide.qh-v17-stack .qh-lit-grid.qh-lit-grid-balanced {
+            grid-template-columns: minmax(0, 1fr);
+            gap: 10px;
+            align-items: start;
+        }
+
+        .qhs-slide.qh-v17-stack .qh-lit-figure img {
+            height: var(--qh-v17-fig-h, 400px) !important;
+        }
+
+        .qhs-slide.qh-v17-lin-fig1 { --qh-v17-fig-h: 404px; }
+        .qhs-slide.qh-v17-lin-fig3 { --qh-v17-fig-h: 396px; }
+        .qhs-slide.qh-v17-ng-fig1 { --qh-v17-fig-h: 428px; }
+
+        .qhs-slide.qh-v17-stack .qh-lit-math {
+            grid-template-columns: repeat(3, auto);
+            justify-content: center;
+            align-items: stretch;
+            gap: 12px;
+        }
+
+        .qhs-slide.qh-v17-stack .qh-lit-math > div {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .qhs-slide.qh-v17-stack .qh-lit-math > .qh-lit-metrics {
+            display: grid;
+            align-content: center;
+            margin-top: 0;
+        }
+
+        /* p51: the portrait figure at full column height beside the formulas */
+        .qhs-slide.qh-v17-side .qh-lit-grid.qh-lit-grid-portrait {
+            grid-template-columns: auto minmax(0, 1fr);
+            gap: 28px;
+        }
+
+        .qhs-slide.qh-v17-side .qh-lit-grid-portrait .qh-lit-figure img {
+            width: auto !important;
+            height: 494px !important;
+        }
+    </style>
+
+    <style id="qh-w04-v18-layout">
+        /* v18 (2026-09-28): Q4 as one page, and the 2018 PRL / 2019 PRX pages rebuilt from
+           20260927-W4課程.docx (formulas first, few words). Paper pages keep the v17
+           recipes: qh-v17-footref (reference in the footer band), qh-v17-stack (figure
+           over one row of formula boxes), qh-v17-side (portrait figure beside them). */
+
+        /* ---- Q4: the two targets on top, the three mechanisms side by side ---- */
+        .qhs-slide.qh-v18-mech .qh-v18-targets {
+            width: max-content;
+            margin: 4px auto 26px;
+            padding: 0 44px;
+        }
+
+        .qhs-slide.qh-v18-mech .qh-v18-mech-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 22px;
+            align-items: stretch;
+        }
+
+        .qhs-slide.qh-v18-mech .qh-v18-mech-grid > div {
+            min-width: 0;
+            padding: 8px 14px 12px;
+            border-top: 4px solid var(--qhs-purple);
+            border-radius: 0 0 8px 8px;
+            background: #f7f4fa;
+        }
+
+        .qhs-slide.qh-v18-mech .qh-v18-mech-grid .qh-step-label {
+            margin: 2px 0 0;
+        }
+
+        .qhs-slide.qh-v18-mech .qh-v18-mech-grid mjx-container[display="true"] {
+            margin: 15px 0 !important;
+        }
+
+        .qhs-slide.qh-v18-mech .qh-v18-mech-grid .qh-result {
+            margin: 16px 0 10px;
+            padding-block: 2px;
+        }
+
+        .qhs-slide .qh-v18-note {
+            color: var(--qhs-muted);
+            font-size: 17px;
+            line-height: 1.35;
+            text-align: center;
+        }
+
+        /* ---- title cards (2018, 2019): scan across the page, one boxed statement ---- */
+        .qhs-slide.qh-v18-card .qhs-content-inner {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .qhs-slide.qh-v18-card.qh-w04-paper-lin .qh-lit-title-scan img {
+            height: var(--qh-v18-scan-h, 406px) !important;
+        }
+
+        .qhs-slide.qh-v18-card.qh-w04-paper-nguyen .qh-lit-title-scan img {
+            height: var(--qh-v18-scan-h, 309px) !important;
+        }
+
+        .qhs-slide.qh-v18-card .qh-v18-card-eq {
+            width: max-content;
+            margin: 18px auto 0;
+            padding: 2px 48px;
+        }
+
+        .qhs-slide.qh-v18-card .qh-v18-card-note {
+            margin-top: 10px;
+            color: var(--qhs-muted);
+            font-size: 20px;
+            text-align: center;
+        }
+
+        /* ---- stacked pages: as many boxes as the page has, in one row ---- */
+        .qhs-slide.qh-v18-row .qh-lit-math {
+            grid-template-columns: none;
+            grid-auto-flow: column;
+            grid-auto-columns: auto;
+        }
+
+        .qhs-slide.qh-v18-p2 { --qh-v17-fig-h: 448px; }
+        .qhs-slide.qh-v18-p4 { --qh-v17-fig-h: 430px; }
+        .qhs-slide.qh-v18-p6 { --qh-v17-fig-h: 436px; }
+
+        /* ---- 2019 sweet-spot page: the portrait figure at the full frame height ---- */
+        .qhs-slide.qh-v18-p7.qh-v17-side .qh-lit-grid-portrait .qh-lit-figure img {
+            height: var(--qh-v18-fig-h, 578px) !important;
+        }
+
+        /* ---- two-column derivation (2018 T1 page) ---- */
+        .qhs-slide.qh-v18-p3 .qh-deriv-split {
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+            gap: 44px;
+            align-items: start;
+            margin-top: 4px;
+        }
+
+        .qhs-slide.qh-v18-p3 .qh-step-label,
+        .qhs-slide.qh-v18-p8 .qh-step-label {
+            margin: 12px 0 0;
+        }
+
+        /* ---- comparison table ---- */
+        .qhs-slide.qh-v18-table table.qh-v18-compare {
+            margin: 4px 0 0;
+            table-layout: fixed;
+        }
+
+        .qhs-slide.qh-v18-table table.qh-v18-compare th:first-child,
+        .qhs-slide.qh-v18-table table.qh-v18-compare td:first-child {
+            width: 27%;
+        }
+
+        .qhs-slide.qh-v18-table table.qh-v18-compare td:first-child {
+            color: var(--qhs-purple-deep, #302840);
+            font-weight: 700;
+        }
+    </style>
+
+    <style id="qh-w04-v18-p49-merge">
+        /* 2026-09-28 (v18, in place): p44 onward is static (qh-w04-noreveal). p49 takes
+           the formulas of the former p50 under its two sweet-spot boxes, beside Fig. 4(a). */
+        .qhs-slide.qh-v18-p7 .qh-lit-math {
+            gap: 8px;
+        }
+
+        .qhs-slide.qh-v18-p7 .qh-lit-math > .qh-v18-t1 {
+            padding: 4px 0 0;
+            border-left: 0;
+            background: none;
+        }
+
+        .qhs-slide.qh-v18-p7 .qh-v18-t1 .qh-v18-sub {
+            margin: 0 0 2px;
+            color: var(--qhs-ink);
+            font-size: 21px;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .qhs-slide.qh-v18-p7 .qh-v18-t1 .qh-step-label {
+            margin: 2px 0 0;
+            text-align: center;
+        }
+
+        .qhs-slide.qh-v18-p7 .qh-v18-t1 mjx-container[display="true"] {
+            margin: 4px 0 !important;
+        }
+
+        .qhs-slide.qh-v18-p7 .qh-v18-t1 .qh-result,
+        .qhs-slide.qh-v18-p7 .qh-v18-t1 .qh-key {
+            margin: 4px 0;
+            padding-block: 0;
+        }
+
+        /* the column now holds seven formulas: display maths at 23 px (the size auto-fitted
+           pages show), labels 19 px, tighter boxes, so it stays above the footer rule */
+        .qhs-slide.qh-v18-p7 .qh-lit-math mjx-container[display="true"] {
+            font-size: 23px !important;
+        }
+
+        .qhs-slide.qh-v18-p7:not(.qhs-cover) .qhs-content-inner .qh-lit-math p.qh-lit-short:not(.qh-hp-source):not(.qh-deriv-foot):not(.source):not(.qh-merge-source):not(.qh-length-note):not(.qh-zoo-source):not(.qh-isotope-source) {
+            margin: 2px 0;
+            font-size: 19px !important;
+            line-height: 1.3;
+        }
+
+        .qhs-slide.qh-v18-p7 .qh-lit-math > div {
+            padding: 7px 12px;
+        }
+
+        /* the key box is styled only on qh-deriv pages; keep the look it had on p50 */
+        .qhs-slide.qh-v18-p7 .qh-v18-t1 .qh-key {
+            border-left: 4px solid #b9aed0;
+            border-radius: 0 8px 8px 0;
+            background: #f6f3fa;
+            padding-inline: 18px;
+        }
+    </style>
+
+    <style id="qh-w04-v18-fgr-u">
+        /* Fermi's golden rule through the time-evolution operator (copy of the c0/c1 page):
+           propagator and amplitude on the left, probability and rate on the right. */
+        .qhs-slide.qh-v18-fgr-u .qh-deriv-split {
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+            gap: 44px;
+            align-items: start;
+            margin-top: 4px;
+        }
+
+        .qhs-slide.qh-v18-fgr-u .qh-deriv-split > div > p:first-child {
+            margin-top: 0;
+        }
+    </style>
+
+    <style id="qh-w04-v20">
+        /* v20 (2026-09-28)
+           p11: Bloch strip on top, the T1 trace and the Ramsey animation below; the lower
+           two are reveal steps (the driver now treats .qh-reveal-item like an equation).
+           Fixed grid rows, so hiding a lower figure never re-centres the strip. */
+        .qhs-slide.qh-w04-krantz .qh-w04-krantz-box.qh-v20-krantz-grid {
+            display: grid;
+            grid-template-columns: auto auto;
+            grid-template-rows: 290px 278px;
+            grid-template-areas: "bloch bloch" "t1 ramsey";
+            justify-content: center;
+            align-content: center;
+            justify-items: center;
+            align-items: center;
+            column-gap: 24px;
+            row-gap: 12px;
+        }
+
+        .qhs-slide.qh-w04-krantz .qh-v20-krantz-grid > .qh-w04-kr-bloch { grid-area: bloch; }
+        .qhs-slide.qh-w04-krantz .qh-v20-krantz-grid > .qh-v20-kr-t1 { grid-area: t1; }
+        .qhs-slide.qh-w04-krantz .qh-v20-krantz-grid > .qh-v20-kr-ramsey { grid-area: ramsey; }
+
+        /* p27: plain-language cards, simple maths and a worked example each; static page */
+        .qhs-slide.qh-v20-mech .qh-v18-mech-grid mjx-container[display="true"] {
+            margin: 8px 0 !important;
+        }
+
+        .qhs-slide.qh-v20-mech .qh-v18-mech-grid .qh-result {
+            margin: 8px 0 6px;
+        }
+
+        .qhs-slide.qh-v20-mech .qh-v20-ex {
+            margin: 6px 0 2px;
+            color: var(--qhs-ink);
+            font-size: 18px;
+            line-height: 1.35;
+            text-align: center;
+        }
+
+        .qhs-slide.qh-v20-mech .qh-v18-note {
+            margin-top: 6px;
+        }
+    </style>
+
+    <style id="qh-w04-v20-tf-dolan">
+        /* two pages between 28 and 29, no titles. The first: Lin's transmon-vs-fluxonium
+           slide beside the two circuits, both 503 px tall so together they span the frame;
+           the reference is the URL itself at a readable size. The second: the Dolan-bridge
+           array schematic from under the header to the footer rule. */
+        .qhs-slide.qh-v20-tf .qhs-slide-body,
+        .qhs-slide.qh-v20-tf .qhs-content-inner,
+        .qhs-slide.qh-v20-dolan .qhs-slide-body,
+        .qhs-slide.qh-v20-dolan .qhs-content-inner {
+            position: static;
+            overflow: visible;
+        }
+
+        .qhs-slide.qh-v20-tf .qh-v20-tf-row {
+            position: absolute;
+            top: 94px;
+            bottom: 54px;
+            left: 68px;
+            right: 68px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+            margin: 0;
+        }
+
+        .qhs-slide.qh-v20-tf .qh-v20-tf-row figure {
+            margin: 0;
+        }
+
+        .qhs-slide.qh-v20-tf .qh-v20-tf-row img {
+            display: block;
+            width: auto !important;
+            max-width: none !important;
+            height: 503px !important;
+            max-height: none !important;
+            margin: 0;
+            mix-blend-mode: multiply;
+        }
+
+        .qhs-slide.qh-v20-tf .qh-v20-tf-ref {
+            position: absolute;
+            left: 68px;
+            bottom: 14px;
+            margin: 0;
+            font-size: 18px;
+            line-height: 1.3;
+        }
+
+        .qhs-slide.qh-v20-tf .qh-v20-tf-ref a {
+            color: #355c9a;
+        }
+
+        .qhs-slide.qh-v20-dolan .qh-v20-dolan-fig {
+            position: absolute;
+            top: 94px;
+            bottom: 54px;
+            left: 68px;
+            right: 68px;
+            margin: 0;
+        }
+
+        .qhs-slide.qh-v20-dolan .qh-v20-dolan-fig img {
+            display: block;
+            width: 100% !important;
+            height: 100% !important;
+            max-width: none !important;
+            max-height: none !important;
+            margin: 0;
+            object-fit: contain;
+            mix-blend-mode: multiply;
+        }
+    </style>
+
+    <style id="qh-w04-v20-fluxmerge">
+        /* The two fluxonium pages as one, right after the superinductor cover: the device
+           (micrograph + 3D rendering) on top, the array circuit beside the E_L = E_J,a/N
+           derivation below. References are the URLs themselves, as on the page after it. */
+        .qhs-slide.qh-v20-fluxmerge .qhs-content-inner {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .qhs-slide.qh-v20-fluxmerge figure {
+            margin: 0;
+            text-align: center;
+        }
+
+        .qhs-slide.qh-v20-fluxmerge img {
+            display: block;
+            width: auto !important;
+            max-width: none !important;
+            max-height: none !important;
+            margin: 0 auto;
+            mix-blend-mode: multiply;
+        }
+
+        .qhs-slide.qh-v20-fluxmerge .qh-v20-fm-top {
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            gap: 28px;
+        }
+
+        .qhs-slide.qh-v20-fluxmerge .qh-v20-fm-top img {
+            height: var(--qh-v20-fm-top-h, 205px) !important;
+        }
+
+        .qhs-slide.qh-v20-fluxmerge .qh-v20-fm-bottom {
+            display: grid;
+            grid-template-columns: max-content minmax(0, 1fr);
+            gap: 22px;
+            align-items: start;
+        }
+
+        .qhs-slide.qh-v20-fluxmerge .qh-v20-fm-array img {
+            height: var(--qh-v20-fm-array-h, 255px) !important;
+        }
+
+        .qhs-slide.qh-v20-fluxmerge .qh-v20-fm-deriv > p:first-child {
+            margin-top: 0;
+        }
+
+        .qhs-slide.qh-v20-fluxmerge .qh-v20-fm-deriv mjx-container[display="true"] {
+            margin: 5px 0 !important;
+            font-size: 23px !important;
+        }
+
+        .qhs-slide.qh-v20-fluxmerge .qh-v20-fm-deriv .qh-result {
+            margin: 6px 0 4px;
+            padding-block: 0;
+        }
+
+        .qhs-slide.qh-v20-fluxmerge .qh-v20-fm-deriv p {
+            margin: 4px 0;
+        }
+
+        /* the URL references: readable size, underlined like a link */
+        .qhs-slide.qh-v20-fluxmerge figcaption.qh-v20-url {
+            margin-top: 4px;
+            font-size: 18px !important;
+            line-height: 1.3;
+        }
+
+        .qhs-slide .qh-v20-url a,
+        .qhs-slide .qh-v20-tf-ref a {
+            color: #355c9a;
+            text-decoration: underline;
+        }
+
+        /* References placed in the footer band sat under the footer, so their links could
+           not be clicked: the slide body is a grid item with z-index 1 and so paints below
+           the footer (also z-index 1, later in the page). On these pages the body goes one
+           layer up; nothing of it overlaps the footer except the reference line. */
+        .qhs-slide.qh-v20-tf .qhs-slide-body,
+        .qhs-slide.qh-w04-full .qhs-slide-body,
+        .qhs-slide.qh-v17-footref .qhs-slide-body {
+            z-index: 2;
+        }
+    </style>
+
+    <style id="qh-w04-v22-noise-parity">
+        .qhs-slide.qh-v22-lowfreq .qh-step-host {
+            align-self: center;
+        }
+
+        .qhs-slide.qh-v22-lowfreq .qh-step-host > mjx-container[display="true"] {
+            margin: 12px 0 !important;
+        }
+
+        .qhs-slide.qh-v22-lowfreq .qh-result {
+            margin-top: 16px;
+            padding: 8px 12px;
+        }
+
+        .qhs-slide.qh-v22-lowfreq .qh-result mjx-container[display="true"] {
+            margin: 5px 0 !important;
+        }
+
+        .qhs-slide.qh-v22-mech .qh-v18-targets {
+            width: 100%;
+            margin: 2px auto 18px;
+            padding: 0 18px;
+        }
+
+        .qhs-slide.qh-v22-mech .qh-v18-mech-grid {
+            grid-template-columns: .82fr 1.38fr .9fr;
+            gap: 16px;
+        }
+
+        .qhs-slide.qh-v22-mech .qh-v18-mech-grid > div {
+            padding: 10px 14px 12px;
+        }
+
+        .qhs-slide.qh-v22-mech .qh-v18-mech-grid .qh-step-label {
+            font-size: 18px !important;
+            text-align: center;
+        }
+
+        .qhs-slide.qh-v22-mech .qh-v18-mech-grid mjx-container[display="true"] {
+            margin: 9px 0 !important;
+            font-size: 22px !important;
+        }
+
+        .qhs-slide.qh-v22-mech .qh-v22-parity mjx-container[display="true"] {
+            font-size: 20px !important;
+        }
+
+        .qhs-slide.qh-v22-mech .qh-result {
+            margin: 10px 0 4px;
+            padding: 5px 8px;
+        }
+    </style>
+
+    <style id="qh-w04-v24">
+        /* v24: p26 in the order of the user's own outline (sweet spot, small overlap,
+           selection rule) with a short parity proof; the proof card gets the most width. */
+        .qhs-slide.qh-v24-mech .qh-v18-mech-grid {
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.36fr);
+            gap: 18px;
+        }
+
+        .qhs-slide.qh-v24-mech .qh-v18-mech-grid mjx-container[display="true"] {
+            margin: 8px 0 !important;
+            font-size: 22px !important;
+        }
+
+        .qhs-slide.qh-v24-mech .qh-v18-mech-grid .qh-result {
+            margin: 8px 0 6px;
+        }
+
+        .qhs-slide.qh-v24-mech .qh-v18-note {
+            margin-top: 8px;
+        }
+    </style>
+
+    <style id="qh-w04-v25">
+        /* v25 (2026-09-28) */
+
+        /* Quasiparticle Burst: the two panels one above the other, equal widths, filling the
+           frame from under the title to the footer rule (316 + 10 + 254 = 580 px). */
+        .qhs-slide.qh-v25-qp .qhs-slide-body,
+        .qhs-slide.qh-v25-qp .qhs-content-inner {
+            position: static;
+            overflow: visible;
+        }
+
+        .qhs-slide.qh-v25-qp .qh-v25-qp-stack {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 3;
+            width: 760px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            justify-content: center;
+            gap: 6px;
+            margin: 0;
+        }
+
+        .qhs-slide.qh-v25-qp .qhs-slide-foot {
+            margin-right: calc(760px + 24px);
+        }
+
+        .qhs-slide.qh-v25-qp .qh-v25-qp-stack figure {
+            margin: 0;
+        }
+
+        .qhs-slide.qh-v25-qp .qh-v25-qp-stack img {
+            display: block;
+            width: auto !important;
+            max-width: none !important;
+            max-height: none !important;
+            margin: 0;
+            mix-blend-mode: multiply;
+        }
+
+        /* like p12: the stack runs the full 810 px slide height against the right edge
+           (446 + 6 + 358 = 810, both panels 759 px wide) */
+        .qhs-slide.qh-v25-qp .qh-v25-qp-stack figure:nth-child(1) img { height: 446px !important; }
+        .qhs-slide.qh-v25-qp .qh-v25-qp-stack figure:nth-child(2) img { height: 358px !important; }
+
+        /* "Every knob": the matrix form of H0 and its boxed result side by side */
+        .qhs-slide.qh-v25-knobs .qh-v25-h0row {
+            display: grid;
+            grid-template-columns: max-content max-content;
+            justify-content: center;
+            align-items: center;
+            column-gap: 56px;
+        }
+
+        .qhs-slide.qh-v25-knobs .qh-v25-h0row > mjx-container[display="true"] {
+            margin: 0 !important;
+        }
+
+        .qhs-slide.qh-v25-knobs .qh-v25-h0row > .qh-result {
+            margin: 0;
+            padding: 4px 36px;
+        }
+
+        /* low-frequency proof page */
+        .qhs-slide.qh-v25-lowfreq .qhs-content-inner > p:first-of-type {
+            margin-top: 0;
+        }
+
+        /* "2018 · T1 long, T2 short": Fig. 2 and Fig. 3(a) side by side at one height (the
+           pair is width-limited at 459 px), one merged box under them */
+        .qhs-slide.qh-v25-p34 .qh-v25-figpair {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            gap: 24px;
+        }
+
+        .qhs-slide.qh-v25-p34 .qh-v25-figpair .qh-lit-figure img {
+            width: auto !important;
+            max-width: none !important;
+            height: 459px !important;
+            max-height: none !important;
+        }
+
+        .qhs-slide.qh-v25-p34 .qh-lit-math {
+            grid-auto-flow: row;
+            justify-content: center;
+        }
+
+        .qhs-slide.qh-v25-p34 .qh-lit-math > .qh-v25-merged {
+            width: max-content;
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 6px 28px 8px;
+        }
+
+        .qhs-slide.qh-v25-p34 .qh-v25-merged mjx-container[display="true"] {
+            margin: 4px 0 !important;
+        }
+    </style>
+
+    <style id="qh-w04-v25-noise-right">
+        /* "Noise sources", like p12: the Siddiqi figure against the right edge of the slide,
+           as tall as the title allows (998 x 763, it would reach the title at full height);
+           the two channel lists move to a 350 px column on the left. */
+        .qhs-slide.qh-v25-noise .qh-w04-figrow {
+            display: block;
+            margin: 0;
+        }
+
+        .qhs-slide.qh-v25-noise .qh-w04-fig {
+            position: absolute;
+            top: 23px;
+            right: 0;
+            bottom: 24px;
+            z-index: 3;
+            width: 998px;
+            margin: 0;
+        }
+
+        .qhs-slide.qh-v25-noise .qh-w04-fig img {
+            width: 100% !important;
+            height: 100% !important;
+            max-width: none !important;
+            max-height: none !important;
+            margin: 0;
+            object-fit: contain;
+            object-position: right center;
+        }
+
+        .qhs-slide.qh-v25-noise .qh-w04-side {
+            position: absolute;
+            top: 174px;
+            bottom: 56px;
+            left: 68px;
+            width: 350px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .qhs-slide.qh-v25-noise .qh-w04-chan-head {
+            font-size: 20px;
+        }
+
+        .qhs-slide.qh-v25-noise .qhs-slide-foot {
+            margin-right: calc(998px + 24px);
+        }
+    </style>
+
+    <style id="qh-w04-v25-t2corner">
+        /* p11, p36: Gamma_2 = Gamma_1/2 + Gamma_phi <=> 1/T2 = 1/2T1 + 1/Tphi, top-right corner */
+        .qhs-slide .qh-v25-t2corner {
+            position: absolute;
+            top: 96px;
+            right: 68px;
+            z-index: 3;
+            margin: 0;
+            padding: 2px 20px;
+            border-left: 4px solid #b9aed0;
+            border-radius: 0 8px 8px 0;
+            background: #f6f3fa;
+        }
+
+        .qhs-slide .qh-v25-t2corner mjx-container[display="true"] {
+            margin: 4px 0 !important;
+            font-size: 23px !important;
+        }
+
+        /* p11 is laid out on a plain slide body: make the corner box's parent the slide */
+        .qhs-slide.qh-w04-krantz .qhs-slide-body,
+        .qhs-slide.qh-w04-krantz .qhs-content-inner {
+            position: static;
+        }
+    </style>
 
 </head>
 
@@ -6610,8 +8179,7 @@ html {
                         </div> /.respond -->
 
                         <div id="prev-next-nav" class="text-center">
-                                    <a class="btn btn-gray" href="T2-2.html">← Previous</a> 
-                                    <a class="btn btn-gray" href="T2-W4.html">Next →</a>
+                                    <a class="btn btn-gray" href="T2-W3.html">← Previous</a> 
                                 </div>
                     </div>
                     <aside class="col-md-3">
@@ -6621,8 +8189,8 @@ html {
                                 <div class="lesson-link "><a href="main.html">QH-2026F v5 · 16-Week Overview</a></div>
                                 <div class="lesson-link "><a href="T1-1d.html">Week 1 Manual Slides · Computation Is Physical | QH-2026F v5</a></div>
                                 <div class="lesson-link "><a href="T2-2.html">Week 2 Manual Slides v41 · Hardware, Superconductivity, and Josephson Anharmonicity | QH-2026F v5</a></div>
-                                <div class="lesson-link active"><a href="T2-W3.html">Week 3 Manual Slides · Tunability and the C-Shunted Transmon | QH-2026F v5</a></div>
-                                <div class="lesson-link "><a href="T2-W4.html">Week 4 Manual Slides · Noise, Fluxonium, and Protected-Qubit Design | QH-2026F v5</a></div>
+                                <div class="lesson-link "><a href="T2-W3.html">Week 3 Manual Slides · Tunability and the C-Shunted Transmon | QH-2026F v5</a></div>
+                                <div class="lesson-link active"><a href="T2-W4.html">Week 4 Manual Slides · Noise, Fluxonium, and Protected-Qubit Design | QH-2026F v5</a></div>
                                 </div>
                             </div>
                         </div></aside>
@@ -6720,98 +8288,50 @@ html {
     <div id="qhs-manual-slides" hidden="hidden">
         <section data-manual-slide data-cover>
           <div class="theme-header" style="text-align: center;">
-            <p class="theme-label">PHYS598500 · Week 3 · T2-3</p>
-            <h2>Tunability, CPB and the C-Shunted Transmon </h2>
-            </div>
+            <p class="theme-label">PHYS598500 · Week 4 · T2-4</p>
+            <h2>Noise, Fluxonium, and Protected-Qubit Design</h2>
+            <p class="theme-subtitle">Operators, matrix elements, and Hamiltonian engineering</p>
+          </div>
         </section>
 
         
 
-        <section data-manual-slide data-auto-fit="true" data-slide-class="qh-v36-question">
-          <h3>The question</h3>
-          <div class="two-col wide-left">
-            <div>
-              <p class="lead">
-                In class, we discussed circuit quantization and the transmon regime \( \frac{E_J}{E_C} \gg 1 \).Historically, the Cooper-pair box (CPB), typically operated in the charge-dominated regime \(E_C \gtrsim E_J \), was one of the earliest superconducting platforms to demonstrate coherent quantum control (<b>Y. Nakamura, Yu. A. Pashkin, and J. S. Tsai, Nature 398, 786–788 (1999)</b>). Yet, modern superconducting processors predominantly employ transmon architectures. 
-                <br><br>If the Cooper-pair box was already capable of coherent control, why did the field transition to the transmon? Detail the core engineering trade-off involved, and explain why the transmon is fundamentally better suited for robust, scalable quantum control. Furthermore, what is sacrificed when \( \frac{E_J}{E_C}\) is increased to transmon regime?
-                </p>
-              <p class="lead"><br>Transmon Ref: Koch et al., Phys. Rev. A 76, 042319 (2007)</p>
+       
+        
+
+        <section data-manual-slide data-auto-fit="false" data-title="Superconductivity Primer"
+            data-slide-class="qh-jj-overview-slide qh-w04-noreveal">
+            <p class="qh-prelude-kicker">Josephson junction</p>
+            <h3>Josephson junction As a Nonlinear Inductor</h3>
+            <div class="qh-jj-layout">
+                <figure class="qh-jj-main-figure">
+                    <a href="../Image/jjun.png"><img src="../WebP/jjun.webp" alt="Wavefunctions from two superconductors overlap across a Josephson junction barrier"></a>
+                    
+                </figure>
+                <div class="qh-jj-side">
+                    <figure class="qh-jj-person">
+                        <a href="../Image/s24-josephson-portrait.png"><img src="../WebP/s24-josephson-portrait.webp" alt="Portrait of Brian Josephson"></a>
+                        <figcaption><strong>Brian Josephson</strong><br>Predicted phase-driven supercurrent tunneling in
+                            1962.</figcaption>
+                    </figure>
+                    <div class="qh-jj-effects">
+                        <div class="qh-jj-effect">\[I=I_c\sin\varphi\]</div>
+                        <div class="qh-jj-effect">
+                            \[\dot\varphi=\frac{2eV}{\hbar}\]</div>
+                    </div>
+                    <div class="qh-result">
+                      \[
+                      \begin{aligned}
+                      L_J(\varphi)
+                      =\frac{\Phi_0}{2\pi I_c\cos\varphi}
+                      \end{aligned}
+                      \]
+                    </div>
+                </div>
             </div>
-            
-          </div>
+            <p class="qh-hp-source">Source and image: <a href="http://hyperphysics.phy-astr.gsu.edu/hbase/Solids/Squid.html" target="_blank" rel="noopener">HyperPhysics, “Josephson Junction”</a>.</p>
         </section>
-
-        <section data-manual-slide data-auto-fit="true" data-slide-class="qh-deriv qh-deriv-tight qh-w03-nakfig">
-          <h3>1999</h3>
-          <div class="qh-deriv-split">
-            <figure class="qh-deriv-fig">
-              <a href="../Image/nakamura-1999-fig1-device-crop.jpg"><img src="../WebP/nakamura-1999-fig1-device-crop.webp" alt="Micrograph of a single-Cooper-pair box with dc gate, pulse gate, reservoir and probe, beside the circuit diagram of the same device"></a>
-              <figcaption>Nakamura, Pashkin &amp; Tsai, <em>Nature</em> <strong>398</strong>, 786 (1999), figure from <a href="https://arxiv.org/abs/cond-mat/9904003" target="_blank" rel="noopener">arXiv:cond-mat/9904003</a></figcaption>
-            </figure>
-            <figure class="qh-deriv-fig qh-v49-grow">
-              <a href="../Image/tsai-2002-physicac-cpb-squid-probe-sem.png"><img src="../WebP/tsai-2002-physicac-cpb-squid-probe-sem.webp" alt="Micrograph and three-dimensional schematic of the same kind of box, showing that its junction is a two-junction SQUID loop, with the gate and the probe junction marked"></a>
-              <figcaption>Tsai, Nakamura &amp; Pashkin, <em>Superconducting single-Cooper-pair box as quantum bit</em> (Physica C) — the same box, drawn so the loop is visible</figcaption>
-            </figure>
-          </div>
-          <p>A <strong>dc gate</strong> sets the operating point, a <strong>pulse gate</strong> kicks it non-adiabatically, a probe junction reads it out.</p>
-          
-          </section>
-
-        <section data-manual-slide data-auto-fit="true" data-slide-class="qh-deriv qh-deriv-tight qh-v31-hardware qh-v36-pair qh-v49-pair-grow">
-          <h3>Superconducting-qubit hardware layouts</h3>
-          <div class="qh-v31-grid">
-            <figure>
-              <div class="qh-v31-frame">
-                <a href="../Image/tsai-2002-physicac-cpb-squid-probe-sem.png"><img src="../WebP/tsai-2002-physicac-cpb-squid-probe-sem.webp" alt="Scanning electron micrograph and circuit sketch of a Cooper-pair box with a SQUID loop and probe junction"></a>
-              </div>
-              <figcaption>
-                <span class="qh-v31-caption-title">1 · Cooper-pair box and SQUID probe junction</span>
-                <span class="qh-v31-caption-source">Tsai, Nakamura &amp; Pashkin, <em>Physica C</em> (2002)</span>
-              </figcaption>
-            </figure>
-            <figure>
-              <div class="qh-v31-frame">
-                <a href="../Image/barends-2013-prl111-fig1-xmon-xy-z-control.png"><img src="../WebP/barends-2013-prl111-fig1-xmon-xy-z-control.webp" alt="Xmon qubit micrograph with XY control, Z control, readout resonator and quantum bus connections"></a>
-              </div>
-              <figcaption>
-                <span class="qh-v31-caption-title">2 · Xmon with XY, Z and readout ports</span>
-                <span class="qh-v31-caption-source">Barends <em>et al.</em>, <em>Phys. Rev. Lett.</em> <strong>111</strong>, 080502 (2013), Fig. 1</span>
-              </figcaption>
-            </figure>
-          </div>
-        </section>
-
-        <section data-manual-slide data-auto-fit="true" data-slide-class="qh-deriv qh-deriv-tight qh-v31-hardware qh-v36-pair">
-          <h3>Superconducting-qubit hardware layouts</h3>
-          <div class="qh-v31-grid">
-            <figure>
-              <div class="qh-v31-frame">
-                <a href="../Image/swiadek-2025-thesis-fig2-14-transmon-layout.png"><img src="../WebP/swiadek-2025-thesis-fig2-14-transmon-layout.webp" alt="Flux-tunable transmon layout with labelled capacitances and scanning electron micrographs of its Josephson junction"></a>
-              </div>
-              <figcaption>
-                <span class="qh-v31-caption-title">3 · Flux-tunable qubit capacitances and junction</span>
-                <span class="qh-v31-caption-source">F. Swiadek, <em>Readout of Superconducting Qubits and Design of Quantum Processing Units</em> (2025), Fig. 2.14(a–c)</span>
-              </figcaption>
-            </figure>
-            <figure class="qh-v49-grow">
-              <div class="qh-v31-frame">
-                <a href="../Image/Starmon.png"><img src="../WebP/Starmon.webp" alt="Scanning electron micrograph of a seven-port starmon with four coupling buses, readout resonator, microwave drive and flux-bias line"></a>
-              </div>
-              <figcaption>
-                <span class="qh-v31-caption-title">4 · Seven-port starmon</span>
-                <span class="qh-v31-caption-source">Versluis <em>et al.</em>, <em>Phys. Rev. Applied</em> <strong>8</strong>, 034021 (2017), <a href="https://arxiv.org/pdf/1612.08208" target="_blank" rel="noopener">Fig. 8(a)</a></span>
-              </figcaption>
-            </figure>
-          </div>
-        </section>
-
-        <section data-manual-slide data-cover data-title="How does a SQUID tune EJ?">
-          <div class="theme-header" style="text-align: center;">
-            <h2>How does a SQUID tune \(E_J\)?</h2>
-          </div>
-        </section>
-
-        <section data-manual-slide data-auto-fit="true" data-slide-class="qh-deriv qh-deriv-tight qh-w03-squid-phase">
+        <section data-manual-slide data-auto-fit="true" data-slide-class="qh-deriv qh-deriv-tight qh-w03-squid-phase qh-w04-noreveal">
           <p class="qh-prelude-kicker">Symmetric SQUID · step 1 of 2</p>
           <h3>The loop fixes the relative junction phase</h3>
           <figure class="qh-squid-bridge-figure">
@@ -6829,7 +8349,7 @@ html {
           
         </section>
 
-        <section data-manual-slide data-auto-fit="true" data-slide-class="qh-deriv qh-deriv-tight qh-w03-squid-current">
+        <section data-manual-slide data-auto-fit="true" data-slide-class="qh-deriv qh-deriv-tight qh-w03-squid-current qh-w04-noreveal">
           <p class="qh-prelude-kicker">Symmetric SQUID · step 2 of 2</p>
           <h3>SQUID</h3>
           <div class="qh-squid-current-hero">
@@ -6897,7 +8417,7 @@ html {
 
         </section>
 
-        <section data-manual-slide data-auto-fit="true" data-slide-class="qh-deriv qh-deriv-tight qh-w03-asymmetric">
+        <section data-manual-slide data-auto-fit="false" data-slide-class="qh-deriv qh-deriv-tight qh-w03-asymmetric qh-w04-noreveal">
           <p class="qh-prelude-kicker">SQUID · asymmetric</p>
           <h3>Asymmetric SQUID</h3>
           <div class="qh-deriv-split">
@@ -6952,1186 +8472,883 @@ html {
         
 
 
-        <section data-manual-slide data-auto-fit="false" data-slide-class="qh-w03-tunablefig qh-w03-flux-merge">
-          <h3>Flux-bias on a real chip</h3>
-          <div class="qh-flux-merge-grid">
+
+        <section data-manual-slide data-auto-fit="false" data-slide-class="qh-deriv qh-deriv-tight qh-v31-hardware qh-v36-pair qh-v17-hw2">
+          <h3>Superconducting-qubit hardware layouts</h3>
+          <div class="qh-v31-grid">
             <figure>
-              <a href="../Image/s28-tunable-transmon-sem.png"><img src="../WebP/s28-tunable-transmon-sem.webp" alt="SEM image of a SQUID loop next to an on-chip flux-bias line"></a>
-              <figcaption>Current in the nearby line threads flux through the SQUID loop. Course source bank.</figcaption>
+              <div class="qh-v31-frame">
+                <a href="../Image/swiadek-2025-thesis-fig2-14-transmon-layout.png"><img src="../WebP/swiadek-2025-thesis-fig2-14-transmon-layout.webp" alt="Flux-tunable transmon layout with labelled capacitances and scanning electron micrographs of its Josephson junction"></a>
+              </div>
+              <figcaption>
+                <span class="qh-v31-caption-title">3 · Flux-tunable qubit capacitances and junction</span>
+                <span class="qh-v31-caption-source">F. Swiadek, <em>Readout of Superconducting Qubits and Design of Quantum Processing Units</em> (2025), Fig. 2.14(a–c)</span>
+              </figcaption>
             </figure>
             <figure class="qh-v49-grow">
-              <a href="../Image/barends-2013-prl111-fig1-xmon-xy-z-control.png"><img src="../WebP/barends-2013-prl111-fig1-xmon-xy-z-control.webp" alt="Xmon qubit with labelled XY control and Z flux-control lines, a SQUID close-up, and the equivalent circuit"></a>
-              <figcaption>Barends <em>et al.</em>, <em>Phys. Rev. Lett.</em> <strong>111</strong>, 080502 (2013), Fig. 1.</figcaption>
+              <div class="qh-v31-frame">
+                <a href="../Image/Starmon.png"><img src="../WebP/Starmon.webp" alt="Scanning electron micrograph of a seven-port starmon with four coupling buses, readout resonator, microwave drive and flux-bias line"></a>
+              </div>
+              <figcaption>
+                <span class="qh-v31-caption-title">4 · Seven-port starmon</span>
+                <span class="qh-v31-caption-source">Versluis <em>et al.</em>, <em>Phys. Rev. Applied</em> <strong>8</strong>, 034021 (2017), <a href="https://arxiv.org/pdf/1612.08208" target="_blank" rel="noopener">Fig. 8(a)</a></span>
+              </figcaption>
             </figure>
           </div>
         </section>
-        <section data-manual-slide data-auto-fit="false" data-slide-class="qh-v50-bleed">
-          <figure class="qh-v50-bleed-fig">
-            <a href="../Image/barends-2014-nat508-five-xmon-xy-z-lines.png"><img src="../WebP/barends-2014-nat508-five-xmon-xy-z-lines.webp" alt="Photograph of a five-Xmon chip with the XY and Z control lines of each qubit labelled, and a schematic separating readout, qubits and control"></a>
-            <figcaption>Barends <em>et al.</em>, <em>Nature</em> <strong>508</strong>, 500 (2014)</figcaption>
+
+        
+<section data-manual-slide data-auto-fit="false" data-slide-class="qh-w04-full qh-w04-dolan">
+          <h3>Double-angle shadow evaporation (Dolan technique)</h3>
+          <figure class="qh-w04-fullfig">
+            <a href="../Image/wu-2013-cpb22-fig2-dolan-shadow-evaporation.png"><img src="../WebP/wu-2013-cpb22-fig2-dolan-shadow-evaporation.webp" alt="Six-panel schematic of Dolan-bridge shadow evaporation: electron-beam writing of a PMMA over PMMA/MAA bilayer on a substrate, development leaving an undercut and a suspended bridge, first angled aluminium evaporation, oxidation, second angled evaporation from the opposite side, and lift-off leaving an Al/AlOx/Al junction"></a>
+          </figure>
+          <p class="qh-hp-source">Y.-L. Wu <em>et al.</em>, <em>Chin. Phys. B</em> <strong>22</strong>, 060309 (2013), Fig. 2. <a href="https://doi.org/10.1088/1674-1056/22/6/060309" target="_blank" rel="noopener">DOI</a></p>
+        </section>
+
+        
+        <section data-manual-slide data-auto-fit="false" data-title="Source PPT · Page 82">
+          <figure class="qh-p82-composite">
+              <div class="qh-p82-panel qh-p82-processor">
+                  <a href="../Image/club2-p82-ibm-5qubit-processor.png"><img src="../WebP/club2-p82-ibm-5qubit-processor.webp" alt="Annotated IBM five-qubit processor"></a>
+              </div>
+              <div class="qh-p82-panel qh-p82-qubit">
+                  <a href="../Image/club2-p82-qubit-cell.png"><img src="../WebP/club2-p82-qubit-cell.webp" alt="Enlarged annotated qubit cell"></a>
+              </div>
+              <div class="qh-p82-panel qh-p82-transmon">
+                  <a href="../Image/club2-p82-transmon-spectrum.jpeg"><img src="../WebP/club2-p82-transmon-spectrum.webp" alt="Transmon circuit and anharmonic energy spectrum"></a>
+              </div>
+              <div class="qh-p82-panel qh-p82-junction">
+                  <a href="../Image/club2-p82-jj-structures.jpeg"><img src="../WebP/club2-p82-jj-structures.webp" alt="Josephson junction structure with a nanometre insulating barrier"></a>
+              </div>
+              <div class="qh-p82-panel qh-p82-micrograph">
+                  <a href="../Image/club2-p82-niobium-junction.png"><img src="../WebP/club2-p82-niobium-junction.webp" alt="False-color junction micrograph"></a>
+              </div>
+              <span class="qh-p82-zoom-marker" aria-hidden="true"></span>
+              <span class="qh-p82-zoom-line left" aria-hidden="true"></span>
+              <span class="qh-p82-zoom-line right" aria-hidden="true"></span>
+              <figcaption class="qh-p82-citations">
+                  <a href="https://www.researchgate.net/figure/An-image-of-IBMs-five-qubit-processor-with-its-main-elements-highlighted-including-the_fig4_358153899" target="_blank" rel="noopener">https://www.researchgate.net/figure/An-image-of-IBMs-five-qubit-processor-with-its-main-elements-highlighted-including-the_fig4_358153899</a>
+                  · <a href="https://www.youtube.com/watch?v=2pB87H3_F_c" target="_blank" rel="noopener">https://www.youtube.com/watch?v=2pB87H3_F_c</a>
+                  · <a href="https://www.anl.gov/article/resurrecting-niobium-for-quantum-science" target="_blank" rel="noopener">https://www.anl.gov/article/resurrecting-niobium-for-quantum-science</a>
+                  · Ref: <a href="https://doi.org/10.1557/mrs.2013.229" target="_blank" rel="noopener">10.1557/mrs.2013.229</a>
+                  · <a href="https://electronics360.globalspec.com/article/13553/how-quantum-computers-work" target="_blank" rel="noopener">https://electronics360.globalspec.com/article/13553/how-quantum-computers-work</a>
+              </figcaption>
+          </figure>
+      </section>
+
+      <section data-manual-slide data-auto-fit="false" data-title="Source PPT · Page 82">
+        <figure class="qh-p82-composite qh-p82-composite-tem qh-p82-tem-only">
+            <figure class="qh-p82-figure qh-p82-right">
+                <a href="../Image/Al-JJ-TEM.png"><img src="../WebP/Al-JJ-TEM.webp" alt="Four-panel micrograph of an Al/AlOx/Al Josephson junction: chip-level overview, junction close-up, and a cross-sectional TEM showing Pt cap, C cap, Top-Al, AlOx barrier, Bottom Al and Si substrate"></a>
+            </figure>
+            <figcaption class="qh-p82-citations">
+                Sources:
+                <a href="https://doi.org/10.1557/mrs.2013.229" target="_blank" rel="noopener">Al/AlO<sub>x</sub>/Al TEM, DOI: 10.1557/mrs.2013.229</a>
+                · <a href="https://electronics360.globalspec.com/article/13553/how-quantum-computers-work" target="_blank" rel="noopener">Electronics360 overview</a>
+            </figcaption>
+        </figure>
+    </section>
+
+        <section data-manual-slide data-cover data-title="From ΔH to T1 and T2">
+          <div class="theme-header" style="text-align: center;">
+            <h2>Noise</h2>
+          </div>
+        </section>
+
+
+        
+        
+
+        <section data-manual-slide data-auto-fit="false" data-slide-class="qh-w04-full qh-w04-krantz">
+          <h3>Relaxation and dephasing</h3>
+          <div class="qh-v25-t2corner">
+            \[
+            \Gamma_2=\tfrac12\,\Gamma_1+\Gamma_\varphi
+            \quad\Longleftrightarrow\quad
+            \frac{1}{T_2}=\frac{1}{2T_1}+\frac{1}{T_\varphi}
+            \]
+          </div>
+          <div class="qh-w04-krantz-box qh-v20-krantz-grid qh-step-host">
+            <figure class="qh-w04-kr-bloch qh-reveal-item">
+              <a href="../Image/krantz-2019-fig4-bloch-longitudinal-transverse-noise.png"><img src="../WebP/krantz-2019-fig4-bloch-longitudinal-transverse-noise.webp" alt="Four Bloch spheres: the Bloch sphere with its longitudinal and transverse axes, longitudinal relaxation with excitation and relaxation rates, pure dephasing in the equatorial plane, and transverse relaxation combining both"></a>
+            </figure>
+            <figure class="qh-reveal-item qh-v20-kr-t1">
+                <a href="../Image/krantz-2019-fig5a-t1-measurement.png"><img src="../WebP/krantz-2019-fig5a-t1-measurement.webp" alt="Energy-relaxation measurement: qubit population decaying from the excited to the ground state after an X pi pulse and a delay tau, with an exponential fit T1 = 85 microseconds"></a>
+              </figure>
+            <figure class="qh-reveal-item qh-v20-kr-ramsey">
+                <a href="../Image/Ramsey-5v.gif"><img src="../Image/Ramsey-5v.gif" alt="Animation: a Bloch vector under Ramsey sequences of two pulses separated by five different delays"></a>
+              </figure>
+          </div>
+          <p class="qh-hp-source">P. Krantz <em>et al.</em>, <em>Appl. Phys. Rev.</em> <strong>6</strong>, 021318 (2019), Figs. 4 and 5(a). <a href="https://doi.org/10.1063/1.5089550" target="_blank" rel="noopener">DOI</a></p>
+        </section>
+
+        <section data-manual-slide data-auto-fit="false" data-slide-class="qh-w04-full qh-w04-where">
+          <h3>Where the fluctuators sit</h3>
+          <figure class="qh-w04-fullfig">
+            <a href="../Image/截圖 2026-06-29 下午3.41.48--73792652.png"><img src="../WebP/截圖 2026-06-29 下午3.41.48--73792652.webp" alt="TLS defects, adsorbates, residues, and contamination near Josephson junctions and circuit surfaces: a transmon electrode and junction, defects in the amorphous AlOx barrier, and surface defects on the electrode and substrate"></a>
+          </figure>
+          <p class="qh-hp-source">Left: J. Lisenfeld <em>et al.</em>, <em>npj Quantum Inf.</em> <strong>5</strong>, 105 (2019), <a href="https://doi.org/10.1038/s41534-019-0224-1" target="_blank" rel="noopener">DOI</a>. Right: W. D. Oliver and P. B. Welander, <em>MRS Bull.</em> <strong>38</strong>, 816 (2013), <a href="https://doi.org/10.1557/mrs.2013.229" target="_blank" rel="noopener">DOI</a>.</p>
+          <figure class="qh-w04-bleed">
+            <a href="../Image/截圖 2026-07-03 下午4.06.45--c66a62db.png"><img src="../WebP/截圖 2026-07-03 下午4.06.45--c66a62db.webp" alt="Schematic illustration of decoherence sources in superconducting qubits: environment circuit modes, photons, paramagnetic and nuclear spins, magnetic-field noise, trapped vortices, charge fluctuations, charge and Josephson-energy fluctuations in the junction, and quasiparticle tunnelling"></a>
           </figure>
         </section>
-        <section data-manual-slide data-cover data-title="Control Circuit">
-          <div class="theme-header" style="text-align: center;">
-            <h2>Control Circuit</h2>
+
+        <section data-manual-slide data-auto-fit="false" data-slide-class="qh-deriv qh-deriv-tight qh-w04-figpage qh-w04-barrier qh-v17-footref">
+          <h3>Inside a 2&nbsp;nm AlO<sub>x</sub> barrier</h3>
+          <div class="qh-w04-figrow">
+            <figure class="qh-w04-fig">
+              <a href="../Image/截圖 2026-07-03 下午4.06.26--ba5f73cc.png"><img src="../WebP/截圖 2026-07-03 下午4.06.26--ba5f73cc.webp" alt="Microscopic material defects in a Josephson-junction barrier: a flux-qubit loop with three junctions, a junction cross-section, and trapped charge, hydrogen impurities, tunnelling atoms and dangling bonds in the roughly 2 nm insulator"></a>
+            </figure>
           </div>
+          <p class="qh-hp-source">S. Saito, <em>NTT Technical Review</em> <strong>22</strong>(11), 7 (2024). <a href="https://doi.org/10.53829/ntr202411fr1" target="_blank" rel="noopener">DOI</a></p>
+        </section>
+
+        <section data-manual-slide data-auto-fit="false" data-slide-class="qh-w04-full qh-w04-tls">
+          <h3>A TLS is a double well</h3>
+          <figure class="qh-w04-fullfig">
+            <a href="../Image/截圖 2026-06-29 下午4.00.18--4d6e1cb0.png"><img src="../WebP/截圖 2026-06-29 下午4.00.18--4d6e1cb0.webp" alt="A simple double-well TLS model with asymmetry epsilon and tunnelling Delta, and a qubit circuit coupled with strength g to a coherent TLS inside an incoherent TLS bath"></a>
+          </figure>
+          <p class="qh-hp-source">I. Siddiqi, <em>Nat. Rev. Mater.</em> <strong>6</strong>, 875 (2021). <a href="https://doi.org/10.1038/s41578-021-00370-4" target="_blank" rel="noopener">DOI</a></p>
+        </section>
+
+        <section data-manual-slide data-auto-fit="false" data-slide-class="qh-w04-full qh-w04-crossing">
+          <h3>Tuning the qubit through a TLS</h3>
+          <figure class="qh-w04-fullfig">
+            <a href="../Image/截圖 2026-07-03 下午2.19.50--3d37b701.png"><img src="../WebP/截圖 2026-07-03 下午2.19.50--3d37b701.webp" alt="A defect two-level system, the qubit transition tuned with flux showing an avoided crossing at the defect energy, and a peak in the qubit relaxation rate 1/T1 at that energy"></a>
+          </figure>
+          <p class="qh-hp-source">P. V. Klimov <em>et al.</em>, <em>Phys. Rev. Lett.</em> <strong>121</strong>, 090502 (2018). <a href="https://doi.org/10.1103/PhysRevLett.121.090502" target="_blank" rel="noopener">DOI</a></p>
+        </section>
+
+        <section data-manual-slide data-auto-fit="false" data-slide-class="qh-w04-full qh-w04-weides">
+          <h3>Transmon with an epitaxial tunnel junction</h3>
+          <figure class="qh-w04-fullfig">
+            <a href="../Image/weides-2011-apl99-fig2-epitaxial-transmon-spectroscopy.png"><img src="../WebP/weides-2011-apl99-fig2-epitaxial-transmon-spectroscopy.webp" alt="Qubit spectroscopy against flux bias between 6.8 and 7.3 GHz with arrows marking avoided level crossings, an upper inset zooming on the splitting near 7.27 GHz, and a lower inset of vacuum Rabi oscillations"></a>
+          </figure>
+          <p class="qh-hp-source">M. P. Weides <em>et al.</em>, <em>Appl. Phys. Lett.</em> <strong>99</strong>, 262502 (2011), Fig. 2. <a href="https://doi.org/10.1063/1.3672000" target="_blank" rel="noopener">DOI</a> · <a href="https://arxiv.org/abs/1111.5083" target="_blank" rel="noopener">arXiv:1111.5083</a></p>
         </section>
 
         
 
-        
-
-        <section data-manual-slide data-auto-fit="true" data-slide-class="qh-deriv qh-deriv-setup qh-cpb-setup">
-          <p class="qh-prelude-kicker">Cooper-pair box · step 1 of 15</p>
-          <h3>The control circuit</h3>
-          <div class="qh-deriv-split">
-            <figure class="qh-deriv-fig qh-cpb-figure">
-              <svg viewBox="0 0 440 320" role="img"
-                aria-label="Cooper-pair box: a gate voltage V_g drives the island through the gate capacitor C_g; the island connects to the grounded reservoir through a Josephson junction E_J in parallel with its capacitance C"
-                fill="none" stroke="#302840" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="156" y="50" width="219" height="130" rx="12" fill="#efeaf7" stroke="#b9aed0" stroke-width="2" stroke-dasharray="7 6" />
-                <path d="M70 144 V80 H148 M148 56 V104 M164 56 V104 M164 80 H350" />
-                <path d="M250 80 V172 M250 188 V272 M226 172 H274 M226 188 H274 M350 80 V166 M350 194 V272" />
-                <path d="M336 166 L364 194 M364 166 L336 194" stroke-width="4" />
-                <path d="M70 196 V272 H350 M210 272 V286 M192 286 H228 M199 294 H221 M206 302 H214" />
-                <circle cx="70" cy="170" r="26" />
-                <g fill="#302840" stroke="none" font-family="Cambria Math, Times New Roman, serif" font-style="italic" font-size="22" text-anchor="middle">
-                  <text x="156" y="134">C<tspan baseline-shift="sub" font-size="72%">g</tspan></text>
-                  <text x="24" y="178">V<tspan baseline-shift="sub" font-size="72%">g</tspan></text>
-                  <text x="388" y="188">E<tspan baseline-shift="sub" font-size="72%">J</tspan></text>
-                  <text x="196" y="188">C</text>
-                  <text x="318" y="188">φ</text>
-                </g>
-                <g fill="#302840" stroke="none" font-family="Montserrat, sans-serif" font-size="20" text-anchor="middle">
-                  <text x="70" y="164">+</text>
-                  <text x="70" y="188">−</text>
-                </g>
-                <g fill="#5f4b8b" stroke="none" font-family="Montserrat, sans-serif" font-size="15" font-weight="600" text-anchor="middle">
-                  <text x="263" y="38">island, V, n</text>
-                  <text x="306" y="306">reservoir (ground)</text>
-                </g>
-              </svg>
-              <figcaption>\(V_g\) biases the island through \(C_g\); a junction \((E_J,\,C)\) connects it to the reservoir.</figcaption>
+        <section data-manual-slide data-auto-fit="false" data-slide-class="qh-deriv qh-deriv-tight qh-w04-figpage qh-w04-drift qh-v17-footref">
+          <h3>\(T_1\) drifts in frequency and in time</h3>
+          <div class="qh-w04-figrow">
+            <figure class="qh-w04-fig">
+              <a href="../Image/截圖 2026-07-03 下午2.20.10--0b72d9f1.png"><img src="../WebP/截圖 2026-07-03 下午2.20.10--0b72d9f1.webp" alt="Spectrally and temporally resolved T1 over 20 hours between 5.4 and 5.8 GHz, with line cuts 100 MHz and 15 minutes apart and the corresponding T1 distributions"></a>
+              <figcaption>Red streaks: short \(T_1\), a TLS near resonance. They wander over hours, so the best operating frequency moves.</figcaption>
             </figure>
-            <div>
-              <p>Junction phase \(\varphi\), island voltage \(V\) (reservoir grounded):</p>
-              \[
-              \dot{\varphi}=\frac{2eV}{\hbar},\qquad U_J=-E_J\cos\varphi
-              \]
-              <p>Voltage stored on each capacitor:</p>
-              \[
-              V_{C}=V,\qquad V_{C_g}=V-V_g
-              \]
-              \[
-              T=\frac{1}{2}CV^2+\frac{1}{2}C_g\left(V-V_g\right)^2
-              \]
-              <p>\(\mathcal{L}=T-U_J\):</p>
-              <div class="qh-key">
-                \[
-                \mathcal{L}=\frac{1}{2}CV^2+\frac{1}{2}C_g\left(V-V_g\right)^2+E_J\cos\varphi
-                \]
+          </div>
+          <p class="qh-hp-source">P. V. Klimov <em>et al.</em>, <em>Phys. Rev. Lett.</em> <strong>121</strong>, 090502 (2018). <a href="https://doi.org/10.1103/PhysRevLett.121.090502" target="_blank" rel="noopener">DOI</a></p>
+        </section>
+
+        <section data-manual-slide data-auto-fit="false" data-slide-class="qh-deriv qh-deriv-tight qh-w04-figpage qh-w04-epi qh-v17-footref">
+          <h3>An epitaxial barrier removes most TLS</h3>
+          <div class="qh-w04-figrow qh-w04-epi-row">
+            <figure class="qh-w04-fig">
+              <a href="../Image/oh-2006-prb74-fig1-rheed-re-al2o3.png"><img src="../WebP/oh-2006-prb74-fig1-rheed-re-al2o3.webp" alt="Four RHEED images, a to d, above sketches of the layer stack with rhenium, aluminium and oxygen atoms"></a>
+              <figcaption>Fig. 1 · RHEED during growth, Re / Al / O</figcaption>
+            </figure>
+            <figure class="qh-w04-fig">
+              <a href="../Image/oh-2006-prb74-fig2-phase-qubit-epitaxial-junction.png"><img src="../WebP/oh-2006-prb74-fig2-phase-qubit-epitaxial-junction.webp" alt="Micrograph of a phase qubit with its dc SQUID and bias coil, a cross-section of the Re / Al2O3 / Al tunnel junction, and the measurement circuit at 25 mK"></a>
+              <figcaption>Fig. 2 · Phase qubit with a Re / Al<sub>2</sub>O<sub>3</sub> / Al junction</figcaption>
+            </figure>
+            <figure class="qh-w04-fig">
+              <a href="../Image/oh-2006-prb74-fig3-spectroscopy-amorphous-vs-crystalline.png"><img src="../WebP/oh-2006-prb74-fig3-spectroscopy-amorphous-vs-crystalline.webp" alt="Qubit spectroscopy against bias current: many avoided crossings for an amorphous AlOx barrier, far fewer for a single-crystal Al2O3 barrier, with a Rabi-oscillation inset"></a>
+              <figcaption>Fig. 3 · (a) amorphous AlO<sub>x</sub> · (b) crystalline Al<sub>2</sub>O<sub>3</sub></figcaption>
+            </figure>
+          </div>
+          <p class="qh-hp-source">S. Oh <em>et al.</em>, <em>Phys. Rev. B</em> <strong>74</strong>, 100502(R) (2006): about 80% fewer TLS splittings; the rest is attributed to the interfaces. <a href="https://doi.org/10.1103/PhysRevB.74.100502" target="_blank" rel="noopener">DOI</a></p>
+        </section>
+
+        <section data-manual-slide data-auto-fit="false" data-slide-class="qh-v25-qp">
+          <h3>Quasiparticle Burst</h3>
+          <div class="qh-v25-qp-stack">
+            <figure>
+              <a href="../Image/quasiparticle-burst-fig-a-chip-stack.png"><img src="../WebP/quasiparticle-burst-fig-a-chip-stack.webp" alt="Qubit array chip photo and the flip-chip stack (qubit chip, vacuum gap, carrier chip, copper box, muon detectors MDA and MDB) with a muon and a gamma ray passing through, phonons breaking Cooper pairs into quasiparticles"></a>
+            </figure>
+            <figure>
+              <a href="../Image/quasiparticle-burst-fig-b-t1-vs-injection.png"><img src="../WebP/quasiparticle-burst-fig-b-t1-vs-injection.webp" alt="Normalized T1 of many qubits against injection power: flat up to about 20 dBm, then dropping sharply; inset energy-relaxation traces with T1 = 10.6 us and 6.8 us"></a>
+            </figure>
+          </div>
+        </section>
+
+
+        <section data-manual-slide data-auto-fit="false" data-slide-class="qh-deriv qh-deriv-tight qh-w04-figpage qh-w04-channels qh-v17-footref qh-v25-noise">
+          <h3>Noise sources</h3>
+          <div class="qh-w04-figrow">
+            <figure class="qh-w04-fig">
+              <a href="../Image/截圖 2026-06-29 下午3.59.04--98010ff9.png"><img src="../WebP/截圖 2026-06-29 下午3.59.04--98010ff9.webp" alt="Materials, nonequilibrium excitations, and decoherence pathways in superconducting qubits: a qubit chip, amorphous dielectrics, non-equilibrium excitations, 1/f noise sources, and the pure-dephasing and longitudinal-relaxation pathways"></a>
+            </figure>
+            <div class="qh-w04-side">
+              <div class="qh-w04-chan qh-w04-chan-t1">
+                <div class="qh-w04-chan-head">Energy relaxation channels</div>
+                <div class="qh-w04-chips">
+                  <span class="qh-w04-chip">TLS absorption</span>
+                  <span class="qh-w04-chip">quasiparticle tunnelling</span>
+                  <span class="qh-w04-chip">Purcell decay</span>
+                  <span class="qh-w04-chip">phonons · package modes</span>
+                  <span class="qh-w04-chip">surface dielectric loss</span>
+                </div>
               </div>
-              <div class="qh-key">
-                \[
-                =\frac{1}{2}\left(C+C_g\right) V^2-C_gV_g\,V+\frac{1}{2}C_gV_g^2+E_J\cos\varphi
-                \]
+              <div class="qh-w04-chan qh-w04-chan-tphi">
+                <div class="qh-w04-chan-head">Phase decoherence channels</div>
+                <div class="qh-w04-chips">
+                  <span class="qh-w04-chip">flux noise</span>
+                  <span class="qh-w04-chip">charge noise</span>
+                  <span class="qh-w04-chip">TLS frequency drift</span>
+                  <span class="qh-w04-chip">critical-current noise</span>
+                  <span class="qh-w04-chip">residual-photon ac Stark shift</span>
+                  <span class="qh-w04-chip">\(1/f\) noise</span>
+                </div>
               </div>
             </div>
           </div>
-          <p class="qh-hp-source">Derivation follows J. Koch et al., <em>Phys. Rev. A</em> <b>76</b>, 042319 (2007), <a href="https://doi.org/10.1103/PhysRevA.76.042319" target="_blank" rel="noopener">DOI</a>, and Y. Makhlin, G. Schön and A. Shnirman, <em>Rev. Mod. Phys.</em> <b>73</b>, 357 (2001), <a href="https://doi.org/10.1103/RevModPhys.73.357" target="_blank" rel="noopener">DOI</a>.</p>
+          <p class="qh-hp-source">I. Siddiqi, <em>Nat. Rev. Mater.</em> <strong>6</strong>, 875 (2021). <a href="https://doi.org/10.1038/s41578-021-00370-4" target="_blank" rel="noopener">DOI</a></p>
+        </section>
+        
+
+        <section data-manual-slide data-cover data-title="Where do errors enter the Hamiltonian?">
+          <div class="theme-header" style="text-align: center;">
+            <h2>Where do errors enter the Hamiltonian?</h2>
+          </div>
         </section>
 
-        <section data-manual-slide data-auto-fit="true" data-slide-class="qh-deriv">
-          <p class="qh-prelude-kicker">Cooper-pair box · step 2 of 15</p>
-          <h3>Expand the Lagrangian</h3>
-          <div class="qh-key">
-            \[
-            \mathcal{L}=\frac{1}{2}\left(C+C_g\right) V^2-C_gV_g\,V+\frac{1}{2}C_gV_g^2+E_J\cos\varphi
-            \]
+        
+
+        
+
+
+
+        
+
+<section data-manual-slide data-auto-fit="true" data-slide-class="qh-deriv qh-v17-knobs qh-v25-knobs">
+  <p class="qh-prelude-kicker">Error channels · step 1 of 6</p>
+  <h3>Every knob is also a noise channel</h3>
+  <div class="qh-v25-h0row">
+  \[
+  \hat{\mathcal H}_0=\begin{pmatrix}E_0 &amp; 0\\ 0 &amp; E_1\end{pmatrix}
+  =\frac{E_0+E_1}{2}\,\mathbb I-\frac{\hbar\omega_{01}}{2}\,\sigma_z
+  \]
+  <div class="qh-result">
+    \[
+    \hat{\mathcal H}_0=-\frac{\hbar\omega_{01}}{2}\,\sigma_z
+    \]
+  </div>
+  </div>
+  <p>The Hamiltonian depends on biases \(\lambda=\{n_g,\Phi,E_J,\ldots\}\), and each one fluctuates:</p>
+
+  \[
+  \lambda(t)=\lambda_0+\delta\lambda(t)
+  \]
+
+  \[
+  \hat{\mathcal H}(\lambda_0+\delta\lambda)
+  =\underbrace{\hat{\mathcal H}(\lambda_0)}_{\hat{\mathcal H}_0}
+  +\underbrace{\hat O_\lambda\,\delta\lambda(t)}_{\Delta\hat{\mathcal H}(t)}
+  +O\!\left(\delta\lambda^2\right),
+  \qquad
+  \hat O_\lambda\equiv\left.\frac{\partial\hat{\mathcal H}}{\partial\lambda}\right|_{\lambda_0}
+  \]
+
+  \[
+  \hat{\mathcal H}_0=-\frac{\hbar\omega_{01}}{2}\,\sigma_z,
+  \qquad
+  O_{ij}\equiv\langle i|\hat O_\lambda|j\rangle,
+  \qquad
+  O_{10}=O_{01}^{*}
+  \]
+
+  \[
+  \Delta\hat{\mathcal H}(t)
+  =\delta\lambda(t)\begin{pmatrix}O_{00}&O;_{01}\\O_{10}&O;_{11}\end{pmatrix}
+  =\delta\lambda(t)\left[\frac{O_{00}+O_{11}}{2}\,\mathbb I
+  -\frac{O_{11}-O_{00}}{2}\,\sigma_z
+  +\frac{O_{10}+O_{01}}{2}\,\sigma_x+\frac{O_{10}-O_{01}}{2i}\,\sigma_y\right]
+  \]
+
+  \[
+  =\underbrace{-\frac{\hbar}{2}\,\delta\omega_{01}(t)\,\sigma_z}_{\Delta\hat{\mathcal H}_\parallel\ \text{(longitudinal)}}
+  +\underbrace{\delta\lambda(t)\left(\frac{O_{10}+O_{01}}{2}\,\sigma_x+\frac{O_{10}-O_{01}}{2i}\,\sigma_y\right)}_{\Delta\hat{\mathcal H}_\perp\ \text{(transverse)}}
+  \]
+
+  <div class="qh-key">
+    \[
+    \delta\omega_{01}(t)\equiv\frac{O_{11}-O_{00}}{\hbar}\,\delta\lambda(t)
+    \]
+  </div>
+  <p class="qh-deriv-foot">The \(\mathbb I\) term moves both levels together, a global phase, and is dropped.</p>
+</section>
+
+      
+
+        <section data-manual-slide data-auto-fit="false" data-slide-class="qh-deriv qh-deriv-tight qh-w04-chain qh-w04-chain-fig qh-w04-noreveal">
+          <p class="qh-prelude-kicker">Noise chain · step 4 of 13</p>
+          <h3>Longitudinal noise moves the frequency</h3>
+          <div class="qh-w04-chainfig-grid">
+            <div class="qh-step-host">
+              <div class="qh-key">
+                \[
+                \delta\omega_{01}(t)\equiv\frac{O_{11}-O_{00}}{\hbar}\,\delta\lambda(t)
+                \]
+              </div>
+              \[
+              \Delta\hat{\mathcal H}_\parallel=-\frac{\hbar}{2}\,\delta\omega_{01}(t)\,\sigma_z
+              \]
+              \[
+              \hat{\mathcal H}_0+\Delta\hat{\mathcal H}_\parallel=-\frac{\hbar}{2}\left[\omega_{01}+\delta\omega_{01}(t)\right]\sigma_z
+              \]
+              \[
+              \langle0|\hat{\mathcal H}_0+\Delta\hat{\mathcal H}_\parallel|1\rangle=0\quad\Longrightarrow\quad|0\rangle\nleftrightarrow|1\rangle
+              \]
+              \[
+              \phi(t)=\int_0^t\left[\omega_{01}+\delta\omega_{01}(t')\right]dt'
+              \]
+              <div class="qh-result">
+                \[
+                \text{random relative phase}\quad\Longrightarrow\quad\text{pure dephasing}
+                \]
+              </div>
+        
+            </div>
+            <figure class="qh-w04-chainfig">
+              <a href="../Image/krantz-2019-fig4c-pure-dephasing.png"><img src="../WebP/krantz-2019-fig4c-pure-dephasing.webp" alt="Bloch sphere with longitudinal noise along z: the Bloch vector on the equator diffuses back and forth around the z axis, pure dephasing at rate Gamma phi"></a>
+              <figcaption class="qh-w04-caption-source">P. Krantz <em>et al.</em>, <em>Appl. Phys. Rev.</em> <strong>6</strong>, 021318 (2019), Fig. 4(c). <a href="https://doi.org/10.1063/1.5089550" target="_blank" rel="noopener">DOI</a></figcaption>
+            </figure>
           </div>
-          <p>Substitute \(V=\frac{\hbar}{2e}\,\dot{\varphi}\):</p>
-          <div class="qh-result">
-            \[
-            \mathcal{L}(\varphi,\dot{\varphi})=\frac{1}{2}\left(C+C_g\right)\left(\frac{\hbar}{2e}\right)^2\dot{\varphi}^2-C_gV_g\,\frac{\hbar}{2e}\,\dot{\varphi}+\frac{1}{2}C_gV_g^2+E_J\cos\varphi
-            \]
-          </div>
-          <div class="qh-result">
-            \[
-            p_\varphi
-            \equiv\frac{\partial\mathcal L}{\partial\dot{\varphi}}
-            =\left(C+C_g\right)\left(\frac{\hbar}{2e}\right)^2\dot{\varphi}
-            -C_gV_g\frac{\hbar}{2e}
-            \]
-          </div>
-          \[
-          \begin{aligned}
-            p_\varphi
-            &amp;=\left(C+C_g\right)\left(\frac{\hbar}{2e}\right)V
-            -C_gV_g\frac{\hbar}{2e}\\[3pt]
-            &amp;=\left(\frac{\hbar}{2e}\right)
-            \underbrace{\left[CV+C_g\left(V-V_g\right)\right]}_{Q_{\rm isl}}
-            =\left(\frac{\hbar}{2e}\right)Q_{\rm isl}\\[3pt]
-            Q_{\rm isl}&amp;=2e\,n_{\rm tot}
-            \quad\Longrightarrow\quad
-            p_\varphi=\hbar n_{\rm tot}
-          \end{aligned}
-          \]
         </section>
+
+        <section data-manual-slide data-auto-fit="true" data-slide-class="qh-deriv qh-deriv-tight qh-v26-lowfreq">
+          <p class="qh-prelude-kicker">Noise chain</p>
+          <h3>Why low-frequency noise is mostly \(\sigma_z\)</h3>
+          <p>One low-frequency component of the noise (\(O_{01}\) real):</p>
+          \[
+          \delta\lambda(t)=\delta\lambda_0\sin\omega_L t,\qquad \omega_L\ll\omega_{01}
+          \]
+          \[
+          \Delta\hat{\mathcal H}(t)=\hat O_\lambda\,\delta\lambda_0\sin\omega_L t
+          =\delta\lambda_0\sin\omega_L t\left[-\frac{O_{11}-O_{00}}{2}\,\sigma_z+O_{01}\,\sigma_x\right]
+          \]
+          <p>Interaction picture, \(\hat U=e^{-i\hat{\mathcal H}_0t/\hbar}\):</p>
+          \[
+          \sigma_z\ \to\ \hat U^\dagger\sigma_z\hat U=\sigma_z
+          \]
+          \[
+          \sigma_x\ \to\ \hat U^\dagger\sigma_x\hat U=\sigma_x\cos\omega_{01}t+\sigma_y\sin\omega_{01}t
+          \]
+          \[
+          \Delta\hat{\mathcal H}_I(t)=\delta\lambda_0\sin\omega_L t\left[-\frac{O_{11}-O_{00}}{2}\,\sigma_z
+          +O_{01}\left(\sigma_x\cos\omega_{01}t+\sigma_y\sin\omega_{01}t\right)\right]
+          \]
+          \[
+          =-\frac{O_{11}-O_{00}}{2}\,\delta\lambda_0\sin\omega_L t\;\sigma_z
+          +\frac{O_{01}\,\delta\lambda_0}{2}\Big[\sigma_x\big(\sin(\omega_{01}+\omega_L)t-\sin(\omega_{01}-\omega_L)t\big)
+          +\sigma_y\big(\cos(\omega_{01}-\omega_L)t-\cos(\omega_{01}+\omega_L)t\big)\Big]
+          \]
+          \[
+          \sigma_x,\ \sigma_y:\ \ e^{\pm i(\omega_{01}-\omega_L)t},\ \ e^{\pm i(\omega_{01}+\omega_L)t}\ \ \text{fast}
+          \qquad\qquad
+          \sigma_z:\ \ \sin\omega_L t\ \ \text{slow}
+          \]
+          <div class="qh-result">
+            \[
+            \overset{\text{RWA}}{\Longrightarrow}\quad
+            \Delta\hat{\mathcal H}_I(t)\simeq-\frac{\hbar}{2}\,\delta\omega_{01}(t)\,\sigma_z,
+            \qquad
+            \delta\omega_{01}(t)=\frac{O_{11}-O_{00}}{\hbar}\,\delta\lambda(t)
+            \]
+          </div>
+          <p class="qh-deriv-foot">A complex \(O_{01}\) only rotates the \(x\)–\(y\) axes. \(\sigma_x,\sigma_y\) survive only for noise near \(\omega_{01}\), i.e. \(S_\lambda(\omega_{01})\): relaxation, next page.</p>
+        </section>
+
+        
+
+
+        
+
+        <section data-manual-slide data-auto-fit="true" data-slide-class="qh-deriv qh-deriv-tight qh-v18-fgr-u">
+          <p class="qh-prelude-kicker">Relaxation · step 1 of 5</p>
+          <h3>Fermi's golden rule</h3>
+          <div class="qh-deriv-split">
+            <div class="qh-step-host">
+              <p>Start in \(|1\rangle\) and let the transverse part act. In the interaction picture:</p>
+              \[
+              \Delta\hat{\mathcal H}_I(t)=e^{i\hat{\mathcal H}_0t/\hbar}\,\Delta\hat{\mathcal H}(t)\,e^{-i\hat{\mathcal H}_0t/\hbar}
+              \]
+              \[
+              i\hbar\,\frac{\partial}{\partial t}\hat U_I(t,0)=\Delta\hat{\mathcal H}_I(t)\,\hat U_I(t,0)
+              \]
+              <p>To first order in \(\Delta\hat{\mathcal H}\):</p>
+              \[
+              \hat U_I(t,0)=\mathcal T\exp\!\left[-\frac{i}{\hbar}\int_0^t\Delta\hat{\mathcal H}_I(t')\,dt'\right]
+              \]
+              \[
+              \simeq\mathbb I-\frac{i}{\hbar}\int_0^t\Delta\hat{\mathcal H}_I(t')\,dt'
+              \]
+              <p>so the amplitude is a Fourier component of the noise:</p>
+              <div class="qh-result">
+                \[
+                \begin{aligned}
+                \langle0|\hat U_I(t,0)|1\rangle
+                &\simeq-\frac{i}{\hbar}\int_0^t e^{-i\omega_{01}t'}\langle0|\Delta\hat{\mathcal H}(t')|1\rangle\,dt'\\
+                &=-\frac{i}{\hbar}\,O_{01}\int_0^t\delta\lambda(t')\,e^{-i\omega_{01}t'}\,dt'
+                \end{aligned}
+                \]
+              </div>
+            </div>
+            <div class="qh-step-host">
+              <p>The probability is a double integral over the noise correlation:</p>
+              \[
+              P_{1\to0}(t)=\left|\langle0|\hat U_I(t,0)|1\rangle\right|^2
+              \]
+              \[
+              =\frac{\left|O_{01}\right|^2}{\hbar^2}\int_0^t\!\!\int_0^t
+              \left\langle\delta\lambda(t'')\delta\lambda(t')\right\rangle
+              e^{-i\omega_{01}\left(t'-t''\right)}dt'dt''
+              \]
+              <p>Stationary noise depends only on \(\tau=t'-t''\), so one integral gives a factor \(t\):</p>
+              \[
+              P_{1\to0}(t)=\frac{\left|O_{01}\right|^2}{\hbar^2}\;t\int_{-\infty}^{\infty}
+              \left\langle\delta\lambda(0)\delta\lambda(\tau)\right\rangle e^{-i\omega_{01}\tau}d\tau
+              \]
+              <div class="qh-result">
+                \[
+                \Gamma_{1\to0}=\frac{\left|\left\langle0\left|\hat{O}_\lambda\right|1\right\rangle\right|^2}{\hbar^2}\,S_\lambda(\omega_{01})
+                \]
+              </div>
+              
+            </div>
+          </div>
+        </section>
+
+        
+
+
+        
+
+        
+
+        
+
+        
 
         <section data-manual-slide data-auto-fit="true" data-slide-class="qh-deriv qh-deriv-tight">
-          <p class="qh-prelude-kicker">Cooper-pair box · step 4 of 15</p>
-          <h3>The Legendre transform</h3>
-          <p class="qh-step-label">Eliminate \(\dot{\varphi}\)</p>
-          \[
-          \begin{aligned}
-          p_\varphi
-            \equiv\frac{\partial\mathcal L}{\partial\dot{\varphi}}
-            =\left(C+C_g\right)\left(\frac{\hbar}{2e}\right)^2\dot{\varphi}
-            -C_gV_g\frac{\hbar}{2e}
-            \qquad \to \qquad
-          \dot{\varphi}
-          &amp;=\frac{p_\varphi+C_gV_g\frac{\hbar}{2e}}
-          {\left(C+C_g\right)\left(\frac{\hbar}{2e}\right)^2}\\[4pt]
-          \end{aligned}
-          \]
-          <p class="qh-step-label">Legendre transform in \(\dot{\varphi}\)</p>
-          \[
-          \begin{aligned}
-          \mathcal H
-          &amp;=p_\varphi\dot{\varphi}-\mathcal L=p_\varphi\dot{\varphi}-\left\{\frac{1}{2}\left(C+C_g\right)\left(\frac{\hbar}{2e}\right)^2\dot{\varphi}^2-C_gV_g\,\frac{\hbar}{2e}\,\dot{\varphi}+\frac{1}{2}C_gV_g^2+E_J\cos\varphi\right\}\\[3pt]
-          \end{aligned}
-          \]
-          \[
-          \begin{aligned}
-          &amp;=p_\varphi
-          \left[\frac{p_\varphi+C_gV_g\frac{\hbar}{2e}}
-          {\left(C+C_g\right)\left(\frac{\hbar}{2e}\right)^2}\right]
-          -
-          \left\{\frac{1}{2}\left(C+C_g\right)\left(\frac{\hbar}{2e}\right)^2
-          \left[\frac{p_\varphi+C_gV_g\frac{\hbar}{2e}}
-          {\left(C+C_g\right)\left(\frac{\hbar}{2e}\right)^2}\right]^2
-          -C_gV_g\frac{\hbar}{2e}
-          \left[\frac{p_\varphi+C_gV_g\frac{\hbar}{2e}}
-          {\left(C+C_g\right)\left(\frac{\hbar}{2e}\right)^2}\right]
-          +\frac{1}{2}C_gV_g^2+E_J\cos\varphi\right\}
-          \end{aligned}
-          \]
-          \[
-          =\frac{\left(p_\varphi+C_gV_g\frac{\hbar}{2e}\right)^2}
-          {2\left(C+C_g\right)\left(\frac{\hbar}{2e}\right)^2}
-          -\frac{1}{2}C_gV_g^2-E_J\cos\varphi
-          \]
-          <div class="qh-key">
-            \[
-            n\equiv n_{\rm tot},\qquad p_\varphi=\hbar n
-            ,\qquad E_C\equiv\frac{e^2}{2\left(C+C_g\right)}
-            ,\qquad n_g\equiv\frac{C_gV_g}{-2e}
-            \]
-          </div>
-          
-          <p>Drop the constant \(-\frac{1}{2}C_gV_g^2\):</p>
-          <div class="qh-result">
-            \[
-            \hat{\mathcal{H}}=4E_C\left(\hat{n}-n_g\right)^2-E_J\cos\hat{\varphi}
-            \]
-          </div>
-        </section>
-
-
-        
-        <section data-manual-slide data-cover data-title="The Physics of Cooper Pair Box">
-          <div class="theme-header" style="text-align: center;">
-            <h2>The Physics of Cooper Pair Box</h2>
-          </div>
-        </section>
-        <section data-manual-slide data-auto-fit="true" data-slide-class="qh-deriv">
-          <p class="qh-prelude-kicker">Cooper-pair box · step 7 of 15</p>
-          <h3>Quantize in the charge basis</h3>
-          <div class="qh-deriv-recap">
-            \[
-            \left[\hat{\varphi},\hat{p}_\varphi\right]=i\hbar\ \Longrightarrow\ \left[\hat{\varphi},\hat{n}\right]=i
-            \]
-          </div>
-          
-          <div class="qh-result">
-            \[
-            \hat{\mathcal{H}}=\sum_{n\in\mathbb{Z}}4E_C\left(n-n_g\right)^2|n\rangle\langle n|-\frac{E_J}{2}\sum_{n\in\mathbb{Z}}\Big(|n+1\rangle\langle n|+|n\rangle\langle n+1|\Big)
-            \]
-          </div>
-          
-          <p>Basis \(\{\ldots,|{-1}\rangle_{\hat{n}},|0\rangle_{\hat{n}},|1\rangle_{\hat{n}},|2\rangle_{\hat{n}},\ldots\}\):</p>
-          \[
-          \hat{\mathcal{H}}=
-          \begin{pmatrix}
-          \ddots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \\
-          \cdots &amp; 4E_C(1+n_g)^2 &amp; -E_J/2 &amp; 0 &amp; 0 &amp; \cdots \\
-          \cdots &amp; -E_J/2 &amp; 4E_C\,n_g^2 &amp; -E_J/2 &amp; 0 &amp; \cdots \\
-          \cdots &amp; 0 &amp; -E_J/2 &amp; 4E_C(1-n_g)^2 &amp; -E_J/2 &amp; \cdots \\
-          \cdots &amp; 0 &amp; 0 &amp; -E_J/2 &amp; 4E_C(2-n_g)^2 &amp; \cdots \\
-          &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \ddots
-          \end{pmatrix}
-          \]
-          <div class="qh-deriv-split qh-deriv-halves">
-            <div class="qh-key">
-              \[
-              \langle n|\hat{\mathcal{H}}|n\rangle=4E_C\left(n-n_g\right)^2
-              \]
-            </div>
-            <div class="qh-key">
-              \[
-              \langle n\pm1|\hat{\mathcal{H}}|n\rangle=-\frac{E_J}{2}
-              \]
-            </div>
-          </div>
-        </section>
-        <section data-manual-slide data-auto-fit="true" data-slide-class="qh-deriv">
-          <p class="qh-prelude-kicker">Cooper-pair box · step 8 of 15</p>
-          <h3>The charge-basis matrix, \(n_g=\frac{1}{2}\)</h3>
-          \[
-          \hat{\mathcal{H}}=
-          \begin{pmatrix}
-          \ddots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \\
-          \cdots &amp; 4E_C(1+n_g)^2 &amp; -E_J/2 &amp; 0 &amp; 0 &amp; \cdots \\
-          \cdots &amp; -E_J/2 &amp; 4E_C\,n_g^2 &amp; -E_J/2 &amp; 0 &amp; \cdots \\
-          \cdots &amp; 0 &amp; -E_J/2 &amp; 4E_C(1-n_g)^2 &amp; -E_J/2 &amp; \cdots \\
-          \cdots &amp; 0 &amp; 0 &amp; -E_J/2 &amp; 4E_C(2-n_g)^2 &amp; \cdots \\
-          &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \ddots
-          \end{pmatrix}
-          \]
-          \[
-          =
-          \begin{pmatrix}
-          \ddots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \\
-          \cdots &amp; 9E_C &amp; -E_J/2 &amp; 0 &amp; 0 &amp; \cdots \\
-          \cdots &amp; -E_J/2 &amp; E_C &amp; -E_J/2 &amp; 0 &amp; \cdots \\
-          \cdots &amp; 0 &amp; -E_J/2 &amp; E_C &amp; -E_J/2 &amp; \cdots \\
-          \cdots &amp; 0 &amp; 0 &amp; -E_J/2 &amp; 9E_C &amp; \cdots \\
-          &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \ddots
-          \end{pmatrix}
-          \]
-          
-        </section>
-
-        <section data-manual-slide data-auto-fit="true"
-         data-slide-class="qh-deriv qh-deriv-tight qh-w03-bandfig">
-  <h3>The avoided crossing in the original paper</h3>
-
-  <figure class="qh-deriv-fig">
-    <a href="../Image/tsai-2002-physicac-charge-bands-avoided-crossing.png"><img src="../WebP/tsai-2002-physicac-charge-bands-avoided-crossing.webp" alt="Charge-state parabolas versus gate charge, with avoided crossings opened by the Josephson coupling"></a>
-    <figcaption>
-      Tsai, Nakamura &amp; Pashkin,
-      <em>Superconducting single-Cooper-pair box as quantum bit</em>
-      (Physica C)
-    </figcaption>
-  </figure>
-
-  <p>
-    The dotted curves are the uncoupled charge states
-    \(|n\rangle\). Josephson tunnelling mixes the two states and
-    turns their crossing into the solid avoided crossing.
-  </p>
-
-  <div class="qh-result">
-    \[
-    \hbar\omega_{01}
-    =
-    \sqrt{
-      \left[8E_C\left(n_g-\frac12\right)\right]^2+E_J^2
-    }
-    \qquad\xrightarrow{\;n_g=1/2\;}\qquad
-    E_J
-    \]
-  </div>
-
-</section>
-
-
-<section data-manual-slide data-auto-fit="true"
-         data-slide-class="qh-deriv">
-  <p class="qh-prelude-kicker">
-    Cooper-pair box · step 10 of 15
-  </p>
-
-  <h3>Diagonalize the two charge states</h3>
-
-  <p>Near \(n_g=1/2\), retain only \(|0\rangle\) and \(|1\rangle\):</p>
-
-  \[
-  \hat{\mathcal H}_{\{0,1\}}
-  =
-  \begin{pmatrix}
-    4E_Cn_g^2 & -E_J/2\\
-    -E_J/2 & 4E_C(1-n_g)^2
-  \end{pmatrix}.
-  \]
-
-  <p>The eigenenergies \(E_\lambda\) obey</p>
-
-  \[
-  \det\!\left(
-    \hat{\mathcal H}_{\{0,1\}}-E_\lambda I
-  \right)=0,
-  \]
-
-  \[
-  \left(4E_Cn_g^2-E_\lambda\right)
-  \left(4E_C(1-n_g)^2-E_\lambda\right)
-  -\frac{E_J^2}{4}=0.
-  \]
-
-  <p>Solving the quadratic equation gives</p>
-
-  \[
-  E_\lambda
-  =
-  2E_C\!\left[n_g^2+(1-n_g)^2\right]
-  \pm
-  \frac12
-  \sqrt{
-    \left[8E_C\left(n_g-\frac12\right)\right]^2+E_J^2
-  }.
-  \]
-
-  <div class="qh-result">
-    \[
-    \hbar\omega_{01}
-    =
-    E_{\lambda,+}-E_{\lambda,-}
-    =
-    \sqrt{
-      \left[8E_C\left(n_g-\frac12\right)\right]^2+E_J^2
-    }
-    \]
-  </div>
-</section>
-
-
-
-<section data-manual-slide data-auto-fit="false" data-slide-class="qh-deriv qh-deriv-tight qh-w03-protofig">
-  <h3>CPB control and readout</h3>
-  <div class="qh-proto-grid">
-    <figure class="qh-deriv-fig">
-      <a href="../Image/nakamura-1999-nat398-fig2-pulse-protocol.png"><img src="../WebP/nakamura-1999-nat398-fig2-pulse-protocol.webp" alt="Energy of the two charge states against total gate charge, with the avoided crossing of size E_J at one electron charge, the pulse trajectory, and the quasiparticle decay rates; below, the pulse sequence in time"></a>
-      <figcaption>Nakamura, Pashkin &amp; Tsai, <em>Nature</em> <strong>398</strong>, 786 (1999), Fig. 2</figcaption>
-    </figure>
-    <figure class="qh-deriv-fig">
-      <a href="../Image/nakamura-1999-nat398-fig4-oscillation-hires.png"><img src="../WebP/nakamura-1999-nat398-fig4-oscillation-hires.webp" alt="Pulse-induced probe current oscillating as a function of the length of the gate pulse, with the coherence time marked"></a>
-      <figcaption>Same paper, Fig. 4</figcaption>
-    </figure>
-    <figure class="qh-deriv-fig">
-      <a href="../Image/nakamura-2000-physicab-cpb-circuit-and-levels.png"><img src="../WebP/nakamura-2000-physicab-cpb-circuit-and-levels.webp" alt="Circuit of the Cooper-pair box with reservoir, box and probe, and the corresponding energy diagram showing a Cooper pair entering the box and two quasiparticles leaving through the probe junction"></a>
-      <figcaption>Nakamura, Pashkin &amp; Tsai, <em>Physica B</em> (2000)</figcaption>
-    </figure>
-  </div>
-  <figure class="qh-v50-corner-fig">
-    <a href="../Image/tsai-2002-physicac-cpb-squid-probe-sem.png"><img src="../WebP/tsai-2002-physicac-cpb-squid-probe-sem.webp" alt="Micrograph and three-dimensional schematic of the same kind of box, showing that its junction is a two-junction SQUID loop, with the gate and the probe junction marked"></a>
-    <figcaption>Tsai, Nakamura &amp; Pashkin, <em>Physica C</em> (2002)</figcaption>
-  </figure>
-</section>
-<section data-manual-slide data-auto-fit="true" data-title="How does the transmon improve the CPB?" data-slide-class="qh-deriv qh-deriv-tight qh-v32-cpb-answer">
-  <p class="qh-prelude-kicker">Visual answer</p>
-  <h3>CPB \(\longrightarrow\) transmon</h3>
-  <div class="qh-v32-cpb-grid">
-    <figure>
-      <div class="qh-v32-cpb-frame">
-        <a href="../Image/koch-2007-fig2-cpb-to-transmon-spectrum.png"><img src="../WebP/koch-2007-fig2-cpb-to-transmon-spectrum.webp" alt="The first three Cooper-pair-box energy bands versus offset charge for EJ over EC equal to 1, 5, 10 and 50; the bands become progressively flatter"></a>
-      </div>
-      <figcaption>\(E_J/E_C\uparrow\ \Rightarrow\ E_m(n_g)\) flattens</figcaption>
-    </figure>
-    <figure>
-      <div class="qh-v32-cpb-frame">
-        <a href="../Image/koch-2007-eq2-4-2-5-charge-dispersion.png"><img src="../WebP/koch-2007-eq2-4-2-5-charge-dispersion.webp" alt="Koch et al. equations defining charge dispersion and showing its exponential suppression with the square root of EJ over EC"></a>
-      </div>
-      <figcaption>\(\epsilon_m\): WKB</figcaption>
-    </figure>
-    <figure>
-      <div class="qh-v32-cpb-frame">
-        <a href="../Image/adiabatic-vs-fast-control-spring-analogy.png"><img src="../WebP/adiabatic-vs-fast-control-spring-analogy.webp" alt="Spring analogy comparing a slow displacement that follows equilibrium with a fast displacement that excites oscillation"></a>
-      </div>
-      <figcaption>slow bias · fast drive</figcaption>
-    </figure>
-  </div>
-  <div class="qh-result">
-    \[
-    \underbrace{|\epsilon_m|}_{\text{charge dispersion}}
-    \propto e^{-\sqrt{8E_J/E_C}}
-    \qquad\text{vs.}\qquad
-    \underbrace{\frac{|\alpha|}{\hbar\omega_{01}}}_{\text{relative anharmonicity}}
-    \sim\frac{1}{\sqrt{8E_J/E_C}}
-    \]
-  </div>
-  <p class="qh-deriv-foot">Spectrum and \(\epsilon_m\): Koch et al., <em>Phys. Rev. A</em> <strong>76</strong>, 042319 (2007), <a href="https://doi.org/10.1103/PhysRevA.76.042319" target="_blank" rel="noopener">DOI</a>.</p>
-</section>
-
-
-<section data-manual-slide data-auto-fit="true"
-         data-slide-class="qh-deriv qh-deriv-tight qh-v36-sweet">
-  <p class="qh-prelude-kicker">
-    Cooper-pair box · step 15 of 15
-  </p>
-
-  <h3>The sweet spot is curved and narrow</h3>
-
-  <p>Write the gate charge as \(n_g=\tfrac12+\delta n_g\) and expand about the sweet spot:</p>
-
-  <div class="qh-key qh-v39-taylor">
-    \[
-    \hbar\omega_{01}\!\left(\tfrac12+\delta n_g\right)
-    =\hbar\omega_{01}\Big|_{\frac12}
-    +\frac{\partial\left(\hbar\omega_{01}\right)}{\partial n_g}\bigg|_{\frac12}\delta n_g
-    +\frac{1}{2}\frac{\partial^2\left(\hbar\omega_{01}\right)}{\partial n_g^2}\bigg|_{\frac12}\delta n_g^{2}
-    +\mathcal O\!\left(\delta n_g^{3}\right)
-    \]
-  </div>
-
-  <div class="qh-deriv-split">
-            <div class="qh-step-host">
-<p>Differentiate the diagonalized level spacing directly:</p>
-
-  \[
-  \frac{\partial(\hbar\omega_{01})}{\partial n_g}
-  =
-  \frac{
-    64E_C^2\left(n_g-\frac12\right)
-  }{
-    \sqrt{
-      64E_C^2\left(n_g-\frac12\right)^2+E_J^2
-    }
-  }.
-  \]
-
-  <div class="qh-result">
-    \[
-    \left.
-    \frac{\partial(\hbar\omega_{01})}{\partial n_g}
-    \right|_{n_g=1/2}
-    =0
-    \]
-  </div>
-
-              </div>
-            <div class="qh-step-host">
-<p>The remaining charge sensitivity is set by the curvature:</p>
-
-  \[
-  \frac{\partial^2(\hbar\omega_{01})}{\partial n_g^2}
-  =
-  \frac{
-    64E_C^2E_J^2
-  }{
-    \left[
-      64E_C^2\left(n_g-\frac12\right)^2+E_J^2
-    \right]^{3/2}
-  }.
-  \]
-
-  <div class="qh-result">
-    \[
-    \left.
-    \frac{\partial^2(\hbar\omega_{01})}{\partial n_g^2}
-    \right|_{n_g=1/2}
-    =
-    \frac{64E_C^2}{E_J}
-    \]
-  </div>
-
-  <p>Close to \(n_g=1/2\), the level spacing is therefore</p>
-
-  \[
-  \hbar\omega_{01}
-  \approx
-  E_J
-  +
-  32\frac{E_C^2}{E_J}
-  \left(n_g-\frac12\right)^2.
-  \]
-
-
-              </div>
-          </div>
-          <p class="qh-deriv-foot">
-    The first-order charge sensitivity vanishes exactly at the
-    sweet spot, but the quadratic sensitivity grows as \(E_C^2/E_J\).
-  </p>
-</section>
-
-        
-        
-
-        
-        <section data-manual-slide data-cover data-title="Interaction Picture">
-          <div class="theme-header" style="text-align: center;">
-            <h2>AC Control on Transmon</h2>
-            <h3>Interaction Picture</h3>
-          </div>
-        </section>
-        
-        <section data-manual-slide data-auto-fit="true" data-slide-class="qh-deriv qh-deriv-tight qh-v29-drive qh-v29-drive-circuit">
-          <p class="qh-prelude-kicker">Transmon drive · 1 of 16</p>
-          <h3>A capacitively driven transmon</h3>
-          <div class="qh-deriv-split">
-            <figure class="qh-deriv-fig">
-              <svg viewBox="0 0 440 320" role="img"
-                aria-label="Cooper-pair box: an ac gate voltage V_g(t) drives the island through the gate capacitor C_g; the island connects to the grounded reservoir through a Josephson junction E_J in parallel with its capacitance C"
-                fill="none" stroke="#302840" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="156" y="50" width="219" height="130" rx="12" fill="#efeaf7" stroke="#b9aed0" stroke-width="2" stroke-dasharray="7 6" />
-                <path d="M84 144 V80 H148 M148 56 V104 M164 56 V104 M164 80 H350" />
-                <path d="M250 80 V172 M250 188 V272 M226 172 H274 M226 188 H274 M350 80 V166 M350 194 V272" />
-                <path d="M336 166 L364 194 M364 166 L336 194" stroke-width="4" />
-                <path d="M84 196 V272 H350 M210 272 V286 M192 286 H228 M199 294 H221 M206 302 H214" />
-                <circle cx="84" cy="170" r="26" />
-                <path d="M68 170 C72 158, 80 158, 84 170 S96 182, 100 170" />
-                <g fill="#302840" stroke="none" font-family="Cambria Math, Times New Roman, serif" font-style="italic" font-size="22" text-anchor="middle">
-                  <text x="156" y="134">C<tspan baseline-shift="sub" font-size="72%">g</tspan></text>
-                  <text x="53" y="178" text-anchor="end">V<tspan baseline-shift="sub" font-size="72%">g</tspan>(t)</text>
-                  <text x="388" y="188">E<tspan baseline-shift="sub" font-size="72%">J</tspan></text>
-                  <text x="196" y="188">C</text>
-                  <text x="318" y="188">φ</text>
-                </g>
-                <g fill="#5f4b8b" stroke="none" font-family="Montserrat, sans-serif" font-size="15" font-weight="600" text-anchor="middle">
-                  <text x="263" y="38">island, V, n</text>
-                  <text x="306" y="306">reservoir (ground)</text>
-                </g>
-              </svg>
-              <figcaption>The microwave line controls \(n_g(t)\) through \(C_g\).</figcaption>
-            </figure>
-            <div class="qh-v45-drive-math">
-                \[
-                \mathcal{H}=4E_{C}\left(n-n_g\right)^2-E_J\cos\varphi, \qquad n_g(t)=-\frac{C_gV_g(t)}{2e}, \qquad E_C=\frac{e^2}{2\left(C+C_g\right)}
-                \]
-              <div class="qh-result">
-                \[
-                \text{Drop }n_g^2 \quad \to \quad
-                \mathcal H(t)=
-                \underbrace{4E_Cn^2-E_J\cos\varphi}_{\mathcal H_0}
-                +\underbrace{\left[-8E_C\cdot n_g(t)\cdot n\right]}_{\mathcal H_d(t)}
-                \]
-              </div>
-              <div>
-                \[
-                \hat{\varphi} = \left(\frac{2E_C}{E_J}\right)^{1/4}\left(a+a^{\dagger}\right),
-                \qquad
-                \hat{n} = \frac{i}{2}\left(\frac{E_J}{2E_C}\right)^{1/4}\left(a^{\dagger}-a\right)
-                , \qquad \hbar\omega_p=\sqrt{8E_JE_C}
-                \]
-            </div>
-            <div>
-              \[
-              \mathcal H_d(t)=-8E_C \cdot \left(-\frac{C_gV_g(t)}{2e}\right)\cdot \frac{i}{2}\left(\frac{E_J}{2E_C}\right)^{1/4}\left(a^{\dagger}-a\right)
-              \]
-            </div>
-            <div>
-              \[
-              =2i \cdot \left(\frac{C_gV_g(t)}{e}\right)\cdot \left(\frac{E_C^2 \cdot 8E_C E_J}{2\cdot 8}\right)^{1/4}\cdot\left(a^{\dagger}-a\right)
-              \]
-            </div>
-            <div>
-              \[
-              =i \cdot \left(\frac{C_gV_g(t)}{e}\right) \sqrt{E_C \hbar \omega_p }\cdot\left(a^{\dagger}-a\right)
-              \]
-            </div>
-            <div>
-              \[
-              =i\hbar\cdot C_gV_g(t)  \sqrt{\frac{  \omega_p}{2\hbar\left(C+C_g\right)} }\cdot\left(a^{\dagger}-a\right)
-              \]
-            </div>
-            <div>
-              \[
-              \equiv i\hbar\cdot\Omega(t)\cdot\left(a^{\dagger}-a\right)
-              \]
-          </div>
-            </div>
-          </div>
-        </section>
-
-        
-
-        
-
-        <section data-manual-slide data-auto-fit="true" data-slide-class="qh-deriv qh-deriv-tight qh-v29-drive qh-v34-phase">
-          <p class="qh-prelude-kicker">Rotating frame · 1 of 3</p>
-          <h3>Free evolution in the lab frame</h3>
-          <div class="qh-v34-frame-grid">
-            <div class="qh-v34-frame-math qh-step-host">
-              <div class="qh-key">
-                \[
-                \mathcal H(t)=\mathcal H_0+\mathcal H_d(t),
-                \qquad
-                \mathcal H_d(t)=0
-                \quad\Longrightarrow\quad
-                \mathcal H=\mathcal H_0
-                \]
-              </div>
-              \[
-              \mathcal H_0
-              =\begin{pmatrix}E_0&amp;0\\[2pt]0&amp;E_1\end{pmatrix}
-              =\frac{E_0+E_1}{2}\,\begin{pmatrix}1&amp;0\\0&amp;1\end{pmatrix}
-              -\frac{E_1-E_0}{2}\,\begin{pmatrix}1&amp;0\\0&amp;-1\end{pmatrix}
-              \]
-              
-              \[
-              \equiv \bar E\,\mathbb I
-              -\frac{\hbar\omega_{01}}{2}\,\sigma_z
-              \]
-              <br>
-              \[
-              \bar E\equiv\frac{E_0+E_1}{2},\quad
-              \hbar\omega_{01}\equiv E_1-E_0
-              \]
-              <br><br>
-              <div class="qh-v48-newblock">
-                \[
-                |\psi_{\rm lab}(t)\rangle
-                =U_0(t,0)|\psi_{\rm lab}(0)\rangle
-                \]
-              </div>
-              \[
-              =\mathcal T\exp\!\left[-\frac{i}{\hbar}
-              \int_0^t\mathcal H_0(s)\,ds\right]*|\psi_{\rm lab}(0)\rangle,
-              \]
-              <div class="qh-result">
-                \[
-                =\underbrace{e^{-i\bar Et/\hbar}}_{\text{common phase}}
-                \exp\!\left(+\frac{i\omega_{01}t}{2}\sigma_z\right)*|\psi_{\rm lab}(0)\rangle
-                \]
-              </div>
-            </div>
-            <figure class="qh-v34-frame-figure">
-              <a href="../Image/five-state-lab-and-rotating-frame.gif"><img src="../Image/five-state-lab-and-rotating-frame.gif" alt="Five state vectors precessing around the Bloch sphere in the lab frame while remaining fixed in a co-rotating frame"></a>
-            </figure>
-          </div>
-        </section>
-
-        <section data-manual-slide data-auto-fit="true" data-slide-class="qh-deriv qh-deriv-tight qh-v29-drive qh-v34-free">
-          <p class="qh-prelude-kicker">Rotating frame · 2 of 3</p>
-          <h3>Rotating frame for \(\mathcal H_0\)</h3>
-          <div class="qh-v34-frame-grid">
-            <div class="qh-v34-frame-math qh-step-host">
-              <div class="qh-key">
-                \[
-                \begin{aligned}
-                U_0(t)&amp;=\mathcal T\exp\!\left[-\frac{i}{\hbar}
-                \int_0^t\mathcal H_0(s)\,ds\right] ,
-                &amp;U_0^\dagger(t)U_0(t)&amp;=\mathbb I,\\
-                |\Theta(t)\rangle&amp;=U_0^\dagger(t)|\psi_{\rm lab}(t)\rangle
-                \end{aligned}
-                \]
-              </div>
-              \[
-              i\hbar\partial_t U(t)=\mathcal H_0U_0(t)
-              \]
-              \[
-              -i\hbar\partial_t U^\dagger(t)=U_0^\dagger(t)\mathcal H_0 \quad \to \quad i\hbar\partial_t U^\dagger(t)=-U_0^\dagger(t)\mathcal H_0
-              \]
-              <div class="qh-v48-newblock">
-                \[
-                i\hbar\,\partial_t|\Theta(t)\rangle
-                =i\hbar\,\partial_t
-                \left[U_0^\dagger(t)|\psi_{\rm lab}(t)\rangle\right]
-                \]
-              </div>
-              \[
-              =\left[i\hbar\partial_t U^\dagger(t)\right]|\psi_{\rm lab}(t)\rangle +U_0^\dagger(t)
-              \left[i\hbar\,\partial_t|\psi_{\rm lab}(t)\rangle\right]
-              \]
-              \[
-              =-U_0^\dagger\mathcal H_0|\psi_{\rm lab}\rangle +U_0^\dagger\mathcal H_0|\psi_{\rm lab}\rangle=0
-              \]
-              <div class="qh-result">
-                \[
-                |\Theta(t)\rangle=|\Theta(0)\rangle
-                \]
-              </div>
-            </div>
-            <figure class="qh-v34-frame-figure">
-              <a href="../Image/five-state-lab-and-rotating-frame.gif"><img src="../Image/five-state-lab-and-rotating-frame.gif" alt="Five state vectors precessing around the Bloch sphere in the lab frame while remaining fixed in a co-rotating frame"></a>
-            </figure>
-          </div>
-        </section>
-
-        <section data-manual-slide data-auto-fit="true" data-slide-class="qh-deriv qh-deriv-tight qh-v29-drive qh-v34-drive">
-          <p class="qh-prelude-kicker">Rotating frame · 3 of 3</p>
-          <h3>Interaction-picture Hamiltonian</h3>
-          <div class="qh-key qh-v29-wide">
-            \[
-            i\hbar\,\partial_t|\psi_{\rm lab}\rangle
-            =\left[\mathcal H_0+\mathcal H_d(t)\right]|\psi_{\rm lab}\rangle,
-            \qquad
-            |\Theta\rangle=U_0^\dagger|\psi_{\rm lab}\rangle,
-            \qquad
-            i\hbar\partial_t U^\dagger=-U_0^\dagger\mathcal H_0
-            \]
-          </div>
-          \[
-          i\hbar\,\partial_t|\Theta\rangle
-          =i\hbar\,\partial_t
-          \left[U_0^\dagger|\psi_{\rm lab}\rangle\right]
-          \]
-          \[
-          =\left(i\hbar\partial_t U^\dagger\right)|\psi_{\rm lab}\rangle
-          +U_0^\dagger\left(i\hbar\,\partial_t|\psi_{\rm lab}\rangle\right)
-          \]
-          \[
-          =-U_0^\dagger\mathcal H_0|\psi_{\rm lab}\rangle
-          +U_0^\dagger\left(\mathcal H_0+\mathcal H_d\right)|\psi_{\rm lab}\rangle
-          \]
-          \[
-          =U_0^\dagger\mathcal H_d|\psi_{\rm lab}\rangle
-          \]
-          \[
-          =U_0^\dagger\mathcal H_dU_0|\Theta\rangle
-          \]
-          <div class="qh-result qh-v29-wide">
-            \[
-            \boxed{
-            i\hbar\,\partial_t|\Theta(t)\rangle
-            =\mathcal H_I(t)|\Theta(t)\rangle},
-            \qquad
-            \mathcal H_I(t)\equiv U_0^\dagger(t)\mathcal H_d(t)U_0(t)
-            \]
-          </div>
-          \[
-          |\Theta(t)\rangle
-          =\mathcal T\exp\!\left[-\frac{i}{\hbar}
-          \int_0^t\mathcal H_I(s)\,ds\right]|\Theta(0)\rangle
-          \]
-        </section>
-
-        <section data-manual-slide data-auto-fit="true" data-slide-class="qh-deriv qh-deriv-tight qh-v29-drive qh-v35-frequency">
-          <p class="qh-prelude-kicker">Transmon drive · 11 of 16</p>
-          <h3>At the oscillator stage, rotate with \(\omega_p\)</h3>
-          <p class="qh-step-label">Start from the driven transmon</p>
-          <div class="qh-key qh-v29-wide">
-            \[
-            \begin{aligned}
-            \mathcal H(t)&amp;=\mathcal H_0+\mathcal H_d(t)
-            =\left\{\hbar\omega_p\!\left(a^\dagger a+\frac12\right)
-              -...\right\}
-              +\left\{i\hbar\Omega(t)(a^\dagger-a)\right\},\quad
-              \hbar\omega_p=\sqrt{8E_JE_C}
-              ,\quad
-              \Omega(t)=C_gV_g(t)  \sqrt{\frac{  \omega_p}{2\hbar\left(C+C_g\right)} }
-            \end{aligned}
-            \]
-          </div>
-          <div class="qh-v35-eq">
-            \[
-            \begin{aligned}
-            \mathcal H_I=U_p^\dagger \mathcal H_d U_p
-            =U_p^\dagger \cdot i\hbar\Omega(t)(a^\dagger-a) \cdot  U_p
-            =i\hbar\Omega(t)\cdot (U_p^\dagger a^\dagger  U_p-U_p^\dagger a  U_p)  
-            \end{aligned}
-            \]
-            </div>
-
-          <p class="qh-step-label">Choose the harmonic part as the reference</p>
-          <div class="qh-v35-eq">
-          \[
-          \begin{aligned}
-          \mathcal H_p&amp;\equiv
-          \hbar\omega_p\!\left(a^\dagger a+\frac12\right), \qquad
-          U_p(t)=e^{-i\mathcal H_pt/\hbar}, \qquad
-          [a^\dagger a,a] =-a, \qquad [a^\dagger a,a^\dagger] =+a^\dagger
-          \end{aligned}
-          \]
-          </div>
-
-          <p class="qh-step-label">Transform</p>
-          <div class="qh-v35-eq">
-          \[
-          \begin{aligned}
-          \frac{d}{dt}\!\left(U_p^\dagger aU_p\right)
-          &amp;=\left(\frac{i}{\hbar}H_pU_p^\dagger\right) a U_p + U_p^\dagger a \left(-\frac{i}{\hbar} H_p U_p\right)
-          =\frac{i}{\hbar}U_p^\dagger[\mathcal H_p,a]U_p
-          =-i\omega_p\left(U_p^\dagger aU_p\right)\\[2pt]
-          \left(U_p^\dagger aU_p\right)(t)&amp;=\left(U_p^\dagger aU_p\right)(0)\cdot e^{-i\omega_p t}=a\cdot e^{-i\omega_p t}
-          \\[2pt]
-          U_p^\dagger aU_p&amp;=ae^{-i\omega_pt},
-          \qquad
-          U_p^\dagger a^\dagger U_p=a^\dagger e^{+i\omega_pt}
-          \end{aligned}
-          \]
-          </div>
-
-          <p class="qh-step-label">Transform the remaining Hamiltonian</p>
-          <div class="qh-v35-eq">
-          \[
-          \begin{aligned}
-          U_p^\dagger \mathcal H_d U_p
-          =U_p^\dagger \cdot i\hbar\Omega(t)(a^\dagger-a) \cdot  U_p
-          =i\hbar\Omega(t)
-          \left(a^\dagger e^{+i\omega_pt}-ae^{-i\omega_pt}\right)
-          \end{aligned}
-          \]
-          </div>
-        </section>
-
-        <section data-manual-slide data-auto-fit="true" data-slide-class="qh-deriv qh-deriv-tight qh-v29-drive qh-v37-rwa">
-          <p class="qh-prelude-kicker">Transmon drive · 12 of 16</p>
-          <h3>Rotating Wave Approximation (RWA)</h3>
-          <p class="qh-step-label">The drive, already rotated</p>
-          <div class="qh-key qh-v29-wide">
-            \[
-            \mathcal H_I(t)=U_p^\dagger\mathcal H_d(t)U_p
-            =i\hbar\Omega(t)\left(a^\dagger e^{+i\omega_pt}-ae^{-i\omega_pt}\right),
-            \qquad
-            V_g(t)=V_0 \, f(t)
-            ,\qquad
-              \Omega(t)=\underbrace{C_gV_0  \sqrt{\frac{  \omega_p}{2\hbar\left(C+C_g\right)} }}_{\equiv \Omega} *f(t)
-            \]
-          </div>
-          <div class="qh-v40-split">
-            <div class="qh-step-host">
-          <p class="qh-step-label">Drive on resonance and write the tone in exponentials</p>
-          <div class="qh-v37-eq">
-            \[
-            \mathcal H_I(t)\Big|_{f(t)=\sin\omega_pt}
-            =i\hbar\Omega\cdot\frac{e^{+i\omega_pt}-e^{-i\omega_pt}}{2i}
-            \cdot\left(a^\dagger e^{+i\omega_pt}-ae^{-i\omega_pt}\right)
-            \]
-          </div>
-          <div class="qh-v37-eq">
-            \[
-            =\frac{\hbar\Omega}{2}\left(e^{+i\omega_pt}-e^{-i\omega_pt}\right)
-            \left(a^\dagger e^{+i\omega_pt}-ae^{-i\omega_pt}\right)
-            \]
-          </div>
-          <div class="qh-v37-eq">
-            \[
-            =\frac{\hbar\Omega}{2}\Big[\,
-            {-\left(a^\dagger+a\right)}
-            \;+\;
-            \underbrace{\left(a^\dagger e^{+2i\omega_pt}+ae^{-2i\omega_pt}\right)}_{\textstyle \text{turns at }2\omega_p}
-            \Big]
-            \]
-          </div>
-          <div class="qh-v37-eq">
-            \[
-            \overset{RWA}{\sim} -\frac{\hbar\Omega}{2}\left(a+a^\dagger\right)
-            \]
-          </div>
-            </div>
-            <div class="qh-v40-ladder qh-step-host">
-              <p class="qh-step-label">What that operator does</p>
-              \[
-              \left(a^\dagger+a\right)\left|0\right\rangle=a^\dagger\left|0\right\rangle=\left|1\right\rangle
-              \]
-              \[
-              \left(a^\dagger+a\right)\left|1\right\rangle=a\left|1\right\rangle=\left|0\right\rangle
-              \]
-              <svg viewBox="0 0 300 250" role="img"
-                aria-label="Two energy levels, the ground state at the bottom and the first excited state at the top, with one curved arrow going up and another coming back down"
-                fill="none" stroke="#302840" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M75 56 H225 M75 196 H225" />
-                <g stroke="#5f4b8b" stroke-width="4">
-                  <path d="M125 190 C88 152, 88 96, 125 60" />
-                  <path d="M117 72 L125 56 L133 72" />
-                  <path d="M175 60 C212 96, 212 152, 175 190" />
-                  <path d="M167 180 L175 196 L183 180" />
-                </g>
-                <g fill="#302840" stroke="none" font-family="Cambria Math, Times New Roman, serif" font-size="26">
-                  <text x="238" y="64">|1⟩</text>
-                  <text x="238" y="204">|0⟩</text>
-                </g>
-              </svg>
-            </div>
-          </div>
-
-        </section>
-
-        <section data-manual-slide data-auto-fit="true" data-slide-class="qh-deriv qh-deriv-tight qh-v29-drive qh-v38-phase">
-          <p class="qh-prelude-kicker">Transmon drive · 13 of 16</p>
-          <h3>The phase of the tone is the axis</h3>
-          <p class="qh-step-label">Same step, now with a phase on the tone</p>
-          <div class="qh-v40-split">
-            <div class="qh-step-host">
-          <div class="qh-v38-eq">
-            \[
-            \mathcal H_I(t)\Big|_{f(t)=\sin\left(\omega_pt+\phi\right)}
-            =\frac{\hbar\Omega}{2}\left(e^{+i\left(\omega_pt+\phi\right)}-e^{-i\left(\omega_pt+\phi\right)}\right)
-            \left(a^\dagger e^{+i\omega_pt}-ae^{-i\omega_pt}\right)
-            \]
-          </div>
-          <div class="qh-v38-eq">
-            \[
-            =\frac{\hbar\Omega}{2}\Big[\,
-            {-\left(ae^{+i\phi}+a^\dagger e^{-i\phi}\right)}
-            \;+\;
-            \underbrace{\left(a^\dagger e^{+i\left(2\omega_pt+\phi\right)}+ae^{-i\left(2\omega_pt+\phi\right)}\right)}_{\textstyle \text{turns at }2\omega_p}
-            \Big]
-            \]
-          </div>
-          <div class="qh-v38-eq">
-            \[
-            \overset{RWA}{\sim}-\frac{\hbar\Omega}{2}\left(ae^{+i\phi}+a^\dagger e^{-i\phi}\right)
-            \]
-          </div>
-          <div class="qh-v38-eq">
-            \[
-            =-\frac{\hbar\Omega}{2}\left(
-            \cos\phi \cdot\underbrace{\left(a+a^\dagger\right)}_{\textstyle \to\,\sigma_x}
-            \;-\;\sin\phi\cdot\underbrace{i\left(a^\dagger-a\right)}_{\textstyle \to\,\sigma_y}
-            \right)
-            \]
-          </div>
-            </div>
-            <div class="qh-v40-pauli qh-step-host">
-              <p class="qh-step-label">Why a Pauli matrix may stand in</p>
-              <p>Keep only \(\left|0\right\rangle,\left|1\right\rangle\). The ladder operators then have one matrix element each:</p>
-              \[
-              \begin{aligned}
-              a&\to\left|0\right\rangle\left\langle1\right|=\begin{pmatrix}0&1\\0&0\end{pmatrix}\\[2pt]
-              a^\dagger&\to\left|1\right\rangle\left\langle0\right|=\begin{pmatrix}0&0\\1&0\end{pmatrix}
-              \end{aligned}
-              \]
-              
-              <div class="qh-key">
-                \[
-                \begin{aligned}
-                a+a^\dagger&\to\begin{pmatrix}0&1\\0&0\end{pmatrix}+\begin{pmatrix}0&0\\1&0\end{pmatrix}=\sigma_x\\[2pt]
-                i\left(a^\dagger-a\right)&\to i\left(\begin{pmatrix}0&0\\1&0\end{pmatrix}-\begin{pmatrix}0&1\\0&0\end{pmatrix}\right)=\sigma_y
-                \end{aligned}
-                \]
-              </div>
-            </div>
-          </div>
-
-          <div class="qh-step-host">
-          <div class="qh-result qh-v29-wide">
-            \[
-            \mathcal H_{\rm RWA}
-            \;\xrightarrow[\ \text{two levels}\ ]{}\;
-            -\frac{\hbar\Omega}{2}\left(\cos\phi\,\sigma_x-\sin\phi\,\sigma_y\right)
-            \equiv-\frac{\hbar\Omega}{2}\,\hat{n}\cdot\vec{\sigma},
-            \qquad
-            \hat{n}=\left(\cos\phi,\,-\sin\phi,\,0\right)
-            \]
-          </div>
-          </div>
-          </section>
-
-        
-
-        
-        
-
-        
-
-          <section data-manual-slide data-auto-fit="true" data-slide-class="qh-deriv qh-deriv-tight qh-v29-drive qh-v41-rabi qh-v48-rabi">
-            <p class="qh-prelude-kicker">Transmon drive · 14 of 16</p>
-            <h3>Rabi Oscillation</h3>
-            <div class="qh-key qh-v41-equation-strip">
-              \[
-              i\hbar\,\partial_t\left|\Theta(t)\right\rangle
-              =\mathcal H_I(t)\left|\Theta(t)\right\rangle,
-              \qquad
-              \left|\Theta(t)\right\rangle
-              =\mathcal T\exp\!\left[-\frac{i}{\hbar}\int_0^t\mathcal H_I(s)\,ds\right]
-              \left|\Theta(0)\right\rangle
-              \]
-            </div>
-            <div class="qh-v48-rabi-grid">
-              <div class="qh-v48-rabi-math qh-step-host">
-                <p>Take \(f(t)=\sin\, \omega_p t\)</p>
-                \[
-                \mathcal H_I(t)\overset{RWA}{\sim}-\frac{\hbar\Omega}{2}\,\sigma_x
-                \]
-                \[
-                U_I(t)
-                =e^{-i\mathcal H_I t/\hbar}
-                =e^{+i\frac{\Omega t}{2}\sigma_x}=I\cos\frac{\Omega t}{2}
-                +i\sigma_x\sin\frac{\Omega t}{2}
-                \]
-                \[
-                =\begin{pmatrix}
-                \cos\frac{\Omega t}{2} &amp; i\sin\frac{\Omega t}{2}\\
-                i\sin\frac{\Omega t}{2} &amp; \cos\frac{\Omega t}{2}
-                \end{pmatrix}
-                \]
-                <p class="qh-step-label">Start in the ground state \(|0\rangle\) and read the population</p>
-                \[
-                U_I(t)\left|0\right\rangle
-                =\cos\frac{\Omega t}{2}\left|0\right\rangle
-                +i\sin\frac{\Omega t}{2}\left|1\right\rangle
-                \]
-                <div class="qh-result">
-                  \[
-                  P_1(t)=\left|\left\langle1\right|U_I(t)\left|0\right\rangle\right|^2
-                  =\sin^2\frac{\Omega t}{2}=\frac{1-\cos\Omega t}{2}
-                  \]
-                </div>
-                <p>The population swings \(0\to1\to0\) at the Rabi frequency \(\Omega\).</p>
-              </div>
-              <div class="qh-v48-rabi-visuals">
-                <figure class="qh-v48-rabi-anim">
-                  <a href="../Image/bloch-rabi-square-pulse-carrier.gif"><img src="../Image/bloch-rabi-square-pulse-carrier.gif" alt="Animation: a Bloch vector driven from the north pole through five full Rabi cycles while a square-envelope carrier pulse plays"></a>
-                </figure>
-                <figure class="qh-v48-rabi-trace">
-                  <a href="../Image/chow-2009-prl102-fig1-pi-pulse-error-rabi-2.png"><img src="../WebP/chow-2009-prl102-fig1-pi-pulse-error-rabi-2.webp" alt="Measured excited-state population oscillating with microwave pulse length"></a>
-                  <figcaption>Chow et al., <em>Phys. Rev. Lett.</em> <strong>102</strong>, 090502 (2009), Fig. 1</figcaption>
-                </figure>
-              </div>
-            </div>
-          </section>
-
-        
-
-        
-
-        
-        <section data-manual-slide data-auto-fit="true" data-slide-class="qh-deriv qh-deriv-tight" data-block="rot">
-          <p class="qh-prelude-kicker">Control · step 12 of 24</p>
-          <h3>Rotate at \(\omega_{01}\)</h3>
-          <p>Rotate all of them at once, each by its own rung number:</p>
-          \[
-          \hat{U}(t)=e^{i\omega_{01}t\,a^\dagger a},
-          \qquad
-          \hat{\mathcal{H}}_{\rm rot}=\hat{U}\hat{\mathcal{H}}\hat{U}^\dagger+i\hbar\left(\partial_t\hat{U}\right)\hat{U}^\dagger
-          \]
-          <div class="qh-deriv-split qh-deriv-halves">
-            <div>
-              <p>Diagonal:</p>
-              \[
-              E_j-j\hbar\omega_{01}=\frac{j\left(j-1\right)}{2}\alpha
-              \]
-            </div>
-            <div>
-              <p>For \(f(t)=\sin\left(\omega_{01} t+\phi_d \right)\) and \(\phi_d=0\):</p>
-              \[
-              i\sin(\omega_dt)
-              \left(a^\dagger e^{i\omega_dt}-ae^{-i\omega_dt}\right)
-              =-\frac{a^\dagger+a}{2}
-              +\underbrace{\frac{a^\dagger e^{2i\omega_dt}+ae^{-2i\omega_dt}}{2}}_{drop}
-              \]
-            </div>
-          </div>
-          <p class="qh-step-label">Drop \(2\omega_d\), then rephase \(|j\rangle\to(-1)^j|j\rangle\)</p>
-          <div class="qh-result qh-bigmat">
-            \[
-            \hat{\mathcal{H}}_{\rm rot}=\begin{pmatrix}
-            0 &amp; \hbar\Omega/2 &amp; 0 &amp; 0 &amp; \cdots\\
-            \hbar\Omega/2 &amp; 0 &amp; \sqrt{2}\hbar\Omega/2 &amp; 0 &amp; \cdots\\
-            0 &amp; \sqrt{2}\hbar\Omega/2 &amp; \alpha &amp; \sqrt{3}\hbar\Omega/2 &amp; \cdots\\
-            0 &amp; 0 &amp; \sqrt{3}\hbar\Omega/2 &amp; 3\alpha &amp; \cdots\\
-            \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \ddots
-            \end{pmatrix}
-            \]
-          </div>
-          <p class="qh-deriv-foot">\(\omega_{01}\) has left the matrix: the qubit block is degenerate and every rung above it is raised by the anharmonicity alone — \(|2\rangle\) by \(\alpha\), \(|3\rangle\) by \(3\alpha\). That is why \(\alpha\) is the only energy in the leakage problem.</p>
-        </section>
-
-        
-
-        <section data-manual-slide data-auto-fit="true" data-slide-class="qh-deriv qh-deriv-tight qh-w03-v11-static" data-block="isolated-12">
-          <p class="qh-prelude-kicker">Control · step 14 of 24</p>
-          <h3>The isolated \(|1\rangle\leftrightarrow|2\rangle\) estimate</h3>
-          <div class="qh-result qh-bigmat">
-            \[
-            \frac{\hat{\mathcal H}_{12}}{\hbar}
-            =\begin{pmatrix}
-            0 &amp; \Omega/\sqrt2\\
-            \Omega/\sqrt2 &amp; \alpha/\hbar
-            \end{pmatrix},
-            \qquad
-            \begin{pmatrix}c_1(0)\\c_2(0)\end{pmatrix}
-            =\begin{pmatrix}1\\0\end{pmatrix}.
-            \]
-          </div>
-          <div class="qh-result">
-            \[
-            \boxed{
-            P_{1\to2}^{(2)}(t)=
-            \frac{2\Omega^2}{2\Omega^2+(\alpha/\hbar)^2}
-            \sin^2\!\left[
-            \frac{t}{2}\sqrt{2\Omega^2+(\alpha/\hbar)^2}
-            \right]}
-            \]
+          <p class="qh-prelude-kicker">Error channels · step 2 of 6</p>
+          <h3>The coupling operators of this circuit</h3>
+          <p>Differentiate \(\hat{\mathcal{H}}=4E_C\left(\hat{n}-n_g\right)^2-E_{J,\mathrm{eff}}(\Phi)\cos\hat{\varphi}\) once for each knob:</p>
+          <div class="qh-deriv-grid">
+            <div>\[\hat{O}_{n_g}=\frac{\partial\hat{\mathcal{H}}}{\partial n_g}=-8E_C\left(\hat{n}-n_g\right)\]</div>
+            <div>\[\hat{O}_\Phi=\frac{\partial\hat{\mathcal{H}}}{\partial\Phi}=-\frac{dE_{J,\mathrm{eff}}}{d\Phi}\cos\hat{\varphi}\]</div>
+            <div>\[\hat{O}_{E_J}=\frac{\partial\hat{\mathcal{H}}}{\partial E_J}=-\cos\hat{\varphi}\]</div>
+            <div>\[\hat{O}_{V}\propto\hat{n}\quad\text{(any capacitive port)}\]</div>
           </div>
           <div class="qh-key">
             \[
-            \boxed{
-            \begin{aligned}
-            P_{1\to2,\max}^{(2)}
-            &amp;=\frac{2(\hbar\Omega/\alpha)^2}
-            {1+2(\hbar\Omega/\alpha)^2}
-            =2\left(\frac{\hbar\Omega}{\alpha}\right)^2
-            -4\left(\frac{\hbar\Omega}{\alpha}\right)^4
-            +8\left(\frac{\hbar\Omega}{\alpha}\right)^6-\cdots
-            \end{aligned}}
+            \text{charge-like knobs}\ \to\ \hat{n},
             \qquad
-            2\left(\frac{\hbar\Omega}{\alpha}\right)^2&lt;1.
+            \text{junction-like knobs}\ \to\ \cos\hat{\varphi}
             \]
           </div>
-          <p class="qh-deriv-foot">This exact two-level result gives the clearest spectral-isolation estimate. It removes \(|0\rangle\); the next pages restore both paths and compute the actual three-level gate dynamics.</p>
+          <p class="qh-deriv-foot">Two operators cover the whole list, and we already know both: \(\hat{n}\) drives the qubit, \(\cos\hat{\varphi}\) is the Josephson term itself.</p>
         </section>
 
         
 
         
-        
 
         
 
         
 
-        <section data-manual-slide data-auto-fit="true" data-slide-class="qh-deriv">
-          <h3>CPB \(\leftrightarrow\) transmon: dispersion versus anharmonicity</h3>
-                    <div class="qh-result">
+        
+
+
+        <section data-manual-slide data-auto-fit="true" data-title="Sweet spot, small overlap, selection rule" data-slide-class="qh-deriv qh-deriv-tight qh-v18-mech qh-w04-noreveal qh-v24-mech">
+          <p class="qh-prelude-kicker">Suppression</p>
+          <h3>Sweet spot, small overlap, selection rule</h3>
+          <div class="qh-key qh-v18-targets">
             \[
-            \hbar\omega_{01}\simeq\sqrt{8E_JE_C}-E_C,
-            \qquad
-            \alpha\simeq-E_C.
+            \hat{O}_\lambda\equiv \frac{\partial \hat{\mathcal H}}{\partial \lambda}
+            \qquad\qquad
+            \underbrace{\frac{\partial\omega_{01}}{\partial\lambda}=\frac{\left\langle1\left|\hat{O}_\lambda\right|1\right\rangle-\left\langle0\left|\hat{O}_\lambda\right|0\right\rangle}{\hbar}}_{T_\varphi}
+            \qquad\qquad
+            \underbrace{\Gamma_1=\frac{\left|\left\langle0\left|\hat{O}_\lambda\right|1\right\rangle\right|^2}{\hbar^2}\,S_\lambda(\omega_{01})}_{T_1}
             \]
           </div>
-          <div class="qh-deriv-split qh-deriv-halves">
+          <div class="qh-v18-mech-grid">
             <div>
-              <p>Charge dispersion:</p>
+              <p class="qh-step-label">1 · Sweet spot: \(\partial\omega_{01}/\partial\lambda=0\)</p>
               \[
-              \boxed{\varepsilon_{01}\propto
-              e^{-\sqrt{8E_J/E_C}}}
+              \frac{\partial\omega_{01}}{\partial\lambda}=\frac{O_{11}-O_{00}}{\hbar}=0
               \]
+              \[
+              \delta\omega_{01}\simeq\frac12\,\frac{\partial^2\omega_{01}}{\partial\lambda^2}\,\delta\lambda^2
+              \]
+              <div class="qh-result">
+                \[
+                \Gamma_\varphi^{(1)}=0
+                \]
+              </div>
+              <div class="qh-v18-note">only at that bias<br>\(n_g=\tfrac12\), \(\Phi=0,\ \Phi_0/2\)</div>
             </div>
             <div>
-              <p>Relative anharmonicity:</p>
+              <p class="qh-step-label">2 · Small overlap: far apart</p>
               \[
-              \boxed{
-              \frac{|\alpha|}{\hbar\omega_{01}}
-              \simeq
-              \frac{E_C}{\sqrt{8E_JE_C}-E_C}
-              \sim\frac{1}{\sqrt{8E_J/E_C}}}
+              \psi_0,\ \psi_1\ \text{far apart}
               \]
+              \[
+              \Longrightarrow\ d_{01}=\langle0|\hat O_\lambda|1\rangle\approx0
+              \]
+              \[
+              \Gamma_1\propto|d_{01}|^2\to0
+              \]
+              <div class="qh-v18-note">\(T_1\) · never exactly zero · at every bias<br>fluxonium 2018</div>
+            </div>
+            <div>
+              <p class="qh-step-label">3 · Selection rule: odd × even = 0</p>
+              \[
+              U(x)=U(-x)\ \Longrightarrow\ [\hat{\mathcal H},\hat P]=0
+              \]
+              \[
+              \Longrightarrow\ \psi_0(x)\ \text{even},\ \ \psi_1(x)\ \text{odd}
+              \]
+              \[
+              \langle0|\cos\hat x|1\rangle=\int\underbrace{\psi_0}_{\rm even}\,\underbrace{\cos x}_{\rm even}\,\underbrace{\psi_1}_{\rm odd}\,dx=0
+              \]
+              \[
+              \langle k|\hat x|k\rangle=\int\underbrace{x}_{\rm odd}\,\underbrace{\psi_k^2}_{\rm even}\,dx=0
+              \]
+              <div class="qh-v18-note">even noise \((\cos x)\): no \(T_1\) · odd noise \((x)\): no first-order \(T_\varphi\)<br>fluxonium at \(\phi_{\rm ext}=\pi\), \(x=\phi-\pi\)</div>
             </div>
           </div>
-          <div class="qh-key">
-            \[
-            \frac{E_J}{E_C}\uparrow:\qquad
-            \underbrace{\varepsilon_{01}\downarrow\downarrow}_{\text{exponentially quieter}}
-            \qquad\text{but}\qquad
-            \underbrace{\frac{|\alpha|}{\hbar\omega_{01}}\downarrow}_{\text{weaker spectral isolation}}.
-            \]
-          </div>
-          <div class="qh-result">
-            \[
-            P_{\rm leak}=O\!\left[\left(\frac{\hbar\Omega}{\alpha}\right)^2\right],
-            \qquad
-            \boxed{\hbar\Omega\ll|\alpha|\simeq E_C}.
-            \]
-          </div>
-          <p class="qh-deriv-foot">CPB: large charge dispersion but strong anharmonicity. Transmon: exponentially suppressed charge dispersion but smaller relative anharmonicity. The practical operating point buys noise immunity while keeping enough \(|\alpha|\) for fast gates.</p>
-          
         </section>
 
         
 
+        
+
+        
+        
 
         
 
         <section data-manual-slide data-cover>
           <div class="theme-header" style="text-align: center;">
-            <p class="theme-label">PHYS598500 · Week 3</p>
+            <h2>What does a superinductor add?</h2>
+          </div>
+        </section>
+
+        <section data-manual-slide data-auto-fit="false" data-slide-class="qh-v20-fluxmerge">
+          <h3>Fluxonium as a physical circuit</h3>
+          <div class="qh-v20-fm-top">
+            <figure class="qh-v20-fm-flux">
+              <a href="../Image/Fluxonium--3e0cc563.png"><img src="../WebP/Fluxonium--3e0cc563.webp" alt="Fluxonium device micrograph with circuit diagram showing a small junction, capacitor, superinductor, and external flux"></a>
+              <figcaption>Manucharyan et al. (2009)</figcaption>
+            </figure>
+            <figure class="qh-v20-fm-3d">
+              <a href="../Image/arxiv-0906.0831-fluxonium-device-3d.png"><img src="../WebP/arxiv-0906.0831-fluxonium-device-3d.webp" alt="3D rendering of a fluxonium: a small junction shunted by a long array of larger junctions, coupled to two 50 ohm lines, with close-ups of the small junction and the array junctions"></a>
+              <figcaption class="qh-v20-url"><a href="https://arxiv.org/pdf/0906.0831" target="_blank" rel="noopener">https://arxiv.org/pdf/0906.0831</a></figcaption>
+            </figure>
+          </div>
+          <div class="qh-v20-fm-bottom">
+            <figure class="qh-v20-fm-array">
+              <a href="../Image/arxiv-1208.5747-junction-array-circuit.png"><img src="../WebP/arxiv-1208.5747-junction-array-circuit.webp" alt="Circuit of a loop: one small junction with phase theta 0 and E_J of order E_C, closed by an array of N junctions with E_J much larger than E_C and phases theta 1 to theta N, threaded by external flux"></a>
+              <figcaption class="qh-v20-url"><a href="https://arxiv.org/pdf/1208.5747" target="_blank" rel="noopener">https://arxiv.org/pdf/1208.5747</a></figcaption>
+            </figure>
+            <div class="qh-step-host qh-v20-fm-deriv">
+              <p>Put \(N\) identical junctions in series. With no phase slips, a total phase \(\Theta\) divides evenly:</p>
+          \[
+          \theta_j=\frac{\Theta}{N},\qquad
+          U=-\sum_{j=1}^{N}E_{J,a}\cos\theta_j=-NE_{J,a}\cos\frac{\Theta}{N}
+          \]
+          <p>Each junction sits near the bottom of its own cosine, so expand:</p>
+          \[
+          -NE_{J,a}\cos\frac{\Theta}{N}\approx-NE_{J,a}+\frac{E_{J,a}}{2N}\Theta^2
+          \]
+          <div class="qh-result">
+            \[
+            \frac{1}{2}E_L\Theta^2=\frac{E_{J,a}}{2N}\Theta^2
+            \qquad\Longrightarrow\qquad
+            E_L=\frac{E_{J,a}}{N}
+          \]
+          </div>
+          <p class="qh-deriv-foot">Each junction is still nonlinear; sharing the phase between \(N\) of them makes the chain linear to order \(\Theta^2/N^2\).</p>
+            </div>
+          </div>
+        </section>
+
+        <section data-manual-slide data-auto-fit="false" data-title="Transmon vs fluxonium" data-slide-class="qh-v20-tf">
+          <div class="qh-v20-tf-row">
+            <figure>
+              <a href="../Image/lin-2022-ncts-transmon-vs-fluxonium.png"><img src="../WebP/lin-2022-ncts-transmon-vs-fluxonium.webp" alt="Transmon versus fluxonium: the transmon cosine potential with its levels and the fluxonium multi-well potential near half flux, with qubit frequency 4 to 8 GHz versus 10 MHz to 8 GHz, anharmonicity about 100 MHz versus about 1 GHz, and a simple versus rich transition spectrum"></a>
+            </figure>
+            <figure>
+              <a href="../Image/T-F.png"><img src="../WebP/T-F.webp" alt="Circuit diagrams: a transmon as a capacitor in parallel with a Josephson junction, and a fluxonium as a capacitor, a junction and a junction-array superinductor threaded by flux Phi B"></a>
+            </figure>
+          </div>
+          <div class="qh-v20-tf-ref"><a href="https://phys.ncts.ntu.edu.tw/uploads/asset/data/63500fbc1d41c88b36c70d54/220826-Yen-Hsiang_Lin.pdf" target="_blank" rel="noopener">https://phys.ncts.ntu.edu.tw/uploads/asset/data/63500fbc1d41c88b36c70d54/220826-Yen-Hsiang_Lin.pdf</a></div>
+        </section>
+
+        <section data-manual-slide data-auto-fit="false" data-title="Fluxonium array, Dolan bridge" data-slide-class="qh-v20-dolan">
+          <figure class="qh-v20-dolan-fig">
+            <a href="../Image/Fluxonium-Dolan.png"><img src="../WebP/Fluxonium-Dolan.webp" alt="Four-step schematic of double-angle shadow evaporation of a Josephson-junction array under a row of suspended resist bridges: first angled deposition, oxidation of the islands, second angled deposition from the opposite side, and the finished chain of overlapping junctions"></a>
+          </figure>
+        </section>
+
+        
+
+        
+
+        
+
+        
+
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        <section data-manual-slide data-auto-fit="false" data-slide-class="qh-w04-pot qh-w04-pot-nguyen">
+          <h3>Fluxonium potential</h3>
+          <div class="qh-pot-widget" data-model="nguyen2019">
+            <div class="qh-pot-top">
+              <div class="qh-result qh-pot-eq">
+                \[
+                U(\phi)=-E_J\cos\left(\phi-\phi_{\rm ext}\right)+\frac{1}{2}E_L\phi^2
+                \]
+              </div>
+              <div class="qh-pot-controls">
+                <label class="qh-pot-ctl"><span class="qh-pot-name">\(E_J\)</span><input type="range" data-param="EJ" min="0.5" max="10" step="0.01" value="3"><span class="qh-pot-val" data-show="EJ"></span></label>
+                <label class="qh-pot-ctl"><span class="qh-pot-name">\(E_L\)</span><input type="range" data-param="EL" min="0" max="2" step="0.01" value="1"><span class="qh-pot-val" data-show="EL"></span></label>
+                <label class="qh-pot-ctl"><span class="qh-pot-name">\(\phi_{\rm ext}\)</span><input type="range" data-param="pext" min="0" max="2" step="0.01" value="1"><span class="qh-pot-val" data-unit="pi" data-show="pext"></span></label>
+              </div>
+            </div>
+            <div class="qh-pot-plots">
+              <div class="qh-pot-panel"><div class="qh-pot-head">\(E_J\)</div><svg class="qh-pot-plot" data-term="J" viewBox="0 0 420 316" role="img" aria-label="Josephson term of the potential against phi"></svg></div>
+              <div class="qh-pot-panel"><div class="qh-pot-head">\(E_L\)</div><svg class="qh-pot-plot" data-term="L" viewBox="0 0 420 316" role="img" aria-label="Inductive term of the potential against phi"></svg></div>
+              <div class="qh-pot-panel"><div class="qh-pot-head">\(E_J+E_L\)</div><svg class="qh-pot-plot" data-term="U" viewBox="0 0 420 316" role="img" aria-label="Total potential against phi"></svg></div>
+            </div>
+          </div>
+          <p class="qh-hp-source">L. B. Nguyen <em>et al.</em>, <em>Phys. Rev. X</em> <strong>9</strong>, 041041 (2019), Eq. (1); start values = device A, \(E_J=3\), \(E_L=1\) GHz (Table I). <a href="https://doi.org/10.1103/PhysRevX.9.041041" target="_blank" rel="noopener">DOI</a></p>
+        </section>
+
+        
+
+        
+
+        <!-- v11-paper-inserts:start -->
+        <section data-manual-slide data-auto-fit="false" data-title="2018 PRL · Two wells" data-slide-class="qh-w04-paper qh-w04-paper-lin qh-v17-footref qh-v18-card qh-w04-noreveal">
+          <h3>2018 PRL</h3>
+          <figure class="qh-lit-title-scan">
+            <a href="../Image/20260928-lin2018-title.png"><img src="../WebP/20260928-lin2018-title.webp" alt="Title and authors of the 2018 Physical Review Letters paper Demonstration of Protection of a Superconducting Qubit from Energy Decay"></a>
+          </figure>
+          <p class="qh-hp-source">Lin <em>et al.</em>, <em>Phys. Rev. Lett.</em> <strong>120</strong>, 150503 (2018).</p>
+        </section>
+
+        <section data-manual-slide data-auto-fit="false" data-title="2018 PRL · Forbidden and allowed" data-slide-class="qh-w04-paper qh-w04-paper-lin qh-v17-footref qh-v17-stack qh-v18-row qh-v18-p2 qh-w04-noreveal">
+          <h3>One atom · forbidden and allowed transitions</h3>
+          <div class="qh-lit-grid">
+            <figure class="qh-lit-figure">
+              <a href="../Image/20260928-lin2018-fig1.png"><img src="../WebP/20260928-lin2018-fig1.webp" alt="Lin 2018 Figure 1 showing the double-loop fluxonium device, circuit, double-well states, and fluxon and plasmon transitions"></a>
+            </figure>
+            <div class="qh-lit-math qh-step-host">
+              <div>
+                \[
+                d_{01}=\langle0|\hat O_\lambda|1\rangle\approx\langle\psi_L|\hat O_\lambda|\psi_R\rangle\ \longrightarrow\ 0
+                \]
+                <p class="qh-lit-short">different wells · exponentially small · forbidden</p>
+              </div>
+              <div>
+                \[
+                |0\rangle\to|2\rangle,\ |1\rangle\to|3\rangle:\quad
+                \langle0|\hat\phi|2\rangle,\ \langle1|\hat\phi|3\rangle=\mathcal O(1)
+                \]
+                <p class="qh-lit-short">same well (plasmon) · allowed</p>
+              </div>
+            </div>
+          </div>
+          <p class="qh-hp-source">Lin <em>et al.</em>, <em>Phys. Rev. Lett.</em> <strong>120</strong>, 150503 (2018), Fig. 1.</p>
+        </section>
+
+        
+
+        <section data-manual-slide data-auto-fit="false" data-title="2018 PRL · T1 long, T2 short" data-slide-class="qh-w04-paper qh-w04-paper-lin qh-v17-footref qh-v17-stack qh-v18-row qh-v18-p4 qh-w04-noreveal qh-v25-p34">
+          <h3>2018 · \(T_1\) long, \(T_2\) short</h3>
+          <div class="qh-v25-t2corner">
+            \[
+            \Gamma_2=\tfrac12\,\Gamma_1+\Gamma_\varphi
+            \quad\Longleftrightarrow\quad
+            \frac{1}{T_2}=\frac{1}{2T_1}+\frac{1}{T_\varphi}
+            \]
+          </div>
+          <div class="qh-lit-grid">
+            <div class="qh-v25-figpair">
+              <figure class="qh-lit-figure">
+                <a href="../Image/lin-2018-prl120-fig2-spectroscopy-coil-current.png"><img src="../WebP/lin-2018-prl120-fig2-spectroscopy-coil-current.webp" alt="Lin 2018 Fig. 2: transmission against coil current and tone frequency with fits, a left inset enlarging the smallest fluxon-plasmon splitting and a right inset of the splittings against the square root of E_J"></a>
+              </figure>
+              <figure class="qh-lit-figure">
+                <a href="../Image/lin-2018-prl120-fig3a-t1-vs-coil-current.png"><img src="../WebP/lin-2018-prl120-fig3a-t1-vs-coil-current.webp" alt="Lin 2018 Fig. 3(a): T1 of the 0-1 transition and its frequency against coil current, rising from about 10 us to above 1 ms, with the measured and calculated dispersive shift below"></a>
+              </figure>
+            </div>
+            <div class="qh-lit-math qh-step-host">
+              <div class="qh-v25-merged">
+                \[
+                \varepsilon\neq0\ \Longrightarrow\ \frac{\partial\omega_{01}}{\partial\Phi}\neq0
+                \ \Longrightarrow\ \delta\omega_{01}(t)\simeq\frac{\partial\omega_{01}}{\partial\Phi}\,\delta\Phi(t)
+                \ \Longrightarrow\ T_1>2\ {\rm ms},\qquad T_2\approx4\ \mu{\rm s}
+                \]
+              </div>
+            </div>
+          </div>
+          <p class="qh-hp-source">Lin <em>et al.</em>, <em>Phys. Rev. Lett.</em> <strong>120</strong>, 150503 (2018), Figs. 2 and 3(a).</p>
+        </section>
+
+        <section data-manual-slide data-auto-fit="false" data-title="2019 PRX · Half-flux sweet spot" data-slide-class="qh-w04-paper qh-w04-paper-nguyen qh-v17-footref qh-v18-card qh-w04-noreveal">
+          <h3>2019 PRX</h3>
+          <figure class="qh-lit-title-scan">
+            <a href="../Image/20260928-nguyen2019-title.png"><img src="../WebP/20260928-nguyen2019-title.webp" alt="Title and authors of the 2019 Physical Review X paper High-Coherence Fluxonium Qubit"></a>
+          </figure>
+          
+          </section>
+
+        <section data-manual-slide data-auto-fit="false" data-title="2019 PRX · Tunnelling doublet" data-slide-class="qh-w04-paper qh-w04-paper-nguyen qh-v17-footref qh-v17-stack qh-v18-row qh-v18-p6 qh-w04-noreveal">
+          <h3>Half flux · a tunnelling doublet</h3>
+          <div class="qh-lit-grid">
+            <figure class="qh-lit-figure">
+              <a href="../Image/20260928-nguyen2019-fig1.png"><img src="../WebP/20260928-nguyen2019-fig1.webp" alt="Nguyen 2019 Figure 1 showing the fluxonium device, circuit, junction array, and wavefunctions at zero and half flux"></a>
+            </figure>
+            <div class="qh-lit-math qh-step-host">
+              <div>
+                \[
+                |0\rangle\simeq\frac{|L\rangle+|R\rangle}{\sqrt2},\qquad
+                |1\rangle\simeq\frac{|L\rangle-|R\rangle}{\sqrt2}
+                \]
+              </div>
+              <div>
+                \[
+                \hbar\omega_{01}=\Delta_{\rm tunnel},\qquad
+                \frac{\omega_{01}}{2\pi}\approx0.17\text{–}0.83\ {\rm GHz}
+                \]
+                <p class="qh-lit-short">not a well offset · transmon: 4–8 GHz</p>
+              </div>
+              <div>
+                \[
+                |2\rangle,|3\rangle\ \text{far}\ \Longrightarrow\ \omega_{12}\gg\omega_{01}
+                \]
+                <p class="qh-lit-short">large anharmonicity</p>
+              </div>
+            </div>
+          </div>
+          <p class="qh-hp-source">Nguyen <em>et al.</em>, <em>Phys. Rev. X</em> <strong>9</strong>, 041041 (2019), Fig. 1.</p>
+        </section>
+
+        <section data-manual-slide data-auto-fit="false" data-title="2019 PRX · Sweet spot and dephasing" data-slide-class="qh-w04-paper qh-w04-paper-nguyen qh-v17-footref qh-v17-side qh-v18-p7 qh-w04-noreveal">
+          <h3>Why the sweet spot removes dephasing</h3>
+          <div class="qh-lit-grid qh-lit-grid-portrait">
+            <figure class="qh-lit-figure">
+              <a href="../Image/20260928-nguyen2019-fig4a.png"><img src="../WebP/20260928-nguyen2019-fig4a.webp" alt="Nguyen 2019 Figure 4a showing T2 increasing sharply near the half-flux sweet spot while the qubit frequency reaches a minimum"></a>
+            </figure>
+            <div class="qh-lit-math qh-step-host">
+              <div>
+                \[
+                \left.\frac{\partial\omega_{01}}{\partial\Phi}\right|_{\Phi_0/2}=0
+                \ \Longrightarrow\
+                \delta\omega_{01}\simeq\frac{\partial\omega_{01}}{\partial\Phi}\,\delta\Phi=0
+                \]
+                <p class="qh-lit-short">first-order flux noise no longer moves the qubit</p>
+              </div>
+              <div>
+                \[
+                T_2:\ 3\text{–}6\ \mu{\rm s}\ \longrightarrow\ 100\ \mu{\rm s}
+                \]
+                <p class="qh-lit-short">Gaussian echo (1/f flux noise) → exponential</p>
+              </div>
+              <div class="qh-v18-t1">
+                <div class="qh-v18-sub">Why \(T_1\) is also long in 2019</div>
+              \[
+              \text{2018: }\ d_{01}=\langle0|\hat O_\lambda|1\rangle\to0
+              \qquad\qquad
+              \text{2019: }\ \left|\langle0|\hat\phi|1\rangle\right|\approx\pi
+              \]
+              <p class="qh-step-label">Not a small phase matrix element: a low frequency</p>
+              \[
+              \hat H_C=4E_C\hat n^2
+              \]
+              \[
+              \dot{\hat\phi}=\frac{i}{\hbar}\left[\hat H,\hat\phi\right]=\frac{8E_C}{\hbar}\,\hat n
+              \]
+              <div class="qh-result">
+                \[
+                \left|\langle0|\hat n|1\rangle\right|=\frac{\hbar\omega_{01}}{8E_C}\,\left|\langle0|\hat\phi|1\rangle\right|
+                \]
+              </div>
+              \[
+              \phi_{01}\sim\pi,\quad\omega_{01}\to0\ \Longrightarrow\ n_{01}\to0
+              \]
+              <div class="qh-key">
+                \[
+                \text{small electric dipole}\ \Longrightarrow\ \text{weak dielectric loss}
+                \]
+              </div>
+          
+              </div>
+            </div>
+          </div>
+          <p class="qh-hp-source">Nguyen <em>et al.</em>, <em>Phys. Rev. X</em> <strong>9</strong>, 041041 (2019), Fig. 4(a).</p>
+        </section>
+
+        
+
+        <section data-manual-slide data-auto-fit="true" data-title="2018 PRL vs 2019 PRX" data-slide-class="qh-w04-paper qh-v18-table qh-w04-noreveal">
+          <h3>2018 PRL vs 2019 PRX</h3>
+          <table class="decision qh-v18-compare">
+            <thead>
+              <tr><th></th><th>2018 PRL</th><th>2019 PRX</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Wells</td><td>unequal double well</td><td>symmetric double well</td></tr>
+              <tr><td>Eigenstates</td><td>\(\psi_0\approx\psi_L,\ \psi_1\approx\psi_R\)</td><td>\((|L\rangle\pm|R\rangle)/\sqrt2\)</td></tr>
+              <tr><td>Transverse matrix element</td><td>\(d_{01}=\langle0|\hat O_\lambda|1\rangle\approx\langle\psi_L|\hat O_\lambda|\psi_R\rangle\to0\)</td><td>\(\left|\langle0|\hat\phi|1\rangle\right|\approx\pi\)</td></tr>
+              <tr><td>\(T_1\) mechanism</td><td>forbidden transition</td><td>low \(\omega_{01}\), \(\left|\langle0|\hat n|1\rangle\right|=\frac{\hbar\omega_{01}}{8E_C}\,\left|\langle0|\hat\phi|1\rangle\right|\)</td></tr>
+              <tr><td>Flux dephasing</td><td>strong, \(\frac{\partial\omega_{01}}{\partial\Phi}\neq0\)</td><td>zero at first order, \(\frac{\partial\omega_{01}}{\partial\Phi}=0\)</td></tr>
+              <tr><td>Main goal</td><td>protect against energy decay</td><td>high overall coherence</td></tr>
+            </tbody>
+          </table>
+          <p class="qh-hp-source">Lin <em>et al.</em>, <em>Phys. Rev. Lett.</em> <strong>120</strong>, 150503 (2018); Nguyen <em>et al.</em>, <em>Phys. Rev. X</em> <strong>9</strong>, 041041 (2019).</p>
+        </section>
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        <!-- v11-paper-inserts:end -->
+
+        <section data-manual-slide data-cover>
+          <div class="theme-header" style="text-align: center;">
+            <p class="theme-label">PHYS598500 · Week 4</p>
             <h2>Thank you</h2>
           </div>
         </section>
+
     </div>
 
     <div class="qh-mode-toggle" role="group" aria-label="Navigation">
@@ -8139,16 +9356,16 @@ html {
     </div>
 
     <div id="qh-slide-root" class="qhs-root" hidden aria-hidden="true" data-qhs-course="PHYS598500"
-        data-qhs-week="WEEK 3" data-qhs-no-click-advance="true"
-        data-qhs-topic="Tunability and the C-Shunted Transmon"
+        data-qhs-week="WEEK 4" data-qhs-no-click-advance="true"
+        data-qhs-topic="Noise, Fluxonium, and Protected-Qubit Design"
         data-qhs-title-suffix="QH-2026F v5 · Manual Slides">
         <header class="qhs-header">
             <a class="qhs-brand" href="main.html" aria-label="Return to the QH-2026F course overview">𝒊𝑁𝑆𝐼𝐺𝐻𝑇
                 𝒊ℏ</a>
             <span class="qhs-divider" aria-hidden="true"></span>
             <div class="qhs-identity">
-                <strong>PHYS598500 · WEEK 3</strong>
-                <span>Tunability, CPB and the C-Shunted Transmon </span>
+                <strong>PHYS598500 · WEEK 4</strong>
+                <span>Noise, Fluxonium, and Protected-Qubit Design · Manual Slides</span>
             </div>
             <button class="qhs-click-mode-button is-active" type="button" data-qhs-action="no-click-advance"
                 aria-pressed="true" aria-label="Toggle mouse click and drag slide advance"
@@ -8947,6 +10164,7 @@ html {
             const HOST = ".qhs-slide";
 
             const hasMath = (el) =>
+                el.classList?.contains("qh-reveal-item") ||
                 el.querySelector('mjx-container[display="true"]') ||
                 (el.tagName === "MJX-CONTAINER" && el.getAttribute("display") === "true");
 
@@ -9002,6 +10220,10 @@ html {
                 if (slide.dataset.qhRevealMarked === "1") return;
                 const inner = slide.querySelector(".qhs-content-inner");
                 if (!inner) return;
+                // MathJax has not typeset this page yet: its maths is still raw \( \) / \[ \]
+                // text, so no step can be found, and marking it now would leave the page
+                // static for the whole load. Wait for a later sweep instead.
+                if (/\\[\[(]/.test(inner.textContent)) return;
                 let hosts = explicitHosts(inner);
                 let groups;
                 if (hosts.length > 1) {
@@ -9318,6 +10540,141 @@ html {
             }
         }
     </style>
+    <script id="qh-w04-v09-potential-widgets">
+        // v09: the slider pages. The deck copies each slide without its scripts or ids, so
+        // this one script finds every .qh-pot-widget (source, slide and article copies) and
+        // wires it up, and does so again whenever the deck builds more slides.
+        (() => {
+            const PI = Math.PI;
+            const NS = "http://www.w3.org/2000/svg";
+            const COLORS = { J: "#5f4b8b", L: "#355c9a", U: "#22232a" };
+            const D_LIN = 0.13;   // SQUID asymmetry, Lin et al. (2018) Table I
+            const MODELS = {
+                // U = E_L phi^2/2 - E_J(phi1) cos[phi + phi_J(phi1) - phi2], Eq. (A2):
+                // E_J(phi1) = E_JS sqrt(cos^2(phi1/2) + d^2 sin^2(phi1/2)),
+                // phi_J(phi1) = arctan(d tan(phi1/2))   (|phi1| <= pi)
+                lin2018: {
+                    xMax: 3 * PI, yMin: -35, yMax: 45, yStep: 10,
+                    ej: (p) => {
+                        const h = p.p1 * PI / 2;
+                        return p.EJS * Math.sqrt(Math.cos(h) ** 2 + (D_LIN * Math.sin(h)) ** 2);
+                    },
+                    terms(phi, p) {
+                        const h = p.p1 * PI / 2;
+                        const phiJ = Math.atan2(D_LIN * Math.sin(h), Math.cos(h));
+                        const J = -this.ej(p) * Math.cos(phi + phiJ - p.p2 * PI);
+                        const L = 0.5 * p.EL * phi * phi;
+                        return { J, L, U: J + L };
+                    },
+                    readout(p) { return { EJ1: this.ej(p).toFixed(2) }; }
+                },
+                // U = E_L phi^2/2 - E_J cos(phi - phi_ext), Nguyen et al. (2019) Eq. (1)
+                nguyen2019: {
+                    xMax: 6 * PI, yMin: -12, yMax: 24, yStep: 6,
+                    terms(phi, p) {
+                        const J = -p.EJ * Math.cos(phi - p.pext * PI);
+                        const L = 0.5 * p.EL * phi * phi;
+                        return { J, L, U: J + L };
+                    },
+                    readout() { return {}; }
+                }
+            };
+
+            let uid = 0;
+            const make = (name, attrs, parent) => {
+                const el = document.createElementNS(NS, name);
+                Object.entries(attrs).forEach(([k, v]) => el.setAttribute(k, v));
+                if (parent) parent.appendChild(el);
+                return el;
+            };
+
+            function setupPlot(svg, model) {
+                const W = 420, H = 316, L = 46, R = 10, T = 10, B = 34;
+                const pw = W - L - R, ph = H - T - B;
+                const X = (phi) => L + (phi + model.xMax) / (2 * model.xMax) * pw;
+                const Y = (u) => T + (model.yMax - u) / (model.yMax - model.yMin) * ph;
+                while (svg.firstChild) svg.removeChild(svg.firstChild);
+                const clip = "qh-pot-clip-" + (++uid);
+                make("rect", { x: L, y: T, width: pw, height: ph }, make("clipPath", { id: clip }, make("defs", {}, svg)));
+                for (let v = Math.ceil(model.yMin / model.yStep) * model.yStep; v <= model.yMax + 1e-9; v += model.yStep) {
+                    make("line", { x1: L, x2: L + pw, y1: Y(v), y2: Y(v),
+                        stroke: v === 0 ? "#b9aed0" : "#ece8f2", "stroke-width": v === 0 ? 1.4 : 1 }, svg);
+                    make("text", { x: L - 7, y: Y(v) + 5, "text-anchor": "end" }, svg).textContent =
+                        v < 0 ? "−" + Math.abs(v) : String(v);
+                }
+                const n = Math.round(model.xMax / PI);
+                const every = n > 3 ? 2 : 1;       // +-6 pi: label every 2 pi, short ticks between
+                for (let k = -n; k <= n; k++) {
+                    const x = X(k * PI);
+                    const major = k % every === 0;
+                    make("line", { x1: x, x2: x, y1: T + ph, y2: T + ph + (major ? 5 : 3), stroke: "#6d6974" }, svg);
+                    if (!major) continue;
+                    const label = k === 0 ? "0" : (k < 0 ? "−" : "") + (Math.abs(k) === 1 ? "" : Math.abs(k)) + "π";
+                    make("text", { x, y: T + ph + 21, "text-anchor": "middle" }, svg).textContent = label;
+                }
+                make("rect", { x: L, y: T, width: pw, height: ph, fill: "none", stroke: "#cfc8dc" }, svg);
+                make("text", { x: L + pw, y: T + ph - 6, "text-anchor": "end" }, svg).textContent = "ϕ";
+                make("text", { x: L + 6, y: T + 16 }, svg).textContent = "GHz";
+                const path = make("path", { fill: "none", "stroke-width": 2.6, "stroke-linejoin": "round",
+                    "clip-path": "url(#" + clip + ")" }, svg);
+                return { path, X, Y };
+            }
+
+            function draw(w) {
+                const model = MODELS[w.dataset.model];
+                const p = {};
+                w.querySelectorAll("input[data-param]").forEach((inp) => { p[inp.dataset.param] = parseFloat(inp.value); });
+                w.querySelectorAll("[data-show]").forEach((out) => {
+                    const v = p[out.dataset.show];
+                    out.textContent = out.dataset.unit === "pi" ? v.toFixed(2) + "π" : v.toFixed(2) + " GHz";
+                });
+                const ro = model.readout(p);
+                w.querySelectorAll("[data-readout]").forEach((s) => { s.textContent = ro[s.dataset.readout] ?? ""; });
+                const N = 1441;
+                w.qhPotPlots.forEach(({ term, path, X, Y }) => {
+                    let d = "";
+                    for (let i = 0; i < N; i++) {
+                        const phi = -model.xMax + 2 * model.xMax * i / (N - 1);
+                        const u = model.terms(phi, p)[term];
+                        d += (i ? "L" : "M") + X(phi).toFixed(1) + " " + Y(u).toFixed(1);
+                    }
+                    path.setAttribute("d", d);
+                });
+            }
+
+            function init(w) {
+                const model = MODELS[w.dataset.model];
+                if (!model || w.dataset.qhPotReady === "1") return;
+                w.dataset.qhPotReady = "1";
+                w.qhPotPlots = Array.from(w.querySelectorAll("svg[data-term]")).map((svg) => {
+                    const plot = setupPlot(svg, model);
+                    plot.path.setAttribute("stroke", COLORS[svg.dataset.term]);
+                    return { term: svg.dataset.term, ...plot };
+                });
+                w.addEventListener("input", (event) => {
+                    if (event.target.matches("input[data-param]")) draw(w);
+                });
+                // Arrow keys on a focused slider move the slider, not the deck; a mouse drag on
+                // a slider is not a page swipe even with click/drag page change switched on.
+                const keep = (event) => { if (event.target.closest("input, label")) event.stopPropagation(); };
+                w.addEventListener("keydown", keep);
+                w.addEventListener("pointerdown", keep);
+                draw(w);
+            }
+
+            let queued = false;
+            const scan = () => {
+                queued = false;
+                document.querySelectorAll(".qh-pot-widget").forEach(init);
+            };
+            scan();
+            new MutationObserver(() => {
+                if (queued) return;
+                queued = true;
+                requestAnimationFrame(scan);
+            }).observe(document.body, { childList: true, subtree: true });
+        })();
+    </script>
 </body>
 
 </html>

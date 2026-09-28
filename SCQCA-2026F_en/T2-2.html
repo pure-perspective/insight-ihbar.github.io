@@ -5201,6 +5201,7 @@
                                 <div class="lesson-link "><a href="T1-1d.html">Week 1 Manual Slides · Computation Is Physical | QH-2026F v5</a></div>
                                 <div class="lesson-link active"><a href="T2-2.html">Week 2 Manual Slides v41 · Hardware, Superconductivity, and Josephson Anharmonicity | QH-2026F v5</a></div>
                                 <div class="lesson-link "><a href="T2-W3.html">Week 3 Manual Slides · Tunability and the C-Shunted Transmon | QH-2026F v5</a></div>
+                                <div class="lesson-link "><a href="T2-W4.html">Week 4 Manual Slides · Noise, Fluxonium, and Protected-Qubit Design | QH-2026F v5</a></div>
                                 </div>
                             </div>
                         </div></aside>
@@ -6869,6 +6870,33 @@
                 return slide.dataset.title || `Slide ${index + 1}`;
             }
 
+            // A preview shows the page as it ends, not as it opens. The reveal driver hides
+            // every step it has not reached yet, so a plain copy left those steps blank.
+            function previewClone(slide) {
+                const clone = sanitizeClone(slide);
+                clone.classList.remove("is-active", "was-active");
+                clone.querySelectorAll(".qh-reveal-step").forEach((step) => {
+                    step.classList.remove("qh-reveal-step", "is-pending", "is-measuring");
+                });
+                clone.querySelectorAll("[data-qh-reveal]").forEach((inner) => inner.removeAttribute("data-qh-reveal"));
+                // The copy is a picture, not a page: keep the reveal driver off it.
+                clone.dataset.qhRevealMarked = "1";
+                delete clone.dataset.qhRevealLocked;
+                return clone;
+            }
+
+            // Fit every preview the way fitSlide() fits its page, including pages that have
+            // not been opened yet, and again once a late image has its size.
+            function fitPreviews() {
+                thumbList.querySelectorAll(".qhs-thumb-canvas > .qhs-slide").forEach((clone) => {
+                    if (clone.dataset.autoFit === "false") return;
+                    fitFrame(clone);
+                    clone.querySelectorAll("img").forEach((image) => {
+                        if (!image.complete) image.addEventListener("load", () => fitFrame(clone), { once: true });
+                    });
+                });
+            }
+
             function buildThumbnails() {
                 if (thumbnailsBuilt) return;
                 thumbnailsBuilt = true;
@@ -6885,9 +6913,7 @@
                     screen.className = "qhs-thumb-screen";
                     const canvas = document.createElement("div");
                     canvas.className = "qhs-thumb-canvas";
-                    const clone = sanitizeClone(slide);
-                    clone.classList.remove("is-active", "was-active");
-                    canvas.appendChild(clone);
+                    canvas.appendChild(previewClone(slide));
                     screen.appendChild(canvas);
 
                     const label = document.createElement("span");
@@ -6908,6 +6934,7 @@
                 });
 
                 thumbList.replaceChildren(fragment);
+                fitPreviews();
                 thumbCurrentIndex = null;
                 updateThumbState();
             }
@@ -6983,6 +7010,13 @@
                 if (fittedSlides.has(index) && !options.force) return;
                 const slide = slides[index];
                 if (!slide || slide.dataset.autoFit === "false") return;
+                fitFrame(slide);
+                fittedSlides.add(index);
+            }
+
+            // Scale a page's content down until it fits the frame. The previews run the
+            // same fit on their copies, so a preview is scaled exactly like its page.
+            function fitFrame(slide) {
                 const body = slide.querySelector(".qhs-slide-body");
                 const inner = slide.querySelector(".qhs-content-inner");
                 inner.style.transform = "none";
@@ -7000,7 +7034,6 @@
                     inner.style.width = `${(100 / scale).toFixed(2)}%`;
                     inner.style.transform = `scale(${scale.toFixed(4)})`;
                 }
-                fittedSlides.add(index);
             }
 
             function setDrawer(open) {
@@ -7105,7 +7138,11 @@
             railHandle.addEventListener("click", () => setDrawer(!rail.classList.contains("is-open")));
             rail.addEventListener("pointerenter", ensureThumbnails);
             rail.addEventListener("focusin", ensureThumbnails);
-            rail.addEventListener("pointerleave", () => setDrawer(false));
+            // Lifting a finger inside the previews also "leaves" them: only a mouse or pen moving
+            // out closes the drawer, or scrolling the list on a phone shut it.
+            rail.addEventListener("pointerleave", (event) => {
+                if (event.pointerType !== "touch") setDrawer(false);
+            });
             stage.addEventListener("pointerenter", () => setDrawer(false));
 
             document.addEventListener("keydown", (event) => {
@@ -7137,25 +7174,65 @@
                 window.setTimeout(() => { wheelLock = false; }, 520);
             }, { passive: true });
 
+            // Touch screens. A one-finger drag on the slide belongs to the deck: left to the
+            // browser it becomes a scroll or a back-swipe, the pointer is cancelled and the swipe
+            // is lost. A pinch-zoomed page, and anything on a slide that really scrolls, keep the
+            // browser's own panning.
+            const zoomedIn = () => (window.visualViewport?.scale || 1) > 1.01;
+            const inScroller = (node) => {
+                for (let el = node; el && el !== stage; el = el.parentElement) {
+                    const style = getComputedStyle(el);
+                    if (el.scrollWidth - el.clientWidth > 40 && /auto|scroll/.test(style.overflowX)) return true;
+                    if (el.scrollHeight - el.clientHeight > 40 && /auto|scroll/.test(style.overflowY)) return true;
+                }
+                return false;
+            };
+            let touchToBrowser = false;
+            stage.addEventListener("touchstart", (event) => {
+                touchToBrowser = event.touches.length > 1 || zoomedIn() || inScroller(event.target);
+            }, { passive: true });
+            stage.addEventListener("touchmove", (event) => {
+                if (mode !== "slides" || touchToBrowser || event.touches.length > 1 || !event.cancelable) return;
+                event.preventDefault();
+            }, { passive: false });
+
             stage.addEventListener("pointerdown", (event) => {
-                if (noClickAdvance && event.pointerType === "mouse") {
-                    pointerStart = null;
-                    return;
-                }
-                pointerStart = { x: event.clientX, y: event.clientY, pointerType: event.pointerType };
-            });
-            stage.addEventListener("pointerup", (event) => {
-                if (!pointerStart) return;
-                const dx = event.clientX - pointerStart.x;
-                const dy = event.clientY - pointerStart.y;
                 pointerStart = null;
-                if (window.getSelection()?.toString().trim()) return;
-                if (Math.abs(dx) > 70 && Math.abs(dx) > Math.abs(dy)) {
-                    suppressClickAdvance = true;
-                    goTo(currentIndex + (dx < 0 ? 1 : -1));
-                    window.setTimeout(() => { suppressClickAdvance = false; }, 0);
-                }
+                if (!event.isPrimary) return;                    // a second finger: a pinch, not a swipe
+                if (noClickAdvance && event.pointerType === "mouse") return;
+                if (event.pointerType !== "mouse" && (zoomedIn() || inScroller(event.target))) return;
+                pointerStart = {
+                    id: event.pointerId, x: event.clientX, y: event.clientY,
+                    t: event.timeStamp, pointerType: event.pointerType
+                };
             });
+            stage.addEventListener("pointercancel", () => { pointerStart = null; });
+            stage.addEventListener("pointerup", (event) => {
+                if (!pointerStart || event.pointerId !== pointerStart.id) return;
+                const { x, y, t, pointerType } = pointerStart;
+                pointerStart = null;
+                const dx = event.clientX - x;
+                const dy = event.clientY - y;
+                if (window.getSelection()?.toString().trim()) return;
+                // a mouse drag keeps its 70 px; a finger also turns on a short, quick flick
+                const reach = Math.abs(dx);
+                const swiped = pointerType === "mouse"
+                    ? reach > 70
+                    : reach >= 40 || (reach >= 24 && event.timeStamp - t < 250);
+                if (!swiped || reach < Math.abs(dy) * 1.2) return;
+                suppressClickAdvance = true;
+                // A swipe is an arrow key: a page that is still revealing shows its next step first.
+                stage.dispatchEvent(new KeyboardEvent("keydown", {
+                    key: dx < 0 ? "ArrowRight" : "ArrowLeft", bubbles: true, cancelable: true
+                }));
+                window.setTimeout(() => { suppressClickAdvance = false; }, 0);
+            });
+            // The click that ends a mouse drag must not step the page a second time.
+            window.addEventListener("click", (event) => {
+                if (!suppressClickAdvance) return;
+                event.preventDefault();
+                event.stopImmediatePropagation();
+            }, true);
 
             stage.addEventListener("click", (event) => {
                 if (mode !== "slides" || suppressClickAdvance) return;
@@ -7164,6 +7241,10 @@
             });
 
             window.addEventListener("resize", resizeStage);
+            // The stage can change size with no window resize event: a phone settles its
+            // viewport after the first layout, a browser bar comes and goes. Keep the slide
+            // fitted to whatever the stage is now.
+            if ("ResizeObserver" in window) new ResizeObserver(() => resizeStage()).observe(stage);
             document.addEventListener("fullscreenchange", resizeStage);
 
             buildDeck();
@@ -7176,6 +7257,11 @@
             const refreshAfterTypeset = () => {
                 fittedSlides.clear();
                 requestAnimationFrame(() => fitSlide(currentIndex, { force: true }));
+                // previews copied before the maths and fonts were in are out of date
+                if (thumbnailsBuilt) {
+                    thumbnailsBuilt = false;
+                    buildThumbnails();
+                }
             };
             if (window.MathJax?.startup?.promise) {
                 window.MathJax.startup.promise.then(refreshAfterTypeset).catch(() => { });
@@ -7427,6 +7513,44 @@
             setInterval(sweep, 250);
         })();
     </script>
+    <style id="qh-touch-controls">
+        /* Slide mode keeps the article behind the deck, and its wide figures and equations
+           still widened the page: a phone then laid the full-screen deck out 860-1560 px wide
+           and showed only its top-left corner, with the page buttons off screen. Clip it,
+           absolutely positioned pieces included. */
+        body.qh-slide-active #qhs-article-content {
+            position: relative;
+            overflow: hidden;
+            contain: paint;
+        }
+
+        /* Phones and tablets: the page buttons at finger size, in a slightly taller bar. */
+        @media (pointer: coarse) {
+            :root {
+                --qhs-controls-height: 60px;
+            }
+
+            .qhs-control-button {
+                width: 48px;
+                height: 48px;
+                font-size: 22px;
+            }
+        }
+
+        /* A finger has no hover. On a tablet, touching the preview handle "hovered" the rail
+           open, the handle slid away under the finger, and the tap landed on some preview and
+           jumped there. Open it by tapping only, as phones already do. */
+        @media (hover: none) {
+            .qhs-rail:hover,
+            .qhs-rail:focus-within {
+                width: 30px;
+            }
+
+            .qhs-rail.is-open {
+                width: min(310px, 88vw);
+            }
+        }
+    </style>
 </body>
 
 </html>
