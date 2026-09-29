@@ -8101,6 +8101,38 @@ html {
         }
     </style>
 
+    <style id="qh-w04-v28-merge">
+        /* the coupling operators (old p25) under the three suppression cards */
+        .qhs-slide .qh-v28-ops > p { margin: 10px 0 0; }
+        .qhs-slide.qh-deriv .qh-v28-ops .qh-deriv-grid.qh-v28-row3 { margin: 0; }
+        .qhs-slide.qh-deriv .qh-v28-ops .qh-deriv-grid mjx-container[display="true"] {
+            font-size: 22px !important;
+            margin: 6px 0 !important;
+        }
+        /* variant "side": cards 1-2 on top, the operators under them, card 3 on the right */
+        .qhs-slide.qh-v28-merge-side .qh-v18-mech-grid {
+            grid-template-areas: "c1 c2 c3" "ops ops c3";
+            grid-template-rows: auto 1fr;
+        }
+        .qhs-slide.qh-v28-merge-side .qh-v18-mech-grid > div:nth-child(1) { grid-area: c1; }
+        .qhs-slide.qh-v28-merge-side .qh-v18-mech-grid > div:nth-child(2) { grid-area: c2; }
+        .qhs-slide.qh-v28-merge-side .qh-v18-mech-grid > div:nth-child(3) { grid-area: c3; }
+        .qhs-slide.qh-v28-merge-side .qh-v18-mech-grid > .qh-v28-ops {
+            grid-area: ops;
+            padding: 4px 6px 0;
+            border-top: 0;
+            background: none;
+        }
+        .qhs-slide.qh-v28-merge-side .qh-v28-ops .qh-deriv-grid.qh-v28-row3 { gap: 0 12px; }
+    </style>
+
+    <style id="qh-w04-v28-t2corner-p11">
+        /* p11: the corner box grew (labels under the three rates); lift it clear of the figure */
+        .qhs-slide.qh-w04-krantz .qh-v25-t2corner {
+            top: var(--qh-v28-corner-top, 40px);
+        }
+    </style>
+
 </head>
 
 <body>
@@ -8487,29 +8519,19 @@ html {
 
 
 
-        <section data-manual-slide data-auto-fit="false" data-slide-class="qh-deriv qh-deriv-tight qh-v31-hardware qh-v36-pair qh-v17-hw2">
-          <h3>Superconducting-qubit hardware layouts</h3>
-          <div class="qh-v31-grid">
-            <figure>
-              <div class="qh-v31-frame">
-                <a href="../Image/swiadek-2025-thesis-fig2-14-transmon-layout.png"><img src="../WebP/swiadek-2025-thesis-fig2-14-transmon-layout.webp" alt="Flux-tunable transmon layout with labelled capacitances and scanning electron micrographs of its Josephson junction"></a>
-              </div>
-              <figcaption>
-                <span class="qh-v31-caption-title">3 · Flux-tunable qubit capacitances and junction</span>
-                <span class="qh-v31-caption-source">F. Swiadek, <em>Readout of Superconducting Qubits and Design of Quantum Processing Units</em> (2025), Fig. 2.14(a–c)</span>
-              </figcaption>
-            </figure>
-            <figure class="qh-v49-grow">
-              <div class="qh-v31-frame">
-                <a href="../Image/Starmon.png"><img src="../WebP/Starmon.webp" alt="Scanning electron micrograph of a seven-port starmon with four coupling buses, readout resonator, microwave drive and flux-bias line"></a>
-              </div>
-              <figcaption>
-                <span class="qh-v31-caption-title">4 · Seven-port starmon</span>
-                <span class="qh-v31-caption-source">Versluis <em>et al.</em>, <em>Phys. Rev. Applied</em> <strong>8</strong>, 034021 (2017), <a href="https://arxiv.org/pdf/1612.08208" target="_blank" rel="noopener">Fig. 8(a)</a></span>
-              </figcaption>
-            </figure>
-          </div>
-        </section>
+        <section data-manual-slide data-auto-fit="false" data-slide-class="qh-w03-tunablefig qh-w03-flux-merge">
+            <h3>Flux-bias on a real chip</h3>
+            <div class="qh-flux-merge-grid">
+              <figure>
+                <a href="../Image/s28-tunable-transmon-sem.png"><img src="../WebP/s28-tunable-transmon-sem.webp" alt="SEM image of a SQUID loop next to an on-chip flux-bias line"></a>
+                <figcaption>Current in the nearby line threads flux through the SQUID loop. Course source bank.</figcaption>
+              </figure>
+              <figure class="qh-v49-grow">
+                <a href="../Image/barends-2013-prl111-fig1-xmon-xy-z-control.png"><img src="../WebP/barends-2013-prl111-fig1-xmon-xy-z-control.webp" alt="Xmon qubit with labelled XY control and Z flux-control lines, a SQUID close-up, and the equivalent circuit"></a>
+                <figcaption>Barends <em>et al.</em>, <em>Phys. Rev. Lett.</em> <strong>111</strong>, 080502 (2013), Fig. 1.</figcaption>
+              </figure>
+            </div>
+          </section>
 
         
 <section data-manual-slide data-auto-fit="false" data-slide-class="qh-w04-full qh-w04-dolan">
@@ -8580,7 +8602,7 @@ html {
             \[
             \Gamma_2=\tfrac12\,\Gamma_1+\Gamma_\varphi
             \quad\Longleftrightarrow\quad
-            \frac{1}{T_2}=\frac{1}{2T_1}+\frac{1}{T_\varphi}
+            \underbrace{\frac{1}{T_2}}_{\substack{\text{decoherence}\\\text{time}}}=\underbrace{\frac{1}{2T_1}}_{\substack{\text{relaxation}\\\text{time}}}+\underbrace{\frac{1}{T_\varphi}}_{\substack{\text{dephasing}\\\text{time}}}
             \]
           </div>
           <div class="qh-w04-krantz-box qh-v20-krantz-grid qh-step-host">
@@ -8899,31 +8921,7 @@ html {
 
         
 
-        <section data-manual-slide data-auto-fit="true" data-slide-class="qh-deriv qh-deriv-tight">
-          <p class="qh-prelude-kicker">Error channels · step 2 of 6</p>
-          <h3>The coupling operators</h3>
-          <p>Differentiate \(\hat{\mathcal{H}}=4E_C\left(\hat{n}-n_g\right)^2-E_{J,\mathrm{eff}}(\Phi)\cos \left(\hat{\varphi}-\varphi_{\rm ext}\right)\) once for each knob:</p>
-          <div class="qh-deriv-grid qh-v28-row3">
-            <div>\[\hat{O}_{n_g}=\frac{\partial\hat{\mathcal{H}}}{\partial n_g}\sim -8E_C\hat{n}\]</div>
-            <div>\[\hat{O}_{E_J}=\frac{\partial\hat{\mathcal{H}}}{\partial E_J}\sim-\cos\hat{\varphi}\]</div>
-            <div>\[\hat{O}_{\varphi_{\rm ext}}=\frac{\partial\hat{\mathcal{H}}}{\partial \varphi_{\rm ext}}\sim-E_J\sin\hat{\varphi}\]</div>
-          </div>
-          
-          
-        </section>
-
-        
-
-        
-
-        
-
-        
-
-        
-
-
-        <section data-manual-slide data-auto-fit="true" data-title="Sweet spot, small overlap, selection rule" data-slide-class="qh-deriv qh-deriv-tight qh-v18-mech qh-w04-noreveal qh-v24-mech">
+        <section data-manual-slide data-auto-fit="true" data-title="Sweet spot, small overlap, selection rule" data-slide-class="qh-deriv qh-deriv-tight qh-v18-mech qh-w04-noreveal qh-v24-mech qh-v28-merge-side">
           <p class="qh-prelude-kicker">Suppression</p>
           <h3>Sweet spot, small overlap, selection rule</h3>
           <div class="qh-key qh-v18-targets">
@@ -8939,7 +8937,7 @@ html {
             <div>
               <p class="qh-step-label">1 · Sweet spot: \(\partial\omega_{01}/\partial\lambda=0\)</p>
               \[
-              \frac{\partial\omega_{01}}{\partial\lambda}=\frac{O_{11}-O_{00}}{\hbar}=0
+              \frac{\partial\omega_{01}}{\partial\lambda}=\frac{O_{11}-O_{00}}{\hbar}=\frac{\partial\left(H_{11}-H_{00}\right)}{\hbar\partial\lambda}=0
               \]
               
               <div class="qh-result">
@@ -8989,6 +8987,14 @@ html {
               \langle0|\hat O|1\rangle=(+1)(-1)\,\langle0|(-\hat O)|1\rangle=+\langle0|\hat O|1\rangle\quad\text{allowed}
               \]
             </div>
+            <div class="qh-v28-ops">
+            <p>Differentiate \(\hat{\mathcal{H}}=4E_C\left(\hat{n}-n_g\right)^2-E_{J,\mathrm{eff}}(\Phi)\cos \left(\hat{\varphi}-\varphi_{\rm ext}\right)\) once for each knob:</p>
+            <div class="qh-deriv-grid qh-v28-row3">
+            <div>\[\hat{O}_{n_g}=\frac{\partial\hat{\mathcal{H}}}{\partial n_g}\sim -8E_C\hat{n}\]</div>
+            <div>\[\hat{O}_{E_J}=\frac{\partial\hat{\mathcal{H}}}{\partial E_J}\sim-\cos\hat{\varphi}\]</div>
+            <div>\[\hat{O}_{\varphi_{\rm ext}}=\frac{\partial\hat{\mathcal{H}}}{\partial \varphi_{\rm ext}}\sim-E_J\sin\hat{\varphi}\]</div>
+          </div>
+          </div>
           </div>
         </section>
 
