@@ -8087,6 +8087,20 @@ html {
         }
     </style>
 
+    <style id="qh-w04-v28">
+        /* p25: the two ways flux enters, one line each */
+        .qhs-slide .qh-key.qh-v28-sincos mjx-container[display="true"] {
+            margin: 6px 0 !important;
+        }
+    </style>
+
+    <style id="qh-w04-v28-row3">
+        /* "The coupling operators": the three operators side by side in one row */
+        .qhs-slide.qh-deriv .qh-deriv-grid.qh-v28-row3 {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+    </style>
+
 </head>
 
 <body>
@@ -8723,7 +8737,7 @@ html {
 
 <section data-manual-slide data-auto-fit="true" data-slide-class="qh-deriv qh-v17-knobs qh-v25-knobs">
   <p class="qh-prelude-kicker">Error channels · step 1 of 6</p>
-  <h3>Every knob is also a noise channel</h3>
+  <h3>Noise in Hamiltonian</h3>
   <div class="qh-v25-h0row">
   \[
   \hat{\mathcal H}_0=\begin{pmatrix}E_0 &amp; 0\\ 0 &amp; E_1\end{pmatrix}
@@ -8748,11 +8762,7 @@ html {
   +O\!\left(\delta\lambda^2\right),
   \qquad
   \hat O_\lambda\equiv\left.\frac{\partial\hat{\mathcal H}}{\partial\lambda}\right|_{\lambda_0}
-  \]
-
-  \[
-  \hat{\mathcal H}_0=-\frac{\hbar\omega_{01}}{2}\,\sigma_z,
-  \qquad
+  ,\qquad
   O_{ij}\equiv\langle i|\hat O_\lambda|j\rangle,
   \qquad
   O_{10}=O_{01}^{*}
@@ -8768,7 +8778,7 @@ html {
 
   \[
   =\underbrace{-\frac{\hbar}{2}\,\delta\omega_{01}(t)\,\sigma_z}_{\Delta\hat{\mathcal H}_\parallel\ \text{(longitudinal)}}
-  +\underbrace{\delta\lambda(t)\left(\frac{O_{10}+O_{01}}{2}\,\sigma_x+\frac{O_{10}-O_{01}}{2i}\,\sigma_y\right)}_{\Delta\hat{\mathcal H}_\perp\ \text{(transverse)}}
+  +\underbrace{\delta\lambda(t)\left(\mathrm{Re}[O_{10}]\,\sigma_x+\mathrm{Im}[O_{10}]\,\sigma_y\right)}_{\Delta\hat{\mathcal H}_\perp\ \text{(transverse)}}
   \]
 
   <div class="qh-key">
@@ -8776,7 +8786,6 @@ html {
     \delta\omega_{01}(t)\equiv\frac{O_{11}-O_{00}}{\hbar}\,\delta\lambda(t)
     \]
   </div>
-  <p class="qh-deriv-foot">The \(\mathbb I\) term moves both levels together, a global phase, and is dropped.</p>
 </section>
 
       
@@ -8817,48 +8826,7 @@ html {
           </div>
         </section>
 
-        <section data-manual-slide data-auto-fit="true" data-slide-class="qh-deriv qh-deriv-tight qh-v26-lowfreq">
-          <p class="qh-prelude-kicker">Noise chain</p>
-          <h3>Why low-frequency noise is mostly \(\sigma_z\)</h3>
-          <p>One low-frequency component of the noise (\(O_{01}\) real):</p>
-          \[
-          \delta\lambda(t)=\delta\lambda_0\sin\omega_L t,\qquad \omega_L\ll\omega_{01}
-          \]
-          \[
-          \Delta\hat{\mathcal H}(t)=\hat O_\lambda\,\delta\lambda_0\sin\omega_L t
-          =\delta\lambda_0\sin\omega_L t\left[-\frac{O_{11}-O_{00}}{2}\,\sigma_z+O_{01}\,\sigma_x\right]
-          \]
-          <p>Interaction picture, \(\hat U=e^{-i\hat{\mathcal H}_0t/\hbar}\):</p>
-          \[
-          \sigma_z\ \to\ \hat U^\dagger\sigma_z\hat U=\sigma_z
-          \]
-          \[
-          \sigma_x\ \to\ \hat U^\dagger\sigma_x\hat U=\sigma_x\cos\omega_{01}t+\sigma_y\sin\omega_{01}t
-          \]
-          \[
-          \Delta\hat{\mathcal H}_I(t)=\delta\lambda_0\sin\omega_L t\left[-\frac{O_{11}-O_{00}}{2}\,\sigma_z
-          +O_{01}\left(\sigma_x\cos\omega_{01}t+\sigma_y\sin\omega_{01}t\right)\right]
-          \]
-          \[
-          =-\frac{O_{11}-O_{00}}{2}\,\delta\lambda_0\sin\omega_L t\;\sigma_z
-          +\frac{O_{01}\,\delta\lambda_0}{2}\Big[\sigma_x\big(\sin(\omega_{01}+\omega_L)t-\sin(\omega_{01}-\omega_L)t\big)
-          +\sigma_y\big(\cos(\omega_{01}-\omega_L)t-\cos(\omega_{01}+\omega_L)t\big)\Big]
-          \]
-          \[
-          \sigma_x,\ \sigma_y:\ \ e^{\pm i(\omega_{01}-\omega_L)t},\ \ e^{\pm i(\omega_{01}+\omega_L)t}\ \ \text{fast}
-          \qquad\qquad
-          \sigma_z:\ \ \sin\omega_L t\ \ \text{slow}
-          \]
-          <div class="qh-result">
-            \[
-            \overset{\text{RWA}}{\Longrightarrow}\quad
-            \Delta\hat{\mathcal H}_I(t)\simeq-\frac{\hbar}{2}\,\delta\omega_{01}(t)\,\sigma_z,
-            \qquad
-            \delta\omega_{01}(t)=\frac{O_{11}-O_{00}}{\hbar}\,\delta\lambda(t)
-            \]
-          </div>
-          <p class="qh-deriv-foot">A complex \(O_{01}\) only rotates the \(x\)–\(y\) axes. \(\sigma_x,\sigma_y\) survive only for noise near \(\omega_{01}\), i.e. \(S_\lambda(\omega_{01})\): relaxation, next page.</p>
-        </section>
+        
 
         
 
@@ -8870,7 +8838,7 @@ html {
           <h3>Fermi's golden rule</h3>
           <div class="qh-deriv-split">
             <div class="qh-step-host">
-              <p>Start in \(|1\rangle\) and let the transverse part act. In the interaction picture:</p>
+              <p>In the interaction picture:</p>
               \[
               \Delta\hat{\mathcal H}_I(t)=e^{i\hat{\mathcal H}_0t/\hbar}\,\Delta\hat{\mathcal H}(t)\,e^{-i\hat{\mathcal H}_0t/\hbar}
               \]
@@ -8907,12 +8875,12 @@ html {
               \]
               <p>Stationary noise depends only on \(\tau=t'-t''\), so one integral gives a factor \(t\):</p>
               \[
-              P_{1\to0}(t)=\frac{\left|O_{01}\right|^2}{\hbar^2}\;t\int_{-\infty}^{\infty}
+              P_{1\to0}(t)\sim\frac{\left|O_{01}\right|^2}{\hbar^2}\;t\int_{-\infty}^{\infty}
               \left\langle\delta\lambda(0)\delta\lambda(\tau)\right\rangle e^{-i\omega_{01}\tau}d\tau
               \]
               <div class="qh-result">
                 \[
-                \Gamma_{1\to0}=\frac{\left|\left\langle0\left|\hat{O}_\lambda\right|1\right\rangle\right|^2}{\hbar^2}\,S_\lambda(\omega_{01})
+                \Gamma_{1\to0}\equiv \frac{d P_{1\to0}(t)}{dt}=\frac{\left|\left\langle0\left|\hat{O}_\lambda\right|1\right\rangle\right|^2}{\hbar^2}\,S_\lambda(\omega_{01})
                 \]
               </div>
               
@@ -8933,22 +8901,15 @@ html {
 
         <section data-manual-slide data-auto-fit="true" data-slide-class="qh-deriv qh-deriv-tight">
           <p class="qh-prelude-kicker">Error channels · step 2 of 6</p>
-          <h3>The coupling operators of this circuit</h3>
-          <p>Differentiate \(\hat{\mathcal{H}}=4E_C\left(\hat{n}-n_g\right)^2-E_{J,\mathrm{eff}}(\Phi)\cos\hat{\varphi}\) once for each knob:</p>
-          <div class="qh-deriv-grid">
-            <div>\[\hat{O}_{n_g}=\frac{\partial\hat{\mathcal{H}}}{\partial n_g}=-8E_C\left(\hat{n}-n_g\right)\]</div>
-            <div>\[\hat{O}_\Phi=\frac{\partial\hat{\mathcal{H}}}{\partial\Phi}=-\frac{dE_{J,\mathrm{eff}}}{d\Phi}\cos\hat{\varphi}\]</div>
-            <div>\[\hat{O}_{E_J}=\frac{\partial\hat{\mathcal{H}}}{\partial E_J}=-\cos\hat{\varphi}\]</div>
-            <div>\[\hat{O}_{V}\propto\hat{n}\quad\text{(any capacitive port)}\]</div>
+          <h3>The coupling operators</h3>
+          <p>Differentiate \(\hat{\mathcal{H}}=4E_C\left(\hat{n}-n_g\right)^2-E_{J,\mathrm{eff}}(\Phi)\cos \left(\hat{\varphi}-\varphi_{\rm ext}\right)\) once for each knob:</p>
+          <div class="qh-deriv-grid qh-v28-row3">
+            <div>\[\hat{O}_{n_g}=\frac{\partial\hat{\mathcal{H}}}{\partial n_g}\sim -8E_C\hat{n}\]</div>
+            <div>\[\hat{O}_{E_J}=\frac{\partial\hat{\mathcal{H}}}{\partial E_J}\sim-\cos\hat{\varphi}\]</div>
+            <div>\[\hat{O}_{\varphi_{\rm ext}}=\frac{\partial\hat{\mathcal{H}}}{\partial \varphi_{\rm ext}}\sim-E_J\sin\hat{\varphi}\]</div>
           </div>
-          <div class="qh-key">
-            \[
-            \text{charge-like knobs}\ \to\ \hat{n},
-            \qquad
-            \text{junction-like knobs}\ \to\ \cos\hat{\varphi}
-            \]
-          </div>
-          <p class="qh-deriv-foot">Two operators cover the whole list, and we already know both: \(\hat{n}\) drives the qubit, \(\cos\hat{\varphi}\) is the Josephson term itself.</p>
+          
+          
         </section>
 
         
@@ -8969,9 +8930,9 @@ html {
             \[
             \hat{O}_\lambda\equiv \frac{\partial \hat{\mathcal H}}{\partial \lambda}
             \qquad\qquad
-            \underbrace{\frac{\partial\omega_{01}}{\partial\lambda}=\frac{\left\langle1\left|\hat{O}_\lambda\right|1\right\rangle-\left\langle0\left|\hat{O}_\lambda\right|0\right\rangle}{\hbar}}_{T_\varphi}
+            \underbrace{\frac{\partial\omega_{01}}{\partial\lambda}=\frac{\left\langle1\left|\hat{O}_\lambda\right|1\right\rangle-\left\langle0\left|\hat{O}_\lambda\right|0\right\rangle}{\hbar}}_{\in T_\varphi}
             \qquad\qquad
-            \underbrace{\Gamma_1=\frac{\left|\left\langle0\left|\hat{O}_\lambda\right|1\right\rangle\right|^2}{\hbar^2}\,S_\lambda(\omega_{01})}_{T_1}
+            \underbrace{\Gamma_1=\frac{\left|\left\langle0\left|\hat{O}_\lambda\right|1\right\rangle\right|^2}{\hbar^2}\,S_\lambda(\omega_{01})}_{\in T_1}
             \]
           </div>
           <div class="qh-v18-mech-grid">
@@ -8980,44 +8941,53 @@ html {
               \[
               \frac{\partial\omega_{01}}{\partial\lambda}=\frac{O_{11}-O_{00}}{\hbar}=0
               \]
+              
+              <div class="qh-result">
+                \[
+                \Gamma_\varphi^{(1)}\to 0
+                \]
+              </div>
               \[
               \delta\omega_{01}\simeq\frac12\,\frac{\partial^2\omega_{01}}{\partial\lambda^2}\,\delta\lambda^2
               \]
-              <div class="qh-result">
-                \[
-                \Gamma_\varphi^{(1)}=0
-                \]
-              </div>
-              <div class="qh-v18-note">only at that bias<br>\(n_g=\tfrac12\), \(\Phi=0,\ \Phi_0/2\)</div>
+              
             </div>
             <div>
               <p class="qh-step-label">2 · Small overlap: far apart</p>
               \[
-              \psi_0,\ \psi_1\ \text{far apart}
+              |0\rangle,\ |1\rangle \text{far apart}
               \]
               \[
-              \Longrightarrow\ d_{01}=\langle0|\hat O_\lambda|1\rangle\approx0
+              \Longrightarrow\langle0|\hat O_\lambda|1\rangle\approx0
               \]
               \[
-              \Gamma_1\propto|d_{01}|^2\to0
+              \Gamma_1\to0
               \]
-              <div class="qh-v18-note">\(T_1\) · never exactly zero · at every bias<br>fluxonium 2018</div>
-            </div>
+              </div>
             <div>
               <p class="qh-step-label">3 · Selection rule: odd × even = 0</p>
+              <p>For example, parity \(\hat P\) and if \(\hat{\mathcal H}\) has symmetry</p>
               \[
-              U(x)=U(-x)\ \Longrightarrow\ [\hat{\mathcal H},\hat P]=0
+              U(\varphi)=U(-\varphi)\ \Longrightarrow\ [\hat{\mathcal H},\hat P]=0
               \]
               \[
-              \Longrightarrow\ \psi_0(x)\ \text{even},\ \ \psi_1(x)\ \text{odd}
+              \hat P|0\rangle =|0\rangle \ \text{even},\ \ \hat P|1\rangle =-|1\rangle\ \text{odd}
+              \]
+              <br>
+              \[
+              \hat n= -i\frac{\partial}{\partial \phi} \text{ odd} \leftrightarrow \hat P ^\dagger \hat n \hat P =-\hat n
+              \]
+              \[\sin \hat{\varphi} \text{ odd}\]
+
+              \[
+              \langle k|\hat O|k\rangle=\langle k|\hat P\,(\hat P^\dagger\hat O\hat P)\,\hat P^\dagger|k\rangle=(\pm1)^2\,\langle k|(-\hat O)|k\rangle
               \]
               \[
-              \langle0|\cos\hat x|1\rangle=\int\underbrace{\psi_0}_{\rm even}\,\underbrace{\cos x}_{\rm even}\,\underbrace{\psi_1}_{\rm odd}\,dx=0
+              \Longrightarrow\ \langle0|\hat O|0\rangle=\langle1|\hat O|1\rangle=0\qquad(\hat O=\hat n,\ \sin\hat\varphi)
               \]
               \[
-              \langle k|\hat x|k\rangle=\int\underbrace{x}_{\rm odd}\,\underbrace{\psi_k^2}_{\rm even}\,dx=0
+              \langle0|\hat O|1\rangle=(+1)(-1)\,\langle0|(-\hat O)|1\rangle=+\langle0|\hat O|1\rangle\quad\text{allowed}
               \]
-              <div class="qh-v18-note">even noise \((\cos x)\): no \(T_1\) · odd noise \((x)\): no first-order \(T_\varphi\)<br>fluxonium at \(\phi_{\rm ext}=\pi\), \(x=\phi-\pi\)</div>
             </div>
           </div>
         </section>
@@ -9055,23 +9025,25 @@ html {
               <figcaption class="qh-v20-url"><a href="https://arxiv.org/pdf/1208.5747" target="_blank" rel="noopener">https://arxiv.org/pdf/1208.5747</a></figcaption>
             </figure>
             <div class="qh-step-host qh-v20-fm-deriv">
-              <p>Put \(N\) identical junctions in series. With no phase slips, a total phase \(\Theta\) divides evenly:</p>
+              \[
+                \theta_0=\underbrace{\sum_{j=1}^{N} \theta_j}_{\equiv\varphi}-\frac{2e}{\hbar} \Phi_{ext}+2\pi n,
+                \qquad \theta_j \sim \frac{\varphi}{N},
+                \qquad E^a_J>E^b_J
+              \]
           \[
-          \theta_j=\frac{\Theta}{N},\qquad
-          U=-\sum_{j=1}^{N}E_{J,a}\cos\theta_j=-NE_{J,a}\cos\frac{\Theta}{N}
+          U=-E_{J}^b \cos\left(\varphi-\frac{2e}{\hbar} \Phi_{ext}\right)-N E_{J}^a \cos\frac{\varphi}{N}
           \]
           <p>Each junction sits near the bottom of its own cosine, so expand:</p>
           \[
-          -NE_{J,a}\cos\frac{\Theta}{N}\approx-NE_{J,a}+\frac{E_{J,a}}{2N}\Theta^2
+          -NE_{J,a}\cos\frac{\varphi}{N}\approx-NE_{J,a}+\frac{E_{J,a}}{2N}\varphi^2
           \]
           <div class="qh-result">
             \[
-            \frac{1}{2}E_L\Theta^2=\frac{E_{J,a}}{2N}\Theta^2
+            \frac{1}{2}E_L\varphi^2=\frac{E_{J,a}}{2N}\varphi^2
             \qquad\Longrightarrow\qquad
-            E_L=\frac{E_{J,a}}{N}
+            E_L=\frac{E_{J,a}}{N}\equiv \frac{1}{L}\left(\frac{\hbar}{2e}\right)^2
           \]
           </div>
-          <p class="qh-deriv-foot">Each junction is still nonlinear; sharing the phase between \(N\) of them makes the chain linear to order \(\Theta^2/N^2\).</p>
             </div>
           </div>
         </section>
@@ -9206,9 +9178,9 @@ html {
             <div class="qh-lit-math qh-step-host">
               <div class="qh-v25-merged">
                 \[
-                \varepsilon\neq0\ \Longrightarrow\ \frac{\partial\omega_{01}}{\partial\Phi}\neq0
-                \ \Longrightarrow\ \delta\omega_{01}(t)\simeq\frac{\partial\omega_{01}}{\partial\Phi}\,\delta\Phi(t)
-                \ \Longrightarrow\ T_1>2\ {\rm ms},\qquad T_2\approx4\ \mu{\rm s}
+                T_1>2\ {\rm ms},\qquad T_2\approx4\ \mu{\rm s}, \qquad
+                \frac{\partial\omega_{01}}{\partial\Phi}\neq0
+                \Longrightarrow\ \delta\omega_{01}(t)\simeq\frac{\partial\omega_{01}}{\partial\Phi}\,\delta\Phi(t)
                 \]
               </div>
             </div>
