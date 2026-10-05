@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 300" width="700" height="300" role="img" aria-label="Four iterations of one Miray run on ibm_aachen. The bars, showing how many distinct answers the shots came back as, fall from 805 to 283. The gold line, showing the share of shots held by the best answer, climbs from 0.26 percent to 27.8 percent. Ten variables, so the figure shows the shape of convergence rather than performance.">
+
+  <line x1="90" y1="240" x2="640" y2="240" stroke="#cfcdcd" stroke-width="2"/>
+
+  <!-- distinct answers measured -->
+  <rect x="102" y="50"    width="56" height="190" fill="#cfcdcd"/>
+  <rect x="212" y="158.6" width="56" height="81.4" fill="#cfcdcd"/>
+  <rect x="322" y="168.5" width="56" height="71.5" fill="#cfcdcd"/>
+  <rect x="432" y="173.2" width="56" height="66.8" fill="#cfcdcd"/>
+  <text x="102" y="40" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="#6b6b6b">distinct answers measured</text>
+
+  <!-- share held by the best answer -->
+  <path d="M130 238.4 L 240 139.3 L 350 71.9 L 460 64" fill="none" stroke="#b38f12" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="130" cy="238.4" r="7" fill="#b38f12"/>
+  <circle cx="240" cy="139.3" r="7" fill="#b38f12"/>
+  <circle cx="350" cy="71.9" r="7" fill="#b38f12"/>
+  <circle cx="460" cy="64" r="7" fill="#b38f12"/>
+  <text x="150" y="234" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" font-weight="600" fill="#b38f12">0.26%</text>
+  <text x="478" y="58" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" font-weight="600" fill="#b38f12">27.8%</text>
+  <text x="478" y="82" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="#b38f12">share held by</text>
+  <text x="478" y="102" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="#b38f12">the best answer</text>
+
+  <!-- iterations -->
+  <g font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="16" fill="#6b6b6b" text-anchor="middle">
+    <text x="130" y="264">1</text>
+    <text x="240" y="264">2</text>
+    <text x="350" y="264">3</text>
+    <text x="460" y="264">5</text>
+  </g>
+  <text x="90" y="290" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="14" font-weight="600" letter-spacing="2.4" fill="#6b6b6b">ITERATION</text>
+
+  <text x="640" y="290" text-anchor="end" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="13" fill="#6b6b6b">ten variables on ibm_aachen: the shape, not performance</text>
+</svg>

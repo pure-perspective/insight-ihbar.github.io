@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N39VTY949N"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-N39VTY949N');
+</script>
+    <!-- Basic Page Needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <meta name="author" content="Peir-Ru Wang">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;1,300&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/20250525-icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/20250525-icon.png">
+
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/css/style.css" rel="stylesheet">
+    <link href="../assets/css/responsive.css" rel="stylesheet">
+
+    <title>FUJITSU: Hardware Challenges in Superconducting FTQC</title>
+    <meta name="description" content="Fujitsu’s talk on unresolved challenges in superconducting fault-tolerant quantum computing: scaling multi-qubit systems, variability, power, and cooling.">
+    <link rel="canonical" href="https://www.insight-ihbar.com/ASW2026_en/F.html">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+<meta name="keywords" content="Fujitsu, RIKEN, FTQC, superconducting qubits, Josephson junction, calibration, 量子電腦">
+</head>
+<body>
+
+    <header id="masthead" class="site-header">
+        <nav id="primary-navigation" class="site-navigation">
+            <div class="container">
+
+                <div class="navbar-header">                   
+                    <a href="../index.html" class="site-title">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
+                </div><!-- /.navbar-header -->
+
+                <div class="collapse navbar-collapse" id="agency-navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="../index.html">Home</a></li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Qubit Physics<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                              <li><a href="../SCQ_elementary_en/main.html">Superconducting Qubits (Elementary)</a></li>
+                              <li><a href="../SCQ_advanced_en/main.html">Superconducting Qubits (Advanced)</a></li>
+                              <li><a href="../SpQ_en/main.html">Semiconductor Spin Qubits</a></li>
+                              <li><a href="../SCQCA-2026F_en/main.html">The Architecture of SC<br>Quantum Computers (2026 Fall)</a></li>
+                            </ul>
+                        </li>
+                        <!--<li class="active"><a href="../SCQ_elementary/main.html">科普介紹</a></li>-->
+                        <li><a href="../QC_hardware_en/main.html">Hardware</a></li>
+                        <li><a href="../QID_en/main.html">Quantum Industries</a></li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Workshop Note<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                <li class="active"><a href="../ASW2026_en/main.html">2026 Academia Sinica SCQC Winter Workshop</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Consultance<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                <li><a href="https://www.quantum-perspectives.com/About_en/main.html">Taiwan Market Outreach Services</a></li>
+                                <li><a href="../About_en/main.html">About Us</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="../index_ch.html">中文版</a></li>                        
+                    </ul>
+                </div>
+
+            </div>   
+        </nav><!-- /.site-navigation -->
+    </header><!-- /#mastheaed -->
+
+    <div id="hero" class="hero overlay subpage-hero blog-hero">
+        <div class="hero-content">
+            <div class="hero_2-text">
+                <h1>2026 Academia Sinica SCQC Winter Workshop</h1>
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+                  <!--<li class="breadcrumb-item"><a href="./main.html">Hardware Guide (2025)</a></li>
+                  <li class="breadcrumb-item active">約瑟夫森節</li>-->
+                </ol>
+            </div><!-- /.hero-text -->
+        </div><!-- /.hero-content -->
+    </div><!-- /.hero -->
+
+    <main id="main" class="site-main">
+
+        <section class="site-section subpage-site-section section-blog">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                        <article class="blog-post">
+                            <!--<img src="../assets/img/portfolio-1.jpg" class="img-res" alt="Laptop on wooden desk">-->
+                            <div class="post-content">
+                                <div style="text-align: center;">
+                                    <h2>FUJITSU: Hardware Challenges in Superconducting FTQC</h2>
+                                    <h3></h3>
+                                    <h3>Yoshiyasu Doi, Senior Research Director</h3>
+                                    <h4>Fujitsu Research Quantum Lab</h4>
+                                    <span style="font-size: 0.7em; line-height: 0.8;">
+                                        2026.04.02 · updated 2026.10.03
+                                    </span>
+                                </div>
+                                <p>FUJITSU is a Japanese manufacturer and developer of full-stack quantum computers. It collaborates closely with the RIKEN Center for Quantum Computing in Japan, with the goal of developing a fault-tolerant quantum computer (FTQC) designed and built domestically in Japan. This talk mainly introduced and assessed the challenges that must be addressed on the path toward the practical realization of large-scale FTQC.</p>
+                                
+                                <div style="text-align: center;">
+                                    <a href="../Image/IMG_5822.JPG">
+                                        <img src="../WebP/IMG_5822.webp" alt="Quantum workshop slide" style="width: 100%; height: auto;">
+                                    </a>
+                                    <a href="../Image/IMG_5832.JPG">
+                                        <img src="../WebP/IMG_5832.webp" alt="Fujitsu tech slide" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲ FUJITSU has enterprise-level data center and supercomputing center deployment solutions in Japan. Interestingly, the slide below mentions the ways FUJITSU has improved computational power at different stages:</p>
+                                    <ol>
+                                        <li><p>Higher clock frequency: through high-frequency CPU operation</p></li>
+                                        <li><p>Multi-core computing: multi-core CPUs</p></li>
+                                        <li><p>Many-core computing: using more processing cores to increase parallelism</p></li>
+                                        <li><p>Memory-centric architecture: improving data movement, bandwidth, and coordination between memory and processing cores.</p></li>
+                                    </ol>
+                                    <p>In addition, FUJITSU is also investing in the computational development of next-generation quantum technologies and quantum-inspired technologies.
+                                    <br><br>
+                                </p>
+                                
+
+                                <h3>Types of Quantum Computers</h3>
+                                <div style="text-align: center;">
+                                    <a href="../Image/IMG_5841.JPG">
+                                        <img src="../WebP/IMG_5841.webp" alt="Quantum computer chart" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲ This slide places quantum gate-based systems beside Ising machines for combinatorial optimization. The latter category includes both quantum annealers and classical CMOS implementations. An Ising machine does not necessarily exploit quantum effects, and Fujitsu's Digital Annealer should not be treated as a universal gate-based quantum computer.
+                                </p>
+
+
+                                <div style="text-align: center;">
+                                    <a href="../Image/fig-03-en-960x540.png">
+                                        <img src="../WebP/fig-03-en-960x540.webp" alt="Quantum roadmap" style="width: 100%; height: auto;">
+                                    </a>
+                                    <a href="../Image/截圖 2026-03-10 上午11.57.56.png">
+                                        <img src="../WebP/截圖 2026-03-10 上午11.57.56.webp" alt="Quantum architecture" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲ FUJITSU's quantum computer roadmap. FUJITSU's research includes superconducting quantum computers and diamond spin quantum computers. STAR stands for Space-Time efficient Analog Rotation. It combines error-corrected Clifford gates with direct analog rotations to reduce resource requirements for early-FTQC. The rotations retain residual errors; partial fault tolerance does not mean that every operation is fully protected. <a href="https://arxiv.org/abs/2303.13181">[Original STAR paper]</a>
+                                    <span style="font-size: 0.7em; line-height: 0.8;">
+                                        <br>Ref: https://global.fujitsu/en-global/technology/research/quantum
+                                        <br>Ref: https://global.fujitsu/-/media/Project/Fujitsu/Fujitsu-HQ/technology/research/quantum/event-202503/FQD2025japan_guest_talk3.pdf
+                                    </span>
+                                    <br><br>
+                                </p>
+                                
+                                
+                                
+                                
+                                <!--
+                                <div style="text-align: center;">
+                                    <a href="../../ImagePool/IMG_5843.JPG">
+                                        <img src="../../ImagePool/IMG_5843.JPG" alt="Fujitsu slide" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲
+                                    
+                                    <br><br>
+                                </p>
+                                
+                                
+                                
+                                <div style="text-align: center;">
+                                    <a href="../../ImagePool/IMG_5845.JPG">
+                                        <img src="../../ImagePool/IMG_5845.JPG" alt="Fujitsu quantum slide" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲
+                                    
+                                    <br><br>
+                                </p>
+                                -->
+                                
+                                <br>
+                                <h3>FUJITSU and RIKEN Multi-Qubit System Development</h3>
+                                <div style="text-align: center;">
+                                    <a href="../Image/IMG_5852.JPG">
+                                        <img src="../WebP/IMG_5852.webp" alt="Quantum slide" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲ FUJITSU is collaborating with Yasunobu Nakamura, the leader of the RIKEN quantum computing center, to develop multi-qubit systems.
+                                    Scaling this system requires the chip, packaging, cryogenic wiring, and control electronics to evolve together. The transmon follows the charge-qubit design lineage; flux qubits are a distinct superconducting circuit family and should not all be described as direct transmon predecessors.
+
+
+                                    
+                                    <br><br>
+                                </p>
+                                
+                                
+                                
+                                <div style="text-align: center;">
+                                    <a href="../Image/IMG_5855.JPG">
+                                        <img src="../WebP/IMG_5855.webp" alt="256-qubit slide" style="width: 100%; height: auto;">
+                                    </a>
+                                
+                                    <a href="../Image/IMG_5870.JPG">
+                                        <img src="../WebP/IMG_5870.webp" alt="Thermal design slide" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲ Fujitsu and RIKEN announced their 256-qubit system in April 2025. This slide explains the extension of the unit-cell layout and three-dimensional wiring approach established for the 64-qubit system, together with denser packaging and improved thermal design. It does not mean simply joining four separate quantum computers. <a href="https://www.riken.jp/en/news_pubs/news/2025/20250422_1/index.html">[RIKEN announcement]</a>
+                                </p>
+                                
+                                
+                                
+                                <!--<div style="text-align: center;">
+                                    <a href="../../ImagePool/IMG_5873.JPG">
+                                        <img src="../../ImagePool/IMG_5873.JPG" alt="Quantum packaging slide" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲
+                                    
+                                    <br><br>
+                                </p>
+                                
+                                
+                                
+                                <div style="text-align: center;">
+                                    <a href="../../ImagePool/IMG_5878.JPG">
+                                        <img src="../../ImagePool/IMG_5878.JPG" alt="Quantum tech slide" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲
+                                    
+                                    <br><br>
+                                </p>-->
+                                
+
+                                <h3>Large-Area Superconducting Circuit Panels and Qubit Variability</h3>
+                                <p>The fabrication of multi-qubit chips is in fact similar to the semiconductor wafer industry: a large number of quantum circuits are integrated on large-area wafers. The related issues of mass production therefore involve the uniformity of qubits across the wafer.
+                                    Because quantum response is extremely sensitive and Josephson junctions require very high process precision, the properties of superconducting qubits distributed across a wafer do in practice vary to some extent. Post-processing can tune the qubits toward their respective design targets.
+                                </p>
+                                
+                                <div style="text-align: center;">
+                                    <a href="../Image/IMG_5918.JPG">
+                                        <img src="../WebP/IMG_5918.webp" alt="Superconducting slide" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲ This figure shows position-dependent variations in junction geometry and normal-state resistance produced by shadow evaporation, including sidewall deposition effects. Junction resistance is related to qubit frequency. Deviations from the frequency plan can cause frequency collisions and unwanted ZZ interactions, making fabrication uniformity and subsequent frequency adjustment important.
+                                    
+                                    <br><br>
+                                </p>
+
+                                <div style="text-align: center;">
+                                    <a href="../Image/IMG_5884.JPG">
+                                        <img src="../WebP/IMG_5884.webp" alt="Qubit variability slide" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲ RIKEN and Fujitsu use laser annealing to adjust Josephson-junction resistance. Probes measure the junction resistance at room temperature, and local laser heating brings it closer to the target. The slide reports a reduction in the resistance coefficient of variation from 4.1% to 0.6%. This measures junction-resistance uniformity; qubit frequencies and gate performance still require cryogenic validation.
+
+                                    
+                                    <br><br>
+                                </p>
+                                
+                                
+                                
+                                
+                                
+                                <div style="text-align: center;">
+                                    <a href="../Image/IMG_5926.JPG">
+                                        <img src="../WebP/IMG_5926.webp" alt="Qubit chip slide" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲ However, when moving toward larger numbers of qubits, measuring each qubit individually and aligning a laser for local heating may not be a method that scales rapidly.
+                                    The slide proposes multi-contact probes and bias-pulse annealing as possible routes to parallelization, marking both with question marks. These are directions for exploring more efficient junction adjustment; the slide does not establish their implementation details or completed validation results.
+                                    
+                                    <br><br>
+                                </p>
+
+
+                                <!--
+                                <div style="text-align: center;">
+                                    <a href="../../ImagePool/IMG_5935.JPG">
+                                        <img src="../../ImagePool/IMG_5935.JPG" alt="300mm wafer slide" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲
+                                    
+                                    <br><br>
+                                </p>
+                                
+                                
+                                
+                                <div style="text-align: center;">
+                                    <a href="../../ImagePool/IMG_5936.JPG">
+                                        <img src="../../ImagePool/IMG_5936.JPG" alt="Qubit variability slide" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲
+                                    
+                                    <br><br>
+                                </p>
+                                
+                                <div style="text-align: center;">
+                                    <a href="../../ImagePool/IMG_5893.JPG">
+                                        <img src="../../ImagePool/IMG_5893.JPG" alt="Quantum computer slide" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲
+                                    
+                                    <br><br>
+                                </p>
+                                
+                                
+                                
+                                <div style="text-align: center;">
+                                    <a href="../../ImagePool/IMG_5899.JPG">
+                                        <img src="../../ImagePool/IMG_5899.JPG" alt="Quantum computer slide" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲
+                                    
+                                    <br><br>
+                                </p>
+                                
+                                
+                                
+                                <div style="text-align: center;">
+                                    <a href="../../ImagePool/IMG_5904.JPG">
+                                        <img src="../../ImagePool/IMG_5904.JPG" alt="Quantum qubits slide" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲
+                                    
+                                    <br><br>
+                                </p>
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                <div style="text-align: center;">
+                                    <a href="../../ImagePool/IMG_5911.JPG">
+                                        <img src="../../ImagePool/IMG_5911.JPG" alt="Quantum slide" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲
+                                    
+                                    <br><br>
+                                </p>-->
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                <h3>Infrastructure Scale of a Quantum Computing Center</h3>
+                                <p>Practical quantum computing depends on the algorithm's logical-qubit count, circuit depth, and acceptable failure probability. There is no fixed conversion between physical and logical qubits: the code, hardware error rates, connectivity, and target logical error rate determine the resources required.</p>
+                                <p>The talk contrasts early-FTQC scenarios with roughly 10,000–60,000 physical qubits and longer-term million-qubit scenarios. These are estimates under particular architectural and application assumptions, not universal thresholds for quantum advantage. For engineers, a central question is whether control channels, cryogenic heat loads, connectors, and racks remain manageable as the processor grows.
+                                </p>
+                                <div style="text-align: center;">
+                                    <a href="../Image/IMG_5915.JPG">
+                                        <img src="../WebP/IMG_5915.webp" alt="Quantum qubit slide" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲ FUJITSU explains the number of qubits required for Early-FTQC and full FTQC.
+                                    
+                                    <br><br>
+                                </p>
+                                
+                                <div style="text-align: center;">
+                                    <a href="../Image/IMG_5943.JPG">
+                                        <img src="../WebP/IMG_5943.webp" alt="Control Electronics slide" style="width: 100%; height: auto;">
+                                    </a>
+                                    <a href="../Image/IMG_5958.JPG">
+                                        <img src="../WebP/IMG_5958.webp" alt="Quantum facility slide" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲ The control-electronics slide lists approximately 7 kW for a 64-qubit configuration and 20 kW for a 256-qubit configuration, then discusses about 100 kW at 1,024 qubits. The million-qubit column still shows a question mark. These are the configurations and estimates presented in the talk, not universal specifications for all platforms.
+                                    <br><br>The next slide labels its row “Required Power” but uses GWh, a unit of energy. GW measures power; without the time interval over which the energy accumulates, the values cannot be converted into a required number of power plants. Infrastructure planning additionally needs operating time, utilization, and a clear boundary for cooling-system consumption.
+                                </p>
+                                
+                                
+                                <!--
+                                <div style="text-align: center;">
+                                    <a href="../../ImagePool/IMG_5950.JPG">
+                                        <img src="../../ImagePool/IMG_5950.JPG" alt="Quantum fridge slide" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲
+                                    
+                                    <br><br>
+                                </p>-->
+                                
+                                
+                                
+                                
+                                <div style="text-align: center;">
+                                    <a href="../Image/IMG_5964.JPG">
+                                        <img src="../WebP/IMG_5964.webp" alt="Quantum cost slide" style="width: 100%; height: auto;">
+                                    </a>
+                                 <a href="../Image/IMG_5966.JPG">
+                                        <img src="../WebP/IMG_5966.webp" alt="Quantum R&amp;D slide" style="width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <p class="dark-background">
+                                    ▲ Because the estimated scale of such a quantum supercomputing center is enormous, FUJITSU raises several open questions: how can the relevant infrastructure be achieved, who will help enable it, and how can the associated costs be reduced to make it more feasible?
+                                    
+                                    <br><br>
+                                </p>
+                                
+                                
+                                
+                                
+                                
+                                <br><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                
+                                <br><br>
+                                <p>
+                                    <span style="font-size: 0.5em; line-height: 0.8;">
+                                        Originally written in Chinese by the author, these articles are translated into English to invite cross-language resonance.
+                                    </span>
+                                </p>
+                                <h3>Connecting scale-up with calibration and operations</h3>
+                                <p>Fabrication variability gives individual qubits different frequencies and gate parameters. A larger processor also brings more couplings, frequency collisions, and calibration records to manage. Low-power control, dense packaging, maintainable cryogenic wiring, and automated calibration therefore belong to the same engineering problem: making a quantum processor reliably usable over time.</p>
+                                <p style="font-size: 0.85em;">Sources: Workshop slides, February 6, 2026; <a href="https://www.riken.jp/en/news_pubs/news/2025/20250422_1/index.html">RIKEN/Fujitsu 256-qubit announcement (2025)</a>; <a href="https://arxiv.org/abs/2303.13181">original STAR paper</a>. Roadmaps and resource requirements are targets or estimates in the context of the talk.</p>
+                                <div class="post-meta">
+                                    <span class="post-author">
+                                        <a href="../About_en/Wang.html"><img class="img-res" src="../WebP/IMG_0964_2.webp" alt="Professional headshot">Peir-Ru Wang</a>
+                                    </span>
+                                    <span class="post-category">
+                                        <a href="../ASW2026_en/main.html"><i class="fa fa-folder" aria-hidden="true"></i>2026 Academia Sinica SCQC Winter Workshop</a>
+                                    </span>
+                                </div><!-- /.post-meta -->
+                            
+                                <div id="prev-next-nav" class="text-center">
+                                    <a class="btn btn-gray" href="E.html">← Previous</a> 
+                                    <a class="btn btn-gray" href="../ASW2026/F.html" style="margin: 0 10px;">中文版</a>
+                                </div>
+
+                                
+
+                            </div><!-- /.post-content -->
+                        </article><!-- /.blog-post -->
+                        <!--<div id="PostComments" class="post-comments">
+                            
+                            
+                            
+                        </div> /#PostComments -->
+                        <!--<div class="respond">
+                            <h3>Post a Comment</h3>
+                            <form class="form-horizontal">
+                                <input class="form-control" type="text" placeholder="Your Name*" required>
+                                <input class="form-control" type="email" placeholder="Your Email" required>
+                                <textarea class="form-control form-control-comment" type="text" placeholder="Your Comment*" required></textarea>
+                                <button class="btn btn-green">Add a comment</button>
+                            </form>    
+                        </div> /.respond -->
+                    </div>
+                    <aside class="col-md-3">
+                        <div class="sidebar">
+                            <div class="widget">
+                                <div id="lesson-list_2">
+                                <div class="lesson-link "><a href="main.html">2026 Academia Sinica SCQC Winter Workshop</a></div>
+                                <div class="lesson-link "><a href="A.html">Introduction to Superconducting Quantum Computers</a></div>
+                                <div class="lesson-link "><a href="B.html">IQM Quantum Computer Technology Development</a></div>
+                                <div class="lesson-link "><a href="C.html">IQM KQCircuit Design</a></div>
+                                <div class="lesson-link "><a href="D.html">AMD</a></div>
+                                <div class="lesson-link "><a href="E.html">NVIDIA and NVQLink</a></div>
+                                <div class="lesson-link active"><a href="F.html">FUJITSU: Hardware Challenges in Superconducting FTQC</a></div>
+                                </div>
+                            </div>
+                        </div></aside>
+                </div>
+            </div>
+        </section><!-- /.section-portfolio -->
+
+    </main><!-- /#main -->
+
+    <footer id="colophon" class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-4 col-xs-6">
+                    <a href="../index_ch.html" class="site-title">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
+                    <p>Exploring the Quantum Technology Together.</p>
+                    </div>
+                <div class="col-lg-offset-4 col-md-3 col-sm-4 col-md-offset-2 col-sm-offset-0 col-xs-6 ">
+                    <p class="site-title">𝐾𝐸𝐸𝑃 𝐼𝑁 𝑇𝑂𝑈𝐶𝐻</p>
+                    <ul class="list-unstyled contact-links">
+                        <li><i class="fa fa-envelope" aria-hidden="true"></i><a href="mailto:info@insight-ihbar.com">info@insight-ihbar.com</a></li>
+                        <!--<li><i class="fa fa-phone" aria-hidden="true"></i><a href="tel:+37400800000">+374 (00) 80 00 00 </a></li>
+                        <li><i class="fa fa-fax" aria-hidden="true"></i><a href="+37400900000">+374 (00) 90 00 00</a></li>
+                        <li><i class="fa-solid fa-location-dot"></i><p>Hsinchu 300, Taiwan (R.O.C.)</p></li>-->
+                    </ul>
+                </div>
+                <!--<div class="clearfix visible-xs"></div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6">
+                    <h3>Featured links</h3>
+                    <ul class="list-unstyled">
+                        <li class="active"><a href="index_ch.html">Home</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="portfolio.html">Porfolio</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>-->
+            </div>
+        </div>
+        <div class="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-8">
+                        <div class="social-links">
+                            <!--<a class="twitter-bg" href="#"><i class="fab fa-twitter"></i></a>-->
+                            <!--<<a class="facebook-bg" href="https://www.facebook.com/people/Quantum-Perspectives/61576446849628/"><i class="fab fa-facebook"></i></a>-->
+                            <!--<a class="facebook-bg" href="https://www.facebook.com/people/%E9%87%8F%E5%AD%90%E9%81%A0%E8%A6%8BQuantum-Perspectives/61576883632888/"><i class="fab fa-facebook-f"></i></a>-->
+                            <!--<a class="pinterest" href="#"><i class="fa-solid fa-microscope"></i></a>-->
+                            <!--<a class="facebook-bg" href="https://www.facebook.com/people/Insight-hbar/61576811775374/"><i class="fab fa-facebook-f"></i></a>-->
+                            <a class="linkedin-bg" href="https://www.linkedin.com/company/insight-ihbar"><i class="fab fa-linkedin"></i></a>
+                        </div><!-- /.social-links -->
+                    </div>
+                    <div class="col-xs-4">
+                        <div class="text-right">
+                            <p><span style="font-size: 16px;">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</span></p>
+                            <p>All Rights Reserved</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.copyright -->
+    </footer><!-- /#footer -->
+
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="../assets/js/bootstrap-select.min.js"></script>
+    <script src="../assets/js/jquery.slicknav.min.js"></script>
+    <script src="../assets/js/jquery.countTo.min.js"></script>
+    <script src="../assets/js/jquery.shuffle.min.js"></script>
+    <script src="../assets/js/script.js"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  
+</body>
+</html>

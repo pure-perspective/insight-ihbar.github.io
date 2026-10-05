@@ -2,8 +2,8 @@
   {
     "title": "2026中研院QPU冬季Workshop：引言",
     "file": "main.html",
-    "status": "new",
-    "date": "2026-02-13"
+    "status": "revised",
+    "date": "2026-10-03"
   },
   {
     "title": "超導量子電腦概論",
@@ -34,5 +34,41 @@
     "file": "E.html",
     "status": "new",
     "date": "2026-03-08"
+  },
+  {
+    "title": "FUJITSU：FTQC研發與挑戰",
+    "file": "F.html",
+    "status": "new",
+    "date": "2026-10-03"
+  },
+  {
+    "title": "QC-Test：從量子晶片到可用的測試平台",
+    "file": "G.html",
+    "status": "new",
+    "date": "2026-10-03"
+  },
+  {
+    "title": "QC-Fab：超導量子晶片的製程與品質",
+    "file": "H.html",
+    "status": "new",
+    "date": "2026-10-03"
+  },
+  {
+    "title": "Quantum Machines：從 OPX 控制到 QUAlibrate 自動校正",
+    "file": "I.html",
+    "status": "new",
+    "date": "2026-10-03"
+  },
+  {
+    "title": "Qblox：模組化控制、Scheduler 與 QPU Tune-up",
+    "file": "J.html",
+    "status": "new",
+    "date": "2026-10-03"
+  },
+  {
+    "title": "超導量子位元的 Calibration：從找到訊號到校正量子閘",
+    "file": "Calibration.html",
+    "status": "new",
+    "date": "2026-10-03"
   }
 ]

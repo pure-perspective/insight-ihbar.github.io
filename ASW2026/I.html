@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N39VTY949N"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-N39VTY949N');
+</script>
+    <!-- Basic Page Needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <meta name="author" content="Peir-Ru Wang">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;1,300&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/20250525-icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/20250525-icon.png">
+
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/css/style.css" rel="stylesheet">
+    <link href="../assets/css/responsive.css" rel="stylesheet">
+
+    <title>Quantum Machines：從 OPX 控制到 QUAlibrate 自動校正</title>
+    <meta name="description" content="2026中研院超導量子電腦Workshop：介紹OPX1000控制架構、QUA脈衝編程、QUAM系統模型與QUAlibrate自動校正，並解讀QPU bring-up、Ramsey、T1及RB實作。">
+    
+    <link rel="canonical" href="https://www.insight-ihbar.com/ASW2026/I.html">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+<meta name="keywords" content="超導量子電腦, ASW2026, Quantum Machines：從 OPX 控制到 QUAlibrate 自動校正">
+<style>
+.asw-article figure { margin: 28px 0; }
+.asw-article figure img { display: block; width: 100%; height: auto; }
+.asw-article figcaption { margin-top: 12px; line-height: 1.9; }
+.asw-article h3 { margin-top: 38px; line-height: 1.5; }
+.asw-article h4 { margin-top: 24px; line-height: 1.6; }
+.asw-article p, .asw-article li { line-height: 1.95; overflow-wrap: break-word; }
+.asw-article table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+.asw-article td, .asw-article th { padding: 10px; border: 1px solid #ddd; vertical-align: top; }
+.asw-article pre { overflow-x: auto; }
+.asw-article .table-scroll { overflow-x: auto; }
+.asw-article a { text-decoration: underline; color: #397976; }
+mjx-container[display="true"] { overflow-x: auto; overflow-y: hidden; padding: 6px 0; max-width: 100%; }
+@media(max-width: 600px) { .asw-article h2 { font-size: 27px; } .asw-article h3 { font-size: 23px; } .asw-article td, .asw-article th { padding: 7px; } }
+</style>
+</head>
+<body>
+
+    <header id="masthead" class="site-header">
+        <nav id="primary-navigation" class="site-navigation">
+            <div class="container">
+
+                <div class="navbar-header">
+                   
+                    <a href="../index_ch.html" class="site-title">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
+
+                </div><!-- /.navbar-header -->
+
+                <div class="collapse navbar-collapse" id="agency-navbar-collapse">
+
+                    <ul class="nav navbar-nav navbar-right">
+
+                        <li><a href="../index_ch.html">Home</a></li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">科普介紹<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                <li><a href="../SCQ_elementary/main.html">超導量子位元(科普版)</a></li>
+                              <li><a href="../SCQ_advanced/main.html">超導量子位元(進階版)</a></li>
+                              <li><a href="../SpQ/main.html">半導體自旋量子位元</a></li>
+                            </ul>
+
+                        </li>
+                        <!--<li class="active"><a href="../SCQ_elementary/main.html">科普介紹</a></li>-->
+                        <li><a href="../QC_hardware/main.html">硬體導論</a></li>
+                        <li><a href="../QID/main.html">量子產業群像錄</a></li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">研討會筆記<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                <li class="active"><a href="../ASW2026/main.html">2026中研院超導量子電腦Workshop</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">量子諮詢<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                <li><a href="https://www.quantum-perspectives.com/About/main.html">量子遠見科技：諮詢服務</a></li>
+                                <li><a href="../About/main.html">關於我們</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="../index.html">English</a></li>
+                        
+                    </ul>
+
+                </div>
+
+            </div>   
+        </nav><!-- /.site-navigation -->
+    </header><!-- /#mastheaed -->
+
+    <div id="hero" class="hero overlay subpage-hero blog-hero">
+        <div class="hero-content">
+            <div class="hero_2-text">
+                <a href="main.html"><h1>2026中研院QPU冬季Workshop</h1></a>
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="../index_ch.html">Home</a></li>
+                  <!--<li class="breadcrumb-item"><a href="../SCQ_elementary/main.html">超導量子位元(科普版)</a></li>
+                  <li class="breadcrumb-item active">約瑟夫森節</li>-->
+                </ol>
+            </div><!-- /.hero-text -->
+        </div><!-- /.hero-content -->
+    </div><!-- /.hero -->
+
+    <main id="main" class="site-main">
+
+        <section class="site-section subpage-site-section section-blog">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                        <article class="blog-post">
+                            <!--<img src="../assets/img/portfolio-1.jpg" class="img-res" alt="">-->
+                            <div class="post-content">
+<div class="asw-article">
+<div style="text-align: center;">
+<h2>Quantum Machines：從 OPX 控制到 QUAlibrate 自動校正</h2>
+<h3>課程團隊：Quantum Machines</h3>
+<p>2026.02.05｜OPX architecture、Intro to QUAlibrate、QPU bring-up / gate control / RB hands-on</p>
+</div>
+<p>前面介紹 IQM 時，重點是超導量子晶片本身的架構；這一天的 Quantum Machines（QM）則把視角轉到晶片外部：如何把量子電路轉換成精準的微波脈衝，再把讀回來的訊號用於下一次控制。兩者是不同公司，也分別處理量子電腦不同層次的工程問題。</p>
+<p>控制一顆超導量子位元，需要管理驅動頻率、振幅、相位、脈衝包絡與讀出時間；擴展到整片 QPU，還要維持多個通道同步，並追蹤隨時間漂移的參數。因此，量子控制器需要把<b>波形產生、訊號擷取、即時計算與校正軟體</b>接成完整的工作流程。此次 QM 的三個 session，正好從 OPX 硬體、QUAlibrate 軟體一路延伸到現場實作。</p>
+<h3>Session 1：OPX architecture——控制器裡也需要計算</h3>
+
+<div style="text-align: center;">
+<a href="../Image/IMG_4568.JPG"><img src="../WebP/IMG_4568.webp" alt="OPX1000 的脈衝處理器與模組化類比前端" loading="lazy" style="width: 100%; height: auto;"></a>
+</div>
+<p class="dark-background">▲ OPX1000 的核心是 Pulse Processing Unit（PPU，脈衝處理單元）。圖中把功能分成波形產生、波形擷取與即時運算：控制器除了送出事先定義的脈衝，也能在執行期間改變參數、處理讀出結果，並依結果決定後續動作。以主動重置為例，讀出結果若顯示量子位元仍在激發態，就接著施加翻轉脈衝；這段決策若每次都回到一般電腦處理，通訊與作業系統延遲會妨礙快速回授。<span style="font-size: 0.85em;">Ref: <a href="https://www.quantum-machines.co/technology/pulse-processing-unit/" target="_blank" rel="noopener noreferrer">Quantum Machines：Pulse Processing Unit</a></span><br><br></p>
+
+<div style="text-align: center;">
+<a href="../Image/IMG_4593.JPG"><img src="../WebP/IMG_4593.webp" alt="LF-FEM 與 MW-FEM 分別連接磁通量線、微波驅動與讀出線" loading="lazy" style="width: 100%; height: auto;"></a>
+</div>
+<p class="dark-background">▲ 這張配線圖很適合對照超導量子晶片的控制需求。LF-FEM 負責較低頻率的電壓波形，可送到量子位元與耦合器的 Flux line；MW-FEM 則負責 XY 微波驅動，以及讀出訊號的發送與接收。Flux line 主要改變量子位元或耦合器的工作點，XY drive 則控制量子態的旋轉。兩者必須在同一個時間基準下協調，才能形成可重複的雙量子位元閘。照片上的頻率範圍是此次投影片所列規格，不能把所有通道都當成同一種輸入輸出。<br><br></p>
+
+<div style="text-align: center;">
+<a href="../Image/IMG_4598.JPG"><img src="../WebP/IMG_4598.webp" alt="MW-FEM 從數位脈衝包絡到 RF-DAC 的數位上轉換流程" loading="lazy" style="width: 100%; height: auto;"></a>
+</div>
+<p class="dark-background">▲ MW-FEM 的訊號路徑由左往右閱讀：先選脈衝包絡、修改振幅等參數，再由數位控制振盪器（NCO）設定頻率與相位，透過數位上轉換（DUC）與插值濾波，最後由 RF-DAC 輸出微波。投影片左側的 1 GSa/s 是 I、Q 資料傳送的取樣率，右側 DAC 的內部高速運作則是另一個層次，兩個數字不能直接混為一談。把更多混頻工作移到數位域，可以減少外接類比 IQ 混頻鏈的調整負擔，但線纜延遲、衰減、失真與晶片參數仍然需要校正。<span style="font-size: 0.85em;">Ref: <a href="https://docs.quantum-machines.co/1.3.0/docs/Guides/opx1000_fems/" target="_blank" rel="noopener noreferrer">官方文件：OPX1000 FEMs（補充硬體原理）</a></span><br><br></p>
+
+<div style="text-align: center;">
+<a href="../Image/IMG_4608.JPG"><img src="../WebP/IMG_4608.webp" alt="透過交錯 Ramsey 量測追蹤量子位元頻率漂移的示範" loading="lazy" style="width: 100%; height: auto;"></a>
+</div>
+<p class="dark-background">▲ 即時能力還可以用於追蹤頻率漂移。左側程式在實驗之間插入 Ramsey 型量測，估計偏離共振的程度，再更新驅動頻率；中間比較三顆量子位元有無補償的偏移，右側則比較長時間重複量測的條紋。條紋能持續保持穩定，表示頻率追蹤有助於維持相位一致性。這裡展示的是講者提供的示範資料；它說明嵌入式校正的用途，不能直接讀成當天中研院晶片或所有 OPX 系統都能達到相同表現。<br><br></p>
+
+<h3>Session 2：Intro to QUAlibrate——從一段程式到一整套校正</h3>
+<p>硬體能精準執行脈衝，還需要讓研究者清楚描述實驗。QM 的軟體可以分成三個相互連接的層次：<b>QUA 描述脈衝與即時控制、QUAM 描述量子系統與參數、QUAlibrate 管理校正的執行與結果</b>。名字相似，但各自解決的問題不同。</p>
+
+<div style="text-align: center;">
+<a href="../Image/IMG_4734.JPG"><img src="../WebP/IMG_4734.webp" alt="QUA 的 Ramsey 脈衝程式與量子位元、共振器時間線" loading="lazy" style="width: 100%; height: auto;"></a>
+</div>
+<p class="dark-background">▲ QUA 是嵌入 Python 的脈衝層級語言。圖中的 Ramsey 實驗先打第一個 X90 脈衝，等待一段時間，再打第二個 X90，最後才測量讀出共振器。<code>play</code> 送脈衝，<code>wait</code> 安排等待，<code>align</code> 對齊不同元件的時間線，<code>measure</code> 發出量測脈衝並處理回波。它看起來像 Python，但即時部分會被編譯到控制器執行；若把等待直接寫成主機端的一般程式延遲，就不是同一種時間控制。<span style="font-size: 0.85em;">Ref: <a href="https://docs.quantum-machines.co/1.1.7/qm-qua-sdk/docs/Introduction/use_case/" target="_blank" rel="noopener noreferrer">QUA 官方範例：實驗程式與控制器執行</a></span><br><br></p>
+
+<div style="text-align: center;">
+<a href="../Image/IMG_4799.JPG"><img src="../WebP/IMG_4799.webp" alt="QUAlibrate 三個支柱：QUAM、執行管理與網頁介面" loading="lazy" style="width: 100%; height: auto;"></a>
+</div>
+<p class="dark-background">▲ QUAM（Quantum Abstract Machine）是量子系統的軟體模型，可記錄量子位元、共振器、通道與操作參數。假設 q3 的共振頻率重新量到新值，後續實驗應該讀取同一份更新後的系統狀態，而不是散落在不同 notebook 裡的舊數字。中間的執行管理把量測整理成有輸入、有輸出的校正節點，右側介面則呈現執行狀態、圖表與參數紀錄。這種分工讓脈衝程式、物理參數與實驗歷史有清楚的連接。<span style="font-size: 0.85em;">Ref: <a href="https://qua-platform.github.io/quam/" target="_blank" rel="noopener noreferrer">QUAM 官方文件</a></span><br><br></p>
+
+<div style="text-align: center;">
+<a href="../Image/IMG_4877.JPG"><img src="../WebP/IMG_4877.webp" alt="由 Ramsey 程式封裝成校正節點，再組成有相依關係的校正圖" loading="lazy" style="width: 100%; height: auto;"></a>
+</div>
+<p class="dark-background">▲ 一個校正節點不只是「按一下執行程式」。以 Ramsey 為例，輸入包含目標量子位元、等待時間與平均次數，執行後要保留資料、擬合圖、估計參數和成功與否。右側的箭頭則表達相依關係：先找到共振器與量子位元頻率，才能可靠地做 Rabi、Ramsey，之後再用 RB 檢查閘品質。若前一步沒有找到可信的頻率，就不應把錯誤參數繼續傳下去。自動化的價值在於把這些判斷寫進流程，而不是讓錯誤更快地重複。<span style="font-size: 0.85em;">Ref: <a href="https://qualibrate-docs.quantum-machines.co/calibration_nodes/" target="_blank" rel="noopener noreferrer">官方文件：Calibration Nodes</a></span><br><span style="font-size: 0.85em;">Ref: <a href="https://qualibrate-docs.quantum-machines.co/calibration_graphs/" target="_blank" rel="noopener noreferrer">官方文件：Calibration Graphs</a></span><br><br></p>
+
+<div style="text-align: center;">
+<a href="../Image/IMG_4916.JPG"><img src="../WebP/IMG_4916.webp" alt="QUAlibrate 網頁介面展示節點、流程、結果及參數歷史" loading="lazy" style="width: 100%; height: auto;"></a>
+</div>
+<p class="dark-background">▲ 網頁介面把校正所需的操作集中在同一個畫面：選擇要執行的節點或整張流程圖、設定掃描範圍，並即時查看結果。圖中也列出 QUAM viewer 與 parameter history。這兩項功能很實用，因為一張漂亮的擬合圖只有在知道當時的工作點、脈衝設定與更新紀錄時，才能成為可比較、可重複的實驗結果。讀者也可以把校正理解成維護一份「目前可使用的 QPU 參數表」。<br><br></p>
+
+<h3>Session 3：Hands-on——把 QPU 調到可以操作</h3>
+<p>最後一場的議程是 QPU bring-up、gate control 與 Randomized Benchmarking（RB）。Bring-up 可以理解為從接上系統，到找出訊號、確認量子位元，再建立可用脈衝的過程。下面以現場照片串起實作的幾個關鍵步驟；詳細的物理判讀另外整理於 <a href="Calibration.html">量子位元校正專文</a>。</p>
+
+<div style="text-align: center;">
+<a href="../Image/IMG_5188.JPG"><img src="../WebP/IMG_5188.webp" alt="現場分三組輪流使用 QPU 及 OPX1000 的實作時程" loading="lazy" style="width: 100%; height: auto;"></a>
+</div>
+<p class="dark-background">▲ 現場安排三組輪流使用 QPU，其餘組別操作未接到該 QPU 的 OPX1000。這樣的安排也提醒我們，控制器端的程式執行、輸出波形驗證，以及真正讀取量子晶片，是三種不同的檢查。前兩項可以確認控制流程，量子位元的頻率、相干時間與閘品質則必須透過實際量測才能知道。<br><br></p>
+
+<div style="text-align: center;">
+<a href="../Image/IMG_5215.JPG"><img src="../WebP/IMG_5215.webp" alt="QUAlibrate 的共振器頻率與讀出功率二維掃描" loading="lazy" style="width: 100%; height: auto;"></a>
+</div>
+<p class="dark-background">▲ 實作畫面選擇 <code>Resonator_Spectroscopy_vs_Amplitude</code>，橫軸是頻率、縱軸是功率，顏色呈現共振器的量測響應。功率改變時，共振特徵也跟著改變，因此不能只在一個很強的讀出功率下找到訊號，就把那個設定直接沿用到單次量子態判讀。這一步先建立讀出頻率與功率的適用範圍，再往量子位元頻譜與脈衝控制前進。右上角的 state updates 則把擬合得到的新參數與舊參數並排，讓更新有跡可循。<br><br></p>
+
+<div style="text-align: center;">
+<a href="../Image/IMG_5230.JPG"><img src="../WebP/IMG_5230.webp" alt="現場 Ramsey 掃描及量子位元頻率更新結果" loading="lazy" style="width: 100%; height: auto;"></a>
+</div>
+<p class="dark-background">▲ 兩個 π/2 脈衝之間改變等待時間，就得到 Ramsey 振盪。振盪頻率用來判斷驅動與量子位元之間的失諧，包絡的衰減則用來估計 T2*。圖中使用正、負失諧的量測曲線，協助辨別頻率應該往哪個方向修正。這張圖也示範校正與特性量測會同時發生：一方面更新操作頻率，一方面記錄目前相位記憶能維持多久。圖上的數值屬於這次、這顆量子位元的結果，不代表整片晶片的平均性能。<br><br></p>
+
+<div style="text-align: center;">
+<a href="../Image/IMG_5287.JPG"><img src="../WebP/IMG_5287.webp" alt="現場 q4 的 T1 弛豫量測與指數衰減擬合" loading="lazy" style="width: 100%; height: auto;"></a>
+</div>
+<p class="dark-background">▲ T1 實驗先用 π 脈衝把量子位元激發，再掃描等待時間。畫面中 q4 的讀出 I 訊號隨時間下降，擬合標示 T1 約為 17.9 ± 0.6 μs。縱軸仍然是電壓訊號，若沒有經過讀出標定，不能直接把它當成激發態機率。T1 提供能量弛豫的時間尺度，也幫助設定被動重置的等待時間；等待太短可能讓上一輪殘留的激發態影響下一輪，等待太長則會增加整個掃描的耗時。<br><br></p>
+
+<div style="text-align: center;">
+<a href="../Image/IMG_4613.JPG"><img src="../WebP/IMG_4613.webp" alt="多量子位元校正路徑與隨機基準測試、Bell 態層析示範" loading="lazy" style="width: 100%; height: auto;"></a>
+</div>
+<p class="dark-background">▲ 講者用這張總覽把完整工作流程接起來：讀出共振器、磁通量工作點、基本單位元閘、頻率微調、讀出優化與相干性量測之後，還有雙位元交互作用、雙位元閘、RB 與 Bell 態層析。這是課程提供的校正路徑與示範圖，不代表各組在有限實作時間內都完成了圖上的每一項。Rabi 曲線能幫助設定 π 脈衝，但單一脈衝看起來正確，還不足以證明一長串閘都能維持品質。<br><br></p>
+
+<h3>校正完成後，如何知道閘真的變好了？</h3>
+<p>RB 將許多隨機 Clifford 閘接成不同長度的序列，再加上理想上可還原初始態的操作，觀察存活機率隨序列長度如何衰減。常見擬合形式為 \(P(m)=A p^m+B\)，其中 \(m\) 是序列長度，\(A\)、\(B\) 吸收部分態準備與量測的影響。在標準假設成立時，\(p\) 可換算為平均 Clifford 錯誤率；它不應直接等同於某一個原生脈衝或雙位元閘的錯誤率。若要估計特定閘，還需要像 interleaved RB 這樣的設計與對照。</p>
+<p><span style="font-size: 0.85em;">Ref: <a href="https://arxiv.org/abs/1203.4550" target="_blank" rel="noopener noreferrer">Magesan et al.：Interleaved randomized benchmarking</a></span></p>
+<p>從此次三個 session 可以看出，控制器與校正軟體需要一起設計。OPX 負責按時執行脈衝與回授，QUA 把實驗描述成可執行程序，QUAM 管理系統狀態，QUAlibrate 再把散落的量測組成可追蹤的流程。當量子位元數量增加時，研究者才能把精力放在辨別真正的物理限制，以及哪些參數需要重新調整。</p>
+<p style="font-size: 0.85em;">圖片來源：2026 年 2 月 5 日 Workshop 現場照片。本文依現場投影片與操作畫面整理；官方文件連結用於補充原理，軟體介面與規格以實際使用版本為準。</p>
+
+</div>
+<div class="post-meta">
+                                    <span class="post-author">
+                                        <a href="../About/Wang.html"><img class="img-res" src="../WebP/IMG_0964_2.webp" alt="">王培儒</a>
+                                    </span>
+                                    <span class="post-category">
+                                        <a href="../ASW2026/main.html"><i class="fa fa-folder" aria-hidden="true"></i>2026中研院QPU冬季Workshop</a>
+                                    </span>
+                                </div><!-- /.post-meta -->
+                            
+                                
+                                <div id="prev-next-nav" class="text-center">
+                                    <a class="btn btn-gray" href="H.html">← 上一頁</a> 
+                                    <a class="btn btn-gray" href="J.html">下一頁 →</a>
+                                </div>
+
+                                
+
+                            </div><!-- /.post-content -->
+                        </article><!-- /.blog-post -->
+                        <!--<div id="PostComments" class="post-comments">
+                            
+                            
+                            
+                        </div> /#PostComments -->
+                        <!--<div class="respond">
+                            <h3>Post a Comment</h3>
+                            <form class="form-horizontal">
+                                <input class="form-control" type="text" placeholder="Your Name*" required>
+                                <input class="form-control" type="email" placeholder="Your Email" required>
+                                <textarea class="form-control form-control-comment" type="text" placeholder="Your Comment*" required></textarea>
+                                <button class="btn btn-green">Add a comment</button>
+                            </form>    
+                        </div> /.respond -->
+                    </div>
+                    <aside class="col-md-3">
+                        <div class="sidebar">
+                            <div class="widget">
+                                <div id="lesson-list_2">
+                                <div class="lesson-link "><a href="main.html">2026中研院QPU冬季Workshop：引言</a></div>
+                                <div class="lesson-link "><a href="A.html">超導量子電腦概論</a></div>
+                                <div class="lesson-link "><a href="B.html">IQM量子電腦科技發展</a></div>
+                                <div class="lesson-link "><a href="C.html">IQM KQCircuit Design</a></div>
+                                <div class="lesson-link "><a href="D.html">AMD</a></div>
+                                <div class="lesson-link "><a href="E.html">NVIDIA與NVQLink</a></div>
+                                <div class="lesson-link "><a href="F.html">FUJITSU：FTQC研發與挑戰</a></div>
+                                <div class="lesson-link "><a href="G.html">QC-Test：從量子晶片到可用的測試平台</a></div>
+                                <div class="lesson-link "><a href="H.html">QC-Fab：超導量子晶片的製程與品質</a></div>
+                                <div class="lesson-link active"><a href="I.html">Quantum Machines：從 OPX 控制到 QUAlibrate 自動校正</a></div>
+                                <div class="lesson-link "><a href="J.html">Qblox：模組化控制、Scheduler 與 QPU Tune-up</a></div>
+                                <div class="lesson-link "><a href="Calibration.html">超導量子位元的 Calibration：從找到訊號到校正量子閘</a></div>
+                                </div>
+                            </div>
+                        </div></aside>
+                </div>
+            </div>
+        </section><!-- /.section-portfolio -->
+
+    </main><!-- /#main -->
+
+    <footer id="colophon" class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-4 col-xs-6">
+                    <a class="site-title">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
+                    <p>一起走進新時代的前沿科學與量子科技</p>
+                    </div>
+                <div class="col-lg-offset-4 col-md-3 col-sm-4 col-md-offset-2 col-sm-offset-0 col-xs-6 ">
+                    <p class="site-title">𝐾𝐸𝐸𝑃 𝐼𝑁 𝑇𝑂𝑈𝐶𝐻</p>
+                    <ul class="list-unstyled contact-links">
+                        <li><i class="fa fa-envelope" aria-hidden="true"></i><a href="mailto:info@insight-ihbar.com">info@insight-ihbar.com</a></li>
+                        <!--<li><i class="fa fa-phone" aria-hidden="true"></i><a href="tel:+37400800000">+374 (00) 80 00 00 </a></li>
+                        <li><i class="fa fa-fax" aria-hidden="true"></i><a href="+37400900000">+374 (00) 90 00 00</a></li>
+                        <li><i class="fa-solid fa-location-dot"></i><p>Hsinchu 300, Taiwan (R.O.C.)</p></li>-->
+                    </ul>
+                </div>
+                <!--<div class="clearfix visible-xs"></div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6">
+                    <h3>Featured links</h3>
+                    <ul class="list-unstyled">
+                        <li class="active"><a href="index_ch.html">Home</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="portfolio.html">Porfolio</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>-->
+            </div>
+        </div>
+        <div class="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-8">
+                        <div class="social-links">
+                            <!--<a class="twitter-bg" href="#"><i class="fab fa-twitter"></i></a>-->
+                            <!--<<a class="facebook-bg" href="https://www.facebook.com/people/Quantum-Perspectives/61576446849628/"><i class="fab fa-facebook"></i></a>-->
+                            <!--<a class="facebook-bg" href="https://www.facebook.com/people/%E9%87%8F%E5%AD%90%E9%81%A0%E8%A6%8BQuantum-Perspectives/61576883632888/"><i class="fab fa-facebook-f"></i></a>-->
+                            <!--<a class="pinterest" href="#"><i class="fa-solid fa-microscope"></i></a>-->
+                            <!--<a class="facebook-bg" href="https://www.facebook.com/people/Insight-hbar/61576811775374/"><i class="fab fa-facebook-f"></i></a>-->
+                            <a class="linkedin-bg" href="https://www.linkedin.com/company/insight-ihbar"><i class="fab fa-linkedin"></i></a>
+                        </div><!-- /.social-links -->
+                    </div>
+                    <div class="col-xs-4">
+                        <div class="text-right">
+                            <p><span style="font-size: 16px;">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</span></p>
+                            <p>All Rights Reserved</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.copyright -->
+    </footer><!-- /#footer -->
+
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="../assets/js/bootstrap-select.min.js"></script>
+    <script src="../assets/js/jquery.slicknav.min.js"></script>
+    <script src="../assets/js/jquery.countTo.min.js"></script>
+    <script src="../assets/js/jquery.shuffle.min.js"></script>
+    <script src="../assets/js/script.js"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  
+</body>
+</html>

@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N39VTY949N"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-N39VTY949N');
+</script>
+    <!-- Basic Page Needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <meta name="author" content="Peir-Ru Wang">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;1,300&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/20250525-icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/20250525-icon.png">
+
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/css/style.css" rel="stylesheet">
+    <link href="../assets/css/responsive.css" rel="stylesheet">
+
+    <title>QC-Test：從量子晶片到可用的測試平台</title>
+    <meta name="description" content="介紹中研院QC-Test的量子硬體整合、QPU共同開發、演算法與容錯測試、次系統驗證，以及校正與資源排程。">
+    
+    <link rel="canonical" href="https://www.insight-ihbar.com/ASW2026/G.html">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+<meta name="keywords" content="超導量子電腦, ASW2026, QC-Test：從量子晶片到可用的測試平台">
+<style>
+.asw-article figure { margin: 28px 0; }
+.asw-article figure img { display: block; width: 100%; height: auto; }
+.asw-article figcaption { margin-top: 12px; line-height: 1.9; }
+.asw-article h3 { margin-top: 38px; line-height: 1.5; }
+.asw-article h4 { margin-top: 24px; line-height: 1.6; }
+.asw-article p, .asw-article li { line-height: 1.95; overflow-wrap: break-word; }
+.asw-article table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+.asw-article td, .asw-article th { padding: 10px; border: 1px solid #ddd; vertical-align: top; }
+.asw-article pre { overflow-x: auto; }
+.asw-article .table-scroll { overflow-x: auto; }
+.asw-article a { text-decoration: underline; color: #397976; }
+mjx-container[display="true"] { overflow-x: auto; overflow-y: hidden; padding: 6px 0; max-width: 100%; }
+@media(max-width: 600px) { .asw-article h2 { font-size: 27px; } .asw-article h3 { font-size: 23px; } .asw-article td, .asw-article th { padding: 7px; } }
+</style>
+</head>
+<body>
+
+    <header id="masthead" class="site-header">
+        <nav id="primary-navigation" class="site-navigation">
+            <div class="container">
+
+                <div class="navbar-header">
+                   
+                    <a href="../index_ch.html" class="site-title">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
+
+                </div><!-- /.navbar-header -->
+
+                <div class="collapse navbar-collapse" id="agency-navbar-collapse">
+
+                    <ul class="nav navbar-nav navbar-right">
+
+                        <li><a href="../index_ch.html">Home</a></li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">科普介紹<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                <li><a href="../SCQ_elementary/main.html">超導量子位元(科普版)</a></li>
+                              <li><a href="../SCQ_advanced/main.html">超導量子位元(進階版)</a></li>
+                              <li><a href="../SpQ/main.html">半導體自旋量子位元</a></li>
+                            </ul>
+
+                        </li>
+                        <!--<li class="active"><a href="../SCQ_elementary/main.html">科普介紹</a></li>-->
+                        <li><a href="../QC_hardware/main.html">硬體導論</a></li>
+                        <li><a href="../QID/main.html">量子產業群像錄</a></li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">研討會筆記<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                <li class="active"><a href="../ASW2026/main.html">2026中研院超導量子電腦Workshop</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">量子諮詢<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                <li><a href="https://www.quantum-perspectives.com/About/main.html">量子遠見科技：諮詢服務</a></li>
+                                <li><a href="../About/main.html">關於我們</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="../index.html">English</a></li>
+                        
+                    </ul>
+
+                </div>
+
+            </div>   
+        </nav><!-- /.site-navigation -->
+    </header><!-- /#mastheaed -->
+
+    <div id="hero" class="hero overlay subpage-hero blog-hero">
+        <div class="hero-content">
+            <div class="hero_2-text">
+                <a href="main.html"><h1>2026中研院QPU冬季Workshop</h1></a>
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="../index_ch.html">Home</a></li>
+                  <!--<li class="breadcrumb-item"><a href="../SCQ_elementary/main.html">超導量子位元(科普版)</a></li>
+                  <li class="breadcrumb-item active">約瑟夫森節</li>-->
+                </ol>
+            </div><!-- /.hero-text -->
+        </div><!-- /.hero-content -->
+    </div><!-- /.hero -->
+
+    <main id="main" class="site-main">
+
+        <section class="site-section subpage-site-section section-blog">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                        <article class="blog-post">
+                            <!--<img src="../assets/img/portfolio-1.jpg" class="img-res" alt="">-->
+                            <div class="post-content">
+<div class="asw-article">
+<div style="text-align: center;">
+    <h2>QC-Test：從量子晶片到可用的測試平台</h2>
+    <h3>講者：呂德輝 博士（David T. Lee）</h3>
+    <h4>中央研究院關鍵議題研究中心 研究助技師</h4>
+    <p>Workshop session：2026.02.05</p>
+</div>
+<p>前面的課程介紹了量子晶片的設計與控制儀器，但把晶片製作出來、接上儀器以後，還有很長一段路要走。量子位元的頻率、脈衝振幅、讀出條件都需要量測與校正，才能把程式裡的量子閘轉換成晶片上的實際操作。中研院的量子計算測試平台（Quantum Computing Test Space, QC-Test），便是把這些工作整合成一個可以支援研究的環境。</p>
+<p>此次QC-Test的介紹，從硬體架構談到量子演算法、容錯量子計算與產業次系統的驗證。可以把它想成量子電腦的整合測試基地：研究者可以在同一套環境中，討論晶片、控制程式和量測結果之間的關係。</p>
+
+<h3>量子電腦是一整套系統</h3>
+<div style="text-align: center;"><a href="../Image/IMG_4663.JPG"><img src="../WebP/IMG_4663.webp" alt="QC-Test的QPU、稀釋冷凍機、脈衝控制器與古典運算設備" style="width: 100%; height: auto;" loading="lazy"></a></div>
+<p>▲ 中研院展示的量子電腦架構。左邊是QPU，中間是稀釋冷凍機（Dilution Refrigerator, DR），右上方是接滿微波線路的控制儀器，右下方則是古典高效能運算設備。真正的量子晶片只占其中一小部分，周圍的低溫、封裝、訊號傳輸與控制系統，都是讓量子位元能夠工作的條件。</p>
+<p>在這邊要分清楚兩種工作：脈衝控制器負責按照時序送出、接收訊號；古典運算設備則分析資料、執行最佳化或處理混合運算。兩者需要配合，才有辦法把一輪量測的結果用到下一輪實驗中。</p>
+
+<div style="text-align: center;"><a href="../Image/IMG_4683.JPG"><img src="../WebP/IMG_4683.webp" alt="QC-SETUP兩套脈衝處理器與10位元、20位元QPU的配置" style="width: 100%; height: auto;" loading="lazy"></a></div>
+<p>▲ QC-SETUP示意圖。圖中兩台Pulse Processor分別對應10位元與20位元QPU，共用圖示中的DR-4低溫環境；晶片與控制器又劃分出Thread-0、Thread-1的操作區域。這樣的安排讓我們看到，共享量子實驗資源時，除了「哪一顆晶片」，也要考慮可用的控制通道與低溫設備。圖中的Thread是這個實驗配置的資源劃分，實際能否同時執行不同工作，仍取決於通道分配與彼此的干擾。</p>
+
+<h3>QC-Test可以測試什麼？</h3>
+<div style="text-align: center;"><a href="../Image/IMG_4686.JPG"><img src="../WebP/IMG_4686.webp" alt="QC-Test的QPU共同開發、演算法、FTQC與次系統四項服務" style="width: 100%; height: auto;" loading="lazy"></a></div>
+<p>▲ 平台依照研究內容安排對應的QC-Setup。演講將用途分成四個方向：QPU共同開發、量子演算法開發、FTQC開發，以及超導量子電腦次系統開發。這四個方向使用相同的量子硬體基礎，但觀察的問題不同：有的人想知道晶片是否符合設計，有的人研究控制或糾錯，也有人需要驗證新開發的周邊元件。</p>
+
+<div style="text-align: center;"><a href="../Image/IMG_4692.JPG"><img src="../WebP/IMG_4692.webp" alt="以Hamiltonian、晶片拓樸與數位分身驗證QPU設計" style="width: 100%; height: auto;" loading="lazy"></a></div>
+<p>▲ QPU共同開發的重點，是讓設計、製造與測試互相回饋。下方的Hamiltonian描述預期的量子系統，上方的QC-SETUP量測實際晶片，再比較拓樸、量子操作與模型是否一致。所謂Digital Twin（數位分身），在這裡可以理解成與實際裝置互相比對的模型；模型預測和量測有落差時，便回頭檢查設計、製程或控制條件。它的價值在於縮短反覆試做的路程。</p>
+
+<div style="text-align: center;"><a href="../Image/IMG_4695.JPG"><img src="../WebP/IMG_4695.webp" alt="量子演算法由理想量子閘轉換到有噪音的實際操作" style="width: 100%; height: auto;" loading="lazy"></a></div>
+<p>▲ 演算法的量子電路通常畫成理想的H閘、控制閘，但實際執行會遇到噪音與控制誤差。QC-Test提供的研究切入點因此包含編譯器、錯誤緩解（Error Mitigation）、脈衝整形、客製化量測和新的校正策略。對研究者來說，能夠接近脈衝與量測層，便能進一步研究「相同的邏輯電路，如何在這顆晶片上執行得更好」。</p>
+
+<h3>硬體品質與量子糾錯的關係</h3>
+<div style="text-align: center;"><a href="../Image/IMG_4699.JPG"><img src="../WebP/IMG_4699.webp" alt="表面碼示意與物理錯誤率對邏輯量子位元開銷的影響" style="width: 100%; height: auto;" loading="lazy"></a></div>
+<p>▲ 容錯量子計算不能只看量子位元的數量，也要看每一次操作的錯誤率。投影片以Surface Code（表面碼）說明：當物理錯誤率低於糾錯閾值，增加編碼距離才有機會進一步壓低邏輯錯誤率。圖中的估算在不同雙位元錯誤率假設下，得到從上萬到數百顆物理位元的不同開銷。</p>
+<p>這些數字是講者在特定假設下的比較，並非每個邏輯位元都固定需要相同數量的物理位元。可以抓住的重點是：<strong>把物理閘做得更準確，本身就能減少後續糾錯的負擔</strong>。因此量測保真度、優化脈衝、驗證解碼與糾錯循環，都需要放回真實硬體上檢查。</p>
+
+<div style="text-align: center;"><a href="../Image/IMG_4700.JPG"><img src="../WebP/IMG_4700.webp" alt="量子供應鏈中的輸入輸出、控制器、低溫電子、封裝及TWPA測試" style="width: 100%; height: auto;" loading="lazy"></a></div>
+<p>▲ 次系統的測試同樣重要。圖中列出I/O擴展、脈衝處理器、低溫電子、封裝與TWPA（行波參量放大器）。這些零件各自有規格，但放進量子電腦之後，還要考慮整體訊號品質、低溫負載與介面是否相容。共享測試環境，便能讓開發者檢查元件放入實際系統後的表現。</p>
+
+<h3>從校正節點到自動最佳化</h3>
+<div style="text-align: center;"><a href="../Image/IMG_4704.JPG"><img src="../WebP/IMG_4704.webp" alt="具有相依關係的物理校正節點與37個參數示例" style="width: 100%; height: auto;" loading="lazy"></a></div>
+<p>▲ 圖中以37個參數示範校正工作的複雜度。節點間的箭頭表示相依與回頭修正的關係：例如還沒找到合適的量子位元頻率，就很難精確決定驅動脈衝；更改前面的設定，也可能影響後續結果。圖上甚至有回返箭頭，因此不能把所有校正都想成只往前走一次的流程。</p>
+<p>實驗的難處往往是判斷「這次擬合是否可信」、「該重做哪一段」。校正軟體需要保存參數、原始資料與更新記錄，才能追溯狀態。這也連到此次Workshop中Quantum Machines的QUAlibrate與Qblox實作課程。</p>
+
+<div style="text-align: center;"><a href="../Image/IMG_4706.JPG"><img src="../WebP/IMG_4706.webp" alt="以強化學習與獎勵函數處理量子控制參數的概念圖" style="width: 100%; height: auto;" loading="lazy"></a></div>
+<p>▲ 講者進一步提出AI for Quantum的方向，用強化學習（Reinforcement Learning, RL）搭配量測回饋來搜尋參數。圖中的Reward System決定什麼樣的結果比較好，例如目標狀態的準備成功率或特定操作的表現。這張圖呈現的是最佳化的構想；能否在實驗上節省時間、維持穩定，仍需透過量測驗證，不能只由神經網路的示意圖判定效果。</p>
+
+<h3>共享平台與排程</h3>
+<div style="text-align: center;"><a href="../Image/IMG_4719.JPG"><img src="../WebP/IMG_4719.webp" alt="演講預告的QCTSS API與依設備、使用者和時間安排的工作佇列" style="width: 100%; height: auto;" loading="lazy"></a></div>
+<p>▲ 演講最後預告QCTSS API，按照QC-Setup、使用者與時間安排工作佇列。示意流程是申請工作、等待資源、取得控制介面，實驗結束後再釋放資源。投影片當時標示Coming soon，因此這裡將它視為Workshop介紹的規劃。實際申請與可使用的設備，應以平台公告及服務窗口的安排為準。</p>
+<p>從這場介紹可以看出，量子硬體研究需要把製程、控制與軟體接起來。QC-Test提供的共同環境，讓不同領域的研究者有機會把各自的成果放進同一套系統裡驗證，也能把量測發現的問題回饋到下一版晶片設計。</p>
+<p style="font-size: small;">Ref: 本文照片為2026年2月5日QC-Test課程現場投影片。平台簡介與使用方式：<a href="https://rcci.sinica.edu.tw/facility.php?id=7">中研院關鍵議題研究中心－量子計算測試平台</a>；講者資料：<a href="https://rcci.sinica.edu.tw/members.php">關鍵議題研究中心研究人員</a>。</p>
+
+</div>
+<div class="post-meta">
+                                    <span class="post-author">
+                                        <a href="../About/Wang.html"><img class="img-res" src="../WebP/IMG_0964_2.webp" alt="">王培儒</a>
+                                    </span>
+                                    <span class="post-category">
+                                        <a href="../ASW2026/main.html"><i class="fa fa-folder" aria-hidden="true"></i>2026中研院QPU冬季Workshop</a>
+                                    </span>
+                                </div><!-- /.post-meta -->
+                            
+                                
+                                <div id="prev-next-nav" class="text-center">
+                                    <a class="btn btn-gray" href="F.html">← 上一頁</a> 
+                                    <a class="btn btn-gray" href="H.html">下一頁 →</a>
+                                </div>
+
+                                
+
+                            </div><!-- /.post-content -->
+                        </article><!-- /.blog-post -->
+                        <!--<div id="PostComments" class="post-comments">
+                            
+                            
+                            
+                        </div> /#PostComments -->
+                        <!--<div class="respond">
+                            <h3>Post a Comment</h3>
+                            <form class="form-horizontal">
+                                <input class="form-control" type="text" placeholder="Your Name*" required>
+                                <input class="form-control" type="email" placeholder="Your Email" required>
+                                <textarea class="form-control form-control-comment" type="text" placeholder="Your Comment*" required></textarea>
+                                <button class="btn btn-green">Add a comment</button>
+                            </form>    
+                        </div> /.respond -->
+                    </div>
+                    <aside class="col-md-3">
+                        <div class="sidebar">
+                            <div class="widget">
+                                <div id="lesson-list_2">
+                                <div class="lesson-link "><a href="main.html">2026中研院QPU冬季Workshop：引言</a></div>
+                                <div class="lesson-link "><a href="A.html">超導量子電腦概論</a></div>
+                                <div class="lesson-link "><a href="B.html">IQM量子電腦科技發展</a></div>
+                                <div class="lesson-link "><a href="C.html">IQM KQCircuit Design</a></div>
+                                <div class="lesson-link "><a href="D.html">AMD</a></div>
+                                <div class="lesson-link "><a href="E.html">NVIDIA與NVQLink</a></div>
+                                <div class="lesson-link "><a href="F.html">FUJITSU：FTQC研發與挑戰</a></div>
+                                <div class="lesson-link active"><a href="G.html">QC-Test：從量子晶片到可用的測試平台</a></div>
+                                <div class="lesson-link "><a href="H.html">QC-Fab：超導量子晶片的製程與品質</a></div>
+                                <div class="lesson-link "><a href="I.html">Quantum Machines：從 OPX 控制到 QUAlibrate 自動校正</a></div>
+                                <div class="lesson-link "><a href="J.html">Qblox：模組化控制、Scheduler 與 QPU Tune-up</a></div>
+                                <div class="lesson-link "><a href="Calibration.html">超導量子位元的 Calibration：從找到訊號到校正量子閘</a></div>
+                                </div>
+                            </div>
+                        </div></aside>
+                </div>
+            </div>
+        </section><!-- /.section-portfolio -->
+
+    </main><!-- /#main -->
+
+    <footer id="colophon" class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-4 col-xs-6">
+                    <a class="site-title">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
+                    <p>一起走進新時代的前沿科學與量子科技</p>
+                    </div>
+                <div class="col-lg-offset-4 col-md-3 col-sm-4 col-md-offset-2 col-sm-offset-0 col-xs-6 ">
+                    <p class="site-title">𝐾𝐸𝐸𝑃 𝐼𝑁 𝑇𝑂𝑈𝐶𝐻</p>
+                    <ul class="list-unstyled contact-links">
+                        <li><i class="fa fa-envelope" aria-hidden="true"></i><a href="mailto:info@insight-ihbar.com">info@insight-ihbar.com</a></li>
+                        <!--<li><i class="fa fa-phone" aria-hidden="true"></i><a href="tel:+37400800000">+374 (00) 80 00 00 </a></li>
+                        <li><i class="fa fa-fax" aria-hidden="true"></i><a href="+37400900000">+374 (00) 90 00 00</a></li>
+                        <li><i class="fa-solid fa-location-dot"></i><p>Hsinchu 300, Taiwan (R.O.C.)</p></li>-->
+                    </ul>
+                </div>
+                <!--<div class="clearfix visible-xs"></div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6">
+                    <h3>Featured links</h3>
+                    <ul class="list-unstyled">
+                        <li class="active"><a href="index_ch.html">Home</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="portfolio.html">Porfolio</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>-->
+            </div>
+        </div>
+        <div class="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-8">
+                        <div class="social-links">
+                            <!--<a class="twitter-bg" href="#"><i class="fab fa-twitter"></i></a>-->
+                            <!--<<a class="facebook-bg" href="https://www.facebook.com/people/Quantum-Perspectives/61576446849628/"><i class="fab fa-facebook"></i></a>-->
+                            <!--<a class="facebook-bg" href="https://www.facebook.com/people/%E9%87%8F%E5%AD%90%E9%81%A0%E8%A6%8BQuantum-Perspectives/61576883632888/"><i class="fab fa-facebook-f"></i></a>-->
+                            <!--<a class="pinterest" href="#"><i class="fa-solid fa-microscope"></i></a>-->
+                            <!--<a class="facebook-bg" href="https://www.facebook.com/people/Insight-hbar/61576811775374/"><i class="fab fa-facebook-f"></i></a>-->
+                            <a class="linkedin-bg" href="https://www.linkedin.com/company/insight-ihbar"><i class="fab fa-linkedin"></i></a>
+                        </div><!-- /.social-links -->
+                    </div>
+                    <div class="col-xs-4">
+                        <div class="text-right">
+                            <p><span style="font-size: 16px;">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</span></p>
+                            <p>All Rights Reserved</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.copyright -->
+    </footer><!-- /#footer -->
+
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="../assets/js/bootstrap-select.min.js"></script>
+    <script src="../assets/js/jquery.slicknav.min.js"></script>
+    <script src="../assets/js/jquery.countTo.min.js"></script>
+    <script src="../assets/js/jquery.shuffle.min.js"></script>
+    <script src="../assets/js/script.js"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  
+</body>
+</html>

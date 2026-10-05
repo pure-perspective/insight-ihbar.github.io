@@ -1,0 +1,2926 @@
+{
+  "checked_at": "2026-10-03",
+  "company_profile_count": 261,
+  "group_count_after_confirmed_mergers": 252,
+  "counting_note": "依已核實集團及品牌承接關係合併，並非完整法律實體或最終受益人清冊。未核實控制關係者暫以現行品牌分組；原頁保留不同產品線與技術沿革。",
+  "merged_groups": {
+    "alphabet": [
+      "Atlantic-Quantum",
+      "Google-Quantum-AI"
+    ],
+    "d-wave": [
+      "D-Wave",
+      "Quantum-Circuits"
+    ],
+    "ionq": [
+      "IonQ",
+      "Oxford-Ionics",
+      "ID-Quantique",
+      "Qubitekk",
+      "Vector-Atomic"
+    ],
+    "quantum-computing-inc": [
+      "Quantum-Computing-Inc",
+      "NuCrypt"
+    ],
+    "btq": [
+      "BTQ-Technologies",
+      "QPerfect"
+    ],
+    "quantum-design": [
+      "Qnami",
+      "Oxford-Instruments"
+    ]
+  },
+  "records": [
+    {
+      "slug": "1QBit",
+      "group_key": "1qbit",
+      "group_name": "1QBit",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://1qbit.com/"
+      ],
+      "notes": "官網僅支持現行品牌及業務識別；不宣稱已排除所有私人股權或隱藏控制關係。",
+      "audit_file": "software-company-groups.json"
+    },
+    {
+      "slug": "Adamas-Nanotechnologies",
+      "group_key": "adamas-nanotechnologies",
+      "group_name": "Adámas Nanotechnologies",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://www.adamasnano.com/"
+      ],
+      "notes": "官網僅支持現行品牌及業務識別；不宣稱已排除所有私人股權或隱藏控制關係。",
+      "audit_file": "software-company-groups.json"
+    },
+    {
+      "slug": "Aegiq",
+      "group_key": "aegiq",
+      "group_name": "Aegiq",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://www.aegiq.com/"
+      ],
+      "notes": "官方來源支持品牌與業務識別，未據此宣稱完全獨立或已窮盡所有私人控制關係。",
+      "audit_file": "security-company-groups.json"
+    },
+    {
+      "slug": "Alea-Quantum-Technologies",
+      "group_key": "alea-quantum-technologies",
+      "group_name": "Alea Quantum Technologies",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://alea-quantum.com/"
+      ],
+      "notes": "官方來源支持品牌與業務識別，未據此宣稱完全獨立或已窮盡所有私人控制關係。",
+      "audit_file": "security-company-groups.json"
+    },
+    {
+      "slug": "Algorithmiq",
+      "group_key": "algorithmiq",
+      "group_name": "Algorithmiq",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://algorithmiq.fi/"
+      ],
+      "notes": "官網僅支持現行品牌及業務識別；不宣稱已排除所有私人股權或隱藏控制關係。",
+      "audit_file": "software-company-groups.json"
+    },
+    {
+      "slug": "Alice-Bob",
+      "group_key": "alice-bob",
+      "group_name": "Alice & Bob",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://alice-bob.com/"
+      ],
+      "notes": "官網支持品牌及業務識別，並非完整股權調查；未核實控制關係時不因共同投資人、經銷、共同研發或供應商關係而合併。",
+      "audit_file": "hardware-company-groups.json"
+    },
+    {
+      "slug": "Aliro-Quantum",
+      "group_key": "aliro-quantum",
+      "group_name": "Aliro Quantum",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://www.aliroquantum.com/"
+      ],
+      "notes": "官方來源支持品牌與業務識別，未據此宣稱完全獨立或已窮盡所有私人控制關係。",
+      "audit_file": "security-company-groups.json"
+    },
+    {
+      "slug": "AMD",
+      "group_key": "amd",
+      "group_name": "AMD",
+      "relationship": "未核實其他控制母公司；暫以現行公司品牌分組",
+      "sources": [
+        "https://www.amd.com/en/solutions/quantum-computing.html"
+      ],
+      "notes": "此處未發現母公司證據不等於證實完全獨立；合作、供應商及一般股權投資不自動合併。",
+      "audit_file": "suppliers-company-groups.json"
+    },
+    {
+      "slug": "Anyon-Systems",
+      "group_key": "anyon-systems",
+      "group_name": "Anyon Systems",
+      "relationship": "未核實其他控制母公司；暫以現行公司品牌分組",
+      "sources": [
+        "https://www.anyonsys.com/en"
+      ],
+      "notes": "加拿大 Anyon Systems 與美國／新加坡 Anyon Technologies（Anyon Computing）為不同公司；名稱近似不可合併。SDT 的供應合作亦不代表控制。",
+      "audit_file": "suppliers-company-groups.json"
+    },
+    {
+      "slug": "Anyon-Technologies",
+      "group_key": "anyon-technologies",
+      "group_name": "Anyon Technologies／Anyon Computing",
+      "relationship": "未核實其他控制母公司；暫以現行公司品牌分組",
+      "sources": [
+        "https://www.anyoncomputing.com/"
+      ],
+      "notes": "加拿大 Anyon Systems 與美國／新加坡 Anyon Technologies（Anyon Computing）為不同公司；名稱近似不可合併。SDT 的供應合作亦不代表控制。",
+      "audit_file": "suppliers-company-groups.json"
+    },
+    {
+      "slug": "AOSense",
+      "group_key": "aosense",
+      "group_name": "AOSense",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://aosense.com/"
+      ],
+      "notes": "官方來源支持品牌與業務識別，未據此宣稱完全獨立或已窮盡所有私人控制關係。",
+      "audit_file": "security-company-groups.json"
+    },
+    {
+      "slug": "Aqarios",
+      "group_key": "aqarios",
+      "group_name": "Aqarios",
+      "relationship": "同品牌上市重組",
+      "sources": [
+        "https://aqarios.com/aqarios-goes-public-germany-first-pure-play-quantum-computing-company/",
+        "https://aqarios.com/imprint-aqarios/"
+      ],
+      "notes": "官方記載與 Fonterelli SPAC 4 AG 完成交易並以 Aqarios Quantum Technologies AG 上市；網站法律頁同時列 GmbH 與 AG，未據此推定精確持股百分比。",
+      "audit_file": "software-company-groups.json"
+    },
+    {
+      "slug": "Aqemia",
+      "group_key": "aqemia",
+      "group_name": "Aqemia",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://aqemia.com/"
+      ],
+      "notes": "官網僅支持現行品牌及業務識別；不宣稱已排除所有私人股權或隱藏控制關係。",
+      "audit_file": "software-company-groups.json"
+    },
+    {
+      "slug": "Aqora",
+      "group_key": "aqora",
+      "group_name": "Aqora",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://aqora.io/"
+      ],
+      "notes": "官網僅支持現行品牌及業務識別；不宣稱已排除所有私人股權或隱藏控制關係。",
+      "audit_file": "software-company-groups.json"
+    },
+    {
+      "slug": "AQT",
+      "group_key": "aqt",
+      "group_name": "Alpine Quantum Technologies（AQT）",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://www.aqt.eu/"
+      ],
+      "notes": "AQT 為 Alpine Quantum Technologies 的縮寫，計數一次。 本次未核實其他控制母公司。",
+      "audit_file": "hardware-company-groups.json"
+    },
+    {
+      "slug": "Aquark-Technologies",
+      "group_key": "aquark-technologies",
+      "group_name": "Aquark Technologies",
+      "relationship": "同公司品牌、區域法人或產品名稱",
+      "sources": [
+        "https://www.aquarktechnologies.com/post/aquark-technologies-establishes-european-entity-in-denmark"
+      ],
+      "notes": "2026年丹麥法人為同集團歐洲實體，非另一個技術供應商。",
+      "audit_file": "security-company-groups.json"
+    },
+    {
+      "slug": "Arqit",
+      "group_key": "arqit",
+      "group_name": "Arqit",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://arqitgroup.com/"
+      ],
+      "notes": "官方來源支持品牌與業務識別，未據此宣稱完全獨立或已窮盡所有私人控制關係。",
+      "audit_file": "security-company-groups.json"
+    },
+    {
+      "slug": "Atlantic-Quantum",
+      "group_key": "alphabet",
+      "group_name": "Alphabet / Google",
+      "relationship": "團隊加入 Google；原公司技術沿革併入 Google 分組",
+      "sources": [
+        "https://blog.google/innovation-and-ai/technology/research/scaling-quantum-computing-even-faster-with-atlantic-quantum/"
+      ],
+      "notes": "2025-10-02 官方宣布團隊加入 Google；企業集團去重時計入 Alphabet / Google。 此來源直接確認團隊整合；未據此自行推定原法人已註銷。",
+      "audit_file": "hardware-company-groups.json"
+    },
+    {
+      "slug": "Atom-Computing",
+      "group_key": "atom-computing",
+      "group_name": "Atom Computing",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://atom-computing.com/"
+      ],
+      "notes": "官網支持品牌及業務識別，並非完整股權調查；未核實控制關係時不因共同投資人、經銷、共同研發或供應商關係而合併。",
+      "audit_file": "hardware-company-groups.json"
+    },
+    {
+      "slug": "Atomionics",
+      "group_key": "atomionics",
+      "group_name": "Atomionics",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://www.atomionics.com/"
+      ],
+      "notes": "官網支持品牌及業務識別，並非完整股權調查；未核實控制關係時不因共同投資人、經銷、共同研發或供應商關係而合併。",
+      "audit_file": "hardware-company-groups.json"
+    },
+    {
+      "slug": "attocube",
+      "group_key": "wittenstein",
+      "group_name": "WITTENSTEIN",
+      "relationship": "集團子公司",
+      "sources": [
+        "https://www.wittenstein-group.com/int-en/press/article/change-of-management-at-wittenstein-alpha-gmbh-and-attocube-systems-ag"
+      ],
+      "notes": "屬 WITTENSTEIN 集團；官方現行網站公司名稱為 attocube systems GmbH，早期專利使用 Attocube Systems AG。",
+      "audit_file": "hardware-company-groups.json"
+    },
+    {
+      "slug": "AUREA-Technology",
+      "group_key": "aurea-technology",
+      "group_name": "AUREA Technology",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://www.aureatechnology.com/"
+      ],
+      "notes": "官網支持品牌及業務識別，並非完整股權調查；未核實控制關係時不因共同投資人、經銷、共同研發或供應商關係而合併。",
+      "audit_file": "hardware-company-groups.json"
+    },
+    {
+      "slug": "Automatski",
+      "group_key": "automatski",
+      "group_name": "Automatski",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://automatski.com/"
+      ],
+      "notes": "官網僅支持現行品牌及業務識別；不宣稱已排除所有私人股權或隱藏控制關係。",
+      "audit_file": "software-company-groups.json"
+    },
+    {
+      "slug": "AWS-Quantum",
+      "group_key": "amazon",
+      "group_name": "Amazon / AWS",
+      "relationship": "公司內部量子業務",
+      "sources": [
+        "https://aws.amazon.com/braket/"
+      ],
+      "notes": "AWS 與 Center for Quantum Computing 均屬 Amazon；企業計數以 Amazon 一家公司計。",
+      "audit_file": "hardware-company-groups.json"
+    },
+    {
+      "slug": "BEIT",
+      "group_key": "beit",
+      "group_name": "BEIT",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://beit.tech/"
+      ],
+      "notes": "官網僅支持現行品牌及業務識別；不宣稱已排除所有私人股權或隱藏控制關係。",
+      "audit_file": "software-company-groups.json"
+    },
+    {
+      "slug": "Bluefors",
+      "group_key": "bluefors",
+      "group_name": "Bluefors",
+      "relationship": "含已收購 Cryomech 產品業務",
+      "sources": [
+        "https://bluefors.com/press-releases/bluefors-closes-the-acquisition-of-cryomech/",
+        "https://bluefors.com/press-releases/bluefors-founders-and-devco-form-long-term-partnership/"
+      ],
+      "notes": "Cryomech 2023-03-28 完成收購；DevCo 2021 公告為共同持有人，未依該公告自行推定精確比例。以 Bluefors 營運集團分組，不將全部投資組合合併。",
+      "audit_file": "suppliers-company-groups.json"
+    },
+    {
+      "slug": "blueqat",
+      "group_key": "blueqat",
+      "group_name": "blueqat",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://blueqat.co.jp/"
+      ],
+      "notes": "官網僅支持現行品牌及業務識別；不宣稱已排除所有私人股權或隱藏控制關係。",
+      "audit_file": "software-company-groups.json"
+    },
+    {
+      "slug": "BlueQubit",
+      "group_key": "bluequbit",
+      "group_name": "BlueQubit",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://www.bluequbit.io/"
+      ],
+      "notes": "官網僅支持現行品牌及業務識別；不宣稱已排除所有私人股權或隱藏控制關係。",
+      "audit_file": "software-company-groups.json"
+    },
+    {
+      "slug": "BTQ-Technologies",
+      "group_key": "btq",
+      "group_name": "BTQ Technologies",
+      "relationship": "母公司與全資子公司／業務資產",
+      "sources": [
+        "https://www.btq.com/products/qlu",
+        "https://www.btq.com/news/2025-year-end-letter-to-shareholders"
+      ],
+      "notes": "QPerfect產品頁明稱wholly owned subsidiary；Radical為已收購資產和團隊，QCIM是產品平台。",
+      "audit_file": "security-company-groups.json"
+    },
+    {
+      "slug": "Bull",
+      "group_key": "bull",
+      "group_name": "Bull",
+      "relationship": "法國政府全資持有",
+      "sources": [
+        "https://www.bull.com/en/press-releases/the-french-state-finalises-the-acquisition-of-bull-and-positions-france-at-the-forefront-of-high-performance-computing-and-ai"
+      ],
+      "notes": "2026-03-31 已完成從 Atos 出售；不再歸入 Atos，也不因政府持股把其他法國公司合併。",
+      "audit_file": "suppliers-company-groups.json"
+    },
+    {
+      "slug": "C12",
+      "group_key": "c12",
+      "group_name": "C12 Quantum Electronics",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://www.c12qe.com/"
+      ],
+      "notes": "官網支持品牌及業務識別，並非完整股權調查；未核實控制關係時不因共同投資人、經銷、共同研發或供應商關係而合併。",
+      "audit_file": "hardware-company-groups.json"
+    },
+    {
+      "slug": "Cerca-Magnetics",
+      "group_key": "cerca-magnetics",
+      "group_name": "Cerca Magnetics",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://www.cercamagnetics.com/"
+      ],
+      "notes": "官方來源支持品牌與業務識別，未據此宣稱完全獨立或已窮盡所有私人控制關係。",
+      "audit_file": "security-company-groups.json"
+    },
+    {
+      "slug": "CIQTEK",
+      "group_key": "ciqtek",
+      "group_name": "CIQTEK（國儀量子）",
+      "relationship": "未核實其他控制母公司；暫以現行公司品牌分組",
+      "sources": [
+        "https://www.ciqtekglobal.com/"
+      ],
+      "notes": "此處未發現母公司證據不等於證實完全獨立；合作、供應商及一般股權投資不自動合併。",
+      "audit_file": "suppliers-company-groups.json"
+    },
+    {
+      "slug": "Classiq",
+      "group_key": "classiq",
+      "group_name": "Classiq",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://www.classiq.io/"
+      ],
+      "notes": "官網僅支持現行品牌及業務識別；不宣稱已排除所有私人股權或隱藏控制關係。",
+      "audit_file": "software-company-groups.json"
+    },
+    {
+      "slug": "CogniFrame",
+      "group_key": "cogniframe",
+      "group_name": "CogniFrame",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://cogniframe.com/"
+      ],
+      "notes": "官網僅支持現行品牌及業務識別；不宣稱已排除所有私人股權或隱藏控制關係。",
+      "audit_file": "software-company-groups.json"
+    },
+    {
+      "slug": "Coherent",
+      "group_key": "coherent",
+      "group_name": "Coherent Corp.",
+      "relationship": "收購完成後母公司更名",
+      "sources": [
+        "https://ir.coherent.com/news-releases/news-release-details/ii-vi-changes-name-coherent-and-launches-new-brand-identity"
+      ],
+      "notes": "II-VI 於 2022-07-01 完成收購 Coherent，2022-09-08 公告更名 Coherent Corp.。",
+      "audit_file": "software-company-groups.json"
+    },
+    {
+      "slug": "ColibriTD",
+      "group_key": "colibritd",
+      "group_name": "ColibriTD",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://www.colibritd.com/"
+      ],
+      "notes": "官網僅支持現行品牌及業務識別；不宣稱已排除所有私人股權或隱藏控制關係。",
+      "audit_file": "software-company-groups.json"
+    },
+    {
+      "slug": "Conductor-Quantum",
+      "group_key": "conductor-quantum",
+      "group_name": "Conductor Quantum",
+      "relationship": "未核實其他控制母公司；暫以現行公司品牌分組",
+      "sources": [
+        "https://www.conductorquantum.com/"
+      ],
+      "notes": "此處未發現母公司證據不等於證實完全獨立；合作、供應商及一般股權投資不自動合併。",
+      "audit_file": "suppliers-company-groups.json"
+    },
+    {
+      "slug": "CryoConcept",
+      "group_key": "air-liquide",
+      "group_name": "Air Liquide",
+      "relationship": "官方確認多數股權收購",
+      "sources": [
+        "https://www.airliquide.com/sites/airliquide.com/files/2020-09/air-liquide-strengthens-its-expertise-extreme-cryogenics-acquisition-majority-stake-cryoconcept_61f10795be7ca.pdf"
+      ],
+      "notes": "Air Liquide 於 2020 年公告取得 CryoConcept 多數股權；本頁將其標示為集團旗下低溫設備企業。 原獨立官網於本次查核時無法解析網域；舊型錄規格以歷史產品資料呈現，實際服務與供貨狀態須向母集團核對。",
+      "audit_file": "hardware-company-groups.json"
+    },
+    {
+      "slug": "Crypta-Labs",
+      "group_key": "crypta-labs",
+      "group_name": "Crypta Labs",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://cryptalabs.com/"
+      ],
+      "notes": "官方來源支持品牌與業務識別，未據此宣稱完全獨立或已窮盡所有私人控制關係。",
+      "audit_file": "security-company-groups.json"
+    },
+    {
+      "slug": "Crypto-Quantique",
+      "group_key": "crypto-quantique",
+      "group_name": "Crypto Quantique",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://www.cryptoquantique.com/"
+      ],
+      "notes": "官方來源支持品牌與業務識別，未據此宣稱完全獨立或已窮盡所有私人控制關係。",
+      "audit_file": "security-company-groups.json"
+    },
+    {
+      "slug": "CryptoNext-Security",
+      "group_key": "cryptonext-security",
+      "group_name": "CryptoNext Security",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://www.cryptonext-security.com/"
+      ],
+      "notes": "官方來源支持品牌與業務識別，未據此宣稱完全獨立或已窮盡所有私人控制關係。",
+      "audit_file": "security-company-groups.json"
+    },
+    {
+      "slug": "D-Wave",
+      "group_key": "d-wave",
+      "group_name": "D-Wave Quantum",
+      "relationship": "集團主體；Quantum Circuits 已併入",
+      "sources": [
+        "https://www.dwavequantum.com/company/newsroom/press-release/d-wave-completes-acquisition-of-quantum-circuits/"
+      ],
+      "notes": "Quantum Circuits Inc. 於 2026-01-20 完成被收購；Quantum Computing Inc.（QCi）為另一家公司。",
+      "audit_file": "hardware-company-groups.json"
+    },
+    {
+      "slug": "Delft-Circuits",
+      "group_key": "delft-circuits",
+      "group_name": "Delft Circuits",
+      "relationship": "未核實其他控制母公司；暫以現行公司品牌分組",
+      "sources": [
+        "https://delft-circuits.com/"
+      ],
+      "notes": "此處未發現母公司證據不等於證實完全獨立；合作、供應商及一般股權投資不自動合併。",
+      "audit_file": "suppliers-company-groups.json"
+    },
+    {
+      "slug": "Diatope",
+      "group_key": "diatope",
+      "group_name": "Diatope",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://diatope.com/"
+      ],
+      "notes": "官網僅支持現行品牌及業務識別；不宣稱已排除所有私人股權或隱藏控制關係。",
+      "audit_file": "software-company-groups.json"
+    },
+    {
+      "slug": "Diraq",
+      "group_key": "diraq",
+      "group_name": "Diraq",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://www.diraq.com/"
+      ],
+      "notes": "官網支持品牌及業務識別，並非完整股權調查；未核實控制關係時不因共同投資人、經銷、共同研發或供應商關係而合併。",
+      "audit_file": "hardware-company-groups.json"
+    },
+    {
+      "slug": "Dotphoton",
+      "group_key": "dotphoton",
+      "group_name": "Dotphoton",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://www.dotphoton.com/"
+      ],
+      "notes": "官方來源支持品牌與業務識別，未據此宣稱完全獨立或已窮盡所有私人控制關係。",
+      "audit_file": "security-company-groups.json"
+    },
+    {
+      "slug": "EeroQ",
+      "group_key": "eeroq",
+      "group_name": "EeroQ",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://eeroq.com/"
+      ],
+      "notes": "官網支持品牌及業務識別，並非完整股權調查；未核實控制關係時不因共同投資人、經銷、共同研發或供應商關係而合併。",
+      "audit_file": "hardware-company-groups.json"
+    },
+    {
+      "slug": "Element-Six",
+      "group_key": "de-beers",
+      "group_name": "De Beers Group",
+      "relationship": "控制事業；事業別股權不同",
+      "sources": [
+        "https://www.e6.com/en/about/corporate-information"
+      ],
+      "notes": "Element Six 官方：Technologies 為 De Beers 100% 持有；Abrasives 為 De Beers 60%、Umicore 40%。本文不再向上推定當日 De Beers 最終控制股東。",
+      "audit_file": "software-company-groups.json"
+    },
+    {
+      "slug": "eleQtron",
+      "group_key": "eleqtron",
+      "group_name": "eleQtron",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://eleqtron.com/en/"
+      ],
+      "notes": "官網支持品牌及業務識別，並非完整股權調查；未核實控制關係時不因共同投資人、經銷、共同研發或供應商關係而合併。",
+      "audit_file": "hardware-company-groups.json"
+    },
+    {
+      "slug": "Entropica-Labs",
+      "group_key": "entropica-labs",
+      "group_name": "Entropica Labs",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://entropicalabs.com/"
+      ],
+      "notes": "官網僅支持現行品牌及業務識別；不宣稱已排除所有私人股權或隱藏控制關係。",
+      "audit_file": "software-company-groups.json"
+    },
+    {
+      "slug": "Ephos",
+      "group_key": "ephos",
+      "group_name": "Ephos",
+      "relationship": "未核實其他控制母公司；暫以現行公司品牌分組",
+      "sources": [
+        "https://ephos.io/"
+      ],
+      "notes": "此處未發現母公司證據不等於證實完全獨立；合作、供應商及一般股權投資不自動合併。",
+      "audit_file": "suppliers-company-groups.json"
+    },
+    {
+      "slug": "Equal1",
+      "group_key": "equal1",
+      "group_name": "Equal1",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://www.equal1.com/"
+      ],
+      "notes": "Equal1 與 equal1.labs 同一企業品牌；Bell-1 與 RacQ 為產品世代。 本次未核實其他控制母公司。",
+      "audit_file": "hardware-company-groups.json"
+    },
+    {
+      "slug": "evolutionQ",
+      "group_key": "evolutionq",
+      "group_name": "evolutionQ",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://www.evolutionq.com/"
+      ],
+      "notes": "官方來源支持品牌與業務識別，未據此宣稱完全獨立或已窮盡所有私人控制關係。",
+      "audit_file": "security-company-groups.json"
+    },
+    {
+      "slug": "Exail",
+      "group_key": "exail",
+      "group_name": "Exail",
+      "relationship": "整合品牌與產品業務",
+      "sources": [
+        "https://www.exail.com/muquans-now-part-of-exail"
+      ],
+      "notes": "Muquans及原iXblue量子儀器以Exail品牌整合；不再將歷史品牌列為另一現行集團。",
+      "audit_file": "security-company-groups.json"
+    },
+    {
+      "slug": "FieldLine",
+      "group_key": "fieldline",
+      "group_name": "FieldLine Medical",
+      "relationship": "同公司品牌、區域法人或產品名稱",
+      "sources": [
+        "https://fieldlinemedical.com/",
+        "https://patents.google.com/patent/US12564331B2/en"
+      ],
+      "notes": "FieldLine Medical為品牌，HEDscan為產品；專利權利人使用FieldLine Inc。",
+      "audit_file": "security-company-groups.json"
+    },
+    {
+      "slug": "FormFactor",
+      "group_key": "formfactor",
+      "group_name": "FormFactor",
+      "relationship": "集團主體；HPD 同集團",
+      "sources": [
+        "https://www.formfactor.com/blog/2020/formfactor-acquires-high-precision-devices-expands-cryogenic-test-capabilities/",
+        "https://www.prnewswire.com/news-releases/danaher-cryogenics-acquires-adr-cryostat-product-line-from-high-precision-devices-a-subsidiary-of-formfactor-complementing-existing-sub-kelvin-offerings-302344488.html"
+      ],
+      "notes": "FormFactor 於 2020 年完成收購 High Precision Devices（HPD），HPD 低溫設備品牌納入同一集團計數。 HPD 的 ADR 冷凍機產品線於 2025 年 1 月售予 Danaher Cryogenics；此為產品線移轉，並非整家 HPD 被售出。",
+      "audit_file": "hardware-company-groups.json"
+    },
+    {
+      "slug": "Fujitsu",
+      "group_key": "fujitsu",
+      "group_name": "Fujitsu（富士通）",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://global.fujitsu/"
+      ],
+      "notes": "官方來源支持品牌與業務識別，未據此宣稱完全獨立或已窮盡所有私人控制關係。",
+      "audit_file": "security-company-groups.json"
+    },
+    {
+      "slug": "Google-Quantum-AI",
+      "group_key": "alphabet",
+      "group_name": "Alphabet / Google",
+      "relationship": "集團內部量子研發業務",
+      "sources": [
+        "https://quantumai.google/"
+      ],
+      "notes": "Google Quantum AI 為 Google／Alphabet 業務，企業計數以 Alphabet 集團一家公司計。",
+      "audit_file": "hardware-company-groups.json"
+    },
+    {
+      "slug": "Groovenauts",
+      "group_key": "groovenauts",
+      "group_name": "Groovenauts",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://www.groovenauts.jp/"
+      ],
+      "notes": "官網僅支持現行品牌及業務識別；不宣稱已排除所有私人股權或隱藏控制關係。",
+      "audit_file": "software-company-groups.json"
+    },
+    {
+      "slug": "Haiqu",
+      "group_key": "haiqu",
+      "group_name": "Haiqu",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://haiqu.ai/"
+      ],
+      "notes": "官網僅支持現行品牌及業務識別；不宣稱已排除所有私人股權或隱藏控制關係。",
+      "audit_file": "software-company-groups.json"
+    },
+    {
+      "slug": "Hamamatsu-Photonics",
+      "group_key": "hamamatsu-photonics",
+      "group_name": "Hamamatsu Photonics",
+      "relationship": "子公司及品牌更名",
+      "sources": [
+        "https://lf.hamamatsu.com/news/nkt-photonics-becomes-hamamatsu-photonics-a-s/"
+      ],
+      "notes": "NKT Photonics 的現行法人名稱為 Hamamatsu Photonics A/S；同一光纖雷射業務已整合在本筆研究。",
+      "audit_file": "software-company-groups.json"
+    },
+    {
+      "slug": "HighFinesse",
+      "group_key": "highfinesse",
+      "group_name": "HighFinesse",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://www.highfinesse.com/en/index.html"
+      ],
+      "notes": "官網僅支持現行品牌及業務識別；不宣稱已排除所有私人股權或隱藏控制關係。",
+      "audit_file": "software-company-groups.json"
+    },
+    {
+      "slug": "Horizon-Quantum",
+      "group_key": "horizon-quantum",
+      "group_name": "Horizon Quantum",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://www.horizonquantum.com/"
+      ],
+      "notes": "官網僅支持現行品牌及業務識別；不宣稱已排除所有私人股權或隱藏控制關係。",
+      "audit_file": "software-company-groups.json"
+    },
+    {
+      "slug": "HPE",
+      "group_key": "hpe",
+      "group_name": "Hewlett Packard Enterprise（HPE）",
+      "relationship": "未核實其他控制母公司；暫以現行公司品牌分組",
+      "sources": [
+        "https://www.hpe.com/us/en/hpe-labs/quantum-computing.html"
+      ],
+      "notes": "此處未發現母公司證據不等於證實完全獨立；合作、供應商及一般股權投資不自動合併。",
+      "audit_file": "suppliers-company-groups.json"
+    },
+    {
+      "slug": "HQS-Quantum-Simulations",
+      "group_key": "hqs-quantum-simulations",
+      "group_name": "HQS Quantum Simulations",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://quantumsimulations.de/"
+      ],
+      "notes": "官網僅支持現行品牌及業務識別；不宣稱已排除所有私人股權或隱藏控制關係。",
+      "audit_file": "software-company-groups.json"
+    },
+    {
+      "slug": "IBM-Quantum",
+      "group_key": "ibm",
+      "group_name": "IBM",
+      "relationship": "公司內部量子業務",
+      "sources": [
+        "https://www.ibm.com/quantum"
+      ],
+      "notes": "IBM Quantum 為 IBM 業務，企業計數以 IBM 一家公司計。",
+      "audit_file": "hardware-company-groups.json"
+    },
+    {
+      "slug": "ICEoxford",
+      "group_key": "iceoxford",
+      "group_name": "ICEoxford",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://www.iceoxford.com/"
+      ],
+      "notes": "官網支持品牌及業務識別，並非完整股權調查；未核實控制關係時不因共同投資人、經銷、共同研發或供應商關係而合併。",
+      "audit_file": "hardware-company-groups.json"
+    },
+    {
+      "slug": "ID-Quantique",
+      "group_key": "ionq",
+      "group_name": "IonQ",
+      "relationship": "取得控制權",
+      "sources": [
+        "https://s28.q4cdn.com/828571518/files/doc_financials/2025/q3/ionq-20250930-htm.pdf"
+      ],
+      "notes": "IonQ 2025年第三季申報記載2025-04-30取得ID Quantique控制權；少數股權與品牌保留不改變此處集團歸屬。",
+      "audit_file": "security-company-groups.json"
+    },
+    {
+      "slug": "Infleqtion",
+      "group_key": "infleqtion",
+      "group_name": "Infleqtion",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://infleqtion.com/"
+      ],
+      "notes": "ColdQuanta 與 Infleqtion 為同一企業沿革，不重複計數。 本次未核實其他控制母公司。",
+      "audit_file": "hardware-company-groups.json"
+    },
+    {
+      "slug": "Ingenii",
+      "group_key": "ingenii",
+      "group_name": "Ingenii",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://www.ingenii.io/"
+      ],
+      "notes": "官網僅支持現行品牌及業務識別；不宣稱已排除所有私人股權或隱藏控制關係。",
+      "audit_file": "software-company-groups.json"
+    },
+    {
+      "slug": "Intel-Quantum",
+      "group_key": "intel",
+      "group_name": "Intel",
+      "relationship": "公司內部量子業務",
+      "sources": [
+        "https://www.intel.com/content/www/us/en/research/quantum-computing.html"
+      ],
+      "notes": "Intel Quantum 為 Intel 研發業務，計數以 Intel 一家公司計。",
+      "audit_file": "hardware-company-groups.json"
+    },
+    {
+      "slug": "IonQ",
+      "group_key": "ionq",
+      "group_name": "IonQ",
+      "relationship": "集團主體；已收購 Oxford Ionics 及 SkyWater",
+      "sources": [
+        "https://www.ionq.com/news/ionq-completes-acquisition-of-skywater-technology",
+        "https://www.ionq.com/news/ionq-completes-acquisition-of-oxford-ionics-rapidly-accelerating-its-quantum"
+      ],
+      "notes": "Oxford Ionics 與 SkyWater 已分別於 2025 年 9 月及 2026 年 7 月完成併入 IonQ；同集團企業不重複計數。",
+      "audit_file": "hardware-company-groups.json"
+    },
+    {
+      "slug": "IQM",
+      "group_key": "iqm",
+      "group_name": "IQM Quantum Computers",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://iqm.tech/"
+      ],
+      "notes": "官網支持品牌及業務識別，並非完整股權調查；未核實控制關係時不因共同投資人、經銷、共同研發或供應商關係而合併。",
+      "audit_file": "hardware-company-groups.json"
+    },
+    {
+      "slug": "ISARA",
+      "group_key": "isara",
+      "group_name": "ISARA",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://www.isara.com/"
+      ],
+      "notes": "官方來源支持品牌與業務識別，未據此宣稱完全獨立或已窮盡所有私人控制關係。",
+      "audit_file": "security-company-groups.json"
+    },
+    {
+      "slug": "Jij",
+      "group_key": "jij",
+      "group_name": "JIJ",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://www.j-ij.com/"
+      ],
+      "notes": "官網僅支持現行品牌及業務識別；不宣稱已排除所有私人股權或隱藏控制關係。",
+      "audit_file": "software-company-groups.json"
+    },
+    {
+      "slug": "JOS-Quantum",
+      "group_key": "jos-quantum",
+      "group_name": "JoS QUANTUM",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://jos-quantum.de/"
+      ],
+      "notes": "官網僅支持現行品牌及業務識別；不宣稱已排除所有私人股權或隱藏控制關係。",
+      "audit_file": "software-company-groups.json"
+    },
+    {
+      "slug": "KEEQuant",
+      "group_key": "keequant",
+      "group_name": "KEEQuant",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://www.keequant.com/"
+      ],
+      "notes": "官方來源支持品牌與業務識別，未據此宣稱完全獨立或已窮盡所有私人控制關係。",
+      "audit_file": "security-company-groups.json"
+    },
+    {
+      "slug": "KETS-Quantum-Security",
+      "group_key": "kets-quantum-security",
+      "group_name": "KETS Quantum Security",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://kets-quantum.com/"
+      ],
+      "notes": "官方來源支持品牌與業務識別，未據此宣稱完全獨立或已窮盡所有私人控制關係。",
+      "audit_file": "security-company-groups.json"
+    },
+    {
+      "slug": "Keysight",
+      "group_key": "keysight",
+      "group_name": "Keysight Technologies",
+      "relationship": "未核實其他控制母公司；暫以現行公司品牌分組",
+      "sources": [
+        "https://www.keysight.com/us/en/solutions/quantum.html"
+      ],
+      "notes": "此處未發現母公司證據不等於證實完全獨立；合作、供應商及一般股權投資不自動合併。",
+      "audit_file": "suppliers-company-groups.json"
+    },
+    {
+      "slug": "Ki3-Photonics",
+      "group_key": "ki3-photonics",
+      "group_name": "Ki3 Photonics",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://www.ki3photonics.com/"
+      ],
+      "notes": "官方來源支持品牌與業務識別，未據此宣稱完全獨立或已窮盡所有私人控制關係。",
+      "audit_file": "security-company-groups.json"
+    },
+    {
+      "slug": "Kipu-Quantum",
+      "group_key": "kipu-quantum",
+      "group_name": "Kipu Quantum",
+      "relationship": "平台資產及關鍵團隊收購",
+      "sources": [
+        "https://www.prnewswire.com/news-releases/kipu-quantum-acquires-quantum-computing-platform-built-by-anaqor-ag-to-accelerate-development-of-industrially-relevant-quantum-solutions-302194055.html"
+      ],
+      "notes": "2024-07-11 公告的收購標的是 Anaqor 建立的 PlanQK 平台及關鍵團隊，未據此宣稱買下 Anaqor 全部股份。",
+      "audit_file": "software-company-groups.json"
+    },
+    {
+      "slug": "kiutra",
+      "group_key": "kiutra",
+      "group_name": "kiutra",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://kiutra.com/"
+      ],
+      "notes": "官網支持品牌及業務識別，並非完整股權調查；未核實控制關係時不因共同投資人、經銷、共同研發或供應商關係而合併。",
+      "audit_file": "hardware-company-groups.json"
+    },
+    {
+      "slug": "Kuano",
+      "group_key": "kuano",
+      "group_name": "Kuano",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://www.kuano.ai/"
+      ],
+      "notes": "官網僅支持現行品牌及業務識別；不宣稱已排除所有私人股權或隱藏控制關係。",
+      "audit_file": "software-company-groups.json"
+    },
+    {
+      "slug": "Kvantify",
+      "group_key": "kvantify",
+      "group_name": "Kvantify",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://www.kvantify.com/"
+      ],
+      "notes": "官網僅支持現行品牌及業務識別；不宣稱已排除所有私人股權或隱藏控制關係。",
+      "audit_file": "software-company-groups.json"
+    },
+    {
+      "slug": "Lake-Shore-Cryotronics",
+      "group_key": "dwyeromega",
+      "group_name": "DwyerOmega",
+      "relationship": "收購後旗下公司／品牌",
+      "sources": [
+        "https://www.lakeshore.com/about-us/press-releases/2026/06/10/arcline-backed-dwyeromega-acquires-lake-shore-cryotronics"
+      ],
+      "notes": "2026-06-10 官方公告被 DwyerOmega 收購；現為 DwyerOmega 旗下品牌與業務。 DwyerOmega 為 Arcline 投資組合平台；本資料以直接營運集團分組，未將 Arcline 所有投資項目一律合併。",
+      "audit_file": "hardware-company-groups.json"
+    },
+    {
+      "slug": "Leiden-Cryogenics",
+      "group_key": "leiden-cryogenics",
+      "group_name": "Leiden Cryogenics",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://www.leidencryogenics.nl/"
+      ],
+      "notes": "官網支持品牌及業務識別，並非完整股權調查；未核實控制關係時不因共同投資人、經銷、共同研發或供應商關係而合併。",
+      "audit_file": "hardware-company-groups.json"
+    },
+    {
+      "slug": "LIGENTEC",
+      "group_key": "ligentec",
+      "group_name": "LIGENTEC",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://www.ligentec.com/"
+      ],
+      "notes": "官網僅支持現行品牌及業務識別；不宣稱已排除所有私人股權或隱藏控制關係。",
+      "audit_file": "software-company-groups.json"
+    },
+    {
+      "slug": "Lightium",
+      "group_key": "lightium",
+      "group_name": "Lightium",
+      "relationship": "未核實其他控制母公司；暫以現行公司品牌分組",
+      "sources": [
+        "https://lightium.com/"
+      ],
+      "notes": "此處未發現母公司證據不等於證實完全獨立；合作、供應商及一般股權投資不自動合併。",
+      "audit_file": "suppliers-company-groups.json"
+    },
+    {
+      "slug": "LioniX-International",
+      "group_key": "lionix-international",
+      "group_name": "LioniX International",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://www.lionix-international.com/"
+      ],
+      "notes": "存在 2018 年 Magic Micro/PHIX 多數持股公告；當前控制現況未核實，見 historical_or_unresolved。",
+      "audit_file": "software-company-groups.json"
+    },
+    {
+      "slug": "LuxQuanta",
+      "group_key": "luxquanta",
+      "group_name": "LuxQuanta",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://luxquanta.com/"
+      ],
+      "notes": "官方來源支持品牌與業務識別，未據此宣稱完全獨立或已窮盡所有私人控制關係。",
+      "audit_file": "security-company-groups.json"
+    },
+    {
+      "slug": "Maybell-Quantum",
+      "group_key": "maybell-quantum",
+      "group_name": "Maybell Quantum",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://www.maybellquantum.com/"
+      ],
+      "notes": "官網支持品牌及業務識別，並非完整股權調查；未核實控制關係時不因共同投資人、經銷、共同研發或供應商關係而合併。",
+      "audit_file": "hardware-company-groups.json"
+    },
+    {
+      "slug": "memQ",
+      "group_key": "memq",
+      "group_name": "memQ",
+      "relationship": "未核實其他控制母公司；暫以現行公司品牌分組",
+      "sources": [
+        "https://memq.tech/"
+      ],
+      "notes": "此處未發現母公司證據不等於證實完全獨立；合作、供應商及一般股權投資不自動合併。",
+      "audit_file": "suppliers-company-groups.json"
+    },
+    {
+      "slug": "Menlo-Systems",
+      "group_key": "menlo-systems",
+      "group_name": "Menlo Systems",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://www.menlosystems.com/"
+      ],
+      "notes": "已確認 Hamamatsu 少數投資與 Thorlabs 工業夥伴關係；未證實任一方目前控制。",
+      "audit_file": "software-company-groups.json"
+    },
+    {
+      "slug": "Menten-AI",
+      "group_key": "menten-ai",
+      "group_name": "Menten AI",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://www.menten.ai/"
+      ],
+      "notes": "官網僅支持現行品牌及業務識別；不宣稱已排除所有私人股權或隱藏控制關係。",
+      "audit_file": "software-company-groups.json"
+    },
+    {
+      "slug": "Merqury-Cybersecurity",
+      "group_key": "merqury-cybersecurity",
+      "group_name": "Merqury Cybersecurity",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://www.merqury.eu/"
+      ],
+      "notes": "官方來源支持品牌與業務識別，未據此宣稱完全獨立或已窮盡所有私人控制關係。",
+      "audit_file": "security-company-groups.json"
+    },
+    {
+      "slug": "Microsoft-Quantum",
+      "group_key": "microsoft",
+      "group_name": "Microsoft",
+      "relationship": "公司內部量子業務",
+      "sources": [
+        "https://quantum.microsoft.com/"
+      ],
+      "notes": "Microsoft Quantum 為 Microsoft 業務，計數以 Microsoft 一家公司計。",
+      "audit_file": "hardware-company-groups.json"
+    },
+    {
+      "slug": "Miraex",
+      "group_key": "sealsq",
+      "group_name": "SEALSQ",
+      "relationship": "100%收購",
+      "sources": [
+        "https://miraex.com/"
+      ],
+      "notes": "Miraex官網2026年6月2日公告與頁尾明示SEALSQ全資持有。",
+      "audit_file": "security-company-groups.json"
+    },
+    {
+      "slug": "Mitsubishi-Electric",
+      "group_key": "mitsubishi-electric",
+      "group_name": "Mitsubishi Electric（三菱電機）",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://www.mitsubishielectric.com/"
+      ],
+      "notes": "官方來源支持品牌與業務識別，未據此宣稱完全獨立或已窮盡所有私人控制關係。",
+      "audit_file": "security-company-groups.json"
+    },
+    {
+      "slug": "Montana-Instruments",
+      "group_key": "atlas-copco",
+      "group_name": "Atlas Copco",
+      "relationship": "官方確認收購已完成",
+      "sources": [
+        "https://www.atlascopcogroup.com/en/media/press-releases/2022/20221121-montana-closing"
+      ],
+      "notes": "Atlas Copco 於 2022-11-21 公告完成收購 Montana Instruments。",
+      "audit_file": "hardware-company-groups.json"
+    },
+    {
+      "slug": "Multiverse-Computing",
+      "group_key": "multiverse-computing",
+      "group_name": "Multiverse Computing",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://multiversecomputing.com/"
+      ],
+      "notes": "官網僅支持現行品牌及業務識別；不宣稱已排除所有私人股權或隱藏控制關係。",
+      "audit_file": "software-company-groups.json"
+    },
+    {
+      "slug": "Nanoacademic",
+      "group_key": "nanoacademic",
+      "group_name": "Nanoacademic Technologies",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://nanoacademic.com/"
+      ],
+      "notes": "官網僅支持現行品牌及業務識別；不宣稱已排除所有私人股權或隱藏控制關係。",
+      "audit_file": "software-company-groups.json"
+    },
+    {
+      "slug": "NanoQT",
+      "group_key": "nanoqt",
+      "group_name": "NanoQT（Nanofiber Quantum Technologies）",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://nano-qt.com/"
+      ],
+      "notes": "官網支持品牌及業務識別，並非完整股權調查；未核實控制關係時不因共同投資人、經銷、共同研發或供應商關係而合併。",
+      "audit_file": "hardware-company-groups.json"
+    },
+    {
+      "slug": "NEC",
+      "group_key": "nec",
+      "group_name": "NEC",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://www.nec.com/"
+      ],
+      "notes": "官方來源支持品牌與業務識別，未據此宣稱完全獨立或已窮盡所有私人控制關係。",
+      "audit_file": "security-company-groups.json"
+    },
+    {
+      "slug": "Nomad-Atomics",
+      "group_key": "nomad-atomics",
+      "group_name": "Nomad Atomics",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://www.nomadatomics.com/"
+      ],
+      "notes": "官方來源支持品牌與業務識別，未據此宣稱完全獨立或已窮盡所有私人控制關係。",
+      "audit_file": "security-company-groups.json"
+    },
+    {
+      "slug": "Nord-Quantique",
+      "group_key": "nord-quantique",
+      "group_name": "Nord Quantique",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://www.nordquantique.com/"
+      ],
+      "notes": "官網支持品牌及業務識別，並非完整股權調查；未核實控制關係時不因共同投資人、經銷、共同研發或供應商關係而合併。",
+      "audit_file": "hardware-company-groups.json"
+    },
+    {
+      "slug": "Novacene-Photonics",
+      "group_key": "novacene-photonics",
+      "group_name": "Novacene Photonics",
+      "relationship": "產品事業承接／歷史品牌",
+      "sources": [
+        "https://novacene-photonics.com/"
+      ],
+      "notes": "官方頁明示延續 M Squared 十五年以上產品傳承；此證據支持產品事業接續，不足單獨證明兩法人完全相同或全部股權承繼。",
+      "audit_file": "software-company-groups.json"
+    },
+    {
+      "slug": "NTT",
+      "group_key": "ntt",
+      "group_name": "NTT",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://group.ntt/en/"
+      ],
+      "notes": "官方來源支持品牌與業務識別，未據此宣稱完全獨立或已窮盡所有私人控制關係。",
+      "audit_file": "security-company-groups.json"
+    },
+    {
+      "slug": "Nu-Quantum",
+      "group_key": "nu-quantum",
+      "group_name": "Nu Quantum",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://www.nu-quantum.com/"
+      ],
+      "notes": "官方來源支持品牌與業務識別，未據此宣稱完全獨立或已窮盡所有私人控制關係。",
+      "audit_file": "security-company-groups.json"
+    },
+    {
+      "slug": "NuCrypt",
+      "group_key": "quantum-computing-inc",
+      "group_name": "Quantum Computing Inc.（QCi）",
+      "relationship": "全資子公司",
+      "sources": [
+        "https://www.sec.gov/Archives/edgar/data/1758009/000121390026054473/R9.htm",
+        "https://www.sec.gov/Archives/edgar/data/1758009/000121390026023896/ea0280138-8k_quantum.htm",
+        "https://www.nucrypt.net/"
+      ],
+      "notes": "SEC申報記載2026-03-04完成，3月5日公告。QCi是Nasdaq QUBT公司，不是泛指量子運算產業。",
+      "audit_file": "security-company-groups.json"
+    },
+    {
+      "slug": "NVIDIA",
+      "group_key": "nvidia",
+      "group_name": "NVIDIA",
+      "relationship": "未核實其他控制母公司；暫以現行公司品牌分組",
+      "sources": [
+        "https://www.nvidia.com/en-us/solutions/quantum-computing/"
+      ],
+      "notes": "此處未發現母公司證據不等於證實完全獨立；合作、供應商及一般股權投資不自動合併。",
+      "audit_file": "suppliers-company-groups.json"
+    },
+    {
+      "slug": "NVision-Imaging",
+      "group_key": "nvision-imaging",
+      "group_name": "NVision Quantum Technologies（原 NVision Imaging Technologies）",
+      "relationship": "同公司品牌、區域法人或產品名稱",
+      "sources": [
+        "https://www.nvision-quantum.com/"
+      ],
+      "notes": "現官網採NVision Quantum Technologies名稱，保留歷史slug。",
+      "audit_file": "security-company-groups.json"
+    },
+    {
+      "slug": "OptQC",
+      "group_key": "optqc",
+      "group_name": "OptQC",
+      "relationship": "未核實其他控制母公司；暫以現行公司品牌分組",
+      "sources": [
+        "https://www.optqc.com/en"
+      ],
+      "notes": "此處未發現母公司證據不等於證實完全獨立；合作、供應商及一般股權投資不自動合併。",
+      "audit_file": "suppliers-company-groups.json"
+    },
+    {
+      "slug": "OrangeQS",
+      "group_key": "orangeqs",
+      "group_name": "Orange Quantum Systems（OrangeQS）",
+      "relationship": "未核實其他控制母公司；暫以現行公司品牌分組",
+      "sources": [
+        "https://orangeqs.com/"
+      ],
+      "notes": "此處未發現母公司證據不等於證實完全獨立；合作、供應商及一般股權投資不自動合併。",
+      "audit_file": "suppliers-company-groups.json"
+    },
+    {
+      "slug": "ORCA-Computing",
+      "group_key": "orca-computing",
+      "group_name": "ORCA Computing",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://orcacomputing.com/"
+      ],
+      "notes": "官網支持品牌及業務識別，並非完整股權調查；未核實控制關係時不因共同投資人、經銷、共同研發或供應商關係而合併。",
+      "audit_file": "hardware-company-groups.json"
+    },
+    {
+      "slug": "Origin-Quantum",
+      "group_key": "origin-quantum",
+      "group_name": "本源量子 Origin Quantum",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://originqc.com.cn/"
+      ],
+      "notes": "本源量子、Origin Quantum、OriginQ 為同一企業品牌；採官網 2026 年悟空 180 資料。 本次未核實其他控制母公司。",
+      "audit_file": "hardware-company-groups.json"
+    },
+    {
+      "slug": "Oxford-Instruments",
+      "group_key": "quantum-design",
+      "group_name": "Quantum Design",
+      "relationship": "已完成收購的 NanoScience 業務",
+      "sources": [
+        "https://qd-oxford.com/blog/2026_01_02_blog_item.html"
+      ],
+      "notes": "2026-01-02 完成收購，現名 Quantum Design Oxford；與 Qnami 以同一營運集團分組。",
+      "audit_file": "suppliers-company-groups.json"
+    },
+    {
+      "slug": "Oxford-Ionics",
+      "group_key": "ionq",
+      "group_name": "IonQ",
+      "relationship": "已完成收購的子公司",
+      "sources": [
+        "https://www.ionq.com/news/ionq-completes-acquisition-of-oxford-ionics-rapidly-accelerating-its-quantum"
+      ],
+      "notes": "IonQ 於 2025-09-17 宣布完成收購，獨立企業計數應與 IonQ 合併。",
+      "audit_file": "hardware-company-groups.json"
+    },
+    {
+      "slug": "Oxford-Quantum-Circuits",
+      "group_key": "oxford-quantum-circuits",
+      "group_name": "Oxford Quantum Circuits（OQC）",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://oqc.tech/"
+      ],
+      "notes": "OQC、Oxford Quantum Circuits 為同一公司；與已被 IonQ 收購的 Oxford Ionics 不同。 本次未核實其他控制母公司。",
+      "audit_file": "hardware-company-groups.json"
+    },
+    {
+      "slug": "ParityQC",
+      "group_key": "parityqc",
+      "group_name": "ParityQC",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://parityqc.com/"
+      ],
+      "notes": "官網支持品牌及業務識別，並非完整股權調查；未核實控制關係時不因共同投資人、經銷、共同研發或供應商關係而合併。",
+      "audit_file": "hardware-company-groups.json"
+    },
+    {
+      "slug": "Pasqal",
+      "group_key": "pasqal",
+      "group_name": "Pasqal",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://www.pasqal.com/"
+      ],
+      "notes": "官網支持品牌及業務識別，並非完整股權調查；未核實控制關係時不因共同投資人、經銷、共同研發或供應商關係而合併。",
+      "audit_file": "hardware-company-groups.json"
+    },
+    {
+      "slug": "Patero",
+      "group_key": "patero",
+      "group_name": "Patero",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://www.patero.io/"
+      ],
+      "notes": "官方來源支持品牌與業務識別，未據此宣稱完全獨立或已窮盡所有私人控制關係。",
+      "audit_file": "security-company-groups.json"
+    },
+    {
+      "slug": "Phasecraft",
+      "group_key": "phasecraft",
+      "group_name": "Phasecraft",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://www.phasecraft.io/"
+      ],
+      "notes": "官網僅支持現行品牌及業務識別；不宣稱已排除所有私人股權或隱藏控制關係。",
+      "audit_file": "software-company-groups.json"
+    },
+    {
+      "slug": "Photon-Force",
+      "group_key": "photon-force",
+      "group_name": "Photon Force",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://www.photon-force.com/"
+      ],
+      "notes": "官網支持品牌及業務識別，並非完整股權調查；未核實控制關係時不因共同投資人、經銷、共同研發或供應商關係而合併。",
+      "audit_file": "hardware-company-groups.json"
+    },
+    {
+      "slug": "Photon-Spot",
+      "group_key": "photon-spot",
+      "group_name": "Photon Spot",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://www.photonspot.com/"
+      ],
+      "notes": "官網支持品牌及業務識別，並非完整股權調查；未核實控制關係時不因共同投資人、經銷、共同研發或供應商關係而合併。",
+      "audit_file": "hardware-company-groups.json"
+    },
+    {
+      "slug": "Photonic",
+      "group_key": "photonic",
+      "group_name": "Photonic Inc.",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://photonic.com/"
+      ],
+      "notes": "官網支持品牌及業務識別，並非完整股權調查；未核實控制關係時不因共同投資人、經銷、共同研發或供應商關係而合併。",
+      "audit_file": "hardware-company-groups.json"
+    },
+    {
+      "slug": "PicoQuant",
+      "group_key": "picoquant",
+      "group_name": "PicoQuant",
+      "relationship": "PicoQuant 品牌及國際銷售實體",
+      "sources": [
+        "https://www.picoquant.cn/AboutUs.html",
+        "https://www.picoquant.com/"
+      ],
+      "notes": "PicoQuant Photonics North America 與 PicoQuant Innovations 為官方公司沿革列出的事業，不另增加公司品牌計數；未核實其他控制母公司。",
+      "audit_file": "hardware-company-groups.json"
+    },
+    {
+      "slug": "Pixel-Photonics",
+      "group_key": "pixel-photonics",
+      "group_name": "Pixel Photonics",
+      "relationship": "未核實其他控制母公司；暫以現行公司品牌分組",
+      "sources": [
+        "https://www.pixelphotonics.com/"
+      ],
+      "notes": "此處未發現母公司證據不等於證實完全獨立；合作、供應商及一般股權投資不自動合併。",
+      "audit_file": "suppliers-company-groups.json"
+    },
+    {
+      "slug": "planqc",
+      "group_key": "planqc",
+      "group_name": "planqc",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://planqc.eu/"
+      ],
+      "notes": "官網支持品牌及業務識別，並非完整股權調查；未核實控制關係時不因共同投資人、經銷、共同研發或供應商關係而合併。",
+      "audit_file": "hardware-company-groups.json"
+    },
+    {
+      "slug": "Post-Quantum",
+      "group_key": "post-quantum",
+      "group_name": "Post-Quantum",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://post-quantum.com/"
+      ],
+      "notes": "官方來源支持品牌與業務識別，未據此宣稱完全獨立或已窮盡所有私人控制關係。",
+      "audit_file": "security-company-groups.json"
+    },
+    {
+      "slug": "pQCee",
+      "group_key": "pqcee",
+      "group_name": "pQCee",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://www.pqcee.com/"
+      ],
+      "notes": "官方來源支持品牌與業務識別，未據此宣稱完全獨立或已窮盡所有私人控制關係。",
+      "audit_file": "security-company-groups.json"
+    },
+    {
+      "slug": "PQSecure-Technologies",
+      "group_key": "pqsecure-technologies",
+      "group_name": "PQSecure Technologies",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://pqsecurity.com/"
+      ],
+      "notes": "官方來源支持品牌與業務識別，未據此宣稱完全獨立或已窮盡所有私人控制關係。",
+      "audit_file": "security-company-groups.json"
+    },
+    {
+      "slug": "PQShield",
+      "group_key": "pqshield",
+      "group_name": "PQShield",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://pqshield.com/"
+      ],
+      "notes": "官方來源支持品牌與業務識別，未據此宣稱完全獨立或已窮盡所有私人控制關係。",
+      "audit_file": "security-company-groups.json"
+    },
+    {
+      "slug": "ProteinQure",
+      "group_key": "proteinqure",
+      "group_name": "ProteinQure",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://www.proteinqure.com/"
+      ],
+      "notes": "官網僅支持現行品牌及業務識別；不宣稱已排除所有私人股權或隱藏控制關係。",
+      "audit_file": "software-company-groups.json"
+    },
+    {
+      "slug": "PsiQuantum",
+      "group_key": "psiquantum",
+      "group_name": "PsiQuantum",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://www.psiquantum.com/"
+      ],
+      "notes": "官網支持品牌及業務識別，並非完整股權調查；未核實控制關係時不因共同投資人、經銷、共同研發或供應商關係而合併。",
+      "audit_file": "hardware-company-groups.json"
+    },
+    {
+      "slug": "Q-ANT",
+      "group_key": "q-ant",
+      "group_name": "Q.ANT",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://qant.com/"
+      ],
+      "notes": "2025-07-21交易法律顧問確認TRUMPF previously sole shareholder，已引入多家VC；2026年Q.ANT官網列多個投資人，但本次沒有公開交易後控制比例。",
+      "audit_file": "security-company-groups.json"
+    },
+    {
+      "slug": "Q-Bird",
+      "group_key": "q-bird",
+      "group_name": "Falqon Systems（原 Q*Bird）",
+      "relationship": "同公司品牌、區域法人或產品名稱",
+      "sources": [
+        "https://www.falqonsystems.com/resources/qbird-becomes-falqon-systems-building-the-infrastructure-for-quantum-secure-networks-qsn/"
+      ],
+      "notes": "2026-09-15官方更名，法人、所有權與既有義務延續。",
+      "audit_file": "security-company-groups.json"
+    },
+    {
+      "slug": "Q-Block-Computing",
+      "group_key": "q-block-computing",
+      "group_name": "Q-Block Computing",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://www.q-block.ca/"
+      ],
+      "notes": "官方來源支持品牌與業務識別，未據此宣稱完全獨立或已窮盡所有私人控制關係。",
+      "audit_file": "security-company-groups.json"
+    },
+    {
+      "slug": "Q-CTRL",
+      "group_key": "q-ctrl",
+      "group_name": "Q-CTRL",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://q-ctrl.com/"
+      ],
+      "notes": "官網僅支持現行品牌及業務識別；不宣稱已排除所有私人股權或隱藏控制關係。",
+      "audit_file": "software-company-groups.json"
+    },
+    {
+      "slug": "QANplatform",
+      "group_key": "qanplatform",
+      "group_name": "QANplatform",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://qanplatform.com/"
+      ],
+      "notes": "官方來源支持品牌與業務識別，未據此宣稱完全獨立或已窮盡所有私人控制關係。",
+      "audit_file": "security-company-groups.json"
+    },
+    {
+      "slug": "Qasky",
+      "group_key": "qasky",
+      "group_name": "Qasky（安徽問天量子）",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://www.qasky.com/"
+      ],
+      "notes": "官方來源支持品牌與業務識別，未據此宣稱完全獨立或已窮盡所有私人控制關係。",
+      "audit_file": "security-company-groups.json"
+    },
+    {
+      "slug": "QbitSoft",
+      "group_key": "qbitsoft",
+      "group_name": "QbitSoft",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://qbit-soft.com/en/"
+      ],
+      "notes": "官網僅支持現行品牌及業務識別；不宣稱已排除所有私人股權或隱藏控制關係。",
+      "audit_file": "software-company-groups.json"
+    },
+    {
+      "slug": "Qblox",
+      "group_key": "qblox",
+      "group_name": "Qblox",
+      "relationship": "未核實其他控制母公司；暫以現行公司品牌分組",
+      "sources": [
+        "https://www.qblox.com/"
+      ],
+      "notes": "此處未發現母公司證據不等於證實完全獨立；合作、供應商及一般股權投資不自動合併。",
+      "audit_file": "suppliers-company-groups.json"
+    },
+    {
+      "slug": "qBraid",
+      "group_key": "qbraid",
+      "group_name": "qBraid",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://qbraid.com/"
+      ],
+      "notes": "官網僅支持現行品牌及業務識別；不宣稱已排除所有私人股權或隱藏控制關係。",
+      "audit_file": "software-company-groups.json"
+    },
+    {
+      "slug": "QC-Design",
+      "group_key": "qc-design",
+      "group_name": "QC Design",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://www.qc.design/"
+      ],
+      "notes": "官網僅支持現行品牌及業務識別；不宣稱已排除所有私人股權或隱藏控制關係。",
+      "audit_file": "software-company-groups.json"
+    },
+    {
+      "slug": "QC-Ware",
+      "group_key": "qc-ware",
+      "group_name": "QC Ware",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://www.qcware.com/"
+      ],
+      "notes": "官網僅支持現行品牌及業務識別；不宣稱已排除所有私人股權或隱藏控制關係。",
+      "audit_file": "software-company-groups.json"
+    },
+    {
+      "slug": "QCentroid",
+      "group_key": "qcentroid",
+      "group_name": "QCentroid",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://qcentroid.com/"
+      ],
+      "notes": "官網僅支持現行品牌及業務識別；不宣稱已排除所有私人股權或隱藏控制關係。",
+      "audit_file": "software-company-groups.json"
+    },
+    {
+      "slug": "Qedma",
+      "group_key": "qedma",
+      "group_name": "Qedma",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://www.qedma.com/"
+      ],
+      "notes": "官網僅支持現行品牌及業務識別；不宣稱已排除所有私人股權或隱藏控制關係。",
+      "audit_file": "software-company-groups.json"
+    },
+    {
+      "slug": "QEYnet",
+      "group_key": "qeynet",
+      "group_name": "QEYnet",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://qeynet.com/"
+      ],
+      "notes": "官方來源支持品牌與業務識別，未據此宣稱完全獨立或已窮盡所有私人控制關係。",
+      "audit_file": "security-company-groups.json"
+    },
+    {
+      "slug": "Qilimanjaro",
+      "group_key": "qilimanjaro",
+      "group_name": "Qilimanjaro Quantum Tech",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://qilimanjaro.tech/"
+      ],
+      "notes": "官網支持品牌及業務識別，並非完整股權調查；未核實控制關係時不因共同投資人、經銷、共同研發或供應商關係而合併。",
+      "audit_file": "hardware-company-groups.json"
+    },
+    {
+      "slug": "QLM-Technology",
+      "group_key": "qlm-technology",
+      "group_name": "QLM Technology",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://qlmtec.com/"
+      ],
+      "notes": "官方來源支持品牌與業務識別，未據此宣稱完全獨立或已窮盡所有私人控制關係。",
+      "audit_file": "security-company-groups.json"
+    },
+    {
+      "slug": "QMill",
+      "group_key": "qmill",
+      "group_name": "QMill",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://qmill.com/en"
+      ],
+      "notes": "官網僅支持現行品牌及業務識別；不宣稱已排除所有私人股權或隱藏控制關係。",
+      "audit_file": "software-company-groups.json"
+    },
+    {
+      "slug": "Qnami",
+      "group_key": "quantum-design",
+      "group_name": "Quantum Design",
+      "relationship": "已完成收購",
+      "sources": [
+        "https://qnami.ch/qnami-joins-quantum-design-to-accelerate-the-future-of-quantum-sensing/"
+      ],
+      "notes": "Qnami官方2026年6月2日宣布加入Quantum Design；不與名稱相近的QuantumDiamonds合併。",
+      "audit_file": "security-company-groups.json"
+    },
+    {
+      "slug": "QNu-Labs",
+      "group_key": "qnu-labs",
+      "group_name": "QNu Labs",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://www.qnulabs.com/"
+      ],
+      "notes": "官方來源支持品牌與業務識別，未據此宣稱完全獨立或已窮盡所有私人控制關係。",
+      "audit_file": "security-company-groups.json"
+    },
+    {
+      "slug": "Qognitive",
+      "group_key": "qognitive",
+      "group_name": "Qognitive",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://www.qognitiveai.com/"
+      ],
+      "notes": "官網僅支持現行品牌及業務識別；不宣稱已排除所有私人股權或隱藏控制關係。",
+      "audit_file": "software-company-groups.json"
+    },
+    {
+      "slug": "Qolab",
+      "group_key": "qolab",
+      "group_name": "Qolab",
+      "relationship": "未核實其他控制母公司；暫以現行公司品牌分組",
+      "sources": [
+        "https://qolab.ai/"
+      ],
+      "notes": "此處未發現母公司證據不等於證實完全獨立；合作、供應商及一般股權投資不自動合併。",
+      "audit_file": "suppliers-company-groups.json"
+    },
+    {
+      "slug": "Qoro-Quantum",
+      "group_key": "qoro-quantum",
+      "group_name": "Qoro Quantum",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://qoroquantum.net/"
+      ],
+      "notes": "官網僅支持現行品牌及業務識別；不宣稱已排除所有私人股權或隱藏控制關係。",
+      "audit_file": "software-company-groups.json"
+    },
+    {
+      "slug": "QPerfect",
+      "group_key": "btq",
+      "group_name": "BTQ Technologies",
+      "relationship": "全資子公司",
+      "sources": [
+        "https://www.qperfect.io/btq-completes-qperfect-acquisition/"
+      ],
+      "notes": "官方明確公告完成收購全部剩餘證券，QPerfect 成為 wholly owned subsidiary。",
+      "audit_file": "software-company-groups.json"
+    },
+    {
+      "slug": "QphoX",
+      "group_key": "qphox",
+      "group_name": "QphoX",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://qphox.eu/"
+      ],
+      "notes": "官方來源支持品牌與業務識別，未據此宣稱完全獨立或已窮盡所有私人控制關係。",
+      "audit_file": "security-company-groups.json"
+    },
+    {
+      "slug": "QRate",
+      "group_key": "qrate",
+      "group_name": "QRate",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://www.goqrate.com/"
+      ],
+      "notes": "官方來源支持品牌與業務識別，未據此宣稱完全獨立或已窮盡所有私人控制關係。",
+      "audit_file": "security-company-groups.json"
+    },
+    {
+      "slug": "QRCrypto",
+      "group_key": "qrcrypto",
+      "group_name": "QRCrypto",
+      "relationship": "同公司品牌、區域法人或產品名稱",
+      "sources": [
+        "https://www.qrcrypto.co.uk/",
+        "https://patents.google.com/patent/US12174971B1/en",
+        "https://www.uid.admin.ch/Detail.aspx?uid_id=CHE227362690"
+      ],
+      "notes": "英國網域網站與瑞士法人作一筆品牌介紹；2026-09-09 官方公告恢復 QRCrypto SA 名稱、先前破產裁定停止效力，查閱時 UID 商業登記為 Active。",
+      "audit_file": "security-company-groups.json"
+    },
+    {
+      "slug": "Qruise",
+      "group_key": "qruise",
+      "group_name": "Qruise",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://www.qruise.com/"
+      ],
+      "notes": "官網僅支持現行品牌及業務識別；不宣稱已排除所有私人股權或隱藏控制關係。",
+      "audit_file": "software-company-groups.json"
+    },
+    {
+      "slug": "Qrypt",
+      "group_key": "qrypt",
+      "group_name": "Qrypt",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://www.qrypt.com/"
+      ],
+      "notes": "官方來源支持品牌與業務識別，未據此宣稱完全獨立或已窮盡所有私人控制關係。",
+      "audit_file": "security-company-groups.json"
+    },
+    {
+      "slug": "QSimulate",
+      "group_key": "qsimulate",
+      "group_name": "QSimulate",
+      "relationship": "國際子公司",
+      "sources": [
+        "https://www.jetro.go.jp/en/invest/newsroom/2025/a2f4e611eb9fc66a.html"
+      ],
+      "notes": "JETRO 記載 2024 年 1 月設立 QSimulate Japan；未把 QIDO 合作方 Mitsui 或 Quantinuum 視為母公司。",
+      "audit_file": "software-company-groups.json"
+    },
+    {
+      "slug": "QST",
+      "group_key": "qst",
+      "group_name": "Quantum Software Technology（QST）",
+      "relationship": "公司及獨家授權產品品牌",
+      "sources": [
+        "https://www.quantumpath.es/2026/02/10/quantumpath-timeline/"
+      ],
+      "notes": "發明人及權利人將相關專利、商標與營業秘密獨家授權 QST。aQuantum/Alhambra 的歷史合資與經銷合作已終止，不能因此合併成現行同集團。",
+      "audit_file": "software-company-groups.json"
+    },
+    {
+      "slug": "QTI",
+      "group_key": "tim",
+      "group_name": "TIM Group",
+      "relationship": "經Telsy持股80%控制",
+      "sources": [
+        "https://www.gruppotim.it/content/dam/gt/investitori/doc---report-finanziari/2024/Annual%20report%202024.pdf",
+        "https://www.gruppotim.it/en/press-archive/corporate/2025/PR-BoD-5-Aug-2025.html"
+      ],
+      "notes": "2024-06-24持股由49%提高到80%，2025年半年度公告再次確認；舊2021年少數投資消息已被後續控制交易更新。",
+      "audit_file": "security-company-groups.json"
+    },
+    {
+      "slug": "Quandela",
+      "group_key": "quandela",
+      "group_name": "Quandela",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://www.quandela.com/"
+      ],
+      "notes": "官網支持品牌及業務識別，並非完整股權調查；未核實控制關係時不因共同投資人、經銷、共同研發或供應商關係而合併。",
+      "audit_file": "hardware-company-groups.json"
+    },
+    {
+      "slug": "Quanscient",
+      "group_key": "quanscient",
+      "group_name": "Quanscient",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://quanscient.com/"
+      ],
+      "notes": "官網僅支持現行品牌及業務識別；不宣稱已排除所有私人股權或隱藏控制關係。",
+      "audit_file": "software-company-groups.json"
+    },
+    {
+      "slug": "Quantastica",
+      "group_key": "quantastica",
+      "group_name": "Quantastica",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://quantastica.com/"
+      ],
+      "notes": "官網僅支持現行品牌及業務識別；不宣稱已排除所有私人股權或隱藏控制關係。",
+      "audit_file": "software-company-groups.json"
+    },
+    {
+      "slug": "Quantinuum",
+      "group_key": "quantinuum",
+      "group_name": "Quantinuum",
+      "relationship": "上市後獨立分組；Honeywell 持非控制性權益",
+      "sources": [
+        "https://www.sec.gov/Archives/edgar/data/773840/000077384026000124/hon-20260630.htm"
+      ],
+      "notes": "Quantinuum 於 2026 年 6 月完成 IPO；Honeywell 2026 年第二季申報列其持股 48% 為非控制性權益，改採權益法核算。本研究不將 Quantinuum 併入 Honeywell 控制集團。Cambridge Quantum 與 Honeywell Quantum Solutions 的既有業務沿革合併計於 Quantinuum。",
+      "audit_file": "hardware-company-groups.json"
+    },
+    {
+      "slug": "QuantLR",
+      "group_key": "quantlr",
+      "group_name": "HEQA Security（原 QuantLR）",
+      "relationship": "同公司品牌、區域法人或產品名稱",
+      "sources": [
+        "https://www.linkedin.com/posts/heqa-sec_introducing-heqa-security-activity-7163533931923947520-eAlw"
+      ],
+      "notes": "官方公司帳號公告更名；不可分別計數。",
+      "audit_file": "security-company-groups.json"
+    },
+    {
+      "slug": "QuantrolOx",
+      "group_key": "quantrolox",
+      "group_name": "QuantrolOx",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://quantrolox.com/"
+      ],
+      "notes": "官網支持品牌及業務識別，並非完整股權調查；未核實控制關係時不因共同投資人、經銷、共同研發或供應商關係而合併。",
+      "audit_file": "hardware-company-groups.json"
+    },
+    {
+      "slug": "Quantropi",
+      "group_key": "quantropi",
+      "group_name": "Quantropi",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://www.quantropi.com/"
+      ],
+      "notes": "官方來源支持品牌與業務識別，未據此宣稱完全獨立或已窮盡所有私人控制關係。",
+      "audit_file": "security-company-groups.json"
+    },
+    {
+      "slug": "Quantum-Art",
+      "group_key": "quantum-art",
+      "group_name": "Quantum Art",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://www.quantum-art.tech/"
+      ],
+      "notes": "官網支持品牌及業務識別，並非完整股權調查；未核實控制關係時不因共同投資人、經銷、共同研發或供應商關係而合併。",
+      "audit_file": "hardware-company-groups.json"
+    },
+    {
+      "slug": "Quantum-Blockchains",
+      "group_key": "quantum-blockchains",
+      "group_name": "Quantum B（原 Quantum Blockchains）",
+      "relationship": "同公司品牌、區域法人或產品名稱",
+      "sources": [
+        "https://quantumb.io/news/quantum-blockchains-becomes-quantum-b/"
+      ],
+      "notes": "2026-05-29官方更名。",
+      "audit_file": "security-company-groups.json"
+    },
+    {
+      "slug": "Quantum-Bridge",
+      "group_key": "quantum-bridge",
+      "group_name": "Quantum Bridge",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://quantumbridgetech.com/"
+      ],
+      "notes": "官方來源支持品牌與業務識別，未據此宣稱完全獨立或已窮盡所有私人控制關係。",
+      "audit_file": "security-company-groups.json"
+    },
+    {
+      "slug": "Quantum-Brilliance",
+      "group_key": "quantum-brilliance",
+      "group_name": "Quantum Brilliance",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://quantumbrilliance.com/"
+      ],
+      "notes": "澳洲與德國營運實體合併為同一企業品牌；QDK 為開發與整合平台。 本次未核實其他控制母公司。",
+      "audit_file": "hardware-company-groups.json"
+    },
+    {
+      "slug": "Quantum-Circuits",
+      "group_key": "d-wave",
+      "group_name": "D-Wave Quantum",
+      "relationship": "已完成收購的子公司",
+      "sources": [
+        "https://www.dwavequantum.com/company/newsroom/press-release/d-wave-completes-acquisition-of-quantum-circuits/"
+      ],
+      "notes": "D-Wave 於 2026-01-20 宣布完成收購；企業集團去重時計入 D-Wave，保留本頁作為被收購企業與技術品牌檔案。",
+      "audit_file": "hardware-company-groups.json"
+    },
+    {
+      "slug": "Quantum-Computing-Inc",
+      "group_key": "quantum-computing-inc",
+      "group_name": "Quantum Computing Inc.（QCi）",
+      "relationship": "集團主體；已收購事業合併計數",
+      "sources": [
+        "https://www.sec.gov/Archives/edgar/data/1758009/000121390026022417/ea0278445-10k_quantum.htm",
+        "https://qci-us.com/news/press-releases/2026/quantum-computing-inc.-completes-acquisition-of-nhanced-semiconductors-inc.",
+        "https://qci-us.com/news/press-releases/2026/quantum-computing-inc.-reports-first-quarter-2026-financial-results"
+      ],
+      "notes": "Quantum Computing Inc. 與 Quantum Circuits Inc. 是不同公司。旗下 NuCrypt、Freedom Photonics、EM4、Optogration、NHanced 不宜重複計為獨立集團。",
+      "audit_file": "hardware-company-groups.json"
+    },
+    {
+      "slug": "Quantum-Diamond-Technologies",
+      "group_key": "quantum-diamond-technologies",
+      "group_name": "Quantum Diamond Technologies Inc.（QDTI）",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://www.qdti.com/"
+      ],
+      "notes": "官方來源支持品牌與業務識別，未據此宣稱完全獨立或已窮盡所有私人控制關係。",
+      "audit_file": "security-company-groups.json"
+    },
+    {
+      "slug": "Quantum-Dice",
+      "group_key": "quantum-dice",
+      "group_name": "Quantum Dice",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://quantum-dice.com/"
+      ],
+      "notes": "官方來源支持品牌與業務識別，未據此宣稱完全獨立或已窮盡所有私人控制關係。",
+      "audit_file": "security-company-groups.json"
+    },
+    {
+      "slug": "Quantum-eMotion",
+      "group_key": "quantum-emotion",
+      "group_name": "Quantum eMotion",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://www.quantumemotion.com/"
+      ],
+      "notes": "官方來源支持品牌與業務識別，未據此宣稱完全獨立或已窮盡所有私人控制關係。",
+      "audit_file": "security-company-groups.json"
+    },
+    {
+      "slug": "Quantum-Industries",
+      "group_key": "quantum-industries",
+      "group_name": "zerothird（原 Quantum Industries）",
+      "relationship": "同公司品牌、區域法人或產品名稱",
+      "sources": [
+        "https://zerothird.com/news/zerothird-gmbh-a-completed-transition"
+      ],
+      "notes": "2025年導入品牌，2026年公告完成法人更名；slug保留原名。",
+      "audit_file": "security-company-groups.json"
+    },
+    {
+      "slug": "Quantum-Machines",
+      "group_key": "quantum-machines",
+      "group_name": "Quantum Machines",
+      "relationship": "含 QDevil、QHarbor 與 PCB Engineering 收購業務",
+      "sources": [
+        "https://www.quantum-machines.co/press-release/quantum-machines-acquires-qdevil-to-provide-full-stack-orchestration-platform/",
+        "https://www.quantum-machines.co/press-release/quantum-machines-acquires-qharbor-software-platform-europe-expansion/",
+        "https://www.quantum-machines.co/press-release/quantum-machines-acquisition-pcb-engineering/"
+      ],
+      "notes": "依序為 2022、2026-05、2026-06 公告；與 NVIDIA、AMD、Qblox、HPE 等合作方不因合作而合併。",
+      "audit_file": "suppliers-company-groups.json"
+    },
+    {
+      "slug": "Quantum-Mads",
+      "group_key": "quantum-mads",
+      "group_name": "Quantum Mads",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://quantum-mads.com/"
+      ],
+      "notes": "官網僅支持現行品牌及業務識別；不宣稱已排除所有私人股權或隱藏控制關係。",
+      "audit_file": "software-company-groups.json"
+    },
+    {
+      "slug": "Quantum-Microwave",
+      "group_key": "quantum-microwave",
+      "group_name": "Quantum Microwave",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://quantummicrowave.com/"
+      ],
+      "notes": "官網僅支持現行品牌及業務識別；不宣稱已排除所有私人股權或隱藏控制關係。",
+      "audit_file": "software-company-groups.json"
+    },
+    {
+      "slug": "Quantum-Motion",
+      "group_key": "quantum-motion",
+      "group_name": "Quantum Motion",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://quantummotion.com/"
+      ],
+      "notes": "原 quantummotion.tech 官網內容已遷至 quantummotion.com；同一企業。 本次未核實其他控制母公司。",
+      "audit_file": "hardware-company-groups.json"
+    },
+    {
+      "slug": "Quantum-Optics-Jena",
+      "group_key": "quantum-optics-jena",
+      "group_name": "Quantum Optics Jena",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://www.qo-jena.com/"
+      ],
+      "notes": "官方來源支持品牌與業務識別，未據此宣稱完全獨立或已窮盡所有私人控制關係。",
+      "audit_file": "security-company-groups.json"
+    },
+    {
+      "slug": "Quantum-Opus",
+      "group_key": "quantum-opus",
+      "group_name": "Quantum Opus",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://www.quantumopus.com/"
+      ],
+      "notes": "官網支持品牌及業務識別，並非完整股權調查；未核實控制關係時不因共同投資人、經銷、共同研發或供應商關係而合併。",
+      "audit_file": "hardware-company-groups.json"
+    },
+    {
+      "slug": "Quantum-Rings",
+      "group_key": "quantum-rings",
+      "group_name": "Quantum Rings",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://www.quantumrings.com/"
+      ],
+      "notes": "官網僅支持現行品牌及業務識別；不宣稱已排除所有私人股權或隱藏控制關係。",
+      "audit_file": "software-company-groups.json"
+    },
+    {
+      "slug": "Quantum-Silicon",
+      "group_key": "quantum-silicon",
+      "group_name": "Quantum Silicon Inc.（QSi）",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://www.quantumsilicon.com/"
+      ],
+      "notes": "官網支持品牌及業務識別，並非完整股權調查；未核實控制關係時不因共同投資人、經銷、共同研發或供應商關係而合併。",
+      "audit_file": "hardware-company-groups.json"
+    },
+    {
+      "slug": "Quantum-Source",
+      "group_key": "quantum-source",
+      "group_name": "Quantum Source",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://www.qs-labs.com/"
+      ],
+      "notes": "官網支持品牌及業務識別，並非完整股權調查；未核實控制關係時不因共同投資人、經銷、共同研發或供應商關係而合併。",
+      "audit_file": "hardware-company-groups.json"
+    },
+    {
+      "slug": "Quantum-South",
+      "group_key": "quantum-south",
+      "group_name": "Quantum-South",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://quantum-south.com/"
+      ],
+      "notes": "官網僅支持現行品牌及業務識別；不宣稱已排除所有私人股權或隱藏控制關係。",
+      "audit_file": "software-company-groups.json"
+    },
+    {
+      "slug": "Quantum-Transistors",
+      "group_key": "quantum-transistors",
+      "group_name": "Quantum Transistors",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://quantumtransistors.com/"
+      ],
+      "notes": "官網支持品牌及業務識別，並非完整股權調查；未核實控制關係時不因共同投資人、經銷、共同研發或供應商關係而合併。",
+      "audit_file": "hardware-company-groups.json"
+    },
+    {
+      "slug": "Quantum-Xchange",
+      "group_key": "quantum-xchange",
+      "group_name": "Quantum Xchange",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://quantumxc.com/"
+      ],
+      "notes": "官方來源支持品牌與業務識別，未據此宣稱完全獨立或已窮盡所有私人控制關係。",
+      "audit_file": "security-company-groups.json"
+    },
+    {
+      "slug": "QuantumCTek",
+      "group_key": "china-telecom",
+      "group_name": "China Telecom",
+      "relationship": "中電信量子集團控股",
+      "sources": [
+        "https://quantum-tech.org/"
+      ],
+      "notes": "國盾官網公司介紹明示由中國電信全資子公司中電信量子集團控股；勿將所有中國量子公司因產業合作合併。",
+      "audit_file": "security-company-groups.json"
+    },
+    {
+      "slug": "QuantumDiamonds",
+      "group_key": "quantumdiamonds",
+      "group_name": "QuantumDiamonds",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://www.qd-st.com/"
+      ],
+      "notes": "官方來源支持品牌與業務識別，未據此宣稱完全獨立或已窮盡所有私人控制關係。",
+      "audit_file": "security-company-groups.json"
+    },
+    {
+      "slug": "Quantumz",
+      "group_key": "quantumz",
+      "group_name": "Quantumz.io",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://quantumz.io/"
+      ],
+      "notes": "官網僅支持現行品牌及業務識別；不宣稱已排除所有私人股權或隱藏控制關係。",
+      "audit_file": "software-company-groups.json"
+    },
+    {
+      "slug": "QuantWare",
+      "group_key": "quantware",
+      "group_name": "QuantWare",
+      "relationship": "未核實其他控制母公司；暫以現行公司品牌分組",
+      "sources": [
+        "https://quantware.com/"
+      ],
+      "notes": "此處未發現母公司證據不等於證實完全獨立；合作、供應商及一般股權投資不自動合併。",
+      "audit_file": "suppliers-company-groups.json"
+    },
+    {
+      "slug": "Qubit-Engineering",
+      "group_key": "qubit-engineering",
+      "group_name": "Qubit Engineering",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://qubitengineering.com/"
+      ],
+      "notes": "官網僅支持現行品牌及業務識別；不宣稱已排除所有私人股權或隱藏控制關係。",
+      "audit_file": "software-company-groups.json"
+    },
+    {
+      "slug": "Qubit-Pharmaceuticals",
+      "group_key": "qubit-pharmaceuticals",
+      "group_name": "Qubit Pharmaceuticals",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://www.qubit-pharmaceuticals.com/"
+      ],
+      "notes": "官網僅支持現行品牌及業務識別；不宣稱已排除所有私人股權或隱藏控制關係。",
+      "audit_file": "software-company-groups.json"
+    },
+    {
+      "slug": "Qubitekk",
+      "group_key": "ionq",
+      "group_name": "IonQ",
+      "relationship": "實質全部資產收購",
+      "sources": [
+        "https://www.ionq.com/news/ionq-completes-acquisition-of-qubitekk-solidifying-leadership-in-quantum"
+      ],
+      "notes": "收購標的是實質全部資產；本頁介紹的原量子網路業務現歸IonQ，不能把法律實體資產交易擴寫成股份合併。",
+      "audit_file": "security-company-groups.json"
+    },
+    {
+      "slug": "QUDORA",
+      "group_key": "qudora",
+      "group_name": "QUDORA Technologies",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://qudora.com/"
+      ],
+      "notes": "官網支持品牌及業務識別，並非完整股權調查；未核實控制關係時不因共同投資人、經銷、共同研發或供應商關係而合併。",
+      "audit_file": "hardware-company-groups.json"
+    },
+    {
+      "slug": "Quemix",
+      "group_key": "terrasky",
+      "group_name": "TerraSky",
+      "relationship": "合併子公司",
+      "sources": [
+        "https://www.quemix.com/en/post/en-20260803-mitsuikinzoku"
+      ],
+      "notes": "2026 年官方增資公告仍明示 Quemix 是 TerraSky 的 consolidated subsidiary。",
+      "audit_file": "software-company-groups.json"
+    },
+    {
+      "slug": "QuEra",
+      "group_key": "quera",
+      "group_name": "QuEra Computing",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://www.quera.com/"
+      ],
+      "notes": "官網支持品牌及業務識別，並非完整股權調查；未核實控制關係時不因共同投資人、經銷、共同研發或供應商關係而合併。",
+      "audit_file": "hardware-company-groups.json"
+    },
+    {
+      "slug": "QuintessenceLabs",
+      "group_key": "quintessencelabs",
+      "group_name": "QuintessenceLabs",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://www.quintessencelabs.com/"
+      ],
+      "notes": "官方來源支持品牌與業務識別，未據此宣稱完全獨立或已窮盡所有私人控制關係。",
+      "audit_file": "security-company-groups.json"
+    },
+    {
+      "slug": "QuiX-Quantum",
+      "group_key": "quix-quantum",
+      "group_name": "QuiX Quantum",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://www.quixquantum.com/"
+      ],
+      "notes": "官網支持品牌及業務識別，並非完整股權調查；未核實控制關係時不因共同投資人、經銷、共同研發或供應商關係而合併。",
+      "audit_file": "hardware-company-groups.json"
+    },
+    {
+      "slug": "Qulabs",
+      "group_key": "qulabs",
+      "group_name": "Qulabs",
+      "relationship": "同一官方網站品牌與區域法人",
+      "sources": [
+        "https://www.qulabs.ai/"
+      ],
+      "notes": "官方網站同時提供美國 Qulabz 與印度 Qulabs 法人資訊。",
+      "audit_file": "software-company-groups.json"
+    },
+    {
+      "slug": "QunaSys",
+      "group_key": "qunasys",
+      "group_name": "QunaSys",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://qunasys.com/en/"
+      ],
+      "notes": "官網僅支持現行品牌及業務識別；不宣稱已排除所有私人股權或隱藏控制關係。",
+      "audit_file": "software-company-groups.json"
+    },
+    {
+      "slug": "Qunnect",
+      "group_key": "qunnect",
+      "group_name": "Qunnect",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://www.qunnect.inc/"
+      ],
+      "notes": "官方來源支持品牌與業務識別，未據此宣稱完全獨立或已窮盡所有私人控制關係。",
+      "audit_file": "security-company-groups.json"
+    },
+    {
+      "slug": "Qunova-Computing",
+      "group_key": "qunova-computing",
+      "group_name": "Qunova Computing",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://qunovacomputing.com/"
+      ],
+      "notes": "官網僅支持現行品牌及業務識別；不宣稱已排除所有私人股權或隱藏控制關係。",
+      "audit_file": "software-company-groups.json"
+    },
+    {
+      "slug": "Quobly",
+      "group_key": "quobly",
+      "group_name": "Quobly",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://www.quobly.io/"
+      ],
+      "notes": "前身品牌 Siquance；同一公司，不重複計數。 本次未核實其他控制母公司。",
+      "audit_file": "hardware-company-groups.json"
+    },
+    {
+      "slug": "QURECA",
+      "group_key": "qureca",
+      "group_name": "QURECA",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://www.qureca.com/"
+      ],
+      "notes": "官網僅支持現行品牌及業務識別；不宣稱已排除所有私人股權或隱藏控制關係。",
+      "audit_file": "software-company-groups.json"
+    },
+    {
+      "slug": "QuSecure",
+      "group_key": "qusecure",
+      "group_name": "QuSecure",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://www.qusecure.com/"
+      ],
+      "notes": "官方來源支持品牌與業務識別，未據此宣稱完全獨立或已窮盡所有私人控制關係。",
+      "audit_file": "security-company-groups.json"
+    },
+    {
+      "slug": "Quside",
+      "group_key": "quside",
+      "group_name": "Quside",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://quside.com/"
+      ],
+      "notes": "官方來源支持品牌與業務識別，未據此宣稱完全獨立或已窮盡所有私人控制關係。",
+      "audit_file": "security-company-groups.json"
+    },
+    {
+      "slug": "QuSpin",
+      "group_key": "quspin",
+      "group_name": "QuSpin",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://quspin.com/"
+      ],
+      "notes": "官方來源支持品牌與業務識別，未據此宣稱完全獨立或已窮盡所有私人控制關係。",
+      "audit_file": "security-company-groups.json"
+    },
+    {
+      "slug": "qutools",
+      "group_key": "qutools",
+      "group_name": "qutools",
+      "relationship": "官網稱私人持有；未核實其他控制母公司",
+      "sources": [
+        "https://qutools.com/who-we-are/"
+      ],
+      "notes": "由 LMU 研究團隊衍生；大學起源不等於大學控制公司。",
+      "audit_file": "hardware-company-groups.json"
+    },
+    {
+      "slug": "QZabre",
+      "group_key": "qzabre",
+      "group_name": "QZabre",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://www.qzabre.com/"
+      ],
+      "notes": "官方來源支持品牌與業務識別，未據此宣稱完全獨立或已窮盡所有私人控制關係。",
+      "audit_file": "security-company-groups.json"
+    },
+    {
+      "slug": "Rigetti",
+      "group_key": "rigetti",
+      "group_name": "Rigetti Computing",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://www.rigetti.com/"
+      ],
+      "notes": "官網支持品牌及業務識別，並非完整股權調查；未核實控制關係時不因共同投資人、經銷、共同研發或供應商關係而合併。",
+      "audit_file": "hardware-company-groups.json"
+    },
+    {
+      "slug": "Riverlane",
+      "group_key": "riverlane",
+      "group_name": "Riverlane",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://www.riverlane.com/"
+      ],
+      "notes": "官網僅支持現行品牌及業務識別；不宣稱已排除所有私人股權或隱藏控制關係。",
+      "audit_file": "software-company-groups.json"
+    },
+    {
+      "slug": "S-Fifteen-Instruments",
+      "group_key": "s-fifteen-instruments",
+      "group_name": "S-Fifteen Instruments",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://s-fifteen.com/"
+      ],
+      "notes": "官方來源支持品牌與業務識別，未據此宣稱完全獨立或已窮盡所有私人控制關係。",
+      "audit_file": "security-company-groups.json"
+    },
+    {
+      "slug": "Sacher-Lasertechnik",
+      "group_key": "sacher-lasertechnik",
+      "group_name": "Sacher Lasertechnik",
+      "relationship": "國際子公司",
+      "sources": [
+        "https://www.sacher-laser.com/corporate/company_profile_and_history/overview/about_us.html"
+      ],
+      "notes": "官方公司沿革記載在美國成立子公司；沒有把同名產品經銷商當作母公司。",
+      "audit_file": "software-company-groups.json"
+    },
+    {
+      "slug": "Safran",
+      "group_key": "safran",
+      "group_name": "Safran",
+      "relationship": "已收購Orolia及旗下業務",
+      "sources": [
+        "https://www.safran-group.com/pressroom/safran-acquires-orolia-and-plans-become-world-leader-resilient-pnt-2022-07-08"
+      ],
+      "notes": "Safran於2022年7月完成Orolia收購；本頁原子時鐘與同步產品統一歸入Safran。",
+      "audit_file": "security-company-groups.json"
+    },
+    {
+      "slug": "SandboxAQ",
+      "group_key": "sandboxaq",
+      "group_name": "SandboxAQ",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://www.sandboxaq.com/"
+      ],
+      "notes": "官方來源支持品牌與業務識別，未據此宣稱完全獨立或已窮盡所有私人控制關係。",
+      "audit_file": "security-company-groups.json"
+    },
+    {
+      "slug": "SaxonQ",
+      "group_key": "saxonq",
+      "group_name": "SAXON Q（SaxonQ）",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://www.saxonq.com/"
+      ],
+      "notes": "官網支持品牌及業務識別，並非完整股權調查；未核實控制關係時不因共同投資人、經銷、共同研發或供應商關係而合併。",
+      "audit_file": "hardware-company-groups.json"
+    },
+    {
+      "slug": "SBQuantum",
+      "group_key": "sbquantum",
+      "group_name": "SBQuantum",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://sbquantum.com/"
+      ],
+      "notes": "官方來源支持品牌與業務識別，未據此宣稱完全獨立或已窮盡所有私人控制關係。",
+      "audit_file": "security-company-groups.json"
+    },
+    {
+      "slug": "Scontel",
+      "group_key": "scontel",
+      "group_name": "SCONTEL",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://www.scontel.ru/"
+      ],
+      "notes": "官網支持品牌及業務識別，並非完整股權調查；未核實控制關係時不因共同投資人、經銷、共同研發或供應商關係而合併。",
+      "audit_file": "hardware-company-groups.json"
+    },
+    {
+      "slug": "SDT",
+      "group_key": "sdt",
+      "group_name": "SDT",
+      "relationship": "未核實其他控制母公司；暫以現行公司品牌分組",
+      "sources": [
+        "https://sdt.inc/en/"
+      ],
+      "notes": "此處未發現母公司證據不等於證實完全獨立；合作、供應商及一般股權投資不自動合併。",
+      "audit_file": "suppliers-company-groups.json"
+    },
+    {
+      "slug": "SEEQC",
+      "group_key": "seeqc",
+      "group_name": "SEEQC",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://seeqc.com/"
+      ],
+      "notes": "官網支持品牌及業務識別，並非完整股權調查；未核實控制關係時不因共同投資人、經銷、共同研發或供應商關係而合併。",
+      "audit_file": "hardware-company-groups.json"
+    },
+    {
+      "slug": "SemiQon",
+      "group_key": "semiqon",
+      "group_name": "SemiQon",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://www.semiqon.com/"
+      ],
+      "notes": "官網支持品牌及業務識別，並非完整股權調查；未核實控制關係時不因共同投資人、經銷、共同研發或供應商關係而合併。",
+      "audit_file": "hardware-company-groups.json"
+    },
+    {
+      "slug": "SignalCore",
+      "group_key": "signalcore",
+      "group_name": "SignalCore",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://www.signalcore.com/"
+      ],
+      "notes": "官網僅支持現行品牌及業務識別；不宣稱已排除所有私人股權或隱藏控制關係。",
+      "audit_file": "software-company-groups.json"
+    },
+    {
+      "slug": "Silicon-Quantum-Computing",
+      "group_key": "silicon-quantum-computing",
+      "group_name": "Silicon Quantum Computing（SQC）",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://sqc.com/"
+      ],
+      "notes": "與 Diraq、Quantum Silicon Inc. 為不同企業；SQC 只計一次。 本次未核實其他控制母公司。",
+      "audit_file": "hardware-company-groups.json"
+    },
+    {
+      "slug": "Single-Quantum",
+      "group_key": "single-quantum",
+      "group_name": "Single Quantum",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://www.singlequantum.com/"
+      ],
+      "notes": "官網支持品牌及業務識別，並非完整股權調查；未核實控制關係時不因共同投資人、經銷、共同研發或供應商關係而合併。",
+      "audit_file": "hardware-company-groups.json"
+    },
+    {
+      "slug": "Sixscape",
+      "group_key": "sixscape",
+      "group_name": "Sixscape Communications",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://sixscape.com/"
+      ],
+      "notes": "官方來源支持品牌與業務識別，未據此宣稱完全獨立或已窮盡所有私人控制關係。",
+      "audit_file": "security-company-groups.json"
+    },
+    {
+      "slug": "SMART-Photonics",
+      "group_key": "smart-photonics",
+      "group_name": "SMART Photonics",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://www.smartphotonics.nl/"
+      ],
+      "notes": "官網僅支持現行品牌及業務識別；不宣稱已排除所有私人股權或隱藏控制關係。",
+      "audit_file": "software-company-groups.json"
+    },
+    {
+      "slug": "Sparrow-Quantum",
+      "group_key": "sparrow-quantum",
+      "group_name": "Sparrow Quantum",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://sparrowquantum.com/"
+      ],
+      "notes": "官方來源支持品牌與業務識別，未據此宣稱完全獨立或已窮盡所有私人控制關係。",
+      "audit_file": "security-company-groups.json"
+    },
+    {
+      "slug": "SpeQtral",
+      "group_key": "speqtral",
+      "group_name": "SpeQtral",
+      "relationship": "同公司品牌、區域法人或產品名稱",
+      "sources": [
+        "https://speqtral.space/"
+      ],
+      "notes": "官方全球組織與區域團隊以一個商業品牌介紹。",
+      "audit_file": "security-company-groups.json"
+    },
+    {
+      "slug": "SpinQ",
+      "group_key": "spinq",
+      "group_name": "量旋科技 SpinQ",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://www.spinq.com/en/"
+      ],
+      "notes": "SpinQ 與量旋科技為同一公司；原 spinquanta.com 主站已轉至 spinq.com。 本次未核實其他控制母公司。",
+      "audit_file": "hardware-company-groups.json"
+    },
+    {
+      "slug": "Strangeworks",
+      "group_key": "strangeworks",
+      "group_name": "Strangeworks",
+      "relationship": "收購公司",
+      "sources": [
+        "https://strangeworks.com/press/strangeworks-acquires-quantagonia-to-create-global-leader-in-applied-ai-optimization-and-quantum-computing"
+      ],
+      "notes": "公司於 2025-08-20 公告收購 Quantagonia，名稱相似的 Quantastica 不在此收購公告。",
+      "audit_file": "software-company-groups.json"
+    },
+    {
+      "slug": "Swabian-Instruments",
+      "group_key": "swabian-instruments",
+      "group_name": "Swabian Instruments",
+      "relationship": "同一品牌的德國、美國、中國實體",
+      "sources": [
+        "https://www.swabianinstruments.com/company/"
+      ],
+      "notes": "官方列德國總部、Swabian Instruments USA Inc. 及中國據點；同品牌分組一次，不將斯圖加特大學視為控制母公司。",
+      "audit_file": "hardware-company-groups.json"
+    },
+    {
+      "slug": "Tabor-Electronics",
+      "group_key": "tabor-electronics",
+      "group_name": "Tabor Electronics",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://www.taborelec.com/"
+      ],
+      "notes": "官網僅支持現行品牌及業務識別；不宣稱已排除所有私人股權或隱藏控制關係。",
+      "audit_file": "software-company-groups.json"
+    },
+    {
+      "slug": "Terra-Quantum",
+      "group_key": "terra-quantum",
+      "group_name": "Terra Quantum",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://terraquantum.swiss/"
+      ],
+      "notes": "已找到與 Novarion 合資 QMware 的歷史公告；當前合資控制比例未核實。",
+      "audit_file": "software-company-groups.json"
+    },
+    {
+      "slug": "ThinkQuantum",
+      "group_key": "officina-stellare",
+      "group_name": "Officina Stellare",
+      "relationship": "控股子公司",
+      "sources": [
+        "https://www.officinastellare.com/2025/12/23/officina-stellare-subsidiary-thinkquantum-signs-new-contract-with-thales-alenia-space-for-esa-saga/",
+        "https://www.officinastellare.com/wp-content/uploads/2023/09/Bilancio-consolidato-intermedio-al-30-giugno-2023-Relazione-della-Societa-di-Revisione.pdf"
+      ],
+      "notes": "2023年財報列50.5%持股，2025-12-23官方仍明稱subsidiary；不將大學衍生背景或Thales供貨合作當成其他控制關係。",
+      "audit_file": "security-company-groups.json"
+    },
+    {
+      "slug": "Thorlabs",
+      "group_key": "thorlabs",
+      "group_name": "Thorlabs",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://www.thorlabs.com/"
+      ],
+      "notes": "官網僅支持現行品牌及業務識別；不宣稱已排除所有私人股權或隱藏控制關係。",
+      "audit_file": "software-company-groups.json"
+    },
+    {
+      "slug": "TOPTICA",
+      "group_key": "toptica",
+      "group_name": "TOPTICA Photonics",
+      "relationship": "國際子公司及已收購事業",
+      "sources": [
+        "https://www.toptica.com/fileadmin/Editors_English/06_company/01_news/02_press/2023/202312_TFR_SAS/PR_TOPTICA_France_EN.pdf"
+      ],
+      "notes": "2023 年官方公告 Azurlight Systems 成為 TOPTICA France；同公告將 HighFinesse 稱為 valued partner，不能當成子公司。",
+      "audit_file": "software-company-groups.json"
+    },
+    {
+      "slug": "Toshiba",
+      "group_key": "toshiba",
+      "group_name": "Toshiba",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://www.toshiba.eu/quantum/"
+      ],
+      "notes": "官方來源支持品牌與業務識別，未據此宣稱完全獨立或已窮盡所有私人控制關係。",
+      "audit_file": "security-company-groups.json"
+    },
+    {
+      "slug": "TreQ",
+      "group_key": "treq",
+      "group_name": "TreQ",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://treq.tech/"
+      ],
+      "notes": "官網支持品牌及業務識別，並非完整股權調查；未核實控制關係時不因共同投資人、經銷、共同研發或供應商關係而合併。",
+      "audit_file": "hardware-company-groups.json"
+    },
+    {
+      "slug": "TuringQ",
+      "group_key": "turingq",
+      "group_name": "TuringQ（圖靈量子）",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://www.turingq.com/"
+      ],
+      "notes": "官網支持品牌及業務識別，並非完整股權調查；未核實控制關係時不因共同投資人、經銷、共同研發或供應商關係而合併。",
+      "audit_file": "hardware-company-groups.json"
+    },
+    {
+      "slug": "Twinleaf",
+      "group_key": "twinleaf",
+      "group_name": "Twinleaf",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://twinleaf.com/"
+      ],
+      "notes": "官方來源支持品牌與業務識別，未據此宣稱完全獨立或已窮盡所有私人控制關係。",
+      "audit_file": "security-company-groups.json"
+    },
+    {
+      "slug": "Universal-Quantum",
+      "group_key": "universal-quantum",
+      "group_name": "Universal Quantum",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://universalquantum.com/"
+      ],
+      "notes": "Universal Quantum Deutschland 是同集團德國實體；本研究以公司集團計數一次。 本次未核實其他控制母公司。",
+      "audit_file": "hardware-company-groups.json"
+    },
+    {
+      "slug": "Vector-Atomic",
+      "group_key": "ionq",
+      "group_name": "IonQ",
+      "relationship": "已完成收購",
+      "sources": [
+        "https://investors.ionq.com/news/news-details/2025/IonQ-Completes-Acquisition-of-Vector-Atomic-the-Global-Leader-in-Advanced-Quantum-Sensing/default.aspx"
+      ],
+      "notes": "公司公告已完成收購；保留Vector Atomic產品品牌頁。",
+      "audit_file": "security-company-groups.json"
+    },
+    {
+      "slug": "VeriQloud",
+      "group_key": "veriqloud",
+      "group_name": "VeriQloud",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://veriqloud.com/"
+      ],
+      "notes": "官方來源支持品牌與業務識別，未據此宣稱完全獨立或已窮盡所有私人控制關係。",
+      "audit_file": "security-company-groups.json"
+    },
+    {
+      "slug": "Vescent",
+      "group_key": "vescent",
+      "group_name": "Vescent",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://vescent.com/"
+      ],
+      "notes": "官網僅支持現行品牌及業務識別；不宣稱已排除所有私人股權或隱藏控制關係。",
+      "audit_file": "software-company-groups.json"
+    },
+    {
+      "slug": "Wave-Photonics",
+      "group_key": "wave-photonics",
+      "group_name": "Wave Photonics",
+      "relationship": "未核實其他控制母公司；暫以現行公司品牌分組",
+      "sources": [
+        "https://www.wavephotonics.com/"
+      ],
+      "notes": "此處未發現母公司證據不等於證實完全獨立；合作、供應商及一般股權投資不自動合併。",
+      "audit_file": "suppliers-company-groups.json"
+    },
+    {
+      "slug": "Welinq",
+      "group_key": "welinq",
+      "group_name": "Welinq",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://www.welinq.fr/"
+      ],
+      "notes": "官方來源支持品牌與業務識別，未據此宣稱完全獨立或已窮盡所有私人控制關係。",
+      "audit_file": "security-company-groups.json"
+    },
+    {
+      "slug": "Xanadu",
+      "group_key": "xanadu",
+      "group_name": "Xanadu",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://www.xanadu.ai/"
+      ],
+      "notes": "官網支持品牌及業務識別，並非完整股權調查；未核實控制關係時不因共同投資人、經銷、共同研發或供應商關係而合併。",
+      "audit_file": "hardware-company-groups.json"
+    },
+    {
+      "slug": "XeedQ",
+      "group_key": "xeedq",
+      "group_name": "XeedQ",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://xeedq.com/"
+      ],
+      "notes": "官網僅支持現行品牌及業務識別；不宣稱已排除所有私人股權或隱藏控制關係。",
+      "audit_file": "software-company-groups.json"
+    },
+    {
+      "slug": "Xiphera",
+      "group_key": "xiphera",
+      "group_name": "Xiphera",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://xiphera.com/"
+      ],
+      "notes": "官方來源支持品牌與業務識別，未據此宣稱完全獨立或已窮盡所有私人控制關係。",
+      "audit_file": "security-company-groups.json"
+    },
+    {
+      "slug": "Zapata-Quantum",
+      "group_key": "zapata-quantum",
+      "group_name": "Zapata Quantum",
+      "relationship": "更名及控股公司/營運子公司",
+      "sources": [
+        "https://zapataquantum.gcs-web.com/static-files/d0950f60-10c3-4b18-a1db-9fa22f2f4ede",
+        "https://www.globenewswire.com/news-release/2025/09/03/3143692/0/en/Zapata-Quantum-Completes-First-Phase-of-Strategic-Restructure-Establishing-Foundation-for-Growth.html"
+      ],
+      "notes": "官方財報記載 2025-08-21 控股公司更名 Zapata Quantum；Legacy Zapata 為其所控制營運公司。",
+      "audit_file": "software-company-groups.json"
+    },
+    {
+      "slug": "Zero-Point-Cryogenics",
+      "group_key": "zero-point-cryogenics",
+      "group_name": "Zero Point Cryogenics",
+      "relationship": "未核實其他控制母公司；暫用自身品牌分組",
+      "sources": [
+        "https://www.zpcryo.com/"
+      ],
+      "notes": "官網支持品牌及業務識別，並非完整股權調查；未核實控制關係時不因共同投資人、經銷、共同研發或供應商關係而合併。",
+      "audit_file": "hardware-company-groups.json"
+    },
+    {
+      "slug": "Zurich-Instruments",
+      "group_key": "rohde-schwarz",
+      "group_name": "Rohde & Schwarz",
+      "relationship": "全資子公司",
+      "sources": [
+        "https://www.zhinst.com/europe/de/company/our-story/"
+      ],
+      "notes": "官方公司沿革記載 2021-07-01 起由 Rohde & Schwarz 全資持有。",
+      "audit_file": "suppliers-company-groups.json"
+    }
+  ]
+}

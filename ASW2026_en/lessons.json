@@ -2,8 +2,8 @@
   {
     "title": "2026 Academia Sinica SCQC Winter Workshop",
     "file": "main.html",
-    "status": "new",
-    "date": "2026-02-13"
+    "status": "revised",
+    "date": "2026-10-03"
   },
   {
     "title": "Introduction to Superconducting Quantum Computers",
@@ -34,5 +34,11 @@
     "file": "E.html",
     "status": "new",
     "date": "2026-03-08"
+  },
+  {
+    "title": "FUJITSU: Hardware Challenges in Superconducting FTQC",
+    "file": "F.html",
+    "status": "new",
+    "date": "2026-10-03"
   }
 ]

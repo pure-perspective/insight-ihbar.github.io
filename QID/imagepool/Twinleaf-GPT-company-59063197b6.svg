@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="590px" height="277px" viewBox="0 0 590 277" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>OMG-Dimensions</title>
+    <g id="OMG-Dimensions" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M17.1,218.7 L18.6,228 L15.7,228 L17.1,218.7 M17.1,173.3 L15.7,164 L18.6,164 L17.1,173.3 M429.8,247 L439.2,245.6 L439.2,248.5 L429.8,247 M414,247 L404.6,248.5 L404.6,245.6 L414,247 M429.8,264 L420.5,265.5 L420.5,262.6 L429.8,264 M348.8,264 L358.1,262.6 L358.1,265.5 L348.8,264 M414,237.8 L423.3,236.4 L423.3,239.3 L414,237.8 M348.8,237.8 L339.4,239.3 L339.4,236.4 L348.8,237.8 M458.2,218.7 L459.6,228 L456.8,228 L458.2,218.7 M458.2,194.6 L456.8,185.2 L459.6,185.2 L458.2,194.6 M45.5,16.4 L54.8,15 L54.8,17.9 L45.5,16.4 M429.8,16.4 L420.5,17.9 L420.5,15 L429.8,16.4 M17.1,145.4 L15.7,136 L18.6,136 L17.1,145.4 M17.1,44.8 L18.6,54.1 L15.7,54.1 L17.1,44.8 M458.2,145.4 L459.6,154.8 L456.8,154.8 L458.2,145.4 M458.2,107.8 L456.8,98.5 L459.6,98.5 L458.2,107.8" id="Stroke-1" stroke="#000000" stroke-width="0.51"></path>
+        <path d="M41.9,218.7 L8.1,218.7 M41.9,173.3 L8.1,173.3 M17.1,218.7 L17.1,236.7 M17.1,173.3 L17.1,155.3 M429.8,222.3 L429.8,256 M414,198.2 L414,256 M429.8,247 L443.3,247 M414,247 L396,247 M429.8,222.3 L429.8,273 M348.8,198.2 L348.8,273 M429.8,264 L404.6,264 M348.8,264 L374,264 M414,198.2 L414,246.8 M348.8,198.2 L348.8,246.8 M414,237.8 L432,237.8 M348.8,237.8 L330.8,237.8 M433.4,218.7 L467.2,218.7 M417.6,194.6 L467.2,194.6 M458.2,218.7 L458.2,236.7 M458.2,194.6 L458.2,176.6 M45.5,41.2 L45.5,7.4 M429.8,41.2 L429.8,7.4 M45.5,16.4 L219.6,16.4 M429.8,16.4 L255.7,16.4 M41.9,145.4 L8.1,145.4 M41.9,44.8 L8.1,44.8 M17.1,145.4 L17.1,100.7 M17.1,44.8 L17.1,89.5 M433.4,145.4 L467.2,145.4 M417.6,107.8 L467.2,107.8 M458.2,145.4 L458.2,163.4 M458.2,107.8 L458.2,89.8" id="Stroke-7" stroke="#000000" stroke-width="0.51" stroke-linecap="round" stroke-linejoin="round"></path>
+        <path d="M17.1,218.7 L18.6,228 L15.7,228 M17.1,173.3 L15.7,164 L18.6,164 M429.8,247 L439.2,245.6 L439.2,248.5 M414,247 L404.6,248.5 L404.6,245.6 M429.8,264 L420.5,265.5 L420.5,262.6 M348.8,264 L358.1,262.6 L358.1,265.5 M414,237.8 L423.3,236.4 L423.3,239.3 M348.8,237.8 L339.4,239.3 L339.4,236.4 M458.2,218.7 L459.6,228 L456.8,228 M458.2,194.6 L456.8,185.2 L459.6,185.2 M45.5,16.4 L54.8,15 L54.8,17.9 M429.8,16.4 L420.5,17.9 L420.5,15 M17.1,145.4 L15.7,136 L18.6,136 M17.1,44.8 L18.6,54.1 L15.7,54.1 M458.2,145.4 L459.6,154.8 L456.8,154.8 M458.2,107.8 L456.8,98.5 L459.6,98.5" id="Fill-9" fill="#000000"></path>
+        <line x1="45.5" y1="215.8" x2="429.8" y2="215.8" id="Path" stroke="#000000" stroke-width="0.709" stroke-linecap="round" stroke-linejoin="round"></line>
+        <line x1="45.5" y1="215.8" x2="45.5" y2="176.2" id="Path" stroke="#000000" stroke-width="0.709" stroke-linecap="round" stroke-linejoin="round"></line>
+        <line x1="429.8" y1="176.2" x2="45.5" y2="176.2" id="Path" stroke="#000000" stroke-width="0.709" stroke-linecap="round" stroke-linejoin="round"></line>
+        <line x1="429.8" y1="176.2" x2="429.8" y2="215.8" id="Path" stroke="#000000" stroke-width="0.709" stroke-linecap="round" stroke-linejoin="round"></line>
+        <polyline id="Path" stroke="#000000" stroke-width="0.709" stroke-linecap="round" stroke-linejoin="round" points="74 204.5 73.9 202.9 73.5 201.4 72.8 200 71.9 198.8 70.7 197.7 69.4 196.8 68 196.2 66.5 195.9 64.9 195.8 63.4 196 61.9 196.5 60.5 197.2 59.3 198.2 58.3 199.4 57.5 200.7 56.9 202.2 56.6 203.7 56.6 205.3 56.9 206.8 57.5 208.3 58.3 209.6 59.3 210.8 60.5 211.8 61.9 212.5 63.4 213 64.9 213.2 66.5 213.1 68 212.8 69.4 212.2 70.7 211.3 71.9 210.2 72.8 209 73.5 207.6 73.9 206.1 74 204.5"></polyline>
+        <polyline id="Path" stroke="#000000" stroke-width="0.709" stroke-linecap="round" stroke-linejoin="round" points="348.8 190.3 347.7 190.5 346.7 190.9 345.8 191.6 345.1 192.5 344.7 193.5 344.5 194.6 344.7 195.7 345.1 196.7 345.8 197.6 346.7 198.3 347.7 198.7 348.8 198.8 349.9 198.7 350.9 198.3 351.8 197.6 352.5 196.7 352.9 195.7 353 194.6 352.9 193.5 352.5 192.5 351.8 191.6 350.9 190.9 349.9 190.5 348.8 190.3"></polyline>
+        <polyline id="Path" stroke="#000000" stroke-width="0.709" stroke-linecap="round" stroke-linejoin="round" points="414 190.3 412.9 190.5 411.8 190.9 411 191.6 410.3 192.5 409.9 193.5 409.7 194.6 409.9 195.7 410.3 196.7 411 197.6 411.8 198.3 412.9 198.7 414 198.8 415.1 198.7 416.1 198.3 417 197.6 417.7 196.7 418.1 195.7 418.2 194.6 418.1 193.5 417.7 192.5 417 191.6 416.1 190.9 415.1 190.5 414 190.3"></polyline>
+        <polyline id="Path" stroke="#000000" stroke-width="0.709" stroke-linecap="round" stroke-linejoin="round" points="65.3 198.3 64 198.4 62.8 198.8 61.6 199.4 60.7 200.3 59.9 201.4 59.4 202.6 59.1 203.8 59.1 205.2 59.4 206.4 59.9 207.6 60.7 208.7 61.6 209.6 62.8 210.2 64 210.6 65.3 210.8 66.6 210.6 67.9 210.2 69 209.6 70 208.7 70.7 207.6 71.3 206.4 71.5 205.2 71.5 203.8 71.3 202.6 70.7 201.4 70 200.3 69 199.4 67.9 198.8 66.6 198.4 65.3 198.3"></polyline>
+        <line x1="45.5" y1="176.2" x2="45.5" y2="173.3" id="Path" stroke="#000000" stroke-width="0.709" stroke-linecap="round" stroke-linejoin="round"></line>
+        <line x1="45.5" y1="173.3" x2="429.8" y2="173.3" id="Path" stroke="#000000" stroke-width="0.709" stroke-linecap="round" stroke-linejoin="round"></line>
+        <line x1="429.8" y1="173.3" x2="429.8" y2="176.2" id="Path" stroke="#000000" stroke-width="0.709" stroke-linecap="round" stroke-linejoin="round"></line>
+        <line x1="429.8" y1="218.7" x2="45.5" y2="218.7" id="Path" stroke="#000000" stroke-width="0.709" stroke-linecap="round" stroke-linejoin="round"></line>
+        <line x1="45.5" y1="218.7" x2="45.5" y2="215.8" id="Path" stroke="#000000" stroke-width="0.709" stroke-linecap="round" stroke-linejoin="round"></line>
+        <line x1="429.8" y1="215.8" x2="429.8" y2="218.7" id="Path" stroke="#000000" stroke-width="0.709" stroke-linecap="round" stroke-linejoin="round"></line>
+        <polyline id="Path" stroke="#000000" stroke-width="0.709" stroke-linecap="round" stroke-linejoin="round" points="71 204.5 70.8 203.2 70.4 202 69.7 201 68.8 200.1 67.8 199.4 66.6 199 65.3 198.8 64.1 199 62.9 199.4 61.8 200.1 60.9 201 60.2 202 59.8 203.2 59.6 204.5 59.8 205.8 60.2 207 60.9 208 61.8 208.9 62.9 209.6 64.1 210 65.3 210.2 66.6 210 67.8 209.6 68.8 208.9 69.7 208 70.4 207 70.8 205.8 71 204.5"></polyline>
+        <polyline id="Path" stroke="#000000" stroke-width="0.709" stroke-linecap="round" stroke-linejoin="round" points="68.5 204.5 68.4 203.6 68 202.7 67.3 202 66.5 201.5 65.6 201.3 64.6 201.4 63.7 201.7 63 202.3 62.4 203.1 62.1 204 62.1 205 62.4 205.9 63 206.7 63.7 207.3 64.6 207.6 65.6 207.7 66.5 207.5 67.3 207 68 206.3 68.4 205.4 68.5 204.5"></polyline>
+        <path d="M429.8,47.6 L45.5,47.6 M45.5,142.6 L429.8,142.6 M348.8,103.6 L347.7,103.7 L346.7,104.2 L345.8,104.8 L345.1,105.7 L344.7,106.7 L344.5,107.8 L344.7,108.9 L345.1,110 L345.8,110.8 L346.7,111.5 L347.7,111.9 L348.8,112.1 L349.9,111.9 L350.9,111.5 L351.8,110.8 L352.5,110 L352.9,108.9 L353,107.8 L352.9,106.7 L352.5,105.7 L351.8,104.8 L350.9,104.2 L349.9,103.7 L348.8,103.6 M414,103.6 L412.9,103.7 L411.8,104.2 L411,104.8 L410.3,105.7 L409.9,106.7 L409.7,107.8 L409.9,108.9 L410.3,110 L411,110.8 L411.8,111.5 L412.9,111.9 L414,112.1 L415.1,111.9 L416.1,111.5 L417,110.8 L417.7,110 L418.1,108.9 L418.2,107.8 L418.1,106.7 L417.7,105.7 L417,104.8 L416.1,104.2 L415.1,103.7 L414,103.6 M429.8,47.6 L429.8,142.6 M45.5,142.6 L45.5,47.6 M45.5,44.8 L429.8,44.8 M429.8,44.8 L429.8,47.6 M45.5,47.6 L45.5,44.8 M429.8,145.4 L45.5,145.4 M429.8,142.6 L429.8,145.4 M45.5,145.4 L45.5,142.6" id="Stroke-12" stroke="#000000" stroke-width="0.709" stroke-linecap="round" stroke-linejoin="round"></path>
+        <path d="M580.6,176.2 L577.8,173.3 M580.6,215.8 L580.6,176.2 M577.8,218.7 L580.6,215.8 M482.8,218.7 L577.8,218.7 M480,215.8 L482.8,218.7 M480,176.2 L480,215.8 M482.8,173.3 L480,176.2 M577.8,173.3 L482.8,173.3 M521.8,194.6 L521.6,193.5 L521.2,192.5 L520.5,191.6 L519.7,190.9 L518.6,190.5 L517.5,190.3 L516.4,190.5 L515.4,190.9 L514.5,191.6 L513.9,192.5 L513.4,193.5 L513.3,194.6 L513.4,195.7 L513.9,196.7 L514.5,197.6 L515.4,198.3 L516.4,198.7 L517.5,198.8 L518.6,198.7 L519.7,198.3 L520.5,197.6 L521.2,196.7 L521.6,195.7 L521.8,194.6" id="Stroke-13" stroke="#000000" stroke-width="0.709" stroke-linecap="round" stroke-linejoin="round"></path>
+        <text id="136" font-family="Palatino-Roman, Palatino" font-size="10" font-weight="normal" letter-spacing="-0.0244" fill="#000000">
+            <tspan x="230.15" y="19">136</tspan>
+        </text>
+        <text id="36" font-family="Palatino-Roman, Palatino" font-size="10" font-weight="normal" letter-spacing="-0.0244" fill="#000000">
+            <tspan x="12.2" y="98.6">36</tspan>
+        </text>
+        <text id="16" font-family="Palatino-Roman, Palatino" font-size="10" font-weight="normal" letter-spacing="-0.0244" fill="#000000">
+            <tspan x="12.2" y="198.8">16</tspan>
+        </text>
+        <text id="28.6" font-family="Palatino-Roman, Palatino" font-size="10" font-weight="normal" letter-spacing="-0.0244" fill="#000000">
+            <tspan x="382" y="267">28.6</tspan>
+        </text>
+        <text id="23.0" font-family="Palatino-Roman, Palatino" font-size="10" font-weight="normal" letter-spacing="-0.0244" fill="#000000">
+            <tspan x="373.936474" y="240.707948">23.0</tspan>
+        </text>
+        <text id="5.6" font-family="Palatino-Roman, Palatino" font-size="10" font-weight="normal" letter-spacing="-0.0244" fill="#000000">
+            <tspan x="444.501792" y="249.798131">5.6</tspan>
+        </text>
+        <text id="8.5" font-family="Palatino-Roman, Palatino" font-size="10" font-weight="normal" letter-spacing="-0.0244" fill="#000000">
+            <tspan x="453.1" y="209.8">8.5</tspan>
+        </text>
+        <text id="13.3" font-family="Palatino-Roman, Palatino" font-size="10" font-weight="normal" letter-spacing="-0.0244" fill="#000000">
+            <tspan x="453.1" y="130.5">13.3</tspan>
+        </text>
+        <text id="1" font-family="Palatino-Bold, Palatino" font-size="10" font-weight="bold" letter-spacing="-0.0244" fill="#000000">
+            <tspan x="411.0122" y="100">1</tspan>
+        </text>
+        <text id="1-copy" font-family="Palatino-Bold, Palatino" font-size="10" font-weight="bold" letter-spacing="-0.0244" fill="#000000">
+            <tspan x="411.0122" y="187">1</tspan>
+        </text>
+        <text id="2" font-family="Palatino-Bold, Palatino" font-size="10" font-weight="bold" letter-spacing="-0.0244" fill="#000000">
+            <tspan x="346.0122" y="100">2</tspan>
+        </text>
+        <text id="2-copy" font-family="Palatino-Bold, Palatino" font-size="10" font-weight="bold" letter-spacing="-0.0244" fill="#000000">
+            <tspan x="346.0122" y="187">2</tspan>
+        </text>
+        <text id="Dead-axis" transform="translate(376.000000, 95.500000) rotate(-90.000000) translate(-376.000000, -95.500000) " font-family="Palatino-Roman, Palatino" font-size="10" font-weight="normal" letter-spacing="-0.0244" fill="#000000">
+            <tspan x="354.386167" y="99">Dead axis</tspan>
+        </text>
+        <path id="Line" d="M382.511967,61.9801827 L382.941641,62.7583238 L387.378512,70.7935078 L387.620203,71.2312121 L386.744795,71.7145956 L386.503103,71.2768912 L382.989,64.913 L382.940991,70.9961702 L382.558978,119.511704 L382.51,125.597 L386.12507,119.28711 L386.373624,118.853266 L387.241312,119.350375 L386.992758,119.784219 L382.429907,127.748539 L381.988033,128.519817 L381.558359,127.741676 L377.121488,119.706492 L376.879797,119.268788 L377.755205,118.785404 L377.996897,119.223109 L381.51,125.586 L381.559009,119.50383 L381.941022,70.9882964 L381.989,64.902 L378.37493,71.2128899 L378.126376,71.646734 L377.258688,71.1496254 L377.507242,70.7157812 L382.070093,62.7514612 L382.511967,61.9801827 Z" fill="#979797" fill-rule="nonzero"></path>
+    </g>
+</svg>

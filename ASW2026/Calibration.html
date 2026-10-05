@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N39VTY949N"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-N39VTY949N');
+</script>
+    <!-- Basic Page Needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <meta name="author" content="Peir-Ru Wang">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;1,300&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/20250525-icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/20250525-icon.png">
+
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/css/style.css" rel="stylesheet">
+    <link href="../assets/css/responsive.css" rel="stylesheet">
+
+    <title>超導量子位元的 Calibration：從找到訊號到校正量子閘</title>
+    <meta name="description" content="從讀出共振器、磁通偏壓、Rabi、Ramsey 與 DRAG，到 IQ 讀出、T1/T2、CZ 校正、RB 與 Bell 態 tomography，逐步理解超導量子位元的校正方法與實驗圖判讀。">
+    
+    <link rel="canonical" href="https://www.insight-ihbar.com/ASW2026/Calibration.html">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+<meta name="keywords" content="超導量子電腦, ASW2026, 超導量子位元的 Calibration：從找到訊號到校正量子閘">
+<style>
+.asw-article figure { margin: 28px 0; }
+.asw-article figure img { display: block; width: 100%; height: auto; }
+.asw-article figcaption { margin-top: 12px; line-height: 1.9; }
+.asw-article h3 { margin-top: 38px; line-height: 1.5; }
+.asw-article h4 { margin-top: 24px; line-height: 1.6; }
+.asw-article p, .asw-article li { line-height: 1.95; overflow-wrap: break-word; }
+.asw-article table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+.asw-article td, .asw-article th { padding: 10px; border: 1px solid #ddd; vertical-align: top; }
+.asw-article pre { overflow-x: auto; }
+.asw-article .table-scroll { overflow-x: auto; }
+.asw-article a { text-decoration: underline; color: #397976; }
+mjx-container[display="true"] { overflow-x: auto; overflow-y: hidden; padding: 6px 0; max-width: 100%; }
+@media(max-width: 600px) { .asw-article h2 { font-size: 27px; } .asw-article h3 { font-size: 23px; } .asw-article td, .asw-article th { padding: 7px; } }
+</style>
+</head>
+<body>
+
+    <header id="masthead" class="site-header">
+        <nav id="primary-navigation" class="site-navigation">
+            <div class="container">
+
+                <div class="navbar-header">
+                   
+                    <a href="../index_ch.html" class="site-title">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
+
+                </div><!-- /.navbar-header -->
+
+                <div class="collapse navbar-collapse" id="agency-navbar-collapse">
+
+                    <ul class="nav navbar-nav navbar-right">
+
+                        <li><a href="../index_ch.html">Home</a></li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">科普介紹<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                <li><a href="../SCQ_elementary/main.html">超導量子位元(科普版)</a></li>
+                              <li><a href="../SCQ_advanced/main.html">超導量子位元(進階版)</a></li>
+                              <li><a href="../SpQ/main.html">半導體自旋量子位元</a></li>
+                            </ul>
+
+                        </li>
+                        <!--<li class="active"><a href="../SCQ_elementary/main.html">科普介紹</a></li>-->
+                        <li><a href="../QC_hardware/main.html">硬體導論</a></li>
+                        <li><a href="../QID/main.html">量子產業群像錄</a></li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">研討會筆記<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                <li class="active"><a href="../ASW2026/main.html">2026中研院超導量子電腦Workshop</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">量子諮詢<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                <li><a href="https://www.quantum-perspectives.com/About/main.html">量子遠見科技：諮詢服務</a></li>
+                                <li><a href="../About/main.html">關於我們</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="../index.html">English</a></li>
+                        
+                    </ul>
+
+                </div>
+
+            </div>   
+        </nav><!-- /.site-navigation -->
+    </header><!-- /#mastheaed -->
+
+    <div id="hero" class="hero overlay subpage-hero blog-hero">
+        <div class="hero-content">
+            <div class="hero_2-text">
+                <a href="main.html"><h1>2026中研院QPU冬季Workshop</h1></a>
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="../index_ch.html">Home</a></li>
+                  <!--<li class="breadcrumb-item"><a href="../SCQ_elementary/main.html">超導量子位元(科普版)</a></li>
+                  <li class="breadcrumb-item active">約瑟夫森節</li>-->
+                </ol>
+            </div><!-- /.hero-text -->
+        </div><!-- /.hero-content -->
+    </div><!-- /.hero -->
+
+    <main id="main" class="site-main">
+
+        <section class="site-section subpage-site-section section-blog">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                        <article class="blog-post">
+                            <!--<img src="../assets/img/portfolio-1.jpg" class="img-res" alt="">-->
+                            <div class="post-content">
+<div class="asw-article">
+<div style="text-align: center;">
+    <h2>超導量子位元的 Calibration：從找到訊號到校正量子閘</h2>
+    <h4>校正的重要知識、操作流程與實驗圖判讀</h4>
+</div>
+
+<p>在<a href="A.html">超導量子電腦概論</a>裡，我們介紹過利用微波脈衝控制 Qubit，並利用 readout resonator 讀取它的狀態。但實務上，設定一個頻率、打一個脈衝，就真的會得到想要的量子態嗎？室溫端設定的電壓，經過混頻器、衰減器、纜線與低溫電路後，到了晶片端已經不是同一個波形；每個 Qubit 的頻率、耦合與相干時間也不完全相同。<b>Calibration（校正）就是透過一系列可量測的實驗，建立「控制參數」與「量子操作」之間的對應。</b></p>
+<p>這篇以可調頻率 Transmon 常見的校正流程為主，從共振器、單量子位元一路介紹到雙量子位元閘。固定頻率 Qubit、不同耦合器或不同的原生量子閘，會使用不同的部分步驟。讀圖時，先確認三件事情：<b>橫軸掃描什麼、縱軸量到什麼，以及這個實驗到底決定哪個參數。</b>這樣才不會把一張漂亮的振盪圖，直接當成高保真度的證明。</p>
+
+<div style="text-align: center;">
+    <a href="../Image/ASW2026-calibration-overview.jpeg"><img src="../WebP/ASW2026-calibration-overview.webp" alt="使用者提供的超導量子位元校正總覽，依箭頭串聯十個量測與驗證面板" style="width: 100%; height: auto;"></a>
+</div>
+<p class="dark-background">▲ 超導 Qubit 校正的十個常見環節。上排由左至右先建立讀出與控制，中排由右至左微調驅動、讀出與相干性，下排再進到雙位元交互作用、量子閘與整體驗證。這是使用者提供的流程示意資料，原始出處與完整量測條件未提供；圖中數字不代表本次 Workshop 的實測成果。本文另繪的圖都標示為「模擬教學示意」，用來說明曲線形狀與判讀方法。<br><br></p>
+
+<br>
+<h3>校正前，先弄清楚儀器量到的是什麼</h3>
+<p>超導 Qubit 的量測，通常不是直接收到一個 0 或 1，而是先收到微波訊號。訊號經下變頻與積分後，得到 \(I\)、\(Q\) 兩個正交分量，再經過分類轉成量子位元的量測結果。因此，原圖裡標示「Trans. amp. [mV]」的縱軸是傳輸訊號的振幅，<b>並不直接等於激發態機率 \(P_1\)</b>。要將它換成 \(P_1\)，需要先準備參考態、建立讀出模型；若還有 \(|2\rangle\) 漏態，單純用兩個參考點線性換算也可能失準。</p>
+<p>實驗開始前，應確認通道對應、LO 與取樣時脈、觸發同步、讀出延遲，以及使用 IQ mixer 時的 LO leakage 與鏡像抑制。每次量測也需要一致的初始態：可以等待弛豫，或使用經過驗證的 active reset。若前一次實驗留下激發態或共振器光子，下一次掃描就不再從相同條件出發。這些基礎工作做好，後續擬合出的物理參數才有意義。<span style="font-size: 0.8em;"> Ref: <a href="https://doi.org/10.1103/PRXQuantum.2.040202">Gao 等，Practical Guide for Building Superconducting Quantum Devices</a>；<a href="https://docs.zhinst.com/labone_q_user_manual/applications_library/tutorials/sources/quantum_operations.html">LabOne Q：參考態與讀出時序</a>。</span></p>
+
+<br>
+<h3>1. Readout resonator：先找到讀出共振器</h3>
+<p>首先掃描讀出微波的頻率，量測傳輸或反射響應。若是常見的 hanger resonator，在傳輸振幅上可以看到一個凹谷；其他量測幾何也可能呈現峰值或不同的複數響應。共振中心給出讀出共振器的頻率 \(f_r\)，線寬則和能量衰減、耦合強度有關。在簡單的單模近似下，載入品質因子可寫成 \(Q_L\approx f_r/\Delta f\)。真正要取出內部損耗與外部耦合時，還需要對複數響應、背景與纜線延遲做適當擬合，不能只量凹谷有多深。</p>
+<p>這一步的目的，是先讓我們有辦法「看到」Qubit。當 Qubit 與共振器處於 dispersive regime 時，共振器頻率會依 Qubit 的狀態改變。之後分別準備 \(|0\rangle\) 與 \(|1\rangle\)，便能找出讀出訊號最容易區分的位置。<b>最後使用的讀出頻率不一定等於初始掃描的凹谷中心</b>，因為還要考慮兩個量子態的差異、雜訊與讀出功率。<span style="font-size: 0.8em;"> Ref: <a href="https://docs.zhinst.com/labone_q_user_manual/applications_library/how-to-guides/sources/01_superconducting_qubits/01_workflows/01_resonator_spectroscopy.html">LabOne Q：Resonator Spectroscopy</a>；<a href="https://arxiv.org/abs/cond-mat/0402216">Blais 等，circuit QED 與 dispersive readout</a>。</span></p>
+
+<div style="text-align: center;">
+    <a href="../Image/ASW2026-calibration-spectroscopy.svg"><img src="../Image/ASW2026-calibration-spectroscopy.svg" alt="模擬教學圖：兩個量子態的共振器頻譜，以及磁通偏壓對 Qubit 頻率的二維掃描" loading="lazy" style="width: 100%; height: auto;"></a>
+</div>
+<p class="dark-background">▲ 模擬教學示意。（A）Qubit 處於不同狀態時，共振器的響應位置不同；兩條曲線是簡化的複數 notch response，並非實驗擬合。（B）每個磁通偏壓都掃描一次 Qubit 驅動頻率，顏色表示響應強度，形成頻率隨磁通變化的軌跡。虛線與 sweet spot 用來說明操作點的選擇，圖中 GHz 與 MHz 數值均為示範設定。<br><br></p>
+
+<br>
+<h3>2. Flux bias 與 Qubit spectroscopy：找到操作頻率</h3>
+<p>接下來固定讀出頻率，在 Qubit drive line 掃描另一個微波頻率；當驅動接近 \(|0\rangle\leftrightarrow|1\rangle\) 的轉換頻率 \(f_{01}\)，讀出響應便會改變。這就是 two-tone spectroscopy：一個 tone 激發 Qubit，另一個 tone 負責偵測。先做較寬範圍的搜尋，再降低驅動功率、縮小掃描範圍，可以減少 power broadening 對中心位置與線寬判讀的影響。<span style="font-size: 0.8em;"> Ref: <a href="https://docs.zhinst.com/labone_q_user_manual/applications_library/how-to-guides/sources/01_superconducting_qubits/01_workflows/03_qubit_spectroscopy.html">LabOne Q：Qubit Spectroscopy</a>。</span></p>
+<p>若 Transmon 的約瑟夫森元件是 SQUID，磁通會改變有效約瑟夫森能量，進而改變頻率。在 Transmon 近似下，</p>
+<p>\[
+f_{01}(\Phi)\approx\frac{\sqrt{8E_CE_J(\Phi)}-E_C}{h}.
+\]</p>
+<p>故一邊掃 flux bias、一邊做 spectroscopy，就可以建立控制電壓與 Qubit 頻率的對應。原始總覽圖的第二格正是在呈現這類軌跡。要注意，儀器上的 mV 是控制電壓，還不是磁通本身；電壓到 \(\Phi\) 的換算須另外標定。頻率對磁通的一階導數接近零的位置稱為 flux sweet spot，能降低一階磁通擾動造成的頻率變動。不過實際選點還要避開鄰近 Qubit、缺陷或其他模態，並兼顧雙位元閘需要的可調範圍。<span style="font-size: 0.8em;"> Ref: <a href="https://arxiv.org/abs/cond-mat/0703002">Koch 等，Transmon 的能階、非諧性與磁通調控</a>。</span></p>
+
+<br>
+<h3>3. Rabi oscillation：把脈衝校正成 \(\pi\) 與 \(\pi/2\)</h3>
+<p>找到 Qubit 頻率之後，就可以開始控制狀態了！共振驅動下，Bloch 球上的旋轉角由 Rabi rate 的時間積分決定：</p>
+<p>\[
+\theta=\int_0^{t_p}\Omega_R(t)\,dt,\qquad
+P_1=\sin^2\!\left(\frac{\theta}{2}\right).
+\]</p>
+<p>固定脈衝長度與包絡，掃描振幅 \(A\)，就得到 amplitude Rabi；固定振幅、掃描時間，則是 time Rabi。以從 \(|0\rangle\) 出發的理想情況而言，第一次到達最大激發機率對應 \(\pi\)-pulse，回到 \(|0\rangle\) 則對應 \(2\pi\)。若控制鏈在線性範圍，\(A_{\pi/2}\approx A_\pi/2\) 可以作為初始估計，但仍應分別驗證兩種脈衝。原圖第三格的週期振盪，正是用來找到這種對應。<span style="font-size: 0.8em;"> Ref: <a href="https://docs.zhinst.com/labone_q_user_manual/applications_library/how-to-guides/sources/01_superconducting_qubits/01_workflows/04_amplitude_rabi.html">LabOne Q：Amplitude Rabi</a>。</span></p>
+<p>為什麼還需要精校？因為 Rabi 曲線最大值附近很平，振幅稍微偏掉，單次量測也不容易看出差異。可以先用 \(\pi/2\) 把狀態帶到 Bloch 球赤道，再重複施加待校正旋轉，讓每次很小的 over-rotation 或 under-rotation 累積成可辨識的偏差。依擬合結果修正振幅，再用獨立序列確認。這類 error amplification 的精度仍受相干時間限制，不能無限增加脈衝數。<span style="font-size: 0.8em;"> Ref: <a href="https://docs.zhinst.com/labone_q_user_manual/applications_library/how-to-guides/sources/01_superconducting_qubits/01_workflows/09_amplitude_fine.html">LabOne Q：Amplitude Calibration with Error Amplification</a>。</span></p>
+
+<div style="text-align: center;">
+    <a href="../Image/ASW2026-calibration-single-qubit.svg"><img src="../Image/ASW2026-calibration-single-qubit.svg" alt="模擬教學圖：Rabi 脈衝振幅、Ramsey 振盪、DRAG 正交包絡，以及 T1 與 T2 衰減比較" loading="lazy" style="width: 100%; height: auto;"></a>
+</div>
+<p class="dark-background">▲ 模擬教學示意。（A）固定形狀與時間的脈衝，以振幅決定旋轉角。（B）Ramsey 的振盪速度反映 detuning，包絡衰減則反映相干性。（C）DRAG 的 Q 分量與 I 包絡的時間導數成比例，並非把同一包絡複製到另一個通道。（D）\(T_1\) 曲線表示激發態人口，Ramsey 與 echo 曲線表示正規化相干對比度；三條曲線量的是不同物理量，不能混稱為同一種「壽命」。所有參數皆為模擬設定。<br><br></p>
+
+<br>
+<h3>4. Fine-tuning qubit drive：Ramsey 與 DRAG</h3>
+<h4>Ramsey：把頻率誤差變成可看見的相位</h4>
+<p>Spectroscopy 可以找到頻率的大致位置，但要細調驅動頻率，Ramsey 更敏感。序列是 \(\pi/2\rightarrow\tau\rightarrow\pi/2\)：第一個脈衝建立疊加態，等待期間累積相位，第二個脈衝把相位差轉成可讀取的人口差。在簡化的指數衰減模型中，</p>
+<p>\[
+P_1(\tau)=B+C e^{-\tau/T_2^*}\cos(2\pi\Delta f\tau+\phi_0),\qquad
+\Delta f=f_{01}-f_d.
+\]</p>
+<p>擬合振盪頻率與包絡，就可以分別估計 detuning 與 \(T_2^*\)。原圖「Fine-tuning qubit drive」的 idle time 振盪，可用 Ramsey 的概念來理解。單一 cosine trace 通常無法直接判斷 detuning 的正負，因此需要已知的頻率偏移、第二個相位正交的量測，或再掃描驅動頻率來決定修正方向。有些控制系統透過第二個 \(\pi/2\) 脈衝的相位步進，人為加入已知的 Ramsey 振盪；這部分也要從擬合結果扣除。<span style="font-size: 0.8em;"> Ref: <a href="https://docs.zhinst.com/labone_q_user_manual/applications_library/how-to-guides/sources/01_superconducting_qubits/01_workflows/05_ramsey.html">LabOne Q：Ramsey Interferometry</a>。</span></p>
+
+<h4>DRAG：避免轉得快，卻轉進 \(|2\rangle\)</h4>
+<p>Transmon 並非只有兩個能階，而是具有有限非諧性的多能階系統。脈衝越短，頻譜通常越寬，越可能影響 \(|1\rangle\leftrightarrow|2\rangle\) 轉換；即使最後沒有留下明顯漏態，也可能累積不想要的相位。DRAG（Derivative Removal by Adiabatic Gate）利用另一個微波正交分量補償這些效應，常見參數化形式是</p>
+<p>\[
+I(t)=A F(t),\qquad Q(t)=\beta\frac{dI(t)}{dt}.
+\]</p>
+<p>依照上式，若 I、Q 使用相同振幅單位，\(\beta\) 就具有時間單位；軟體也可能先把時間正規化，再提供無因次的 DRAG 係數。正負號與數值會受到混頻器、軟體與時間單位定義影響，不能直接照抄別人的設定。實際做法是掃描 DRAG 係數，配合對相位敏感的脈衝序列；例如比較 \(X_{\pi/2}Y_\pi\) 與 \(X_{\pi/2}Y_{-\pi}\) 的響應，再用漏態量測與 benchmark 確認。<b>相位誤差最小的係數，未必同時讓漏態最小</b>，故頻率、振幅與 DRAG 往往需要交替微調。<span style="font-size: 0.8em;"> Ref: <a href="https://arxiv.org/abs/0901.0534">Motzoi 等，DRAG 原始論文</a>；<a href="https://docs.zhinst.com/labone_q_user_manual/applications_library/reference/experiments/drag_q_scaling.html">LabOne Q：DRAG quadrature-scaling 校正</a>。</span></p>
+
+<br>
+<h3>5. Readout optimization：IQ 兩團分開，還要確認怎麼分</h3>
+<p>有了初步的 \(\pi\)-pulse，就可以交替準備 \(|0\rangle\) 與 \(|1\rangle\)，重複量測許多 shots，把每次讀到的 \(I+iQ\) 畫成散點。原圖中藍色、橘色的兩團點，就是常說的 IQ blobs。將連接兩團中心的方向旋轉到 I 軸後，簡單情況下可用一個 threshold 分類；若分布不對稱、含有弛豫軌跡或多個能階，就需要更合適的分類方式。讀出頻率、功率、積分時間、積分權重與門檻應一起考慮，並以未參與調參的 shots 檢查分類效果。<span style="font-size: 0.8em;"> Ref: <a href="https://docs.zhinst.com/labone_q_user_manual/applications_library/how-to-guides/sources/01_superconducting_qubits/01_workflows/11_iq_blobs.html">LabOne Q：IQ Blobs</a>。</span></p>
+<p>分類結果可以整理成 assignment matrix：</p>
+<p>\[
+M_{ij}=P(\text{判為 }i\mid\text{準備 }j),\qquad
+F_{\mathrm{assign}}=\frac{P(0|0)+P(1|1)}{2}.
+\]</p>
+<p>這個定義採用兩種輸入態等權重。它和單量子位元閘保真度是不同的量，而且實際估計值還可能包含準備態錯誤、熱激發與讀出期間的 \(T_1\) 弛豫。故看到一團尾巴時，應先辨識是放大鏈雜訊、狀態準備、弛豫，還是讀出本身誘發了轉換。</p>
+<p>讀出功率也不是越大越好。提高共振器光子數可以增加訊號，但過強讀出可能把 Qubit 推離計算子空間；積分越久雖可累積訊號，也給了 \(|1\rangle\) 更多時間弛豫。若目標是中途量測與量子糾錯，還要用重複量測檢查 QND 性質、量測後漏態與 reset 效果，而不只是讓兩團點看起來分開。<span style="font-size: 0.8em;"> Ref: <a href="https://arxiv.org/abs/1606.05721">Sank 等，讀出誘發的量子態轉換</a>。</span></p>
+
+<div style="text-align: center;">
+    <a href="../Image/ASW2026-calibration-readout.svg"><img src="../Image/ASW2026-calibration-readout.svg" alt="模擬教學圖：旋轉後的 IQ 散點與判別門檻，以及兩態 assignment matrix" loading="lazy" style="width: 100%; height: auto;"></a>
+</div>
+<p class="dark-background">▲ 模擬教學示意。（A）每一點代表一個 shot，虛線是簡化的一維分類門檻；重疊區會造成判讀錯誤。（B）另一組獨立的示範矩陣，直欄是準備態，橫列是判定結果，每一欄機率加總為 1。此例等權重 assignment fidelity 為 96%，不是由左圖散點計算，也不是 Qubit 的 gate fidelity。<br><br></p>
+
+<br>
+<h3>6. Qubit coherence：\(T_1\)、\(T_2^*\) 與 echo 各代表什麼？</h3>
+<p>\(T_1\) 是能量弛豫時間。先用 \(\pi\)-pulse 準備 \(|1\rangle\)，等待 \(\tau\) 再讀出，常用模型是 \(P_1(\tau)=P_{\mathrm{eq}}+C e^{-\tau/T_1}\)。長時間的基線應允許熱人口與量測偏移，而不必強迫為零。原圖的「Qubit coherence」示範的是這類人口衰減，圖上的單一 \(T_1\) 值也只是當時量測條件下的估計。</p>
+<p>\(T_2^*\) 則由 Ramsey 包絡取得，描述自由演化時疊加態失去相位一致性的速度。在兩個 \(\pi/2\) 脈衝中間加入 \(\pi\)-pulse，可以重新聚焦一部分慢速頻率擾動，得到 Hahn-echo 的 \(T_{2,\mathrm{echo}}\)。若 echo 明顯長於 Ramsey，表示低頻雜訊可能占有重要角色。對簡單、平穩的指數衰減模型，</p>
+<p>\[
+\frac{1}{T_2}=\frac{1}{2T_1}+\frac{1}{T_\phi},\qquad T_2\leq 2T_1.
+\]</p>
+<p>其中 \(T_\phi\) 表示純退相位時間。若資料呈現 Gaussian 包絡、拍頻或時間漂移，就要使用相符的模型，不能把所有曲線硬套單一指數。相干時間提供操作速度的尺度，但閘操作期間還可能存在額外雜訊，因此 \(t_{\mathrm{gate}}/T_1\) 只是粗略的誤差尺度，不能直接當成完整的閘錯誤率。<span style="font-size: 0.8em;"> Ref: <a href="https://arxiv.org/html/1904.06560v5">Krantz 等，A Quantum Engineer’s Guide to Superconducting Qubits，Coherence 章節</a>。</span></p>
+
+<br>
+<h3>7. Two-qubit interaction：先量耦合，再談量子閘</h3>
+<p>兩個 Qubit 各自可以操作，還不代表已經能做雙位元閘。首先要知道：在待機時有多少殘餘耦合，操作時又能提供多強的交互作用。常見方法是準備一個激發態，例如 \(|10\rangle\)，掃描互動時間與 Qubit 或 coupler 的偏壓，再量測激發態是否轉移到 \(|01\rangle\)。橫軸是時間、縱軸是 detuning 或控制振幅、顏色是轉移機率，便可能得到 chevron 圖。</p>
+<p>在理想的雙態交換模型中，若 \(H/\hbar\) 的非對角耦合是 \(g\)，detuning 為 \(\Delta\)，則</p>
+<p>\[
+P_{10\rightarrow01}(t)=\frac{4g^2}{\Delta^2+4g^2}
+\sin^2\!\left(\frac{\sqrt{\Delta^2+4g^2}\,t}{2}\right),
+\]</p>
+<p>這裡 \(g\) 與 \(\Delta\) 都採角頻率單位。共振時轉移幅度最大，離開共振後幅度變小、振盪頻率改變，因而形成特徵紋路。但原圖的「Two-qubit interaction」只提供了小型色圖，不能僅憑紋路就斷定它測的是 \(|10\rangle\leftrightarrow|01\rangle\)、\(|11\rangle\leftrightarrow|02\rangle\)，或哪一種 coupler 實作；必須回到準備態、脈衝與讀出定義。<span style="font-size: 0.8em;"> Ref: <a href="https://arxiv.org/abs/0903.2030">DiCarlo 等，可控制的雙量子位元交互作用</a>。</span></p>
+<p>另一個重點是殘餘 \(ZZ\)。分別把鄰居準備在 \(|0\rangle\) 與 \(|1\rangle\)，比較目標 Qubit 的 Ramsey 頻率，就能量到依鄰居狀態而改變的頻率偏移。這個偏移在待機時會累積不想要的條件相位；可調耦合器常需要一起校正 idle point 與 gate point，而不只是找最大耦合。<span style="font-size: 0.8em;"> Ref: <a href="https://docs.zhinst.com/labone_q_user_manual/applications_library/how-to-guides/sources/01_superconducting_qubits/01_workflows/15_zz_coupling.html">LabOne Q：ZZ Coupling</a>。</span></p>
+
+<br>
+<h3>8. Two-qubit gate calibration：以 CZ 為例</h3>
+<p>CZ 閘的理想形式是 \(\operatorname{diag}(1,1,1,-1)\)：前三個計算基底態維持相同的相對相位，\(|11\rangle\) 多得到一個 \(\pi\) 相位。某些 Transmon 實作會利用 \(|11\rangle\) 與 \(|02\rangle\) 或 \(|20\rangle\) 的 avoided crossing，也有使用可調耦合器的實作。這些方法的波形不同，但校正時都要同時注意<b>條件相位、單位元相位與漏態</b>。</p>
+<p>若各基底態累積相位 \(\phi_{ij}\)，真正需要調到 \(\pi\pmod{2\pi}\) 的組合是</p>
+<p>\[
+\phi_{\mathrm{cond}}=\phi_{11}-\phi_{10}-\phi_{01}+\phi_{00}.
+\]</p>
+<p>實驗上，先將目標位元準備成疊加態，另一個控制位元分別準備成 \(|0\rangle\) 與 \(|1\rangle\)，施加待測脈衝，再掃描分析脈衝的相位。兩組 Ramsey fringe 的相位差便給出條件相位。掃描 flux pulse 的振幅、長度或形狀，找出相位差接近 \(\pi\) 的區域；再量測兩個位元各自的動態相位，以 virtual Z 等方式補償。<span style="font-size: 0.8em;"> Ref: <a href="https://arxiv.org/abs/1402.4848">Barends 等，超導 CZ 閘與控制波形校正</a>。</span></p>
+<p>同時還要檢查脈衝結束後是否留在 \(|2\rangle\)、是否仍有交換、波形尾巴是否影響下一個閘，以及平行操作時參數是否改變。條件相位正確，只代表完成了其中一個條件；如果每次 CZ 都把一部分人口漏出計算空間，它仍不是一個好的 CZ。最後必須放進完整序列做驗證。</p>
+
+<div style="text-align: center;">
+    <a href="../Image/ASW2026-calibration-two-qubit.svg"><img src="../Image/ASW2026-calibration-two-qubit.svg" alt="模擬教學圖：交換 chevron、CZ 條件 Ramsey、RB 衰減，以及 Bell 態與古典混合態密度矩陣" loading="lazy" style="width: 100%; height: auto;"></a>
+</div>
+<p class="dark-background">▲ 模擬教學示意。（A）理想 \(|10\rangle\leftrightarrow|01\rangle\) 交換模型的 chevron，設定 \(g/(2\pi)=8\,\mathrm{MHz}\)，縱軸為 \(\Delta/(2\pi)\)，並非原始總覽圖的重建。（B）控制位元為 0 或 1 時，目標位元的條件 Ramsey 相差 \(\pi\)，用來說明 CZ 相位量測。（C）一量子位元 reference RB 與 interleaved RB 的示範曲線；不同曲線的衰減率需放在對應模型下解讀。（D、E）理想 Bell 態與古典混合態具有相同的對角人口，但 Bell 態還有非對角相干項；兩者的虛部在此理想例子中皆為零。<br><br></p>
+
+<br>
+<h3>9. Randomized benchmarking：量到的是哪一種 fidelity？</h3>
+<p>Randomized benchmarking（RB）會施加不同長度的隨機 Clifford 序列，最後加上理想上能反轉整段序列的操作，量測回到指定初始態的機率。對許多序列平均後，常用 \(P(m)=A p^m+B\) 擬合。其中 \(m\) 是 Clifford 數，\(A\)、\(B\) 吸收一部分 state preparation and measurement（SPAM）的影響，\(p\) 描述隨深度增加的衰減。在標準模型成立時，</p>
+<p>\[
+r_{\mathrm{Clifford}}=\frac{d-1}{d}(1-p),\qquad d=2^n.
+\]</p>
+<p>這是<b>每個 Clifford 的平均錯誤率</b>，不一定是每個實體脈衝的錯誤率。若把 Clifford 分解成多個原生閘，還需要知道編譯與噪聲假設，才能進一步解讀。量測時應保存不同隨機序列的分散、shots 數與擬合不確定度；若曲線出現多重衰減、漂移或明顯偏離模型，也要先檢查 leakage 與非平穩雜訊。<span style="font-size: 0.8em;"> Ref: <a href="https://arxiv.org/abs/1109.6887">Magesan 等，Characterizing Quantum Gates via Randomized Benchmarking</a>。</span></p>
+<p>若要測某個指定閘，例如 CZ，可使用 interleaved RB：在每個隨機 Clifford 間插入待測閘，再與 reference RB 比較。在相應噪聲假設下，常用估計是</p>
+<p>\[
+r_{\mathrm{gate}}\approx\frac{d-1}{d}\left(1-\frac{p_{\mathrm{int}}}{p_{\mathrm{ref}}}\right).
+\]</p>
+<p>它是帶有假設與界限的估計，不是對任何噪聲都成立的精確等式。原圖 RB 面板標有「1 − EPG」，但僅憑這張縮圖，無法確認其中 G 指 Clifford、原生閘或如何換算；故不宜把圖上數字直接當作前一步 CZ 的實測保真度。<span style="font-size: 0.8em;"> Ref: <a href="https://arxiv.org/abs/1203.4550">Magesan 等，Interleaved Randomized Benchmarking</a>。</span></p>
+
+<br>
+<h3>10. Bell state tomography：除了人口，還要看到相干性</h3>
+<p>最後用完整的單位元閘、雙位元閘與讀出，準備一個 Bell 態，例如</p>
+<p>\[
+|\Phi^+\rangle=\frac{|00\rangle+|11\rangle}{\sqrt2},\qquad
+\rho_{\Phi^+}=\frac12
+\begin{pmatrix}
+1&0&0&1\\0&0&0&0\\0&0&0&0\\1&0&0&1
+\end{pmatrix}.
+\]</p>
+<p>如果只用 Z basis 量到約一半 00、一半 11，仍不能證明有糾纏，因為古典混合態 \(\rho_{\mathrm{mix}}=(|00\rangle\langle00|+|11\rangle\langle11|)/2\) 也會給出相同機率。兩者的差別在於非對角的相干項。因此 tomography 需要在讀出前加上不同的分析旋轉，取得 X、Y、Z basis 的聯合量測；例如兩位元的九組局域基底設定，可提供重建密度矩陣所需的資訊。</p>
+<p>重建後不只看 3D 長條有沒有「長得像」，也應確認矩陣 Hermitian、trace 為 1，以及正半定等物理條件。Bell-state fidelity 可寫成 \(F_{\Phi^+}=\langle\Phi^+|\rho|\Phi^+\rangle\)。在可信的兩位元狀態與量測模型下，超過 \(1/2\) 可作為相對於此 Bell 態的糾纏判據；實驗上仍須納入統計不確定度與 SPAM 影響。<b>這裡的 fidelity 評估的是整段 Bell 態製備結果，並不等於單獨 CZ 閘的 fidelity。</b>如果使用讀出誤差修正，亦應同時保留原始結果與修正方法。<span style="font-size: 0.8em;"> Ref: <a href="https://arxiv.org/abs/quant-ph/0103121">James 等，雙量子位元 tomography、物理態重建與誤差分析</a>；<a href="https://quantum.prof/publications/2007/measuringGates.pdf">White 等，Bell-state fidelity 與糾纏判據</a>。</span></p>
+
+<br>
+<h3>校正完成後，如何維持可用的 QPU？</h3>
+<p>前面的流程並不是每次都從第一格重跑到最後一格。較合理的方式，是記錄參數之間的依賴關係：flux 操作點改了，\(f_{01}\) 可能改變；頻率改了，Rabi、DRAG 與讀出條件可能需要重驗；單位元相位或雙位元波形改了，下游 benchmark 也要重新確認。以 dependency graph 管理校正，就是讓系統知道哪些上游條件變動後，哪些下游結果需要更新。<span style="font-size: 0.8em;"> Ref: <a href="https://arxiv.org/abs/1803.03226">Kelly 等，Physical Qubit Calibration on a Directed Acyclic Graph</a>。</span></p>
+<p>實務上每次更新應保存原始資料、時間、通道、脈衝版本、擬合模型與參數不確定度，再用另一組序列檢查是否真的改善。對多位元處理器，還要在實際會使用的平行操作與鄰居狀態下驗證。如此一來，Calibration 才能將頻率、振幅、相位與讀出分類這些控制設定，轉成可重現的量子操作。</p>
+<h4>一次校正要留下哪些可重用的參數？</h4>
+<p>以單一 Qubit 為例，Rabi 掃描完成後，不是只存一張圖，而是把選定的 \(A_\pi\)、\(A_{\pi/2}\)、脈衝長度、包絡與當時的驅動頻率一起存入設定；Ramsey 更新 \(f_d\)，DRAG 更新係數及其單位，讀出校正則更新讀出頻率、功率、積分權重與分類門檻。雙位元閘還需保存作用的位元對、flux 波形、持續時間、idle bias，以及兩個位元各自的相位補償。這些參數必須有一致的版本，否則下次執行很容易混用不同時間的設定。</p>
+<p>每個步驟都可以依「掃描 → 擬合 → 暫存候選參數 → 獨立驗證」執行。先確認掃描涵蓋足夠的共振線形或振盪週期，再檢查擬合殘差與不確定度；通過驗證後才把候選值設成日常操作值。若新的參數使 error-amplification、讀出分類或 RB 結果變差，就保留原資料並回到上一個已驗證版本。本文的圖提供模型與判讀方法，實際掃描範圍、步距、shots 與通過門檻，則需依裝置響應、雜訊與所需精度決定。</p>
+
+<div style="overflow-x: auto;">
+<table border="1" cellspacing="0" cellpadding="8" width="100%">
+    <thead><tr><th>量測圖</th><th>主要決定的量</th><th>不能單憑它下的結論</th></tr></thead>
+    <tbody>
+        <tr><td>Resonator / spectroscopy</td><td>共振頻率、操作點、頻譜結構</td><td>看到共振就代表閘已校好</td></tr>
+        <tr><td>Rabi / Ramsey / DRAG</td><td>脈衝轉角、頻率與相位、包絡修正</td><td>高振盪對比度等於高 gate fidelity</td></tr>
+        <tr><td>IQ blobs</td><td>分類門檻與 assignment matrix</td><td>讀出正確率等於量子閘保真度</td></tr>
+        <tr><td>\(T_1\) / \(T_2^*\) / echo</td><td>弛豫與退相位尺度</td><td>單次相干時間能代表所有操作誤差</td></tr>
+        <tr><td>Chevron / conditional Ramsey</td><td>耦合、條件相位、雙位元脈衝參數</td><td>相位到 \(\pi\) 就代表 CZ 沒有漏態</td></tr>
+        <tr><td>RB / interleaved RB</td><td>指定模型下的平均錯誤率估計</td><td>一個數字涵蓋全部串擾與噪聲</td></tr>
+        <tr><td>Bell tomography</td><td>製備態的密度矩陣與相干性</td><td>00 / 11 人口各半就已證明糾纏</td></tr>
+    </tbody>
+</table>
+</div>
+<p class="dark-background">▲ 讀懂校正圖，關鍵在於把「這張圖實際量到的東西」與「想驗證的量子操作」連起來。每一個環節都有自己的誤差來源，也都有下一個實驗可以交叉檢查。<br><br></p>
+
+</div>
+<div class="post-meta">
+                                    <span class="post-author">
+                                        <a href="../About/Wang.html"><img class="img-res" src="../WebP/IMG_0964_2.webp" alt="">王培儒</a>
+                                    </span>
+                                    <span class="post-category">
+                                        <a href="../ASW2026/main.html"><i class="fa fa-folder" aria-hidden="true"></i>2026中研院QPU冬季Workshop</a>
+                                    </span>
+                                </div><!-- /.post-meta -->
+                            
+                                
+                                <div id="prev-next-nav" class="text-center">
+                                    <a class="btn btn-gray" href="J.html">← 上一頁</a> 
+                                </div>
+
+                                
+
+                            </div><!-- /.post-content -->
+                        </article><!-- /.blog-post -->
+                        <!--<div id="PostComments" class="post-comments">
+                            
+                            
+                            
+                        </div> /#PostComments -->
+                        <!--<div class="respond">
+                            <h3>Post a Comment</h3>
+                            <form class="form-horizontal">
+                                <input class="form-control" type="text" placeholder="Your Name*" required>
+                                <input class="form-control" type="email" placeholder="Your Email" required>
+                                <textarea class="form-control form-control-comment" type="text" placeholder="Your Comment*" required></textarea>
+                                <button class="btn btn-green">Add a comment</button>
+                            </form>    
+                        </div> /.respond -->
+                    </div>
+                    <aside class="col-md-3">
+                        <div class="sidebar">
+                            <div class="widget">
+                                <div id="lesson-list_2">
+                                <div class="lesson-link "><a href="main.html">2026中研院QPU冬季Workshop：引言</a></div>
+                                <div class="lesson-link "><a href="A.html">超導量子電腦概論</a></div>
+                                <div class="lesson-link "><a href="B.html">IQM量子電腦科技發展</a></div>
+                                <div class="lesson-link "><a href="C.html">IQM KQCircuit Design</a></div>
+                                <div class="lesson-link "><a href="D.html">AMD</a></div>
+                                <div class="lesson-link "><a href="E.html">NVIDIA與NVQLink</a></div>
+                                <div class="lesson-link "><a href="F.html">FUJITSU：FTQC研發與挑戰</a></div>
+                                <div class="lesson-link "><a href="G.html">QC-Test：從量子晶片到可用的測試平台</a></div>
+                                <div class="lesson-link "><a href="H.html">QC-Fab：超導量子晶片的製程與品質</a></div>
+                                <div class="lesson-link "><a href="I.html">Quantum Machines：從 OPX 控制到 QUAlibrate 自動校正</a></div>
+                                <div class="lesson-link "><a href="J.html">Qblox：模組化控制、Scheduler 與 QPU Tune-up</a></div>
+                                <div class="lesson-link active"><a href="Calibration.html">超導量子位元的 Calibration：從找到訊號到校正量子閘</a></div>
+                                </div>
+                            </div>
+                        </div></aside>
+                </div>
+            </div>
+        </section><!-- /.section-portfolio -->
+
+    </main><!-- /#main -->
+
+    <footer id="colophon" class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-4 col-xs-6">
+                    <a class="site-title">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
+                    <p>一起走進新時代的前沿科學與量子科技</p>
+                    </div>
+                <div class="col-lg-offset-4 col-md-3 col-sm-4 col-md-offset-2 col-sm-offset-0 col-xs-6 ">
+                    <p class="site-title">𝐾𝐸𝐸𝑃 𝐼𝑁 𝑇𝑂𝑈𝐶𝐻</p>
+                    <ul class="list-unstyled contact-links">
+                        <li><i class="fa fa-envelope" aria-hidden="true"></i><a href="mailto:info@insight-ihbar.com">info@insight-ihbar.com</a></li>
+                        <!--<li><i class="fa fa-phone" aria-hidden="true"></i><a href="tel:+37400800000">+374 (00) 80 00 00 </a></li>
+                        <li><i class="fa fa-fax" aria-hidden="true"></i><a href="+37400900000">+374 (00) 90 00 00</a></li>
+                        <li><i class="fa-solid fa-location-dot"></i><p>Hsinchu 300, Taiwan (R.O.C.)</p></li>-->
+                    </ul>
+                </div>
+                <!--<div class="clearfix visible-xs"></div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6">
+                    <h3>Featured links</h3>
+                    <ul class="list-unstyled">
+                        <li class="active"><a href="index_ch.html">Home</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="portfolio.html">Porfolio</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>-->
+            </div>
+        </div>
+        <div class="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-8">
+                        <div class="social-links">
+                            <!--<a class="twitter-bg" href="#"><i class="fab fa-twitter"></i></a>-->
+                            <!--<<a class="facebook-bg" href="https://www.facebook.com/people/Quantum-Perspectives/61576446849628/"><i class="fab fa-facebook"></i></a>-->
+                            <!--<a class="facebook-bg" href="https://www.facebook.com/people/%E9%87%8F%E5%AD%90%E9%81%A0%E8%A6%8BQuantum-Perspectives/61576883632888/"><i class="fab fa-facebook-f"></i></a>-->
+                            <!--<a class="pinterest" href="#"><i class="fa-solid fa-microscope"></i></a>-->
+                            <!--<a class="facebook-bg" href="https://www.facebook.com/people/Insight-hbar/61576811775374/"><i class="fab fa-facebook-f"></i></a>-->
+                            <a class="linkedin-bg" href="https://www.linkedin.com/company/insight-ihbar"><i class="fab fa-linkedin"></i></a>
+                        </div><!-- /.social-links -->
+                    </div>
+                    <div class="col-xs-4">
+                        <div class="text-right">
+                            <p><span style="font-size: 16px;">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</span></p>
+                            <p>All Rights Reserved</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.copyright -->
+    </footer><!-- /#footer -->
+
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="../assets/js/bootstrap-select.min.js"></script>
+    <script src="../assets/js/jquery.slicknav.min.js"></script>
+    <script src="../assets/js/jquery.countTo.min.js"></script>
+    <script src="../assets/js/jquery.shuffle.min.js"></script>
+    <script src="../assets/js/script.js"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  
+</body>
+</html>
