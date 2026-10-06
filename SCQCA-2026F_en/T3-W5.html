@@ -5,7 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="author" content="Peir-Ru Wang">
-    <title>Controlling a Single Qubit with Microwaves</title>
+    <title>Week 5 · Controlling a Single Qubit with Microwaves</title>
+    <meta name="uniweb-nav" content="title">
     <style>
         :root {
             --t-fff: #fff;
@@ -8456,18 +8457,17 @@ data-slide-class="v04 qh-deriv v66-iq-slide">
             <h3>Adding a second derivative</h3>
             <div class="v4-two">
                 <div class="qh-step-host">
-                    <p>Add a second derivative. The spectrum gets a quadratic factor (two zeros):</p>
-                    <div class="v4-eq">\[S=I+c_1\dot I+c_2\ddot I\ \Rightarrow\ \widetilde S(\omega)=\big(1-ic_1\omega-c_2\,\omega^2\big)\,\widetilde I(\omega)\]</div>
-                    <p>Put both zeros at the 1–2 line:</p>
-                    <div class="v4-eq">\[1-ic_1\omega-c_2\,\omega^2=\Big(1-\frac{\omega}{\alpha}\Big)^{2}\ \Rightarrow\ c_1=-\frac{2i}{\alpha},\quad c_2=-\frac{1}{\alpha^2}\]</div>
-                    <div class="v4-eq">\[I\ \to\ I-\frac{\ddot I}{\alpha^2},\qquad Q=-\frac{2\dot I}{\alpha}\]</div>
-                    <p>\(n\) derivatives (\(I,\dot I,\dots,I^{(n-1)}=0\) at \(t=0,T\)):</p>
-                    <div class="v4-eq">\[P_n(\omega)=\Big(1-\frac{\omega}{\alpha}\Big)^{n},\qquad c_k=\binom{n}{k}\Big(\frac{-i}{\alpha}\Big)^{k}\]</div>
+                    <p>Each derivative adds one zero. Two derivatives: two zeros, at lines we choose:</p>
+                    <div class="v4-eq">\[\begin{aligned}S&amp;=I+c_1\dot I+c_2\ddot I\\\widetilde S(\omega)&amp;=\big(1-ic_1\omega-c_2\,\omega^2\big)\widetilde I(\omega)=\Big(1-\frac{\omega}{\omega_1}\Big)\Big(1-\frac{\omega}{\omega_2}\Big)\widetilde I(\omega)\end{aligned}\]</div>
+                    <div class="v4-eq">\[c_1=-i\Big(\frac{1}{\omega_1}+\frac{1}{\omega_2}\Big),\qquad c_2=-\frac{1}{\omega_1\omega_2}\]</div>
+                    <p>\(\omega_1=\alpha\) (the 1–2 line), \(\omega_2\) a second line. \(n\) derivatives (\(I,\dot I,\dots,I^{(n-1)}=0\) at \(t=0,T\)) remove \(n\) chosen lines:</p>
+                    <div class="v4-eq">\[P_n(\omega)=\prod_{j=1}^{n}\Big(1-\frac{\omega}{\omega_j}\Big)\]</div>
+                    <p>Even derivatives go into \(I\), odd ones into \(Q\). \(\omega_1=\omega_2=\alpha\): a double zero, a wider notch.</p>
                 </div>
                 <div class="qh-step-host">
-                    <div class="v73hd qh-reveal-item" aria-label="Interactive higher-derivative DRAG: buttons set the highest derivative n from 1 to 6; panels show I and Q, their sum with the 5 GHz carrier, and the spectrum of S = I + iQ in dB with an n-fold zero at the 1-2 line">
+                    <div class="v73hd qh-reveal-item" aria-label="Interactive higher-derivative DRAG: buttons set the number of derivatives n from 1 to 6; each one removes one more of six chosen lines (the first is the 1-2 line); panels show I and Q, their sum with the 5 GHz carrier, and the spectrum of S = I + iQ in dB">
                         <div class="v73hd-head">
-                            <span class="v73hd-hint">highest derivative n</span>
+                            <span class="v73hd-hint">derivatives n (lines removed)</span>
                             <button type="button" data-v73-order="1" aria-pressed="false">1</button>
                             <button type="button" data-v73-order="2" class="is-on" aria-pressed="true">2</button>
                             <button type="button" data-v73-order="3" aria-pressed="false">3</button>
@@ -8490,12 +8490,10 @@ data-slide-class="v04 qh-deriv v66-iq-slide">
                     </div>
                 </div>
             </div>
-            <!-- Teaching note: v74：先寫 n=2 的二次多項式 1 − ic₁ω − c₂ω²（兩個零點），兩個都放在 α → c₁ = −2i/α、c₂ = −1/α²；再推廣到 n。右圖頻譜格多畫 |P_n(ω)|（虛線），看得到二次（V 形平底）到六次的形狀。頻譜下限 −160 dB（之前 −120 會把 n 大時的凹口截平）。
-                 每多一階微分，頻譜就多乘一個 (−iω)（分部積分；需要 I, İ, …, I^(n−1) 在兩端為 0）。S̃ = P_n(ω) Ĩ，P_n 是 n 次多項式，可以放 n 個零點。
-                 這裡把 n 個零點都放在 1–2 線：P_n = (1 − ω/α)^n，c_k = C(n,k)(−i/α)^k；(−i)^k 交替為 1, −i, −1, i：偶數階實數 → 進 I，奇數階虛數 → 進 Q。
-                 n=1 就是 λ=1 的 DRAG；n=2：I → I − Ï/α²，Q = −2İ/α（Q 是 λ=2 的兩倍）。n 重零點讓 1–2 線附近的凹口變寬（α 有校正誤差、pulse 期間 1–2 線被 AC Stark 推動時仍壓得住）。
-                 代價：P_n 在 ω>0 那側變大，波形峰值變大（按鈕旁顯示 peak |I+iQ|：n=1 → 80 MHz，n=6 → 189 MHz），強驅動也讓微擾展開變差，實務上用到 2–3 階（HD DRAG：Hyyppä 2024 用 ġ, g̈, g⃛，零點在 α, α, −α）。
-                 波包用 sin⁶(πt/T)（前 5 階導數在兩端為 0，所以 n 最多 6）；cos² 只撐到 n=2。面積不變：P_n(0)=1，所以仍是 π pulse。數值：Python 直接積分 S 與 P_n Ĩ 一致到 1e−10。 -->
+            <!-- Teaching note: v75：每多一階微分，P_n 多一個零點，可以放在任一條指定的線上。n=2：(1 − ω/ω₁)(1 − ω/ω₂) = 1 − ic₁ω − c₂ω² → c₁ = −i(1/ω₁ + 1/ω₂)，c₂ = −1/(ω₁ω₂)；ω₁ = ω₂ = α 就是雙重零點（凹口變寬）。
+                 偶數階係數是實數 → I，奇數階是虛數 → Q（c_k = p_k i^k，p_k 是 P_n 對 ω^k 的係數）。右圖 6 條指定線（偏移 −223（1–2）、+175、−160、+125、−275、+275 MHz，例如鄰近 qubit 的線），按 n 依序把前 n 條歸零：該線的點掉到底、標籤變綠。
+                 數值（Python 驗證）：每條線在被納入後是精確零點；面積不變（P_n(0)=1，仍是 π pulse）；波形峰值 80 → 60 MHz（零點分佈在兩側，不會爆）。波包 sin⁶（前 5 階導數在兩端為 0，n 最多 6）。
+                 頻譜上每 50 MHz 的小凹口是 sin⁶ 本身的（20 ns 有限長度、餘弦級數），不是 DRAG 造成的。 -->
             <p class="v4-source">Interactive: sin⁶ π pulse (\(I,\dots,I^{(5)}=0\) at the ends), T = 20 ns, carrier 5 GHz, \(\tfrac{\alpha}{2\pi}=-223\) MHz. HD DRAG: M. Hyyppä et al., PRX Quantum <b>5</b>, 030353 (2024).</p>
         </section>
         <section data-manual-slide="" data-auto-fit="false" data-title="Gaussian or cos² envelope?" data-slide-class="v04 qh-deriv v52-cmp-slide">
@@ -8676,7 +8674,7 @@ data-slide-class="v04 qh-deriv v66-iq-slide">
     <div id="qh-slide-root" class="qhs-root" hidden="" aria-hidden="true" data-qhs-course="PHYS598500"
         data-qhs-week="WEEK 5A" data-qhs-no-click-advance="true"
         data-qhs-topic="Superconducting Circuits &amp; Microwave Control"
-        data-qhs-title-suffix="QH-2026F · Week 5A · v26">
+        data-qhs-title-suffix="PHYS598500 · Week 5">
         <header class="qhs-header">
             <a class="qhs-brand" href="main.html" aria-label="Return to the QH-2026F course overview">𝒊𝑁𝑆𝐼𝐺𝐻𝑇
                 𝒊ℏ</a>
@@ -11598,9 +11596,10 @@ point I(t) + iQ(t) at the cursor. Carrier cycles are reduced for visibility. */
         })();
     </script>
 
-    <script>/* Higher-derivative DRAG (v73). S = sum_{k=0}^{n} c_k I^(k), c_k = binom(n,k) (-i/alpha)^k, so the spectrum is
-S~(w) = (1 - w/alpha)^n I~(w): an n-fold zero at the 1-2 line (w = alpha). Even k are real (they go into I), odd k
-imaginary (into Q). The identity needs I, I', ..., I^(n-1) to vanish at t = 0 and T, so the envelope is
+    <script>/* Higher-derivative DRAG (v73; v75: one new zero per derivative). P_n(w) = prod_{j<=n} (1 - w/w_j) with the
+target lines w_j at offsets -223 (1-2), +175, -160, +125, -275, +275 MHz. P_n(w) = sum_k p_k w^k, and
+S = sum_k c_k I^(k) with c_k = p_k i^k gives S~(w) = P_n(w) I~(w): exact zeros at the first n lines. Even k are real
+(they go into I), odd k imaginary (into Q). The identity needs I, I', ..., I^(n-1) to vanish at t = 0 and T, so the envelope is
 sin^6(pi t/T) = [10 - 15 cos(2 pi t/T) + 6 cos(4 pi t/T) - cos(6 pi t/T)]/32 (derivatives up to the 5th vanish at the ends),
 scaled to a pi pulse, T = 20 ns; alpha/2pi = -223 MHz; carrier 5 GHz (100 cycles in 20 ns). The spectrum is drawn
 as |(1 - w/alpha)^n| |I~(w)| in dB re |I~(0)|; a direct integral of S agrees to 1e-10 (checked in Python). */
@@ -11621,18 +11620,23 @@ as |(1 - w/alpha)^n| |I~(w)| in dB re |I~(0)|; a direct integral of S agrees to 
                 }
                 return AMP * v;
             };
-            const binom = (n, k) => { let r = 1; for (let j = 1; j <= k; j++) r = r * (n - k + j) / j; return r; };
-            // S = sum c_k I^(k), c_k = binom(n,k) (-i/alpha)^k: (-i)^k = 1, -i, -1, i, ...
+            const TARGETS = [-223, 175, -160, 125, -275, 275];          // MHz offsets; the first is the 1-2 line (alpha)
+            const W = TARGETS.map(f => TAU * f / 1000);
+            // p_k of P_n(w) = prod_{j<n} (1 - w/w_j)
+            const POLY = [[1]];
+            for (let n = 1; n <= 6; n++) { const prev = POLY[n - 1], q = new Array(prev.length + 1).fill(0); prev.forEach((v, k) => { q[k] += v; q[k + 1] -= v / W[n - 1]; }); POLY.push(q); }
+            const Pn = (w, n) => { let v = 1; for (let j = 0; j < n; j++) v *= 1 - w / W[j]; return v; };
+            // S = sum c_k I^(k), c_k = p_k i^k: i^k = 1, i, -1, -i, ...
             function iq(t, n) {
                 let re = 0, im = 0;
-                for (let k = 0; k <= n; k++) {
-                    const mag = binom(n, k) / Math.pow(ALPHA, k), d = deriv(t, k), ph = k % 4;
-                    if (ph === 0) re += mag * d; else if (ph === 1) im -= mag * d; else if (ph === 2) re -= mag * d; else im += mag * d;
-                }
+                POLY[n].forEach((pk, k) => {
+                    const d = pk * deriv(t, k), ph = k % 4;
+                    if (ph === 0) re += d; else if (ph === 1) im += d; else if (ph === 2) re -= d; else im -= d;
+                });
                 return { I: re, Q: im };
             }
             const NT = 2000, dt = T / NT;
-            const F0 = -350, F1 = 150, NF = 501;
+            const F0 = -350, F1 = 350, NF = 701;
             const freqs = Array.from({ length: NF }, (_, j) => F0 + (F1 - F0) * j / (NF - 1));
             function itilde(fMHz) {
                 const w = TAU * fMHz / 1000; let re = 0, im = 0;
@@ -11641,7 +11645,7 @@ as |(1 - w/alpha)^n| |I~(w)| in dB re |I~(0)|; a direct integral of S agrees to 
             }
             const IMAG = freqs.map(itilde), I0 = itilde(0), IALPHA = itilde(MHZ(ALPHA));
             const dB = x => 20 * Math.log10(Math.max(x, 1e-12));
-            const specDb = (f, mag, n) => dB(Math.pow(Math.abs(1 - (TAU * f / 1000) / ALPHA), n) * mag / I0);
+            const specDb = (f, mag, n) => dB(Math.abs(Pn(TAU * f / 1000, n)) * mag / I0);
             const peak = [];
             for (let n = 0; n <= 6; n++) { let p = 0; for (let k = 0; k <= 400; k++) { const s = iq(T * k / 400, n); p = Math.max(p, Math.hypot(s.I, s.Q)); } peak.push(p); }
 
@@ -11706,26 +11710,30 @@ as |(1 - w/alpha)^n| |I~(w)| in dB re |I~(0)|; a direct integral of S agrees to 
                     const Y = v => m.top + (1 - (Math.max(YMIN, Math.min(YMAX, v)) - YMIN) / (YMAX - YMIN)) * ph;
                     grid(ctx, width, m, Y, [0, -40, -80, -120, -160]);
                     ctx.textAlign = 'center'; ctx.textBaseline = 'top';
-                    for (const f of [-300, -200, -100, 0, 100]) ctx.fillText((F_D + f / 1000).toFixed(1), X(f), height - m.bottom + 6);
+                    for (const f of [-300, -200, -100, 0, 100, 200, 300]) ctx.fillText((F_D + f / 1000).toFixed(1), X(f), height - m.bottom + 6);
                     ctx.textAlign = 'right'; ctx.fillText('GHz', width - m.right, height - m.bottom + 6);
-                    const fa = MHZ(ALPHA);
-                    for (const f of [0, fa]) { ctx.strokeStyle = COLORS.line; ctx.lineWidth = 1.4; ctx.setLineDash([5, 4]); ctx.beginPath(); ctx.moveTo(X(f), m.top); ctx.lineTo(X(f), height - m.bottom); ctx.stroke(); ctx.setLineDash([]); }
-                    // the polynomial factor |P_n(w)| itself (dashed), then the spectrum P_n * I~
-                    ctx.setLineDash([6, 4]); line(ctx, freqs.map(f => [X(f), Y(dB(Math.pow(Math.abs(1 - (TAU * f / 1000) / ALPHA), n)))]), '#65508f', 1.8); ctx.setLineDash([]);
-                    line(ctx, freqs.map((f, j) => [X(f), Y(specDb(f, IMAG[j], n))]), COLORS.spec, 2.4);
+                    // carrier and the six chosen lines; the first n are removed
+                    ctx.strokeStyle = COLORS.line; ctx.lineWidth = 1.2; ctx.setLineDash([5, 4]); ctx.beginPath(); ctx.moveTo(X(0), m.top); ctx.lineTo(X(0), height - m.bottom); ctx.stroke();
+                    TARGETS.forEach((f, j) => {
+                        ctx.strokeStyle = j < n ? 'rgba(32,128,44,.55)' : 'rgba(181,69,73,.45)';
+                        ctx.beginPath(); ctx.moveTo(X(f), m.top + 16); ctx.lineTo(X(f), height - m.bottom); ctx.stroke();
+                    });
+                    ctx.setLineDash([]);
+                    ctx.setLineDash([6, 4]); line(ctx, freqs.map(f => [X(f), Y(dB(Math.abs(Pn(TAU * f / 1000, n))))]), '#65508f', 1.6); ctx.setLineDash([]);
+                    line(ctx, freqs.map((f, j) => [X(f), Y(specDb(f, IMAG[j], n))]), COLORS.spec, 2.2);
+                    TARGETS.forEach((f, j) => {
+                        const v = j < n ? YMIN : specDb(f, itilde(f), n);
+                        ctx.beginPath(); ctx.arc(X(f), Y(v), 5, 0, TAU); ctx.fillStyle = j < n ? '#20802c' : '#b54549'; ctx.fill();
+                        ctx.font = '700 12px Montserrat, sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'top';
+                        ctx.fillStyle = j < n ? '#20802c' : '#b54549'; ctx.fillText(j === 0 ? '1–2' : String(j + 1), X(f), m.top + 1);
+                    });
                     ctx.font = '600 12px Montserrat, sans-serif'; ctx.textAlign = 'right'; ctx.textBaseline = 'bottom'; ctx.fillStyle = '#65508f';
                     ctx.fillText('dashed: |Pₙ(ω)|', width - m.right - 4, height - m.bottom - 6);
-                    ctx.beginPath(); ctx.arc(X(fa), Y(YMIN), 5, 0, TAU); ctx.fillStyle = COLORS.spec; ctx.fill();
-                    for (const [f, label] of [[0, '0–1 (carrier)'], [fa, '1–2 (4.777)']]) {
-                        ctx.font = '600 12px Montserrat, sans-serif'; ctx.textAlign = 'left'; ctx.textBaseline = 'top';
-                        const w = ctx.measureText(label).width; ctx.fillStyle = 'rgba(255,255,255,.92)'; ctx.fillRect(X(f) + 3, m.top + 1, w + 5, 16);
-                        ctx.fillStyle = COLORS.line; ctx.fillText(label, X(f) + 5, m.top + 2);
-                    }
                 }
                 function draw() {
                     wavePlot(order); rfPlot(order); specPlot(order);
                     const r = out('peak'); if (r) r.textContent = `peak |I + iQ|: ${MHZ(peak[order]).toFixed(0)} MHz`;
-                    const z = out('zero'); if (z) z.textContent = `${order}-fold zero at the 1–2 line`;
+                    const z = out('zero'); if (z) z.textContent = `${order} of 6 chosen lines removed (green)`;
                 }
                 buttons.forEach(b => b.addEventListener('click', e => {
                     e.preventDefault(); e.stopPropagation(); order = Number(b.dataset.v73Order);
