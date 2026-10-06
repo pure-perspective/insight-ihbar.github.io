@@ -6092,6 +6092,30 @@
             object-fit: contain
         }
     </style>
+    <style id="v81-bankson-three-figures">
+        .qhs-slide.v81-bankson-slide .v81-bankson-row {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            height: 535px;
+            width: 100%
+        }
+
+        .qhs-slide.v81-bankson-slide .v81-bankson-row .v4-figure {
+            flex: var(--ar) 1 0;
+            min-width: 0;
+            height: auto;
+            margin: 0
+        }
+
+        #qh-slide-root .qhs-slide.v81-bankson-slide .v81-bankson-row .v4-figure img {
+            display: block;
+            width: 100% !important;
+            height: auto !important;
+            max-width: 100% !important;
+            max-height: none !important
+        }
+    </style>
     <style id="v80-trilayer-process">
         .qhs-slide.v80-trilayer-slide .v80-trilayer-figure {
             height: 455px;
@@ -7667,6 +7691,12 @@
             line-height: 1.25 !important;
         }
 
+        #qh-slide-root .qhs-slide.v71-wj-process .v71-wj-note {
+            margin: 24px 0 0 !important;
+            color: #33313a;
+            white-space: nowrap;
+        }
+
         .qhs-slide.v71-wj-process .v71-wj-sem {
             display: flex;
             flex-direction: column;
@@ -7791,7 +7821,7 @@
         <section data-manual-slide="" data-auto-fit="false" data-title="Maskless lithography: Dolan bridge"
             data-slide-class="v04 qh-deriv v07-source-figure v72-dolan-inset-slide" data-source-addition="20261003">
             <!-- Source PDF: Heidelberg-Instruments-AN-Maskless-Josephson-Junction-Fabrication.pdf -->
-            <h3>Maskless lithography: Dolan bridge</h3>
+            <h3>Dolan bridge</h3>
             <figure class="v4-figure v07-source-wide"><a href="../Image/heidelberg-2026-fig1-dolan-bridge-maskless-lithography.png"><img src="../WebP/heidelberg-2026-fig1-dolan-bridge-maskless-lithography.webp" alt="Heidelberg Instruments Figure 1: Dolan bridge junction fabrication with angled deposition and in-situ oxidation"></a>
             </figure>
             <figure class="v72-dolan-inset"><a href="../Image/pishchimova-2022-fig1a-dolan-shadow-evaporation.png"><img src="../WebP/pishchimova-2022-fig1a-dolan-shadow-evaporation.webp" alt="Pishchimova et al. Figure 1a: Niemeyer-Dolan bridge and two aluminum shadow-evaporation directions"></a>
@@ -7803,7 +7833,7 @@
         <section data-manual-slide="" data-auto-fit="false" data-title="Maskless lithography: Manhattan"
             data-slide-class="v04 qh-deriv v07-source-figure" data-source-addition="20261003">
             <!-- Source PDF: Heidelberg-Instruments-AN-Maskless-Josephson-Junction-Fabrication.pdf -->
-            <h3>Maskless lithography: Manhattan (Bridgeless)</h3>
+            <h3>Manhattan (Bridgeless)</h3>
             <figure class="v4-figure v07-source-wide"><a href="../Image/heidelberg-2026-fig2-manhattan-maskless-lithography.png"><img src="../WebP/heidelberg-2026-fig2-manhattan-maskless-lithography.webp" alt="Heidelberg Instruments Figure 2: Manhattan-style junction fabrication with orthogonal deposition and in-situ oxidation"></a>
             </figure>
             <p class="v4-source">Ref: <a href="https://heidelberg-instruments.com/wp-content/uploads/2026/01/Heidelberg-Instruments-AN-Maskless-Josephson-Junction-Fabrication.pdf">https://heidelberg-instruments.com</a>
@@ -7811,7 +7841,7 @@
         </section>
         <section data-manual-slide="" data-auto-fit="false" data-title="Multiangle shadow evaporation"
             data-slide-class="v04 qh-deriv v07-source-figure v07-multiangle-slide" data-source-addition="20261003">
-            <h3>Multiangle shadow evaporation (Manhattan, Bridgeless)</h3>
+            <h3>Manhattan (Bridgeless)</h3>
             <!-- Source figures: Costache et al. (2012), Fig. 2(a,b) and Fig. 1(d). -->
             <div class="v07-multiangle">
                 <div>
@@ -7834,13 +7864,36 @@
         <section data-manual-slide="" data-auto-fit="false" data-title="Single-layer resist: shadow evaporation"
             data-slide-class="v04 qh-deriv v07-source-figure " data-source-addition="20261003">
             <!-- Source PDF: GregJosephson.pdf -->
-            <h3>Single-layer resist: shadow evaporation (Manhattan, Bridgeless)</h3>
+            <h3>Manhattan (Bridgeless)</h3>
             <figure class="v4-figure v07-source-wide"><a href="../Image/potts-2001-fig3-single-layer-resist-shadow-evaporation.png"><img src="../WebP/potts-2001-fig3-single-layer-resist-shadow-evaporation.webp" alt="Potts et al. Figure 3: single-layer resist pattern, two evaporation directions, and metal tracks after lift-off"></a>
             </figure>
             <p class="v4-source">Ref: <a href="https://doi.org/10.1049/ip-smt:20010395">10.1049/ip-smt:20010395</a></p>
         </section>
 
         
+
+        <section data-manual-slide="" data-auto-fit="false" data-title="Symmetric angled depositions"
+            data-slide-class="v04 qh-deriv v07-source-figure v81-bankson-slide" data-source-addition="20261006">
+            <h3>Manhattan (Bridgeless)</h3>
+            <!-- Source figures: S. M. Bankson et al., IEEE Trans. Appl. Supercond. 33(5) (2023), doi:10.1109/TASC.2023.3246940.
+                 Left: three angled Al depositions (1, 2, 3 at angle θ). Middle and right: SEM of two junction crossings (50 kx, 08/18/22). -->
+            <div class="v81-bankson-row">
+                <figure class="v4-figure" style="--ar:1.245"><a href="../Image/bankson-2023-symmetric-angled-deposition-schematic.png"><img src="../WebP/bankson-2023-symmetric-angled-deposition-schematic.webp" alt="Bankson et al.: resist and substrate with three angled aluminum depositions 1, 2 and 3 at angle theta, panels a to c"></a></figure>
+                <figure class="v4-figure" style="--ar:1.147"><a href="../Image/bankson-2023-manhattan-junction-sem-1.png"><img src="../WebP/bankson-2023-manhattan-junction-sem-1.webp" alt="Bankson et al.: SEM image of a Manhattan junction crossing, 50 kx, 1 micrometre scale bar"></a></figure>
+                <figure class="v4-figure" style="--ar:1.154"><a href="../Image/bankson-2023-manhattan-junction-sem-2.png"><img src="../WebP/bankson-2023-manhattan-junction-sem-2.webp" alt="Bankson et al.: SEM image of a second Manhattan junction crossing, 50 kx, 1 micrometre scale bar"></a></figure>
+            </div>
+            <p class="v4-source">S. M. Bankson et al., IEEE Trans. Appl. Supercond. <b>33</b>, no. 5 (2023).</p>
+        </section>
+
+        <section data-manual-slide="" data-auto-fit="false" data-title="Manhattan SQUID (Kreikebaum 2020)"
+            data-slide-class="v04 qh-deriv v07-source-figure" data-source-addition="20261006">
+            <h3>Manhattan (Bridgeless)</h3>
+            <!-- Source figure: J. M. Kreikebaum et al., Supercond. Sci. Technol. 33, 06LT02 (2020), Fig. 1 (arXiv:1909.09165):
+                 (a) CSAR/MMA resist stack, layer 1, oxidation, rotate by phi, layer 2 at theta; (b) developed resist; (c) final SQUID; (d) SEM of the two junctions.
+                 Text of the paper: bridgeless junctions have the advantage over Dolan bridges that the junction area does not depend on the resist thickness. -->
+            <figure class="v4-figure v07-source-wide"><a href="../Image/kreikebaum-2020-fig1-manhattan-squid-resist-stack.png"><img src="../WebP/kreikebaum-2020-fig1-manhattan-squid-resist-stack.webp" alt="Kreikebaum et al. Figure 1: (a) CSAR on MMA resist stack with depositions 1 and 2 at angle theta and rotation phi, (b) micrograph of the developed resist, (c) micrograph of the final SQUID, (d) SEM images of the two junctions"></a></figure>
+            <p class="v4-source">J. M. Kreikebaum et al., Supercond. Sci. Technol. <b>33</b>, 06LT02 (2020), Fig. 1.</p>
+        </section>
 
         <section data-manual-slide="" data-auto-fit="false" data-title="Trilayer process"
             data-slide-class="v04 qh-deriv v07-source-figure v80-trilayer-slide" data-source-addition="20261006">
@@ -7907,6 +7960,7 @@
                     <figcaption>After step E, the top Al electrode stays suspended. PVD SiO₂ leaves less residue than PECVD SiO₂.</figcaption>
                 </figure>
             </div>
+            <p class="v71-wj-note">PVD sputters SiO₂. PECVD makes SiO₂ from SiH₄+N₂O gases reaction in a plasma (more H and N defects).</p>
             <p class="v4-source" data-source-kind="figure">C.-T. Ke et al., <i>npj Quantum Information</i> <b>12</b>, 98 (2026), Figs. 1 and 4. <a href="https://doi.org/10.1038/s41534-026-01249-4">DOI</a></p>
         </section>
         
