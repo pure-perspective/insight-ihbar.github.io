@@ -8144,7 +8144,7 @@ data-slide-class="v04 qh-deriv v66-iq-slide">
             <h3>One matrix for the week</h3>
             <div class="qh-step-host">
                 <div class="v4-eq">\[U=\sum_j i^{\,j}e^{-ij\omega_dt}\,|j\rangle\langle j|,\qquad\mathcal H_{\rm rot}=U^\dagger\mathcal H U-i\hbar\,U^\dagger\dot U\]</div>
-                <div class="v4-eq">\[\Delta\equiv\omega_{01}-\omega_d,\qquad\big[I\cos\omega_dt+Q\sin\omega_dt\big]e^{i\omega_dt}\ \overset{\rm RWA}{\simeq}\ \tfrac12(I+iQ)\]</div>
+                <div class="v4-eq">\[\text{Detuning }\Delta\equiv\omega_{01}-\omega_d,\qquad\big[I\cos\omega_dt+Q\sin\omega_dt\big]e^{i\omega_dt}\ \overset{\rm RWA}{\simeq}\ \tfrac12(I+iQ)\]</div>
                 <div class="v4-eq">\[\frac{\mathcal H_{\rm rot}}{\hbar}=\left(\begin{array}{@{\,}c@{\;\;}c@{\;\;}c@{\;\;}c@{\;\;}c@{\;\;}c@{\,}}\color{#355f9c}{0}&amp;\color{#355f9c}{\tfrac12(I-iQ)}&amp;0&amp;0&amp;0&amp;\cdots\\\color{#355f9c}{\tfrac12(I+iQ)}&amp;\color{#355f9c}{\Delta}&amp;\color{#b5651d}{\tfrac{\sqrt2}{2}(I-iQ)}&amp;0&amp;0&amp;\cdots\\0&amp;\color{#b5651d}{\tfrac{\sqrt2}{2}(I+iQ)}&amp;\color{#b5651d}{2\Delta+\alpha}&amp;\tfrac{\sqrt3}{2}(I-iQ)&amp;0&amp;\cdots\\0&amp;0&amp;\tfrac{\sqrt3}{2}(I+iQ)&amp;3\Delta+3\alpha&amp;\tfrac{\sqrt4}{2}(I-iQ)&amp;\cdots\\0&amp;0&amp;0&amp;\tfrac{\sqrt4}{2}(I+iQ)&amp;4\Delta+6\alpha&amp;\cdots\\\vdots&amp;\vdots&amp;\vdots&amp;\vdots&amp;\vdots&amp;\ddots\end{array}\right)\]</div>
             </div>
             <!-- Teaching note: v65：換到 interaction（旋轉）框架 U=Σ i^j e^(−ijω_d t)|j⟩⟨j|（i^j 把 i(a†−a) 的 i 吸收掉，係數變實數）。
@@ -8230,95 +8230,7 @@ data-slide-class="v04 qh-deriv v66-iq-slide">
         <p class="v4-source">Images: Qblox Cluster module overview and Cluster chassis, docs.qblox.com.</p>
     </section>
 
-    <section data-manual-slide="" data-auto-fit="false" data-title="Virtual Z gates"
-            data-slide-class="v04 qh-deriv ">
-            <h3>Virtual Z gates and Frame updates</h3>
-            <div class="qh-step-host">
-                <div class="v4-eq">\[R_z(\varphi)=e^{-i\varphi\sigma_z/2}\]</div>
-                <div class="v4-eq">
-                    \[R_z(\varphi)\sigma_xR_z^\dagger(\varphi)=\cos\varphi\,\sigma_x+\sin\varphi\,\sigma_y\]</div>
-                <div class="v4-eq qh-key">\[R_\phi(\theta)=R_z(\phi)R_x(\theta)R_z(-\phi)\]</div>
-                <p class="">Changing the phase of subsequent microwave pulses changes their axes in the rotating frame.
-                </p>
-                <p class="v4-note">The controller tracks this frame change in software. A separate physical Z pulse is
-                    unnecessary.</p>
-            </div>
-         
-            <div class="qh-step-host">
-                <p class="">Track a logical Z rotation by storing its angle in the frame.</p>
-                <div class="v4-eq">\[R_\phi(\theta)R_z(\varphi)=R_z(\varphi)R_{\phi-\varphi}(\theta)\]</div>
-                <div class="v4-eq">\[\phi_{\rm frame}\leftarrow\phi_{\rm frame}+\varphi,\qquad\phi_{\rm drive}=\phi_{\rm
-                    logical}-\phi_{\rm frame}\]</div>
-                <p class="">For a logical \(Z_{\pi/2}\), shift the phase of each later physical pulse by
-                    \(-\pi/2\).
-                </p>
-                <div class="v4-eq qh-key">\[R_x(\theta)R_z(\pi/2)=R_z(\pi/2)R_{-\pi/2}(\theta)\]</div>
-                <p class="v4-note">The final Z remains in the tracked frame. It does not change a measurement in the
-                    computational basis.</p>
-            </div>
-            <p class="v4-source" data-source-kind="theory">Virtual-Z theory: D. C. McKay et al., Phys. Rev. A <b>96</b>, 022330 (2017), Sec. I. <a href="https://doi.org/10.1103/PhysRevA.96.022330">DOI</a></p>
-        </section>
-
-
-        <section data-manual-slide="" data-auto-fit="false" data-title="Physical Z and virtual Z on the Bloch sphere"
-            data-slide-class="v04 qh-deriv v4-plot v24-bloch-z">
-            <h3>Physical Z and virtual Z on the Bloch sphere</h3>
-            <!-- Animation Python source: ../../ImagePool/w05-physical-virtual-z-bloch-v25.py -->
-            <!-- Figure provenance: numerical lecture animation, not a reproduced paper figure or experimental dataset. -->
-            <figure class="v4-figure">
-                <a href="../Image/w05-physical-virtual-z-bloch-v25.gif"><img src="../Image/w05-physical-virtual-z-bloch-v25.gif" alt="Both Bloch spheres start with x,y axes. Physical Z continuously rotates the state by positive theta. During the virtual frame update, x,y blink three times at the original positions. Only after the blinking ends do the axes jump directly by negative theta and the labels change to x-prime,y-prime. The physical state stays fixed during the update. The subsequent logical Y is played as X."></a>
-            </figure>
-            <p class="v4-source" data-source-kind="simulation">Lecture simulation. Fixed drive reference. Ideal two-state evolution.
-                <a href="../../ImagePool/w05-physical-virtual-z-bloch-v25.py" download>Python</a>
-            </p>
-        </section>
-        
-        <section data-manual-slide="" data-auto-fit="false" data-title="Physical Z and virtual Z"
-            data-slide-class="v04 qh-deriv v23-vz-slide">
-            <h3>Physical Z and virtual Z</h3>
-            <div class="v23vz"
-                aria-label="Animated comparison of X, Z(theta), Y with a physical flux-pulse Z and with a virtual Z that shifts the phase of the later pulse">
-                <div class="v23vz-head">
-                    <p class="v23vz-equation">\(X=R_x(\pi/2),\quad Y=R_y(\pi/2),\qquad R_\phi(\pi/2)\,R_z(\theta)=R_z(\theta)\,R_{\phi-\theta}(\pi/2)\)</p>
-                    <div class="v23vz-actions">
-                        <span class="v23vz-hint">Z angle θ</span>
-                        <button type="button" class="v23vz-theta" data-v23-theta="45" aria-pressed="false">45°</button>
-                        <button type="button" class="v23vz-theta is-on" data-v23-theta="90" aria-pressed="true">90°</button>
-                        <button type="button" class="v23vz-theta" data-v23-theta="180" aria-pressed="false">180°</button>
-                        <button type="button" data-v23-run="">Stop</button>
-                        <button type="button" data-v23-reset="">Replay</button>
-                    </div>
-                </div>
-                <div class="v23vz-scopes">
-                    <div class="v23vz-panel">
-                        <div class="v23vz-panel-head">
-                            <span>Physical Z: a flux pulse</span>
-                            <small data-v23-head="physical"></small>
-                        </div>
-                        <canvas data-v23-mode="physical"
-                            aria-label="I branch, Q branch, flux line and RF output for X, a flux-pulse Z, then Y"></canvas>
-                        <p class="v23vz-result" data-v23-result="physical"></p>
-                    </div>
-                    <div class="v23vz-panel">
-                        <div class="v23vz-panel-head">
-                            <span>Virtual Z: a frame update</span>
-                            <small data-v23-head="virtual"></small>
-                        </div>
-                        <canvas data-v23-mode="virtual"
-                            aria-label="I branch, Q branch, flux line and RF output for X, a virtual Z, then Y played with its phase shifted by minus theta"></canvas>
-                        <p class="v23vz-result" data-v23-result="virtual"></p>
-                    </div>
-                </div>
-                <div class="v23vz-foot">
-                    <span class="v23vz-legend"><i class="v23vz-swatch v23vz-swatch-lo"></i>LO (never changes)</span>
-                    <span class="v23vz-legend"><i class="v23vz-swatch v23vz-swatch-i"></i>\(I(t)\)</span>
-                    <span class="v23vz-legend"><i class="v23vz-swatch v23vz-swatch-q"></i>\(Q(t)\)</span>
-                    <span class="v23vz-legend"><i class="v23vz-swatch v23vz-swatch-flux"></i>flux \(\delta\omega_{01}(t)\)</span>
-                    <span class="v23vz-legend"><i class="v23vz-swatch v23vz-swatch-rf"></i>\(V_{\rm RF}(t)\)</span>
-                    <span class="v23vz-note">Carrier cycles are reduced for visibility.</span>
-                </div>
-            </div>
-        </section>
+    
 
         <section data-manual-slide="" data-auto-fit="false" data-title="Pulse shaping" data-slide-class="v04 qh-deriv "
             data-cover="">
@@ -8472,6 +8384,96 @@ data-slide-class="v04 qh-deriv v66-iq-slide">
             </figure>
             <p class="v4-source">Each point is a separate π/2 – τ – π/2 run, with no drive during τ. The 10 ns π/2
                 pulses are sent at ω<sub>d</sub>, so their axis tilts by arctan[(ω<sub>01</sub> − ω<sub>d</sub>)/Ω].</p>
+        </section>
+
+        <section data-manual-slide="" data-auto-fit="false" data-title="Virtual Z gates"
+            data-slide-class="v04 qh-deriv ">
+            <h3>Virtual Z gates and Frame updates</h3>
+            <div class="qh-step-host">
+                <div class="v4-eq">\[R_z(\varphi)=e^{-i\varphi\sigma_z/2}\]</div>
+                <div class="v4-eq">
+                    \[R_z(\varphi)\sigma_xR_z^\dagger(\varphi)=\cos\varphi\,\sigma_x+\sin\varphi\,\sigma_y\]</div>
+                <div class="v4-eq qh-key">\[R_\phi(\theta)=R_z(\phi)R_x(\theta)R_z(-\phi)\]</div>
+                <p class="">Changing the phase of subsequent microwave pulses changes their axes in the rotating frame.
+                </p>
+                <p class="v4-note">The controller tracks this frame change in software. A separate physical Z pulse is
+                    unnecessary.</p>
+            </div>
+         
+            <div class="qh-step-host">
+                <p class="">Track a logical Z rotation by storing its angle in the frame.</p>
+                <div class="v4-eq">\[R_\phi(\theta)R_z(\varphi)=R_z(\varphi)R_{\phi-\varphi}(\theta)\]</div>
+                <div class="v4-eq">\[\phi_{\rm frame}\leftarrow\phi_{\rm frame}+\varphi,\qquad\phi_{\rm drive}=\phi_{\rm
+                    logical}-\phi_{\rm frame}\]</div>
+                <p class="">For a logical \(Z_{\pi/2}\), shift the phase of each later physical pulse by
+                    \(-\pi/2\).
+                </p>
+                <div class="v4-eq qh-key">\[R_x(\theta)R_z(\pi/2)=R_z(\pi/2)R_{-\pi/2}(\theta)\]</div>
+                <p class="v4-note">The final Z remains in the tracked frame. It does not change a measurement in the
+                    computational basis.</p>
+            </div>
+            <p class="v4-source" data-source-kind="theory">Virtual-Z theory: D. C. McKay et al., Phys. Rev. A <b>96</b>, 022330 (2017), Sec. I. <a href="https://doi.org/10.1103/PhysRevA.96.022330">DOI</a></p>
+        </section>
+
+
+        <section data-manual-slide="" data-auto-fit="false" data-title="Physical Z and virtual Z on the Bloch sphere"
+            data-slide-class="v04 qh-deriv v4-plot v24-bloch-z">
+            <h3>Physical Z and virtual Z on the Bloch sphere</h3>
+            <!-- Animation Python source: ../../ImagePool/w05-physical-virtual-z-bloch-v25.py -->
+            <!-- Figure provenance: numerical lecture animation, not a reproduced paper figure or experimental dataset. -->
+            <figure class="v4-figure">
+                <a href="../Image/w05-physical-virtual-z-bloch-v25.gif"><img src="../Image/w05-physical-virtual-z-bloch-v25.gif" alt="Both Bloch spheres start with x,y axes. Physical Z continuously rotates the state by positive theta. During the virtual frame update, x,y blink three times at the original positions. Only after the blinking ends do the axes jump directly by negative theta and the labels change to x-prime,y-prime. The physical state stays fixed during the update. The subsequent logical Y is played as X."></a>
+            </figure>
+            <p class="v4-source" data-source-kind="simulation">Lecture simulation. Fixed drive reference. Ideal two-state evolution.
+                <a href="../../ImagePool/w05-physical-virtual-z-bloch-v25.py" download>Python</a>
+            </p>
+        </section>
+        
+        <section data-manual-slide="" data-auto-fit="false" data-title="Physical Z and virtual Z"
+            data-slide-class="v04 qh-deriv v23-vz-slide">
+            <h3>Physical Z and virtual Z</h3>
+            <div class="v23vz"
+                aria-label="Animated comparison of X, Z(theta), Y with a physical flux-pulse Z and with a virtual Z that shifts the phase of the later pulse">
+                <div class="v23vz-head">
+                    <p class="v23vz-equation">\(X=R_x(\pi/2),\quad Y=R_y(\pi/2),\qquad R_\phi(\pi/2)\,R_z(\theta)=R_z(\theta)\,R_{\phi-\theta}(\pi/2)\)</p>
+                    <div class="v23vz-actions">
+                        <span class="v23vz-hint">Z angle θ</span>
+                        <button type="button" class="v23vz-theta" data-v23-theta="45" aria-pressed="false">45°</button>
+                        <button type="button" class="v23vz-theta is-on" data-v23-theta="90" aria-pressed="true">90°</button>
+                        <button type="button" class="v23vz-theta" data-v23-theta="180" aria-pressed="false">180°</button>
+                        <button type="button" data-v23-run="">Stop</button>
+                        <button type="button" data-v23-reset="">Replay</button>
+                    </div>
+                </div>
+                <div class="v23vz-scopes">
+                    <div class="v23vz-panel">
+                        <div class="v23vz-panel-head">
+                            <span>Physical Z: a flux pulse</span>
+                            <small data-v23-head="physical"></small>
+                        </div>
+                        <canvas data-v23-mode="physical"
+                            aria-label="I branch, Q branch, flux line and RF output for X, a flux-pulse Z, then Y"></canvas>
+                        <p class="v23vz-result" data-v23-result="physical"></p>
+                    </div>
+                    <div class="v23vz-panel">
+                        <div class="v23vz-panel-head">
+                            <span>Virtual Z: a frame update</span>
+                            <small data-v23-head="virtual"></small>
+                        </div>
+                        <canvas data-v23-mode="virtual"
+                            aria-label="I branch, Q branch, flux line and RF output for X, a virtual Z, then Y played with its phase shifted by minus theta"></canvas>
+                        <p class="v23vz-result" data-v23-result="virtual"></p>
+                    </div>
+                </div>
+                <div class="v23vz-foot">
+                    <span class="v23vz-legend"><i class="v23vz-swatch v23vz-swatch-lo"></i>LO (never changes)</span>
+                    <span class="v23vz-legend"><i class="v23vz-swatch v23vz-swatch-i"></i>\(I(t)\)</span>
+                    <span class="v23vz-legend"><i class="v23vz-swatch v23vz-swatch-q"></i>\(Q(t)\)</span>
+                    <span class="v23vz-legend"><i class="v23vz-swatch v23vz-swatch-flux"></i>flux \(\delta\omega_{01}(t)\)</span>
+                    <span class="v23vz-legend"><i class="v23vz-swatch v23vz-swatch-rf"></i>\(V_{\rm RF}(t)\)</span>
+                    <span class="v23vz-note">Carrier cycles are reduced for visibility.</span>
+                </div>
+            </div>
         </section>
         
         
