@@ -5775,7 +5775,8 @@
         }
 
         .qhs-slide.v04.v4-chain-slide .v4-chain p {
-            font-size: 24px
+            font-size: 22px;
+            font-weight: 400
         }
 
         .qhs-slide.v04.v4-chain-slide .v4-chain p:nth-child(even) {
@@ -6091,6 +6092,35 @@
             object-fit: contain
         }
     </style>
+    <style id="v80-trilayer-process">
+        .qhs-slide.v80-trilayer-slide .v80-trilayer-figure {
+            height: 455px;
+            width: 100%;
+            margin: 0 0 12px
+        }
+
+        .qhs-slide.v80-trilayer-slide .v80-trilayer-steps {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+            grid-template-rows: repeat(3, auto);
+            grid-auto-flow: column;
+            column-gap: 40px;
+            row-gap: 2px;
+            margin: 0;
+            padding: 0;
+            list-style: none
+        }
+
+        .qhs-slide.v80-trilayer-slide .v80-trilayer-steps li {
+            margin: 0;
+            color: #33313a;
+            line-height: 1.34
+        }
+
+        .qhs-slide.v80-trilayer-slide .v80-trilayer-steps b {
+            color: #51416e
+        }
+    </style>
     <style id="v07-added-source-figures">
         .qhs-slide.v07-source-figure .v07-source-wide {
             height: 535px;
@@ -6123,8 +6153,9 @@
         }
 
         .qhs-slide.v07-source-figure .v07-multiangle .v4-note {
-            font-size: 23px;
+            font-size: 22px;
             line-height: 1.4;
+            color: #33313a;
             margin-top: 16px
         }
     </style>
@@ -7517,14 +7548,6 @@
         }
     </style>
     <style id="v70-drag-split-layout">
-        .qhs-slide.v04.v70-drag-split .qhs-slide-body {
-            padding: 14px 54px 22px;
-        }
-
-        .qhs-slide.v04.v70-drag-split .qhs-slide-title {
-            font-size: 41px;
-            margin-bottom: 14px;
-        }
 
         .qhs-slide.v70-drag-split .v70-drag-layout {
             display: grid;
@@ -7539,7 +7562,6 @@
         }
 
         #qh-slide-root .qhs-slide.v70-drag-split .v70-drag-copy p {
-            font-size: 21px !important;
             line-height: 1.35;
             margin: 0 0 10px;
         }
@@ -7549,12 +7571,7 @@
         }
 
         .qhs-slide.v70-drag-split .v70-drag-copy mjx-container[display="true"] {
-            font-size: 21px !important;
             margin: 8px 0 !important;
-        }
-
-        .qhs-slide.v70-drag-split .v70-drag-copy .v70-drag-matrix mjx-container[display="true"] {
-            font-size: 17px !important;
         }
 
         .qhs-slide.v70-drag-split .v70-drag-visual {
@@ -7580,14 +7597,6 @@
         }
     </style>
     <style id="v71-window-junction-process">
-        .qhs-slide.v04.v71-wj-process .qhs-slide-body {
-            padding: 12px 52px 18px;
-        }
-
-        .qhs-slide.v04.v71-wj-process .qhs-slide-title {
-            font-size: 40px;
-            margin-bottom: 12px;
-        }
 
         .qhs-slide.v71-wj-process .v71-wj-grid {
             display: grid;
@@ -7647,15 +7656,15 @@
             display: block;
             margin-bottom: 3px;
             color: #51416e;
-            font-size: 16px;
+            font-size: 22px;
             line-height: 1.15;
         }
 
         #qh-slide-root .qhs-slide.v71-wj-process .v71-wj-copy p {
             margin: 0 !important;
             color: #33313a;
-            font-size: 15.5px !important;
-            line-height: 1.28 !important;
+            font-size: 22px !important;
+            line-height: 1.25 !important;
         }
 
         .qhs-slide.v71-wj-process .v71-wj-sem {
@@ -7682,8 +7691,8 @@
 
         #qh-slide-root .qhs-slide.v71-wj-process .v71-wj-sem figcaption {
             margin-top: 8px;
-            color: #55505f;
-            font-size: 15px !important;
+            color: #33313a;
+            font-size: 22px !important;
             line-height: 1.3;
             text-align: left;
         }
@@ -7794,7 +7803,7 @@
         <section data-manual-slide="" data-auto-fit="false" data-title="Maskless lithography: Manhattan"
             data-slide-class="v04 qh-deriv v07-source-figure" data-source-addition="20261003">
             <!-- Source PDF: Heidelberg-Instruments-AN-Maskless-Josephson-Junction-Fabrication.pdf -->
-            <h3>Maskless lithography: Manhattan (Bridge-free)</h3>
+            <h3>Maskless lithography: Manhattan (Bridgeless)</h3>
             <figure class="v4-figure v07-source-wide"><a href="../Image/heidelberg-2026-fig2-manhattan-maskless-lithography.png"><img src="../WebP/heidelberg-2026-fig2-manhattan-maskless-lithography.webp" alt="Heidelberg Instruments Figure 2: Manhattan-style junction fabrication with orthogonal deposition and in-situ oxidation"></a>
             </figure>
             <p class="v4-source">Ref: <a href="https://heidelberg-instruments.com/wp-content/uploads/2026/01/Heidelberg-Instruments-AN-Maskless-Josephson-Junction-Fabrication.pdf">https://heidelberg-instruments.com</a>
@@ -7802,7 +7811,7 @@
         </section>
         <section data-manual-slide="" data-auto-fit="false" data-title="Multiangle shadow evaporation"
             data-slide-class="v04 qh-deriv v07-source-figure v07-multiangle-slide" data-source-addition="20261003">
-            <h3>Multiangle shadow evaporation (Manhattan, Bridge-free)</h3>
+            <h3>Multiangle shadow evaporation (Manhattan, Bridgeless)</h3>
             <!-- Source figures: Costache et al. (2012), Fig. 2(a,b) and Fig. 1(d). -->
             <div class="v07-multiangle">
                 <div>
@@ -7825,13 +7834,33 @@
         <section data-manual-slide="" data-auto-fit="false" data-title="Single-layer resist: shadow evaporation"
             data-slide-class="v04 qh-deriv v07-source-figure " data-source-addition="20261003">
             <!-- Source PDF: GregJosephson.pdf -->
-            <h3>Single-layer resist: shadow evaporation (Manhattan, Bridge-free)</h3>
+            <h3>Single-layer resist: shadow evaporation (Manhattan, Bridgeless)</h3>
             <figure class="v4-figure v07-source-wide"><a href="../Image/potts-2001-fig3-single-layer-resist-shadow-evaporation.png"><img src="../WebP/potts-2001-fig3-single-layer-resist-shadow-evaporation.webp" alt="Potts et al. Figure 3: single-layer resist pattern, two evaporation directions, and metal tracks after lift-off"></a>
             </figure>
             <p class="v4-source">Ref: <a href="https://doi.org/10.1049/ip-smt:20010395">10.1049/ip-smt:20010395</a></p>
         </section>
 
         
+
+        <section data-manual-slide="" data-auto-fit="false" data-title="Trilayer process"
+            data-slide-class="v04 qh-deriv v07-source-figure v80-trilayer-slide" data-source-addition="20261006">
+            <h3>Trilayer Process</h3>
+            <!-- Source figure: A. Anferov et al., Phys. Rev. Applied 21, 024047 (2024), Fig. 1 (Nb/Al/AlOx/Al/Nb on sapphire, optical lithography only). -->
+            <figure class="v4-figure v80-trilayer-figure"><a href="../Image/anferov-2024-fig1-trilayer-junction-process.png"><img src="../WebP/anferov-2024-fig1-trilayer-junction-process.webp" alt="Anferov et al. Figure 1: trilayer junction process, panels a to g, and an electron micrograph of a 500 by 600 nm junction in panel h"></a></figure>
+            <ol class="v80-trilayer-steps">
+                <li><b>(a)</b> Deposit Nb/Al/AlO<sub>x</sub>/Al/Nb in one vacuum.</li>
+                <li><b>(b)</b> Etch the first finger (chlorine).</li>
+                <li><b>(c–d)</b> Grow SiO<sub>2</sub>. Etch it back to a sidewall spacer.</li>
+                <li><b>(e)</b> Clean the oxides in vacuum. Deposit Nb.</li>
+                <li><b>(f)</b> Etch the second finger (fluorine). It stops on Al.</li>
+                <li><b>(g)</b> Wet-etch SiO<sub>2</sub>, bare Al and some NbO<sub>x</sub>.</li>
+            </ol>
+            <!-- Teaching note: v80 新頁。文字是 ASD-STE100 風格（祈使句、一句一動作、短句），依 Fig. 1 圖說 (a)–(h)。
+                 (b) 氯 RIE 連 Al 一起蝕刻成第一根 finger；(c)(d) SiO₂ 等向成長再用氟非等向蝕刻，只留側壁 spacer，隔開上下電極；
+                 (e) 真空中清掉表面氧化物再鍍 Nb 佈線；(f) 氟電漿蝕刻 Nb、不蝕刻 Al（Al 當 etch stop），定義第二根 finger；
+                 (g) 濕蝕刻去掉 SiO₂、露出的 Al 和部分 NbOx。全程只用光學微影，可直接用在 foundry 製程。 -->
+            <p class="v4-source">A. Anferov et al., Phys. Rev. Applied <b>21</b>, 024047 (2024), Fig. 1; (h) a 500 × 600 nm junction.</p>
+        </section>
 
         <section data-manual-slide="" data-auto-fit="false" data-title="Scaffold-assisted window junction"
             data-slide-class="v04 v71-wj-process" data-source-addition="20261005">
@@ -8419,7 +8448,7 @@ data-slide-class="v04 qh-deriv v66-iq-slide">
                 <div class="qh-step-host">
                     <p>I and Q drive the carrier 90° apart. DRAG sets Q from the slope of I:</p>
                     <div class="v4-eq">\[\begin{aligned}V(t)&amp;\propto I(t)\cos\omega_dt+Q(t)\sin\omega_dt\\Q(t)&amp;=-\frac{\lambda}{\alpha}\,\dot I(t)\end{aligned}\]</div>
-                    <p>Fourier transform at an offset \(\omega\) from \(\omega_d=\omega_{01}\):</p>
+                    <p>Fourier transform (\(\omega\) measured from \(\omega_d=\omega_{01}\)):</p>
                     <div class="v4-eq">\[\begin{aligned}S&amp;=I+iQ=I-\frac{i\lambda}{\alpha}\,\dot I\\\widetilde S(\omega)&amp;=\int_0^T I\,e^{i\omega t}dt-\frac{i\lambda}{\alpha}\int_0^T\dot I\,e^{i\omega t}dt\\&amp;=\widetilde I(\omega)-\frac{i\lambda}{\alpha}\Big(\underbrace{\big[I\,e^{i\omega t}\big]_0^T}_{0\ \text{if}\ I(0)=I(T)=0}-\,i\omega\,\widetilde I(\omega)\Big)\\&amp;=\Big(1-\frac{\lambda\omega}{\alpha}\Big)\widetilde I(\omega)\end{aligned}\]</div>
                     
                 </div>
@@ -8461,8 +8490,8 @@ data-slide-class="v04 qh-deriv v66-iq-slide">
                     <div class="v4-eq">\[\begin{aligned}S&amp;=I+c_1\dot I+c_2\ddot I\\\widetilde S(\omega)&amp;=\big(1-ic_1\omega-c_2\,\omega^2\big)\widetilde I(\omega)=\Big(1-\frac{\omega}{\omega_1}\Big)\Big(1-\frac{\omega}{\omega_2}\Big)\widetilde I(\omega)\end{aligned}\]</div>
                     <div class="v4-eq">\[c_1=-i\Big(\frac{1}{\omega_1}+\frac{1}{\omega_2}\Big),\qquad c_2=-\frac{1}{\omega_1\omega_2}\]</div>
                     <p>\(\omega_1=\alpha\) (the 1–2 line), \(\omega_2\) a second line. \(n\) derivatives (\(I,\dot I,\dots,I^{(n-1)}=0\) at \(t=0,T\)) remove \(n\) chosen lines:</p>
-                    <div class="v4-eq">\[P_n(\omega)=\prod_{j=1}^{n}\Big(1-\frac{\omega}{\omega_j}\Big)\]</div>
-                    <p>Even derivatives go into \(I\), odd ones into \(Q\). \(\omega_1=\omega_2=\alpha\): a double zero, a wider notch.</p>
+                    <div class="v4-eq">\[\widetilde S(\omega)=\prod_{j=1}^{n}\Big(1-\frac{\omega}{\omega_j}\Big)\,\widetilde I(\omega)\]</div>
+                    
                 </div>
                 <div class="qh-step-host">
                     <div class="v73hd qh-reveal-item" aria-label="Interactive higher-derivative DRAG: buttons set the number of derivatives n from 1 to 6; each one removes one more of six chosen lines (the first is the 1-2 line); panels show I and Q, their sum with the 5 GHz carrier, and the spectrum of S = I + iQ in dB">
@@ -8476,7 +8505,7 @@ data-slide-class="v04 qh-deriv v66-iq-slide">
                             <button type="button" data-v73-order="6" aria-pressed="false">6</button>
                         </div>
                         <div class="v73hd-panel">
-                            <div class="v73hd-panel-head"><span>Envelopes <b class="v73hd-i">I(t)</b> and <b class="v73hd-q">Q(t)</b></span><small data-v73-out="peak"></small></div>
+                            <div class="v73hd-panel-head"><span>Envelopes <b class="v73hd-i">I(t)</b> and <b class="v73hd-q">Q(t)</b>, \(\cos^6\) π pulse</span><small data-v73-out="peak"></small></div>
                             <canvas data-v73-plot="wave" aria-label="I and Q envelopes, MHz"></canvas>
                         </div>
                         <div class="v73hd-panel">
@@ -8484,17 +8513,20 @@ data-slide-class="v04 qh-deriv v66-iq-slide">
                             <canvas data-v73-plot="rf" aria-label="The summed waveform with the carrier"></canvas>
                         </div>
                         <div class="v73hd-panel">
-                            <div class="v73hd-panel-head"><span>Spectrum of \(S=I+iQ\) and \(|P_n(\omega)|\), dB</span><small data-v73-out="zero"></small></div>
+                            <div class="v73hd-panel-head"><span>Spectrum of \(S=I+iQ\), dB</span><small data-v73-out="zero"></small></div>
                             <canvas data-v73-plot="spec" aria-label="Spectrum of S in dB versus frequency"></canvas>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- Teaching note: v75：每多一階微分，P_n 多一個零點，可以放在任一條指定的線上。n=2：(1 − ω/ω₁)(1 − ω/ω₂) = 1 − ic₁ω − c₂ω² → c₁ = −i(1/ω₁ + 1/ω₂)，c₂ = −1/(ω₁ω₂)；ω₁ = ω₂ = α 就是雙重零點（凹口變寬）。
-                 偶數階係數是實數 → I，奇數階是虛數 → Q（c_k = p_k i^k，p_k 是 P_n 對 ω^k 的係數）。右圖 6 條指定線（偏移 −223（1–2）、+175、−160、+125、−275、+275 MHz，例如鄰近 qubit 的線），按 n 依序把前 n 條歸零：該線的點掉到底、標籤變綠。
-                 數值（Python 驗證）：每條線在被納入後是精確零點；面積不變（P_n(0)=1，仍是 π pulse）；波形峰值 80 → 60 MHz（零點分佈在兩側，不會爆）。波包 sin⁶（前 5 階導數在兩端為 0，n 最多 6）。
-                 頻譜上每 50 MHz 的小凹口是 sin⁶ 本身的（20 ns 有限長度、餘弦級數），不是 DRAG 造成的。 -->
-            <p class="v4-source">Interactive: sin⁶ π pulse (\(I,\dots,I^{(5)}=0\) at the ends), T = 20 ns, carrier 5 GHz, \(\tfrac{\alpha}{2\pi}=-223\) MHz. HD DRAG: M. Hyyppä et al., PRX Quantum <b>5</b>, 030353 (2024).</p>
+            <!-- Teaching note: v78：寫明每個 n 都是 cos⁶ π pulse（標題與 footer），I/Q 與加總波形縱軸改 ±100 MHz（峰值最多 80）。
+                 v75：每多一階微分，多一個零點，可放在任一條指定的線上。n=2：(1 − ω/ω₁)(1 − ω/ω₂) = 1 − ic₁ω − c₂ω² → c₁ = −i(1/ω₁ + 1/ω₂)，c₂ = −1/(ω₁ω₂)；ω₁ = ω₂ = α 就是雙重零點（凹口變寬）。
+                 偶數階係數是實數 → I，奇數階是虛數 → Q（c_k = p_k i^k，p_k 是連乘積 Π(1 − ω/ω_j) 對 ω^k 的係數）。6 條指定線標成 ω₁…ω₆（ω₁ = α 是 1–2 線，其餘偏移 +175、−160、+125、−275、+275 MHz）。
+                 v77：拿掉虛線（那條是連乘積 |Π(1 − ω/ω_j)| 本身），不用 P_n 記號（易與機率、投影混淆）。
+                 高階的代價（cos⁶，理想硬體也看得到，只是在 ±350 MHz 視窗外）：連乘積離指定線越遠越大，約 |ω|ⁿ，等於把高頻放大。
+                 ±1 GHz 處：n=0 約 −159 dB，n=3 約 −118，n=6 約 −78 dB；2 GHz：−202 → −82 dB。n=6 時 S 含 I⁽⁶⁾，兩端不為 0，波形在端點有跳躍，尾巴只剩 1/ω（跟截斷高斯同一個病）。
+                 視窗內也有：沒指定的 +275 MHz 線 n=1 −71 dB → n=5 −59 dB。其他：零點只在一次微擾（線性響應）成立，強驅動時線被 AC Stark 移走；係數多、要校準；高頻部分最受 AWG 取樣與線路失真影響。 -->
+            <p class="v4-source">Interactive: \(\cos^6\) π pulse for every \(n\) (\(I,\dots,I^{(5)}=0\) at the ends), T = 20 ns, carrier 5 GHz, \(\tfrac{\alpha}{2\pi}=-223\) MHz. HD DRAG: M. Hyyppä et al., PRX Quantum <b>5</b>, 030353 (2024).</p>
         </section>
         <section data-manual-slide="" data-auto-fit="false" data-title="Gaussian or cos² envelope?" data-slide-class="v04 qh-deriv v52-cmp-slide">
             <h3>Gaussian or \(\cos^2\) envelope?</h3>
@@ -8617,9 +8649,11 @@ data-slide-class="v04 qh-deriv v66-iq-slide">
                 <div class="v4-eq">\[i\frac{d}{dt}\begin{pmatrix}c_0\\c_1\\c_2\end{pmatrix}\simeq\begin{pmatrix}0&amp;\tfrac12 I&amp;0\\\tfrac12 I&amp;{\color{#355f9c}\Delta+\left(\lambda-\tfrac12\right)\tfrac{I^2}{\alpha}}&amp;{\color{#b5651d}-i\tfrac{\sqrt2}{2}(1-\lambda)\tfrac{\dot I}{\alpha}}\\0&amp;{\color{#b5651d}i\tfrac{\sqrt2}{2}(1-\lambda)\tfrac{\dot I}{\alpha}}&amp;2\Delta+\alpha\end{pmatrix}\begin{pmatrix}c_0\\c_1\\c_2\end{pmatrix}\]</div>
                 <p>Blue: the phase (Q also moves the blue entry). Orange, integrated over the pulse, is the \((1-\lambda)\) of DRAG: Q cancels the leakage.</p>
                 <p>\(\lambda=\tfrac12\): blue is 0, orange is half. \(\lambda=1\): orange is 0, but blue is \(+\tfrac{I^2}{2\alpha}\). \(\lambda=1\) and \(\Delta(t)=-\tfrac{I^2}{2\alpha}\): both are 0.</p>
+                <p>On the AWG the carrier stays at \(\omega_{01}\) and \(\Delta\) goes into the envelope: \(I+iQ\to(I+iQ)\,e^{\,i\int_0^t\Delta\,dt'}\). A constant \(\Delta\) is just a lower \(\omega_d\); \(\Delta(t)\) can only be made this way.</p>
             </div>
             <!-- Teaching note: 起點 3×3 → 終點 3×3，不引入新變數。pulse 期間真正的振幅與 c 差一個只在 I≠0 時存在的部分（c2 跟著 c1 的部分、
                  p44 的括號），pulse 起訖 I=0 時完全相同，所以這個 3×3 給出同樣的 gate 與 leakage。藍 = Δ+(λ−½)I²/α，橙 = (1−λ)(√2/2)İ/α。
+                 v79 最後一行：V = Re[(I+iQ)e^{−iω_d t}]（p09），把 I+iQ 乘 e^{i∫Δdt} 等於瞬時載波 ω01 − Δ(t)，在跟著驅動相位轉的座標裡 |1⟩ 得 Δ、|2⟩ 得 2Δ（同本頁矩陣）。常數 Δ 就是 I、Q 以 Δ 振盪（論文裡 I、Q 的「次頻率」/ sideband），等同把 ω_d 調低；Δ(t) = −I²/2α 是時變的，只能這樣做。結束時座標多轉了 ∫Δdt，下一個 pulse 要接著這個相位（virtual Z）。
                  略去的項（0–2 與 |2⟩ 的小移動，都離共振 α）：模擬中 λ=1 的 leakage 只剩 1.7e-9；逐項數值檢查見下一頁 Python。 -->
             <p class="v4-source">J. M. Gambetta et al., Phys. Rev. A <b>83</b>, 012308 (2011) · F. Motzoi et al., Phys. Rev. Lett. <b>103</b>, 110501 (2009).</p>
         </section>
@@ -8628,7 +8662,7 @@ data-slide-class="v04 qh-deriv v66-iq-slide">
         
 
         <section data-manual-slide="" data-auto-fit="false" data-title="DRAG weight: one half or one?" data-slide-class="v04 qh-deriv v29-drag">
-            <h3>DRAG weight: one half or one?</h3>
+            <h3>DRAG weight: one half or one? (Clifford randomized benchmarking)</h3>
             <div class="v29-grid">
                 <div>
                     <figure class="v29-figure v29-data"><a href="../Image/w05-chen-half-full-drag-v29.png"><img src="../WebP/w05-chen-half-full-drag-v29.webp" alt="Chen Figure 1c and 1d. Half-weight DRAG improves sequence fidelity, while full-weight DRAG reduces leakage more without detuning."></a>
@@ -11596,13 +11630,13 @@ point I(t) + iQ(t) at the cursor. Carrier cycles are reduced for visibility. */
         })();
     </script>
 
-    <script>/* Higher-derivative DRAG (v73; v75: one new zero per derivative). P_n(w) = prod_{j<=n} (1 - w/w_j) with the
-target lines w_j at offsets -223 (1-2), +175, -160, +125, -275, +275 MHz. P_n(w) = sum_k p_k w^k, and
-S = sum_k c_k I^(k) with c_k = p_k i^k gives S~(w) = P_n(w) I~(w): exact zeros at the first n lines. Even k are real
+    <script>/* Higher-derivative DRAG (v73; v75: one new zero per derivative; v77: no dashed factor curve). Target lines w_j at
+offsets -223 (1-2), +175, -160, +125, -275, +275 MHz. prod_{j<=n} (1 - w/w_j) = sum_k p_k w^k, and
+S = sum_k c_k I^(k) with c_k = p_k i^k gives S~(w) = prod_j (1 - w/w_j) I~(w): exact zeros at the first n lines. Even k are real
 (they go into I), odd k imaginary (into Q). The identity needs I, I', ..., I^(n-1) to vanish at t = 0 and T, so the envelope is
-sin^6(pi t/T) = [10 - 15 cos(2 pi t/T) + 6 cos(4 pi t/T) - cos(6 pi t/T)]/32 (derivatives up to the 5th vanish at the ends),
+cos^6 (centred, = sin^6(pi t/T), named like p38's cos^2) = [10 - 15 cos(2 pi t/T) + 6 cos(4 pi t/T) - cos(6 pi t/T)]/32 (derivatives up to the 5th vanish at the ends),
 scaled to a pi pulse, T = 20 ns; alpha/2pi = -223 MHz; carrier 5 GHz (100 cycles in 20 ns). The spectrum is drawn
-as |(1 - w/alpha)^n| |I~(w)| in dB re |I~(0)|; a direct integral of S agrees to 1e-10 (checked in Python). */
+as |prod_j (1 - w/w_j)| |I~(w)| in dB re |I~(0)|; a direct integral of S agrees to 1e-10 (checked in Python). */
         (() => {
             const instances = new WeakMap();
             const TAU = 2 * Math.PI, T = 20, ALPHA = -TAU * 0.223, F_D = 5.0, CYCLES = F_D * T, W0 = TAU / T;
@@ -11622,10 +11656,10 @@ as |(1 - w/alpha)^n| |I~(w)| in dB re |I~(0)|; a direct integral of S agrees to 
             };
             const TARGETS = [-223, 175, -160, 125, -275, 275];          // MHz offsets; the first is the 1-2 line (alpha)
             const W = TARGETS.map(f => TAU * f / 1000);
-            // p_k of P_n(w) = prod_{j<n} (1 - w/w_j)
+            // p_k of prod_{j<n} (1 - w/w_j)
             const POLY = [[1]];
             for (let n = 1; n <= 6; n++) { const prev = POLY[n - 1], q = new Array(prev.length + 1).fill(0); prev.forEach((v, k) => { q[k] += v; q[k + 1] -= v / W[n - 1]; }); POLY.push(q); }
-            const Pn = (w, n) => { let v = 1; for (let j = 0; j < n; j++) v *= 1 - w / W[j]; return v; };
+            const prodZ = (w, n) => { let v = 1; for (let j = 0; j < n; j++) v *= 1 - w / W[j]; return v; };
             // S = sum c_k I^(k), c_k = p_k i^k: i^k = 1, i, -1, -i, ...
             function iq(t, n) {
                 let re = 0, im = 0;
@@ -11645,7 +11679,7 @@ as |(1 - w/alpha)^n| |I~(w)| in dB re |I~(0)|; a direct integral of S agrees to 
             }
             const IMAG = freqs.map(itilde), I0 = itilde(0), IALPHA = itilde(MHZ(ALPHA));
             const dB = x => 20 * Math.log10(Math.max(x, 1e-12));
-            const specDb = (f, mag, n) => dB(Math.abs(Pn(TAU * f / 1000, n)) * mag / I0);
+            const specDb = (f, mag, n) => dB(Math.abs(prodZ(TAU * f / 1000, n)) * mag / I0);
             const peak = [];
             for (let n = 0; n <= 6; n++) { let p = 0; for (let k = 0; k <= 400; k++) { const s = iq(T * k / 400, n); p = Math.max(p, Math.hypot(s.I, s.Q)); } peak.push(p); }
 
@@ -11686,8 +11720,8 @@ as |(1 - w/alpha)^n| |I~(w)| in dB re |I~(0)|; a direct integral of S agrees to 
                     const p = prepare(canvas('wave')); if (!p) return;
                     const { ctx, width, height } = p, m = { left: 44, right: 14, top: 8, bottom: 22 };
                     const t0 = -1, t1 = T + 1, pw = width - m.left - m.right, ph = height - m.top - m.bottom;
-                    const X = t => m.left + (t - t0) / (t1 - t0) * pw, Y = v => m.top + (1 - (v + 200) / 400) * ph;
-                    grid(ctx, width, m, Y, [-200, -100, 0, 100, 200]); timeAxes(ctx, width, height, m, X);
+                    const X = t => m.left + (t - t0) / (t1 - t0) * pw, Y = v => m.top + (1 - (v + 100) / 200) * ph;
+                    grid(ctx, width, m, Y, [-100, -50, 0, 50, 100]); timeAxes(ctx, width, height, m, X);
                     const N = 600, ii = [], qq = [];
                     for (let k = 0; k <= N; k++) { const t = t0 + (t1 - t0) * k / N, s = iq(t, n); ii.push([X(t), Y(MHZ(s.I))]); qq.push([X(t), Y(MHZ(s.Q))]); }
                     line(ctx, ii, COLORS.i, 2.4); line(ctx, qq, COLORS.q, 2.4);
@@ -11696,8 +11730,8 @@ as |(1 - w/alpha)^n| |I~(w)| in dB re |I~(0)|; a direct integral of S agrees to 
                     const p = prepare(canvas('rf')); if (!p) return;
                     const { ctx, width, height } = p, m = { left: 44, right: 14, top: 8, bottom: 22 };
                     const t0 = -1, t1 = T + 1, pw = width - m.left - m.right, ph = height - m.top - m.bottom;
-                    const X = t => m.left + (t - t0) / (t1 - t0) * pw, Y = v => m.top + (1 - (v + 200) / 400) * ph;
-                    grid(ctx, width, m, Y, [-200, 0, 200]); timeAxes(ctx, width, height, m, X);
+                    const X = t => m.left + (t - t0) / (t1 - t0) * pw, Y = v => m.top + (1 - (v + 100) / 200) * ph;
+                    grid(ctx, width, m, Y, [-100, 0, 100]); timeAxes(ctx, width, height, m, X);
                     const N = 4400, rf = [];
                     for (let k = 0; k <= N; k++) { const t = t0 + (t1 - t0) * k / N, s = iq(t, n), th = TAU * CYCLES * t / T; rf.push([X(t), Y(MHZ(s.I * Math.cos(th) + s.Q * Math.sin(th)))]); }
                     line(ctx, rf, COLORS.rf, 1.1);
@@ -11719,16 +11753,13 @@ as |(1 - w/alpha)^n| |I~(w)| in dB re |I~(0)|; a direct integral of S agrees to 
                         ctx.beginPath(); ctx.moveTo(X(f), m.top + 16); ctx.lineTo(X(f), height - m.bottom); ctx.stroke();
                     });
                     ctx.setLineDash([]);
-                    ctx.setLineDash([6, 4]); line(ctx, freqs.map(f => [X(f), Y(dB(Math.abs(Pn(TAU * f / 1000, n))))]), '#65508f', 1.6); ctx.setLineDash([]);
                     line(ctx, freqs.map((f, j) => [X(f), Y(specDb(f, IMAG[j], n))]), COLORS.spec, 2.2);
                     TARGETS.forEach((f, j) => {
                         const v = j < n ? YMIN : specDb(f, itilde(f), n);
                         ctx.beginPath(); ctx.arc(X(f), Y(v), 5, 0, TAU); ctx.fillStyle = j < n ? '#20802c' : '#b54549'; ctx.fill();
-                        ctx.font = '700 12px Montserrat, sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'top';
-                        ctx.fillStyle = j < n ? '#20802c' : '#b54549'; ctx.fillText(j === 0 ? '1–2' : String(j + 1), X(f), m.top + 1);
+                        ctx.font = '700 15px "Times New Roman", serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'top';
+                        ctx.fillStyle = j < n ? '#20802c' : '#b54549'; ctx.fillText('ω' + '₁₂₃₄₅₆'[j], X(f), m.top - 1);
                     });
-                    ctx.font = '600 12px Montserrat, sans-serif'; ctx.textAlign = 'right'; ctx.textBaseline = 'bottom'; ctx.fillStyle = '#65508f';
-                    ctx.fillText('dashed: |Pₙ(ω)|', width - m.right - 4, height - m.bottom - 6);
                 }
                 function draw() {
                     wavePlot(order); rfPlot(order); specPlot(order);

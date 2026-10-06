@@ -34,8 +34,7 @@
     <link href="../assets/css/style.css" rel="stylesheet">
     <link href="../assets/css/responsive.css" rel="stylesheet">
 
-    <title>Week 4 · Noise, Fluxonium</title>
-    <meta name="uniweb-nav" content="title">
+    <title>Week 4 Manual Slides · Noise, Fluxonium</title>
     <meta name="description"
         content="PHYS598500 Week 4 manual slides on noise operators, selection rules, superinductors, fluxonium, and protected-qubit design.">
     <meta name="keywords" content="- Quantum Processor
@@ -8238,7 +8237,7 @@ html {
                                 <div class="lesson-link "><a href="T1-1d.html">Week 1 · Computation Is Physical</a></div>
                                 <div class="lesson-link "><a href="T2-2.html">Week 2 · Hardware, Superconductivity, and Josephson Anharmonicity</a></div>
                                 <div class="lesson-link "><a href="T2-W3.html">Week 3 · Tunability and the C-Shunted Transmon</a></div>
-                                <div class="lesson-link active"><a href="T2-W4.html">Week 4 · Noise, Fluxonium</a></div>
+                                <div class="lesson-link active"><a href="T2-W4.html">Week 4 Manual Slides · Noise, Fluxonium, and Protected-Qubit Design | QH-2026F v5</a></div>
                                 <div class="lesson-link "><a href="T3-W5.html">Week 5 · Controlling a Single Qubit with Microwaves</a></div>
                                 </div>
                             </div>
@@ -8581,16 +8580,14 @@ html {
                 <a href="../Image/Al-JJ-TEM.png"><img src="../WebP/Al-JJ-TEM.webp" alt="Four-panel micrograph of an Al/AlOx/Al Josephson junction: chip-level overview, junction close-up, and a cross-sectional TEM showing Pt cap, C cap, Top-Al, AlOx barrier, Bottom Al and Si substrate"></a>
             </figure>
             <figcaption class="qh-p82-citations">
-                Sources:
-                <a href="https://doi.org/10.1557/mrs.2013.229" target="_blank" rel="noopener">Al/AlO<sub>x</sub>/Al TEM, DOI: 10.1557/mrs.2013.229</a>
-                · <a href="https://electronics360.globalspec.com/article/13553/how-quantum-computers-work" target="_blank" rel="noopener">Electronics360 overview</a>
+                X. Liu <em>et al.</em>, <em>Unveiling atomic structure and chemical composition of the Al/AlO<sub>x</sub>/Al Josephson junctions in qubits</em>, Applied Surface Science <strong>640</strong>, 158337 (2023), <a href="https://doi.org/10.1016/j.apsusc.2023.158337" target="_blank" rel="noopener">DOI: 10.1016/j.apsusc.2023.158337</a>。
             </figcaption>
         </figure>
     </section>
 
         <section data-manual-slide data-cover data-title="From ΔH to T1 and T2">
           <div class="theme-header" style="text-align: center;">
-            <h2>Noise</h2>
+            <h2>Decoherence Time and Noise</h2>
           </div>
         </section>
 
@@ -8923,7 +8920,7 @@ html {
 
         
 
-        <section data-manual-slide data-auto-fit="true" data-title="Sweet spot, small overlap, selection rule" data-slide-class="qh-deriv qh-deriv-tight qh-v18-mech qh-w04-noreveal qh-v24-mech qh-v28-merge-side">
+        <section data-manual-slide data-auto-fit="true" data-title="Sweet spot, small overlap, selection rule" data-slide-class="qh-deriv qh-deriv-tight qh-v18-mech qh-v24-mech qh-v28-merge-side qh-v29-mech-reveal">
           <p class="qh-prelude-kicker">Suppression</p>
           <h3>Sweet spot, small overlap, selection rule</h3>
           <div class="qh-key qh-v18-targets">
@@ -8935,8 +8932,8 @@ html {
             \underbrace{\Gamma_1=\frac{\left|\left\langle0\left|\hat{O}_\lambda\right|1\right\rangle\right|^2}{\hbar^2}\,S_\lambda(\omega_{01})}_{\in T_1}
             \]
           </div>
-          <div class="qh-v18-mech-grid">
-            <div>
+          <div class="qh-v18-mech-grid qh-step-host qh-reveal-all">
+            <div class="qh-reveal-item">
               <p class="qh-step-label">1 · Sweet spot: \(\partial\omega_{01}/\partial\lambda=0\)</p>
               \[
               \frac{\partial\omega_{01}}{\partial\lambda}=\frac{O_{11}-O_{00}}{\hbar}=\frac{\partial\left(H_{11}-H_{00}\right)}{\hbar\partial\lambda}=0
@@ -8952,7 +8949,7 @@ html {
               \]
               
             </div>
-            <div>
+            <div class="qh-reveal-item">
               <p class="qh-step-label">2 · Small overlap: far apart</p>
               \[
               |0\rangle,\ |1\rangle \text{far apart}
@@ -8964,7 +8961,7 @@ html {
               \Gamma_1\to0
               \]
               </div>
-            <div>
+            <div class="qh-reveal-item">
               <p class="qh-step-label">3 · Selection rule: odd × even = 0</p>
               <p>For example, parity \(\hat P\) and if \(\hat{\mathcal H}\) has symmetry</p>
               \[
@@ -8989,7 +8986,7 @@ html {
               \langle0|\hat O|1\rangle=(+1)(-1)\,\langle0|(-\hat O)|1\rangle=+\langle0|\hat O|1\rangle\quad\text{allowed}
               \]
             </div>
-            <div class="qh-v28-ops">
+            <div class="qh-reveal-item qh-v28-ops">
             <p>Differentiate \(\hat{\mathcal{H}}=4E_C\left(\hat{n}-n_g\right)^2-E_{J,\mathrm{eff}}(\Phi)\cos \left(\hat{\varphi}-\varphi_{\rm ext}\right)\) once for each knob:</p>
             <div class="qh-deriv-grid qh-v28-row3">
             <div>\[\hat{O}_{n_g}=\frac{\partial\hat{\mathcal{H}}}{\partial n_g}\sim -8E_C\hat{n}\]</div>
@@ -9338,7 +9335,7 @@ html {
     <div id="qh-slide-root" class="qhs-root" hidden aria-hidden="true" data-qhs-course="PHYS598500"
         data-qhs-week="WEEK 4" data-qhs-no-click-advance="true"
         data-qhs-topic="Noise, Fluxonium, and Protected-Qubit Design"
-        data-qhs-title-suffix="PHYS598500 · Week 4">
+        data-qhs-title-suffix="QH-2026F v5 · Manual Slides">
         <header class="qhs-header">
             <a class="qhs-brand" href="main.html" aria-label="Return to the QH-2026F course overview">𝒊𝑁𝑆𝐼𝐺𝐻𝑇
                 𝒊ℏ</a>
@@ -10218,8 +10215,10 @@ html {
                     const host = pickHost(inner);
                     if (!host) { slide.dataset.qhRevealMarked = "1"; return; }
                     hosts = [host];
-                    // group 0 is the opening line / recap and always stays visible
-                    groups = groupsOf(host).slice(1);
+                    // group 0 is the opening line / recap and always stays visible, unless the
+                    // host says every group is a click (the page opens on what sits above it)
+                    groups = groupsOf(host);
+                    if (!host.classList.contains("qh-reveal-all")) groups = groups.slice(1);
                 }
 
                 const live = groups
