@@ -9179,13 +9179,13 @@ data-slide-class="v04 qh-deriv w06-page w06-pic-slide w06-pic-2d">
             <div class="w06lv" aria-label="Interactive level picture: sliders set Delta, alpha1 and alpha2; the bare levels of the nine states move, grouped by excitation number">
                 <div class="w06w-controls">
                     <label><span>\(\Delta=\omega_1-\omega_2\)</span><input type="range" min="-500" max="500" step="5" value="-150" data-w06lv="delta" aria-label="Delta in MHz"><b data-w06lv-out="delta"></b></label>
-                    <label><span>\(\alpha_1\)</span><input type="range" min="-500" max="0" step="5" value="-200" data-w06lv="a1" aria-label="alpha1 in MHz"><b data-w06lv-out="a1"></b></label>
+                    <label><span>\(\alpha_1\)</span><input type="range" min="-500" max="0" step="5" value="-300" data-w06lv="a1" aria-label="alpha1 in MHz"><b data-w06lv-out="a1"></b></label>
                     <label><span>\(\alpha_2\)</span><input type="range" min="-500" max="0" step="5" value="-200" data-w06lv="a2" aria-label="alpha2 in MHz"><b data-w06lv-out="a2"></b></label>
                 </div>
                 <canvas data-w06lv-plot aria-label="Level picture"></canvas>
             </div>
             <!-- Teaching note: 9×9 畫成能階，拉 Δ、α1、α2 看能階怎麼上下。直欄 = Q2 在哪一階（最左欄 |00⟩、|10⟩、|20⟩），顏色 = Q1 在哪一階；每個虛線框是激發數相同的一組（RWA 之後只有框內互相連：g、√2g、2g）。每一組畫在它自己的座標 E − Nω2（組與組之間其實差 ω2 ≈ 2π×5 GHz，這裡縮在一起）。這頁是 g → 0 的裸能階，只看「誰和誰靠近」：Δ = 0 時 |01⟩、|10⟩ 對齊（iSWAP）；Δ = −α1 時 |11⟩、|20⟩ 對齊（CZ）；Δ = α2 時 |11⟩、|02⟩ 對齊。α = 0 是簡諧振子（W7 的共振腔）；α = −500 MHz 已超出一般 transmon（−150 ~ −350 MHz），當作極端情形看。 -->
-            <p class="v4-source">Bare levels (\(g\to0\)). Each block is in its own frame, \(E-N\omega_2\). The real distance between the blocks is \(\omega_2\approx2\pi\times5\) GHz.</p>
+            <p class="v4-source">Bare levels (\(g\to0\)). \(\zeta=E_{11}-E_{10}-E_{01}+E_{00}\) from the exact eigenvalues with \(g=2\pi\times10\) MHz. Each block is in its own frame, \(E-N\omega_2\). The real distance between the blocks is \(\omega_2\approx2\pi\times5\) GHz.</p>
         </section>
 
         <section data-manual-slide="" data-auto-fit="false" data-title="iSWAP"
@@ -12916,6 +12916,18 @@ w06lv: bare levels only.  w06ac: exact eigenvalues of the N=1 (2x2) and N=2 (3x3
                     link('20', '11', '√2 g', Math.abs(D + a1) < tol);
                     link('11', '02', '√2 g', Math.abs(D - a2) < tol);
                     link('21', '12', '2g', false, true);
+                    // v90: live zeta, large, at the right of the 2-excitation block (exact eigenvalues with g = 2 pi x 10 MHz)
+                    {
+                        const EZ = blocks(D, 10, a1, a2), Ez = (N, col) => (EZ.find(o => o.N === N && o.col === col) || { e: NaN }).e;
+                        const zeta = Ez(2, 1) - Ez(1, 1) - Ez(1, 0);
+                        if (Number.isFinite(zeta)) {
+                            const zx = xs[2] + bw + 8, zy = B[2].top + B[2].h - 16;
+                            ctx.fillStyle = PUR; ctx.font = '700 22px Montserrat, sans-serif'; ctx.textAlign = 'left'; ctx.textBaseline = 'bottom';
+                            ctx.fillText(`ζ = 2π × (${zeta < 0 ? '−' : '+'}${Math.abs(zeta).toFixed(2)} MHz)`, zx, zy);
+                            ctx.fillStyle = MUT; ctx.font = '12px Montserrat, sans-serif'; ctx.textBaseline = 'top';
+                            ctx.fillText('exact, with g = 2π × 10 MHz', zx, zy + 3);
+                        }
+                    }
                     const note = [];
                     if (Math.abs(D) < tol) note.push('|01⟩ meets |10⟩: iSWAP');
                     if (Math.abs(D + a1) < tol) note.push('|11⟩ meets |20⟩: CZ');
