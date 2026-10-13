@@ -8123,7 +8123,7 @@
         #qh-slide-root .qhs-slide.w06-mc-slide .w06-mc-refs a { color: inherit; text-decoration: none; }
     </style>
     <style id="w06-v55">
-        .qhs-slide.w06-cz-slide .w06cz { display: grid; grid-template-rows: auto auto minmax(0, 1fr) auto; gap: 5px; height: 572px; color: #28333b; user-select: none; }
+        .qhs-slide.w06-cz-slide .w06cz { display: grid; grid-template-rows: auto auto minmax(0, 1fr) auto auto; gap: 5px; height: 572px; color: #28333b; user-select: none; }
         .qhs-slide.w06-cz-slide .w06cz-controls { display: grid; gap: 2px; }
         .qhs-slide.w06-cz-slide .w06cz-controls label { display: grid; grid-template-columns: 60px minmax(0, 1fr) 150px; align-items: center; gap: 10px; font-size: 15px; line-height: 1.15; }
         .qhs-slide.w06-cz-slide .w06cz-controls label span { color: #65508f; font-weight: 700; }
@@ -8201,6 +8201,18 @@
         #qh-slide-root .qhs-slide.w06-pic-slide .w06-pic-xmon { left: 157.3px; top: 156px; width: 437.6px; height: 578px; }
         #qh-slide-root .qhs-slide.w06-pic-slide .w06-pic-syc { left: 634.9px; top: 0; width: 511.3px; height: 734px; }
         #qh-slide-root .qhs-slide.w06-pic-slide .w06-pic-wil { left: -45px; top: 168.6px; width: 1393.5px; height: 552.8px; }
+    </style>
+    <style id="w06-v86">
+        /* p20-22: one column layout for the three company tables */
+        #qh-slide-root .qhs-slide.w06-mc-slide table.w06-mc:not(.w06-mc4) { table-layout: fixed !important; }
+        #qh-slide-root .qhs-slide.w06-mc-slide table.w06-mc:not(.w06-mc4) th:nth-child(1) { width: 14.2% !important; }
+        #qh-slide-root .qhs-slide.w06-mc-slide table.w06-mc:not(.w06-mc4) th:nth-child(2) { width: 9.5% !important; }
+        #qh-slide-root .qhs-slide.w06-mc-slide table.w06-mc:not(.w06-mc4) th:nth-child(3) { width: 14.2% !important; }
+        #qh-slide-root .qhs-slide.w06-mc-slide table.w06-mc:not(.w06-mc4) th:nth-child(4) { width: 14.2% !important; }
+        #qh-slide-root .qhs-slide.w06-mc-slide table.w06-mc:not(.w06-mc4) th:nth-child(5) { width: 7.4% !important; }
+        #qh-slide-root .qhs-slide.w06-mc-slide table.w06-mc:not(.w06-mc4) th:nth-child(6) { width: 6.8% !important; }
+        #qh-slide-root .qhs-slide.w06-mc-slide table.w06-mc:not(.w06-mc4) th:nth-child(7) { width: 14.2% !important; }
+        #qh-slide-root .qhs-slide.w06-mc-slide table.w06-mc:not(.w06-mc4) th:nth-child(8) { width: 19.5% !important; }
     </style>
     <style id="w06-v67">
         /* p40: lecture figure over the device image (left), Samach Fig. 3(a, b) at full height (right).
@@ -9249,10 +9261,11 @@ data-slide-class="v04 qh-deriv w06-page w06-pic-slide w06-pic-2d">
                 <h2>CZ</h2>
             </div>
         </section>
-<section data-manual-slide="" data-auto-fit="false" data-title="CZ on the chip"
+        
+        <section data-manual-slide="" data-auto-fit="false" data-title="CZ gate: four inputs"
             data-slide-class="v04 qh-deriv w06m-slide">
-            <h3>CZ on the chip</h3>
-            <div class="w06m" data-w06m-gate="cz" aria-label="Animated CZ Ramsey on a two-Xmon device: a pi/2 pulse on Q1, Q2 in |0> or |1>, the CZ flux pulse on the Z line of Q1, and a second pi/2 pulse on Q1; with Q2 in |1> the phase of |11> becomes pi, and Q1 ends in |1> instead of |0>">
+            <h3>The CZ gate on the chip</h3>
+            <div class="w06m" data-w06m-gate="czgate" aria-label="Animated CZ gate on a two-Xmon device, Q1 the control and Q2 the target, for the inputs |00>, |10>, |01> and |11>: preparation X pulses, the CZ flux pulse on the Z line of Q1, then a virtual Z on Q1 that removes the phase from the flux pulse; only |11> ends with the sign -1">
                 <div class="w06m-dev">
                     <a href="../Image/Wang2019-Fig1b-device.png"><img src="../WebP/Wang2019-Fig1b-device.webp" alt="Two Xmon transmons, Xmon1 (Q1) and Xmon2 (Q2), with a direct capacitive coupling between neighbouring arms. Each Xmon has an XY line and a Z line at the bottom and a read-out resonator at the top."></a>
                     <svg viewBox="0 0 1126 1366" preserveAspectRatio="none" aria-hidden="true">
@@ -9266,19 +9279,21 @@ data-slide-class="v04 qh-deriv w06-page w06-pic-slide w06-pic-2d">
                 </div>
                 <div class="w06m-right">
                     <div class="w06m-head">
-                        <span class="w06m-hint">Q2</span>
-                        <button type="button" data-w06m-q2="0" aria-pressed="false">|0⟩</button>
-                        <button type="button" data-w06m-q2="1" class="is-on" aria-pressed="true">|1⟩</button>
+                        <span class="w06m-hint">Q1 control · Q2 target · input</span>
+                        <button type="button" data-w06m-in="00" aria-pressed="false">|00⟩</button>
+                        <button type="button" data-w06m-in="10" aria-pressed="false">|10⟩</button>
+                        <button type="button" data-w06m-in="01" aria-pressed="false">|01⟩</button>
+                        <button type="button" data-w06m-in="11" class="is-on" aria-pressed="true">|11⟩</button>
                         <button type="button" data-w06m-run="">Stop</button>
                         <button type="button" data-w06m-reset="">Replay</button>
                     </div>
                     <canvas data-w06m-plot="scope" aria-label="XY line of Q1, XY line of Q2 and Z line of Q1 against time"></canvas>
-                    <canvas data-w06m-plot="panels" aria-label="Levels of Q1 and Q2"></canvas>
+                    <canvas data-w06m-plot="panels" aria-label="Levels of Q1 and Q2, with the population and the phase of each amplitude"></canvas>
                     <p class="w06m-readout" data-w06m-out="readout"></p>
                 </div>
             </div>
-            <!-- Teaching note: CZ Ramsey（Wang 2019 Fig. 2(a) 下、Fig. 2(d)）：Q1 打 π/2 到赤道（+x），Q2 打 X（|1⟩）或不打（|0⟩）——這兩個是準備，不是 gate；CZ 只有框起來的那段 Q1 的 flux pulse；最後 Q1 再打 π/2（相位 0）。Q2 = |0⟩：|10⟩ 在這個頻率沒有夥伴，Q1 停在 +x，最後回到 |0⟩；Q2 = |1⟩：Q1 變成 −x，最後到 |1⟩。最後 Q1 是 |1⟩（Q2 = |1⟩）或 |0⟩（Q2 = |0⟩），差別就是 CZ 的 −1。v61 起不畫 fringe 圖。CZ：flux pulse 把 Q1 移到 ω₂ − α₁，|11⟩ 到 |20⟩ 再回來，多一個 −1。單位元相位（flux 讓 Q1 頻率改變的動態相位）已扣掉。理想模型，數字示意。 -->
-            <p class="v4-source">Device image: T. Wang <em>et al.</em>, Phys. Rev. Applied <b>11</b>, 034030 (2019), Fig. 1(b); it only shows the signal lines. Pulse sequence: the CZ Ramsey of its Fig. 2(a). Lecture animation of an ideal model; single-qubit phases removed.</p>
+            <!-- Teaching note: 真正的 CZ 閘只有兩樣東西：Q1 的 flux pulse（在 ω₂ − α₁ 停 35 ns，|11⟩ → |20⟩ → −|11⟩）和最後 Q1 上的 virtual Z（改框架、不送訊號）。flux 期間 Q1 的頻率從 5.52 GHz 降到 5.214 GHz，所有 Q1 = |1⟩ 的態（|10⟩、|11⟩）多一個動態相位 φ₁ = ∫(ω₁ − ω₁,idle) dt（約 −10.8 圈；扣掉整圈後淨值 −65°，flux 期間箭頭照實際整圈轉，virtual Z 只轉回淨值 +65°）；virtual Z 把 Q1 轉回 +65°。四種輸入：|00⟩、|01⟩ 不變；|10⟩ 只差 φ₁，補回後回到 +1；|11⟩ 經 |20⟩ 回來帶 −1，補回後是 −|11⟩。箭頭是每個振幅在各自 qubit 待機頻率框架中的相位。理想模型：忽略 flux 期間 |01⟩–|10⟩ 的小 AC Stark 位移，所以 Q2 不用修正；準備用的 X 脈衝不是閘的一部分。 -->
+            <p class="v4-source">Device image: T. Wang <em>et al.</em>, Phys. Rev. Applied <b>11</b>, 034030 (2019), Fig. 1(b); it only shows the signal lines. Lecture animation of an ideal model: Q1 moves from 5.52 GHz to \(\omega_2-\alpha_1=5.21\) GHz for 35 ns.</p>
         </section>
         
 <section data-manual-slide="" data-auto-fit="false" data-title="CZ chevron"
@@ -9316,8 +9331,9 @@ data-slide-class="v04 qh-deriv w06-page w06-pic-slide w06-pic-2d">
             <h3>A tunable coupler</h3>
             <div class="w06-tc">
                 <div class="w06-tc-text">
-<div class="v4-eq">\[g_{\rm eff}\approx g_{12}+\frac{g_1g_2}{2}\Big(\frac{1}{\omega_1-\omega_c}+\frac{1}{\omega_2-\omega_c}\Big)\]</div>
-<p>Two transmon qubits and one transmon coupler. Qubit 1 is fixed at 4.16 GHz. Qubit 2 and the coupler have Z lines. Each qubit couples to the coupler with \(\frac{g}{2\pi}\approx72\) MHz, much more than the direct coupling. Qubit 2 moves to the gate frequency. Then a Z pulse on the coupler starts the coupling. CZ: 60 ns, 99.76 %. iSWAP: 30 ns, 99.87 %.</p>
+<p>When the coupler is far from both qubits, \(g_{1c}\ll|\omega_1-\omega_c|\) and \(g_{2c}\ll|\omega_2-\omega_c|\):</p>
+<div class="v4-eq">\[g_{\rm eff}\approx g_{12}+\frac{g_{1c}g_{2c}}{2}\Big(\frac{1}{\omega_1-\omega_c}+\frac{1}{\omega_2-\omega_c}\Big)\]</div>
+<p>Two transmon qubits and one transmon coupler. Qubit 1 is fixed at 4.16 GHz. Qubit 2 and the coupler have Z lines. Each qubit couples to the coupler with \(\frac{g_{1c}}{2\pi}=\frac{g_{2c}}{2\pi}\approx72\) MHz, much more than the direct coupling. Qubit 2 moves to the gate frequency. Then a Z pulse on the coupler starts the coupling. CZ: 60 ns, 99.76 %. iSWAP: 30 ns, 99.87 %.</p>
                 </div>
                 <figure class="w06-tc-fig"><a href="../Image/Sung2021-Fig1.png"><img src="../WebP/Sung2021-Fig1.webp" alt="Sung et al. 2021, Fig. 1: (a) levels of qubit 1, the coupler and qubit 2 with couplings g1c, g2c and g12; (b) optical image of the chip; (c) zoom on qubit 1 (blue), the coupler and qubit 2 (red); (d) circuit with C1c, C2c, C12, XY and Z control lines and readout"></a></figure>
             </div>
@@ -9331,14 +9347,16 @@ data-slide-class="v04 qh-deriv w06-page w06-pic-slide w06-pic-2d">
             <div class="v4-two">
                 <div class="qh-step-host">
 <p>Labels: \(|\text{qubit 1},\text{coupler},\text{qubit 2}\rangle\). \(g_{12}\) is the direct coupling between the qubits. The dashed line is \(E_{100}+E_{001}-E_{000}\). \(\zeta\) is its distance to \(|101\rangle\).</p>
+<p>\(\Delta=\omega_1-\omega_2\). At \(\Delta=0\), \(|100\rangle\) and \(|001\rangle\) exchange the excitation: this is the iSWAP. Move \(\omega_c\) down, and the exchange becomes faster.</p>
                 </div>
                 <div class="qh-step-host">
-                    <div class="w06cz" aria-label="Interactive model: sliders set the coupler frequency, the coupler anharmonicity, the qubit-coupler coupling and the direct qubit-qubit coupling; left, all levels with up to two excitations, in columns by the level of qubit 2, with the dashed line E100 + E001 and the gap zeta to |101>; right, zeta against the coupler frequency with the zero marked">
+                    <div class="w06cz" aria-label="Interactive model: sliders set Delta = w1 - w2, the coupler frequency, the coupler anharmonicity, the qubit-coupler coupling and the direct qubit-qubit coupling; left, all levels with up to two excitations, in columns by the level of qubit 2, with the dashed line E100 + E001 and the gap zeta to |101>; right, zeta against the coupler frequency with the zero marked">
                         <div class="w06cz-controls">
+                            <label><span>\(\Delta\)</span><input type="range" min="-300" max="300" step="5" value="-50" data-w06cz="d" aria-label="Delta = w1 - w2 in MHz"><b data-w06cz-out="d"></b></label>
                             <label><span>\(\omega_c\)</span><input type="range" min="4330" max="5500" step="5" value="4800" data-w06cz="wc" aria-label="Coupler frequency in MHz"><b data-w06cz-out="wc"></b></label>
                             <label><span>\(\alpha_c\)</span><input type="range" min="-200" max="0" step="5" value="-90" data-w06cz="ac" aria-label="Coupler anharmonicity in MHz"><b data-w06cz-out="ac"></b></label>
-                            <label><span>\(g_1=g_2\)</span><input type="range" min="30" max="100" step="1" value="72" data-w06cz="g" aria-label="Qubit-coupler coupling in MHz"><b data-w06cz-out="g"></b></label>
-                            <label><span>\(g_{12}\)</span><input type="range" min="0" max="15" step="0.5" value="0" data-w06cz="g12" aria-label="Direct qubit-qubit coupling in MHz"><b data-w06cz-out="g12"></b></label>
+                            <label><span>\(g_{1c}=g_{2c}\)</span><input type="range" min="30" max="100" step="1" value="72" data-w06cz="g" aria-label="Qubit-coupler coupling in MHz"><b data-w06cz-out="g"></b></label>
+                            <label><span>\(g_{12}\)</span><input type="range" min="0" max="15" step="0.5" value="3" data-w06cz="g12" aria-label="Direct qubit-qubit coupling in MHz"><b data-w06cz-out="g12"></b></label>
                         </div>
                         <div class="w06cz-mode"><span>coupler levels</span><button type="button" data-w06cz-mode="3" class="is-on" aria-pressed="true">0, 1, 2</button><button type="button" data-w06cz-mode="2" aria-pressed="false">0, 1</button></div>
                         <div class="w06cz-panels">
@@ -9346,11 +9364,12 @@ data-slide-class="v04 qh-deriv w06-page w06-pic-slide w06-pic-2d">
                             <div class="w06cz-panel"><div class="w06cz-panel-head"><span>\(\zeta\) against \(\omega_c\)</span></div><canvas data-w06cz-plot="zeta" aria-label="ZZ rate against coupler frequency"></canvas></div>
                         </div>
                         <p class="w06cz-readout" data-w06cz-out="parts"></p>
+                        <p class="w06cz-readout w06cz-swap" data-w06cz-out="swap"></p>
                     </div>
                 </div>
             </div>
             <!-- Teaching note: v57 加了 g12（兩顆 qubit 之間的直接電容耦合，和 p45 一致）。公式是 ω1 ≠ ω2、含 g12 的最低階結果（g1、g2 一階，g12 算二階，全部 g⁴ 級），由四階 Rayleigh–Schrödinger 微擾推出，並和精確對角化比對：全部 α = 0 時精確 ζ = 0；g → 0 時「精確/公式」→ 1.000（四組參數，含 g1 ≠ g2、α1 ≠ α2、g12 為負）。每一項對應一個能階：分母就是 |101⟩ 到 |200⟩、|002⟩、|020⟩ 的距離（ω2−ω1−α1 > 0、ω1−ω2−α2 > 0 = 在下面 → 正；Δ1+Δ2−α_c < 0 = 在上面 → 負）。g_A、g_B 裡 g12（正）和經過 coupler 的 g1g2/Δ（coupler 在上，Δ < 0，負）相反號 → 在某個 ω_c 互相抵消（p45 的 off point）＝ 第一種關掉 ZZ 的方式；第二種是 |020⟩ 那項（負）抵消其他項（Sung）。最後一項 4g12g1g2/(Δ1Δ2) 是直接路徑和 coupler 路徑一起出現的交叉項，沒有對應單一能階。右圖和左圖全部是精確本徵值（RWA、每個元件 0–2 能階），沒有用公式畫的曲線；公式只在 coupler 離 qubit 夠遠時準（靠近 coupler 時高階項可到 30% 以上）。拉法：g12 = 0 只有 |020⟩ 的零點（約 4.38 GHz）；g12 = 3 → 4.44；g12 = 5 → 三個零點（4.55、4.80、5.26）；g12 = 6 → 5.08；g12 = 10 → 4.73。|020⟩ 和 g_eff 兩種機制在 g12 ≈ 5–6 MHz 互相干涉。Mundada 2019（p21、p46 的圖）是同一個想法：固定在上方的 bus（負號路徑）和可調、在下方的 coupler（正號路徑）互相抵消。 -->
-            <p class="v4-source">Plots: exact eigenvalues (RWA, levels 0–2), \(\omega_{1,2}=2\pi\times(4.16,\,4.21)\) GHz, \(\alpha_{1,2}=2\pi\times(-220)\) MHz; \(\zeta\) gap drawn larger. Formula: leading order in \(g\).</p>
+            <p class="v4-source">Exact eigenvalues and exact time evolution (RWA, levels 0–2), \(\omega_1=2\pi\times4.16\) GHz, \(\omega_2=\omega_1-\Delta\), \(\alpha_{1,2}=2\pi\times(-220)\) MHz; \(\zeta\) gap drawn larger.</p>
         </section>
 <section data-manual-slide="" data-auto-fit="false" data-title="ZZ-free iSWAP (Sung 2021)"
             data-slide-class="v04 qh-deriv w06-page w06s-slide w06-zz-slide">
@@ -12633,9 +12652,9 @@ zeta = E101 - E100 - E001 + E000. "From |020>" = zeta(coupler 0-2) - zeta(couple
                 }
                 return { w: a.map((r, i) => r[i]), v };
             }
-            function levels(wc, ac, g, g12, nc) {          // {'000': E, '100': E, ...} dressed, plus bare
+            function levels(wc, ac, g, g12, nc, w2 = W2) {  // {'000': E, '100': E, ...} dressed, plus bare; v84: w2 = w1 - Delta
                 const out = {}, bare = {};
-                const E = s => s[0] * W1 + AQ * s[0] * (s[0] - 1) / 2 + s[1] * wc + ac * s[1] * (s[1] - 1) / 2 + s[2] * W2 + AQ * s[2] * (s[2] - 1) / 2;
+                const E = s => s[0] * W1 + AQ * s[0] * (s[0] - 1) / 2 + s[1] * wc + ac * s[1] * (s[1] - 1) / 2 + s[2] * w2 + AQ * s[2] * (s[2] - 1) / 2;
                 for (let N = 0; N <= 2; N++) {
                     const st = []; for (let a = 0; a < 3; a++) for (let c = 0; c < nc; c++) for (let b = 0; b < 3; b++) if (a + c + b === N) st.push([a, c, b]);
                     const key = s => s.join(''), idx = new Map(st.map((s, k) => [key(s), k]));
@@ -12652,6 +12671,22 @@ zeta = E101 - E100 - E001 + E000. "From |020>" = zeta(coupler 0-2) - zeta(couple
                 return { E: out, bare };
             }
             const zetaOf = L => L.E['101'] - L.E['100'] - L.E['001'] + L.E['000'];
+            // v84: the exact |100> <-> |001> exchange. One-excitation block (|100>, |010>, |001>), exact eigenvalues and exact time
+            // evolution; the largest P(|001>) in one period of the two qubit-like eigenstates (energies in MHz, so phase = 2 pi E t / 1000, t in ns)
+            function swapOf(wc, g, g12, w2) {
+                const H = [[W1, g, g12], [g, wc, g], [g12, g, w2]], e = eigSym(H);
+                const kA = [0, 1, 2].reduce((b, k) => (e.v[0][k] ** 2 > e.v[0][b] ** 2 ? k : b), 0);
+                const kB = [0, 1, 2].filter(k => k !== kA).reduce((b, k) => (e.v[2][k] ** 2 > e.v[2][b] ** 2 ? k : b), [0, 1, 2].find(k => k !== kA));
+                const split = Math.abs(e.w[kA] - e.w[kB]);
+                if (split < 0.02) return { split, p: 0, t: NaN };
+                const T1 = Math.min(5000, 1000 / split), n = 4000; let best = 0, tb = 0;
+                for (let j = 1; j <= n; j++) {
+                    const tt = T1 * j / n; let re = 0, im = 0;
+                    for (let k = 0; k < 3; k++) { const a = e.v[2][k] * e.v[0][k], ph = -2 * Math.PI * e.w[k] * tt / 1000; re += a * Math.cos(ph); im += a * Math.sin(ph); }
+                    const p = re * re + im * im; if (p > best) { best = p; tb = tt; }
+                }
+                return { split, p: best, t: tb };
+            }
             const fmtM = v => `${v < 0 ? '−' : '+'}${Math.abs(v) >= 1 ? Math.abs(v).toFixed(2) : Math.abs(v).toFixed(3)} MHz`;
             const mhz = v => (v < 0 ? `(−${Math.abs(v)} MHz)` : `${v} MHz`);
             function prep(canvas) {
@@ -12671,7 +12706,7 @@ zeta = E101 - E100 - E001 + E000. "From |020>" = zeta(coupler 0-2) - zeta(couple
                     const P = prep(cLev); if (!P) return; const { ctx, width, height } = P;
                     const m = { left: 46, right: 8, top: 10, bottom: 34 }, ph = height - m.top - m.bottom, gapB = 10;
                     // three bands, one per excitation number, each with its own GHz scale (the axis is broken between bands)
-                    const bands = [{ lo: -0.25, hi: 0.35, f: 0.09, ticks: [0] }, { lo: 4.0, hi: 5.6, f: 0.33, ticks: [4, 5] }, { lo: 7.9, hi: 11.1, f: 0.58, ticks: [8, 9, 10, 11] }];
+                    const bands = [{ lo: -0.25, hi: 0.35, f: 0.09, ticks: [0] }, { lo: 3.75, hi: 5.6, f: 0.33, ticks: [4, 5] }, { lo: 7.4, hi: 11.1, f: 0.58, ticks: [8, 9, 10, 11] }];
                     let yb = height - m.bottom; bands.forEach(bd => { const h = (ph - 2 * gapB) * bd.f; bd.y0 = yb; bd.y1 = yb - h; yb = bd.y1 - gapB; });
                     const YB = (N, e) => { const bd = bands[N], v = e / 1000; return bd.y0 - (v - bd.lo) / (bd.hi - bd.lo) * (bd.y0 - bd.y1); };
                     const pw = width - m.left - m.right, colW = [0.45, 0.37, 0.18], colX = [m.left, m.left + pw * colW[0], m.left + pw * (colW[0] + colW[1])];
@@ -12710,12 +12745,12 @@ zeta = E101 - E100 - E001 + E000. "From |020>" = zeta(coupler 0-2) - zeta(couple
                     ctx.fillStyle = z < 0 ? COL.neg : COL.pos; ctx.font = 'italic 15px "Cambria Math", "Times New Roman", serif'; ctx.textAlign = 'right'; ctx.textBaseline = 'middle';
                     ctx.fillText('ζ', xb - 4, (yd + pos['101'].y) / 2);
                 }
-                function drawZeta(wc, ac, g, g12, z) {
+                function drawZeta(wc, ac, g, g12, z, w2) {
                     const P = prep(cZ); if (!P) return; const { ctx, width, height } = P;
                     const m = { left: 44, right: 12, top: 16, bottom: 34 }, pw = width - m.left - m.right, ph = height - m.top - m.bottom;
                     const X = w => m.left + (w - WC0) / (WC1 - WC0) * pw, Y = v => m.top + (1 - (Math.max(ZMIN, Math.min(ZMAX, v)) - ZMIN) / (ZMAX - ZMIN)) * ph;
-                    const key = [ac, g, g12, nc].join(',');
-                    if (key !== curveKey) { curveKey = key; curve = []; for (let k = 0; k <= 160; k++) { const w = WC0 + (WC1 - WC0) * k / 160; curve.push([w, zetaOf(levels(w, ac, g, g12, nc))]); } }
+                    const key = [ac, g, g12, nc, w2].join(',');
+                    if (key !== curveKey) { curveKey = key; curve = []; for (let k = 0; k <= 160; k++) { const w = WC0 + (WC1 - WC0) * k / 160; curve.push([w, zetaOf(levels(w, ac, g, g12, nc, w2))]); } }
                     ctx.font = '11px Montserrat, sans-serif'; ctx.fillStyle = COL.axis; ctx.textBaseline = 'middle'; ctx.textAlign = 'right';
                     for (let v = ZMIN; v <= ZMAX; v += 2) { ctx.strokeStyle = v === 0 ? '#b9b2c0' : COL.grid; ctx.lineWidth = v === 0 ? 1.4 : 1; ctx.beginPath(); ctx.moveTo(m.left, Y(v)); ctx.lineTo(width - m.right, Y(v)); ctx.stroke(); ctx.fillText(String(v), m.left - 6, Y(v)); }
                     ctx.textAlign = 'center'; ctx.textBaseline = 'top';
@@ -12731,7 +12766,7 @@ zeta = E101 - E100 - E001 + E000. "From |020>" = zeta(coupler 0-2) - zeta(couple
                         const [w0, v0] = curve[k - 1], [w1, v1] = curve[k];
                         if (Math.sign(v0) === Math.sign(v1)) continue;
                         let lo = w0, hi = w1, flo = v0;
-                        for (let it = 0; it < 18; it++) { const mid = (lo + hi) / 2, fm = zetaOf(levels(mid, ac, g, g12, nc)); if (Math.sign(fm) === Math.sign(flo)) { lo = mid; flo = fm; } else hi = mid; }
+                        for (let it = 0; it < 18; it++) { const mid = (lo + hi) / 2, fm = zetaOf(levels(mid, ac, g, g12, nc, w2)); if (Math.sign(fm) === Math.sign(flo)) { lo = mid; flo = fm; } else hi = mid; }
                         zeros.push((lo + hi) / 2);
                     }
                     zeros.forEach((w, k) => {
@@ -12744,15 +12779,22 @@ zeta = E101 - E100 - E001 + E000. "From |020>" = zeta(coupler 0-2) - zeta(couple
                 }
                 function draw() {
                     const wc = Number(input('wc').value), ac = Number(input('ac').value), g = Number(input('g').value), g12 = Number(input('g12').value);
+                    const dl = Number(input('d')?.value ?? W1 - W2), w2 = W1 - dl;
+                    if (out('d')) out('d').textContent = `2π × ${mhz(dl)}`;
                     out('wc').textContent = `2π × ${(wc / 1000).toFixed(2)} GHz`; out('ac').textContent = `2π × ${mhz(ac)}`; out('g').textContent = `2π × ${g} MHz`; out('g12').textContent = `2π × ${g12.toFixed(1)} MHz`;
-                    const L = levels(wc, ac, g, g12, nc), z = zetaOf(L), zq = zetaOf(levels(wc, ac, g, g12, 2));
+                    const L = levels(wc, ac, g, g12, nc, w2), z = zetaOf(L), zq = zetaOf(levels(wc, ac, g, g12, 2, w2));
+                    if (out('swap')) {
+                        const sw = swapOf(wc, g, g12, w2), sp = `splitting 2π × ${sw.split.toFixed(2)} MHz`;
+                        out('swap').innerHTML = !(sw.p > 0) ? `From |100⟩: no exchange (${sp}).`
+                            : `From |100⟩: max P(|001⟩) = <b>${sw.p.toFixed(2)}</b> at <b>${sw.t.toFixed(0)} ns</b> · ${sp}` + (Math.abs(dl) < 1 && sw.p > .95 ? ' · iSWAP' : '');
+                    }
                     out('gap').textContent = `ζ = 2π × (${fmtM(z)})`;
                     out('parts').innerHTML = nc === 3
                         ? `<span style="color:${COL.pos}">without |020⟩: ${fmtM(zq)}</span> · <span style="color:${COL.neg}">from |020⟩: ${fmtM(z - zq)}</span> · total ζ: ${fmtM(z)}`
                         : `<span style="color:${COL.pos}">coupler levels 0, 1 only: ζ = ${fmtM(zq)}</span>; no |020⟩, no change of sign`;
-                    drawLevels(L, z, g12); drawZeta(wc, ac, g, g12, z);
+                    drawLevels(L, z, g12); drawZeta(wc, ac, g, g12, z, w2);
                 }
-                for (const n of ['wc', 'ac', 'g', 'g12']) input(n)?.addEventListener('input', e => { e.stopPropagation(); draw(); });
+                for (const n of ['d', 'wc', 'ac', 'g', 'g12']) input(n)?.addEventListener('input', e => { e.stopPropagation(); draw(); });
                 modeButtons.forEach(b => b.addEventListener('click', e => { e.preventDefault(); e.stopPropagation(); nc = Number(b.dataset.w06czMode); modeButtons.forEach(x => { const on = x === b; x.classList.toggle('is-on', on); x.setAttribute('aria-pressed', String(on)); }); draw(); }));
                 for (const name of ['pointerdown', 'pointermove', 'pointerup', 'mousedown', 'mousemove', 'mouseup', 'touchstart', 'touchmove', 'touchend', 'click', 'dblclick']) root.addEventListener(name, ev => ev.stopPropagation(), { passive: true });
                 root.addEventListener('keydown', ev => { if (['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', ' ', 'Enter', 'PageUp', 'PageDown', 'Home', 'End'].includes(ev.key)) ev.stopPropagation(); }, true);
@@ -13325,7 +13367,12 @@ Levels (schematic): w2 = 1, w1 idle = 1.5, alpha1 = -0.25; columns = level of Q2
             const COL = { ink: '#28333b', zero: '#aaa2b0', lo: '#cfc9d6', d1: '#b5651d', d2: '#355f9c', flux: '#2f6f69', cursor: '#25827a', pur: '#65508f', mut: '#6b6472', sph: '#b9b2c0' };
             const LV = ['#355f9c', '#b5651d', '#2e7d4f'];
             const SIG = .022, CYC = 36, W2 = 1, W1I = 1.5, A1 = -.25, GG = .025, PEAK = .05;
-            const TL = { iswap: { XA: .12, F0: .28, F1: .295, F2: .845, F3: .86 }, cz: { XA: .10, F0: .21, F1: .225, F2: .665, F3: .68, XB: .80 } };
+            const TL = { iswap: { XA: .12, F0: .28, F1: .295, F2: .845, F3: .86 }, cz: { XA: .10, F0: .21, F1: .225, F2: .665, F3: .68, XB: .80 },
+                czgate: { XA: .10, F0: .21, F1: .225, F2: .665, F3: .68, VZ: .80 } };
+            // czgate (v80): the dynamic phase of Q1 in the flux pulse, phi1 = 2 pi (5.214 - 5.52 GHz) x 35.36 ns, and the virtual Z that removes it
+            const PHI1 = TAU * (5.214 - 5.52) * 35.36, smooth = u => { u = clamp(u); return u * u * (3 - 2 * u); };
+            // v83: the flux pulse turns the phase by all of phi1 (-10.8 turns); the virtual Z turns it back only by the net +65 deg
+            const NET = Math.atan2(Math.sin(-PHI1), Math.cos(-PHI1)), NETD = Math.round(NET / DEG), sgn = v => (v < 0 ? '−' : '+') + Math.abs(v);
             const clamp = v => Math.max(0, Math.min(1, v));
             const gaussAt = c => s => { const u = (s - c) / SIG, v = Math.exp(-.5 * u * u); return v < .003 ? 0 : v; };
             function cumOf(f) {
@@ -13349,15 +13396,24 @@ Levels (schematic): w2 = 1, w1 idle = 1.5, alpha1 = -0.25; columns = level of Q2
                 const shiftA = s => dA(s) / 2 - Math.sqrt(dA(s) ** 2 / 4 + GG * GG);
                 const s0 = shiftA(0), phiA = cumOf(s => shiftA(s) - s0);
                 const q20 = s => (1 - dA(s) / Math.sqrt(dA(s) ** 2 + 4 * GG * GG)) / 2, q0 = q20(0);
-                const target = gate === 'iswap' ? W2 : W2 - A1;
+                const target = gate === 'iswap' ? W2 : W2 - A1, fluxCum = cumOf(fluxS);
                 return {
                     T, gA, gB, fA, fB, hold, phiA, target, p20A: s => Math.max(0, q20(s) - q0),
+                    phi1: s => PHI1 * fluxCum(s), fc: fluxCum, vz: s => T.VZ ? smooth((s - T.VZ + .025) / .05) : 0,
                     depth: (s, adia) => adia ? envA(s) * (W1I - w1A((T.F0 + T.F3) / 2)) / (W1I - target) : fluxS(s),
                     w1: (s, adia) => adia ? w1A(s) : W1I + (target - W1I) * fluxS(s)
                 };
             }
-            function state(M, gate, s, adia, q2one) {
+            function state(M, gate, s, adia, q2one, inp = '11') {
                 const A = { '00': [1, 0], '01': [0, 0], '10': [0, 0], '11': [0, 0], '20': [0, 0] };
+                if (gate === 'czgate') {
+                    const th = Math.PI * M.fA(s), on = [[Math.cos(th / 2), 0], [Math.sin(th / 2), 0]], off = [[1, 0], [0, 0]];
+                    const c = inp[0] === '1' ? on : off, d = inp[1] === '1' ? on : off;
+                    for (const j of [0, 1]) for (const k of [0, 1]) A[`${j}${k}`] = cm(c[j], d[k]);
+                    const P = -M.phi1(s) - NET * M.vz(s), e = [Math.cos(P), Math.sin(P)], th2 = Math.PI * M.hold(s), a11 = A['11'];
+                    A['10'] = cm(A['10'], e); A['11'] = cs(cm(a11, e), Math.cos(th2)); A['20'] = cs(a11, Math.sin(th2));
+                    return A;
+                }
                 if (gate === 'iswap') {
                     const th = Math.PI * M.fA(s), ph = .5 * Math.PI * M.hold(s), a10 = [0, -Math.sin(th / 2)];
                     A['00'] = [Math.cos(th / 2), 0]; A['10'] = cs(a10, Math.cos(ph)); A['01'] = cm(a10, [0, -Math.sin(ph)]);
@@ -13392,6 +13448,19 @@ Levels (schematic): w2 = 1, w1 idle = 1.5, alpha1 = -0.25; columns = level of Q2
                     ctx.strokeStyle = COL.pur; ctx.fillStyle = COL.pur; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(xs, ya); ctx.lineTo(xe, yb); ctx.stroke();
                     for (const [xx, yy, sg] of [[xe, yb, 1], [xs, ya, -1]]) { ctx.beginPath(); ctx.moveTo(xx, yy); ctx.lineTo(xx - 9 * sg, yy - 5); ctx.lineTo(xx - 9 * sg, yy + 5); ctx.closePath(); ctx.fill(); }
                     ctx.font = '600 15px "Times New Roman", serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'bottom'; ctx.fillText(lab, (xs + xe) / 2, Math.min(ya, yb) - 4);
+                }
+                return { pos, bw, x0 };
+            }
+            // czgate (v80): the phase of each computational amplitude, as an arrow in a small circle beside its level
+            function drawPhasors(ctx, L, A) {
+                for (const k of ['00', '10', '01', '11']) {
+                    const p = n2(A[k]); if (p < .004) continue;
+                    const [xx, yy] = L.pos[k], cx = xx === L.x0 ? xx + L.bw / 2 + 30 : xx - L.bw / 2 - 30, r = 17, a = Math.atan2(A[k][1], A[k][0]), len = r * Math.sqrt(p);
+                    ctx.strokeStyle = COL.sph; ctx.lineWidth = 1.2; ctx.beginPath(); ctx.arc(cx, yy, r, 0, TAU); ctx.stroke();
+                    ctx.setLineDash([2, 3]); ctx.beginPath(); ctx.moveTo(cx - r, yy); ctx.lineTo(cx + r, yy); ctx.stroke(); ctx.setLineDash([]);
+                    const ex = cx + len * Math.cos(a), ey = yy - len * Math.sin(a);
+                    ctx.strokeStyle = COL.pur; ctx.fillStyle = COL.pur; ctx.lineWidth = 2.4; ctx.beginPath(); ctx.moveTo(cx, yy); ctx.lineTo(ex, ey); ctx.stroke();
+                    if (len > 6) { ctx.save(); ctx.translate(ex, ey); ctx.rotate(-a); ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(-7, -4); ctx.lineTo(-7, 4); ctx.closePath(); ctx.fill(); ctx.restore(); }
                 }
             }
             function drawPop(ctx, x, y, w, h, M, sweep) {
@@ -13438,8 +13507,10 @@ Levels (schematic): w2 = 1, w1 idle = 1.5, alpha1 = -0.25; columns = level of Q2
             }
             function init(root) {
                 if (instances.has(root)) { instances.get(root).request(); return; }
-                const gate = root.dataset.w06mGate === 'cz' ? 'cz' : 'iswap', M = model(gate), T = M.T;
+                const gate = ['cz', 'czgate'].includes(root.dataset.w06mGate) ? root.dataset.w06mGate : 'iswap', M = model(gate), T = M.T;
                 let running = true, sweep = 0, lastNow = performance.now(), raf = 0, dash = 0, mode = 'sudden', q2one = true;
+                const inButtons = Array.from(root.querySelectorAll('[data-w06m-in]'));
+                let inp = (inButtons.find(b => b.classList.contains('is-on')) || {}).dataset?.w06mIn || '11';
                 const adia = () => gate === 'cz' && mode === 'adiabatic';
                 const q = sel => root.querySelector(sel), qa = sel => Array.from(root.querySelectorAll(sel));
                 const runButton = q('[data-w06m-run]'), resetButton = q('[data-w06m-reset]'), modeButtons = qa('[data-w06m-mode]'), q2Buttons = qa('[data-w06m-q2]');
@@ -13448,17 +13519,19 @@ Levels (schematic): w2 = 1, w1 idle = 1.5, alpha1 = -0.25; columns = level of Q2
                 const active = () => !!root.closest('.qhs-slide.is-active');
                 const tName = gate === 'iswap' ? 'ω₂' : 'ω₂ − α₁';
                 function chip() {
-                    const a = M.gA(sweep) > .03, b = M.gB(sweep) > .03, f = M.depth(sweep, adia()) > .02, two = gate === 'cz' && q2one && a;
+                    const cg = gate === 'czgate', a0 = M.gA(sweep) > .03, a = cg ? a0 && inp[0] === '1' : a0, b = M.gB(sweep) > .03, f = M.depth(sweep, adia()) > .02;
+                    const two = (gate === 'cz' && q2one && a) || (cg && a0 && inp[1] === '1'), vzOn = cg && Math.abs(sweep - T.VZ) < .03;
                     for (const [k, on, col] of [['xy1', a || b, COL.d1], ['xy2', two, COL.d2], ['z1', f, COL.flux]]) {
                         const p = lines[k]; if (!p) continue;
                         p.style.opacity = on ? '.85' : '0'; p.style.stroke = col; p.style.strokeDasharray = '34 18'; p.style.strokeDashoffset = String(-dash);
                     }
                     const parts = [];
-                    if (a) parts.push(gate === 'iswap' ? 'X on Q1' : 'π/2 on Q1'); if (two) parts.push('X on Q2'); if (b) parts.push('π/2 on Q1');
+                    if (a) parts.push(gate === 'cz' ? 'π/2 on Q1' : 'X on Q1'); if (two) parts.push('X on Q2'); if (b) parts.push('π/2 on Q1');
                     if (f) parts.push((adia() ? 'Q1 toward ' : 'Q1 to ') + tName);
+                    if (vzOn) parts.push('virtual Z on Q1: no signal');
                     if (tag) {
                         tag.style.opacity = parts.length ? '1' : '0';
-                        const col = f ? COL.flux : COL.d1, r = tag.querySelector('rect'), tx = tag.querySelector('text');
+                        const col = f ? COL.flux : vzOn ? COL.pur : COL.d1, r = tag.querySelector('rect'), tx = tag.querySelector('text');
                         if (r) r.style.stroke = col; if (tx) { tx.style.fill = col; tagText(tx, parts.join(' · ')); tag.querySelectorAll('.w06m-bar').forEach(l => l.setAttribute('stroke', col)); }
                     }
                 }
@@ -13468,9 +13541,10 @@ Levels (schematic): w2 = 1, w1 idle = 1.5, alpha1 = -0.25; columns = level of Q2
                     const plotW = width - g.left - g.right, gap = 6, laneH = (height - g.top - g.bottom - 2 * gap) / 3;
                     const lanes = [0, 1, 2].map(k => { const top = g.top + k * (laneH + gap); return { top, mid: top + laneH / 2, scale: laneH / 2 / 1.12 }; });
                     const px = s => g.left + s * plotW, n = Math.max(600, Math.round(plotW * 2)), th = s => TAU * CYC * s;
-                    if (gate === 'cz') {
-                        ctx.fillStyle = 'rgba(101,80,143,.08)'; ctx.fillRect(px(T.F0 - .012), g.top - 2, px(T.F3 + .012) - px(T.F0 - .012), height - g.top - g.bottom + 2);
-                        ctx.strokeStyle = 'rgba(101,80,143,.45)'; ctx.setLineDash([4, 3]); ctx.strokeRect(px(T.F0 - .012), g.top - 2, px(T.F3 + .012) - px(T.F0 - .012), height - g.top - g.bottom + 2); ctx.setLineDash([]);
+                    if (gate !== 'iswap') {
+                        const b1 = gate === 'czgate' ? T.VZ + .035 : T.F3 + .012;
+                        ctx.fillStyle = 'rgba(101,80,143,.08)'; ctx.fillRect(px(T.F0 - .012), g.top - 2, px(b1) - px(T.F0 - .012), height - g.top - g.bottom + 2);
+                        ctx.strokeStyle = 'rgba(101,80,143,.45)'; ctx.setLineDash([4, 3]); ctx.strokeRect(px(T.F0 - .012), g.top - 2, px(b1) - px(T.F0 - .012), height - g.top - g.bottom + 2); ctx.setLineDash([]);
                     }
                     const curve = (lane, f, color, lw) => { ctx.beginPath(); for (let j = 0; j <= n; j++) { const s = j / n, yy = lane.mid - f(s) * lane.scale; if (j) ctx.lineTo(px(s), yy); else ctx.moveTo(px(s), yy); } ctx.strokeStyle = color; ctx.lineWidth = lw; ctx.lineJoin = 'round'; ctx.stroke(); };
                     [['XY Q1', COL.d1], ['XY Q2', COL.d2], ['Z Q1', COL.flux]].forEach(([title, col], k) => {
@@ -13478,9 +13552,15 @@ Levels (schematic): w2 = 1, w1 idle = 1.5, alpha1 = -0.25; columns = level of Q2
                         ctx.beginPath(); ctx.moveTo(g.left, lane.mid); ctx.lineTo(width - g.right, lane.mid); ctx.strokeStyle = COL.zero; ctx.lineWidth = 1; ctx.stroke();
                         ctx.textAlign = 'right'; ctx.textBaseline = 'middle'; ctx.fillStyle = col; ctx.font = '700 13px Montserrat, sans-serif'; ctx.fillText(title, g.left - 8, lane.mid);
                     });
-                    const amp1 = gate === 'iswap' ? 1 : .55;
-                    curve(lanes[0], s => amp1 * (M.gA(s) + M.gB(s)) * Math.cos(th(s)), COL.d1, 1.3);
-                    if (gate === 'cz' && q2one) curve(lanes[1], s => M.gA(s) * Math.cos(th(s) + 1), COL.d2, 1.3);
+                    const amp1 = gate === 'cz' ? .55 : 1, on1 = gate !== 'czgate' || inp[0] === '1';
+                    if (on1) curve(lanes[0], s => amp1 * (M.gA(s) + M.gB(s)) * Math.cos(th(s)), COL.d1, 1.3);
+                    if ((gate === 'cz' && q2one) || (gate === 'czgate' && inp[1] === '1')) curve(lanes[1], s => M.gA(s) * Math.cos(th(s) + 1), COL.d2, 1.3);
+                    if (gate === 'czgate') {                      // the virtual Z: a frame update on Q1, no waveform
+                        const xv = px(T.VZ), l0 = lanes[0];
+                        ctx.strokeStyle = COL.pur; ctx.fillStyle = COL.pur; ctx.lineWidth = 1.6; ctx.setLineDash([3, 3]); ctx.beginPath(); ctx.moveTo(xv, l0.top + 2); ctx.lineTo(xv, l0.top + 2 * l0.scale * 1.12 - 2); ctx.stroke(); ctx.setLineDash([]);
+                        ctx.beginPath(); ctx.moveTo(xv, l0.mid - 7); ctx.lineTo(xv + 7, l0.mid); ctx.lineTo(xv, l0.mid + 7); ctx.lineTo(xv - 7, l0.mid); ctx.closePath(); ctx.fill();
+                        ctx.font = '600 11px Montserrat, sans-serif'; ctx.textAlign = 'left'; ctx.textBaseline = 'middle'; ctx.fillText('virtual Z', xv + 11, l0.mid);
+                    }
                     const fl = lanes[2], depth = .9;
                     ctx.setLineDash([4, 4]); ctx.strokeStyle = COL.lo; ctx.beginPath(); ctx.moveTo(g.left, fl.mid + depth * fl.scale); ctx.lineTo(width - g.right, fl.mid + depth * fl.scale); ctx.stroke(); ctx.setLineDash([]);
                     curve(fl, s => -depth * M.depth(s, adia()), COL.flux, 2.4);
@@ -13489,6 +13569,9 @@ Levels (schematic): w2 = 1, w1 idle = 1.5, alpha1 = -0.25; columns = level of Q2
                     if (gate === 'iswap') {
                         ctx.fillStyle = COL.d1; ctx.fillText('X', px(T.XA), g.top - 4);
                         ctx.fillStyle = COL.flux; ctx.fillText('hold 25 ns at ω₂', px((T.F1 + T.F2) / 2), g.top - 4);
+                    } else if (gate === 'czgate') {
+                        if (inp !== '00') { ctx.fillStyle = COL.d1; ctx.fillText('X', px(T.XA), g.top - 4); }
+                        ctx.fillStyle = COL.pur; ctx.fillText('CZ gate: flux pulse (35 ns at ω₂ − α₁) + virtual Z on Q1', px((T.F0 + T.VZ + .035) / 2), g.top - 4);
                     } else {
                         ctx.fillStyle = COL.d1; fracAt(ctx, px(T.XA), g.top - 16, 'π', '2', 12); fracAt(ctx, px(T.XB), g.top - 16, 'π', '2', 12);
                         ctx.fillStyle = COL.pur; ctx.fillText(adia() ? 'CZ: slow pulse near ω₂ − α₁' : 'CZ: hold 35 ns at ω₂ − α₁', px((T.F1 + T.F2) / 2), g.top - 4);
@@ -13498,9 +13581,14 @@ Levels (schematic): w2 = 1, w1 idle = 1.5, alpha1 = -0.25; columns = level of Q2
                     const P = prepare(panels); if (!P) return null;
                     const { ctx, width, height } = P, half = width / 2;
                     if (gate === 'iswap') { ctx.strokeStyle = '#ece8ef'; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(half, 10); ctx.lineTo(half, height - 10); ctx.stroke(); }
-                    const A = state(M, gate, sweep, adia(), q2one), w1 = M.w1(sweep, adia());
+                    const A = state(M, gate, sweep, adia(), q2one, inp), w1 = M.w1(sweep, adia());
                     const arrow = gate === 'iswap' ? Math.abs(w1 - W2) < .01 : !adia() && Math.abs(w1 - (W2 - A1)) < .01;
                     if (gate === 'iswap') { drawLevels(ctx, 0, 0, half, height, A, w1, gate, arrow); drawPop(ctx, half, 0, half, height, M, sweep); }
+                    else if (gate === 'czgate') {
+                        drawPhasors(ctx, drawLevels(ctx, width * .2, 0, width * .6, height, A, w1, 'cz', arrow), A);
+                        ctx.fillStyle = COL.mut; ctx.font = '12px Montserrat, sans-serif'; ctx.textAlign = 'left'; ctx.textBaseline = 'bottom';
+                        ctx.fillText('dot: population', 12, height - 26); ctx.fillText('arrow: phase of the amplitude', 12, height - 10);
+                    }
                     else drawLevels(ctx, width * .2, 0, width * .6, height, A, w1, gate, arrow);      // v61: no fringe graph
                     return A;
                 }
@@ -13515,6 +13603,20 @@ Levels (schematic): w2 = 1, w1 idle = 1.5, alpha1 = -0.25; columns = level of Q2
                         else if (s < T.F2) stage = `At Δ = 0, |10⟩ = ${FR('|+⟩ + |−⟩', '√2')}. The two parts beat, and the excitation moves to |01⟩.`;
                         else stage = `At gt = ${FR('π', '2')}, the flux pulse ends. The state is −i|01⟩ and does not change.`;
                         nums = `P(|10⟩) = ${f2(n2(A['10']))}, P(|01⟩) = ${f2(n2(A['01']))}`;
+                    } else if (gate === 'czgate') {
+                        const ket = `|${inp}⟩`, q1 = inp[0] === '1', a = A[inp], mag = Math.sqrt(n2(a)), ang = Math.atan2(a[1], a[0]) / DEG;
+                        if (s < T.XA + 3 * SIG) stage = { '00': 'Input |00⟩: no preparation pulse.', '10': 'Input |10⟩: an X pulse on Q1, the control.', '01': 'Input |01⟩: an X pulse on Q2, the target.', '11': 'Input |11⟩: X pulses on Q1 and Q2.' }[inp] + ' The preparation is not part of the gate.';
+                        else if (s < T.F0) stage = `The input is ${ket}. Now the CZ gate starts.`;
+                        else if (s < T.F3) stage = inp === '11' ? '|11⟩ goes to |20⟩ and back, with the sign −1. Q1 is at a lower frequency, thus the phase also changes by φ₁.'
+                            : inp === '10' ? '|10⟩ has no partner at this frequency. Q1 is at a lower frequency, thus the phase of |10⟩ changes by φ₁.'
+                                : `Q1 is in |0⟩. The flux pulse does not change ${ket}.`;
+                        else if (s < T.VZ - .025) stage = q1 ? `The flux pulse is done. Each state with Q1 = |1⟩ has the extra phase φ₁ = ${sgn(NETD)}° (mod 360°).` : `The flux pulse is done. ${ket} did not change.`;
+                        else if (s < T.VZ + .025) stage = `Phase correction: a virtual Z on Q1 turns the phase of Q1 back by ${sgn(-NETD)}°. No signal goes to the chip.`;
+                        else stage = inp === '11' ? 'Result: |11⟩ → −|11⟩. The target gets the sign −1 only when the control is in |1⟩: this is the CZ.'
+                            : `Result: ${ket} → ${ket}. Only |11⟩ gets the sign −1.`;
+                        const num = mag < .005 ? '0' : Math.abs(Math.sin(ang * DEG)) < .02 ? (Math.cos(ang * DEG) < 0 ? '−' : '+') + mag.toFixed(2)
+                            : `${mag.toFixed(2)} e<sup>i·${String(Math.round(ang)).replace('-', '−')}°</sup>`;
+                        nums = `amplitude of ${ket} = ${num}` + (n2(A['20']) > .005 ? `, P(|20⟩) = ${f2(n2(A['20']))}` : '');
                     } else {
                         if (s < T.XA + 3 * SIG) stage = q2one ? `Preparation: a ${FR('π', '2')} pulse puts Q1 in ${FR('|0⟩ + |1⟩', '√2')}, and an X pulse puts Q2 in |1⟩.` : `Preparation: a ${FR('π', '2')} pulse puts Q1 in ${FR('|0⟩ + |1⟩', '√2')}. Q2 stays in |0⟩.`;
                         else if (s < T.F0) stage = 'Idle, far from resonance: the two states do not change.';
@@ -13541,6 +13643,7 @@ Levels (schematic): w2 = 1, w1 idle = 1.5, alpha1 = -0.25; columns = level of Q2
                 const restart = () => { sweep = 0; running = true; if (runButton) runButton.textContent = 'Stop'; request(); };
                 modeButtons.forEach(btn => btn.addEventListener('click', e => { e.preventDefault(); e.stopPropagation(); mode = btn.dataset.w06mMode; pick(modeButtons, btn); restart(); }));
                 q2Buttons.forEach(btn => btn.addEventListener('click', e => { e.preventDefault(); e.stopPropagation(); q2one = btn.dataset.w06mQ2 === '1'; pick(q2Buttons, btn); restart(); }));
+                inButtons.forEach(btn => btn.addEventListener('click', e => { e.preventDefault(); e.stopPropagation(); inp = btn.dataset.w06mIn; pick(inButtons, btn); restart(); }));
                 runButton?.addEventListener('click', e => { e.preventDefault(); e.stopPropagation(); running = !running; runButton.textContent = running ? 'Stop' : 'Run'; request(); if (!running) drawAll(); });
                 resetButton?.addEventListener('click', e => { e.preventDefault(); e.stopPropagation(); restart(); });
                 for (const name of ['pointerdown', 'pointermove', 'pointerup', 'mousedown', 'mousemove', 'mouseup', 'touchstart', 'touchmove', 'touchend', 'click', 'dblclick']) root.addEventListener(name, event => event.stopPropagation(), { passive: true });
