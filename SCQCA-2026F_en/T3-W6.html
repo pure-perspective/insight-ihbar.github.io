@@ -8214,6 +8214,10 @@
         #qh-slide-root .qhs-slide.w06-mc-slide table.w06-mc:not(.w06-mc4) th:nth-child(7) { width: 14.2% !important; }
         #qh-slide-root .qhs-slide.w06-mc-slide table.w06-mc:not(.w06-mc4) th:nth-child(8) { width: 19.5% !important; }
     </style>
+    <style id="w06-v87">
+        /* p3: the Wang 2019 device at the full slide height, on the right */
+        #qh-slide-root .qhs-slide.w06-pic-slide .w06-pic-wang { right: 0; left: auto; top: 0; width: 605.0px; height: 734px; }
+    </style>
     <style id="w06-v67">
         /* p40: lecture figure over the device image (left), Samach Fig. 3(a, b) at full height (right).
            Column widths 410 : 671 follow the aspect ratios (901x660, 2144x1442 stacked; 1748x1542), so the images fill without cropping. */
@@ -8597,6 +8601,14 @@
                 </tbody>
             </table>
             <!-- Teaching note: 開場先講兩週的關係：同一個 Hamiltonian（transmon + 夥伴 + 耦合 g）、同一個矩陣、同樣的失諧 drive → 同樣的 AC Stark shift。圖的慣例（整週都一樣）：直欄 = 夥伴的能階（Q2 或光子數），往右加一；同一欄往上 = Q1（或 qubit）升一階；顏色 = Q1 的能階；能量照真實順序畫（GHz 台階示意，MHz 位移放大）。左圖：Q2 在 0 時翻 Q1 是 E10 − E00，Q2 在 1 時是 E11 − E01，差 ζ（p26 推）——「Q1 的頻率看 Q2」。右圖：夥伴換成 resonator（α₂ = 0），同一張圖：每多一個光子，qubit 頻率多移 2χ（AC Stark shift；ζ 在 α₂ = 0 時正好是 2χ）。同一項的另一種讀法（表格第一列）：resonator 的頻率看 qubit → readout。不同的地方：這週相位留在裡面 → CZ；下週光子漏到線上（κ）被聽 → readout。 -->
+        </section>
+        <section data-manual-slide="" data-auto-fit="false" data-title="A two-qubit chip"
+            data-slide-class="v04 qh-deriv w06-page w06-pic-slide w06-pic-wang-slide">
+            <h3>A two-qubit chip</h3>
+            <div class="w06-pics">
+                <figure class="w06-pic w06-pic-wang"><a href="../Image/Wang2019-Fig1b-device.png"><img src="../WebP/Wang2019-Fig1b-device.webp" alt="Two Xmon transmons, Xmon1 and Xmon2, with a direct capacitive coupling between neighbouring arms; each has an XY line and a Z line at the bottom and a read-out resonator on a common read-out line with a JPA and a HEMT amplifier"></a></figure>
+            </div>
+            <p class="v4-source">T. Wang <em>et al.</em>, Phys. Rev. Applied <b>11</b>, 034030 (2019), Fig. 1(b).</p>
         </section>
 <section data-manual-slide="" data-auto-fit="false" data-title="Two-qubit gates"
             data-slide-class="v04 qh-deriv " data-cover="">
