@@ -8132,23 +8132,51 @@ data-slide-class="v04 qh-deriv v66-iq-slide">
                 <div class="qh-step-host">
                     <p>Write \(\mathcal H_0\) with \(a,a^\dagger\) (\(E_J\gg E_C\)) and keep the fourth-order term:</p>
                     <div class="v4-eq">\[\mathcal H_0=\hbar\omega_p\!\left(a^\dagger a+\tfrac12\right)-E_J-\frac{E_C}{12}\left(a+a^\dagger\right)^4+\cdots\]</div>
-                    <p>Level \(j\) sits at \(\omega_j=j\,\omega_{01}+\tfrac{\alpha}{2}\,j(j-1)\), with \(\omega_{01}\simeq\omega_p-\tfrac{E_C}{\hbar}\) and \(\alpha\simeq-\tfrac{E_C}{\hbar}\):</p>
+                    <p>Level \(j\) sits at \(j\,\omega_{01}+\tfrac{\alpha}{2}\,j(j-1)\), with \(\omega_{01}\simeq\omega_p-\tfrac{E_C}{\hbar}\) and \(\alpha\simeq-\tfrac{E_C}{\hbar}\):</p>
                     <div class="v4-eq">\[\frac{\mathcal H_0}{\hbar}=\left(\begin{array}{@{\,}c@{}c@{}c@{}c@{}c@{}c@{\,}}0&amp;&amp;&amp;&amp;&amp;\\&amp;\omega_{01}&amp;&amp;&amp;&amp;\\&amp;&amp;2\omega_{01}+\alpha&amp;&amp;&amp;\\&amp;&amp;&amp;3\omega_{01}+3\alpha&amp;&amp;\\&amp;&amp;&amp;&amp;4\omega_{01}+6\alpha&amp;\\&amp;&amp;&amp;&amp;&amp;\ddots\end{array}\right)\]</div>
                 </div>
                 <figure class="v4-figure"><a href="../Image/Transmon state.png"><img src="../WebP/Transmon state.webp" alt="Transmon potential V(phi) with its cosine shape, the harmonic parabola dashed, and the levels g, e, f getting closer by E_C"></a></figure>
             </div>
             <p class="v4-source" data-source-kind="figure">J. Koch et al., Phys. Rev. A <b>76</b>, 042319 (2007)</p>
         </section>
+        <section data-manual-slide="" data-auto-fit="false" data-title="The rotating frame"
+            data-slide-class="v04 qh-deriv">
+            <h3>The rotating frame</h3>
+            <div class="v4-two">
+                <div class="qh-step-host">
+                    <p>Keep only the terms of \((a+a^\dagger)^4\) that do not change the level, \(6a^\dagger a^\dagger aa+12a^\dagger a+3\). Drop the constant:</p>
+                    <div class="v4-eq">\[\begin{aligned}\frac{\mathcal H_0}{\hbar}&amp;\simeq\Big(\omega_p-\frac{E_C}{\hbar}\Big)a^\dagger a-\frac{E_C}{2\hbar}\,a^\dagger a^\dagger aa\\&amp;=\omega_{01}\,a^\dagger a+\frac{\alpha}{2}\,a^\dagger a^\dagger aa\end{aligned}\]</div>
+                    <p>\(\omega_p\) is the LC frequency. The qubit frequency \(\omega_{01}=\omega_p+\alpha\) is lower by \(|\alpha|\).</p>
+                    <p>Write the drive in units of frequency, \(\Omega(t)=I\cos\omega_dt+Q\sin\omega_dt\):</p>
+                    <div class="v4-eq">\[\frac{\mathcal H}{\hbar}=\omega_{01}\,a^\dagger a+\frac{\alpha}{2}\,a^\dagger a^\dagger aa+i\,\Omega(t)\big(a^\dagger-a\big)\]</div>
+                </div>
+                <div class="qh-step-host">
+                    <p>Turn the frame at the drive frequency \(\omega_d\). The factor \(i^{\,j}\) makes the coupling real:</p>
+                    <div class="v4-eq">\[U=\sum_j i^{\,j}e^{-ij\omega_dt}\,|j\rangle\langle j|,\qquad\mathcal H_{\rm rot}=U^\dagger\mathcal H U-i\hbar\,U^\dagger\dot U\]</div>
+                    <div class="v4-eq">\[-i\hbar\,U^\dagger\dot U=-\hbar\,\omega_d\,a^\dagger a,\qquad U^\dagger\big(i\,a^\dagger\big)U=e^{i\omega_dt}\,a^\dagger\]</div>
+                    <p>The \(\alpha\) term does not change. With \(\Delta\equiv\omega_{01}-\omega_d\):</p>
+                    <div class="v4-eq">\[\begin{aligned}\frac{\mathcal H_{\rm rot}}{\hbar}&amp;=\Delta\,a^\dagger a+\frac{\alpha}{2}\,a^\dagger a^\dagger aa\\&amp;\quad{}+\Omega(t)\big(e^{i\omega_dt}a^\dagger+e^{-i\omega_dt}a\big)\end{aligned}\]</div>
+                </div>
+            </div>
+            <!-- Teaching note: rotating frame 的完整推導（使用者 2026-10-17：「rotating frame定義不清 / 量子位元LC是w_p / 01之間是w_01-alpha(或加)」）。
+                 左：(a+a†)⁴ 只留不改變能階的項（一階微擾 = 對角部分）：正規排序後是 6a†a†aa + 12a†a + 3（⟨j|(a+a†)⁴|j⟩ = 6j²+6j+3，數值驗算）。
+                 −(E_C/12)(6a†a†aa + 12a†a + 3) = −(E_C/2)a†a†aa − E_C a†a − E_C/4，所以 ω01 = ω_p − E_C/ħ = ω_p + α，α = −E_C/ħ（α < 0，ω01 比 LC 頻率 ω_p 低 |α|；E_J/E_C = 50 精確對角化：ω01 = 4.167、ω_p − E_C = 4.180、ω_p = 4.400，單位 E_C=0.22）。
+                 驅動：p11 的 Ω(t) 正比於 V_g(t) = I cos ω_d t + Q sin ω_d t；從這頁起 I、Q 用頻率單位（乘上 p11 的係數 C_g√(ω_p/2ħ(C+C_g))）。
+                 右：旋轉座標 = 以驅動頻率 ω_d 轉，第 j 階轉 jω_d；i^j 把 i(a†−a) 的 i 吸收掉，係數變實數。
+                 −iħU†U̇ = −ħω_d a†a（從每一階扣掉 jω_d），U†(ia†)U = e^{iω_d t}a†、U†(−ia)U = e^{−iω_d t}a；α 項與 U 對易不動。
+                 結果：Δ a†a + (α/2)a†a†aa + Ω(t)(e^{iω_d t}a† + h.c.)；下一頁做 RWA 再寫成矩陣。數值檢查：實驗室座標直接積分 vs 這個旋轉座標，重疊 1.00000。 -->
+            <p class="v4-source">P. Krantz et al., Appl. Phys. Rev. <b>6</b>, 021318 (2019).</p>
+        </section>
         <section data-manual-slide="" data-auto-fit="false" data-title="One matrix for the week"
             data-slide-class="v04 qh-deriv v4-small-eq v35-page">
             <h3>One matrix for the week</h3>
             <div class="qh-step-host">
-                <div class="v4-eq">\[U=\sum_j i^{\,j}e^{-ij\omega_dt}\,|j\rangle\langle j|,\qquad\mathcal H_{\rm rot}=U^\dagger\mathcal H U-i\hbar\,U^\dagger\dot U\]</div>
-                <div class="v4-eq">\[\text{Detuning }\Delta\equiv\omega_{01}-\omega_d,\qquad\big[I\cos\omega_dt+Q\sin\omega_dt\big]e^{i\omega_dt}\ \overset{\rm RWA}{\simeq}\ \tfrac12(I+iQ)\]</div>
+                <div class="v4-eq">\[\Omega(t)\,e^{i\omega_dt}=\big[I\cos\omega_dt+Q\sin\omega_dt\big]e^{i\omega_dt}\ \overset{\rm RWA}{\simeq}\ \tfrac12(I+iQ)\]</div>
+                <div class="v4-eq">\[\frac{\mathcal H_{\rm rot}}{\hbar}\simeq\Delta\,a^\dagger a+\frac{\alpha}{2}\,a^\dagger a^\dagger aa+\tfrac12(I+iQ)\,a^\dagger+\tfrac12(I-iQ)\,a\]</div>
                 <div class="v4-eq">\[\frac{\mathcal H_{\rm rot}}{\hbar}=\left(\begin{array}{@{\,}c@{\;\;}c@{\;\;}c@{\;\;}c@{\;\;}c@{\;\;}c@{\,}}\color{#355f9c}{0}&amp;\color{#355f9c}{\tfrac12(I-iQ)}&amp;0&amp;0&amp;0&amp;\cdots\\\color{#355f9c}{\tfrac12(I+iQ)}&amp;\color{#355f9c}{\Delta}&amp;\color{#b5651d}{\tfrac{\sqrt2}{2}(I-iQ)}&amp;0&amp;0&amp;\cdots\\0&amp;\color{#b5651d}{\tfrac{\sqrt2}{2}(I+iQ)}&amp;\color{#b5651d}{2\Delta+\alpha}&amp;\tfrac{\sqrt3}{2}(I-iQ)&amp;0&amp;\cdots\\0&amp;0&amp;\tfrac{\sqrt3}{2}(I+iQ)&amp;3\Delta+3\alpha&amp;\tfrac{\sqrt4}{2}(I-iQ)&amp;\cdots\\0&amp;0&amp;0&amp;\tfrac{\sqrt4}{2}(I+iQ)&amp;4\Delta+6\alpha&amp;\cdots\\\vdots&amp;\vdots&amp;\vdots&amp;\vdots&amp;\vdots&amp;\ddots\end{array}\right)\]</div>
             </div>
             <!-- Teaching note: v65：換到 interaction（旋轉）框架 U=Σ i^j e^(−ijω_d t)|j⟩⟨j|（i^j 把 i(a†−a) 的 i 吸收掉，係數變實數）。
-                 對角線 ω_j − jω_d = jΔ + (α/2)j(j−1)，Δ ≡ ω01 − ω_d（qubit 與驅動的頻率差，共振時 0）。下三角 [I cos + Q sin]e^(iω_d t) 的慢項 ½(I+iQ)（RWA 丟 2ω_d 項）。 -->
+                 對角線 jω01 + (α/2)j(j−1) − jω_d = jΔ + (α/2)j(j−1)，Δ ≡ ω01 − ω_d（qubit 與驅動的頻率差，共振時 0）。下三角 [I cos + Q sin]e^(iω_d t) 的慢項 ½(I+iQ)（RWA 丟 2ω_d 項）。 -->
             <p class="v4-source">P. Krantz et al., Appl. Phys. Rev. <b>6</b>, 021318 (2019).</p>
         </section>
 
@@ -8662,7 +8690,7 @@ data-slide-class="v04 qh-deriv v66-iq-slide">
                 <div class="v4-eq">\[i\frac{d}{dt}\begin{pmatrix}c_0\\c_1\\c_2\end{pmatrix}\simeq\begin{pmatrix}0&amp;\tfrac12 I&amp;0\\\tfrac12 I&amp;{\color{#355f9c}\Delta+\left(\lambda-\tfrac12\right)\tfrac{I^2}{\alpha}}&amp;{\color{#b5651d}-i\tfrac{\sqrt2}{2}(1-\lambda)\tfrac{\dot I}{\alpha}}\\0&amp;{\color{#b5651d}i\tfrac{\sqrt2}{2}(1-\lambda)\tfrac{\dot I}{\alpha}}&amp;2\Delta+\alpha\end{pmatrix}\begin{pmatrix}c_0\\c_1\\c_2\end{pmatrix}\]</div>
                 <p>Blue: the phase (Q also moves the blue entry). Orange, integrated over the pulse, is the \((1-\lambda)\) of DRAG: Q cancels the leakage.</p>
                 <p>\(\lambda=\tfrac12\): blue is 0, orange is half. \(\lambda=1\): orange is 0, but blue is \(+\tfrac{I^2}{2\alpha}\). \(\lambda=1\) and \(\Delta(t)=-\tfrac{I^2}{2\alpha}\): both are 0.</p>
-                <p>On the AWG the carrier stays at \(\omega_{01}\) and \(\Delta\) goes into the envelope: \(I+iQ\to(I+iQ)\,e^{\,i\int_0^t\Delta\,dt'}\). A constant \(\Delta\) is just a lower \(\omega_d\); \(\Delta(t)\) can only be made this way.</p>
+                <p>On the AWG the carrier stays at \(\omega_{01}\) and \(\Delta\) goes into the envelope: \(I+iQ\to(I+iQ)\,e^{\,i\int_0^t\Delta\,dt'}\). A constant \(\Delta\) is just a lower \(\omega_d\); \(\Delta(t)\) can only be made this way. The frame then turns with the phase of the drive, \(\int_0^t\omega_d\,dt'\), in place of \(\omega_dt\).</p>
             </div>
             <!-- Teaching note: 起點 3×3 → 終點 3×3，不引入新變數。pulse 期間真正的振幅與 c 差一個只在 I≠0 時存在的部分（c2 跟著 c1 的部分、
                  p44 的括號），pulse 起訖 I=0 時完全相同，所以這個 3×3 給出同樣的 gate 與 leakage。藍 = Δ+(λ−½)I²/α，橙 = (1−λ)(√2/2)İ/α。

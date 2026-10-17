@@ -174,14 +174,15 @@
             <ul>
                 <li><b>Pulse Amplitude (Amplitude \( A \)):</b> Changes the state of the Qubit (rotation angle on the Bloch sphere).</li>
                 <li><b>Pulse Duration (Duration \( T \)):</b> Changes the state of the Qubit (rotation angle on the Bloch sphere).</li>
-                <li><b>Pulse Frequency (Frequency \( \omega_d \)):</b> Determines whether the Qubit can be driven accurately; the closer to the qubit's eigenfrequency \(\hbar \omega_{01}\), the better.</li>
+                <li><b>Pulse Frequency (Frequency \( \omega_d \)):</b> The drive frequency; define the detuning as \(\Delta=\omega_d-\omega_{01}\).</li>
                 <li><b>Pulse Envelope (Envelope \( F(t, \tau) \)):</b> Affects leakage.</li>
             </ul>
     <p>
     A complete pulse can be expressed as:
     \[
-        P(t) = A \cdot F(t, \tau) \cdot \sin(\omega_{01} t)
+        P(t) = A \cdot F(t, \tau) \cdot \sin(\omega_d t)
     \]
+    Resonance corresponds to \(\Delta=0\), or \(\omega_d=\omega_{01}\).
 
 
     Examples are as follows:

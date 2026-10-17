@@ -9145,24 +9145,25 @@ data-slide-class="v04 qh-deriv w06-page w06-pic-slide w06-pic-2d">
             <h3>Two transmons and one coupling</h3>
             <div class="v4-two">
                 <div class="qh-step-host">
-<p>Each transmon is a ladder with its own \(\omega_1,\alpha_1\) and \(\omega_2,\alpha_2\):</p>
+<p>Each transmon is a ladder. The qubit frequencies are \(\omega_1=\omega_{p1}+\alpha_1\) and \(\omega_2=\omega_{p2}+\alpha_2\):</p>
 <div class="v4-eq">\[\frac{\mathcal H}{\hbar}=\omega_1a_1^\dagger a_1+\frac{\alpha_1}{2}a_1^\dagger a_1^\dagger a_1a_1+\omega_2a_2^\dagger a_2+\frac{\alpha_2}{2}a_2^\dagger a_2^\dagger a_2a_2+\frac{\mathcal H_c}{\hbar}\]</div>
 <p>The coupling capacitor gives:</p>
 <div class="v4-eq">\[\frac{\mathcal H_c}{\hbar}=-g\,(a_1^\dagger-a_1)(a_2^\dagger-a_2)\]</div>
 <div class="v4-eq">\[=g\,\big(a_1^\dagger a_2+a_1a_2^\dagger-a_1^\dagger a_2^\dagger-a_1a_2\big)\]</div>
-<p>Rotate each transmon at its own frequency:</p>
+<p>Turn the frame of each transmon at its qubit frequency, \(\omega_1\) or \(\omega_2\):</p>
 <div class="v4-eq">\[U=\sum_{j,k}e^{-i(j\omega_1+k\omega_2)t}\,|jk\rangle\langle jk|,\qquad\mathcal H_{\rm rot}=U^\dagger\mathcal H U-i\hbar\,U^\dagger\dot U\]</div>
                 </div>
                 <div class="qh-step-host">
 <p>Each operator gets its own phase:</p>
-<div class="v4-eq">\[U^\dagger a_jU=a_j\,e^{-i\omega_jt},\qquad U^\dagger a_j^\dagger U=a_j^\dagger\,e^{i\omega_jt}\]</div>
-<p>The term \(-i\hbar\,U^\dagger\dot U\) cancels the \(\omega_1\) and \(\omega_2\) terms. The \(\alpha\) terms do not turn. Keep all terms:</p>
+<div class="v4-eq">\[U^\dagger a_1U=a_1\,e^{-i\omega_1t},\qquad U^\dagger a_2U=a_2\,e^{-i\omega_2t}\]</div>
+<div class="v4-eq">\[-i\hbar\,U^\dagger\dot U=-\hbar\,\omega_1a_1^\dagger a_1-\hbar\,\omega_2a_2^\dagger a_2\]</div>
+<p>This cancels the \(\omega_1\) and \(\omega_2\) terms. The \(\alpha\) terms do not change. Keep all terms:</p>
 <div class="v4-eq">\[\begin{aligned}\frac{\mathcal H_{\rm rot}}{\hbar}&amp;=\frac{\alpha_1}{2}a_1^\dagger a_1^\dagger a_1a_1+\frac{\alpha_2}{2}a_2^\dagger a_2^\dagger a_2a_2+g\,\big(e^{i\Delta t}a_1^\dagger a_2+e^{-i\Delta t}a_1a_2^\dagger\big)\\&amp;\quad{}-g\,\big(e^{i(\omega_1+\omega_2)t}a_1^\dagger a_2^\dagger+e^{-i(\omega_1+\omega_2)t}a_1a_2\big)\end{aligned}\]</div>
 <p>\(\Delta\equiv\omega_1-\omega_2\) is slow. \(\omega_1+\omega_2\approx2\pi\times10\) GHz is fast, and its average is zero (RWA):</p>
 <div class="v4-eq">\[\begin{aligned}\frac{\mathcal H_{\rm rot}}{\hbar}&amp;\overset{\rm RWA}{\simeq}\frac{\alpha_1}{2}a_1^\dagger a_1^\dagger a_1a_1+\frac{\alpha_2}{2}a_2^\dagger a_2^\dagger a_2a_2\\&amp;\quad{}+g\,\big(e^{i\Delta t}a_1^\dagger a_2+e^{-i\Delta t}a_1a_2^\dagger\big)\end{aligned}\]</div>
                 </div>
             </div>
-            <!-- Teaching note: 每顆 transmon 就是 W5 的能階梯（ω_j = jω01 + (α/2)j(j−1)），ω1、ω2 是兩顆各自的 0→1 頻率，α1、α2 各自的非簡諧性。a†a†aa 的對角元 = j(j−1)；不用 n 當激發數，因為 W5 的 n 是電荷數。𝓗_c 來自 B 段的耦合電容。旋轉座標（左下）：兩顆各轉自己的頻率（與 W5 一樣是 U†𝓗U − iħU†U̇）。右邊：U†a_jU = a_j e^{−iω_j t}；−iħU†U̇ 把 ω1、ω2 項消掉，α 項與 U 對易不動。先保留全部四個耦合項：a1†a2、a1a2† 帶 e^{±iΔt}（交換一個激發，慢）；a1†a2†、a1a2 帶 e^{±i(ω1+ω2)t}（同時產生/消滅兩個激發，約 10 GHz，快），最後才做 RWA 丟掉快項。對角只剩 α。 -->
+            <!-- Teaching note: 每顆 transmon 就是 W5 的能階梯（第 j 階在 jω01 + (α/2)j(j−1)），ω1、ω2 是兩顆各自的 0→1 頻率 = ω_p + α（W5「The rotating frame」頁：(a+a†)⁴ 的對角部分讓 ω01 = ω_p − E_C/ħ；p29 的 g 用的是 ω_p，因為它來自 n 的零點起伏），旋轉座標轉在 ω1、ω2，不是 ω_p；α1、α2 各自的非簡諧性。a†a†aa 的對角元 = j(j−1)；不用 n 當激發數，因為 W5 的 n 是電荷數。𝓗_c 來自 B 段的耦合電容。旋轉座標（左下）：兩顆各轉自己的頻率（與 W5 一樣是 U†𝓗U − iħU†U̇）。右邊：U†a_jU = a_j e^{−iω_j t}；−iħU†U̇ 把 ω1、ω2 項消掉，α 項與 U 對易不動。先保留全部四個耦合項：a1†a2、a1a2† 帶 e^{±iΔt}（交換一個激發，慢）；a1†a2†、a1a2 帶 e^{±i(ω1+ω2)t}（同時產生/消滅兩個激發，約 10 GHz，快），最後才做 RWA 丟掉快項。對角只剩 α。 -->
         </section>
 <section data-manual-slide="" data-auto-fit="false" data-title="One matrix for the week"
             data-slide-class="v04 qh-deriv w06-page w06-nine">
@@ -9185,7 +9186,7 @@ data-slide-class="v04 qh-deriv w06-page w06-pic-slide w06-pic-2d">
                 <canvas data-w06lv-plot aria-label="Level picture"></canvas>
             </div>
             <!-- Teaching note: 9×9 畫成能階，拉 Δ、α1、α2 看能階怎麼上下。直欄 = Q2 在哪一階（最左欄 |00⟩、|10⟩、|20⟩），顏色 = Q1 在哪一階；每個虛線框是激發數相同的一組（RWA 之後只有框內互相連：g、√2g、2g）。每一組畫在它自己的座標 E − Nω2（組與組之間其實差 ω2 ≈ 2π×5 GHz，這裡縮在一起）。這頁是 g → 0 的裸能階，只看「誰和誰靠近」：Δ = 0 時 |01⟩、|10⟩ 對齊（iSWAP）；Δ = −α1 時 |11⟩、|20⟩ 對齊（CZ）；Δ = α2 時 |11⟩、|02⟩ 對齊。α = 0 是簡諧振子（W7 的共振腔）；α = −500 MHz 已超出一般 transmon（−150 ~ −350 MHz），當作極端情形看。 -->
-            <p class="v4-source">Bare levels (\(g\to0\)). \(\zeta=E_{11}-E_{10}-E_{01}+E_{00}\) from the exact eigenvalues with \(g=2\pi\times10\) MHz. Each block is in its own frame, \(E-N\omega_2\). The real distance between the blocks is \(\omega_2\approx2\pi\times5\) GHz.</p>
+            <p class="v4-source">Bare levels (\(g\to0\)). \(\zeta=E_{11}-E_{10}-E_{01}+E_{00}\) from the exact eigenvalues with \(g=2\pi\times10\) MHz. Both transmons turn at \(\omega_2\): each level is drawn at \(E-N\omega_2\). The real distance between the blocks is \(\omega_2\approx2\pi\times5\) GHz.</p>
         </section>
 
         <section data-manual-slide="" data-auto-fit="false" data-title="iSWAP"
@@ -9202,8 +9203,10 @@ data-slide-class="v04 qh-deriv w06-page w06-pic-slide w06-pic-2d">
             <div class="qh-step-host">
 <p>Use only levels 0 and 1 of each transmon. The result is a 4×4 matrix.</p>
 <div class="v4-eq">\[\frac{\mathcal H_{\rm rot}}{\hbar}\bigg|_{\text{levels 0, 1}}:\quad\begin{array}{r|cccc}&amp;{\color{#6b6472}{|00\rangle}}&amp;{\color{#6b6472}{|01\rangle}}&amp;{\color{#6b6472}{|10\rangle}}&amp;{\color{#6b6472}{|11\rangle}}\\\hline{\color{#6b6472}{|00\rangle}}&amp;{\color{#355f9c}{0}}&amp;0&amp;0&amp;0\\{\color{#6b6472}{|01\rangle}}&amp;0&amp;{\color{#355f9c}{0}}&amp;{\color{#355f9c}{g\,e^{-i\Delta t}}}&amp;0\\{\color{#6b6472}{|10\rangle}}&amp;0&amp;{\color{#355f9c}{g\,e^{i\Delta t}}}&amp;{\color{#355f9c}{0}}&amp;0\\{\color{#6b6472}{|11\rangle}}&amp;0&amp;0&amp;0&amp;{\color{#355f9c}{0}}\\\end{array}\]</div>
-<p>Only \(|01\rangle\) and \(|10\rangle\) have a coupling, \(g\,e^{\mp i\Delta t}\). The row and the column of \(|11\rangle\) are all 0. Thus, in the 4×4, \(|11\rangle\) has no partner.</p>
-<p>The \(|01\rangle,|10\rangle\) block is a drive between these two states. The detuning of the drive is \(\Delta\).</p>
+<p>Only \(|01\rangle\) and \(|10\rangle\) have a coupling, \(g\,e^{\mp i\Delta t}\). The row and the column of \(|11\rangle\) are all 0. In the 4×4, \(|11\rangle\) has no partner.</p>
+<p>Turn both transmons at \(\omega_2\). Then the \(|01\rangle,|10\rangle\) block is constant, and \(\Delta\) is on the diagonal:</p>
+<div class="v4-eq">\[\begin{pmatrix}0&amp;g\\g&amp;\Delta\end{pmatrix}\]</div>
+<p>This is a drive with the detuning \(\Delta\).</p>
             </div>
             <!-- Teaching note: 先只看每顆的 0、1 能階（傳統的「兩個二能階」）。這就是上一頁 RWA 後的 Hamiltonian 截到 4×4：對角都是 0（各自的旋轉座標），只有 |01⟩、|10⟩ 之間有 g e^{∓iΔt}；|11⟩ 那一列、那一行全是 0，在 4×4 裡沒有鄰居。接下來分兩種情況：遠離共振（2×2 失諧 drive → AC Stark shift → 4×4 的有效對角，ζ = 0）、共振（Δ = 0 → iSWAP）。之後才加第 2 能階（9×9），|11⟩ 才有鄰居 |02⟩、|20⟩。數值檢查（g/2π = 10 MHz、Δ/2π = −300 MHz、α1/2π = −220、α2/2π = −200 MHz）：只留 0、1 → ZZ = 0；每顆 3 階（9×9）或 5 階 → ZZ/2π = −1.58 MHz。 -->
         </section>
@@ -9248,7 +9251,7 @@ data-slide-class="v04 qh-deriv w06-page w06-pic-slide w06-pic-2d">
             <h3>\(|01\rangle\) meets \(|10\rangle\): iSWAP</h3>
             <div class="v4-two">
                 <div class="qh-step-host">
-<p>On resonance, \(\Delta=0\), and the phase factors are equal to 1:</p>
+<p>The flux pulse moves Q1 to \(\omega_1=\omega_2\). The frame of Q1 turns at this new \(\omega_1\). Then \(\Delta=0\), and the phase factors are equal to 1:</p>
 <div class="v4-eq">\[i\frac{d}{dt}\begin{pmatrix}c_{01}\\c_{10}\end{pmatrix}=\begin{pmatrix}0&amp;g\\g&amp;0\end{pmatrix}\begin{pmatrix}c_{01}\\c_{10}\end{pmatrix}\]</div>
 <p>Start in \(|10\rangle\):</p>
 <div class="v4-eq">\[c_{10}(t)=\cos gt,\qquad c_{01}(t)=-i\sin gt\]</div>

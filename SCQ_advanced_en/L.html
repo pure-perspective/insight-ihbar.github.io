@@ -127,47 +127,23 @@
                 <img src="../WebP/2_LC--27962ea7.webp" alt="Geometric symbol design" style="width: 70%; height: auto;">
             </a>
         </div>
-        <p >
-            Quantum computation requires coupling between qubits, which can influence the parameters of the qubits. Let us first discuss two linear LC circuits coupled through a capacitor \( C_g \).
-        </p>
-        <p style="text-align:center">
-            \[
-            \mathcal{L}_{2LC} = \frac{L_A \dot{Q}_A^2}{2} + \frac{L_B \dot{Q}_B^2}{2} - \frac{Q_A^2}{2C_A} - \frac{Q_B^2}{2C_B} - \frac{Q_g^2}{2C_g}
-            \]
-        </p>
-        <p >
-            The charge \( Q_g \) on the coupling capacitor \( C_g \) can be expressed in terms of \( Q_A \) and \( Q_B \) using the properties of capacitors:
-        </p>
-        <p style="text-align:center">
-            \[
-            Q_g = C_g (V_A - V_B) = C_g \left( \frac{Q_A}{C_A} - \frac{Q_B}{C_B} \right)
-            \]
-        </p>
-        <p >
-            Substituting this into the Lagrangian and simplifying:
-        </p>
-        <p style="text-align:center">
-            \[
-            \mathcal{L}_{2LC} = \frac{L_A \dot{Q}_A^2}{2} + \frac{L_B \dot{Q}_B^2}{2} - \frac{(C_A + C_g) }{2C_A^2} Q_A^2 - \frac{(C_B + C_g) }{2C_B^2}Q_B^2 + \frac{C_g}{C_A C_B} Q_A Q_B
-            \]
-        </p>
-        <p >
-            Here, define \( C_{\Sigma A} = \frac{C_A^2}{C_A + C_g} \) and \( C_{\Sigma B} = \frac{C_B^2}{C_B + C_g} \). The canonical momentum is defined as:
-        </p>
-        <p style="text-align:center">
-            \[
-            \Phi_A = -\frac{\partial \mathcal{L}_{2LC}}{\partial \dot{Q}_A} = -L_A \dot{Q}_A \quad \rightarrow \quad \dot{Q}_A = -\frac{\Phi_A}{L_A}
-            \]
-        </p>
-        <p >
-            The Hamiltonian can then be expressed as:
-        </p>
-        <p style="text-align:center">
-            \[
-            \bar{\mathcal{H}}_{2LC} = \frac{\Phi_A^2}{2L_A} + \frac{Q_A^2}{2C_{\Sigma A}} + \frac{\Phi_B^2}{2L_B} + \frac{Q_B^2}{2C_{\Sigma B}} - \frac{C_g}{C_A C_B} Q_A Q_B
-            \]
-        </p>
-        <p >
+<p>After the coupling capacitor is connected, the current through an inductor is no longer the time derivative of the charge on only one capacitor. The coupling-capacitor charge therefore cannot simply be substituted into the Lagrangian of two independent LC circuits.</p>
+<p>A direct derivation uses the two node fluxes \(\phi_A\) and \(\phi_B\), with \(V_A=\dot\phi_A\) and \(V_B=\dot\phi_B\):</p>
+<p style="text-align:center">
+    \[
+    \mathcal L=\frac{C_A}{2}\dot\phi_A^2+\frac{C_B}{2}\dot\phi_B^2
+    +\frac{C_g}{2}(\dot\phi_A-\dot\phi_B)^2
+    -\frac{\phi_A^2}{2L_A}-\frac{\phi_B^2}{2L_B}.
+    \]
+</p>
+<p>The canonical charges are</p>
+<p style="text-align:center">
+    \[
+    q_A=(C_A+C_g)\dot\phi_A-C_g\dot\phi_B,\qquad
+    q_B=(C_B+C_g)\dot\phi_B-C_g\dot\phi_A.
+    \]
+</p>
+<p>These equations already include the effect of \(C_g\). Solving them for the node voltages and using \(\mathcal H=q_A\dot\phi_A+q_B\dot\phi_B-\mathcal L\) gives a consistent Hamiltonian from which both the mode frequencies and the coupling strength can be derived.</p>        <p >
             Moving to canonical quantization:
         </p>
         <p style="text-align:center">

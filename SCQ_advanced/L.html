@@ -121,84 +121,23 @@
                                 要量子計算需要位元之間的耦合，耦合會對量子位元的參數產生影響。可以先討論兩個線性 LC 電路透過電容 \( C_g \) 耦合。
                             </p>
                 
-                            <p style="text-align:center">
-                                \[
-                                \mathcal{L}_{2LC} = \frac{L_A \dot{Q}_A^2}{2} + \frac{L_B \dot{Q}_B^2}{2} - \frac{Q_A^2}{2C_A} - \frac{Q_B^2}{2C_B} - \frac{Q_g^2}{2C_g}
-                                \]
-                            </p>
-                
-                            <p >
-                                耦合電容 \( C_g \) 的帶電 \( Q_g \) 可以代換為 \( Q_A \) 和 \( Q_B \)，利用電容的性質：
-                            </p>
-                
-                            <p style="text-align:center">
-                                \[
-                                Q_g = C_g (V_A - V_B) = C_g \left( \frac{Q_A}{C_A} - \frac{Q_B}{C_B} \right)
-                                \]
-                            </p>
-                
-                            <p >
-                                將其代入 Lagrangian 並整理得：
-                            </p>
-                
-                            <p style="text-align:center">
-                                \[
-                                \mathcal{L}_{2LC} = \frac{L_A \dot{Q}_A^2}{2} + \frac{L_B \dot{Q}_B^2}{2} - \frac{(C_A + C_g) }{2C_A^2} Q_A^2 - \frac{(C_B + C_g) }{2C_B^2}Q_B^2 + \frac{C_g}{C_A C_B} Q_A Q_B
-                                \]
-                            </p>
-                
-                            <p >
-                                其中定義 \( C_{\Sigma A} = \frac{C_A^2}{C_A + C_g} \)，\( C_{\Sigma B} = \frac{C_B^2}{C_B + C_g} \)。接著定義正則動量：
-                            </p>
-                
-                            <p style="text-align:center">
-                                \[
-                                \Phi_A = -\frac{\partial \mathcal{L}_{2LC}}{\partial \dot{Q}_A} = -L_A \dot{Q}_A \quad \rightarrow \quad \dot{Q}_A = -\frac{\Phi_A}{L_A}
-                                \]
-                            </p>
-                
-                            <p >
-                                計算 Hamiltonian：
-                            </p>
-                
-                            <p style="text-align:center">
-                                \[
-                                \bar{\mathcal{H}}_{2LC} = \frac{\Phi_A^2}{2L_A} + \frac{Q_A^2}{2C_{\Sigma A}} + \frac{\Phi_B^2}{2L_B} + \frac{Q_B^2}{2C_{\Sigma B}} - \frac{C_g}{C_A C_B} Q_A Q_B
-                                \]
-                            </p>
-                
-                            <p >
-                                正則量子化：
-                            </p>
-                
-                            <p style="text-align:center">
-                                \[
-                                \begin{aligned}
-                                &a;_{\Sigma A} = \sqrt{\frac{1}{2\hbar} \sqrt{\frac{L_A}{C_{\Sigma A}}}} \left(\sqrt{\frac{C_{\Sigma A}}{L_A}} \Phi_A + iQ_A \right) \\
-                                &a;_{\Sigma A}^\dagger = \sqrt{\frac{1}{2\hbar} \sqrt{\frac{L_A}{C_{\Sigma A}}}} \left(\sqrt{\frac{C_{\Sigma A}}{L_A}} \Phi_A - iQ_A \right)
-                                \end{aligned}
-                                \]
-                            </p>
-                
-                            <p >
-                                定義頻率 \( \omega_{\Sigma A} = \frac{1}{\sqrt{L_A C_{\Sigma A}}} \)，\( \omega_{\Sigma B} = \frac{1}{\sqrt{L_B C_{\Sigma B}}} \)：
-                            </p>
-                
-                            <p style="text-align:center">
-                                \[
-                                \bar{\mathcal{H}}_{2LC} = \hbar \omega_{\Sigma A} \left(a_{\Sigma A}^\dagger a_{\Sigma A} + \frac{1}{2}\right) + \hbar \omega_{\Sigma B} \left(a_{\Sigma B}^\dagger a_{\Sigma B} + \frac{1}{2}\right) - \hbar \Omega_g \, i(a_{\Sigma A}^\dagger - a_{\Sigma A}) \, i(a_{\Sigma B}^\dagger - a_{\Sigma B})
-                                \]
-                            </p>
-                
-                            <p >
-                                其中，耦合強度 \( \Omega_g \) 定義為：
-                            </p>
-                
-                            <p style="text-align:center">
-                                \[
-                                \Omega_g = C_g \sqrt{\frac{\omega_{\Sigma A}}{2(C_A + C_g)}} \sqrt{\frac{\omega_{\Sigma B}}{2(C_B + C_g)}}
-                                \]
-                            </p>
+<p>接上耦合電容後，流過電感的電流不再等於單一電容電荷的時間導數，因此不能直接把耦合電容的電荷代回兩個獨立 LC 電路的拉格朗日量。</p>
+<p>較直接的做法是用兩個節點磁通 \(\phi_A\) 與 \(\phi_B\) 作為座標，並令 \(V_A=\dot\phi_A\)、\(V_B=\dot\phi_B\)。此時</p>
+<p style="text-align:center">
+    \[
+    \mathcal L=\frac{C_A}{2}\dot\phi_A^2+\frac{C_B}{2}\dot\phi_B^2
+    +\frac{C_g}{2}(\dot\phi_A-\dot\phi_B)^2
+    -\frac{\phi_A^2}{2L_A}-\frac{\phi_B^2}{2L_B}.
+    \]
+</p>
+<p>相應的正準電荷為</p>
+<p style="text-align:center">
+    \[
+    q_A=(C_A+C_g)\dot\phi_A-C_g\dot\phi_B,\qquad
+    q_B=(C_B+C_g)\dot\phi_B-C_g\dot\phi_A.
+    \]
+</p>
+<p>這兩式已包含耦合電容的影響。由它們解出兩個節點電壓，再用 \(\mathcal H=q_A\dot\phi_A+q_B\dot\phi_B-\mathcal L\) 求得哈密頓量；自振頻率與耦合強度都應由這個哈密頓量一致地導出。</p>
 
 
 

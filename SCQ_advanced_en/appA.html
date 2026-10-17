@@ -124,87 +124,18 @@
 
                                 
                                 
-                            <p >
-                              The wavefunction \(\Psi\) of a particle with charge \(q\) satisfies the Schrödinger equation:
+                            <p>
+                              A charged particle in electromagnetic potentials obeys
                               \[
-                              i\hbar \partial_t \Psi = \frac{\hat{p}^2}{2m} \Psi + V\Psi,
+                              i\hbar\partial_t\Psi=\left[\frac{(-i\hbar\nabla-q\mathbf A)^2}{2m}+q\phi+U\right]\Psi.
                               \]
-                              where the momentum operator \(\hat{p}\) under the influence of an electromagnetic potential \((\phi, \mathbf{A})\) is expressed as (in SI units):
+                              If \(\Psi=\sqrt n e^{i\theta}\), then
+                              \(\mathbf J_q=(q\hbar/m)n(\nabla\theta-q\mathbf A/\hbar)\). Single-valuedness gives
+                              \(\oint\nabla\theta\cdot d\mathbf l=2\pi n\). For a Cooper pair, using the charge magnitude \(q^*=2e\) and a fixed orientation convention,
                               \[
-                              \hat{p} = \frac{\hbar}{i} \nabla - q\mathbf{A}.
+                              \Phi_B+\frac{m^*}{q^*}\oint\mathbf v_s\cdot d\mathbf l=n\frac{h}{q^*}=n\Phi_0.
                               \]
-                              Substituting into the Schrödinger equation gives:
-                              \[
-                              i\hbar \partial_t \Psi = \frac{1}{2m} \left( \frac{\hbar}{i} \nabla - q\mathbf{A} \right) \left( \frac{\hbar}{i} \nabla \Psi - q\mathbf{A}\Psi \right) + V\Psi.
-                              \]
-                              Expanding this yields:
-                              \[
-                              i\hbar \partial_t \Psi = -\frac{\hbar^2}{2m} \nabla^2 \Psi - \frac{q}{2m} \frac{\hbar}{i} \nabla \cdot (\mathbf{A}\Psi) - \frac{q}{2m} \frac{\hbar}{i} \mathbf{A} \cdot \nabla \Psi + \frac{q^2 A^2}{2m} \Psi + V\Psi.
-                              \]
-                            </p>
-                        
-                            <p >
-                              Its conjugate equation is:
-                              \[
-                              -i\hbar \partial_t \Psi^* = -\frac{\hbar^2}{2m} \nabla^2 \Psi^* + \frac{q}{2m} \frac{\hbar}{i} \nabla \cdot (\mathbf{A} \Psi^*) + \frac{q}{2m} \frac{\hbar}{i} \mathbf{A} \cdot \nabla \Psi^* + \frac{q^2 A^2}{2m} \Psi^* + V\Psi^*.
-                              \]
-                            </p>
-                        
-                            <p >
-                              Multiplying the first equation by \(\Psi^*\) and the second equation by \(\Psi\), and subtracting the two, we get:
-                              \[
-                              i\hbar (\Psi^* \partial_t \Psi + \Psi \partial_t \Psi^*) = -\frac{\hbar^2}{2m} (\Psi^* \nabla^2 \Psi - \Psi \nabla^2 \Psi^*) - \frac{q}{2m} \frac{\hbar}{i} \left[ \Psi^* \nabla \cdot (\mathbf{A}\Psi) + \Psi \nabla \cdot (\mathbf{A}\Psi^*) + \Psi^* \mathbf{A} \cdot \nabla \Psi + \Psi \mathbf{A} \cdot \nabla \Psi^* \right].
-                              \]
-                              Simplifying:
-                              \[
-                              i\hbar \partial_t (\Psi^* \Psi) = -\frac{\hbar^2}{2m} \nabla \cdot (\Psi^* \nabla \Psi - \Psi \nabla \Psi^*) - \frac{q}{2m} \frac{\hbar}{i} \nabla \cdot (2\mathbf{A} \Psi^* \Psi).
-                              \]
-                            </p>
-                        
-                            <p >
-                              Dividing by \(i\hbar\), we get:
-                              \[
-                              \partial_t (\Psi^* \Psi) = -\nabla \cdot \left[ \frac{\hbar}{2mi} (\Psi^* \nabla \Psi - \Psi \nabla \Psi^*) - \frac{q\mathbf{A}}{m} \Psi^* \Psi \right].
-                              \]
-                              Comparing this with the continuity equation:
-                              \[
-                              \partial_t \rho + \nabla \cdot \mathbf{J} = 0,
-                              \]
-                              where \(\rho = \Psi^* \Psi\) is the probability density, we identify the probability current as:
-                              \[
-                              \mathbf{J} = \frac{\hbar}{2mi} (\Psi^* \nabla \Psi - \Psi \nabla \Psi^*) - \frac{q\mathbf{A}}{m} \Psi^* \Psi.
-                              \]
-                            </p>
-                        
-                            <p >
-                              For charged particles, the current density \(\mathbf{J}_q\) is:
-                              \[
-                              \mathbf{J}_q = q \mathbf{J} = q \left[ \frac{\hbar}{2mi} (\Psi^* \nabla \Psi - \Psi \nabla \Psi^*) - \frac{q\mathbf{A}}{m} \Psi^* \Psi \right].
-                              \]
-                              If the wavefunction is expressed in terms of the particle density \(n(\mathbf{r})\) and phase \(\theta(\mathbf{r})\) as \(\Psi \sim \sqrt{n(\mathbf{r})} e^{i\theta(\mathbf{r})}\), then:
-                              \[
-                              \mathbf{J}_q = q\frac{\hbar}{m} n(\mathbf{r}) \left[ \nabla \theta(\mathbf{r}) - \frac{q\mathbf{A}}{\hbar} \right].
-                              \]
-                            </p>
-                        
-                            <div style="text-align: center;">
-                              <a href="../Image/LOOP.png">
-                                <img src="../WebP/LOOP.webp" alt="Diagram of a circle" style="width: 50%; height: auto;">
-                              </a>
-                            </div>
-                        
-                            <p >
-                              Under topological conditions, and using Stokes' theorem:
-                              \[
-                              \int \nabla \times \left[ \nabla \theta(\mathbf{r}) - \frac{q\mathbf{A}}{\hbar} \right] \cdot d\mathbf{S} = \int \nabla \times (\nabla \theta(\mathbf{r})) \cdot d\mathbf{S} - \frac{q}{\hbar} \int (\nabla \times \mathbf{A}) \cdot d\mathbf{S},
-                              \]
-                              simplifying to:
-                              \[
-                              \oint \nabla \theta(\mathbf{r}) \cdot d\mathbf{l} - \frac{q}{\hbar} \Phi_B = \begin{cases} 
-                              0, & \text{if the loop is without a hole}, \\
-                              2\pi N, & \text{if the loop encloses a hole}.
-                              \end{cases}
-                              \]
+                              Only when the superflow correction is negligible may this be reduced to \(\Phi_B=n\Phi_0\).
                             </p>
 
 

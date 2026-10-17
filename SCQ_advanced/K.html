@@ -131,57 +131,22 @@
                               現在我們來討論如何驅動 LC 電路與 Transmon。透過耦合電容 \( C_d \) 與外部電壓源 \( V_d \) 耦合，系統的 Lagrangian 為：
                             </p>
                         
-                            <p style="text-align: center;">
+                            <p>
+                              以 node flux \(\phi\) 為廣義座標，對接地電容 \(C\)、耦合電容 \(C_d\) 與理想外部電壓 \(V_d(t)\)，Lagrangian 為
                               \[
-                              \mathcal{L}_d(\dot{Q}, Q) = T - U = \frac{L\dot{Q}^2}{2} - \frac{Q^2}{2C} - \frac{Q_d^2}{2C_d}
+                              \mathcal L=\frac{C}{2}\dot\phi^2+\frac{C_d}{2}[\dot\phi-V_d(t)]^2-\frac{\phi^2}{2L}.
                               \]
-                            </p>
-                        
-                            <p >
-                              其中耦合電容 \( C_d \) 所攜帶的能量為：
-                            </p>
-                        
-                            <p style="text-align: center;">
+                              定義 \(C_\Sigma=C+C_d\) 與正準電荷
                               \[
-                              \frac{Q_d^2}{2C_d} = \frac{C_d (V - V_d)^2}{2} = \frac{C_d \left(\frac{Q}{C} - V_d\right)^2}{2} \]
-                        \[
-                              = \frac{C_d Q^2}{2C^2} - \frac{C_d Q}{C}V_d + \frac{C_d V_d^2}{2}
+                              q=\frac{\partial\mathcal L}{\partial\dot\phi}=C_\Sigma\dot\phi-C_dV_d(t).
                               \]
-                            </p>
-                        
-                            <p >
-                              將上述式子代入並整理得：
-                            </p>
-                        
-                            <p style="text-align: center;">
+                              Legendre transform 給出（略去只依賴外部 source 的常數項）
                               \[
-                              \mathcal{L}_d(\dot{Q}, Q) = \frac{L\dot{Q}^2}{2} - \frac{Q^2}{2C} - \frac{C_d}{C} \frac{Q^2}{2C} + \frac{C_d}{C} QV_d - \frac{C_d V_d^2}{2}
+                              \mathcal H=\frac{[q+C_dV_d(t)]^2}{2C_\Sigma}+\frac{\phi^2}{2L}
+                              =\frac{q^2}{2C_\Sigma}+\frac{\phi^2}{2L}+\frac{C_d}{C_\Sigma}qV_d(t)+\text{const.}
                               \]
-                        \[
-                        = \frac{L\dot{Q}^2}{2} - \frac{Q^2}{2C_\Sigma} + \frac{C_d}{C} QV_d - \frac{C_d V_d^2}{2}
-                              \]
+                              量子化時令 \([\phi,q]=i\hbar\)，再以 zero-point operators 表示驅動耦合。
                             </p>
-                        
-                            <p >
-                              其中 \( C_\Sigma = \frac{C^2}{C + C_d} \)。定義正則動量：
-                            </p>
-                        
-                            <p style="text-align: center;">
-                              \[
-                              \Phi = -\frac{\partial \mathcal{L}_d}{\partial \dot{Q}} = -L\dot{Q} \quad \rightarrow \quad \dot{Q} = -\frac{\Phi}{L}
-                              \]
-                            </p>
-                        
-                            <p >
-                              接著計算 Hamiltonian：
-                            </p>
-                        
-                            <p style="text-align: center;">
-                              \[
-                              \bar{\mathcal{H}}_d = -\mathcal{L}_d - \Phi \dot{Q}\]
-                        \[ = -\frac{L\dot{Q}^2}{2} + \frac{Q^2}{2C_\Sigma} - \frac{C_d}{C} QV_d + \frac{\Phi^2}{L}\]
-                        \[
-                              = \frac{\Phi^2}{2L} + \frac{Q^2}{2C_\Sigma} - \frac{C_d}{C} QV_d
                               \]
                             </p>
                         
@@ -258,12 +223,12 @@
                         
                             <p style="text-align: center;">
                               \[
-                              \bar{\mathcal{H}} _d = \hbar \omega_\Sigma \left(a_d^\dagger a_d + \frac{1}{2}\right) -  i \Omega (a_d^\dagger - a_d)
+                              \bar{\mathcal{H}} _d = \hbar \omega_\Sigma \left(a_d^\dagger a_d + \frac{1}{2}\right) -i\hbar\Omega(a_d^\dagger-a_d)
                               \]
                             </p>
                         
                             <p >
-                              其中 \( \Omega = C_d V_d \sqrt{\frac{\omega_\Sigma}{2\hbar (C + C_d)}} \) 稱為拉比頻率（Rabi Frequency）。
+                              其中 \( \Omega = C_d V_d \sqrt{\frac{\omega_\Sigma}{2\hbar (C + C_d)}} \) 是以角頻率表示的驅動強度；此式位於 lab frame，轉到 rotating frame 並採 rotating-wave approximation 後才得到常用的 Rabi Hamiltonian。
                             </p>
 
 

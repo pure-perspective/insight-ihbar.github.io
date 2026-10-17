@@ -130,62 +130,14 @@
       </a>
     </div>
 
-    <p >
-      Now, let's discuss how to drive an LC circuit and a transmon qubit. By coupling the system to an external voltage source \( V_d \) through a coupling capacitor \( C_d \), the Lagrangian of the system is given by:
-    </p>
-
-    <p style="text-align: center;">
+    <p>
+      Use the node flux \(\phi\) as the generalized coordinate. For a grounded capacitance \(C\), a coupling capacitance \(C_d\), and an ideal external voltage \(V_d(t)\),
       \[
-      \mathcal{L}_d(\dot{Q}, Q) = T - U = \frac{L\dot{Q}^2}{2} - \frac{Q^2}{2C} - \frac{Q_d^2}{2C_d}
+      \mathcal L=\frac{C}{2}\dot\phi^2+\frac{C_d}{2}[\dot\phi-V_d(t)]^2-\frac{\phi^2}{2L}.
       \]
-    </p>
-
-    <p >
-      The energy associated with the coupling capacitor \( C_d \) is:
-    </p>
-
-    <p style="text-align: center;">
+      With \(C_\Sigma=C+C_d\), the canonical charge is \(q=C_\Sigma\dot\phi-C_dV_d\). After dropping a term that depends only on the external source,
       \[
-      \frac{Q_d^2}{2C_d} = \frac{C_d (V - V_d)^2}{2} = \frac{C_d \left(\frac{Q}{C} - V_d\right)^2}{2}
-      \]
-      \[
-      = \frac{C_d Q^2}{2C^2} - \frac{C_d Q}{C}V_d + \frac{C_d V_d^2}{2}
-      \]
-    </p>
-
-    <p >
-      Substituting the above expression into the Lagrangian and simplifying, we obtain:
-    </p>
-
-    <p style="text-align: center;">
-      \[
-      \mathcal{L}_d(\dot{Q}, Q) = \frac{L\dot{Q}^2}{2} - \frac{Q^2}{2C} - \frac{C_d}{C} \frac{Q^2}{2C} + \frac{C_d}{C} QV_d - \frac{C_d V_d^2}{2}
-      \]
-      \[
-      = \frac{L\dot{Q}^2}{2} - \frac{Q^2}{2C_\Sigma} + \frac{C_d}{C} QV_d - \frac{C_d V_d^2}{2}
-      \]
-    </p>
-
-    <p >
-      Here, \( C_\Sigma = \frac{C^2}{C + C_d} \). We define the canonical momentum as:
-    </p>
-
-    <p style="text-align: center;">
-      \[
-      \Phi = -\frac{\partial \mathcal{L}_d}{\partial \dot{Q}} = -L\dot{Q} \quad \rightarrow \quad \dot{Q} = -\frac{\Phi}{L}
-      \]
-    </p>
-
-    <p >
-      Next, we calculate the Hamiltonian:
-    </p>
-
-    <p style="text-align: center;">
-      \[
-      \bar{\mathcal{H}} _d = -\mathcal{L}_d - \Phi \dot{Q} = -\frac{L\dot{Q}^2}{2} + \frac{Q^2}{2C_\Sigma} - \frac{C_d}{C} QV_d + \frac{\Phi^2}{L}
-      \]
-      \[
-      = \frac{\Phi^2}{2L} + \frac{Q^2}{2C_\Sigma} - \frac{C_d}{C} QV_d
+      \mathcal H=\frac{q^2}{2C_\Sigma}+\frac{\phi^2}{2L}+\frac{C_d}{C_\Sigma}qV_d(t)+\mathrm{const.},\qquad[\phi,q]=i\hbar.
       \]
     </p>
 
@@ -234,30 +186,13 @@
       </div>
     </details>
 
-    <p >
-      The final result is:
-    </p>
-
-    <p style="text-align: center;">
+    <p>
+      If \(\Omega\) is expressed as an angular frequency, the lab-frame drive Hamiltonian is
       \[
-      \bar{\mathcal{H}} _d = \hbar \omega_\Sigma \left(a_d^\dagger a_d + \frac{1}{2}\right) -  i \Omega (a_d^\dagger - a_d)
+      \bar{\mathcal H}_d=\hbar\omega_\Sigma\left(a_d^\dagger a_d+\frac12\right)-i\hbar\Omega(t)(a_d^\dagger-a_d).
       \]
-    </p>
-
-    <p >
-      Here, \( \Omega = C_d V_d \sqrt{\frac{\omega_\Sigma}{2\hbar (C + C_d)}} \) is known as the Rabi frequency.
-    </p>
-
-
-
-
-
-
-
-
-
-
-                                <p>
+      The usual Rabi Hamiltonian follows only after transforming to the drive rotating frame and applying the rotating-wave approximation when \(|\Omega|,|\Delta|\ll\omega_\Sigma+\omega_d\).
+    </p>                                <p>
                                     <span style="font-size: 0.5em; line-height: 0.8;">
                                         Originally written in Chinese by the author, these articles are translated into English to invite cross-language resonance.
                                     </span>

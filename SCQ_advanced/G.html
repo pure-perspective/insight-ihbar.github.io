@@ -174,13 +174,13 @@
                                 帶入後可得電感值：
                                 \[
                                 L_{\text{SQUID}}(\Delta\theta_1, \Phi_B) = \left[\frac{2\pi}{\Phi_0} \cdot 2I_0 \cos\left(\frac{\Phi_B}{\Phi_0} \pi\right) 
-                                \cos\left(\Delta\theta_1 - \frac{\Phi_B}{\Phi_0} \pi\right)\right]
+                                \cos\left(\Delta\theta_1 - \frac{\Phi_B}{\Phi_0} \pi\right)\right]^{-1}
                                 \]
                             </p>
                             <p >
                                 可以注意到 \( L_{\text{SQUID}} \) 的值會受到外加磁通 \( \Phi_B \) 的影響，這為後來 Tunable Transmon 調整頻率的關鍵。定義變數 \( \Phi \)：
                                 \[
-                                \Phi \equiv \frac{\Delta\theta_1}{\pi} \Phi_0 - \Phi_B = \frac{\Phi_0}{\pi} \left(\Delta\theta_1 - \frac{\Phi}{\Phi_0} \pi\right)
+                                \Phi_{\mathrm{eff}} \equiv \frac{\Phi_0}{\pi}\Delta\theta_1-\Phi_B = \frac{\Phi_0}{\pi}\left(\Delta\theta_1-\pi\frac{\Phi_B}{\Phi_0}\right)
                                 \]
                                 並有：
                                 \[

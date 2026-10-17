@@ -161,7 +161,7 @@
                                 </p>
                                 <ul>
                                     <li>
-                                        <p><strong>Single-Spin Qubit:</strong> This is the most intuitive encoding method. A qubit is encoded in the two states of a single electron confined in a single quantum dot, spin-down \( \ket{0} \) and spin-up \( \ket{1} \), distinguished by applying a z-direction magnetic field \(B_z\). This scheme is conceptually simple and has the most straightforward physical structure. Its control typically requires applying an oscillating magnetic field \(B_x\) resonant with the qubit, i.e., electron spin resonance (ESR), to drive spin rotations. However, generating a precise, localized oscillating magnetic field at the nanoscale is a significant technological challenge, and it only responds to magnetic fields, not electric fields, which has spurred the development of more complex encoding schemes.</p>
+                                        <p><strong>Single-Spin Qubit:</strong> A qubit is encoded in the two spin states of one electron confined in a quantum dot. It can be driven by a resonant oscillating magnetic field. In some devices, an AC gate voltage can also drive the spin through spin-orbit coupling or a magnetic-field gradient produced by a micromagnet.</p>
                                       </li>
                                       <li>
                                         <p><strong>Singlet-Triplet (\(S-T_0\) Qubit):</strong> 
@@ -198,7 +198,7 @@
                                             To overcome the reliance of \(S-T_0\) qubits on magnetic field gradients, the hybrid qubit was proposed. It uses three electrons distributed in a double quantum dot (one electron in one dot, two in the other) to encode a qubit. Its logical basis states can be defined as
                                             \[ \ket{0} \equiv \ket{\downarrow}\otimes S \]
                                             and
-                                            \[ \ket{1} \equiv  \sqrt{\frac{1}{3}}\ket{\uparrow}\otimes T_0-\sqrt{\frac{2}{3}}\ket{\uparrow}\otimes T_{-} \],
+                                            \[ \ket{1} \equiv \sqrt{\frac{1}{3}}\ket{\downarrow}\otimes\ket{T_0}-\sqrt{\frac{2}{3}}\ket{\uparrow}\otimes\ket{T_-} \],
                                             where \( S \) represents the singlet state in the double-electron dot, and \(T_0, T_{-}\) represent the triplet states. The energy splitting of this encoding is mainly determined by the singlet-triplet energy difference within a quantum dot, thus enabling fast qubit rotations without an external magnetic field gradient, while also being less sensitive to charge noise.
                                         </p></li>
                                         </ul>

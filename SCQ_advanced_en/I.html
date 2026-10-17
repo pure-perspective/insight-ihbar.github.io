@@ -150,27 +150,21 @@
       In this case:
     </p>
 
-    <p >
+    <p>
+      In the Fock basis \((\ket{0},\ket{1},\ket{2},\ldots)\), the annihilation and creation operators are
       \[
-      a^\dagger = 
-      \begin{bmatrix}
+      a=\begin{bmatrix}
         0 & 1 & 0 & \cdots \\
         0 & 0 & \sqrt{2} & \cdots \\
         0 & 0 & 0 & \cdots \\
-        \vdots & \vdots & \vdots & \ddots \\
-      \end{bmatrix}
-      \]
-    </p>
-
-    <p >
-      \[
-      a =
-      \begin{bmatrix}
+        \vdots & \vdots & \vdots & \ddots
+      \end{bmatrix},\qquad
+      a^\dagger=\begin{bmatrix}
         0 & 0 & 0 & \cdots \\
         1 & 0 & 0 & \cdots \\
         0 & \sqrt{2} & 0 & \cdots \\
-        \vdots & \vdots & \vdots & \ddots \\
-      \end{bmatrix}
+        \vdots & \vdots & \vdots & \ddots
+      \end{bmatrix}.
       \]
     </p>
 
@@ -178,42 +172,14 @@
       This represents an infinite-dimensional quantum system. A superconducting qubit uses the Transmon's ground state \( \ket{0} \) (or \( \ket{g} \)) and the first excited state \( \ket{1} \) (or \( \ket{e} \)) as its computational basis. In the two-dimensional framework of quantum computation:
     </p>
 
-    <p >
+    <p>
+      Fix the basis order as \((\ket{0},\ket{1})\), with
+      \(\sigma^+=\ket{1}\!\bra{0}\) and \(\sigma^-=\ket{0}\!\bra{1}\). Therefore,
       \[
-      a^\dagger \rightarrow \sigma^+ = 
-      \begin{bmatrix}
-        0 & 1 \\
-        0 & 0 \\
-      \end{bmatrix}, \quad
-      a \rightarrow \sigma^- = 
-      \begin{bmatrix}
-        0 & 0 \\
-        1 & 0 \\
-      \end{bmatrix}
-      \]
-    </p>
-
-    <p >
-      These lead to the following definitions:
-    </p>
-
-    <p >
-      \[
-      \sigma_x = \sigma^+ + \sigma^- = 
-      \begin{bmatrix}
-        0 & 1 \\
-        1 & 0 \\
-      \end{bmatrix}, \quad
-      \sigma_y = i \left(\sigma^+ - \sigma^- \right) = 
-      \begin{bmatrix}
-        0 & -i \\
-        i & 0 \\
-      \end{bmatrix}, \quad
-      \sigma_z = \mathbb{I} - 2\sigma^+\sigma^- = 
-      \begin{bmatrix}
-        1 & 0 \\
-        0 & -1 \\
-      \end{bmatrix}
+      \sigma^+=\begin{bmatrix}0&0\\1&0\end{bmatrix},\qquad
+      \sigma^-=\begin{bmatrix}0&1\\0&0\end{bmatrix},\qquad
+      \sigma_y=-i(\sigma^+-\sigma^-),\qquad
+      \sigma_z=I-2\sigma^+\sigma^-=\begin{bmatrix}1&0\\0&-1\end{bmatrix}.
       \]
     </p>
 

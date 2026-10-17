@@ -129,7 +129,7 @@ Canonical quantization is a method for introducing quantum structure into classi
 <p >
 The canonical momentum \(\Phi_\#\) is defined as:
 \[
-\Phi_\# \equiv \frac{\partial \mathcal{L}}{\partial \dot{Q}} =  \mathcal{L}\dot{Q} \leftrightarrow \dot{Q} = \frac{\Phi_\#}{L}.
+\Phi_\# \equiv \frac{\partial \mathcal{L}}{\partial \dot{Q}} = L\dot{Q} \leftrightarrow \dot{Q} = \frac{\Phi_\#}{L}.
 \]
 Here, \(\Phi_\#\) has the same unit as magnetic flux and can be interpreted as the flux inside the inductor. The Hamiltonian \(H(\Phi_\#, Q)\) is defined as:
 \[
@@ -176,7 +176,7 @@ Q = \sqrt{\frac{\hbar}{2} \sqrt{\frac{C}{L}}} (a^\dagger + a), \quad
 <p >
 It can be shown that \([a, a^\dagger] = 1\):
 \[
-[a, a^\dagger] = aa^\dagger - a^\dagger a = \frac{1}{2\hbar} \sqrt{\frac{L}{C}} \left[ Q, \Phi_\# \right] = 1.
+[a,a^\dagger]=\frac{-i}{2\hbar}\bigl([Q,\Phi_\#]-[\Phi_\#,Q]\bigr)=\frac{-i}{\hbar}[Q,\Phi_\#]=1,\qquad [Q,\Phi_\#]=i\hbar.
 \]
 The Hamiltonian \(H(\Phi_\#, Q)\) can be rewritten as:
 \[

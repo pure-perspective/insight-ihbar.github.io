@@ -171,7 +171,7 @@
                             <p >
                               Expanding the Hamiltonian:
                               \[
-                              \mathcal{H} = \frac{\hbar}{\sqrt{LC}} \left[a^\dagger a + \frac{1}{2}\right] - \frac{1}{24L} \left(\frac{\pi}{\Phi_0}\right)^2 \left[i \sqrt{\frac{\hbar}{2\sqrt{L/C}}} (a^\dagger + a)\right]^4.
+                              \mathcal{H} = \frac{\hbar}{\sqrt{LC}} \left[a^\dagger a + \frac{1}{2}\right] - \frac{1}{24L} \left(\frac{\pi}{\Phi_0}\right)^2 \left[\sqrt{\frac{\hbar}{2}\sqrt{\frac{L}{C}}} (a^\dagger + a)\right]^4.
                               \]
                               Simplifying:
                               \[
@@ -271,53 +271,15 @@
                               \]
                             </p>
                         
-                            <p >
-                              The energy difference between levels \(m\) and \(m-1\) is:
-                            </p>
-                        
-                            <p style="text-align:center">
+                            <p>
+                              Let \(C_\Sigma\) denote the total capacitance of the qubit island and define
                               \[
-                              \Delta E^m_{m-1} = \frac{\hbar}{\sqrt{LC}} - \frac{\hbar^2}{96C} \left(\frac{\pi}{\Phi_0}\right)^2 \left\{6[m^2 - (m-1)^2] + 6\right\}.
+                              E_C=\frac{e^2}{2C_\Sigma}.
                               \]
-                            </p>
-                        
-                            <p style="text-align:center">
-                              \[
-                              = \frac{\hbar}{\sqrt{LC}} - \frac{\hbar^2 \pi^2}{96C} \frac{e^2}{\pi^2 \hbar^2} \left[6(2m - 1) + 6\right].
-                              \]
-                            </p>
-                        
-                            <p >
-                              Finally, we get:
-                            </p>
-                        
-                            <p style="text-align:center">
-                              \[
-                              \Delta E^m_{m-1} = \frac{\hbar}{\sqrt{LC}} - m\frac{e^2}{8C}.
-                              \]
-                            </p>
-                        
-                            <p >
-                              Calculating \( \Delta E^{21} - \Delta E^{10} \):
-                            </p>
-                        
-                            <p style="text-align:center">
-                              \[
-                              \Delta E^{21} - \Delta E^{10} = \left(\frac{\hbar}{\sqrt{LC}} - 2\frac{e^2}{8C}\right) - \left(\frac{\hbar}{\sqrt{LC}} - \frac{e^2}{8C}\right).
-                              \]
-                            </p>
-                        
-                            <p style="text-align:center">
-                              \[
-                              = -\frac{e^2}{8C} \equiv -E_C.
-                              \]
-                            </p>
-                        
-                            <p >
-                              \( E_C \) represents the nonlinear effect.
-                            </p>
-                        
-                            <div style="text-align: center;">
+                              In the transmon regime, the adjacent level spacing is approximately
+                              \(\Delta E^m_{m-1}\simeq\hbar\omega_p-mE_C\). Therefore, the anharmonicity is
+                              \(\Delta E^{21}-\Delta E^{10}\simeq-E_C\).
+                            </p>                            <div style="text-align: center;">
                               <a href="../Image/Transmon state.png">
                                 <img src="../WebP/Transmon state.webp" alt="Potential energy graph" style="width: 50%; height: auto;">
                               </a>
