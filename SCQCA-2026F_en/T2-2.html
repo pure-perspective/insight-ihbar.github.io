@@ -5198,11 +5198,11 @@
                         <div class="sidebar">
                             <div class="widget">
                                 <div id="lesson-list_2">
-                                <div class="lesson-link "><a href="main.html">QH-2026F · 16-Week Overview</a></div>
+                                <div class="lesson-link "><a href="main.html">16-Week Overview</a></div>
                                 <div class="lesson-link "><a href="T1-1d.html">Week 1 · Computation Is Physical</a></div>
                                 <div class="lesson-link active"><a href="T2-2.html">Week 2 · Hardware, Superconductivity, and Josephson Anharmonicity</a></div>
                                 <div class="lesson-link "><a href="T2-W3.html">Week 3 · Tunability and the C-Shunted Transmon</a></div>
-                                <div class="lesson-link "><a href="T2-W4.html">Week 4 Manual Slides · Noise, Fluxonium, and Protected-Qubit Design | QH-2026F v5</a></div>
+                                <div class="lesson-link "><a href="T2-W4.html">Week 4 · Noise, Fluxonium</a></div>
                                 <div class="lesson-link "><a href="T3-W5.html">Week 5 · Controlling a Single Qubit with Microwaves</a></div>
                                 <div class="lesson-link "><a href="T3-W6.html">Week 6 · Two-Qubit Interactions</a></div>
                                 </div>
@@ -6355,14 +6355,14 @@
             <div class="qh-deriv-split qh-deriv-halves">
                 <div>
                     \[
-                    \hat{\varphi} = \left(\frac{2E_C}{E_J}\right)^{1/4}\left(a+a^{\dagger}\right),
+                    \hat{\varphi} = \left(\frac{2E_C}{E_J}\right)^{1/4}\left(\hat a+\hat a^{\dagger}\right),
                     \qquad
-                    \hat{n} = \frac{i}{2}\left(\frac{E_J}{2E_C}\right)^{1/4}\left(a^{\dagger}-a\right)
+                    \hat{n} = \frac{i}{2}\left(\frac{E_J}{2E_C}\right)^{1/4}\left(\hat a^{\dagger}-\hat a\right)
                     \]
                 </div>
                 <div class="qh-result">
                     \[
-                    \hat{\mathcal{H}}_0=\hbar\omega_p \left(a^{\dagger}a+\frac{1}{2}\right),
+                    \hat{\mathcal{H}}_0=\hbar\omega_p \left(\hat a^{\dagger}\hat a+\frac{1}{2}\right),
                     \qquad
                     \hbar\omega_p = \sqrt{8E_JE_C} = \frac{\hbar}{\sqrt{L_JC}}
                     \]
@@ -6372,13 +6372,13 @@
             <p>Substituting \(\hat{\varphi}\) into \(\Delta \hat{\mathcal{H}}\):</p>
             \[
             \Delta \hat{\mathcal{H}}
-            = -\frac{E_J}{4!}\left(\frac{2E_C}{E_J}\right)\left(a+a^{\dagger}\right)^{4}
-            + \frac{E_J}{6!}\left(\frac{2E_C}{E_J}\right)^{3/2}\left(a+a^{\dagger}\right)^{6}
+            = -\frac{E_J}{4!}\left(\frac{2E_C}{E_J}\right)\left(\hat a+\hat a^{\dagger}\right)^{4}
+            + \frac{E_J}{6!}\left(\frac{2E_C}{E_J}\right)^{3/2}\left(\hat a+\hat a^{\dagger}\right)^{6}
             - \cdots
             \]
                 \[
-                = -\frac{E_C}{12}\left(a+a^{\dagger}\right)^{4}
-                + \frac{\sqrt{2}}{360}\,E_C\sqrt{\frac{E_C}{E_J}}\left(a+a^{\dagger}\right)^{6}
+                = -\frac{E_C}{12}\left(\hat a+\hat a^{\dagger}\right)^{4}
+                + \frac{\sqrt{2}}{360}\,E_C\sqrt{\frac{E_C}{E_J}}\left(\hat a+\hat a^{\dagger}\right)^{6}
                 - \cdots
                 \]
         </section>
@@ -6389,28 +6389,28 @@
             <h3>Quartic Expectation Value</h3>
             <p>First-order shift \(E^m=E_0^m+\delta E^m\), where \(\hat{\mathcal{H}}_0 |m\rangle =E^m_0 |m\rangle \):</p>
             \[
-            \delta E^m=\langle m\rvert\,\left[-\frac{E_C}{12}\left(a+a^{\dagger}\right)^{4}\right]\,\lvert m\rangle
+            \delta E^m=\langle m\rvert\,\left[-\frac{E_C}{12}\left(\hat a+\hat a^{\dagger}\right)^{4}\right]\,\lvert m\rangle
             \]
-            <p>Only terms with equal powers of \(a\) and \(a^{\dagger}\) survive:</p>
+            <p>Only terms with equal powers of \(\hat a\) and \(\hat a^{\dagger}\) survive:</p>
             \[
             \left\langle m\left\lvert
-            aaa^{\dagger}a^{\dagger}
-            + aa^{\dagger}aa^{\dagger}
-            + aa^{\dagger}a^{\dagger}a
-            + a^{\dagger}aaa^{\dagger}
-            + a^{\dagger}aa^{\dagger}a
-            + a^{\dagger}a^{\dagger}aa
+            \hat a\hat a\hat a^{\dagger}\hat a^{\dagger}
+            + \hat a\hat a^{\dagger}\hat a\hat a^{\dagger}
+            + \hat a\hat a^{\dagger}\hat a^{\dagger}\hat a
+            + \hat a^{\dagger}\hat a\hat a\hat a^{\dagger}
+            + \hat a^{\dagger}\hat a\hat a^{\dagger}\hat a
+            + \hat a^{\dagger}\hat a^{\dagger}\hat a\hat a
             \right\rvert m\right\rangle
             \]
-            <p>Normal-ordering with \(aa^{\dagger}=a^{\dagger}a+1\):</p>
+            <p>Normal-ordering with \(\hat a\hat a^{\dagger}=\hat a^{\dagger}\hat a+1\):</p>
             \[
             = \left\langle m\left\lvert
-            6\,a^{\dagger}aa^{\dagger}a + 6\,a^{\dagger}a + 3
+            6\,\hat a^{\dagger}\hat a\hat a^{\dagger}\hat a + 6\,\hat a^{\dagger}\hat a + 3
             \right\rvert m\right\rangle
             \]
             <div class="qh-result">
                 \[
-                \left\langle m\left\lvert \left(a+a^{\dagger}\right)^{4}\right\rvert m\right\rangle
+                \left\langle m\left\lvert \left(\hat a+\hat a^{\dagger}\right)^{4}\right\rvert m\right\rangle
                 = 6m^{2}+6m+3
                 \qquad\Longrightarrow\qquad
                 \delta E^m = -\frac{E_C}{12}\left(6m^{2}+6m+3\right)

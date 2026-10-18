@@ -6619,11 +6619,11 @@ html {
                         <div class="sidebar">
                             <div class="widget">
                                 <div id="lesson-list_2">
-                                <div class="lesson-link "><a href="main.html">QH-2026F · 16-Week Overview</a></div>
+                                <div class="lesson-link "><a href="main.html">16-Week Overview</a></div>
                                 <div class="lesson-link "><a href="T1-1d.html">Week 1 · Computation Is Physical</a></div>
                                 <div class="lesson-link "><a href="T2-2.html">Week 2 · Hardware, Superconductivity, and Josephson Anharmonicity</a></div>
                                 <div class="lesson-link active"><a href="T2-W3.html">Week 3 · Tunability and the C-Shunted Transmon</a></div>
-                                <div class="lesson-link "><a href="T2-W4.html">Week 4 Manual Slides · Noise, Fluxonium, and Protected-Qubit Design | QH-2026F v5</a></div>
+                                <div class="lesson-link "><a href="T2-W4.html">Week 4 · Noise, Fluxonium</a></div>
                                 <div class="lesson-link "><a href="T3-W5.html">Week 5 · Controlling a Single Qubit with Microwaves</a></div>
                                 <div class="lesson-link "><a href="T3-W6.html">Week 6 · Two-Qubit Interactions</a></div>
                                 </div>
@@ -7500,47 +7500,47 @@ html {
             </figure>
             <div class="qh-v45-drive-math">
                 \[
-                \mathcal{H}=4E_{C}\left(n-n_g\right)^2-E_J\cos\varphi, \qquad n_g(t)=-\frac{C_gV_g(t)}{2e}, \qquad E_C=\frac{e^2}{2\left(C+C_g\right)}
+                \hat{\mathcal H}=4E_{C}\left(\hat n-n_g\right)^2-E_J\cos\hat\varphi, \qquad n_g(t)=-\frac{C_gV_g(t)}{2e}, \qquad E_C=\frac{e^2}{2\left(C+C_g\right)}
                 \]
               <div class="qh-result">
                 \[
                 \text{Drop }n_g^2 \quad \to \quad
-                \mathcal H(t)=
-                \underbrace{4E_Cn^2-E_J\cos\varphi}_{\mathcal H_0}
-                +\underbrace{\left[-8E_C\cdot n_g(t)\cdot n\right]}_{\mathcal H_d(t)}
+                \hat{\mathcal H}(t)=
+                \underbrace{4E_C\hat n^2-E_J\cos\hat\varphi}_{\hat{\mathcal H}_0}
+                +\underbrace{\left[-8E_C\cdot n_g(t)\cdot\hat n\right]}_{\hat{\mathcal H}_d(t)}
                 \]
               </div>
               <div>
                 \[
-                \hat{\varphi} = \left(\frac{2E_C}{E_J}\right)^{1/4}\left(a+a^{\dagger}\right),
+                \hat{\varphi} = \left(\frac{2E_C}{E_J}\right)^{1/4}\left(\hat a+\hat a^{\dagger}\right),
                 \qquad
-                \hat{n} = \frac{i}{2}\left(\frac{E_J}{2E_C}\right)^{1/4}\left(a^{\dagger}-a\right)
+                \hat{n} = \frac{i}{2}\left(\frac{E_J}{2E_C}\right)^{1/4}\left(\hat a^{\dagger}-\hat a\right)
                 , \qquad \hbar\omega_p=\sqrt{8E_JE_C}
                 \]
             </div>
             <div>
               \[
-              \mathcal H_d(t)=-8E_C \cdot \left(-\frac{C_gV_g(t)}{2e}\right)\cdot \frac{i}{2}\left(\frac{E_J}{2E_C}\right)^{1/4}\left(a^{\dagger}-a\right)
+              \hat{\mathcal H}_d(t)=-8E_C \cdot \left(-\frac{C_gV_g(t)}{2e}\right)\cdot \frac{i}{2}\left(\frac{E_J}{2E_C}\right)^{1/4}\left(\hat a^{\dagger}-\hat a\right)
               \]
             </div>
             <div>
               \[
-              =2i \cdot \left(\frac{C_gV_g(t)}{e}\right)\cdot \left(\frac{E_C^2 \cdot 8E_C E_J}{2\cdot 8}\right)^{1/4}\cdot\left(a^{\dagger}-a\right)
+              =2i \cdot \left(\frac{C_gV_g(t)}{e}\right)\cdot \left(\frac{E_C^2 \cdot 8E_C E_J}{2\cdot 8}\right)^{1/4}\cdot\left(\hat a^{\dagger}-\hat a\right)
               \]
             </div>
             <div>
               \[
-              =i \cdot \left(\frac{C_gV_g(t)}{e}\right) \sqrt{E_C \hbar \omega_p }\cdot\left(a^{\dagger}-a\right)
+              =i \cdot \left(\frac{C_gV_g(t)}{e}\right) \sqrt{E_C \hbar \omega_p }\cdot\left(\hat a^{\dagger}-\hat a\right)
               \]
             </div>
             <div>
               \[
-              =i\hbar\cdot C_gV_g(t)  \sqrt{\frac{  \omega_p}{2\hbar\left(C+C_g\right)} }\cdot\left(a^{\dagger}-a\right)
+              =i\hbar\cdot C_gV_g(t)  \sqrt{\frac{  \omega_p}{2\hbar\left(C+C_g\right)} }\cdot\left(\hat a^{\dagger}-\hat a\right)
               \]
             </div>
             <div>
               \[
-              \equiv i\hbar\cdot\Omega(t)\cdot\left(a^{\dagger}-a\right)
+              \equiv i\hbar\cdot\Omega(t)\cdot\left(\hat a^{\dagger}-\hat a\right)
               \]
           </div>
             </div>
@@ -7558,15 +7558,15 @@ html {
             <div class="qh-v34-frame-math qh-step-host">
               <div class="qh-key">
                 \[
-                \mathcal H(t)=\mathcal H_0+\mathcal H_d(t),
+                \hat{\mathcal H}(t)=\hat{\mathcal H}_0+\hat{\mathcal H}_d(t),
                 \qquad
-                \mathcal H_d(t)=0
+                \hat{\mathcal H}_d(t)=0
                 \quad\Longrightarrow\quad
-                \mathcal H=\mathcal H_0
+                \hat{\mathcal H}=\hat{\mathcal H}_0
                 \]
               </div>
               \[
-              \mathcal H_0
+              \hat{\mathcal H}_0
               =\begin{pmatrix}E_0&amp;0\\[2pt]0&amp;E_1\end{pmatrix}
               =\frac{E_0+E_1}{2}\,\begin{pmatrix}1&amp;0\\0&amp;1\end{pmatrix}
               -\frac{E_1-E_0}{2}\,\begin{pmatrix}1&amp;0\\0&amp;-1\end{pmatrix}
@@ -7574,7 +7574,7 @@ html {
               
               \[
               \equiv \bar E\,\mathbb I
-              -\frac{\hbar\omega_{01}}{2}\,\sigma_z
+              -\frac{\hbar\omega_{01}}{2}\,\hat\sigma_z
               \]
               <br>
               \[
@@ -7585,17 +7585,17 @@ html {
               <div class="qh-v48-newblock">
                 \[
                 |\psi_{\rm lab}(t)\rangle
-                =U_0(t,0)|\psi_{\rm lab}(0)\rangle
+                =\hat U_0(t,0)|\psi_{\rm lab}(0)\rangle
                 \]
               </div>
               \[
               =\mathcal T\exp\!\left[-\frac{i}{\hbar}
-              \int_0^t\mathcal H_0(s)\,ds\right]*|\psi_{\rm lab}(0)\rangle,
+              \int_0^t\hat{\mathcal H}_0(s)\,ds\right]*|\psi_{\rm lab}(0)\rangle,
               \]
               <div class="qh-result">
                 \[
                 =\underbrace{e^{-i\bar Et/\hbar}}_{\text{common phase}}
-                \exp\!\left(+\frac{i\omega_{01}t}{2}\sigma_z\right)*|\psi_{\rm lab}(0)\rangle
+                \exp\!\left(+\frac{i\omega_{01}t}{2}\hat\sigma_z\right)*|\psi_{\rm lab}(0)\rangle
                 \]
               </div>
             </div>
@@ -7607,38 +7607,38 @@ html {
 
         <section data-manual-slide data-auto-fit="true" data-slide-class="qh-deriv qh-deriv-tight qh-v29-drive qh-v34-free">
           <p class="qh-prelude-kicker">Rotating frame · 2 of 3</p>
-          <h3>Rotating frame for \(\mathcal H_0\)</h3>
+          <h3>Rotating frame for \(\hat{\mathcal H}_0\)</h3>
           <div class="qh-v34-frame-grid">
             <div class="qh-v34-frame-math qh-step-host">
               <div class="qh-key">
                 \[
                 \begin{aligned}
-                U_0(t)&amp;=\mathcal T\exp\!\left[-\frac{i}{\hbar}
-                \int_0^t\mathcal H_0(s)\,ds\right] ,
-                &amp;U_0^\dagger(t)U_0(t)&amp;=\mathbb I,\\
-                |\Theta(t)\rangle&amp;=U_0^\dagger(t)|\psi_{\rm lab}(t)\rangle
+                \hat U_0(t)&amp;=\mathcal T\exp\!\left[-\frac{i}{\hbar}
+                \int_0^t\hat{\mathcal H}_0(s)\,ds\right] ,
+                &amp;\hat U_0^\dagger(t)\hat U_0(t)&amp;=\mathbb I,\\
+                |\Theta(t)\rangle&amp;=\hat U_0^\dagger(t)|\psi_{\rm lab}(t)\rangle
                 \end{aligned}
                 \]
               </div>
               \[
-              i\hbar\partial_t U(t)=\mathcal H_0U_0(t)
+              i\hbar\partial_t \hat U(t)=\hat{\mathcal H}_0\hat U_0(t)
               \]
               \[
-              -i\hbar\partial_t U^\dagger(t)=U_0^\dagger(t)\mathcal H_0 \quad \to \quad i\hbar\partial_t U^\dagger(t)=-U_0^\dagger(t)\mathcal H_0
+              -i\hbar\partial_t \hat U^\dagger(t)=\hat U_0^\dagger(t)\hat{\mathcal H}_0 \quad \to \quad i\hbar\partial_t \hat U^\dagger(t)=-\hat U_0^\dagger(t)\hat{\mathcal H}_0
               \]
               <div class="qh-v48-newblock">
                 \[
                 i\hbar\,\partial_t|\Theta(t)\rangle
                 =i\hbar\,\partial_t
-                \left[U_0^\dagger(t)|\psi_{\rm lab}(t)\rangle\right]
+                \left[\hat U_0^\dagger(t)|\psi_{\rm lab}(t)\rangle\right]
                 \]
               </div>
               \[
-              =\left[i\hbar\partial_t U^\dagger(t)\right]|\psi_{\rm lab}(t)\rangle +U_0^\dagger(t)
+              =\left[i\hbar\partial_t \hat U^\dagger(t)\right]|\psi_{\rm lab}(t)\rangle +\hat U_0^\dagger(t)
               \left[i\hbar\,\partial_t|\psi_{\rm lab}(t)\rangle\right]
               \]
               \[
-              =-U_0^\dagger\mathcal H_0|\psi_{\rm lab}\rangle +U_0^\dagger\mathcal H_0|\psi_{\rm lab}\rangle=0
+              =-\hat U_0^\dagger\hat{\mathcal H}_0|\psi_{\rm lab}\rangle +\hat U_0^\dagger\hat{\mathcal H}_0|\psi_{\rm lab}\rangle=0
               \]
               <div class="qh-result">
                 \[
@@ -7658,45 +7658,45 @@ html {
           <div class="qh-key qh-v29-wide">
             \[
             i\hbar\,\partial_t|\psi_{\rm lab}\rangle
-            =\left[\mathcal H_0+\mathcal H_d(t)\right]|\psi_{\rm lab}\rangle,
+            =\left[\hat{\mathcal H}_0+\hat{\mathcal H}_d(t)\right]|\psi_{\rm lab}\rangle,
             \qquad
-            |\Theta\rangle=U_0^\dagger|\psi_{\rm lab}\rangle,
+            |\Theta\rangle=\hat U_0^\dagger|\psi_{\rm lab}\rangle,
             \qquad
-            i\hbar\partial_t U^\dagger=-U_0^\dagger\mathcal H_0
+            i\hbar\partial_t \hat U^\dagger=-\hat U_0^\dagger\hat{\mathcal H}_0
             \]
           </div>
           \[
           i\hbar\,\partial_t|\Theta\rangle
           =i\hbar\,\partial_t
-          \left[U_0^\dagger|\psi_{\rm lab}\rangle\right]
+          \left[\hat U_0^\dagger|\psi_{\rm lab}\rangle\right]
           \]
           \[
-          =\left(i\hbar\partial_t U^\dagger\right)|\psi_{\rm lab}\rangle
-          +U_0^\dagger\left(i\hbar\,\partial_t|\psi_{\rm lab}\rangle\right)
+          =\left(i\hbar\partial_t \hat U^\dagger\right)|\psi_{\rm lab}\rangle
+          +\hat U_0^\dagger\left(i\hbar\,\partial_t|\psi_{\rm lab}\rangle\right)
           \]
           \[
-          =-U_0^\dagger\mathcal H_0|\psi_{\rm lab}\rangle
-          +U_0^\dagger\left(\mathcal H_0+\mathcal H_d\right)|\psi_{\rm lab}\rangle
+          =-\hat U_0^\dagger\hat{\mathcal H}_0|\psi_{\rm lab}\rangle
+          +\hat U_0^\dagger\left(\hat{\mathcal H}_0+\hat{\mathcal H}_d\right)|\psi_{\rm lab}\rangle
           \]
           \[
-          =U_0^\dagger\mathcal H_d|\psi_{\rm lab}\rangle
+          =\hat U_0^\dagger\hat{\mathcal H}_d|\psi_{\rm lab}\rangle
           \]
           \[
-          =U_0^\dagger\mathcal H_dU_0|\Theta\rangle
+          =\hat U_0^\dagger\hat{\mathcal H}_d\hat U_0|\Theta\rangle
           \]
           <div class="qh-result qh-v29-wide">
             \[
             \boxed{
             i\hbar\,\partial_t|\Theta(t)\rangle
-            =\mathcal H_I(t)|\Theta(t)\rangle},
+            =\hat{\mathcal H}_I(t)|\Theta(t)\rangle},
             \qquad
-            \mathcal H_I(t)\equiv U_0^\dagger(t)\mathcal H_d(t)U_0(t)
+            \hat{\mathcal H}_I(t)\equiv \hat U_0^\dagger(t)\hat{\mathcal H}_d(t)\hat U_0(t)
             \]
           </div>
           \[
           |\Theta(t)\rangle
           =\mathcal T\exp\!\left[-\frac{i}{\hbar}
-          \int_0^t\mathcal H_I(s)\,ds\right]|\Theta(0)\rangle
+          \int_0^t\hat{\mathcal H}_I(s)\,ds\right]|\Theta(0)\rangle
           \]
         </section>
 
@@ -7707,10 +7707,10 @@ html {
           <div class="qh-key qh-v29-wide">
             \[
             \begin{aligned}
-            \mathcal H(t)&amp;=\mathcal H_0+\mathcal H_d(t)
-            =\left\{\hbar\omega_p\!\left(a^\dagger a+\frac12\right)
+            \hat{\mathcal H}(t)&amp;=\hat{\mathcal H}_0+\hat{\mathcal H}_d(t)
+            =\left\{\hbar\omega_p\!\left(\hat a^\dagger \hat a+\frac12\right)
               -...\right\}
-              +\left\{i\hbar\Omega(t)(a^\dagger-a)\right\},\quad
+              +\left\{i\hbar\Omega(t)(\hat a^\dagger-\hat a)\right\},\quad
               \hbar\omega_p=\sqrt{8E_JE_C}
               ,\quad
               \Omega(t)=C_gV_g(t)  \sqrt{\frac{  \omega_p}{2\hbar\left(C+C_g\right)} }
@@ -7720,9 +7720,9 @@ html {
           <div class="qh-v35-eq">
             \[
             \begin{aligned}
-            \mathcal H_I=U_p^\dagger \mathcal H_d U_p
-            =U_p^\dagger \cdot i\hbar\Omega(t)(a^\dagger-a) \cdot  U_p
-            =i\hbar\Omega(t)\cdot (U_p^\dagger a^\dagger  U_p-U_p^\dagger a  U_p)  
+            \hat{\mathcal H}_I=\hat U_p^\dagger \hat{\mathcal H}_d \hat U_p
+            =\hat U_p^\dagger \cdot i\hbar\Omega(t)(\hat a^\dagger-\hat a) \cdot  \hat U_p
+            =i\hbar\Omega(t)\cdot (\hat U_p^\dagger \hat a^\dagger  \hat U_p-\hat U_p^\dagger \hat a  \hat U_p)  
             \end{aligned}
             \]
             </div>
@@ -7731,10 +7731,10 @@ html {
           <div class="qh-v35-eq">
           \[
           \begin{aligned}
-          \mathcal H_p&amp;\equiv
-          \hbar\omega_p\!\left(a^\dagger a+\frac12\right), \qquad
-          U_p(t)=e^{-i\mathcal H_pt/\hbar}, \qquad
-          [a^\dagger a,a] =-a, \qquad [a^\dagger a,a^\dagger] =+a^\dagger
+          \hat{\mathcal H}_p&amp;\equiv
+          \hbar\omega_p\!\left(\hat a^\dagger \hat a+\frac12\right), \qquad
+          \hat U_p(t)=e^{-i\hat{\mathcal H}_pt/\hbar}, \qquad
+          [\hat a^\dagger \hat a,\hat a] =-\hat a, \qquad [\hat a^\dagger \hat a,\hat a^\dagger] =+\hat a^\dagger
           \end{aligned}
           \]
           </div>
@@ -7743,15 +7743,15 @@ html {
           <div class="qh-v35-eq">
           \[
           \begin{aligned}
-          \frac{d}{dt}\!\left(U_p^\dagger aU_p\right)
-          &amp;=\left(\frac{i}{\hbar}H_pU_p^\dagger\right) a U_p + U_p^\dagger a \left(-\frac{i}{\hbar} H_p U_p\right)
-          =\frac{i}{\hbar}U_p^\dagger[\mathcal H_p,a]U_p
-          =-i\omega_p\left(U_p^\dagger aU_p\right)\\[2pt]
-          \left(U_p^\dagger aU_p\right)(t)&amp;=\left(U_p^\dagger aU_p\right)(0)\cdot e^{-i\omega_p t}=a\cdot e^{-i\omega_p t}
+          \frac{d}{dt}\!\left(\hat U_p^\dagger \hat a\hat U_p\right)
+          &amp;=\left(\frac{i}{\hbar}\hat{\mathcal H}_p\hat U_p^\dagger\right) \hat a \hat U_p + \hat U_p^\dagger \hat a \left(-\frac{i}{\hbar} \hat{\mathcal H}_p \hat U_p\right)
+          =\frac{i}{\hbar}\hat U_p^\dagger[\hat{\mathcal H}_p,\hat a]\hat U_p
+          =-i\omega_p\left(\hat U_p^\dagger \hat a\hat U_p\right)\\[2pt]
+          \left(\hat U_p^\dagger \hat a\hat U_p\right)(t)&amp;=\left(\hat U_p^\dagger \hat a\hat U_p\right)(0)\cdot e^{-i\omega_p t}=\hat a\cdot e^{-i\omega_p t}
           \\[2pt]
-          U_p^\dagger aU_p&amp;=ae^{-i\omega_pt},
+          \hat U_p^\dagger \hat a\hat U_p&amp;=\hat ae^{-i\omega_pt},
           \qquad
-          U_p^\dagger a^\dagger U_p=a^\dagger e^{+i\omega_pt}
+          \hat U_p^\dagger \hat a^\dagger \hat U_p=\hat a^\dagger e^{+i\omega_pt}
           \end{aligned}
           \]
           </div>
@@ -7760,10 +7760,10 @@ html {
           <div class="qh-v35-eq">
           \[
           \begin{aligned}
-          U_p^\dagger \mathcal H_d U_p
-          =U_p^\dagger \cdot i\hbar\Omega(t)(a^\dagger-a) \cdot  U_p
+          \hat U_p^\dagger \hat{\mathcal H}_d \hat U_p
+          =\hat U_p^\dagger \cdot i\hbar\Omega(t)(\hat a^\dagger-\hat a) \cdot  \hat U_p
           =i\hbar\Omega(t)
-          \left(a^\dagger e^{+i\omega_pt}-ae^{-i\omega_pt}\right)
+          \left(\hat a^\dagger e^{+i\omega_pt}-\hat ae^{-i\omega_pt}\right)
           \end{aligned}
           \]
           </div>
@@ -7775,8 +7775,8 @@ html {
           <p class="qh-step-label">The drive, already rotated</p>
           <div class="qh-key qh-v29-wide">
             \[
-            \mathcal H_I(t)=U_p^\dagger\mathcal H_d(t)U_p
-            =i\hbar\Omega(t)\left(a^\dagger e^{+i\omega_pt}-ae^{-i\omega_pt}\right),
+            \hat{\mathcal H}_I(t)=\hat U_p^\dagger\hat{\mathcal H}_d(t)\hat U_p
+            =i\hbar\Omega(t)\left(\hat a^\dagger e^{+i\omega_pt}-\hat ae^{-i\omega_pt}\right),
             \qquad
             V_g(t)=V_0 \, f(t)
             ,\qquad
@@ -7788,39 +7788,39 @@ html {
           <p class="qh-step-label">Drive on resonance and write the tone in exponentials</p>
           <div class="qh-v37-eq">
             \[
-            \mathcal H_I(t)\Big|_{f(t)=\sin\omega_pt}
+            \hat{\mathcal H}_I(t)\Big|_{f(t)=\sin\omega_pt}
             =i\hbar\Omega\cdot\frac{e^{+i\omega_pt}-e^{-i\omega_pt}}{2i}
-            \cdot\left(a^\dagger e^{+i\omega_pt}-ae^{-i\omega_pt}\right)
+            \cdot\left(\hat a^\dagger e^{+i\omega_pt}-\hat ae^{-i\omega_pt}\right)
             \]
           </div>
           <div class="qh-v37-eq">
             \[
             =\frac{\hbar\Omega}{2}\left(e^{+i\omega_pt}-e^{-i\omega_pt}\right)
-            \left(a^\dagger e^{+i\omega_pt}-ae^{-i\omega_pt}\right)
+            \left(\hat a^\dagger e^{+i\omega_pt}-\hat ae^{-i\omega_pt}\right)
             \]
           </div>
           <div class="qh-v37-eq">
             \[
             =\frac{\hbar\Omega}{2}\Big[\,
-            {-\left(a^\dagger+a\right)}
+            {-\left(\hat a^\dagger+\hat a\right)}
             \;+\;
-            \underbrace{\left(a^\dagger e^{+2i\omega_pt}+ae^{-2i\omega_pt}\right)}_{\textstyle \text{turns at }2\omega_p}
+            \underbrace{\left(\hat a^\dagger e^{+2i\omega_pt}+\hat ae^{-2i\omega_pt}\right)}_{\textstyle \text{turns at }2\omega_p}
             \Big]
             \]
           </div>
           <div class="qh-v37-eq">
             \[
-            \overset{RWA}{\sim} -\frac{\hbar\Omega}{2}\left(a+a^\dagger\right)
+            \overset{RWA}{\sim} -\frac{\hbar\Omega}{2}\left(\hat a+\hat a^\dagger\right)
             \]
           </div>
             </div>
             <div class="qh-v40-ladder qh-step-host">
               <p class="qh-step-label">What that operator does</p>
               \[
-              \left(a^\dagger+a\right)\left|0\right\rangle=a^\dagger\left|0\right\rangle=\left|1\right\rangle
+              \left(\hat a^\dagger+\hat a\right)\left|0\right\rangle=\hat a^\dagger\left|0\right\rangle=\left|1\right\rangle
               \]
               \[
-              \left(a^\dagger+a\right)\left|1\right\rangle=a\left|1\right\rangle=\left|0\right\rangle
+              \left(\hat a^\dagger+\hat a\right)\left|1\right\rangle=\hat a\left|1\right\rangle=\left|0\right\rangle
               \]
               <svg viewBox="0 0 300 250" role="img"
                 aria-label="Two energy levels, the ground state at the bottom and the first excited state at the top, with one curved arrow going up and another coming back down"
@@ -7850,30 +7850,30 @@ html {
             <div class="qh-step-host">
           <div class="qh-v38-eq">
             \[
-            \mathcal H_I(t)\Big|_{f(t)=\sin\left(\omega_pt+\phi\right)}
+            \hat{\mathcal H}_I(t)\Big|_{f(t)=\sin\left(\omega_pt+\phi\right)}
             =\frac{\hbar\Omega}{2}\left(e^{+i\left(\omega_pt+\phi\right)}-e^{-i\left(\omega_pt+\phi\right)}\right)
-            \left(a^\dagger e^{+i\omega_pt}-ae^{-i\omega_pt}\right)
+            \left(\hat a^\dagger e^{+i\omega_pt}-\hat ae^{-i\omega_pt}\right)
             \]
           </div>
           <div class="qh-v38-eq">
             \[
             =\frac{\hbar\Omega}{2}\Big[\,
-            {-\left(ae^{+i\phi}+a^\dagger e^{-i\phi}\right)}
+            {-\left(\hat ae^{+i\phi}+\hat a^\dagger e^{-i\phi}\right)}
             \;+\;
-            \underbrace{\left(a^\dagger e^{+i\left(2\omega_pt+\phi\right)}+ae^{-i\left(2\omega_pt+\phi\right)}\right)}_{\textstyle \text{turns at }2\omega_p}
+            \underbrace{\left(\hat a^\dagger e^{+i\left(2\omega_pt+\phi\right)}+\hat ae^{-i\left(2\omega_pt+\phi\right)}\right)}_{\textstyle \text{turns at }2\omega_p}
             \Big]
             \]
           </div>
           <div class="qh-v38-eq">
             \[
-            \overset{RWA}{\sim}-\frac{\hbar\Omega}{2}\left(ae^{+i\phi}+a^\dagger e^{-i\phi}\right)
+            \overset{RWA}{\sim}-\frac{\hbar\Omega}{2}\left(\hat ae^{+i\phi}+\hat a^\dagger e^{-i\phi}\right)
             \]
           </div>
           <div class="qh-v38-eq">
             \[
             =-\frac{\hbar\Omega}{2}\left(
-            \cos\phi \cdot\underbrace{\left(a+a^\dagger\right)}_{\textstyle \to\,\sigma_x}
-            \;-\;\sin\phi\cdot\underbrace{i\left(a^\dagger-a\right)}_{\textstyle \to\,\sigma_y}
+            \cos\phi \cdot\underbrace{\left(\hat a+\hat a^\dagger\right)}_{\textstyle \to\,\hat\sigma_x}
+            \;-\;\sin\phi\cdot\underbrace{i\left(\hat a^\dagger-\hat a\right)}_{\textstyle \to\,\hat\sigma_y}
             \right)
             \]
           </div>
@@ -7883,16 +7883,16 @@ html {
               <p>Keep only \(\left|0\right\rangle,\left|1\right\rangle\). The ladder operators then have one matrix element each:</p>
               \[
               \begin{aligned}
-              a&\to\left|0\right\rangle\left\langle1\right|=\begin{pmatrix}0&1\\0&0\end{pmatrix}\\[2pt]
-              a^\dagger&\to\left|1\right\rangle\left\langle0\right|=\begin{pmatrix}0&0\\1&0\end{pmatrix}
+              \hat a&\to\left|0\right\rangle\left\langle1\right|=\begin{pmatrix}0&1\\0&0\end{pmatrix}\\[2pt]
+              \hat a^\dagger&\to\left|1\right\rangle\left\langle0\right|=\begin{pmatrix}0&0\\1&0\end{pmatrix}
               \end{aligned}
               \]
               
               <div class="qh-key">
                 \[
                 \begin{aligned}
-                a+a^\dagger&\to\begin{pmatrix}0&1\\0&0\end{pmatrix}+\begin{pmatrix}0&0\\1&0\end{pmatrix}=\sigma_x\\[2pt]
-                i\left(a^\dagger-a\right)&\to i\left(\begin{pmatrix}0&0\\1&0\end{pmatrix}-\begin{pmatrix}0&1\\0&0\end{pmatrix}\right)=\sigma_y
+                \hat a+\hat a^\dagger&\to\begin{pmatrix}0&1\\0&0\end{pmatrix}+\begin{pmatrix}0&0\\1&0\end{pmatrix}=\hat\sigma_x\\[2pt]
+                i\left(\hat a^\dagger-\hat a\right)&\to i\left(\begin{pmatrix}0&0\\1&0\end{pmatrix}-\begin{pmatrix}0&1\\0&0\end{pmatrix}\right)=\hat\sigma_y
                 \end{aligned}
                 \]
               </div>
@@ -7902,12 +7902,12 @@ html {
           <div class="qh-step-host">
           <div class="qh-result qh-v29-wide">
             \[
-            \mathcal H_{\rm RWA}
+            \hat{\mathcal H}_{\rm RWA}
             \;\xrightarrow[\ \text{two levels}\ ]{}\;
-            -\frac{\hbar\Omega}{2}\left(\cos\phi\,\sigma_x-\sin\phi\,\sigma_y\right)
-            \equiv-\frac{\hbar\Omega}{2}\,\hat{n}\cdot\vec{\sigma},
+            -\frac{\hbar\Omega}{2}\left(\cos\phi\,\hat\sigma_x-\sin\phi\,\hat\sigma_y\right)
+            \equiv-\frac{\hbar\Omega}{2}\,\hat{\mathbf n}\cdot\vec{\hat\sigma},
             \qquad
-            \hat{n}=\left(\cos\phi,\,-\sin\phi,\,0\right)
+            \hat{\mathbf n}=\left(\cos\phi,\,-\sin\phi,\,0\right)
             \]
           </div>
           </div>
@@ -7926,10 +7926,10 @@ html {
             <div class="qh-key qh-v41-equation-strip">
               \[
               i\hbar\,\partial_t\left|\Theta(t)\right\rangle
-              =\mathcal H_I(t)\left|\Theta(t)\right\rangle,
+              =\hat{\mathcal H}_I(t)\left|\Theta(t)\right\rangle,
               \qquad
               \left|\Theta(t)\right\rangle
-              =\mathcal T\exp\!\left[-\frac{i}{\hbar}\int_0^t\mathcal H_I(s)\,ds\right]
+              =\mathcal T\exp\!\left[-\frac{i}{\hbar}\int_0^t\hat{\mathcal H}_I(s)\,ds\right]
               \left|\Theta(0)\right\rangle
               \]
             </div>
@@ -7937,13 +7937,13 @@ html {
               <div class="qh-v48-rabi-math qh-step-host">
                 <p>Take \(f(t)=\sin\, \omega_p t\)</p>
                 \[
-                \mathcal H_I(t)\overset{RWA}{\sim}-\frac{\hbar\Omega}{2}\,\sigma_x
+                \hat{\mathcal H}_I(t)\overset{RWA}{\sim}-\frac{\hbar\Omega}{2}\,\hat\sigma_x
                 \]
                 \[
-                U_I(t)
-                =e^{-i\mathcal H_I t/\hbar}
-                =e^{+i\frac{\Omega t}{2}\sigma_x}=I\cos\frac{\Omega t}{2}
-                +i\sigma_x\sin\frac{\Omega t}{2}
+                \hat U_I(t)
+                =e^{-i\hat{\mathcal H}_I t/\hbar}
+                =e^{+i\frac{\Omega t}{2}\hat\sigma_x}=I\cos\frac{\Omega t}{2}
+                +i\hat\sigma_x\sin\frac{\Omega t}{2}
                 \]
                 \[
                 =\begin{pmatrix}
@@ -7953,13 +7953,13 @@ html {
                 \]
                 <p class="qh-step-label">Start in the ground state \(|0\rangle\) and read the population</p>
                 \[
-                U_I(t)\left|0\right\rangle
+                \hat U_I(t)\left|0\right\rangle
                 =\cos\frac{\Omega t}{2}\left|0\right\rangle
                 +i\sin\frac{\Omega t}{2}\left|1\right\rangle
                 \]
                 <div class="qh-result">
                   \[
-                  P_1(t)=\left|\left\langle1\right|U_I(t)\left|0\right\rangle\right|^2
+                  P_1(t)=\left|\left\langle1\right|\hat U_I(t)\left|0\right\rangle\right|^2
                   =\sin^2\frac{\Omega t}{2}=\frac{1-\cos\Omega t}{2}
                   \]
                 </div>
@@ -7987,7 +7987,7 @@ html {
           <h3>Rotate at \(\omega_{01}\)</h3>
           <p>Rotate all of them at once, each by its own rung number:</p>
           \[
-          \hat{U}(t)=e^{i\omega_{01}t\,a^\dagger a},
+          \hat{U}(t)=e^{i\omega_{01}t\,\hat a^\dagger \hat a},
           \qquad
           \hat{\mathcal{H}}_{\rm rot}=\hat{U}\hat{\mathcal{H}}\hat{U}^\dagger+i\hbar\left(\partial_t\hat{U}\right)\hat{U}^\dagger
           \]
@@ -8002,9 +8002,9 @@ html {
               <p>For \(f(t)=\sin\left(\omega_{01} t+\phi_d \right)\) and \(\phi_d=0\):</p>
               \[
               i\sin(\omega_dt)
-              \left(a^\dagger e^{i\omega_dt}-ae^{-i\omega_dt}\right)
-              =-\frac{a^\dagger+a}{2}
-              +\underbrace{\frac{a^\dagger e^{2i\omega_dt}+ae^{-2i\omega_dt}}{2}}_{drop}
+              \left(\hat a^\dagger e^{i\omega_dt}-\hat ae^{-i\omega_dt}\right)
+              =-\frac{\hat a^\dagger+\hat a}{2}
+              +\underbrace{\frac{\hat a^\dagger e^{2i\omega_dt}+\hat ae^{-2i\omega_dt}}{2}}_{drop}
               \]
             </div>
           </div>

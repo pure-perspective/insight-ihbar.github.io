@@ -10246,11 +10246,11 @@ mjx-container[display="true"] {
                         <div class="sidebar">
                             <div class="widget">
                                 <div id="lesson-list_2">
-                                <div class="lesson-link "><a href="main.html">QH-2026F · 16-Week Overview</a></div>
+                                <div class="lesson-link "><a href="main.html">16-Week Overview</a></div>
                                 <div class="lesson-link active"><a href="T1-1d.html">Week 1 · Computation Is Physical</a></div>
                                 <div class="lesson-link "><a href="T2-2.html">Week 2 · Hardware, Superconductivity, and Josephson Anharmonicity</a></div>
                                 <div class="lesson-link "><a href="T2-W3.html">Week 3 · Tunability and the C-Shunted Transmon</a></div>
-                                <div class="lesson-link "><a href="T2-W4.html">Week 4 Manual Slides · Noise, Fluxonium, and Protected-Qubit Design | QH-2026F v5</a></div>
+                                <div class="lesson-link "><a href="T2-W4.html">Week 4 · Noise, Fluxonium</a></div>
                                 <div class="lesson-link "><a href="T3-W5.html">Week 5 · Controlling a Single Qubit with Microwaves</a></div>
                                 <div class="lesson-link "><a href="T3-W6.html">Week 6 · Two-Qubit Interactions</a></div>
                                 </div>
@@ -11316,10 +11316,10 @@ mjx-container[display="true"] {
                     <br></p>
                     <p class="qh-physics-bridge-row is-pending">
                         <span
-                            class="qh-physics-bridge-meaning qh-control-sequence-equation">\(H(t)=H_{\mathrm{hardware}}+V(t)\)</span>
+                            class="qh-physics-bridge-meaning qh-control-sequence-equation">\(\hat H(t)=\hat H_{\mathrm{hardware}}+\hat V(t)\)</span>
                             <br></p>
                     <p class="qh-physics-bridge-row is-pending">
-                        <span class="qh-physics-bridge-meaning qh-control-sequence-quantum">A quantum algorithm is a time&#8209;dependent Hamiltonian \(H(t)\).</span>
+                        <span class="qh-physics-bridge-meaning qh-control-sequence-quantum">A quantum algorithm is a time&#8209;dependent Hamiltonian \(\hat H(t)\).</span>
                         <br></p>
                 </div>
             </section>
@@ -11332,9 +11332,9 @@ mjx-container[display="true"] {
 
                 <div class="qh-evolution-upper">
                     <div class="qh-evolution-equations">
-                        <p>\[i\hbar\frac{d}{dt}|\psi(t)\rangle=H(t)|\psi(t)\rangle,\]</p>
-                        <p>\[U(T,0)=\mathcal T\exp\!\left[-\frac{i}{\hbar}\int_0^T H(t)\,dt\right],\]</p>
-                        <p>\[|\psi(T)\rangle=U(T,0)|\psi(0)\rangle.\]</p>
+                        <p>\[i\hbar\frac{d}{dt}|\psi(t)\rangle=\hat H(t)|\psi(t)\rangle,\]</p>
+                        <p>\[\hat U(T,0)=\mathcal T\exp\!\left[-\frac{i}{\hbar}\int_0^T \hat H(t)\,dt\right],\]</p>
+                        <p>\[|\psi(T)\rangle=\hat U(T,0)|\psi(0)\rangle.\]</p>
                         
                     </div>
 
@@ -11345,10 +11345,10 @@ mjx-container[display="true"] {
 
                 <div class="qh-evolution-lower">
                     <p class="qh-evolution-slicing"><br>\[\begin{align*}
-                        U(T,0)&\approx \mathcal T\exp\!\left[-\frac{i}{\hbar}\int_{T_n}^T H(t)\,dt\right]*\mathcal
-                        T\exp\!\left[-\frac{i}{\hbar}\int_{T_{n-1}}^{T_n} H(t)\,dt\right]*...*\mathcal
-                        T\exp\!\left[-\frac{i}{\hbar}\int_0^{T_1} H(t)\,dt\right],\\
-                        &\approx U(T,T_n)*U(T_n,T_{n-1})*...*U(T_1,0)
+                        \hat U(T,0)&\approx \mathcal T\exp\!\left[-\frac{i}{\hbar}\int_{T_n}^T \hat H(t)\,dt\right]*\mathcal
+                        T\exp\!\left[-\frac{i}{\hbar}\int_{T_{n-1}}^{T_n} \hat H(t)\,dt\right]*...*\mathcal
+                        T\exp\!\left[-\frac{i}{\hbar}\int_0^{T_1} \hat H(t)\,dt\right],\\
+                        &\approx \hat U(T,T_n)*\hat U(T_n,T_{n-1})*...*\hat U(T_1,0)
                         \end{align*}\]</p>
                     
                 </div>
@@ -11361,14 +11361,14 @@ mjx-container[display="true"] {
 
                 <div class="qh-evolution-upper">
                     <div class="qh-evolution-equations">
-                        <p>\[i\hbar\frac{d}{dt}|\psi(t)\rangle=H(t)|\psi(t)\rangle,\]</p>
-                        <p>\[U(T,0)=\mathcal T\exp\!\left[-\frac{i}{\hbar}\int_0^T H(t)\,dt\right],\]</p>
-                        <p>\[|\psi(T)\rangle=U(T,0)|\psi(0)\rangle.\]</p>
-                        <p><br>\[\boxed{\text{Reversibility}:\exists U^{-1} \text{ s.t } U*U^{-1}=I}\]</p>
-                        <p>\[U^{-1}(T,0)=U(0,T)=U^\dagger(T,0)=\mathcal
-                            T\exp\!\left[\textcolor{red}{+}\frac{i}{\hbar}\int_0^T H(t)\,dt\right]\]</p>
-                        <p>\[\langle \psi(T)|\psi(T)\rangle=\langle \psi(0)|U^\dagger(T,0)*
-                            U(T,0)|\psi(T)\rangle=\langle \psi(0)|\psi(0)\rangle=1\]</p>
+                        <p>\[i\hbar\frac{d}{dt}|\psi(t)\rangle=\hat H(t)|\psi(t)\rangle,\]</p>
+                        <p>\[\hat U(T,0)=\mathcal T\exp\!\left[-\frac{i}{\hbar}\int_0^T \hat H(t)\,dt\right],\]</p>
+                        <p>\[|\psi(T)\rangle=\hat U(T,0)|\psi(0)\rangle.\]</p>
+                        <p><br>\[\boxed{\text{Reversibility}:\exists \hat U^{-1} \text{ s.t } \hat U*\hat U^{-1}=I}\]</p>
+                        <p>\[\hat U^{-1}(T,0)=\hat U(0,T)=\hat U^\dagger(T,0)=\mathcal
+                            T\exp\!\left[\textcolor{red}{+}\frac{i}{\hbar}\int_0^T \hat H(t)\,dt\right]\]</p>
+                        <p>\[\langle \psi(T)|\psi(T)\rangle=\langle \psi(0)|\hat U^\dagger(T,0)*
+                            \hat U(T,0)|\psi(T)\rangle=\langle \psi(0)|\psi(0)\rangle=1\]</p>
                     </div>
 
                     <a class="qh-evolution-circuit" href="../Image/qiskit-circuit-4.png">
@@ -11378,12 +11378,12 @@ mjx-container[display="true"] {
 
                 <div class="qh-evolution-lower">
                     <p class="qh-evolution-slicing"><br>\[\begin{align*}
-                        U(T,0)&\approx \mathcal T\exp\!\left[-\frac{i}{\hbar}\int_{T_n}^T H(t)\,dt\right]*\mathcal
-                        T\exp\!\left[-\frac{i}{\hbar}\int_{T_{n-1}}^{T_n} H(t)\,dt\right]*...*\mathcal
-                        T\exp\!\left[-\frac{i}{\hbar}\int_0^{T_1} H(t)\,dt\right],\\
-                        &\approx U(T,T_n)*U(T_n,T_{n-1})*...*U(T_1,0)
+                        \hat U(T,0)&\approx \mathcal T\exp\!\left[-\frac{i}{\hbar}\int_{T_n}^T \hat H(t)\,dt\right]*\mathcal
+                        T\exp\!\left[-\frac{i}{\hbar}\int_{T_{n-1}}^{T_n} \hat H(t)\,dt\right]*...*\mathcal
+                        T\exp\!\left[-\frac{i}{\hbar}\int_0^{T_1} \hat H(t)\,dt\right],\\
+                        &\approx \hat U(T,T_n)*\hat U(T_n,T_{n-1})*...*\hat U(T_1,0)
                         \end{align*}\]</p>
-                    <p class="qh-evolution-chain"><br>\[\boxed{\text{Boolean function}\rightarrow\text{reversible embedding}\rightarrow\text{unitary}\rightarrow H(t).}\]</p>
+                    <p class="qh-evolution-chain"><br>\[\boxed{\text{Boolean function}\rightarrow\text{reversible embedding}\rightarrow\text{unitary}\rightarrow \hat H(t).}\]</p>
                 </div>
             </section>
         </section>
@@ -11616,14 +11616,14 @@ mjx-container[display="true"] {
 
                 <div class="qh-evolution-upper">
                     <div class="qh-evolution-equations">
-                        <p>\[i\hbar\frac{d}{dt}|\psi(t)\rangle=H(t)|\psi(t)\rangle,\]</p>
-                        <p>\[U(T,0)=\mathcal T\exp\!\left[-\frac{i}{\hbar}\int_0^T H(t)\,dt\right],\]</p>
-                        <p>\[|\psi(T)\rangle=U(T,0)|\psi(0)\rangle.\]</p>
-                        <p><br>\[\boxed{\text{Reversibility}:\exists U^{-1} \text{ s.t } U*U^{-1}=I}\]</p>
-                        <p>\[U^{-1}(T,0)=U(0,T)=U^\dagger(T,0)=\mathcal
-                            T\exp\!\left[\textcolor{red}{+}\frac{i}{\hbar}\int_0^T H(t)\,dt\right]\]</p>
-                        <p>\[\langle \psi(T)|\psi(T)\rangle=\langle \psi(0)|U^\dagger(T,0)*
-                            U(T,0)|\psi(T)\rangle=\langle \psi(0)|\psi(0)\rangle=1\]</p>
+                        <p>\[i\hbar\frac{d}{dt}|\psi(t)\rangle=\hat H(t)|\psi(t)\rangle,\]</p>
+                        <p>\[\hat U(T,0)=\mathcal T\exp\!\left[-\frac{i}{\hbar}\int_0^T \hat H(t)\,dt\right],\]</p>
+                        <p>\[|\psi(T)\rangle=\hat U(T,0)|\psi(0)\rangle.\]</p>
+                        <p><br>\[\boxed{\text{Reversibility}:\exists \hat U^{-1} \text{ s.t } \hat U*\hat U^{-1}=I}\]</p>
+                        <p>\[\hat U^{-1}(T,0)=\hat U(0,T)=\hat U^\dagger(T,0)=\mathcal
+                            T\exp\!\left[\textcolor{red}{+}\frac{i}{\hbar}\int_0^T \hat H(t)\,dt\right]\]</p>
+                        <p>\[\langle \psi(T)|\psi(T)\rangle=\langle \psi(0)|\hat U^\dagger(T,0)*
+                            \hat U(T,0)|\psi(T)\rangle=\langle \psi(0)|\psi(0)\rangle=1\]</p>
                     </div>
 
                     <a class="qh-evolution-circuit" href="../Image/qiskit-circuit-4.png">
@@ -11633,12 +11633,12 @@ mjx-container[display="true"] {
 
                 <div class="qh-evolution-lower">
                     <p class="qh-evolution-slicing"><br>\[\begin{align*}
-                        U(T,0)&\approx \mathcal T\exp\!\left[-\frac{i}{\hbar}\int_{T_n}^T H(t)\,dt\right]*\mathcal
-                        T\exp\!\left[-\frac{i}{\hbar}\int_{T_{n-1}}^{T_n} H(t)\,dt\right]*...*\mathcal
-                        T\exp\!\left[-\frac{i}{\hbar}\int_0^{T_1} H(t)\,dt\right],\\
-                        &\approx U(T,T_n)*U(T_n,T_{n-1})*...*U(T_1,0)
+                        \hat U(T,0)&\approx \mathcal T\exp\!\left[-\frac{i}{\hbar}\int_{T_n}^T \hat H(t)\,dt\right]*\mathcal
+                        T\exp\!\left[-\frac{i}{\hbar}\int_{T_{n-1}}^{T_n} \hat H(t)\,dt\right]*...*\mathcal
+                        T\exp\!\left[-\frac{i}{\hbar}\int_0^{T_1} \hat H(t)\,dt\right],\\
+                        &\approx \hat U(T,T_n)*\hat U(T_n,T_{n-1})*...*\hat U(T_1,0)
                         \end{align*}\]</p>
-                    <p class="qh-evolution-chain"><br>\[\boxed{\text{Boolean function}\rightarrow\text{reversible embedding}\rightarrow\text{unitary}\rightarrow H(t).}\]</p>
+                    <p class="qh-evolution-chain"><br>\[\boxed{\text{Boolean function}\rightarrow\text{reversible embedding}\rightarrow\text{unitary}\rightarrow \hat H(t).}\]</p>
                 </div>
             </section>
         </section>
@@ -11650,9 +11650,9 @@ mjx-container[display="true"] {
                 <div class="qh-pauli-origin-top">
                     <div>
                         <h4>Unitary time evolution</h4>
-                        <p>\[U(T,0)=\mathcal T\exp\!\left[-\frac{i}{\hbar}\int_0^T H(t)\,dt\right],\]</p>
-                        <p>\[|\psi(T)\rangle=U(T,0)|\psi(0)\rangle.\]<br>
-                            The Hamiltonian \(H\) is Hermitian, so \(U^\dagger(t)U(t)=I\) and total probability remains
+                        <p>\[\hat U(T,0)=\mathcal T\exp\!\left[-\frac{i}{\hbar}\int_0^T \hat H(t)\,dt\right],\]</p>
+                        <p>\[|\psi(T)\rangle=\hat U(T,0)|\psi(0)\rangle.\]<br>
+                            The Hamiltonian \(\hat H\) is Hermitian, so \(\hat U^\dagger(t)\hat U(t)=I\) and total probability remains
                             one.</p>
                     </div>
                     <div>
@@ -11660,7 +11660,7 @@ mjx-container[display="true"] {
                         <p>\[
                             \begin{align*}
                             i\hbar \partial_t |\psi \rangle
-                            &= H |\psi_\rangle
+                            &= \hat H |\psi_\rangle
                             \\
                             i\hbar \partial_t
                             \begin{pmatrix}
@@ -11701,9 +11701,9 @@ mjx-container[display="true"] {
                 <div class="qh-pauli-origin-top">
                     <div>
                         <h4>Unitary time evolution</h4>
-                        <p>\[U(T,0)=\mathcal T\exp\!\left[-\frac{i}{\hbar}\int_0^T H(t)\,dt\right],\]</p>
-                        <p>\[|\psi(T)\rangle=U(T,0)|\psi(0)\rangle.\]<br>
-                            The Hamiltonian \(H\) is Hermitian, so \(U^\dagger(t)U(t)=I\) and total probability remains
+                        <p>\[\hat U(T,0)=\mathcal T\exp\!\left[-\frac{i}{\hbar}\int_0^T \hat H(t)\,dt\right],\]</p>
+                        <p>\[|\psi(T)\rangle=\hat U(T,0)|\psi(0)\rangle.\]<br>
+                            The Hamiltonian \(\hat H\) is Hermitian, so \(\hat U^\dagger(t)\hat U(t)=I\) and total probability remains
                             one.</p>
                     </div>
                     <div>
@@ -11711,7 +11711,7 @@ mjx-container[display="true"] {
                         <p>\[
                             \begin{align*}
                             i\hbar \partial_t |\psi \rangle
-                            &= H |\psi_\rangle
+                            &= \hat H |\psi_\rangle
                             \\
                             i\hbar \partial_t
                             \begin{pmatrix}
@@ -11754,7 +11754,7 @@ mjx-container[display="true"] {
                         <h4>Identity part and traceless part</h4>
                         <p>\[
                             \begin{align*}
-                            H=\begin{pmatrix}
+                            \hat H=\begin{pmatrix}
                             c+h_z&h;_x-ih_y\\
                             h_x+ih_y&c-h;_z
                             \end{pmatrix}
@@ -11776,7 +11776,7 @@ mjx-container[display="true"] {
                             0&-1
                             \end{pmatrix}
                             \\&\equiv cI +
-                            \underbracket{h_x\sigma_x +h_y\sigma_y +h_z\sigma_z}_{H'}, \quad \sigma_i \text{ :Pauli matrices}
+                            \underbracket{h_x\hat\sigma_x +h_y\hat\sigma_y +h_z\hat\sigma_z}_{\hat H'}, \quad \hat\sigma_i \text{ :Pauli matrices}
                             \end{align*}
                             \]</p>
                     </div>
@@ -11795,9 +11795,9 @@ mjx-container[display="true"] {
                 <div class="qh-pauli-origin-top">
                     <div>
                         <h4>Unitary time evolution</h4>
-                        <p>\[U(T,0)=\mathcal T\exp\!\left[-\frac{i}{\hbar}\int_0^T H(t)\,dt\right],\]</p>
-                        <p>\[|\psi(T)\rangle=U(T,0)|\psi(0)\rangle.\]<br>
-                            The Hamiltonian \(H\) is Hermitian, so \(U^\dagger(t)U(t)=I\) and total probability remains
+                        <p>\[\hat U(T,0)=\mathcal T\exp\!\left[-\frac{i}{\hbar}\int_0^T \hat H(t)\,dt\right],\]</p>
+                        <p>\[|\psi(T)\rangle=\hat U(T,0)|\psi(0)\rangle.\]<br>
+                            The Hamiltonian \(\hat H\) is Hermitian, so \(\hat U^\dagger(t)\hat U(t)=I\) and total probability remains
                             one.</p>
                     </div>
                     <div>
@@ -11805,7 +11805,7 @@ mjx-container[display="true"] {
                         <p>\[
                             \begin{align*}
                             i\hbar \partial_t |\psi \rangle
-                            &= H |\psi_\rangle
+                            &= \hat H |\psi_\rangle
                             \\
                             i\hbar \partial_t
                             \begin{pmatrix}
@@ -11848,7 +11848,7 @@ mjx-container[display="true"] {
                         <h4>Identity part and traceless part</h4>
                         <p>\[
                             \begin{align*}
-                            H=\begin{pmatrix}
+                            \hat H=\begin{pmatrix}
                             c+h_z&h;_x-ih_y\\
                             h_x+ih_y&c-h;_z
                             \end{pmatrix}
@@ -11870,7 +11870,7 @@ mjx-container[display="true"] {
                             0&-1
                             \end{pmatrix}
                             \\&\equiv cI +
-                            \underbracket{h_x\sigma_x +h_y\sigma_y +h_z\sigma_z}_{H'}, \quad \sigma_i \text{ :Pauli matrices}
+                            \underbracket{h_x\hat\sigma_x +h_y\hat\sigma_y +h_z\hat\sigma_z}_{\hat H'}, \quad \hat\sigma_i \text{ :Pauli matrices}
                             \end{align*}
                             \]</p>
                     </div>
@@ -11878,10 +11878,10 @@ mjx-container[display="true"] {
 
                 <div class="qh-pauli-global-phase">
                     <p>\[
-                        e^{-itH}=e^{-it(cI+H')}=e^{-itc}e^{-itH'}
+                        e^{-it\hat H}=e^{-it(cI+\hat H')}=e^{-itc}e^{-it\hat H'}
                         \]</p>
                     <p>The factor \(e^{-itc}\) is a global phase. Observable state evolution
-                        therefore comes from \(H'\).</p>
+                        therefore comes from \(\hat H'\).</p>
                 </div>
 
                 
@@ -11896,21 +11896,21 @@ mjx-container[display="true"] {
 
                 <div class="qh-pauli-property-matrices">
                     <p>\[
-                        \sigma_x=\begin{pmatrix}0&1\\1&0\end{pmatrix},\qquad
-                        \sigma_y=\begin{pmatrix}0&-i\\i&0\end{pmatrix},\qquad
-                        \sigma_z=\begin{pmatrix}1&0\\0&-1\end{pmatrix}.
+                        \hat\sigma_x=\begin{pmatrix}0&1\\1&0\end{pmatrix},\qquad
+                        \hat\sigma_y=\begin{pmatrix}0&-i\\i&0\end{pmatrix},\qquad
+                        \hat\sigma_z=\begin{pmatrix}1&0\\0&-1\end{pmatrix}.
                     \]</p>
                 </div>
                 <div class="qh-pauli-product-rule">
                     <p>\[
-                        \boxed{\sigma_i\sigma_j=\delta_{ij}I+i \epsilon_{ijk}\sigma_k}
+                        \boxed{\hat\sigma_i\hat\sigma_j=\delta_{ij}I+i \epsilon_{ijk}\hat\sigma_k}
                     \]</p>
                     <p>\[
-                        \sigma_i \sigma_j=- \sigma_j \sigma_i=i \epsilon_{ijk}\sigma_k ,
+                        \hat\sigma_i \hat\sigma_j=- \hat\sigma_j \hat\sigma_i=i \epsilon_{ijk}\hat\sigma_k ,
                         \qquad
-                        \sigma_x \sigma_x =\sigma_y \sigma_y =\sigma_z \sigma_z= I,
+                        \hat\sigma_x \hat\sigma_x =\hat\sigma_y \hat\sigma_y =\hat\sigma_z \hat\sigma_z= I,
                         \qquad
-                        \operatorname{Tr} (\sigma_i)=0.
+                        \operatorname{Tr} (\hat\sigma_i)=0.
                     \]</p>
                 </div>
                 
@@ -11929,44 +11929,36 @@ mjx-container[display="true"] {
 
                 <div class="qh-pauli-property-matrices">
                     <p>\[
-                        \sigma_x=\begin{pmatrix}0&1\\1&0\end{pmatrix},\qquad
-                        \sigma_y=\begin{pmatrix}0&-i\\i&0\end{pmatrix},\qquad
-                        \sigma_z=\begin{pmatrix}1&0\\0&-1\end{pmatrix}.
+                        \hat\sigma_x=\begin{pmatrix}0&1\\1&0\end{pmatrix},\qquad
+                        \hat\sigma_y=\begin{pmatrix}0&-i\\i&0\end{pmatrix},\qquad
+                        \hat\sigma_z=\begin{pmatrix}1&0\\0&-1\end{pmatrix}.
                     \]</p>
                 </div>
                 <div class="qh-pauli-product-rule">
                     <p>\[
-                        \boxed{\sigma_i\sigma_j=\delta_{ij}I+i \epsilon_{ijk}\sigma_k}
+                        \boxed{\hat\sigma_i\hat\sigma_j=\delta_{ij}I+i \epsilon_{ijk}\hat\sigma_k}
                     \]</p>
                     <p>\[
-                        \sigma_i \sigma_j=- \sigma_j \sigma_i=i \epsilon_{ijk}\sigma_k ,
+                        \hat\sigma_i \hat\sigma_j=- \hat\sigma_j \hat\sigma_i=i \epsilon_{ijk}\hat\sigma_k ,
                         \qquad
-                        \sigma_x \sigma_x =\sigma_y \sigma_y =\sigma_z \sigma_z= I,
+                        \hat\sigma_x \hat\sigma_x =\hat\sigma_y \hat\sigma_y =\hat\sigma_z \hat\sigma_z= I,
                         \qquad
-                        \operatorname{Tr} (\sigma_i)=0.
+                        \operatorname{Tr} (\hat\sigma_i)=0.
                     \]</p>
                 </div>
                 <p>\[
-                    \begin{align*}
-                    H&=
-                     cI +
-                    h_x\sigma_x +h_y\sigma_y +h_z\sigma_z
-                    \end{align*}
+                    \hat H=cI+h_x\hat\sigma_x+h_y\hat\sigma_y+h_z\hat\sigma_z,\qquad
+                    h_i=\frac{1}{2}\operatorname{Tr}(\hat H\hat\sigma_i)
                     \]</p>
-                    <p>\[
-                        \begin{align*}
-                        h_i =\frac{1}{2} \operatorname{Tr}(H\sigma_i)
-                        \end{align*}
-                        \]</p>
                         <p>For example, \[
                             \begin{align*}
-                            h_x = \frac{1}{2}\operatorname{Tr}(H\sigma_x)
+                            h_x = \frac{1}{2}\operatorname{Tr}(\hat H\hat\sigma_x)
                             &= \frac{1}{2}\operatorname{Tr}\left[\left(cI +
-                            h_x\sigma_x +h_y\sigma_y +h_z\sigma_z\right)\sigma_x\right]\\
-                            &=\frac{1}{2} \operatorname{Tr}\left(c \sigma_x +
-                            h_x\sigma_x \sigma_x +h_y\sigma_y \sigma_x +h_z\sigma_z \sigma_x\right)\\
-                            &=\frac{1}{2} \operatorname{Tr}\left(c \sigma_x +
-                            h_x I -i h_y\sigma_z + i h_z\sigma_y \right)
+                            h_x\hat\sigma_x +h_y\hat\sigma_y +h_z\hat\sigma_z\right)\hat\sigma_x\right]\\
+                            &=\frac{1}{2} \operatorname{Tr}\left(c \hat\sigma_x +
+                            h_x\hat\sigma_x \hat\sigma_x +h_y\hat\sigma_y \hat\sigma_x +h_z\hat\sigma_z \hat\sigma_x\right)\\
+                            &=\frac{1}{2} \operatorname{Tr}\left(c \hat\sigma_x +
+                            h_x I -i h_y\hat\sigma_z + i h_z\hat\sigma_y \right)
                             \end{align*}
                             \]</p>
             </section>
@@ -11978,38 +11970,38 @@ mjx-container[display="true"] {
 
                 <div class="qh-pauli-property-matrices">
                     <p>\[
-                        \sigma_x=\begin{pmatrix}0&1\\1&0\end{pmatrix},\qquad
-                        \sigma_y=\begin{pmatrix}0&-i\\i&0\end{pmatrix},\qquad
-                        \sigma_z=\begin{pmatrix}1&0\\0&-1\end{pmatrix}.
+                        \hat\sigma_x=\begin{pmatrix}0&1\\1&0\end{pmatrix},\qquad
+                        \hat\sigma_y=\begin{pmatrix}0&-i\\i&0\end{pmatrix},\qquad
+                        \hat\sigma_z=\begin{pmatrix}1&0\\0&-1\end{pmatrix}.
                     \]</p>
                 </div>
                 <div class="qh-pauli-product-rule">
                     <p>\[
-                        \boxed{\sigma_i\sigma_j=\delta_{ij}I+i \epsilon_{ijk}\sigma_k}
+                        \boxed{\hat\sigma_i\hat\sigma_j=\delta_{ij}I+i \epsilon_{ijk}\hat\sigma_k}
                     \]</p>
                     <p>\[
-                        \sigma_i \sigma_j=- \sigma_j \sigma_i=i \epsilon_{ijk}\sigma_k ,
+                        \hat\sigma_i \hat\sigma_j=- \hat\sigma_j \hat\sigma_i=i \epsilon_{ijk}\hat\sigma_k ,
                         \qquad
-                        \sigma_x \sigma_x =\sigma_y \sigma_y =\sigma_z \sigma_z= I,
+                        \hat\sigma_x \hat\sigma_x =\hat\sigma_y \hat\sigma_y =\hat\sigma_z \hat\sigma_z= I,
                         \qquad
-                        \operatorname{Tr} (\sigma_i)=0.
+                        \operatorname{Tr} (\hat\sigma_i)=0.
                     \]</p>
                 </div>
 
                 <h4>Each Pauli matrix</h4>
                     <p>\[
-                        \sigma_i^\dagger=\sigma_i,\qquad
-                        \sigma_i^2=I,\qquad
-                        \sigma_i^{-1}=\sigma_i
+                        \hat\sigma_i^\dagger=\hat\sigma_i,\qquad
+                        \hat\sigma_i^2=I,\qquad
+                        \hat\sigma_i^{-1}=\hat\sigma_i
                     \]</p>
                     <p>\[
-                        \operatorname{spec}(\sigma_i)=\{+1,-1\}.
+                        \operatorname{spec}(\hat\sigma_i)=\{+1,-1\}.
                     \]</p>
 
                 <div class="qh-bloch-basis-strip qh-pauli-axis-strip" aria-label="Pauli axes and their eigenstates">
                     <div class="qh-bloch-basis-item">
                         <strong>Pauli-\(Z\) gate and Z-axis</strong>
-                        <span>\(Z\equiv \sigma_z, \quad \left\{
+                        <span>\(Z\equiv \hat\sigma_z, \quad \left\{
                             \begin{array}{c}
                             Z|0\rangle=+|0\rangle \\
                             Z|1\rangle=-|1\rangle
@@ -12019,7 +12011,7 @@ mjx-container[display="true"] {
                     <div class="qh-bloch-basis-item">
                         <strong>Pauli-\(X\) gate and X-axis</strong>
                         <span>\(
-                            X\equiv \sigma_x, \  \left\{
+                            X\equiv \hat\sigma_x, \  \left\{
                             \begin{array}{c}
                             X|+\rangle=+|+\rangle \\
                             X|-\rangle=-|-\rangle
@@ -12030,7 +12022,7 @@ mjx-container[display="true"] {
                     </div>
                     <div class="qh-bloch-basis-item">
                         <strong>Pauli-\(Y\) gate and Y-axis</strong>
-                        <span>\(Y\equiv \sigma_y, \  \left\{
+                        <span>\(Y\equiv \hat\sigma_y, \  \left\{
                             \begin{array}{c}
                             Y|i\rangle=+|i\rangle \\
                             Y|-i\rangle=-|-i\rangle
@@ -12166,13 +12158,13 @@ mjx-container[display="true"] {
 
                         <div class="qh-physics-bridge-row qh-bloch-reveal-step is-pending">
                             <div class="qh-physics-bridge-meaning">
-                                <p class="qh-bloch-density-label">Density matrix \(\rho\):</p>
+                                <p class="qh-bloch-density-label">Density matrix \(\hat\rho\):</p>
                             </div>
                         </div>
 
                         <div class="qh-physics-bridge-row qh-bloch-reveal-step is-pending">
                             <div class="qh-physics-bridge-meaning">
-                                <p>\[\rho\equiv|\psi\rangle\langle\psi|
+                                <p>\[\hat\rho\equiv|\psi\rangle\langle\psi|
                                     =e^{i\phi_0}\begin{pmatrix}
                                     \cos(\theta/2)\\ e^{i\phi}\sin(\theta/2)
                                     \end{pmatrix}
@@ -12219,9 +12211,9 @@ mjx-container[display="true"] {
                         <p>\[|\psi\rangle = e^{i\phi_0}\left[ \cos \left( \frac{\theta}{2} \right) \ |0 \rangle + \sin
                             \left( \frac{\theta}{2} \right) \ e^{i\phi} |1 \rangle \right] \]</p>
 
-                        <p>Density matrix \(\rho\):
+                        <p>Density matrix \(\hat\rho\):
                             \[
-                            \rho \equiv |\psi \rangle \langle \psi |
+                            \hat\rho \equiv |\psi \rangle \langle \psi |
                             =
                             \frac{1}{2}\begin{pmatrix}
                             1+\cos \theta
@@ -12267,7 +12259,7 @@ mjx-container[display="true"] {
                             <div class="qh-physics-bridge-meaning">
                                 <p>\[
                                     \equiv\frac{1}{2}\left[
-                                    I+r_x\sigma_x+r_y\sigma_y+r_z\sigma_z
+                                    I+r_x\hat\sigma_x+r_y\hat\sigma_y+r_z\hat\sigma_z
                                     \right]
                                     \]</p>
                             </div>
@@ -12283,7 +12275,7 @@ mjx-container[display="true"] {
                 <div class="qh-physics-bridge-row qh-bloch-reveal-step is-pending">
                     <div class="qh-physics-bridge-meaning">
                         <p>\[
-                            r_i=\operatorname{Tr}(\rho\sigma_i)
+                            r_i=\operatorname{Tr}(\hat\rho\hat\sigma_i)
                             \]</p>
                     </div>
                 </div>
@@ -12293,9 +12285,9 @@ mjx-container[display="true"] {
                         <p>For example,
                             \[
                             \begin{aligned}
-                            r_x=\operatorname{Tr}(\rho\sigma_x)
+                            r_x=\operatorname{Tr}(\hat\rho\hat\sigma_x)
                             &=\frac{1}{2}\operatorname{Tr}\left[\left(cI+
-                            r_x\sigma_x+r_y\sigma_y+r_z\sigma_z\right)\sigma_x\right]
+                            r_x\hat\sigma_x+r_y\hat\sigma_y+r_z\hat\sigma_z\right)\hat\sigma_x\right]
                             \end{aligned}
                             \]</p>
                     </div>
@@ -12305,8 +12297,8 @@ mjx-container[display="true"] {
                         <p>
                             \[
                             \begin{aligned}
-                            &=\frac{1}{2}\operatorname{Tr}\left(c \sigma_x+
-                            r_x\sigma_x\sigma_x+r_y\sigma_y\sigma_x+r_z\sigma_z\sigma_x\right)
+                            &=\frac{1}{2}\operatorname{Tr}\left(c \hat\sigma_x+
+                            r_x\hat\sigma_x\hat\sigma_x+r_y\hat\sigma_y\hat\sigma_x+r_z\hat\sigma_z\hat\sigma_x\right)
                             \end{aligned}
                             \]</p>
                     </div>
@@ -12316,8 +12308,8 @@ mjx-container[display="true"] {
                         <p>
                             \[
                             \begin{aligned}
-                            &=\frac{1}{2}\operatorname{Tr}\left(c \sigma_x+
-                            r_x I-ir_y\sigma_z+ir_z\sigma_y\right)
+                            &=\frac{1}{2}\operatorname{Tr}\left(c \hat\sigma_x+
+                            r_x I-ir_y\hat\sigma_z+ir_z\hat\sigma_y\right)
                             \end{aligned}
                             \]</p>
                     </div>
@@ -12338,24 +12330,24 @@ mjx-container[display="true"] {
                         <p>\[|\psi\rangle = e^{i\phi_0}\left[ \cos \left( \frac{\theta}{2} \right) \ |0 \rangle + \sin
                             \left( \frac{\theta}{2} \right) \ e^{i\phi} |1 \rangle \right] \]</p>
 
-                        <p>Density matrix \(\rho\):
+                        <p>Density matrix \(\hat\rho\):
                             \[\begin{align*}
-                            \rho \equiv |\psi \rangle \langle \psi |
+                            \hat\rho \equiv |\psi \rangle \langle \psi |
                             &=\frac{1}{2}\left[
                             I
-                            +\cos \phi \sin \theta \ \sigma_x
-                            +\sin \phi \sin \theta \  \sigma_y
-                            +\cos \theta \  \sigma_z
+                            +\cos \phi \sin \theta \ \hat\sigma_x
+                            +\sin \phi \sin \theta \  \hat\sigma_y
+                            +\cos \theta \  \hat\sigma_z
                             \right]\\
                             &=
                             \frac{1}{2}\left[
                             I
-                            + r_x \sigma_x
-                            + r_y \sigma_y
-                            + r_z \sigma_z
+                            + r_x \hat\sigma_x
+                            + r_y \hat\sigma_y
+                            + r_z \hat\sigma_z
                             \right]\end{align*}\]<br>
                             \[\begin{align*}
-                            r_i &=\operatorname{Tr}(\rho\sigma_i)
+                            r_i &=\operatorname{Tr}(\hat\rho\hat\sigma_i)
                             \end{align*}\]</p>
 
                     </div>
@@ -12402,25 +12394,25 @@ mjx-container[display="true"] {
                 <h3>Single-Qubit Rotation Operators</h3>
                 <p>\[
                     \begin{align*}
-                    H&=
+                    \hat H&=
                      cI +
-                    h_x\sigma_x +h_y\sigma_y +h_z\sigma_z
+                    h_x\hat\sigma_x +h_y\hat\sigma_y +h_z\hat\sigma_z
                     \end{align*}
                     \]</p>
                     <p>\[
-                        U(t)=e^{-itH}=e^{-it(cI +h_x\sigma_x +h_y\sigma_y +h_z\sigma_z)}
+                        \hat U(t)=e^{-it\hat H}=e^{-it(cI +h_x\hat\sigma_x +h_y\hat\sigma_y +h_z\hat\sigma_z)}
                         \]</p>
                 <div class="qh-single-gate-cards">
                     <div class="qh-single-gate-card">
-                        <h4>\(R_x(\alpha)\equiv e^{\left(-i\frac{\alpha}{2}\sigma_x\right)}\)</h4>
+                        <h4>\(R_x(\alpha)\equiv e^{\left(-i\frac{\alpha}{2}\hat\sigma_x\right)}\)</h4>
                         
                     </div>
                     <div class="qh-single-gate-card">
-                        <h4>\(R_y(\alpha)\equiv e^{\left(-i\frac{\alpha}{2}\sigma_y\right)}\)</h4>
+                        <h4>\(R_y(\alpha)\equiv e^{\left(-i\frac{\alpha}{2}\hat\sigma_y\right)}\)</h4>
                         
                     </div>
                     <div class="qh-single-gate-card">
-                        <h4>\(R_z(\alpha)\equiv e^{\left(-i\frac{\alpha}{2}\sigma_z\right)}\)</h4>
+                        <h4>\(R_z(\alpha)\equiv e^{\left(-i\frac{\alpha}{2}\hat\sigma_z\right)}\)</h4>
                         
                     </div>
                     <div class="qh-single-gate-card">
@@ -12447,26 +12439,26 @@ mjx-container[display="true"] {
                 <div class="qh-active-evolution-flow">
                     <div class="qh-active-evolution-step">
                         <h4>State vector</h4>
-                        <p>\[|\psi'\rangle=U|\psi\rangle\]</p>
+                        <p>\[|\psi'\rangle=\hat U|\psi\rangle\]</p>
                     </div>
                     <div class="qh-active-evolution-arrow" aria-hidden="true">→</div>
                     <div class="qh-active-evolution-step">
                         <h4>Density matrix</h4>
-                        <p>\[\boxed{\rho'=U\rho U^\dagger}\]</p>
+                        <p>\[\boxed{\hat\rho'=\hat U\hat\rho \hat U^\dagger}\]</p>
                     </div>
                     <div class="qh-active-evolution-arrow" aria-hidden="true">→</div>
                     <div class="qh-active-evolution-step">
                         <h4>Bloch coordinates</h4>
-                        <p>\[\rho'=\frac12\left(I+\mathbf r'\!\cdot\!\boldsymbol{\sigma}\right)\]</p>
+                        <p>\[\hat\rho'=\frac12\left(I+\mathbf r'\!\cdot\!\boldsymbol{\hat\sigma}\right)\]</p>
                     </div>
                 </div>
 
                 <div class="qh-active-evolution-coordinate">
-                    <p>Since \(r_i'=\operatorname{Tr}(\rho'\sigma_i)\), cyclicity of the trace gives</p>
+                    <p>Since \(r_i'=\operatorname{Tr}(\hat\rho'\hat\sigma_i)\), cyclicity of the trace gives</p>
                     <p>\[
                         \boxed{
-                        r_i'=\operatorname{Tr}(U\rho U^\dagger\sigma_i)
-                        =\operatorname{Tr}\!\left(\rho\,U^\dagger\sigma_iU\right)}.
+                        r_i'=\operatorname{Tr}(\hat U\hat\rho \hat U^\dagger\hat\sigma_i)
+                        =\operatorname{Tr}\!\left(\hat\rho\,\hat U^\dagger\hat\sigma_i\hat U\right)}.
                     \]</p>
                 </div>
                 
@@ -12480,43 +12472,43 @@ mjx-container[display="true"] {
                 <div class="qh-active-evolution-flow">
                     <div class="qh-active-evolution-step">
                         <h4>State vector</h4>
-                        <p>\[|\psi'\rangle=U|\psi\rangle\]</p>
+                        <p>\[|\psi'\rangle=\hat U|\psi\rangle\]</p>
                     </div>
                     <div class="qh-active-evolution-arrow" aria-hidden="true">→</div>
                     <div class="qh-active-evolution-step">
                         <h4>Density matrix</h4>
-                        <p>\[\boxed{\rho'=U\rho U^\dagger}\]</p>
+                        <p>\[\boxed{\hat\rho'=\hat U\hat\rho \hat U^\dagger}\]</p>
                     </div>
                     <div class="qh-active-evolution-arrow" aria-hidden="true">→</div>
                     <div class="qh-active-evolution-step">
                         <h4>Bloch coordinates</h4>
-                        <p>\[\rho'=\frac12\left(I+\mathbf r'\!\cdot\!\boldsymbol{\sigma}\right)\]</p>
+                        <p>\[\hat\rho'=\frac12\left(I+\mathbf r'\!\cdot\!\boldsymbol{\hat\sigma}\right)\]</p>
                     </div>
                 </div>
 
                 <div class="qh-active-evolution-coordinate">
-                    <p>Since \(r_i'=\operatorname{Tr}(\rho'\sigma_i)\), cyclicity of the trace gives</p>
+                    <p>Since \(r_i'=\operatorname{Tr}(\hat\rho'\hat\sigma_i)\), cyclicity of the trace gives</p>
                     <p>\[
                         \boxed{
-                        r_i'=\operatorname{Tr}(U\rho U^\dagger\sigma_i)
-                        =\operatorname{Tr}\!\left(\rho\,U^\dagger\sigma_iU\right)}.
+                        r_i'=\operatorname{Tr}(\hat U\hat\rho \hat U^\dagger\hat\sigma_i)
+                        =\operatorname{Tr}\!\left(\hat\rho\,\hat U^\dagger\hat\sigma_i\hat U\right)}.
                     \]</p>
                 </div>
-                <p>For example, \(U_x=R_x(\alpha)= e^{\left(-i\frac{\alpha}{2}\sigma_x\right)}\)</p>
+                <p>For example, \(\hat U_x=R_x(\alpha)= e^{\left(-i\frac{\alpha}{2}\hat\sigma_x\right)}\)</p>
                 <div class="qh-active-evolution-flow">
                     <div class="qh-active-evolution-step">
                         <h4>State vector</h4>
-                        <p>\[|\psi'\rangle=U_x|\psi\rangle\]</p>
+                        <p>\[|\psi'\rangle=\hat U_x|\psi\rangle\]</p>
                     </div>
                     <div class="qh-active-evolution-arrow" aria-hidden="true">→</div>
                     <div class="qh-active-evolution-step">
                         <h4>Density matrix</h4>
-                        <p>\[\boxed{\rho'=U_x\rho U^\dagger_x}\]</p>
+                        <p>\[\boxed{\hat\rho'=\hat U_x\hat\rho \hat U^\dagger_x}\]</p>
                     </div>
                     <div class="qh-active-evolution-arrow" aria-hidden="true">→</div>
                     <div class="qh-active-evolution-step">
                         <h4>Bloch coordinates</h4>
-                        <p>\[\rho'=\frac12\left(I+\mathbf r'\!\cdot\!\boldsymbol{\sigma}\right)\]</p>
+                        <p>\[\hat\rho'=\frac12\left(I+\mathbf r'\!\cdot\!\boldsymbol{\hat\sigma}\right)\]</p>
                     </div>
                 </div>
             </section>
@@ -12530,15 +12522,15 @@ mjx-container[display="true"] {
         <section data-manual-slide data-auto-fit="false"
             data-title="Expanding the Exponential Term by Term">
             <section class="qh-lecture-block qh-v28-expexpand-slide" id="t1a-expand-exponential-terms">
-                <h3>Expanding \(e^{-i\alpha\sigma_x/2}\) Term by Term</h3>
+                <h3>Expanding \(e^{-i\alpha\hat\sigma_x/2}\) Term by Term</h3>
 
                 <div class="qh-v28-expexpand-row">
                     <div class="qh-v28-expexpand-label">Split into \(\cos\) and \(i\sin\)</div>
                     <div class="qh-v28-expexpand-math">
                         <p>\[
-                            e^{-i\frac\alpha2\sigma_x}
-                            =\cos\!\left(\frac\alpha2\sigma_x\right)
-                            -i\sin\!\left(\frac\alpha2\sigma_x\right)
+                            e^{-i\frac\alpha2\hat\sigma_x}
+                            =\cos\!\left(\frac\alpha2\hat\sigma_x\right)
+                            -i\sin\!\left(\frac\alpha2\hat\sigma_x\right)
                         \]</p>
                     </div>
                 </div>
@@ -12548,19 +12540,19 @@ mjx-container[display="true"] {
                     <div class="qh-v28-expexpand-math">
                         <p>\[
                             \begin{aligned}
-                            \cos\!\left(\frac\alpha2\sigma_x\right)
+                            \cos\!\left(\frac\alpha2\hat\sigma_x\right)
                             &=I
-                            -\frac{1}{2!}  \left(\frac\alpha2\sigma_x\right)^{2}
-                            +\frac{1}{4!}  \left(\frac\alpha2\sigma_x\right)^{4}-...
+                            -\frac{1}{2!}  \left(\frac\alpha2\hat\sigma_x\right)^{2}
+                            +\frac{1}{4!}  \left(\frac\alpha2\hat\sigma_x\right)^{4}-...
                             =I
-                            -\frac{1}{2!}  \left(\frac\alpha2\right)^{2}\left(\sigma_x\right)^{2}
-                            +\frac{1}{4!}  \left(\frac\alpha2\right)^{4}\left(\sigma_x\right)^{4}-...
+                            -\frac{1}{2!}  \left(\frac\alpha2\right)^{2}\left(\hat\sigma_x\right)^{2}
+                            +\frac{1}{4!}  \left(\frac\alpha2\right)^{4}\left(\hat\sigma_x\right)^{4}-...
                             ,\\[2pt]
-                            \sin\!\left(\frac\alpha2\sigma_x\right)
-                            &=\left(\frac\alpha2\sigma_x\right)
-                            -\frac{1}{3!}  \left(\frac\alpha2\sigma_x\right)^{3}+...
-                            =\left(\frac\alpha2\right)\sigma_x
-                            -\frac{1}{3!}  \left(\frac\alpha2\right)^{3}\left(\sigma_x\right)^{3}+...
+                            \sin\!\left(\frac\alpha2\hat\sigma_x\right)
+                            &=\left(\frac\alpha2\hat\sigma_x\right)
+                            -\frac{1}{3!}  \left(\frac\alpha2\hat\sigma_x\right)^{3}+...
+                            =\left(\frac\alpha2\right)\hat\sigma_x
+                            -\frac{1}{3!}  \left(\frac\alpha2\right)^{3}\left(\hat\sigma_x\right)^{3}+...
                             \end{aligned}
                         \]</p>
                     </div>
@@ -12570,23 +12562,23 @@ mjx-container[display="true"] {
                     <div class="qh-v28-expexpand-label">Collapse the operators</div>
                     <div class="qh-v28-expexpand-math">
                         <p>\[
-                            \sigma_x^{2}=I
+                            \hat\sigma_x^{2}=I
                             \quad\Longrightarrow\quad
-                            \sigma_x^{2m}=I,
+                            \hat\sigma_x^{2m}=I,
                             \qquad
-                            \sigma_x^{2m+1}=\sigma_x.
+                            \hat\sigma_x^{2m+1}=\hat\sigma_x.
                         \]</p>
                         <p>\[
                             \begin{aligned}
-                            \cos\!\left(\frac\alpha2\sigma_x\right)
+                            \cos\!\left(\frac\alpha2\hat\sigma_x\right)
                             &=I
                             -\frac{1}{2!}  \left(\frac\alpha2\right)^{2}I
                             +\frac{1}{4!}  \left(\frac\alpha2\right)^{4}I-...
                             =\cos\frac\alpha2\,I,\\[2pt]
-                            \sin\!\left(\frac\alpha2\sigma_x\right)
-                            &=\left(\frac\alpha2\right)\sigma_x
-                            -\frac{1}{3!}  \left(\frac\alpha2\right)^{3}\sigma_x+...
-                            =\sin\frac\alpha2\,\sigma_x.
+                            \sin\!\left(\frac\alpha2\hat\sigma_x\right)
+                            &=\left(\frac\alpha2\right)\hat\sigma_x
+                            -\frac{1}{3!}  \left(\frac\alpha2\right)^{3}\hat\sigma_x+...
+                            =\sin\frac\alpha2\,\hat\sigma_x.
                             \end{aligned}
                         \]</p>
                     </div>
@@ -12596,8 +12588,8 @@ mjx-container[display="true"] {
                     <div class="qh-v28-expexpand-label">Tidy up</div>
                     <div class="qh-v28-expexpand-math">
                         <p>\[
-                            \boxed{\;e^{-i\frac\alpha2\sigma_x}
-                            =\cos\frac\alpha2\,I-i\sin\frac\alpha2\,\sigma_x\;}
+                            \boxed{\;e^{-i\frac\alpha2\hat\sigma_x}
+                            =\cos\frac\alpha2\,I-i\sin\frac\alpha2\,\hat\sigma_x\;}
                         \]</p>
                     </div>
                 </div>
@@ -12616,11 +12608,11 @@ mjx-container[display="true"] {
 
                 <div class="qh-v26-bloch-start">
                     <p>\[
-                    \rho=\frac12\left(I+r_x\sigma_x+r_y\sigma_y+r_z\sigma_z\right),
+                    \hat\rho=\frac12\left(I+r_x\hat\sigma_x+r_y\hat\sigma_y+r_z\hat\sigma_z\right),
                     \qquad
-                    U_x(\alpha)=\cos\tfrac\alpha2\,I-i\sin\tfrac\alpha2\,\sigma_x,
+                    \hat U_x(\alpha)=\cos\tfrac\alpha2\,I-i\sin\tfrac\alpha2\,\hat\sigma_x,
                     \qquad
-                    r_x=\operatorname{Tr}(\rho'\sigma_x) \to r_x'=\operatorname{Tr}(\rho U^\dagger \sigma_x U).
+                    r_x=\operatorname{Tr}(\hat\rho'\hat\sigma_x) \to r_x'=\operatorname{Tr}(\hat\rho \hat U^\dagger \hat\sigma_x \hat U).
                 \]</p>
                 </div>
 
@@ -12631,19 +12623,19 @@ mjx-container[display="true"] {
                         <div class="qh-v34-equation-stack" aria-label="Conjugating sigma x">
                             <div class="qh-physics-bridge-row qh-bloch-reveal-step qh-v34-equation-line is-pending">
                                 <div class="qh-physics-bridge-meaning">
-                                    <span class="qh-v34-equation-lhs">\(U_x^\dagger\sigma_xU_x\)</span>
+                                    <span class="qh-v34-equation-lhs">\(\hat U_x^\dagger\hat\sigma_x\hat U_x\)</span>
                                     <span class="qh-v34-equation-relation">\(=\)</span>
-                                    <span class="qh-v34-equation-rhs">\(\left(\cos\!\left(\frac{\alpha}{2}\right)I+i\sin\!\left(\frac{\alpha}{2}\right)\sigma_x\right)\sigma_x\left(\cos\!\left(\frac{\alpha}{2}\right)I-i\sin\!\left(\frac{\alpha}{2}\right)\sigma_x\right)\)</span>
+                                    <span class="qh-v34-equation-rhs">\(\left(\cos\!\left(\frac{\alpha}{2}\right)I+i\sin\!\left(\frac{\alpha}{2}\right)\hat\sigma_x\right)\hat\sigma_x\left(\cos\!\left(\frac{\alpha}{2}\right)I-i\sin\!\left(\frac{\alpha}{2}\right)\hat\sigma_x\right)\)</span>
                                 </div>
                             </div>
                             <div class="qh-physics-bridge-row qh-bloch-reveal-step qh-v34-equation-line is-pending">
                                 <div class="qh-physics-bridge-meaning">
                                     <span class="qh-v34-equation-lhs"></span>
                                     <span class="qh-v34-equation-relation">\(=\)</span>
-                                    <span class="qh-v34-equation-rhs">\(\cos^2\!\left(\frac{\alpha}{2}\right)\sigma_x-i\cos\!\left(\frac{\alpha}{2}\right)\sin\!\left(\frac{\alpha}{2}\right)\sigma_x^2\)</span>
+                                    <span class="qh-v34-equation-rhs">\(\cos^2\!\left(\frac{\alpha}{2}\right)\hat\sigma_x-i\cos\!\left(\frac{\alpha}{2}\right)\sin\!\left(\frac{\alpha}{2}\right)\hat\sigma_x^2\)</span>
                                     <span class="qh-v34-equation-lhs"></span>
                                     <span class="qh-v34-equation-relation"></span>
-                                    <span class="qh-v34-equation-rhs qh-v34-equation-rhs--continuation">\(+i\cos\!\left(\frac{\alpha}{2}\right)\sin\!\left(\frac{\alpha}{2}\right)\sigma_x^2+\sin^2\!\left(\frac{\alpha}{2}\right)\sigma_x^3\)</span>
+                                    <span class="qh-v34-equation-rhs qh-v34-equation-rhs--continuation">\(+i\cos\!\left(\frac{\alpha}{2}\right)\sin\!\left(\frac{\alpha}{2}\right)\hat\sigma_x^2+\sin^2\!\left(\frac{\alpha}{2}\right)\hat\sigma_x^3\)</span>
                                 </div>
                             </div>
                             
@@ -12651,14 +12643,14 @@ mjx-container[display="true"] {
                                 <div class="qh-physics-bridge-meaning">
                                     <span class="qh-v34-equation-lhs"></span>
                                     <span class="qh-v34-equation-relation">\(=\)</span>
-                                    <span class="qh-v34-equation-rhs">\(\left[\cos^2\!\left(\frac{\alpha}{2}\right)+\sin^2\!\left(\frac{\alpha}{2}\right)\right]\sigma_x\)</span>
+                                    <span class="qh-v34-equation-rhs">\(\left[\cos^2\!\left(\frac{\alpha}{2}\right)+\sin^2\!\left(\frac{\alpha}{2}\right)\right]\hat\sigma_x\)</span>
                                 </div>
                             </div>
                             <div class="qh-physics-bridge-row qh-bloch-reveal-step qh-v34-equation-line is-pending">
                                 <div class="qh-physics-bridge-meaning">
                                     <span class="qh-v34-equation-lhs"></span>
                                     <span class="qh-v34-equation-relation">\(=\)</span>
-                                    <span class="qh-v34-equation-rhs">\(\sigma_x.\)</span>
+                                    <span class="qh-v34-equation-rhs">\(\hat\sigma_x.\)</span>
                                 </div>
                             </div>
                         </div>
@@ -12671,28 +12663,28 @@ mjx-container[display="true"] {
                                 <div class="qh-physics-bridge-meaning">
                                     <span class="qh-v34-equation-lhs">\(r_x'\)</span>
                                     <span class="qh-v34-equation-relation">\(=\)</span>
-                                    <span class="qh-v34-equation-rhs">\(\operatorname{Tr}(\rho'\sigma_x)\)</span>
+                                    <span class="qh-v34-equation-rhs">\(\operatorname{Tr}(\hat\rho'\hat\sigma_x)\)</span>
                                 </div>
                             </div>
                             <div class="qh-physics-bridge-row qh-bloch-reveal-step qh-v34-equation-line is-pending">
                                 <div class="qh-physics-bridge-meaning">
                                     <span class="qh-v34-equation-lhs"></span>
                                     <span class="qh-v34-equation-relation">\(=\)</span>
-                                    <span class="qh-v34-equation-rhs">\(\operatorname{Tr}(U_x\rho U_x^\dagger\sigma_x)\)</span>
+                                    <span class="qh-v34-equation-rhs">\(\operatorname{Tr}(\hat U_x\hat\rho \hat U_x^\dagger\hat\sigma_x)\)</span>
                                 </div>
                             </div>
                             <div class="qh-physics-bridge-row qh-bloch-reveal-step qh-v34-equation-line is-pending">
                                 <div class="qh-physics-bridge-meaning">
                                     <span class="qh-v34-equation-lhs"></span>
                                     <span class="qh-v34-equation-relation">\(=\)</span>
-                                    <span class="qh-v34-equation-rhs">\(\operatorname{Tr}(\rho U_x^\dagger\sigma_xU_x)\)</span>
+                                    <span class="qh-v34-equation-rhs">\(\operatorname{Tr}(\hat\rho \hat U_x^\dagger\hat\sigma_x\hat U_x)\)</span>
                                 </div>
                             </div>
                             <div class="qh-physics-bridge-row qh-bloch-reveal-step qh-v34-equation-line is-pending">
                                 <div class="qh-physics-bridge-meaning">
                                     <span class="qh-v34-equation-lhs"></span>
                                     <span class="qh-v34-equation-relation">\(=\)</span>
-                                    <span class="qh-v34-equation-rhs">\(\operatorname{Tr}(\rho\sigma_x)\)</span>
+                                    <span class="qh-v34-equation-rhs">\(\operatorname{Tr}(\hat\rho\hat\sigma_x)\)</span>
                                 </div>
                             </div>
                             <div class="qh-physics-bridge-row qh-bloch-reveal-step qh-v34-equation-line is-pending">
@@ -12716,11 +12708,11 @@ mjx-container[display="true"] {
 
                 <div class="qh-v26-bloch-start">
                     <p>\[
-                    \rho=\frac12\left(I+r_x\sigma_x+r_y\sigma_y+r_z\sigma_z\right),
+                    \hat\rho=\frac12\left(I+r_x\hat\sigma_x+r_y\hat\sigma_y+r_z\hat\sigma_z\right),
                     \qquad
-                    U_x(\alpha)=\cos\tfrac\alpha2\,I-i\sin\tfrac\alpha2\,\sigma_x,
+                    \hat U_x(\alpha)=\cos\tfrac\alpha2\,I-i\sin\tfrac\alpha2\,\hat\sigma_x,
                     \qquad
-                    r_y=\operatorname{Tr}(\rho'\sigma_y) \to r_y'=\operatorname{Tr}(\rho U^\dagger \sigma_y U).
+                    r_y=\operatorname{Tr}(\hat\rho'\hat\sigma_y) \to r_y'=\operatorname{Tr}(\hat\rho \hat U^\dagger \hat\sigma_y \hat U).
                 \]</p>
                 </div>
 
@@ -12729,34 +12721,34 @@ mjx-container[display="true"] {
                         <div class="qh-v34-equation-stack" aria-label="Conjugating sigma y">
                             <div class="qh-physics-bridge-row qh-bloch-reveal-step qh-v34-equation-line qh-v34-equation-line--identity is-pending">
                                 <div class="qh-physics-bridge-meaning">
-                                    \(\sigma_y\sigma_x=-i\sigma_z,\qquad
-                                    \sigma_x\sigma_y=i\sigma_z,\qquad
-                                    \sigma_x\sigma_y\sigma_x=-\sigma_y.\)
+                                    \(\hat\sigma_y\hat\sigma_x=-i\hat\sigma_z,\qquad
+                                    \hat\sigma_x\hat\sigma_y=i\hat\sigma_z,\qquad
+                                    \hat\sigma_x\hat\sigma_y\hat\sigma_x=-\hat\sigma_y.\)
                                 </div>
                             </div>
                             <div class="qh-physics-bridge-row qh-bloch-reveal-step qh-v34-equation-line is-pending">
                                 <div class="qh-physics-bridge-meaning">
-                                    <span class="qh-v34-equation-lhs">\(U_x^\dagger\sigma_yU_x\)</span>
+                                    <span class="qh-v34-equation-lhs">\(\hat U_x^\dagger\hat\sigma_y\hat U_x\)</span>
                                     <span class="qh-v34-equation-relation">\(=\)</span>
-                                    <span class="qh-v34-equation-rhs">\(\left(\cos\!\left(\frac{\alpha}{2}\right)I+i\sin\!\left(\frac{\alpha}{2}\right)\sigma_x\right)\sigma_y\left(\cos\!\left(\frac{\alpha}{2}\right)I-i\sin\!\left(\frac{\alpha}{2}\right)\sigma_x\right)\)</span>
+                                    <span class="qh-v34-equation-rhs">\(\left(\cos\!\left(\frac{\alpha}{2}\right)I+i\sin\!\left(\frac{\alpha}{2}\right)\hat\sigma_x\right)\hat\sigma_y\left(\cos\!\left(\frac{\alpha}{2}\right)I-i\sin\!\left(\frac{\alpha}{2}\right)\hat\sigma_x\right)\)</span>
                                 </div>
                             </div>
                             <div class="qh-physics-bridge-row qh-bloch-reveal-step qh-v34-equation-line is-pending">
                                 <div class="qh-physics-bridge-meaning">
                                     <span class="qh-v34-equation-lhs"></span>
                                     <span class="qh-v34-equation-relation">\(=\)</span>
-                                    <span class="qh-v34-equation-rhs">\(\cos^2\!\left(\frac{\alpha}{2}\right)\sigma_y-i\cos\!\left(\frac{\alpha}{2}\right)\sin\!\left(\frac{\alpha}{2}\right)\sigma_y\sigma_x\)</span>
+                                    <span class="qh-v34-equation-rhs">\(\cos^2\!\left(\frac{\alpha}{2}\right)\hat\sigma_y-i\cos\!\left(\frac{\alpha}{2}\right)\sin\!\left(\frac{\alpha}{2}\right)\hat\sigma_y\hat\sigma_x\)</span>
                                     <span class="qh-v34-equation-lhs"></span>
                                     <span class="qh-v34-equation-relation"></span>
-                                    <span class="qh-v34-equation-rhs qh-v34-equation-rhs--continuation">\(+i\cos\!\left(\frac{\alpha}{2}\right)\sin\!\left(\frac{\alpha}{2}\right)\sigma_x\sigma_y+\sin^2\!\left(\frac{\alpha}{2}\right)\sigma_x\sigma_y\sigma_x\)</span>
+                                    <span class="qh-v34-equation-rhs qh-v34-equation-rhs--continuation">\(+i\cos\!\left(\frac{\alpha}{2}\right)\sin\!\left(\frac{\alpha}{2}\right)\hat\sigma_x\hat\sigma_y+\sin^2\!\left(\frac{\alpha}{2}\right)\hat\sigma_x\hat\sigma_y\hat\sigma_x\)</span>
                                 </div>
                             </div>
                             <div class="qh-physics-bridge-row qh-bloch-reveal-step qh-v34-equation-line is-pending">
                                 <div class="qh-physics-bridge-meaning">
                                     <span class="qh-v34-equation-lhs"></span>
                                     <span class="qh-v34-equation-relation">\(=\)</span>
-                                    <span class="qh-v34-equation-rhs">\(\left[\cos^2\!\left(\frac{\alpha}{2}\right)-\sin^2\!\left(\frac{\alpha}{2}\right)\right]\sigma_y
-                                        -2\cos\!\left(\frac{\alpha}{2}\right)\sin\!\left(\frac{\alpha}{2}\right)\sigma_z\)</span>
+                                    <span class="qh-v34-equation-rhs">\(\left[\cos^2\!\left(\frac{\alpha}{2}\right)-\sin^2\!\left(\frac{\alpha}{2}\right)\right]\hat\sigma_y
+                                        -2\cos\!\left(\frac{\alpha}{2}\right)\sin\!\left(\frac{\alpha}{2}\right)\hat\sigma_z\)</span>
                                 </div>
                             </div>
                             
@@ -12764,7 +12756,7 @@ mjx-container[display="true"] {
                                 <div class="qh-physics-bridge-meaning">
                                     <span class="qh-v34-equation-lhs"></span>
                                     <span class="qh-v34-equation-relation">\(=\)</span>
-                                    <span class="qh-v34-equation-rhs">\(\cos\alpha\,\sigma_y-\sin\alpha\,\sigma_z,\)</span>
+                                    <span class="qh-v34-equation-rhs">\(\cos\alpha\,\hat\sigma_y-\sin\alpha\,\hat\sigma_z,\)</span>
                                 </div>
                             </div>
                             
@@ -12778,28 +12770,28 @@ mjx-container[display="true"] {
                                 <div class="qh-physics-bridge-meaning">
                                     <span class="qh-v34-equation-lhs">\(r_y'\)</span>
                                     <span class="qh-v34-equation-relation">\(=\)</span>
-                                    <span class="qh-v34-equation-rhs">\(\operatorname{Tr}(\rho'\sigma_y)\)</span>
+                                    <span class="qh-v34-equation-rhs">\(\operatorname{Tr}(\hat\rho'\hat\sigma_y)\)</span>
                                 </div>
                             </div>
                             <div class="qh-physics-bridge-row qh-bloch-reveal-step qh-v34-equation-line is-pending">
                                 <div class="qh-physics-bridge-meaning">
                                     <span class="qh-v34-equation-lhs"></span>
                                     <span class="qh-v34-equation-relation">\(=\)</span>
-                                    <span class="qh-v34-equation-rhs">\(\operatorname{Tr}(\rho U_x^\dagger\sigma_yU_x)\)</span>
+                                    <span class="qh-v34-equation-rhs">\(\operatorname{Tr}(\hat\rho \hat U_x^\dagger\hat\sigma_y\hat U_x)\)</span>
                                 </div>
                             </div>
                             <div class="qh-physics-bridge-row qh-bloch-reveal-step qh-v34-equation-line is-pending">
                                 <div class="qh-physics-bridge-meaning">
                                     <span class="qh-v34-equation-lhs"></span>
                                     <span class="qh-v34-equation-relation">\(=\)</span>
-                                    <span class="qh-v34-equation-rhs">\(\operatorname{Tr}\!\left[\rho(\cos\alpha\,\sigma_y-\sin\alpha\,\sigma_z)\right]\)</span>
+                                    <span class="qh-v34-equation-rhs">\(\operatorname{Tr}\!\left[\hat\rho(\cos\alpha\,\hat\sigma_y-\sin\alpha\,\hat\sigma_z)\right]\)</span>
                                 </div>
                             </div>
                             <div class="qh-physics-bridge-row qh-bloch-reveal-step qh-v34-equation-line is-pending">
                                 <div class="qh-physics-bridge-meaning">
                                     <span class="qh-v34-equation-lhs"></span>
                                     <span class="qh-v34-equation-relation">\(=\)</span>
-                                    <span class="qh-v34-equation-rhs">\(\cos\alpha\operatorname{Tr}(\rho\,\sigma_y)-\sin\alpha\operatorname{Tr}(\rho\,\sigma_z)\)</span>
+                                    <span class="qh-v34-equation-rhs">\(\cos\alpha\operatorname{Tr}(\hat\rho\,\hat\sigma_y)-\sin\alpha\operatorname{Tr}(\hat\rho\,\hat\sigma_z)\)</span>
                                 </div>
                             </div>
                             <div class="qh-physics-bridge-row qh-bloch-reveal-step qh-v34-equation-line is-pending">
@@ -12823,11 +12815,11 @@ mjx-container[display="true"] {
 
                 <div class="qh-v26-bloch-start">
                     <p>\[
-                    \rho=\frac12\left(I+r_x\sigma_x+r_y\sigma_y+r_z\sigma_z\right),
+                    \hat\rho=\frac12\left(I+r_x\hat\sigma_x+r_y\hat\sigma_y+r_z\hat\sigma_z\right),
                     \qquad
-                    U_x(\alpha)=\cos\tfrac\alpha2\,I-i\sin\tfrac\alpha2\,\sigma_x,
+                    \hat U_x(\alpha)=\cos\tfrac\alpha2\,I-i\sin\tfrac\alpha2\,\hat\sigma_x,
                     \qquad
-                    r_z=\operatorname{Tr}(\rho'\sigma_z) \to r_z'=\operatorname{Tr}(\rho U^\dagger \sigma_z U).
+                    r_z=\operatorname{Tr}(\hat\rho'\hat\sigma_z) \to r_z'=\operatorname{Tr}(\hat\rho \hat U^\dagger \hat\sigma_z \hat U).
                 \]</p>
                 </div>
 
@@ -12836,26 +12828,26 @@ mjx-container[display="true"] {
                         <div class="qh-v34-equation-stack" aria-label="Conjugating sigma z">
                             <div class="qh-physics-bridge-row qh-bloch-reveal-step qh-v34-equation-line qh-v34-equation-line--identity is-pending">
                                 <div class="qh-physics-bridge-meaning">
-                                    \(\sigma_z\sigma_x=i\sigma_y,\qquad
-                                    \sigma_x\sigma_z=-i\sigma_y,\qquad
-                                    \sigma_x\sigma_z\sigma_x=-\sigma_z.\)
+                                    \(\hat\sigma_z\hat\sigma_x=i\hat\sigma_y,\qquad
+                                    \hat\sigma_x\hat\sigma_z=-i\hat\sigma_y,\qquad
+                                    \hat\sigma_x\hat\sigma_z\hat\sigma_x=-\hat\sigma_z.\)
                                 </div>
                             </div>
                             <div class="qh-physics-bridge-row qh-bloch-reveal-step qh-v34-equation-line is-pending">
                                 <div class="qh-physics-bridge-meaning">
-                                    <span class="qh-v34-equation-lhs">\(U_x^\dagger\sigma_zU_x\)</span>
+                                    <span class="qh-v34-equation-lhs">\(\hat U_x^\dagger\hat\sigma_z\hat U_x\)</span>
                                     <span class="qh-v34-equation-relation">\(=\)</span>
-                                    <span class="qh-v34-equation-rhs">\(\left(\cos\!\left(\frac{\alpha}{2}\right)I+i\sin\!\left(\frac{\alpha}{2}\right)\sigma_x\right)\sigma_z\left(\cos\!\left(\frac{\alpha}{2}\right)I-i\sin\!\left(\frac{\alpha}{2}\right)\sigma_x\right)\)</span>
+                                    <span class="qh-v34-equation-rhs">\(\left(\cos\!\left(\frac{\alpha}{2}\right)I+i\sin\!\left(\frac{\alpha}{2}\right)\hat\sigma_x\right)\hat\sigma_z\left(\cos\!\left(\frac{\alpha}{2}\right)I-i\sin\!\left(\frac{\alpha}{2}\right)\hat\sigma_x\right)\)</span>
                                 </div>
                             </div>
                             <div class="qh-physics-bridge-row qh-bloch-reveal-step qh-v34-equation-line is-pending">
                                 <div class="qh-physics-bridge-meaning">
                                     <span class="qh-v34-equation-lhs"></span>
                                     <span class="qh-v34-equation-relation">\(=\)</span>
-                                    <span class="qh-v34-equation-rhs">\(\cos^2\!\left(\frac{\alpha}{2}\right)\sigma_z-i\cos\!\left(\frac{\alpha}{2}\right)\sin\!\left(\frac{\alpha}{2}\right)\sigma_z\sigma_x\)</span>
+                                    <span class="qh-v34-equation-rhs">\(\cos^2\!\left(\frac{\alpha}{2}\right)\hat\sigma_z-i\cos\!\left(\frac{\alpha}{2}\right)\sin\!\left(\frac{\alpha}{2}\right)\hat\sigma_z\hat\sigma_x\)</span>
                                     <span class="qh-v34-equation-lhs"></span>
                                     <span class="qh-v34-equation-relation"></span>
-                                    <span class="qh-v34-equation-rhs qh-v34-equation-rhs--continuation">\(+i\cos\!\left(\frac{\alpha}{2}\right)\sin\!\left(\frac{\alpha}{2}\right)\sigma_x\sigma_z+\sin^2\!\left(\frac{\alpha}{2}\right)\sigma_x\sigma_z\sigma_x\)</span>
+                                    <span class="qh-v34-equation-rhs qh-v34-equation-rhs--continuation">\(+i\cos\!\left(\frac{\alpha}{2}\right)\sin\!\left(\frac{\alpha}{2}\right)\hat\sigma_x\hat\sigma_z+\sin^2\!\left(\frac{\alpha}{2}\right)\hat\sigma_x\hat\sigma_z\hat\sigma_x\)</span>
                                 </div>
                             </div>
                             
@@ -12863,8 +12855,8 @@ mjx-container[display="true"] {
                                 <div class="qh-physics-bridge-meaning">
                                     <span class="qh-v34-equation-lhs"></span>
                                     <span class="qh-v34-equation-relation">\(=\)</span>
-                                    <span class="qh-v34-equation-rhs">\(2\cos\!\left(\frac{\alpha}{2}\right)\sin\!\left(\frac{\alpha}{2}\right)\sigma_y
-                                        +\left[\cos^2\!\left(\frac{\alpha}{2}\right)-\sin^2\!\left(\frac{\alpha}{2}\right)\right]\sigma_z\)</span>
+                                    <span class="qh-v34-equation-rhs">\(2\cos\!\left(\frac{\alpha}{2}\right)\sin\!\left(\frac{\alpha}{2}\right)\hat\sigma_y
+                                        +\left[\cos^2\!\left(\frac{\alpha}{2}\right)-\sin^2\!\left(\frac{\alpha}{2}\right)\right]\hat\sigma_z\)</span>
                                 </div>
                             </div>
                             
@@ -12872,7 +12864,7 @@ mjx-container[display="true"] {
                                 <div class="qh-physics-bridge-meaning">
                                     <span class="qh-v34-equation-lhs"></span>
                                     <span class="qh-v34-equation-relation">\(=\)</span>
-                                    <span class="qh-v34-equation-rhs">\(\sin\alpha\,\sigma_y+\cos\alpha\,\sigma_z,\)</span>
+                                    <span class="qh-v34-equation-rhs">\(\sin\alpha\,\hat\sigma_y+\cos\alpha\,\hat\sigma_z,\)</span>
                                 </div>
                             </div>
                             
@@ -12886,28 +12878,28 @@ mjx-container[display="true"] {
                                 <div class="qh-physics-bridge-meaning">
                                     <span class="qh-v34-equation-lhs">\(r_z'\)</span>
                                     <span class="qh-v34-equation-relation">\(=\)</span>
-                                    <span class="qh-v34-equation-rhs">\(\operatorname{Tr}(\rho'\sigma_z)\)</span>
+                                    <span class="qh-v34-equation-rhs">\(\operatorname{Tr}(\hat\rho'\hat\sigma_z)\)</span>
                                 </div>
                             </div>
                             <div class="qh-physics-bridge-row qh-bloch-reveal-step qh-v34-equation-line is-pending">
                                 <div class="qh-physics-bridge-meaning">
                                     <span class="qh-v34-equation-lhs"></span>
                                     <span class="qh-v34-equation-relation">\(=\)</span>
-                                    <span class="qh-v34-equation-rhs">\(\operatorname{Tr}(\rho U_x^\dagger\sigma_zU_x)\)</span>
+                                    <span class="qh-v34-equation-rhs">\(\operatorname{Tr}(\hat\rho \hat U_x^\dagger\hat\sigma_z\hat U_x)\)</span>
                                 </div>
                             </div>
                             <div class="qh-physics-bridge-row qh-bloch-reveal-step qh-v34-equation-line is-pending">
                                 <div class="qh-physics-bridge-meaning">
                                     <span class="qh-v34-equation-lhs"></span>
                                     <span class="qh-v34-equation-relation">\(=\)</span>
-                                    <span class="qh-v34-equation-rhs">\(\operatorname{Tr}\!\left[\rho(\sin\alpha\,\sigma_y+\cos\alpha\,\sigma_z)\right]\)</span>
+                                    <span class="qh-v34-equation-rhs">\(\operatorname{Tr}\!\left[\hat\rho(\sin\alpha\,\hat\sigma_y+\cos\alpha\,\hat\sigma_z)\right]\)</span>
                                 </div>
                             </div>
                             <div class="qh-physics-bridge-row qh-bloch-reveal-step qh-v34-equation-line is-pending">
                                 <div class="qh-physics-bridge-meaning">
                                     <span class="qh-v34-equation-lhs"></span>
                                     <span class="qh-v34-equation-relation">\(=\)</span>
-                                    <span class="qh-v34-equation-rhs">\(\sin\alpha\operatorname{Tr}(\rho\,\sigma_y)+\cos\alpha\operatorname{Tr}(\rho\,\sigma_z)\)</span>
+                                    <span class="qh-v34-equation-rhs">\(\sin\alpha\operatorname{Tr}(\hat\rho\,\hat\sigma_y)+\cos\alpha\operatorname{Tr}(\hat\rho\,\hat\sigma_z)\)</span>
                                 </div>
                             </div>
                             <div class="qh-physics-bridge-row qh-bloch-reveal-step qh-v34-equation-line is-pending">
@@ -12930,11 +12922,11 @@ mjx-container[display="true"] {
 
                 <div class="qh-v26-bloch-start">
                     <p>\[
-                    \rho=\frac12\left(I+r_x\sigma_x+r_y\sigma_y+r_z\sigma_z\right),
+                    \hat\rho=\frac12\left(I+r_x\hat\sigma_x+r_y\hat\sigma_y+r_z\hat\sigma_z\right),
                     \qquad
-                    U_x(\alpha)=\cos\tfrac\alpha2\,I-i\sin\tfrac\alpha2\,\sigma_x,
+                    \hat U_x(\alpha)=\cos\tfrac\alpha2\,I-i\sin\tfrac\alpha2\,\hat\sigma_x,
                     \qquad
-                    r_i=\operatorname{Tr}(\rho'\sigma_i) \to r_i'=\operatorname{Tr}(\rho U^\dagger \sigma_i U).
+                    r_i=\operatorname{Tr}(\hat\rho'\hat\sigma_i) \to r_i'=\operatorname{Tr}(\hat\rho \hat U^\dagger \hat\sigma_i \hat U).
                 \]</p>
                 </div>
 

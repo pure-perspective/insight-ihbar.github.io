@@ -34,7 +34,8 @@
     <link href="../assets/css/style.css" rel="stylesheet">
     <link href="../assets/css/responsive.css" rel="stylesheet">
 
-    <title>Week 4 Manual Slides · Noise, Fluxonium</title>
+    <title>Week 4 · Noise, Fluxonium</title>
+    <meta name="uniweb-nav" content="title">
     <meta name="description"
         content="PHYS598500 Week 4 manual slides on noise operators, selection rules, superinductors, fluxonium, and protected-qubit design.">
     <meta name="keywords" content="- Quantum Processor
@@ -8233,11 +8234,11 @@ html {
                         <div class="sidebar">
                             <div class="widget">
                                 <div id="lesson-list_2">
-                                <div class="lesson-link "><a href="main.html">QH-2026F · 16-Week Overview</a></div>
+                                <div class="lesson-link "><a href="main.html">16-Week Overview</a></div>
                                 <div class="lesson-link "><a href="T1-1d.html">Week 1 · Computation Is Physical</a></div>
                                 <div class="lesson-link "><a href="T2-2.html">Week 2 · Hardware, Superconductivity, and Josephson Anharmonicity</a></div>
                                 <div class="lesson-link "><a href="T2-W3.html">Week 3 · Tunability and the C-Shunted Transmon</a></div>
-                                <div class="lesson-link active"><a href="T2-W4.html">Week 4 Manual Slides · Noise, Fluxonium, and Protected-Qubit Design | QH-2026F v5</a></div>
+                                <div class="lesson-link active"><a href="T2-W4.html">Week 4 · Noise, Fluxonium</a></div>
                                 <div class="lesson-link "><a href="T3-W5.html">Week 5 · Controlling a Single Qubit with Microwaves</a></div>
                                 <div class="lesson-link "><a href="T3-W6.html">Week 6 · Two-Qubit Interactions</a></div>
                                 </div>
@@ -8763,11 +8764,11 @@ html {
   <div class="qh-v25-h0row">
   \[
   \hat{\mathcal H}_0=\begin{pmatrix}E_0 &amp; 0\\ 0 &amp; E_1\end{pmatrix}
-  =\frac{E_0+E_1}{2}\,\mathbb I-\frac{\hbar\omega_{01}}{2}\,\sigma_z
+  =\frac{E_0+E_1}{2}\,\mathbb I-\frac{\hbar\omega_{01}}{2}\,\hat\sigma_z
   \]
   <div class="qh-result">
     \[
-    \hat{\mathcal H}_0=-\frac{\hbar\omega_{01}}{2}\,\sigma_z
+    \hat{\mathcal H}_0=-\frac{\hbar\omega_{01}}{2}\,\hat\sigma_z
     \]
   </div>
   </div>
@@ -8794,13 +8795,13 @@ html {
   \Delta\hat{\mathcal H}(t)
   =\delta\lambda(t)\begin{pmatrix}O_{00}&O;_{01}\\O_{10}&O;_{11}\end{pmatrix}
   =\delta\lambda(t)\left[\frac{O_{00}+O_{11}}{2}\,\mathbb I
-  -\frac{O_{11}-O_{00}}{2}\,\sigma_z
-  +\frac{O_{10}+O_{01}}{2}\,\sigma_x+\frac{O_{10}-O_{01}}{2i}\,\sigma_y\right]
+  -\frac{O_{11}-O_{00}}{2}\,\hat\sigma_z
+  +\frac{O_{10}+O_{01}}{2}\,\hat\sigma_x+\frac{O_{10}-O_{01}}{2i}\,\hat\sigma_y\right]
   \]
 
   \[
-  =\underbrace{-\frac{\hbar}{2}\,\delta\omega_{01}(t)\,\sigma_z}_{\Delta\hat{\mathcal H}_\parallel\ \text{(longitudinal)}}
-  +\underbrace{\delta\lambda(t)\left(\mathrm{Re}[O_{10}]\,\sigma_x+\mathrm{Im}[O_{10}]\,\sigma_y\right)}_{\Delta\hat{\mathcal H}_\perp\ \text{(transverse)}}
+  =\underbrace{-\frac{\hbar}{2}\,\delta\omega_{01}(t)\,\hat\sigma_z}_{\Delta\hat{\mathcal H}_\parallel\ \text{(longitudinal)}}
+  +\underbrace{\delta\lambda(t)\left(\mathrm{Re}[O_{10}]\,\hat\sigma_x+\mathrm{Im}[O_{10}]\,\hat\sigma_y\right)}_{\Delta\hat{\mathcal H}_\perp\ \text{(transverse)}}
   \]
 
   <div class="qh-key">
@@ -8823,10 +8824,10 @@ html {
                 \]
               </div>
               \[
-              \Delta\hat{\mathcal H}_\parallel=-\frac{\hbar}{2}\,\delta\omega_{01}(t)\,\sigma_z
+              \Delta\hat{\mathcal H}_\parallel=-\frac{\hbar}{2}\,\delta\omega_{01}(t)\,\hat\sigma_z
               \]
               \[
-              \hat{\mathcal H}_0+\Delta\hat{\mathcal H}_\parallel=-\frac{\hbar}{2}\left[\omega_{01}+\delta\omega_{01}(t)\right]\sigma_z
+              \hat{\mathcal H}_0+\Delta\hat{\mathcal H}_\parallel=-\frac{\hbar}{2}\left[\omega_{01}+\delta\omega_{01}(t)\right]\hat\sigma_z
               \]
               \[
               \langle0|\hat{\mathcal H}_0+\Delta\hat{\mathcal H}_\parallel|1\rangle=0\quad\Longrightarrow\quad|0\rangle\nleftrightarrow|1\rangle
@@ -9336,7 +9337,7 @@ html {
     <div id="qh-slide-root" class="qhs-root" hidden aria-hidden="true" data-qhs-course="PHYS598500"
         data-qhs-week="WEEK 4" data-qhs-no-click-advance="true"
         data-qhs-topic="Noise, Fluxonium, and Protected-Qubit Design"
-        data-qhs-title-suffix="QH-2026F v5 · Manual Slides">
+        data-qhs-title-suffix="PHYS598500 · Week 4">
         <header class="qhs-header">
             <a class="qhs-brand" href="main.html" aria-label="Return to the QH-2026F course overview">𝒊𝑁𝑆𝐼𝐺𝐻𝑇
                 𝒊ℏ</a>

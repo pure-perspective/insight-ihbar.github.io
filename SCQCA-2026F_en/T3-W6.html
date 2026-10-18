@@ -8676,8 +8676,8 @@
 </svg></figure>
                 </div>
                 <div class="w06-col">
-<p>Gate set \(\{\mathrm{CNOT},H,T\}\), with \(T=\mathrm{diag}(1,e^{i\frac{\pi}{4}})\). For each \(n\)-qubit unitary \(U\) and each \(\varepsilon>0\), can a finite circuit \(V\) of these gates give</p>
-<div class="v4-eq">\[\min_{\phi}\left\|U-e^{i\phi}V\right\|<\varepsilon\ ?\]</div>
+<p>Gate set \(\{\mathrm{CNOT},H,T\}\), with \(T=\mathrm{diag}(1,e^{i\frac{\pi}{4}})\). For each \(n\)-qubit unitary \(\hat U\) and each \(\varepsilon>0\), can a finite circuit \(\hat V\) of these gates give</p>
+<div class="v4-eq">\[\min_{\phi}\left\|\hat U-e^{i\phi}\hat V\right\|<\varepsilon\ ?\]</div>
 <p>Yes. This property is universality. The phase \(e^{i\phi}\) is a global phase and has no physical effect. Any entangling two-qubit gate can replace CNOT: the hardware uses CZ or iSWAP.</p>
                 </div>
             </div>
@@ -9130,8 +9130,8 @@ data-slide-class="v04 qh-deriv w06-page w06-pic-slide w06-pic-2d">
 <div class="v4-eq">\[\mathcal H=4E_{C1}n_1^2-E_{J1}\cos\varphi_1+4E_{C2}n_2^2-E_{J2}\cos\varphi_2+\mathcal H_c\]</div>
 <div class="v4-eq">\[E_{C1}=\frac{e^2\left(C_2+C_g\right)}{2D},\qquad E_{C2}=\frac{e^2\left(C_1+C_g\right)}{2D}\]</div>
 <div class="v4-eq">\[\mathcal H_c=4e^2\,\frac{C_g}{D}\,n_1n_2\]</div>
-<p>Use \(n=\tfrac{i}{2}\big(\tfrac{E_J}{2E_C}\big)^{\frac{1}{4}}(a^\dagger-a)\) and \(\hbar\omega_p=\sqrt{8E_JE_C}\):</p>
-<div class="v4-eq">\[\frac{\mathcal H_c}{\hbar}=-g\,(a_1^\dagger-a_1)(a_2^\dagger-a_2)\]</div>
+<p>Use \(\hat n=\tfrac{i}{2}\big(\tfrac{E_J}{2E_C}\big)^{\frac{1}{4}}(\hat a^\dagger-\hat a)\) and \(\hbar\omega_p=\sqrt{8E_JE_C}\):</p>
+<div class="v4-eq">\[\frac{\hat{\mathcal H}_c}{\hbar}=-g\,(\hat a_1^\dagger-\hat a_1)(\hat a_2^\dagger-\hat a_2)\]</div>
 <div class="v4-eq">\[g=\frac{C_g\sqrt{\omega_{p1}\,\omega_{p2}}}{2\sqrt{\left(C_1+C_g\right)\left(C_2+C_g\right)}}\]</div>
 <p>For \(C_g=0.32\) fF, \(C_1=C_2=80\) fF and \(\omega_p=2\pi\times5\) GHz, \(g\approx2\pi\times10\) MHz.</p>
                 </div>
@@ -9146,21 +9146,21 @@ data-slide-class="v04 qh-deriv w06-page w06-pic-slide w06-pic-2d">
             <div class="v4-two">
                 <div class="qh-step-host">
 <p>Each transmon is a ladder. The qubit frequencies are \(\omega_1=\omega_{p1}+\alpha_1\) and \(\omega_2=\omega_{p2}+\alpha_2\):</p>
-<div class="v4-eq">\[\frac{\mathcal H}{\hbar}=\omega_1a_1^\dagger a_1+\frac{\alpha_1}{2}a_1^\dagger a_1^\dagger a_1a_1+\omega_2a_2^\dagger a_2+\frac{\alpha_2}{2}a_2^\dagger a_2^\dagger a_2a_2+\frac{\mathcal H_c}{\hbar}\]</div>
+<div class="v4-eq">\[\frac{\hat{\mathcal H}}{\hbar}=\omega_1\hat a_1^\dagger \hat a_1+\frac{\alpha_1}{2}\hat a_1^\dagger \hat a_1^\dagger \hat a_1\hat a_1+\omega_2\hat a_2^\dagger \hat a_2+\frac{\alpha_2}{2}\hat a_2^\dagger \hat a_2^\dagger \hat a_2\hat a_2+\frac{\hat{\mathcal H}_c}{\hbar}\]</div>
 <p>The coupling capacitor gives:</p>
-<div class="v4-eq">\[\frac{\mathcal H_c}{\hbar}=-g\,(a_1^\dagger-a_1)(a_2^\dagger-a_2)\]</div>
-<div class="v4-eq">\[=g\,\big(a_1^\dagger a_2+a_1a_2^\dagger-a_1^\dagger a_2^\dagger-a_1a_2\big)\]</div>
+<div class="v4-eq">\[\frac{\hat{\mathcal H}_c}{\hbar}=-g\,(\hat a_1^\dagger-\hat a_1)(\hat a_2^\dagger-\hat a_2)\]</div>
+<div class="v4-eq">\[=g\,\big(\hat a_1^\dagger \hat a_2+\hat a_1\hat a_2^\dagger-\hat a_1^\dagger \hat a_2^\dagger-\hat a_1\hat a_2\big)\]</div>
 <p>Turn the frame of each transmon at its qubit frequency, \(\omega_1\) or \(\omega_2\):</p>
-<div class="v4-eq">\[U=\sum_{j,k}e^{-i(j\omega_1+k\omega_2)t}\,|jk\rangle\langle jk|,\qquad\mathcal H_{\rm rot}=U^\dagger\mathcal H U-i\hbar\,U^\dagger\dot U\]</div>
+<div class="v4-eq">\[\hat U=\sum_{j,k}e^{-i(j\omega_1+k\omega_2)t}\,|jk\rangle\langle jk|,\qquad\hat{\mathcal H}_{\rm rot}=\hat U^\dagger\hat{\mathcal H} \hat U-i\hbar\,\hat U^\dagger\dot{\hat U}\]</div>
                 </div>
                 <div class="qh-step-host">
 <p>Each operator gets its own phase:</p>
-<div class="v4-eq">\[U^\dagger a_1U=a_1\,e^{-i\omega_1t},\qquad U^\dagger a_2U=a_2\,e^{-i\omega_2t}\]</div>
-<div class="v4-eq">\[-i\hbar\,U^\dagger\dot U=-\hbar\,\omega_1a_1^\dagger a_1-\hbar\,\omega_2a_2^\dagger a_2\]</div>
+<div class="v4-eq">\[\hat U^\dagger \hat a_1\hat U=\hat a_1\,e^{-i\omega_1t},\qquad \hat U^\dagger \hat a_2\hat U=\hat a_2\,e^{-i\omega_2t}\]</div>
+<div class="v4-eq">\[-i\hbar\,\hat U^\dagger\dot{\hat U}=-\hbar\,\omega_1\hat a_1^\dagger \hat a_1-\hbar\,\omega_2\hat a_2^\dagger \hat a_2\]</div>
 <p>This cancels the \(\omega_1\) and \(\omega_2\) terms. The \(\alpha\) terms do not change. Keep all terms:</p>
-<div class="v4-eq">\[\begin{aligned}\frac{\mathcal H_{\rm rot}}{\hbar}&amp;=\frac{\alpha_1}{2}a_1^\dagger a_1^\dagger a_1a_1+\frac{\alpha_2}{2}a_2^\dagger a_2^\dagger a_2a_2+g\,\big(e^{i\Delta t}a_1^\dagger a_2+e^{-i\Delta t}a_1a_2^\dagger\big)\\&amp;\quad{}-g\,\big(e^{i(\omega_1+\omega_2)t}a_1^\dagger a_2^\dagger+e^{-i(\omega_1+\omega_2)t}a_1a_2\big)\end{aligned}\]</div>
+<div class="v4-eq">\[\begin{aligned}\frac{\hat{\mathcal H}_{\rm rot}}{\hbar}&amp;=\frac{\alpha_1}{2}\hat a_1^\dagger \hat a_1^\dagger \hat a_1\hat a_1+\frac{\alpha_2}{2}\hat a_2^\dagger \hat a_2^\dagger \hat a_2\hat a_2+g\,\big(e^{i\Delta t}\hat a_1^\dagger \hat a_2+e^{-i\Delta t}\hat a_1\hat a_2^\dagger\big)\\&amp;\quad{}-g\,\big(e^{i(\omega_1+\omega_2)t}\hat a_1^\dagger \hat a_2^\dagger+e^{-i(\omega_1+\omega_2)t}\hat a_1\hat a_2\big)\end{aligned}\]</div>
 <p>\(\Delta\equiv\omega_1-\omega_2\) is slow. \(\omega_1+\omega_2\approx2\pi\times10\) GHz is fast, and its average is zero (RWA):</p>
-<div class="v4-eq">\[\begin{aligned}\frac{\mathcal H_{\rm rot}}{\hbar}&amp;\overset{\rm RWA}{\simeq}\frac{\alpha_1}{2}a_1^\dagger a_1^\dagger a_1a_1+\frac{\alpha_2}{2}a_2^\dagger a_2^\dagger a_2a_2\\&amp;\quad{}+g\,\big(e^{i\Delta t}a_1^\dagger a_2+e^{-i\Delta t}a_1a_2^\dagger\big)\end{aligned}\]</div>
+<div class="v4-eq">\[\begin{aligned}\frac{\hat{\mathcal H}_{\rm rot}}{\hbar}&amp;\overset{\rm RWA}{\simeq}\frac{\alpha_1}{2}\hat a_1^\dagger \hat a_1^\dagger \hat a_1\hat a_1+\frac{\alpha_2}{2}\hat a_2^\dagger \hat a_2^\dagger \hat a_2\hat a_2\\&amp;\quad{}+g\,\big(e^{i\Delta t}\hat a_1^\dagger \hat a_2+e^{-i\Delta t}\hat a_1\hat a_2^\dagger\big)\end{aligned}\]</div>
                 </div>
             </div>
             <!-- Teaching note: 每顆 transmon 就是 W5 的能階梯（第 j 階在 jω01 + (α/2)j(j−1)），ω1、ω2 是兩顆各自的 0→1 頻率 = ω_p + α（W5「The rotating frame」頁：(a+a†)⁴ 的對角部分讓 ω01 = ω_p − E_C/ħ；p29 的 g 用的是 ω_p，因為它來自 n 的零點起伏），旋轉座標轉在 ω1、ω2，不是 ω_p；α1、α2 各自的非簡諧性。a†a†aa 的對角元 = j(j−1)；不用 n 當激發數，因為 W5 的 n 是電荷數。𝓗_c 來自 B 段的耦合電容。旋轉座標（左下）：兩顆各轉自己的頻率（與 W5 一樣是 U†𝓗U − iħU†U̇）。右邊：U†a_jU = a_j e^{−iω_j t}；−iħU†U̇ 把 ω1、ω2 項消掉，α 項與 U 對易不動。先保留全部四個耦合項：a1†a2、a1a2† 帶 e^{±iΔt}（交換一個激發，慢）；a1†a2†、a1a2 帶 e^{±i(ω1+ω2)t}（同時產生/消滅兩個激發，約 10 GHz，快），最後才做 RWA 丟掉快項。對角只剩 α。 -->
@@ -9170,7 +9170,7 @@ data-slide-class="v04 qh-deriv w06-page w06-pic-slide w06-pic-2d">
             <h3>Levels 0–2: one matrix for the week</h3>
             <div class="qh-step-host">
 <p>This matrix uses levels 0–2 of each transmon. Blue shows levels 0 and 1 (the 4×4). Orange shows the couplings of level 2: \(|11\rangle\) has two partners, \(|20\rangle\) and \(|02\rangle\).</p>
-<div class="v4-eq">\[\frac{\mathcal H_{\rm rot}}{\hbar}:\quad\begin{array}{r|cccc|cc|ccc}&amp;{\color{#6b6472}{|00\rangle}}&amp;{\color{#6b6472}{|01\rangle}}&amp;{\color{#6b6472}{|10\rangle}}&amp;{\color{#6b6472}{|11\rangle}}&amp;{\color{#6b6472}{|20\rangle}}&amp;{\color{#6b6472}{|02\rangle}}&amp;{\color{#6b6472}{|21\rangle}}&amp;{\color{#6b6472}{|12\rangle}}&amp;{\color{#6b6472}{|22\rangle}}\\\hline{\color{#6b6472}{|00\rangle}}&amp;{\color{#355f9c}{0}}&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;\\{\color{#6b6472}{|01\rangle}}&amp;&amp;{\color{#355f9c}{0}}&amp;{\color{#355f9c}{g\,e^{-i\Delta t}}}&amp;&amp;&amp;&amp;&amp;&amp;\\{\color{#6b6472}{|10\rangle}}&amp;&amp;{\color{#355f9c}{g\,e^{i\Delta t}}}&amp;{\color{#355f9c}{0}}&amp;&amp;&amp;&amp;&amp;&amp;\\{\color{#6b6472}{|11\rangle}}&amp;&amp;&amp;&amp;{\color{#355f9c}{0}}&amp;{\color{#b5651d}{\sqrt2g\,e^{-i\Delta t}}}&amp;{\color{#b5651d}{\sqrt2g\,e^{i\Delta t}}}&amp;&amp;&amp;\\\hline{\color{#6b6472}{|20\rangle}}&amp;&amp;&amp;&amp;{\color{#b5651d}{\sqrt2g\,e^{i\Delta t}}}&amp;{\color{#b5651d}{\alpha_1}}&amp;&amp;&amp;&amp;\\{\color{#6b6472}{|02\rangle}}&amp;&amp;&amp;&amp;{\color{#b5651d}{\sqrt2g\,e^{-i\Delta t}}}&amp;&amp;{\color{#b5651d}{\alpha_2}}&amp;&amp;&amp;\\\hline{\color{#6b6472}{|21\rangle}}&amp;&amp;&amp;&amp;&amp;&amp;&amp;\alpha_1&amp;2g\,e^{i\Delta t}&amp;\\{\color{#6b6472}{|12\rangle}}&amp;&amp;&amp;&amp;&amp;&amp;&amp;2g\,e^{-i\Delta t}&amp;\alpha_2&amp;\\{\color{#6b6472}{|22\rangle}}&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;\alpha_1+\alpha_2\\\end{array}\]</div>
+<div class="v4-eq">\[\frac{\hat{\mathcal H}_{\rm rot}}{\hbar}:\quad\begin{array}{r|cccc|cc|ccc}&amp;{\color{#6b6472}{|00\rangle}}&amp;{\color{#6b6472}{|01\rangle}}&amp;{\color{#6b6472}{|10\rangle}}&amp;{\color{#6b6472}{|11\rangle}}&amp;{\color{#6b6472}{|20\rangle}}&amp;{\color{#6b6472}{|02\rangle}}&amp;{\color{#6b6472}{|21\rangle}}&amp;{\color{#6b6472}{|12\rangle}}&amp;{\color{#6b6472}{|22\rangle}}\\\hline{\color{#6b6472}{|00\rangle}}&amp;{\color{#355f9c}{0}}&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;\\{\color{#6b6472}{|01\rangle}}&amp;&amp;{\color{#355f9c}{0}}&amp;{\color{#355f9c}{g\,e^{-i\Delta t}}}&amp;&amp;&amp;&amp;&amp;&amp;\\{\color{#6b6472}{|10\rangle}}&amp;&amp;{\color{#355f9c}{g\,e^{i\Delta t}}}&amp;{\color{#355f9c}{0}}&amp;&amp;&amp;&amp;&amp;&amp;\\{\color{#6b6472}{|11\rangle}}&amp;&amp;&amp;&amp;{\color{#355f9c}{0}}&amp;{\color{#b5651d}{\sqrt2g\,e^{-i\Delta t}}}&amp;{\color{#b5651d}{\sqrt2g\,e^{i\Delta t}}}&amp;&amp;&amp;\\\hline{\color{#6b6472}{|20\rangle}}&amp;&amp;&amp;&amp;{\color{#b5651d}{\sqrt2g\,e^{i\Delta t}}}&amp;{\color{#b5651d}{\alpha_1}}&amp;&amp;&amp;&amp;\\{\color{#6b6472}{|02\rangle}}&amp;&amp;&amp;&amp;{\color{#b5651d}{\sqrt2g\,e^{-i\Delta t}}}&amp;&amp;{\color{#b5651d}{\alpha_2}}&amp;&amp;&amp;\\\hline{\color{#6b6472}{|21\rangle}}&amp;&amp;&amp;&amp;&amp;&amp;&amp;\alpha_1&amp;2g\,e^{i\Delta t}&amp;\\{\color{#6b6472}{|12\rangle}}&amp;&amp;&amp;&amp;&amp;&amp;&amp;2g\,e^{-i\Delta t}&amp;\alpha_2&amp;\\{\color{#6b6472}{|22\rangle}}&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;\alpha_1+\alpha_2\\\end{array}\]</div>
             </div>
             <!-- Teaching note: 基底 |jk⟩ = 第一顆在 j、第二顆在 k。順序：先四個計算態 |00⟩,|01⟩,|10⟩,|11⟩（藍，左上 4×4），再 |11⟩ 的兩個鄰居 |20⟩,|02⟩（橘；先 Q1 的第 2 階，和 |21⟩ 排在 |12⟩ 前同一個規則），最後 |21⟩,|12⟩,|22⟩（不碰計算態；v31 起 |21⟩ 排在 |12⟩ 前）。對角 = (α1/2)j(j−1) + (α2/2)k(k−1)。非對角：a1†a2 把 |j,k⟩ 送到 |j+1,k−1⟩，係數 √(j+1)√k · g e^{iΔt}：|01⟩→|10⟩ 是 g，|02⟩→|11⟩ 和 |11⟩→|20⟩ 是 √2g，|12⟩→|21⟩ 是 2g。激發總數 j+k 不變（RWA 之後）。|12⟩ 還連到 |03⟩、|21⟩ 連到 |30⟩、|22⟩ 連到 |13⟩,|31⟩（三階以上，未列）。 -->
         </section>
@@ -9202,7 +9202,7 @@ data-slide-class="v04 qh-deriv w06-page w06-pic-slide w06-pic-2d">
             <h3>Two levels each: the 4×4</h3>
             <div class="qh-step-host">
 <p>Use only levels 0 and 1 of each transmon. The result is a 4×4 matrix.</p>
-<div class="v4-eq">\[\frac{\mathcal H_{\rm rot}}{\hbar}\bigg|_{\text{levels 0, 1}}:\quad\begin{array}{r|cccc}&amp;{\color{#6b6472}{|00\rangle}}&amp;{\color{#6b6472}{|01\rangle}}&amp;{\color{#6b6472}{|10\rangle}}&amp;{\color{#6b6472}{|11\rangle}}\\\hline{\color{#6b6472}{|00\rangle}}&amp;{\color{#355f9c}{0}}&amp;0&amp;0&amp;0\\{\color{#6b6472}{|01\rangle}}&amp;0&amp;{\color{#355f9c}{0}}&amp;{\color{#355f9c}{g\,e^{-i\Delta t}}}&amp;0\\{\color{#6b6472}{|10\rangle}}&amp;0&amp;{\color{#355f9c}{g\,e^{i\Delta t}}}&amp;{\color{#355f9c}{0}}&amp;0\\{\color{#6b6472}{|11\rangle}}&amp;0&amp;0&amp;0&amp;{\color{#355f9c}{0}}\\\end{array}\]</div>
+<div class="v4-eq">\[\frac{\hat{\mathcal H}_{\rm rot}}{\hbar}\bigg|_{\text{levels 0, 1}}:\quad\begin{array}{r|cccc}&amp;{\color{#6b6472}{|00\rangle}}&amp;{\color{#6b6472}{|01\rangle}}&amp;{\color{#6b6472}{|10\rangle}}&amp;{\color{#6b6472}{|11\rangle}}\\\hline{\color{#6b6472}{|00\rangle}}&amp;{\color{#355f9c}{0}}&amp;0&amp;0&amp;0\\{\color{#6b6472}{|01\rangle}}&amp;0&amp;{\color{#355f9c}{0}}&amp;{\color{#355f9c}{g\,e^{-i\Delta t}}}&amp;0\\{\color{#6b6472}{|10\rangle}}&amp;0&amp;{\color{#355f9c}{g\,e^{i\Delta t}}}&amp;{\color{#355f9c}{0}}&amp;0\\{\color{#6b6472}{|11\rangle}}&amp;0&amp;0&amp;0&amp;{\color{#355f9c}{0}}\\\end{array}\]</div>
 <p>Only \(|01\rangle\) and \(|10\rangle\) have a coupling, \(g\,e^{\mp i\Delta t}\). The row and the column of \(|11\rangle\) are all 0. In the 4×4, \(|11\rangle\) has no partner.</p>
 <p>Turn both transmons at \(\omega_2\). Then the \(|01\rangle,|10\rangle\) block is constant, and \(\Delta\) is on the diagonal:</p>
 <div class="v4-eq">\[\begin{pmatrix}0&amp;g\\g&amp;\Delta\end{pmatrix}\]</div>
