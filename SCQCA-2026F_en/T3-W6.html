@@ -8535,6 +8535,11 @@
             max-height: 340px !important;
         }
     </style>
+    <style id="w06-pics-select">
+        /* 2026-10-20: the full-slide picture box lets the mouse through, so the slide text can be selected; the figures keep it */
+        #qh-slide-root .qhs-slide .w06-pics { pointer-events: none; }
+        #qh-slide-root .qhs-slide .w06-pics .w06-pic { pointer-events: auto; }
+    </style>
 </head>
 
 <body>
