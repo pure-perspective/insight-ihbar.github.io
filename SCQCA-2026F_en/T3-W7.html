@@ -8988,6 +8988,40 @@
         /* v83: ferrite circulator page, product photo on the right */
         #qh-slide-root .qhs-slide.w07-c-ferr .w06-pic { right: 0; left: auto; top: 149.6px; width: 652.0px; height: 434.9px; }
     </style>
+    <style id="w07-v89">
+        /* v89: the CPB page has no v04 class; give its title the v04 title style; 4 px less margin keeps the figures at their v88 size */
+        .qhs-slide.w07-v46-proto:not(.qhs-cover) .qhs-slide-title { font-size: 43px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.18; margin-bottom: 14px; }
+    </style>
+    <style id="w07-v90">
+        /* v90: resonator response page (one resonator, probe buttons, blobs), same look as the chip readout page; v93: drawing on the left, widget on the right */
+        .qhs-slide.w07rr-slide .w07rr { display: grid; grid-template-columns: 350px minmax(0, 1fr) 380px; grid-template-rows: auto 130px minmax(0, 1fr) auto; gap: 8px 14px; height: 560px; color: #28333b; user-select: none; }
+        .qhs-slide.w07rr-slide .w07rr-head { grid-column: 2 / 4; grid-row: 1; display: flex; align-items: center; justify-content: flex-end; gap: 6px; flex-wrap: wrap; min-height: 28px; }
+        .qhs-slide.w07rr-slide .w07rr-hint { color: #65508f; font: 700 14px Montserrat, sans-serif; margin: 0 4px 0 8px; }
+        .qhs-slide.w07rr-slide .w07rr-head button { border: 1px solid #b9abc9; border-radius: 7px; background: #fff; color: #4d3768; font: 600 13px/1 Montserrat, sans-serif; padding: 6px 9px; cursor: pointer; }
+        .qhs-slide.w07rr-slide .w07rr-noise { display: flex; align-items: center; gap: 8px; margin-right: auto; color: #65508f; font: 700 14px Montserrat, sans-serif; }
+        .qhs-slide.w07rr-slide .w07rr-noise input[type="range"] { width: 140px; accent-color: #355f9c; }
+        .qhs-slide.w07rr-slide .w07rr-noise b { min-width: 2.6em; color: #28333b; font-variant-numeric: tabular-nums; }
+        .qhs-slide.w07rr-slide .w07rr-head button.is-on { background: #4d3768; border-color: #4d3768; color: #fff; }
+        .qhs-slide.w07rr-slide .w07rr canvas { display: block; width: 100%; height: 100%; min-height: 0; border: 1px solid #ddd8e1; border-radius: 9px; background: #fff; }
+        .qhs-slide.w07rr-slide .w07rr canvas[data-w07rr-plot="scope"] { grid-column: 2 / 4; grid-row: 2; }
+        .qhs-slide.w07rr-slide .w07rr canvas[data-w07rr-plot="s21"] { grid-column: 2; grid-row: 3; }
+        .qhs-slide.w07rr-slide .w07rr canvas[data-w07rr-plot="iq"] { grid-column: 3; grid-row: 3; }
+        #qh-slide-root .qhs-slide.w07rr-slide p.w07rr-readout { grid-column: 2 / 4; grid-row: 4; margin: 0 !important; font-size: 15px !important; line-height: 1.35 !important; color: #3f3946; height: 2.75em; overflow: hidden; }
+        .qhs-slide.w07rr-slide figure.w07rr-draw { grid-column: 1; grid-row: 1 / -1; margin: 0; min-height: 0; display: flex; align-items: center; justify-content: center; }
+        .qhs-slide.w07rr-slide figure.w07rr-draw svg { display: block; width: 100%; height: 100%; }
+    </style>
+    <style id="w07-v94">
+        /* v94: diamond level diagram for the dispersive shift, with the resonator and the qubit point of view below */
+        .qhs-slide.w07-diamond .w07-dia-top { display: flex; justify-content: center; margin: -6px 0 6px; }
+        .qhs-slide.w07-diamond figure.w07-dia-fig { margin: 0; width: 440px; }
+        .qhs-slide.w07-diamond figure.w07-dia-fig svg { display: block; width: 100%; height: auto; }
+        #qh-slide-root .qhs-slide.w07-diamond p.w07-pov { font-weight: 700 !important; margin-bottom: 4px !important; }
+        #qh-slide-root .qhs-slide.w07-diamond p.w07-pov-r { color: #65508f !important; }
+        #qh-slide-root .qhs-slide.w07-diamond p.w07-pov-q { color: #25827a !important; }
+        .qhs-slide.w07-diamond .w07-pov-row { display: grid; grid-template-columns: 270px minmax(0, 1fr); gap: 12px; align-items: center; }
+        #qh-slide-root .qhs-slide.w07-diamond figure.w07-pov-fig { margin: 0 !important; }
+        #qh-slide-root .qhs-slide.w07-diamond figure.w07-pov-fig img { display: block; width: 100% !important; height: auto !important; max-width: none !important; max-height: none !important; margin: 0 !important; border: 0 !important; box-shadow: none !important; }
+    </style>
 </head>
 
 <body>
@@ -8999,6 +9033,35 @@
                 <p class="theme-label">PHYS598500 · Week 7</p>
                 <h2>Qubit Readout</h2>
             </div>
+        </section>
+        <section data-manual-slide="" data-auto-fit="false" data-title="Overview of qubit readout"
+            data-slide-class="v04 qh-deriv w07-page w07-intro">
+            <h3>Overview of qubit readout</h3>
+            <div class="v4-two">
+                <div class="qh-step-host">
+<div class="qh-reveal-item">
+<p>Qubit readout is difficult:</p>
+<p><b>Small signal.</b> About 10 photons leave the resonator: approximately \(6\times10^{-16}\) W, or −122 dBm. The first amplifier must add almost no noise.</p>
+<p><b>Short time.</b> The readout must stop in a few hundred ns. This is much shorter than \(T_1\). One QEC cycle is approximately 1 μs.</p>
+<p><b>No change to the qubit.</b> Too many photons in the resonator cause qubit transitions. A resonator that leaks fast lets the qubit decay into the line (Purcell decay).</p>
+<p>A faster and clearer readout needs more photons or a faster leak. Both disturb the qubit.</p>
+</div>
+                </div>
+                <div class="qh-step-host">
+<div class="qh-reveal-item">
+<p><b>Full readout:</b> For example, projective readout. It gives the value of each qubit, 0 or 1. Each qubit is then in that state.</p>
+<p><b>Partial readout:</b> For example, parity readout. It gives only “same”, \(|00\rangle\) or \(|11\rangle\), or “different”, \(|01\rangle\) or \(|10\rangle\). A superposition inside each pair stays.</p>
+</div>
+<div class="qh-reveal-item">
+<p><b>Demolition.</b> After the result 1, the qubit is no longer in \(|1\rangle\). Example: the CPB readout makes the qubit decay. A QND readout gives the same result again.</p>
+</div>
+                </div>
+            </div>
+            <!-- Teaching note: v92（老師建議開頭引言：quantum readout 很難；weak and strong (projective)；demolition：read 時會不會改變狀態；可不可以多次量測。使用者同意「full readout vs parity（partial）readout」的說法和 1–3 點內容，「放在p2前一頁當第二頁」）。
+左欄，讀取為什麼難：(1) 訊號小：10 顆光子以 κ = 2π×2 MHz 漏出，P = n̄ħω_rκ = 10 × (1.05×10⁻³⁴ × 2π×7×10⁹ J) × 2π×2×10⁶ s⁻¹ ≈ 5.8×10⁻¹⁶ W ≈ −122 dBm（和 p14「Quantum limit of the added noise」的 6×10⁻¹⁶ W 同一個數）；第一級放大器要接近量子極限（Amplifiers 那一節）。(2) 要快：讀取幾百 ns，遠短於 T₁；QEC 一輪約 1 μs（Pipelined stabilizer measurement 那頁）。(3) 不能改變 qubit：光子太多 → 接近 N_crit 時的躍遷（Transitions and backaction 那一節）；κ 大 → Purcell decay（Purcell filter 那一節）。要讀得快、讀得清楚，就要更多光子或更大的 κ，兩者都會擾動 qubit。
+右欄：Strong（projective）：一次就分得出 0 或 1，兩團分開遠大於團寬，讀完 qubit 在讀到的態。Weak：一次只拿到一點資訊，態只被改一點，要平均很多次才知道 ⟨σ̂_z⟩。例子：光子很少或讀取很短（兩團重疊；p30 把 noise 拉大可示範）；早期沒有 JPA 時 dispersive readout 每一次都是 weak，只能平均；比喻：磁場很弱的 Stern–Gerlach，上下落點重疊，一顆原子只給一點提示；實驗：K. W. Murch et al., Nature 502, 211 (2013)，很少光子的 weak measurement，看到 qubit 的態一點一點被拉向 |0⟩ 或 |1⟩。
+Full 與 parity（partial）：老師說的「像量 parity 那種」。只問兩顆一樣或不一樣（Ẑ₁Ẑ₂）。|+⟩|+⟩ 量到偶 → (|00⟩ + |11⟩)/√2，量到奇 → (|01⟩ + |10⟩)/√2：只拿到 1 bit，每一顆的值仍然不知道，同一組裡的疊加保留（量完得到 Bell 態）；全讀則只剩四個乘積態之一。比喻：只知道兩枚硬幣同一面，不知道正或反。實驗：光子數 parity，L. Sun et al., Nature 511, 444 (2014)：每顆光子讓 qubit 移 2χ（Photon-number splitting 那頁），Ramsey π/2 – 等 π/(2|χ|) – π/2，相位 nπ，偶數回 |0⟩、奇數到 |1⟩，讀 qubit 得 parity 不得 n，重複量測追蹤光子一顆一顆漏掉；用量測做糾纏：D. Ristè et al., Nature 502, 350 (2013)。QEC 的 stabilizer 量測就是 parity（Pipelined stabilizer measurement 那頁）。注意名詞：論文裡的 weak measurement 通常指每次資訊少（兩團重疊，QND 頁 Krantz Fig. 23 的 weak 就是這個），parity 量測通常叫 partial / joint measurement，對 parity 本身是 projective；共同點是量得少、擾動少，所以頁面上分成兩項寫。
+Demolition：量測一定讓疊加塌縮，那是量測本身，不算 demolition；demolition 是讀到 1 之後 qubit 已經不在 |1⟩。例子：CPB（Destructive readout of the CPB 那頁，準粒子穿隧讓 qubit 衰減）、光偵測器把光子吸收。Dispersive readout 理想上 QND，但讀取中的 T₁、Purcell、量測引發的躍遷帶來一部分 demolition。多次量測：QND 則連讀兩次結果一樣（QND fidelity 1 − P(1|0) − P(0|1) 就是連續兩次讀取量的）；parity 也可以一直重複量，parity 翻了就知道出錯。 v93（使用者「右半邊要動畫」「同時跳出 Full readout: For example, Projective readout / Partial readout: For example, Parity readout」「不要講 Weak readout」）：右欄分兩步出現，第一步 Full 和 Partial 一起，第二步 Demolition；Weak readout 那一項整段拿掉（上面 Weak 的例子只留在註解裡）。左欄整欄是第一步（進頁就顯示），右欄 Full + Partial 第二步、Demolition 第三步。 v94（使用者「不要說One shot」）：Full readout 改成「It gives the value of each qubit, 0 or 1. Each qubit is then in that state.」，和 Partial 那句「It gives only “same” … or “different” …」對稱。 -->
         </section>
         <section data-manual-slide="" data-auto-fit="false" data-title="Dispersive readout on a chip"
             data-slide-class="v04 qh-deriv w06m-slide w07m-slide">
@@ -9031,233 +9094,6 @@
             </div>
             <!-- Teaching note: 同一顆晶片，這次看讀取。選 Q1 的輸入 |0⟩ 或 |1⟩（|1⟩ 先打一個 X）。然後讀取音（頻率在 ω_r(0) 和 ω_r(1) 中間）從左邊的訊號源沿 read-out line 走，經過 Q1 的 read-out resonator：共振腔以 κ 充進光子（紫色框的亮度 = 光子數），出來的訊號（顏色 = qubit 態）經 circulator、JPA、HEMT 往上。示波器第三軌：透射訊號，淺色是另一個 qubit 態的訊號——振幅一樣（0.71），相位差 90°（+45° 對 −45°）。右下 IQ 平面：透射訊號從 (1, 0) 出發、繞到 S21(j)；音停了以後光子以 κ 漏光。積分整段 → 一個點；放大器雜訊讓每一次不同 → 一團。兩個輸入都跑過一次就看到兩團。理想模型：hanger 共振腔、無內部損耗、κ = 2|χ| = 2π×2 MHz、讀取 600 ns、穩態 10 個光子；χ < 0，所以 |1⟩ 的共振腔頻率較低。 -->
             <p class="v4-source">Device image: T. Wang <em>et al.</em>, Phys. Rev. Applied <b>11</b>, 034030 (2019), Fig. 1(b); it only shows the signal lines. Lecture animation of an ideal model: \(\kappa=2|\chi|=2\pi\times2\) MHz, probe between \(\omega_r(0)\) and \(\omega_r(1)\).</p>
-        </section>
-        <section data-manual-slide="" data-auto-fit="false" data-title="Dilution refrigerator wiring"
-            data-slide-class="v04 qh-deriv w06-page w06-pic-slide w07-pic w07-hist w07-c-kr3">
-            <h3>Dilution refrigerator wiring</h3>
-            <div class="w07-htext">
-<p>This dilution refrigerator has 25 drive, 25 flux, 4 read-out, 6 read-in and 5 pump lines (a).</p>
-<p>The lines pass five plates, from 35 K to 10 mK (b).</p>
-<p>The input lines have attenuators and filters. The output line has isolators and amplifiers.</p>
-            </div>
-            <div class="w06-pics">
-                <figure class="w06-pic w07-f1"><a href="../Image/Krinner2019-Fig3.jpg"><img src="../WebP/Krinner2019-Fig3.webp" alt="(a) Photograph of a Bluefors XLD dilution refrigerator with its cables installed; (b) schematic of the drive, flux, pump and output lines through the 35 K, 3 K, 900 mK, 100 mK and 10 mK stages, with attenuators, Eccosorb, low-pass and band-pass filters, a circulator, isolators, a directional coupler, a TWPA and a HEMT; a legend shows the symbols"></a></figure>
-            </div>
-            <!-- Teaching note: Krinner 2019 Fig. 3（已對原文）：Bluefors XLD，25 drive、25 flux、4 read-out、6 read-in、5 pump lines。(b) 五個溫度台：35 K、3 K（4K stage）、900 mK（still）、100 mK（cold plate, CP）、10 mK（mixing chamber, MXC）。Drive：3 K、100 mK、10 mK 各 −20 dB + Eccosorb；Flux：−10/−20 dB、LP、Eccosorb；Pump：−20、−10 dB + 20 dB directional coupler；Output：Sample → isolator → directional coupler（pump 加進來）→ TWPA → isolator → BP filter（10 mK）→ circulator（100 mK）→ NbTi 超導線 → HEMT（3 K）→ 室溫。 -->
-            <p class="v4-source">S. Krinner <em>et al.</em>, EPJ Quantum Technology <b>6</b>, 2 (2019), Fig. 3 (arXiv version).</p>
-        </section>
-        <section data-manual-slide="" data-auto-fit="false" data-title="Input-line attenuators and filters"
-            data-slide-class="v04 qh-deriv w06-page w06-pic-slide w07-pic w07-hist w07-c-kr4">
-            <h3>Input-line attenuators and filters</h3>
-            <div class="w07-htext">
-<p>An attenuator passes a small part of the signal and adds the noise of its own, cold temperature. 20 dB passes 1%.</p>
-<p>About 60 dB in total brings the thermal photons at the chip to about \(10^{-3}\).</p>
-<p>Copper plates hold the attenuators and keep them cold (a–d).</p>
-<p>An Eccosorb filter absorbs infrared light. Infrared light makes quasiparticles and shortens \(T_1\).</p>
-            </div>
-            <div class="w06-pics">
-                <figure class="w06-pic w07-f1"><a href="../Image/Krinner2019-Fig4.jpg"><img src="../WebP/Krinner2019-Fig4.webp" alt="(a) CAD drawing of a copper plate for attenuators; (b) photograph of such a plate with cables installed in the refrigerator; (c) the same plate used to clamp cables; (d) two-part copper adapter; (e) pre-assembly tool with copper plates and a vacuum flange; (f) vacuum flange with SMA adapters; (g) mounting the cable tree into the refrigerator"></a></figure>
-            </div>
-            <!-- Teaching note: Krinner 2019 Fig. 4 與 Sec. 2.2、3.2（已對原文）：20 dB 衰減器像一個分光鏡：透過 1% 入射訊號、加入 99% 衰減器所在溫度的黑體輻射 → 每一級把上一級的熱雜訊壓下去；4K 級約 20 dB 就夠（≈ 300 K / 3 K）。drive 線總共約 60 dB，MXC 的熱光子 ~10⁻³（熱光子會讓 qubit 熱激發、也會經 χ 讓 qubit 退相）。衰減器用銅板夾緊（黃銅螺絲冷縮比銅多，夾得更緊；低溫下接觸熱阻由夾持力決定）。IR 濾波：Eccosorb CR-124，放在 MXC 衰減器前。(e)(f)(g)：整束線先在外面組好再裝進冰箱。 -->
-            <p class="v4-source">S. Krinner <em>et al.</em>, EPJ Quantum Technology <b>6</b>, 2 (2019), Fig. 4 (arXiv version).</p>
-        </section>
-        <section data-manual-slide="" data-auto-fit="false" data-title="Readout setup and circulator"
-            data-slide-class="v04 qh-deriv w06-page w06-pic-slide w07-pic w07-hist w07-c-krantz w07-c-krcirc">
-            <h3>Readout setup and circulator</h3>
-            <div class="w07-htext">
-<figure class="w06-svgfig w07-circ-sym"><svg class="w06-svg" viewBox="0 0 470 230" role="img" aria-label="Circuit symbols: a circulator, a circle with a clockwise arrow and three ports 1, 2 and 3; an isolator, the same circulator with port 3 connected through a 50 ohm resistor to ground" fill="none" stroke="#302840" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-  <circle cx="110" cy="100" r="44" />
-  <path d="M20 100 H66 M154 100 H200 M110 144 V196" />
-  <path d="M87.5 113 A26 26 0 1 1 132.5 113" stroke-width="2.6" />
-  <path d="M129.5 118.2 L138.8 112 L130.2 107 Z" fill="#302840" stroke-width="1.5" />
-  <circle cx="345" cy="100" r="44" />
-  <path d="M255 100 H301 M389 100 H435 M345 144 V158 l10 4 l-20 8 l20 8 l-20 8 l20 8 l-10 4 V210 M329 210 H361 M335 217 H355 M341 224 H349" />
-  <path d="M322.5 113 A26 26 0 1 1 367.5 113" stroke-width="2.6" />
-  <path d="M364.5 118.2 L373.8 112 L365.2 107 Z" fill="#302840" stroke-width="1.5" />
-  <g fill="#302840" stroke="none" font-family="Montserrat, sans-serif" font-size="17" font-weight="600" text-anchor="middle">
-    <text x="30" y="88">1</text><text x="190" y="88">2</text><text x="124" y="190">3</text>
-    <text x="265" y="88">1</text><text x="425" y="88">2</text><text x="392" y="190">50 Ω</text>
-  </g>
-  <g fill="#5f4b8b" stroke="none" font-family="Montserrat, sans-serif" font-size="16" font-weight="600" text-anchor="middle">
-    <text x="110" y="34">circulator</text><text x="345" y="34">isolator</text>
-  </g>
-</svg></figure>
-<p>A circulator sends a wave from port 1 to port 2, from 2 to 3, and from 3 to 1.</p>
-<p>An isolator is a circulator with a 50 Ω load on port 3. A wave goes from 1 to 2. A wave from 2 goes into the load.</p>
-            </div>
-            <div class="w06-pics">
-                <figure class="w06-pic w07-f1"><a href="../Image/Krantz2019-Fig19.png"><img src="../WebP/Krantz2019-Fig19.webp" alt="(a) Simplified readout setup: signal creation with an AWG, an LO and an IQ mixer at room temperature; attenuators at 3 K and 10 mK; the chip with the qubit, the readout resonator and a Purcell filter; the reflected signal S11 goes through circulators to a parametric amplifier at 10 mK, then to amplifiers at 3 K and room temperature, and to an IQ mixer and a digitizer; (b) magnitude and phase of S11 against frequency for the qubit in |0&gt; and |1&gt;; (c) the two answers in the IQ plane"></a></figure>
-            </div>
-            <!-- Teaching note: 讀取的整條線（Krantz Fig. 19(a)）：室溫 AWG + LO + IQ mixer 做出讀取脈衝 → 冷卻台階上的衰減器（3 K、10 mK）→ 晶片：qubit、讀取共振腔、Purcell filter → 反射訊號 S11 經 circulator 到 10 mK 的參量放大器（Para. Amp.）→ 3 K HEMT → 室溫放大 → 同一個 LO 的 IQ mixer 降頻成 V_I、V_Q → 數位化。(b)(c) 是後面「Two dips」頁的東西（|0⟩、|1⟩ 兩個 dip、IQ 平面兩點）。 -->
-            <p class="v4-source">P. Krantz <em>et al.</em>, Appl. Phys. Rev. <b>6</b>, 021318 (2019), Fig. 19 (arXiv version).</p>
-        </section>
-        <section data-manual-slide="" data-auto-fit="false" data-title="Readout setup"
-            data-slide-class="v04 qh-deriv w06-page w06-pic-slide w07-pic w07-hist w07-c-syc3">
-            <h3>Readout setup</h3>
-            <div class="w06-pics">
-                <figure class="w06-pic w07-f1"><a href="../Image/Arute2019-FigS3.png"><img src="../WebP/Arute2019-FigS3.webp" alt="Cryogenic wiring of the Sycamore processor: control lines and readout lines from 300 K through 3 K to 10 mK, with attenuators, low-pass and band-pass filters, IR filters, bias tees, circulators, the IMPA with its pump and flux lines, and the cryo-LNA (HEMT) at 3 K on the readout output; a legend shows the symbols"></a></figure>
-            </div>
-            <!-- Teaching note: Sycamore 補充資料 Fig. S3（已對原文）：讀取有 9 條（Readout 9X，每條讀 6 顆）。Readout in：室溫 → 3 K、10 mK 各級衰減器（20 dB）與濾波器（band-pass、IR）→ circulator → 晶片。Readout out：晶片反射 → 一串 circulator（隔離器）→ IMPA（10 mK，有 pump 與 flux 線）→ IR filter → 3 K 的 cryo-LNA（Low Noise Factory HEMT）→ 室溫。控制線（Z、XY、coupler）也都有衰減器與低通/IR 濾波器。輸入線要衰減：擋掉高溫台階的熱雜訊；輸出線不能衰減：要用 circulator/隔離器讓訊號只往外走、擋住放大器往回打的雜訊。 -->
-            <p class="v4-source">F. Arute <em>et al.</em>, Nature <b>574</b>, 505 (2019), Supplementary Information, Fig. S3 (arXiv version).</p>
-        </section>
-        <section data-manual-slide="" data-auto-fit="false" data-title="Ferrite circulator"
-            data-slide-class="v04 qh-deriv w06-page w06-pic-slide w07-pic w07-hist w07-c-ferr">
-            <h3>Ferrite circulator</h3>
-            <div class="w07-htext">
-<p>Superconducting processors use ferrite circulators at 10 mK. Right: a 4–8 GHz cryogenic circulator, the type on the cold plate of a refrigerator.</p>
-<figure class="w06-svgfig w07-ferr-sym"><svg class="w06-svg" viewBox="0 0 600 345" role="img" aria-label="Exploded view of a junction circulator, from top to bottom: magnet, pole plate, ferrite disc, a Y-shaped conductor with three arms that are ports 1, 2 and 3, ferrite disc, pole plate, magnet; an arrow B shows the magnetic field through the stack" fill="none"><path d="M28 326 V20" stroke="#65508f" stroke-width="2.5" /><path d="M28 12 l-7 14 h14 z" fill="#65508f" /><text x="38" y="38" font-family="Cambria Math, Times New Roman, serif" font-style="italic" font-size="20" fill="#65508f">B</text><path d="M145 296 v26 a70 15 0 0 0 140 0 v-26" fill="#c9c3cf" stroke="#6b6472" stroke-width="2" /><ellipse cx="215" cy="296" rx="70" ry="15" fill="#c9c3cf" stroke="#6b6472" stroke-width="2" /><path d="M123 262 v6 a92 20 0 0 0 184 0 v-6" fill="#d9b38c" stroke="#8a6a4a" stroke-width="2" /><ellipse cx="215" cy="262" rx="92" ry="20" fill="#d9b38c" stroke="#8a6a4a" stroke-width="2" /><path d="M123 222 v12 a92 20 0 0 0 184 0 v-12" fill="#3a3540" stroke="#28333b" stroke-width="2" /><ellipse cx="215" cy="222" rx="92" ry="20" fill="#3a3540" stroke="#28333b" stroke-width="2" /><ellipse cx="215" cy="172" rx="52" ry="11" fill="#e2b04a" stroke="#9a7420" stroke-width="2" /><path d="M215 172 l-140 -12" stroke="#9a7420" stroke-width="9" stroke-linecap="round" /><path d="M215 172 l-140 -12" stroke="#e2b04a" stroke-width="5" stroke-linecap="round" /><path d="M215 172 l140 -12" stroke="#9a7420" stroke-width="9" stroke-linecap="round" /><path d="M215 172 l140 -12" stroke="#e2b04a" stroke-width="5" stroke-linecap="round" /><path d="M215 172 l100 34" stroke="#9a7420" stroke-width="9" stroke-linecap="round" /><path d="M215 172 l100 34" stroke="#e2b04a" stroke-width="5" stroke-linecap="round" /><path d="M123 118 v12 a92 20 0 0 0 184 0 v-12" fill="#3a3540" stroke="#28333b" stroke-width="2" /><ellipse cx="215" cy="118" rx="92" ry="20" fill="#3a3540" stroke="#28333b" stroke-width="2" /><path d="M123 82 v6 a92 20 0 0 0 184 0 v-6" fill="#d9b38c" stroke="#8a6a4a" stroke-width="2" /><ellipse cx="215" cy="82" rx="92" ry="20" fill="#d9b38c" stroke="#8a6a4a" stroke-width="2" /><path d="M145 30 v26 a70 15 0 0 0 140 0 v-26" fill="#c9c3cf" stroke="#6b6472" stroke-width="2" /><ellipse cx="215" cy="30" rx="70" ry="15" fill="#c9c3cf" stroke="#6b6472" stroke-width="2" /><text x="395" y="48" font-family="Montserrat, sans-serif" font-size="15" fill="#28333b">magnet</text><text x="395" y="90" font-family="Montserrat, sans-serif" font-size="15" fill="#28333b">pole plate</text><text x="395" y="129" font-family="Montserrat, sans-serif" font-size="15" fill="#28333b">ferrite disc</text><text x="395" y="177" font-family="Montserrat, sans-serif" font-size="15" fill="#28333b">Y-junction conductor</text><text x="395" y="233" font-family="Montserrat, sans-serif" font-size="15" fill="#28333b">ferrite disc</text><text x="395" y="270" font-family="Montserrat, sans-serif" font-size="15" fill="#28333b">pole plate</text><text x="395" y="314" font-family="Montserrat, sans-serif" font-size="15" fill="#28333b">magnet</text><text x="55" y="156" font-family="Montserrat, sans-serif" font-size="16" font-weight="700" fill="#5f4b8b">2</text><text x="351" y="150" font-family="Montserrat, sans-serif" font-size="16" font-weight="700" fill="#5f4b8b">3</text><text x="325" y="224" font-family="Montserrat, sans-serif" font-size="16" font-weight="700" fill="#5f4b8b">1</text></svg></figure>
-<p>Inside: a Y-shaped conductor between two ferrite discs. Magnets bias the ferrite. The wave from one port leaves only at the next port.</p>
-<p>The magnets need a magnetic shield near the qubits.</p>
-            </div>
-            <div class="w06-pics">
-                <figure class="w06-pic w07-f1"><a href="../Image/QuinStar-QCY-G0400801.png"><img src="../WebP/QuinStar-QCY-G0400801.webp" alt="A QuinStar QCY cryogenic circulator for 4 to 8 GHz: a small metal box with a copper body and a steel cover, with three SMA connectors, one on each of three sides"></a></figure>
-            </div>
-            <!-- Teaching note: v83：右邊換成 QuinStar QCY-G0400801（4–8 GHz 低溫 circulator，datasheet：插入損耗 0.15 dB、隔離 24 dB、回波損耗 24 dB，OFHC 銅外殼，SMA，0.51″×1.75″×1.51″，60 g，可選 μ-metal 或雙層磁屏蔽）——Krinner 2019 冰箱 cold plate 上用的就是 QCY 系列（QCY-060400CM00）（使用者「右半邊 做好是超導位元用的裝置」）。Geffroy 的配線圖拿掉。左邊分解圖是我畫的，使用者「暫且保留」。v80（使用者「放常用的鐵氧體照片和內部結構」）。右：Geffroy et al., arXiv:2608.18699 (2026) Fig. 5（CC BY 4.0），已對原文：MXC 上一顆 LNF 4–8 GHz circulator（另一埠接負載，正文稱 a single isolator），4 K 的 LNF-LNC4_8SG HEMT；照片上方金色盒子（IN/OUT、SMA）就是它。超導實驗常用的就是這種商用低溫鐵氧體 circulator/isolator（LNF、Quinstar；Krinner 的冰箱用 Quinstar QCY/QCC）。左圖自己畫的：junction circulator 的分解圖——上下兩片永久磁鐵與極片，兩片鐵氧體圓片夾著 Y 形中心導體，三臂即三個埠（Wikimedia Commons HYH532BZ1.5 拆解照的層次相同）。原理：磁化的鐵氧體讓兩個轉向相反的圓偏振模頻率不同，兩者疊加的駐波圖樣轉 30°，節點落在第三埠 → 從一埠進只從下一埠出。缺點：公分級、有磁鐵（要磁屏蔽）、每條線一顆，難以擴充 → 晶片上的 circulator（下一頁，研究中）。 -->
-            <p class="v4-source">Right: QuinStar Technology, QCY-G0400801 4–8 GHz cryogenic circulator, datasheet (2019). Left: drawing, not to scale.</p>
-        </section>
-        <section data-manual-slide="" data-auto-fit="false" data-title="On-chip circulator"
-            data-slide-class="v04 qh-deriv w06-page w06-pic-slide w07-pic w07-circ-nav">
-            <h3>On-chip circulator</h3>
-            <p class="w07-nav-note">A research device. Processors still use ferrite circulators.</p>
-            <div class="w06-pics">
-                <figure class="w06-pic w07-f1"><a href="../Image/Navarathna2023-Fig1.png"><img src="../WebP/Navarathna2023-Fig1.webp" alt="(a) lumped-element circuit of a passive on-chip circulator: a superconducting loop with three Josephson junctions E_J1, E_J2, E_J3 forms three islands (red, blue, green) with charges n_1, n_2, n_3; each island has a gate capacitor C_g to a voltage V_i and a coupling capacitor C_c to its port; flux Phi threads the loop; (b) false-coloured optical micrograph of the loop with the three islands, scale bar 10 micrometres"></a></figure>
-            </div>
-            <!-- Teaching note: v54。R. Navarathna et al., PRL 130, 037001 (2023) Fig. 1，已對原文 arXiv:2208.13339：被三個 Josephson junction 打斷的超導環 → 三個島，三個 gate 電荷偏壓，經交指電容接到三個埠，環中有外加磁通。只用 DC 控制（沒有 pump、沒有強磁場）就有非互易散射。(b) 假色光學顯微照片，三個島紅藍綠，junction 是兩層 Al 夾 AlOx 重疊。量測時每個埠仍接一個 ferrite circulator（論文 setup 圖）；準粒子穿隧會讓它在四個狀態間跳（HMM 分析）。 -->
-            <p class="v4-source">R. Navarathna <em>et al.</em>, Phys. Rev. Lett. <b>130</b>, 037001 (2023), Fig. 1 (arXiv version).</p>
-        </section>
-        <section data-manual-slide="" data-auto-fit="false" data-title="First amplifier at 10 mK"
-            data-slide-class="v04 qh-deriv w06-page w06-pic-slide w07-pic w07-hist w07-c-white2">
-            <h3>First amplifier at 10 mK</h3>
-            <div class="w07-htext">
-<p>The first amplifier is next to the chip, at 10 mK. It is a Josephson parametric amplifier: a JPA, an IMPA or a TWPA.</p>
-<p>It needs a pump tone. It adds almost only the quantum noise.</p>
-<p>The figure shows a TWPA in its box (a), its line with resonators (b) and its junctions (c).</p>
-            </div>
-            <div class="w06-pics">
-                <figure class="w06-pic w07-f1"><a href="../Image/White2015-Fig2.png"><img src="../WebP/White2015-Fig2.webp" alt="(a) Photograph of the packaged TWPA: a square chip in an aluminum box with copper circuit-board feed lines; (b) optical micrograph and circuit: a long junction line with quarter-wave resonators for phase matching; (c) scanning electron micrograph of the unit cell: three Josephson junctions and a shunt capacitor"></a></figure>
-            </div>
-            <!-- Teaching note: White 2015 Fig. 2（UCSB/Google 的 TWPA）：(a) 封裝照片，鋁盒 + 銅 PCB 饋線，晶片 6 mm 見方；(b) 光學顯微照片與電路：週期性插入 λ/4 共振腔做相位匹配；(c) SEM：單元 = 三個 Josephson junction + 並聯平行板電容。第一級放大器放在 mixing chamber（10 mK），緊接晶片後（Sycamore 用的是 IMPA，Fig. S3 的紅色三角）；需要 pump（JPA/IMPA 還要 flux bias）。為什麼第一級最重要、加的雜訊多少：後面「Why amplify」頁（Friis）。 -->
-            <p class="v4-source">T. C. White <em>et al.</em>, Appl. Phys. Lett. <b>106</b>, 242601 (2015), Fig. 2 (arXiv version).</p>
-        </section>
-        <section data-manual-slide="" data-auto-fit="false" data-title="Circulators and isolators in the refrigerator"
-            data-slide-class="v04 qh-deriv w06-page w06-pic-slide w07-pic w07-hist w07-c-circ">
-            <h3>Circulators and isolators in the refrigerator</h3>
-            <div class="w07-htext">
-<p>In the refrigerator: isolator arrays at 10 mK (a) and circulators at the cold plate (c), each with a magnetic shield.</p>
-            </div>
-            <div class="w06-pics">
-                <figure class="w06-pic w07-f1"><a href="../Image/Krinner2019-Fig6.jpg"><img src="../WebP/Krinner2019-Fig6.webp" alt="(a) Components on the mixing-chamber plate: isolator arrays, directional couplers and TWPAs; (b) four HEMT amplifiers on the 4 K plate; (c) four band-pass filters at the mixing chamber and four circulators at the cold plate"></a></figure>
-            </div>
-            <!-- Teaching note: v78：符號與前兩句搬到「Readout setup and circulator」頁左邊（使用者「移到 p07 左邊」）；這頁只留 Krinner 圖與冰箱裡的那句（(a)、(c) 是這張圖的子圖）。v59（使用者「p05你要放超導實驗常用的circulator 還有符號」）。左：自己畫的符號。circulator = 圓 + 順時針箭頭，1→2→3→1；isolator = circulator 的第 3 埠接 50 Ω 匹配負載到地（從 2 回來的波被負載吃掉）——Krantz Fig. 19、Arute Fig. S3 的讀取鏈用的就是這兩個符號。右：Krinner 2019 Fig. 6（EPJ QT，CC BY），已對原文 Sec. 3.4：輸出線上 CP 一個 circulator（Quinstar QCY-060400CM00）+ MXC 兩個 isolator（各屬一個四通道 isolator array，Quinstar QCC-075900XM000，3–12 GHz），合計 > 60 dB 隔離；兩者都有磁屏蔽（鐵氧體要磁鐵，磁場會干擾超導元件）。(a) MXC：isolator array → directional coupler → TWPA → isolator array；(b) 4K 的 HEMT；(c) MXC 的 bandpass filter、CP 的 circulator。這頁取代 v58 的 Commons 拆解照（那顆是 925–960 MHz 通訊用）；原 p11「Output line」刪掉，同一張圖改放這裡。 -->
-            <p class="v4-source">S. Krinner <em>et al.</em>, EPJ Quantum Technology <b>6</b>, 2 (2019), Fig. 6 (arXiv version).</p>
-        </section>
-        <section data-manual-slide="" data-auto-fit="false" data-title="Amplifiers"
-            data-slide-class="v04 qh-deriv " data-cover="">
-            <div class="theme-header">
-                <p class="theme-label">PHYS598500 · Week 7</p>
-                <h2>Amplifiers</h2>
-            </div>
-        </section>
-        <section data-manual-slide="" data-auto-fit="false" data-title="Quantum-limited amplification"
-            data-slide-class="v04 qh-deriv w06-page w06-pic-slide w07-pic w07-hist w07-c-k25">
-            <h3>Quantum-limited amplification</h3>
-            <div class="w07-htext">
-<p>An ideal amplifier would give \(\hat a_{\rm out}=\sqrt G\,\hat a_{\rm in}\). Then \(\big[\hat a_{\rm out},\hat a_{\rm out}^\dagger\big]=G\neq1\), and this output is not possible.</p>
-<p>The idler mode \(\hat b_{\rm in}\), in vacuum, must enter the output (b). Both quadratures gain \(\sqrt G\), and the idler vacuum adds half a photon of noise (c, blue):</p>
-<div class="w07-k25-eqs">
-<div class="v4-eq">\[\hat a_{\rm out}=\underbrace{\sqrt G\,\hat a_{\rm in}}_{\text{amplification}}+\underbrace{\sqrt{G-1}\,\hat b_{\rm in}^\dagger}_{\text{added idler noise}}\]</div>
-<div class="v4-eq">\[\big[\hat a_{\rm out},\hat a_{\rm out}^\dagger\big]=G\big[\hat a_{\rm in},\hat a_{\rm in}^\dagger\big]+(G-1)\big[\hat b_{\rm in}^\dagger,\hat b_{\rm in}\big]=G-(G-1)=1\]</div>
-</div>
-            </div>
-            <div class="w06-pics">
-                <figure class="w06-pic w07-f1"><a href="../Image/Krantz2019-Fig25.png"><img src="../WebP/Krantz2019-Fig25.webp" alt="(a) amplifier input: a coherent state in the I-Q plane with noise circles; (b) mixing processes: pump, signal and idler, with the idler input in vacuum; (c) amplifier output: both quadratures amplified by the square root of G, with the vacuum noise of the idler added as a blue ring"></a></figure>
-            </div>
-            <!-- Teaching note: v59：對易子驗算從下一頁「Why half a photon」搬到這裡，放在 a_out 右邊（使用者「這個放到p13」）。v20：使用者指出這頁的關鍵是 Krantz Eq. (181)–(183)（Caves theorem）：理想放大 a_out = √G a_in 給 [a_out, a_out†] = G ≠ 1，違反玻色對易關係，所以一定要把另一個模（idler b_in，處於真空）放進來：a_out = √G a_in + √(G−1) b_in†（放大 + 加上的 idler 雜訊）；G 大時至少加 ħω/2（半個光子），下一頁逐步算。使用者給的圖（DOI 10.1063/1.5089550 = Krantz 2019 APR），arXiv 版 Fig. 25，圖說：quantum-limited、phase-preserving 參量放大一個同調態；(a) 輸入中心 (⟨I_in⟩, ⟨Q_in⟩)，圓的半徑 = 雜訊；(b) signal 與 pump 經純色散非線性介質交互作用，idler 輸入是真空；(c) 兩個正交分量都放大 √G，理想情況下輸出多加半個光子的雜訊（藍）。下一頁推導為什麼是半個光子。 -->
-            <p class="v4-source">P. Krantz <em>et al.</em>, Appl. Phys. Rev. <b>6</b>, 021318 (2019), Fig. 25 (arXiv version).</p>
-        </section>
-        <section data-manual-slide="" data-auto-fit="false" data-title="Quantum limit of the added noise"
-            data-slide-class="v04 qh-deriv w07-page w07-c-noise">
-            <h3>Quantum limit of the added noise</h3>
-            <div class="v4-two w07-noise-two">
-                <div class="qh-step-host">
-<p>Ten photons that leave at \(\kappa=2\pi\times2\) MHz give about \(10^8\) photons per second. At 7 GHz, this is \(6\times10^{-16}\) W.</p>
-<p>Each amplifier adds noise. We count it as photons per mode:</p>
-<div class="v4-eq">\[N_{\rm add}=\frac{k_BT_N}{\hbar\omega}\]</div>
-<p>A HEMT at 4 K has \(T_N\approx2\)–4 K. This gives \(N_{\rm add}\approx6\)–12 at 7 GHz.</p>
-                </div>
-                <div class="qh-step-host">
-<p>Count the noise in photons. With \(\hat I=\frac12\big(\hat a+\hat a^\dagger\big)\) and \(\hat Q=\frac{1}{2i}\big(\hat a-\hat a^\dagger\big)\):</p>
-<div class="v4-eq">\[\hat I^2+\hat Q^2=\hat a^\dagger\hat a+\tfrac12\]</div>
-<p>In vacuum, \(\langle\Delta\hat I^2\rangle=\langle\Delta\hat Q^2\rangle=\frac14\): together \(\frac12\). This is the half photon of the vacuum.</p>
-<p>The pump makes signal and idler photons in pairs. The idler \(\hat b_{\rm in}\) is in vacuum:</p>
-<div class="v4-eq">\[\hat a_{\rm out}=\sqrt G\,\hat a_{\rm in}+\sqrt{G-1}\;\hat b_{\rm in}^\dagger\]</div>
-<div class="v4-eq">\[\langle\Delta\hat I_{\rm out}^2\rangle=G\,\langle\Delta\hat I_{\rm in}^2\rangle+(G-1)\cdot\frac14\ \xrightarrow{\ G\gg1\ }\ G\Big(\langle\Delta\hat I_{\rm in}^2\rangle+\frac14\Big)\]</div>
-<p>Divide by \(G\): the idler adds \(\frac14\) to each quadrature, \(\frac14+\frac14=\frac12\). The amplifier adds half a photon, \(N_{\rm add}=\frac12\). With the half photon of the input vacuum, the total is 1 photon.</p>
-                </div>
-            </div>
-            <!-- Teaching note: v82（使用者「可你這邊這樣寫 我很難解釋」）：右欄改成可以照順序講的鏈：(1) 雜訊以光子計：Î² + Q̂² = (a+a†)²/4 − (a−a†)²/4 = (aa† + a†a)/2 = a†a + ½，所以真空 ⟨ΔI²⟩ = ⟨ΔQ²⟩ = ¼，合計 ½ = 真空的半個光子（零點）。(2) pump 成對產生 signal、idler；idler 在真空：a_out = √G a_in + √(G−1) b_in†，I_out = √G I_a + √(G−1) I_b（b† 讓 Q 變號，變異數不變）→ ⟨ΔI_out²⟩ = G⟨ΔI_in²⟩ + (G−1)/4 ≈ G(⟨ΔI_in²⟩ + ¼)。(3) 除以 G 換算回輸入端：idler 給每個分量多 ¼，合計 ½ = 放大器加的半個光子 N_add = ½；輸入本身的真空 ½ 加上去，換算回輸入端的總雜訊 1 個光子（對照左欄 HEMT 的 6–12）。v67：重新排版成左右兩欄（使用者「p13 重新排版」）：左 = 古典放大器的雜訊（訊號功率、N_add、HEMT），右 = 量子極限的推導；字句不變，右欄最後兩句合併。前一頁「Phase-preserving amplification in the IQ plane」刪掉。v59：對易子那段搬到上一頁。保相（非簡併）放大：pump 成對產生 signal 與 idler 光子 → a_out = √G a_in + √(G−1) b_in†（Bogoliubov）。對易子：[a_out, a_out†] = G[a_in, a_in†] + (G−1)[b_in†, b_in] = G − (G−1) = 1；若沒有 idler 項就是 G ≠ 1，違反玻色對易關係 → 不可能有不加雜訊的保相放大器（Caves 1982）。正交分量 I = (a+a†)/2、Q = (a−a†)/2i，真空變異數各 1/4。I_out = √G I_a + √(G−1) I_b、Q_out = √G Q_a − √(G−1) Q_b，所以 ⟨ΔI_out²⟩ = G⟨ΔI_in²⟩ + (G−1)/4 ≈ G(⟨ΔI_in²⟩ + 1/4)（Krantz Fig. 25(c) 的 √(G⟨ΔI_in² + 1/4⟩)）。換算回輸入端：每個分量多 1/4，兩個合計 1/2 光子 = 上面 N_add 的量子極限 1/2。
-                 v52：上面一列 = 原「Why amplify」頁的左半（使用者：「p11右半邊去掉,剩下移去跟p14合併」；Friis 那半拿掉）。訊號：10 個光子 × κ ≈ 1.3×10⁸ 光子/秒 × ħω（7 GHz，4.6×10⁻²⁴ J）≈ 6×10⁻¹⁶ W（−122 dBm）。放大器加的雜訊以「每模幾個光子」計：N_add = k_B T_N/ħω；HEMT T_N 2–4 K、7 GHz 時 ħω/k_B = 0.34 K → 6–12 個光子。量子極限（保留兩個正交分量）½ 光子（Caves）。 -->
-            <p class="v4-source">C. M. Caves, Phys. Rev. D <b>26</b>, 1817 (1982).</p>
-        </section>
-        <section data-manual-slide="" data-auto-fit="false" data-title="Current-pumped and flux-pumped JPA"
-            data-slide-class="v04 qh-deriv w06-page w06-pic-slide w07-pic w07-hist w07-c-k27">
-            <h3>Current-pumped and flux-pumped JPA</h3>
-            <div class="w07-htext">
-<p>A JPA is a resonator that ends in a SQUID (a). The SQUID gives the nonlinearity.</p>
-<p>Current pump (b): \(\omega_{\rm pump}\approx\omega_a\) (\(\omega_p\), \(\omega_r\) in the figure). Two pump photons give a signal photon and an idler photon: \(2\omega_{\rm pump}=\omega_s+\omega_i\).</p>
-<p>Flux pump (c): a flux line changes the SQUID inductance at \(\omega_{\rm pump}\approx2\omega_a\). One pump photon gives a signal photon and an idler photon: \(\omega_{\rm pump}=\omega_s+\omega_i\).</p>
-<p>The flux pump is far from the signal frequency. It is easy to filter.</p>
-            </div>
-            <div class="w06-pics">
-                <figure class="w06-pic w07-f1"><a href="../Image/Krantz2019-Fig27.png"><img src="../WebP/Krantz2019-Fig27.webp" alt="(a) circuit of a Josephson parametric amplifier: a quarter-wave resonator shorted to ground by a SQUID; (b) current pumping, four-wave mixing with the pump near the resonance; (c) flux pumping through a separate flux line, three-wave mixing with the pump near twice the resonance"></a></figure>
-            </div>
-            <!-- Teaching note: Krantz Fig. 27（已對原文）：(a) λ/4 共振腔（藍，集總元件）經 SQUID（橘）接地，SQUID 給 Kerr 非線性。(b) 電流 pump：ω_p ≈ ω_r，四波混頻 2ω_p = ω_s + ω_i（Duffing，H = ω_r c†c + K c†c†cc）。(c) 磁通 pump：用另一條快 flux 線在 Φ_dc 附近調 Φ_ac，三波混頻 ω_p = ω_s + ω_i，ω_p ≈ 2ω_r（Yamamoto 2008 等）。磁通 pump 離訊號頻率遠，容易濾掉、不會飽和後面的放大器。本 deck 前一頁把放大器共振腔叫 ω_a（ω_r 已是讀取共振腔），圖裡的 ω_r、ω_p 分別是 ω_a、ω_pump。 -->
-            <p class="v4-source">P. Krantz <em>et al.</em>, Appl. Phys. Rev. <b>6</b>, 021318 (2019), Fig. 27 (arXiv version).</p>
-        </section>
-        <section data-manual-slide="" data-auto-fit="false" data-title="Impedance-matched parametric amplifier (IMPA)"
-            data-slide-class="v04 qh-deriv w06-page w06-pic-slide w07-pic w07-hist w07-c-imp">
-            <h3>Impedance-matched parametric amplifier (IMPA)</h3>
-            <div class="w07-htext">
-<p>A tapered line, 50 Ω to 15 Ω, couples a flux-pumped JPA strongly to the 50 Ω line (a).</p>
-<p>The band is up to 700 MHz, near the quantum limit. A JPA with \(Q=10\) has only about 60 MHz.</p>
-<p>Sycamore uses IMPAs as its first amplifiers.</p>
-            </div>
-            <div class="w06-pics">
-                <figure class="w06-pic w07-f1"><a href="../Image/Mutus2014-Fig1.png"><img src="../WebP/Mutus2014-Fig1.webp" alt="(a) circuit of the IMPA: a SQUID-based LC circuit with bias and pump, coupled to the circulator through a tapered line from 50 to 15 ohm whose profile is shown in the inset; (b) photograph of the 3 mm chip and micrographs of the tapered line at 40, 25 and 15 ohm"></a></figure>
-            </div>
-            <!-- Teaching note: Mutus 2014（UCSB/Google）Fig. 1，已對原文 arXiv:1401.3799：(a) 非線性 LC（SQUID）經漸變傳輸線（50 Ω → 15 Ω，20 mm 長的 CPW 加 2 μm 寬的 crossover，密度越大阻抗越低，見右邊顯微照片）接到 50 Ω；I_bias 調 SQUID 電感、ω_p 是磁通 pump（「pumpistor」模型 = flux driven SQUID）。(b) 3 mm × 3 mm 晶片。強耦合 → 頻寬到 700 MHz、平均飽和 −108 dBm（最高 −103 dBm）、增益 > 15 dB、接近量子極限；一般 Q = 10 的 JPA 只有 60 MHz（Fig. 2）。Sycamore 補充資料：mixing chamber 上的第一級是 IMPA。 -->
-            <p class="v4-source">J. Y. Mutus <em>et al.</em>, Appl. Phys. Lett. <b>104</b>, 263513 (2014), Fig. 1 (arXiv version).</p>
-        </section>
-        <section data-manual-slide="" data-auto-fit="false" data-title="SNAIL parametric amplifier"
-            data-slide-class="v04 qh-deriv w06-page w06-pic-slide w07-pic w07-hist w07-c-snl">
-            <h3>SNAIL parametric amplifier</h3>
-            <div class="w07-htext">
-<p>A SNAIL is a loop with three large junctions and one small junction (c). With flux, its energy has a \(\varphi^3\) term.</p>
-<p>The \(\varphi^3\) term gives three-wave mixing: \(\omega_{\rm pump}=\omega_s+\omega_i\), with \(\omega_{\rm pump}\approx2\omega_a\).</p>
-<p>An array of 20 SNAILs (b) lets the amplifier take more power. At 20 dB gain, the 1 dB compression point is −102 to −112 dBm.</p>
-<p>The band is tunable over 1 GHz, with quantum-limited noise.</p>
-            </div>
-            <div class="w06-pics">
-                <figure class="w06-pic w07-f1"><a href="../Image/Frattini2018-Fig1.png"><img src="../WebP/Frattini2018-Fig1.webp" alt="(a) optical image of the SNAIL parametric amplifier on a microstrip line; (b) array of 20 SNAILs; (c) electron micrograph of one SNAIL with three large junctions and one small junction; (d) circuit model with the SNAIL array inside a half-wave microstrip resonator coupled through C_c"></a></figure>
-            </div>
-            <!-- Teaching note: Frattini 2018（Yale）Fig. 1，已對原文 arXiv:1806.06093：SNAIL = 三個大 junction（L_J）與一個小 junction（L_J/α）組成的環；加磁通後位能不對稱 → 有三次項（三波混頻）與可調的四次項。M = 20 個 SNAIL 串在 λ/2 微帶共振腔中央（(a)(b)(d)），κ 由 C_c 決定。pump 在 ω_p ≈ 2ω_a（Fig. 3）。串很多個 SNAIL 讓每個 junction 分到的相位小 → 飽和功率高：20 dB 增益時 P_−1dB = −102 到 −112 dBm，整個 1 GHz 可調頻寬內都如此，雜訊維持量子極限。 -->
-            <p class="v4-source">N. E. Frattini <em>et al.</em>, Phys. Rev. Applied <b>10</b>, 054020 (2018), Fig. 1 (arXiv version).</p>
-        </section>
-        <section data-manual-slide="" data-auto-fit="false" data-title="Traveling-wave parametric amplifier (TWPA)"
-            data-slide-class="v04 qh-deriv w06-page w06-pic-slide w07-pic w07-hist w07-c-twpa">
-            <h3>Traveling-wave parametric amplifier (TWPA)</h3>
-            <div class="w07-htext">
-<p>A TWPA is a transmission line. Each cell has a junction \(L_J\) in the line and a capacitor \(C\) to ground (left, a).</p>
-<p>The signal gains a little in each cell as it travels with the pump (left, b).</p>
-<p>LC resonators (red) set the phase of the pump. Then the gain is about 20 dB over several GHz (left, c, d).</p>
-<p>Right: a chain of SQUIDs under a top ground. The SQUID height changes periodically. This makes a gap (d). The band is 3 GHz, and the noise is near the quantum limit.</p>
-            </div>
-            <div class="w06-pics">
-                <figure class="w06-pic w07-f1"><a href="../Image/Krantz2019-Fig28.png"><img src="../WebP/Krantz2019-Fig28.webp" alt="(a) circuit of a Josephson traveling wave parametric amplifier: unit cells with a junction in series and a capacitor to ground, with resonant phase-matching LC circuits; (b) the signal grows along the line; (c) gain against frequency with and without resonant phase matching; (d) dispersion relation with a stop band at the resonator frequency"></a></figure>
-                <figure class="w06-pic w07-f2"><a href="../Image/Planat2020-Fig1.png"><img src="../WebP/Planat2020-Fig1.webp" alt="(a) schematic of the photonic-crystal SQUID traveling wave amplifier on silicon under an alumina layer and a copper top ground, with an optical picture of two periods of the SQUID array; (b) electrical sketch with modulated unit cells; (c) picture of the sample in its copper box; (d) calculated dispersion relation with a photonic gap"></a></figure>
-            </div>
-            <!-- Teaching note: v59：原 p19「TWPA: the circuit」與 p20「A TWPA made of SQUIDs」合併（使用者「TWPA兩頁可以合併」）。左 Krantz Fig. 28（圖由 Kevin O’Brien 提供，已對原文）：(a) 每個單元：串聯 junction L_J（橘）+ 對地電容 C（藍）；紅色 LC 共振腔做 resonant phase matching（RPM）。(b) 訊號沿線逐格放大。(c) 有 RPM 時增益約 20 dB、頻寬數 GHz；沒有時只有約 10 dB、窄。(d) LC 共振腔在其共振頻率打開 stop band，pump 放在附近可調波向量達成相位匹配。右 Planat 2020（Grenoble，Roch 組）Fig. 1，已對原文 arXiv:1907.10158：SQUID 陣列在矽上，覆蓋薄氧化鋁與厚銅頂層地；只調 SQUID 高度 → 光子晶體，色散在約 7 GHz 有 gap（d），用來相位匹配；線圈加磁通可原位調；3 GHz 頻寬、1 dB 壓縮 −102 dBm、雜訊接近量子極限。 -->
-            <p class="v4-source">Left: P. Krantz <em>et al.</em>, Appl. Phys. Rev. <b>6</b>, 021318 (2019), Fig. 28. Right: L. Planat <em>et al.</em>, Phys. Rev. X <b>10</b>, 021021 (2020), Fig. 1 (arXiv versions).</p>
         </section>
         <section data-manual-slide="" data-auto-fit="false" data-title="Measurement"
             data-slide-class="v04 qh-deriv " data-cover="">
@@ -9404,6 +9240,55 @@
             </div>
             <!-- Teaching note: v73：「the qubit and the resonator do not exchange energy. This is the dispersive regime.」從刪掉的「Principle of dispersive readout」頁搬來（使用者「可以直接放在 p25」「p28 可以刪」）。那頁其他內容（χ < 0 → ω_r(1) 在 ω_r(0) 下方、讀取音遠離 ω01 不被吸收、相位帶著 qubit 狀態、IQ 點、弱音、頻率示意圖）不再出現在頁面上。v72：補一句與兩顆 transmon 的 ζ 的關係（使用者同意）。ζ = E11 − E10 − E01 + E00 = 2χ 的定義完全相同；二階微擾：E10 +g²/Δ、E01 −g²/Δ、E11 −2g²/(Δ+α1) + 2g²/(Δ−α2)（|1,1⟩ 接 |2,0⟩ 距離 −(Δ+α1)、接 |0,2⟩ 距離 Δ−α2，各 √2g）→ ζ ≈ 2g²(α1+α2)/[(Δ+α1)(Δ−α2)]；α2 = 0 → 2g²α/[Δ(Δ+α)] = 2χ。上週只用數值本徵值算 ζ，這個近似式第一次出現。v64（使用者「這三頁我對不起來」）：所有 E_{j,n} 都是上一頁矩陣（拿掉 (j+n)ω_r 之後）的本徵值，逐 block 二階微擾：位移 = Σ c²/(E_自己 − E_對方)。|1,0⟩：g²/(Δ−0)；|0,1⟩：g²/(0−Δ)；|1,1⟩：2g²/(Δ−0) + 2g²/(Δ−(2Δ+α)) = 2g²/Δ − 2g²/(Δ+α)。拿掉「AC Stark shift」「weak drives」的說法（這裡沒有驅動，只有耦合 g）。2χ = (E11 − E01) − (E10 − E00)：(j+n)ω_r 的係數 2 − 1 − 1 + 0 = 0，所以框架不影響 χ。v61：拉桿頁（α2 = 0）刪掉，開頭「transmon 1 / transmon 2」那句（W6 記號的橋）也拿掉，直接從上一頁矩陣的 block 讀 χ（使用者「p28跟p30接不起來」）。v58：Hamiltonian 與 Δ 的定義移到前面新的三頁（transmon + 共振腔的 Lagrangian、Hamiltonian、矩陣），這頁只從矩陣的 N = 0、1、2 block 讀出 χ。v41：0–3 光子的能階圖從這頁拿掉（只剩基態推 χ；圖留在「One term, two readings」頁，使用者同意）。v25：Hamiltonian 與符號從下一頁搬到這頁開頭（這頁先用到 g、√2g，使用者「14,15,16,17 邏輯根本串不起來」）。上一頁拉桿的 transmon 1 就是 qubit（ω01 = ω1、α = α1），transmon 2 令 α2 = 0 就是共振腔（a_r、ω_r = ω2）；RWA 後 𝓗/ħ = ω01a†a + (α/2)a†a†aa + ω_r a_r†a_r + g(a†a_r + aa_r†)，耦合項就是上週的 g(a1†a2 + a1a2†)。從基態出發（共振腔平常是空的：讀完後光子漏光，或用 reset pulse 清空）。符號：qubit ω01、α；共振腔 ω_r；Δ = ω01 − ω_r。一個激發：|1,0⟩ ↔ |0,1⟩，耦合 g、失諧 Δ（就是上週的 2×2）：|1,0⟩ +g²/Δ、|0,1⟩ −g²/Δ（g²/Δ 就是 Lamb shift，qubit 頻率在沒有光子時也移 g²/Δ）。兩個激發：|1,1⟩ ↔ |0,2⟩（√2 來自光子 a_r†|1⟩ = √2|2⟩，失諧 Δ）、|1,1⟩ ↔ |2,0⟩（√2 來自 transmon a†|1⟩ = √2|2⟩，失諧 −(Δ+α)）：|1,1⟩ 移 2g²/Δ − 2g²/(Δ+α)。有一個光子時 qubit 翻轉要 E11 − E01，沒有光子時 E10 − E00，差 2χ = [2g²/Δ − 2g²/(Δ+α)] − (−g²/Δ) − g²/Δ = 2g²/Δ − 2g²/(Δ+α) → χ = g²α/[Δ(Δ+α)]（= α2 = 0 拉桿頁的 ζ）。圖：直欄 = 光子數 0, 1, 2, 3，往上 = qubit；虛線 = 沒有色散位移時 |1,n⟩ 的位置；每多一個光子多 2χ（後面幾頁證明對每個 N 都成立）。 -->
         </section>
+        <section data-manual-slide="" data-auto-fit="false" data-title="Level diagram for the dispersive shift"
+            data-slide-class="v04 qh-deriv w07-page w07-diamond">
+            <h3>Level diagram for the dispersive shift</h3>
+            <div class="qh-step-host w07-dia-top">
+                <figure class="qh-reveal-item w07-dia-fig"><svg viewBox="0 0 720 290" role="img" aria-label="Diamond of four levels: |0,0> at the bottom, |0,1> on the left, |1,0> on the right, |1,1> at the top. Purple arrows add one photon: |0,0> to |0,1> and |1,0> to |1,1>. Green arrows take the qubit from 0 to 1: |0,0> to |1,0> and |0,1> to |1,1>. A dashed line above |1,1> is the sum E01 + E10 - E00; |1,1> is 2 chi from it." fill="none">
+                    <path d="M318 258 L263.2 186.9" stroke="#65508f" stroke-width="3.2" /><path d="M254.0 175.0 L268.3 182.9 L258.0 190.8 z" fill="#65508f" />
+                    <path d="M468 155 L413.9 93.3" stroke="#65508f" stroke-width="3.2" /><path d="M404.0 82.0 L418.8 89.0 L409.0 97.6 z" fill="#65508f" />
+                    <path d="M402 258 L456.8 186.9" stroke="#25827a" stroke-width="3.2" /><path d="M466.0 175.0 L462.0 190.8 L451.7 182.9 z" fill="#25827a" />
+                    <path d="M252 155 L306.1 93.3" stroke="#25827a" stroke-width="3.2" /><path d="M316.0 82.0 L311.0 97.6 L301.2 89.0 z" fill="#25827a" />
+                    <path d="M312 50 H408" stroke="#8a8394" stroke-width="2.4" stroke-dasharray="7 6" />
+                    <path d="M424 59 V65" stroke="#4d3768" stroke-width="2" /><path d="M424 51 L419.5 59 L428.5 59 z" fill="#4d3768" /><path d="M424 73 L419.5 65 L428.5 65 z" fill="#4d3768" />
+                    <path d="M315 268 H405" stroke="#355f9c" stroke-width="6" stroke-linecap="round" />
+                    <path d="M165 165 H255" stroke="#355f9c" stroke-width="6" stroke-linecap="round" />
+                    <path d="M465 165 H555" stroke="#b5651d" stroke-width="6" stroke-linecap="round" />
+                    <path d="M315 74 H405" stroke="#b5651d" stroke-width="6" stroke-linecap="round" />
+                    <g fill="#28333b" font-family="Cambria Math, Times New Roman, serif" font-size="34">
+                        <text x="418" y="280">|0, 0⟩</text>
+                        <text x="153" y="176" text-anchor="end">|0, 1⟩</text>
+                        <text x="567" y="176">|1, 0⟩</text>
+                        <text x="302" y="86" text-anchor="end">|1, 1⟩</text>
+                        <text x="434" y="72" font-style="italic" fill="#4d3768" font-size="32">2χ</text>
+                    </g>
+                </svg></figure>
+            </div>
+            <div class="v4-two w07-dia-two">
+                <div class="qh-step-host">
+                    <div class="qh-reveal-item">
+<p class="w07-pov w07-pov-r">Resonator point of view</p>
+<div class="w07-pov-row">
+<figure class="w07-pov-fig"><a href="../Image/w07-levels-pov-resonator-v94.svg"><img src="../Image/w07-levels-pov-resonator-v94.svg" alt="The four levels |0,0&gt;, |1,0&gt; (photon number 0) and |0,1&gt;, |1,1&gt; (photon number 1); purple arrows from |0,0&gt; to |0,1&gt; and from |1,0&gt; to |1,1&gt;: one photon added with the qubit in 0 and in 1; |1,1&gt; is 2 chi from the dashed bar"></a></figure>
+<p>The energy of one photon is the resonator frequency. It depends on the qubit state:</p>
+</div>
+<div class="v4-eq">\[\underbrace{\big(E_{1,1}-E_{1,0}\big)}_{\text{qubit in }|1\rangle}-\underbrace{\big(E_{0,1}-E_{0,0}\big)}_{\text{qubit in }|0\rangle}=2\chi\]</div>
+                    </div>
+                </div>
+                <div class="qh-step-host">
+                    <div class="qh-reveal-item">
+<p class="w07-pov w07-pov-q">Qubit point of view</p>
+<div class="w07-pov-row">
+<figure class="w07-pov-fig"><a href="../Image/w07-levels-pov-qubit-v94.svg"><img src="../Image/w07-levels-pov-qubit-v94.svg" alt="The four levels |0,0&gt;, |1,0&gt; (photon number 0) and |0,1&gt;, |1,1&gt; (photon number 1); green arrows from |0,0&gt; to |1,0&gt; and from |0,1&gt; to |1,1&gt;: the qubit from 0 to 1 with 0 and with 1 photon; |1,1&gt; is 2 chi from the dashed bar"></a></figure>
+<p>The energy from 0 to 1 is the qubit frequency. It depends on the photon number:</p>
+</div>
+<div class="v4-eq">\[\underbrace{\big(E_{1,1}-E_{0,1}\big)}_{\text{1 photon}}-\underbrace{\big(E_{1,0}-E_{0,0}\big)}_{\text{0 photons}}=2\chi\]</div>
+                    </div>
+                </div>
+            </div>
+            <!-- Teaching note: v94（使用者「Dispersive shift 後面幫我加頁：中上是菱形圖，2χ 虛線，|1,1⟩ 在上、|0,1⟩ 左、|1,0⟩ 右、|0,0⟩ 下，菱形之間要箭頭；左下放 resonator point of view，右下放 qubit point of view，來呼應 The last term has two readings」）。圖是使用者要求畫的示意圖：藍色能階 = qubit 在 0，橘色 = qubit 在 1（和整份 deck 的配色一樣）；紫色箭頭 = 加一顆光子（共振腔的躍遷），綠色箭頭 = qubit 從 0 到 1；虛線 = E_{0,1} + E_{1,0} − E_{0,0}（兩者不互相影響時 |1,1⟩ 應該在的位置），|1,1⟩ 離它 2χ；χ < 0（transmon，Δ < 0），所以 |1,1⟩ 在虛線下面，和後面 Dispersive Hamiltonian、Photon-number splitting 的階梯圖一致。不按比例：|0,1⟩、|1,0⟩ 實際上差 Δ。重點：2χ = E_{1,1} − E_{1,0} − E_{0,1} + E_{0,0} 這一個數，兩種分組：(E_{1,1} − E_{1,0}) − (E_{0,1} − E_{0,0}) → 共振腔頻率隨 qubit 態變（讀取）；(E_{1,1} − E_{0,1}) − (E_{1,0} − E_{0,0}) → qubit 頻率隨光子數變（AC Stark，讀取的 backaction）。就是下一頁「The last term has two readings」。動畫：進頁先有菱形圖，按一下左下，再按一下右下。 v94 第二步（使用者「兩邊 point of view 畫的是要像這樣，兩個各自的小圖」，附 w07-levels-chi-v04.svg 的 0、1 光子那兩欄截圖）：左下、右下各放一張小圖，畫法和 Dispersive Hamiltonian 頁的階梯圖相同（欄 = 光子數、往上 = transmon、藍 0 橘 1、虛線 = 沒有 2χ 時 |1,1⟩ 的位置）；qubit 小圖用綠色直箭頭（|0,0⟩→|1,0⟩、|0,1⟩→|1,1⟩），resonator 小圖用紫色斜箭頭（|0,0⟩→|0,1⟩、|1,0⟩→|1,1⟩），顏色和菱形圖、標題對應。Python source: w07-levels-pov-v94.py -->
+            <p class="v4-source">Schematic, not to scale.</p>
+        </section>
         <section data-manual-slide="" data-auto-fit="false" data-title="Dispersive Hamiltonian"
             data-slide-class="v04 qh-deriv w07-page">
             <h3>Dispersive Hamiltonian</h3>
@@ -9438,6 +9323,72 @@
             </div>
             <!-- Teaching note: v45：左邊加「One term, two readings」頁的能階圖（使用者：「反而適合在旁邊畫能階圖，像 20 頁那種」）：每多一個光子，|0,n⟩→|1,n⟩ 的 qubit 躍遷再移 2χ，所以右邊實驗頻譜裡每個光子數一條線；Schuster 的頻率軸由高到低畫，光子越多的線越往右。真實實驗：Schuster 2007 Fig. 3。腔裡放同調態，平均光子數 n̄ 從 0.02 到 17，qubit 光譜分裂成一條條（每個光子數一條），間距 2χ_eff/2π = −17 MHz（原文：為了清楚，頻率軸由高到低畫；光子越多的峰越往右，和前一頁動畫的方向相反）。qubit 是 Cooper-pair box，Δ/2π = 1.2 GHz，γ/2π = 1.9 MHz，κ/2π = 250 kHz；峰寬 γ_n = γ/2 + γ_φ + (n + n̄)κ/2。藍 = 資料、紅 = 數值模擬。n̄ 大時峰重疊、包絡變成高斯 → 回到古典場。 -->
             <p class="v4-source">D. I. Schuster <em>et al.</em>, Nature <b>445</b>, 515 (2007), Fig. 3 (arXiv version). Left: dressed levels; the dashed bar is \(E_{0,n}+E_{1,0}-E_{0,0}\). Not to scale.</p>
+        </section>
+        <section data-manual-slide="" data-auto-fit="false" data-title="Resonator response"
+            data-slide-class="v04 qh-deriv w07rr-slide">
+            <h3>Resonator response</h3>
+            <div class="w07rr" aria-label="Left: a drawing of the resonator on its read-out line; it glows with the photon number. Right: animated response of this resonator in reflection, with no qubit: buttons set the probe frequency relative to the resonator frequency and a slider sets the noise size; the scope shows the tone and the transmitted signal against time, the left panel shows the magnitude and the phase of the reflection S11 of the resonator with the probe, and the IQ plane shows the reflected signal and, after the tone, one blob of integrated points for each probe frequency">
+                <figure class="w07rr-draw"><svg viewBox="0 0 400 620" role="img" aria-label="Drawing of a one-port read-out resonator on a chip: a coplanar read-out line comes in from the left and ends above the resonator; the tone goes in and the reflected signal comes out on the same line. Below it, a meandering coplanar resonator; its first straight part runs along the end of the line and couples to it; its other end goes into the ground plane at the bottom. The resonator glows when photons are in it." fill="none">
+                <text x="200" y="24" text-anchor="middle" font-family="Montserrat, sans-serif" font-size="17" font-weight="700" fill="#28333b">read-out line</text>
+                <rect x="10" y="40" width="380" height="566" rx="14" fill="#d6d0de" stroke="#b9b2c2" stroke-width="2" />
+                <path d="M10 90 H300" stroke="#3a3540" stroke-width="16" />
+                <path d="M292 90 H300" stroke="#3a3540" stroke-width="16" stroke-linecap="round" />
+                <path d="M10 90 H300" stroke="#d6d0de" stroke-width="7" />
+                <path d="M120 128 H285 A26 26 0 0 1 285 180 H115 A25 25 0 0 0 115 230 H285 A25 25 0 0 1 285 280 H115 A25 25 0 0 0 115 330 H285 A25 25 0 0 1 285 380 H115 A25 25 0 0 0 115 430 H285 A25 25 0 0 1 285 480 H200 V578" stroke="#3a3540" stroke-width="16" stroke-linejoin="round" />
+                <path d="M112 128 H120" stroke="#3a3540" stroke-width="16" stroke-linecap="round" />
+                <path d="M120 128 H285 A26 26 0 0 1 285 180 H115 A25 25 0 0 0 115 230 H285 A25 25 0 0 1 285 280 H115 A25 25 0 0 0 115 330 H285 A25 25 0 0 1 285 380 H115 A25 25 0 0 0 115 430 H285 A25 25 0 0 1 285 480 H200 V606" stroke="#d6d0de" stroke-width="7" stroke-linejoin="round" />
+                <path data-w07rr-glow="" d="M120 128 H285 A26 26 0 0 1 285 180 H115 A25 25 0 0 0 115 230 H285 A25 25 0 0 1 285 280 H115 A25 25 0 0 0 115 330 H285 A25 25 0 0 1 285 380 H115 A25 25 0 0 0 115 430 H285 A25 25 0 0 1 285 480 H200 V578" stroke="#65508f" stroke-width="13" stroke-linejoin="round" stroke-linecap="round" opacity="0" />
+                <text x="22" y="72" font-family="Montserrat, sans-serif" font-size="16" font-weight="700" fill="#65508f">in →</text>
+                <text x="22" y="124" font-family="Montserrat, sans-serif" font-size="16" font-weight="700" fill="#65508f">← out</text>
+                <text x="352" y="304" text-anchor="middle" transform="rotate(-90 352 304)" font-family="Montserrat, sans-serif" font-size="17" font-weight="700" fill="#28333b">resonator</text>
+                </svg></figure>
+                <div class="w07rr-head">
+                    <label class="w07rr-noise"><span>noise</span><input type="range" min="0" max="0.3" step="0.01" value="0.09" data-w07rr-noise="" aria-label="noise size"><b data-w07rr-noise-out=""></b></label>
+                    <span class="w07rr-hint">probe − ω<sub>r</sub> (2π × MHz)</span>
+                    <button type="button" data-w07rr-f="-3" aria-pressed="false">−3</button>
+                    <button type="button" data-w07rr-f="-1" aria-pressed="false">−1</button>
+                    <button type="button" data-w07rr-f="0" class="is-on" aria-pressed="true">0</button>
+                    <button type="button" data-w07rr-f="1" aria-pressed="false">+1</button>
+                    <button type="button" data-w07rr-f="3" aria-pressed="false">+3</button>
+                    <button type="button" data-w07rr-run="">Stop</button>
+                    <button type="button" data-w07rr-reset="">Replay</button>
+                </div>
+                <canvas data-w07rr-plot="scope" aria-label="The readout tone into the line and the reflected signal against time"></canvas>
+                <canvas data-w07rr-plot="s21" aria-label="Magnitude and phase of the reflection S11 of the resonator against the probe frequency, with the probe marked"></canvas>
+                <canvas data-w07rr-plot="iq" aria-label="IQ plane with the reflected signal and the integrated points"></canvas>
+                <p class="w07rr-readout" data-w07rr-out="readout"></p>
+            </div>
+            <!-- Teaching note: v90（使用者「我想要新增一頁單純resonator response，因為我要讓學生了解resonator的行為，然後也會有blob，可以切換probe頻率」）。只有一個共振腔、沒有 qubit，模型、單位、時間軸和下一頁晶片動畫完全相同：hanger 共振腔、無內部損耗、κ = 2π×2 MHz、讀取音 600 ns。按鈕選 probe − ω_r = −3、−1、0、+1、+3（2π×MHz）。穩態 S21 = 1 − κ/(κ − 2i(ω − ω_r))：0 → S21 = 0（共振腔漏出的波和音抵消，透射為零，腔內光子最多 20 顆）；±1 = ±κ/2 → (1 ± i)/2，振幅 0.71、相位 ±45°（低於 ω_r 為 +45°），10 顆光子；±3 → 0.9 ± 0.3i，振幅 0.95、相位 ±18°，2 顆光子。示波器：打音後先有暫態（e^{−κt/2}，160 ns），音停後漏出的波以 κ 衰減；在共振時音開著幾乎沒有輸出，音一停反而出現漏出的波。IQ 平面：透射訊號從 (1, 0) 出發繞到 S21，積分整段 → 一個點，放大器雜訊 → 一團；換一個 probe 頻率 → 另一團（舊的變淡留著）。積分包含充光子的暫態，所以團的中心比穩態點更靠近 (1, 0)。Replay 清掉所有的團；離開這頁再回來也會重來。v91（使用者「p29多一個可調noise size，然後也要有theta圖」）：noise 滑桿 0–0.3（每個分量的散佈，以音的振幅為單位；預設 0.09），所有已經出現的團跟著變大變小；|S21| 下方加 θ = arg S21：遠離共振 → 0°，低於 ω_r 往 +90°、高於 ω_r 往 −90°，在 ω_r 跳 180°（無內部損耗時 S21 的圓通過原點，振幅為零的那一點相位沒有定義）。 v93（使用者「p29可以往右收窄，左邊用類似Ferrite circulator繪圖技能畫resonator」，附 Wang 2019 晶片圖上 read-out resonator 的截圖）：動畫收到右邊；左邊是自己畫的 SVG：上方一條共面波導 read-out line（in → out），下方一條彎折的共面波導共振腔，第一段沿著 read-out line 走（耦合處），另一端接到底部的地（λ/4）；顏色仿晶片照片：金屬淺灰、縫隙深色。共振腔的紫色光暈 = 腔內光子數（和晶片動畫紫框同一個意思，0 到 20 顆）。 v94（使用者「幹你就不能做一樣是S11 Krantz的嗎」）：整頁改成反射式，和 Reflection S11 頁（Krantz Fig. 19）同一個模型：單埠共振腔，κ = 2π×2 MHz、κ_int = 2π×0.65 MHz 固定；S11 = 1 − 2κ/(κ + κ_int − 2i(ω − ω_r))。共振時 |S11| = 0.51、θ = π（腔內損耗吃掉約 74 % 的功率）；±1：|S11| = 0.73、θ = 87° / 273°；±3：0.94、θ = 36° / 324°；θ 跨過共振轉一整圈 0 → 2π。IQ 平面上 S11 的圓：圓心 1 − κ/(κ+κ_int) = 0.25、半徑 0.75，通過 (1, 0)。畫的圖改成單埠：read-out line 從左邊進來，停在共振腔耦合段的上方，in 和 out 走同一條線（中間靠 circulator 分開）。共振時腔內 20 顆光子。 -->
+            <p class="v4-source">Lecture animation of an ideal model: one-port resonator read in reflection, \(\kappa=2\pi\times2\) MHz, \(\kappa_{\rm int}=2\pi\times0.65\) MHz.</p>
+        </section>
+        <section data-manual-slide="" data-auto-fit="false" data-title="Reflection S11"
+            data-slide-class="v04 qh-deriv w07-page w07-widget-slide">
+            <h3>Reflection \(S_{11}\)</h3>
+            <div class="v4-two">
+                <div class="qh-step-host">
+<p>Krantz's setup reads in reflection. The resonator has one port. A circulator sends the tone in and takes the reflected wave out.</p>
+<p>All the leaked field goes back through this port. A real resonator also loses some energy inside (\(\kappa_{\rm int}\)). This makes the dip.</p>
+<div class="v4-eq">\[\frac{d\alpha}{dt}=-i\omega_r(j)\,\alpha-\frac{\kappa+\kappa_{\rm int}}{2}\,\alpha-\sqrt{\kappa}\;b_{\rm in}\,e^{-i\omega t}\]</div>
+<div class="v4-eq">\[b_{\rm out}\,e^{-i\omega t}=b_{\rm in}\,e^{-i\omega t}+\sqrt{\kappa}\;\alpha\]</div>
+<div class="v4-eq">\[S_{11}=\frac{b_{\rm out}}{b_{\rm in}}=1-\frac{2\kappa}{\kappa+\kappa_{\rm int}-2i\big(\omega-\omega_r(j)\big)}\]</div>
+<p>Without \(\kappa_{\rm int}\), \(|S_{11}|=1\) at all frequencies. Only the phase \(\theta\) changes: one full turn across each resonance. The qubit state is in the phase.</p>
+                </div>
+                <div class="qh-step-host">
+                    <div class="w07w w07s11 qh-reveal-item" aria-label="Interactive reflection readout: sliders set kappa and the probe frequency; the internal loss kappa_int is fixed; panels show the magnitude and the phase of S11 against frequency for the qubit in 0 and in 1, and the two answers in the IQ plane">
+                        <div class="w07w-controls">
+                            <label><span>κ (2π × MHz)</span><input type="range" min="0.4" max="8" step="0.1" value="2" data-w07s11="kappa" aria-label="kappa"><b data-w07s11-out="kappa"></b></label>
+                            <input type="hidden" data-w07s11="kint" value="0.65">
+                            <label><span>probe (2π × MHz)</span><input type="range" min="-3" max="3" step="0.05" value="0" data-w07s11="probe" aria-label="probe offset"><b data-w07s11-out="probe"></b></label>
+                        </div>
+                        <div class="w07w-panels">
+                            <div class="w07w-panel w07s11-stack"><div class="w07w-head"><span>|S₁₁| and θ</span><small>2χ = −2π × 2 MHz</small></div><div class="w07s11-two"><canvas data-w07s11-plot="mag"></canvas><canvas data-w07s11-plot="ph"></canvas></div></div>
+                            <div class="w07w-panel"><div class="w07w-head"><span>IQ plane</span><small data-w07s11-out="sep"></small></div><canvas data-w07s11-plot="iq"></canvas></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Teaching note: v38（使用者看不懂 Krantz Fig. 19(b)(c) 的 S11 原理，問「為何一下是 S11 一下是 S21」→「那 p25 後面畫 S11 的啊」）。反射式：共振腔只有一個埠，漏出的場全部回到同一個埠（hanger 是兩邊各一半）。本課慣例 V = Re[b e^{−iωt}]：dα/dt = −iω_r α − (κ+κ_int)/2 α − √κ b_in e^{−iωt}，b_out = b_in + √κ α，穩態 α = −√κ b_in/[(κ+κ_int)/2 + i(ω_r − ω)] → S11 = 1 − 2κ/(κ + κ_int − 2i(ω − ω_r(j)))。共振處 S11 = (κ_int − κ)/(κ + κ_int)：κ_int = 0 時 |S11| = 1（沒有 dip，只有相位轉一整圈 2π）；κ_int = κ/3 時 |S11| = 0.5，就是 Krantz 圖的 dip 深度（預設 κ = 2、κ_int = 0.65）；κ_int > κ（欠耦合）時相位只擺一下又回來。IQ 平面上 S11 走圓心 1 − κ/(κ+κ_int)、半徑 κ/(κ+κ_int) 的圓。探測放中間、κ_int = 0、κ = 2|χ|：|0⟩ 的 S11 = +i（θ = +90°），|1⟩ 的 = −i（−90°），兩點距離 2（hanger 的兩倍）。Krantz 用工程慣例 e^{+iωt}，是這裡的共軛：θ 往 −2π 走、IQ 圖上下鏡射（他們 |1⟩ 在上）。物理一樣：qubit 決定 ω_r(j)，固定頻率的探測音反射回來的相位不同。v91（使用者「不要k_int」）：v40 這頁加回來後，κ_int 從文字、公式和滑桿拿掉（和 v57 同樣的作法）；沒有內部損耗，|S11| 是一條平的 1，沒有 dip，所以「across each dip」改成「across each resonance」。Krantz Fig. 19(b) 的 |S11| 有 dip，那是實際共振腔的內部損耗。 v93（使用者選 B：「為何S11又變成沒有dip」→ 反射式的 dip 只能來自內部損耗）：不放 κ_int 滑桿，固定 κ_int = 2π×0.65 MHz（隱藏 input，程式照讀），公式放回 κ_int 那一項，文字一句「A real resonator also loses some energy inside (κ_int). This makes the dip.」；最後一句改成「Without κ_int, |S11| = 1 …」。κ = 2 時共振處 |S11| = (κ − κ_int)/(κ + κ_int) = 0.51（Krantz Fig. 19(b) 的深度）；拉 κ 時 dip 深淺會變，κ = κ_int 時降到 0（臨界耦合），κ < κ_int 時相位只擺一下又回來。 -->
+            <p class="v4-source">One-port resonator, \(\chi=-2\pi\times1\) MHz, \(\kappa_{\rm int}=2\pi\times0.65\) MHz. P. Krantz <em>et al.</em>, Appl. Phys. Rev. <b>6</b>, 021318 (2019), Fig. 19(b, c) use \(e^{+i\omega t}\): there \(\theta\) goes to \(-2\pi\) and the IQ picture is mirrored.</p>
         </section>
         <section data-manual-slide="" data-auto-fit="false" data-title="Dispersive readout on a chip"
             data-slide-class="v04 qh-deriv w06m-slide w07m-slide">
@@ -9534,11 +9485,11 @@
             <!-- Teaching note: v71：表格加 qh-reveal-item，右欄排在左欄兩步之後出現（原本右欄沒有 display 方程，翻頁腳本一開始就全部顯示，順序怪；使用者「p35 動畫順序怪的」）。右下三段拿掉（使用者「右下角 when... 全部去掉」），原文：N 慢慢變時這些成分會回來，留下兩個誤差：(1) |1⟩ 的光子成分以 κ 漏掉（Purcell）；τ = 500 ns、沒有 Purcell filter 時 κ(g/Δ)²τ ≈ 0.03。(2) 接近 N_crit 時成分不小，光子多時真實 transmon 會跳到別的能階。 使用者「你也沒有估計 order 差多少」。對易子：[a†, |1⟩⟨1|] = √2|2⟩⟨1| − |1⟩⟨0|，[a, |1⟩⟨1|] = |0⟩⟨1| − √2|1⟩⟨2|，乘上 a_r、a_r†。它把 |1,N⟩ 接到 |0,N+1⟩（矩陣元 g√(N+1)，能量差 E(1,N) − E(0,N+1) = Δ）和 |2,N−1⟩（√2g√N，能量差 −(Δ+α)）。一階微擾：混入振幅 g√(N+1)/Δ 與 −√2g√N/(Δ+α)，機率 (g/Δ)²(N+1) = (N+1)/4N_crit 與 2g²N/(Δ+α)²。數字（g/2π = 100 MHz、Δ/2π = −1.5 GHz、α/2π = −220 MHz）：(g/Δ)² = 1/225 = 0.0044；N = 10：11/225 = 0.049、20×(100/1720)² = 0.068；N = 56：57/225 = 0.25、112×(100/1720)² = 0.38（已不小，一階展開失效）。光子數慢慢變（1/κ ≈ 80 ns ≫ 1/|Δ|）時這些混入部分會跟著回去（絕熱），本身不是錯誤；留下的：(1) |1⟩ 的光子部分以 κ 漏掉 = Purcell，κ(g/Δ)²τ = 2π×2 MHz × 0.0044 × 500 ns ≈ 0.028（沒有 Purcell filter）；(2) 接近 N_crit 時混入是 O(1)；光子多時真實 transmon 會跳到別的能階（price 一章）。v32 更正：原本寫「能階交叉」——RWA、Δ < 0 的模型裡不會交叉，躍遷來自 RWA 以外的項（Sank 2016）或 Δ > 0 時的多光子共振（Khezri 2023），發生的光子數不只看 N_crit（Dumas 2024）。所以色散讀取離 QND 的差距是 (g/Δ)² 的量級（10⁻³–10⁻²），probe junction 是 1 的量級（下一個 1999 頁）。 -->
             <p class="v4-source">Values: \(g=2\pi\times100\) MHz, \(\Delta=-2\pi\times1.5\) GHz, \(\alpha=-2\pi\times220\) MHz, \(\kappa=2\pi\times2\) MHz.</p>
         </section>
-        <section data-manual-slide="" data-auto-fit="false" data-title="Purcell decay, transitions and backaction"
+        <section data-manual-slide="" data-auto-fit="false" data-title="Transitions and backaction"
             data-slide-class="v04 qh-deriv " data-cover="">
             <div class="theme-header">
                 <p class="theme-label">PHYS598500 · Week 7</p>
-                <h2>Purcell decay, transitions and backaction</h2>
+                <h2>Transitions and backaction</h2>
             </div>
         </section>
         <section data-manual-slide="" data-auto-fit="false" data-title="Level diagram for N photons"
@@ -9575,6 +9526,13 @@
             </div>
             <!-- Teaching note: v56（「只保留p66 但改用 … 這兩張圖」，兩張是使用者的截圖，期刊版）。R. Versluis et al., PR Applied 8, 034021 (2017)：左 Fig. 4 = 用 8-qubit unit cell（D1–D4、X1、Z1、X2、Z2）重複鋪成 surface code，虛線 = 最近鄰耦合，輪廓 = unit cell，點的顏色也代表單 qubit 控制頻率（紅 f1、綠藍 f2、粉 f3）。右 Fig. 5(a) = 同一個 unit cell 的 pipelined X/Z stabilizer 量測：時段 1–4（5–8）做 X 型（Z 型）的 CZ（每段 40 ns），A、B（D、E）做 H（20 ns）；X 型 ancilla 在 D–F 量測、Z 型在 A–C 量測，這時 C、F 時段可對 data qubit 做（可選的）其他運算；讀取加光子耗散 500 ns；下方箭頭 = 下一個 QEC cycle。重點：讀取比一整組閘還長，所以把計算塞進讀取的時間裡；讀取越快，一個 cycle 越短。這是設計提案；Andersen 2020、Krinner 2022 的實驗用了這種 pipelined 排法。 -->
             <p class="v4-source">R. Versluis <em>et al.</em>, Phys. Rev. Applied <b>8</b>, 034021 (2017), Figs. 4 and 5(a).</p>
+        </section>
+        <section data-manual-slide="" data-auto-fit="false" data-title="Purcell filter"
+            data-slide-class="v04 qh-deriv " data-cover="">
+            <div class="theme-header">
+                <p class="theme-label">PHYS598500 · Week 7</p>
+                <h2>Purcell filter</h2>
+            </div>
         </section>
         <section data-manual-slide="" data-auto-fit="false" data-title="Resonator decay rate κ"
             data-slide-class="v04 qh-deriv w07-page w07-split w07-c-kappa">
@@ -9685,6 +9643,233 @@
             </div>
             <!-- Teaching note: v70：數字換成本課的定義 1 − P(1|0) − P(0|1)。論文用平均形式：F = 1 − (ε_g + ε_e)/2 = 97.4%（ε_g = 1.0%、ε_e = 4.3%）→ 本課 1 − 5.3% = 94.7%；Q = (P_gg + P_ee)/2 = 99%（P_gg = 99.6%、P_ee = 98.3%）→ 本課 P_gg + P_ee − 1 = 97.9%。v30。Dassonneville 2020（Grenoble，Buisson 組）Fig. 2，已對原文 arXiv:1905.00271（PRX 10, 011045）：兩個相同 transmon（E_J、C_S）經並聯 LC（L_a = 10 個 SQUID 串、C_t）相連，放在 3D 銅腔中央（腔 24.5 × 5 × 35 mm，TE101）。整數磁通量子時 Eq. (1)：H = 4E_Cq n_q² − 2E_J cos φ_q + 4E_Ca n_a² − 2E_J[cos φ_a − (L_J/L_a)φ_a²] − (E_J/2)φ_q²φ_a² + O6，φ_q = 兩個 junction 相位平均（qubit），φ_a = 相位差（ancilla）。由 −E_J cos φ1 − E_J cos φ2 = −2E_J cos φ_q cos φ_a 可知最低階耦合是 φ_q²φ_a²：對稱讓橫向（field–field）與縱向（field–energy）耦合在 q⁴、a⁴ 之前都不出現。g_zz = √(α_q U_a)，量到 g_zz/2π = 34.5 MHz。ancilla 與腔橫向強耦合 g_ac/2π = 295 MHz → 上下兩個 polariton，各帶 χ_u = −g_zz cos²θ、χ_l = −g_zz sin²θ（不靠 qubit–腔失諧）。qubit–腔的直接耦合靠對稱與擺放方向壓掉。頁上 (b) 沒寫：腔場分布與晶片方向（對齊讓 ancilla 偶極沿腔場、qubit 偶極垂直）。讀取用 lower polariton（ancilla 與腔混成的模，頁上只寫 ancilla 與腔強 exchange）：2χ_l/2π = −9 MHz（他們 σz = ±1 的寫法，兩態頻率差 = 2χ，與本週相同）；50 ns 單發 fidelity 97.4 %，QND 99 %（Pg,g 99.6 %、Pe,e 98.3 %），n_l ≈ 2。比較（論文 Sec. III D）：若用色散近似得到同樣 −9 MHz，Δ_l/2π = −754 MHz、α_q/2π = −88 MHz，需要 g_x/2π ≈ 180 MHz，Purcell T1 ≈ κ_l⁻¹(Δ_l/g_x)² ≈ 0.24 μs，且 |Δ|/g ≈ 4.2 色散近似也不成立。v32：QND 99 % 是用長讀取脈衝連讀兩次量的（abstract「for long measurement pulses」），97.4 % 是 50 ns。他們的 T1 = 3.3 μs（零磁通），被殘餘橫向耦合限制：junction 不對稱 1.3 %（|g_qa|/2π = 26.1 MHz）與樣品擺放偏差（|g_qc|/2π ≤ 25.8 MHz）。 -->
             <p class="v4-source">R. Dassonneville <em>et al.</em>, Phys. Rev. X <b>10</b>, 011045 (2020), Fig. 2 (arXiv version).</p>
+        </section>
+        <section data-manual-slide="" data-auto-fit="false" data-title="Signal and amplification"
+            data-slide-class="v04 qh-deriv " data-cover="">
+            <div class="theme-header">
+                <p class="theme-label">PHYS598500 · Week 7</p>
+                <h2>Signal and amplification</h2>
+            </div>
+        </section>
+        <section data-manual-slide="" data-auto-fit="false" data-title="Dilution refrigerator wiring"
+            data-slide-class="v04 qh-deriv w06-page w06-pic-slide w07-pic w07-hist w07-c-kr3">
+            <h3>Dilution refrigerator wiring</h3>
+            <div class="w07-htext">
+<p>This dilution refrigerator has 25 drive, 25 flux, 4 read-out, 6 read-in and 5 pump lines (a).</p>
+<p>The lines pass five plates, from 35 K to 10 mK (b).</p>
+<p>The input lines have attenuators and filters. The output line has isolators and amplifiers.</p>
+            </div>
+            <div class="w06-pics">
+                <figure class="w06-pic w07-f1"><a href="../Image/Krinner2019-Fig3.jpg"><img src="../WebP/Krinner2019-Fig3.webp" alt="(a) Photograph of a Bluefors XLD dilution refrigerator with its cables installed; (b) schematic of the drive, flux, pump and output lines through the 35 K, 3 K, 900 mK, 100 mK and 10 mK stages, with attenuators, Eccosorb, low-pass and band-pass filters, a circulator, isolators, a directional coupler, a TWPA and a HEMT; a legend shows the symbols"></a></figure>
+            </div>
+            <!-- Teaching note: Krinner 2019 Fig. 3（已對原文）：Bluefors XLD，25 drive、25 flux、4 read-out、6 read-in、5 pump lines。(b) 五個溫度台：35 K、3 K（4K stage）、900 mK（still）、100 mK（cold plate, CP）、10 mK（mixing chamber, MXC）。Drive：3 K、100 mK、10 mK 各 −20 dB + Eccosorb；Flux：−10/−20 dB、LP、Eccosorb；Pump：−20、−10 dB + 20 dB directional coupler；Output：Sample → isolator → directional coupler（pump 加進來）→ TWPA → isolator → BP filter（10 mK）→ circulator（100 mK）→ NbTi 超導線 → HEMT（3 K）→ 室溫。 -->
+            <p class="v4-source">S. Krinner <em>et al.</em>, EPJ Quantum Technology <b>6</b>, 2 (2019), Fig. 3 (arXiv version).</p>
+        </section>
+        <section data-manual-slide="" data-auto-fit="false" data-title="Input-line attenuators and filters"
+            data-slide-class="v04 qh-deriv w06-page w06-pic-slide w07-pic w07-hist w07-c-kr4">
+            <h3>Input-line attenuators and filters</h3>
+            <div class="w07-htext">
+<p>An attenuator passes a small part of the signal and adds the noise of its own, cold temperature. 20 dB passes 1%.</p>
+<p>About 60 dB in total brings the thermal photons at the chip to about \(10^{-3}\).</p>
+<p>Copper plates hold the attenuators and keep them cold (a–d).</p>
+<p>An Eccosorb filter absorbs infrared light. Infrared light makes quasiparticles and shortens \(T_1\).</p>
+            </div>
+            <div class="w06-pics">
+                <figure class="w06-pic w07-f1"><a href="../Image/Krinner2019-Fig4.jpg"><img src="../WebP/Krinner2019-Fig4.webp" alt="(a) CAD drawing of a copper plate for attenuators; (b) photograph of such a plate with cables installed in the refrigerator; (c) the same plate used to clamp cables; (d) two-part copper adapter; (e) pre-assembly tool with copper plates and a vacuum flange; (f) vacuum flange with SMA adapters; (g) mounting the cable tree into the refrigerator"></a></figure>
+            </div>
+            <!-- Teaching note: Krinner 2019 Fig. 4 與 Sec. 2.2、3.2（已對原文）：20 dB 衰減器像一個分光鏡：透過 1% 入射訊號、加入 99% 衰減器所在溫度的黑體輻射 → 每一級把上一級的熱雜訊壓下去；4K 級約 20 dB 就夠（≈ 300 K / 3 K）。drive 線總共約 60 dB，MXC 的熱光子 ~10⁻³（熱光子會讓 qubit 熱激發、也會經 χ 讓 qubit 退相）。衰減器用銅板夾緊（黃銅螺絲冷縮比銅多，夾得更緊；低溫下接觸熱阻由夾持力決定）。IR 濾波：Eccosorb CR-124，放在 MXC 衰減器前。(e)(f)(g)：整束線先在外面組好再裝進冰箱。 -->
+            <p class="v4-source">S. Krinner <em>et al.</em>, EPJ Quantum Technology <b>6</b>, 2 (2019), Fig. 4 (arXiv version).</p>
+        </section>
+        <section data-manual-slide="" data-auto-fit="false" data-title="Readout setup and circulator"
+            data-slide-class="v04 qh-deriv w06-page w06-pic-slide w07-pic w07-hist w07-c-krantz w07-c-krcirc">
+            <h3>Readout setup and circulator</h3>
+            <div class="w07-htext">
+<figure class="w06-svgfig w07-circ-sym"><svg class="w06-svg" viewBox="0 0 470 230" role="img" aria-label="Circuit symbols: a circulator, a circle with a clockwise arrow and three ports 1, 2 and 3; an isolator, the same circulator with port 3 connected through a 50 ohm resistor to ground" fill="none" stroke="#302840" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="110" cy="100" r="44" />
+  <path d="M20 100 H66 M154 100 H200 M110 144 V196" />
+  <path d="M87.5 113 A26 26 0 1 1 132.5 113" stroke-width="2.6" />
+  <path d="M129.5 118.2 L138.8 112 L130.2 107 Z" fill="#302840" stroke-width="1.5" />
+  <circle cx="345" cy="100" r="44" />
+  <path d="M255 100 H301 M389 100 H435 M345 144 V158 l10 4 l-20 8 l20 8 l-20 8 l20 8 l-10 4 V210 M329 210 H361 M335 217 H355 M341 224 H349" />
+  <path d="M322.5 113 A26 26 0 1 1 367.5 113" stroke-width="2.6" />
+  <path d="M364.5 118.2 L373.8 112 L365.2 107 Z" fill="#302840" stroke-width="1.5" />
+  <g fill="#302840" stroke="none" font-family="Montserrat, sans-serif" font-size="17" font-weight="600" text-anchor="middle">
+    <text x="30" y="88">1</text><text x="190" y="88">2</text><text x="124" y="190">3</text>
+    <text x="265" y="88">1</text><text x="425" y="88">2</text><text x="392" y="190">50 Ω</text>
+  </g>
+  <g fill="#5f4b8b" stroke="none" font-family="Montserrat, sans-serif" font-size="16" font-weight="600" text-anchor="middle">
+    <text x="110" y="34">circulator</text><text x="345" y="34">isolator</text>
+  </g>
+</svg></figure>
+<p>A circulator sends a wave from port 1 to port 2, from 2 to 3, and from 3 to 1.</p>
+<p>An isolator is a circulator with a 50 Ω load on port 3. A wave goes from 1 to 2. A wave from 2 goes into the load.</p>
+            </div>
+            <div class="w06-pics">
+                <figure class="w06-pic w07-f1"><a href="../Image/Krantz2019-Fig19.png"><img src="../WebP/Krantz2019-Fig19.webp" alt="(a) Simplified readout setup: signal creation with an AWG, an LO and an IQ mixer at room temperature; attenuators at 3 K and 10 mK; the chip with the qubit, the readout resonator and a Purcell filter; the reflected signal S11 goes through circulators to a parametric amplifier at 10 mK, then to amplifiers at 3 K and room temperature, and to an IQ mixer and a digitizer; (b) magnitude and phase of S11 against frequency for the qubit in |0&gt; and |1&gt;; (c) the two answers in the IQ plane"></a></figure>
+            </div>
+            <!-- Teaching note: 讀取的整條線（Krantz Fig. 19(a)）：室溫 AWG + LO + IQ mixer 做出讀取脈衝 → 冷卻台階上的衰減器（3 K、10 mK）→ 晶片：qubit、讀取共振腔、Purcell filter → 反射訊號 S11 經 circulator 到 10 mK 的參量放大器（Para. Amp.）→ 3 K HEMT → 室溫放大 → 同一個 LO 的 IQ mixer 降頻成 V_I、V_Q → 數位化。(b)(c) 是後面「Two dips」頁的東西（|0⟩、|1⟩ 兩個 dip、IQ 平面兩點）。 -->
+            <p class="v4-source">P. Krantz <em>et al.</em>, Appl. Phys. Rev. <b>6</b>, 021318 (2019), Fig. 19 (arXiv version).</p>
+        </section>
+        <section data-manual-slide="" data-auto-fit="false" data-title="Readout setup"
+            data-slide-class="v04 qh-deriv w06-page w06-pic-slide w07-pic w07-hist w07-c-syc3">
+            <h3>Readout setup</h3>
+            <div class="w06-pics">
+                <figure class="w06-pic w07-f1"><a href="../Image/Arute2019-FigS3.png"><img src="../WebP/Arute2019-FigS3.webp" alt="Cryogenic wiring of the Sycamore processor: control lines and readout lines from 300 K through 3 K to 10 mK, with attenuators, low-pass and band-pass filters, IR filters, bias tees, circulators, the IMPA with its pump and flux lines, and the cryo-LNA (HEMT) at 3 K on the readout output; a legend shows the symbols"></a></figure>
+            </div>
+            <!-- Teaching note: Sycamore 補充資料 Fig. S3（已對原文）：讀取有 9 條（Readout 9X，每條讀 6 顆）。Readout in：室溫 → 3 K、10 mK 各級衰減器（20 dB）與濾波器（band-pass、IR）→ circulator → 晶片。Readout out：晶片反射 → 一串 circulator（隔離器）→ IMPA（10 mK，有 pump 與 flux 線）→ IR filter → 3 K 的 cryo-LNA（Low Noise Factory HEMT）→ 室溫。控制線（Z、XY、coupler）也都有衰減器與低通/IR 濾波器。輸入線要衰減：擋掉高溫台階的熱雜訊；輸出線不能衰減：要用 circulator/隔離器讓訊號只往外走、擋住放大器往回打的雜訊。 -->
+            <p class="v4-source">F. Arute <em>et al.</em>, Nature <b>574</b>, 505 (2019), Supplementary Information, Fig. S3 (arXiv version).</p>
+        </section>
+        <section data-manual-slide="" data-auto-fit="false" data-title="Ferrite circulator"
+            data-slide-class="v04 qh-deriv w06-page w06-pic-slide w07-pic w07-hist w07-c-ferr">
+            <h3>Ferrite circulator</h3>
+            <div class="w07-htext">
+<p>Superconducting processors use ferrite circulators at 10 mK. Right: a 4–8 GHz cryogenic circulator, the type on the cold plate of a refrigerator.</p>
+<figure class="w06-svgfig w07-ferr-sym"><svg class="w06-svg" viewBox="0 0 600 345" role="img" aria-label="Exploded view of a junction circulator, from top to bottom: magnet, pole plate, ferrite disc, a Y-shaped conductor with three arms that are ports 1, 2 and 3, ferrite disc, pole plate, magnet; an arrow B shows the magnetic field through the stack" fill="none"><path d="M28 326 V20" stroke="#65508f" stroke-width="2.5" /><path d="M28 12 l-7 14 h14 z" fill="#65508f" /><text x="38" y="38" font-family="Cambria Math, Times New Roman, serif" font-style="italic" font-size="20" fill="#65508f">B</text><path d="M145 296 v26 a70 15 0 0 0 140 0 v-26" fill="#c9c3cf" stroke="#6b6472" stroke-width="2" /><ellipse cx="215" cy="296" rx="70" ry="15" fill="#c9c3cf" stroke="#6b6472" stroke-width="2" /><path d="M123 262 v6 a92 20 0 0 0 184 0 v-6" fill="#d9b38c" stroke="#8a6a4a" stroke-width="2" /><ellipse cx="215" cy="262" rx="92" ry="20" fill="#d9b38c" stroke="#8a6a4a" stroke-width="2" /><path d="M123 222 v12 a92 20 0 0 0 184 0 v-12" fill="#3a3540" stroke="#28333b" stroke-width="2" /><ellipse cx="215" cy="222" rx="92" ry="20" fill="#3a3540" stroke="#28333b" stroke-width="2" /><ellipse cx="215" cy="172" rx="52" ry="11" fill="#e2b04a" stroke="#9a7420" stroke-width="2" /><path d="M215 172 l-140 -12" stroke="#9a7420" stroke-width="9" stroke-linecap="round" /><path d="M215 172 l-140 -12" stroke="#e2b04a" stroke-width="5" stroke-linecap="round" /><path d="M215 172 l140 -12" stroke="#9a7420" stroke-width="9" stroke-linecap="round" /><path d="M215 172 l140 -12" stroke="#e2b04a" stroke-width="5" stroke-linecap="round" /><path d="M215 172 l100 34" stroke="#9a7420" stroke-width="9" stroke-linecap="round" /><path d="M215 172 l100 34" stroke="#e2b04a" stroke-width="5" stroke-linecap="round" /><path d="M123 118 v12 a92 20 0 0 0 184 0 v-12" fill="#3a3540" stroke="#28333b" stroke-width="2" /><ellipse cx="215" cy="118" rx="92" ry="20" fill="#3a3540" stroke="#28333b" stroke-width="2" /><path d="M123 82 v6 a92 20 0 0 0 184 0 v-6" fill="#d9b38c" stroke="#8a6a4a" stroke-width="2" /><ellipse cx="215" cy="82" rx="92" ry="20" fill="#d9b38c" stroke="#8a6a4a" stroke-width="2" /><path d="M145 30 v26 a70 15 0 0 0 140 0 v-26" fill="#c9c3cf" stroke="#6b6472" stroke-width="2" /><ellipse cx="215" cy="30" rx="70" ry="15" fill="#c9c3cf" stroke="#6b6472" stroke-width="2" /><text x="395" y="48" font-family="Montserrat, sans-serif" font-size="15" fill="#28333b">magnet</text><text x="395" y="90" font-family="Montserrat, sans-serif" font-size="15" fill="#28333b">pole plate</text><text x="395" y="129" font-family="Montserrat, sans-serif" font-size="15" fill="#28333b">ferrite disc</text><text x="395" y="177" font-family="Montserrat, sans-serif" font-size="15" fill="#28333b">Y-junction conductor</text><text x="395" y="233" font-family="Montserrat, sans-serif" font-size="15" fill="#28333b">ferrite disc</text><text x="395" y="270" font-family="Montserrat, sans-serif" font-size="15" fill="#28333b">pole plate</text><text x="395" y="314" font-family="Montserrat, sans-serif" font-size="15" fill="#28333b">magnet</text><text x="55" y="156" font-family="Montserrat, sans-serif" font-size="16" font-weight="700" fill="#5f4b8b">2</text><text x="351" y="150" font-family="Montserrat, sans-serif" font-size="16" font-weight="700" fill="#5f4b8b">3</text><text x="325" y="224" font-family="Montserrat, sans-serif" font-size="16" font-weight="700" fill="#5f4b8b">1</text></svg></figure>
+<p>Inside: a Y-shaped conductor between two ferrite discs. Magnets bias the ferrite. The wave from one port leaves only at the next port.</p>
+<p>The magnets need a magnetic shield near the qubits.</p>
+            </div>
+            <div class="w06-pics">
+                <figure class="w06-pic w07-f1"><a href="../Image/QuinStar-QCY-G0400801.png"><img src="../WebP/QuinStar-QCY-G0400801.webp" alt="A QuinStar QCY cryogenic circulator for 4 to 8 GHz: a small metal box with a copper body and a steel cover, with three SMA connectors, one on each of three sides"></a></figure>
+            </div>
+            <!-- Teaching note: v83：右邊換成 QuinStar QCY-G0400801（4–8 GHz 低溫 circulator，datasheet：插入損耗 0.15 dB、隔離 24 dB、回波損耗 24 dB，OFHC 銅外殼，SMA，0.51″×1.75″×1.51″，60 g，可選 μ-metal 或雙層磁屏蔽）——Krinner 2019 冰箱 cold plate 上用的就是 QCY 系列（QCY-060400CM00）（使用者「右半邊 做好是超導位元用的裝置」）。Geffroy 的配線圖拿掉。左邊分解圖是我畫的，使用者「暫且保留」。v80（使用者「放常用的鐵氧體照片和內部結構」）。右：Geffroy et al., arXiv:2608.18699 (2026) Fig. 5（CC BY 4.0），已對原文：MXC 上一顆 LNF 4–8 GHz circulator（另一埠接負載，正文稱 a single isolator），4 K 的 LNF-LNC4_8SG HEMT；照片上方金色盒子（IN/OUT、SMA）就是它。超導實驗常用的就是這種商用低溫鐵氧體 circulator/isolator（LNF、Quinstar；Krinner 的冰箱用 Quinstar QCY/QCC）。左圖自己畫的：junction circulator 的分解圖——上下兩片永久磁鐵與極片，兩片鐵氧體圓片夾著 Y 形中心導體，三臂即三個埠（Wikimedia Commons HYH532BZ1.5 拆解照的層次相同）。原理：磁化的鐵氧體讓兩個轉向相反的圓偏振模頻率不同，兩者疊加的駐波圖樣轉 30°，節點落在第三埠 → 從一埠進只從下一埠出。缺點：公分級、有磁鐵（要磁屏蔽）、每條線一顆，難以擴充 → 晶片上的 circulator（下一頁，研究中）。 -->
+            <p class="v4-source">Right: QuinStar Technology, QCY-G0400801 4–8 GHz cryogenic circulator, datasheet (2019). Left: drawing, not to scale.</p>
+        </section>
+        <section data-manual-slide="" data-auto-fit="false" data-title="On-chip circulator"
+            data-slide-class="v04 qh-deriv w06-page w06-pic-slide w07-pic w07-circ-nav">
+            <h3>On-chip circulator</h3>
+            <p class="w07-nav-note">A research device. Processors still use ferrite circulators.</p>
+            <div class="w06-pics">
+                <figure class="w06-pic w07-f1"><a href="../Image/Navarathna2023-Fig1.png"><img src="../WebP/Navarathna2023-Fig1.webp" alt="(a) lumped-element circuit of a passive on-chip circulator: a superconducting loop with three Josephson junctions E_J1, E_J2, E_J3 forms three islands (red, blue, green) with charges n_1, n_2, n_3; each island has a gate capacitor C_g to a voltage V_i and a coupling capacitor C_c to its port; flux Phi threads the loop; (b) false-coloured optical micrograph of the loop with the three islands, scale bar 10 micrometres"></a></figure>
+            </div>
+            <!-- Teaching note: v54。R. Navarathna et al., PRL 130, 037001 (2023) Fig. 1，已對原文 arXiv:2208.13339：被三個 Josephson junction 打斷的超導環 → 三個島，三個 gate 電荷偏壓，經交指電容接到三個埠，環中有外加磁通。只用 DC 控制（沒有 pump、沒有強磁場）就有非互易散射。(b) 假色光學顯微照片，三個島紅藍綠，junction 是兩層 Al 夾 AlOx 重疊。量測時每個埠仍接一個 ferrite circulator（論文 setup 圖）；準粒子穿隧會讓它在四個狀態間跳（HMM 分析）。 -->
+            <p class="v4-source">R. Navarathna <em>et al.</em>, Phys. Rev. Lett. <b>130</b>, 037001 (2023), Fig. 1 (arXiv version).</p>
+        </section>
+        <section data-manual-slide="" data-auto-fit="false" data-title="First amplifier at 10 mK"
+            data-slide-class="v04 qh-deriv w06-page w06-pic-slide w07-pic w07-hist w07-c-white2">
+            <h3>First amplifier at 10 mK</h3>
+            <div class="w07-htext">
+<p>The first amplifier is next to the chip, at 10 mK. It is a Josephson parametric amplifier: a JPA, an IMPA or a TWPA.</p>
+<p>It needs a pump tone. It adds almost only the quantum noise.</p>
+<p>The figure shows a TWPA in its box (a), its line with resonators (b) and its junctions (c).</p>
+            </div>
+            <div class="w06-pics">
+                <figure class="w06-pic w07-f1"><a href="../Image/White2015-Fig2.png"><img src="../WebP/White2015-Fig2.webp" alt="(a) Photograph of the packaged TWPA: a square chip in an aluminum box with copper circuit-board feed lines; (b) optical micrograph and circuit: a long junction line with quarter-wave resonators for phase matching; (c) scanning electron micrograph of the unit cell: three Josephson junctions and a shunt capacitor"></a></figure>
+            </div>
+            <!-- Teaching note: White 2015 Fig. 2（UCSB/Google 的 TWPA）：(a) 封裝照片，鋁盒 + 銅 PCB 饋線，晶片 6 mm 見方；(b) 光學顯微照片與電路：週期性插入 λ/4 共振腔做相位匹配；(c) SEM：單元 = 三個 Josephson junction + 並聯平行板電容。第一級放大器放在 mixing chamber（10 mK），緊接晶片後（Sycamore 用的是 IMPA，Fig. S3 的紅色三角）；需要 pump（JPA/IMPA 還要 flux bias）。為什麼第一級最重要、加的雜訊多少：後面「Why amplify」頁（Friis）。 -->
+            <p class="v4-source">T. C. White <em>et al.</em>, Appl. Phys. Lett. <b>106</b>, 242601 (2015), Fig. 2 (arXiv version).</p>
+        </section>
+        <section data-manual-slide="" data-auto-fit="false" data-title="Circulators and isolators in the refrigerator"
+            data-slide-class="v04 qh-deriv w06-page w06-pic-slide w07-pic w07-hist w07-c-circ">
+            <h3>Circulators and isolators in the refrigerator</h3>
+            <div class="w07-htext">
+<p>In the refrigerator: isolator arrays at 10 mK (a) and circulators at the cold plate (c), each with a magnetic shield.</p>
+            </div>
+            <div class="w06-pics">
+                <figure class="w06-pic w07-f1"><a href="../Image/Krinner2019-Fig6.jpg"><img src="../WebP/Krinner2019-Fig6.webp" alt="(a) Components on the mixing-chamber plate: isolator arrays, directional couplers and TWPAs; (b) four HEMT amplifiers on the 4 K plate; (c) four band-pass filters at the mixing chamber and four circulators at the cold plate"></a></figure>
+            </div>
+            <!-- Teaching note: v78：符號與前兩句搬到「Readout setup and circulator」頁左邊（使用者「移到 p07 左邊」）；這頁只留 Krinner 圖與冰箱裡的那句（(a)、(c) 是這張圖的子圖）。v59（使用者「p05你要放超導實驗常用的circulator 還有符號」）。左：自己畫的符號。circulator = 圓 + 順時針箭頭，1→2→3→1；isolator = circulator 的第 3 埠接 50 Ω 匹配負載到地（從 2 回來的波被負載吃掉）——Krantz Fig. 19、Arute Fig. S3 的讀取鏈用的就是這兩個符號。右：Krinner 2019 Fig. 6（EPJ QT，CC BY），已對原文 Sec. 3.4：輸出線上 CP 一個 circulator（Quinstar QCY-060400CM00）+ MXC 兩個 isolator（各屬一個四通道 isolator array，Quinstar QCC-075900XM000，3–12 GHz），合計 > 60 dB 隔離；兩者都有磁屏蔽（鐵氧體要磁鐵，磁場會干擾超導元件）。(a) MXC：isolator array → directional coupler → TWPA → isolator array；(b) 4K 的 HEMT；(c) MXC 的 bandpass filter、CP 的 circulator。這頁取代 v58 的 Commons 拆解照（那顆是 925–960 MHz 通訊用）；原 p11「Output line」刪掉，同一張圖改放這裡。 -->
+            <p class="v4-source">S. Krinner <em>et al.</em>, EPJ Quantum Technology <b>6</b>, 2 (2019), Fig. 6 (arXiv version).</p>
+        </section>
+        <section data-manual-slide="" data-auto-fit="false" data-title="Quantum-limited amplification"
+            data-slide-class="v04 qh-deriv w06-page w06-pic-slide w07-pic w07-hist w07-c-k25">
+            <h3>Quantum-limited amplification</h3>
+            <div class="w07-htext">
+<p>An ideal amplifier would give \(\hat a_{\rm out}=\sqrt G\,\hat a_{\rm in}\). Then \(\big[\hat a_{\rm out},\hat a_{\rm out}^\dagger\big]=G\neq1\), and this output is not possible.</p>
+<p>The idler mode \(\hat b_{\rm in}\), in vacuum, must enter the output (b). Both quadratures gain \(\sqrt G\), and the idler vacuum adds half a photon of noise (c, blue):</p>
+<div class="w07-k25-eqs">
+<div class="v4-eq">\[\hat a_{\rm out}=\underbrace{\sqrt G\,\hat a_{\rm in}}_{\text{amplification}}+\underbrace{\sqrt{G-1}\,\hat b_{\rm in}^\dagger}_{\text{added idler noise}}\]</div>
+<div class="v4-eq">\[\big[\hat a_{\rm out},\hat a_{\rm out}^\dagger\big]=G\big[\hat a_{\rm in},\hat a_{\rm in}^\dagger\big]+(G-1)\big[\hat b_{\rm in}^\dagger,\hat b_{\rm in}\big]=G-(G-1)=1\]</div>
+</div>
+            </div>
+            <div class="w06-pics">
+                <figure class="w06-pic w07-f1"><a href="../Image/Krantz2019-Fig25.png"><img src="../WebP/Krantz2019-Fig25.webp" alt="(a) amplifier input: a coherent state in the I-Q plane with noise circles; (b) mixing processes: pump, signal and idler, with the idler input in vacuum; (c) amplifier output: both quadratures amplified by the square root of G, with the vacuum noise of the idler added as a blue ring"></a></figure>
+            </div>
+            <!-- Teaching note: v59：對易子驗算從下一頁「Why half a photon」搬到這裡，放在 a_out 右邊（使用者「這個放到p13」）。v20：使用者指出這頁的關鍵是 Krantz Eq. (181)–(183)（Caves theorem）：理想放大 a_out = √G a_in 給 [a_out, a_out†] = G ≠ 1，違反玻色對易關係，所以一定要把另一個模（idler b_in，處於真空）放進來：a_out = √G a_in + √(G−1) b_in†（放大 + 加上的 idler 雜訊）；G 大時至少加 ħω/2（半個光子），下一頁逐步算。使用者給的圖（DOI 10.1063/1.5089550 = Krantz 2019 APR），arXiv 版 Fig. 25，圖說：quantum-limited、phase-preserving 參量放大一個同調態；(a) 輸入中心 (⟨I_in⟩, ⟨Q_in⟩)，圓的半徑 = 雜訊；(b) signal 與 pump 經純色散非線性介質交互作用，idler 輸入是真空；(c) 兩個正交分量都放大 √G，理想情況下輸出多加半個光子的雜訊（藍）。下一頁推導為什麼是半個光子。 -->
+            <p class="v4-source">P. Krantz <em>et al.</em>, Appl. Phys. Rev. <b>6</b>, 021318 (2019), Fig. 25 (arXiv version).</p>
+        </section>
+        <section data-manual-slide="" data-auto-fit="false" data-title="Quantum limit of the added noise"
+            data-slide-class="v04 qh-deriv w07-page w07-c-noise">
+            <h3>Quantum limit of the added noise</h3>
+            <div class="v4-two w07-noise-two">
+                <div class="qh-step-host">
+<p>Ten photons that leave at \(\kappa=2\pi\times2\) MHz give about \(10^8\) photons per second. At 7 GHz, this is \(6\times10^{-16}\) W.</p>
+<p>Each amplifier adds noise. We count it as photons per mode:</p>
+<div class="v4-eq">\[N_{\rm add}=\frac{k_BT_N}{\hbar\omega}\]</div>
+<p>A HEMT at 4 K has \(T_N\approx2\)–4 K. This gives \(N_{\rm add}\approx6\)–12 at 7 GHz.</p>
+                </div>
+                <div class="qh-step-host">
+<p>Count the noise in photons. With \(\hat I=\frac12\big(\hat a+\hat a^\dagger\big)\) and \(\hat Q=\frac{1}{2i}\big(\hat a-\hat a^\dagger\big)\):</p>
+<div class="v4-eq">\[\hat I^2+\hat Q^2=\hat a^\dagger\hat a+\tfrac12\]</div>
+<p>In vacuum, \(\langle\Delta\hat I^2\rangle=\langle\Delta\hat Q^2\rangle=\frac14\): together \(\frac12\). This is the half photon of the vacuum.</p>
+<p>The pump makes signal and idler photons in pairs. The idler \(\hat b_{\rm in}\) is in vacuum:</p>
+<div class="v4-eq">\[\hat a_{\rm out}=\sqrt G\,\hat a_{\rm in}+\sqrt{G-1}\;\hat b_{\rm in}^\dagger\]</div>
+<div class="v4-eq">\[\langle\Delta\hat I_{\rm out}^2\rangle=G\,\langle\Delta\hat I_{\rm in}^2\rangle+(G-1)\cdot\frac14\ \xrightarrow{\ G\gg1\ }\ G\Big(\langle\Delta\hat I_{\rm in}^2\rangle+\frac14\Big)\]</div>
+<p>Divide by \(G\): the idler adds \(\frac14\) to each quadrature, \(\frac14+\frac14=\frac12\). The amplifier adds half a photon, \(N_{\rm add}=\frac12\). With the half photon of the input vacuum, the total is 1 photon.</p>
+                </div>
+            </div>
+            <!-- Teaching note: v82（使用者「可你這邊這樣寫 我很難解釋」）：右欄改成可以照順序講的鏈：(1) 雜訊以光子計：Î² + Q̂² = (a+a†)²/4 − (a−a†)²/4 = (aa† + a†a)/2 = a†a + ½，所以真空 ⟨ΔI²⟩ = ⟨ΔQ²⟩ = ¼，合計 ½ = 真空的半個光子（零點）。(2) pump 成對產生 signal、idler；idler 在真空：a_out = √G a_in + √(G−1) b_in†，I_out = √G I_a + √(G−1) I_b（b† 讓 Q 變號，變異數不變）→ ⟨ΔI_out²⟩ = G⟨ΔI_in²⟩ + (G−1)/4 ≈ G(⟨ΔI_in²⟩ + ¼)。(3) 除以 G 換算回輸入端：idler 給每個分量多 ¼，合計 ½ = 放大器加的半個光子 N_add = ½；輸入本身的真空 ½ 加上去，換算回輸入端的總雜訊 1 個光子（對照左欄 HEMT 的 6–12）。v67：重新排版成左右兩欄（使用者「p13 重新排版」）：左 = 古典放大器的雜訊（訊號功率、N_add、HEMT），右 = 量子極限的推導；字句不變，右欄最後兩句合併。前一頁「Phase-preserving amplification in the IQ plane」刪掉。v59：對易子那段搬到上一頁。保相（非簡併）放大：pump 成對產生 signal 與 idler 光子 → a_out = √G a_in + √(G−1) b_in†（Bogoliubov）。對易子：[a_out, a_out†] = G[a_in, a_in†] + (G−1)[b_in†, b_in] = G − (G−1) = 1；若沒有 idler 項就是 G ≠ 1，違反玻色對易關係 → 不可能有不加雜訊的保相放大器（Caves 1982）。正交分量 I = (a+a†)/2、Q = (a−a†)/2i，真空變異數各 1/4。I_out = √G I_a + √(G−1) I_b、Q_out = √G Q_a − √(G−1) Q_b，所以 ⟨ΔI_out²⟩ = G⟨ΔI_in²⟩ + (G−1)/4 ≈ G(⟨ΔI_in²⟩ + 1/4)（Krantz Fig. 25(c) 的 √(G⟨ΔI_in² + 1/4⟩)）。換算回輸入端：每個分量多 1/4，兩個合計 1/2 光子 = 上面 N_add 的量子極限 1/2。
+                 v52：上面一列 = 原「Why amplify」頁的左半（使用者：「p11右半邊去掉,剩下移去跟p14合併」；Friis 那半拿掉）。訊號：10 個光子 × κ ≈ 1.3×10⁸ 光子/秒 × ħω（7 GHz，4.6×10⁻²⁴ J）≈ 6×10⁻¹⁶ W（−122 dBm）。放大器加的雜訊以「每模幾個光子」計：N_add = k_B T_N/ħω；HEMT T_N 2–4 K、7 GHz 時 ħω/k_B = 0.34 K → 6–12 個光子。量子極限（保留兩個正交分量）½ 光子（Caves）。 -->
+            <p class="v4-source">C. M. Caves, Phys. Rev. D <b>26</b>, 1817 (1982).</p>
+        </section>
+        <section data-manual-slide="" data-auto-fit="false" data-title="Current-pumped and flux-pumped JPA"
+            data-slide-class="v04 qh-deriv w06-page w06-pic-slide w07-pic w07-hist w07-c-k27">
+            <h3>Current-pumped and flux-pumped JPA</h3>
+            <div class="w07-htext">
+<p>A JPA is a resonator that ends in a SQUID (a). The SQUID gives the nonlinearity.</p>
+<p>Current pump (b): \(\omega_{\rm pump}\approx\omega_a\) (\(\omega_p\), \(\omega_r\) in the figure). Two pump photons give a signal photon and an idler photon: \(2\omega_{\rm pump}=\omega_s+\omega_i\).</p>
+<p>Flux pump (c): a flux line changes the SQUID inductance at \(\omega_{\rm pump}\approx2\omega_a\). One pump photon gives a signal photon and an idler photon: \(\omega_{\rm pump}=\omega_s+\omega_i\).</p>
+<p>The flux pump is far from the signal frequency. It is easy to filter.</p>
+            </div>
+            <div class="w06-pics">
+                <figure class="w06-pic w07-f1"><a href="../Image/Krantz2019-Fig27.png"><img src="../WebP/Krantz2019-Fig27.webp" alt="(a) circuit of a Josephson parametric amplifier: a quarter-wave resonator shorted to ground by a SQUID; (b) current pumping, four-wave mixing with the pump near the resonance; (c) flux pumping through a separate flux line, three-wave mixing with the pump near twice the resonance"></a></figure>
+            </div>
+            <!-- Teaching note: Krantz Fig. 27（已對原文）：(a) λ/4 共振腔（藍，集總元件）經 SQUID（橘）接地，SQUID 給 Kerr 非線性。(b) 電流 pump：ω_p ≈ ω_r，四波混頻 2ω_p = ω_s + ω_i（Duffing，H = ω_r c†c + K c†c†cc）。(c) 磁通 pump：用另一條快 flux 線在 Φ_dc 附近調 Φ_ac，三波混頻 ω_p = ω_s + ω_i，ω_p ≈ 2ω_r（Yamamoto 2008 等）。磁通 pump 離訊號頻率遠，容易濾掉、不會飽和後面的放大器。本 deck 前一頁把放大器共振腔叫 ω_a（ω_r 已是讀取共振腔），圖裡的 ω_r、ω_p 分別是 ω_a、ω_pump。 -->
+            <p class="v4-source">P. Krantz <em>et al.</em>, Appl. Phys. Rev. <b>6</b>, 021318 (2019), Fig. 27 (arXiv version).</p>
+        </section>
+        <section data-manual-slide="" data-auto-fit="false" data-title="Impedance-matched parametric amplifier (IMPA)"
+            data-slide-class="v04 qh-deriv w06-page w06-pic-slide w07-pic w07-hist w07-c-imp">
+            <h3>Impedance-matched parametric amplifier (IMPA)</h3>
+            <div class="w07-htext">
+<p>A tapered line, 50 Ω to 15 Ω, couples a flux-pumped JPA strongly to the 50 Ω line (a).</p>
+<p>The band is up to 700 MHz, near the quantum limit. A JPA with \(Q=10\) has only about 60 MHz.</p>
+<p>Sycamore uses IMPAs as its first amplifiers.</p>
+            </div>
+            <div class="w06-pics">
+                <figure class="w06-pic w07-f1"><a href="../Image/Mutus2014-Fig1.png"><img src="../WebP/Mutus2014-Fig1.webp" alt="(a) circuit of the IMPA: a SQUID-based LC circuit with bias and pump, coupled to the circulator through a tapered line from 50 to 15 ohm whose profile is shown in the inset; (b) photograph of the 3 mm chip and micrographs of the tapered line at 40, 25 and 15 ohm"></a></figure>
+            </div>
+            <!-- Teaching note: Mutus 2014（UCSB/Google）Fig. 1，已對原文 arXiv:1401.3799：(a) 非線性 LC（SQUID）經漸變傳輸線（50 Ω → 15 Ω，20 mm 長的 CPW 加 2 μm 寬的 crossover，密度越大阻抗越低，見右邊顯微照片）接到 50 Ω；I_bias 調 SQUID 電感、ω_p 是磁通 pump（「pumpistor」模型 = flux driven SQUID）。(b) 3 mm × 3 mm 晶片。強耦合 → 頻寬到 700 MHz、平均飽和 −108 dBm（最高 −103 dBm）、增益 > 15 dB、接近量子極限；一般 Q = 10 的 JPA 只有 60 MHz（Fig. 2）。Sycamore 補充資料：mixing chamber 上的第一級是 IMPA。 -->
+            <p class="v4-source">J. Y. Mutus <em>et al.</em>, Appl. Phys. Lett. <b>104</b>, 263513 (2014), Fig. 1 (arXiv version).</p>
+        </section>
+        <section data-manual-slide="" data-auto-fit="false" data-title="SNAIL parametric amplifier"
+            data-slide-class="v04 qh-deriv w06-page w06-pic-slide w07-pic w07-hist w07-c-snl">
+            <h3>SNAIL parametric amplifier</h3>
+            <div class="w07-htext">
+<p>A SNAIL is a loop with three large junctions and one small junction (c). With flux, its energy has a \(\varphi^3\) term.</p>
+<p>The \(\varphi^3\) term gives three-wave mixing: \(\omega_{\rm pump}=\omega_s+\omega_i\), with \(\omega_{\rm pump}\approx2\omega_a\).</p>
+<p>An array of 20 SNAILs (b) lets the amplifier take more power. At 20 dB gain, the 1 dB compression point is −102 to −112 dBm.</p>
+<p>The band is tunable over 1 GHz, with quantum-limited noise.</p>
+            </div>
+            <div class="w06-pics">
+                <figure class="w06-pic w07-f1"><a href="../Image/Frattini2018-Fig1.png"><img src="../WebP/Frattini2018-Fig1.webp" alt="(a) optical image of the SNAIL parametric amplifier on a microstrip line; (b) array of 20 SNAILs; (c) electron micrograph of one SNAIL with three large junctions and one small junction; (d) circuit model with the SNAIL array inside a half-wave microstrip resonator coupled through C_c"></a></figure>
+            </div>
+            <!-- Teaching note: Frattini 2018（Yale）Fig. 1，已對原文 arXiv:1806.06093：SNAIL = 三個大 junction（L_J）與一個小 junction（L_J/α）組成的環；加磁通後位能不對稱 → 有三次項（三波混頻）與可調的四次項。M = 20 個 SNAIL 串在 λ/2 微帶共振腔中央（(a)(b)(d)），κ 由 C_c 決定。pump 在 ω_p ≈ 2ω_a（Fig. 3）。串很多個 SNAIL 讓每個 junction 分到的相位小 → 飽和功率高：20 dB 增益時 P_−1dB = −102 到 −112 dBm，整個 1 GHz 可調頻寬內都如此，雜訊維持量子極限。 -->
+            <p class="v4-source">N. E. Frattini <em>et al.</em>, Phys. Rev. Applied <b>10</b>, 054020 (2018), Fig. 1 (arXiv version).</p>
+        </section>
+        <section data-manual-slide="" data-auto-fit="false" data-title="Traveling-wave parametric amplifier (TWPA)"
+            data-slide-class="v04 qh-deriv w06-page w06-pic-slide w07-pic w07-hist w07-c-twpa">
+            <h3>Traveling-wave parametric amplifier (TWPA)</h3>
+            <div class="w07-htext">
+<p>A TWPA is a transmission line. Each cell has a junction \(L_J\) in the line and a capacitor \(C\) to ground (left, a).</p>
+<p>The signal gains a little in each cell as it travels with the pump (left, b).</p>
+<p>LC resonators (red) set the phase of the pump. Then the gain is about 20 dB over several GHz (left, c, d).</p>
+<p>Right: a chain of SQUIDs under a top ground. The SQUID height changes periodically. This makes a gap (d). The band is 3 GHz, and the noise is near the quantum limit.</p>
+            </div>
+            <div class="w06-pics">
+                <figure class="w06-pic w07-f1"><a href="../Image/Krantz2019-Fig28.png"><img src="../WebP/Krantz2019-Fig28.webp" alt="(a) circuit of a Josephson traveling wave parametric amplifier: unit cells with a junction in series and a capacitor to ground, with resonant phase-matching LC circuits; (b) the signal grows along the line; (c) gain against frequency with and without resonant phase matching; (d) dispersion relation with a stop band at the resonator frequency"></a></figure>
+                <figure class="w06-pic w07-f2"><a href="../Image/Planat2020-Fig1.png"><img src="../WebP/Planat2020-Fig1.webp" alt="(a) schematic of the photonic-crystal SQUID traveling wave amplifier on silicon under an alumina layer and a copper top ground, with an optical picture of two periods of the SQUID array; (b) electrical sketch with modulated unit cells; (c) picture of the sample in its copper box; (d) calculated dispersion relation with a photonic gap"></a></figure>
+            </div>
+            <!-- Teaching note: v59：原 p19「TWPA: the circuit」與 p20「A TWPA made of SQUIDs」合併（使用者「TWPA兩頁可以合併」）。左 Krantz Fig. 28（圖由 Kevin O’Brien 提供，已對原文）：(a) 每個單元：串聯 junction L_J（橘）+ 對地電容 C（藍）；紅色 LC 共振腔做 resonant phase matching（RPM）。(b) 訊號沿線逐格放大。(c) 有 RPM 時增益約 20 dB、頻寬數 GHz；沒有時只有約 10 dB、窄。(d) LC 共振腔在其共振頻率打開 stop band，pump 放在附近可調波向量達成相位匹配。右 Planat 2020（Grenoble，Roch 組）Fig. 1，已對原文 arXiv:1907.10158：SQUID 陣列在矽上，覆蓋薄氧化鋁與厚銅頂層地；只調 SQUID 高度 → 光子晶體，色散在約 7 GHz 有 gap（d），用來相位匹配；線圈加磁通可原位調；3 GHz 頻寬、1 dB 壓縮 −102 dBm、雜訊接近量子極限。 -->
+            <p class="v4-source">Left: P. Krantz <em>et al.</em>, Appl. Phys. Rev. <b>6</b>, 021318 (2019), Fig. 28. Right: L. Planat <em>et al.</em>, Phys. Rev. X <b>10</b>, 021021 (2020), Fig. 1 (arXiv versions).</p>
         </section>
         <section data-manual-slide="" data-auto-fit="false" data-title="Thank you"
             data-slide-class="v04 qh-deriv " data-cover="">
@@ -14917,7 +15102,7 @@ Ideal model, hanger resonator with no internal loss, rates in rad/ns:
                 const q = sel => root.querySelector(sel), qa = sel => Array.from(root.querySelectorAll(sel));
                 const inButtons = qa('[data-w07m-in]');
                 let inp = +((inButtons.find(b => b.classList.contains('is-on')) || {}).dataset?.w07mIn || 0);
-                const seen = [false, false];                       // the blob of an input stays once its readout is done
+                const seen = [false, false];                       // the blob of an input stays until Replay (v90)
                 const runButton = q('[data-w07m-run]'), resetButton = q('[data-w07m-reset]');
                 const scope = q('[data-w07m-plot="scope"]'), panels = q('[data-w07m-plot="panels"]'), readout = q('[data-w07m-out="readout"]');
                 const lines = { xy1: q('[data-w07m-line="xy1"]'), roin: q('[data-w07m-line="roin"]'), roout: q('[data-w07m-line="roout"]') }, res = q('[data-w07m-res]'), tag = q('[data-w07m-tag]');
@@ -15037,16 +15222,24 @@ Ideal model, hanger resonator with no internal loss, rates in rad/ns:
                 function request() { if (!raf) { lastNow = performance.now(); raf = requestAnimationFrame(frame); } }
                 const pick = (buttons, btn) => buttons.forEach(o => { const on = o === btn; o.classList.toggle('is-on', on); o.setAttribute('aria-pressed', String(on)); });
                 const restart = () => { sweep = 0; running = true; if (runButton) runButton.textContent = 'Stop'; request(); };
-                inButtons.forEach(btn => btn.addEventListener('click', e => { e.preventDefault(); e.stopPropagation(); inp = +btn.dataset.w07mIn; pick(inButtons, btn); restart(); }));
+                inButtons.forEach(btn => btn.addEventListener('click', e => { e.preventDefault(); e.stopPropagation(); inp = +btn.dataset.w07mIn; seen[inp] = false; pick(inButtons, btn); restart(); }));
                 runButton?.addEventListener('click', e => { e.preventDefault(); e.stopPropagation(); running = !running; runButton.textContent = running ? 'Stop' : 'Run'; request(); if (!running) drawAll(); });
-                resetButton?.addEventListener('click', e => { e.preventDefault(); e.stopPropagation(); restart(); });
+                resetButton?.addEventListener('click', e => { e.preventDefault(); e.stopPropagation(); seen[0] = seen[1] = false; restart(); });
                 for (const name of ['pointerdown', 'pointermove', 'pointerup', 'mousedown', 'mousemove', 'mouseup', 'touchstart', 'touchmove', 'touchend', 'click', 'dblclick']) root.addEventListener(name, event => event.stopPropagation(), { passive: true });
                 root.addEventListener('keydown', event => { if (['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', ' ', 'Enter', 'PageUp', 'PageDown', 'Home', 'End'].includes(event.key)) event.stopPropagation(); }, true);
                 if (typeof ResizeObserver !== 'undefined') new ResizeObserver(request).observe(root);
-                instances.set(root, { request, set: (s, j) => { if (j === 0 || j === 1) { inp = j; pick(inButtons, inButtons.find(b => +b.dataset.w07mIn === j)); } sweep = s; running = false; if (runButton) runButton.textContent = 'Run'; drawAll(); } });
+                instances.set(root, { request, reset: () => { seen[0] = seen[1] = false; sweep = 0; running = true; if (runButton) runButton.textContent = 'Stop'; }, set: (s, j) => { if (j === 0 || j === 1) { inp = j; pick(inButtons, inButtons.find(b => +b.dataset.w07mIn === j)); } sweep = s; running = false; if (runButton) runButton.textContent = 'Run'; drawAll(); } });
                 request();
             }
-            function boot() { document.querySelectorAll('.qhs-slide.is-active .w07m').forEach(init); }
+            const wasActive = new WeakMap();
+            function boot() {
+                document.querySelectorAll('.w07m').forEach(root => {
+                    const on = !!root.closest('.qhs-slide.is-active');
+                    if (on && wasActive.get(root) === false && instances.has(root)) instances.get(root).reset();   // back on the page: start again (v90)
+                    wasActive.set(root, on);
+                    if (on) init(root);
+                });
+            }
             window.w07M = { get: root => instances.get(root) };
             function start() { new MutationObserver(boot).observe(document.body, { subtree: true, attributes: true, attributeFilter: ['class'] }); window.addEventListener('resize', boot); boot(); }
             if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start, { once: true }); else start();
@@ -15260,6 +15453,197 @@ ps, phase-sensitive (degenerate): a_out = √G a_in + e^{−iφ}√(G−1) a_in�
             if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start, { once: true }); else start();
         })();
 
+    </script>
+    <script>
+/* W07 v90: resonator response. One hanger resonator, no qubit, no internal loss. Same model, units and timing as the chip readout (w07m):
+  rates in rad/ns, kappa = 2 pi x 2 MHz, delta = w_probe - w_r, convention V = Re[A e^{-i w t}].
+  field b:  db/dt = -(kappa/2 - i delta) b + eps/2,  transmitted  out = eps - kappa b;  steady state out = eps S21,
+  S21 = 1 - kappa / (kappa - 2 i delta):  delta = 0 -> 0;  delta = -+kappa/2 -> (1 +- i)/2 (0.71, +-45 deg);  delta = -+3 MHz -> 0.9 +- 0.3 i.
+  Photon number scaled as on the chip page: n = 20 kappa^2 |b|^2 (10 at |delta| = kappa/2, 20 on resonance).
+  The tone (eps = 1) is on from T_ON to T_OFF (600 ns); the integrated point is the mean of out over the tone; shots = mean + white noise.
+  Replay clears all blobs; a new probe frequency regrows its own blob; leaving the page and coming back starts again.
+  v91: noise slider (the spread of each quadrature, in units of the tone amplitude; all blobs follow it), and the phase theta of S21 under |S21|.
+  v94: one-port resonator read in reflection, as on the Reflection S11 page (Krantz Fig. 19): kappa_int = 2 pi x 0.65 MHz fixed,
+  db/dt = -((kappa + kappa_int)/2 - i delta) b + eps, out = eps - kappa b, S11 = 1 - 2 kappa / (kappa + kappa_int - 2 i delta);
+  |S11| = 0.51 and theta = pi on resonance; theta runs 0 -> 2 pi across the resonance; n = 20 on resonance. */
+        (() => {
+            const instances = new WeakMap(), wasActive = new WeakMap(), TAU = 2 * Math.PI, DEG = Math.PI / 180;
+            const COL = { ink: '#28333b', zero: '#aaa2b0', lo: '#cfc9d6', tone: '#65508f', pur: '#65508f', mut: '#6b6472', grid: '#ece8ef', cursor: '#25827a', sig: '#355f9c' };
+            const TT = 1000, T_ON = 170, T_OFF = 770, CYC = 13;                                  // ns; display cycles of the carrier
+            const KAP = TAU * 2e-3, KINT = TAU * 0.65e-3, NSHOT = 260, FREQS = [-3, -1, 0, 1, 3];         // probe - w_r in 2 pi x MHz
+            const DEL = f => TAU * 1e-3 * f;
+            const clamp = v => Math.max(0, Math.min(1, v));
+            const cm = (a, b) => [a[0] * b[0] - a[1] * b[1], a[0] * b[1] + a[1] * b[0]];
+            const cdiv = (a, b) => { const d = b[0] * b[0] + b[1] * b[1]; return [(a[0] * b[0] + a[1] * b[1]) / d, (a[1] * b[0] - a[0] * b[1]) / d]; };
+            const cexp = z => { const r = Math.exp(z[0]); return [r * Math.cos(z[1]), r * Math.sin(z[1])]; };
+            const S21 = d => { const z = cdiv([2 * KAP, 0], [KAP + KINT, -2 * d]); return [1 - z[0], -z[1]]; };      // v94: this is S11 (reflection)
+            const bss = d => cdiv([2, 0], [KAP + KINT, -2 * d]);                                  // steady field for eps = 1
+            const C0 = 1 - KAP / (KAP + KINT), R0 = KAP / (KAP + KINT);                           // the S11 circle in the IQ plane
+            const th360 = z => (Math.atan2(z[1], z[0]) / DEG + 360) % 360;                       // theta in [0, 360)
+            function field(d, t) {                                                                // b(t), exact for the square tone
+                const lam = [-(KAP + KINT) / 2, d], b0 = bss(d);
+                if (t <= T_ON) return [0, 0];
+                if (t <= T_OFF) { const e = cexp([lam[0] * (t - T_ON), lam[1] * (t - T_ON)]); return [b0[0] * (1 - e[0]) + b0[1] * e[1], b0[1] * (1 - e[0]) - b0[0] * e[1]]; }
+                const bo = field(d, T_OFF), e = cexp([lam[0] * (t - T_OFF), lam[1] * (t - T_OFF)]);
+                return cm(bo, e);
+            }
+            const tone = t => (t > T_ON && t <= T_OFF ? 1 : 0);
+            const out = (d, t) => { const b = field(d, t); return [tone(t) - KAP * b[0], -KAP * b[1]]; };
+            const photons = (d, t) => { const b = field(d, t); return 20 * (KAP + KINT) * (KAP + KINT) / 4 * (b[0] * b[0] + b[1] * b[1]); };
+            function rng(seed) { let s = seed >>> 0; return () => { s = (s * 1664525 + 1013904223) >>> 0; return s / 4294967296; }; }
+            const MEAN = FREQS.map(f => { const d = DEL(f); let a = [0, 0]; const n = 600; for (let k = 0; k < n; k++) { const o = out(d, T_ON + (k + .5) * (T_OFF - T_ON) / n); a = [a[0] + o[0] / n, a[1] + o[1] / n]; } return a; });
+            const OFFS = FREQS.map((f, i) => { const r = rng(23 + 41 * i), pts = []; for (let k = 0; k < NSHOT; k++) { const u = Math.max(1e-9, r()), v = r(), rr = Math.sqrt(-2 * Math.log(u)); pts.push([rr * Math.cos(TAU * v), rr * Math.sin(TAU * v)]); } return pts; });   // unit noise; shot = mean + noise * offset
+            const fmt = f => (f > 0 ? '+' : f < 0 ? '−' : '') + Math.abs(f);
+            function prepare(canvas) {
+                const ctx = canvas?.getContext('2d'); if (!ctx) return null;
+                const box = canvas.getBoundingClientRect(); if (box.width < 10 || box.height < 10) return null;
+                const dpr = Math.min(2, window.devicePixelRatio || 1), width = Math.round(canvas.clientWidth || box.width), height = Math.round(canvas.clientHeight || box.height);
+                if (canvas.width !== Math.round(width * dpr) || canvas.height !== Math.round(height * dpr)) { canvas.width = Math.round(width * dpr); canvas.height = Math.round(height * dpr); }
+                ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, width, height); ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, width, height);
+                return { ctx, width, height };
+            }
+            function init(root) {
+                if (instances.has(root)) { instances.get(root).request(); return; }
+                let running = true, sweep = 0, lastNow = performance.now(), raf = 0;
+                const q = sel => root.querySelector(sel), qa = sel => Array.from(root.querySelectorAll(sel));
+                const fButtons = qa('[data-w07rr-f]'), noiseIn = q('[data-w07rr-noise]'), noiseOut = q('[data-w07rr-noise-out]');
+                let noise = noiseIn ? Number(noiseIn.value) : .085;
+                const showNoise = () => { if (noiseOut) noiseOut.textContent = noise.toFixed(2); };
+                let fi = Math.max(0, FREQS.indexOf(+((fButtons.find(b => b.classList.contains('is-on')) || {}).dataset?.w07rrF || 0)));
+                const seen = FREQS.map(() => false);                 // the blob of a probe frequency stays until Replay
+                const runButton = q('[data-w07rr-run]'), resetButton = q('[data-w07rr-reset]');
+                const glow = q('[data-w07rr-glow]');                 // v93: the drawn resonator glows with the photon number
+                const scope = q('[data-w07rr-plot="scope"]'), s21 = q('[data-w07rr-plot="s21"]'), iq = q('[data-w07rr-plot="iq"]'), readout = q('[data-w07rr-out="readout"]');
+                const active = () => !!root.closest('.qhs-slide.is-active');
+                const T = () => sweep * TT, d = () => DEL(FREQS[fi]);
+                function drawScope() {
+                    const P = prepare(scope); if (!P) return;
+                    const { ctx, width, height } = P, g = { left: 74, right: 10, top: 30, bottom: 6 };
+                    const plotW = width - g.left - g.right, gap = 8, laneH = (height - g.top - g.bottom - gap) / 2;
+                    const lanes = [0, 1].map(k => { const top = g.top + k * (laneH + gap); return { top, mid: top + laneH / 2, scale: laneH / 2 / 1.12 }; });
+                    const px = t => g.left + t / TT * plotW, n = Math.max(700, Math.round(plotW * 2)), th = t => TAU * CYC * t / TT;
+                    const curve = (lane, f, color, lw) => { ctx.beginPath(); for (let k = 0; k <= n; k++) { const t = TT * k / n, yy = lane.mid - f(t) * lane.scale; if (k) ctx.lineTo(px(t), yy); else ctx.moveTo(px(t), yy); } ctx.strokeStyle = color; ctx.lineWidth = lw; ctx.lineJoin = 'round'; ctx.stroke(); };
+                    ctx.fillStyle = 'rgba(101,80,143,.07)'; ctx.fillRect(px(T_ON), g.top - 2, px(T_OFF) - px(T_ON), height - g.top - g.bottom + 2);
+                    [['readout', 'in', COL.tone], ['readout', 'out', COL.sig]].forEach(([a, b, col], k) => {
+                        const lane = lanes[k];
+                        ctx.beginPath(); ctx.moveTo(g.left, lane.mid); ctx.lineTo(width - g.right, lane.mid); ctx.strokeStyle = COL.zero; ctx.lineWidth = 1; ctx.stroke();
+                        ctx.textAlign = 'right'; ctx.fillStyle = col;
+                        ctx.textBaseline = 'bottom'; ctx.font = '600 11px Montserrat, sans-serif'; ctx.fillText(a, g.left - 8, lane.mid);
+                        ctx.textBaseline = 'top'; ctx.font = '700 13px Montserrat, sans-serif'; ctx.fillText(b, g.left - 8, lane.mid);
+                    });
+                    curve(lanes[0], t => tone(t) * Math.cos(th(t)), COL.tone, 1.4);
+                    curve(lanes[1], t => { const o = out(d(), t); return o[0] * Math.cos(th(t)) + o[1] * Math.sin(th(t)); }, COL.sig, 2.0);
+                    ctx.strokeStyle = COL.cursor; ctx.lineWidth = 1.6; ctx.setLineDash([5, 4]); ctx.beginPath(); ctx.moveTo(px(T()), g.top); ctx.lineTo(px(T()), height - g.bottom); ctx.stroke(); ctx.setLineDash([]);
+                    ctx.font = '600 12px Montserrat, sans-serif'; ctx.textBaseline = 'bottom'; ctx.textAlign = 'center';
+                    ctx.fillStyle = COL.pur; ctx.fillText('readout tone, integrated (600 ns)', px((T_ON + T_OFF) / 2), g.top - 4);
+                }
+                function drawS21() {
+                    const P = prepare(s21); if (!P) return;
+                    const { ctx, width, height } = P, F0 = -4, F1 = 4, x0 = 52, x1 = width - 16, gapY = 34;
+                    const top = { y0: 30, y1: 30 + (height - 30 - gapY - 40) / 2 }, bot = { y0: top.y1 + gapY, y1: height - 40 };
+                    const X = f => x0 + (f - F0) / (F1 - F0) * (x1 - x0);
+                    const Ym = v => top.y1 - v / 1.05 * (top.y1 - top.y0), Yp = v => bot.y1 - v / 380 * (bot.y1 - bot.y0);
+                    const grid = (y, label) => { ctx.strokeStyle = COL.grid; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(x0, y); ctx.lineTo(x1, y); ctx.stroke(); ctx.fillText(label, x0 - 6, y); };
+                    ctx.font = '12px Montserrat, sans-serif'; ctx.fillStyle = COL.mut; ctx.textAlign = 'right'; ctx.textBaseline = 'middle';
+                    for (const v of [0, .5, 1]) grid(Ym(v), v.toFixed(1));
+                    for (const [v, l] of [[0, '0'], [180, 'π'], [360, '2π']]) grid(Yp(v), l);
+                    ctx.textAlign = 'center'; ctx.textBaseline = 'top';
+                    for (const f of FREQS) ctx.fillText(fmt(f), X(f), bot.y1 + 5);
+                    ctx.fillText('probe frequency − ωᵣ (2π × MHz)', (x0 + x1) / 2, bot.y1 + 21);
+                    ctx.font = '700 13px Montserrat, sans-serif'; ctx.textAlign = 'left'; ctx.fillStyle = COL.ink;
+                    ctx.fillText('|S₁₁| of the resonator', x0, 6); ctx.fillText('θ, the phase of S₁₁', x0, top.y1 + 10);
+                    ctx.beginPath();
+                    for (let k = 0; k <= 400; k++) { const f = F0 + (F1 - F0) * k / 400, z = S21(DEL(f)), v = Math.hypot(z[0], z[1]); k ? ctx.lineTo(X(f), Ym(v)) : ctx.moveTo(X(f), Ym(v)); }
+                    ctx.strokeStyle = COL.sig; ctx.lineWidth = 2.6; ctx.stroke();
+                    ctx.beginPath();                                                    // theta runs once from 0 to 2 pi across the resonance
+                    for (let k = 0; k <= 401; k++) { const f = F0 + (F1 - F0) * k / 401, th = th360(S21(DEL(f))); k ? ctx.lineTo(X(f), Yp(th)) : ctx.moveTo(X(f), Yp(th)); }
+                    ctx.strokeStyle = COL.sig; ctx.lineWidth = 2.6; ctx.stroke();
+                    const fp = FREQS[fi];
+                    ctx.strokeStyle = COL.pur; ctx.lineWidth = 1.6; ctx.setLineDash([5, 4]); ctx.beginPath(); ctx.moveTo(X(fp), top.y0); ctx.lineTo(X(fp), top.y1); ctx.moveTo(X(fp), bot.y0); ctx.lineTo(X(fp), bot.y1); ctx.stroke(); ctx.setLineDash([]);
+                    ctx.fillStyle = COL.pur; ctx.font = '600 12px Montserrat, sans-serif'; ctx.textAlign = fp > 2 ? 'right' : 'left'; ctx.textBaseline = 'top'; ctx.fillText('probe', X(fp) + (fp > 2 ? -4 : 4), top.y0 + 2);
+                }
+                function drawIQ() {
+                    const P = prepare(iq); if (!P) return;
+                    const { ctx, width, height } = P, t = T(), x0 = 14, x1 = width - 14, y0 = 30, y1 = height - 12;
+                    const sc = Math.min((x1 - x0) / (2 * R0 + .5), (y1 - y0) / (2 * R0 + .3)), cx = (x0 + x1) / 2, cy = (y0 + y1) / 2;
+                    const X = v => cx + (v - C0) * sc, Y = v => cy - v * sc;
+                    ctx.font = '700 13px Montserrat, sans-serif'; ctx.textAlign = 'left'; ctx.textBaseline = 'top'; ctx.fillStyle = COL.ink; ctx.fillText('IQ plane: the reflected signal', 12, 6);
+                    ctx.strokeStyle = COL.grid; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(X(C0 - R0 - .15), Y(0)); ctx.lineTo(X(1.17), Y(0)); ctx.moveTo(X(0), Y(-R0 - .1)); ctx.lineTo(X(0), Y(R0 + .1)); ctx.stroke();
+                    ctx.fillStyle = COL.mut; ctx.font = '12px Montserrat, sans-serif'; ctx.textBaseline = 'bottom'; ctx.fillText('I', X(1.17) - 8, Y(0) - 3); ctx.fillText('Q', X(0) + 5, Y(R0 + .1) + 14);
+                    ctx.strokeStyle = COL.lo; ctx.lineWidth = 1.5; ctx.setLineDash([4, 4]); ctx.beginPath(); ctx.arc(X(C0), Y(0), R0 * sc, 0, TAU); ctx.stroke(); ctx.setLineDash([]);
+                    ctx.save(); ctx.beginPath(); ctx.rect(1, 26, width - 2, height - 27); ctx.clip();   // large noise: keep the dots under the panel title
+                    FREQS.forEach((f, i) => {
+                        const now = i === fi && t > T_OFF + 40;
+                        if (!seen[i] && !now) return;
+                        const k = i === fi && !seen[i] ? clamp((t - T_OFF - 40) / 120) : 1;
+                        ctx.fillStyle = COL.sig; ctx.globalAlpha = i === fi ? .5 : .2;
+                        for (const p of OFFS[i].slice(0, Math.round(NSHOT * k))) { ctx.beginPath(); ctx.arc(X(MEAN[i][0] + noise * p[0]), Y(MEAN[i][1] + noise * p[1]), 2.3, 0, TAU); ctx.fill(); }
+                        ctx.globalAlpha = 1;
+                    });
+                    ctx.restore();
+                    // the trajectory of the reflected signal up to now (only while the tone is on)
+                    if (t > T_ON) {
+                        const tm = Math.min(t, T_OFF); ctx.beginPath();
+                        for (let k = 0; k <= 400; k++) { const o = out(d(), T_ON + 1e-6 + (tm - T_ON - 1e-6) * k / 400); if (k) ctx.lineTo(X(o[0]), Y(o[1])); else ctx.moveTo(X(o[0]), Y(o[1])); }
+                        ctx.strokeStyle = COL.sig; ctx.lineWidth = 2.2; ctx.stroke();
+                        if (t <= T_OFF) { const o = out(d(), t); ctx.beginPath(); ctx.arc(X(o[0]), Y(o[1]), 6, 0, TAU); ctx.fillStyle = COL.sig; ctx.fill(); ctx.strokeStyle = '#fff'; ctx.lineWidth = 1.5; ctx.stroke(); }
+                    }
+                }
+                function text() {
+                    if (!readout) return;
+                    const t = T(), f = FREQS[fi], o = out(d(), t), amp = Math.hypot(o[0], o[1]), ph = Math.round(th360(o)) % 360, n = photons(d(), t);
+                    let stage;
+                    if (t < T_ON) stage = 'The resonator is empty.';
+                    else if (t < T_ON + 220) stage = 'The tone goes into the port of the resonator. The resonator fills with photons.';
+                    else if (t < T_OFF) stage = f === 0 ? 'The probe is at ω<sub>r</sub>. The reflected signal has the phase π. It is smaller: the resonator loses part of the power inside (κ<sub>int</sub>).'
+                        : Math.abs(f) === 1 ? `The probe is near ω<sub>r</sub>, ${f < 0 ? 'below' : 'above'} it. Here the phase changes fast with the probe frequency.`
+                        : `The probe is far ${f < 0 ? 'below' : 'above'} ω<sub>r</sub>. Almost all of the tone comes back, with a small change of phase.`;
+                    else if (t < T_OFF + 160) stage = 'The tone stops. The photons leave the resonator.';
+                    else stage = 'The integrated signal gives one point. The amplifier noise moves each repetition a little: one blob.' + (seen.filter(Boolean).length > 1 ? ' Each probe frequency gives its own blob.' : ' Select another probe frequency for another blob.');
+                    const nums = t > T_ON && t <= T_OFF + 160 ? `reflected amplitude ${amp.toFixed(2)}, phase θ = ${ph}° · photons in the resonator ${n.toFixed(1)}` : `photons in the resonator ${n.toFixed(1)}`;
+                    readout.innerHTML = `${stage}<br><b>${nums}</b>`;
+                }
+                function drawAll() { if (T() > T_OFF + 160) seen[fi] = true; if (glow) glow.style.opacity = String(.7 * clamp(photons(d(), T()) / 20)); drawScope(); drawS21(); drawIQ(); text(); }
+                function frame(now) {
+                    raf = 0; if (!active()) return;
+                    const dt = Math.min(50, Math.max(0, now - lastNow));
+                    if (running) sweep = (sweep + dt / 13000) % 1;
+                    lastNow = now; drawAll();
+                    if (running) raf = requestAnimationFrame(frame);
+                }
+                function request() { if (!raf) { lastNow = performance.now(); raf = requestAnimationFrame(frame); } }
+                const pick = btn => fButtons.forEach(o => { const on = o === btn; o.classList.toggle('is-on', on); o.setAttribute('aria-pressed', String(on)); });
+                const restart = () => { sweep = 0; running = true; if (runButton) runButton.textContent = 'Stop'; request(); };
+                const clearAll = () => seen.fill(false);
+                fButtons.forEach(btn => btn.addEventListener('click', e => { e.preventDefault(); e.stopPropagation(); fi = Math.max(0, FREQS.indexOf(+btn.dataset.w07rrF)); seen[fi] = false; pick(btn); restart(); }));
+                runButton?.addEventListener('click', e => { e.preventDefault(); e.stopPropagation(); running = !running; runButton.textContent = running ? 'Stop' : 'Run'; request(); if (!running) drawAll(); });
+                resetButton?.addEventListener('click', e => { e.preventDefault(); e.stopPropagation(); clearAll(); restart(); });
+                noiseIn?.addEventListener('input', e => { e.stopPropagation(); noise = Number(noiseIn.value); showNoise(); if (running) request(); else drawAll(); });
+                showNoise();
+                for (const name of ['pointerdown', 'pointermove', 'pointerup', 'mousedown', 'mousemove', 'mouseup', 'touchstart', 'touchmove', 'touchend', 'click', 'dblclick']) root.addEventListener(name, event => event.stopPropagation(), { passive: true });
+                root.addEventListener('keydown', event => { if (['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', ' ', 'Enter', 'PageUp', 'PageDown', 'Home', 'End'].includes(event.key)) event.stopPropagation(); }, true);
+                if (typeof ResizeObserver !== 'undefined') new ResizeObserver(request).observe(root);
+                instances.set(root, {
+                    request,
+                    reset: () => { clearAll(); sweep = 0; running = true; if (runButton) runButton.textContent = 'Stop'; },
+                    setNoise: v => { noise = v; if (noiseIn) noiseIn.value = String(v); showNoise(); drawAll(); },
+                    set: (s, f) => { const i = FREQS.indexOf(f); if (i >= 0) { fi = i; pick(fButtons[i]); } sweep = s; running = false; if (runButton) runButton.textContent = 'Run'; drawAll(); },
+                    seen
+                });
+                request();
+            }
+            function boot() {
+                document.querySelectorAll('.w07rr').forEach(root => {
+                    const on = !!root.closest('.qhs-slide.is-active');
+                    if (on && wasActive.get(root) === false && instances.has(root)) instances.get(root).reset();   // back on the page: start again
+                    wasActive.set(root, on);
+                    if (on) init(root);
+                });
+            }
+            window.w07RR = { get: root => instances.get(root), MEAN, FREQS };
+            function start() { new MutationObserver(boot).observe(document.body, { subtree: true, attributes: true, attributeFilter: ['class'] }); window.addEventListener('resize', boot); boot(); }
+            if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start, { once: true }); else start();
+        })();
     </script>
 </body>
 
