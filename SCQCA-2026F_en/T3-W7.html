@@ -9058,10 +9058,40 @@
                 </div>
             </div>
             <!-- Teaching note: v92（老師建議開頭引言：quantum readout 很難；weak and strong (projective)；demolition：read 時會不會改變狀態；可不可以多次量測。使用者同意「full readout vs parity（partial）readout」的說法和 1–3 點內容，「放在p2前一頁當第二頁」）。
-左欄，讀取為什麼難：(1) 訊號小：10 顆光子以 κ = 2π×2 MHz 漏出，P = n̄ħω_rκ = 10 × (1.05×10⁻³⁴ × 2π×7×10⁹ J) × 2π×2×10⁶ s⁻¹ ≈ 5.8×10⁻¹⁶ W ≈ −122 dBm（和 p14「Quantum limit of the added noise」的 6×10⁻¹⁶ W 同一個數）；第一級放大器要接近量子極限（Amplifiers 那一節）。(2) 要快：讀取幾百 ns，遠短於 T₁；QEC 一輪約 1 μs（Pipelined stabilizer measurement 那頁）。(3) 不能改變 qubit：光子太多 → 接近 N_crit 時的躍遷（Transitions and backaction 那一節）；κ 大 → Purcell decay（Purcell filter 那一節）。要讀得快、讀得清楚，就要更多光子或更大的 κ，兩者都會擾動 qubit。
+左欄，讀取為什麼難：(1) 訊號小：10 顆光子以 κ = 2π×2 MHz 漏出，P = n̄ħω_rκ = 10 × (1.05×10⁻³⁴ × 2π×7×10⁹ J) × 2π×2×10⁶ s⁻¹ ≈ 5.8×10⁻¹⁶ W ≈ −122 dBm（和 p14「Quantum limit of the added noise」的 6×10⁻¹⁶ W 同一個數）；第一級放大器要接近量子極限（Amplifiers 那一節）。(2) 要快：讀取幾百 ns，遠短於 T₁；QEC 一輪約 1 μs（Pipelined stabilizer measurement 那頁）。(3) 不能改變 qubit：光子太多 → 接近 N_crit 時的躍遷（Readout induced transition 那一節）；κ 大 → Purcell decay（Purcell filter 那一節）。要讀得快、讀得清楚，就要更多光子或更大的 κ，兩者都會擾動 qubit。
 右欄：Strong（projective）：一次就分得出 0 或 1，兩團分開遠大於團寬，讀完 qubit 在讀到的態。Weak：一次只拿到一點資訊，態只被改一點，要平均很多次才知道 ⟨σ̂_z⟩。例子：光子很少或讀取很短（兩團重疊；p30 把 noise 拉大可示範）；早期沒有 JPA 時 dispersive readout 每一次都是 weak，只能平均；比喻：磁場很弱的 Stern–Gerlach，上下落點重疊，一顆原子只給一點提示；實驗：K. W. Murch et al., Nature 502, 211 (2013)，很少光子的 weak measurement，看到 qubit 的態一點一點被拉向 |0⟩ 或 |1⟩。
 Full 與 parity（partial）：老師說的「像量 parity 那種」。只問兩顆一樣或不一樣（Ẑ₁Ẑ₂）。|+⟩|+⟩ 量到偶 → (|00⟩ + |11⟩)/√2，量到奇 → (|01⟩ + |10⟩)/√2：只拿到 1 bit，每一顆的值仍然不知道，同一組裡的疊加保留（量完得到 Bell 態）；全讀則只剩四個乘積態之一。比喻：只知道兩枚硬幣同一面，不知道正或反。實驗：光子數 parity，L. Sun et al., Nature 511, 444 (2014)：每顆光子讓 qubit 移 2χ（Photon-number splitting 那頁），Ramsey π/2 – 等 π/(2|χ|) – π/2，相位 nπ，偶數回 |0⟩、奇數到 |1⟩，讀 qubit 得 parity 不得 n，重複量測追蹤光子一顆一顆漏掉；用量測做糾纏：D. Ristè et al., Nature 502, 350 (2013)。QEC 的 stabilizer 量測就是 parity（Pipelined stabilizer measurement 那頁）。注意名詞：論文裡的 weak measurement 通常指每次資訊少（兩團重疊，QND 頁 Krantz Fig. 23 的 weak 就是這個），parity 量測通常叫 partial / joint measurement，對 parity 本身是 projective；共同點是量得少、擾動少，所以頁面上分成兩項寫。
 Demolition：量測一定讓疊加塌縮，那是量測本身，不算 demolition；demolition 是讀到 1 之後 qubit 已經不在 |1⟩。例子：CPB（Destructive readout of the CPB 那頁，準粒子穿隧讓 qubit 衰減）、光偵測器把光子吸收。Dispersive readout 理想上 QND，但讀取中的 T₁、Purcell、量測引發的躍遷帶來一部分 demolition。多次量測：QND 則連讀兩次結果一樣（QND fidelity 1 − P(1|0) − P(0|1) 就是連續兩次讀取量的）；parity 也可以一直重複量，parity 翻了就知道出錯。 v93（使用者「右半邊要動畫」「同時跳出 Full readout: For example, Projective readout / Partial readout: For example, Parity readout」「不要講 Weak readout」）：右欄分兩步出現，第一步 Full 和 Partial 一起，第二步 Demolition；Weak readout 那一項整段拿掉（上面 Weak 的例子只留在註解裡）。左欄整欄是第一步（進頁就顯示），右欄 Full + Partial 第二步、Demolition 第三步。 v94（使用者「不要說One shot」）：Full readout 改成「It gives the value of each qubit, 0 or 1. Each qubit is then in that state.」，和 Partial 那句「It gives only “same” … or “different” …」對稱。 -->
+        </section>
+        <section data-manual-slide="" data-auto-fit="false" data-title="Readout setup and circulator"
+            data-slide-class="v04 qh-deriv w06-page w06-pic-slide w07-pic w07-hist w07-c-krantz w07-c-krcirc">
+            <h3>Readout setup and circulator</h3>
+            <div class="w07-htext">
+<figure class="w06-svgfig w07-circ-sym"><svg class="w06-svg" viewBox="0 0 470 230" role="img" aria-label="Circuit symbols: a circulator, a circle with a clockwise arrow and three ports 1, 2 and 3; an isolator, the same circulator with port 3 connected through a 50 ohm resistor to ground" fill="none" stroke="#302840" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="110" cy="100" r="44" />
+  <path d="M20 100 H66 M154 100 H200 M110 144 V196" />
+  <path d="M87.5 113 A26 26 0 1 1 132.5 113" stroke-width="2.6" />
+  <path d="M129.5 118.2 L138.8 112 L130.2 107 Z" fill="#302840" stroke-width="1.5" />
+  <circle cx="345" cy="100" r="44" />
+  <path d="M255 100 H301 M389 100 H435 M345 144 V158 l10 4 l-20 8 l20 8 l-20 8 l20 8 l-10 4 V210 M329 210 H361 M335 217 H355 M341 224 H349" />
+  <path d="M322.5 113 A26 26 0 1 1 367.5 113" stroke-width="2.6" />
+  <path d="M364.5 118.2 L373.8 112 L365.2 107 Z" fill="#302840" stroke-width="1.5" />
+  <g fill="#302840" stroke="none" font-family="Montserrat, sans-serif" font-size="17" font-weight="600" text-anchor="middle">
+    <text x="30" y="88">1</text><text x="190" y="88">2</text><text x="124" y="190">3</text>
+    <text x="265" y="88">1</text><text x="425" y="88">2</text><text x="392" y="190">50 Ω</text>
+  </g>
+  <g fill="#5f4b8b" stroke="none" font-family="Montserrat, sans-serif" font-size="16" font-weight="600" text-anchor="middle">
+    <text x="110" y="34">circulator</text><text x="345" y="34">isolator</text>
+  </g>
+</svg></figure>
+<p>A circulator sends a wave from port 1 to port 2, from 2 to 3, and from 3 to 1.</p>
+<p>An isolator is a circulator with a 50 Ω load on port 3. A wave goes from 1 to 2. A wave from 2 goes into the load.</p>
+            </div>
+            <div class="w06-pics">
+                <figure class="w06-pic w07-f1"><a href="../Image/Krantz2019-Fig19.png"><img src="../WebP/Krantz2019-Fig19.webp" alt="(a) Simplified readout setup: signal creation with an AWG, an LO and an IQ mixer at room temperature; attenuators at 3 K and 10 mK; the chip with the qubit, the readout resonator and a Purcell filter; the reflected signal S11 goes through circulators to a parametric amplifier at 10 mK, then to amplifiers at 3 K and room temperature, and to an IQ mixer and a digitizer; (b) magnitude and phase of S11 against frequency for the qubit in |0&gt; and |1&gt;; (c) the two answers in the IQ plane"></a></figure>
+            </div>
+            <!-- Teaching note: 讀取的整條線（Krantz Fig. 19(a)）：室溫 AWG + LO + IQ mixer 做出讀取脈衝 → 冷卻台階上的衰減器（3 K、10 mK）→ 晶片：qubit、讀取共振腔、Purcell filter → 反射訊號 S11 經 circulator 到 10 mK 的參量放大器（Para. Amp.）→ 3 K HEMT → 室溫放大 → 同一個 LO 的 IQ mixer 降頻成 V_I、V_Q → 數位化。(b)(c) 是後面「Two dips」頁的東西（|0⟩、|1⟩ 兩個 dip、IQ 平面兩點）。 -->
+            <p class="v4-source">P. Krantz <em>et al.</em>, Appl. Phys. Rev. <b>6</b>, 021318 (2019), Fig. 19 (arXiv version).</p>
         </section>
         <section data-manual-slide="" data-auto-fit="false" data-title="Dispersive readout on a chip"
             data-slide-class="v04 qh-deriv w06m-slide w07m-slide">
@@ -9240,6 +9270,30 @@ Demolition：量測一定讓疊加塌縮，那是量測本身，不算 demolitio
             </div>
             <!-- Teaching note: v73：「the qubit and the resonator do not exchange energy. This is the dispersive regime.」從刪掉的「Principle of dispersive readout」頁搬來（使用者「可以直接放在 p25」「p28 可以刪」）。那頁其他內容（χ < 0 → ω_r(1) 在 ω_r(0) 下方、讀取音遠離 ω01 不被吸收、相位帶著 qubit 狀態、IQ 點、弱音、頻率示意圖）不再出現在頁面上。v72：補一句與兩顆 transmon 的 ζ 的關係（使用者同意）。ζ = E11 − E10 − E01 + E00 = 2χ 的定義完全相同；二階微擾：E10 +g²/Δ、E01 −g²/Δ、E11 −2g²/(Δ+α1) + 2g²/(Δ−α2)（|1,1⟩ 接 |2,0⟩ 距離 −(Δ+α1)、接 |0,2⟩ 距離 Δ−α2，各 √2g）→ ζ ≈ 2g²(α1+α2)/[(Δ+α1)(Δ−α2)]；α2 = 0 → 2g²α/[Δ(Δ+α)] = 2χ。上週只用數值本徵值算 ζ，這個近似式第一次出現。v64（使用者「這三頁我對不起來」）：所有 E_{j,n} 都是上一頁矩陣（拿掉 (j+n)ω_r 之後）的本徵值，逐 block 二階微擾：位移 = Σ c²/(E_自己 − E_對方)。|1,0⟩：g²/(Δ−0)；|0,1⟩：g²/(0−Δ)；|1,1⟩：2g²/(Δ−0) + 2g²/(Δ−(2Δ+α)) = 2g²/Δ − 2g²/(Δ+α)。拿掉「AC Stark shift」「weak drives」的說法（這裡沒有驅動，只有耦合 g）。2χ = (E11 − E01) − (E10 − E00)：(j+n)ω_r 的係數 2 − 1 − 1 + 0 = 0，所以框架不影響 χ。v61：拉桿頁（α2 = 0）刪掉，開頭「transmon 1 / transmon 2」那句（W6 記號的橋）也拿掉，直接從上一頁矩陣的 block 讀 χ（使用者「p28跟p30接不起來」）。v58：Hamiltonian 與 Δ 的定義移到前面新的三頁（transmon + 共振腔的 Lagrangian、Hamiltonian、矩陣），這頁只從矩陣的 N = 0、1、2 block 讀出 χ。v41：0–3 光子的能階圖從這頁拿掉（只剩基態推 χ；圖留在「One term, two readings」頁，使用者同意）。v25：Hamiltonian 與符號從下一頁搬到這頁開頭（這頁先用到 g、√2g，使用者「14,15,16,17 邏輯根本串不起來」）。上一頁拉桿的 transmon 1 就是 qubit（ω01 = ω1、α = α1），transmon 2 令 α2 = 0 就是共振腔（a_r、ω_r = ω2）；RWA 後 𝓗/ħ = ω01a†a + (α/2)a†a†aa + ω_r a_r†a_r + g(a†a_r + aa_r†)，耦合項就是上週的 g(a1†a2 + a1a2†)。從基態出發（共振腔平常是空的：讀完後光子漏光，或用 reset pulse 清空）。符號：qubit ω01、α；共振腔 ω_r；Δ = ω01 − ω_r。一個激發：|1,0⟩ ↔ |0,1⟩，耦合 g、失諧 Δ（就是上週的 2×2）：|1,0⟩ +g²/Δ、|0,1⟩ −g²/Δ（g²/Δ 就是 Lamb shift，qubit 頻率在沒有光子時也移 g²/Δ）。兩個激發：|1,1⟩ ↔ |0,2⟩（√2 來自光子 a_r†|1⟩ = √2|2⟩，失諧 Δ）、|1,1⟩ ↔ |2,0⟩（√2 來自 transmon a†|1⟩ = √2|2⟩，失諧 −(Δ+α)）：|1,1⟩ 移 2g²/Δ − 2g²/(Δ+α)。有一個光子時 qubit 翻轉要 E11 − E01，沒有光子時 E10 − E00，差 2χ = [2g²/Δ − 2g²/(Δ+α)] − (−g²/Δ) − g²/Δ = 2g²/Δ − 2g²/(Δ+α) → χ = g²α/[Δ(Δ+α)]（= α2 = 0 拉桿頁的 ζ）。圖：直欄 = 光子數 0, 1, 2, 3，往上 = qubit；虛線 = 沒有色散位移時 |1,n⟩ 的位置；每多一個光子多 2χ（後面幾頁證明對每個 N 都成立）。 -->
         </section>
+        <section data-manual-slide="" data-auto-fit="false" data-title="Dispersive Hamiltonian"
+            data-slide-class="v04 qh-deriv w07-page">
+            <h3>Dispersive Hamiltonian</h3>
+            <div class="v4-two">
+                <div class="qh-step-host">
+<p>The block of \(|1,N\rangle\) has the same form for each \(N\). The same steps give, for the qubit levels 0 and 1:</p>
+<div class="v4-eq">\[E_{0,N}\approx-\frac{Ng^2}{\Delta},\qquad E_{1,N}\approx\Delta+\frac{(N+1)\,g^2}{\Delta}-\frac{2N\,g^2}{\Delta+\alpha}\]</div>
+<p>Add back \((j+n)\,\omega_r\). One Hamiltonian gives all these levels:</p>
+<div class="v4-eq">\[\frac{\hat{\mathcal H}}{\hbar}\approx\Big(\omega_{01}+\frac{g^2}{\Delta}\Big)|1\rangle\langle1|+\Big(\omega_r-\frac{g^2}{\Delta}\Big)\hat a_r^\dagger\hat a_r+2\chi\,|1\rangle\langle1|\,\hat a_r^\dagger\hat a_r\]</div>
+<p>The resonator frequency for each qubit state:</p>
+<div class="v4-eq">\[\omega_r(0)=\omega_r-\frac{g^2}{\Delta},\qquad\omega_r(1)=\omega_r(0)+2\chi\]</div>
+                </div>
+                <div class="qh-step-host">
+<div class="qh-reveal-item">
+<p>The last term has two readings. The resonator frequency depends on the qubit state. This gives the readout.</p>
+<p>The qubit frequency depends on the photon number, \(2\chi\) for each photon. This is the AC Stark shift, the backaction of the readout.</p>
+                <!-- Figure Python source: ../../ImagePool/w07-level-pictures-v04.py -->
+                <figure class="w07-lvfig w07-lvfig-big"><a href="../Image/w07-levels-chi-v04.svg"><img src="../Image/w07-levels-chi-v04.svg" alt="Columns for 0 to 3 photons; in each column |0,n&gt; and |1,n&gt; at their true order (staircase); the dashed bar is E(0,n) + E(1,0) - E(0,0); |1,n&gt; is 2 chi n below it"></a></figure>
+</div>
+                </div>
+            </div>
+            <!-- Teaching note: v81：右欄（兩種讀法 + 能階圖）包成一個 qh-reveal-item，排在左欄三步之後出現（使用者「動畫順序也怪」）。v64（「這三頁我對不起來」）：左欄從上一頁的 N 光子 block 推：|0,N⟩ 只接 |1,N−1⟩（g√N，距離 −Δ）→ −Ng²/Δ；|1,N⟩ 接 |0,N+1⟩（g√(N+1)，距離 Δ）與 |2,N−1⟩（√2g√N，距離 −(Δ+α)）→ Δ + (N+1)g²/Δ − 2Ng²/(Δ+α)。加回 (j+n)ω_r：|0,N⟩ → N(ω_r − g²/Δ)；|1,N⟩ → ω01 + g²/Δ + N(ω_r − g²/Δ) + 2χN，正好是這個 𝓗 的本徵值。ω_r(j) = E_{j,N+1} − E_{j,N}。只在光子少時成立（N ≪ N_crit，後面定義）。右欄拿掉 ζ|11⟩⟨11| → α2 = 0 那行（定義 ζ 的拉桿頁 v61 已刪）。原註記：把前面幾頁的位移合成一個有效 Hamiltonian（用投影子，避開 σz 的正負號慣例）。最後一項兩種讀法：共振腔頻率隨 qubit 變（讀取）；qubit 頻率隨光子數變（AC Stark，讀取的反作用）。兩顆 transmon 的 ζ|11⟩⟨11| 令 α2 = 0 就是這一項：在兩位元閘它是閘，在讀取它是量測，也是量測的代價。右下圖（課程慣例）：直欄 = 光子數，往上 = qubit，實線 = dressed，虛線 = E(0,n) + E(1,0) − E(0,0)（沒有色散位移時 |1,n⟩ 的位置），|1,n⟩ 比虛線低 2χn（χ < 0）。GHz 台階示意、MHz 位移放大。 -->
+            <p class="v4-source" data-source-kind="figure">Picture: solid bars are dressed levels; the dashed bar is \(E_{0,n}+E_{1,0}-E_{0,0}\). Not to scale.</p>
+        </section>
         <section data-manual-slide="" data-auto-fit="false" data-title="Level diagram for the dispersive shift"
             data-slide-class="v04 qh-deriv w07-page w07-diamond">
             <h3>Level diagram for the dispersive shift</h3>
@@ -9269,7 +9323,7 @@ Demolition：量測一定讓疊加塌縮，那是量測本身，不算 demolitio
                     <div class="qh-reveal-item">
 <p class="w07-pov w07-pov-r">Resonator point of view</p>
 <div class="w07-pov-row">
-<figure class="w07-pov-fig"><a href="../Image/w07-levels-pov-resonator-v94.svg"><img src="../Image/w07-levels-pov-resonator-v94.svg" alt="The four levels |0,0&gt;, |1,0&gt; (photon number 0) and |0,1&gt;, |1,1&gt; (photon number 1); purple arrows from |0,0&gt; to |0,1&gt; and from |1,0&gt; to |1,1&gt;: one photon added with the qubit in 0 and in 1; |1,1&gt; is 2 chi from the dashed bar"></a></figure>
+<figure class="w07-pov-fig"><a href="../Image/w07-levels-pov-resonator-v96.svg"><img src="../Image/w07-levels-pov-resonator-v96.svg" alt="The four levels in two columns: qubit in 0, |0,0&gt; and |0,1&gt;; qubit in 1, |1,0&gt; and |1,1&gt;; vertical purple arrows from |0,0&gt; to |0,1&gt; and from |1,0&gt; to |1,1&gt;: one photon added with the qubit in 0 and in 1; the second arrow is shorter, |1,1&gt; is 2 chi from the dashed bar"></a></figure>
 <p>The energy of one photon is the resonator frequency. It depends on the qubit state:</p>
 </div>
 <div class="v4-eq">\[\underbrace{\big(E_{1,1}-E_{1,0}\big)}_{\text{qubit in }|1\rangle}-\underbrace{\big(E_{0,1}-E_{0,0}\big)}_{\text{qubit in }|0\rangle}=2\chi\]</div>
@@ -9286,32 +9340,8 @@ Demolition：量測一定讓疊加塌縮，那是量測本身，不算 demolitio
                     </div>
                 </div>
             </div>
-            <!-- Teaching note: v94（使用者「Dispersive shift 後面幫我加頁：中上是菱形圖，2χ 虛線，|1,1⟩ 在上、|0,1⟩ 左、|1,0⟩ 右、|0,0⟩ 下，菱形之間要箭頭；左下放 resonator point of view，右下放 qubit point of view，來呼應 The last term has two readings」）。圖是使用者要求畫的示意圖：藍色能階 = qubit 在 0，橘色 = qubit 在 1（和整份 deck 的配色一樣）；紫色箭頭 = 加一顆光子（共振腔的躍遷），綠色箭頭 = qubit 從 0 到 1；虛線 = E_{0,1} + E_{1,0} − E_{0,0}（兩者不互相影響時 |1,1⟩ 應該在的位置），|1,1⟩ 離它 2χ；χ < 0（transmon，Δ < 0），所以 |1,1⟩ 在虛線下面，和後面 Dispersive Hamiltonian、Photon-number splitting 的階梯圖一致。不按比例：|0,1⟩、|1,0⟩ 實際上差 Δ。重點：2χ = E_{1,1} − E_{1,0} − E_{0,1} + E_{0,0} 這一個數，兩種分組：(E_{1,1} − E_{1,0}) − (E_{0,1} − E_{0,0}) → 共振腔頻率隨 qubit 態變（讀取）；(E_{1,1} − E_{0,1}) − (E_{1,0} − E_{0,0}) → qubit 頻率隨光子數變（AC Stark，讀取的 backaction）。就是下一頁「The last term has two readings」。動畫：進頁先有菱形圖，按一下左下，再按一下右下。 v94 第二步（使用者「兩邊 point of view 畫的是要像這樣，兩個各自的小圖」，附 w07-levels-chi-v04.svg 的 0、1 光子那兩欄截圖）：左下、右下各放一張小圖，畫法和 Dispersive Hamiltonian 頁的階梯圖相同（欄 = 光子數、往上 = transmon、藍 0 橘 1、虛線 = 沒有 2χ 時 |1,1⟩ 的位置）；qubit 小圖用綠色直箭頭（|0,0⟩→|1,0⟩、|0,1⟩→|1,1⟩），resonator 小圖用紫色斜箭頭（|0,0⟩→|0,1⟩、|1,0⟩→|1,1⟩），顏色和菱形圖、標題對應。Python source: w07-levels-pov-v94.py -->
+            <!-- Teaching note: v94（使用者「Dispersive shift 後面幫我加頁：中上是菱形圖，2χ 虛線，|1,1⟩ 在上、|0,1⟩ 左、|1,0⟩ 右、|0,0⟩ 下，菱形之間要箭頭；左下放 resonator point of view，右下放 qubit point of view，來呼應 The last term has two readings」）。圖是使用者要求畫的示意圖：藍色能階 = qubit 在 0，橘色 = qubit 在 1（和整份 deck 的配色一樣）；紫色箭頭 = 加一顆光子（共振腔的躍遷），綠色箭頭 = qubit 從 0 到 1；虛線 = E_{0,1} + E_{1,0} − E_{0,0}（兩者不互相影響時 |1,1⟩ 應該在的位置），|1,1⟩ 離它 2χ；χ < 0（transmon，Δ < 0），所以 |1,1⟩ 在虛線下面，和後面 Dispersive Hamiltonian、Photon-number splitting 的階梯圖一致。不按比例：|0,1⟩、|1,0⟩ 實際上差 Δ。重點：2χ = E_{1,1} − E_{1,0} − E_{0,1} + E_{0,0} 這一個數，兩種分組：(E_{1,1} − E_{1,0}) − (E_{0,1} − E_{0,0}) → 共振腔頻率隨 qubit 態變（讀取）；(E_{1,1} − E_{0,1}) − (E_{1,0} − E_{0,0}) → qubit 頻率隨光子數變（AC Stark，讀取的 backaction）。就是下一頁「The last term has two readings」。動畫：進頁先有菱形圖，按一下左下，再按一下右下。 v94 第二步（使用者「兩邊 point of view 畫的是要像這樣，兩個各自的小圖」，附 w07-levels-chi-v04.svg 的 0、1 光子那兩欄截圖）：左下、右下各放一張小圖，畫法和 Dispersive Hamiltonian 頁的階梯圖相同（欄 = 光子數、往上 = transmon、藍 0 橘 1、虛線 = 沒有 2χ 時 |1,1⟩ 的位置）；qubit 小圖用綠色直箭頭（|0,0⟩→|1,0⟩、|0,1⟩→|1,1⟩），resonator 小圖用紫色斜箭頭（|0,0⟩→|0,1⟩、|1,0⟩→|1,1⟩），顏色和菱形圖、標題對應。Python source: w07-levels-pov-v94.py v96（使用者「這邊我與要直的，所以 1,0 0,1 位置會動」）：resonator 小圖改成直箭頭：左欄 qubit 在 0（|0,0⟩、|0,1⟩），右欄 qubit 在 1（|1,0⟩、|1,1⟩），往上 = 多一顆光子；右欄的箭頭短 2|χ|（|1,1⟩ 在虛線下面）。qubit 小圖不變（欄 = 光子數）。Python source: w07-levels-pov-v96.py -->
             <p class="v4-source">Schematic, not to scale.</p>
-        </section>
-        <section data-manual-slide="" data-auto-fit="false" data-title="Dispersive Hamiltonian"
-            data-slide-class="v04 qh-deriv w07-page">
-            <h3>Dispersive Hamiltonian</h3>
-            <div class="v4-two">
-                <div class="qh-step-host">
-<p>The block of \(|1,N\rangle\) has the same form for each \(N\). The same steps give, for the qubit levels 0 and 1:</p>
-<div class="v4-eq">\[E_{0,N}\approx-\frac{Ng^2}{\Delta},\qquad E_{1,N}\approx\Delta+\frac{(N+1)\,g^2}{\Delta}-\frac{2N\,g^2}{\Delta+\alpha}\]</div>
-<p>Add back \((j+n)\,\omega_r\). One Hamiltonian gives all these levels:</p>
-<div class="v4-eq">\[\frac{\hat{\mathcal H}}{\hbar}\approx\Big(\omega_{01}+\frac{g^2}{\Delta}\Big)|1\rangle\langle1|+\Big(\omega_r-\frac{g^2}{\Delta}\Big)\hat a_r^\dagger\hat a_r+2\chi\,|1\rangle\langle1|\,\hat a_r^\dagger\hat a_r\]</div>
-<p>The resonator frequency for each qubit state:</p>
-<div class="v4-eq">\[\omega_r(0)=\omega_r-\frac{g^2}{\Delta},\qquad\omega_r(1)=\omega_r(0)+2\chi\]</div>
-                </div>
-                <div class="qh-step-host">
-<div class="qh-reveal-item">
-<p>The last term has two readings. The resonator frequency depends on the qubit state. This gives the readout.</p>
-<p>The qubit frequency depends on the photon number, \(2\chi\) for each photon. This is the AC Stark shift, the backaction of the readout.</p>
-                <!-- Figure Python source: ../../ImagePool/w07-level-pictures-v04.py -->
-                <figure class="w07-lvfig w07-lvfig-big"><a href="../Image/w07-levels-chi-v04.svg"><img src="../Image/w07-levels-chi-v04.svg" alt="Columns for 0 to 3 photons; in each column |0,n&gt; and |1,n&gt; at their true order (staircase); the dashed bar is E(0,n) + E(1,0) - E(0,0); |1,n&gt; is 2 chi n below it"></a></figure>
-</div>
-                </div>
-            </div>
-            <!-- Teaching note: v81：右欄（兩種讀法 + 能階圖）包成一個 qh-reveal-item，排在左欄三步之後出現（使用者「動畫順序也怪」）。v64（「這三頁我對不起來」）：左欄從上一頁的 N 光子 block 推：|0,N⟩ 只接 |1,N−1⟩（g√N，距離 −Δ）→ −Ng²/Δ；|1,N⟩ 接 |0,N+1⟩（g√(N+1)，距離 Δ）與 |2,N−1⟩（√2g√N，距離 −(Δ+α)）→ Δ + (N+1)g²/Δ − 2Ng²/(Δ+α)。加回 (j+n)ω_r：|0,N⟩ → N(ω_r − g²/Δ)；|1,N⟩ → ω01 + g²/Δ + N(ω_r − g²/Δ) + 2χN，正好是這個 𝓗 的本徵值。ω_r(j) = E_{j,N+1} − E_{j,N}。只在光子少時成立（N ≪ N_crit，後面定義）。右欄拿掉 ζ|11⟩⟨11| → α2 = 0 那行（定義 ζ 的拉桿頁 v61 已刪）。原註記：把前面幾頁的位移合成一個有效 Hamiltonian（用投影子，避開 σz 的正負號慣例）。最後一項兩種讀法：共振腔頻率隨 qubit 變（讀取）；qubit 頻率隨光子數變（AC Stark，讀取的反作用）。兩顆 transmon 的 ζ|11⟩⟨11| 令 α2 = 0 就是這一項：在兩位元閘它是閘，在讀取它是量測，也是量測的代價。右下圖（課程慣例）：直欄 = 光子數，往上 = qubit，實線 = dressed，虛線 = E(0,n) + E(1,0) − E(0,0)（沒有色散位移時 |1,n⟩ 的位置），|1,n⟩ 比虛線低 2χn（χ < 0）。GHz 台階示意、MHz 位移放大。 -->
-            <p class="v4-source" data-source-kind="figure">Picture: solid bars are dressed levels; the dashed bar is \(E_{0,n}+E_{1,0}-E_{0,0}\). Not to scale.</p>
         </section>
         <section data-manual-slide="" data-auto-fit="false" data-title="Photon-number splitting"
             data-slide-class="v04 qh-deriv w06-page w06-pic-slide w07-pic w07-pic-schuster">
@@ -9485,11 +9515,11 @@ Demolition：量測一定讓疊加塌縮，那是量測本身，不算 demolitio
             <!-- Teaching note: v71：表格加 qh-reveal-item，右欄排在左欄兩步之後出現（原本右欄沒有 display 方程，翻頁腳本一開始就全部顯示，順序怪；使用者「p35 動畫順序怪的」）。右下三段拿掉（使用者「右下角 when... 全部去掉」），原文：N 慢慢變時這些成分會回來，留下兩個誤差：(1) |1⟩ 的光子成分以 κ 漏掉（Purcell）；τ = 500 ns、沒有 Purcell filter 時 κ(g/Δ)²τ ≈ 0.03。(2) 接近 N_crit 時成分不小，光子多時真實 transmon 會跳到別的能階。 使用者「你也沒有估計 order 差多少」。對易子：[a†, |1⟩⟨1|] = √2|2⟩⟨1| − |1⟩⟨0|，[a, |1⟩⟨1|] = |0⟩⟨1| − √2|1⟩⟨2|，乘上 a_r、a_r†。它把 |1,N⟩ 接到 |0,N+1⟩（矩陣元 g√(N+1)，能量差 E(1,N) − E(0,N+1) = Δ）和 |2,N−1⟩（√2g√N，能量差 −(Δ+α)）。一階微擾：混入振幅 g√(N+1)/Δ 與 −√2g√N/(Δ+α)，機率 (g/Δ)²(N+1) = (N+1)/4N_crit 與 2g²N/(Δ+α)²。數字（g/2π = 100 MHz、Δ/2π = −1.5 GHz、α/2π = −220 MHz）：(g/Δ)² = 1/225 = 0.0044；N = 10：11/225 = 0.049、20×(100/1720)² = 0.068；N = 56：57/225 = 0.25、112×(100/1720)² = 0.38（已不小，一階展開失效）。光子數慢慢變（1/κ ≈ 80 ns ≫ 1/|Δ|）時這些混入部分會跟著回去（絕熱），本身不是錯誤；留下的：(1) |1⟩ 的光子部分以 κ 漏掉 = Purcell，κ(g/Δ)²τ = 2π×2 MHz × 0.0044 × 500 ns ≈ 0.028（沒有 Purcell filter）；(2) 接近 N_crit 時混入是 O(1)；光子多時真實 transmon 會跳到別的能階（price 一章）。v32 更正：原本寫「能階交叉」——RWA、Δ < 0 的模型裡不會交叉，躍遷來自 RWA 以外的項（Sank 2016）或 Δ > 0 時的多光子共振（Khezri 2023），發生的光子數不只看 N_crit（Dumas 2024）。所以色散讀取離 QND 的差距是 (g/Δ)² 的量級（10⁻³–10⁻²），probe junction 是 1 的量級（下一個 1999 頁）。 -->
             <p class="v4-source">Values: \(g=2\pi\times100\) MHz, \(\Delta=-2\pi\times1.5\) GHz, \(\alpha=-2\pi\times220\) MHz, \(\kappa=2\pi\times2\) MHz.</p>
         </section>
-        <section data-manual-slide="" data-auto-fit="false" data-title="Transitions and backaction"
+        <section data-manual-slide="" data-auto-fit="false" data-title="Readout induced transition"
             data-slide-class="v04 qh-deriv " data-cover="">
             <div class="theme-header">
                 <p class="theme-label">PHYS598500 · Week 7</p>
-                <h2>Transitions and backaction</h2>
+                <h2>Readout induced transition</h2>
             </div>
         </section>
         <section data-manual-slide="" data-auto-fit="false" data-title="Level diagram for N photons"
@@ -9679,36 +9709,6 @@ Demolition：量測一定讓疊加塌縮，那是量測本身，不算 demolitio
             </div>
             <!-- Teaching note: Krinner 2019 Fig. 4 與 Sec. 2.2、3.2（已對原文）：20 dB 衰減器像一個分光鏡：透過 1% 入射訊號、加入 99% 衰減器所在溫度的黑體輻射 → 每一級把上一級的熱雜訊壓下去；4K 級約 20 dB 就夠（≈ 300 K / 3 K）。drive 線總共約 60 dB，MXC 的熱光子 ~10⁻³（熱光子會讓 qubit 熱激發、也會經 χ 讓 qubit 退相）。衰減器用銅板夾緊（黃銅螺絲冷縮比銅多，夾得更緊；低溫下接觸熱阻由夾持力決定）。IR 濾波：Eccosorb CR-124，放在 MXC 衰減器前。(e)(f)(g)：整束線先在外面組好再裝進冰箱。 -->
             <p class="v4-source">S. Krinner <em>et al.</em>, EPJ Quantum Technology <b>6</b>, 2 (2019), Fig. 4 (arXiv version).</p>
-        </section>
-        <section data-manual-slide="" data-auto-fit="false" data-title="Readout setup and circulator"
-            data-slide-class="v04 qh-deriv w06-page w06-pic-slide w07-pic w07-hist w07-c-krantz w07-c-krcirc">
-            <h3>Readout setup and circulator</h3>
-            <div class="w07-htext">
-<figure class="w06-svgfig w07-circ-sym"><svg class="w06-svg" viewBox="0 0 470 230" role="img" aria-label="Circuit symbols: a circulator, a circle with a clockwise arrow and three ports 1, 2 and 3; an isolator, the same circulator with port 3 connected through a 50 ohm resistor to ground" fill="none" stroke="#302840" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-  <circle cx="110" cy="100" r="44" />
-  <path d="M20 100 H66 M154 100 H200 M110 144 V196" />
-  <path d="M87.5 113 A26 26 0 1 1 132.5 113" stroke-width="2.6" />
-  <path d="M129.5 118.2 L138.8 112 L130.2 107 Z" fill="#302840" stroke-width="1.5" />
-  <circle cx="345" cy="100" r="44" />
-  <path d="M255 100 H301 M389 100 H435 M345 144 V158 l10 4 l-20 8 l20 8 l-20 8 l20 8 l-10 4 V210 M329 210 H361 M335 217 H355 M341 224 H349" />
-  <path d="M322.5 113 A26 26 0 1 1 367.5 113" stroke-width="2.6" />
-  <path d="M364.5 118.2 L373.8 112 L365.2 107 Z" fill="#302840" stroke-width="1.5" />
-  <g fill="#302840" stroke="none" font-family="Montserrat, sans-serif" font-size="17" font-weight="600" text-anchor="middle">
-    <text x="30" y="88">1</text><text x="190" y="88">2</text><text x="124" y="190">3</text>
-    <text x="265" y="88">1</text><text x="425" y="88">2</text><text x="392" y="190">50 Ω</text>
-  </g>
-  <g fill="#5f4b8b" stroke="none" font-family="Montserrat, sans-serif" font-size="16" font-weight="600" text-anchor="middle">
-    <text x="110" y="34">circulator</text><text x="345" y="34">isolator</text>
-  </g>
-</svg></figure>
-<p>A circulator sends a wave from port 1 to port 2, from 2 to 3, and from 3 to 1.</p>
-<p>An isolator is a circulator with a 50 Ω load on port 3. A wave goes from 1 to 2. A wave from 2 goes into the load.</p>
-            </div>
-            <div class="w06-pics">
-                <figure class="w06-pic w07-f1"><a href="../Image/Krantz2019-Fig19.png"><img src="../WebP/Krantz2019-Fig19.webp" alt="(a) Simplified readout setup: signal creation with an AWG, an LO and an IQ mixer at room temperature; attenuators at 3 K and 10 mK; the chip with the qubit, the readout resonator and a Purcell filter; the reflected signal S11 goes through circulators to a parametric amplifier at 10 mK, then to amplifiers at 3 K and room temperature, and to an IQ mixer and a digitizer; (b) magnitude and phase of S11 against frequency for the qubit in |0&gt; and |1&gt;; (c) the two answers in the IQ plane"></a></figure>
-            </div>
-            <!-- Teaching note: 讀取的整條線（Krantz Fig. 19(a)）：室溫 AWG + LO + IQ mixer 做出讀取脈衝 → 冷卻台階上的衰減器（3 K、10 mK）→ 晶片：qubit、讀取共振腔、Purcell filter → 反射訊號 S11 經 circulator 到 10 mK 的參量放大器（Para. Amp.）→ 3 K HEMT → 室溫放大 → 同一個 LO 的 IQ mixer 降頻成 V_I、V_Q → 數位化。(b)(c) 是後面「Two dips」頁的東西（|0⟩、|1⟩ 兩個 dip、IQ 平面兩點）。 -->
-            <p class="v4-source">P. Krantz <em>et al.</em>, Appl. Phys. Rev. <b>6</b>, 021318 (2019), Fig. 19 (arXiv version).</p>
         </section>
         <section data-manual-slide="" data-auto-fit="false" data-title="Readout setup"
             data-slide-class="v04 qh-deriv w06-page w06-pic-slide w07-pic w07-hist w07-c-syc3">
