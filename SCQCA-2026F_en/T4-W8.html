@@ -6818,84 +6818,11 @@
         </section>
         
         
-        <section data-manual-slide="" data-auto-fit="false" data-title="Tensor product of Pauli matrices"
-            data-slide-class="v04 qh-deriv w8 ">
-            <h3>Tensor product of Pauli matrices</h3>
-            <div class="w8-split w8-narrow">
-                <div class="w8-text">
-<p>Two qubits: \(4\times4\) matrices. The tensor product puts the whole \(\hat B\) into each element of \(\hat A\):</p>
-<div class="v4-eq">\[\hat A\otimes\hat B=\begin{pmatrix}a_{00}\hat B&a;_{01}\hat B\\a_{10}\hat B&a;_{11}\hat B\end{pmatrix}\]</div>
-<p>Rules: \(\big(\hat A\otimes\hat B\big)\big(\hat C\otimes\hat D\big)=\hat A\hat C\otimes\hat B\hat D\) and \({\rm Tr}\big(\hat A\otimes\hat B\big)={\rm Tr}\hat A\;{\rm Tr}\hat B\).</p>
-                </div>
-                <div class="w8w" data-w8="kron" aria-label="Interactive tensor product: choose A and B among I, sigma x, sigma y, sigma z; left the 4 by 4 matrix A tensor B as 3D bars, built block by block, each block one element of A times B, imaginary entries in green; right the trace of A tensor B times each of the 16 Pauli products as 3D bars: 4 for itself, 0 for the other 15">
-                    <div class="w8-ctl"><span class="w8-glab">Â</span><button type="button" data-g="a" data-v="0" class="" aria-pressed="false">Î</button><button type="button" data-g="a" data-v="1" class="" aria-pressed="false">σ̂x</button><button type="button" data-g="a" data-v="2" class="" aria-pressed="false">σ̂y</button><button type="button" data-g="a" data-v="3" class="is-on" aria-pressed="true">σ̂z</button><span class="w8-glab">B̂</span><button type="button" data-g="b" data-v="0" class="" aria-pressed="false">Î</button><button type="button" data-g="b" data-v="1" class="is-on" aria-pressed="true">σ̂x</button><button type="button" data-g="b" data-v="2" class="" aria-pressed="false">σ̂y</button><button type="button" data-g="b" data-v="3" class="" aria-pressed="false">σ̂z</button><button type="button" data-act="build">Build</button><label>view<input type="range" min="-80" max="80" step="1" value="20" data-k="az" aria-label="view"><b data-o="az"></b></label></div>
-                    <canvas data-c="main" aria-label="Interactive tensor product: choose A and B among I, sigma x, sigma y, sigma z; left the 4 by 4 matrix A tensor B as 3D bars, built block by block, each block one element of A times B, imaginary entries in green; right the trace of A tensor B times each of the 16 Pauli products as 3D bars: 4 for itself, 0 for the other 15"></canvas>
-                    <p class="w8-out" data-o="res"></p>
-                </div>
-            </div>
-            <!-- Teaching note: 使用者看「Density matrix in Pauli products」那頁：「這邊需要補一頁教學」。這一頁把那頁跳過的步驟補齊，和單 qubit 那頁（第一週推導）同一個做法：1. 張量積（Kronecker product）：Â⊗B̂ 的每個區塊是 Â 的一個元素乘上整個 B̂；例如 σ̂z⊗σ̂x = [[σ̂x, 0], [0, −σ̂x]]。2. 兩條規則：(Â⊗B̂)(Ĉ⊗D̂) = ÂĈ⊗B̂D̂，Tr(Â⊗B̂) = TrÂ·TrB̂。3. 單 qubit 的 Tr(σ̂iσ̂k) = 2δik（包含 σ̂0 = Î）→ Tr[(σ̂i⊗σ̂j)(σ̂k⊗σ̂l)] = Tr(σ̂iσ̂k)Tr(σ̂jσ̂l) = 4δikδjl：16 個乘積彼此正交。4. 把 ρ̂ 寫成 ¼Σ r_ij σ̂i⊗σ̂j（r_ij 是兩 qubit 版的 Bloch 分量），乘上 σ̂k⊗σ̂l 取跡，16 項裡只剩 i = k、j = l 那一項：r_kl = Tr[ρ̂ σ̂k⊗σ̂l] = ⟨σ̂k⊗σ̂l⟩。下一頁就是這個結果。動畫：選 Â、B̂，Build 一塊一塊組出 4×4 的 Â⊗B̂（3D 長條；含 σ̂y 時元素是 ±i，畫成綠色、高度 = 虛部）；右邊是 Tr[(Â⊗B̂)(σ̂k⊗σ̂l)] 對 16 個乘積：只有自己是 4，其他 15 個是 0。 -->
-            <p class="v4-source">Lecture animation of an ideal model.</p>
-        </section>
-        <section data-manual-slide="" data-auto-fit="false" data-title="Density matrix in Pauli products"
-            data-slide-class="v04 qh-deriv w8 ">
-            <h3>Density matrix in Pauli products</h3>
-            <div class="w8-split w8-narrow">
-                <div class="w8-text">
-<p>One qubit: \(\hat I,\hat\sigma_x,\hat\sigma_y,\hat\sigma_z\). Two qubits: the 16 products \(\hat\sigma_i\otimes\hat\sigma_j\), \(i,j\in\{0,x,y,z\}\), \(\hat\sigma_0=\hat I\).</p>
-<p>The two rules and \({\rm Tr}\big(\hat\sigma_i\hat\sigma_k\big)=2\delta_{ik}\) give:</p>
-<div class="v4-eq">\[\begin{aligned}{\rm Tr}\big[(\hat\sigma_i\otimes\hat\sigma_j)(\hat\sigma_k\otimes\hat\sigma_l)\big]&={\rm Tr}\big(\hat\sigma_i\hat\sigma_k\big)\,{\rm Tr}\big(\hat\sigma_j\hat\sigma_l\big)\\&=4\,\delta_{ik}\delta_{jl}\end{aligned}\]</div>
-<p>Write \(\hat\rho=\frac{1}{4}\sum_{i,j}r_{ij}\,\hat\sigma_i\otimes\hat\sigma_j\). Multiply by \(\hat\sigma_k\otimes\hat\sigma_l\) and take the trace. Only one term is left:</p>
-<div class="v4-eq">\[r_{kl}={\rm Tr}\big[\hat\rho\,(\hat\sigma_k\otimes\hat\sigma_l)\big]=\big\langle\hat\sigma_k\otimes\hat\sigma_l\big\rangle\]</div>
-<p>\(\langle\hat I\otimes\hat I\rangle=1\). \(\langle\hat\sigma_i\otimes\hat I\rangle\): the Bloch vector of qubit 1. \(\langle\hat I\otimes\hat\sigma_j\rangle\): of qubit 2. The other nine: correlations. 15 unknown numbers.</p>
-                </div>
-                <div class="w8w" data-w8="pauli16" aria-label="Interactive 3D bars of the 16 Pauli expectation values of a two-qubit state: rows qubit 1 (I, x, y, z), columns qubit 2; grey the trace, green the Bloch vector of each qubit, purple and orange the nine correlations; buttons choose the state; drag or the view slider turns the chart">
-                    <div class="w8-ctl"><button type="button" data-g="st" data-v="z00" class="" aria-pressed="false">|00⟩</button><button type="button" data-g="st" data-v="p0" class="" aria-pressed="false">|+⟩|0⟩</button><button type="button" data-g="st" data-v="phi" class="is-on" aria-pressed="true">|Φ⁺⟩</button><button type="button" data-g="st" data-v="psi" class="" aria-pressed="false">|Ψ⁻⟩</button><button type="button" data-g="st" data-v="mix" class="" aria-pressed="false">mixture</button><label>view<input type="range" min="-80" max="80" step="1" value="20" data-k="az" aria-label="view"><b data-o="az"></b></label></div>
-                    <canvas data-c="main" aria-label="Interactive 3D bars of the 16 Pauli expectation values of a two-qubit state: rows qubit 1 (I, x, y, z), columns qubit 2; grey the trace, green the Bloch vector of each qubit, purple and orange the nine correlations; buttons choose the state; drag or the view slider turns the chart"></canvas>
-                    <p class="w8-out" data-o="res"></p>
-                </div>
-            </div>
-            <!-- Teaching note: 單 qubit：ρ̂ = ½(Î + Σ⟨σ̂_i⟩σ̂_i)，因為 Tr(σ̂_iσ̂_j) = 2δ_ij。兩 qubit：16 個乘積 σ̂_i⊗σ̂_j 是 4×4 矩陣的基底，Tr[(A⊗B)(C⊗D)] = Tr(AC)Tr(BD) 給 4δ_ikδ_jl，所以 ρ̂ = ¼ Σ⟨σ̂_i⊗σ̂_j⟩σ̂_i⊗σ̂_j，係數 ⟨σ̂_i⊗σ̂_j⟩ = Tr(ρ̂ σ̂_i⊗σ̂_j)。表格：灰 ⟨Î⊗Î⟩ = 1（跡）；綠色第一行、第一列 = 每顆 qubit 自己的 Bloch 向量；紫色 3×3 = 關聯。乘積態的關聯 = 兩個 Bloch 分量相乘（|+⟩|0⟩：只有 x⊗Î、Î⊗z、x⊗z = 1）。|Φ⁺⟩：兩顆的 Bloch 向量都是 0（單獨看每顆都是完全混態），只有 XX = 1、YY = −1、ZZ = 1——資訊全在關聯裡。混合態 ½(|00⟩⟨00| + |11⟩⟨11|) 只有 ZZ = 1：和 |Φ⁺⟩ 的差別在 XX、YY，所以要量 x、y 的設定。 -->
-            <p class="v4-source">Lecture animation of an ideal model.</p>
-        </section>
-        <section data-manual-slide="" data-auto-fit="false" data-title="Two-qubit state tomography"
-            data-slide-class="v04 qh-deriv w8 ">
-            <h3>Two-qubit state tomography</h3>
-            <div class="w8-split w8-proc">
-                <div class="w8-text">
-<p>Settings: x, y or z on each qubit. Nine settings. For each setting:</p>
-<ol class="w8-steps">
-<li>Reset both qubits to \(|00\rangle\). Prepare the state.</li>
-<li>Rotate each qubit for its setting.</li>
-<li>Read both qubits once: \(|00\rangle\), \(|01\rangle\), \(|10\rangle\) or \(|11\rangle\).</li>
-<li>Repeat 1–3 \(N\) times. Count \(n_{00},n_{01},n_{10},n_{11}\).</li>
-<li>Result 0 counts \(+1\), result 1 counts \(-1\). \(\hat\sigma_i\otimes\hat\sigma_j\) takes the product:
-\[\big\langle\hat\sigma_i\otimes\hat\sigma_j\big\rangle=\frac{n_{00}-n_{01}-n_{10}+n_{11}}{N}\]</li>
-<li>The same counts give \(\langle\hat\sigma_i\otimes\hat I\rangle\) and \(\langle\hat I\otimes\hat\sigma_j\rangle\).</li>
-</ol>
-                </div>
-                <div class="w8w" data-w8="tomo9" aria-label="Interactive two-qubit tomography: a 3 by 3 grid of settings, qubit 1 rows x, y, z and qubit 2 columns x, y, z; click a box or Measure all nine: N shots fill the four count bars |00&gt;, |01&gt;, |10&gt;, |11&gt;, then the box shows the correlation and the two single-qubit values">
-                    <div class="w8-ctl"><button type="button" data-g="st" data-v="phi" class="is-on" aria-pressed="true">|Φ⁺⟩</button><button type="button" data-g="st" data-v="psi" class="" aria-pressed="false">|Ψ⁻⟩</button><button type="button" data-g="st" data-v="z00" class="" aria-pressed="false">|00⟩</button><button type="button" data-g="st" data-v="p0" class="" aria-pressed="false">|+⟩|0⟩</button><label>N<input type="range" min="1" max="4" step="0.1" value="3" data-k="n" aria-label="N"><b data-o="n"></b></label><button type="button" data-act="all">Measure all nine</button><button type="button" data-act="clear">Clear</button></div>
-                    <canvas data-c="main" aria-label="Interactive two-qubit tomography: a 3 by 3 grid of settings, qubit 1 rows x, y, z and qubit 2 columns x, y, z; click a box or Measure all nine: N shots fill the four count bars |00&gt;, |01&gt;, |10&gt;, |11&gt;, then the box shows the correlation and the two single-qubit values"></canvas>
-                    <p class="w8-out" data-o="res"></p>
-                </div>
-            </div>
-            <!-- Teaching note: 兩 qubit 的流程和單 qubit 一樣，只是兩顆一起：每一發重置到 |00⟩、準備、兩顆各自依設定旋轉（σ̂z 不轉、σ̂x 先 R_y(−90°)、σ̂y 先 R_x(90°)）、兩顆一起讀一次，得到 |00⟩、|01⟩、|10⟩、|11⟩ 之一。每個設定 N 發，數 n₀₀、n₀₁、n₁₀、n₁₁。讀到 0 記 +1、讀到 1 記 −1，σ̂_i⊗σ̂_j 的本徵值是兩個的乘積：00、11 是 +1，01、10 是 −1，所以 ⟨σ̂_i⊗σ̂_j⟩ = (n₀₀ − n₀₁ − n₁₀ + n₁₁)/N；同一組計數也給 ⟨σ̂_i⊗Î⟩ = (n₀₀ + n₀₁ − n₁₀ − n₁₁)/N、⟨Î⊗σ̂_j⟩ = (n₀₀ − n₀₁ + n₁₀ − n₁₁)/N。九個設定給出全部 9 個關聯，單 qubit 的值每個各量到三次。共 9N 發；n 顆 qubit 要 3ⁿ 個設定。小工具：點一格就量那個設定（N 發，計數條長出來），或 Measure all nine 依序量九格；|Φ⁺⟩ 的 xx = 1、yy = −1、zz = 1。 -->
-            <p class="v4-source">Lecture animation of an ideal model: multinomial shot noise.</p>
-        </section>
         
-        <section data-manual-slide="" data-auto-fit="false" data-title="Bell states on a superconducting chip"
-            data-slide-class="v04 qh-deriv w8 w8-tallfig w8-tf520">
-            <h3>Bell states on a superconducting chip</h3>
-            <div class="w8-pic w8-pic-t">
-                <div class="w8-text">
-<p>(a) Make the state, then tomography: rotations and a joint readout of both qubits.</p>
-<p>(b)–(e) Re ρ̂ of four Bell states.</p>
-<p>The paper names the states differently: |Ψ±⟩ = <span class="nowrap">\(\frac{1}{\sqrt2}\big(|00\rangle\pm|11\rangle\big)\)</span>.</p>
-</div><figure><a href="../Image/DiCarlo2009-Fig3.png"><img src="../WebP/DiCarlo2009-Fig3.webp" alt="(a) Circuit: an entangler with R_y(pi/2) pulses and a conditional phase gate, then state tomography by rotations and a joint dispersive readout. (b) to (e) Measured real parts of the density matrices of the four Bell states as 3D bar charts"></a></figure>
-            </div>
-            <!-- Teaching note: v79 圖改全高（使用者「圖改全高」）：w8-tallfig，圖框 520 px 寬、734 px 高，貼右；標題限寬在圖左邊。DiCarlo 2009：第一次在超導電路上做出 Bell 態並做 state tomography；讀取是兩顆 qubit 共用一個共振腔的聯合色散讀取。注意論文的命名和我們不同：他們的 |Ψ±⟩ 是 |00⟩ ± |11⟩。 -->
-            <p class="v4-source">L. DiCarlo <em>et al.</em>, Nature <b>460</b>, 240 (2009), Fig. 3.</p>
-        </section>
+        
+        
+        
+        
         <section data-manual-slide="" data-auto-fit="false" data-title="GHZ-state tomography"
             data-slide-class="v04 qh-deriv w8 ">
             <h3>GHZ-state tomography</h3>
