@@ -6033,6 +6033,7 @@
         .qhs-slide.v73-hd-slide .v73hd-q { color: #b54549; }
     </style>
     <style id="w8y-v02">
+.qhs-slide.w8 .w8w.w8-tofw[data-w8="resspec"] .w8-ctl input[type="range"] { width: 170px; }
 .qhs-slide.w8.w8-dm2 .w8-split.w8-narrow { grid-template-columns: minmax(0, 1fr) 640px; }
 .qhs-slide.w8 .w8w[data-w8="f0g1"] .w8-ctl input[type="range"] { width: 96px; }
 .qhs-slide.w8 .w8-ctl.w8-ctlgrid .w8-sgrid { flex: 1 0 100%; display: grid; grid-template-columns: repeat(3, max-content); gap: 6px 26px; align-items: center; }
@@ -6549,9 +6550,10 @@
             <div class="w8-col">
                 <div class="w8-text"><p>Apply m random Clifford gates. The last gate undoes the whole sequence, so the ideal result is |0⟩.</p>
 <p>Errors lower the probability \(P(0)=\langle0|\hat\rho|0\rangle\) at the end, the <b>survival probability</b>. Repeat for many random sequences and many lengths m.</p></div>
-                <div class="w8-big"><div class="w8-circ"><div class="w8-rbanim"><div class="w8-crow" style="--wire:747px"><span class="w8-in">\(|0\rangle\)</span><span class="w8-g ">\(C_1\)</span><span class="w8-g ">\(C_2\)</span><span class="w8-g ">\(C_3\)</span><span class="w8-dots">· · ·</span><span class="w8-g ">\(C_m\)</span><span class="w8-g w8-gg">\(C_r\)</span><span class="w8-m"><svg viewBox="0 0 30 22" fill="none"><path d="M3 19 A12 12 0 0 1 27 19" stroke="#28333b" stroke-width="2" /><path d="M15 19 L24 5" stroke="#28333b" stroke-width="2" /></svg></span><p class="w8-res">\(P(0)\)</p></div></div><p class="w8-cap">\(C_1,\dots,C_m\): random Clifford gates. Recovery gate: \(C_r=\big(C_m\cdots C_2C_1\big)^{-1}\). Ideal: the sequence is the identity, and \(P(0)=1\).</p></div></div>
+                <div class="w8-big"><div class="w8-circ"><div class="w8-rbanim"><div class="w8-crow" style="--wire:747px"><span class="w8-in">\(|0\rangle\)</span><span class="w8-g ">\(C_1\)</span><span class="w8-g ">\(C_2\)</span><span class="w8-g ">\(C_3\)</span><span class="w8-dots">· · ·</span><span class="w8-g ">\(C_m\)</span><span class="w8-g w8-gg">\(C_r\)</span><span class="w8-m"><svg viewBox="0 0 30 22" fill="none"><path d="M3 19 A12 12 0 0 1 27 19" stroke="#28333b" stroke-width="2" /><path d="M15 19 L24 5" stroke="#28333b" stroke-width="2" /></svg></span><p class="w8-res">\(P(0)\)</p></div></div><p class="w8-cap">\(C_1,\dots,C_m\): random Clifford gates. Recovery gate: \(C_r=\big(C_m\cdots C_2C_1\big)^{-1}\). Ideal: the sequence is the identity, and \(P(0)=1\).</p></div><div class="w8-text" style="margin-top:34px"><p><b>Why RB</b>: a long sequence makes a small gate error large enough to measure. The decay gives the average error per gate. Preparation and readout errors do not change the decay.</p>
+<p><b>Random gates</b>: take each gate from all 24 Clifford gates with equal probability, and average over many sequences. Then, on average, every error makes the Bloch vector shorter by the same factor in all directions. So \(P(0)\) decays as one exponential in \(m\).</p></div></div>
             </div>
-            <!-- Teaching note: RB 的想法：一串隨機 Clifford 閘，最後一個閘把整串反轉回來，理想結果永遠是 |0⟩；誤差越多 P(0) 越低。換很多隨機序列、很多長度 m。圖是自畫的電路示意。v53：24 個 Clifford 的表移到前一頁（「24 single-qubit Clifford gates and their decomposition」），這頁只留 RB 的想法和電路。原 v38 下方的 24 個單 qubit Clifford 脈衝表（Barends 2014 Supplementary Table S6，脈衝依時間順序，v39 起用論文記號 X、Y = 180°，X/2、−X/2 = ±90°；I = 等一個閘時間；四類：Paulis、120°、90°、Hadamard-like（180°）；平均 1.875 個脈衝，所以 r_gate ≈ r_Clifford / 1.875）。 -->
+            <!-- Teaching note: RB 的想法：一串隨機 Clifford 閘，最後一個閘把整串反轉回來，理想結果永遠是 |0⟩；誤差越多 P(0) 越低。換很多隨機序列、很多長度 m。圖是自畫的電路示意。v53：24 個 Clifford 的表移到前一頁（「24 single-qubit Clifford gates and their decomposition」），這頁只留 RB 的想法和電路。v127（使用者「這邊下面可不可以用簡單的句子說一下RB的重要性、或是對ramdon的要求？」）：電路下加兩行。重要性：序列越長，小誤差累積到量得到（0.1 % 的閘誤差在幾百個閘後才看得出來）；衰減率給每個閘的平均誤差；準備和讀取誤差只進 A、B，不改衰減（細節在 Survival probability 和 Assumptions 頁）；不需要 tomography，量子位元多也做得了。對隨機的要求：每個閘從全部 24 個 Clifford 等機率抽（Clifford 群是 unitary 2-design），再對很多條序列平均；這個平均（twirling）把任何誤差都變成「各方向一樣縮短 Bloch 向量」的去極化誤差，所以 P(0) 是單一指數 A p^m + B。只用部分閘（例如只用 Pauli 或只用 X、Y）就只得到 Pauli twirl，各方向縮短不同，衰減可以不是單一指數；每條序列要獨立抽、每個 m 要很多條（實驗常用 30–100 條）。閘誤差要大致與閘無關、沒有記憶，見 Assumptions 頁。原 v38 下方的 24 個單 qubit Clifford 脈衝表（Barends 2014 Supplementary Table S6，脈衝依時間順序，v39 起用論文記號 X、Y = 180°，X/2、−X/2 = ±90°；I = 等一個閘時間；四類：Paulis、120°、90°、Hadamard-like（180°）；平均 1.875 個脈衝，所以 r_gate ≈ r_Clifford / 1.875）。 -->
         </section>
         <section data-manual-slide="" data-auto-fit="false" data-title="Single-qubit Clifford gates"
             data-slide-class="v04 qh-deriv w8 ">
@@ -6593,7 +6595,7 @@
                 </div>
             </div>
             <div class="w8-text w8-band">
-<p>Preparation and readout errors (SPAM) change \(A\) and \(B\), not \(p\).</p>
+<p>Preparation and readout errors change \(A\) and \(B\), not \(p\).</p>
 <p>Average error per Clifford gate: \(r=\frac{1-p}{2}=1-F_{\rm ave}\).</p>
 <p>\(F_{\rm ave}\): the average gate fidelity, averaged over the Clifford gates.</p>
             </div>
@@ -6608,13 +6610,13 @@
             <h3>Assumptions of randomized benchmarking</h3>
             <div class="w8-flow">
                 <div class="w8-text"><p>\(P(m)=A\,p^{m}+B\) gives the error per Clifford only under these conditions:</p></div>
-                <table class="w8-tab w8-cond"><thead><tr><th>condition</th><th>if it fails</th></tr></thead><tbody><tr><td>Every Clifford has about the same error; no memory between gates</td><td>The decay is not one exponential.</td></tr><tr><td>No drift during the experiment</td><td>\(p\) changes in time; the fit mixes different gates.</td></tr><tr><td>The qubit stays in \(|0\rangle\) and \(|1\rangle\)</td><td>Leakage gives an extra decay and moves \(B\) (leakage RB).</td></tr><tr><td>Preparation and readout do not depend on \(m\)</td><td>SPAM no longer stays in \(A\) and \(B\).</td></tr><tr><td>Enough contrast \(A\)</td><td>\(p\) cannot be fitted.</td></tr></tbody></table>
+                <table class="w8-tab w8-cond"><thead><tr><th>condition</th><th>if it fails</th></tr></thead><tbody><tr><td>Every Clifford has about the same error; no memory between gates</td><td>The decay is not one exponential.</td></tr><tr><td>No drift during the experiment</td><td>\(p\) changes in time; the fit mixes different gates.</td></tr><tr><td>The qubit stays in \(|0\rangle\) and \(|1\rangle\)</td><td>Leakage gives an extra decay and moves \(B\) (leakage RB).</td></tr><tr><td>Preparation and readout do not depend on \(m\)</td><td>Their errors no longer stay in \(A\) and \(B\).</td></tr></tbody></table>
                 <div class="w8-text">
-<p>SPAM is not removed. It goes into \(A\) and \(B\), so \(r\) does not need it. \(C_r\) is a real gate too; it need not be perfect.</p>
+<p>Preparation and readout errors are not removed. They go into \(A\) and \(B\), so \(r\) does not need them. \(C_r\) is a real gate too; it need not be perfect.</p>
 <p>\(r\) is the error per Clifford, not per pulse. One Clifford is 1.875 pulses on average (Barends 2014): about \(\frac{r}{1.875}\) per pulse, an estimate.</p>
                 </div>
             </div>
-            <!-- Teaching note: v42 補上（大綱五）：RB 的指標在標準模型適用時才是「每個 Clifford 的平均誤差」：誤差大致與閘無關、無記憶（Markov）、無漂移、無洩漏、SPAM 與長度無關、對比度夠。SPAM 不是被物理消除，而是進入 A、B，所以不必先精確重建 SPAM。復原閘 C_r 也是實際的閘、有誤差，RB 不要求它完美。標準 Clifford RB 的 r 是每個 Clifford 的誤差，不等於任一原生脈衝的 fidelity；Barends 用平均 1.875 個脈衝換算，只是估計。 -->
+            <!-- Teaching note: v42 補上（大綱五）：RB 的指標在標準模型適用時才是「每個 Clifford 的平均誤差」：誤差大致與閘無關、無記憶（Markov）、無漂移、無洩漏、SPAM 與長度無關、對比度夠。SPAM 不是被物理消除，而是進入 A、B，所以不必先精確重建 SPAM。復原閘 C_r 也是實際的閘、有誤差，RB 不要求它完美。標準 Clifford RB 的 r 是每個 Clifford 的誤差，不等於任一原生脈衝的 fidelity；Barends 用平均 1.875 個脈衝換算，只是估計。v122（使用者「我都沒有講到SPAM」「Enough contrast … 這個刪掉」）：投影片上不再出現 SPAM 這個縮寫，改寫成 preparation and readout errors（口頭可說：SPAM = state preparation and measurement errors）；「對比度 A 要夠」那一列刪掉。 -->
             <p class="v4-source">E. Magesan, J. M. Gambetta, J. Emerson, Phys. Rev. A <b>85</b>, 042311 (2012). R. Barends <em>et al.</em>, Nature <b>508</b>, 500 (2014).</p>
         </section>
         <section data-manual-slide="" data-auto-fit="false" data-title="Randomized benchmarking of a transmon"
@@ -6785,13 +6787,13 @@
 <div class="v4-eq">\[\langle\hat\sigma_a\rangle-r_a=\frac{2\lambda}{N}\,r_a\big(1-r_a^2\big)\]</div>
 <p>\(\frac{1-r_a^2}{N}\): the variance of \(\langle\hat\sigma_a\rangle\). An uncertain component moves more.</p>
                 </div>
-                <div class="w8w" data-w8="mle" aria-label="Interactive maximum likelihood in a cut of the Bloch ball: the likelihood of the counts as shading, the true state, the linear inversion that can lie outside the circle, and the climb to the maximum inside the circle">
+                <div class="w8w" data-w8="mle" aria-label="Interactive maximum likelihood in a cut of the Bloch ball: the likelihood of the counts as shading, the true state, the linear inversion that can lie outside the circle, and the maximum inside the circle">
                     <div class="w8-ctl"><label>true state θ<input type="range" min="0" max="180" step="1" value="50" data-k="th" aria-label="true state θ"><b data-o="th"></b></label><label>shots per setting N<input type="range" min="1" max="4" step="0.1" value="1.2" data-k="n" aria-label="shots per setting N"><b data-o="n"></b></label><span class="w8-gap"></span><button type="button" data-act="again">Measure again</button></div>
-                    <canvas data-c="main" aria-label="Interactive maximum likelihood in a cut of the Bloch ball: the likelihood of the counts as shading, the true state, the linear inversion that can lie outside the circle, and the climb to the maximum inside the circle"></canvas>
+                    <canvas data-c="main" aria-label="Interactive maximum likelihood in a cut of the Bloch ball: the likelihood of the counts as shading, the true state, the linear inversion that can lie outside the circle, and the maximum inside the circle"></canvas>
                     <p class="w8-out" data-o="res"></p>
                 </div>
             </div>
-            <!-- Teaching note: v37 重寫（使用者「這一頁給我重寫 根本沒用到的東西就丟掉」、「用廣義推導」）：從計數推到結果。(1) Born：態 r 在設定 a 讀到 |0⟩ 的機率 (1 + rₐ)/2；N 次獨立 → 二項分布，三個設定相乘 = ℒ(r)，取 log、丟常數：ln ℒ = Σ [n₀ₐ ln(1 + rₐ) + n₁ₐ ln(1 − rₐ)]。(2) ∂/∂rₐ = 0 → n₀ₐ/(1 + rₐ) = n₁ₐ/(1 − rₐ) → rₐ = (n₀ₐ − n₁ₐ)/N = ⟨σ̂ₐ⟩：線性反演就是不加限制的最大似然。(3) ln ℒ 每項都凹；解在球外時，|r| ≤ 1 內的最大值在球面上。Lagrange：n₀ₐ/(1 + rₐ) − n₁ₐ/(1 − rₐ) = 2λ rₐ，通分 → N(⟨σ̂ₐ⟩ − rₐ) = 2λ rₐ(1 − rₐ²)。(4) (1 − rₐ²)/N 是 ⟨σ̂ₐ⟩ 的二項變異數：每個分量拉回的量和它自己的誤差成正比；nearest physical state（r/|r|）則不管誤差、等比例縮。數字（前一頁 50 shots：x 30/20、y 50/0、z 35/15）：⟨σ̂⟩ = (0.20, 1.00, 0.40)，|r| = 1.095；最大似然 (0.131, 0.955, 0.267)，三個分量的 (⟨σ̂ₐ⟩ − rₐ)/[rₐ(1 − rₐ²)] 都是 0.536 = 2λ/N。拿掉 T̂†T̂ / Tr(T̂†T̂)（動畫沒用到；兩個以上 qubit 才需要，James et al. 2001）和一般式 ℒ(ρ̂) = Π Pₖ^nₖ。動畫：Bloch 球 y = 0 的截面，只有 x、z 兩個設定；紫色深淺 ℒ/ℒ_max；紅叉線性反演；紫線 Climb 沿梯度從圓心爬到圓內最大值（紫點），一開始就顯示。預設 θ 50°、N 16 第一次量測在圓外（|r| = 1.152）。 -->
+            <!-- Teaching note: v37 重寫（使用者「這一頁給我重寫 根本沒用到的東西就丟掉」、「用廣義推導」）：從計數推到結果。(1) Born：態 r 在設定 a 讀到 |0⟩ 的機率 (1 + rₐ)/2；N 次獨立 → 二項分布，三個設定相乘 = ℒ(r)，取 log、丟常數：ln ℒ = Σ [n₀ₐ ln(1 + rₐ) + n₁ₐ ln(1 − rₐ)]。(2) ∂/∂rₐ = 0 → n₀ₐ/(1 + rₐ) = n₁ₐ/(1 − rₐ) → rₐ = (n₀ₐ − n₁ₐ)/N = ⟨σ̂ₐ⟩：線性反演就是不加限制的最大似然。(3) ln ℒ 每項都凹；解在球外時，|r| ≤ 1 內的最大值在球面上。Lagrange：n₀ₐ/(1 + rₐ) − n₁ₐ/(1 − rₐ) = 2λ rₐ，通分 → N(⟨σ̂ₐ⟩ − rₐ) = 2λ rₐ(1 − rₐ²)。(4) (1 − rₐ²)/N 是 ⟨σ̂ₐ⟩ 的二項變異數：每個分量拉回的量和它自己的誤差成正比；nearest physical state（r/|r|）則不管誤差、等比例縮。數字（前一頁 50 shots：x 30/20、y 50/0、z 35/15）：⟨σ̂⟩ = (0.20, 1.00, 0.40)，|r| = 1.095；最大似然 (0.131, 0.955, 0.267)，三個分量的 (⟨σ̂ₐ⟩ − rₐ)/[rₐ(1 − rₐ²)] 都是 0.536 = 2λ/N。拿掉 T̂†T̂ / Tr(T̂†T̂)（動畫沒用到；兩個以上 qubit 才需要，James et al. 2001）和一般式 ℒ(ρ̂) = Π Pₖ^nₖ。動畫：Bloch 球 y = 0 的截面，只有 x、z 兩個設定；紫色深淺 ℒ/ℒ_max；紅叉線性反演；紫點 = 圓內 ℒ 的最大值，直接畫出。v123 拿掉從圓心長出來的紫線（使用者「為何動畫要是長出來？」）：那是從 r = 0 沿梯度往上爬的數值搜尋路徑，本頁是直接解（圓內 = 線性反演，圓外 = 球面上 Lagrange），用不到它；v99「Climb 拿掉」當時只拿掉按鈕。預設 θ 50°、N 16 第一次量測在圓外（|r| = 1.152）。 -->
             <p class="v4-source">Lecture animation of an ideal model: cut y = 0, only the x and z settings.</p>
         </section>
         
@@ -6872,21 +6874,19 @@
             <h3>Reset by measurement</h3>
             <div class="w8-split w8-wide">
                 <div class="w8-text">
-<p>Read the qubit first. Then:</p>
+<p>The qubit can start in a superposition \(\cos\tfrac{\theta}{2}|0\rangle+\sin\tfrac{\theta}{2}|1\rangle\).</p>
+<p>Read the qubit first. The readout puts it in \(|0\rangle\) or \(|1\rangle\). Then:</p>
 <p><b>Heralding</b>: keep only the shots that read \(|0\rangle\).</p>
 <p><b>Feedback</b>: when the result is \(|1\rangle\), apply a \(\pi\) pulse.</p>
-<p>Both are fast: one readout instead of \(5T_1\). The readout error \(e\) stays:</p>
-<div class="v4-eq">\[P(1)_{\rm after}\approx p\,e+(1-p)\,e\]</div>
-<p>\(p\): \(P(1)\) before. Feedback needs a QND readout and fast electronics: the decision takes a few hundred ns.</p>
                 </div>
-                <div class="w8w" data-w8="fbreset" aria-label="Interactive reset by measurement with 100 qubits as dots: before, the readout result as a ring, and after the feedback pi pulse or after discarding the results |1&gt;">
-                    <div class="w8-ctl"><label>P(1) before<input type="range" min="0" max="40" step="1" value="16" data-k="p" aria-label="P(1) before"><b data-o="p"></b></label><label>readout error e<input type="range" min="0" max="10" step="0.5" value="3" data-k="e" aria-label="readout error e"><b data-o="e"></b></label><button type="button" data-g="mode" data-v="fb" class="is-on" aria-pressed="true">feedback</button><button type="button" data-g="mode" data-v="her" class="" aria-pressed="false">heralding</button><button type="button" data-act="run">Run</button></div>
-                    <canvas data-c="main" aria-label="Interactive reset by measurement with 100 qubits as dots: before, the readout result as a ring, and after the feedback pi pulse or after discarding the results |1&gt;"></canvas>
+                <div class="w8w" data-w8="fbreset" aria-label="Interactive reset by measurement with 100 qubits as dots: before, each in its own superposition, coloured by its share of |1&gt;; after the readout, with the result as a ring; and after the feedback pi pulse or after discarding the results |1&gt;">
+                    <div class="w8-ctl"><label>readout error e<input type="range" min="0" max="10" step="0.1" value="0.5" data-k="e" aria-label="readout error e"><b data-o="e"></b></label><button type="button" data-g="mode" data-v="fb" class="is-on" aria-pressed="true">feedback</button><button type="button" data-g="mode" data-v="her" class="" aria-pressed="false">heralding</button><button type="button" data-act="run">Run</button></div>
+                    <canvas data-c="main" aria-label="Interactive reset by measurement with 100 qubits as dots: before, each in its own superposition, coloured by its share of |1&gt;; after the readout, with the result as a ring; and after the feedback pi pulse or after discarding the results |1&gt;"></canvas>
                     <p class="w8-out" data-o="res"></p>
                 </div>
             </div>
-            <!-- Teaching note: v24（使用者「p12、p13也補上pulse seq」）：動畫上方加脈衝序列。第二種：用量測來初始化。Heralding（先量，只留讀到 |0⟩ 的那幾發，其餘丟掉）和 feedback（先量，讀到 |1⟩ 就打 π 脈衝）。兩者都只要一次讀取的時間，不必等 5T₁。剩下的誤差主要來自讀取誤差 e：feedback 後 P(1) ≈ pe + (1 − p)e（真 |1⟩ 讀成 |0⟩ 沒被翻、真 |0⟩ 讀成 |1⟩ 被翻成 |1⟩）；heralding 後 P(1) = pe/(pe + (1 − p)(1 − e))，但只留下一部分 shot。feedback 需要 QND 讀取（讀完態不變，見 W7）和低延遲電子學（讀取＋判斷＋發脈衝幾百 ns）；延遲期間的 T₁ 也會加誤差（模型未含）。動畫：100 顆 qubit，填色 = 真實狀態，外圈 = 讀取結果；按 Run 依序顯示三步。 -->
-            <p class="v4-source">Lecture animation of an ideal model: the same readout error in both directions. Numbers: D. Ristè <em>et al.</em>, Phys. Rev. Lett. <b>109</b>, 240502 (2012).</p>
+            <!-- Teaching note: v24（使用者「p12、p13也補上pulse seq」）：動畫上方加脈衝序列。第二種：用量測來初始化。Heralding（先量，只留讀到 |0⟩ 的那幾發，其餘丟掉）和 feedback（先量，讀到 |1⟩ 就打 π 脈衝）。兩者都只要一次讀取的時間，不必等 5T₁。剩下的誤差主要來自讀取誤差 e：feedback 後 P(1) ≈ pe + (1 − p)e（真 |1⟩ 讀成 |0⟩ 沒被翻、真 |0⟩ 讀成 |1⟩ 被翻成 |1⟩）；heralding 後 P(1) = pe/(pe + (1 − p)(1 − e))，但只留下一部分 shot。feedback 需要 QND 讀取（讀完態不變，見 W7）和低延遲電子學（讀取＋判斷＋發脈衝幾百 ns）；延遲期間的 T₁ 也會加誤差（模型未含）。動畫：100 顆 qubit，先畫起始態（每顆自己的疊加，藍 → 綠 → 黃的漸層色 = |1⟩ 的比例），再畫讀取後的狀態（填色）和讀取結果（外圈）；按 Run 依序顯示三步。v125（使用者「剛開始是可能是疊加態」）：起始態改成疊加 cos(θ/2)|0⟩ + sin(θ/2)|1⟩，畫在 Bloch 球上（和 Power Rabi 頁同一畫法：從 |0⟩ 出發的軌跡、投影到 z 軸的虛線）。這就是 Ristè 2012 Fig. 3 的做法：先 postselect 到 |0⟩，再打 θ 脈衝準備 |θ⟩，然後 reset，量 P(0) 對 θ：沒有回饋是 Rabi 曲線 cos²(θ/2)，有回饋幾乎是平線（論文：對所有疊加態平均誤差 2.4 %）。讀取把每一發隨機投影到 |0⟩（機率 cos²(θ/2)）或 |1⟩（sin²(θ/2)），之後和混態一樣：p = sin²(θ/2)，feedback 後 P(1) ≈ pe + (1 − p)e = e，與 θ 無關。熱平衡的殘留激發（約 16 %）是混態、不是疊加，但讀取只看布居，所以同樣的 P(1) 給同樣的結果。論文一輪 Fb₀ 的實測：θ = 0 → 1.2 %、θ = π → 7.8 %；讀取誤差只占 0.4 %、1.4 %，其餘是量測到動作之間 2.4 μs 內的弛豫和熱激發（含 |2⟩）。兩輪：1.3 %、3.4 %。模型只有讀取誤差，所以平的。e 預設 0.5 %（SOM：ε₀ = 0.3 %、ε₁ = 0.7 %）。v124 把使用者的話誤解成 |2⟩，加的 |2⟩ 句子、式子、滑桿和綠點在 v125 拿掉。v126：Bloch 球拿掉（使用者「誰要你畫bloch球的…你就像漸層過渡色一樣每個qubit佔的比例不同就好了啊」）：第 1 格又是 100 顆點，每顆有自己的疊加，填色是藍（|0⟩）到橘（|1⟩）的漸層，比例 = 這顆的 sin²(θᵢ/2)，每次 Run 隨機（0 到 1 均勻）；讀取時第 i 顆以這個機率到 |1⟩。「start state θ」滑桿拿掉（使用者「這根本沒意義好嗎」：每顆比例不同，一個 θ 沒有意義）。左邊「Both are fast … 5T₁. The readout error e stays」、P(1)_after ≈ pe + (1 − p)e 和「p = sin²(θ/2) … QND … few hundred ns」整段刪掉（使用者「這段刪掉」）；口頭可講：兩者都只要一次讀取，不必等 5T₁；feedback 後 P(1) ≈ pe + (1 − p)e = e（p = 平均 P(1)），feedback 需要 QND 讀取和幾百 ns 內的判斷。v129（使用者「你換成藍色跟黃色好了 混色會像綠色」）：|1⟩ 改黃色（#e2b212），漸層沿色相從藍經綠到黃（RGB 直接混藍黃會變灰）；讀取後的點、外圈、圖例都改黃。v131（使用者「這樣太花了」）：漸層不再繞色相環（會經過青、亮綠），改成像顏料混色：每個顏色通道取幾何平均 c₀^(1−t) c₁^t，中間是暗的橄欖綠。v132（使用者「你這邊藍色用正藍一點 這個綠太屎綠」）：|0⟩ 改正藍 #1d5ad8（點、外圈、漸層）；漸層改成藍 → 乾淨的綠 #43a047 → 黃，分兩段線性。 -->
+            <p class="v4-source">Lecture animation of an ideal model: the same readout error both ways. Start states and \(e\) as in D. Ristè <em>et al.</em>, Phys. Rev. Lett. <b>109</b>, 240502 (2012).</p>
         </section>
         <section data-manual-slide="" data-auto-fit="false" data-title="Reset by feedback on a transmon"
             data-slide-class="v04 qh-deriv w8 ">
@@ -7008,21 +7008,31 @@
         <section data-manual-slide="" data-auto-fit="false" data-title="Resonator spectroscopy"
             data-slide-class="v04 qh-deriv w8 ">
             <h3>Resonator spectroscopy</h3>
-            <div class="w8-split w8-wide">
-                <div class="w8-text">
-<p>Sweep the readout frequency. Measure the amplitude and the phase of the signal.</p>
-<p>At the resonator frequency \(f_r\) the amplitude has a dip. \(\kappa\): the decay rate of the resonator. The full width of the dip is \(\frac{\kappa}{2\pi}\).</p>
-<p>In the IQ plane the points lie on a circle.</p>
-<p>The qubit is in \(|0\rangle\). This \(f_r\) is the first guess of the readout frequency.</p>
+            <div class="w8w w8-tofw" data-w8="resspec" aria-label="Interactive resonator spectroscopy: left, the chip with the readout tone on the read-out line and read-out resonator 1, which glows near its frequency while the tone past it gets weaker; right, the amplitude and the phase (cable delay removed) against the readout frequency with a cursor, and the IQ plane with the two waves whose sum is the measured point">
+                <div class="w8-tofdev">
+                    <a href="../Image/Wang2019-Fig1b-device.png"><img src="../WebP/Wang2019-Fig1b-device.webp" alt="Two Xmon transmons, each with a read-out resonator on a common read-out line; the read-out line goes from the source through a circulator to a JPA and then up through a HEMT to the read-out"></a>
+                    <svg viewBox="0 0 1126 1366" preserveAspectRatio="none" aria-hidden="true">
+                        <path data-rs-res="" d="M422 311.5 H214.3 A17.325 17.325 0 0 0 197.0 328.8 V396.7 A17.325 17.325 0 0 0 214.3 414.0 H413.2 A17.325 17.325 0 0 1 413.2 448.6 H214.3 A17.325 17.325 0 0 0 214.3 483.3 H413.2 A17.325 17.325 0 0 1 413.2 518.0 H214.3 A17.325 17.325 0 0 0 214.3 552.6 H413.2 A17.325 17.325 0 0 1 413.2 587.2 H214.3 A17.325 17.325 0 0 0 214.3 621.9 H413.2 A17.325 17.325 0 0 1 413.2 656.5 H214.3 A17.325 17.325 0 0 0 214.3 691.2 H413.2 A17.325 17.325 0 0 1 413.2 725.8 H214.3 A17.325 17.325 0 0 0 214.3 760.5 H306.7 A17.325 17.325 0 0 1 324 777.8 V868" fill="none" stroke="rgba(181,101,29,.30)" stroke-width="30" stroke-linecap="round" stroke-linejoin="round" style="opacity:0" />
+                        <path data-rs-res="" d="M422 311.5 H214.3 A17.325 17.325 0 0 0 197.0 328.8 V396.7 A17.325 17.325 0 0 0 214.3 414.0 H413.2 A17.325 17.325 0 0 1 413.2 448.6 H214.3 A17.325 17.325 0 0 0 214.3 483.3 H413.2 A17.325 17.325 0 0 1 413.2 518.0 H214.3 A17.325 17.325 0 0 0 214.3 552.6 H413.2 A17.325 17.325 0 0 1 413.2 587.2 H214.3 A17.325 17.325 0 0 0 214.3 621.9 H413.2 A17.325 17.325 0 0 1 413.2 656.5 H214.3 A17.325 17.325 0 0 0 214.3 691.2 H413.2 A17.325 17.325 0 0 1 413.2 725.8 H214.3 A17.325 17.325 0 0 0 214.3 760.5 H306.7 A17.325 17.325 0 0 1 324 777.8 V868" fill="none" stroke="#b5651d" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" style="opacity:0" />
+                        <path data-rs-seg="0" d="M150 295 H197" fill="none" stroke="#355f9c" stroke-width="10" stroke-dasharray="26 16" stroke-linecap="butt" />
+                        <path data-rs-seg="1" d="M197.0 295 H225.1" fill="none" stroke="#355f9c" stroke-width="10" stroke-dasharray="26 16" stroke-linecap="butt" />
+                        <path data-rs-seg="2" d="M225.1 295 H253.2" fill="none" stroke="#355f9c" stroke-width="10" stroke-dasharray="26 16" stroke-linecap="butt" />
+                        <path data-rs-seg="3" d="M253.2 295 H281.4" fill="none" stroke="#355f9c" stroke-width="10" stroke-dasharray="26 16" stroke-linecap="butt" />
+                        <path data-rs-seg="4" d="M281.4 295 H309.5" fill="none" stroke="#355f9c" stroke-width="10" stroke-dasharray="26 16" stroke-linecap="butt" />
+                        <path data-rs-seg="5" d="M309.5 295 H337.6" fill="none" stroke="#355f9c" stroke-width="10" stroke-dasharray="26 16" stroke-linecap="butt" />
+                        <path data-rs-seg="6" d="M337.6 295 H365.8" fill="none" stroke="#355f9c" stroke-width="10" stroke-dasharray="26 16" stroke-linecap="butt" />
+                        <path data-rs-seg="7" d="M365.8 295 H393.9" fill="none" stroke="#355f9c" stroke-width="10" stroke-dasharray="26 16" stroke-linecap="butt" />
+                        <path data-rs-seg="8" d="M393.9 295 H422.0" fill="none" stroke="#355f9c" stroke-width="10" stroke-dasharray="26 16" stroke-linecap="butt" />
+                        <path data-rs-seg="9" d="M422 295 H852 L934 302 H996 V283 H934 L892 252 V92" fill="none" stroke="#355f9c" stroke-width="10" stroke-dasharray="26 16" stroke-linecap="butt" />
+                        <g data-rs-tag="" transform="translate(24 40)"><rect rx="12" width="420" height="70" fill="#fff" stroke="#25827a" stroke-width="4" /><text x="210" y="49" text-anchor="middle" font-family="Montserrat, sans-serif" font-size="38" font-weight="800" fill="#25827a">f = 4.7540 GHz</text></g>
+                    </svg>
                 </div>
-                <div class="w8w" data-w8="resspec" aria-label="Interactive resonator spectroscopy: amplitude and phase (cable delay removed) of the signal against the readout frequency, and the same points in the IQ plane">
-                    <div class="w8-ctl"><span class="w8-gap"></span><button type="button" data-act="sweep">Sweep</button></div>
-                    <canvas data-c="main" aria-label="Interactive resonator spectroscopy: amplitude and phase (cable delay removed) of the signal against the readout frequency, and the same points in the IQ plane"></canvas>
-                    <p class="w8-out" data-o="res"></p>
-                </div>
+                <div class="w8-ctl"><button type="button" data-act="sweep">Sweep</button><label>readout frequency<input type="range" min="4.654" max="4.854" step="0.0005" value="4.754" data-k="f" aria-label="readout frequency (GHz)"><b data-o="f"></b></label></div>
+                <canvas data-c="main" aria-label="Interactive resonator spectroscopy: left, the chip with the readout tone on the read-out line and read-out resonator 1, which glows near its frequency while the tone past it gets weaker; right, the amplitude and the phase (cable delay removed) against the readout frequency with a cursor, and the IQ plane with the two waves whose sum is the measured point"></canvas>
+                <p class="w8-out" data-o="res"></p>
             </div>
-            <!-- Teaching note: QM 02a：掃讀取頻率，看透射訊號的振幅和相位。共振腔頻率 f_r 有個凹陷，全寬 κ/2π（κ：共振腔的衰減率）。線材延遲 τ 讓相位多 2πfτ（240 ns → 每 4.17 MHz 轉一圈）；v75 拿掉原始相位的按鈕（使用者「raw去掉」），v76 頁面上延遲那句也刪（「那句延遲也刪」），圖上只畫扣掉延遲後的相位，只在 f_r 附近變化；IQ 平面上是一個圓（notch 型）。qubit 在 |0⟩，所以這是含色散位移的 f_r，當作讀取頻率的初值；07a 再精調。f_r = 4.754 GHz、κ/2π = 37.5 MHz 來自 Walter 2017；η = 0.9 與 240 ns 是教學用數字。 -->
-            <p class="v4-source">Lecture model (notch resonator): \(f_r\) = 4.754 GHz and \(\frac{\kappa}{2\pi}\) = 37.5 MHz from T. Walter <em>et al.</em>, Phys. Rev. Applied <b>7</b>, 054020 (2017).</p>
+            <!-- Teaching note: v114（使用者「這一頁左邊文字去掉 左邊我想要搭配這張圖做動畫 聯繫右邊掃圖的意義」）：左邊文字拿掉，換成 time of flight 頁同一張晶片圖（Wang 2019 Fig. 1(b)），疊上動畫：讀取音沿 read-out line 走（藍色虛線，Sweep 時往前流）；經過 read-out resonator 1 的耦合段之後，亮度 = |S(f)|；共振腔本身發橘光，亮度 = 儲存能量 1/(1 + 4x²)，x = (f − f_r)/κ。f = f_r 時共振腔最亮、後面的線最暗：能量進了共振腔，共振腔再放出來的波和直接通過的波反相、互相抵消，所以讀到凹陷。resonator 2 的頻率不同，不在這個掃描範圍，所以不亮。右邊 IQ 平面：量到的點在圓上（直徑 η），相位在 f_r 附近翻轉；口頭可說：量到的點 = 只有線的 1 加上共振腔放出的波 −η/(1 + 2ix)（v119 依使用者「這兩個箭頭都不要」拿掉圖上的兩個箭頭）。原本左邊的文字：掃讀取頻率，量振幅和相位；f_r 有凹陷，全寬 κ/2π（κ：共振腔的衰減率）；IQ 平面上是圓；qubit 在 |0⟩，這個 f_r 是讀取頻率的初值。使用者問「是不是其實是有耦合 qubit 在 0 之下的頻率」：是，量到的是 qubit 在 |0⟩ 時被推過的共振腔頻率 f_bare − g²/Δ（本 deck 的模型 g/2π = 210 MHz、Δ/2π = 1562 MHz：推下 28 MHz），振幅圖標題寫「qubit in |0⟩」。QM 02a：掃讀取頻率，看透射訊號的振幅和相位。共振腔頻率 f_r 有個凹陷，全寬 κ/2π（κ：共振腔的衰減率）。線材延遲 τ 讓相位多 2πfτ（240 ns → 每 4.17 MHz 轉一圈）；v75 拿掉原始相位的按鈕（使用者「raw去掉」），v76 頁面上延遲那句也刪（「那句延遲也刪」），圖上只畫扣掉延遲後的相位，只在 f_r 附近變化；IQ 平面上是一個圓（notch 型）。qubit 在 |0⟩，所以這是含色散位移的 f_r，當作讀取頻率的初值；07a 再精調。f_r = 4.754 GHz、κ/2π = 37.5 MHz 來自 Walter 2017；η = 0.9 與 240 ns 是教學用數字。 -->
+            <p class="v4-source">Chip: T. Wang <em>et al.</em>, Phys. Rev. Applied <b>11</b>, 034030 (2019), Fig. 1(b). Lecture model (notch resonator): \(f_r\) = 4.754 GHz, \(\frac{\kappa}{2\pi}\) = 37.5 MHz from T. Walter <em>et al.</em>, Phys. Rev. Applied <b>7</b>, 054020 (2017).</p>
         </section>
         <section data-manual-slide="" data-auto-fit="false" data-title="One-tone spectroscopy"
             data-slide-class="v04 qh-deriv w8 ">
@@ -7052,7 +7062,7 @@
                     <p class="w8-out" data-o="res"></p>
                 </div>
             </div>
-            <!-- Teaching note: 頻域（連續波，掃參數）vs 時域（脈衝）。one tone：只有讀取音，掃頻率找共振腔；two tone：一個長時間的 drive 音加讀取音，找 qubit；時域：短脈衝 → 等待 → 讀取脈衝（Rabi、T₁、Ramsey…）。v21：自畫示意換成動畫：左邊是送出去的訊號（讀取線、驅動線），右邊是一點一點量出來的曲線：one tone 的共振腔凹陷、two tone 的 qubit 峰、脈衝的 Rabi 振盪。數字只是示意（7.000 GHz、5.000 GHz、Ω/2π = 20 MHz）。 -->
+            <!-- Teaching note: 頻域（連續波，掃參數）vs 時域（脈衝）。one tone：只有讀取音，掃頻率找共振腔；two tone：一個長時間的 drive 音加讀取音，找 qubit；時域：短脈衝 → 等待 → 讀取脈衝（Rabi、T₁、Ramsey…）。v21：自畫示意換成動畫：左邊是送出去的訊號（讀取線、驅動線），右邊是一點一點量出來的曲線：one tone 的共振腔凹陷、two tone 的 qubit 峰、脈衝的 Rabi 振盪。數字只是示意（7.000 GHz、5.000 GHz、Ω/2π = 20 MHz）。v115（使用者「那你p38那邊畫的到底對不對 而且你怎知道p(1)?」）：two tone 和 pulses 的縱軸原本寫 P(1)（two tone 峰高 0.5），錯：這一步量到的是讀取訊號（透射的相位或 IQ 點的移動），還不是 P(1)。要換成 P(1) 需要 |0⟩ 和 |1⟩ 兩個參考訊號，而 |1⟩ 要 π 脈衝，兩頻譜時還沒有。之後：Rabi 振盪的最低、最高點當成 |0⟩、|1⟩ 的訊號來縮放；讀取校好（p45 的 IQ 兩團 + 閾值）之後，P(1) = 讀成 1 的發數比例（再用 assignment matrix 修讀取誤差）。現在縱軸是 readout signal (a.u.)、不標數字。two tone 的讀取音畫小並標 weak：連續開著的讀取光子會讓 qubit 線 ac Stark 位移 2χn̄、變寬（量測去相干），所以 n̄ < 1；現在常用脈衝式（長驅動脈衝飽和 qubit，關掉後再讀）。v116（使用者「方向跟你的不一樣啊」+ Schuster 2005 Fig. 3）：two tone 改成讀取相位從 0 往下凹，和 Schuster 2005 Fig. 3（v105 p44）一樣；方向本身取決於共振腔往哪邊移、讀取點在哪、相位的正負號慣例。v117（使用者「所以到底是怎樣 幹廢物你不會去找相符合的圖嗎？」「你不會找找看其他論文嗎？」）：查了實測的兩頻譜：方向由讀取共振腔的型式決定。透射型共振腔（one tone 是峰）：讀取點在峰頂，qubit 激發後共振移走，|S21| 下降 → 凹陷（Naghiloo 2019 arXiv:1904.09291 的 two-tone 圖，3D 腔 transmon，−20 → −40 dBm，功率大時多一個雙光子 g→f 凹陷在 (ω_ge + ω_gf)/2；Schuster 2005 Fig. 3 的相位凹陷，CPW 透射型）。notch（hanger）型（one tone 是凹陷，本 deck p35–36 的晶片和這頁的 one tone）：讀取點在凹陷底，qubit 激發後共振移走，|S21| 上升 → 峰（Kroll 2018 arXiv:1806.10534 Fig. 4(a)，λ/4 共振腔掛在饋線上，|S21| at f_r 對 f_d 是往上的 Lorentzian）。所以這頁改回峰，並和 one tone 用同一個量、同一把尺：|S21| = |(1 − P1)S0 + P1 S1|，S0 = 0.15（凹陷底），S1 = 1 − 0.85/(1 + 2i)（2χ = κ），P1 最多 ½ → 0.52。 -->
             <p class="v4-source">Lecture animation of an ideal model.</p>
         </section>
         <section data-manual-slide="" data-auto-fit="false" data-title="Spectroscopy against flux"
@@ -7171,13 +7181,13 @@
 <p>Its minimum gives the sweet spot and \(f_{01}\) there, more precisely than spectroscopy.</p>
 <p>At the sweet spot, flux noise changes \(f_{01}\) only in second order.</p>
                 </div>
-                <div class="w8w" data-w8="ramflux" aria-label="Interactive Ramsey against flux: left the Ramsey fringes at one flux bias, right the fringe frequency against the flux bias with a parabola fit and the sweet spot">
+                <div class="w8w" data-w8="ramflux" aria-label="Interactive Ramsey against flux: left, the map of the Ramsey fringes against the free time and the drive frequency, with the band at the qubit frequency and the cut at the fixed drive frequency, and below the fringes along the cut; right, the fringe frequency against the flux bias with a parabola fit and the sweet spot">
                     <div class="w8-ctl"><label>flux bias<input type="range" min="-15" max="15" step="2.5" value="0" data-k="b" aria-label="flux bias from the first guess (milli flux quanta)"><b data-o="b"></b></label><span class="w8-gap"></span><button type="button" data-act="sweep">Sweep the flux</button></div>
-                    <canvas data-c="main" aria-label="Interactive Ramsey against flux: left the Ramsey fringes at one flux bias, right the fringe frequency against the flux bias with a parabola fit and the sweet spot"></canvas>
+                    <canvas data-c="main" aria-label="Interactive Ramsey against flux: left, the map of the Ramsey fringes against the free time and the drive frequency, with the band at the qubit frequency and the cut at the fixed drive frequency, and below the fringes along the cut; right, the fringe frequency against the flux bias with a parabola fit and the sweet spot"></canvas>
                     <p class="w8-out" data-o="res"></p>
                 </div>
             </div>
-            <!-- Teaching note: QM 06a：在 03b 粗找的偏壓附近，做幾個磁通偏壓的 Ramsey。驅動頻率固定在初估 f₀₁ 上方 3 MHz（失諧都同號，條紋頻率 = f_d − f₀₁，沒有正負號的模糊）。甜蜜點附近 f₀₁ ≈ f_max(1 − π²Φ²/4Φ₀²)，所以條紋頻率對磁通是拋物線；最低點 = 甜蜜點，也給出那裡的 f₀₁（比頻譜準：Ramsey 量的是 kHz 等級的頻率差）。甜蜜點上 df₀₁/dΦ = 0，磁通雜訊只有二階影響，T₂* 較長。模型：f₀₁(Φ) = f_max √|cos(πΦ/Φ₀)|（兩個相同接面），f_max = 6.316 GHz（Walter 2017 的 qubit 頻率當作頂點），甜蜜點在初估 +4 mΦ₀，每點 200 shots，不含衰減（甜蜜點在初估 +4 mΦ₀）。 -->
+            <!-- Teaching note: QM 06a：在 03b 粗找的偏壓附近，做幾個磁通偏壓的 Ramsey。驅動頻率固定在初估 f₀₁ 上方 3 MHz（失諧都同號，條紋頻率 = f_d − f₀₁，沒有正負號的模糊）。甜蜜點附近 f₀₁ ≈ f_max(1 − π²Φ²/4Φ₀²)，所以條紋頻率對磁通是拋物線；最低點 = 甜蜜點，也給出那裡的 f₀₁（比頻譜準：Ramsey 量的是 kHz 等級的頻率差）。甜蜜點上 df₀₁/dΦ = 0，磁通雜訊只有二階影響，T₂* 較長。模型：f₀₁(Φ) = f_max √|cos(πΦ/Φ₀)|（兩個相同接面），f_max = 6.316 GHz（Walter 2017 的 qubit 頻率當作頂點），甜蜜點在初估 +4 mΦ₀，每點 200 shots，不含衰減（甜蜜點在初估 +4 mΦ₀）。v118（使用者「你這邊是不是乾脆左邊要畫ramsey fringe 然後你切某個detune 然後條flux時 整個fringe怎麼變？」）：左半改成 Ramsey 條紋圖：橫軸自由時間 τ，縱軸驅動頻率（相對 f₀₁ 初估，−8 … +6 MHz），顏色 P(1) = ½(1 + cos 2π(f − f₀₁)τ)；橘線 = f₀₁(Φ)，那一條沒有條紋（失諧 0）；離開它條紋越來越密（扇形）。綠虛線 = 固定的驅動頻率 f_d（+3 MHz），就是「切」的位置；下面是沿切線的 P(1)（每點 200 shots），和上圖同一個 τ 軸。調磁通 → f₀₁ 改變 → 整個扇形上下移，切線離扇形中心的距離 f_d − f₀₁ 改變，所以量到的條紋頻率改變；在甜蜜點 f₀₁ 最高、離 f_d 最近，條紋最稀（2.75 MHz）。 -->
             <p class="v4-source">Lecture model: transmon with two equal junctions, top of the curve at 6.316 GHz from T. Walter <em>et al.</em>, Phys. Rev. Applied <b>7</b>, 054020 (2017).</p>
         </section>
         <section data-manual-slide="" data-auto-fit="false" data-title="Optimizing the readout"
@@ -7238,6 +7248,43 @@
             <!-- Teaching note: v45 依使用者要求複製前一頁、加高頻雜訊、加 CPMG 按鈕。慢雜訊同前頁（每次 run 的 δω 固定）；快雜訊 = 每次 run 內 δω 也在變（Ornstein–Uhlenbeck，相關時間約 6 μs，rms 預設 4.2 kHz）。每個 X_π 把相位反號，最後的相位 = 各段相位交錯正負相加：常數 δω 在 echo 和 CPMG 都抵消；快雜訊只有在一個間距 τ/N 內變化很小時才抵消。所以「高頻」要分兩段講：比 1/τ 快（echo 消不掉）、但比 N/τ 慢（CPMG 消得掉）；比間距還快的雜訊（白雜訊）和 T₁ 用多少 π 都消不掉——這就是 CPMG 頁的濾波器。預設 τ = 40 μs、固定種子 1742 的 6 次 run，快雜訊部分的 rms 角度：Ramsey 28°（加上慢雜訊共 47°）、echo 26°、CPMG N = 4 12°、N = 8 5°（期望值 31°、25°、14°、8°）。v47 起動畫從時間 0 開始（「為何開頭不是在0」）。 -->
             <p class="v4-source">Lecture animation of a model: slow noise constant during one run, fast noise with a correlation time of 6 μs, short pulses, no T₁.</p>
         </section>
+        
+        
+        <section data-manual-slide="" data-auto-fit="false" data-title="CPMG and the noise spectrum"
+            data-slide-class="v04 qh-deriv w8 ">
+            <h3>CPMG and the noise spectrum</h3>
+            <div class="w8-split w8-narrow">
+                <div class="w8-text">
+<p>CPMG: \(N\) \(\pi\) pulses in the time \(\tau\). Each \(\pi\) pulse flips the sign of the phase that the noise adds: \(y(t)=\pm1\).</p>
+<div class="v4-eq">\[\phi=\int_0^\tau\delta\omega(t)\,y(t)\,dt\]</div>
+<p>Slow noise: the + and − parts cancel. Noise that changes sign with the pulses, \(f\approx\frac{N}{2\tau}\), adds up. Much faster noise averages out between two pulses.</p>
+<p>Average over the noise \(S(f)\), with \(Y\) the Fourier transform of \(y\):</p>
+<div class="v4-eq">\[\big\langle\phi^2\big\rangle=\int_0^\infty S(f)\,\big|Y(2\pi f)\big|^2\,df\]</div>
+<p>\(|Y|^2\) is a filter. More pulses move it to higher \(f\): CPMG is not sensitive to slow noise.</p>
+                </div>
+                <div class="w8w" data-w8="cpmg" aria-label="Interactive CPMG filter: the pi pulses and the sign y(t) of the phase, a test noise at the frequency f and its product with y, the accumulated phase; below, the filter of the sequence against the noise frequency with the spectrum of the fast noise and the test frequency">
+                    <div class="w8-ctl"><label>π pulses N<input type="range" min="0" max="20" step="1" value="1" data-k="N" aria-label="π pulses N"><b data-o="N"></b></label><label>test noise f (log)<input type="range" min="3" max="6" step="0.001" value="4.097" data-k="f" aria-label="test noise frequency f (log)"><b data-o="f"></b></label></div>
+                    <canvas data-c="main" aria-label="Interactive CPMG filter: the pi pulses and the sign y(t) of the phase, a test noise at the frequency f and its product with y, the accumulated phase; below, the filter of the sequence against the noise frequency with the spectrum of the fast noise and the test frequency"></canvas>
+                    <p class="w8-out" data-o="res"></p>
+                </div>
+            </div>
+            <!-- Teaching note: v97 重做（使用者「看不懂」）：先看時間軸——π 脈衝讓相位的正負號 y(t) 翻轉；測試雜訊 δω(t) = cos 2πft 和 y 相乘後積分就是相位 φ；慢雜訊正負抵消，f ≈ N/(2τ) 的雜訊跟著翻轉一直累積；所以 |Y|² 是濾波器，峰在 N/(2τ)。滑桿只留 N 和 f，τ 固定 3.2 μs。輸出的 coherence 用 1/f 雜訊（N = 1 對上 Bylander 2011 Fig. 2d 的 1.4 μs）。CPMG：τ 內等間隔 N 個 π 脈衝。每個脈衝把相位累積的正負號翻轉 → 對頻率雜訊是一個帶通濾波器，中心在 N/(2τ)；低頻（慢雜訊、1/f）被擋掉，所以 CPMG 對慢雜訊不敏感、對高頻敏感。改變 N 和 τ 掃濾波器的中心 → 量雜訊頻譜（下一頁 Bylander）。N = 0 是 Ramsey，N = 1 是 echo。v120（使用者「那為何會出現平原區？」）：原本濾波曲線被截在縱軸底 10⁻⁴，底下全部畫成一條平線，看起來像「平原」；實際值遠更小（N = 10：0.03 MHz 2 × 10⁻⁷、0.1 MHz 2 × 10⁻⁵、6–6.5 MHz 約 10⁻⁷），就是慢雜訊和奇次諧波之間被抵消。現在照實際值畫，低於軸底就出框被裁掉。使用者問「CPMG 可以用來探測有哪些 noise 頻率來源嗎」：可以說它量的是讓 qubit 頻率起伏的雜訊頻譜 S(f)（f ≈ N/(2τ)，Bylander 2011：0.2–20 MHz，1/f^α、α = 0.9）；它本身不分辨來源，要靠改偏壓（對磁通的靈敏度 ∂f/∂Φ）等方法判斷是哪一種雜訊；只量純去相位的雜訊，T₁ 的雜訊（GHz）要另外量。v127（使用者看 p47 和 p48 兩個動畫：「幹這動畫概念對不起來 我到底低頻、高頻是怎麼影響的？」）：原本 p47 τ = 40 μs、快雜訊相關時間 6 μs（約 27 kHz），p48 卻是 τ = 3.2 μs、軸 10 kHz–20 MHz、coherence 用另一種 1/f 雜訊（Bylander），所以 p47 的「快」在 p48 的軸上反而是「慢」；N = 0、f = 1.57 MHz 時測試雜訊的 φ ≈ 0，coherence 卻是 0.00（那是 1/f 雜訊算的），概念對不起來。現在 p48 用 p47 的 τ = 40 μs 和 p47 的快雜訊：OU，rms 4.2 kHz，相關時間 6 μs，單邊頻譜 S(f) = 4σ²τc/[1 + (2πfτc)²]，27 kHz 以下平、以上 1/f²（虛線，歸一到 1）。輸出的 rms 角度 = √∫S|Y|²df，和 p47 的期望值一樣：Ramsey 31°、echo 25°、N = 2 20°、N = 4 14°、N = 8 8°、N = 16 4°。低頻、高頻怎麼影響（三段）：一個頻率 f 的雜訊 δω = A cos 2πft，相位 φ = ∫δω y dt。(1) 比整段序列慢（f ≪ 1/τ）：Ramsey 整段同號，φ ≈ Aτ，每次 run 不同 → 散開（T₂*）；echo/CPMG 正負兩半相等 → 抵消。(2) f ≈ N/(2τ)：雜訊和 y 一起變號，乘積一直同號 → 累積，最傷。(3) 比脈衝間距快很多（f ≫ N/τ）：每段間距內雜訊自己正負平均掉，φ ~ A/(2πf) → 很小，不論有沒有脈衝。真實雜訊是各頻率的加總，權重是 S(f)：濾波器 |Y|² 選一個頻帶，S(f) 告訴那裡有多少雜訊。p47 的快雜訊集中在 27 kHz 以下：echo 的頻帶在 12.5 kHz（在雜訊裡 → 消不掉），CPMG N = 8 在 100 kHz（雜訊已經很小 → 消掉）。白雜訊（所有頻率一樣多）：∫|Y|²df 對任何 N 都一樣，所以多少個 π 都沒用；T₁ 也一樣。預設 N = 1、f = 12.5 kHz（echo 的峰）。Bylander 的 1/f 雜訊留在下一頁的論文圖。v130（使用者「X pi怎麼的不見了」）：每個 π 脈衝上都標 X_π（原本只標第一個 π）。 -->
+            <p class="v4-source">Lecture model: τ = 40 μs; fast noise 4.2 kHz rms with a correlation time of 6 μs; no T₁.</p>
+        </section>
+        <section data-manual-slide="" data-auto-fit="false" data-title="Noise spectroscopy with CPMG"
+            data-slide-class="v04 qh-deriv w8 w8-tallfig w8-tf680">
+            <h3>Noise spectroscopy with CPMG</h3>
+            <div class="w8-pic w8-pic-t">
+                <div class="w8-text">
+<p>(a) The CPMG sequence.</p>
+<p>(b) Filters for N = 0 to 10: the peak moves to higher frequency.</p>
+<p>(c, d) More π pulses: slower decay.</p>
+<p>(g) The noise spectrum from the decays.</p>
+</div><figure><a href="../Image/Bylander2011-Fig2.png"><img src="../WebP/Bylander2011-Fig2.webp" alt="(a) CPMG sequence: X_pi/2, N Y_pi pulses, X_pi/2. (b) Filter functions for N = 0, 1, 2, 4 and 10 at tau = 1 microsecond. (c) Decay rate against flux detuning for Ramsey and CPMG with growing N. (d) Decay time against the number of pi pulses for CPMG, CP and UDD. (e to g) A decay curve, the extracted coherence and the noise spectrum"></a></figure>
+            </div>
+            <!-- Teaching note: v79 圖改全高（使用者「圖改全高」）：w8-tallfig，圖框 680 px 寬、734 px 高，貼右；標題限寬在圖左邊。Bylander 2011：用 CPMG 量 flux qubit 的雜訊頻譜。(b) 濾波器隨 N 移到高頻；(d) 退相干時間隨 N 變長；(g) 由此反推的 S(ω)（1/f 型）。 -->
+            <p class="v4-source">J. Bylander <em>et al.</em>, Nature Phys. <b>7</b>, 565 (2011), Fig. 2.</p>
+        </section>
         <section data-manual-slide="" data-auto-fit="false" data-title="Pulse errors and decoupling sequences"
             data-slide-class="v04 qh-deriv w8 ">
             <h3>Pulse errors and decoupling sequences</h3>
@@ -7257,42 +7304,6 @@
             </div>
             <!-- Teaching note: v48 依使用者要求新增（「做 Pulse errors and decoupling sequences」）。只看脈衝誤差：沒有失諧，每個 π 轉 π + δ（振幅誤差）。黑：完美脈衝；橙：有誤差。數值驗證（δ = 5°）：CPMG（全部 X_π）起點 +x 不受影響（在轉軸上），起點 +y 每個脈衝多轉 δ，N 個脈衝後偏 Nδ（N = 8：40°）；XpXm（X_π、−X_π）每一對完全抵消，任何態都是 0；XY4（X、Y、X、Y，Maudsley 1986；Ezzell 2023 Eq. 13）一階項 +x −y −x +y 相消，只剩二階（每四個脈衝 0.4°）。v49 加失諧滑桿（「加一個失諧誤差的滑桿」）：δω 讓脈衝轉軸偏出赤道 δω/Ω，脈衝之間繞 z 轉 δω τ（間距 τ = 4 個 π 脈衝長）。驗證（N = 8、δω/Ω = 5 %、δ = 0）：CPMG +x 0.7°、+y 15.9°；XpXm +x 43°、+y 0.7°；XY4 0.9°。XpXm 只消振幅誤差、不消失諧；XY4 兩者都消；IBM Qiskit Runtime 的 DD 選項 XX、XpXm、XY4，其中 XY4 寫成 +X、+Y、−X、−Y，在這兩種簡單誤差模型下都會一階累積（每四個脈衝 2√2 δ），所以這頁用標準的 X、Y、X、Y。Ezzell 2023 表 I：CPMG 不是 universal，只保護 |±⟩；比較 60 種序列，UR、QDD 最好，CPMG、XY4 把脈衝間距調大也接近。實務上 −X、Y 是同一個校準好的脈衝改驅動相位（π、π/2），不需另外校準。 -->
             <p class="v4-source">Lecture animation of a model: amplitude error and detuning, pulse spacing 4 π-pulse lengths, no decay. N. Ezzell <em>et al.</em>, Phys. Rev. Applied <b>20</b>, 064027 (2023), Eq. (13) and Table I.</p>
-        </section>
-        
-        <section data-manual-slide="" data-auto-fit="false" data-title="CPMG and the noise spectrum"
-            data-slide-class="v04 qh-deriv w8 ">
-            <h3>CPMG and the noise spectrum</h3>
-            <div class="w8-split w8-narrow">
-                <div class="w8-text">
-<p>CPMG: \(N\) \(\pi\) pulses in the time \(\tau\). Each \(\pi\) pulse flips the sign of the phase that the noise adds: \(y(t)=\pm1\).</p>
-<div class="v4-eq">\[\phi=\int_0^\tau\delta\omega(t)\,y(t)\,dt\]</div>
-<p>Slow noise: the + and − parts cancel. Noise that changes sign with the pulses, \(f\approx\frac{N}{2\tau}\), adds up.</p>
-<p>Average over the noise \(S(f)\), with \(Y\) the Fourier transform of \(y\):</p>
-<div class="v4-eq">\[\big\langle\phi^2\big\rangle=\int_0^\infty S(f)\,\big|Y(2\pi f)\big|^2\,df\]</div>
-<p>\(|Y|^2\) is a filter. More pulses move it to higher \(f\): CPMG is not sensitive to slow noise.</p>
-                </div>
-                <div class="w8w" data-w8="cpmg" aria-label="Interactive CPMG filter: the pi pulses and the sign y(t) of the phase, a test noise at the frequency f and its product with y, the accumulated phase; below, the filter of the sequence against the noise frequency with the 1/f noise and the test frequency">
-                    <div class="w8-ctl"><label>π pulses N<input type="range" min="0" max="20" step="1" value="10" data-k="N" aria-label="π pulses N"><b data-o="N"></b></label><label>test noise f (log)<input type="range" min="4" max="7.3" step="0.005" value="6.194" data-k="f" aria-label="test noise frequency f (log)"><b data-o="f"></b></label></div>
-                    <canvas data-c="main" aria-label="Interactive CPMG filter: the pi pulses and the sign y(t) of the phase, a test noise at the frequency f and its product with y, the accumulated phase; below, the filter of the sequence against the noise frequency with the 1/f noise and the test frequency"></canvas>
-                    <p class="w8-out" data-o="res"></p>
-                </div>
-            </div>
-            <!-- Teaching note: v97 重做（使用者「看不懂」）：先看時間軸——π 脈衝讓相位的正負號 y(t) 翻轉；測試雜訊 δω(t) = cos 2πft 和 y 相乘後積分就是相位 φ；慢雜訊正負抵消，f ≈ N/(2τ) 的雜訊跟著翻轉一直累積；所以 |Y|² 是濾波器，峰在 N/(2τ)。滑桿只留 N 和 f，τ 固定 3.2 μs。輸出的 coherence 用 1/f 雜訊（N = 1 對上 Bylander 2011 Fig. 2d 的 1.4 μs）。CPMG：τ 內等間隔 N 個 π 脈衝。每個脈衝把相位累積的正負號翻轉 → 對頻率雜訊是一個帶通濾波器，中心在 N/(2τ)；低頻（慢雜訊、1/f）被擋掉，所以 CPMG 對慢雜訊不敏感、對高頻敏感。改變 N 和 τ 掃濾波器的中心 → 量雜訊頻譜（下一頁 Bylander）。N = 0 是 Ramsey，N = 1 是 echo。 -->
-            <p class="v4-source">Lecture model: τ = 3.2 μs; 1/f noise set so that N = 1 matches J. Bylander <em>et al.</em>, Nat. Phys. <b>7</b>, 565 (2011), Fig. 2d (T₁ = 11.5 μs).</p>
-        </section>
-        <section data-manual-slide="" data-auto-fit="false" data-title="Noise spectroscopy with CPMG"
-            data-slide-class="v04 qh-deriv w8 w8-tallfig w8-tf680">
-            <h3>Noise spectroscopy with CPMG</h3>
-            <div class="w8-pic w8-pic-t">
-                <div class="w8-text">
-<p>(a) The CPMG sequence.</p>
-<p>(b) Filters for N = 0 to 10: the peak moves to higher frequency.</p>
-<p>(c, d) More π pulses: slower decay.</p>
-<p>(g) The noise spectrum from the decays.</p>
-</div><figure><a href="../Image/Bylander2011-Fig2.png"><img src="../WebP/Bylander2011-Fig2.webp" alt="(a) CPMG sequence: X_pi/2, N Y_pi pulses, X_pi/2. (b) Filter functions for N = 0, 1, 2, 4 and 10 at tau = 1 microsecond. (c) Decay rate against flux detuning for Ramsey and CPMG with growing N. (d) Decay time against the number of pi pulses for CPMG, CP and UDD. (e to g) A decay curve, the extracted coherence and the noise spectrum"></a></figure>
-            </div>
-            <!-- Teaching note: v79 圖改全高（使用者「圖改全高」）：w8-tallfig，圖框 680 px 寬、734 px 高，貼右；標題限寬在圖左邊。Bylander 2011：用 CPMG 量 flux qubit 的雜訊頻譜。(b) 濾波器隨 N 移到高頻；(d) 退相干時間隨 N 變長；(g) 由此反推的 S(ω)（1/f 型）。 -->
-            <p class="v4-source">J. Bylander <em>et al.</em>, Nature Phys. <b>7</b>, 565 (2011), Fig. 2.</p>
         </section>
         
         
@@ -8813,52 +8824,65 @@ W8.def('passreset', root => {
     return { draw, reset() { an.stop(); t = 0; } };
 });
 
-/* fbreset: reset by measurement, 100 qubits as dots. Before: each is |1> with probability p (fill colour = true state).
-   Readout: each gets a result; a wrong result with probability e (both directions). Feedback: a pi pulse on every result |1>.
-   Heralding: the shots with the result |1> are discarded. After: count the qubits still in |1>.
-   Feedback: P1 = p e + (1 - p) e.  Heralding: P1 = p e / (p e + (1 - p)(1 - e)), kept fraction p e + (1 - p)(1 - e). */
+/* fbreset (v126): reset by measurement, 100 qubits as dots. Before: each qubit in its own superposition cos(θi/2)|0> + sin(θi/2)|1>;
+   its share of |1>, sin²(θi/2), is drawn at random (uniform 0…1) on every Run; fill = blend from blue (|0>) to orange (|1>) by that share.
+   Readout: qubit i goes to |1> with that probability, else to |0> (fill = the state after the readout); a wrong result with probability e
+   (both directions; ring = result). Feedback: a pi pulse on every result |1>. Heralding: the shots with the result |1> are dropped.
+   With p = the average share: feedback P1 = p e + (1 - p) e; heralding P1 = p e / kept, kept = p e + (1 - p)(1 - e). */
 W8.def('fbreset', root => {
     const { C } = W8; let r = W8.rng(5), seedN = 0, Q = null, stage = 3;
     const mode = W8.group(root, 'mode', () => { stage = 0; an.start(); });
-    function sample() { const p = W8.val(root, 'p') / 100, e = W8.val(root, 'e') / 100; seedN++; r = W8.rng(5 + 37 * seedN); Q = []; for (let i = 0; i < 100; i++) { const s = r() < p ? 1 : 0, m = r() < e ? 1 - s : s; Q.push({ s, m }); } }
+    // v129: |0> blue, |1> yellow. v132 (「藍色用正藍一點 這個綠太屎綠」): true blue, and the blend blue -> clean green -> yellow
+    const BLU = '#1d5ad8', YEL = '#e2b212', K0 = [0x1d, 0x5a, 0xd8], KG = [0x43, 0xa0, 0x47], K1 = [0xe2, 0xb2, 0x12],
+        mix = t => { const [p, q, u] = t < .5 ? [K0, KG, 2 * t] : [KG, K1, 2 * t - 1]; return `rgb(${p.map((v, k) => Math.round(v + (q[k] - v) * u)).join(',')})`; };
+    function sample() { const e = W8.val(root, 'e') / 100; seedN++; r = W8.rng(5 + 37 * seedN); Q = [];
+        for (let i = 0; i < 100; i++) { const q1 = r(), s = r() < q1 ? 1 : 0, m = r() < e ? 1 - s : s; Q.push({ q1, s, m }); } }
     let tt = 0;
     const an = W8.animator(root, dt => { tt += dt; if (tt > 900) { tt = 0; stage++; } draw(); if (stage >= 3) { stage = 3; draw(); return false; } });
-    function panel(ctx, x0, y0, sz, title, fill, ring, fade, sub) {
+    function panel(ctx, x0, y0, sz, title, col, ring, fade, sub) {
         W8.text(ctx, title, x0, y0 - 12, { w: 700, size: 14 });
         for (let i = 0; i < 100; i++) { const cx = x0 + (i % 10) * sz + sz / 2, cy = y0 + Math.floor(i / 10) * sz + sz / 2;
-            ctx.globalAlpha = fade && fade(i) ? .12 : 1; W8.dot(ctx, cx, cy, sz * .34, fill(i) ? C.o : C.b);
-            if (ring) { ctx.strokeStyle = ring(i) ? C.o : C.b; ctx.lineWidth = 2; ctx.beginPath(); ctx.arc(cx, cy, sz * .46, 0, W8.TAU); ctx.stroke(); } ctx.globalAlpha = 1; }
+            ctx.globalAlpha = fade && fade(i) ? .12 : 1; W8.dot(ctx, cx, cy, sz * .34, col(i));
+            if (ring) { ctx.strokeStyle = ring(i) ? YEL : BLU; ctx.lineWidth = 2; ctx.beginPath(); ctx.arc(cx, cy, sz * .46, 0, W8.TAU); ctx.stroke(); } ctx.globalAlpha = 1; }
         if (sub) W8.text(ctx, sub, x0, y0 + 10 * sz + 18, { size: 13, col: C.mut, w: 600 });
     }
     function draw() {
         const P0 = W8.prep(W8.cv(root)); if (!P0) return; const { ctx, w, h } = P0;
-        const p = W8.val(root, 'p') / 100, e = W8.val(root, 'e') / 100, fb = (mode.get() || 'fb') === 'fb';
-        W8.out(root, 'p', (100 * p).toFixed(0) + ' %'); W8.out(root, 'e', (100 * e).toFixed(1) + ' %');
+        const e = W8.val(root, 'e') / 100, fb = (mode.get() || 'fb') === 'fb';
+        W8.out(root, 'e', (100 * e).toFixed(1) + ' %');
         if (!Q) sample();
-        // pulse sequence of the chosen method; the stage of the animation is highlighted
-        const S1 = stage === 1, S2 = stage === 2;
-        if (fb) W8INITSEQ(ctx, 90, 44, w - 120, [['qubit', C.p], ['readout', C.red]], [{ l: 1, a: .02, b: .26, lab: 'read', col: C.red, on: S1 }, { l: 0, a: .38, b: .46, lab: 'π if |1⟩', col: C.o, kind: 'dash', on: S2 },
-            { l: 0, a: .54, b: .84, lab: 'the experiment', col: C.p }, { l: 1, a: .84, b: 1, lab: 'read', col: C.red }], { notes: [[.26, .38, 'decide (FPGA)', C.ink], [.54, 1, 'the shot']] });
-        else W8INITSEQ(ctx, 90, 44, w - 120, [['qubit', C.p], ['readout', C.red]], [{ l: 1, a: .02, b: .26, lab: 'read (herald)', col: C.red, on: S1 },
-            { l: 0, a: .34, b: .7, lab: 'the experiment', col: C.p }, { l: 1, a: .7, b: .86, lab: 'read', col: C.red }], { notes: [[.02, .26, 'result |1⟩: drop this shot', S2 ? C.red : C.mut], [.34, .86, 'the shot']] });
+        const p = Q.reduce((x, q) => x + q.q1, 0) / 100;
+        // pulse sequence of the chosen method: θ makes the start state; the stage of the animation is highlighted
+        const S0 = stage === 0, S1 = stage === 1, S2 = stage === 2;
+        if (fb) W8INITSEQ(ctx, 90, 44, w - 120, [['qubit', C.p], ['readout', C.red]], [{ l: 0, a: .02, b: .08, lab: 'θ', col: C.p, on: S0 }, { l: 1, a: .12, b: .32, lab: 'read', col: C.red, on: S1 },
+            { l: 0, a: .42, b: .5, lab: 'π if |1⟩', col: C.o, kind: 'dash', on: S2 }, { l: 0, a: .56, b: .84, lab: 'the experiment', col: C.p }, { l: 1, a: .84, b: 1, lab: 'read', col: C.red }],
+            { notes: [[0, .1, 'start state', C.p], [.32, .42, 'decide (FPGA)', C.ink], [.56, 1, 'the shot']] });
+        else W8INITSEQ(ctx, 90, 44, w - 120, [['qubit', C.p], ['readout', C.red]], [{ l: 0, a: .02, b: .08, lab: 'θ', col: C.p, on: S0 }, { l: 1, a: .14, b: .36, lab: 'read (herald)', col: C.red, on: S1 },
+            { l: 0, a: .44, b: .74, lab: 'the experiment', col: C.p }, { l: 1, a: .74, b: .9, lab: 'read', col: C.red }],
+            { notes: [[0, .1, 'start state', C.p], [.14, .36, 'result |1⟩: drop this shot', S2 ? C.red : C.mut], [.44, .9, 'the shot']] });
         const sz = Math.min((w - 80) / 31, (h - 200) / 10.6), gap = sz * .5, y0 = 156;
         const xs = [16, 16 + 10 * sz + gap, 16 + 20 * sz + 2 * gap];
-        const n1 = Q.filter(q => q.s).length;
-        panel(ctx, xs[0], y0, sz, '1. Before: true state', i => Q[i].s, null, null, `|1⟩: ${n1} of 100`);
-        if (stage >= 1) { const nm = Q.filter(q => q.m).length; panel(ctx, xs[1], y0, sz, '2. Readout result (ring)', i => Q[i].s, i => Q[i].m, null, `read |1⟩: ${nm}`); }
+        // 1. before: each qubit in its own superposition, coloured by its share of |1⟩; the key under the panel
+        panel(ctx, xs[0], y0, sz, '1. Before (fill = share of |1⟩)', i => mix(Q[i].q1), null, null, null);
+        { const ky = y0 + 10 * sz + 18, gx = xs[0] + 28, gw = 10 * sz - 64, g = ctx.createLinearGradient(gx, 0, gx + gw, 0);
+            W8.text(ctx, '|0⟩', xs[0], ky, { size: 13, col: C.mut, w: 600 });
+            for (let k = 0; k <= 10; k++) g.addColorStop(k / 10, mix(k / 10)); ctx.fillStyle = g; ctx.fillRect(gx, ky - 11, gw, 11);
+            W8.text(ctx, '|1⟩', gx + gw + 6, ky, { size: 13, col: C.mut, w: 600 }); }
+        if (stage >= 1) { const n1 = Q.filter(q => q.s).length, nm = Q.filter(q => q.m).length; panel(ctx, xs[1], y0, sz, '2. Readout (ring = result)', i => Q[i].s ? YEL : BLU, i => Q[i].m, null, `in |1⟩: ${n1} · read |1⟩: ${nm}`); }
         if (stage >= 2) {
-            if (fb) { const after = Q.map(q => q.m ? 1 - q.s : q.s), na = after.reduce((a, b) => a + b, 0); panel(ctx, xs[2], y0, sz, '3. π pulse when the result is |1⟩', i => after[i], null, null, `|1⟩ left: ${na} of 100`); }
-            else { const kept = Q.filter(q => !q.m), na = kept.filter(q => q.s).length; panel(ctx, xs[2], y0, sz, '3. Keep only the results |0⟩', i => Q[i].s, null, i => Q[i].m, `kept ${kept.length}, |1⟩ among them: ${na}`); }
+            if (fb) { const after = Q.map(q => q.m ? 1 - q.s : q.s), na = after.reduce((x, y) => x + y, 0); panel(ctx, xs[2], y0, sz, '3. π pulse when the result is |1⟩', i => after[i] ? YEL : BLU, null, null, `|1⟩ left: ${na} of 100`); }
+            else { const kept = Q.filter(q => !q.m), na = kept.filter(q => q.s).length; panel(ctx, xs[2], y0, sz, '3. Keep only the results |0⟩', i => Q[i].s ? YEL : BLU, null, i => Q[i].m, `kept ${kept.length}, |1⟩ among them: ${na}`); }
         }
-        W8.text(ctx, 'fill: true state (blue |0⟩, orange |1⟩)', 16, h - 8, { size: 12, col: C.mut, w: 600 });
-        const pf = fb ? p * e + (1 - p) * e : p * e / (p * e + (1 - p) * (1 - e)), kept = p * e + (1 - p) * (1 - e);
-        W8.out(root, 'res', stage < 3 ? 'Step ' + (stage + 1) + ' of 3' : (fb ? `Feedback: P(1) after = p·e + (1 − p)·e = <b>${(100 * pf).toFixed(2)} %</b> (from ${(100 * p).toFixed(0)} %). Every shot is kept.`
-            : `Heralding: P(1) among the kept shots = <b>${(100 * pf).toFixed(2)} %</b>; ${(100 * kept).toFixed(0)} % of the shots are kept.`) + (fb ? ' &nbsp;·&nbsp; paper (Ristè 2012): feedback takes the residual excitation from 16 % to 3 %' : ''));
+        W8.text(ctx, 'after the readout: blue |0⟩, yellow |1⟩ · ring: the readout result', 16, h - 8, { size: 12, col: C.mut, w: 600 });
+        const kept = p * e + (1 - p) * (1 - e), pf = fb ? p * e + (1 - p) * e : (kept > 1e-9 ? p * e / kept : NaN);
+        W8.out(root, 'res', stage < 3 ? 'Step ' + (stage + 1) + ' of 3' : (fb ? `Feedback: P(1) after = <b>${(100 * pf).toFixed(2)} %</b> (before: ${(100 * p).toFixed(0)} %). Every shot is kept.`
+            : kept > 1e-9 ? `Heralding: P(1) among the kept shots = <b>${(100 * pf).toFixed(2)} %</b>; ${(100 * kept).toFixed(0)} % of the shots are kept.` : 'Heralding: every shot reads |1⟩, so no shot is kept.'));
     }
     W8.act(root, 'run', () => { sample(); stage = 0; tt = 0; an.start(); });
     W8.inputs(root, () => { sample(); stage = 3; draw(); });
     return { draw };
 });
+
 
 /* f0g1: unconditional reset with two drives (scheme of Magnard et al. 2018). States |j,n>: transmon level j, n resonator photons.
    e-f drive Omega couples |1,0> and |2,0>; the f0g1 drive gives the effective coupling g between |2,0> and |0,1>; |0,1> decays to |0,0> at kappa.
@@ -8979,9 +9003,12 @@ W8.def('swapreset', root => {
             if (D > 1e-12) { const Wv = Math.sqrt(D); pg1 = (g * Math.exp(-a * tc) * Math.sin(Wv * tc) / Wv) ** 2; } else if (D < -1e-12) { const Wv = Math.sqrt(-D); pg1 = (g * Math.exp(-a * tc) * Math.sinh(Wv * tc) / Wv) ** 2; } else pg1 = (g * tc * Math.exp(-a * tc)) ** 2; }
         const lv = [['|1,0⟩', X0, Y(.75), p1, C.o], ['|0,1⟩', X1, Y(.75), pg1, C.g], ['|0,0⟩', X0 + 85, Y(0), Math.max(0, 1 - p1 - pg1), C.b]];
         W8.text(ctx, `t = ${tc.toFixed(0)} ns`, 14, 24, { size: 14, w: 700 });
-        W8.path(ctx, [[X0 + 38, Y(.75) - 4], [X1 - 38, Y(.75) - 4]], C.p, 2.6); W8.head(ctx, X0 + 38, Y(.75) - 4, X1 - 38, Y(.75) - 4, C.p, 9); W8.head(ctx, X1 - 38, Y(.75) - 4, X0 + 38, Y(.75) - 4, C.p, 9);
-        W8.text(ctx, 'g: swap', (X0 + X1) / 2, Y(.75) - 14, { al: 'center', size: 13, w: 700, col: C.p });
-        { const a = [X1, Y(.75) + 10], b = [X0 + 105, Y(0) - 10], q = []; for (let i = 0; i <= 30; i++) { const s = i / 30; q.push([a[0] + (b[0] - a[0]) * s + 5 * Math.sin(s * 20), a[1] + (b[1] - a[1]) * s]); } W8.path(ctx, q, C.red, 2); W8.head(ctx, q[28][0], q[28][1], b[0], b[1], C.red, 9); W8.text(ctx, 'κ: leaks out', (a[0] + b[0]) / 2 + 14, (a[1] + b[1]) / 2, { size: 13, w: 700, col: C.red }); }
+        W8.path(ctx, [[X0 + 38, Y(.75)], [X1 - 38, Y(.75)]], C.p, 2.6); W8.head(ctx, X0 + 38, Y(.75), X1 - 38, Y(.75), C.p, 9); W8.head(ctx, X1 - 38, Y(.75), X0 + 38, Y(.75), C.p, 9);   // v128: on the level lines
+        W8.text(ctx, 'g: swap', (X0 + X1) / 2, Y(.75) - 12, { al: 'center', size: 13, w: 700, col: C.p });
+        { // v128: from under the label of |0,1⟩ to above the centre of |0,0⟩; the wiggle is perpendicular and zero at both ends, so the head is on the line
+            const a = [X1, Y(.75) + 34], b = [X0 + 85, Y(0) - 36], L = Math.hypot(b[0] - a[0], b[1] - a[1]), nx = -(b[1] - a[1]) / L, ny = (b[0] - a[0]) / L, q = [];
+            for (let i = 0; i <= 60; i++) { const s = i / 60, o = 5 * Math.sin(Math.PI * s) * Math.sin(6 * Math.PI * s); q.push([a[0] + (b[0] - a[0]) * s + nx * o, a[1] + (b[1] - a[1]) * s + ny * o]); }
+            W8.path(ctx, q, C.red, 2); W8.head(ctx, a[0], a[1], b[0], b[1], C.red, 9); W8.text(ctx, 'κ: leaks out', (a[0] + b[0]) / 2 + 16, (a[1] + b[1]) / 2, { size: 13, w: 700, col: C.red }); }
         for (const [lab, x, y, p, col] of lv) { W8.path(ctx, [[x - 30, y], [x + 30, y]], C.ink, 3); ctx.fillStyle = col; ctx.globalAlpha = .45; ctx.beginPath(); ctx.arc(x, y - 11, 3 + 17 * Math.sqrt(Math.max(0, Math.min(1, p))), 0, W8.TAU); ctx.fill(); ctx.globalAlpha = 1; W8.text(ctx, lab, x, y + 22, { al: 'center', size: 14, w: 700 }); }
         // P(e) on a log scale, model curve and the paper's result
         const b = { x: w * .5, y: 40, w: w * .47, h: h - 96 };
@@ -10260,30 +10287,32 @@ W8.def('echo', root => {
     return { draw, reset() { an.stop(); si = -1; setBtn(); } };
 });
 
-/* cpmg (v97, the user: 「看不懂」): CPMG as a filter, step by step, sequence length tau = 3.2 us fixed. N pi pulses at tau (k - 1/2)/N.
+/* cpmg (v97, the user: 「看不懂」; v127: the scale and the noise of 「Fast noise and CPMG」, after 「這動畫概念對不起來 我到底低頻、高頻是怎麼影響的？」):
+   CPMG as a filter, step by step, sequence length tau = 40 us (as on that page). N pi pulses at tau (k - 1/2)/N.
    Strip 1: the pulses and the sign y(t) = +-1 (it flips at each pulse). Strip 2: a test noise dw(t) = cos(2 pi f t) and the product y dw (filled).
    Strip 3: the phase phi(t) = int_0^t y dw dt' (scale: tau). Bottom: the filter |Y(2 pi f)|^2 / tau^2 against f (log axes), Y = FT of y,
-   with the 1/f noise S(f) (dashed) and a dot at the test frequency. Slow noise: the + and - parts of y dw cancel; noise at f = N/(2 tau) follows the
-   flips and phi grows. Averaged over the noise: <phi^2> = int S |Y|^2 df; coherence W = exp(-<phi^2>/2 - tau/(2 T1)) with the 1/f noise of the earlier
-   widget (A = 1.38e12 (rad/s)^2, set so that N = 1 decays to 1/e at 1.4 us as in Bylander 2011 Fig. 2d; T1 = 11.5 us). */
+   with the spectrum of the fast noise of that page (dashed, normalised to 1 at f = 0) and a dot at the test frequency.
+   Fast noise: Ornstein-Uhlenbeck, rms sigma = 2 pi x 4.2 kHz, correlation time 6 us: one-sided S(f) = 4 sigma^2 tc / (1 + (2 pi f tc)^2).
+   rms angle = sqrt(int S |Y|^2 df): Ramsey 31, echo 25, N = 2 20, N = 4 14, N = 8 8, N = 16 4 degrees, the values of that page. */
 W8.def('cpmg', root => {
-    const { C, TAU } = W8; const A = 1.38e12, T1 = 11.5e-6, tau = 3.2e-6;
+    const { C, TAU } = W8; const tau = 40e-6, SIG = TAU * 4.2e3, TC = 6e-6;
+    const S = f => 4 * SIG * SIG * TC / (1 + (TAU * f * TC) ** 2);
     function Y2(f, N) { const w = TAU * f; if (w * tau < 1e-6) { return N === 0 ? tau * tau : 0; } const ts = [0]; for (let k = 1; k <= N; k++) ts.push(tau * (k - .5) / N); ts.push(tau);
         let re = 0, im = 0; for (let j = 0; j < ts.length - 1; j++) { const s = j % 2 ? -1 : 1; re += s * (Math.sin(w * ts[j + 1]) - Math.sin(w * ts[j])) / w; im += s * (-Math.cos(w * ts[j + 1]) + Math.cos(w * ts[j])) / w; } return re * re + im * im; }
-    function phi2(N) { let s = 0; const n = 2400, f0 = 1e2, f1 = 1e9, L = Math.log(f1 / f0); for (let i = 0; i < n; i++) { const f = f0 * Math.exp(L * (i + .5) / n), df = f * L / n; s += (A / f) * Y2(f, N) * df; } return s; }
+    function phi2(N) { let s = 0; const n = 3000, f0 = 1, f1 = 1e9, L = Math.log(f1 / f0); for (let i = 0; i < n; i++) { const f = f0 * Math.exp(L * (i + .5) / n), df = f * L / n; s += S(f) * Y2(f, N) * df; } return s; }
     function draw() {
         const P0 = W8.prep(W8.cv(root)); if (!P0) return; const { ctx, w, h } = P0;
         const N = Math.round(W8.val(root, 'N')), f = Math.pow(10, W8.val(root, 'f'));
-        const fpk = N ? N / (2 * tau) : 0, ftxt = v => v >= 1e6 ? (v / 1e6).toFixed(2) + ' MHz' : (v / 1e3).toFixed(0) + ' kHz';
+        const fpk = N ? N / (2 * tau) : 0, ftxt = v => v >= 1e6 ? (v / 1e6).toFixed(2) + ' MHz' : v >= 99950 ? (v / 1e3).toFixed(0) + ' kHz' : (v / 1e3).toFixed(1) + ' kHz';
         W8.out(root, 'N', String(N)); W8.out(root, 'f', ftxt(f));
         const ts = []; for (let k = 1; k <= N; k++) ts.push(tau * (k - .5) / N);
         const y = t => { let s = 1; for (const tk of ts) if (t > tk) s = -s; return s; };
-        const x0 = 96, xw = w - x0 - 22, X = t => x0 + xw * t / tau, M = 600;
+        const x0 = 96, xw = w - x0 - 22, X = t => x0 + xw * t / tau, M = 1600;
         const lane = (yc, lab, col) => { W8.path(ctx, [[x0, yc], [x0 + xw, yc]], '#d6d0dd', 1); W8.text(ctx, lab, x0 - 10, yc + 4, { al: 'right', size: 12, w: 700, col }); };
         // strip 1: pulses and the sign y(t)
         const y1 = 46, a1 = 16; lane(y1, 'y(t) = ±1', C.p);
         for (const tk of ts) { ctx.fillStyle = 'rgba(53,95,156,.85)'; ctx.fillRect(X(tk) - 3, y1 - 30, 6, 22); }
-        if (N) W8.text(ctx, 'π', X(ts[0]) + 6, y1 - 22, { size: 12, w: 800, col: C.b });
+        for (const tk of ts) W8.text(ctx, 'X_π', X(tk), y1 - 34, { al: 'center', size: 12, w: 800, col: C.b });   // v130: every pulse labelled
         { const q = []; for (let i = 0; i <= M; i++) { const t = tau * i / M; q.push([X(t), y1 - a1 * y(t)]); } W8.path(ctx, q, C.p, 2.4); }
         // strip 2: test noise and the product
         const y2 = 120, a2 = 26; lane(y2, 'noise δω(t)', C.g);
@@ -10294,18 +10323,24 @@ W8.def('cpmg', root => {
         const y3 = 196, a3 = 30; lane(y3, 'phase φ(t)', C.o);
         let phi = 0; { const q = [[X(0), y3]]; const dt = tau / M; for (let i = 1; i <= M; i++) { const t = tau * (i - .5) / M; phi += y(t) * Math.cos(TAU * f * t) * dt; q.push([X(tau * i / M), y3 - a3 * phi / tau]); } W8.path(ctx, q, C.o, 2.4); }
         W8.text(ctx, '0', x0 - 2, y3 + 16, { size: 11, col: C.mut });
-        W8.text(ctx, `${(tau * 1e6).toFixed(1)} μs`, x0 + xw, y3 + 20, { al: 'right', size: 11, col: C.mut, w: 600 });
-        // bottom: the filter and the noise spectrum
+        W8.text(ctx, `${(tau * 1e6).toFixed(0)} μs`, x0 + xw, y3 + 20, { al: 'right', size: 11, col: C.mut, w: 600 });
+        // bottom: the filter and the spectrum of the fast noise
         const b = { x: x0, y: 262, w: xw, h: h - 262 - 44 };
-        const F = W8.axes(ctx, b, { x0: 1e4, x1: 2e7, y0: 1e-4, y1: 2, logx: true, logy: true, xt: [1e4, 1e5, 1e6, 1e7], xf: v => ({ 1e4: '10 kHz', 1e5: '100 kHz', 1e6: '1 MHz', 1e7: '10 MHz' })[v], yt: [1e-4, 1e-2, 1], yf: v => ({ 1e-4: '10⁻⁴', 1e-2: '10⁻²', 1: '1' })[v], xl: 'noise frequency f', yl: '|Y|² / τ²', ylo: 44, title: 'Filter |Y(2πf)|² of the sequence' });
+        const F = W8.axes(ctx, b, { x0: 1e3, x1: 1e6, y0: 1e-4, y1: 2, logx: true, logy: true, xt: [1e3, 1e4, 1e5, 1e6], xf: v => ({ 1e3: '1 kHz', 1e4: '10 kHz', 1e5: '100 kHz', 1e6: '1 MHz' })[v], yt: [1e-4, 1e-2, 1], yf: v => ({ 1e-4: '10⁻⁴', 1e-2: '10⁻²', 1: '1' })[v], xl: 'noise frequency f', yl: '|Y|² / τ²', ylo: 44, title: 'Filter |Y(2πf)|² of the sequence' });
         ctx.save(); ctx.beginPath(); ctx.rect(b.x, b.y, b.w, b.h); ctx.clip();
-        { const q = []; for (let i = 0; i <= 160; i++) { const v = Math.pow(10, 4 + Math.log10(2e3) * i / 160); q.push([F.X(v), F.Y(Math.max(1e-4, 1e4 / v))]); } W8.path(ctx, q, C.o, 1.8, [6, 4]); }
-        { const q = []; for (let i = 0; i <= 900; i++) { const v = Math.pow(10, 4 + Math.log10(2e3) * i / 900); q.push([F.X(v), F.Y(Math.max(1.05e-4, Y2(v, N) / (tau * tau)))]); } W8.path(ctx, q, C.p, 2.2); }
+        { const q = []; for (let i = 0; i <= 160; i++) { const v = Math.pow(10, 3 + 3 * i / 160); q.push([F.X(v), F.Y(S(v) / S(0))]); } W8.path(ctx, q, C.o, 1.8, [6, 4]); }
+        { const q = []; for (let i = 0; i <= 2400; i++) { const v = Math.pow(10, 3 + 3 * i / 2400); q.push([F.X(v), F.Y(Y2(v, N) / (tau * tau))]); } W8.path(ctx, q, C.p, 2.2); }   // v120: true values, no clamp; below the axis the plot box clips it
         ctx.restore();
-        W8.text(ctx, 'noise S(f) ∝ 1/f', F.X(1.2e4) + 4, F.Y(.8) + 14, { size: 12, w: 700, col: C.o });
+        W8.text(ctx, 'fast noise S(f)', F.X(1.15e3), F.Y(.2), { size: 12, w: 700, col: C.o });
         W8.path(ctx, [[F.X(f), b.y], [F.X(f), b.y + b.h]], C.g, 1.4, [4, 3]); W8.dot(ctx, F.X(f), F.Y(Math.max(1.05e-4, Y2(f, N) / (tau * tau))), 6, C.g);
-        const W = Math.exp(-phi2(N) / 2 - tau / (2 * T1));
-        W8.out(root, 'res', (N ? `filter peak at N(2τ)⁻¹ = ${ftxt(fpk)}` : 'N = 0 (Ramsey): the filter keeps the slow noise') + ` &nbsp;·&nbsp; at f = ${ftxt(f)}: φ(τ) = ${W8.fmt(Math.abs(phi / tau) < .005 ? 0 : phi / tau, 2)} τ &nbsp;·&nbsp; <b>coherence after ${(tau * 1e6).toFixed(1)} μs: ${W.toFixed(2)}</b>`);
+        // the regime of the test frequency
+        // by the filter itself: inside the main peak = adds up; below it = cancels; above it = averages out
+        let reg;
+        if (!N) reg = Y2(f, 0) / (tau * tau) > .3 ? 'slower than τ: the phase grows' : 'faster than τ: the phase averages out';
+        else reg = Y2(f, N) / Y2(fpk, N) > .3 ? 'changes sign with the pulses: the phase adds up' : f < fpk ? 'slower than the pulses: + and − cancel' : 'faster than the pulses: the phase averages out';
+        const ang = Math.sqrt(phi2(N)) * 180 / Math.PI;
+        W8.out(root, 'res', (N === 0 ? 'N = 0 (Ramsey)' : N === 1 ? `N = 1 (echo): filter peak at ${ftxt(fpk)}` : `N = ${N}: filter peak at ${ftxt(fpk)}`)
+            + ` &nbsp;·&nbsp; test noise at ${ftxt(f)}: ${reg} &nbsp;·&nbsp; <b>fast noise (4.2 kHz rms, 6 μs): rms angle ${ang.toFixed(0)}°</b>`);
     }
     W8.inputs(root, draw);
     return { draw };
@@ -10350,10 +10385,9 @@ W8.def('uhl', root => {
 
 /* mle: maximum likelihood in the cut y = 0. True pure state at the angle θ from +z (Bloch vector (sin θ, 0, cos θ)).
    N shots in the x setting and N in the z setting. Linear inversion: x_L = 2 n0x/N − 1, z_L = 2 n0z/N − 1 (it can lie outside the disk).
-   ln L(x, z) = n0x ln((1+x)/2) + n1x ln((1−x)/2) + the same for z. Shading: L / L_max. The MLE is the maximum inside the disk |r| ≤ 1.
-   "Climb": projected gradient ascent from the centre (the path is drawn). */
+   ln L(x, z) = n0x ln((1+x)/2) + n1x ln((1−x)/2) + the same for z. Shading: L / L_max. The MLE is the maximum inside the disk |r| ≤ 1, drawn as a dot. */
 W8.def('mle', root => {
-    const { C, DEG } = W8; let seed = 2, D = null, climb = 1, path = [];   // first measurement: seed 3 (θ 50°, N 16: |r| = 1.152, outside the sphere)
+    const { C, DEG } = W8; let seed = 2, D = null;   // first measurement: seed 3 (θ 50°, N 16: |r| = 1.152, outside the sphere)
     const lnL = (x, z) => { if (Math.abs(x) >= 1 || Math.abs(z) >= 1) return -Infinity; const { N, ax, az } = D;
         return ax * Math.log((1 + x) / 2) + (N - ax) * Math.log((1 - x) / 2) + az * Math.log((1 + z) / 2) + (N - az) * Math.log((1 - z) / 2); };
     const safe = (x, z) => lnL(Math.max(-.999999, Math.min(.999999, x)), Math.max(-.999999, Math.min(.999999, z)));
@@ -10364,18 +10398,11 @@ W8.def('mle', root => {
         // the maximum inside the disk
         if (D.xl * D.xl + D.zl * D.zl <= 1 && Math.abs(D.xl) < 1 && Math.abs(D.zl) < 1) { D.xm = D.xl; D.zm = D.zl; }
         else { let best = -Infinity, bp = 0; for (let k = 0; k < 2880; k++) { const p = k / 2880 * W8.TAU, v = safe(Math.sin(p), Math.cos(p)); if (v > best) { best = v; bp = p; } } D.xm = Math.sin(bp); D.zm = Math.cos(bp); }
-        // projected gradient ascent from the centre
-        path = [[0, 0]]; let x = 0, z = 0;
-        for (let k = 0; k < 400; k++) { const gx = (ax / (1 + x) - (N - ax) / (1 - x)) / N, gz = (az / (1 + z) - (N - az) / (1 - z)) / N;
-            x += .06 * gx; z += .06 * gz; const L = Math.hypot(x, z); if (L > 1) { x /= L; z /= L; } x = Math.max(-.9995, Math.min(.9995, x)); z = Math.max(-.9995, Math.min(.9995, z));
-            path.push([x, z]); if (Math.hypot(x - D.xm, z - D.zm) < 2e-3) break; }
-        path.push([D.xm, D.zm]); climb = 0;
     }
-    const an = W8.animator(root, dt => { climb = Math.min(1, climb + dt / 1800); draw(); if (climb >= 1) return false; });
     function draw() {
         const P0 = W8.prep(W8.cv(root)); if (!P0) return; const { ctx, w, h } = P0;
         W8.out(root, 'th', W8.val(root, 'th') + '°'); W8.out(root, 'n', Math.round(Math.pow(10, W8.val(root, 'n'))).toLocaleString('en'));
-        if (!D) { measure(); climb = 1; }   // the first view shows the climb and the maximum at once
+        if (!D) measure();
         const Rb = Math.min(h * .4, w * .3), cx0 = Rb + 60, cy0 = h / 2 + 8, P = W8.bloch(ctx, cx0, cy0, Rb, { az: 62, el: 16 }), Lr = 1.2;
         const Q = (x, z) => P([x, 0, z]);
         // the sheet y = 0, shaded with L / L_max (L_max over the sheet, without the sphere limit); outside the sphere lighter
@@ -10386,10 +10413,10 @@ W8.def('mle', root => {
         { const c4 = [Q(-Lr, -Lr), Q(Lr, -Lr), Q(Lr, Lr), Q(-Lr, Lr)]; ctx.strokeStyle = C.ax; ctx.lineWidth = 1; ctx.beginPath(); c4.forEach((q, k) => k ? ctx.lineTo(q[0], q[1]) : ctx.moveTo(q[0], q[1])); ctx.closePath(); ctx.stroke(); }
         { const q = []; for (let i = 0; i <= 120; i++) { const u = i / 120 * W8.TAU; q.push(Q(Math.sin(u), Math.cos(u))); } W8.path(ctx, q, C.ink, 2.2); }
         W8.text(ctx, 'sheet: the plane y = 0 · outside the sphere: |r| > 1', 14, 22, { size: 12, w: 700, col: C.mut });
-        // true state, linear inversion, climb path, MLE
+        // true state, linear inversion, MLE
         { const q = Q(D.tx, D.tz); ctx.strokeStyle = '#7c7484'; ctx.lineWidth = 2.4; ctx.beginPath(); ctx.arc(q[0], q[1], 8, 0, W8.TAU); ctx.stroke(); }
         { const q = Q(D.xl, D.zl), lx = q[0], lz = q[1]; W8.path(ctx, [[lx - 8, lz - 8], [lx + 8, lz + 8]], C.red, 3); W8.path(ctx, [[lx - 8, lz + 8], [lx + 8, lz - 8]], C.red, 3); }
-        if (climb > 0) { const k = Math.max(1, Math.round(climb * (path.length - 1))); W8.path(ctx, path.slice(0, k + 1).map(p2 => Q(p2[0], p2[1])), C.p, 2.6); const e = Q(path[k][0], path[k][1]); W8.dot(ctx, e[0], e[1], 7, C.p); }
+        { const e = Q(D.xm, D.zm); W8.dot(ctx, e[0], e[1], 7, C.p); }
         const x0 = 0, S = cx0 + Rb + 10, y0 = 40;
         // legend and numbers
         const gx = x0 + S + 22; let gy = y0 + 18;
@@ -10407,9 +10434,8 @@ W8.def('mle', root => {
         W8.out(root, 'res', Ll > 1 + 1e-9 ? `Linear inversion: |r| = ${fl(Ll)} > 1, not a state. The maximum of L inside the sphere lies on its surface: a pure state.`
             : `Linear inversion: |r| = ${fl(Ll)} ≤ 1. It is a state, and it is already the maximum of L.`);
     }
-    W8.act(root, 'again', () => { measure(); climb = 0; an.start(); });
-    W8.act(root, 'climb', () => { climb = 0; an.start(); });
-    W8.inputs(root, () => { measure(); climb = 1; draw(); });
+    W8.act(root, 'again', () => { measure(); draw(); });
+    W8.inputs(root, () => { measure(); draw(); });
     return { draw };
 });
 
@@ -10534,15 +10560,20 @@ W8.def('speckle', root => {
 
 /* fdtd: what is sent (left: readout line and drive line) and what is measured (right), for one tone, two tones and a pulse experiment.
    One tone: |S21| of the resonator, Lorentzian dip at 7.000 GHz, half width 2 MHz, sweep 6.990–7.010 GHz.
-   Two tones: P(1) of the qubit, Lorentzian at 5.000 GHz, half width 1 MHz, sweep 4.995–5.005 GHz; the readout tone stays at 7.000 GHz.
-   Pulses: P(1) = sin²(Ωτ/2) with Ω/2π = 20 MHz, pulse length τ = 0–100 ns. 41 points per sweep, 5 s. */
+   Two tones (v117): |S21| at the readout tone, 7.000 GHz = the bottom of the notch dip of the one-tone panel. The drive excites the qubit (P1 = ½ L, L a
+   Lorentzian at 5.000 GHz); the resonance moves by 2χ = κ for |1⟩, so |S21| = |(1 − P1) S0 + P1 S1| goes up, S0 = 0.15, S1 = 0.83 + 0.34i (peak 0.52).
+   Notch resonator → peak (Kroll 2018, arXiv:1806.10534, Fig. 4a); transmission-type resonator → dip (Naghiloo 2019, arXiv:1904.09291; Schuster 2005 Fig. 3).
+   (v116 drew a phase dip from 0 at 5.000 GHz, as in Schuster 2005 Fig. 3), half width 1 MHz, sweep 4.995–5.005 GHz; the weak readout tone stays at 7.000 GHz.
+   Pulses: the readout signal ∝ sin²(Ωτ/2) with Ω/2π = 20 MHz, pulse length τ = 0–100 ns. 41 points per sweep, 5 s.
+   v115 (the user: 「你怎知道p(1)?」): no P(1) on these axes. At this step the readout is not calibrated: P(1) needs the signals of |0⟩ and |1⟩,
+   and |1⟩ needs a π pulse. The y axis is the readout signal in arbitrary units, without numbers. */
 W8.def('fdtd', root => {
     const { C } = W8; let s = 1;
     const mode = W8.group(root, 'm', () => { s = 0; an.start(); });
     const M = {
         one: { x0: 6.990, x1: 7.010, xl: 'readout frequency (GHz)', yl: '|S₂₁|', f: x => 1 - .85 / (1 + Math.pow((x - 7) / .002, 2)), xt: [6.99, 7, 7.01], xf: v => v.toFixed(2), title: 'One tone: the resonator', u: x => `readout tone at ${x.toFixed(4)} GHz` },
-        two: { x0: 4.995, x1: 5.005, xl: 'drive frequency (GHz)', yl: 'P(1)', f: x => .5 / (1 + Math.pow((x - 5) / .001, 2)), xt: [4.995, 5, 5.005], xf: v => v.toFixed(3), title: 'Two tones: the qubit', u: x => `drive tone at ${x.toFixed(4)} GHz, readout tone at 7.000 GHz` },
-        time: { x0: 0, x1: 100, xl: 'pulse length τ (ns)', yl: 'P(1)', f: x => Math.pow(Math.sin(2 * Math.PI * .02 * x / 2), 2), xt: [0, 25, 50, 75, 100], xf: String, title: 'Pulses: Rabi oscillation', u: x => `drive pulse of ${x.toFixed(1)} ns, then the readout pulse` } };
+        two: { x0: 4.995, x1: 5.005, xl: 'drive frequency (GHz)', yl: '|S₂₁| at 7.000 GHz', f: x => { const P = .5 / (1 + Math.pow((x - 5) / .001, 2)); return Math.hypot((1 - P) * .15 + P * .83, P * .34); }, xt: [4.995, 5, 5.005], xf: v => v.toFixed(3), title: 'Two tones: the qubit', u: x => `drive tone at ${x.toFixed(4)} GHz, readout tone at 7.000 GHz` },
+        time: { x0: 0, x1: 100, xl: 'pulse length τ (ns)', yl: 'readout signal (a.u.)', f: x => Math.pow(Math.sin(2 * Math.PI * .02 * x / 2), 2), xt: [0, 25, 50, 75, 100], xf: String, title: 'Pulses: Rabi oscillation', u: x => `drive pulse of ${x.toFixed(1)} ns, then the readout pulse` } };
     const an = W8.animator(root, dt => { s = Math.min(1, s + dt / 5000); draw(); if (s >= 1) return false; });
     function draw() {
         const P0 = W8.prep(W8.cv(root)); if (!P0) return; const { ctx, w, h } = P0;
@@ -10554,13 +10585,13 @@ W8.def('fdtd', root => {
         W8.path(ctx, [[lx, h - 46], [lx + lw, h - 46]], C.ax, 1.4); W8.head(ctx, lx, h - 46, lx + lw, h - 46, C.ax, 8); W8.text(ctx, 'time', lx + lw - 2, h - 28, { al: 'right', size: 12, col: C.mut });
         const wave = (y, col, env, cyc) => { const q = []; for (let i = 0; i <= 600; i++) { const t = i / 600; q.push([lx + t * lw, y - amp * env(t) * Math.sin(W8.TAU * cyc * t)]); } W8.path(ctx, q, col, 1.6); };
         if (key === 'one') { wave(yR, C.b, () => 1, 14 + 8 * s); W8.path(ctx, [[lx, yD], [lx + lw, yD]], C.g, 1.6); W8.text(ctx, 'off', lx + lw / 2, yD - 10, { al: 'center', size: 12, col: C.mut }); }
-        else if (key === 'two') { wave(yR, C.b, () => 1, 22); wave(yD, C.g, () => .8, 10 + 8 * s); }
+        else if (key === 'two') { wave(yR, C.b, () => .35, 22); wave(yD, C.g, () => .8, 10 + 8 * s); W8.text(ctx, 'weak', lx + lw, yR - amp * .35 - 8, { al: 'right', size: 12, w: 700, col: C.b }); }
         else { const tau = x / 100 * .5, box = (a, b) => t => t >= a && t <= b ? 1 : 0; wave(yD, C.g, box(.04, .04 + tau), 60); wave(yR, C.b, box(.06 + tau, .96), 26);
             W8.text(ctx, 'τ', lx + lw * (.04 + tau / 2), yD + amp + 18, { al: 'center', size: 15, w: 700, col: C.g }); }
         W8.text(ctx, key === 'time' ? 'A short pulse, then the readout pulse' : 'The tones stay on', lx, h - 70, { size: 12, w: 600, col: C.mut });
         // right: the measured curve, point by point
         const b = { x: w * .54, y: 46, w: w * .43, h: h - 106 };
-        const A = W8.axes(ctx, b, { x0: m.x0, x1: m.x1, y0: 0, y1: 1.05, xt: m.xt, xf: m.xf, yt: [0, .5, 1], yf: v => v.toFixed(1), xl: m.xl, yl: m.yl, ylo: 42, title: 'What we measure: ' + m.title.split(': ')[1] });
+        const A = W8.axes(ctx, b, { x0: m.x0, x1: m.x1, y0: m.y0 ?? 0, y1: m.y1 ?? 1.05, xt: m.xt, xf: m.xf, yt: m.yt || [0, .5, 1], yf: key === 'time' ? (() => '') : (v => v.toFixed(1)), xl: m.xl, yl: m.yl, ylo: key === 'time' ? 18 : 42, title: 'What we measure: ' + m.title.split(': ')[1] });
         for (let i = 0; i <= kk; i++) { const xi = m.x0 + (m.x1 - m.x0) * i / 40; W8.dot(ctx, A.X(xi), A.Y(m.f(xi)), i === kk ? 6 : 4, i === kk ? C.o : C.p); }
         W8.path(ctx, [[A.X(x), b.y], [A.X(x), b.y + b.h]], C.o, 1.2, [4, 3]);
         W8.out(root, 'res', `${m.title}. Now: ${m.u(x)}.`);
@@ -10792,7 +10823,7 @@ W8.def('fanhf', root => {
         if (m === 'echo') return [head, wt('w1', 0, tau / 2, '½τ', 1.15), p('flip', Xax, Math.PI, 'X_π', 1000, .5), wt('w2', tau / 2, tau / 2, '½τ', 1.15), ...tail];
         const out = [head], pd = N <= 4 ? 700 : N <= 8 ? 500 : 350, psw = .5 * Math.min(1, 4 / N);
         out.push(wt('c0', 0, tau / (2 * N), ' ', 2.3 / (2 * N)));
-        for (let j = 1; j <= N; j++) { out.push(p('pi', Xax, Math.PI, j === 1 ? 'X_π' : '', pd, psw));
+        for (let j = 1; j <= N; j++) { out.push(p('pi', Xax, Math.PI, 'X_π', pd, psw));   // v130: every pulse labelled
             const t0 = tau / (2 * N) + (j - 1) * tau / N, last = j === N; out.push(wt(last ? 'clast' : 'cw', t0, last ? tau / (2 * N) : tau / N, ' ', last ? 2.3 / (2 * N) : 2.3 / N)); }
         return out.concat(tail);
     }
@@ -10830,7 +10861,7 @@ W8.def('fanhf', root => {
         W8.text(ctx, 'black: no noise', lx, ly, { size: 13, w: 700, col: '#1d1d1f' });
         W8.text(ctx, 'red: +δω, blue: −δω', lx, ly + 24, { size: 13, w: 700, col: C.ink });
         W8.text(ctx, 'slow: |δω|/2π = ' + [L / 3, 2 * L / 3, L].map(f1).join(', ') + ' kHz', lx, ly + 48, { size: 12, w: 600, col: C.mut });
-        W8.text(ctx, 'fast: changes in about 6 μs', lx, ly + 70, { size: 12, w: 600, col: C.mut });
+        W8.text(ctx, 'fast: changes in about 6 μs, f up to 27 kHz', lx, ly + 70, { size: 12, w: 600, col: C.mut });
         W8.text(ctx, 'one vector = one run', lx, ly + 92, { size: 12, w: 600, col: C.mut });
         // what happens now
         const n = st[i].n, P1 = k => (1 - tip[k][2]) / 2, avg = [0, 1, 2, 3, 4, 5, 6].reduce((a, k) => a + P1(k), 0) / 7;
@@ -11210,39 +11241,58 @@ W8.def('tof', root => {
     return { draw, reset() { an.stop(); setBtn(false); tc = TMAX; } };
 });
 
-/* resspec (v73): resonator spectroscopy. Notch (hanger) model S(f) = e^{−2πi f τ}[1 − η/(1 + 2i(f − f_r)/κ)], f_r = 4.754 GHz and κ/2π = 37.5 MHz
-   (Walter 2017), η = 0.9, τ = 240 ns. Amplitude: a dip at f_r with the full width κ. Phase with τ removed (v75, 「raw去掉」): it changes only near f_r.
-   Right: the same points in the IQ plane, the resonance circle. "Sweep" adds the points. */
+/* resspec (v73; v114 with the chip, the user: 「這一頁左邊文字去掉 左邊我想要搭配這張圖做動畫 聯繫右邊掃圖的意義」). Notch (hanger) model
+   S(f) = 1 − η/(1 + 2ix), x = (f − f_r)/κ (cable delay removed), f_r = 4.754 GHz, κ/2π = 37.5 MHz (Walter 2017), η = 0.9; the qubit is in |0⟩.
+   Left, on the chip of the time-of-flight page: the readout tone on the read-out line (blue dashes, moving during the sweep); past the coupling part of
+   read-out resonator 1 its brightness is |S(f)|; the resonator glows (orange) with its stored energy 1/(1 + 4x²). Resonator 2 has another frequency.
+   Right: amplitude, phase and IQ points up to the current frequency, a cursor at f, and the IQ point at f (v119: the arrows 「line」 and
+   「resonator」 removed, the user: 「這兩個箭頭都不要」).
+   "Sweep": f from 4.654 to 4.854 GHz in 6 s. The slider sets f by hand. */
 W8.def('resspec', root => {
-    const { C, TAU } = W8; const FR = 4.754, KAP = .0375, ETA = .9, TD = 240, FA = 4.654, FB = 4.854, NP = 401, NZ = .012;
-    let k = NP; const r0 = W8.rng(77), nz = []; for (let i = 0; i < NP; i++) nz.push([W8.gauss(r0), W8.gauss(r0)]);
+    const { C } = W8; const FR = 4.754, KAP = .0375, ETA = .9, FA = 4.654, FB = 4.854, NP = 401, NZ = .012, RUN = 6000;
+    let k = NP, off = 0; const r0 = W8.rng(77), nz = []; for (let i = 0; i < NP; i++) nz.push([W8.gauss(r0), W8.gauss(r0)]);
     const fOf = i => FA + (FB - FA) * i / (NP - 1);
-    const pt = i => { const f = fOf(i), x = (f - FR) / KAP, d = 1 + 4 * x * x; return [1 - ETA / d + NZ * nz[i][0], 2 * ETA * x / d + NZ * nz[i][1]]; };
-    const an = W8.animator(root, dt => { k = Math.min(NP, k + Math.max(1, Math.round(dt / 4))); draw(); if (k >= NP) { setBtn(false); return false; } });
+    const S = f => { const x = (f - FR) / KAP, d = 1 + 4 * x * x; return [1 - ETA / d, 2 * ETA * x / d]; };
+    const pt = i => { const s0 = S(fOf(i)); return [s0[0] + NZ * nz[i][0], s0[1] + NZ * nz[i][1]]; };
+    const segs = [...root.querySelectorAll('[data-rs-seg]')].sort((p, q) => p.dataset.rsSeg - q.dataset.rsSeg), res = [...root.querySelectorAll('[data-rs-res]')], tag = root.querySelector('[data-rs-tag] text');
+    function chip(f) {   // the line past the coupler carries |S|; dashes continue across the pieces
+        const s0 = S(f), a = Math.hypot(s0[0], s0[1]), x = (f - FR) / KAP, E = 1 / (1 + 4 * x * x), n = segs.length - 2; let L = 0;
+        segs.forEach((p, i) => { const o = i === 0 ? 1 : i <= n ? 1 - (1 - a) * (i - .5) / n : a; p.style.opacity = Math.max(.08, o).toFixed(3); p.style.strokeDashoffset = (L - off).toFixed(1); L += p.getTotalLength ? p.getTotalLength() : 0; });
+        res.forEach(p => p.style.opacity = E.toFixed(3));
+        if (tag) tag.textContent = `f = ${f.toFixed(4)} GHz`;
+    }
+    const an = W8.animator(root, dt => { k = Math.min(NP, k + dt / RUN * NP); off += .25 * dt; W8.setv(root, 'f', fOf(Math.min(NP - 1, Math.floor(k))).toFixed(4)); draw(); if (k >= NP) { setBtn(false); return false; } });
     function setBtn(on) { root.querySelectorAll('[data-act="sweep"]').forEach(b => b.textContent = on ? 'Sweeping…' : 'Sweep'); }
     function draw() {
+        const f = W8.val(root, 'f'); W8.out(root, 'f', f.toFixed(4) + ' GHz'); chip(f);
         const P0 = W8.prep(W8.cv(root)); if (!P0) return; const { ctx, w, h } = P0;
-        const lw = w * .6, hh = (h - 30 - 86) / 2;
+        const lw = w * .6, hh = (h - 30 - 86) / 2, kk = Math.floor(k);
         const b1 = { x: 62, y: 30, w: lw - 80, h: hh }, b2 = { x: 62, y: 30 + hh + 64, w: lw - 80, h: hh };
         const xt = [4.66, 4.70, 4.74, 4.78, 4.82, 4.85], xf = v => v.toFixed(2);
-        const A = W8.axes(ctx, b1, { x0: FA, x1: FB, y0: 0, y1: 1.1, xt, xf, yt: [0, .5, 1], yf: v => v.toFixed(1), yl: 'amplitude', title: 'Amplitude' });
+        const A = W8.axes(ctx, b1, { x0: FA, x1: FB, y0: 0, y1: 1.1, xt, xf, yt: [0, .5, 1], yf: v => v.toFixed(1), yl: 'amplitude', title: 'Amplitude, qubit in |0⟩' });
         const B = W8.axes(ctx, b2, { x0: FA, x1: FB, y0: -3.3, y1: 3.3, xt, xf, yt: [-3.14, 0, 3.14], yf: v => v ? (v < 0 ? '−π' : 'π') : '0', xl: 'readout frequency (GHz)', yl: 'phase', title: 'Phase, cable delay removed' });
         const L = Math.min(w - lw - 30, h - 80), b3 = { x: lw + 26, y: 30 + (h - 70 - L) / 2, w: L, h: L };
         const Cc = W8.axes(ctx, b3, { x0: -1.15, x1: 1.15, y0: -1.15, y1: 1.15, xt: [-1, 0, 1], yt: [-1, 0, 1], xl: 'I', yl: 'Q', ylo: 26, title: 'IQ plane' });
-        const ca = [], cb = [], cc = [];
-        for (let i = 0; i < k; i++) { const [re, im] = pt(i), f = fOf(i); ca.push([A.X(f), A.Y(Math.hypot(re, im))]); cb.push([B.X(f), B.Y(Math.atan2(im, re))]); cc.push([Cc.X(re), Cc.Y(im)]); }
-        for (const q of ca) W8.dot(ctx, q[0], q[1], 1.8, C.b);
-        for (const q of cb) W8.dot(ctx, q[0], q[1], 1.8, C.o);
-        ctx.save(); ctx.beginPath(); ctx.rect(b3.x, b3.y, b3.w, b3.h); ctx.clip(); for (const q of cc) W8.dot(ctx, q[0], q[1], 2, C.p); ctx.restore();
-        if (k >= NP) { W8.path(ctx, [[A.X(FR), b1.y], [A.X(FR), b1.y + b1.h]], C.g, 1.6, [5, 4]); W8.text(ctx, 'f_r', A.X(FR) + 5, b1.y + 16, { col: C.g, w: 800, size: 13 });
+        for (let i = 0; i < kk; i++) { const [re, im] = pt(i), fi = fOf(i); W8.dot(ctx, A.X(fi), A.Y(Math.hypot(re, im)), 1.8, C.b); W8.dot(ctx, B.X(fi), B.Y(Math.atan2(im, re)), 1.8, C.o); }
+        ctx.save(); ctx.beginPath(); ctx.rect(b3.x, b3.y, b3.w, b3.h); ctx.clip(); for (let i = 0; i < kk; i++) { const [re, im] = pt(i); W8.dot(ctx, Cc.X(re), Cc.Y(im), 2, 'rgba(101,80,143,.55)'); } ctx.restore();
+        if (kk >= NP) { W8.path(ctx, [[A.X(FR), b1.y], [A.X(FR), b1.y + b1.h]], C.g, 1.4, [3, 4]); W8.text(ctx, 'f_r', A.X(FR) - 6, b1.y + 16, { al: 'right', col: C.g, w: 800, size: 13 });
             const yh = A.Y(1 - ETA / 2); W8.path(ctx, [[A.X(FR - KAP / 2), yh], [A.X(FR + KAP / 2), yh]], C.g, 2.2); W8.text(ctx, 'κ', A.X(FR + KAP / 2) + 6, yh + 5, { col: C.g, w: 800, size: 14 }); }
-        W8.out(root, 'res', `dip at <b>f<sub>r</sub> = ${FR.toFixed(3)} GHz</b> &nbsp;·&nbsp; full width κ/2π = ${(KAP * 1e3).toFixed(1)} MHz`);
+        // the cursor at f and the point the tone gives now
+        const s0 = S(f), am = Math.hypot(s0[0], s0[1]);
+        for (const [X, bb] of [[A.X, b1], [B.X, b2]]) W8.path(ctx, [[X(f), bb.y], [X(f), bb.y + bb.h]], C.p, 1.8, [6, 4]);
+        W8.dot(ctx, A.X(f), A.Y(am), 5.5, C.b); W8.dot(ctx, B.X(f), B.Y(Math.atan2(s0[1], s0[0])), 5.5, C.o);
+        // IQ: the point at the current frequency (v119: the two arrows removed, 「這兩個箭頭都不要」)
+        const o2 = [Cc.X(s0[0]), Cc.Y(s0[1])];
+        W8.dot(ctx, o2[0], o2[1], 5.5, C.p);
+        W8.out(root, 'res', `f = ${f.toFixed(4)} GHz &nbsp;·&nbsp; amplitude ${am.toFixed(2)} &nbsp;·&nbsp; dip at <b>f<sub>r</sub> = ${FR.toFixed(3)} GHz</b> &nbsp;·&nbsp; full width κ/2π = ${(KAP * 1e3).toFixed(1)} MHz`);
     }
-    W8.act(root, 'sweep', () => { k = 0; an.start(); setBtn(true); });
-    return { draw, reset() { an.stop(); k = NP; setBtn(false); } };
+    W8.act(root, 'sweep', () => { if (an.on) { an.stop(); setBtn(false); return; } k = 0; an.start(); setBtn(true); });
+    W8.inputs(root, () => { if (an.on) { an.stop(); setBtn(false); } draw(); });
+    return { draw, reset() { an.stop(); setBtn(false); } };
 });
 
-/* ramflux (v73): Ramsey against flux. f01(Φ) = fmax √|cos(π(Φ − Φs)/Φ0)| with fmax = 6.316 GHz (the qubit of Walter 2017 taken as the top of the curve) and the
+/* ramflux (v73; v118 left half: the fringe map against τ and the drive frequency, the cut at f_d and the trace along it, the user:
+   「左邊要畫ramsey fringe 然後你切某個detune 然後條flux時 整個fringe怎麼變」): Ramsey against flux. f01(Φ) = fmax √|cos(π(Φ − Φs)/Φ0)| with fmax = 6.316 GHz (the qubit of Walter 2017 taken as the top of the curve) and the
    sweet spot Φs = +4 mΦ0 from the first-guess bias. Drive fixed at the first-guess f01(0) + 3 MHz, so the fringe frequency f_d − f01(Φ) ≥ 2.75 MHz has no sign doubt.
    Ramsey X_π/2 – τ – X_π/2 – read: P(1) = ½(1 + cos 2π(f_d − f01)τ), no decay, 200 shots per point. "Sweep the flux" measures the fringe frequency at
    −15 … +15 mΦ0 (fit error 10 kHz); a parabola fit gives the sweet spot and f01 there. */
@@ -11262,11 +11312,22 @@ W8.def('ramflux', root => {
     function draw() {
         const P0 = W8.prep(W8.cv(root)); if (!P0) return; const { ctx, w, h } = P0;
         const b = W8.val(root, 'b'); W8.out(root, 'b', W8.fmt(b, 1) + ' mΦ₀'); const d = dfq(b);
-        const b1 = { x: 62, y: 96, w: w * .5 - 80, h: h - 138 };
-        const A = W8.axes(ctx, b1, { x0: 0, x1: TM, y0: 0, y1: 1.05, xt: [0, .25, .5, .75, 1], xf: v => v.toFixed(2), yt: [0, .5, 1], yf: v => v.toFixed(1), xl: 'free time τ (μs)', yl: 'P(1)', title: `Ramsey at ${W8.fmt(b, 1)} mΦ₀` });
-        const cur = []; for (let i = 0; i <= 400; i++) { const t = TM * i / 400; cur.push([A.X(t), A.Y(.5 * (1 + Math.cos(TAU * d * t)))]); } W8.path(ctx, cur, '#c9c3cf', 1.8);
-        const r = W8.rng(900 + Math.round(b * 10)); for (let i = 0; i < NT; i++) { const t = TM * i / (NT - 1), p = .5 * (1 + Math.cos(TAU * d * t)); W8.dot(ctx, A.X(t), A.Y(W8.binom(r, SHOTS, p) / SHOTS), 3.2, C.p); }
-        W8seq(ctx, 70, 64, Math.min(300, b1.w - 20), [{ t: 'pulse', label: 'X_π/2', w: .6 }, { t: 'wait', label: 'free time τ', w: 2 }, { t: 'pulse', label: 'X_π/2', w: .6 }, { t: 'read', w: .6 }], C.g);
+        // left (v118): the Ramsey fringes against τ and the drive frequency f; the fan is centred at f01(Φ); the dashed line is the fixed drive f_d (the cut)
+        const c0 = fq(b) - fq(0), YT = 6, YB = -8, cut = DET;   // MHz from the first guess of f01
+        W8seq(ctx, 70, 50, Math.min(300, w * .5 - 100), [{ t: 'pulse', label: 'X_π/2', w: .6 }, { t: 'wait', label: 'free time τ', w: 2 }, { t: 'pulse', label: 'X_π/2', w: .6 }, { t: 'read', w: .6 }], C.g);
+        const avail = h - 78 - 46, bm = { x: 62, y: 78, w: w * .5 - 80, h: Math.round(avail * .58) }, bc = { x: 62, y: 78 + bm.h + 34, w: w * .5 - 80, h: avail - bm.h - 34 };
+        { const iw = Math.max(40, Math.round(bm.w / 2)), ih = Math.max(30, Math.round(bm.h / 2)), im = ctx.createImageData(iw, ih);
+          for (let j = 0; j < ih; j++) { const f = YT - (YT - YB) * (j + .5) / ih; for (let i = 0; i < iw; i++) { const t = TM * (i + .5) / iw, p = .5 * (1 + Math.cos(TAU * (f - c0) * t)), col = W8.cmap(p * .92), o = 4 * (j * iw + i); im.data[o] = col[0]; im.data[o + 1] = col[1]; im.data[o + 2] = col[2]; im.data[o + 3] = 255; } }
+          const off = document.createElement('canvas'); off.width = iw; off.height = ih; off.getContext('2d').putImageData(im, 0, 0); ctx.imageSmoothingEnabled = true; ctx.drawImage(off, bm.x, bm.y, bm.w, bm.h); }
+        const M = W8.axes(ctx, bm, { x0: 0, x1: TM, y0: YB, y1: YT, xt: [0, .25, .5, .75, 1], xf: () => '', yt: [-8, -4, 0, 4], yf: v => W8.fmt(v, 0), yl: 'drive frequency (MHz)', ylo: 36, title: `Ramsey fringes at ${W8.fmt(b, 1)} mΦ₀` });
+        const lab = (s0, x, y, col, al) => { W8.font(ctx, 12, 800); const tw = ctx.measureText(s0.replace(/_/g, '')).width; ctx.fillStyle = 'rgba(255,255,255,.88)'; ctx.fillRect((al === 'right' ? x - tw : x) - 3, y - 12, tw + 6, 16); W8.text(ctx, s0, x, y, { al, size: 12, w: 800, col }); };
+        W8.path(ctx, [[bm.x, M.Y(c0)], [bm.x + bm.w, M.Y(c0)]], C.o, 2); lab('f₀₁', bm.x + 6, M.Y(c0) + (c0 > -6.5 ? 15 : -6), C.o, 'left');
+        W8.path(ctx, [[bm.x, M.Y(cut)], [bm.x + bm.w, M.Y(cut)]], C.g, 2, [7, 4]); lab('f_d (cut)', bm.x + bm.w - 4, M.Y(cut) - 6, C.g, 'right');
+        W8.text(ctx, '0 = first guess of f₀₁', bm.x + bm.w, bm.y - 6, { al: 'right', size: 11, col: C.mut, bl: 'bottom' });
+        // below: P(1) along the cut, the same τ axis
+        const A = W8.axes(ctx, bc, { x0: 0, x1: TM, y0: 0, y1: 1.05, xt: [0, .25, .5, .75, 1], xf: v => v.toFixed(2), yt: [0, 1], yf: v => v.toFixed(0), xl: 'free time τ (μs)', yl: 'P(1)', ylo: 36, title: `Along the cut: fringe frequency ${d.toFixed(2)} MHz` });
+        const cur = []; for (let i = 0; i <= 400; i++) { const t = TM * i / 400; cur.push([A.X(t), A.Y(.5 * (1 + Math.cos(TAU * d * t)))]); } W8.path(ctx, cur, '#c9c3cf', 1.6);
+        const r = W8.rng(900 + Math.round(b * 10)); for (let i = 0; i < NT; i++) { const t = TM * i / (NT - 1), p = .5 * (1 + Math.cos(TAU * d * t)); W8.dot(ctx, A.X(t), A.Y(W8.binom(r, SHOTS, p) / SHOTS), 2.8, C.p); }
         const b2 = { x: w * .5 + 50, y: 40, w: w * .5 - 72, h: h - 82 };
         const B = W8.axes(ctx, b2, { x0: -16, x1: 16, y0: 2, y1: 9, xt: [-15, -10, -5, 0, 5, 10, 15], yt: [2, 3, 4, 5, 6, 7, 8, 9], xl: 'flux bias from the first guess (mΦ₀)', yl: 'fringe frequency (MHz)', title: 'Fringe frequency against flux' });
         const F = fit(); if (F) { const q = []; for (let x = -16; x <= 16; x += .25) q.push([B.X(x), B.Y(F.c[0] + F.c[1] * x + F.c[2] * x * x)]); ctx.save(); ctx.beginPath(); ctx.rect(b2.x, b2.y, b2.w, b2.h); ctx.clip(); W8.path(ctx, q, C.o, 2); ctx.restore(); }
