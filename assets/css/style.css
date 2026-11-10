@@ -52,12 +52,40 @@ a:hover {
     text-decoration: none;
 }
 
+/* 2026-10-30 內文放大、加深（原本 18px / 330 / #585d5f / 27px） */
 p {
     margin-bottom: 0;
+    font-size: 20px;
+    font-weight: 400;
+    color: #3a3f42;
+    line-height: 32px;
+}
+
+@media only screen and (max-width : 767px) {
+    p {
+        font-size: 18px;
+        line-height: 29px;
+    }
+}
+
+/* 投影片（qhs）與文章版投影片副本維持原本的內文樣式 */
+:where(.qhs-root, .qhs-slide, .qhs-article-slide-source, .qhs-article-cover-source) p {
     font-size: 18px;
     font-weight: 330;
     color: #585d5f;
     line-height: 27px;
+}
+
+/* 過長的網址或字串可換行（一般文字不受影響） */
+p:not(:where(.qhs-root, .qhs-slide, .qhs-article-slide-source, .qhs-article-cover-source) *) {
+    overflow-wrap: break-word;
+}
+
+/* 行間方程式維持原本大小：桌機內文 18→20px，方程式縮回 90% */
+@media only screen and (min-width : 768px) {
+    p:not(:where(.qhs-root, .qhs-slide, .qhs-article-slide-source, .qhs-article-cover-source) *) mjx-container[display="true"] > mjx-math {
+        font-size: 90%;
+    }
 }
 
 h1 {
@@ -1515,6 +1543,38 @@ a.linkedin-bg:hover {
     color: #499afe;
 }
 
+/* 2026-10-30 段落／清單／表格／圖說裡的超連結：墨藍＋細底線（原本 #8c8f94、滑過 #499afe）；按鈕、作者列、投影片不變 */
+.post-content :where(p, li, td, th, figcaption, dd, dt, blockquote) a:where(:not(.btn)):not(:where(.qhs-root, .qhs-slide, .qhs-article-slide-source, .qhs-article-cover-source) *),
+:where(.site-section) p a:where(:not(.btn)):not(:where(.qhs-root, .qhs-slide, .qhs-article-slide-source, .qhs-article-cover-source) *) {
+    color: #1f5f8b;
+}
+
+.post-content :where(p, li, td, th, figcaption, dd, dt, blockquote) a:where(:not(.btn):not(:has(img, picture, svg, video))):not(:where(.qhs-root, .qhs-slide, .qhs-article-slide-source, .qhs-article-cover-source) *),
+:where(.site-section) p a:where(:not(.btn):not(:has(img, picture, svg, video))):not(:where(.qhs-root, .qhs-slide, .qhs-article-slide-source, .qhs-article-cover-source) *) {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+    text-decoration-color: rgba(31, 95, 139, 0.35);
+    text-decoration-color: color-mix(in srgb, currentColor 35%, transparent);
+}
+
+.post-content :where(p, li, td, th, figcaption, dd, dt, blockquote) a:where(:not(.btn)):not(:where(.qhs-root, .qhs-slide, .qhs-article-slide-source, .qhs-article-cover-source) *):hover,
+:where(.site-section) p a:where(:not(.btn)):not(:where(.qhs-root, .qhs-slide, .qhs-article-slide-source, .qhs-article-cover-source) *):hover {
+    color: #0f3d5c;
+}
+
+.post-content :where(p, li, td, th, figcaption, dd, dt, blockquote) a:where(:not(.btn):not(:has(img, picture, svg, video))):not(:where(.qhs-root, .qhs-slide, .qhs-article-slide-source, .qhs-article-cover-source) *):hover,
+:where(.site-section) p a:where(:not(.btn):not(:has(img, picture, svg, video))):not(:where(.qhs-root, .qhs-slide, .qhs-article-slide-source, .qhs-article-cover-source) *):hover {
+    text-decoration: underline;
+    text-decoration-color: currentColor;
+}
+
+/* 2026-10-30 按鈕滑過／點選：照原本 .btn:hover 的設計用白字（原本被 .post-content a:hover 蓋成藍底藍字，字看不見）；平常的顏色不變 */
+.post-content a.btn:not(:where(.qhs-root, .qhs-slide, .qhs-article-slide-source, .qhs-article-cover-source) *):hover,
+.post-content a.btn:not(:where(.qhs-root, .qhs-slide, .qhs-article-slide-source, .qhs-article-cover-source) *):focus {
+    color: #fff;
+}
+
 .post-meta {
     padding: 5px 0;
 }
@@ -1745,3 +1805,46 @@ a.linkedin-bg:hover {
     border-left-color: #00bfa5; /* 或你想要的高亮色 */
     background-color: #eefdfb;
   }
+
+/* 2026-10-30 整頁加寬：1200px 以上由 1170px 放寬，最多 1400px、兩側各留 40px；欄位比例（內文 9：側欄 3）不變 */
+@media only screen and (min-width : 1200px) {
+    .container {
+        width: max(1170px, min(1400px, calc(100% - 80px)));
+    }
+}
+
+/* 側欄課程目錄字放大（原本吃 Bootstrap 預設 14px）；992–1199px 的螢幕側欄只有約 180px 寬，用 15px */
+:where(aside, .sidebar) .lesson-link {
+    font-size: 17px;
+    line-height: 1.5;
+    overflow-wrap: break-word;
+}
+
+@media only screen and (min-width : 992px) and (max-width : 1199px) {
+    :where(aside, .sidebar) .lesson-link {
+        font-size: 15px;
+    }
+}
+
+/* 文章裡的清單字跟段落一樣大（原本吃 Bootstrap 預設 14px）；表格、文章目錄、投影片不變，頁面自己設的字級優先 */
+.post-content li:not(:where(.qhs-root, .qhs-slide, .qhs-article-slide-source, .qhs-article-cover-source, nav, table) *) {
+    font-size: 20px;
+    line-height: 32px;
+    overflow-wrap: break-word;
+}
+
+@media only screen and (max-width : 767px) {
+    .post-content li:not(:where(.qhs-root, .qhs-slide, .qhs-article-slide-source, .qhs-article-cover-source, nav, table) *) {
+        font-size: 18px;
+        line-height: 29px;
+    }
+}
+
+/* 2026-10-30 文章表格裡的字跟段落一樣大（原本吃 Bootstrap 預設 14px）：只在 1200px 以上的寬螢幕；
+   手機、平板維持原本大小（放大後表格會比螢幕寬）；投影片不變，頁面自己設的字級優先 */
+@media only screen and (min-width : 1200px) {
+    .post-content :is(td, th):not(:where(.qhs-root, .qhs-slide, .qhs-article-slide-source, .qhs-article-cover-source) *) {
+        font-size: 20px;
+        line-height: 1.6;
+    }
+}
