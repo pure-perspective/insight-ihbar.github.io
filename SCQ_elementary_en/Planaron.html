@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N39VTY949N"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-N39VTY949N');
+</script>
+    <!-- Basic Page Needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <meta name="author" content="Peir-Ru Wang">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;1,300&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/20250525-icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/20250525-icon.png">
+
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/css/style.css" rel="stylesheet">
+    <link href="../assets/css/responsive.css" rel="stylesheet">
+
+    <title>Planaron: A Qubit Fabricated Using the Superconductor–Insulator Transition</title>
+    <meta name="description" content="An introduction to the NbN film, planar weak link, and qubit measurements of Planaron, illustrated with figures from the paper.">
+    <meta name="keywords" content="Planaron, NbN, superconducting qubits, superconductor–insulator transition, atomic layer deposition, atomic layer etching, Josephson junction">
+    <link rel="canonical" href="https://www.insight-ihbar.com/SCQ_elementary_en/Planaron.html">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+
+    <header id="masthead" class="site-header">
+        <nav id="primary-navigation" class="site-navigation">
+            <div class="container">
+
+                <div class="navbar-header">                   
+                    <a href="../index.html" class="site-title">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
+                </div><!-- /.navbar-header -->
+
+                <div class="collapse navbar-collapse" id="agency-navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="../index.html">Home</a></li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Qubit Physics<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                              <li class="active"><a href="../SCQ_elementary_en/main.html">Superconducting Qubits (Elementary)</a></li>
+                              <li><a href="../SCQ_advanced_en/main.html">Superconducting Qubits (Advanced)</a></li>
+                              <li><a href="../SpQ_en/main.html">Semiconductor Spin Qubits</a></li>
+                              <li><a href="../SCQCA-2026F_en/main.html">The Architecture of SC<br>Quantum Computers (2026 Fall)</a></li>
+                            </ul>
+                        </li>
+                        <!--<li class="active"><a href="../SCQ_elementary/main.html">科普介紹</a></li>-->
+                        <li><a href="../QC_hardware_en/main.html">Hardware</a></li>
+                        <li><a href="../QID_en/main.html">Quantum Industries</a></li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Workshop Note<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                <li><a href="../ASW2026_en/main.html">2026 Academia Sinica SCQC Winter Workshop</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Consultance<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                <li><a href="https://www.quantum-perspectives.com/About_en/main.html">Taiwan Market Outreach Services</a></li>
+                                <li><a href="../About_en/main.html">About Us</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="../index_ch.html">中文版</a></li>                        
+                    </ul>
+                </div>
+
+            </div>   
+        </nav><!-- /.site-navigation -->
+    </header><!-- /#mastheaed -->
+
+    <div id="hero" class="hero overlay subpage-hero blog-hero">
+        <div class="hero-content">
+            <div class="hero_2-text">
+                <h1>Qubit Physics</h1>
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+                  <li class="breadcrumb-item"><a href="./main.html">Superconducting Qubits (Elementary)</a></li>
+                  <!--<li class="breadcrumb-item active">約瑟夫森節</li>-->
+                </ol>
+            </div><!-- /.hero-text -->
+        </div><!-- /.hero-content -->
+    </div><!-- /.hero -->
+
+    <main id="main" class="site-main">
+
+        <section class="site-section subpage-site-section section-blog">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                        <article class="blog-post">
+                            <!--<img src="../assets/img/portfolio-1.jpg" class="img-res" alt="">-->
+                            <div class="post-content">
+<div style="text-align: center;">
+    <h2>Planaron: A Qubit Fabricated Using the Superconductor–Insulator Transition</h2>
+    <h3>A Planar Weak Link Made from a Single NbN Film</h3>
+</div>
+
+<p>Common superconducting qubits are quantum circuits built with Josephson junctions. Their tunnel junctions often use an \(\mathrm{Al}/\mathrm{AlO}_x/\mathrm{Al}\) structure, with an amorphous aluminum oxide tunnel barrier between two aluminum electrodes. Defects in this amorphous oxide can form two-level systems (TLS) that cause decoherence. This has led scientists and engineers to ask whether a superconducting qubit could be made directly from a single material. Bøttcher and colleagues used a single niobium nitride (NbN) film, locally thinning a small region into a weak link to make a qubit they call Planaron.<a href="#ref-1">[1]</a></p>
+
+<h3 id="sit">The Superconductor–Insulator Transition in NbN Films</h3>
+<p>Superconducting properties are related to the coherence length of Cooper pairs. When a material's dimensions become comparable to this length, its superconducting properties can change. Many superconductors have a different \(T_c\) in thin-film form than in bulk. As an NbN film is thinned, its superconducting critical temperature \(T_c\) decreases. These films undergo a superconductor–insulator transition (SIT) near a critical thickness of \(d_c \approx 2.5\text{–}3\,\mathrm{nm}\). The team used atomic layer deposition (ALD) to control the thickness during film growth and atomic layer etching (ALE) to gradually thin thicker films, studying how thickness affects the superconducting state.</p>
+
+<p>To make a junction, the thicker NbN on either side is retained as superconducting electrodes, while a short section in the middle is thinned to about \(2.5\,\mathrm{nm}\) to form a weak link. In panel (b) below, the thin central region and the thicker electrodes were originally part of the same film; only the local thickness has changed. The length and width of the thin region are then varied to see how much supercurrent it can carry. The current–voltage curves below provide this comparison.</p>
+<div style="text-align: center;"><a href="../Image/planaron-paper-fig2.png"><img class="paper-figure" src="../WebP/planaron-paper-fig2.webp" alt="Figure 2 from the paper: phase diagram, AFM image, and current–voltage measurements of planar weak links" width="1397" height="1782" loading="lazy" style="width:85%;max-width:100%;height:auto;"></a></div>
+<p class="dark-background">▲ (a) Thickness-controlled SIT phase diagram, with the boundary between the superconducting and insulating regions near \(d_{c}\). (b) An atomic force microscopy (AFM) image of the weak link, showing the thinned central region and the thicker electrodes on either side. (c, d) Short weak links with a length of \(20\,\mathrm{nm}\) carry a tunneling supercurrent. (e, f) When the thinned region is extended to \(50\,\mathrm{nm}\), superconducting tunneling is no longer observed, and resistive behavior appears.<br><span style="font-size: 0.7em; line-height: 0.8;">Ref: C. G. L. Bøttcher et al., <a href="https://arxiv.org/abs/2510.19983v1">arXiv:2510.19983v1</a>, Fig. 2. <a href="https://arxiv.org/html/2510.19983v1/Figure2.png">Original figure</a>.</span><br><br></p>
+
+
+<h4 id="fabrication">Two Fabrication Sequences for Weak Links</h4>
+<div style="text-align: center;"><a href="../Image/planaron-paper-s8.svg"><img class="paper-figure" src="../Image/planaron-paper-s8.svg" alt="Supplementary Figure S8: two fabrication sequences, with local thinning before or after wire patterning" width="349" height="329" loading="lazy" style="width:80%;max-width:100%;height:auto;"></a></div>
+<p class="dark-background">▲ (a→b) For Sample 1, a long trench is first etched into the NbN film to locally reduce its thickness, and the surrounding material is then removed. (c→d) For Sample 2, the wire is patterned first, and a short section in the middle is then locally thinned. Both processes form a weak link, but the wire sidewalls are exposed differently during subsequent processing. The two sets of samples show different distributions of supercurrent.<br><span style="font-size: 0.7em; line-height: 0.8;">Ref: C. G. L. Bøttcher et al., <a href="https://arxiv.org/abs/2510.19983v1">arXiv:2510.19983v1</a>, Fig. S8. <a href="https://arxiv.org/html/2510.19983v1/FigureS3.svg">Original figure</a>.</span><br><br></p>
+
+
+
+<h3 id="planaron">Spectroscopy of the Planaron Qubit</h3>
+<p>Connecting the NbN weak link to a capacitor forms a Planaron. The junction is about \(1\,\mu\mathrm{m}\) wide and \(30\,\mathrm{nm}\) long; panel (a) below shows the circuit layout. When microwaves on the transmission line are resonant with the qubit, the amplitude and phase of the transmitted signal change. The qubit frequency can therefore be determined from the transmission coefficient \(S_{21}\).</p>
+<div style="text-align: center;"><a href="../Image/planaron-paper-fig3.png"><img class="paper-figure" src="../WebP/planaron-paper-fig3.webp" alt="Figure 3 from the paper: Planaron circuit, power dependence, and two-tone spectroscopy" width="2039" height="848" loading="lazy" style="width:100%;max-width:100%;height:auto;"></a></div>
+<p class="dark-background">▲ (a) The weak-link geometry is shown above, with the capacitor and transmission-line layout below. (b) Complex transmission responses at different drive powers. As the power increases, the two-level transition gradually saturates, compressing the curves. (c) Fitting the transmission response in (b) to a two-level model gives the Rabi frequency \(\Omega_R\), which increases with the microwave drive amplitude. (d) With the \(|0\rangle \rightarrow |1\rangle\) transition continuously driven, a second microwave tone is swept to reveal the \(|1\rangle \rightarrow |2\rangle\) transition. Energy-level splitting also appears under strong driving. (e) A line cut at fixed power shows two peaks separated by about \(235\,\mathrm{MHz}\), giving the magnitude of the anharmonicity.<br><span style="font-size: 0.7em; line-height: 0.8;">Ref: C. G. L. Bøttcher et al., <a href="https://arxiv.org/abs/2510.19983v1">arXiv:2510.19983v1</a>, Fig. 3. <a href="https://arxiv.org/html/2510.19983v1/Figure3.png">Original figure</a>.</span><br><br></p>
+
+
+
+<h3 id="planaron-relaxation">\(T_1\) of the Planaron Qubit</h3>
+<p>In a later talk, Bøttcher presented measurements of the Planaron's energy relaxation time \(T_1\). The qubit is first excited to \(|1\rangle\) and then read out after different waiting times. The decay of the excited-state population gives \(T_1\). The result shown on the slide is \(T_1=243\pm7.9\,\mu\mathrm{s}\).<a href="#ref-2">[2]</a></p>
+<div style="text-align: center;"><a href="../Image/planaron-linkedin-eichinger-lifetime-coherence.jpg"><img class="paper-figure" src="../WebP/planaron-linkedin-eichinger-lifetime-coherence.webp" alt="Charlotte Bøttcher&#x27;s presentation slide: Planaron energy relaxation time and the distribution of repeated measurements over 20 hours" width="2048" height="1535" loading="lazy" style="width:100%;max-width:100%;height:auto;"></a></div>
+<p class="dark-background">▲ The left plot compares \(T_1\) at different detunings. Pink points are experimental data, and gray-blue points are simulations of the Purcell effect. The upper-right plot shows the decay of the readout signal with waiting time. The lower-right plot shows the distribution of repeated \(T_1\) measurements over 20 hours, with a mean of about \(220\,\mu\mathrm{s}\). The slide does not specify the measurement temperature.<br><span style="font-size: 0.7em; line-height: 0.8;">Ref: Charlotte Bøttcher, “The Planaron qubit: lifetime &amp; coherence,” presentation slide; photo source: Michaela Eichinger, <a href="https://www.linkedin.com/feed/update/urn:li:share:7518967884673556483/">original LinkedIn post</a>.</span><br><br></p>
+
+<h3 id="references">References</h3>
+<ol class="references">
+<li id="ref-1">C. G. L. Bøttcher et al., “A transmon qubit realized by exploiting the superconductor-insulator transition,” preprint (2025). <a href="https://arxiv.org/abs/2510.19983v1">arXiv:2510.19983v1</a>.</li>
+<li id="ref-2">Charlotte Bøttcher, “The Planaron qubit: lifetime &amp; coherence,” photograph of a presentation slide shared by Michaela Eichinger in the <a href="https://www.linkedin.com/feed/update/urn:li:share:7518967884673556483/">original LinkedIn post</a>.</li>
+</ol>
+
+
+                                <p>
+                                    <span style="font-size: 0.5em; line-height: 0.8;">
+                                        Originally written in Chinese by the author, these articles are translated into English to invite cross-language resonance.
+                                    </span>
+                                </p>
+                                <div class="post-meta">
+                                    <span class="post-author">
+                                        <a href="../About_en/Wang.html"><img class="img-res" src="../WebP/IMG_0964_2.webp" alt="">Peir-Ru Wang</a>
+                                    </span>
+                                    <span class="post-category">
+                                        <a href="./main.html"><i class="fa fa-folder" aria-hidden="true"></i>Superconducting Qubits (Elementary)</a>
+                                    </span>
+                                </div><!-- /.post-meta -->
+                            
+                                <div id="prev-next-nav" class="text-center">
+                                    <a class="btn btn-gray" href="F.html">← Previous</a> 
+                                    <a class="btn btn-gray" href="../SCQ_elementary/Planaron.html" style="margin: 0 10px;">中文版</a>
+                                    <a class="btn btn-gray" href="G.html">Next →</a>
+                                </div>
+
+                                
+
+                            </div><!-- /.post-content -->
+                        </article><!-- /.blog-post -->
+                        <!--<div id="PostComments" class="post-comments">
+                            
+                            
+                            
+                        </div> /#PostComments -->
+                        <!--<div class="respond">
+                            <h3>Post a Comment</h3>
+                            <form class="form-horizontal">
+                                <input class="form-control" type="text" placeholder="Your Name*" required>
+                                <input class="form-control" type="email" placeholder="Your Email" required>
+                                <textarea class="form-control form-control-comment" type="text" placeholder="Your Comment*" required></textarea>
+                                <button class="btn btn-green">Add a comment</button>
+                            </form>    
+                        </div> /.respond -->
+                    </div>
+                    <aside class="col-md-3">
+                        <div class="sidebar">
+                            <div class="widget">
+                                <div id="lesson-list_2">
+                                <div class="lesson-link "><a href="main.html">Superconducting Qubits (Elementary Version): Menu</a></div>
+                                <div class="lesson-link "><a href="A.html">Josephson Junction</a></div>
+                                <div class="lesson-link "><a href="B.html">What is a Superconducting Qubit?</a></div>
+                                <div class="lesson-link "><a href="C.html">Overview of Superconducting Circuit Qubit Types</a></div>
+                                <div class="lesson-link "><a href="D.html">Early Types of Superconducting Qubits</a></div>
+                                <div class="lesson-link "><a href="E.html">Modern Mainstream Superconducting Qubits</a></div>
+                                <div class="lesson-link "><a href="F.html">Superconducting Qubits under Electron Microscopy</a></div>
+                                <div class="lesson-link active"><a href="Planaron.html">Planaron: A Qubit Fabricated Using the Superconductor–Insulator Transition</a></div>
+                                <div class="lesson-link "><a href="G.html">Other Types of Qubits</a></div>
+                                <div class="lesson-link "><a href="H.html">What Does a Superconducting Quantum Computer Look Like?</a></div>
+                                <div class="lesson-link "><a href="I.html">How Are Signals Delivered to Qubits?</a></div>
+                                <div class="lesson-link "><a href="J.html">QPU Topology</a></div>
+                                <div class="lesson-link "><a href="M.html">Decoherence-Time Drift</a></div>
+                                <div class="lesson-link "><a href="K.html">How to Control a Superconducting Qubit</a></div>
+                                <div class="lesson-link "><a href="L.html">Control Error 1 - Frequency Detuning</a></div>
+                                </div>
+                            </div>
+                        </div></aside>
+                </div>
+            </div>
+        </section><!-- /.section-portfolio -->
+
+    </main><!-- /#main -->
+
+    <footer id="colophon" class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-4 col-xs-6">
+                    <a href="../index.html" class="site-title">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
+                    <p>Exploring the Quantum Technology Together.</p>
+                    </div>
+                <div class="col-lg-offset-4 col-md-3 col-sm-4 col-md-offset-2 col-sm-offset-0 col-xs-6 ">
+                    <p class="site-title">𝐾𝐸𝐸𝑃 𝐼𝑁 𝑇𝑂𝑈𝐶𝐻</p>
+                    <ul class="list-unstyled contact-links">
+                        <li><i class="fa fa-envelope" aria-hidden="true"></i><a href="mailto:info@insight-ihbar.com">info@insight-ihbar.com</a></li>
+                        <!--<li><i class="fa fa-phone" aria-hidden="true"></i><a href="tel:+37400800000">+374 (00) 80 00 00 </a></li>
+                        <li><i class="fa fa-fax" aria-hidden="true"></i><a href="+37400900000">+374 (00) 90 00 00</a></li>
+                        <li><i class="fa-solid fa-location-dot"></i><p>Hsinchu 300, Taiwan (R.O.C.)</p></li>-->
+                    </ul>
+                </div>
+                <!--<div class="clearfix visible-xs"></div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6">
+                    <h3>Featured links</h3>
+                    <ul class="list-unstyled">
+                        <li class="active"><a href="index_ch.html">Home</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="portfolio.html">Porfolio</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>-->
+            </div>
+        </div>
+        <div class="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-8">
+                        <div class="social-links">
+                            <!--<a class="twitter-bg" href="#"><i class="fab fa-twitter"></i></a>-->
+                            <!--<<a class="facebook-bg" href="https://www.facebook.com/people/Quantum-Perspectives/61576446849628/"><i class="fab fa-facebook"></i></a>-->
+                            <!--<a class="facebook-bg" href="https://www.facebook.com/people/%E9%87%8F%E5%AD%90%E9%81%A0%E8%A6%8BQuantum-Perspectives/61576883632888/"><i class="fab fa-facebook-f"></i></a>-->
+                            <!--<a class="pinterest" href="#"><i class="fa-solid fa-microscope"></i></a>-->
+                            <!--<a class="facebook-bg" href="https://www.facebook.com/people/Insight-hbar/61576811775374/"><i class="fab fa-facebook-f"></i></a>-->
+                            <a class="linkedin-bg" href="https://www.linkedin.com/company/insight-ihbar"><i class="fab fa-linkedin"></i></a>
+                        </div><!-- /.social-links -->
+                    </div>
+                    <div class="col-xs-4">
+                        <div class="text-right">
+                            <p><span style="font-size: 16px;">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</span></p>
+                            <p>All Rights Reserved</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.copyright -->
+    </footer><!-- /#footer -->
+
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="../assets/js/bootstrap-select.min.js"></script>
+    <script src="../assets/js/jquery.slicknav.min.js"></script>
+    <script src="../assets/js/jquery.countTo.min.js"></script>
+    <script src="../assets/js/jquery.shuffle.min.js"></script>
+    <script src="../assets/js/script.js"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        details.dark-background {
+          background-color: #f5f5f5;
+          border: 1px solid #ddd;
+          padding: 10px;
+          border-radius: 5px;
+        }
+        details.dark-background summary {
+          cursor: pointer;
+          font-weight: bold;
+          background-color: #e0e0e0;
+          padding: 5px;
+          border-radius: 3px;
+        }
+      </style>
+  
+</body>
+</html>

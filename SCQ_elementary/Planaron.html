@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N39VTY949N"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-N39VTY949N');
+</script>
+    <!-- Basic Page Needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <meta name="author" content="Peir-Ru Wang">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;1,300&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/20250525-icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/20250525-icon.png">
+
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/css/style.css" rel="stylesheet">
+    <link href="../assets/css/responsive.css" rel="stylesheet">
+
+    <title>Planaron：以超導—絕緣體轉變製作量子位元</title>
+    <meta name="description" content="以論文原圖介紹Planaron的NbN薄膜、平面弱連結與量子位元量測。">
+    <meta name="keywords" content="Planaron, NbN, 超導量子位元, 超導—絕緣體轉變, 原子層沉積, 原子層蝕刻, 約瑟夫森節">
+    <link rel="canonical" href="https://www.insight-ihbar.com/SCQ_elementary/Planaron.html">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+
+    <header id="masthead" class="site-header">
+        <nav id="primary-navigation" class="site-navigation">
+            <div class="container">
+
+                <div class="navbar-header">
+                   
+                    <a href="../index_ch.html" class="site-title">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
+
+                </div><!-- /.navbar-header -->
+
+                <div class="collapse navbar-collapse" id="agency-navbar-collapse">
+
+                    <ul class="nav navbar-nav navbar-right">
+
+                        <li><a href="../index_ch.html">Home</a></li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">科普介紹<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                              <li class="active"><a href="../SCQ_elementary/main.html">超導量子位元(科普版)</a></li>
+                              <li><a href="../SCQ_advanced/main.html">超導量子位元(進階版)</a></li>
+                              <li><a href="../SpQ/main.html">半導體自旋量子位元</a></li>
+                            </ul>
+
+                        </li>
+                        <!--<li class="active"><a href="../SCQ_elementary/main.html">科普介紹</a></li>-->
+                        <li><a href="../QC_hardware/main.html">硬體導論</a></li>
+                        <li><a href="../QID/main.html">量子產業群像錄</a></li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">研討會筆記<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                <li><a href="../ASW2026/main.html">2026中研院超導量子電腦Workshop</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">量子諮詢<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                <li><a href="https://www.quantum-perspectives.com/About/main.html">量子遠見科技：諮詢服務</a></li>
+                                <li><a href="../About/main.html">關於我們</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="../index.html">English</a></li>
+                        
+                    </ul>
+
+                </div>
+
+            </div>   
+        </nav><!-- /.site-navigation -->
+    </header><!-- /#mastheaed -->
+
+    <div id="hero" class="hero overlay subpage-hero blog-hero">
+        <div class="hero-content">
+            <div class="hero_2-text">
+                <h1>科普介紹</h1>
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="../index_ch.html">Home</a></li>
+                  <li class="breadcrumb-item"><a href="../SCQ_elementary/main.html">超導量子位元(科普版)</a></li>
+                  <!--<li class="breadcrumb-item active">早年超導量子位元的種類</li>-->
+                </ol>
+            </div><!-- /.hero-text -->
+        </div><!-- /.hero-content -->
+    </div><!-- /.hero -->
+
+    <main id="main" class="site-main">
+
+        <section class="site-section subpage-site-section section-blog">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                        <article class="blog-post">
+                            <!--<img src="../assets/img/portfolio-1.jpg" class="img-res" alt="">-->
+                            <div class="post-content">
+<div style="text-align: center;">
+                                    <h2>Planaron：以超導—絕緣體轉變製作量子位元</h2>
+                                    <h3>單一NbN薄膜製作的平面弱連結</h3>
+                                </div>
+
+<p>常見超導量子位元是以約瑟夫森節構成的量子電路，穿隧接面常採用\(\mathrm{Al}/\mathrm{AlO}_x/\mathrm{Al}\)結構，在兩層鋁電極之間夾入非晶氧化鋁穿隧障壁。然而，非晶氧化層常有許多缺陷構成TLS，造成退相干來源，故科學家與工程師在思考，能否用單一材料直接製成超導量子位元？Bøttcher等人利用單一氮化鈮(NbN)薄膜，將局部區域減薄成弱連結，製作出稱為Planaron的量子位元。<a href="#ref-1">[1]</a></p>
+
+<h3 id="sit">NbN薄膜的超導—絕緣體轉變</h3>
+<p>超導性質與古柏對的相干長度有關，當材料尺寸與相干尺度相近時，超導性質會受到改變，許多超導體製成薄膜時\(T_c\)會與塊材不同。NbN薄膜減薄時，超導臨界溫度\(T_c\)會降低。這批薄膜在臨界厚度\(d_c \approx 2.5\text{–}3\,\mathrm{nm}\)附近發生超導—絕緣體轉變(Superconductor–Insulator Transition，SIT)。研究團隊用原子層沉積(ALD)控制薄膜的生長厚度，也用原子層蝕刻(ALE)將較厚的薄膜逐步減薄，研究厚度對超導態的影響。</p>
+
+<p>製作接面時，先保留兩側較厚的NbN作為超導電極，再把中間一小段減薄到約\(2.5\,\mathrm{nm}\)，形成弱連結。可以參考下圖(b)，中央薄區與兩側電極原本是同一片薄膜，只在局部改變厚度。接著改變薄區的長度和寬度，觀察它能承載多少超導電流，以下用電流—電壓曲線來比較。</p>
+<div style="text-align: center;"><a href="../Image/planaron-paper-fig2.png"><img class="paper-figure" src="../WebP/planaron-paper-fig2.webp" alt="原論文Fig.2，平面弱連結的相圖、AFM影像與電流電壓量測" width="1397" height="1782" loading="lazy" style="width:85%;max-width:100%;height:auto;"></a></div>
+<p class="dark-background">▲(a)以薄膜厚度調控的SIT相圖，厚度\(d_{c}\)附近為超導與絕緣區域的分界。(b)弱連結的原子力顯微鏡(AFM)影像，可見中央減薄區與兩側較厚電極。(c、d)長度\(20\,\mathrm{nm}\)的短弱連結，具有超導穿隧電流。(e、f)當減薄區長度增加到\(50\,\mathrm{nm}\)時，便不具備穿隧超導性，電阻行為隨之顯現。<br><span style="font-size: 0.7em; line-height: 0.8;">Ref: C. G. L. Bøttcher et al., <a href="https://arxiv.org/abs/2510.19983v1">arXiv:2510.19983v1</a>, Fig. 2。<a href="https://arxiv.org/html/2510.19983v1/Figure2.png">論文原圖</a>。</span><br><br></p>
+
+
+<h4 id="fabrication">兩種弱連結製程順序</h4>
+<div style="text-align: center;"><a href="../Image/planaron-paper-s8.svg"><img class="paper-figure" src="../Image/planaron-paper-s8.svg" alt="補充圖S8，先局部減薄或先定義導線的兩種製程" width="349" height="329" loading="lazy" style="width:80%;max-width:100%;height:auto;"></a></div>
+<p class="dark-background">▲(a→b)Sample 1先在NbN薄膜中局部蝕刻減薄出長槽，再去除周邊。(c→d)Sample 2先製作導線，再將中間一段局部減薄。兩種製程都能形成弱連結，但導線側壁暴露於後續製程的情況不同。兩組樣品的超導電流分布會有差異。<br><span style="font-size: 0.7em; line-height: 0.8;">Ref: C. G. L. Bøttcher et al., <a href="https://arxiv.org/abs/2510.19983v1">arXiv:2510.19983v1</a>, Fig. S8。<a href="https://arxiv.org/html/2510.19983v1/FigureS3.svg">論文原圖</a>。</span><br><br></p>
+
+
+
+<h3 id="planaron">Planaron量子位元的頻譜</h3>
+<p>將NbN弱連結接上電容，構成Planaron。接面的寬度約\(1\,\mu\mathrm{m}\)、長度約\(30\,\mathrm{nm}\)，電路配置可以見下圖(a)。當傳輸線上的微波與量子位元共振，傳輸訊號的振幅與相位會改變，因此可以由傳輸係數\(S_{21}\)找出量子位元頻率。</p>
+<div style="text-align: center;"><a href="../Image/planaron-paper-fig3.png"><img class="paper-figure" src="../WebP/planaron-paper-fig3.webp" alt="原論文Fig.3，Planaron電路、功率依賴與雙音頻譜" width="2039" height="848" loading="lazy" style="width:100%;max-width:100%;height:auto;"></a></div>
+<p class="dark-background">▲(a)上方為弱連結幾何，下方為電容與傳輸線的配置。(b)不同驅動功率下的複數傳輸響應；功率增加時，兩能階躍遷逐漸飽和，曲線受到壓縮。(c)將圖(b)的傳輸響應代入兩能階模型，抽取Rabi頻率\(\Omega_R\)，可以看到微波驅動振幅越大，Rabi頻率也跟著增加。(d)先持續驅動\(|0\rangle \rightarrow |1\rangle\)，再掃描第二道微波，可見\(|1\rangle \rightarrow |2\rangle\)躍遷，強驅動下亦出現能階分裂。(e)固定功率下的截線，兩個峰相距約\(235\,\mathrm{MHz}\)，即非諧性大小。<br><span style="font-size: 0.7em; line-height: 0.8;">Ref: C. G. L. Bøttcher et al., <a href="https://arxiv.org/abs/2510.19983v1">arXiv:2510.19983v1</a>, Fig. 3。<a href="https://arxiv.org/html/2510.19983v1/Figure3.png">論文原圖</a>。</span><br><br></p>
+
+
+
+<h3 id="planaron-relaxation">Planaron量子位元的\(T_1\)</h3>
+<p>Bøttcher在後續演講中展示了Planaron的能量弛緩時間\(T_1\)。先將量子位元激發至\(|1\rangle\)，再改變等待時間後讀出，便可以由激發態的衰減取得\(T_1\)。投影片上的量測結果為\(T_1=243\pm7.9\,\mu\mathrm{s}\)。<a href="#ref-2">[2]</a></p>
+<div style="text-align: center;"><a href="../Image/planaron-linkedin-eichinger-lifetime-coherence.jpg"><img class="paper-figure" src="../WebP/planaron-linkedin-eichinger-lifetime-coherence.webp" alt="Charlotte Bøttcher演講投影片：Planaron的能量弛緩時間與20小時內重複量測的分布" width="2048" height="1535" loading="lazy" style="width:100%;max-width:100%;height:auto;"></a></div>
+<p class="dark-background">▲左圖比較不同失諧量（detuning）下的\(T_1\)，粉紅點為實驗數據，灰藍點為Purcell效應的模擬結果。右上為讀出訊號隨等待時間的衰減曲線；右下統計20小時內多次量測的\(T_1\)，平均約\(220\,\mu\mathrm{s}\)。這張投影片未標示量測溫度。<br><span style="font-size: 0.7em; line-height: 0.8;">Ref: Charlotte Bøttcher, “The Planaron qubit: lifetime &amp; coherence,” 演講投影片；照片出處：Michaela Eichinger，<a href="https://www.linkedin.com/feed/update/urn:li:share:7518967884673556483/">LinkedIn原始貼文</a>。</span><br><br></p>
+
+<h3 id="references">參考文獻</h3>
+<ol class="references">
+<li id="ref-1">C. G. L. Bøttcher et al., “A transmon qubit realized by exploiting the superconductor-insulator transition,” 預印本 (2025). <a href="https://arxiv.org/abs/2510.19983v1">arXiv:2510.19983v1</a>。</li>
+<li id="ref-2">Charlotte Bøttcher，〈The Planaron qubit: lifetime &amp; coherence〉演講投影片照片，由Michaela Eichinger發布於<a href="https://www.linkedin.com/feed/update/urn:li:share:7518967884673556483/">LinkedIn原始貼文</a>。</li>
+</ol>
+
+                                <div class="post-meta">
+                                    <span class="post-author">
+                                        <a href="../About/Wang.html"><img class="img-res" src="../WebP/IMG_0964_2.webp" alt="">王培儒</a>
+                                    </span>
+                                    <span class="post-category">
+                                        <a href="../SCQ_elementary/main.html"><i class="fa fa-folder" aria-hidden="true"></i> 超導量子位元(科普版)</a>
+                                    </span>
+                                </div><!-- /.post-meta -->
+                            
+                                <div id="prev-next-nav" class="text-center">
+                                    <a class="btn btn-gray" href="F.html">← 上一頁</a> 
+                                    <a class="btn btn-gray" href="../SCQ_elementary_en/Planaron.html" style="margin: 0 10px;">English Version</a>
+                                    <a class="btn btn-gray" href="G.html">下一頁 →</a>
+                                </div>
+
+
+
+                            </div><!-- /.post-content -->
+                        </article><!-- /.blog-post -->
+                        <!--<div id="PostComments" class="post-comments">
+                            
+                            
+                            
+                        </div> /#PostComments -->
+                        <!--<div class="respond">
+                            <h3>Post a Comment</h3>
+                            <form class="form-horizontal">
+                                <input class="form-control" type="text" placeholder="Your Name*" required>
+                                <input class="form-control" type="email" placeholder="Your Email" required>
+                                <textarea class="form-control form-control-comment" type="text" placeholder="Your Comment*" required></textarea>
+                                <button class="btn btn-green">Add a comment</button>
+                            </form>    
+                        </div> /.respond -->
+                    </div>
+                    <aside class="col-md-3">
+                        <div class="sidebar">
+                            <div class="widget">
+                                <div id="lesson-list_2">
+                                <div class="lesson-link "><a href="main.html">超導量子位元(科普版):目錄</a></div>
+                                <div class="lesson-link "><a href="A.html">約瑟夫森節</a></div>
+                                <div class="lesson-link "><a href="B.html">超導量子位元是什麼呢？</a></div>
+                                <div class="lesson-link "><a href="C.html">淺談超導電路量子位元的種類</a></div>
+                                <div class="lesson-link "><a href="D.html">早年超導量子位元的種類</a></div>
+                                <div class="lesson-link "><a href="E.html">當前主流超導量子位元的種類</a></div>
+                                <div class="lesson-link "><a href="F.html">電子顯微鏡下的超導量子位元</a></div>
+                                <div class="lesson-link active"><a href="Planaron.html">Planaron：以超導—絕緣體轉變製作量子位元</a></div>
+                                <div class="lesson-link "><a href="G.html">其他種類的Qubit</a></div>
+                                <div class="lesson-link "><a href="H.html">超導量子電腦長什麼樣子？</a></div>
+                                <div class="lesson-link "><a href="I.html">如何送訊號到量子位元？</a></div>
+                                <div class="lesson-link "><a href="J.html">QPU拓墣</a></div>
+                                <div class="lesson-link "><a href="M.html">退相干時間漂移</a></div>
+                                <div class="lesson-link "><a href="K.html">如何控制超導量子位元</a></div>
+                                <div class="lesson-link "><a href="L.html">控制誤差1-頻率失諧</a></div>
+                                </div>
+                            </div>
+                        </div></aside>
+                </div>
+            </div>
+        </section><!-- /.section-portfolio -->
+
+    </main><!-- /#main -->
+
+    <footer id="colophon" class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-4 col-xs-6">
+                    <a class="site-title">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</a>
+                    <p>一起走進新時代的前沿科學與量子科技</p>
+                    </div>
+                <div class="col-lg-offset-4 col-md-3 col-sm-4 col-md-offset-2 col-sm-offset-0 col-xs-6 ">
+                    <p class="site-title">𝐾𝐸𝐸𝑃 𝐼𝑁 𝑇𝑂𝑈𝐶𝐻</p>
+                    <ul class="list-unstyled contact-links">
+                        <li><i class="fa fa-envelope" aria-hidden="true"></i><a href="mailto:info@insight-ihbar.com">info@insight-ihbar.com</a></li>
+                        <!--<li><i class="fa fa-phone" aria-hidden="true"></i><a href="tel:+37400800000">+374 (00) 80 00 00 </a></li>
+                        <li><i class="fa fa-fax" aria-hidden="true"></i><a href="+37400900000">+374 (00) 90 00 00</a></li>
+                        <li><i class="fa-solid fa-location-dot"></i><p>Hsinchu 300, Taiwan (R.O.C.)</p></li>-->
+                    </ul>
+                </div>
+                <!--<div class="clearfix visible-xs"></div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6">
+                    <h3>Featured links</h3>
+                    <ul class="list-unstyled">
+                        <li class="active"><a href="index_ch.html">Home</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="portfolio.html">Porfolio</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>-->
+            </div>
+        </div>
+        <div class="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-8">
+                        <div class="social-links">
+                            <!--<a class="twitter-bg" href="#"><i class="fab fa-twitter"></i></a>-->
+                            <!--<<a class="facebook-bg" href="https://www.facebook.com/people/Quantum-Perspectives/61576446849628/"><i class="fab fa-facebook"></i></a>-->
+                            <!--<a class="facebook-bg" href="https://www.facebook.com/people/%E9%87%8F%E5%AD%90%E9%81%A0%E8%A6%8BQuantum-Perspectives/61576883632888/"><i class="fab fa-facebook-f"></i></a>-->
+                            <!--<a class="pinterest" href="#"><i class="fa-solid fa-microscope"></i></a>-->
+                            <!--<a class="facebook-bg" href="https://www.facebook.com/people/Insight-hbar/61576811775374/"><i class="fab fa-facebook-f"></i></a>-->
+                            <a class="linkedin-bg" href="https://www.linkedin.com/company/insight-ihbar"><i class="fab fa-linkedin"></i></a>
+                        </div><!-- /.social-links -->
+                    </div>
+                    <div class="col-xs-4">
+                        <div class="text-right">
+                            <p><span style="font-size: 16px;">𝒊𝑁𝑆𝐼𝐺𝐻𝑇 𝒊ℏ</span></p>
+                            <p>All Rights Reserved</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.copyright -->
+    </footer><!-- /#footer -->
+
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="../assets/js/bootstrap-select.min.js"></script>
+    <script src="../assets/js/jquery.slicknav.min.js"></script>
+    <script src="../assets/js/jquery.countTo.min.js"></script>
+    <script src="../assets/js/jquery.shuffle.min.js"></script>
+    <script src="../assets/js/script.js"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  
+</body>
+</html>
